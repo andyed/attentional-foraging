@@ -4,6 +4,8 @@
 
 **Assessment:** This is a dataset paper, not a theory paper. The conceptual contributions are empirical observations, not mechanistic models. The gaps are where our work connects.
 
+> **Note:** Sections A and "What our reanalysis adds" below use v0 (uncorrected) numbers. See [findings.md](findings.md) for v1-corrected values — notably, the convergence curve shape changed after scroll correction (starts low, rises, then converges) and distance-only AUC dropped from 0.631 to 0.548.
+
 ---
 
 ## What they claim

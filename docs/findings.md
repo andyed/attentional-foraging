@@ -99,7 +99,7 @@ The forced-choice lab paradigm can't isolate first-pass priming because:
 1. 69% of trials have regressions (the non-regression subset is too small)
 2. Participants optimize rather than satisfice
 
-The right test: **at-scale production logs with first-click behavior only**. Millions of queries, no forced choice, natural satisficing. Measure time-to-first-click by position, conditioned on cumulative lexical overlap with results above the fold. This was Andy's prior strategy at eBay and is the path to a clean test.
+The right test: **at-scale production logs with first-click behavior only**. Millions of queries, no forced choice, natural satisficing. Measure time-to-first-click by position, conditioned on cumulative lexical overlap with results above the fold. This approach — large-scale behavioral logs with natural stopping criteria — is the path to a clean test (cf. Huang, White & Buscher 2012, who demonstrated the value of production-scale cursor data for understanding attention).
 
 ---
 

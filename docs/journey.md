@@ -18,7 +18,7 @@ The immediate connection: this dataset sits at the intersection of Scrutinizer (
 
 Andy's first observation: academic work reporting mouse-gaze divergence (Huang, White & Buscher 2012; the AdSERP paper itself reports 372px mean distance) has never conditioned on **p(click)**. The higher the click probability, the closer the mouse should be to the eye — because the mouse must converge on the gaze target to execute the click. Averaging across entire browsing sessions (including scanning/idle periods) inflates the reported divergence.
 
-This is a simple idea. Nobody had tested it.
+This is a simple idea. Huang, White & Buscher (2012) showed gaze-cursor alignment tightens near clicks, but the continuous distance-as-a-function-of-time-to-click curve — and the scroll correction that changes its shape — hadn't been done.
 
 ## Notebook 1: Convergence Analysis
 
