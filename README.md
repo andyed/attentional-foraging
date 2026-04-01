@@ -19,7 +19,7 @@ We found this dataset at 5am, got excited, and spent a morning exploring it. Thi
 
 The eye tracker (Gazepoint GP3 HD, 150 Hz) records **fixation duration** — how long the eye holds still on a location. This is the direct measure of how long someone looked at something. We sum all fixation durations that fall within each result's page-space Y band to get **total fixation time per result** — our primary measure of evaluation time.
 
-To assign fixations to results, we estimate each result's vertical boundaries from the SERP document height and number of results extracted. This is approximate — the AdSERP paper references AOI (area of interest) boundary data for ad regions, but we haven't located per-result AOI boundaries in the Zenodo download yet. If those exist, they'd replace our estimated boundaries and sharpen the fixation-to-result mapping considerably.
+To assign fixations to results, we estimate each result's vertical boundaries from the SERP document height and number of results extracted. This is approximate. The AdSERP dataset includes **ad boundary data** (`ad-boundary-data.zip` on [Zenodo](https://zenodo.org/records/15236546)) with exact pixel bounding boxes for native ads, top display ads, and right-rail display ads. These give us precise Y positions for ad elements — the organic results fill the space around them. Combining ad boundaries with our h3-based result extraction would sharpen the fixation-to-result mapping. Pending.
 
 We also compute **viewport time** — how long each result was ≥50% visible on screen (IAB viewability threshold), derived from the scroll event timeline. This lets us distinguish "evaluated briefly because it wasn't visible long" from "evaluated briefly because it was easy to process."
 
