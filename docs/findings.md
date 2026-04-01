@@ -81,6 +81,22 @@ Whether the priming explanation has been proposed before for SERP evaluation spe
 
 ## Caveats
 
+### Forced-click task constraint (systematic)
+
+The AdSERP participants were served SERPs via `localhost` in a controlled lab environment with transactional queries ("buy X"). Every trial ends with a click on a SERP result. This is a **forced-choice, single-task** design — no competing tabs, no address bar navigation, no query reformulation, no abandonment.
+
+This constrains generalizability across all three notebooks:
+
+| Finding | Effect of forced-click | What changes in the wild |
+|---------|----------------------|--------------------------|
+| **Convergence** | Mouse X variance is artificially low — the mouse has nowhere to go except toward results. In real browsing, attention splits across tabs, bookmarks bar, URL entry. The convergence signal is likely weaker and noisier. | Baseline divergence higher, convergence slope may be shallower |
+| **Regressions** | Regression rate (69%) may be inflated — participants *must* find something satisfactory, so they re-evaluate more thoroughly than a user who might abandon and reformulate. | Regression rate probably lower in the wild; abandonment competes with regression |
+| **Priming** | Priming effect should be robust — it depends on SERP content structure, not task constraints. But fixation durations may be longer than natural (forced thoroughness), compressing the variance that overlap needs to explain. | Effect direction holds; magnitude may change |
+
+The findings describe the **underlying mechanisms** (priming, convergence dynamics, regression patterns) rather than the **base rates** (exact regression frequency, exact convergence timing). The mechanisms should transfer; the numbers are specific to this task design.
+
+### Other caveats
+
 - **Coordinate correction applied (v1):** Page-space fixations reconciled with screen-space mouse via scroll offset interpolation. v0 findings used uncorrected coordinates; absolute distance values were wrong, relative trends held.
 - **Result boundary estimation:** Fixation-to-result mapping uses estimated Y boundaries (document height / N results). Without rendering the SERP HTML, exact pixel boundaries are unavailable. Misattribution at result boundaries adds noise.
 - **Priming effect is small:** Partial r = -0.043. Real but modest at bag-of-words granularity. The effect may be larger with semantic similarity or when controlling for result relevance.
