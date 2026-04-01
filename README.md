@@ -19,6 +19,18 @@ We found this dataset, got excited, and spent an afternoon exploring it. This re
 
 Full writeup with caveats: **[docs/findings.md](docs/findings.md)**
 
+### Lexical priming predicts evaluation speed
+
+By position 9, 62% of a result's vocabulary already appeared in prior results. **After controlling for position, higher lexical overlap predicts shorter fixation duration** (partial r = -0.043, p = 1.2×10⁻⁷). 8 of 9 positions show the effect. Users evaluate faster not just because they care less, but because cumulative context makes each result cheaper to process.
+
+![Priming](plots-v1/plot_priming1_overview.png)
+
+### Scroll regressions are the dominant pattern
+
+69% of trials involve scrolling back up. Mean 2.8 regressions/trial, ~7 result slots of travel. Regression count correlates with decision time (r=0.660).
+
+![Regressions](plots-v1/plot_reg1_overview.png)
+
 ### Mouse-gaze distance depends on click intent
 
 With scroll-corrected coordinates, distance starts low (~90px, both gaze and mouse near page top), rises steadily as the user scrolls down (gaze follows content, mouse stays in screen space), peaks near ~500px, then converges sharply in the last ~2s before click. The reported 372px aggregate sits mid-curve.
@@ -27,23 +39,11 @@ With scroll-corrected coordinates, distance starts low (~90px, both gaze and mou
 
 *128,887 fixation-mouse pairs. Scroll-corrected page-space coordinates (v1).*
 
-### Eye movements coordinate scrolling
+### Viewport state predicts clicks
 
 When modeling click prediction at a 5s horizon, viewport state (target visible, time since scroll) outperforms mouse-gaze distance alone (AUC 0.704 vs 0.548). The scroll-stop event — when the viewport locks onto a result — is a stronger click signal than spatial proximity.
 
 ![Scroll dynamics](plots-v1/plot10_scroll_dynamics.png)
-
-### Scroll regressions are the dominant pattern
-
-69% of trials involve scrolling back up. Mean 2.8 regressions/trial, ~7 result slots of travel.
-
-![Regressions](plots-v1/plot_reg1_overview.png)
-
-### Lexical priming predicts evaluation speed
-
-By position 9, 62% of a result's vocabulary already appeared in prior results. **After controlling for position, higher lexical overlap predicts shorter fixation duration** (partial r = -0.043, p = 1.2×10⁻⁷). 8 of 9 positions show the effect. Users evaluate faster not just because they care less, but because cumulative context makes each result cheaper to process.
-
-![Priming](plots-v1/plot_priming1_overview.png)
 
 ---
 
