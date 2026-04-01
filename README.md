@@ -22,25 +22,25 @@ Full writeup with caveats: **[docs/findings.md](docs/findings.md)**
 
 The reported 372px aggregate mixes two regimes. Before ~10s, the click target is often not in the viewport — the distance metric is abstract. In the last 10s, distance drops monotonically as the mouse converges on the visible target.
 
-![Convergence curve](plots/plot1_convergence_curve.png)
+![Convergence curve](plots-v0/plot1_convergence_curve.png)
 
 ### Eye movements coordinate scrolling
 
 Viewport state — whether the target is visible, how recently the user scrolled — predicts clicks better than mouse-gaze distance alone (AUC 0.704 vs 0.631).
 
-![Scroll dynamics](plots/plot10_scroll_dynamics.png)
+![Scroll dynamics](plots-v0/plot10_scroll_dynamics.png)
 
 ### Scroll regressions are the dominant pattern
 
 69% of trials involve scrolling back up to re-examine previous results. This page-level analog of fixation regressions in reading appears undercharacterized relative to its prevalence.
 
-![Regressions](plots/plot_reg1_overview.png)
+![Regressions](plots-v0/plot_reg1_overview.png)
 
 ### Lexical overlap builds rapidly
 
 By position 9, 62% of a result's vocabulary has already appeared in prior results. Whether this priming mediates evaluation speed — the alternative to the "declining effort" explanation — is our most interesting open question.
 
-![Priming](plots/plot_priming1_overview.png)
+![Priming](plots-v0/plot_priming1_overview.png)
 
 ---
 
