@@ -9,6 +9,8 @@ AdSERP/data/*.zip
 __pycache__/
 
 # Output (reproducible from notebook)
-*.png
 convergence_results.json
 phase_results.json
+
+# Keep plot PNGs for README embedding
+# plots are reproducible but needed for GitHub rendering
