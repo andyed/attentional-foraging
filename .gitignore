@@ -1,0 +1,14 @@
+# Data (downloaded from Zenodo, not ours)
+AdSERP/data/fixation-data/
+AdSERP/data/mouse-movement-data/
+AdSERP/data/trial-metadata/
+AdSERP/data/*.zip
+
+# Python
+.venv/
+__pycache__/
+
+# Output (reproducible from notebook)
+*.png
+convergence_results.json
+phase_results.json
