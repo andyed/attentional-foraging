@@ -21,7 +21,7 @@ Full writeup with caveats: **[docs/findings.md](docs/findings.md)**
 
 ### Mouse-gaze distance depends on click intent
 
-Conditioning the reported 372px aggregate on time-to-click reveals it mixes two regimes. Before ~10s the target is often not in the viewport. In the last 10s, distance drops as the mouse converges on the visible target.
+With scroll-corrected coordinates, distance starts low (~90px, both gaze and mouse near page top), rises steadily as the user scrolls down (gaze follows content, mouse stays in screen space), peaks near ~500px, then converges sharply in the last ~2s before click. The reported 372px aggregate sits mid-curve.
 
 ![Convergence curve](plots-v1/plot1_convergence_curve.png)
 
@@ -29,7 +29,7 @@ Conditioning the reported 372px aggregate on time-to-click reveals it mixes two 
 
 ### Eye movements coordinate scrolling
 
-Viewport state — target visible, time since scroll — predicts clicks better than mouse-gaze distance (AUC 0.704 vs 0.548).
+When modeling click prediction at a 5s horizon, viewport state (target visible, time since scroll) outperforms mouse-gaze distance alone (AUC 0.704 vs 0.548). The scroll-stop event — when the viewport locks onto a result — is a stronger click signal than spatial proximity.
 
 ![Scroll dynamics](plots-v1/plot10_scroll_dynamics.png)
 
