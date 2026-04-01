@@ -15,33 +15,64 @@ We found this dataset at 5am, got excited, and spent a morning exploring it. Thi
 
 ---
 
-## Findings
+## How we measure evaluation time
+
+The eye tracker (Gazepoint GP3 HD, 150 Hz) records **fixation duration** — how long the eye holds still on a location. This is the direct measure of how long someone looked at something. We sum all fixation durations that fall within each result's page-space Y band to get **total fixation time per result** — our primary measure of evaluation time.
+
+To assign fixations to results, we estimate each result's vertical boundaries from the SERP document height and number of results extracted. This is approximate — the AdSERP paper references AOI (area of interest) boundary data for ad regions, but we haven't located per-result AOI boundaries in the Zenodo download yet. If those exist, they'd replace our estimated boundaries and sharpen the fixation-to-result mapping considerably.
+
+We also compute **viewport time** — how long each result was ≥50% visible on screen (IAB viewability threshold), derived from the scroll event timeline. This lets us distinguish "evaluated briefly because it wasn't visible long" from "evaluated briefly because it was easy to process."
 
 Full writeup with caveats: **[docs/findings.md](docs/findings.md)**
 
-### Lexical priming facilitates re-evaluation, not first-pass scanning
+---
 
-By position 9, 62% of a result's vocabulary already appeared in prior results. We hypothesized this cumulative priming would predict faster evaluation generally. **The result is more specific:** in trials where users scroll back to re-examine results, higher overlap predicts lower attention density (partial r = -0.033, p = 0.003). But in pure sequential first-pass evaluation (no regressions), the effect vanishes (r = -0.002, p = 0.92). Priming helps when you return to a result, not when you first encounter it — at least at bag-of-words granularity. Finer-grained semantic similarity may reveal a first-pass effect.
+## Findings
+
+### Results get less evaluation time as you scroll down
+
+Total fixation time per result (eye-tracker, scroll-corrected page-space coordinates):
+
+| Position | Fixation (ms) | Viewport (ms) | Overlap |
+|----------|--------------|---------------|---------|
+| 0 | 4,073 | 7,978 | 0% |
+| 1 | 2,994 | 11,832 | 38% |
+| 3 | 2,131 | 13,783 | 46% |
+| 5 | 1,589 | 9,505 | 56% |
+| 7 | 1,325 | 6,501 | 58% |
+| 9 | 2,497 | 3,366 | 59% |
+
+Fixation time drops 65% from position 0 to position 7. The uptick at position 9 is the "ski jump" — likely a pseudo forced-choice effect where the cost of loading page 2 concentrates attention on the last visible results.
+
+### Lexical overlap builds rapidly
+
+By position 9, 62% of a result's vocabulary has already appeared in prior results. Novel tokens per result drop from 28 to 10. This is a structural fact about SERP content, independent of behavior.
 
 ![Priming](plots-v1/plot_priming1_overview.png)
 
+![Per-result evaluation](plots-v1/plot_priming3_fixation.png)
+
+### Priming predicts faster re-evaluation, not first-pass scanning
+
+We hypothesized cumulative lexical overlap would predict shorter evaluation time generally — the alternative to "declining effort" as an explanation for faster evaluation at lower positions. **The result is more specific:** in trials where users scroll back to re-examine results, higher overlap predicts less evaluation time per unit of visibility (partial r = -0.033, p = 0.003, 6/7 positions in the priming direction). But in pure sequential first-pass evaluation (no scroll regressions), the effect vanishes (r = -0.002, p = 0.92).
+
+Priming helps when you *return* to a result, not when you first encounter it — at least at bag-of-words granularity. Finer-grained measures (stemming, sentence embeddings) may reveal a first-pass effect.
+
 ### Scroll regressions are the dominant pattern
 
-69% of trials involve scrolling back up. Mean 2.8 regressions/trial, ~7 result slots of travel. Regression count correlates with decision time (r=0.660).
+69% of trials involve scrolling back up. Mean 2.8 regressions/trial, ~7 result slots of travel. Regression count correlates with decision time (r=0.660). The high rate is likely inflated by the forced-choice task — participants must click, so they re-evaluate rather than abandon.
 
 ![Regressions](plots-v1/plot_reg1_overview.png)
 
-### Mouse-gaze distance depends on click intent
+### Mouse-gaze convergence depends on click intent
 
-With scroll-corrected coordinates, distance starts low (~90px, both gaze and mouse near page top), rises steadily as the user scrolls down (gaze follows content, mouse stays in screen space), peaks near ~500px, then converges sharply in the last ~2s before click. The reported 372px aggregate sits mid-curve.
+With scroll-corrected page-space coordinates, mouse-gaze distance starts low (~90px), rises as the user scrolls down, peaks near ~500px, then converges sharply in the last ~2s before click. The reported 372px aggregate sits mid-curve.
 
 ![Convergence curve](plots-v1/plot1_convergence_curve.png)
 
-*128,887 fixation-mouse pairs. Scroll-corrected page-space coordinates (v1).*
+### Viewport state predicts clicks better than distance
 
-### Viewport state predicts clicks
-
-When modeling click prediction at a 5s horizon, viewport state (target visible, time since scroll) outperforms mouse-gaze distance alone (AUC 0.704 vs 0.548). The scroll-stop event — when the viewport locks onto a result — is a stronger click signal than spatial proximity.
+At a 5s horizon, viewport features (target visible, time since scroll) outperform mouse-gaze distance alone (AUC 0.704 vs 0.548). The scroll-stop event is the stronger click signal.
 
 ![Scroll dynamics](plots-v1/plot10_scroll_dynamics.png)
 
