@@ -4,6 +4,8 @@
 **Dataset:** AdSERP (Latifzadeh, Gwizdka & Leiva, SIGIR 2025)
 **Duration:** Single session, ~2 hours from discovery to three notebooks
 
+> **Frozen as of 2026-04-01 end of day.** This document records the first session as it happened, including wrong turns and naive assumptions. Updates go in [findings.md](findings.md). See "What We Got Wrong" at the end for corrections applied in v1+.
+
 ---
 
 ## Discovery
@@ -164,4 +166,16 @@ attentional-foraging/
 
 ---
 
-*First pass. Single session. The dataset is rich enough for a full paper.*
+## What We Got Wrong (v1 corrections)
+
+**Coordinate mismatch (v0 → v1):** The v0 convergence plots used uncorrected screen-space coordinates for both gaze and mouse. Fixation Y is in page-space (increases past screen height as user scrolls); mouse Y is in screen-space. The scroll offset needed to reconcile them was available from the start but not applied until v1.
+
+The corrected plot tells a different story: distance starts *low* (both gaze and mouse near top of page), *increases* as the user scrolls (gaze follows content down the page, mouse stays in screen space), then converges sharply in the last few seconds before click. The 372px aggregate sits in the middle of the curve rather than above the baseline.
+
+The relative findings (two-regime model, convergence timing, viewport features beating distance) are robust — they depend on trends, not absolute pixel values. But the absolute numbers in the v0 table above are wrong.
+
+**Click prediction AUC (v0 → v1):** Distance-only baseline dropped from 0.631 to 0.548 with corrected coordinates. Scroll features (0.687) and the full model (0.704) held. The distance signal was inflated by the coordinate mismatch — scroll features were doing most of the work all along.
+
+---
+
+*Frozen 2026-04-01. The dataset is rich enough for a full paper.*
