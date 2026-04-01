@@ -21,7 +21,7 @@ Full writeup with caveats: **[docs/findings.md](docs/findings.md)**
 
 ### Lexical priming predicts evaluation speed
 
-By position 9, 62% of a result's vocabulary already appeared in prior results. **After controlling for position, higher lexical overlap predicts shorter fixation duration** (partial r = -0.043, p = 1.2×10⁻⁷). 8 of 9 positions show the effect. Users evaluate faster not just because they care less, but because cumulative context makes each result cheaper to process.
+By position 9, 62% of a result's vocabulary already appeared in prior results. **After controlling for position, higher lexical overlap predicts lower evaluation rate** — fixation duration normalized by time-in-viewport (≥50% visible, IAB standard) — with partial r = -0.054, p = 2.4×10⁻⁹. 8 of 9 positions show the effect. Overlap does not predict viewport time (r = 0.004), ruling out the confound that high-overlap results are simply scrolled past faster. Users evaluate faster not because they care less, but because cumulative context makes each result cheaper to process.
 
 ![Priming](plots-v1/plot_priming1_overview.png)
 

@@ -37,19 +37,21 @@ By position 9, 62% of a result's vocabulary has already appeared in prior result
 
 ## 5. Lexical priming predicts evaluation speed
 
-**This is the key result.** After controlling for position, cumulative lexical overlap predicts shorter fixation duration on that result.
+**This is the key result.** After controlling for position, cumulative lexical overlap predicts lower evaluation rate — fixation duration normalized by time-in-viewport (≥50% visible, IAB viewability standard).
 
 | Measure | Value |
 |---------|-------|
-| Raw r (overlap × log fixation) | -0.117 (p < 10⁻⁴⁵) |
-| Partial r (position-controlled) | **-0.043** (p = 1.2×10⁻⁷) |
+| Partial r, raw fixation (position-controlled) | -0.048 (p = 1.1×10⁻⁷) |
+| **Partial r, eval rate (position-controlled)** | **-0.054** (p = 2.4×10⁻⁹) |
+| Confound check: overlap × viewport time | 0.004 (p = 0.67) — clean |
 | Within-position sign consistency | 8/9 positions negative |
-| Strongest within-position effect | Position 9: r = -0.152 (p = 2.2×10⁻⁶) |
-| Novel tokens × log fixation | +0.030 (p = 2.5×10⁻⁴) |
+| Strongest within-position effect | Position 9: r = -0.244 (p = 1.2×10⁻⁸) |
 
-The partial correlation is the clean test: within the same rank, across ~2,700 different queries, results with higher lexical overlap with prior results receive shorter fixation. The effect strengthens at lower positions — exactly where cumulative priming is strongest.
+The viewport normalization is critical. Raw fixation duration conflates evaluation speed with exposure time — a result visible for 10 seconds naturally accumulates more fixation than one visible for 2 seconds. The eval rate (fixation_ms / viewport_ms) is the proportion of available viewing time spent evaluating. The effect *strengthens* with this correction (partial r improves from -0.048 to -0.054).
 
-Fixation duration by position confirms the base finding: 4,085ms at position 0 → 1,426ms at position 7 (65% reduction). The priming analysis offers an alternative to the standard "declining effort/attention" explanation: users evaluate faster because the vocabulary is increasingly redundant, not because they care less.
+The confound check is clean: overlap does NOT predict viewport time (r = 0.004). High-overlap results aren't just scrolled past faster — they receive genuinely less attentional investment per unit of exposure.
+
+Within the same rank, across ~2,200 different queries, results with higher lexical overlap with prior results receive lower evaluation rates. The effect strengthens at lower positions — exactly where cumulative priming is strongest.
 
 This is bag-of-words overlap. Semantic similarity (embeddings) would likely show a stronger effect.
 
