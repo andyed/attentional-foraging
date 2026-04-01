@@ -1,0 +1,551 @@
+% Attentional Foraging on SERPs — Reference Library
+% Verified against DOIs and publisher metadata 2026-04-01.
+% If you add entries, include the DOI and a comment noting where you verified it.
+
+% ═══════════════════════════════════════════════════════════════════════════
+% PRIMARY DATASET
+% ═══════════════════════════════════════════════════════════════════════════
+
+@inproceedings{latifzadeh2025adserp,
+  author    = {Latifzadeh, Kayhan and Gwizdka, Jacek and Leiva, Luis A.},
+  title     = {A Versatile Dataset of Mouse and Eye Movements on Search Engine Results Pages},
+  booktitle = {Proceedings of the 48th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  series    = {SIGIR '25},
+  year      = {2025},
+  publisher = {ACM},
+  address   = {Padua, Italy},
+  doi       = {10.1145/3726302.3730325},
+  note      = {Dataset on Zenodo: \url{https://zenodo.org/records/15236546}},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% SELF-CITATION
+% ═══════════════════════════════════════════════════════════════════════════
+
+@misc{edmonds2021augcog,
+  author    = {Edmonds, Andy},
+  title     = {Search as Augmented Cognition},
+  howpublished = {Talk at the Made to Measure (IIRMetrics) Workshop, CHIIR 2021},
+  year      = {2021},
+  note      = {No formal DOI. Workshop page: \url{https://sites.google.com/view/iirmetrics/home}. Proposed priming hypothesis for SERP evaluation speedup.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% COMPANION / FOLLOW-UP WORK BY ADSERP AUTHORS
+% ═══════════════════════════════════════════════════════════════════════════
+
+@inproceedings{villaizan2025adsight,
+  author    = {Villaiz\'{a}n-Vallelado, Mario and Salvatori, Matteo and Latifzadeh, Kayhan and Penta, Antonio and Leiva, Luis A. and Arapakis, Ioannis},
+  title     = {{AdSight}: Scalable and Accurate Quantification of User Attention in Multi-Slot Sponsored Search},
+  booktitle = {Proceedings of the 48th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  series    = {SIGIR '25},
+  year      = {2025},
+  publisher = {ACM},
+  address   = {Padua, Italy},
+  doi       = {10.1145/3726302.3729891},
+  note      = {Uses same dataset as \cite{latifzadeh2025adserp}. Transformer predicting fixation from mouse trajectories.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% GWIZDKA LAB — RECENT RELATED WORK
+% ═══════════════════════════════════════════════════════════════════════════
+
+@inproceedings{zhang2026attention,
+  author    = {Zhang, Dan and Jayawardena, Gavindya and Gwizdka, Jacek},
+  title     = {Attention! {Rethinking} What We Measure in {CHIIR} Studies},
+  booktitle = {Proceedings of the 2026 Conference on Human Information Interaction and Retrieval},
+  series    = {CHIIR '26},
+  year      = {2026},
+  pages     = {100--110},
+  publisher = {ACM},
+  doi       = {10.1145/3786304.3787944},
+  note      = {Argues CHIIR conflates different attention constructs. Relevant to our fixation vs viewport vs TTI decomposition.},
+}
+
+@inproceedings{shi2025pupillometric,
+  author    = {Shi, Lingyao and Jayawardena, Gavindya and Gwizdka, Jacek},
+  title     = {Pupillometric Analysis of Cognitive Load in Relation to Relevance and Confirmation Bias},
+  booktitle = {Proceedings of the 2025 ACM SIGIR Conference on Human Information Interaction and Retrieval},
+  series    = {CHIIR '25},
+  year      = {2025},
+  publisher = {ACM},
+  doi       = {10.1145/3698204.3716458},
+}
+
+@inproceedings{gwizdka2025grelreader,
+  author    = {Gwizdka, Jacek and Cole, Michael},
+  title     = {g-{Rel}-{READER}: A Dataset for Relevance and Reading Evaluation through Advanced Data from Eye-tracking and {EEG} Recordings},
+  booktitle = {Proceedings of the 2025 ACM SIGIR Conference on Human Information Interaction and Retrieval},
+  series    = {CHIIR '25},
+  year      = {2025},
+  publisher = {ACM},
+  doi       = {10.1145/3698204.3716474},
+}
+
+@inproceedings{jayawardena2025ambient,
+  author    = {Jayawardena, Gavindya and Jayawardana, Yasith and Abeysinghe, Yasiru and Mahanama, Bhanuka and Jayarathna, Sampath and Gwizdka, Jacek},
+  title     = {A Real-Time Approach to Capture Ambient and Focal Attention in Visual Search},
+  booktitle = {Proceedings of the 2025 Symposium on Eye Tracking Research and Applications},
+  series    = {ETRA '25},
+  year      = {2025},
+  pages     = {1--7},
+  publisher = {ACM},
+  doi       = {10.1145/3715669.3723111},
+}
+
+@article{jayawardena2025pupillometry,
+  author    = {Jayawardena, Gavindya and Jayawardana, Yasith and Gwizdka, Jacek},
+  title     = {Measuring Mental Effort in Real Time Using Pupillometry},
+  journal   = {Journal of Eye Movement Research},
+  volume    = {18},
+  number    = {6},
+  year      = {2025},
+  doi       = {10.3390/jemr18060070},
+}
+
+@inproceedings{jayawardena2026workingmemory,
+  author    = {Jayawardena, Gavindya and Shi, Lingyao and Gwizdka, Jacek},
+  title     = {Effects of Working Memory Capacity and Search Task Complexity on Cognitive Load},
+  booktitle = {Proceedings of the 2026 Conference on Human Information Interaction and Retrieval},
+  series    = {CHIIR '26},
+  year      = {2026},
+  publisher = {ACM},
+  doi       = {10.1145/3786304.3787871},
+}
+
+@article{gwizdka2010cogload,
+  author    = {Gwizdka, Jacek},
+  title     = {Distribution of Cognitive Load in Web Search},
+  journal   = {Journal of the American Society for Information Science and Technology},
+  volume    = {61},
+  number    = {11},
+  pages     = {2167--2187},
+  year      = {2010},
+  doi       = {10.1002/asi.21385},
+  note      = {Found cognitive load peaks during query formulation and document evaluation, not SERP scanning.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% SEARCH ABANDONMENT
+% ═══════════════════════════════════════════════════════════════════════════
+
+@inproceedings{diriye2012abandonment,
+  author    = {Diriye, Abdigani and White, Ryen and Buscher, Georg and Dumais, Susan T.},
+  title     = {Leaving So Soon? {Understanding} and Predicting Web Search Abandonment Rationales},
+  booktitle = {Proceedings of the 21st ACM International Conference on Information and Knowledge Management},
+  series    = {CIKM '12},
+  year      = {2012},
+  pages     = {1025--1034},
+  publisher = {ACM},
+  doi       = {10.1145/2396761.2398399},
+}
+
+@inproceedings{bruckner2020abandonment,
+  author    = {Br\"{u}ckner, Lukas and Arapakis, Ioannis and Leiva, Luis A.},
+  title     = {Query Abandonment Prediction with Deep Learning Models of Mouse Cursor Movements},
+  booktitle = {Proceedings of the 29th ACM International Conference on Information and Knowledge Management},
+  series    = {CIKM '20},
+  year      = {2020},
+  publisher = {ACM},
+  doi       = {10.1145/3340531.3412126},
+  note      = {Same Leiva as AdSERP/AdSight. Mouse cursor → abandonment prediction.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% MOUSE-GAZE COORDINATION / ATTENTION PREDICTION
+% ═══════════════════════════════════════════════════════════════════════════
+
+@inproceedings{leiva2020efficient,
+  author    = {Leiva, Luis A. and Arapakis, Ioannis and Iordanou, Costas},
+  title     = {Learning Efficient Representations of Mouse Movements to Predict User Attention},
+  booktitle = {Proceedings of the 43rd International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  series    = {SIGIR '20},
+  year      = {2020},
+  publisher = {ACM},
+  doi       = {10.1145/3397271.3401031},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% BOUNDED RATIONALITY / SATISFICING
+% ═══════════════════════════════════════════════════════════════════════════
+
+@article{simon1956rational,
+  author    = {Simon, Herbert A.},
+  title     = {Rational Choice and the Structure of the Environment},
+  journal   = {Psychological Review},
+  volume    = {63},
+  number    = {2},
+  pages     = {129--138},
+  year      = {1956},
+  doi       = {10.1037/h0042769},
+}
+
+@article{simon1955behavioral,
+  author    = {Simon, Herbert A.},
+  title     = {A Behavioral Model of Rational Choice},
+  journal   = {The Quarterly Journal of Economics},
+  volume    = {69},
+  number    = {1},
+  pages     = {99--118},
+  year      = {1955},
+  doi       = {10.2307/1884852},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% SERP EVALUATION MODELS (cited by AdSight, relevant to our work)
+% ═══════════════════════════════════════════════════════════════════════════
+
+@inproceedings{liu2014skimming,
+  author    = {Liu, Yiqun and Wang, Ke and Zhou, Jianyun and Nie, Min and Zhang, Shaoping and Ma, Shaoping},
+  title     = {From Skimming to Reading: A Two-stage Examination Model for Web Search},
+  booktitle = {Proceedings of the 23rd ACM International Conference on Information and Knowledge Management},
+  series    = {CIKM '14},
+  year      = {2014},
+  publisher = {ACM},
+  doi       = {10.1145/2661829.2661907},
+  note      = {Two-phase SERP evaluation: skimming then reading. Both stages predictable from mouse. Cited by AdSight.},
+}
+
+@article{jaiswal2023foraging,
+  author    = {Jaiswal, Amit Kumar and Tiwari, Prayag and Hossain, M. Shamim},
+  title     = {Predicting Users' Behavior Using Mouse Movement Information: An Information Foraging Theory Perspective},
+  journal   = {Neural Computing and Applications},
+  volume    = {35},
+  pages     = {33},
+  year      = {2023},
+  doi       = {10.1007/s00521-020-05306-7},
+  note      = {IFT framing for mouse-based user prediction. Relevant to AFE angle.},
+}
+
+@inproceedings{bruckner2021systematic,
+  author    = {Br\"{u}ckner, Lukas and Arapakis, Ioannis and Leiva, Luis A.},
+  title     = {A Systematic Examination of Mouse Movement Length for Decision Making in Web Search},
+  booktitle = {Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  year      = {2021},
+  publisher = {ACM},
+  doi       = {10.1145/3404835.3463055},
+  note      = {Same Leiva/Arapakis team as AdSight. Mouse movement length as decision signal.},
+}
+
+@inproceedings{guo2010browsing,
+  author    = {Guo, Qi and Agichtein, Eugene},
+  title     = {Ready to Buy or Just Browsing? {Detecting} Web Searcher Goals from Interaction Data},
+  booktitle = {Proceedings of the 33rd International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  series    = {SIGIR '10},
+  year      = {2010},
+  publisher = {ACM},
+  doi       = {10.1145/1835449.1835473},
+  note      = {Goal detection from interaction. Relevant to satisfice/optimize.},
+}
+
+@inproceedings{guo2012dwell,
+  author    = {Guo, Qi and Agichtein, Eugene},
+  title     = {Beyond Dwell Time: Estimating Document Relevance from Cursor Movements and Other Post-click Searcher Behavior},
+  booktitle = {Proceedings of the 21st International Conference on World Wide Web},
+  series    = {WWW '12},
+  year      = {2012},
+  publisher = {ACM},
+  doi       = {10.1145/2187836.2187914},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% THIRD-PARTY CITING ADSERP
+% ═══════════════════════════════════════════════════════════════════════════
+
+@article{lengauer2025guidaeta,
+  author    = {Lengauer, Stefan and others},
+  title     = {{GUID\AE TA} -- A Versatile Interactions Dataset with Extensive Context Information and Metadata},
+  journal   = {arXiv preprint},
+  year      = {2025},
+  eprint    = {2511.20328},
+  archiveprefix = {arXiv},
+  note      = {250-user interaction dataset. Cites AdSERP as comparable.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% THEORETICAL FRAMEWORK — INFORMATION FORAGING, SURPRISAL, READING MODELS
+% ═══════════════════════════════════════════════════════════════════════════
+
+@article{pirolli1999foraging,
+  author    = {Pirolli, Peter and Card, Stuart},
+  title     = {Information Foraging},
+  journal   = {Psychological Review},
+  volume    = {106},
+  number    = {4},
+  pages     = {643--675},
+  year      = {1999},
+  doi       = {10.1037/0033-295X.106.4.643},
+  note      = {Foundational IFT paper. Adapts optimal foraging theory to human information seeking.},
+}
+
+@article{sims2003inattention,
+  author    = {Sims, Christopher A.},
+  title     = {Implications of Rational Inattention},
+  journal   = {Journal of Monetary Economics},
+  volume    = {50},
+  number    = {3},
+  pages     = {665--690},
+  year      = {2003},
+  doi       = {10.1016/S0304-3932(03)00029-1},
+  note      = {Shannon-capacity constraint on observation → action. Relevant to attention allocation on SERPs.},
+}
+
+@inproceedings{hale2001surprisal,
+  author    = {Hale, John},
+  title     = {A Probabilistic {E}arley Parser as a Psycholinguistic Model},
+  booktitle = {Proceedings of the Second Meeting of the North American Chapter of the Association for Computational Linguistics},
+  series    = {NAACL '01},
+  year      = {2001},
+  pages     = {1--8},
+  publisher = {ACL},
+  doi       = {10.3115/1073336.1073357},
+  note      = {Introduced surprisal theory: word processing difficulty $\propto$ $-\log P(\text{word}|\text{context})$.},
+}
+
+@article{levy2008surprisal,
+  author    = {Levy, Roger},
+  title     = {Expectation-Based Syntactic Comprehension},
+  journal   = {Cognition},
+  volume    = {106},
+  number    = {3},
+  pages     = {1126--1177},
+  year      = {2008},
+  doi       = {10.1016/j.cognition.2007.05.006},
+  note      = {Formalizes surprisal as resource-reallocation cost during incremental comprehension.},
+}
+
+@article{reichle1998ezreader,
+  author    = {Reichle, Erik D. and Pollatsek, Alexander and Fisher, Donald L. and Rayner, Keith},
+  title     = {Toward a Model of Eye Movement Control in Reading},
+  journal   = {Psychological Review},
+  volume    = {105},
+  number    = {1},
+  pages     = {125--157},
+  year      = {1998},
+  doi       = {10.1037/0033-295X.105.1.125},
+  note      = {Original E-Z Reader model. Relates lexical access to saccade programming.},
+}
+
+@incollection{clark1977givennew,
+  author    = {Clark, Herbert H. and Haviland, Susan E.},
+  title     = {Comprehension and the Given-New Contract},
+  booktitle = {Discourse Production and Comprehension},
+  editor    = {Freedle, Roy O.},
+  publisher = {Erlbaum},
+  address   = {Hillsdale, NJ},
+  year      = {1977},
+  pages     = {1--40},
+  note      = {No DOI (pre-digital). Establishes the given-new contract for discourse comprehension.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% SERP EYE-TRACKING CLASSICS
+% ═══════════════════════════════════════════════════════════════════════════
+
+@inproceedings{granka2004eyetracking,
+  author    = {Granka, Laura A. and Joachims, Thorsten and Gay, Geri},
+  title     = {Eye-Tracking Analysis of User Behavior in {WWW} Search},
+  booktitle = {Proceedings of the 27th Annual International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  series    = {SIGIR '04},
+  year      = {2004},
+  pages     = {478--479},
+  publisher = {ACM},
+  doi       = {10.1145/1008992.1009079},
+  note      = {Early SERP eye-tracking. Showed linear scan with rapid drop-off.},
+}
+
+@inproceedings{joachims2005clickthrough,
+  author    = {Joachims, Thorsten and Granka, Laura and Pan, Bing and Hembrooke, Helene and Gay, Geri},
+  title     = {Accurately Interpreting Clickthrough Data as Implicit Feedback},
+  booktitle = {Proceedings of the 28th Annual International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  series    = {SIGIR '05},
+  year      = {2005},
+  pages     = {154--161},
+  publisher = {ACM},
+  doi       = {10.1145/1076034.1076063},
+  note      = {Clicks are informative but position-biased. Eye-tracking validation.},
+}
+
+@article{lorigo2008eyetracking,
+  author    = {Lorigo, Lori and Haridasan, Maya and Brynjarsd\'{o}ttir, Hr\"{o}nn and Xia, Ling and Joachims, Thorsten and Gay, Geri and Granka, Laura A. and Pellacini, Fabio and Pan, Bing},
+  title     = {Eye Tracking and Online Search: Lessons Learned and Challenges Ahead},
+  journal   = {Journal of the American Society for Information Science and Technology},
+  volume    = {59},
+  number    = {7},
+  pages     = {1041--1052},
+  year      = {2008},
+  doi       = {10.1002/asi.20794},
+  note      = {$\sim$2/3 of scanpaths are nonlinear. Challenges sequential cascade assumptions.},
+}
+
+@inproceedings{craswell2008positionbias,
+  author    = {Craswell, Nick and Zoeter, Onno and Taylor, Michael and Ramsey, Bill},
+  title     = {An Experimental Comparison of Click Position-Bias Models},
+  booktitle = {Proceedings of the 2008 International Conference on Web Search and Data Mining},
+  series    = {WSDM '08},
+  year      = {2008},
+  pages     = {87--94},
+  publisher = {ACM},
+  doi       = {10.1145/1341531.1341545},
+  note      = {Compares cascade, examination, and logistic position-bias models for clicks.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% MOUSE-GAZE COORDINATION
+% ═══════════════════════════════════════════════════════════════════════════
+
+@inproceedings{huang2012usersee,
+  author    = {Huang, Jeff and White, Ryen and Buscher, Georg},
+  title     = {User See, User Point: Gaze and Cursor Alignment in Web Search},
+  booktitle = {Proceedings of the SIGCHI Conference on Human Factors in Computing Systems},
+  series    = {CHI '12},
+  year      = {2012},
+  pages     = {1341--1350},
+  publisher = {ACM},
+  doi       = {10.1145/2207676.2208591},
+  note      = {Gaze-cursor alignment varies by mouse behavior type (reading, hesitating, scrolling, clicking).},
+}
+
+@inproceedings{chen2001mousecursor,
+  author    = {Chen, Mon-Chu and Anderson, John R. and Sohn, Myeong-Ho},
+  title     = {What Can a Mouse Cursor Tell Us More? {Correlation} of Eye/Mouse Movements on Web Browsing},
+  booktitle = {CHI '01 Extended Abstracts on Human Factors in Computing Systems},
+  series    = {CHI EA '01},
+  year      = {2001},
+  pages     = {281--282},
+  publisher = {ACM},
+  doi       = {10.1145/634067.634234},
+  note      = {Early evidence of strong eye-hand coordination in web browsing.},
+}
+
+@article{boi2016attention,
+  author    = {Boi, Paolo and Fenu, Gianni and Spano, Lucio Davide and Vargiu, Vittore},
+  title     = {Reconstructing User's Attention on the Web through Mouse Movements and Perception-Based Content Identification},
+  journal   = {ACM Transactions on Applied Perception},
+  volume    = {13},
+  number    = {3},
+  pages     = {15:1--15:21},
+  year      = {2016},
+  doi       = {10.1145/2912124},
+  note      = {Eyes and mouse must be on the same \emph{content group}, not same pixel. Generalizes Navalpakkam et al.\ (2013).},
+}
+
+@inproceedings{smucker2014mouse,
+  author    = {Smucker, Mark D. and Guo, Xiaoyu Sunny and Toulis, Andrew},
+  title     = {Mouse Movement During Relevance Judging: Implications for Determining User Attention},
+  booktitle = {Proceedings of the 37th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  series    = {SIGIR '14},
+  year      = {2014},
+  publisher = {ACM},
+  doi       = {10.1145/2600428.2609489},
+  note      = {For simple tasks, mouse $\neq$ attention --- users move cursor only to click buttons.},
+}
+
+@inproceedings{arapakis2016engagement,
+  author    = {Arapakis, Ioannis and Leiva, Luis A.},
+  title     = {Predicting User Engagement with Direct Displays Using Mouse Cursor Information},
+  booktitle = {Proceedings of the 39th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  series    = {SIGIR '16},
+  year      = {2016},
+  publisher = {ACM},
+  doi       = {10.1145/2911451.2911505},
+  note      = {Mouse cursor predicts engagement with knowledge panels. Same Leiva/Arapakis team as AdSight.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% SERP SCROLL / VIEWPORT BEHAVIOR
+% ═══════════════════════════════════════════════════════════════════════════
+
+@article{white2017prefetching,
+  author    = {White, Ryen W. and Diaz, Fernando and Guo, Qi},
+  title     = {Search Result Prefetching on Desktop and Mobile},
+  journal   = {ACM Transactions on Information Systems},
+  volume    = {35},
+  number    = {3},
+  year      = {2017},
+  publisher = {ACM},
+  doi       = {10.1145/3015466},
+  note      = {Viewport visibility used in prefetching. Cursor (desktop) and viewport (mobile) predict click targets.},
+}
+
+@inproceedings{lagun2014attention,
+  author    = {Lagun, Dmitry and Hsieh, Chih-Hung and Webster, Dale and Navalpakkam, Vidhya},
+  title     = {Towards Better Measurement of Attention and Satisfaction in Mobile Search},
+  booktitle = {Proceedings of the 37th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  series    = {SIGIR '14},
+  year      = {2014},
+  pages     = {113--122},
+  publisher = {ACM},
+  doi       = {10.1145/2600428.2609631},
+  note      = {Click+scroll features outperform click-only. Viewport duration correlates with gaze duration.},
+}
+
+@inproceedings{wang2018mobilesearch,
+  author    = {Wang, Xiaochuan and Su, Ning and He, Zexue and Liu, Yiqun and Ma, Shaoping},
+  title     = {A Large-Scale Study of Mobile Search Examination Behavior},
+  booktitle = {Proceedings of the 41st International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  series    = {SIGIR '18},
+  year      = {2018},
+  publisher = {ACM},
+  doi       = {10.1145/3209978.3210099},
+  note      = {Viewport change events reconstruct examination behavior. Clicks cluster in top 2/3 of viewport.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% RESPONSE VIGOR / MOTOR BEHAVIOR
+% ═══════════════════════════════════════════════════════════════════════════
+
+@book{shadmehr2020vigor,
+  author    = {Shadmehr, Reza and Ahmed, Alaa A.},
+  title     = {Vigor: Neuroeconomics of Movement Control},
+  publisher = {MIT Press},
+  year      = {2020},
+  isbn      = {978-0-262-04405-9},
+  doi       = {10.7551/mitpress/12940.001.0001},
+  note      = {Movement vigor reflects subjective reward valuation. Connects motor control to foraging theory.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% COGNITIVE LOAD / CONFIRMATION BIAS IN SEARCH
+% ═══════════════════════════════════════════════════════════════════════════
+
+@incollection{shi2024confirmationbias,
+  author    = {Shi, Lingyao and Gwizdka, Jacek},
+  title     = {The Effects of Confirmation Bias and Readability on Relevance Assessment: An Eye-Tracking Study},
+  booktitle = {Information Systems and Neuroscience},
+  series    = {Lecture Notes in Information Systems and Organisation},
+  volume    = {66},
+  publisher = {Springer},
+  address   = {Cham},
+  year      = {2025},
+  doi       = {10.1007/978-3-031-71385-9_11},
+  note      = {Presented at NeuroIS 2024. Confirmation bias and readability jointly affect relevance judgments.},
+}
+
+@inproceedings{gwizdka2014relevance,
+  author    = {Gwizdka, Jacek},
+  title     = {Characterizing Relevance with Eye-Tracking Measures},
+  booktitle = {Proceedings of the 5th Information Interaction in Context Symposium},
+  series    = {IIiX '14},
+  year      = {2014},
+  pages     = {58--67},
+  publisher = {ACM},
+  doi       = {10.1145/2637002.2637011},
+  note      = {Eye-tracking measures characterize document relevance. 74\% accuracy from gaze features alone.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% MULTI-SIGNAL SERP EVALUATION
+% ═══════════════════════════════════════════════════════════════════════════
+
+@inproceedings{chuklin2016cas,
+  author    = {Chuklin, Aleksandr and de Rijke, Maarten},
+  title     = {Incorporating Clicks, Attention and Satisfaction into a Search Engine Result Page Evaluation Model},
+  booktitle = {Proceedings of the 25th ACM International Conference on Information and Knowledge Management},
+  series    = {CIKM '16},
+  year      = {2016},
+  pages     = {175--184},
+  publisher = {ACM},
+  doi       = {10.1145/2983323.2983829},
+  note      = {CAS model: jointly captures clicks, attention, and satisfaction for SERP evaluation.},
+}

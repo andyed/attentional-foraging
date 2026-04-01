@@ -20,7 +20,15 @@
 
 - [ ] **Search abandonment literature:** Connect to the forced-choice paradigm insight. Search abandonment (Diriye et al. 2012, Bruckner et al. 2020 "Query Abandonment Prediction") is the observable patch-leaving decision in AFE terms. The AdSERP forced-choice task eliminates abandonment as an outcome, which isolates the foraging-to-exploitation transition — but the abandonment literature characterizes the alternative outcome. Understanding both paths (click vs. abandon) completes the AFE picture.
 
-- [ ] **Citation audit (priority):** Survey Gwizdka's full publication list and the AdSERP team's prior/subsequent work before claiming any finding as novel. 1,200 eye tracking sessions is serious labor — they likely have analyses in progress or published that overlap with our observations. Check JASIST, SIGIR, CHIIR proceedings. Also verify p(click) conditioning and priming hypothesis novelty claims against the broader literature.
+- [x] **Citation audit (priority):** Completed 2026-04-01. Surveyed Gwizdka's full 2025-2026 publication list (10 papers), Latifzadeh follow-ups (AdSight, LaborTrack), Leiva related work. Key finding: **AdSight** (SIGIR '25, same data) does Transformer-based mouse→fixation prediction — we should position TTI calibrator relative to it. **No overlap with priming analysis** — lexical overlap → evaluation speed appears novel. Zhang et al. CHIIR '26 "Attention! Rethinking" supports our fixation/viewport/TTI decomposition. All references in `references.bib`.
+
+- [ ] **Residual dwell model (Peter Dixon-Moses):** Map fixation-time per result as a function of lexical overlap to establish a baseline. Residuals (deviation from expected dwell) predict interest/click — "this result held attention longer than priming alone would predict." Baseline may need per-user calibration from early-session features (e.g., time-to-first-scroll as a proxy for processing speed). See user_strategies.ipynb for satisfice/optimize segmentation that could serve as the calibration axis.
+
+- [ ] **Priming × user strategy interaction:** Re-run serp_priming.ipynb with user segmentation (satisfice/optimize terciles from user_strategies.ipynb) as a moderator. Optimizers encounter more cumulative overlap before clicking — the priming effect should be stronger for them. Satisficers who click at position 2 have barely accumulated priming signal.
+
+- [ ] **Personalized lexical divergence (Peter Dixon-Moses):** If dwell-time residuals flag "lexical divergences of interest," those terms could enhance subsequent queries — a user-specific signal of what information they found novel vs. already-known. Applied potential for search personalization.
+
+- [ ] **TTI as individual calibrator (Peter Dixon-Moses):** Time-to-first-scroll as proxy for individual information processing speed. If TTI predicts per-user evaluation rate, it's a session-start calibration signal available without any training data.
 
 ## Design / Product Connections (from Peter Dixon-Moses)
 

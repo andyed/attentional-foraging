@@ -84,7 +84,7 @@ At a 5s horizon, viewport features (target visible, time since scroll) outperfor
 
 ## Theoretical framework
 
-These findings are interpreted through the **Attentional-Foraging Equilibrium (AFE)**, which synthesizes Rational Inattention (Sims 2003) with Information Foraging Theory (Pirolli & Card 1999). AFE models SERP browsing as patch foraging: lexical priming reduces within-patch handling time, scroll regressions are travel costs paid for re-evaluation, and the convergence curve traces the transition from foraging to exploitation. The forced-choice purchase task in AdSERP is useful here because it creates a defined stopping criterion — making the patch-leaving decision observable where most SERP studies cannot (cf. [Diriye et al. 2020](https://dl.acm.org/doi/10.1145/3343413.3377951) on search abandonment as the alternative outcome). Full framework: [AFE presentation](https://gamma.app/docs/The-Attentional-Foraging-Equilibrium-A-Synthesis-of-Digital-Behav-aq0bw2ujjxwypbt). Detailed mapping in [findings.md](docs/findings.md).
+These findings are interpreted through the **Attentional-Foraging Equilibrium (AFE)**, which synthesizes Rational Inattention (Sims 2003) with Information Foraging Theory (Pirolli & Card 1999). AFE models SERP browsing as patch foraging: lexical priming reduces within-patch handling time, scroll regressions are travel costs paid for re-evaluation, and the convergence curve traces the transition from foraging to exploitation. The forced-choice purchase task in AdSERP is useful here because it creates a defined stopping criterion — making the patch-leaving decision observable where most SERP studies cannot (cf. [Diriye et al. 2012](https://doi.org/10.1145/2396761.2398399) on search abandonment as the alternative outcome). Full framework: [AFE presentation](https://gamma.app/docs/The-Attentional-Foraging-Equilibrium-A-Synthesis-of-Digital-Behav-aq0bw2ujjxwypbt). Detailed mapping in [findings.md](docs/findings.md).
 
 ---
 
@@ -95,6 +95,8 @@ These findings are interpreted through the **Attentional-Foraging Equilibrium (A
 | **Convergence** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks/convergence_analysis.ipynb) | Mouse-gaze distance conditioned on click intent, scroll-enriched prediction |
 | **Regressions** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks/scroll_regressions.ipynb) | Scroll regression prevalence, magnitude, timing, sparklines |
 | **Priming** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks/serp_priming.ipynb) | Cumulative lexical overlap, priming × fixation duration |
+| **Coverage & TTI** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks/fixation_coverage.ipynb) | Fixation coverage above click, TTI, processing speed calibration |
+| **User Strategies** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks/user_strategies.ipynb) | Satisfice vs optimize segmentation by regression rate |
 
 ## Data
 
@@ -116,7 +118,9 @@ uv sync && uv run jupyter execute convergence_analysis.ipynb --inplace
 
 - **[findings.md](docs/findings.md)** — What we think we found, with caveats
 - **[journey.md](docs/journey.md)** — The first session, frozen at v0
-- **[adserp-key-claims.md](docs/adserp-key-claims.md)** — The paper's claims and what the dataset enables
+- **[adserp-key-claims.md](docs/adserp-key-claims.md)** — The AdSERP paper's claims and what the dataset enables
+- **[adsight-key-claims.md](docs/adsight-key-claims.md)** — AdSight companion paper analysis (Transformer mouse→fixation prediction)
+- **[references.bib](references.bib)** — Verified BibTeX library (20 entries, all with DOIs or arXiv IDs)
 
 <a id="whats-next"></a>
 ## What's Next
