@@ -45,43 +45,45 @@ But clicks tell the opposite story: 82.42% of clicks land on non-ad elements. DD
 
 ---
 
-## What they don't claim (the gaps)
+## Opportunities the dataset enables
 
-### A. No conditioning on click intent
+The authors' contribution is the dataset itself — a generous, well-structured public resource that makes all of the following analyses possible. These are directions we pursued, not criticisms of what a dataset paper chose to scope.
+
+### A. Conditioning on click intent
 
 Their aggregate 372px distance does not condition on whether or when a click occurs. **Our reanalysis** (N=128,887 pairs) shows this distance drops monotonically from ~334px (scanning) to ~172px (1-2s before click) — a 48% reduction. The reported aggregate inflates divergence by pooling high- and low-intent fixations.
 
-### B. No temporal dynamics
+### B. Temporal dynamics
 
-Despite having timestamped mouse and gaze data, they compute spatial distance at concurrent timepoints only. No analysis of:
+The dataset's timestamped mouse and gaze data enables temporal analyses beyond concurrent spatial distance:
 - Mouse lag/lead relative to gaze
 - Phase-dependent coupling (scanning vs. evaluation vs. acquisition)
 - Convergence rate or derivative analysis
 
-### C. No mechanistic model of coupling/decoupling
+### C. Mechanistic modeling of coupling/decoupling
 
-They report *that* mouse and gaze diverge but not *why*. No engagement with:
+The dataset supports connecting mouse-gaze divergence to established motor/decision frameworks:
 - Motor planning literature (when does the hand start moving toward a gaze target?)
 - Decision-making dynamics (evaluation phase, approach-avoidance)
 - Response vigor framework (Shadmehr & Ahmed 2020)
 
-### D. No pre-attentive or peripheral vision analysis
+### D. Pre-attentive and peripheral vision analysis
 
-Zero discussion of:
+The SERP screenshots + fixation sequences enable questions about peripheral processing:
 - Whether SERP elements are detected peripherally before fixation
 - Visual search strategy (F-pattern, golden triangle)
 - How peripheral degradation affects which elements get fixated
 - Pre-attentive features that guide the first saccade to an ad
 
-This is a significant gap given the SERP context — structured layouts with repeated visual patterns (blue links, green URLs, ad badges) are exactly the kind of content where pre-attentive feature detection matters.
+Structured SERP layouts with repeated visual patterns (blue links, green URLs, ad badges) are exactly the kind of content where pre-attentive feature detection matters.
 
-### E. No individual differences in mouse-gaze coupling
+### E. Individual differences in mouse-gaze coupling
 
-They report population-level statistics only. **Our analysis** finds per-participant acquisition onset ranges from 0.2s to 13.8s (mean=2.4s, SD=2.5s) — individual differences are large enough to warrant per-session calibration.
+**Our analysis** finds per-participant acquisition onset ranges from 0.2s to 13.8s (mean=2.4s, SD=2.5s) — the dataset supports rich individual-differences analysis.
 
-### F. No connection to click dynamics
+### F. Click dynamics
 
-The paper treats clicks as binary events (happened/didn't). No analysis of click approach dynamics, hold duration, or pre-click motor behavior — the signals ClickSense captures.
+The dataset's click events could be connected to approach dynamics, hold duration, and pre-click motor behavior — complementing work like ClickSense on motor commitment signals.
 
 ---
 
@@ -95,7 +97,7 @@ The paper treats clicks as binary events (happened/didn't). No analysis of click
 | Boi et al. 2016 — mouse doesn't match eye | We show it depends on p(click) |
 | Smucker et al. 2014 — for simple tasks, mouse ≠ attention | Task complexity moderates coupling — supports per-session calibration |
 
-## What they missed that we found
+## What our reanalysis adds
 
 1. **p(click) conditioning** — mouse-gaze distance is not a fixed property; it's a function of decision state
 2. **Three-phase structure** — scanning (>5s, ~330px) → evaluation (2-5s, declining) → acquisition (0-2s, ~170px)

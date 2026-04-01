@@ -52,7 +52,7 @@ Andy identified the 1-2s window as the target acquisition phase (consistent with
 
 **Click prediction:** Logistic regression at 5s horizon gives AUC=0.638. Peak at 2s horizon (AUC=0.720). Raw distance is the dominant feature; convergence rate (slope) adds only +0.002 AUC. The distance signal is simple and powerful; the derivative doesn't help a linear model.
 
-## The Scroll Discovery
+## Refining the Model: Scroll and Viewport State
 
 Checking event types in the mouse data revealed **scroll events** — `window.scrollY` offsets captured at ~60Hz. They're the most frequent event type in many trials. This changed everything.
 
@@ -102,7 +102,7 @@ Andy also noted that the priming hypothesis connects to his eBay research: regre
 
 ## Key Theoretical Contributions
 
-### What we found that the paper missed
+### What our reanalysis adds
 
 1. **p(click) conditioning** — mouse-gaze distance is a function of decision state, not a fixed property
 2. **Two-regime distance metric** — before 10s it's abstract distance-to-goal; after 10s it's spatial distance-to-visible-target
@@ -111,14 +111,16 @@ Andy also noted that the priming hypothesis connects to his eBay research: regre
 5. **Lexical priming curve** — cumulative overlap reaches 62% by position 9, explaining acceleration without invoking fatigue
 6. **Individual calibration** — 2.5s SD in acquisition onset; 20.6% SD in regression rate
 
-### What the paper didn't analyze (despite having the data)
+### Analyses the dataset enables
 
-- No conditioning on click intent or decision stage
-- No temporal dynamics (mouse lag/lead vs gaze)
-- No scroll regression characterization
-- No SERP content analysis despite providing HTML
-- No pre-attentive processing or peripheral vision discussion
-- No per-participant variability analysis
+The authors' contribution is the dataset itself — a generous, well-structured public resource. These are directions we pursued, enabled by the richness of what they provided:
+
+- Conditioning on click intent and decision stage
+- Temporal dynamics (mouse lag/lead vs gaze)
+- Scroll regression characterization
+- SERP content analysis using the provided HTML snapshots
+- Pre-attentive processing and peripheral vision questions
+- Per-participant variability analysis
 
 ### Connections to other projects
 

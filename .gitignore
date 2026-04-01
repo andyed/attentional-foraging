@@ -3,6 +3,7 @@ AdSERP/data/fixation-data/
 AdSERP/data/mouse-movement-data/
 AdSERP/data/trial-metadata/
 AdSERP/data/*.zip
+AdSERP/data/serps/
 
 # Python
 .venv/
@@ -14,3 +15,4 @@ phase_results.json
 
 # Keep plot PNGs for README embedding
 # plots are reproducible but needed for GitHub rendering
+.DS_Store
