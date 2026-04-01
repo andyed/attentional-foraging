@@ -44,7 +44,7 @@ Total fixation time per result (eye-tracker, scroll-corrected page-space coordin
 | 7 | 1,325 | 6,501 | 58% |
 | 9 | 2,497 | 3,366 | 59% |
 
-Fixation time drops 65% from position 0 to position 7. The uptick at position 9 is the "ski jump" — likely a pseudo forced-choice effect where the cost of loading page 2 concentrates attention on the last visible results.
+Fixation time drops 65% from position 0 to position 7. The uptick at position 9 is the "ski jump" — a pattern consistent with increased evaluation at the bottom of page 1 observed in production search logs across multiple companies (Edmonds, "Made to Measure," CHIIR 2025 Workshop). In production, the cost of loading page 2 creates a pseudo forced-choice that concentrates attention on the last visible results. In this lab study, the forced-click task likely amplifies the same effect.
 
 ### Lexical overlap builds rapidly — and that should matter
 

@@ -178,6 +178,12 @@ The relative findings (two-regime model, convergence timing, viewport features b
 
 ---
 
+## AFE Framework Connection (2026-04-01, later session)
+
+During a follow-up session, these findings were connected to the **Attentional-Foraging Equilibrium** — Andy's framework synthesizing Rational Inattention (Sims) with Information Foraging Theory (Pirolli & Card). The AFE equation ρ = V / (τ + T_s + σ²) maps directly onto the findings: lexical priming reduces τ, scroll regressions are T_s costs, the convergence curve traces foraging-to-exploitation transition, and per-participant variance reflects bandwidth λ. The forced-choice purchase task turns out to be a serendipitous paradigm — it makes the patch-leaving decision observable. See the updated [findings.md](findings.md) for the full mapping.
+
+---
+
 **Git repo made public 8:38am PT, 2026-04-01.** ~3.5 hours from dataset discovery to public release.
 
 *Frozen 2026-04-01. The dataset is rich enough for a full paper.*

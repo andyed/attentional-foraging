@@ -87,6 +87,12 @@ Structured SERP layouts with repeated visual patterns (blue links, green URLs, a
 
 The dataset's click events could be connected to approach dynamics, hold duration, and pre-click motor behavior — complementing work like ClickSense on motor commitment signals.
 
+### G. Forced-choice purchase task as a foraging paradigm
+
+The AdSERP task design — participants must click an item they would "typically choose" to purchase — is a serendipitous experimental paradigm for studying the foraging-to-exploitation transition. The forced choice with optimizing intent creates a defined stopping criterion: the user *must* commit. Most SERP studies use open-ended informational tasks where the user can abandon, reformulate, or leave without clicking. This means the patch-leaving decision (in Information Foraging Theory terms) is unobservable. In AdSERP, every trial ends with an observable commitment, and the 69% regression rate captures the cost of re-evaluation before that commitment.
+
+This deserves a literature review: forced-choice vs open-ended SERP task designs and what each reveals about the decision process. Key questions: How does the forced stopping criterion change regression behavior? Do open-ended tasks show the same priming × re-evaluation interaction, or does the ability to abandon short-circuit it? What other forced-choice SERP paradigms exist, and do they report comparable regression rates?
+
 ---
 
 ## Key citations they use (our overlap)
