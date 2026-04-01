@@ -56,9 +56,9 @@ Why this matters: **lexical priming**. In reading research, previously encounter
 
 ### Priming predicts faster re-evaluation, not first-pass scanning
 
-We hypothesized cumulative lexical overlap would predict shorter evaluation time generally — the alternative to "declining effort" as an explanation for faster evaluation at lower positions. **The result is more specific:** in trials where users scroll back to re-examine results, higher overlap predicts less evaluation time per unit of visibility (partial r = -0.033, p = 0.003, 6/7 positions in the priming direction). But in pure sequential first-pass evaluation (no scroll regressions), the effect vanishes (r = -0.002, p = 0.92).
+We hypothesized cumulative lexical overlap would predict shorter evaluation time generally — the alternative to "declining effort" as an explanation for faster evaluation at lower positions. **We detected the effect in re-evaluation but not in first-pass scanning:** in trials where users scroll back to re-examine results, higher overlap predicts less evaluation time per unit of visibility (partial r = -0.033, p = 0.003, 6/7 positions in the priming direction). In pure sequential first-pass evaluation (no scroll regressions), we did not detect the effect at bag-of-words granularity (r = -0.002, p = 0.92).
 
-Priming helps when you *return* to a result, not when you first encounter it — at least at bag-of-words granularity. Finer-grained measures (stemming, sentence embeddings) may reveal a first-pass effect.
+This is likely a detection sensitivity issue — bag-of-words token overlap is a crude measure. Stemming, sentence embeddings, and TF-IDF weighting would capture semantic priming that word-level set intersection misses. The first-pass effect may be real but below the threshold of this instrument.
 
 ### Scroll regressions are the dominant pattern
 
@@ -68,7 +68,7 @@ Priming helps when you *return* to a result, not when you first encounter it —
 
 ### Mouse-gaze convergence depends on click intent
 
-With scroll-corrected page-space coordinates, mouse-gaze distance starts low (~90px), rises as the user scrolls down, peaks near ~500px, then converges sharply in the last ~2s before click. The reported 372px aggregate sits mid-curve.
+With scroll-corrected page-space coordinates, mouse-gaze distance starts low (~90px, both near page top), then rises monotonically as the user scrolls (gaze follows content down the page, mouse stays in screen space — the offset accumulates). Distance peaks near ~500px. A modest downturn appears in the final 1-2 seconds before click, but the "sharp convergence" we reported in v0 was largely an artifact of uncorrected coordinates. The corrected picture is dominated by scroll accumulation, not by motor convergence.
 
 ![Convergence curve](plots-v1/plot1_convergence_curve.png)
 
