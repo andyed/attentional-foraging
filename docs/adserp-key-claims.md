@@ -108,4 +108,27 @@ The dataset's click events could be connected to approach dynamics, hold duratio
 
 ---
 
-*Generated 2026-04-01 from AdSERP dataset reanalysis in attentional-foraging project.*
+## Citation audit: prior work by finding
+
+Audit conducted 2026-04-01. Searched Gwizdka, Leiva, Latifzadeh, Arapakis publication lists and broader literature.
+
+| Finding | Prior work | Our contribution | Key citations |
+|---------|-----------|-----------------|---------------|
+| Mouse-gaze distance conditioned on click intent | Gaze-cursor alignment tightens near clicks (Huang et al. CHI 2012). ~66% nonlinear scanpaths (Lorigo et al. JASIST 2008). | Continuous time-to-click curve, scroll correction showing aggregate mixes two regimes | Huang, White & Buscher 2012; Chen, Anderson & Sohn 2001 |
+| Scroll features beat distance for click prediction | Viewport visibility used in prefetching (Diaz et al. TOIS 2017). Click+scroll > click-only (Lagun et al. SIGIR 2014). | Direct AUC comparison: viewport (0.704) vs distance (0.548) after scroll correction | Diaz et al. 2017; Wang et al. SIGIR 2018; Lagun et al. 2014 |
+| 69% scroll regression prevalence | ~66% nonlinear SERP scanpaths (Lorigo et al. 2008). No scroll-level quantification. | Scroll-level regression frequency, magnitude (~7 slots), decision-time correlation (r=0.660) | Lorigo et al. JASIST 2008; Granka et al. SIGIR 2004 |
+| **Lexical priming predicts evaluation speed** | **No prior work found.** Position bias literature (Joachims 2005, Craswell 2008) attributes speed-up to trust. Gwizdka 2010/2014 on cognitive load. | **Novel.** Partial r = -0.054 after position control. First test of content redundancy driving SERP evaluation speed. | Joachims et al. 2005; Hale 2001 / Levy 2008 (surprisal theory); Gwizdka 2010 |
+| Eye finds target ~15s before click | Eyes lead mouse ~300ms (Chen et al. 2001; Huang et al. 2012). 2-3s mouse trajectory predictive (Bruckner et al. 2021). | Macro-level temporal gaps: eye 14.9s, revisit 13.6s, mouse 9.1s. Different scale than micro-level 300ms. | Chen et al. 2001; Bruckner, Arapakis & Leiva 2021 |
+
+### Key papers from the AdSERP team to cite
+
+- Latifzadeh, Gwizdka & Leiva (2025) — AdSERP dataset. The foundation.
+- Villazan-Vallelado et al. (2025) — AdSight. Slot-level attention from cursor at scale.
+- Bruckner, Arapakis & Leiva (2021) — "When Choice Happens." Closest to our temporal analysis.
+- Arapakis & Leiva (2020) — SIGIR. Neural attention prediction from cursor.
+- Gwizdka (2010) — JASIST. Cognitive load distribution in web search.
+- Shi & Gwizdka (2024) — Confirmation bias + readability. Closest to evaluation speed.
+
+---
+
+*Generated 2026-04-01. Citation audit added 2026-04-01.*

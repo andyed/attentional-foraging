@@ -19,9 +19,9 @@ We found this dataset at 5am, got excited, and spent a morning exploring it. Thi
 
 Full writeup with caveats: **[docs/findings.md](docs/findings.md)**
 
-### Lexical priming predicts evaluation speed
+### Lexical priming facilitates re-evaluation, not first-pass scanning
 
-By position 9, 62% of a result's vocabulary already appeared in prior results. **After controlling for position, higher lexical overlap predicts lower evaluation rate** — fixation duration normalized by time-in-viewport (≥50% visible, IAB standard) — with partial r = -0.054, p = 2.4×10⁻⁹. 8 of 9 positions show the effect. Overlap does not predict viewport time (r = 0.004), ruling out the confound that high-overlap results are simply scrolled past faster. Users evaluate faster not because they care less, but because cumulative context makes each result cheaper to process.
+By position 9, 62% of a result's vocabulary already appeared in prior results. We hypothesized this cumulative priming would predict faster evaluation generally. **The result is more specific:** in trials where users scroll back to re-examine results, higher overlap predicts lower attention density (partial r = -0.033, p = 0.003). But in pure sequential first-pass evaluation (no regressions), the effect vanishes (r = -0.002, p = 0.92). Priming helps when you return to a result, not when you first encounter it — at least at bag-of-words granularity. Finer-grained semantic similarity may reveal a first-pass effect.
 
 ![Priming](plots-v1/plot_priming1_overview.png)
 
@@ -51,9 +51,9 @@ When modeling click prediction at a 5s horizon, viewport state (target visible, 
 
 | Notebook | nbviewer | Topic |
 |----------|----------|-------|
-| **Convergence** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/convergence_analysis.ipynb) | Mouse-gaze distance conditioned on click intent, scroll-enriched prediction |
-| **Regressions** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/scroll_regressions.ipynb) | Scroll regression prevalence, magnitude, timing, sparklines |
-| **Priming** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/serp_priming.ipynb) | Cumulative lexical overlap, priming × fixation duration |
+| **Convergence** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks/convergence_analysis.ipynb) | Mouse-gaze distance conditioned on click intent, scroll-enriched prediction |
+| **Regressions** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks/scroll_regressions.ipynb) | Scroll regression prevalence, magnitude, timing, sparklines |
+| **Priming** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks/serp_priming.ipynb) | Cumulative lexical overlap, priming × fixation duration |
 
 ## Data
 
@@ -80,14 +80,18 @@ uv sync && uv run jupyter execute convergence_analysis.ipynb --inplace
 <a id="whats-next"></a>
 ## What's Next
 
-- ~~**Per-result priming → evaluation speed**~~ ✓ Done. Partial r = -0.043 (p = 1.2×10⁻⁷). Priming supported.
-- **Semantic similarity (embeddings):** Bag-of-words overlap likely underestimates the effect. Sentence-level embeddings would capture paraphrase and synonym priming.
-- **Earliest click predictors:** First fixation revisit to eventual target, mouse drift onset, scroll deceleration — signals earlier than the 5-10s window
-- **Local novelty → regression triggers:** Per-result novelty predicting next scroll-back event (time-series, not aggregate)
+- ~~**Per-result priming → evaluation speed**~~ Tested. **Prior hypothesis: lexical priming would predict faster evaluation generally.** Confirmed in re-evaluation (regression trials, r=-0.033, p=0.003) but null in first-pass sequential scanning (no-regression trials, r=-0.002, p=0.92). Priming facilitates re-evaluation, not first-pass scanning — at least at bag-of-words granularity.
+- **Sharpen the overlap metric** (may reveal first-pass effect the crude measure missed):
+  - Stemmed tokens (running/runs/runner → run)
+  - Sentence embeddings (mxbai-embed-large) for paraphrase/synonym priming
+  - TF-IDF weighted overlap — distinguish high-information from noise
+  - Bigram/trigram overlap — phrase-level priming
+- **Per-fixation analysis:** First-fixation duration (initial orientation) vs total fixation. Classic reading measure, more sensitive to priming.
+- **First-click-only at scale:** Production logs, no forced choice, natural satisficing — the clean first-pass test this dataset can't provide.
+- **Earliest click predictors:** First fixation revisit, mouse drift onset, scroll deceleration
+- **Local novelty → regression triggers:** Per-result novelty predicting next scroll-back (time-series)
 - **Pupil dilation × regressions**
-- **AOI-filtered analysis:** Separate navigational fixations from result-evaluation fixations using ad boundary data
-- **AdSERP attention metric:** Their proportion-of-total-fixation metric (Figure 11) as the dependent variable instead of raw fixation duration
-- **Citation audit**
+- **AOI-filtered analysis:** Separate navigational from result-evaluation fixations
 
 ## Citation
 
