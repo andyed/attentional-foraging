@@ -44,9 +44,11 @@ Total fixation time per result (eye-tracker, scroll-corrected page-space coordin
 
 Fixation time drops 65% from position 0 to position 7. The uptick at position 9 is the "ski jump" — likely a pseudo forced-choice effect where the cost of loading page 2 concentrates attention on the last visible results.
 
-### Lexical overlap builds rapidly
+### Lexical overlap builds rapidly — and that should matter
 
-By position 9, 62% of a result's vocabulary has already appeared in prior results. Novel tokens per result drop from 28 to 10. This is a structural fact about SERP content, independent of behavior.
+By position 9, 62% of a result's vocabulary has already appeared in prior results. Novel tokens per result drop from 28 to 10.
+
+Why this matters: **lexical priming**. In reading research, previously encountered words are processed faster on re-encounter — less cognitive effort to recognize, categorize, and integrate. If a SERP user has already read "electro-harmonix tone tattoo analog delay" in results 1-3, encountering those same terms in result 7 should be cheaper to evaluate. The standard explanation for faster evaluation at lower positions is declining effort or attention fatigue. The alternative: it's cumulative priming from vocabulary redundancy.
 
 ![Priming](plots-v1/plot_priming1_overview.png)
 
