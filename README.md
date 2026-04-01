@@ -44,7 +44,7 @@ Total fixation time per result (eye-tracker, scroll-corrected page-space coordin
 | 7 | 1,325 | 6,501 | 58% |
 | 9 | 2,497 | 3,366 | 59% |
 
-Fixation time drops 65% from position 0 to position 7. The uptick at position 9 is the "ski jump" — a pattern consistent with increased evaluation at the bottom of page 1 observed in production search logs across multiple companies (Edmonds, "Made to Measure," CHIIR 2025 Workshop). In production, the cost of loading page 2 creates a pseudo forced-choice that concentrates attention on the last visible results. In this lab study, the forced-click task likely amplifies the same effect.
+Fixation time drops 65% from position 0 to position 7. The uptick at position 9 is the **"ski jump"** — users click disproportionately on the last visible position before a pagination boundary. This pattern has been observed in click share data at eBay, Redbubble, MSN Search, and others (also reported by SLI Systems, Jakob Nielsen, Lou Rosenfeld). The explanation: people make a locally rational decision between the last set of results and the temporal/attentional cost of Next (Edmonds, ["Search as Augmented Cognition,"](https://www.linkedin.com/in/andyed/) CHIIR Made to Measure Workshop, 2021). The same talk proposed the priming hypothesis tested here: *"Why does result evaluation speed up? Hypothesis: Semantic priming and reduced cost of lexical processing, verifiable by manipulating heterogeneity of search results."* In this lab study, the forced-click task likely amplifies the ski jump — there is no Next button, so position 9 *is* the boundary.
 
 ### Lexical overlap builds rapidly — and that should matter
 
