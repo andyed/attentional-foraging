@@ -1,6 +1,8 @@
 # Attentional Foraging on SERPs
 
-In July 2025, Latifzadeh, Gwizdka & Leiva published [AdSERP](https://github.com/kayhan-latifzadeh/AdSERP) — a dataset of 2,776 transactional search queries on Google, with simultaneous eye tracking (Gazepoint GP3 HD, 150 Hz), mouse tracking, scroll events, pupil dilation, SERP HTML snapshots, and ad bounding boxes from 47 participants. It's one of the richest public datasets on how people actually look at and interact with search results.
+**Dataset:** [AdSERP](https://github.com/kayhan-latifzadeh/AdSERP) ([paper](https://doi.org/10.1145/3726302.3730325), [data on Zenodo](https://zenodo.org/records/15236546)) — Latifzadeh, Gwizdka & Leiva, SIGIR 2025.
+
+2,776 transactional search queries on Google, 47 participants, simultaneous eye tracking (Gazepoint GP3 HD, 150 Hz), mouse tracking, scroll events, pupil dilation, SERP HTML snapshots, and ad bounding boxes. One of the richest public datasets on how people actually look at and interact with search results.
 
 ![Eye and mouse heatmaps from AdSERP](plots-v1/adserp_heatmaps.png)
 *Eye vs. mouse heatmaps from the AdSERP paper (Figure 9). Eye fixations spread across results; mouse clusters in a single region. From [Latifzadeh et al. 2025](https://doi.org/10.1145/3726302.3730325).*
@@ -77,6 +79,12 @@ With scroll-corrected page-space coordinates, mouse-gaze distance starts low (~9
 At a 5s horizon, viewport features (target visible, time since scroll) outperform mouse-gaze distance alone (AUC 0.704 vs 0.548). The scroll-stop event is the stronger click signal.
 
 ![Scroll dynamics](plots-v1/plot10_scroll_dynamics.png)
+
+---
+
+## Theoretical framework
+
+These findings are interpreted through the **Attentional-Foraging Equilibrium (AFE)**, which synthesizes Rational Inattention (Sims 2003) with Information Foraging Theory (Pirolli & Card 1999). AFE models SERP browsing as patch foraging: lexical priming reduces within-patch handling time, scroll regressions are travel costs paid for re-evaluation, and the convergence curve traces the transition from foraging to exploitation. The forced-choice purchase task in AdSERP is useful here because it creates a defined stopping criterion — making the patch-leaving decision observable where most SERP studies cannot. Full framework: [AFE presentation](https://gamma.app/docs/The-Attentional-Foraging-Equilibrium-A-Synthesis-of-Digital-Behav-aq0bw2ujjxwypbt). Detailed mapping in [findings.md](docs/findings.md).
 
 ---
 
