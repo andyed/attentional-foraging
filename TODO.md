@@ -18,6 +18,8 @@
 
 - [ ] **Earliest predictor refinement:** The 14.9s first-fixation signal uses a 150px Y radius. Sensitivity analysis on radius. Also: does first-fixation duration on the eventual target differ from first-fixation duration on non-clicked results?
 
+- [ ] **Search abandonment literature:** Connect to the forced-choice paradigm insight. Search abandonment (Diriye et al. 2012, Bruckner et al. 2020 "Query Abandonment Prediction") is the observable patch-leaving decision in AFE terms. The AdSERP forced-choice task eliminates abandonment as an outcome, which isolates the foraging-to-exploitation transition — but the abandonment literature characterizes the alternative outcome. Understanding both paths (click vs. abandon) completes the AFE picture.
+
 - [ ] **Citation audit (priority):** Survey Gwizdka's full publication list and the AdSERP team's prior/subsequent work before claiming any finding as novel. 1,200 eye tracking sessions is serious labor — they likely have analyses in progress or published that overlap with our observations. Check JASIST, SIGIR, CHIIR proceedings. Also verify p(click) conditioning and priming hypothesis novelty claims against the broader literature.
 
 ## Design / Product Connections (from Peter Dixon-Moses)
