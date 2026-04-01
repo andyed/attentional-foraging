@@ -5,7 +5,7 @@ In July 2025, Latifzadeh, Gwizdka & Leiva published [AdSERP](https://github.com/
 ![Eye and mouse heatmaps from AdSERP](plots-v1/adserp_heatmaps.png)
 *Eye vs. mouse heatmaps from the AdSERP paper (Figure 9). Eye fixations spread across results; mouse clusters in a single region. From [Latifzadeh et al. 2025](https://doi.org/10.1145/3726302.3730325).*
 
-We found this dataset, got excited, and spent an afternoon exploring it. This repo is three notebooks of preliminary analysis — questions we wanted to ask, first-pass answers, and a transparent record of how we got there.
+We found this dataset at 5am, got excited, and spent a morning exploring it. This repo is three notebooks of preliminary analysis — questions we wanted to ask, first-pass answers, and a transparent record of how we got there.
 
 > **v1 — 2026-04-01. This is a <4 hour first pass.**
 >
