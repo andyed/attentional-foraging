@@ -178,4 +178,6 @@ The relative findings (two-regime model, convergence timing, viewport features b
 
 ---
 
+**Git repo made public 8:38am PT, 2026-04-01.** ~3.5 hours from dataset discovery to public release.
+
 *Frozen 2026-04-01. The dataset is rich enough for a full paper.*
