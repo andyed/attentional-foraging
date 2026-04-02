@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Scanpath: p037-b2-t5 — buy fusion ms wr600cv dust cover</title>
+<meta name="viewport" content="width=1280">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #111; color: #eee; font-family: system-ui, -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; }
+.header { width: 1280px; padding: 10px 16px; background: #1a1a1a; border-bottom: 1px solid #333;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.header h1 { font-size: 14px; font-weight: 600; }
+.header h1 span { color: #aaa; font-weight: 400; }
+.controls { display: flex; gap: 12px; align-items: center; font-size: 12px; }
+.controls label { cursor: pointer; user-select: none; }
+.btn { background: #333; border: 1px solid #555; color: #eee; padding: 3px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; }
+.btn:hover { background: #444; }
+.btn.active { background: #2a5a8a; border-color: #4a8aca; }
+.viewer { position: relative; width: 1280px; height: 70vh; overflow-y: auto; overflow-x: hidden; background: #000; }
+.serp-container { position: relative; width: 1280px; min-height: 2459px; }
+.gazeplot-img { width: 1280px; display: block; }
+.serp-iframe { width: 1280px; height: 2459px; border: none; display: block; }
+.scanpath-svg { position: absolute; top: 0; left: 0; z-index: 10; pointer-events: none; }
+.foveal-ring { position: absolute; z-index: 11; pointer-events: none; border: 2px solid rgba(255,255,255,0.7);
+  border-radius: 50%; width: 120px; height: 120px; transform: translate(-50%, -50%);
+  box-shadow: 0 0 20px rgba(255,255,255,0.3); transition: left 0.08s, top 0.08s; display: none; }
+.timeline { width: 1280px; background: #1a1a1a; padding: 8px 16px; border-top: 1px solid #333; }
+.timeline-track { position: relative; height: 40px; background: #222; border-radius: 4px; cursor: pointer; overflow: hidden; }
+.timeline-ticks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.timeline-tick { position: absolute; bottom: 0; border-radius: 2px 2px 0 0; min-width: 2px; }
+.timeline-playhead { position: absolute; top: 0; width: 2px; height: 100%; background: #ff4444; z-index: 2; }
+.timeline-info { display: flex; justify-content: space-between; margin-top: 4px; font-size: 11px; color: #aaa; }
+.info-panel { width: 1280px; padding: 6px 16px; background: #1a1a1a; font-size: 11px; color: #aaa;
+  display: flex; gap: 20px; border-top: 1px solid #222; }
+.info-panel .val { color: #ccc; }
+.info-panel a { color: #ff9933; text-decoration: none; font-weight: 600; }
+.info-panel a:hover { text-decoration: underline; }
+.back { position: fixed; top: 8px; left: 8px; z-index: 100; font-size: 12px; }
+.back a { color: #6af; text-decoration: none; }
+</style></head><body>
+<div class="back"><a href="index.html">&larr; All trials</a></div>
+<div class="header">
+  <h1>p037-b2-t5 <span>— buy fusion ms wr600cv dust cover</span></h1>
+  <div class="controls">
+    <label><input type="checkbox" id="lines-toggle" checked> Lines</label>
+    <label><input type="checkbox" id="numbers-toggle" checked> Numbers</label>
+    <button class="btn" id="play-btn">&#9654; Play</button>
+    <button class="btn" id="reset-btn">Reset</button>
+  </div>
+</div>
+<div class="viewer" id="viewer">
+  <div class="serp-container">
+    <img class="gazeplot-img" src="gazeplots/p037-b2-t5.png" />
+    <svg class="scanpath-svg" id="scanpath-svg" xmlns="http://www.w3.org/2000/svg"
+         width="1280" height="2459" viewBox="0 0 1280 2459"></svg>
+    <div class="foveal-ring" id="foveal-ring"></div>
+  </div>
+</div>
+<div class="timeline">
+  <div class="timeline-track" id="timeline-track">
+    <div class="timeline-ticks" id="timeline-ticks"></div>
+    <div class="timeline-playhead" id="playhead"></div>
+  </div>
+  <div class="timeline-info">
+    <span id="time-label">Fixation 0 / 276</span>
+    <span id="duration-label">0.0s / 83.8s</span>
+  </div>
+</div>
+<div class="info-panel">
+  <span><a href="https://github.com/andyed/scrutinizer">Scrutinizer rendering</a></span>
+  <span>Position: <span class="val" id="info-pos">—</span></span>
+  <span>Duration: <span class="val" id="info-dur">—</span></span>
+  <span>Fixations: <span class="val" id="info-seen">0</span></span>
+  <span>Click: <span class="val">(358, 516)</span></span>
+</div>
+<script>
+const F=[{"t":1677756715085,"x":477,"y":116,"d":216},{"t":1677756715259,"x":543,"y":217,"d":167},{"t":1677756715486,"x":275,"y":182,"d":200},{"t":1677756715761,"x":235,"y":167,"d":267},{"t":1677756715996,"x":264,"y":32,"d":207},{"t":1677756716411,"x":220,"y":60,"d":408},{"t":1677756716612,"x":245,"y":19,"d":194},{"t":1677756717054,"x":276,"y":48,"d":435},{"t":1677756717322,"x":309,"y":48,"d":260},{"t":1677756717691,"x":351,"y":51,"d":361},{"t":1677756718280,"x":234,"y":220,"d":562},{"t":1677756718548,"x":222,"y":499,"d":241},{"t":1677756718890,"x":217,"y":480,"d":334},{"t":1677756719117,"x":239,"y":229,"d":201},{"t":1677756719244,"x":267,"y":110,"d":120},{"t":1677756719385,"x":280,"y":45,"d":133},{"t":1677756719653,"x":349,"y":17,"d":261},{"t":1677756720008,"x":326,"y":30,"d":348},{"t":1677756720223,"x":295,"y":64,"d":207},{"t":1677756720336,"x":338,"y":25,"d":106},{"t":1677756720952,"x":220,"y":166,"d":234},{"t":1677756721160,"x":222,"y":171,"d":200},{"t":1677756721328,"x":228,"y":523,"d":140},{"t":1677756721696,"x":219,"y":481,"d":361},{"t":1677756722620,"x":230,"y":618,"d":321},{"t":1677756722916,"x":254,"y":575,"d":288},{"t":1677756723264,"x":282,"y":576,"d":341},{"t":1677756723424,"x":234,"y":730,"d":133},{"t":1677756723458,"x":231,"y":767,"d":26},{"t":1677756723880,"x":219,"y":666,"d":184},{"t":1677756724054,"x":221,"y":712,"d":167},{"t":1677756724289,"x":219,"y":728,"d":227},{"t":1677756724563,"x":295,"y":723,"d":267},{"t":1677756724844,"x":373,"y":728,"d":274},{"t":1677756725112,"x":438,"y":723,"d":261},{"t":1677756725273,"x":521,"y":713,"d":154},{"t":1677756725401,"x":499,"y":779,"d":121},{"t":1677756725521,"x":508,"y":754,"d":114},{"t":1677756725608,"x":562,"y":479,"d":80},{"t":1677756725802,"x":561,"y":711,"d":146},{"t":1677756726365,"x":391,"y":725,"d":556},{"t":1677756727343,"x":344,"y":809,"d":281},{"t":1677756727611,"x":304,"y":877,"d":261},{"t":1677756727787,"x":255,"y":802,"d":169},{"t":1677756728006,"x":362,"y":165,"d":194},{"t":1677756728200,"x":275,"y":386,"d":67},{"t":1677756728616,"x":277,"y":73,"d":328},{"t":1677756728904,"x":264,"y":64,"d":281},{"t":1677756729345,"x":354,"y":71,"d":434},{"t":1677756729561,"x":384,"y":87,"d":208},{"t":1677756729688,"x":280,"y":201,"d":120},{"t":1677756729848,"x":265,"y":245,"d":154},{"t":1677756729969,"x":235,"y":196,"d":113},{"t":1677756730123,"x":238,"y":176,"d":147},{"t":1677756730310,"x":232,"y":75,"d":180},{"t":1677756730646,"x":246,"y":73,"d":328},{"t":1677756730900,"x":284,"y":63,"d":247},{"t":1677756731134,"x":306,"y":60,"d":228},{"t":1677756731248,"x":308,"y":51,"d":107},{"t":1677756731356,"x":329,"y":79,"d":100},{"t":1677756731643,"x":320,"y":89,"d":281},{"t":1677756731798,"x":190,"y":638,"d":107},{"t":1677756731972,"x":228,"y":724,"d":147},{"t":1677756732220,"x":228,"y":752,"d":241},{"t":1677756732621,"x":307,"y":711,"d":395},{"t":1677756733037,"x":379,"y":721,"d":408},{"t":1677756733378,"x":311,"y":861,"d":334},{"t":1677756733767,"x":316,"y":923,"d":88},{"t":1677756734215,"x":300,"y":868,"d":441},{"t":1677756734510,"x":348,"y":842,"d":287},{"t":1677756734785,"x":435,"y":845,"d":267},{"t":1677756734966,"x":483,"y":824,"d":173},{"t":1677756735200,"x":536,"y":815,"d":228},{"t":1677756735870,"x":610,"y":821,"d":663},{"t":1677756736004,"x":637,"y":822,"d":127},{"t":1677756736145,"x":679,"y":822,"d":133},{"t":1677756736252,"x":632,"y":906,"d":99},{"t":1677756736681,"x":511,"y":945,"d":421},{"t":1677756736922,"x":366,"y":849,"d":214},{"t":1677756737123,"x":324,"y":811,"d":193},{"t":1677756737585,"x":256,"y":879,"d":127},{"t":1677756737927,"x":254,"y":984,"d":335},{"t":1677756738121,"x":379,"y":956,"d":187},{"t":1677756738415,"x":480,"y":956,"d":287},{"t":1677756738690,"x":404,"y":968,"d":268},{"t":1677756739447,"x":369,"y":1108,"d":127},{"t":1677756739789,"x":415,"y":1069,"d":334},{"t":1677756739964,"x":488,"y":1090,"d":168},{"t":1677756740271,"x":726,"y":1272,"d":281},{"t":1677756740526,"x":725,"y":1223,"d":247},{"t":1677756740774,"x":264,"y":1201,"d":221},{"t":1677756741014,"x":229,"y":1213,"d":233},{"t":1677756741436,"x":308,"y":1222,"d":254},{"t":1677756741678,"x":379,"y":1191,"d":234},{"t":1677756741832,"x":481,"y":1187,"d":147},{"t":1677756742213,"x":516,"y":1195,"d":374},{"t":1677756742475,"x":389,"y":1323,"d":234},{"t":1677756742903,"x":407,"y":1329,"d":422},{"t":1677756743077,"x":327,"y":1347,"d":167},{"t":1677756743218,"x":367,"y":1335,"d":134},{"t":1677756743473,"x":499,"y":1347,"d":247},{"t":1677756743989,"x":347,"y":1486,"d":488},{"t":1677756744324,"x":580,"y":1482,"d":308},{"t":1677756744927,"x":386,"y":1597,"d":375},{"t":1677756745261,"x":283,"y":1608,"d":328},{"t":1677756745516,"x":238,"y":1606,"d":247},{"t":1677756745945,"x":295,"y":1598,"d":422},{"t":1677756746695,"x":267,"y":1586,"d":288},{"t":1677756746929,"x":309,"y":1575,"d":227},{"t":1677756747921,"x":333,"y":1728,"d":562},{"t":1677756748249,"x":369,"y":1728,"d":321},{"t":1677756748557,"x":334,"y":1731,"d":301},{"t":1677756749153,"x":225,"y":1732,"d":589},{"t":1677756749448,"x":451,"y":1714,"d":268},{"t":1677756749655,"x":466,"y":1726,"d":200},{"t":1677756750151,"x":351,"y":1735,"d":488},{"t":1677756750372,"x":476,"y":1726,"d":214},{"t":1677756750674,"x":533,"y":1708,"d":294},{"t":1677756751109,"x":237,"y":1824,"d":409},{"t":1677756751759,"x":282,"y":1833,"d":642},{"t":1677756752061,"x":345,"y":1819,"d":295},{"t":1677756752208,"x":421,"y":1725,"d":140},{"t":1677756752442,"x":331,"y":1009,"d":207},{"t":1677756753012,"x":245,"y":360,"d":94},{"t":1677756753145,"x":248,"y":452,"d":126},{"t":1677756753467,"x":235,"y":515,"d":314},{"t":1677756753762,"x":306,"y":518,"d":287},{"t":1677756754009,"x":402,"y":528,"d":241},{"t":1677756754331,"x":460,"y":511,"d":314},{"t":1677756754478,"x":461,"y":513,"d":140},{"t":1677756754760,"x":523,"y":504,"d":274},{"t":1677756755282,"x":274,"y":500,"d":495},{"t":1677756755999,"x":262,"y":373,"d":200},{"t":1677756756234,"x":220,"y":639,"d":207},{"t":1677756756749,"x":245,"y":721,"d":509},{"t":1677756756950,"x":302,"y":724,"d":194},{"t":1677756757124,"x":392,"y":743,"d":167},{"t":1677756757292,"x":469,"y":733,"d":160},{"t":1677756757700,"x":569,"y":716,"d":401},{"t":1677756758055,"x":422,"y":712,"d":348},{"t":1677756758417,"x":434,"y":537,"d":334},{"t":1677756758638,"x":418,"y":492,"d":214},{"t":1677756759127,"x":294,"y":491,"d":481},{"t":1677756759362,"x":386,"y":569,"d":227},{"t":1677756759777,"x":452,"y":603,"d":408},{"t":1677756760326,"x":350,"y":616,"d":542},{"t":1677756760849,"x":278,"y":590,"d":515},{"t":1677756761083,"x":266,"y":482,"d":227},{"t":1677756761318,"x":295,"y":477,"d":227},{"t":1677756761559,"x":334,"y":484,"d":234},{"t":1677756761679,"x":381,"y":524,"d":113},{"t":1677756762041,"x":594,"y":519,"d":334},{"t":1677756762235,"x":569,"y":480,"d":187},{"t":1677756762496,"x":246,"y":510,"d":234},{"t":1677756762751,"x":212,"y":535,"d":247},{"t":1677756763086,"x":231,"y":654,"d":328},{"t":1677756763273,"x":254,"y":667,"d":180},{"t":1677756763434,"x":326,"y":635,"d":154},{"t":1677756763581,"x":460,"y":629,"d":140},{"t":1677756763702,"x":529,"y":625,"d":113},{"t":1677756764117,"x":608,"y":602,"d":194},{"t":1677756764292,"x":608,"y":598,"d":168},{"t":1677756764419,"x":676,"y":585,"d":120},{"t":1677756765008,"x":663,"y":567,"d":582},{"t":1677756765531,"x":231,"y":691,"d":214},{"t":1677756765805,"x":243,"y":695,"d":268},{"t":1677756766181,"x":222,"y":707,"d":368},{"t":1677756766288,"x":286,"y":694,"d":100},{"t":1677756766516,"x":312,"y":566,"d":220},{"t":1677756766844,"x":453,"y":503,"d":321},{"t":1677756766991,"x":456,"y":529,"d":140},{"t":1677756767172,"x":620,"y":539,"d":153},{"t":1677756767453,"x":650,"y":487,"d":274},{"t":1677756767541,"x":444,"y":514,"d":80},{"t":1677756767775,"x":230,"y":574,"d":207},{"t":1677756767962,"x":251,"y":586,"d":180},{"t":1677756768143,"x":302,"y":540,"d":173},{"t":1677756768237,"x":236,"y":689,"d":87},{"t":1677756768545,"x":215,"y":763,"d":301},{"t":1677756768659,"x":257,"y":687,"d":106},{"t":1677756768960,"x":343,"y":515,"d":274},{"t":1677756769222,"x":383,"y":471,"d":254},{"t":1677756769409,"x":663,"y":400,"d":160},{"t":1677756769584,"x":760,"y":368,"d":167},{"t":1677756770367,"x":796,"y":370,"d":776},{"t":1677756770722,"x":393,"y":778,"d":308},{"t":1677756770963,"x":228,"y":751,"d":234},{"t":1677756771151,"x":225,"y":720,"d":180},{"t":1677756771486,"x":229,"y":817,"d":194},{"t":1677756771713,"x":235,"y":865,"d":221},{"t":1677756771874,"x":275,"y":892,"d":153},{"t":1677756772370,"x":295,"y":853,"d":489},{"t":1677756772624,"x":416,"y":844,"d":247},{"t":1677756773261,"x":504,"y":845,"d":388},{"t":1677756773361,"x":425,"y":829,"d":93},{"t":1677756773576,"x":353,"y":810,"d":207},{"t":1677756773884,"x":305,"y":849,"d":301},{"t":1677756774319,"x":569,"y":813,"d":408},{"t":1677756774788,"x":589,"y":808,"d":281},{"t":1677756774962,"x":585,"y":803,"d":167},{"t":1677756775110,"x":651,"y":811,"d":140},{"t":1677756775344,"x":638,"y":839,"d":227},{"t":1677756775605,"x":391,"y":821,"d":234},{"t":1677756775953,"x":449,"y":837,"d":341},{"t":1677756776101,"x":425,"y":982,"d":140},{"t":1677756776376,"x":494,"y":956,"d":268},{"t":1677756776550,"x":569,"y":957,"d":167},{"t":1677756776825,"x":448,"y":930,"d":267},{"t":1677756776992,"x":424,"y":953,"d":160},{"t":1677756777193,"x":403,"y":938,"d":194},{"t":1677756777387,"x":381,"y":929,"d":187},{"t":1677756777662,"x":438,"y":1091,"d":247},{"t":1677756777849,"x":401,"y":1091,"d":180},{"t":1677756778064,"x":496,"y":1079,"d":207},{"t":1677756779035,"x":368,"y":587,"d":481},{"t":1677756779162,"x":406,"y":619,"d":120},{"t":1677756779356,"x":436,"y":576,"d":187},{"t":1677756779584,"x":415,"y":507,"d":220},{"t":1677756779899,"x":404,"y":490,"d":126},{"t":1677756780033,"x":366,"y":498,"d":127},{"t":1677756780194,"x":298,"y":499,"d":153},{"t":1677756780750,"x":269,"y":509,"d":549},{"t":1677756780917,"x":271,"y":481,"d":160},{"t":1677756781172,"x":254,"y":110,"d":248},{"t":1677756781285,"x":246,"y":115,"d":107},{"t":1677756781660,"x":251,"y":84,"d":367},{"t":1677756781888,"x":296,"y":68,"d":221},{"t":1677756782129,"x":296,"y":70,"d":234},{"t":1677756782739,"x":279,"y":527,"d":583},{"t":1677756783115,"x":265,"y":731,"d":368},{"t":1677756783509,"x":281,"y":863,"d":368},{"t":1677756784139,"x":364,"y":847,"d":622},{"t":1677756784387,"x":457,"y":830,"d":240},{"t":1677756784615,"x":531,"y":851,"d":220},{"t":1677756784756,"x":573,"y":821,"d":134},{"t":1677756785278,"x":648,"y":822,"d":515},{"t":1677756786068,"x":298,"y":822,"d":763},{"t":1677756786390,"x":229,"y":944,"d":314},{"t":1677756786852,"x":263,"y":934,"d":455},{"t":1677756787073,"x":255,"y":713,"d":194},{"t":1677756787696,"x":276,"y":704,"d":616},{"t":1677756787857,"x":229,"y":733,"d":153},{"t":1677756788205,"x":280,"y":1017,"d":301},{"t":1677756788500,"x":235,"y":954,"d":121},{"t":1677756788761,"x":238,"y":934,"d":254},{"t":1677756788969,"x":283,"y":941,"d":201},{"t":1677756789096,"x":269,"y":999,"d":120},{"t":1677756789860,"x":224,"y":1061,"d":757},{"t":1677756790108,"x":240,"y":1077,"d":241},{"t":1677756790329,"x":304,"y":1078,"d":214},{"t":1677756790556,"x":376,"y":1088,"d":220},{"t":1677756790777,"x":460,"y":1065,"d":214},{"t":1677756791166,"x":534,"y":1077,"d":381},{"t":1677756791528,"x":606,"y":1070,"d":355},{"t":1677756792037,"x":209,"y":1107,"d":207},{"t":1677756792787,"x":204,"y":1131,"d":743},{"t":1677756792968,"x":248,"y":1098,"d":174},{"t":1677756793163,"x":242,"y":1062,"d":188},{"t":1677756793336,"x":253,"y":1104,"d":167},{"t":1677756793818,"x":250,"y":1219,"d":475},{"t":1677756793979,"x":302,"y":1221,"d":153},{"t":1677756794086,"x":279,"y":1269,"d":99},{"t":1677756794609,"x":240,"y":1311,"d":515},{"t":1677756794803,"x":255,"y":1331,"d":187},{"t":1677756795239,"x":278,"y":1328,"d":429},{"t":1677756795667,"x":284,"y":1353,"d":422},{"t":1677756795881,"x":220,"y":1347,"d":207},{"t":1677756795975,"x":318,"y":1324,"d":86},{"t":1677756796538,"x":384,"y":363,"d":241},{"t":1677756796852,"x":336,"y":289,"d":308},{"t":1677756797409,"x":281,"y":515,"d":529},{"t":1677756797596,"x":284,"y":477,"d":180},{"t":1677756797918,"x":269,"y":259,"d":294},{"t":1677756798012,"x":418,"y":135,"d":87},{"t":1677756798581,"x":723,"y":40,"d":541},{"t":1677756798715,"x":705,"y":63,"d":127}],CK={"x":358.2559774964838,"y":516.0527704485488},FR=60,SW=1280,N=276,
+T0=1677756715085,TD=83757,MND=26,MXD=776;
+const rF=d=>8+(d-MND)/(MXD-MND+1)*22;
+const cF=(i,n)=>{const t=n>1?i/(n-1):0;return`rgb(${Math.round(50+205*t)},${Math.round(50+100*(1-Math.abs(t-.5)*2))},${Math.round(255-205*t)})`};
+const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
+fr=document.getElementById('foveal-ring'),vw=document.getElementById('viewer'),
+lt=document.getElementById('lines-toggle'),nt=document.getElementById('numbers-toggle'),
+tt=document.getElementById('timeline-track');
+let ci=N-1,pl=false,pt=null;
+const ns='http://www.w3.org/2000/svg';
+function se(t,a){const e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e}
+const tEl=document.getElementById('timeline-ticks');
+F.forEach((f,i)=>{const t=document.createElement('div');t.className='timeline-tick';
+t.style.left=(N>1?(f.t-T0)/TD*100:0)+'%';t.style.width=Math.max(.5,f.d/TD*100)+'%';
+t.style.height=Math.min(100,20+f.d/10)+'%';t.style.background=cF(i,N);t.style.opacity='.5';tEl.appendChild(t)});
+const lE=[],cE=[],tE=[];
+for(let i=0;i<N;i++){const f=F[i],r=rF(f.d),c=cF(i,N);
+if(i>0){const p=F[i-1];const l=se('line',{x1:p.x,y1:p.y,x2:f.x,y2:f.y,stroke:c,'stroke-width':1.5,'stroke-opacity':.4});svg.appendChild(l);lE.push(l)}else lE.push(null);
+const cr=se('circle',{cx:f.x,cy:f.y,r,fill:c,'fill-opacity':.25,stroke:c,'stroke-width':2,'stroke-opacity':.8});svg.appendChild(cr);cE.push(cr);
+const fs=Math.max(9,Math.min(14,r));const tx=se('text',{x:f.x,y:f.y,'text-anchor':'middle','dominant-baseline':'central','font-family':'monospace','font-weight':'bold','font-size':fs,fill:'white',stroke:'rgba(0,0,0,.6)','stroke-width':2,'paint-order':'stroke'});tx.textContent=i+1;svg.appendChild(tx);tE.push(tx)}
+if(CK){const s=se('polygon',{points:[0,-16,6,-4,16,-4,8,4,12,16,0,8,-12,16,-8,4,-16,-4,-6,-4].reduce((a,v,i)=>{a.push(i%2===0?CK.x+v:CK.y+v);return a},[]).join(','),fill:'#f00','fill-opacity':.5,stroke:'#f00','stroke-width':2});svg.appendChild(s);
+const l=se('text',{x:CK.x+18,y:CK.y+4,'font-family':'monospace','font-weight':'bold','font-size':11,fill:'#f00',stroke:'white','stroke-width':2,'paint-order':'stroke'});l.textContent='CLICK';svg.appendChild(l)}
+function uv(){for(let i=0;i<N;i++){const v=i<=ci;cE[i].style.display=v?'':'none';tE[i].style.display=v&&nt.checked?'':'none';
+if(lE[i])lE[i].style.display=v&&lt.checked?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',pl&&i===ci?1:.8)}
+if(ci>=0&&N>1)ph.style.left=(F[ci].t-T0)/TD*100+'%';
+if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px';
+const vr=vw.getBoundingClientRect(),fy=f.y-vw.scrollTop;if(fy<100||fy>vr.height-100)vw.scrollTo({top:f.y-vr.height/2,behavior:'smooth'})}else fr.style.display='none';
+if(ci>=0){const f=F[ci];document.getElementById('info-pos').textContent='('+f.x+','+f.y+')';
+document.getElementById('info-dur').textContent=f.d+'ms';document.getElementById('info-seen').textContent=ci+1;
+document.getElementById('time-label').textContent='Fixation '+(ci+1)+' / '+N;
+document.getElementById('duration-label').textContent=((f.t-T0)/1000).toFixed(1)+'s / '+(TD/1000).toFixed(1)+'s'}}
+function sf(i){ci=Math.max(-1,Math.min(N-1,i));uv()}
+lt.addEventListener('change',uv);nt.addEventListener('change',uv);
+let dr=false;function ts(e){const r=tt.getBoundingClientRect(),p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
+let b=0;for(let i=0;i<N;i++)if(F[i].t<=T0+p*TD)b=i;sf(b)}
+tt.addEventListener('mousedown',e=>{dr=true;ts(e)});document.addEventListener('mousemove',e=>{if(dr)ts(e)});document.addEventListener('mouseup',()=>{dr=false});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){sf(ci+1);e.preventDefault()}if(e.key==='ArrowLeft'){sf(ci-1);e.preventDefault()}
+if(e.key===' '){tp();e.preventDefault()}if(e.key==='Home'){sf(0);e.preventDefault()}if(e.key==='End'){sf(N-1);e.preventDefault()}});
+function tp(){pl=!pl;document.getElementById('play-btn').textContent=pl?'⏸ Pause':'▶ Play';
+document.getElementById('play-btn').classList.toggle('active',pl);if(pl){if(ci>=N-1)ci=-1;pn()}else{clearTimeout(pt);fr.style.display='none';ci=N-1;uv()}}
+function pn(){if(!pl)return;const n=ci+1;if(n>=N){pl=false;document.getElementById('play-btn').textContent='▶ Play';fr.style.display='none';ci=N-1;uv();return}
+sf(n);pt=setTimeout(pn,Math.max(100,F[n].d*.5))}
+document.getElementById('play-btn').addEventListener('click',tp);
+document.getElementById('reset-btn').addEventListener('click',()=>{pl=false;clearTimeout(pt);document.getElementById('play-btn').textContent='▶ Play';ci=N-1;uv();vw.scrollTo({top:0})});
+uv();
+</script></body></html>
