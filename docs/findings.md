@@ -2,7 +2,7 @@
 
 Reanalysis of the AdSERP dataset (Latifzadeh, Gwizdka & Leiva, SIGIR 2025). The [journey doc](journey.md) records how this started; this document records what we think we found.
 
-**Status:** v4, 2026-04-01. Viewport time computation fixed (was missing pre-scroll and post-scroll periods, inflating position 0 dwell ratios >1.0). Forward-only shape test added: dwell *increases* with position during forward scanning (ρ = +0.73), reversing the priming prediction. Metric renamed from "eval rate" / "attention density" to "gaze dwell ratio" (fixation duration / visible duration — both durations, dimensionless).
+**Status:** v6, 2026-04-02. Priming hypothesis tested at three granularities (bag-of-words, semantic embeddings, within-position) — null at all. Forward-only dwell increases with position (ρ = +0.82). §9 added: where relaxing serial evaluation helps. Orientation time (194ms median) reflects well-memorized SERP layout.
 
 ---
 
@@ -12,7 +12,7 @@ These findings are interpreted through the **Attentional-Foraging Equilibrium (A
 
 How each finding maps to AFE:
 
-- **Lexical priming** (Finding 2) — bag-of-words overlap correlates with faster evaluation in aggregate, but the effect does not survive within-position controls, and the forward-only curve reverses (ρ = +0.73). Lower dwell during regressions is consistent with repetition/recognition and scroll kinematics (ballistic backward scrolling), not semantic priming. Finer-grained measures (semantic embeddings, token-level fixation analysis) may be needed to detect the mechanism if it exists.
+- **Lexical priming** (Finding 2) — tested at three levels of granularity (bag-of-words, semantic embeddings, within-position controls) and null at all of them. Forward-only dwell *increases* with position (ρ = +0.82). Lower dwell during regressions is explained by repetition/recognition and ballistic scroll kinematics, not content priming. The mechanism, if it exists, operates below the result level (possibly token-level fixation duration) — but the most parsimonious explanation is that evaluation slows with foraging depth because the candidate set in working memory grows.
 - **Scroll regressions** (Finding 4) are travel costs (T_s) paid for re-evaluation. What triggers regressions remains untested — SERP-level homogeneity does not predict regression count (r = -0.015), and per-result novelty triggering has not been analyzed.
 - **Mouse-gaze convergence** (Finding 5) traces the transition from foraging (high T_s, moving between patches) to exploitation (low τ, evaluating within a patch).
 - **Per-participant variance** (Finding 7) maps to bandwidth λ — individual cognitive capacity differences.
@@ -40,21 +40,13 @@ By position 9, 62% of a result's vocabulary has already appeared in prior result
 
 **Notebook:** [serp_priming.ipynb](../notebooks/serp_priming.ipynb), Step 2
 
-## 2. Overlap correlates with evaluation speed — but does not survive within-position controls
+## 2. Cumulative content overlap does not predict evaluation speed
 
-**v3 correction: the aggregate priming effect is confounded with position.**
+Tested at three levels of granularity. Null at all of them.
 
-We initially reported that cumulative lexical overlap predicted faster evaluation (gaze dwell ratio, formerly "attention density"), especially in regression trials. The aggregate correlations were:
+**The hypothesis:** As users scan down a SERP, they accumulate vocabulary from prior results. This cumulative exposure should make later results cheaper to evaluate — a priming effect from redundancy. If true, higher overlap with prior results should predict faster evaluation at the same rank.
 
-| Analysis | Partial r | p | N |
-|----------|-----------|---|---|
-| All trials, positions 1-9 | -0.054 | 2.4×10⁻⁹ | 12,121 |
-| Regression trials, positions 1-7 | -0.033 | 0.003 | 8,342 |
-| No-regression trials, positions 1-9 | -0.002 | 0.92 | 2,640 |
-
-**The problem:** Position and overlap are confounded — both increase monotonically down the SERP. The aggregate correlations could reflect position-dependent attention decline rather than a content-driven priming effect.
-
-**The within-position test:** For each position (1-9), we tested whether trials with higher-than-median overlap at that position showed different evaluation metrics. This controls for position entirely.
+**Bag-of-words overlap × evaluation metrics (within-position):**
 
 | Metric | Within-position r | Significant at any position? |
 |--------|------------------|------|
@@ -64,16 +56,13 @@ We initially reported that cumulative lexical overlap predicted faster evaluatio
 | Viewport time | r ≈ 0 at all positions | No |
 | Gaze dwell ratio (fixation/viewport) | r = -0.049 at position 1 only (p=0.01) | Marginal, one position |
 
-**What this means:** Bag-of-words lexical overlap at the result level does not predict any evaluation metric once position is controlled. The effect we initially attributed to priming was driven by the position-overlap confound.
+**Semantic embeddings (mxbai-embed-large):** Cosine similarity between each result's snippet embedding and the centroid of all prior result embeddings. Also null within-position — sentence-level semantic similarity does not predict evaluation time any better than bag-of-words.
 
-**What this does NOT mean:** The priming hypothesis is not rejected — it's untested at the right granularity. Bag-of-words overlap is a coarse measure. Several paths remain:
+**The forward-only curve reverses the prediction:** Isolating forward-scanning periods (excluding regressions), gaze dwell ratio *increases* with position (Spearman ρ = +0.82). Users dwell longer on later results during first-pass scanning. The most parsimonious explanation: cognitive load increases with foraging depth because the candidate set in working memory grows. Each new result must be compared against an expanding set of already-evaluated alternatives.
 
-1. **Semantic embeddings** (TODO) — sentence-level similarity captures paraphrase and synonym priming that bag-of-words misses
-2. **Token-level analysis** — within a result, do previously-seen tokens receive shorter fixations than novel tokens? Requires word-level AOI mapping.
-3. **Working memory preloading** — the hypothesis that prior exposure reduces cognitive load may operate below the result level, at the phrase or concept level
-4. **At-scale production logs** — millions of queries with natural satisficing behavior may have enough power to detect small effects that are invisible in 2,776 lab trials
+**Why the aggregate correlation was misleading:** Position and overlap are confounded — both increase monotonically down the SERP. The aggregate partial r = -0.054 (p = 2.4×10⁻⁹) was driven by this confound, not by content. The regression-vs-no-regression split compounded the problem: lower dwell on revisit reflects recognition/memory and ballistic scroll kinematics (§8), not semantic priming.
 
-The regression-vs-no-regression split (v2 finding) initially appeared informative: the aggregate effect was concentrated in re-evaluation trials. But this is triply confounded: (a) position-overlap covariation persists within regression trials (within-position null), (b) revisitation itself produces lower dwell through recognition/memory rather than semantic priming, and (c) ballistic backward scrolling creates systematically shorter viewport windows at intermediate positions, biasing the dwell ratio denominator. The scroll kinematics analysis (`scroll_kinematics.ipynb`) tests confound (c) directly.
+**What remains:** Token-level fixation analysis (do previously-encountered words receive shorter fixations within a result?) and at-scale production logs with larger N. But the result-level hypothesis — that cumulative overlap predicts faster evaluation — is tested and null.
 
 **Notebook:** [serp_priming.ipynb](../notebooks/serp_priming.ipynb), Step 4; [fixation_coverage.ipynb](../notebooks/fixation_coverage.ipynb), decomposition analysis
 
@@ -108,7 +97,7 @@ Position-dependent decline in total fixation time conflates several processes. D
 
 | Component | What it measures | Position-dependent? | Value |
 |-----------|-----------------|-------------------|-------|
-| **Page orientation** | Time from page load to first fixation on any result | No (fixed cost) | FV: ~1.6s, Scrollers: ~3.0s |
+| **Page orientation** | Time from page load to first fixation on any result | No (fixed cost) | Median **194ms** (all groups identical — SERP layout is well-memorized) |
 | **Scanning rate** | Additional time per position before first fixation arrives | Yes (linear ramp) | FV: ~2.6s/pos, Scrollers: ~1.7s/pos |
 | **Fixation count** | Number of fixations on a result (once reached) | Yes (declines with position) | ~10 at pos 0 → ~7 at pos 9 |
 | **Per-fixation duration** | Duration of each individual fixation | **No (~220ms, flat)** | 202-228ms across all positions |
