@@ -92,6 +92,8 @@ At a 5s horizon, viewport features (target visible, time since scroll) outperfor
 
 These findings are interpreted through the **Attentional-Foraging Equilibrium (AFE)**, which synthesizes Rational Inattention (Sims 2003) with Information Foraging Theory (Pirolli & Card 1999). AFE models SERP browsing as patch foraging: scroll regressions are travel costs paid for re-evaluation, the convergence curve traces the transition from foraging to exploitation, and per-participant variance maps to individual bandwidth differences. The forced-choice purchase task in AdSERP is useful here because it creates a defined stopping criterion — making the patch-leaving decision observable where most SERP studies cannot (cf. [Diriye et al. 2012](https://doi.org/10.1145/2396761.2398399) on search abandonment as the alternative outcome). Full framework: [AFE presentation](https://gamma.app/docs/The-Attentional-Foraging-Equilibrium-A-Synthesis-of-Digital-Behav-aq0bw2ujjxwypbt). Detailed mapping in [findings.md](docs/findings.md).
 
+![SERP task model](assets/serp-task-model.svg)
+
 ---
 
 ## Notebooks

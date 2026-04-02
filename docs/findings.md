@@ -20,6 +20,12 @@ How each finding maps to AFE:
 
 Full presentation: [The Attentional-Foraging Equilibrium](https://gamma.app/docs/The-Attentional-Foraging-Equilibrium-A-Synthesis-of-Digital-Behav-aq0bw2ujjxwypbt)
 
+### SERP interaction task model
+
+![SERP task model](../assets/serp-task-model.svg)
+
+*SERP interaction model — after Marchionini (1995), Gwizdka (2010). The **Engage** zone contains the evaluation loop measured in this project: Locate → Evaluate → Click decision → End-of-page check → Deliberate (regress, choose visible, or paginate). The Deliberate diamond is where the forced-choice task inflates regression frequency — in naturalistic search, "next page" and query reformulation absorb decisions that become regressions here.*
+
 ---
 
 ## Dataset constraints

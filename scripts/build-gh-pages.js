@@ -127,7 +127,15 @@ for (const trial of trials) {
         .filter(m => isFinite(m.t) && isFinite(m.x) && ['mousemove','mouseover','click','mousedown','mouseup'].includes(m.e))
         .map(m => ({ t: m.t - (fixations.length > 0 ? fixations[0].t : 0), x: m.x * rx, y: m.y, e: m.e }));
 
-    const maxY = Math.max(docH, ...fixations.map(f => f.y)) + 100;
+    // Measure actual image heights — SVG must match exactly
+    const serpImgH = fs.existsSync(serpRenderPath)
+        ? parseInt(require('child_process').execSync(`sips -g pixelHeight "${serpRenderPath}" | tail -1`).toString().match(/\d+/)?.[0] || '0')
+        : docH;
+    const gazeplotImgH = hasGazeplot
+        ? parseInt(require('child_process').execSync(`sips -g pixelHeight "${path.join(SITE_DIR, 'gazeplots', id + '.png')}" | tail -1`).toString().match(/\d+/)?.[0] || '0')
+        : serpImgH;
+    // Default to serp-render height — no padding, no max(docH, fixY)
+    const maxY = serpImgH;
     const fovealR = 60;
     const N = fixations.length;
     const T0 = N > 0 ? fixations[0].t : 0;
@@ -157,9 +165,8 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .btn:hover { background: #444; }
 .btn.active { background: #2a5a8a; border-color: #4a8aca; }
 .viewer { position: relative; width: ${screenW}px; height: 70vh; overflow-y: auto; overflow-x: hidden; background: #000; }
-.serp-container { position: relative; width: ${screenW}px; min-height: ${maxY}px; }
-.serp-render { width: ${screenW}px; display: block; }
-.gazeplot-img { position: absolute; top: 0; left: 0; width: ${screenW}px; display: block; }
+.serp-container { position: relative; width: ${screenW}px; }
+#bg-img { width: ${screenW}px; display: block; }
 .scanpath-svg { position: absolute; top: 0; left: 0; z-index: 10; pointer-events: none; }
 .foveal-ring { position: absolute; z-index: 11; pointer-events: none; border: 2px solid rgba(255,255,255,0.7);
   border-radius: 50%; width: ${fovealR*2}px; height: ${fovealR*2}px; transform: translate(-50%, -50%);
@@ -188,6 +195,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
     <h1>${id} <span>— ${query}</span></h1>
   </div>
   <div class="controls">
+    ${hasGazeplot ? `<button class="btn" id="mode-btn">Gazeplot</button>` : ''}
     <label><input type="checkbox" id="lines-toggle" checked> Lines</label>
     <label><input type="checkbox" id="numbers-toggle" checked> Numbers</label>
     <button class="btn" id="play-btn">&#9654; Play</button>
@@ -196,10 +204,9 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 </div>
 <div class="viewer" id="viewer">
   <div class="serp-container">
-    <img class="serp-render" src="${serpRenderRelPath}" />
-    ${hasGazeplot ? `<img class="gazeplot-img" src="${gazeplotRelPath}" />` : ''}
+    <img id="bg-img" src="${serpRenderRelPath}" />
     <svg class="scanpath-svg" id="scanpath-svg" xmlns="http://www.w3.org/2000/svg"
-         width="${screenW}" height="${maxY}" viewBox="0 0 ${screenW} ${maxY}"></svg>
+         width="${screenW}" height="${serpImgH}" viewBox="0 0 ${screenW} ${serpImgH}"></svg>
     <div class="foveal-ring" id="foveal-ring"></div>
     <div class="mouse-cursor" id="mouse-cursor"><svg viewBox="0 0 20 28"><path d="M0,0 L0,22 L5.5,17 L10,28 L14,26 L9,16 L16,16 Z" fill="#ff9933" stroke="#000" stroke-width="1"/></svg></div>
   </div>
@@ -224,7 +231,9 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 </div>
 <script>
 const F=${JSON.stringify(fixations)},CK=${JSON.stringify(click)},ME=${JSON.stringify(mouseEvents)},FR=${fovealR},SW=${screenW},N=${N},
-T0=${T0},TD=${TOTAL_DUR},MND=${minD},MXD=${maxD};
+T0=${T0},TD=${TOTAL_DUR},MND=${minD},MXD=${maxD},
+SERP_SRC='${serpRenderRelPath}',SERP_H=${serpImgH},
+GAZEPLOT_SRC=${hasGazeplot ? `'${gazeplotRelPath}'` : 'null'},GAZEPLOT_H=${gazeplotImgH};
 const rF=d=>8+(d-MND)/(MXD-MND+1)*22;
 const cF=(i,n)=>{const t=n>1?i/(n-1):0;return\`rgb(\${Math.round(50+205*t)},\${Math.round(50+100*(1-Math.abs(t-.5)*2))},\${Math.round(255-205*t)})\`};
 const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
@@ -277,6 +286,21 @@ sf(n);pt=setTimeout(pn,Math.max(100,F[n].d*.5))}
 document.getElementById('play-btn').addEventListener('click',tp);
 document.getElementById('reset-btn').addEventListener('click',()=>{pl=false;clearTimeout(pt);document.getElementById('play-btn').textContent='▶ Play';ci=N-1;uv();vw.scrollTo({top:0})});
 uv();
+// Gazeplot toggle
+let bgMode='serp';
+const modeBtn=document.getElementById('mode-btn');
+const bgImg=document.getElementById('bg-img');
+if(modeBtn&&GAZEPLOT_SRC){modeBtn.addEventListener('click',()=>{
+  bgMode=bgMode==='serp'?'gazeplot':'serp';
+  modeBtn.textContent=bgMode==='serp'?'Gazeplot':'SERP';
+  modeBtn.classList.toggle('active',bgMode==='gazeplot');
+  const h=bgMode==='gazeplot'?GAZEPLOT_H:SERP_H;
+  const src=bgMode==='gazeplot'?GAZEPLOT_SRC:SERP_SRC;
+  bgImg.src=src;
+  svg.setAttribute('viewBox','0 0 '+SW+' '+h);
+  svg.setAttribute('height',h);
+  svg.style.height=h+'px';
+})}
 </script></body></html>`;
 
     fs.writeFileSync(path.join(SITE_DIR, `${id}.html`), html);
