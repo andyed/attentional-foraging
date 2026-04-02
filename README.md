@@ -1,27 +1,23 @@
 # Attentional Foraging on SERPs
 
-**Dataset:** [AdSERP](https://github.com/kayhan-latifzadeh/AdSERP) ([paper](https://doi.org/10.1145/3726302.3730325), [data on Zenodo](https://zenodo.org/records/15236546)) — Latifzadeh, Gwizdka & Leiva, SIGIR 2025.
+[Demo](https://andyed.github.io/attentional-foraging/) | [Findings](#findings) | [Notebooks](#notebooks) | [Data](#data) | [Docs](#docs) | [What's Next](#whats-next) | [Citation](#citation)
+
+---
+
+## Interactive foveated scanpath replays
+
+**[andyed.github.io/attentional-foraging](https://andyed.github.io/attentional-foraging/)** — 10 prototypical search sessions replayed through [Scrutinizer](https://github.com/andyed/scrutinizer2025)'s neuroscience-based peripheral vision simulator. Full-page renders showing what each participant could actually resolve at each fixation: sharp where they looked, degraded through LGN/V1/DoG peripheral pooling where they didn't. Scanpath overlay with numbered fixations, saccade lines, timeline scrubbing, and playback.
+
+---
+
+## Dataset
+
+[AdSERP](https://github.com/kayhan-latifzadeh/AdSERP) ([paper](https://doi.org/10.1145/3726302.3730325), [Zenodo](https://zenodo.org/records/15236546)) — Latifzadeh, Gwizdka & Leiva, SIGIR 2025.
 
 2,776 transactional search queries on Google, 47 participants, simultaneous eye tracking (Gazepoint GP3 HD, 150 Hz), mouse tracking, scroll events, pupil dilation, SERP HTML snapshots, and ad bounding boxes. One of the richest public datasets on how people actually look at and interact with search results.
 
 ![Eye and mouse heatmaps from AdSERP](plots-v1/adserp_heatmaps.png)
 *Eye vs. mouse heatmaps from the AdSERP paper (Figure 9). Eye fixations spread across results; mouse clusters in a single region. From [Latifzadeh et al. 2025](https://doi.org/10.1145/3726302.3730325).*
-
-We found this dataset at 5am, got excited, and spent a morning exploring it. This repo is three notebooks of preliminary analysis — questions we wanted to ask, first-pass answers, and a transparent record of how we got there.
-
-**[Interactive demo: Foveated scanpath replays](https://andyed.github.io/attentional-foraging/)** — 10 prototypical search sessions replayed through [Scrutinizer](https://github.com/andyed/scrutinizer2025)'s neuroscience-based peripheral vision simulator. See what each participant could actually resolve at each fixation.
-
-> **v4 — 2026-04-01. Ongoing revisions from initial <4 hour first pass.**
->
-> **Revision strategy:** The [journey doc](docs/journey.md) is frozen at v0 — the first session as it happened, including wrong turns. Future updates add a "What we got wrong" section and revise the [findings](docs/findings.md). The point is to show the full arc.
->
-> Built collaboratively by a human researcher and [Claude Code](https://claude.ai/claude-code). See [docs/journey.md](docs/journey.md).
-
----
-
-**What's here:** [Findings](#findings) | [Notebooks](#notebooks) | [Data](#data) | [Docs](#docs) | [What's Next](#whats-next)
-
-Three threads: (1) how people allocate attention across SERP results — fixation coverage, evaluation time decomposition, first-viewport vs scrolled behavior; (2) whether cumulative content overlap speeds evaluation — tested and currently null at bag-of-words granularity, finer measures pending; (3) stable individual differences in search strategy — satisfice/optimize segmentation, TTI as a processing speed calibrator.
 
 ---
 
@@ -128,6 +124,10 @@ uv sync && uv run jupyter execute convergence_analysis.ipynb --inplace
 - **[adsight-key-claims.md](docs/adsight-key-claims.md)** — AdSight companion paper analysis (Transformer mouse→fixation prediction)
 - **[references.bib](references.bib)** — Verified BibTeX library (20 entries, all with DOIs or arXiv IDs)
 
+## History
+
+This started as a 4-hour morning sprint after finding the AdSERP dataset at 5am. The [journey doc](docs/journey.md) is frozen at that v0 — wrong turns and all. The [findings](docs/findings.md) continue to be revised. Built collaboratively by a human researcher and [Claude Code](https://claude.ai/claude-code).
+
 <a id="whats-next"></a>
 ## What's Next
 
@@ -143,6 +143,7 @@ uv sync && uv run jupyter execute convergence_analysis.ipynb --inplace
 - **Local novelty → regression triggers:** Per-result novelty predicting next scroll-back (time-series)
 - **Pupil dilation × regressions**
 - **AOI-filtered analysis:** Separate navigational from result-evaluation fixations
+- **Full-page foveated video replays** of complete search sessions through Scrutinizer
 
 ## Citation
 
