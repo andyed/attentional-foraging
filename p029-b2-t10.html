@@ -16,9 +16,8 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .btn:hover { background: #444; }
 .btn.active { background: #2a5a8a; border-color: #4a8aca; }
 .viewer { position: relative; width: 1280px; height: 70vh; overflow-y: auto; overflow-x: hidden; background: #000; }
-.serp-container { position: relative; width: 1280px; min-height: 3856px; }
-.serp-render { width: 1280px; display: block; }
-.gazeplot-img { position: absolute; top: 0; left: 0; width: 1280px; display: block; }
+.serp-container { position: relative; width: 1280px; }
+#bg-img { width: 1280px; display: block; }
 .scanpath-svg { position: absolute; top: 0; left: 0; z-index: 10; pointer-events: none; }
 .foveal-ring { position: absolute; z-index: 11; pointer-events: none; border: 2px solid rgba(255,255,255,0.7);
   border-radius: 50%; width: 120px; height: 120px; transform: translate(-50%, -50%);
@@ -47,6 +46,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
     <h1>p029-b2-t10 <span>— buy nike nike 375833 pro bra</span></h1>
   </div>
   <div class="controls">
+    <button class="btn" id="mode-btn">Gazeplot</button>
     <label><input type="checkbox" id="lines-toggle" checked> Lines</label>
     <label><input type="checkbox" id="numbers-toggle" checked> Numbers</label>
     <button class="btn" id="play-btn">&#9654; Play</button>
@@ -55,10 +55,9 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 </div>
 <div class="viewer" id="viewer">
   <div class="serp-container">
-    <img class="serp-render" src="serp-renders/p029-b2-t10.png" />
-    <img class="gazeplot-img" src="gazeplots/p029-b2-t10.png" />
+    <img id="bg-img" src="serp-renders/p029-b2-t10.png" />
     <svg class="scanpath-svg" id="scanpath-svg" xmlns="http://www.w3.org/2000/svg"
-         width="1280" height="3856" viewBox="0 0 1280 3856"></svg>
+         width="1280" height="3758" viewBox="0 0 1280 3758"></svg>
     <div class="foveal-ring" id="foveal-ring"></div>
     <div class="mouse-cursor" id="mouse-cursor"><svg viewBox="0 0 20 28"><path d="M0,0 L0,22 L5.5,17 L10,28 L14,26 L9,16 L16,16 Z" fill="#ff9933" stroke="#000" stroke-width="1"/></svg></div>
   </div>
@@ -83,7 +82,9 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 </div>
 <script>
 const F=[{"t":1676552337529,"x":476,"y":165,"d":242},{"t":1676552337836,"x":494,"y":349,"d":281},{"t":1676552337956,"x":448,"y":296,"d":112},{"t":1676552338224,"x":429,"y":228,"d":259},{"t":1676552338419,"x":412,"y":338,"d":187},{"t":1676552339122,"x":450,"y":363,"d":696},{"t":1676552339632,"x":474,"y":388,"d":502},{"t":1676552339825,"x":436,"y":380,"d":186},{"t":1676552340194,"x":438,"y":308,"d":362},{"t":1676552340476,"x":463,"y":218,"d":274},{"t":1676552340703,"x":339,"y":326,"d":201},{"t":1676552340857,"x":281,"y":343,"d":147},{"t":1676552341052,"x":193,"y":333,"d":188},{"t":1676552341219,"x":209,"y":212,"d":160},{"t":1676552341601,"x":464,"y":222,"d":354},{"t":1676552341708,"x":552,"y":258,"d":100},{"t":1676552341998,"x":600,"y":252,"d":283},{"t":1676552342196,"x":645,"y":350,"d":193},{"t":1676552342347,"x":669,"y":351,"d":142},{"t":1676552342579,"x":578,"y":339,"d":228},{"t":1676552343115,"x":576,"y":356,"d":530},{"t":1676552343423,"x":454,"y":353,"d":301}],CK={"x":469.873417721519,"y":292},ME=[{"t":2729,"x":662.5035161744022,"y":307,"e":"mouseover"},{"t":2730,"x":662.5035161744022,"y":307,"e":"mousemove"},{"t":2745,"x":660.70323488045,"y":308,"e":"mousemove"},{"t":2763,"x":660.70323488045,"y":310,"e":"mousemove"},{"t":2781,"x":658.9029535864979,"y":311,"e":"mousemove"},{"t":2796,"x":658.0028129395217,"y":312,"e":"mousemove"},{"t":2812,"x":654.4022503516175,"y":313,"e":"mousemove"},{"t":2828,"x":650.8016877637131,"y":315,"e":"mouseover"},{"t":2828,"x":650.8016877637131,"y":315,"e":"mousemove"},{"t":2846,"x":646.3009845288326,"y":316,"e":"mouseover"},{"t":2846,"x":646.3009845288326,"y":316,"e":"mousemove"},{"t":2863,"x":640,"y":316,"e":"mouseover"},{"t":2863,"x":640,"y":316,"e":"mousemove"},{"t":2879,"x":628.2981715893108,"y":316,"e":"mouseover"},{"t":2880,"x":628.2981715893108,"y":316,"e":"mousemove"},{"t":2896,"x":609.395218002813,"y":316,"e":"mousemove"},{"t":2912,"x":588.6919831223629,"y":320,"e":"mousemove"},{"t":2929,"x":558.0872011251757,"y":323,"e":"mousemove"},{"t":2944,"x":544.5850914205345,"y":325,"e":"mousemove"},{"t":2963,"x":536.4838255977496,"y":326,"e":"mousemove"},{"t":2978,"x":527.4824191279887,"y":326,"e":"mouseover"},{"t":2978,"x":527.4824191279887,"y":326,"e":"mousemove"},{"t":2995,"x":522.0815752461322,"y":326,"e":"mouseover"},{"t":2995,"x":522.0815752461322,"y":326,"e":"mousemove"},{"t":3012,"x":514.8804500703235,"y":326,"e":"mouseover"},{"t":3012,"x":514.8804500703235,"y":326,"e":"mousemove"},{"t":3030,"x":509.4796061884669,"y":326,"e":"mousemove"},{"t":3045,"x":504.0787623066104,"y":324,"e":"mousemove"},{"t":3062,"x":499.5780590717299,"y":324,"e":"mousemove"},{"t":3078,"x":495.9774964838256,"y":322,"e":"mousemove"},{"t":3096,"x":492.37693389592124,"y":320,"e":"mousemove"},{"t":3112,"x":489.676511954993,"y":318,"e":"mousemove"},{"t":3129,"x":484.2756680731364,"y":316,"e":"mousemove"},{"t":3146,"x":481.5752461322081,"y":314,"e":"mousemove"},{"t":3161,"x":478.87482419127986,"y":313,"e":"mousemove"},{"t":3179,"x":477.9746835443038,"y":312,"e":"mousemove"},{"t":3196,"x":477.9746835443038,"y":311,"e":"mousemove"},{"t":3211,"x":477.07454289732766,"y":310,"e":"mousemove"},{"t":3230,"x":477.07454289732766,"y":307,"e":"mousemove"},{"t":3245,"x":475.2742616033755,"y":302,"e":"mousemove"},{"t":3262,"x":474.3741209563994,"y":300,"e":"mousemove"},{"t":3279,"x":473.4739803094233,"y":296,"e":"mousemove"},{"t":3295,"x":472.57383966244726,"y":294,"e":"mousemove"},{"t":3312,"x":471.67369901547113,"y":294,"e":"mousemove"},{"t":3345,"x":470.77355836849506,"y":294,"e":"mousemove"},{"t":3362,"x":470.77355836849506,"y":293,"e":"mousemove"},{"t":3384,"x":469.873417721519,"y":292,"e":"mousemove"},{"t":4554,"x":469.873417721519,"y":292,"e":"mousedown"},{"t":4696,"x":469.873417721519,"y":292,"e":"mousemove"},{"t":4719,"x":469.873417721519,"y":292,"e":"mouseup"},{"t":6479,"x":469.873417721519,"y":292,"e":"click"}],FR=60,SW=1280,N=22,
-T0=1676552337529,TD=6195,MND=100,MXD=696;
+T0=1676552337529,TD=6195,MND=100,MXD=696,
+SERP_SRC='serp-renders/p029-b2-t10.png',SERP_H=3758,
+GAZEPLOT_SRC='gazeplots/p029-b2-t10.png',GAZEPLOT_H=4780;
 const rF=d=>8+(d-MND)/(MXD-MND+1)*22;
 const cF=(i,n)=>{const t=n>1?i/(n-1):0;return`rgb(${Math.round(50+205*t)},${Math.round(50+100*(1-Math.abs(t-.5)*2))},${Math.round(255-205*t)})`};
 const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
@@ -136,4 +137,19 @@ sf(n);pt=setTimeout(pn,Math.max(100,F[n].d*.5))}
 document.getElementById('play-btn').addEventListener('click',tp);
 document.getElementById('reset-btn').addEventListener('click',()=>{pl=false;clearTimeout(pt);document.getElementById('play-btn').textContent='▶ Play';ci=N-1;uv();vw.scrollTo({top:0})});
 uv();
+// Gazeplot toggle
+let bgMode='serp';
+const modeBtn=document.getElementById('mode-btn');
+const bgImg=document.getElementById('bg-img');
+if(modeBtn&&GAZEPLOT_SRC){modeBtn.addEventListener('click',()=>{
+  bgMode=bgMode==='serp'?'gazeplot':'serp';
+  modeBtn.textContent=bgMode==='serp'?'Gazeplot':'SERP';
+  modeBtn.classList.toggle('active',bgMode==='gazeplot');
+  const h=bgMode==='gazeplot'?GAZEPLOT_H:SERP_H;
+  const src=bgMode==='gazeplot'?GAZEPLOT_SRC:SERP_SRC;
+  bgImg.src=src;
+  svg.setAttribute('viewBox','0 0 '+SW+' '+h);
+  svg.setAttribute('height',h);
+  svg.style.height=h+'px';
+})}
 </script></body></html>

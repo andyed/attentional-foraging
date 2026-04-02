@@ -1,0 +1,285 @@
+{
+  "timestamp": "2026-04-02T15:11:26.508Z",
+  "results": [
+    {
+      "trialId": "p032-b6-t8",
+      "tests": [
+        {
+          "name": "click_hits_content",
+          "pass": true,
+          "detail": "click(423,220) → A ✓ link: \"Hartleys Lemon Jelly Cubes, 135g - Amazon UKhttps:\""
+        },
+        {
+          "name": "fixations_hit_content",
+          "pass": true,
+          "detail": "5/5 sampled fixations hit content (need ≥50%)"
+        },
+        {
+          "name": "bg_width_1280",
+          "pass": true,
+          "detail": "bg.naturalWidth=1280 (need 1280)"
+        },
+        {
+          "name": "viewBox_width_1280",
+          "pass": true,
+          "detail": "viewBox width=1280 (need 1280)"
+        },
+        {
+          "name": "rendered_width_match",
+          "pass": true,
+          "detail": "bg=1280px, svg=1280px"
+        },
+        {
+          "name": "rendered_height_match",
+          "pass": true,
+          "detail": "bg=2644px, svg=2644px (Δ0)"
+        }
+      ]
+    },
+    {
+      "trialId": "p029-b2-t10",
+      "tests": [
+        {
+          "name": "click_hits_content",
+          "pass": true,
+          "detail": "click(470,292) → A ✓ link"
+        },
+        {
+          "name": "fixations_hit_content",
+          "pass": true,
+          "detail": "5/5 sampled fixations hit content (need ≥50%)"
+        },
+        {
+          "name": "bg_width_1280",
+          "pass": true,
+          "detail": "bg.naturalWidth=1280 (need 1280)"
+        },
+        {
+          "name": "viewBox_width_1280",
+          "pass": true,
+          "detail": "viewBox width=1280 (need 1280)"
+        },
+        {
+          "name": "rendered_width_match",
+          "pass": true,
+          "detail": "bg=1280px, svg=1280px"
+        },
+        {
+          "name": "rendered_height_match",
+          "pass": true,
+          "detail": "bg=3758px, svg=3758px (Δ0)"
+        }
+      ]
+    },
+    {
+      "trialId": "p016-b3-t1",
+      "tests": [
+        {
+          "name": "click_hits_content",
+          "pass": true,
+          "detail": "click(410,261) → A ✓ link: \"John Mayall & The Bluesbreakers With Eric Clapton \""
+        },
+        {
+          "name": "fixations_hit_content",
+          "pass": true,
+          "detail": "4/5 sampled fixations hit content (need ≥50%)"
+        },
+        {
+          "name": "bg_width_1280",
+          "pass": true,
+          "detail": "bg.naturalWidth=1280 (need 1280)"
+        },
+        {
+          "name": "viewBox_width_1280",
+          "pass": true,
+          "detail": "viewBox width=1280 (need 1280)"
+        },
+        {
+          "name": "rendered_width_match",
+          "pass": true,
+          "detail": "bg=1280px, svg=1280px"
+        },
+        {
+          "name": "rendered_height_match",
+          "pass": true,
+          "detail": "bg=3724px, svg=3724px (Δ0)"
+        }
+      ]
+    },
+    {
+      "trialId": "p047-b1-t9",
+      "tests": [
+        {
+          "name": "click_hits_content",
+          "pass": true,
+          "detail": "click(315,364) → A ✓ link: \"Timing Belt Kit Dayco - Easy And Convenient Paymen\""
+        },
+        {
+          "name": "fixations_hit_content",
+          "pass": true,
+          "detail": "5/5 sampled fixations hit content (need ≥50%)"
+        },
+        {
+          "name": "bg_width_1280",
+          "pass": true,
+          "detail": "bg.naturalWidth=1280 (need 1280)"
+        },
+        {
+          "name": "viewBox_width_1280",
+          "pass": true,
+          "detail": "viewBox width=1280 (need 1280)"
+        },
+        {
+          "name": "rendered_width_match",
+          "pass": true,
+          "detail": "bg=1280px, svg=1280px"
+        },
+        {
+          "name": "rendered_height_match",
+          "pass": true,
+          "detail": "bg=2974px, svg=2974px (Δ0)"
+        }
+      ]
+    },
+    {
+      "trialId": "p035-b4-t2",
+      "tests": [
+        {
+          "name": "click_hits_content",
+          "pass": true,
+          "detail": "click(297,261) → A ✓ link: \"Avon Anew Ultimate 7S Skincare Kit - Amazon.comhtt\""
+        },
+        {
+          "name": "fixations_hit_content",
+          "pass": true,
+          "detail": "5/5 sampled fixations hit content (need ≥50%)"
+        },
+        {
+          "name": "bg_width_1280",
+          "pass": true,
+          "detail": "bg.naturalWidth=1280 (need 1280)"
+        },
+        {
+          "name": "viewBox_width_1280",
+          "pass": true,
+          "detail": "viewBox width=1280 (need 1280)"
+        },
+        {
+          "name": "rendered_width_match",
+          "pass": true,
+          "detail": "bg=1280px, svg=1280px"
+        },
+        {
+          "name": "rendered_height_match",
+          "pass": true,
+          "detail": "bg=2810px, svg=2810px (Δ0)"
+        }
+      ]
+    },
+    {
+      "trialId": "p011-b3-t2",
+      "tests": [
+        {
+          "name": "click_hits_content",
+          "pass": true,
+          "detail": "click(380,183) → A ✓ link: \"Playmobil 5190 Gymnast on Balancing Beam - Amazon \""
+        },
+        {
+          "name": "fixations_hit_content",
+          "pass": true,
+          "detail": "4/5 sampled fixations hit content (need ≥50%)"
+        },
+        {
+          "name": "bg_width_1280",
+          "pass": true,
+          "detail": "bg.naturalWidth=1280 (need 1280)"
+        },
+        {
+          "name": "viewBox_width_1280",
+          "pass": true,
+          "detail": "viewBox width=1280 (need 1280)"
+        },
+        {
+          "name": "rendered_width_match",
+          "pass": true,
+          "detail": "bg=1280px, svg=1280px"
+        },
+        {
+          "name": "rendered_height_match",
+          "pass": true,
+          "detail": "bg=2584px, svg=2584px (Δ0)"
+        }
+      ]
+    },
+    {
+      "trialId": "p037-b2-t5",
+      "tests": [
+        {
+          "name": "click_hits_content",
+          "pass": true,
+          "detail": "click(358,573) → A ✓ link: \"Marine WR600 Headunit Dust Cover (Fusion MS-WR600C\""
+        },
+        {
+          "name": "fixations_hit_content",
+          "pass": true,
+          "detail": "5/5 sampled fixations hit content (need ≥50%)"
+        },
+        {
+          "name": "bg_width_1280",
+          "pass": true,
+          "detail": "bg.naturalWidth=1280 (need 1280)"
+        },
+        {
+          "name": "viewBox_width_1280",
+          "pass": true,
+          "detail": "viewBox width=1280 (need 1280)"
+        },
+        {
+          "name": "rendered_width_match",
+          "pass": true,
+          "detail": "bg=1280px, svg=1280px"
+        },
+        {
+          "name": "rendered_height_match",
+          "pass": true,
+          "detail": "bg=2359px, svg=2359px (Δ0)"
+        }
+      ]
+    },
+    {
+      "trialId": "p045-b2-t6",
+      "tests": [
+        {
+          "name": "click_hits_content",
+          "pass": true,
+          "detail": "click(434,426) → A ✓ link: \"GATES Manguitos de Radiador MERCEDES-BENZ: Clase C\""
+        },
+        {
+          "name": "fixations_hit_content",
+          "pass": true,
+          "detail": "5/5 sampled fixations hit content (need ≥50%)"
+        },
+        {
+          "name": "bg_width_1280",
+          "pass": true,
+          "detail": "bg.naturalWidth=1280 (need 1280)"
+        },
+        {
+          "name": "viewBox_width_1280",
+          "pass": true,
+          "detail": "viewBox width=1280 (need 1280)"
+        },
+        {
+          "name": "rendered_width_match",
+          "pass": true,
+          "detail": "bg=1280px, svg=1280px"
+        },
+        {
+          "name": "rendered_height_match",
+          "pass": true,
+          "detail": "bg=3179px, svg=3179px (Δ0)"
+        }
+      ]
+    }
+  ]
+}
