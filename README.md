@@ -35,32 +35,38 @@ Full writeup with caveats: **[docs/findings.md](docs/findings.md)**
 
 Total fixation time per result (eye-tracker, scroll-corrected page-space coordinates):
 
-| Position | Fixation (ms) | Viewport (ms) | Overlap |
-|----------|--------------|---------------|---------|
-| 0 | 4,073 | 7,978 | 0% |
-| 1 | 2,994 | 11,832 | 38% |
-| 3 | 2,131 | 13,783 | 46% |
-| 5 | 1,589 | 9,505 | 56% |
-| 7 | 1,325 | 6,501 | 58% |
-| 9 | 2,497 | 3,366 | 59% |
+| Position | Fixation (ms) | Viewport (ms) | Dwell Ratio | Overlap |
+|----------|--------------|---------------|-------------|---------|
+| 0 | 4,085 | 14,584 | 0.28 | 0% |
+| 1 | 3,071 | 17,990 | 0.18 | 38% |
+| 3 | 2,103 | 16,526 | 0.16 | 46% |
+| 5 | 1,589 | 9,577 | 0.25 | 55% |
+| 7 | 1,325 | 6,529 | 0.35 | 58% |
+| 9 | 2,497 | 3,378 | 1.25 | 59% |
 
-Fixation time drops 65% from position 0 to position 7. The uptick at position 9 is the **"ski jump"** — users click disproportionately on the last visible position before a pagination boundary. This pattern has been observed in click share data at eBay, Redbubble, MSN Search, and others (also reported by SLI Systems, Jakob Nielsen, Lou Rosenfeld). The explanation: people make a locally rational decision between the last set of results and the temporal/attentional cost of Next (Edmonds, ["Search as Augmented Cognition,"](https://www.linkedin.com/in/andyed/) CHIIR Made to Measure Workshop, 2021). The same talk proposed the priming hypothesis tested here: *"Why does result evaluation speed up? Hypothesis: Semantic priming and reduced cost of lexical processing, verifiable by manipulating heterogeneity of search results."* In this lab study, the forced-click task likely amplifies the ski jump — there is no Next button, so position 9 *is* the boundary.
+Fixation time drops 65% from position 0 to position 7. Gaze dwell ratio — fixation duration / visible duration — drops from 0.28 to 0.16 by position 3, then *rises* back through positions 4-9. The U-shape means later results get more intense evaluation per unit of visible time, not less. The uptick at position 9 is the **"ski jump"** — users click disproportionately on the last visible position before a pagination boundary. This pattern has been observed in click share data at eBay, Redbubble, MSN Search, and others (also reported by SLI Systems, Jakob Nielsen, Lou Rosenfeld). The explanation: people make a locally rational decision between the last set of results and the temporal/attentional cost of Next (Edmonds, ["Search as Augmented Cognition,"](https://www.linkedin.com/in/andyed/) CHIIR Made to Measure Workshop, 2021). The same talk proposed the priming hypothesis tested here: *"Why does result evaluation speed up? Hypothesis: Semantic priming and reduced cost of lexical processing, verifiable by manipulating heterogeneity of search results."* In this lab study, the forced-click task likely amplifies the ski jump — there is no Next button, so position 9 *is* the boundary.
 
 ### Lexical overlap builds rapidly — and that should matter
 
 By position 9, 62% of a result's vocabulary has already appeared in prior results. Novel tokens per result drop from 28 to 10.
 
-Why this matters: **lexical priming**. In reading research, previously encountered words are processed faster on re-encounter — less cognitive effort to recognize, categorize, and integrate. If a SERP user has already read "electro-harmonix tone tattoo analog delay" in results 1-3, encountering those same terms in result 7 should be cheaper to evaluate. The standard explanation for faster evaluation at lower positions is declining effort or attention fatigue. The alternative: it's cumulative priming from vocabulary redundancy.
+Why this matters: **lexical priming**. In reading research, previously encountered words are processed faster on re-encounter — less cognitive effort to recognize, categorize, and integrate. If a SERP user has already read "electro-harmonix tone tattoo analog delay" in results 1-3, encountering those same terms in result 7 should be cheaper to evaluate. The standard explanation for faster evaluation at lower positions is declining effort or attention fatigue. The alternative: it's cumulative priming from vocabulary redundancy. **However:** our analysis shows this effect operates in re-evaluation (scroll regressions), not in first-pass forward scanning — and when we test the forward-only curve shape, the relationship reverses (dwell *increases* with overlap, Spearman ρ = +0.73). See below.
 
 ![Priming](plots-v1/plot_priming1_overview.png)
 
 ![Per-result evaluation](plots-v1/plot_priming3_fixation.png)
 
-### Priming predicts faster re-evaluation, not first-pass scanning
+### Priming: aggregate correlation does not survive within-position controls
 
-We hypothesized cumulative lexical overlap would predict shorter evaluation time generally — the alternative to "declining effort" as an explanation for faster evaluation at lower positions. **We detected the effect in re-evaluation but not in first-pass scanning:** in trials where users scroll back to re-examine results, higher overlap predicts less evaluation time per unit of visibility (partial r = -0.033, p = 0.003, 6/7 positions in the priming direction). In pure sequential first-pass evaluation (no scroll regressions), we did not detect the effect at bag-of-words granularity (r = -0.002, p = 0.92).
+We hypothesized cumulative lexical overlap would predict shorter evaluation time — the alternative to "declining effort" as an explanation for faster evaluation at lower positions. The aggregate correlation exists (partial r = -0.054, p = 2.4×10⁻⁹) and is concentrated in regression trials (r = -0.033, p = 0.003), absent in first-pass trials (r = -0.002, p = 0.92).
 
-This is likely a detection sensitivity issue — bag-of-words token overlap is a crude measure. Stemming, sentence embeddings, and TF-IDF weighting would capture semantic priming that word-level set intersection misses. The first-pass effect may be real but below the threshold of this instrument.
+**v3 correction:** When we test within each position — comparing high-overlap vs low-overlap trials at the same rank — the effect is null across all metrics (TFT, TFC, mean fixation duration, viewport time). The aggregate correlation was driven by the position-overlap confound: both decline together because they're both functions of rank.
+
+**The priming hypothesis is not rejected — it's untested at the right granularity.** Bag-of-words overlap at the result level is too coarse. Paths forward: semantic embeddings, token-level fixation mapping, and at-scale production logs with larger N. See [findings.md](docs/findings.md) for the full decomposition.
+
+### Evaluation time decomposes into four components
+
+Per-fixation duration is **flat at ~220ms** regardless of position. The position-dependent decline in total fixation time comes from investing fewer fixations at lower positions — an attention allocation decision. Page orientation time (~1-3s) and linear scanning rate (~1.7-2.6s/position) are the other components. This reframes the priming question: if content effects exist, they should appear in fixation *count*, not fixation *duration*.
 
 ### Scroll regressions are the dominant pattern
 
@@ -84,7 +90,7 @@ At a 5s horizon, viewport features (target visible, time since scroll) outperfor
 
 ## Theoretical framework
 
-These findings are interpreted through the **Attentional-Foraging Equilibrium (AFE)**, which synthesizes Rational Inattention (Sims 2003) with Information Foraging Theory (Pirolli & Card 1999). AFE models SERP browsing as patch foraging: lexical priming reduces within-patch handling time, scroll regressions are travel costs paid for re-evaluation, and the convergence curve traces the transition from foraging to exploitation. The forced-choice purchase task in AdSERP is useful here because it creates a defined stopping criterion — making the patch-leaving decision observable where most SERP studies cannot (cf. [Diriye et al. 2012](https://doi.org/10.1145/2396761.2398399) on search abandonment as the alternative outcome). Full framework: [AFE presentation](https://gamma.app/docs/The-Attentional-Foraging-Equilibrium-A-Synthesis-of-Digital-Behav-aq0bw2ujjxwypbt). Detailed mapping in [findings.md](docs/findings.md).
+These findings are interpreted through the **Attentional-Foraging Equilibrium (AFE)**, which synthesizes Rational Inattention (Sims 2003) with Information Foraging Theory (Pirolli & Card 1999). AFE models SERP browsing as patch foraging: lexical priming reduces within-patch handling time during re-evaluation (not first-pass scanning), scroll regressions are travel costs paid for re-evaluation, and the convergence curve traces the transition from foraging to exploitation. The forced-choice purchase task in AdSERP is useful here because it creates a defined stopping criterion — making the patch-leaving decision observable where most SERP studies cannot (cf. [Diriye et al. 2012](https://doi.org/10.1145/2396761.2398399) on search abandonment as the alternative outcome). Full framework: [AFE presentation](https://gamma.app/docs/The-Attentional-Foraging-Equilibrium-A-Synthesis-of-Digital-Behav-aq0bw2ujjxwypbt). Detailed mapping in [findings.md](docs/findings.md).
 
 ---
 

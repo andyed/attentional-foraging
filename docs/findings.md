@@ -2,7 +2,7 @@
 
 Reanalysis of the AdSERP dataset (Latifzadeh, Gwizdka & Leiva, SIGIR 2025). The [journey doc](journey.md) records how this started; this document records what we think we found.
 
-**Status:** v2, 2026-04-01. Viewport-normalized attention density. Regression-stratified analysis. Honest correction of headline stat.
+**Status:** v3, 2026-04-01. Within-position controls show bag-of-words overlap effect does not survive position confound. Evaluation time decomposed into orientation, scanning rate, fixation count, and per-fixation duration. Honest corrections throughout.
 
 ---
 
@@ -12,7 +12,7 @@ These findings are interpreted through the **Attentional-Foraging Equilibrium (A
 
 How each finding maps to AFE:
 
-- **Lexical priming** (Finding 2) reduces τ — processing redundant vocabulary is cheaper. The speed-up is declining cost, not declining effort.
+- **Lexical priming** (Finding 2) — bag-of-words overlap correlates with faster evaluation in aggregate, but the effect does not survive within-position controls. The position-overlap confound remains unresolved. Finer-grained measures (semantic embeddings, token-level fixation analysis) may be needed to detect the mechanism.
 - **Scroll regressions** (Finding 4) are travel costs (T_s) paid for re-evaluation when a novel result disrupts the reward rate estimate.
 - **Mouse-gaze convergence** (Finding 5) traces the transition from foraging (high T_s, moving between patches) to exploitation (low τ, evaluating within a patch).
 - **Per-participant variance** (Finding 7) maps to bandwidth λ — individual cognitive capacity differences.
@@ -40,36 +40,65 @@ By position 9, 62% of a result's vocabulary has already appeared in prior result
 
 **Notebook:** [serp_priming.ipynb](../notebooks/serp_priming.ipynb), Step 2
 
-## 2. Overlap predicts attention density — but only in re-evaluation
+## 2. Overlap correlates with evaluation speed — but does not survive within-position controls
 
-**This is the key finding, and it's more nuanced than our initial report.**
+**v3 correction: the aggregate priming effect is confounded with position.**
 
-We measure attention density: fixation duration normalized by time-in-viewport (≥50% visible, IAB standard). This controls for exposure time — a result visible for 10s naturally accumulates more fixation than one visible for 2s.
+We initially reported that cumulative lexical overlap predicted faster evaluation (attention density), especially in regression trials. The aggregate correlations were:
 
 | Analysis | Partial r | p | N |
 |----------|-----------|---|---|
 | All trials, positions 1-9 | -0.054 | 2.4×10⁻⁹ | 12,121 |
-| All trials, positions 1-7 (no ski jump) | -0.021 | 0.028 | 10,902 |
-| **No-regression trials, positions 1-9** | **-0.002** | **0.92** | **2,640** |
-| **Regression trials, positions 1-7** | **-0.033** | **0.003** | **8,342** |
+| Regression trials, positions 1-7 | -0.033 | 0.003 | 8,342 |
+| No-regression trials, positions 1-9 | -0.002 | 0.92 | 2,640 |
 
-**What this means:** In trials where users scroll straight down and click without scrolling back (pure sequential evaluation), overlap does not predict attention density. The priming effect only appears in trials with regressions — when users scroll back to re-evaluate earlier results. High-overlap results are re-evaluated more efficiently on the second pass, not the first.
+**The problem:** Position and overlap are confounded — both increase monotonically down the SERP. The aggregate correlations could reflect position-dependent attention decline rather than a content-driven priming effect.
 
-The initial headline stat (partial r = -0.054) was driven by two factors:
-- Regression trials (69% of the dataset in this forced-choice paradigm)
-- The position 8-9 "ski jump" (attention density spikes at the bottom of the SERP, where users face a pseudo forced-choice between the last results and the cost of loading page 2)
+**The within-position test:** For each position (1-9), we tested whether trials with higher-than-median overlap at that position showed different evaluation metrics. This controls for position entirely.
 
-**Honest reframing:** Lexical priming facilitates **re-evaluation**, not first-pass scanning. On first contact, users evaluate each result on its own terms regardless of vocabulary overlap. But when they return to re-examine — after encountering a novel result that disrupts their context model — high-overlap results are processed faster because the vocabulary is already primed.
+| Metric | Within-position r | Significant at any position? |
+|--------|------------------|------|
+| Total fixation time (TFT) | r ≈ 0 at all positions | No |
+| Fixation count (TFC) | r ≈ 0 at all positions | No |
+| Mean single-fixation duration | r ≈ 0 at all positions | No |
+| Viewport time | r ≈ 0 at all positions | No |
+| Eval rate (fixation/viewport) | r = -0.049 at position 1 only (p=0.01) | Marginal, one position |
 
-This distinction matters for theory: it's consistent with the reading literature where regressions serve integration/verification functions, not initial comprehension.
+**What this means:** Bag-of-words lexical overlap at the result level does not predict any evaluation metric once position is controlled. The effect we initially attributed to priming was driven by the position-overlap confound.
 
-**Notebook:** [serp_priming.ipynb](../notebooks/serp_priming.ipynb), Step 4
+**What this does NOT mean:** The priming hypothesis is not rejected — it's untested at the right granularity. Bag-of-words overlap is a coarse measure. Several paths remain:
+
+1. **Semantic embeddings** (TODO) — sentence-level similarity captures paraphrase and synonym priming that bag-of-words misses
+2. **Token-level analysis** — within a result, do previously-seen tokens receive shorter fixations than novel tokens? Requires word-level AOI mapping.
+3. **Working memory preloading** — the hypothesis that prior exposure reduces cognitive load may operate below the result level, at the phrase or concept level
+4. **At-scale production logs** — millions of queries with natural satisficing behavior may have enough power to detect small effects that are invisible in 2,776 lab trials
+
+The regression-vs-no-regression split (v2 finding) may still be informative: it showed the aggregate effect was concentrated in re-evaluation trials. But since the within-position test is null for both subsets, the re-evaluation framing also needs revisiting with finer-grained measures.
+
+**Notebook:** [serp_priming.ipynb](../notebooks/serp_priming.ipynb), Step 4; [fixation_coverage.ipynb](../notebooks/fixation_coverage.ipynb), decomposition analysis
 
 ## 3. SERP-level homogeneity does not predict trial duration or regressions
 
 Neither trial duration (r = -0.027, p = 0.15) nor regression count (r = -0.015) varies with overall SERP homogeneity. The signal is local (per-result overlap), not global. SERP-level homogeneity is too blunt — the variance that matters is which specific results have high vs low overlap with their predecessors.
 
 **Notebook:** [serp_priming.ipynb](../notebooks/serp_priming.ipynb), Steps 2.5 and 3
+
+## 3a. Evaluation time decomposes into four independent components
+
+Position-dependent decline in total fixation time conflates several processes. Decomposing:
+
+| Component | What it measures | Position-dependent? | Value |
+|-----------|-----------------|-------------------|-------|
+| **Page orientation** | Time from page load to first fixation on any result | No (fixed cost) | FV: ~1.6s, Scrollers: ~3.0s |
+| **Scanning rate** | Additional time per position before first fixation arrives | Yes (linear ramp) | FV: ~2.6s/pos, Scrollers: ~1.7s/pos |
+| **Fixation count** | Number of fixations on a result (once reached) | Yes (declines with position) | ~10 at pos 0 → ~7 at pos 9 |
+| **Per-fixation duration** | Duration of each individual fixation | **No (~220ms, flat)** | 202-228ms across all positions |
+
+The key insight: **per-fixation duration does not vary with position.** Each reading fixation costs ~220ms regardless of where you are on the page. The position-dependent decline in total fixation time comes entirely from investing fewer fixations at lower positions — an attention allocation decision, not a processing speed change.
+
+This means the priming hypothesis (Finding 2) needs reframing. If priming operates, it should reduce fixation *count* (fewer looks needed to extract information from familiar vocabulary), not fixation *duration* (each look is the same speed). The within-position test for fixation count is null at bag-of-words granularity, but the mechanistic prediction for finer-grained measures remains: fewer refixations on previously-encountered tokens.
+
+**Notebook:** [fixation_coverage.ipynb](../notebooks/fixation_coverage.ipynb), decomposition analysis
 
 ## 4. Scroll regressions are the dominant browsing pattern
 
@@ -101,25 +130,31 @@ Per-participant acquisition onset ranges from 0.2s to 13.8s (SD=2.5s). Regressio
 
 The **Attentional-Foraging Equilibrium** provides the overarching frame. AFE models the SERP as a patch environment where the user's reward rate ρ = V / (τ + T_s + σ²) determines when to stop evaluating and commit to a click. The mechanisms below all operate on components of that equation.
 
-The re-evaluation priming result connects to:
+The theoretical connections remain relevant even though the bag-of-words overlap measure didn't survive within-position controls:
 
-- **Surprisal theory** (Hale 2001, Levy 2008): High-overlap results have low surprisal on re-encounter → faster processing. In AFE terms, this reduces τ (handling time) for primed results.
-- **E-Z Reader** (Reichle, Rayner, Pollatsek): Regressions serve integration/verification. Re-reading primed text is faster. Regressions are the T_s cost of re-entering a previously visited patch.
-- **Given-new contract** (Clark & Haviland 1977): On re-evaluation, most vocabulary is "given" → fast processing. The given-new structure is what makes τ decline with position.
-- **Rational Inattention** (Sims 2003): σ² (uncertainty) determines how much information the user acquires before deciding. Per-participant variance in regression rates and acquisition onset reflects differences in bandwidth λ — the cognitive channel capacity each user brings.
+- **Surprisal theory** (Hale 2001, Levy 2008): Predicts that high-overlap content has low surprisal → faster processing. The theory is sound; the measure (result-level bag-of-words) may be too coarse. Token-level surprisal within fixation sequences is the right test.
+- **E-Z Reader** (Reichle, Rayner, Pollatsek): Predicts fewer refixations on familiar words. Our decomposition confirms per-fixation duration is flat (~220ms) across positions — the right level for this model is word-level, not result-level.
+- **Given-new contract** (Clark & Haviland 1977): Predicts faster integration of "given" information. Still theoretically grounded — needs a measure that tracks given/new at the appropriate granularity.
+- **Rational Inattention** (Sims 2003): Per-participant variance in regression rates and TTI reflects differences in bandwidth λ. This is well-supported by the user strategies analysis (regression rate 0%–98% range, TTI calibration at r=0.77).
 
-The first-pass null result is also informative: during initial sequential scanning, users may process results at a level above individual lexical items — evaluating domain, formatting, result type — where bag-of-words overlap is the wrong granularity. In AFE terms, first-pass scanning is dominated by T_s (travel between patches) rather than τ (within-patch evaluation), so the priming mechanism operates on the wrong component.
-
----
-
-## What would test first-pass priming properly
-
-The forced-choice lab paradigm can't isolate first-pass priming because:
-1. 69% of trials have regressions (the non-regression subset is too small)
-2. Participants optimize rather than satisfice
-
-The right test: **at-scale production logs with first-click behavior only**. Millions of queries, no forced choice, natural satisficing. Measure time-to-first-click by position, conditioned on cumulative lexical overlap with results above the fold. This approach — large-scale behavioral logs with natural stopping criteria — is the path to a clean test (cf. Huang, White & Buscher 2012, who demonstrated the value of production-scale cursor data for understanding attention).
+The decomposition finding — that position-dependent evaluation decline comes from fewer fixations per result, not shorter fixations — suggests the mechanism operates at the **allocation** level (how many fixations to invest) rather than the **processing** level (how long each fixation takes). This is an attention-allocation decision, not a lexical processing effect. It may still be content-driven, but the signal pathway is different from what we initially hypothesized.
 
 ---
 
-*v2, 2026-04-01. Corrected from v1: regression-stratified analysis reveals priming is a re-evaluation effect, not a first-pass effect.*
+## What would test priming properly
+
+The bag-of-words overlap measure at the result level is too coarse and too confounded with position. Paths forward:
+
+1. **Token-level fixation analysis:** Map individual fixations to specific words within results. Test whether previously-seen tokens receive fewer refixations than novel tokens within the same result. This is the E-Z Reader prediction and requires word-level AOI mapping from the SERP HTML.
+
+2. **Semantic embeddings:** Sentence-level similarity (e.g., via embedding cosine distance) captures paraphrase and synonym priming that bag-of-words misses. A result about "delay pedals" is semantically primed by a prior result about "echo effects" even with zero token overlap.
+
+3. **At-scale production logs:** Millions of queries with natural satisficing behavior. Measure time-to-first-click by position, conditioned on SERP content similarity. The larger N may detect small effects invisible in 2,776 lab trials. This also provides the natural-stopping-criterion test that the forced-choice paradigm cannot (cf. Huang, White & Buscher 2012 on production-scale cursor data).
+
+4. **Within-result fixation sequences:** For results that are revisited (regression trials), compare fixation patterns on the first vs second visit. If priming operates, the second visit should be shorter *and* show a different scanpath (skipping familiar tokens, fixating novel ones).
+
+5. **Residual dwell model (Peter Dixon-Moses):** Establish a per-user baseline for expected evaluation time using TTI as a calibrator (r=0.77). Residuals from this model — "this result held attention longer than expected" — may reveal content-driven effects that position-level analysis cannot.
+
+---
+
+*v3, 2026-04-01. v1: aggregate priming correlation. v2: regression-stratified split (re-evaluation vs first-pass). v3: within-position controls show bag-of-words overlap does not survive position confound. Evaluation time decomposed into four components; per-fixation duration is position-invariant. Priming hypothesis reframed as fixation-count mechanism requiring finer-grained measures.*
