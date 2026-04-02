@@ -101,6 +101,48 @@ footer a { color: #888; }
   <div class="query">"buy fusion ms wr600cv dust cover"</div>
   <div class="meta">276 fixations · Scrutinizer rendered</div>
 </a></div>
+<details style="margin-top:2em;color:#aaa;">
+<summary style="cursor:pointer;color:#ccc;font-size:0.95em;margin-bottom:0.8em;">How this was built</summary>
+<div style="line-height:1.7;font-size:0.85em;">
+<p>Each background image is a full-page foveated render produced by
+<a href="https://github.com/andyed/scrutinizer2025" style="color:#ff9933;">Scrutinizer</a>, a
+neuroscience-based peripheral vision simulator. Scrutinizer models the
+human visual system's resolution falloff from fovea to periphery using
+a pipeline inspired by the lateral geniculate nucleus (LGN), primary visual
+cortex (V1), and difference-of-Gaussians (DoG) spatial frequency filtering.</p>
+
+<p><strong>Infinite visual memory mode</strong> accumulates every fixation across
+the entire scanpath. As each fixation is replayed, the foveal region at
+that position is "remembered" — remaining sharp while everything else
+degrades through the peripheral pipeline. The final image shows exactly
+what the participant could have resolved across their full search session:
+sharp where they looked, degraded where they didn't.</p>
+
+<p><strong>Pipeline:</strong></p>
+<ol style="margin-left:1.5em;color:#999;">
+<li>The <a href="https://github.com/andyed/attentional-foraging/blob/main/scripts/find_interesting_trials.py" style="color:#6af;">interesting trials script</a>
+  identifies prototypical search behaviors from 2,776 AdSERP trials</li>
+<li>The <a href="https://github.com/andyed/scrutinizer2025/blob/main/renderer/scanpath/importers/adserp-importer.js" style="color:#6af;">AdSERP importer</a>
+  parses fixation CSVs (page-space coords from Gazepoint GP3 HD at 150Hz),
+  mouse events (evtrack pageX/pageY), scroll timelines, and trial metadata —
+  reconciling two coordinate systems
+  (<a href="https://github.com/andyed/scrutinizer2025/blob/main/docs/adserp-coordinate-system.md" style="color:#6af;">coordinate reference</a>)</li>
+<li>The <a href="https://github.com/andyed/scrutinizer2025/blob/main/scripts/capture-fullpage-gazeplot.js" style="color:#6af;">fullpage gazeplot script</a>
+  walks each fixation through Scrutinizer's Electron-based WebGL pipeline with
+  <code style="background:#222;padding:1px 4px;border-radius:2px;">TEST_VISUAL_MEMORY=-1</code> (infinite accumulation),
+  then tile-captures the full page at each scroll position and stitches them</li>
+<li>The interactive overlay (fixation numbers, saccade lines, timeline scrubber)
+  is generated as self-contained HTML with the gazeplot PNG as background</li>
+</ol>
+
+<p style="margin-top:0.8em;"><strong>Data:</strong>
+<a href="https://doi.org/10.1145/3726302.3730325" style="color:#6af;">AdSERP</a> —
+Latifzadeh et al., 2,776 transactional Google SERP queries, 47 participants,
+Gazepoint GP3 HD eye tracker, simultaneous mouse + scroll + gaze recording.
+<a href="https://zenodo.org/records/15236546" style="color:#6af;">Dataset on Zenodo</a>.</p>
+</div>
+</details>
+
 <footer>
   <a href="https://github.com/andyed/scrutinizer2025">Scrutinizer</a> ·
   <a href="https://github.com/andyed/attentional-foraging">attentional-foraging</a> ·
