@@ -115,7 +115,9 @@ for (const trial of trials) {
     let click = null;
     if (clickLines.length > 0) {
         const c = clickLines[clickLines.length - 1].split(',');
-        click = { x: parseFloat(c[1]) * rx, y: parseFloat(c[2]) * ry };
+        // Scale X from window-space (1422) to screenshot-space (1280).
+        // Y is raw pageY — document-relative, matches the Playwright screenshot directly.
+        click = { x: parseFloat(c[1]) * rx, y: parseFloat(c[2]) };
     }
 
     const maxY = Math.max(docH, ...fixations.map(f => f.y)) + 100;

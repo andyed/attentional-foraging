@@ -13,10 +13,10 @@ const files = fs.readdirSync(siteDir).filter(f => f.match(/^p\d+-b\d+-t\d+\.html
         await page.goto('file://' + path.resolve(siteDir, f), { waitUntil: 'networkidle' });
         await page.waitForTimeout(2000);
 
-        // Screenshot the viewer area (header + gazeplot + overlay, no timeline)
-        const viewer = await page.$('.viewer');
-        if (viewer) {
-            await viewer.screenshot({ path: path.join(siteDir, 'png', id + '.png') });
+        // Screenshot the full serp-container (gazeplot + overlay, full page height)
+        const container = await page.$('.serp-container');
+        if (container) {
+            await container.screenshot({ path: path.join(siteDir, 'png', id + '.png') });
             const mb = (fs.statSync(path.join(siteDir, 'png', id + '.png')).size / 1024 / 1024).toFixed(1);
             console.log('  ✓ ' + id + ' ' + mb + 'MB');
         }
