@@ -115,33 +115,21 @@ for (const trial of trials) {
     let click = null;
     if (clickLines.length > 0) {
         const c = clickLines[clickLines.length - 1].split(',');
-        // Scale X from window-space (1422) to screenshot-space (1280).
-        // Y is raw pageY — document-relative, matches the Playwright screenshot directly.
-        click = { x: parseFloat(c[1]) * rx, y: parseFloat(c[2]) };
+        // Scale from window CSS pixels to screenshot-space (screen pixels).
+        // Both X and Y are page-space (evtrack pageX/pageY) — scale by rx/ry.
+        click = { x: parseFloat(c[1]) * rx, y: parseFloat(c[2]) * ry };
     }
 
     // Parse mouse movement events for cursor replay
-    // Scale X by rx (window→screenshot space), Y is raw pageY
+    // Scale X by rx, Y by ry (window CSS px → screen px). Both are page-space.
     const mouseEvents = mouseCsv.trim().split('\n').slice(1)
         .map(l => { const c = l.split(','); return { t: parseInt(c[0]), x: parseFloat(c[1]), y: parseFloat(c[2]), e: (c[3]||'').trim() }; })
         .filter(m => isFinite(m.t) && isFinite(m.x) && ['mousemove','mouseover','click','mousedown','mouseup'].includes(m.e))
-        .map(m => ({ t: m.t - (fixations.length > 0 ? fixations[0].t : 0), x: m.x * rx, y: m.y, e: m.e }));
+        .map(m => ({ t: m.t - (fixations.length > 0 ? fixations[0].t : 0), x: m.x * rx, y: m.y * ry, e: m.e }));
 
-    // Measure actual image heights — SVG must match the primary background exactly.
-    // The gazeplot is the primary view (the whole point of the project).
-    // The serp-render is the fallback when no gazeplot exists.
-    const gazeplotFullPath = hasGazeplot ? path.join(SITE_DIR, 'gazeplots', id + '.png') : null;
-    const primaryImgPath = gazeplotFullPath || serpRenderPath;
-    const primaryImgH = parseInt(require('child_process').execSync(
-        `sips -g pixelHeight "${primaryImgPath}" | tail -1`
-    ).toString().match(/\d+/)?.[0] || '0');
-    const serpImgH = fs.existsSync(serpRenderPath)
-        ? parseInt(require('child_process').execSync(`sips -g pixelHeight "${serpRenderPath}" | tail -1`).toString().match(/\d+/)?.[0] || '0')
-        : docH;
-    const gazeplotImgH = hasGazeplot
-        ? parseInt(require('child_process').execSync(`sips -g pixelHeight "${gazeplotFullPath}" | tail -1`).toString().match(/\d+/)?.[0] || '0')
-        : 0;
-    const maxY = primaryImgH;
+    // Both gazeplot (--single mode) and Playwright SERP render are docH tall.
+    // SVG viewBox matches this height so fixation coordinates (page-space) align.
+    const primaryImgH = docH;
     const fovealR = 60;
     const N = fixations.length;
     const T0 = N > 0 ? fixations[0].t : 0;
@@ -238,8 +226,8 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 <script>
 const F=${JSON.stringify(fixations)},CK=${JSON.stringify(click)},ME=${JSON.stringify(mouseEvents)},FR=${fovealR},SW=${screenW},N=${N},
 T0=${T0},TD=${TOTAL_DUR},MND=${minD},MXD=${maxD},
-SERP_SRC='${serpRenderRelPath}',SERP_H=${serpImgH},
-GAZEPLOT_SRC=${hasGazeplot ? `'${gazeplotRelPath}'` : 'null'},GAZEPLOT_H=${gazeplotImgH};
+SERP_SRC='${serpRenderRelPath}',
+GAZEPLOT_SRC=${hasGazeplot ? `'${gazeplotRelPath}'` : 'null'};
 const rF=d=>8+(d-MND)/(MXD-MND+1)*22;
 const cF=(i,n)=>{const t=n>1?i/(n-1):0;return\`rgb(\${Math.round(50+205*t)},\${Math.round(50+100*(1-Math.abs(t-.5)*2))},\${Math.round(255-205*t)})\`};
 const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
@@ -300,12 +288,7 @@ if(modeBtn){modeBtn.addEventListener('click',()=>{
   bgMode=bgMode==='gazeplot'?'serp':'gazeplot';
   modeBtn.textContent=bgMode==='gazeplot'?'Raw SERP':'Gazeplot';
   modeBtn.classList.toggle('active',bgMode==='serp');
-  const h=bgMode==='gazeplot'?GAZEPLOT_H:SERP_H;
-  const src=bgMode==='gazeplot'?GAZEPLOT_SRC:SERP_SRC;
-  bgImg.src=src;
-  svg.setAttribute('viewBox','0 0 '+SW+' '+h);
-  svg.setAttribute('height',h);
-  svg.style.height=h+'px';
+  bgImg.src=bgMode==='gazeplot'?GAZEPLOT_SRC:SERP_SRC;
 })}
 </script></body></html>`;
 
@@ -354,6 +337,10 @@ footer a { color: #888; }
 <p class="subtitle" style="color:#888;">
   AdSERP: 47 participants, 2,776 transactional Google queries, Gazepoint GP3 HD eye tracker at 150Hz.
   Trials below are prototypical examples of distinct search behaviors.
+</p>
+<p style="background:#332200;border:1px solid #664400;border-radius:6px;padding:8px 12px;color:#ffcc66;font-size:0.85em;margin-bottom:1em;">
+  Note: Fixation overlay alignment with the foveated render is being corrected.
+  Coordinates may not match the sharp regions exactly.
 </p>
 <p class="controls-help">
   <kbd>&larr;</kbd><kbd>&rarr;</kbd> step through fixations &middot;
