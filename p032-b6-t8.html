@@ -46,7 +46,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
     <h1>p032-b6-t8 <span>— buy hartleys hartleys lemon jelly 135g</span></h1>
   </div>
   <div class="controls">
-    <button class="btn" id="mode-btn">Gazeplot</button>
+    <button class="btn" id="mode-btn">Raw SERP</button>
     <label><input type="checkbox" id="lines-toggle" checked> Lines</label>
     <label><input type="checkbox" id="numbers-toggle" checked> Numbers</label>
     <button class="btn" id="play-btn">&#9654; Play</button>
@@ -55,9 +55,9 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 </div>
 <div class="viewer" id="viewer">
   <div class="serp-container">
-    <img id="bg-img" src="serp-renders/p032-b6-t8.png" />
+    <img id="bg-img" src="gazeplots/p032-b6-t8.png" />
     <svg class="scanpath-svg" id="scanpath-svg" xmlns="http://www.w3.org/2000/svg"
-         width="1280" height="2644" viewBox="0 0 1280 2644"></svg>
+         width="1280" height="2641" viewBox="0 0 1280 2641"></svg>
     <div class="foveal-ring" id="foveal-ring"></div>
     <div class="mouse-cursor" id="mouse-cursor"><svg viewBox="0 0 20 28"><path d="M0,0 L0,22 L5.5,17 L10,28 L14,26 L9,16 L16,16 Z" fill="#ff9933" stroke="#000" stroke-width="1"/></svg></div>
   </div>
@@ -77,14 +77,14 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   <span>Position: <span class="val" id="info-pos">—</span></span>
   <span>Duration: <span class="val" id="info-dur">—</span></span>
   <span>Fixations: <span class="val" id="info-seen">0</span></span>
-  <span>Click: <span class="val">(423, 220)</span></span>
+  <span>Click: <span class="val">(423, 198)</span></span>
   <span><a href="png/p032-b6-t8.png" download style="color:#6af;text-decoration:none;">Download PNG</a></span>
 </div>
 <script>
-const F=[{"t":1677152663221,"x":671,"y":176,"d":293},{"t":1677152663443,"x":526,"y":237,"d":213},{"t":1677152663630,"x":321,"y":286,"d":161},{"t":1677152663871,"x":190,"y":291,"d":234},{"t":1677152664038,"x":193,"y":218,"d":160},{"t":1677152664179,"x":210,"y":124,"d":133},{"t":1677152664314,"x":244,"y":113,"d":127},{"t":1677152664588,"x":302,"y":91,"d":267},{"t":1677152664743,"x":751,"y":27,"d":107}],CK={"x":423.0661040787623,"y":220},ME=[{"t":237,"x":624.6976090014065,"y":245,"e":"mouseover"},{"t":238,"x":624.6976090014065,"y":245,"e":"mousemove"},{"t":244,"x":624.6976090014065,"y":246,"e":"mousemove"},{"t":255,"x":624.6976090014065,"y":247,"e":"mousemove"},{"t":272,"x":624.6976090014065,"y":250,"e":"mousemove"},{"t":288,"x":624.6976090014065,"y":251,"e":"mousemove"},{"t":304,"x":623.7974683544304,"y":252,"e":"mousemove"},{"t":322,"x":623.7974683544304,"y":253,"e":"mousemove"},{"t":348,"x":622.8973277074542,"y":255,"e":"mousemove"},{"t":388,"x":621.0970464135021,"y":257,"e":"mousemove"},{"t":405,"x":617.4964838255977,"y":261,"e":"mousemove"},{"t":422,"x":614.7960618846695,"y":264,"e":"mousemove"},{"t":438,"x":612.0956399437412,"y":266,"e":"mousemove"},{"t":455,"x":596.7932489451476,"y":278,"e":"mousemove"},{"t":472,"x":581.4908579465541,"y":291,"e":"mouseover"},{"t":472,"x":581.4908579465541,"y":291,"e":"mousemove"},{"t":489,"x":564.3881856540085,"y":302,"e":"mousemove"},{"t":504,"x":550.8860759493671,"y":311,"e":"mouseover"},{"t":504,"x":550.8860759493671,"y":311,"e":"mousemove"},{"t":521,"x":538.2841068917018,"y":315,"e":"mouseover"},{"t":521,"x":538.2841068917018,"y":315,"e":"mousemove"},{"t":537,"x":527.4824191279887,"y":318,"e":"mousemove"},{"t":554,"x":519.381153305204,"y":324,"e":"mousemove"},{"t":572,"x":511.2798874824191,"y":325,"e":"mousemove"},{"t":588,"x":505.87904360056257,"y":326,"e":"mousemove"},{"t":604,"x":501.3783403656821,"y":326,"e":"mousemove"},{"t":621,"x":499.5780590717299,"y":326,"e":"mousemove"},{"t":639,"x":495.0773558368495,"y":326,"e":"mousemove"},{"t":654,"x":492.37693389592124,"y":326,"e":"mousemove"},{"t":672,"x":491.4767932489451,"y":326,"e":"mousemove"},{"t":688,"x":487.8762306610408,"y":326,"e":"mousemove"},{"t":704,"x":486.0759493670886,"y":325,"e":"mousemove"},{"t":721,"x":481.5752461322081,"y":325,"e":"mousemove"},{"t":738,"x":480.67510548523205,"y":323,"e":"mousemove"},{"t":755,"x":478.87482419127986,"y":323,"e":"mousemove"},{"t":772,"x":477.07454289732766,"y":322,"e":"mousemove"},{"t":788,"x":474.3741209563994,"y":321,"e":"mousemove"},{"t":820,"x":473.4739803094233,"y":320,"e":"mousemove"},{"t":884,"x":472.57383966244726,"y":320,"e":"mousemove"},{"t":900,"x":471.67369901547113,"y":318,"e":"mousemove"},{"t":938,"x":468.0731364275668,"y":313,"e":"mousemove"},{"t":955,"x":461.77215189873414,"y":305,"e":"mouseover"},{"t":955,"x":461.77215189873414,"y":305,"e":"mousemove"},{"t":971,"x":455.47116736990154,"y":295,"e":"mouseover"},{"t":971,"x":455.47116736990154,"y":295,"e":"mousemove"},{"t":988,"x":443.76933895921235,"y":271,"e":"mouseover"},{"t":988,"x":443.76933895921235,"y":271,"e":"mousemove"},{"t":1005,"x":434.7679324894515,"y":254,"e":"mouseover"},{"t":1005,"x":434.7679324894515,"y":254,"e":"mousemove"},{"t":1021,"x":428.4669479606188,"y":238,"e":"mouseover"},{"t":1021,"x":428.4669479606188,"y":238,"e":"mousemove"},{"t":1037,"x":426.66666666666663,"y":232,"e":"mouseover"},{"t":1038,"x":426.66666666666663,"y":232,"e":"mousemove"},{"t":1054,"x":424.8663853727145,"y":227,"e":"mousemove"},{"t":1072,"x":423.96624472573836,"y":225,"e":"mousemove"},{"t":1087,"x":423.0661040787623,"y":223,"e":"mousemove"},{"t":1105,"x":423.0661040787623,"y":221,"e":"mousemove"},{"t":1206,"x":423.0661040787623,"y":221,"e":"mousedown"},{"t":1357,"x":423.0661040787623,"y":220,"e":"mousemove"},{"t":1358,"x":423.0661040787623,"y":220,"e":"mouseup"},{"t":2260,"x":423.0661040787623,"y":220,"e":"click"}],FR=60,SW=1280,N=9,
+const F=[{"t":1677152663221,"x":671,"y":176,"d":293},{"t":1677152663443,"x":526,"y":237,"d":213},{"t":1677152663630,"x":321,"y":286,"d":161},{"t":1677152663871,"x":190,"y":291,"d":234},{"t":1677152664038,"x":193,"y":218,"d":160},{"t":1677152664179,"x":210,"y":124,"d":133},{"t":1677152664314,"x":244,"y":113,"d":127},{"t":1677152664588,"x":302,"y":91,"d":267},{"t":1677152664743,"x":751,"y":27,"d":107}],CK={"x":423.0661040787623,"y":198.1354441512753},ME=[{"t":237,"x":624.6976090014065,"y":220.65083553210204,"e":"mouseover"},{"t":238,"x":624.6976090014065,"y":220.65083553210204,"e":"mousemove"},{"t":244,"x":624.6976090014065,"y":221.5514511873351,"e":"mousemove"},{"t":255,"x":624.6976090014065,"y":222.45206684256817,"e":"mousemove"},{"t":272,"x":624.6976090014065,"y":225.1539138082674,"e":"mousemove"},{"t":288,"x":624.6976090014065,"y":226.05452946350044,"e":"mousemove"},{"t":304,"x":623.7974683544304,"y":226.95514511873353,"e":"mousemove"},{"t":322,"x":623.7974683544304,"y":227.85576077396658,"e":"mousemove"},{"t":348,"x":622.8973277074542,"y":229.65699208443272,"e":"mousemove"},{"t":388,"x":621.0970464135021,"y":231.45822339489888,"e":"mousemove"},{"t":405,"x":617.4964838255977,"y":235.06068601583115,"e":"mousemove"},{"t":422,"x":614.7960618846695,"y":237.76253298153034,"e":"mousemove"},{"t":438,"x":612.0956399437412,"y":239.5637642919965,"e":"mousemove"},{"t":455,"x":596.7932489451476,"y":250.37115215479332,"e":"mousemove"},{"t":472,"x":581.4908579465541,"y":262.0791556728232,"e":"mouseover"},{"t":472,"x":581.4908579465541,"y":262.0791556728232,"e":"mousemove"},{"t":489,"x":564.3881856540085,"y":271.985927880387,"e":"mousemove"},{"t":504,"x":550.8860759493671,"y":280.09146877748464,"e":"mouseover"},{"t":504,"x":550.8860759493671,"y":280.09146877748464,"e":"mousemove"},{"t":521,"x":538.2841068917018,"y":283.6939313984169,"e":"mouseover"},{"t":521,"x":538.2841068917018,"y":283.6939313984169,"e":"mousemove"},{"t":537,"x":527.4824191279887,"y":286.3957783641161,"e":"mousemove"},{"t":554,"x":519.381153305204,"y":291.79947229551453,"e":"mousemove"},{"t":572,"x":511.2798874824191,"y":292.7000879507476,"e":"mousemove"},{"t":588,"x":505.87904360056257,"y":293.60070360598064,"e":"mousemove"},{"t":604,"x":501.3783403656821,"y":293.60070360598064,"e":"mousemove"},{"t":621,"x":499.5780590717299,"y":293.60070360598064,"e":"mousemove"},{"t":639,"x":495.0773558368495,"y":293.60070360598064,"e":"mousemove"},{"t":654,"x":492.37693389592124,"y":293.60070360598064,"e":"mousemove"},{"t":672,"x":491.4767932489451,"y":293.60070360598064,"e":"mousemove"},{"t":688,"x":487.8762306610408,"y":293.60070360598064,"e":"mousemove"},{"t":704,"x":486.0759493670886,"y":292.7000879507476,"e":"mousemove"},{"t":721,"x":481.5752461322081,"y":292.7000879507476,"e":"mousemove"},{"t":738,"x":480.67510548523205,"y":290.89885664028145,"e":"mousemove"},{"t":755,"x":478.87482419127986,"y":290.89885664028145,"e":"mousemove"},{"t":772,"x":477.07454289732766,"y":289.99824098504837,"e":"mousemove"},{"t":788,"x":474.3741209563994,"y":289.09762532981534,"e":"mousemove"},{"t":820,"x":473.4739803094233,"y":288.19700967458226,"e":"mousemove"},{"t":884,"x":472.57383966244726,"y":288.19700967458226,"e":"mousemove"},{"t":900,"x":471.67369901547113,"y":286.3957783641161,"e":"mousemove"},{"t":938,"x":468.0731364275668,"y":281.89270008795074,"e":"mousemove"},{"t":955,"x":461.77215189873414,"y":274.6877748460862,"e":"mouseover"},{"t":955,"x":461.77215189873414,"y":274.6877748460862,"e":"mousemove"},{"t":971,"x":455.47116736990154,"y":265.6816182937555,"e":"mouseover"},{"t":971,"x":455.47116736990154,"y":265.6816182937555,"e":"mousemove"},{"t":988,"x":443.76933895921235,"y":244.06684256816183,"e":"mouseover"},{"t":988,"x":443.76933895921235,"y":244.06684256816183,"e":"mousemove"},{"t":1005,"x":434.7679324894515,"y":228.75637642919966,"e":"mouseover"},{"t":1005,"x":434.7679324894515,"y":228.75637642919966,"e":"mousemove"},{"t":1021,"x":428.4669479606188,"y":214.34652594547055,"e":"mouseover"},{"t":1021,"x":428.4669479606188,"y":214.34652594547055,"e":"mousemove"},{"t":1037,"x":426.66666666666663,"y":208.94283201407214,"e":"mouseover"},{"t":1038,"x":426.66666666666663,"y":208.94283201407214,"e":"mousemove"},{"t":1054,"x":424.8663853727145,"y":204.43975373790678,"e":"mousemove"},{"t":1072,"x":423.96624472573836,"y":202.63852242744065,"e":"mousemove"},{"t":1087,"x":423.0661040787623,"y":200.8372911169745,"e":"mousemove"},{"t":1105,"x":423.0661040787623,"y":199.03605980650838,"e":"mousemove"},{"t":1206,"x":423.0661040787623,"y":199.03605980650838,"e":"mousedown"},{"t":1357,"x":423.0661040787623,"y":198.1354441512753,"e":"mousemove"},{"t":1358,"x":423.0661040787623,"y":198.1354441512753,"e":"mouseup"},{"t":2260,"x":423.0661040787623,"y":198.1354441512753,"e":"click"}],FR=60,SW=1280,N=9,
 T0=1677152663221,TD=1629,MND=107,MXD=293,
-SERP_SRC='serp-renders/p032-b6-t8.png',SERP_H=2644,
-GAZEPLOT_SRC='gazeplots/p032-b6-t8.png',GAZEPLOT_H=3824;
+SERP_SRC='serp-renders/p032-b6-t8.png',
+GAZEPLOT_SRC='gazeplots/p032-b6-t8.png';
 const rF=d=>8+(d-MND)/(MXD-MND+1)*22;
 const cF=(i,n)=>{const t=n>1?i/(n-1):0;return`rgb(${Math.round(50+205*t)},${Math.round(50+100*(1-Math.abs(t-.5)*2))},${Math.round(255-205*t)})`};
 const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
@@ -138,18 +138,13 @@ document.getElementById('play-btn').addEventListener('click',tp);
 document.getElementById('reset-btn').addEventListener('click',()=>{pl=false;clearTimeout(pt);document.getElementById('play-btn').textContent='▶ Play';ci=N-1;uv();vw.scrollTo({top:0})});
 uv();
 // Gazeplot toggle
-let bgMode='serp';
+let bgMode=GAZEPLOT_SRC?'gazeplot':'serp';
 const modeBtn=document.getElementById('mode-btn');
 const bgImg=document.getElementById('bg-img');
-if(modeBtn&&GAZEPLOT_SRC){modeBtn.addEventListener('click',()=>{
-  bgMode=bgMode==='serp'?'gazeplot':'serp';
-  modeBtn.textContent=bgMode==='serp'?'Gazeplot':'SERP';
-  modeBtn.classList.toggle('active',bgMode==='gazeplot');
-  const h=bgMode==='gazeplot'?GAZEPLOT_H:SERP_H;
-  const src=bgMode==='gazeplot'?GAZEPLOT_SRC:SERP_SRC;
-  bgImg.src=src;
-  svg.setAttribute('viewBox','0 0 '+SW+' '+h);
-  svg.setAttribute('height',h);
-  svg.style.height=h+'px';
+if(modeBtn){modeBtn.addEventListener('click',()=>{
+  bgMode=bgMode==='gazeplot'?'serp':'gazeplot';
+  modeBtn.textContent=bgMode==='gazeplot'?'Raw SERP':'Gazeplot';
+  modeBtn.classList.toggle('active',bgMode==='serp');
+  bgImg.src=bgMode==='gazeplot'?GAZEPLOT_SRC:SERP_SRC;
 })}
 </script></body></html>
