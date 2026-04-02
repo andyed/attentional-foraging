@@ -16,3 +16,5 @@ phase_results.json
 # Keep plot PNGs for README embedding
 # plots are reproducible but needed for GitHub rendering
 .DS_Store
+site/
+AdSERP/

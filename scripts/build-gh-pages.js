@@ -34,6 +34,10 @@ const trials = [];
 for (const [tag, info] of Object.entries(interesting.prototypical)) {
     if (!info.trial_id || seen.has(info.trial_id)) continue;
     if (info.value === 0 && info.metric === 'fixation_count') continue;
+    if (info.trial_id === 'p041-b1-t10') continue; // 1 fixation — not useful as demo
+    if (info.trial_id === 'p031-b4-t5') continue; // 0 fixations — instant click, no scanpath
+    if (info.trial_id === 'p037-b5-t10') continue; // tile capture broken — needs debugging
+    if (info.trial_id === 'p021-b5-t8') continue; // tile capture broken — needs debugging
     seen.add(info.trial_id);
     trials.push({ tag, ...info });
 }
@@ -107,6 +111,8 @@ for (const trial of trials) {
     const html = `<!DOCTYPE html>
 <html><head><meta charset="utf-8"><title>Scanpath: ${id} — ${query}</title>
 <meta name="viewport" content="width=${screenW}">
+<script>!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init('phc_cUZalkUiHgfuv7k5hPzhuLhYQkjUWOQBl82pdDgHAmZ',{api_host:'https://us.i.posthog.com',person_profiles:'identified_only'});</script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: #111; color: #eee; font-family: system-ui, -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; }
@@ -179,6 +185,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   <span>Duration: <span class="val" id="info-dur">—</span></span>
   <span>Fixations: <span class="val" id="info-seen">0</span></span>
   ${click ? `<span>Click: <span class="val">(${Math.round(click.x)}, ${Math.round(click.y)})</span></span>` : ''}
+  <span><a href="png/${id}.png" download style="color:#6af;text-decoration:none;">Download PNG</a></span>
 </div>
 <script>
 const F=${JSON.stringify(fixations)},CK=${JSON.stringify(click)},FR=${fovealR},SW=${screenW},N=${N},
@@ -239,6 +246,8 @@ const indexHtml = `<!DOCTYPE html>
 <html><head><meta charset="utf-8">
 <title>AdSERP Scanpath Explorer — Attentional Foraging on Search Engine Results</title>
 <meta name="description" content="Interactive foveated vision scanpath replays of eye-tracking data from the AdSERP dataset, rendered through Scrutinizer's neuroscience-based peripheral vision simulation.">
+<script>!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init('phc_cUZalkUiHgfuv7k5hPzhuLhYQkjUWOQBl82pdDgHAmZ',{api_host:'https://us.i.posthog.com',person_profiles:'identified_only'});</script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: system-ui, -apple-system, sans-serif; max-width: 900px; margin: 0 auto; padding: 2em 1em; background: #111; color: #eee; }
@@ -279,10 +288,15 @@ footer a { color: #888; }
   Window selector limits visible fixation history
 </p>
 ${results.map(r => `<div class="trial"><a href="${r.id}.html">
-  <span class="tag">${r.tag.replace(/_/g, ' ')}</span>
-  <div class="id">${r.id}</div>
-  <div class="query">"${r.query}"</div>
-  <div class="meta">${r.n} fixations${r.hasGazeplot ? ' · Scrutinizer rendered' : ''}</div>
+  <div style="display:flex;gap:12px;align-items:start;">
+    <img src="png/${r.id}.png" style="width:180px;height:120px;object-fit:cover;object-position:center 15%;border-radius:4px;flex-shrink:0;background:#222;" loading="lazy" alt="${r.tag}">
+    <div>
+      <span class="tag">${r.tag.replace(/_/g, ' ')}</span>
+      <div class="id">${r.id}</div>
+      <div class="query">"${r.query}"</div>
+      <div class="meta">${r.n} fixations${r.hasGazeplot ? ' · Scrutinizer rendered' : ''}</div>
+    </div>
+  </div>
 </a></div>`).join('\n')}
 <details style="margin-top:2em;color:#aaa;">
 <summary style="cursor:pointer;color:#ccc;font-size:0.95em;margin-bottom:0.8em;">How this was built</summary>
