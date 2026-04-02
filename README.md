@@ -9,7 +9,7 @@
 
 We found this dataset at 5am, got excited, and spent a morning exploring it. This repo is three notebooks of preliminary analysis — questions we wanted to ask, first-pass answers, and a transparent record of how we got there.
 
-> **v1 — 2026-04-01. This is a <4 hour first pass.**
+> **v4 — 2026-04-01. Ongoing revisions from initial <4 hour first pass.**
 >
 > **Revision strategy:** The [journey doc](docs/journey.md) is frozen at v0 — the first session as it happened, including wrong turns. Future updates add a "What we got wrong" section and revise the [findings](docs/findings.md). The point is to show the full arc.
 >
@@ -64,6 +64,10 @@ We hypothesized cumulative lexical overlap would predict shorter evaluation time
 
 **The priming hypothesis is not rejected — it's untested at the right granularity.** Bag-of-words overlap at the result level is too coarse. Paths forward: semantic embeddings, token-level fixation mapping, and at-scale production logs with larger N. See [findings.md](docs/findings.md) for the full decomposition.
 
+### p(fixate | visible) is also null — and structurally uninformative
+
+We tested whether overlap predicts *skipping* results entirely (binary: fixated or not). The aggregate signal looks real (r_pb = -0.059, 8/9 positions in skip direction) but forward-only p(fixate) is ~99.8% at every position. During first-pass scanning, users fixate virtually everything visible — there is no skip decision for overlap to predict. The 12.5% skip rate is concentrated in regressions.
+
 ### Evaluation time decomposes into four components
 
 Per-fixation duration is **flat at ~220ms** regardless of position. The position-dependent decline in total fixation time comes from investing fewer fixations at lower positions — an attention allocation decision. Page orientation time (~1-3s) and linear scanning rate (~1.7-2.6s/position) are the other components. This reframes the priming question: if content effects exist, they should appear in fixation *count*, not fixation *duration*.
@@ -100,7 +104,7 @@ These findings are interpreted through the **Attentional-Foraging Equilibrium (A
 |----------|----------|-------|
 | **Convergence** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks/convergence_analysis.ipynb) | Mouse-gaze distance conditioned on click intent, scroll-enriched prediction |
 | **Regressions** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks/scroll_regressions.ipynb) | Scroll regression prevalence, magnitude, timing, sparklines |
-| **Priming** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks/serp_priming.ipynb) | Cumulative lexical overlap, priming × fixation duration |
+| **Priming** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks/serp_priming.ipynb) | Cumulative lexical overlap × evaluation time; within-position controls null, forward-only dwell reverses |
 | **Coverage & TTI** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks/fixation_coverage.ipynb) | Fixation coverage above click, TTI, processing speed calibration |
 | **User Strategies** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks/user_strategies.ipynb) | Satisfice vs optimize segmentation by regression rate |
 
@@ -131,7 +135,7 @@ uv sync && uv run jupyter execute convergence_analysis.ipynb --inplace
 <a id="whats-next"></a>
 ## What's Next
 
-- ~~**Per-result priming → evaluation speed**~~ Tested. **Prior hypothesis: lexical priming would predict faster evaluation generally.** Confirmed in re-evaluation (regression trials, r=-0.033, p=0.003) but null in first-pass sequential scanning (no-regression trials, r=-0.002, p=0.92). Priming facilitates re-evaluation, not first-pass scanning — at least at bag-of-words granularity.
+- ~~**Per-result priming → evaluation speed**~~ Tested. **Prior hypothesis: lexical priming would predict faster evaluation generally.** Disconfirmed for first-pass scanning: forward-only dwell curve shows *increasing* dwell with position (Spearman ρ = +0.73, permutation p = 0.98 against priming). The aggregate partial r = -0.060 is entirely driven by regressions (9/9 positions in priming direction during re-evaluation). Within-position controls show the aggregate was confounded by position-overlap covariation.
 - **Sharpen the overlap metric** (may reveal first-pass effect the crude measure missed):
   - Stemmed tokens (running/runs/runner → run)
   - Sentence embeddings (mxbai-embed-large) for paraphrase/synonym priming

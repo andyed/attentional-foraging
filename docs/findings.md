@@ -2,7 +2,7 @@
 
 Reanalysis of the AdSERP dataset (Latifzadeh, Gwizdka & Leiva, SIGIR 2025). The [journey doc](journey.md) records how this started; this document records what we think we found.
 
-**Status:** v3, 2026-04-01. Within-position controls show bag-of-words overlap effect does not survive position confound. Evaluation time decomposed into orientation, scanning rate, fixation count, and per-fixation duration. Honest corrections throughout.
+**Status:** v4, 2026-04-01. Viewport time computation fixed (was missing pre-scroll and post-scroll periods, inflating position 0 dwell ratios >1.0). Forward-only shape test added: dwell *increases* with position during forward scanning (ρ = +0.73), reversing the priming prediction. Metric renamed from "eval rate" / "attention density" to "gaze dwell ratio" (fixation duration / visible duration — both durations, dimensionless).
 
 ---
 
@@ -44,7 +44,7 @@ By position 9, 62% of a result's vocabulary has already appeared in prior result
 
 **v3 correction: the aggregate priming effect is confounded with position.**
 
-We initially reported that cumulative lexical overlap predicted faster evaluation (attention density), especially in regression trials. The aggregate correlations were:
+We initially reported that cumulative lexical overlap predicted faster evaluation (gaze dwell ratio, formerly "attention density"), especially in regression trials. The aggregate correlations were:
 
 | Analysis | Partial r | p | N |
 |----------|-----------|---|---|
@@ -62,7 +62,7 @@ We initially reported that cumulative lexical overlap predicted faster evaluatio
 | Fixation count (TFC) | r ≈ 0 at all positions | No |
 | Mean single-fixation duration | r ≈ 0 at all positions | No |
 | Viewport time | r ≈ 0 at all positions | No |
-| Eval rate (fixation/viewport) | r = -0.049 at position 1 only (p=0.01) | Marginal, one position |
+| Gaze dwell ratio (fixation/viewport) | r = -0.049 at position 1 only (p=0.01) | Marginal, one position |
 
 **What this means:** Bag-of-words lexical overlap at the result level does not predict any evaluation metric once position is controlled. The effect we initially attributed to priming was driven by the position-overlap confound.
 
@@ -76,6 +76,25 @@ We initially reported that cumulative lexical overlap predicted faster evaluatio
 The regression-vs-no-regression split (v2 finding) may still be informative: it showed the aggregate effect was concentrated in re-evaluation trials. But since the within-position test is null for both subsets, the re-evaluation framing also needs revisiting with finer-grained measures.
 
 **Notebook:** [serp_priming.ipynb](../notebooks/serp_priming.ipynb), Step 4; [fixation_coverage.ipynb](../notebooks/fixation_coverage.ipynb), decomposition analysis
+
+## 2a. p(fixate | visible) is also null — and structurally uninformative for forward scanning
+
+The dwell ratio analysis (Finding 2) excluded results with zero fixations. If priming causes users to *skip* high-overlap results entirely, the signal would live in the binary fixation decision, not dwell duration.
+
+We tested p(fixate | visible ≥100ms) as a function of cumulative overlap:
+
+| Analysis | r_pb | p | N |
+|----------|------|---|---|
+| Aggregate, positions 1-9 | -0.059 | 2.4×10⁻¹³ | 15,527 |
+| Within-position weighted mean | -0.031 | — | — |
+| **Forward-only, positions 1-9** | **0.002** | **0.83** | **11,216** |
+| Forward-only within-position mean | -0.0003 | — | 3/9 skip direction |
+
+The aggregate signal (8/9 positions in skip direction) again does not survive forward-only isolation. The structural reason: **forward-only p(fixate) is ~99.8% at every position.** During first-pass scanning, users fixate virtually everything visible. There is no skip decision to predict — the variance that overlap could explain doesn't exist during forward scanning.
+
+The 12.5% overall skip rate (2,280/18,299 visible results) is concentrated in regression trials and late-trial positions where viewport windows are short.
+
+**Notebook:** [serp_priming.ipynb](../notebooks/serp_priming.ipynb), Step 6
 
 ## 3. SERP-level homogeneity does not predict trial duration or regressions
 
@@ -96,7 +115,7 @@ Position-dependent decline in total fixation time conflates several processes. D
 
 The key insight: **per-fixation duration does not vary with position.** Each reading fixation costs ~220ms regardless of where you are on the page. The position-dependent decline in total fixation time comes entirely from investing fewer fixations at lower positions — an attention allocation decision, not a processing speed change.
 
-This means the priming hypothesis (Finding 2) needs reframing. If priming operates, it should reduce fixation *count* (fewer looks needed to extract information from familiar vocabulary), not fixation *duration* (each look is the same speed). The within-position test for fixation count is null at bag-of-words granularity, but the mechanistic prediction for finer-grained measures remains: fewer refixations on previously-encountered tokens.
+**Note on per-fixation duration as a priming metric:** It isn't one. Fixation duration is a low-level oculomotor parameter driven by saccade planning and foveal information extraction mechanics, not by result-level content familiarity. No one in the reading literature would predict that result-level lexical overlap changes individual fixation durations — the grain size is wrong. The flat ~220ms finding is a useful decomposition fact but says nothing about priming. The valid priming metrics at this granularity are fixation *count* (fewer looks needed) and p(fixate) (skip entirely). Both are null within-position. See "What we got wrong" in [journey.md](journey.md) for how we initially misframed this.
 
 **Notebook:** [fixation_coverage.ipynb](../notebooks/fixation_coverage.ipynb), decomposition analysis
 
@@ -157,4 +176,14 @@ The bag-of-words overlap measure at the result level is too coarse and too confo
 
 ---
 
-*v3, 2026-04-01. v1: aggregate priming correlation. v2: regression-stratified split (re-evaluation vs first-pass). v3: within-position controls show bag-of-words overlap does not survive position confound. Evaluation time decomposed into four components; per-fixation duration is position-invariant. Priming hypothesis reframed as fixation-count mechanism requiring finer-grained measures.*
+## v4 corrections
+
+**Viewport time computation (v3 → v4):** The prior `compute_viewport_time` only counted time between scroll events. Pre-scroll periods (page load → first scroll, where position 0 is visible the entire time) and post-scroll periods were dropped. This caused position 0 dwell ratios >1.0 (e.g., 13,000ms fixation on 183ms computed viewport — a 73x ratio). Fixed by covering the full trial window. Position 0 dwell ratio corrected from 1.35 → 0.28.
+
+**Forward-only shape test (new):** Isolating forward-scanning periods (excluding scroll regressions), the gaze dwell ratio *increases* with position (Spearman ρ = +0.73 on position means 0-8, permutation p = 0.98 against priming). Users dwell longer on later results during first-pass scanning. The aggregate partial r = -0.060 was entirely driven by regressions: users dwell less on high-overlap results during re-evaluation (all 9 positions in priming direction). This converges with the v3 within-position null: the forward-scanning "priming" signal was an artifact of position confounding.
+
+**Metric rename:** "Eval rate" / "attention density" → "gaze dwell ratio" (fixation duration / visible duration). Both numerator and denominator are durations in ms; the result is a dimensionless ratio, not a rate.
+
+---
+
+*v4, 2026-04-01. v1: aggregate priming correlation. v2: regression-stratified split (re-evaluation vs first-pass). v3: within-position controls show bag-of-words overlap does not survive position confound. v4: viewport time bug fix; forward-only shape test shows dwell increases with position (ρ = +0.73), reversing priming prediction; metric renamed to gaze dwell ratio.*

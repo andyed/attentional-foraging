@@ -53,7 +53,7 @@ These gaps are where our work is complementary or novel:
 
 1. **No individual differences.** No per-user calibration, no user-level features, no analysis of satisfice/optimize strategies. Every user is treated identically. Our TTI calibrator (r=0.77 for fixation prediction at user level) could be an input feature to their model.
 
-2. **No content features.** Purely geometric — cursor trajectory + slot position. No lexical features, no overlap between results, no priming. The priming hypothesis is entirely absent from their framing.
+2. **No content features.** Purely geometric — cursor trajectory + slot position. No lexical features, no overlap between results, no priming. The priming hypothesis is entirely absent from their framing. (Our bag-of-words overlap test was null within-position controls; finer-grained content measures remain untested.)
 
 3. **No temporal dynamics of evaluation.** They predict total fixation per slot but don't model how evaluation time changes across results within a trial. Our position-dependent evaluation curve (65% fixation drop from position 0→7) and the ski-jump are absent.
 
@@ -80,7 +80,7 @@ AdSight answers: "Can we predict where a user looked from where their mouse went
 
 We answer different questions:
 - "What do users actually look at before clicking?" → Fixation coverage (95% above click)
-- "Does cumulative content exposure speed up evaluation?" → Priming (yes, r=-0.043)
+- "Does cumulative content exposure speed up evaluation?" → Priming (aggregate r=-0.054, but does not survive within-position controls; forward-only dwell increases with position, ρ = +0.73)
 - "Are there stable individual differences in evaluation strategy?" → Satisfice/optimize segmentation
 - "Can we calibrate individual processing speed from early behavior?" → TTI calibrator (r=0.77)
 

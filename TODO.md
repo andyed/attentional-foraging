@@ -2,13 +2,13 @@
 
 ## Publication
 
-- [ ] **Single arXiv paper → CHI/CHIIR submission, if findings warrant.** Core contribution: decomposing "attention" on SERPs into four measurable constructs (overt fixation, viewport exposure, interaction latency, processing speed) where the field uses one undifferentiated term (Zhang et al. CHIIR '26). Novel findings: (1) lexical priming predicts re-evaluation speed, not first-pass (content effect absent from SERP attention literature), (2) TTI-to-first-scroll calibrates individual processing speed at r=0.77 (zero-training-data signal, complementary to AdSight's Transformer approach), (3) satisfice/optimize is a continuous user trait visible from scroll regressions. Frame relative to AdSight (same data, prediction focus) and Zhang et al. (same lab, definitional focus). Venue candidates: CHI, CHIIR, CIKM, SIGIR resource track.
+- [ ] **Single arXiv paper → CHI/CHIIR submission, if findings warrant.** Core contribution: decomposing "attention" on SERPs into four measurable constructs (overt fixation, viewport exposure, interaction latency, processing speed) where the field uses one undifferentiated term (Zhang et al. CHIIR '26). Novel findings: (1) lexical priming does NOT predict first-pass evaluation — forward-only dwell curve reverses (ρ = +0.73); aggregate correlation was position confound + regression artifact, (2) TTI-to-first-scroll calibrates individual processing speed at r=0.77 (zero-training-data signal, complementary to AdSight's Transformer approach), (3) satisfice/optimize is a continuous user trait visible from scroll regressions. Frame relative to AdSight (same data, prediction focus) and Zhang et al. (same lab, definitional focus). Venue candidates: CHI, CHIIR, CIKM, SIGIR resource track.
 
 ## Next Pass
 
 - [ ] **Scroll velocity decomposition (Peter Dixon-Moses):** Separate forward vs backward scroll velocity as distinct features. Backward velocity is high because the user *knows* where the target was — different signal than forward deceleration (approaching novel target). Compute acceleration/deceleration derivatives in each direction separately. Relevant to mobile/touch where mouse signal is unavailable.
 
-- [ ] **Gwizdka 2010 — cognitive load distribution in web search:** "Distribution of Cognitive Load in Web Search" (JASIST 61(11), 2167-2187). Same Gwizdka who co-authored AdSERP. Found cognitive load peaks during query formulation and document evaluation, not during SERP scanning. If priming reduces evaluation cost, it's reducing peak cognitive load. Connect to our priming finding. [Scholar link](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gto9D-8AAAAJ&citation_for_view=gto9D-8AAAAJ:Se3iqnhoufwC)
+- [ ] **Gwizdka 2010 — cognitive load distribution in web search:** "Distribution of Cognitive Load in Web Search" (JASIST 61(11), 2167-2187). Same Gwizdka who co-authored AdSERP. Found cognitive load peaks during query formulation and document evaluation, not during SERP scanning. Now that we know priming only operates in re-evaluation (not first-pass), connect to the cognitive load distribution — re-evaluation is a distinct load peak. [Scholar link](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gto9D-8AAAAJ&citation_for_view=gto9D-8AAAAJ:Se3iqnhoufwC)
 
 - [ ] **Semantic similarity (embeddings):** Bag-of-words overlap likely underestimates the priming effect. Sentence-level embeddings would capture paraphrase and synonym priming.
 
@@ -28,13 +28,21 @@
 
 - [ ] **Residual dwell model (Peter Dixon-Moses):** Map fixation-time per result as a function of lexical overlap to establish a baseline. Residuals (deviation from expected dwell) predict interest/click — "this result held attention longer than priming alone would predict." Baseline may need per-user calibration from early-session features (e.g., time-to-first-scroll as a proxy for processing speed). See user_strategies.ipynb for satisfice/optimize segmentation that could serve as the calibration axis.
 
-- [ ] **Priming × user strategy interaction:** Re-run serp_priming.ipynb with user segmentation (satisfice/optimize terciles from user_strategies.ipynb) as a moderator. Optimizers encounter more cumulative overlap before clicking — the priming effect should be stronger for them. Satisficers who click at position 2 have barely accumulated priming signal.
+- [ ] **Priming × user strategy interaction:** Re-run serp_priming.ipynb with user segmentation (satisfice/optimize terciles from user_strategies.ipynb) as a moderator. Given the forward-only null, focus on regression-heavy optimizers — they have the most re-evaluation passes where priming actually operates.
 
 - [ ] **Personalized lexical divergence (Peter Dixon-Moses):** If dwell-time residuals flag "lexical divergences of interest," those terms could enhance subsequent queries — a user-specific signal of what information they found novel vs. already-known. Applied potential for search personalization.
 
 - [ ] **TTI as individual calibrator (Peter Dixon-Moses):** Time-to-first-scroll as proxy for individual information processing speed. If TTI predicts per-user evaluation rate, it's a session-start calibration signal available without any training data.
 
+## Follow-ups from v4 (2026-04-01)
+
+- [ ] **Position 9 dwell ratio still >1.0 (1.25).** Short viewport window at bottom of page before click terminates trial. Same class of bug as the pre-scroll issue but at the tail end. Investigate whether click events truncate the viewport window prematurely.
+- [x] **p(fixate) as binary outcome.** Tested. Forward-only p(fixate) is ~99.8% at every position — users fixate everything during forward scanning. No skip decision to predict. Aggregate skip signal (r_pb = -0.059) is again position confound + regression artifact. The 12.5% skip rate is concentrated in regression trials. Structurally uninformative for priming.
+- [ ] **Forward-only regression stratification.** The ρ = +0.73 forward-only shape test pools all trials. Separate: (a) trials with zero regressions (pure forward scan), (b) forward segments within regression trials. Are they different?
+- [ ] **Re-export HTML notebooks.** `html/serp_priming.html` is stale — pre-v4 metric names and viewport computation. Re-export after notebook is stable.
+- [ ] **Pupil dilation × position (cognitive load from comparative decision-making).** The forward-only dwell increase (ρ = +0.73) suggests increasing cognitive load as users hold more candidates in working memory. AdSERP Gazepoint GP3 HD records pupil diameter. Shi, Jayawardena & Gwizdka (2025) and Jayawardena et al. (2025) provide methodology. Pupil data available on Zenodo (129MB). Test: does pupil dilation increase with position during forward scanning? If so, the dwell increase is cognitive load, not attention.
+
 ## Design / Product Connections (from Peter Dixon-Moses)
 
-- E-comm intentionally introduces diversity to slow evaluation and reduce bounce. The priming curve is the mechanism — high overlap = fast reject. Topic shifts recapture attention.
+- E-comm intentionally introduces diversity to slow evaluation and reduce bounce. The priming curve operates in re-evaluation (regressions), not first-pass — so diversity slows *re-evaluation* of previously seen items, not initial scanning. Topic shifts recapture attention on return visits.
 - Mouse is "falling as an available signal" — mobile/touch has no cursor. Scroll + viewport features are the only behavioral signals. Our viewport-state finding (AUC 0.704 vs 0.548) is directly relevant.

@@ -89,11 +89,13 @@ Canonical definitions for every metric used in this project. Each metric is grou
 **Definition:** Total time a result was ≥50% visible in the viewport, computed from scroll event timeline using IAB viewability threshold.
 **Units:** Milliseconds.
 **Prior art:** IAB viewability standard (50% of pixels visible for ≥1 second). White, Diaz & Guo (2017) used viewport visibility for prefetching. AdSERP provides scroll events that enable this computation.
-**Our usage:** Denominator for evaluation rate (fixation_ms / viewport_ms). Separates "didn't look because it wasn't visible" from "didn't look because it wasn't interesting."
+**Our usage:** Denominator for gaze dwell ratio (fixation_ms / viewport_ms). Separates "didn't look because it wasn't visible" from "didn't look because it wasn't interesting."
+**v4 fix:** Prior computation only counted time between scroll events. Pre-scroll periods (page load → first scroll) and post-scroll periods were missing, severely undercounting viewport time for position 0 (dwell ratios were >1.0, some as high as 73x). Fixed to cover full trial window.
 
-### Evaluation Rate (Gaze Dwell Fraction)
-**Definition:** TFT / viewport_time for a result. What proportion of visible time was spent fixating.
-**Units:** Ratio (0-1).
+### Gaze Dwell Ratio
+**Definition:** Total fixation duration on a result / total time that result was ≥50% visible. Both numerator and denominator are durations in ms; the ratio is dimensionless.
+**Units:** Dimensionless ratio. Typical range 0.1–0.6; can exceed 1.0 at boundary positions (position 9) where viewport window is truncated by click.
+**Prior names (deprecated):** "evaluation rate," "eval rate," "attention density," "gaze dwell fraction." All were imprecise — "rate" implies frequency, "density" implies spatial, "fraction" implies a 0–1 ceiling.
 **Prior art:** Novel combination. Viewport-normalized fixation is not standard in CHIIR literature.
 **Our usage:** serp_priming.ipynb step 4. Controls for exposure time when comparing evaluation across positions.
 

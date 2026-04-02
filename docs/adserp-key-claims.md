@@ -4,7 +4,7 @@
 
 **Assessment:** This is a dataset paper, not a theory paper. The conceptual contributions are empirical observations, not mechanistic models. The gaps are where our work connects.
 
-> **Note:** Sections A and "What our reanalysis adds" below use v0 (uncorrected) numbers. See [findings.md](findings.md) for v1-corrected values — notably, the convergence curve shape changed after scroll correction (starts low, rises, then converges) and distance-only AUC dropped from 0.631 to 0.548.
+> **Note:** Sections A and "What our reanalysis adds" below use v0 (uncorrected) numbers. See [findings.md](findings.md) for v1-corrected values — notably, the convergence curve shape changed after scroll correction (starts low, rises, then converges) and distance-only AUC dropped from 0.631 to 0.548. **v3/v4 correction:** The aggregate priming correlation (overlap → evaluation speed) does not survive within-position controls — the effect was driven by the position-overlap confound. Forward-only dwell *increases* with position (ρ = +0.73), opposite of the priming prediction. The citation audit table reflects the corrected status.
 
 ---
 
@@ -91,7 +91,7 @@ The dataset's click events could be connected to approach dynamics, hold duratio
 
 The AdSERP task design — participants must click an item they would "typically choose" to purchase — is a serendipitous experimental paradigm for studying the foraging-to-exploitation transition. The forced choice with optimizing intent creates a defined stopping criterion: the user *must* commit. Most SERP studies use open-ended informational tasks where the user can abandon, reformulate, or leave without clicking. This means the patch-leaving decision (in Information Foraging Theory terms) is unobservable. In AdSERP, every trial ends with an observable commitment, and the 69% regression rate captures the cost of re-evaluation before that commitment.
 
-This deserves a literature review: forced-choice vs open-ended SERP task designs and what each reveals about the decision process. Key questions: How does the forced stopping criterion change regression behavior? Do open-ended tasks show the same priming × re-evaluation interaction, or does the ability to abandon short-circuit it? What other forced-choice SERP paradigms exist, and do they report comparable regression rates?
+This deserves a literature review: forced-choice vs open-ended SERP task designs and what each reveals about the decision process. Key questions: How does the forced stopping criterion change regression behavior? Do open-ended tasks show the same priming × re-evaluation pattern (aggregate only — within-position controls are null at bag-of-words granularity), or does the ability to abandon short-circuit it? What other forced-choice SERP paradigms exist, and do they report comparable regression rates?
 
 ---
 
@@ -125,7 +125,7 @@ Audit conducted 2026-04-01. Searched Gwizdka, Leiva, Latifzadeh, Arapakis public
 | Mouse-gaze distance conditioned on click intent | Gaze-cursor alignment tightens near clicks (Huang et al. CHI 2012). ~66% nonlinear scanpaths (Lorigo et al. JASIST 2008). | Continuous time-to-click curve, scroll correction showing aggregate mixes two regimes | Huang, White & Buscher 2012; Chen, Anderson & Sohn 2001 |
 | Scroll features beat distance for click prediction | Viewport visibility used in prefetching (Diaz et al. TOIS 2017). Click+scroll > click-only (Lagun et al. SIGIR 2014). | Direct AUC comparison: viewport (0.704) vs distance (0.548) after scroll correction | Diaz et al. 2017; Wang et al. SIGIR 2018; Lagun et al. 2014 |
 | 69% scroll regression prevalence | ~66% nonlinear SERP scanpaths (Lorigo et al. 2008). No scroll-level quantification. | Scroll-level regression frequency, magnitude (~7 slots), decision-time correlation (r=0.660) | Lorigo et al. JASIST 2008; Granka et al. SIGIR 2004 |
-| **Lexical priming predicts evaluation speed** | **No prior work found.** Position bias literature (Joachims 2005, Craswell 2008) attributes speed-up to trust. Gwizdka 2010/2014 on cognitive load. | **Novel.** Partial r = -0.054 after position control. First test of content redundancy driving SERP evaluation speed. | Joachims et al. 2005; Hale 2001 / Levy 2008 (surprisal theory); Gwizdka 2010 |
+| **Lexical priming and evaluation speed** | **No prior work found.** Position bias literature (Joachims 2005, Craswell 2008) attributes speed-up to trust. Gwizdka 2010/2014 on cognitive load. | **Partially novel, partially null.** Aggregate partial r = -0.060 does not survive within-position controls (v3) and is absent in forward-only scanning (ρ = +0.73 contra-priming, v4). Effect is real only in re-evaluation (regressions). First test of content redundancy on SERP evaluation, but the result is a null for first-pass priming. | Joachims et al. 2005; Hale 2001 / Levy 2008 (surprisal theory); Gwizdka 2010 |
 | Eye finds target ~15s before click | Eyes lead mouse ~300ms (Chen et al. 2001; Huang et al. 2012). 2-3s mouse trajectory predictive (Bruckner et al. 2021). | Macro-level temporal gaps: eye 14.9s, revisit 13.6s, mouse 9.1s. Different scale than micro-level 300ms. | Chen et al. 2001; Bruckner, Arapakis & Leiva 2021 |
 
 ### Key papers from the AdSERP team to cite

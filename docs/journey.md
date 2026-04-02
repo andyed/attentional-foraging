@@ -110,7 +110,7 @@ Andy also noted that the priming hypothesis connects to his eBay research: regre
 2. **Two-regime distance metric** — before 10s it's abstract distance-to-goal; after 10s it's spatial distance-to-visible-target
 3. **Scroll-stop as the real predictor** — viewport state (AUC=0.704) beats gaze-mouse distance (0.631) for click prediction
 4. **Scroll regressions are the norm** — 69.1% of trials, barely studied in the literature
-5. **Lexical priming curve** — cumulative overlap reaches 62% by position 9, explaining acceleration without invoking fatigue
+5. **Lexical priming curve** — cumulative overlap reaches 62% by position 9 (a content-structural fact; the behavioral claim that this explains acceleration did not survive within-position controls — see "What We Got Wrong v2–v4")
 6. **Individual calibration** — 2.5s SD in acquisition onset; 20.6% SD in regression rate
 
 ### Analyses the dataset enables
@@ -184,6 +184,26 @@ During a follow-up session, these findings were connected to the **Attentional-F
 
 ---
 
+## What We Got Wrong (v2–v4 corrections, 2026-04-01, later sessions)
+
+**The priming headline collapsed under scrutiny.** The v1 story was: "lexical priming predicts faster evaluation (partial r = -0.054)." Each subsequent revision peeled away a layer of confound:
+
+- **v2:** Regression-stratified analysis. The effect was concentrated in regression trials (r = -0.033), null in first-pass (r = -0.002). Reframed as "priming facilitates re-evaluation, not first-pass scanning." This felt like a sharper, more honest finding.
+- **v3:** Within-position controls. Testing high-overlap vs low-overlap *at the same rank* — null across every metric (TFT, TFC, mean fixation duration, viewport time). The aggregate correlation was driven by the position-overlap confound: both decline monotonically with rank, so any position-correlated attention decline looks like a priming effect.
+- **v4:** Forward-only shape test. Isolating forward-scanning periods (excluding regressions), gaze dwell ratio *increases* with position (Spearman ρ = +0.73) — the opposite of the priming prediction. The "priming effect" was entirely an artifact of regressions (lower dwell on revisit = memory, not priming) plus position confounding.
+
+**The metric naming was sloppy.** We called it "eval rate," then "attention density," then "gaze dwell fraction." Each name was imprecise about what was being measured: the ratio of two durations (fixation duration / visible duration). "Gaze dwell ratio" was the final name. Getting the name wrong made it harder to think clearly about what the metric could and couldn't tell us.
+
+**The viewport time computation was broken.** `compute_viewport_time` only counted intervals between scroll events. Before the first scroll, the viewport is static at y=0 — position 0 is fully visible — but that entire period was dropped. Some trials had 27 seconds of fixation on 183ms of computed viewport time, producing dwell ratios of 73x. 44% of position-0 observations had ratios >1.0. We reported means built on these numbers.
+
+**We treated per-fixation duration as a priming metric.** The ~220ms flat-across-positions finding was presented as "reframing the priming question" — implying fixation duration was a reasonable thing to test. It wasn't. Fixation duration is a low-level oculomotor parameter. No one in reading research would predict that result-level vocabulary overlap changes individual fixation durations. The grain size is wrong by an order of magnitude. This is a cognitive psychologist's error — confusing the level of analysis. The valid priming metrics were always fixation count and p(fixate), both of which are null within-position.
+
+**We tested p(fixate | visible) and found it structurally uninformative.** Forward-only p(fixate) is ~99.8% at every position. During first-pass scanning, users fixate everything they see. There is no skip decision for overlap to predict. The 12.5% skip rate lives entirely in regressions and late-trial edge cases. This was the last plausible refuge for a bag-of-words priming signal, and it's empty.
+
+**The pattern across v1–v4:** Each version reported a "finding" that looked significant because we hadn't controlled for the right thing yet. The aggregate r survived because position and overlap are confounded. The regression split survived because regressions conflate familiarity with revisitation. The within-position test was the real control, and it's null. The forward-only shape test confirmed the null by showing the curve goes the wrong way. We should have started with within-position controls and forward-only isolation. Instead we reported the exciting aggregate and spent four versions discovering it was confounded.
+
+---
+
 **Git repo made public 8:38am PT, 2026-04-01.** ~3.5 hours from dataset discovery to public release.
 
-*Frozen 2026-04-01. The dataset is rich enough for a full paper.*
+*v0 frozen 2026-04-01. Corrections appended as they were discovered. The dataset is rich enough for a full paper.*
