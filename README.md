@@ -9,6 +9,8 @@
 
 We found this dataset at 5am, got excited, and spent a morning exploring it. This repo is three notebooks of preliminary analysis — questions we wanted to ask, first-pass answers, and a transparent record of how we got there.
 
+**[Interactive demo: Foveated scanpath replays](https://andyed.github.io/attentional-foraging/)** — 10 prototypical search sessions replayed through [Scrutinizer](https://github.com/andyed/scrutinizer2025)'s neuroscience-based peripheral vision simulator. See what each participant could actually resolve at each fixation.
+
 > **v4 — 2026-04-01. Ongoing revisions from initial <4 hour first pass.**
 >
 > **Revision strategy:** The [journey doc](docs/journey.md) is frozen at v0 — the first session as it happened, including wrong turns. Future updates add a "What we got wrong" section and revise the [findings](docs/findings.md). The point is to show the full arc.
