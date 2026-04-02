@@ -12,8 +12,8 @@ These findings are interpreted through the **Attentional-Foraging Equilibrium (A
 
 How each finding maps to AFE:
 
-- **Lexical priming** (Finding 2) — bag-of-words overlap correlates with faster evaluation in aggregate, but the effect does not survive within-position controls. The position-overlap confound remains unresolved. Finer-grained measures (semantic embeddings, token-level fixation analysis) may be needed to detect the mechanism.
-- **Scroll regressions** (Finding 4) are travel costs (T_s) paid for re-evaluation when a novel result disrupts the reward rate estimate.
+- **Lexical priming** (Finding 2) — bag-of-words overlap correlates with faster evaluation in aggregate, but the effect does not survive within-position controls, and the forward-only curve reverses (ρ = +0.73). Lower dwell during regressions is consistent with repetition/recognition and scroll kinematics (ballistic backward scrolling), not semantic priming. Finer-grained measures (semantic embeddings, token-level fixation analysis) may be needed to detect the mechanism if it exists.
+- **Scroll regressions** (Finding 4) are travel costs (T_s) paid for re-evaluation. What triggers regressions remains untested — SERP-level homogeneity does not predict regression count (r = -0.015), and per-result novelty triggering has not been analyzed.
 - **Mouse-gaze convergence** (Finding 5) traces the transition from foraging (high T_s, moving between patches) to exploitation (low τ, evaluating within a patch).
 - **Per-participant variance** (Finding 7) maps to bandwidth λ — individual cognitive capacity differences.
 - The **forced-choice purchase task** creates a defined stopping criterion that makes the patch-leaving decision observable. Most SERP studies use open-ended tasks where the user can leave without clicking.
@@ -73,7 +73,7 @@ We initially reported that cumulative lexical overlap predicted faster evaluatio
 3. **Working memory preloading** — the hypothesis that prior exposure reduces cognitive load may operate below the result level, at the phrase or concept level
 4. **At-scale production logs** — millions of queries with natural satisficing behavior may have enough power to detect small effects that are invisible in 2,776 lab trials
 
-The regression-vs-no-regression split (v2 finding) may still be informative: it showed the aggregate effect was concentrated in re-evaluation trials. But since the within-position test is null for both subsets, the re-evaluation framing also needs revisiting with finer-grained measures.
+The regression-vs-no-regression split (v2 finding) initially appeared informative: the aggregate effect was concentrated in re-evaluation trials. But this is triply confounded: (a) position-overlap covariation persists within regression trials (within-position null), (b) revisitation itself produces lower dwell through recognition/memory rather than semantic priming, and (c) ballistic backward scrolling creates systematically shorter viewport windows at intermediate positions, biasing the dwell ratio denominator. The scroll kinematics analysis (`scroll_kinematics.ipynb`) tests confound (c) directly.
 
 **Notebook:** [serp_priming.ipynb](../notebooks/serp_priming.ipynb), Step 4; [fixation_coverage.ipynb](../notebooks/fixation_coverage.ipynb), decomposition analysis
 
@@ -176,14 +176,51 @@ The bag-of-words overlap measure at the result level is too coarse and too confo
 
 ---
 
+## 8. Backward scrolling is ballistic — the viewport mechanics confound
+
+Backward scroll velocity is significantly higher than forward (median 915 vs 784 px/s, peak 1852 vs 1111 px/s). The velocity profile is ballistic (Spearman ρ = 0.867 between distance-from-target and velocity): users start fast and decelerate near the regression target.
+
+87.3% of regression targets are at positions 0-4 (median: position 2). Positions 6-8 are ballistic transit zones — high velocity, short viewport windows, suppressed fixations. Position 9 is near the regression origin and reverses.
+
+**The key test:** Regression velocity at each position correlates with the dwell ratio delta (all-inclusive minus forward-only) at ρ = -0.762 (p = 0.017). Scroll speed explains 58% of the variance in the "priming" pattern across positions.
+
+This confirms that the lower dwell ratios at positions 6-8 when regressions are included are a viewport mechanics artifact, not evidence of content-driven re-evaluation. The user is flying past these positions at 1400+ px/s on the way to their actual target at positions 2-4.
+
+**Notebook:** [scroll_kinematics.ipynb](../notebooks/scroll_kinematics.ipynb)
+
+## 9. The serial evaluation assumption is wrong for most SERP sessions
+
+Click models (Chuklin et al. 2015), cascade models (Craswell et al. 2008), and even the two-stage examination model (Liu et al. CIKM 2014) assume monotonic top-to-bottom examination: the user scans result 1, then 2, then 3, and either clicks or abandons. This assumption is embedded in offline evaluation metrics (C/W/L framework, Azzopardi SIGIR 2014) and in the examination hypothesis that underlies position bias correction.
+
+Our data shows this assumption fails for the majority of search sessions:
+
+- **69% of trials contain at least one scroll regression.** The typical session involves 2.8 regressions traversing ~7 result positions. Only 31% of trials are pure one-pass sequential scans.
+- **Regression targets are position-specific** (ANOVA η² = 0.87) — users scroll back to a remembered region, not randomly or always to the top. But landing precision is region-level, not result-level (offset from nearest result center ≈ random baseline). After landing, ~6 fixations of visual search are needed to locate the target. This implies spatial memory for SERP layout that is coarser than individual results — consistent with Solman & Kingstone (2024) on spatial memory in naturalistic visual search.
+- **Revisit behavior is asymmetric.** Clicked results get +32% more fixations and +37% more time on revisit (deep confirmation). Non-clicked results get −17% fewer fixations (quick rejection). Per-fixation duration drops slightly on revisit (210 vs 216ms) — recognition, not re-reading.
+- **The satisfice/optimize dimension maps to regression rate.** Per-participant regression rate correlates with LHIPA (pupillometric cognitive load) at ρ = −0.55. Optimizers (86% regression rate, lower LHIPA = more load) click higher (mean position 2.7) than satisficers (43% rate, position 3.4). Optimizers don't forage deeper — they forage more thoroughly. This connects to Schwartz's maximizing/satisficing construct but via a physiological measure rather than self-report.
+
+**Implications:** Any evaluation model that assumes serial examination will systematically mischaracterize sessions with regressions. Position bias estimates derived from cascade models absorb regression effects into the position parameter — the "position 7 penalty" includes both natural decay and the fact that position 7 is a transit zone during ballistic backward scrolling (see §8). Click models need a re-examination state, not just examine → click/skip.
+
+Maxwell & Azzopardi (ECIR 2018) model SERP-level stopping using information scent but not within-page re-evaluation. Our data suggests the stopping decision and the regression decision are competing alternatives at the bottom-of-page deliberation point: the user can stop (click what they've seen), scroll back (regress to re-evaluate), or paginate (next SERP). The forced-choice task in AdSERP makes the regression path visible where naturalistic search would allow abandonment — regressions are the alternative to abandoning.
+
+**Notebooks:** [regression_decisions.ipynb](../notebooks/regression_decisions.ipynb), [scroll_kinematics.ipynb](../notebooks/scroll_kinematics.ipynb)
+
+---
+
 ## v4 corrections
 
 **Viewport time computation (v3 → v4):** The prior `compute_viewport_time` only counted time between scroll events. Pre-scroll periods (page load → first scroll, where position 0 is visible the entire time) and post-scroll periods were dropped. This caused position 0 dwell ratios >1.0 (e.g., 13,000ms fixation on 183ms computed viewport — a 73x ratio). Fixed by covering the full trial window. Position 0 dwell ratio corrected from 1.35 → 0.28.
 
-**Forward-only shape test (new):** Isolating forward-scanning periods (excluding scroll regressions), the gaze dwell ratio *increases* with position (Spearman ρ = +0.73 on position means 0-8, permutation p = 0.98 against priming). Users dwell longer on later results during first-pass scanning. The aggregate partial r = -0.060 was entirely driven by regressions: users dwell less on high-overlap results during re-evaluation (all 9 positions in priming direction). This converges with the v3 within-position null: the forward-scanning "priming" signal was an artifact of position confounding.
+**Forward-only shape test (new):** Isolating forward-scanning periods (excluding scroll regressions), the gaze dwell ratio *increases* with position (Spearman ρ = +0.73 on position means 0-8, permutation p = 0.98 against priming). Users dwell longer on later results during first-pass scanning — consistent with increasing cognitive load from holding more candidates in working memory. The aggregate partial r = -0.060 was driven by regressions, but this does not indicate priming: lower dwell on revisit is expected from repetition/recognition (the user already encoded the content), and is further confounded by ballistic backward scroll dynamics that create systematically shorter viewport windows at intermediate positions (see `scroll_kinematics.ipynb`). The within-position test is null for regression trials too.
 
 **Metric rename:** "Eval rate" / "attention density" → "gaze dwell ratio" (fixation duration / visible duration). Both numerator and denominator are durations in ms; the result is a dimensionless ratio, not a rate.
 
+## v5 corrections (2026-04-02)
+
+**FPOGY out-of-bounds clamp (fixation attribution bug).** The Gazepoint GP3 HD reports gaze Y coordinates that exceed the screen boundaries — 24.5% of fixations have FPOGY > screen_height (1024px), with the 95th percentile at 1830px. These out-of-bounds samples were added to `scroll_offset` to compute `page_y`, attributing fixations to SERP positions below the viewport. Position 9 was the primary victim: mean per-trial dwell ratio was 2.9× (89% of trials >1.0). The fix: clamp `FPOGY` to `[0, screen_height]` before computing `page_y = fy + scroll_offset`. Position 9 dwell ratio corrected from 1.25 → 0.79. Forward-only shape test strengthened slightly (ρ from +0.73 to +0.82).
+
+**Anyone working with AdSERP fixation data** should be aware that FPOGY values can substantially exceed screen bounds. Always clamp or filter gaze coordinates to the viewport before mapping to page-space positions.
+
 ---
 
-*v4, 2026-04-01. v1: aggregate priming correlation. v2: regression-stratified split (re-evaluation vs first-pass). v3: within-position controls show bag-of-words overlap does not survive position confound. v4: viewport time bug fix; forward-only shape test shows dwell increases with position (ρ = +0.73), reversing priming prediction; metric renamed to gaze dwell ratio.*
+*v5, 2026-04-02. v1: aggregate priming correlation. v2: regression-stratified split (re-evaluation vs first-pass). v3: within-position controls show bag-of-words overlap does not survive position confound. v4: viewport time bug fix; forward-only shape test shows dwell increases with position (ρ = +0.73), reversing priming prediction; metric renamed to gaze dwell ratio. v5: FPOGY clamp fix (24.5% of fixations out-of-bounds); position 9 dwell ratio 1.25 → 0.79; scroll kinematics analysis confirms ballistic regression confound (ρ = -0.762); regression-trial "priming" reframed as triple confound (position, repetition, kinematics).*
