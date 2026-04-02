@@ -44,28 +44,37 @@ async function main() {
 
 console.log(`Building site with ${trials.length} trials...\n`);
 
-// Step 1: Pre-render SERP screenshots at 1280px viewport using Playwright.
-// This ensures fixation coordinates (in 1280px screenshot space) align exactly.
-console.log('  Rendering SERP screenshots at 1280px...');
+// Step 1: Pre-render SERP screenshots at each trial's original window width.
+// The SERP was displayed at windowW CSS pixels during the study (e.g., 1422px).
+// Rendering at the same width preserves the exact layout — no reflow drift.
+console.log('  Rendering SERP screenshots at original window widths...');
 const browser = await chromium.launch();
-const playwrightCtx = await browser.newContext({ viewport: { width: 1280, height: 1024 } });
 
+// Read each trial's window width from metadata, render at that width
+const trialDocHeights = {};
 for (const trial of trials) {
     const serpSrc = path.join(DATA_DIR, 'serps', `${trial.trial_id}.html`);
     if (!fs.existsSync(serpSrc)) continue;
+    const metaXml = fs.readFileSync(path.join(DATA_DIR, 'trial-metadata', `${trial.trial_id}.xml`), 'utf8');
+    const get = (tag) => { const m = metaXml.match(new RegExp(`<${tag}>([^<]*)</${tag}>`)); return m ? m[1].trim() : ''; };
+    const windowW = parseInt(get('window').split('x')[0]) || 1422;
+    const windowH = parseInt(get('window').split('x')[1]) || 1137;
+
+    const playwrightCtx = await browser.newContext({ viewport: { width: windowW, height: windowH } });
     const page = await playwrightCtx.newPage();
     await page.goto(`file://${path.resolve(serpSrc)}`, { waitUntil: 'networkidle' });
     await page.waitForTimeout(500);
-    // Get full page height, resize viewport to match, then clip to exactly 1280px wide
     const docHeight = await page.evaluate(() => Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight));
-    await page.setViewportSize({ width: 1280, height: docHeight });
+    await page.setViewportSize({ width: windowW, height: docHeight });
     await page.waitForTimeout(300);
     await page.screenshot({
         path: path.join(SITE_DIR, 'serp-renders', `${trial.trial_id}.png`),
-        clip: { x: 0, y: 0, width: 1280, height: docHeight }
+        clip: { x: 0, y: 0, width: windowW, height: docHeight }
     });
+    trialDocHeights[trial.trial_id] = docHeight;
     await page.close();
-    console.log(`    ${trial.trial_id}`);
+    await playwrightCtx.close();
+    console.log(`    ${trial.trial_id} (${windowW}x${docHeight})`);
 }
 await browser.close();
 console.log('');
@@ -105,31 +114,31 @@ for (const trial of trials) {
     const docH = parseInt(get('document').split('x')[1]) || 2642;
     const query = get('task').split('|').pop().trim().replace(/-/g, ' ');
 
+    // Fixations are in screen-pixel page-space (1280-wide). Scale to CSS page-space
+    // (windowW-wide) to match the SERP render at its original window width.
+    const rx = screenW / windowW, ry = screenH / windowH;
     const fixations = fixCsv.trim().split('\n').slice(1).map(l => {
         const [t, x, y, d] = l.split(',').map(Number);
-        return { t, x, y, d };
+        return { t, x: x / rx, y: y / ry, d };
     }).filter(f => isFinite(f.t) && isFinite(f.x) && f.d > 0);
 
-    const rx = screenW / windowW, ry = screenH / windowH;
+    // Click and mouse are already in CSS page-space (evtrack pageX/pageY) — no scaling.
     const clickLines = mouseCsv.trim().split('\n').slice(1).filter(l => l.includes(',click,'));
     let click = null;
     if (clickLines.length > 0) {
         const c = clickLines[clickLines.length - 1].split(',');
-        // Scale from window CSS pixels to screenshot-space (screen pixels).
-        // Both X and Y are page-space (evtrack pageX/pageY) — scale by rx/ry.
-        click = { x: parseFloat(c[1]) * rx, y: parseFloat(c[2]) * ry };
+        click = { x: parseFloat(c[1]), y: parseFloat(c[2]) };
     }
 
-    // Parse mouse movement events for cursor replay
-    // Scale X by rx, Y by ry (window CSS px → screen px). Both are page-space.
     const mouseEvents = mouseCsv.trim().split('\n').slice(1)
         .map(l => { const c = l.split(','); return { t: parseInt(c[0]), x: parseFloat(c[1]), y: parseFloat(c[2]), e: (c[3]||'').trim() }; })
         .filter(m => isFinite(m.t) && isFinite(m.x) && ['mousemove','mouseover','click','mousedown','mouseup'].includes(m.e))
-        .map(m => ({ t: m.t - (fixations.length > 0 ? fixations[0].t : 0), x: m.x * rx, y: m.y * ry, e: m.e }));
+        .map(m => ({ t: m.t - (fixations.length > 0 ? fixations[0].t : 0), x: m.x, y: m.y, e: m.e }));
 
-    // Both gazeplot (--single mode) and Playwright SERP render are docH tall.
-    // SVG viewBox matches this height so fixation coordinates (page-space) align.
-    const primaryImgH = docH;
+    // SERP render is at windowW × docHeight (original layout, no reflow).
+    // Use the Playwright-measured docHeight as authoritative.
+    const serpDocH = trialDocHeights[id] || docH;
+    const primaryImgH = serpDocH;
     const fovealR = 60;
     const N = fixations.length;
     const T0 = N > 0 ? fixations[0].t : 0;
@@ -143,13 +152,13 @@ for (const trial of trials) {
 
     const html = `<!DOCTYPE html>
 <html><head><meta charset="utf-8"><title>Scanpath: ${id} — ${query}</title>
-<meta name="viewport" content="width=${screenW}">
+<meta name="viewport" content="width=${windowW}">
 <script>!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
 posthog.init('phc_cUZalkUiHgfuv7k5hPzhuLhYQkjUWOQBl82pdDgHAmZ',{api_host:'https://us.i.posthog.com',person_profiles:'identified_only'});</script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: #111; color: #eee; font-family: system-ui, -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; }
-.header { width: ${screenW}px; padding: 10px 16px; background: #1a1a1a; border-bottom: 1px solid #333;
+.header { width: ${windowW}px; padding: 10px 16px; background: #1a1a1a; border-bottom: 1px solid #333;
   display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
 .header h1 { font-size: 14px; font-weight: 600; }
 .header h1 span { color: #aaa; font-weight: 400; }
@@ -158,9 +167,9 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .btn { background: #333; border: 1px solid #555; color: #eee; padding: 3px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; }
 .btn:hover { background: #444; }
 .btn.active { background: #2a5a8a; border-color: #4a8aca; }
-.viewer { position: relative; width: ${screenW}px; height: 70vh; overflow-y: auto; overflow-x: hidden; background: #000; }
-.serp-container { position: relative; width: ${screenW}px; }
-#bg-img { width: ${screenW}px; display: block; }
+.viewer { position: relative; width: ${windowW}px; height: 70vh; overflow-y: auto; overflow-x: hidden; background: #000; }
+.serp-container { position: relative; width: ${windowW}px; }
+#bg-img { width: ${windowW}px; display: block; }
 .scanpath-svg { position: absolute; top: 0; left: 0; z-index: 10; pointer-events: none; }
 .foveal-ring { position: absolute; z-index: 11; pointer-events: none; border: 2px solid rgba(255,255,255,0.7);
   border-radius: 50%; width: ${fovealR*2}px; height: ${fovealR*2}px; transform: translate(-50%, -50%);
@@ -169,13 +178,13 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   width: 20px; height: 20px; transition: left 0.03s linear, top 0.03s linear; }
 .mouse-cursor svg { width: 20px; height: 28px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); }
 .mouse-cursor.clicking svg path { fill: #ff3333; }
-.timeline { width: ${screenW}px; background: #1a1a1a; padding: 8px 16px; border-top: 1px solid #333; }
+.timeline { width: ${windowW}px; background: #1a1a1a; padding: 8px 16px; border-top: 1px solid #333; }
 .timeline-track { position: relative; height: 40px; background: #222; border-radius: 4px; cursor: pointer; overflow: hidden; }
 .timeline-ticks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 .timeline-tick { position: absolute; bottom: 0; border-radius: 2px 2px 0 0; min-width: 2px; }
 .timeline-playhead { position: absolute; top: 0; width: 2px; height: 100%; background: #ff4444; z-index: 2; }
 .timeline-info { display: flex; justify-content: space-between; margin-top: 4px; font-size: 11px; color: #aaa; }
-.info-panel { width: ${screenW}px; padding: 6px 16px; background: #1a1a1a; font-size: 11px; color: #aaa;
+.info-panel { width: ${windowW}px; padding: 6px 16px; background: #1a1a1a; font-size: 11px; color: #aaa;
   display: flex; gap: 20px; border-top: 1px solid #222; }
 .info-panel .val { color: #ccc; }
 .info-panel a { color: #ff9933; text-decoration: none; font-weight: 600; }
@@ -200,7 +209,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   <div class="serp-container">
     <img id="bg-img" src="${hasGazeplot ? gazeplotRelPath : serpRenderRelPath}" />
     <svg class="scanpath-svg" id="scanpath-svg" xmlns="http://www.w3.org/2000/svg"
-         width="${screenW}" height="${primaryImgH}" viewBox="0 0 ${screenW} ${primaryImgH}"></svg>
+         width="${windowW}" height="${primaryImgH}" viewBox="0 0 ${windowW} ${primaryImgH}"></svg>
     <div class="foveal-ring" id="foveal-ring"></div>
     <div class="mouse-cursor" id="mouse-cursor"><svg viewBox="0 0 20 28"><path d="M0,0 L0,22 L5.5,17 L10,28 L14,26 L9,16 L16,16 Z" fill="#ff9933" stroke="#000" stroke-width="1"/></svg></div>
   </div>
@@ -224,7 +233,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   <span><a href="png/${id}.png" download style="color:#6af;text-decoration:none;">Download PNG</a></span>
 </div>
 <script>
-const F=${JSON.stringify(fixations)},CK=${JSON.stringify(click)},ME=${JSON.stringify(mouseEvents)},FR=${fovealR},SW=${screenW},N=${N},
+const F=${JSON.stringify(fixations)},CK=${JSON.stringify(click)},ME=${JSON.stringify(mouseEvents)},FR=${fovealR},SW=${windowW},N=${N},
 T0=${T0},TD=${TOTAL_DUR},MND=${minD},MXD=${maxD},
 SERP_SRC='${serpRenderRelPath}',
 GAZEPLOT_SRC=${hasGazeplot ? `'${gazeplotRelPath}'` : 'null'};
