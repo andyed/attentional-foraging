@@ -27,22 +27,18 @@ fs.mkdirSync(path.join(SITE_DIR, 'serp-renders'), { recursive: true });
 fs.mkdirSync(path.join(SITE_DIR, 'gazeplots'), { recursive: true });
 fs.mkdirSync(path.join(SITE_DIR, 'png'), { recursive: true });
 
-// Load interesting trials
-const interestingPath = path.join(DATA_DIR, 'interesting-trials.json');
-const interesting = JSON.parse(fs.readFileSync(interestingPath, 'utf8'));
-
-const seen = new Set();
-const trials = [];
-for (const [tag, info] of Object.entries(interesting.prototypical)) {
-    if (!info.trial_id || seen.has(info.trial_id)) continue;
-    if (info.value === 0 && info.metric === 'fixation_count') continue;
-    if (info.trial_id === 'p041-b1-t10') continue; // 1 fixation — not useful as demo
-    if (info.trial_id === 'p031-b4-t5') continue; // 0 fixations — instant click, no scanpath
-    if (info.trial_id === 'p037-b5-t10') continue; // tile capture broken — needs debugging
-    if (info.trial_id === 'p021-b5-t8') continue; // tile capture broken — needs debugging
-    seen.add(info.trial_id);
-    trials.push({ tag, ...info });
-}
+// Curated trial list — each demonstrates a distinct search behavior.
+// Hand-picked for visual clarity and diversity.
+const trials = [
+    { tag: 'quick_decider',       trial_id: 'p032-b6-t8',  query: 'buy hartleys hartleys lemon jelly 135g' },
+    { tag: 'ad_focused',          trial_id: 'p029-b2-t10', query: 'buy nike nike 375833 pro bra' },
+    { tag: 'medium_engagement',   trial_id: 'p016-b3-t1',  query: 'buy blues breakers with eric clapton' },
+    { tag: 'mouse_follower',      trial_id: 'p047-b1-t9',  query: 'buy dayco dayco wp259k2a timing belt kit' },
+    { tag: 'regressive_scroller', trial_id: 'p035-b4-t2',  query: 'buy avon anew ultimate 7s cleanser' },
+    { tag: 'deep_explorer',       trial_id: 'p011-b3-t2',  query: 'buy playmobil gymnast on balance beam' },
+    { tag: 'long_trial',          trial_id: 'p037-b2-t5',  query: 'buy fusion ms wr600cv dust cover' },
+    { tag: 'scanner',             trial_id: 'p045-b2-t6',  query: 'buy gates gates 22650 lower radiator hose' },
+];
 
 async function main() {
 

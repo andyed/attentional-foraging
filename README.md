@@ -1,12 +1,22 @@
 # Attentional Foraging on SERPs
 
-[Demo](https://andyed.github.io/attentional-foraging/) | [Findings](#findings) | [Notebooks](#notebooks) | [Data](#data) | [Docs](#docs) | [What's Next](#whats-next) | [Citation](#citation)
+[Demo](https://andyed.github.io/attentional-foraging/) | [Why](#why-this-project-exists) | [Findings](#findings) | [Notebooks](#notebooks) | [Data](#data) | [Docs](#docs) | [What's Next](#whats-next) | [Citation](#citation)
 
 ---
 
+## Why this project exists
+
+This project has three goals:
+
+1. **Test the priming hypothesis.** In a [2021 CHIIR workshop talk](https://www.linkedin.com/in/andyed/), I conjectured that result evaluation speeds up down the SERP partly because of cumulative lexical priming — previously encountered terms get cheaper to process on re-encounter. The AdSERP dataset provided the first opportunity to test this directly with eye-tracking fixation data. (Result: [disconfirmed at bag-of-words granularity](#priming-aggregate-correlation-does-not-survive-within-position-controls), but the question isn't closed — sharper metrics may reveal first-pass effects.)
+
+2. **Build out gaze replay for [Scrutinizer](https://github.com/andyed/scrutinizer2025).** Scrutinizer is a neuroscience-based foveated vision simulator. AdSERP's simultaneous gaze + mouse + scroll recordings on real Google SERPs were the ideal stress test for a new scanpath replay pipeline — importing eye-tracking data and rendering what the searcher could actually resolve at each fixation.
+
+3. **Stress-test and evolve a working model of search as attentional foraging.** The [Attentional-Foraging Equilibrium (AFE)](#theoretical-framework) is an unpublished framework that synthesizes Rational Inattention (Sims 2003) with Information Foraging Theory (Pirolli & Card 1999). It treats SERP browsing as patch foraging: scroll regressions as travel costs, the mouse-gaze convergence curve as the exploitation transition, per-participant variance as individual bandwidth differences. This model is grounded in the academic literature but also in a decade of shipping search and recommendation systems at scale (eBay, Microsoft, Meta, Quora) — industrial contexts where the same foraging dynamics play out across billions of queries. The AFE is a working model, not a published theory; this project is where it gets tested against real behavioral data.
+
 ## Interactive foveated scanpath replays
 
-**[andyed.github.io/attentional-foraging](https://andyed.github.io/attentional-foraging/)** — 10 prototypical search sessions replayed through [Scrutinizer](https://github.com/andyed/scrutinizer2025)'s neuroscience-based peripheral vision simulator. Full-page renders showing what each participant could actually resolve at each fixation: sharp where they looked, degraded through LGN/V1/DoG peripheral pooling where they didn't. Scanpath overlay with numbered fixations, saccade lines, timeline scrubbing, and playback.
+**[andyed.github.io/attentional-foraging](https://andyed.github.io/attentional-foraging/)** — 8 curated search sessions replayed through [Scrutinizer](https://github.com/andyed/scrutinizer2025)'s foveated vision pipeline. Full-page renders showing what each participant could actually resolve at each fixation: sharp where they looked, degraded through LGN/V1/DoG peripheral pooling where they didn't. Scanpath overlay with numbered fixations, saccade lines, timeline scrubbing, and playback.
 
 ---
 
@@ -31,18 +41,18 @@ Total fixation time per result (eye-tracker, scroll-corrected page-space coordin
 |----------|--------------|---------------|-------------|---------|
 | 0 | 4,085 | 14,584 | 0.28 | 0% |
 | 1 | 3,071 | 17,990 | 0.18 | 38% |
-| 3 | 2,103 | 16,526 | 0.16 | 46% |
-| 5 | 1,589 | 9,577 | 0.25 | 55% |
-| 7 | 1,325 | 6,529 | 0.35 | 58% |
-| 9 | 2,497 | 3,378 | 1.25 | 59% |
+| 3 | 2,154 | 16,488 | 0.16 | 46% |
+| 5 | 2,288 | 9,479 | 0.33 | 55% |
+| 7 | 1,997 | 6,401 | 0.42 | 58% |
+| 9 | 2,035 | 3,454 | 0.79 | 59% |
 
-Fixation time drops 65% from position 0 to position 7. Gaze dwell ratio — fixation duration / visible duration — drops from 0.28 to 0.16 by position 3, then *rises* back through positions 4-9. The U-shape means later results get more intense evaluation per unit of visible time, not less. The uptick at position 9 is the **"ski jump"** — users click disproportionately on the last visible position before a pagination boundary. This pattern has been observed in click share data at eBay, Redbubble, MSN Search, and others (also reported by SLI Systems, Jakob Nielsen, Lou Rosenfeld). The explanation: people make a locally rational decision between the last set of results and the temporal/attentional cost of Next (Edmonds, ["Search as Augmented Cognition,"](https://www.linkedin.com/in/andyed/) CHIIR Made to Measure Workshop, 2021). The same talk proposed the priming hypothesis tested here: *"Why does result evaluation speed up? Hypothesis: Semantic priming and reduced cost of lexical processing, verifiable by manipulating heterogeneity of search results."* In this lab study, the forced-click task likely amplifies the ski jump — there is no Next button, so position 9 *is* the boundary.
+Fixation time drops from position 0 to position 3. Gaze dwell ratio — fixation duration / visible duration — drops from 0.28 to 0.16 by position 3, then *rises* back through positions 4-9. The U-shape means later results get more intense evaluation per unit of visible time, not less. This pattern has been observed in click share data at eBay, Redbubble, MSN Search, and others (also reported by SLI Systems, Jakob Nielsen, Lou Rosenfeld). The explanation: people make a locally rational decision between the last set of results and the temporal/attentional cost of Next (Edmonds, ["Search as Augmented Cognition,"](https://www.linkedin.com/in/andyed/) CHIIR Made to Measure Workshop, 2021). The same talk proposed the priming hypothesis tested here: *"Why does result evaluation speed up? Hypothesis: Semantic priming and reduced cost of lexical processing, verifiable by manipulating heterogeneity of search results."* In this lab study, the forced-click task likely amplifies the ski jump — there is no Next button, so position 9 *is* the boundary.
 
 ### Lexical overlap builds rapidly — and that should matter
 
 By position 9, 62% of a result's vocabulary has already appeared in prior results. Novel tokens per result drop from 28 to 10.
 
-Why this matters: **lexical priming**. In reading research, previously encountered words are processed faster on re-encounter — less cognitive effort to recognize, categorize, and integrate. If a SERP user has already read "electro-harmonix tone tattoo analog delay" in results 1-3, encountering those same terms in result 7 should be cheaper to evaluate. The standard explanation for faster evaluation at lower positions is declining effort or attention fatigue. The alternative: it's cumulative priming from vocabulary redundancy. **However:** our analysis shows this effect operates in re-evaluation (scroll regressions), not in first-pass forward scanning — and when we test the forward-only curve shape, the relationship reverses (dwell *increases* with overlap, Spearman ρ = +0.73). See below.
+Why this matters: **lexical priming**. In reading research, previously encountered words are processed faster on re-encounter — less cognitive effort to recognize, categorize, and integrate. If a SERP user has already read "electro-harmonix tone tattoo analog delay" in results 1-3, encountering those same terms in result 7 should be cheaper to evaluate. The standard explanation for faster evaluation at lower positions is declining effort or attention fatigue. The alternative: it's cumulative priming from vocabulary redundancy. **However:** this hypothesis does not survive within-position controls (see below). Forward-only dwell *increases* with position (Spearman ρ = +0.73), opposite the priming prediction. The aggregate correlation (partial r = -0.054) was an artifact of position-overlap confounding. Lower dwell during regressions likely reflects repetition/recognition and scroll kinematics, not semantic priming.
 
 ![Priming](plots-v1/plot_priming1_overview.png)
 
@@ -86,7 +96,7 @@ At a 5s horizon, viewport features (target visible, time since scroll) outperfor
 
 ## Theoretical framework
 
-These findings are interpreted through the **Attentional-Foraging Equilibrium (AFE)**, which synthesizes Rational Inattention (Sims 2003) with Information Foraging Theory (Pirolli & Card 1999). AFE models SERP browsing as patch foraging: lexical priming reduces within-patch handling time during re-evaluation (not first-pass scanning), scroll regressions are travel costs paid for re-evaluation, and the convergence curve traces the transition from foraging to exploitation. The forced-choice purchase task in AdSERP is useful here because it creates a defined stopping criterion — making the patch-leaving decision observable where most SERP studies cannot (cf. [Diriye et al. 2012](https://doi.org/10.1145/2396761.2398399) on search abandonment as the alternative outcome). Full framework: [AFE presentation](https://gamma.app/docs/The-Attentional-Foraging-Equilibrium-A-Synthesis-of-Digital-Behav-aq0bw2ujjxwypbt). Detailed mapping in [findings.md](docs/findings.md).
+These findings are interpreted through the **Attentional-Foraging Equilibrium (AFE)**, which synthesizes Rational Inattention (Sims 2003) with Information Foraging Theory (Pirolli & Card 1999). AFE models SERP browsing as patch foraging: scroll regressions are travel costs paid for re-evaluation, the convergence curve traces the transition from foraging to exploitation, and per-participant variance maps to individual bandwidth differences. The forced-choice purchase task in AdSERP is useful here because it creates a defined stopping criterion — making the patch-leaving decision observable where most SERP studies cannot (cf. [Diriye et al. 2012](https://doi.org/10.1145/2396761.2398399) on search abandonment as the alternative outcome). Full framework: [AFE presentation](https://gamma.app/docs/The-Attentional-Foraging-Equilibrium-A-Synthesis-of-Digital-Behav-aq0bw2ujjxwypbt). Detailed mapping in [findings.md](docs/findings.md).
 
 ---
 
@@ -99,6 +109,7 @@ These findings are interpreted through the **Attentional-Foraging Equilibrium (A
 | **Priming** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks/serp_priming.ipynb) | Cumulative lexical overlap × evaluation time; within-position controls null, forward-only dwell reverses |
 | **Coverage & TTI** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks/fixation_coverage.ipynb) | Fixation coverage above click, TTI, processing speed calibration |
 | **User Strategies** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks/user_strategies.ipynb) | Satisfice vs optimize segmentation by regression rate |
+| **Scroll Kinematics** | [View](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks/scroll_kinematics.ipynb) | Viewport mechanics confound: ballistic backward scrolling biases regression dwell ratios |
 
 ## Data
 
@@ -118,6 +129,7 @@ uv sync && uv run jupyter execute convergence_analysis.ipynb --inplace
 
 ## Docs
 
+- **[CHANGELOG.md](CHANGELOG.md)** — Version history, bug fixes, corrections
 - **[findings.md](docs/findings.md)** — What we think we found, with caveats
 - **[journey.md](docs/journey.md)** — The first session, frozen at v0
 - **[adserp-key-claims.md](docs/adserp-key-claims.md)** — The AdSERP paper's claims and what the dataset enables
@@ -131,7 +143,7 @@ This started as a 4-hour morning sprint after finding the AdSERP dataset at 5am.
 <a id="whats-next"></a>
 ## What's Next
 
-- ~~**Per-result priming → evaluation speed**~~ Tested. **Prior hypothesis: lexical priming would predict faster evaluation generally.** Disconfirmed for first-pass scanning: forward-only dwell curve shows *increasing* dwell with position (Spearman ρ = +0.73, permutation p = 0.98 against priming). The aggregate partial r = -0.060 is entirely driven by regressions (9/9 positions in priming direction during re-evaluation). Within-position controls show the aggregate was confounded by position-overlap covariation.
+- ~~**Per-result priming → evaluation speed**~~ Tested. **Prior hypothesis: lexical priming would predict faster evaluation generally.** Disconfirmed at bag-of-words granularity: forward-only dwell curve shows *increasing* dwell with position (Spearman ρ = +0.73, permutation p = 0.98 against priming). Within-position controls null across all metrics. The aggregate partial r = -0.054 was driven by position-overlap confounding. Lower dwell during regressions is consistent with repetition/recognition (revisiting already-read content) and scroll kinematics (ballistic backward scrolling reduces viewport time at intermediate positions), not semantic priming. The [scroll kinematics analysis](notebooks/scroll_kinematics.ipynb) tests the viewport mechanics confound directly.
 - **Sharpen the overlap metric** (may reveal first-pass effect the crude measure missed):
   - Stemmed tokens (running/runs/runner → run)
   - Sentence embeddings (mxbai-embed-large) for paraphrase/synonym priming
