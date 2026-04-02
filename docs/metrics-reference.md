@@ -48,9 +48,12 @@ Canonical definitions for every metric used in this project. Each metric is grou
 ### Page Orientation Time
 **Definition:** Time from page load (t₀) to first fixation on any SERP result.
 **Units:** Milliseconds.
-**Prior art:** Not a standard named metric in SERP literature. Huang et al. (2012) describe the 0-1s post-pageload period as an alignment phase where "gaze and cursor are closely aligned... perhaps from the previous action that led to the page." Mao et al. (2018) model a "skimming stage" that precedes evaluation. In our regression, this is the **intercept** of time-to-first-fixation ~ position.
-**Our values:** FV clickers ~1619ms, scrollers ~2993ms.
-**Note:** This is NOT the same as TTI (time to first interaction), which measures mouse/scroll behavior, not gaze. Orientation time is a gaze measure; TTI is a motor measure. They capture different things — the eye orients before the hand moves.
+**Prior art:** Not a standard named metric in SERP literature. Huang et al. (2012) describe the 0-1s post-pageload period as an alignment phase where "gaze and cursor are closely aligned... perhaps from the previous action that led to the page." Liu et al. (CIKM 2014) model a "skimming stage" that precedes evaluation.
+**Our values (two measures, not interchangeable):**
+- **Raw orientation time** (time from page load to first fixation on any result): median **194ms**, identical across all groups. This reflects how quickly users locate the first result — fast because SERP layout is well-memorized.
+- **Regression intercept** (intercept of time-to-first-fixation ~ position): FV clickers ~1619ms, scrollers ~2993ms. This is *not* the same thing — it's the extrapolated y-intercept of the linear model, which absorbs per-position scanning time and is always larger than the raw orientation time.
+
+**Note:** Neither measure is TTI (time to first interaction), which measures mouse/scroll behavior, not gaze. Orientation time is a gaze measure; TTI is a motor measure.
 
 ### Evaluation Scanning Rate
 **Definition:** The slope of time-to-first-fixation ~ position. How many additional milliseconds per result position before first fixation arrives there.
