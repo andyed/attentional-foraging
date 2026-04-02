@@ -213,6 +213,42 @@ The natural rate is almost certainly much lower than AdSERP's 69%. From personal
 
 **Notebooks:** [regression_decisions.ipynb](../notebooks/regression_decisions.ipynb), [scroll_kinematics.ipynb](../notebooks/scroll_kinematics.ipynb)
 
+## 10. Mouse proximity predicts click — and reveals the consideration set
+
+Gaze-cursor distance during fixations on a result predicts whether that result will be clicked. The gradient is monotonic and strong:
+
+| Min gaze-cursor distance | Click rate | Relative to baseline |
+|---|---|---|
+| 0–66px | 26.9% | 11× |
+| 66–145px | 10.7% | 4.5× |
+| 145–251px | 5.7% | 2.4× |
+| 251–399px | 3.2% | 1.3× |
+| 399+px | 2.4% | baseline |
+
+This is computed per result-region per trial (n=25,886 result-fixation records across 2,772 trials). For each result the user fixated, we measure the minimum distance between gaze and cursor at any point during fixation. Closer approach = higher click probability.
+
+**The "almost clicked" segment.** 14% of non-clicked results (3,154 / 23,352) had the mouse within 58px of gaze — the same threshold as the median clicked result. These "almost clicked" results received **more fixations** than the results that were actually clicked (16.8 vs 15.2 mean). Users evaluated them deeply, moved the mouse close, and then chose something else. This is the consideration set made visible: the cursor approaches as interest rises, then either commits (click) or withdraws (rejection).
+
+**Why this matters for production.** Click models treat non-clicks as ambiguous — maybe the user examined the result and found it irrelevant, maybe they never saw it. Mouse proximity resolves this ambiguity without eye tracking. A non-clicked result where `min_cursor_distance < 100px` is a high-confidence **evaluated-and-rejected** signal. A non-clicked result where the cursor never approached is **unseen or unconsidered**. These carry opposite relevance implications.
+
+Huang, White & Buscher (2012) showed cursor proximity is the best single predictor of gaze location, but used it to predict *where* the eyes were, not to infer *what the user thought* about what they saw. The step from gaze prediction to implicit relevance judgment — particularly for unclicked results — appears to be novel.
+
+The signal is deployable from standard mouse telemetry: `min_cursor_distance_to_result_center` per impression. No eye tracker needed. The eye tracking in AdSERP validates the interpretation (mouse proximity during genuine visual evaluation, not accidental hover), but the production metric is cursor-only.
+
+**Notebooks:** [individual_differences.ipynb](../notebooks/individual_differences.ipynb)
+
+## 11. Two orthogonal individual difference dimensions
+
+Per-participant correlations across 46 participants reveal two independent axes of variation:
+
+**Dimension 1: Deliberation style.** TTI-to-first-scroll, regression rate, LHIPA (cognitive load), fixation count, and trial duration are all highly intercorrelated (Spearman ρ = 0.57 to 0.94). This is the satisfice/optimize axis: some users evaluate quickly with few regressions and low cognitive load (satisficers), others take longer with more re-evaluation and higher load (optimizers). Regression rate × LHIPA: ρ = −0.574 (p < 0.0001).
+
+**Dimension 2: Motor coupling.** Gaze-cursor lag (median −825ms, gaze leads) is a reliable individual trait (split-half reliability r = 0.76, Spearman-Brown corrected) but is **uncorrelated** with any deliberation measure (lag × TTI: ρ = −0.17 ns; lag × LHIPA: ρ = −0.07 ns; lag × regression rate: ρ = +0.25, p = 0.10). Some people keep their cursor tracking their eyes; others park it. This style is stable across trials but orthogonal to how deliberate the search strategy is.
+
+The gaze-cursor lag replicates Huang, White & Buscher (2012) in direction and magnitude (our −825ms vs their −700ms, both gaze-leads) but extends it: the lag is a stable trait that varies independently of search depth.
+
+**Notebooks:** [individual_differences.ipynb](../notebooks/individual_differences.ipynb), [gaze_cursor_lag.ipynb](../notebooks/gaze_cursor_lag.ipynb)
+
 ---
 
 ## v4 corrections

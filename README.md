@@ -86,6 +86,16 @@ At a 5s horizon, viewport features (target visible, time since scroll) outperfor
 
 ![Scroll dynamics](plots-v1/plot10_scroll_dynamics.png)
 
+### Mouse proximity predicts click — and reveals the consideration set
+
+Per-result minimum gaze-cursor distance predicts click with an 11× gradient: 26.9% click rate when cursor approaches within 66px of gaze, vs 2.4% baseline at 400+px. 14% of non-clicked results had the mouse within clicking distance while the eyes were evaluating — "almost clicked" results that received *more* fixations (16.8) than clicked results (15.2). These are the consideration set: deeply evaluated, cursor-approached, and rejected.
+
+This signal is deployable from standard mouse telemetry — no eye tracker needed. A non-clicked result where `min_cursor_distance < 100px` is a high-confidence **evaluated-and-rejected** signal, resolving the ambiguity that click models can't: was the result unseen, or was it seen and rejected? See [findings.md §10](docs/findings.md) for full analysis.
+
+### Two independent individual difference dimensions
+
+Gaze-cursor lag is a reliable trait (split-half r = 0.76) but **orthogonal** to the TTI/regression/LHIPA deliberation axis. Searchers vary on two independent dimensions: (1) deliberation style (how thoroughly they evaluate) and (2) motor coupling (how tightly cursor tracks gaze). Neither predicts the other. See [findings.md §11](docs/findings.md).
+
 ---
 
 ## Theoretical framework
