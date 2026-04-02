@@ -13,6 +13,7 @@ h1 a { color: #ff9933; text-decoration: none; }
 .trial:hover { border-left-color: #ff9933; background: #222; }
 .trial a { display: block; padding: 0.8em 1em; color: #eee; text-decoration: none; cursor: pointer; }
 .trial .tag { color: #ff9933; font-size: 0.8em; text-transform: uppercase; letter-spacing: 0.5px; }
+.trial .id { font-weight: 600; font-size: 0.95em; }
 .trial .query { color: #aaa; font-size: 0.85em; margin-top: 2px; }
 .trial .meta { color: #888; font-size: 0.8em; margin-top: 2px; }
 kbd { background: #333; padding: 1px 6px; border-radius: 3px; font-size: 0.85em; color: #ccc; }
@@ -35,91 +36,71 @@ footer a { color: #888; }
   Trials below are prototypical examples of distinct search behaviors.
 </p>
 <p class="controls-help">
-  <kbd>←</kbd><kbd>→</kbd> step through fixations &middot;
+  <kbd>&larr;</kbd><kbd>&rarr;</kbd> step through fixations &middot;
   <kbd>Space</kbd> play/pause &middot;
   drag timeline to scrub &middot;
   Window selector limits visible fixation history
 </p>
-<div class="trial">
-  <a href="p045-b2-t6.html">
-    <span class="tag">scanner</span>
-    <div style="font-weight:600;font-size:0.95em;">p045-b2-t6</div>
-    <div class="query">"buy gates gates 22650 lower radiator hose"</div>
-    <div class="meta">312 fixations · Scrutinizer rendered</div>
-  </a>
-</div>
-<div class="trial">
-  <a href="p037-b5-t10.html">
-    <span class="tag">heavy scroller</span>
-    <div style="font-weight:600;font-size:0.95em;">p037-b5-t10</div>
-    <div class="query">"buy mg decky washed polo caps mango"</div>
-    <div class="meta">206 fixations · Scrutinizer rendered</div>
-  </a>
-</div>
-<div class="trial">
-  <a href="p009-b1-t3.html">
-    <span class="tag">scroll without reading</span>
-    <div style="font-weight:600;font-size:0.95em;">p009-b1-t3</div>
-    <div class="query">"buy lascar electronics usb temp data logger"</div>
-    <div class="meta">40 fixations · Scrutinizer rendered</div>
-  </a>
-</div>
-<div class="trial">
-  <a href="p041-b1-t10.html">
-    <span class="tag">mouse follower</span>
-    <div style="font-weight:600;font-size:0.95em;">p041-b1-t10</div>
-    <div class="query">"buy lowrance lowrance 000 10027 001 bracket"</div>
-    <div class="meta">1 fixations · Scrutinizer rendered</div>
-  </a>
-</div>
-<div class="trial">
-  <a href="p021-b5-t8.html">
-    <span class="tag">mouse independent</span>
-    <div style="font-weight:600;font-size:0.95em;">p021-b5-t8</div>
-    <div class="query">"buy angelic music"</div>
-    <div class="meta">94 fixations · Scrutinizer rendered</div>
-  </a>
-</div>
-<div class="trial">
-  <a href="p029-b2-t10.html">
-    <span class="tag">ad focused</span>
-    <div style="font-weight:600;font-size:0.95em;">p029-b2-t10</div>
-    <div class="query">"buy nike nike 375833 pro bra"</div>
-    <div class="meta">22 fixations · Scrutinizer rendered</div>
-  </a>
-</div>
-<div class="trial">
-  <a href="p020-b6-t5.html">
-    <span class="tag">ad ignorer</span>
-    <div style="font-weight:600;font-size:0.95em;">p020-b6-t5</div>
-    <div class="query">"buy remy remy 25216 premium remanufactured starter"</div>
-    <div class="meta">297 fixations · Scrutinizer rendered</div>
-  </a>
-</div>
-<div class="trial">
-  <a href="p011-b3-t2.html">
-    <span class="tag">deep explorer</span>
-    <div style="font-weight:600;font-size:0.95em;">p011-b3-t2</div>
-    <div class="query">"buy playmobil gymnast on balance beam"</div>
-    <div class="meta">91 fixations · Scrutinizer rendered</div>
-  </a>
-</div>
-<div class="trial">
-  <a href="p031-b4-t5.html">
-    <span class="tag">top only</span>
-    <div style="font-weight:600;font-size:0.95em;">p031-b4-t5</div>
-    <div class="query">"buy rotary carburetor kit for zama"</div>
-    <div class="meta">0 fixations · Scrutinizer rendered</div>
-  </a>
-</div>
-<div class="trial">
-  <a href="p037-b2-t5.html">
-    <span class="tag">long trial</span>
-    <div style="font-weight:600;font-size:0.95em;">p037-b2-t5</div>
-    <div class="query">"buy fusion ms wr600cv dust cover"</div>
-    <div class="meta">276 fixations · Scrutinizer rendered</div>
-  </a>
-</div>
+<div class="trial"><a href="p045-b2-t6.html">
+  <span class="tag">scanner</span>
+  <div class="id">p045-b2-t6</div>
+  <div class="query">"buy gates gates 22650 lower radiator hose"</div>
+  <div class="meta">312 fixations · Scrutinizer rendered</div>
+</a></div>
+<div class="trial"><a href="p037-b5-t10.html">
+  <span class="tag">heavy scroller</span>
+  <div class="id">p037-b5-t10</div>
+  <div class="query">"buy mg decky washed polo caps mango"</div>
+  <div class="meta">206 fixations · Scrutinizer rendered</div>
+</a></div>
+<div class="trial"><a href="p009-b1-t3.html">
+  <span class="tag">scroll without reading</span>
+  <div class="id">p009-b1-t3</div>
+  <div class="query">"buy lascar electronics usb temp data logger"</div>
+  <div class="meta">40 fixations · Scrutinizer rendered</div>
+</a></div>
+<div class="trial"><a href="p041-b1-t10.html">
+  <span class="tag">mouse follower</span>
+  <div class="id">p041-b1-t10</div>
+  <div class="query">"buy lowrance lowrance 000 10027 001 bracket"</div>
+  <div class="meta">1 fixations · Scrutinizer rendered</div>
+</a></div>
+<div class="trial"><a href="p021-b5-t8.html">
+  <span class="tag">mouse independent</span>
+  <div class="id">p021-b5-t8</div>
+  <div class="query">"buy angelic music"</div>
+  <div class="meta">94 fixations · Scrutinizer rendered</div>
+</a></div>
+<div class="trial"><a href="p029-b2-t10.html">
+  <span class="tag">ad focused</span>
+  <div class="id">p029-b2-t10</div>
+  <div class="query">"buy nike nike 375833 pro bra"</div>
+  <div class="meta">22 fixations · Scrutinizer rendered</div>
+</a></div>
+<div class="trial"><a href="p020-b6-t5.html">
+  <span class="tag">ad ignorer</span>
+  <div class="id">p020-b6-t5</div>
+  <div class="query">"buy remy remy 25216 premium remanufactured starter"</div>
+  <div class="meta">297 fixations · Scrutinizer rendered</div>
+</a></div>
+<div class="trial"><a href="p011-b3-t2.html">
+  <span class="tag">deep explorer</span>
+  <div class="id">p011-b3-t2</div>
+  <div class="query">"buy playmobil gymnast on balance beam"</div>
+  <div class="meta">91 fixations · Scrutinizer rendered</div>
+</a></div>
+<div class="trial"><a href="p031-b4-t5.html">
+  <span class="tag">top only</span>
+  <div class="id">p031-b4-t5</div>
+  <div class="query">"buy rotary carburetor kit for zama"</div>
+  <div class="meta">0 fixations · Scrutinizer rendered</div>
+</a></div>
+<div class="trial"><a href="p037-b2-t5.html">
+  <span class="tag">long trial</span>
+  <div class="id">p037-b2-t5</div>
+  <div class="query">"buy fusion ms wr600cv dust cover"</div>
+  <div class="meta">276 fixations · Scrutinizer rendered</div>
+</a></div>
 <footer>
   <a href="https://github.com/andyed/scrutinizer2025">Scrutinizer</a> ·
   <a href="https://github.com/andyed/attentional-foraging">attentional-foraging</a> ·

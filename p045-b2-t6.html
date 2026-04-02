@@ -35,20 +35,15 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .back { font-size: 12px; }
 .back a { color: #6af; text-decoration: none; }
 </style></head><body>
-<div class="header"><div style="display:flex;align-items:center;gap:12px;"><span class="back"><a href="index.html">&larr; All</a></span><div style="display:flex;align-items:center;gap:12px;">
-    <h1>p045-b2-t6 <span>— buy gates gates 22650 lower radiator hose</span></h1></div>
+<div class="header">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <span class="back"><a href="index.html">&larr; All</a></span>
+    <h1>p045-b2-t6 <span>— buy gates gates 22650 lower radiator hose</span></h1>
   </div>
   <div class="controls">
     <label><input type="checkbox" id="lines-toggle" checked> Lines</label>
     <label><input type="checkbox" id="numbers-toggle" checked> Numbers</label>
-    <span style="color:#888">Window:</span>
-    <select id="window-size" style="background:#333;color:#eee;border:1px solid #555;border-radius:3px;padding:2px 4px;font-size:11px;">
-      <option value="5">5</option>
-      <option value="10">10</option>
-      <option value="25">25</option>
-      <option value="0" selected>All</option>
-    </select>
-    <span style="color:#888">Window:</span><select id="window-size" style="background:#333;color:#eee;border:1px solid #555;border-radius:3px;padding:2px 4px;font-size:11px;"><option value="5">5</option><option value="10">10</option><option value="25">25</option><option value="0" selected>All</option></select><button class="btn" id="play-btn">&#9654; Play</button>
+    <button class="btn" id="play-btn">&#9654; Play</button>
     <button class="btn" id="reset-btn">Reset</button>
   </div>
 </div>
@@ -85,7 +80,7 @@ const cF=(i,n)=>{const t=n>1?i/(n-1):0;return`rgb(${Math.round(50+205*t)},${Math
 const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
 fr=document.getElementById('foveal-ring'),vw=document.getElementById('viewer'),
 lt=document.getElementById('lines-toggle'),nt=document.getElementById('numbers-toggle'),
-ws=document.getElementById('window-size'),tt=document.getElementById('timeline-track');
+tt=document.getElementById('timeline-track');
 let ci=N-1,pl=false,pt=null;
 const ns='http://www.w3.org/2000/svg';
 function se(t,a){const e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e}
@@ -100,9 +95,8 @@ const cr=se('circle',{cx:f.x,cy:f.y,r,fill:c,'fill-opacity':.25,stroke:c,'stroke
 const fs=Math.max(9,Math.min(14,r));const tx=se('text',{x:f.x,y:f.y,'text-anchor':'middle','dominant-baseline':'central','font-family':'monospace','font-weight':'bold','font-size':fs,fill:'white',stroke:'rgba(0,0,0,.6)','stroke-width':2,'paint-order':'stroke'});tx.textContent=i+1;svg.appendChild(tx);tE.push(tx)}
 if(CK){const s=se('polygon',{points:[0,-16,6,-4,16,-4,8,4,12,16,0,8,-12,16,-8,4,-16,-4,-6,-4].reduce((a,v,i)=>{a.push(i%2===0?CK.x+v:CK.y+v);return a},[]).join(','),fill:'#f00','fill-opacity':.5,stroke:'#f00','stroke-width':2});svg.appendChild(s);
 const l=se('text',{x:CK.x+18,y:CK.y+4,'font-family':'monospace','font-weight':'bold','font-size':11,fill:'#f00',stroke:'white','stroke-width':2,'paint-order':'stroke'});l.textContent='CLICK';svg.appendChild(l)}
-function uv(){const wn=parseInt(ws.value)||0;const lo=wn>0?Math.max(0,ci-wn+1):0;
-for(let i=0;i<N;i++){const v=i<=ci&&i>=lo;cE[i].style.display=v?'':'none';tE[i].style.display=v&&nt.checked?'':'none';
-if(lE[i])lE[i].style.display=v&&i>lo&&lt.checked?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',i===ci?1:v?0.8:0)}
+function uv(){for(let i=0;i<N;i++){const v=i<=ci;cE[i].style.display=v?'':'none';tE[i].style.display=v&&nt.checked?'':'none';
+if(lE[i])lE[i].style.display=v&&lt.checked?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',pl&&i===ci?1:.8)}
 if(ci>=0&&N>1)ph.style.left=(F[ci].t-T0)/TD*100+'%';
 if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px';
 const vr=vw.getBoundingClientRect(),fy=f.y-vw.scrollTop;if(fy<100||fy>vr.height-100)vw.scrollTo({top:f.y-vr.height/2,behavior:'smooth'})}else fr.style.display='none';
@@ -111,7 +105,7 @@ document.getElementById('info-dur').textContent=f.d+'ms';document.getElementById
 document.getElementById('time-label').textContent='Fixation '+(ci+1)+' / '+N;
 document.getElementById('duration-label').textContent=((f.t-T0)/1000).toFixed(1)+'s / '+(TD/1000).toFixed(1)+'s'}}
 function sf(i){ci=Math.max(-1,Math.min(N-1,i));uv()}
-lt.addEventListener('change',uv);nt.addEventListener('change',uv);ws.addEventListener('change',uv);ws.addEventListener('change',uv);
+lt.addEventListener('change',uv);nt.addEventListener('change',uv);
 let dr=false;function ts(e){const r=tt.getBoundingClientRect(),p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
 let b=0;for(let i=0;i<N;i++)if(F[i].t<=T0+p*TD)b=i;sf(b)}
 tt.addEventListener('mousedown',e=>{dr=true;ts(e)});document.addEventListener('mousemove',e=>{if(dr)ts(e)});document.addEventListener('mouseup',()=>{dr=false});
