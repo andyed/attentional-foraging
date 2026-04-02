@@ -138,12 +138,14 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .info-panel .val { color: #ccc; }
 .info-panel a { color: #ff9933; text-decoration: none; font-weight: 600; }
 .info-panel a:hover { text-decoration: underline; }
-.back { position: fixed; top: 8px; left: 8px; z-index: 100; font-size: 12px; }
+.back { font-size: 12px; }
 .back a { color: #6af; text-decoration: none; }
 </style></head><body>
-<div class="back"><a href="index.html">&larr; All trials</a></div>
 <div class="header">
-  <h1>${id} <span>— ${query}</span></h1>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <span class="back"><a href="index.html">&larr; All</a></span>
+    <h1>${id} <span>— ${query}</span></h1>
+  </div>
   <div class="controls">
     <label><input type="checkbox" id="lines-toggle" checked> Lines</label>
     <label><input type="checkbox" id="numbers-toggle" checked> Numbers</label>
@@ -172,7 +174,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   </div>
 </div>
 <div class="info-panel">
-  <span><a href="https://github.com/andyed/scrutinizer">Scrutinizer rendering</a></span>
+  <span><a href="https://github.com/andyed/scrutinizer2025">Scrutinizer rendering</a></span>
   <span>Position: <span class="val" id="info-pos">—</span></span>
   <span>Duration: <span class="val" id="info-dur">—</span></span>
   <span>Fixations: <span class="val" id="info-seen">0</span></span>
@@ -204,8 +206,8 @@ const l=se('text',{x:CK.x+18,y:CK.y+4,'font-family':'monospace','font-weight':'b
 function uv(){for(let i=0;i<N;i++){const v=i<=ci;cE[i].style.display=v?'':'none';tE[i].style.display=v&&nt.checked?'':'none';
 if(lE[i])lE[i].style.display=v&&lt.checked?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',pl&&i===ci?1:.8)}
 if(ci>=0&&N>1)ph.style.left=(F[ci].t-T0)/TD*100+'%';
-if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px';
-const vr=vw.getBoundingClientRect(),fy=f.y-vw.scrollTop;if(fy<100||fy>vr.height-100)vw.scrollTo({top:f.y-vr.height/2,behavior:'smooth'})}else fr.style.display='none';
+if(ci>=0){const f=F[ci];const vr=vw.getBoundingClientRect(),fy=f.y-vw.scrollTop;if(fy<100||fy>vr.height-100)vw.scrollTo({top:f.y-vr.height/2,behavior:'smooth'})}
+if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px'}else fr.style.display='none';
 if(ci>=0){const f=F[ci];document.getElementById('info-pos').textContent='('+f.x+','+f.y+')';
 document.getElementById('info-dur').textContent=f.d+'ms';document.getElementById('info-seen').textContent=ci+1;
 document.getElementById('time-label').textContent='Fixation '+(ci+1)+' / '+N;
@@ -244,35 +246,88 @@ h1 { font-size: 1.6em; margin-bottom: 0.3em; }
 h1 a { color: #ff9933; text-decoration: none; }
 .subtitle { color: #aaa; margin-bottom: 1.5em; line-height: 1.5; }
 .subtitle a { color: #6af; text-decoration: none; }
-.trial { margin: 0.6em 0; padding: 0.8em 1em; background: #1a1a1a; border-radius: 6px; border-left: 3px solid #333; transition: border-color 0.2s; }
-.trial:hover { border-left-color: #ff9933; }
-.trial a { color: #eee; text-decoration: none; font-weight: 600; font-size: 0.95em; }
+.trial { margin: 0.6em 0; background: #1a1a1a; border-radius: 6px; border-left: 3px solid #333; transition: border-color 0.2s, background 0.2s; cursor: pointer; }
+.trial:hover { border-left-color: #ff9933; background: #222; }
+.trial a { display: block; padding: 0.8em 1em; color: #eee; text-decoration: none; cursor: pointer; }
 .trial .tag { color: #ff9933; font-size: 0.8em; text-transform: uppercase; letter-spacing: 0.5px; }
+.trial .id { font-weight: 600; font-size: 0.95em; }
 .trial .query { color: #aaa; font-size: 0.85em; margin-top: 2px; }
-.trial .meta { color: #666; font-size: 0.8em; margin-top: 2px; }
+.trial .meta { color: #888; font-size: 0.8em; margin-top: 2px; }
 kbd { background: #333; padding: 1px 6px; border-radius: 3px; font-size: 0.85em; color: #ccc; }
 .controls-help { color: #888; font-size: 0.85em; margin-bottom: 1.5em; }
 footer { margin-top: 2em; padding-top: 1em; border-top: 1px solid #333; color: #666; font-size: 0.8em; }
 footer a { color: #888; }
 </style></head><body>
-<h1><a href="https://github.com/andyed/scrutinizer">Scrutinizer</a> × AdSERP</h1>
+<h1><a href="https://github.com/andyed/scrutinizer2025">Scrutinizer</a> × AdSERP</h1>
 <p class="subtitle">
-  Interactive scanpath replays of eye-tracking data from the
-  <a href="https://doi.org/10.1145/3726302.3730325">AdSERP dataset</a>,
-  rendered through Scrutinizer's neuroscience-based foveated vision simulation
-  (LGN/V1/DoG peripheral degradation with infinite visual memory).
+  Each page below replays a complete search session from the
+  <a href="https://doi.org/10.1145/3726302.3730325">AdSERP dataset</a>:
+  numbered eye fixations, mouse cursor path, page scroll positions, and
+  <a href="https://github.com/andyed/scrutinizer2025">Scrutinizer</a>-simulated
+  peripheral vision — showing what the searcher could actually resolve
+  at each moment. The background image is rendered through Scrutinizer's
+  LGN/V1/DoG foveated pipeline with infinite visual memory accumulation.
+</p>
+<p class="subtitle" style="color:#888;">
+  AdSERP: 47 participants, 2,776 transactional Google queries, Gazepoint GP3 HD eye tracker at 150Hz.
+  Trials below are prototypical examples of distinct search behaviors.
 </p>
 <p class="controls-help">
-  <kbd>←</kbd><kbd>→</kbd> step &middot; <kbd>Space</kbd> play/pause &middot; drag timeline to scrub
+  <kbd>&larr;</kbd><kbd>&rarr;</kbd> step through fixations &middot;
+  <kbd>Space</kbd> play/pause &middot;
+  drag timeline to scrub &middot;
+  Window selector limits visible fixation history
 </p>
-${results.map(r => `<div class="trial">
+${results.map(r => `<div class="trial"><a href="${r.id}.html">
   <span class="tag">${r.tag.replace(/_/g, ' ')}</span>
-  <div><a href="${r.id}.html">${r.id}</a></div>
+  <div class="id">${r.id}</div>
   <div class="query">"${r.query}"</div>
   <div class="meta">${r.n} fixations${r.hasGazeplot ? ' · Scrutinizer rendered' : ''}</div>
-</div>`).join('\n')}
+</a></div>`).join('\n')}
+<details style="margin-top:2em;color:#aaa;">
+<summary style="cursor:pointer;color:#ccc;font-size:0.95em;margin-bottom:0.8em;">How this was built</summary>
+<div style="line-height:1.7;font-size:0.85em;">
+<p>Each background image is a full-page foveated render produced by
+<a href="https://github.com/andyed/scrutinizer2025" style="color:#ff9933;">Scrutinizer</a>, a
+neuroscience-based peripheral vision simulator. Scrutinizer models the
+human visual system's resolution falloff from fovea to periphery using
+a pipeline inspired by the lateral geniculate nucleus (LGN), primary visual
+cortex (V1), and difference-of-Gaussians (DoG) spatial frequency filtering.</p>
+
+<p><strong>Infinite visual memory mode</strong> accumulates every fixation across
+the entire scanpath. As each fixation is replayed, the foveal region at
+that position is "remembered" — remaining sharp while everything else
+degrades through the peripheral pipeline. The final image shows exactly
+what the participant could have resolved across their full search session:
+sharp where they looked, degraded where they didn't.</p>
+
+<p><strong>Pipeline:</strong></p>
+<ol style="margin-left:1.5em;color:#999;">
+<li>The <a href="https://github.com/andyed/attentional-foraging/blob/main/scripts/find_interesting_trials.py" style="color:#6af;">interesting trials script</a>
+  identifies prototypical search behaviors from 2,776 AdSERP trials</li>
+<li>The <a href="https://github.com/andyed/scrutinizer2025/blob/main/renderer/scanpath/importers/adserp-importer.js" style="color:#6af;">AdSERP importer</a>
+  parses fixation CSVs (page-space coords from Gazepoint GP3 HD at 150Hz),
+  mouse events (evtrack pageX/pageY), scroll timelines, and trial metadata —
+  reconciling two coordinate systems
+  (<a href="https://github.com/andyed/scrutinizer2025/blob/main/docs/adserp-coordinate-system.md" style="color:#6af;">coordinate reference</a>)</li>
+<li>The <a href="https://github.com/andyed/scrutinizer2025/blob/main/scripts/capture-fullpage-gazeplot.js" style="color:#6af;">fullpage gazeplot script</a>
+  walks each fixation through Scrutinizer's Electron-based WebGL pipeline with
+  <code style="background:#222;padding:1px 4px;border-radius:2px;">TEST_VISUAL_MEMORY=-1</code> (infinite accumulation),
+  then tile-captures the full page at each scroll position and stitches them</li>
+<li>The interactive overlay (fixation numbers, saccade lines, timeline scrubber)
+  is generated as self-contained HTML with the gazeplot PNG as background</li>
+</ol>
+
+<p style="margin-top:0.8em;"><strong>Data:</strong>
+<a href="https://doi.org/10.1145/3726302.3730325" style="color:#6af;">AdSERP</a> —
+Latifzadeh et al., 2,776 transactional Google SERP queries, 47 participants,
+Gazepoint GP3 HD eye tracker, simultaneous mouse + scroll + gaze recording.
+<a href="https://zenodo.org/records/15236546" style="color:#6af;">Dataset on Zenodo</a>.</p>
+</div>
+</details>
+
 <footer>
-  <a href="https://github.com/andyed/scrutinizer">Scrutinizer</a> ·
+  <a href="https://github.com/andyed/scrutinizer2025">Scrutinizer</a> ·
   <a href="https://github.com/andyed/attentional-foraging">attentional-foraging</a> ·
   <a href="https://doi.org/10.1145/3726302.3730325">AdSERP paper</a> ·
   Built ${new Date().toISOString().slice(0, 10)}

@@ -32,12 +32,14 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .info-panel .val { color: #ccc; }
 .info-panel a { color: #ff9933; text-decoration: none; font-weight: 600; }
 .info-panel a:hover { text-decoration: underline; }
-.back { position: fixed; top: 8px; left: 8px; z-index: 100; font-size: 12px; }
+.back { font-size: 12px; }
 .back a { color: #6af; text-decoration: none; }
 </style></head><body>
-<div class="back"><a href="index.html">&larr; All trials</a></div>
 <div class="header">
-  <h1>p045-b2-t6 <span>— buy gates gates 22650 lower radiator hose</span></h1>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <span class="back"><a href="index.html">&larr; All</a></span>
+    <h1>p045-b2-t6 <span>— buy gates gates 22650 lower radiator hose</span></h1>
+  </div>
   <div class="controls">
     <label><input type="checkbox" id="lines-toggle" checked> Lines</label>
     <label><input type="checkbox" id="numbers-toggle" checked> Numbers</label>
@@ -64,7 +66,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   </div>
 </div>
 <div class="info-panel">
-  <span><a href="https://github.com/andyed/scrutinizer">Scrutinizer rendering</a></span>
+  <span><a href="https://github.com/andyed/scrutinizer2025">Scrutinizer rendering</a></span>
   <span>Position: <span class="val" id="info-pos">—</span></span>
   <span>Duration: <span class="val" id="info-dur">—</span></span>
   <span>Fixations: <span class="val" id="info-seen">0</span></span>
@@ -96,8 +98,8 @@ const l=se('text',{x:CK.x+18,y:CK.y+4,'font-family':'monospace','font-weight':'b
 function uv(){for(let i=0;i<N;i++){const v=i<=ci;cE[i].style.display=v?'':'none';tE[i].style.display=v&&nt.checked?'':'none';
 if(lE[i])lE[i].style.display=v&&lt.checked?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',pl&&i===ci?1:.8)}
 if(ci>=0&&N>1)ph.style.left=(F[ci].t-T0)/TD*100+'%';
-if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px';
-const vr=vw.getBoundingClientRect(),fy=f.y-vw.scrollTop;if(fy<100||fy>vr.height-100)vw.scrollTo({top:f.y-vr.height/2,behavior:'smooth'})}else fr.style.display='none';
+if(ci>=0){const f=F[ci];const vr=vw.getBoundingClientRect(),fy=f.y-vw.scrollTop;if(fy<100||fy>vr.height-100)vw.scrollTo({top:f.y-vr.height/2,behavior:'smooth'})}
+if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px'}else fr.style.display='none';
 if(ci>=0){const f=F[ci];document.getElementById('info-pos').textContent='('+f.x+','+f.y+')';
 document.getElementById('info-dur').textContent=f.d+'ms';document.getElementById('info-seen').textContent=ci+1;
 document.getElementById('time-label').textContent='Fixation '+(ci+1)+' / '+N;
