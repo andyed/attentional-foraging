@@ -118,7 +118,7 @@ The key insight: **per-fixation duration does not vary with position.** Each rea
 
 ## 5. Mouse-gaze convergence depends on click intent
 
-With scroll-corrected coordinates, distance starts low (~90px), rises as the user scrolls (gaze follows content, mouse stays in screen space), peaks near ~500px, then converges sharply in the last ~2s before click.
+With scroll-corrected coordinates, distance starts low (~90px), rises as the user scrolls (gaze follows content, mouse stays in screen space), peaks near ~500px, with a modest downturn in the final 1-2s before click. The "sharp convergence" reported in v0 was largely an artifact of uncorrected coordinates; the corrected picture is dominated by scroll accumulation.
 
 **Notebook:** [convergence_analysis.ipynb](../notebooks/convergence_analysis.ipynb)
 
@@ -151,17 +151,17 @@ The decomposition finding — that position-dependent evaluation decline comes f
 
 ## What would test priming properly
 
-The bag-of-words overlap measure at the result level is too coarse and too confounded with position. Paths forward:
+Tested at three granularities — bag-of-words, semantic embeddings (mxbai-embed-large cosine similarity), and within-position controls — all null. The remaining paths:
 
-1. **Token-level fixation analysis:** Map individual fixations to specific words within results. Test whether previously-seen tokens receive fewer refixations than novel tokens within the same result. This is the E-Z Reader prediction and requires word-level AOI mapping from the SERP HTML.
+1. **Token-level fixation analysis:** Map individual fixations to specific words within results. Test whether previously-seen tokens receive fewer refixations than novel tokens within the same result. This is the E-Z Reader prediction and requires word-level AOI mapping from the SERP HTML. The only untested granularity.
 
-2. **Semantic embeddings:** Sentence-level similarity (e.g., via embedding cosine distance) captures paraphrase and synonym priming that bag-of-words misses. A result about "delay pedals" is semantically primed by a prior result about "echo effects" even with zero token overlap.
+2. ~~**Semantic embeddings:**~~ Tested. Sentence-level cosine similarity (mxbai-embed-large) between each result's snippet embedding and the centroid of all prior result embeddings. Null within-position, same as bag-of-words.
 
-3. **At-scale production logs:** Millions of queries with natural satisficing behavior. Measure time-to-first-click by position, conditioned on SERP content similarity. The larger N may detect small effects invisible in 2,776 lab trials. This also provides the natural-stopping-criterion test that the forced-choice paradigm cannot (cf. Huang, White & Buscher 2012 on production-scale cursor data).
+3. **At-scale production logs:** Millions of queries with natural satisficing behavior. Measure time-to-first-click by position, conditioned on SERP content similarity. The larger N may detect small effects invisible in 2,776 lab trials. This also provides the natural-stopping-criterion test that the forced-choice paradigm cannot.
 
-4. **Within-result fixation sequences:** For results that are revisited (regression trials), compare fixation patterns on the first vs second visit. If priming operates, the second visit should be shorter *and* show a different scanpath (skipping familiar tokens, fixating novel ones).
+4. **Within-result fixation sequences:** For results that are revisited (regression trials), compare fixation patterns on the first vs second visit. If priming operates, the second visit should show a different scanpath (skipping familiar tokens, fixating novel ones).
 
-5. **Residual dwell model (Peter Dixon-Moses):** Establish a per-user baseline for expected evaluation time using TTI as a calibrator (r=0.77). Residuals from this model — "this result held attention longer than expected" — may reveal content-driven effects that position-level analysis cannot.
+5. **Residual dwell model:** Establish a per-user baseline for expected evaluation time using TTI as a calibrator (r=0.77). Residuals from this model — "this result held attention longer than expected" — may reveal content-driven effects that position-level analysis cannot.
 
 ---
 
@@ -213,7 +213,7 @@ The natural rate is almost certainly much lower than AdSERP's 69%. Anecdotally, 
 
 **Viewport time computation (v3 → v4):** The prior `compute_viewport_time` only counted time between scroll events. Pre-scroll periods (page load → first scroll, where position 0 is visible the entire time) and post-scroll periods were dropped. This caused position 0 dwell ratios >1.0 (e.g., 13,000ms fixation on 183ms computed viewport — a 73x ratio). Fixed by covering the full trial window. Position 0 dwell ratio corrected from 1.35 → 0.28.
 
-**Forward-only shape test (new):** Isolating forward-scanning periods (excluding scroll regressions), the gaze dwell ratio *increases* with position (Spearman ρ = +0.73 on position means 0-8, permutation p = 0.98 against priming). Users dwell longer on later results during first-pass scanning — consistent with increasing cognitive load from holding more candidates in working memory. The aggregate partial r = -0.060 was driven by regressions, but this does not indicate priming: lower dwell on revisit is expected from repetition/recognition (the user already encoded the content), and is further confounded by ballistic backward scroll dynamics that create systematically shorter viewport windows at intermediate positions (see `scroll_kinematics.ipynb`). The within-position test is null for regression trials too.
+**Forward-only shape test (new):** Isolating forward-scanning periods (excluding scroll regressions), the gaze dwell ratio *increases* with position (Spearman ρ = +0.73 on position means 0-8 (corrected to +0.82 after FPOGY clamp in v5), permutation p = 0.98 against priming). Users dwell longer on later results during first-pass scanning — consistent with increasing cognitive load from holding more candidates in working memory. The aggregate partial r = -0.060 was driven by regressions, but this does not indicate priming: lower dwell on revisit is expected from repetition/recognition (the user already encoded the content), and is further confounded by ballistic backward scroll dynamics that create systematically shorter viewport windows at intermediate positions (see `scroll_kinematics.ipynb`). The within-position test is null for regression trials too.
 
 **Metric rename:** "Eval rate" / "attention density" → "gaze dwell ratio" (fixation duration / visible duration). Both numerator and denominator are durations in ms; the result is a dimensionless ratio, not a rate.
 
@@ -225,4 +225,4 @@ The natural rate is almost certainly much lower than AdSERP's 69%. Anecdotally, 
 
 ---
 
-*v5, 2026-04-02. v1: aggregate priming correlation. v2: regression-stratified split (re-evaluation vs first-pass). v3: within-position controls show bag-of-words overlap does not survive position confound. v4: viewport time bug fix; forward-only shape test shows dwell increases with position (ρ = +0.73), reversing priming prediction; metric renamed to gaze dwell ratio. v5: FPOGY clamp fix (24.5% of fixations out-of-bounds); position 9 dwell ratio 1.25 → 0.79; scroll kinematics analysis confirms ballistic regression confound (ρ = -0.762); regression-trial "priming" reframed as triple confound (position, repetition, kinematics).*
+*v6, 2026-04-02. v1: aggregate priming correlation. v2: regression-stratified split (re-evaluation vs first-pass). v3: within-position controls show bag-of-words overlap does not survive position confound. v4: viewport time bug fix; forward-only shape test shows dwell increases with position (ρ = +0.73), reversing priming prediction; metric renamed to gaze dwell ratio. v5: FPOGY clamp fix (24.5% of fixations out-of-bounds); position 9 dwell ratio 1.25 → 0.79; scroll kinematics analysis confirms ballistic regression confound (ρ = -0.762); regression-trial "priming" reframed as triple confound (position, repetition, kinematics).*

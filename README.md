@@ -8,7 +8,7 @@
 
 This project has three goals:
 
-1. **Test the priming hypothesis.** In a [2021 CHIIR workshop talk](https://www.linkedin.com/in/andyed/), I conjectured that result evaluation speeds up down the SERP partly because of cumulative lexical priming — previously encountered terms get cheaper to process on re-encounter. The AdSERP dataset provided the first opportunity to test this directly with eye-tracking fixation data. (Result: [disconfirmed at bag-of-words granularity](#priming-aggregate-correlation-does-not-survive-within-position-controls), but the question isn't closed — sharper metrics may reveal first-pass effects.)
+1. **Test the priming hypothesis.** In a [2021 CHIIR workshop talk](https://www.linkedin.com/in/andyed/), I conjectured that result evaluation speeds up down the SERP partly because of cumulative lexical priming — previously encountered terms get cheaper to process on re-encounter. The AdSERP dataset provided the first opportunity to test this directly with eye-tracking fixation data. (Result: [null at three granularities](#cumulative-content-overlap-does-not-predict-evaluation-speed) — bag-of-words, semantic embeddings, and within-position controls. The most parsimonious explanation for slower evaluation at lower positions is growing working memory load, not content priming. Token-level fixation analysis remains untested.)
 
 2. **Build out gaze replay for [Scrutinizer](https://github.com/andyed/scrutinizer2025).** Scrutinizer is a neuroscience-based foveated vision simulator. AdSERP's simultaneous gaze + mouse + scroll recordings on real Google SERPs were the ideal stress test for a new scanpath replay pipeline — importing eye-tracking data and rendering what the searcher could actually resolve at each fixation.
 

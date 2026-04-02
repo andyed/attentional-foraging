@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 680" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .box { fill: #f0f4f8; stroke: #4a6785; stroke-width: 1.5; }
+    .diamond { fill: #f0f4f8; stroke: #4a6785; stroke-width: 1.5; }
+    .rounded { fill: #e8edf2; stroke: #4a6785; stroke-width: 1.5; }
+    .engage-zone { fill: #e8f5e9; stroke: #2e7d32; stroke-width: 1.5; stroke-dasharray: 6 3; }
+    .arrow { stroke: #4a6785; stroke-width: 1.5; fill: none; marker-end: url(#ah); }
+    .line { stroke: #4a6785; stroke-width: 1.5; fill: none; }
+    .label { font-size: 12.5px; fill: #1a2a3a; text-anchor: middle; }
+    .sublabel { font-size: 9.5px; fill: #5a7a9a; text-anchor: middle; }
+    .edgelabel { font-size: 9px; fill: #5a7a9a; }
+    .zone-label { font-size: 11px; fill: #2e7d32; font-weight: 600; }
+    .note { font-size: 9px; fill: #7a8a9a; font-style: italic; }
+  </style>
+  <defs>
+    <marker id="ah" markerWidth="7" markerHeight="5" refX="6.5" refY="2.5" orient="auto">
+      <path d="M0,0 L7,2.5 L0,5 Z" fill="#4a6785" />
+    </marker>
+  </defs>
+
+  <!-- ═══ Top flow ═══ -->
+
+  <!-- Page Loads -->
+  <rect x="120" y="20" width="120" height="32" rx="16" class="rounded" />
+  <text x="180" y="41" class="label">Page Loads</text>
+
+  <line x1="180" y1="52" x2="180" y2="72" class="arrow" />
+
+  <!-- Find Results -->
+  <rect x="120" y="72" width="120" height="36" rx="5" class="box" />
+  <text x="180" y="93" class="label">Find Results</text>
+
+  <line x1="180" y1="108" x2="180" y2="130" class="arrow" />
+
+  <!-- Evaluate Utility -->
+  <rect x="120" y="130" width="120" height="36" rx="5" class="box" />
+  <text x="180" y="151" class="label">Evaluate Utility</text>
+
+  <line x1="180" y1="166" x2="180" y2="190" class="arrow" />
+
+  <!-- Engage or Refine diamond -->
+  <polygon points="180,190 248,225 180,260 112,225" class="diamond" />
+  <text x="180" y="222" class="label">Engage or</text>
+  <text x="180" y="235" class="label">Refine?</text>
+
+  <!-- Refine — left loop back to Find Results -->
+  <line x1="112" y1="225" x2="60" y2="225" class="line" />
+  <line x1="60" y1="225" x2="60" y2="90" class="line" />
+  <line x1="60" y1="90" x2="120" y2="90" class="arrow" />
+  <text x="66" y="160" class="edgelabel" transform="rotate(-90, 66, 160)">refine query</text>
+
+  <!-- Engage — down -->
+  <line x1="180" y1="260" x2="180" y2="288" class="arrow" />
+  <text x="186" y="277" class="edgelabel" text-anchor="start">engage</text>
+
+  <!-- ═══ Engage zone ═══ -->
+  <rect x="50" y="288" width="310" height="360" rx="8" class="engage-zone" />
+  <text x="64" y="305" class="zone-label">Engage</text>
+
+  <!-- Locate Next Result -->
+  <rect x="115" y="314" width="130" height="36" rx="5" class="box" style="fill:#e8f5e9;" />
+  <text x="180" y="336" class="label">Locate Next Result</text>
+
+  <line x1="180" y1="350" x2="180" y2="374" class="arrow" />
+
+  <!-- Evaluate Result -->
+  <rect x="115" y="374" width="130" height="36" rx="5" class="box" style="fill:#e8f5e9;" />
+  <text x="180" y="396" class="label">Evaluate Result</text>
+
+  <line x1="180" y1="410" x2="180" y2="434" class="arrow" />
+
+  <!-- Click? diamond -->
+  <polygon points="180,434 220,458 180,482 140,458" class="diamond" style="fill:#e8f5e9;" />
+  <text x="180" y="461" class="label" font-size="11">Click?</text>
+
+  <!-- Click yes — right, exits to Done -->
+  <line x1="220" y1="458" x2="320" y2="458" class="arrow" />
+  <text x="260" y="451" class="edgelabel" text-anchor="middle">yes</text>
+
+  <!-- Done terminal -->
+  <rect x="320" y="444" width="30" height="28" rx="14" class="rounded" style="fill:#d4edda;" />
+  <text x="335" y="462" class="label" font-size="9">Done</text>
+
+  <!-- Click no — down to End of Page? -->
+  <line x1="180" y1="482" x2="180" y2="510" class="arrow" />
+  <text x="186" y="498" class="edgelabel" text-anchor="start">no</text>
+
+  <!-- End of Page? diamond -->
+  <polygon points="180,510 235,540 180,570 125,540" class="diamond" style="fill:#e8f5e9;" />
+  <text x="180" y="536" class="label" font-size="10">End of</text>
+  <text x="180" y="548" class="label" font-size="10">page?</text>
+
+  <!-- Not end of page — loop back up to Locate Next Result -->
+  <line x1="125" y1="540" x2="80" y2="540" class="line" />
+  <line x1="80" y1="540" x2="80" y2="332" class="line" />
+  <line x1="80" y1="332" x2="115" y2="332" class="arrow" />
+  <text x="86" y="440" class="edgelabel" transform="rotate(-90, 86, 440)">more results</text>
+
+  <!-- End of page yes — down to Deliberate diamond -->
+  <line x1="180" y1="570" x2="180" y2="594" class="arrow" />
+  <text x="186" y="585" class="edgelabel" text-anchor="start">yes</text>
+
+  <!-- Deliberate diamond -->
+  <polygon points="180,594 240,620 180,646 120,620" class="diamond" style="fill:#fff3e0; stroke:#e65100;" />
+  <text x="180" y="623" class="label" font-size="10" fill="#bf360c">Deliberate</text>
+
+  <!-- Deliberate: scroll back up (regress) — left, back to Locate -->
+  <line x1="120" y1="620" x2="68" y2="620" class="line" style="stroke:#e65100;" />
+  <line x1="68" y1="620" x2="68" y2="332" class="line" style="stroke:#e65100;" />
+  <line x1="68" y1="332" x2="80" y2="332" class="arrow" style="stroke:#e65100;" />
+  <text x="74" y="605" class="edgelabel" fill="#bf360c" transform="rotate(-90, 74, 560)">regress (scroll back)</text>
+
+  <!-- Deliberate: choose visible result — right to Done -->
+  <line x1="240" y1="620" x2="320" y2="620" class="line" style="stroke:#e65100;" />
+  <line x1="320" y1="620" x2="320" y2="472" class="arrow" style="stroke:#e65100;" />
+  <text x="270" y="613" class="edgelabel" fill="#bf360c" text-anchor="middle">choose visible</text>
+
+  <!-- Deliberate: next page — down out of zone -->
+  <!-- (exits engage zone conceptually) -->
+  <line x1="180" y1="646" x2="180" y2="660" class="line" style="stroke:#e65100; marker-end: url(#ah);" />
+  <text x="186" y="658" class="edgelabel" fill="#bf360c" text-anchor="start">next page</text>
+
+  <!-- ═══ Attribution ═══ -->
+  <text x="200" y="678" class="note" text-anchor="middle">SERP interaction model — after Marchionini (1995), Gwizdka (2010)</text>
+</svg>

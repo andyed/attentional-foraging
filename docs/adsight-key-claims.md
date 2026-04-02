@@ -80,7 +80,7 @@ AdSight answers: "Can we predict where a user looked from where their mouse went
 
 We answer different questions:
 - "What do users actually look at before clicking?" → Fixation coverage (95% above click)
-- "Does cumulative content exposure speed up evaluation?" → Priming (aggregate r=-0.054, but does not survive within-position controls; forward-only dwell increases with position, ρ = +0.73)
+- "Does cumulative content exposure speed up evaluation?" → Tested at 3 granularities (bag-of-words, semantic embeddings, within-position controls): null at all. Forward-only dwell increases with position (ρ = +0.82) — cognitive load from growing candidate set.
 - "Are there stable individual differences in evaluation strategy?" → Satisfice/optimize segmentation
 - "Can we calibrate individual processing speed from early behavior?" → TTI calibrator (r=0.77)
 

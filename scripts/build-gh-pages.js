@@ -56,9 +56,13 @@ for (const trial of trials) {
     const page = await playwrightCtx.newPage();
     await page.goto(`file://${path.resolve(serpSrc)}`, { waitUntil: 'networkidle' });
     await page.waitForTimeout(500);
+    // Get full page height, resize viewport to match, then clip to exactly 1280px wide
+    const docHeight = await page.evaluate(() => Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight));
+    await page.setViewportSize({ width: 1280, height: docHeight });
+    await page.waitForTimeout(300);
     await page.screenshot({
         path: path.join(SITE_DIR, 'serp-renders', `${trial.trial_id}.png`),
-        fullPage: true
+        clip: { x: 0, y: 0, width: 1280, height: docHeight }
     });
     await page.close();
     console.log(`    ${trial.trial_id}`);
@@ -116,6 +120,13 @@ for (const trial of trials) {
         click = { x: parseFloat(c[1]) * rx, y: parseFloat(c[2]) };
     }
 
+    // Parse mouse movement events for cursor replay
+    // Scale X by rx (window→screenshot space), Y is raw pageY
+    const mouseEvents = mouseCsv.trim().split('\n').slice(1)
+        .map(l => { const c = l.split(','); return { t: parseInt(c[0]), x: parseFloat(c[1]), y: parseFloat(c[2]), e: (c[3]||'').trim() }; })
+        .filter(m => isFinite(m.t) && isFinite(m.x) && ['mousemove','mouseover','click','mousedown','mouseup'].includes(m.e))
+        .map(m => ({ t: m.t - (fixations.length > 0 ? fixations[0].t : 0), x: m.x * rx, y: m.y, e: m.e }));
+
     const maxY = Math.max(docH, ...fixations.map(f => f.y)) + 100;
     const fovealR = 60;
     const N = fixations.length;
@@ -153,6 +164,10 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .foveal-ring { position: absolute; z-index: 11; pointer-events: none; border: 2px solid rgba(255,255,255,0.7);
   border-radius: 50%; width: ${fovealR*2}px; height: ${fovealR*2}px; transform: translate(-50%, -50%);
   box-shadow: 0 0 20px rgba(255,255,255,0.3); transition: left 0.08s, top 0.08s; display: none; }
+.mouse-cursor { position: absolute; z-index: 999; pointer-events: none; display: none;
+  width: 20px; height: 20px; transition: left 0.03s linear, top 0.03s linear; }
+.mouse-cursor svg { width: 20px; height: 28px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); }
+.mouse-cursor.clicking svg path { fill: #ff3333; }
 .timeline { width: ${screenW}px; background: #1a1a1a; padding: 8px 16px; border-top: 1px solid #333; }
 .timeline-track { position: relative; height: 40px; background: #222; border-radius: 4px; cursor: pointer; overflow: hidden; }
 .timeline-ticks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
@@ -186,6 +201,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
     <svg class="scanpath-svg" id="scanpath-svg" xmlns="http://www.w3.org/2000/svg"
          width="${screenW}" height="${maxY}" viewBox="0 0 ${screenW} ${maxY}"></svg>
     <div class="foveal-ring" id="foveal-ring"></div>
+    <div class="mouse-cursor" id="mouse-cursor"><svg viewBox="0 0 20 28"><path d="M0,0 L0,22 L5.5,17 L10,28 L14,26 L9,16 L16,16 Z" fill="#ff9933" stroke="#000" stroke-width="1"/></svg></div>
   </div>
 </div>
 <div class="timeline">
@@ -207,14 +223,15 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   <span><a href="png/${id}.png" download style="color:#6af;text-decoration:none;">Download PNG</a></span>
 </div>
 <script>
-const F=${JSON.stringify(fixations)},CK=${JSON.stringify(click)},FR=${fovealR},SW=${screenW},N=${N},
+const F=${JSON.stringify(fixations)},CK=${JSON.stringify(click)},ME=${JSON.stringify(mouseEvents)},FR=${fovealR},SW=${screenW},N=${N},
 T0=${T0},TD=${TOTAL_DUR},MND=${minD},MXD=${maxD};
 const rF=d=>8+(d-MND)/(MXD-MND+1)*22;
 const cF=(i,n)=>{const t=n>1?i/(n-1):0;return\`rgb(\${Math.round(50+205*t)},\${Math.round(50+100*(1-Math.abs(t-.5)*2))},\${Math.round(255-205*t)})\`};
 const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
-fr=document.getElementById('foveal-ring'),vw=document.getElementById('viewer'),
+fr=document.getElementById('foveal-ring'),mc=document.getElementById('mouse-cursor'),
+vw=document.getElementById('viewer'),
 lt=document.getElementById('lines-toggle'),nt=document.getElementById('numbers-toggle'),
-tt=document.getElementById('timeline-track');
+ws=document.getElementById('window-size'),tt=document.getElementById('timeline-track');
 let ci=N-1,pl=false,pt=null;
 const ns='http://www.w3.org/2000/svg';
 function se(t,a){const e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e}
@@ -233,7 +250,15 @@ function uv(){for(let i=0;i<N;i++){const v=i<=ci;cE[i].style.display=v?'':'none'
 if(lE[i])lE[i].style.display=v&&lt.checked?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',pl&&i===ci?1:.8)}
 if(ci>=0&&N>1)ph.style.left=(F[ci].t-T0)/TD*100+'%';
 if(ci>=0){const f=F[ci];const vr=vw.getBoundingClientRect(),fy=f.y-vw.scrollTop;if(fy<100||fy>vr.height-100)vw.scrollTo({top:f.y-vr.height/2,behavior:'smooth'})}
-if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px'}else fr.style.display='none';
+if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px';
+// Mouse cursor: interpolate position at current fixation time (relative)
+if(ME.length>0){const ft=f.t-T0;let mi=0;for(let i=0;i<ME.length;i++){if(ME[i].t<=ft)mi=i;else break;}
+const m0=ME[mi],m1=ME[Math.min(mi+1,ME.length-1)];
+let mx=m0.x,my=m0.y;if(m1.t>m0.t){const p=(ft-m0.t)/(m1.t-m0.t);mx=m0.x+(m1.x-m0.x)*p;my=m0.y+(m1.y-m0.y)*p;}
+mc.style.display='block';mc.style.left=mx+'px';mc.style.top=my+'px';mc.style.opacity='1';
+mc.classList.toggle('clicking',m0.e==='click'||m0.e==='mousedown');
+console.log('CURSOR',mx.toFixed(0),my.toFixed(0),m0.e);
+}}else{fr.style.display='none';mc.style.display='none';}
 if(ci>=0){const f=F[ci];document.getElementById('info-pos').textContent='('+f.x+','+f.y+')';
 document.getElementById('info-dur').textContent=f.d+'ms';document.getElementById('info-seen').textContent=ci+1;
 document.getElementById('time-label').textContent='Fixation '+(ci+1)+' / '+N;
@@ -246,8 +271,8 @@ tt.addEventListener('mousedown',e=>{dr=true;ts(e)});document.addEventListener('m
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){sf(ci+1);e.preventDefault()}if(e.key==='ArrowLeft'){sf(ci-1);e.preventDefault()}
 if(e.key===' '){tp();e.preventDefault()}if(e.key==='Home'){sf(0);e.preventDefault()}if(e.key==='End'){sf(N-1);e.preventDefault()}});
 function tp(){pl=!pl;document.getElementById('play-btn').textContent=pl?'⏸ Pause':'▶ Play';
-document.getElementById('play-btn').classList.toggle('active',pl);if(pl){if(ci>=N-1)ci=-1;pn()}else{clearTimeout(pt);fr.style.display='none';ci=N-1;uv()}}
-function pn(){if(!pl)return;const n=ci+1;if(n>=N){pl=false;document.getElementById('play-btn').textContent='▶ Play';fr.style.display='none';ci=N-1;uv();return}
+document.getElementById('play-btn').classList.toggle('active',pl);if(pl){if(ci>=N-1)ci=-1;pn()}else{clearTimeout(pt);fr.style.display='none';mc.style.display='none';ci=N-1;uv()}}
+function pn(){if(!pl)return;const n=ci+1;if(n>=N){pl=false;document.getElementById('play-btn').textContent='▶ Play';fr.style.display='none';mc.style.display='none';ci=N-1;uv();return}
 sf(n);pt=setTimeout(pn,Math.max(100,F[n].d*.5))}
 document.getElementById('play-btn').addEventListener('click',tp);
 document.getElementById('reset-btn').addEventListener('click',()=>{pl=false;clearTimeout(pt);document.getElementById('play-btn').textContent='▶ Play';ci=N-1;uv();vw.scrollTo({top:0})});

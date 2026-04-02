@@ -6,7 +6,7 @@ fs.mkdirSync(path.join(siteDir, 'png'), { recursive: true });
 const files = fs.readdirSync(siteDir).filter(f => f.match(/^p\d+-b\d+-t\d+\.html$/)).sort();
 (async () => {
     const browser = await chromium.launch();
-    const ctx = await browser.newContext({ viewport: { width: 1320, height: 1024 }, deviceScaleFactor: 2 });
+    const ctx = await browser.newContext({ viewport: { width: 1320, height: 1024 }, deviceScaleFactor: 1 });
     for (const f of files) {
         const id = f.replace('.html', '');
         const page = await ctx.newPage();
