@@ -13,6 +13,7 @@
 
 const path = require('path');
 const fs = require('fs');
+const { chromium } = require('playwright');
 
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'AdSERP', 'data');
@@ -22,8 +23,9 @@ const SITE_DIR = path.join(ROOT, 'site');
 
 // Clean and create site structure
 if (fs.existsSync(SITE_DIR)) fs.rmSync(SITE_DIR, { recursive: true });
-fs.mkdirSync(path.join(SITE_DIR, 'serps'), { recursive: true });
+fs.mkdirSync(path.join(SITE_DIR, 'serp-renders'), { recursive: true });
 fs.mkdirSync(path.join(SITE_DIR, 'gazeplots'), { recursive: true });
+fs.mkdirSync(path.join(SITE_DIR, 'png'), { recursive: true });
 
 // Load interesting trials
 const interestingPath = path.join(DATA_DIR, 'interesting-trials.json');
@@ -42,20 +44,40 @@ for (const [tag, info] of Object.entries(interesting.prototypical)) {
     trials.push({ tag, ...info });
 }
 
+async function main() {
+
 console.log(`Building site with ${trials.length} trials...\n`);
+
+// Step 1: Pre-render SERP screenshots at 1280px viewport using Playwright.
+// This ensures fixation coordinates (in 1280px screenshot space) align exactly.
+console.log('  Rendering SERP screenshots at 1280px...');
+const browser = await chromium.launch();
+const playwrightCtx = await browser.newContext({ viewport: { width: 1280, height: 1024 } });
+
+for (const trial of trials) {
+    const serpSrc = path.join(DATA_DIR, 'serps', `${trial.trial_id}.html`);
+    if (!fs.existsSync(serpSrc)) continue;
+    const page = await playwrightCtx.newPage();
+    await page.goto(`file://${path.resolve(serpSrc)}`, { waitUntil: 'networkidle' });
+    await page.waitForTimeout(500);
+    await page.screenshot({
+        path: path.join(SITE_DIR, 'serp-renders', `${trial.trial_id}.png`),
+        fullPage: true
+    });
+    await page.close();
+    console.log(`    ${trial.trial_id}`);
+}
+await browser.close();
+console.log('');
 
 // Process each trial
 const results = [];
 for (const trial of trials) {
     const id = trial.trial_id;
 
-    // Copy SERP HTML
-    const serpSrc = path.join(DATA_DIR, 'serps', `${id}.html`);
-    const serpDest = path.join(SITE_DIR, 'serps', `${id}.html`);
-    if (fs.existsSync(serpSrc)) {
-        fs.copyFileSync(serpSrc, serpDest);
-    } else {
-        console.log(`  ✗ ${id}: no SERP HTML`);
+    const serpRenderPath = path.join(SITE_DIR, 'serp-renders', `${id}.png`);
+    if (!fs.existsSync(serpRenderPath)) {
+        console.log(`  ✗ ${id}: no SERP render`);
         continue;
     }
 
@@ -104,8 +126,8 @@ for (const trial of trials) {
     const durations = fixations.map(f => f.d);
     const minD = Math.min(...durations) || 50, maxD = Math.max(...durations) || 500;
 
-    // Generate HTML with RELATIVE paths
-    const serpRelPath = `serps/${id}.html`;
+    // Relative paths for assets
+    const serpRenderRelPath = `serp-renders/${id}.png`;
     const gazeplotRelPath = `gazeplots/${id}.png`;
 
     const html = `<!DOCTYPE html>
@@ -127,8 +149,8 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .btn.active { background: #2a5a8a; border-color: #4a8aca; }
 .viewer { position: relative; width: ${screenW}px; height: 70vh; overflow-y: auto; overflow-x: hidden; background: #000; }
 .serp-container { position: relative; width: ${screenW}px; min-height: ${maxY}px; }
-.gazeplot-img { width: ${screenW}px; display: block; }
-.serp-iframe { width: ${screenW}px; height: ${maxY}px; border: none; display: block; }
+.serp-render { width: ${screenW}px; display: block; }
+.gazeplot-img { position: absolute; top: 0; left: 0; width: ${screenW}px; display: block; }
 .scanpath-svg { position: absolute; top: 0; left: 0; z-index: 10; pointer-events: none; }
 .foveal-ring { position: absolute; z-index: 11; pointer-events: none; border: 2px solid rgba(255,255,255,0.7);
   border-radius: 50%; width: ${fovealR*2}px; height: ${fovealR*2}px; transform: translate(-50%, -50%);
@@ -161,9 +183,8 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 </div>
 <div class="viewer" id="viewer">
   <div class="serp-container">
-    ${hasGazeplot
-        ? `<img class="gazeplot-img" src="${gazeplotRelPath}" />`
-        : `<iframe class="serp-iframe" src="${serpRelPath}" scrolling="no"></iframe>`}
+    <img class="serp-render" src="${serpRenderRelPath}" />
+    ${hasGazeplot ? `<img class="gazeplot-img" src="${gazeplotRelPath}" />` : ''}
     <svg class="scanpath-svg" id="scanpath-svg" xmlns="http://www.w3.org/2000/svg"
          width="${screenW}" height="${maxY}" viewBox="0 0 ${screenW} ${maxY}"></svg>
     <div class="foveal-ring" id="foveal-ring"></div>
@@ -356,3 +377,6 @@ fs.writeFileSync(path.join(SITE_DIR, '.nojekyll'), '');
 console.log(`\n  Site built: ${SITE_DIR}/`);
 console.log(`  ${results.length} trials, ${results.filter(r => r.hasGazeplot).length} with Scrutinizer renders`);
 console.log(`\n  Deploy: gh-pages -d site  (or push site/ to gh-pages branch)`);
+
+} // end async main
+main().catch(err => { console.error('Fatal:', err); process.exit(1); });
