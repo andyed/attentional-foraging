@@ -535,6 +535,147 @@
 }
 
 % ═══════════════════════════════════════════════════════════════════════════
+% ECONOMIC MODELS OF SEARCH / STOPPING
+% ═══════════════════════════════════════════════════════════════════════════
+
+@inproceedings{azzopardi2014economic,
+  author    = {Azzopardi, Leif},
+  title     = {Modelling Interaction with Economic Models of Search},
+  booktitle = {Proceedings of the 37th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  series    = {SIGIR '14},
+  year      = {2014},
+  pages     = {3--12},
+  publisher = {ACM},
+  doi       = {10.1145/2600428.2609574},
+  note      = {Applies microeconomic cost-benefit analysis to search interaction. Foundation for IFT-based stopping models.},
+}
+
+@inproceedings{azzopardi2019economichci,
+  author    = {Azzopardi, Leif and Zuccon, Guido},
+  title     = {Building Economic Models of Human Computer Interaction},
+  booktitle = {Extended Abstracts of the 2019 CHI Conference on Human Factors in Computing Systems},
+  series    = {CHI EA '19},
+  year      = {2019},
+  publisher = {ACM},
+  doi       = {10.1145/3290607.3299052},
+  note      = {Tutorial extending economic search models to HCI. C/W/L framework for evaluation.},
+}
+
+@inproceedings{maxwell2018scent,
+  author    = {Maxwell, David and Azzopardi, Leif},
+  title     = {Information Scent, Searching and Stopping},
+  booktitle = {Proceedings of the 40th European Conference on Information Retrieval},
+  series    = {ECIR '18},
+  year      = {2018},
+  publisher = {Springer},
+  doi       = {10.1007/978-3-319-76941-7_17},
+  note      = {SERP-level stopping model using information scent. Models leave decision but not within-page re-evaluation.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% CAROUSEL / RECOMMENDER EYE TRACKING
+% ═══════════════════════════════════════════════════════════════════════════
+
+@inproceedings{deleon2025recgaze,
+  author    = {de Le\'{o}n Mart\'{i}nez, Jurek and Jansen, Thomas and Schmitt, Christina and Tusche, Anita and de Rijke, Maarten},
+  title     = {{RecGaze}: The First Eye Tracking and User Interaction Dataset for Carousel Interfaces},
+  booktitle = {Proceedings of the 48th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  series    = {SIGIR '25},
+  year      = {2025},
+  publisher = {ACM},
+  doi       = {10.1145/3726302.3730301},
+  note      = {87 users, 3,477 interactions. Gaze + clicks + cursor on horizontal carousels. Horizontal analog of SERP scroll regressions.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% SCROLL COORDINATE METHODOLOGY
+% ═══════════════════════════════════════════════════════════════════════════
+
+@article{eyescrollr2024,
+  author    = {Brich, Irina R. and Buczny, Jacek and Eckstein, Miriam K. and Nebe, Sabrina and Spengler, Friedrich B.},
+  title     = {{eyeScrollR}: A Software Method for Reproducible Mapping of Eye-Tracking Data from Scrollable Web Pages},
+  journal   = {Behavior Research Methods},
+  volume    = {56},
+  year      = {2024},
+  doi       = {10.3758/s13428-024-02385-5},
+  note      = {Deterministic algorithm remapping gaze coordinates to full-page coordinates using scroll data. Validates our scroll-correction approach.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% CLICK MODELS
+% ═══════════════════════════════════════════════════════════════════════════
+
+@book{chuklin2015clickmodels,
+  author    = {Chuklin, Aleksandr and Markov, Ilya and de Rijke, Maarten},
+  title     = {Click Models for Web Search},
+  publisher = {Morgan \& Claypool},
+  series    = {Synthesis Lectures on Information Concepts, Retrieval, and Services},
+  year      = {2015},
+  doi       = {10.2200/S00654ED1V01Y201507ICR043},
+  note      = {Comprehensive survey. Most models assume monotonic top-to-bottom examination; our regression data breaks this assumption.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% LHIPA ALGORITHM
+% ═══════════════════════════════════════════════════════════════════════════
+
+@inproceedings{duchowski2020lhipa,
+  author    = {Duchowski, Andrew T. and Krejtz, Krzysztof and Krejtz, Izabela and Biele, Cezary and Niedzielska, Anna and Kiefer, Peter and Raubal, Martin and Giannopoulos, Ioannis},
+  title     = {The Low/High Index of Pupillary Activity},
+  booktitle = {Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems},
+  series    = {CHI '20},
+  year      = {2020},
+  pages     = {1--12},
+  publisher = {ACM},
+  doi       = {10.1145/3313831.3376394},
+  note      = {LHIPA algorithm: wavelet decomposition separating cognitive load from luminance in pupil diameter. The measure we computed on AdSERP data.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% SPATIAL MEMORY IN VISUAL SEARCH
+% ═══════════════════════════════════════════════════════════════════════════
+
+@article{solman2024spatial,
+  author    = {Solman, Gavin J. F. and Kingstone, Alan},
+  title     = {Knowing Where to Go: Spatial Memory Guides Eye and Body Movements in a Naturalistic Visual Search Task},
+  journal   = {Journal of Vision},
+  volume    = {24},
+  number    = {9},
+  year      = {2024},
+  doi       = {10.1167/jov.24.9.8},
+  note      = {Spatial memory guides return fixations in real-world search. Closest analog to our SERP regression spatial precision finding.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% SATISFICING IN IR
+% ═══════════════════════════════════════════════════════════════════════════
+
+@article{zhai2022satisficing,
+  author    = {Zhai, Junping and Qiu, Xinhan and Shi, Xin and Shi, Yong},
+  title     = {An Information Retrieval Benchmarking Model of Satisficing and Impatient Users' Behavior in Online Search Environments},
+  journal   = {Expert Systems with Applications},
+  volume    = {189},
+  year      = {2022},
+  doi       = {10.1016/j.eswa.2021.116089},
+  note      = {Models satisficing in IR using click logs. Our work adds eye-tracking and pupillometry dimensions.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% AD QUALITY / GAZE ON SERPS
+% ═══════════════════════════════════════════════════════════════════════════
+
+@inproceedings{buscher2010goodbad,
+  author    = {Buscher, Georg and Dumais, Susan T. and Cutrell, Edward},
+  title     = {The Good, the Bad, and the Random: An Eye-Tracking Study of Ad Quality in Web Search},
+  booktitle = {Proceedings of the 33rd International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  series    = {SIGIR '10},
+  year      = {2010},
+  publisher = {ACM},
+  doi       = {10.1145/1835449.1835459},
+  note      = {Ad quality affects gaze patterns. Users develop different examination strategies for ads vs organic. Supports our ad\_focused/ad\_ignorer split.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
 % MULTI-SIGNAL SERP EVALUATION
 % ═══════════════════════════════════════════════════════════════════════════
 
