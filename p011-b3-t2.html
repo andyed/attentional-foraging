@@ -17,8 +17,8 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .btn.active { background: #2a5a8a; border-color: #4a8aca; }
 .viewer { position: relative; width: 1280px; height: 70vh; overflow-y: auto; overflow-x: hidden; background: #000; }
 .serp-container { position: relative; width: 1280px; min-height: 3092px; }
-.gazeplot-img { width: 1280px; display: block; }
-.serp-iframe { width: 1280px; height: 3092px; border: none; display: block; }
+.serp-render { width: 1280px; display: block; }
+.gazeplot-img { position: absolute; top: 0; left: 0; width: 1280px; display: block; }
 .scanpath-svg { position: absolute; top: 0; left: 0; z-index: 10; pointer-events: none; }
 .foveal-ring { position: absolute; z-index: 11; pointer-events: none; border: 2px solid rgba(255,255,255,0.7);
   border-radius: 50%; width: 120px; height: 120px; transform: translate(-50%, -50%);
@@ -51,6 +51,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 </div>
 <div class="viewer" id="viewer">
   <div class="serp-container">
+    <img class="serp-render" src="serp-renders/p011-b3-t2.png" />
     <img class="gazeplot-img" src="gazeplots/p011-b3-t2.png" />
     <svg class="scanpath-svg" id="scanpath-svg" xmlns="http://www.w3.org/2000/svg"
          width="1280" height="3092" viewBox="0 0 1280 3092"></svg>
