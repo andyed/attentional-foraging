@@ -22,13 +22,23 @@ footer a { color: #888; }
 </style></head><body>
 <h1><a href="https://github.com/andyed/scrutinizer">Scrutinizer</a> × AdSERP</h1>
 <p class="subtitle">
-  Interactive scanpath replays of eye-tracking data from the
-  <a href="https://doi.org/10.1145/3726302.3730325">AdSERP dataset</a>,
-  rendered through Scrutinizer's neuroscience-based foveated vision simulation
-  (LGN/V1/DoG peripheral degradation with infinite visual memory).
+  Each page below replays a complete search session from the
+  <a href="https://doi.org/10.1145/3726302.3730325">AdSERP dataset</a>:
+  numbered eye fixations, mouse cursor path, page scroll positions, and
+  <a href="https://github.com/andyed/scrutinizer">Scrutinizer</a>-simulated
+  peripheral vision — showing what the searcher could actually resolve
+  at each moment. The background image is rendered through Scrutinizer's
+  LGN/V1/DoG foveated pipeline with infinite visual memory accumulation.
+</p>
+<p class="subtitle" style="color:#888;">
+  AdSERP: 47 participants, 2,776 transactional Google queries, Gazepoint GP3 HD eye tracker at 150Hz.
+  Trials below are prototypical examples of distinct search behaviors.
 </p>
 <p class="controls-help">
-  <kbd>←</kbd><kbd>→</kbd> step &middot; <kbd>Space</kbd> play/pause &middot; drag timeline to scrub
+  <kbd>←</kbd><kbd>→</kbd> step through fixations &middot;
+  <kbd>Space</kbd> play/pause &middot;
+  drag timeline to scrub &middot;
+  Window selector limits visible fixation history
 </p>
 <div class="trial">
   <a href="p045-b2-t6.html">
