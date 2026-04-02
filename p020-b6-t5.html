@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Scanpath: p020-b6-t5 — buy remy remy 25216 premium remanufactured starter</title>
+<meta name="viewport" content="width=1280">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #111; color: #eee; font-family: system-ui, -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; }
+.header { width: 1280px; padding: 10px 16px; background: #1a1a1a; border-bottom: 1px solid #333;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.header h1 { font-size: 14px; font-weight: 600; }
+.header h1 span { color: #aaa; font-weight: 400; }
+.controls { display: flex; gap: 12px; align-items: center; font-size: 12px; }
+.controls label { cursor: pointer; user-select: none; }
+.btn { background: #333; border: 1px solid #555; color: #eee; padding: 3px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; }
+.btn:hover { background: #444; }
+.btn.active { background: #2a5a8a; border-color: #4a8aca; }
+.viewer { position: relative; width: 1280px; height: 70vh; overflow-y: auto; overflow-x: hidden; background: #000; }
+.serp-container { position: relative; width: 1280px; min-height: 2876px; }
+.gazeplot-img { width: 1280px; display: block; }
+.serp-iframe { width: 1280px; height: 2876px; border: none; display: block; }
+.scanpath-svg { position: absolute; top: 0; left: 0; z-index: 10; pointer-events: none; }
+.foveal-ring { position: absolute; z-index: 11; pointer-events: none; border: 2px solid rgba(255,255,255,0.7);
+  border-radius: 50%; width: 120px; height: 120px; transform: translate(-50%, -50%);
+  box-shadow: 0 0 20px rgba(255,255,255,0.3); transition: left 0.08s, top 0.08s; display: none; }
+.timeline { width: 1280px; background: #1a1a1a; padding: 8px 16px; border-top: 1px solid #333; }
+.timeline-track { position: relative; height: 40px; background: #222; border-radius: 4px; cursor: pointer; overflow: hidden; }
+.timeline-ticks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.timeline-tick { position: absolute; bottom: 0; border-radius: 2px 2px 0 0; min-width: 2px; }
+.timeline-playhead { position: absolute; top: 0; width: 2px; height: 100%; background: #ff4444; z-index: 2; }
+.timeline-info { display: flex; justify-content: space-between; margin-top: 4px; font-size: 11px; color: #aaa; }
+.info-panel { width: 1280px; padding: 6px 16px; background: #1a1a1a; font-size: 11px; color: #aaa;
+  display: flex; gap: 20px; border-top: 1px solid #222; }
+.info-panel .val { color: #ccc; }
+.info-panel a { color: #ff9933; text-decoration: none; font-weight: 600; }
+.info-panel a:hover { text-decoration: underline; }
+.back { position: fixed; top: 8px; left: 8px; z-index: 100; font-size: 12px; }
+.back a { color: #6af; text-decoration: none; }
+</style></head><body>
+<div class="back"><a href="index.html">&larr; All trials</a></div>
+<div class="header">
+  <h1>p020-b6-t5 <span>— buy remy remy 25216 premium remanufactured starter</span></h1>
+  <div class="controls">
+    <label><input type="checkbox" id="lines-toggle" checked> Lines</label>
+    <label><input type="checkbox" id="numbers-toggle" checked> Numbers</label>
+    <button class="btn" id="play-btn">&#9654; Play</button>
+    <button class="btn" id="reset-btn">Reset</button>
+  </div>
+</div>
+<div class="viewer" id="viewer">
+  <div class="serp-container">
+    <img class="gazeplot-img" src="gazeplots/p020-b6-t5.png" />
+    <svg class="scanpath-svg" id="scanpath-svg" xmlns="http://www.w3.org/2000/svg"
+         width="1280" height="2876" viewBox="0 0 1280 2876"></svg>
+    <div class="foveal-ring" id="foveal-ring"></div>
+  </div>
+</div>
+<div class="timeline">
+  <div class="timeline-track" id="timeline-track">
+    <div class="timeline-ticks" id="timeline-ticks"></div>
+    <div class="timeline-playhead" id="playhead"></div>
+  </div>
+  <div class="timeline-info">
+    <span id="time-label">Fixation 0 / 297</span>
+    <span id="duration-label">0.0s / 58.6s</span>
+  </div>
+</div>
+<div class="info-panel">
+  <span><a href="https://github.com/andyed/scrutinizer">Scrutinizer rendering</a></span>
+  <span>Position: <span class="val" id="info-pos">—</span></span>
+  <span>Duration: <span class="val" id="info-dur">—</span></span>
+  <span>Fixations: <span class="val" id="info-seen">0</span></span>
+  <span>Click: <span class="val">(453, 555)</span></span>
+</div>
+<script>
+const F=[{"t":1675869686122,"x":566,"y":346,"d":167},{"t":1675869686223,"x":472,"y":298,"d":93},{"t":1675869686350,"x":237,"y":201,"d":100},{"t":1675869686744,"x":206,"y":25,"d":367},{"t":1675869686865,"x":218,"y":46,"d":114},{"t":1675869687032,"x":195,"y":48,"d":160},{"t":1675869687087,"x":189,"y":132,"d":47},{"t":1675869687268,"x":202,"y":292,"d":114},{"t":1675869687415,"x":233,"y":301,"d":141},{"t":1675869687562,"x":280,"y":326,"d":141},{"t":1675869687856,"x":262,"y":588,"d":267},{"t":1675869688024,"x":255,"y":632,"d":161},{"t":1675869688144,"x":279,"y":680,"d":114},{"t":1675869688285,"x":231,"y":656,"d":133},{"t":1675869688519,"x":225,"y":734,"d":227},{"t":1675869688634,"x":158,"y":747,"d":107},{"t":1675869688781,"x":220,"y":702,"d":140},{"t":1675869689062,"x":219,"y":626,"d":274},{"t":1675869689224,"x":235,"y":687,"d":154},{"t":1675869689357,"x":254,"y":807,"d":126},{"t":1675869689477,"x":242,"y":774,"d":113},{"t":1675869689645,"x":236,"y":777,"d":161},{"t":1675869690020,"x":262,"y":805,"d":368},{"t":1675869690161,"x":252,"y":764,"d":133},{"t":1675869690395,"x":252,"y":898,"d":227},{"t":1675869690744,"x":248,"y":892,"d":301},{"t":1675869690855,"x":127,"y":858,"d":84},{"t":1675869691018,"x":699,"y":700,"d":100},{"t":1675869691112,"x":720,"y":562,"d":86},{"t":1675869691267,"x":701,"y":586,"d":147},{"t":1675869691400,"x":709,"y":503,"d":126},{"t":1675869691494,"x":719,"y":492,"d":86},{"t":1675869691890,"x":278,"y":119,"d":187},{"t":1675869692258,"x":309,"y":150,"d":362},{"t":1675869692432,"x":233,"y":268,"d":167},{"t":1675869692646,"x":215,"y":336,"d":208},{"t":1675869692740,"x":211,"y":504,"d":86},{"t":1675869692847,"x":224,"y":470,"d":99},{"t":1675869693041,"x":232,"y":290,"d":166},{"t":1675869693276,"x":339,"y":546,"d":148},{"t":1675869693805,"x":384,"y":516,"d":520},{"t":1675869693966,"x":314,"y":343,"d":133},{"t":1675869694174,"x":325,"y":481,"d":201},{"t":1675869694367,"x":337,"y":530,"d":187},{"t":1675869694561,"x":288,"y":530,"d":187},{"t":1675869694716,"x":269,"y":549,"d":147},{"t":1675869694810,"x":251,"y":491,"d":86},{"t":1675869694856,"x":205,"y":326,"d":20},{"t":1675869695117,"x":279,"y":459,"d":233},{"t":1675869695231,"x":245,"y":325,"d":86},{"t":1675869695379,"x":241,"y":287,"d":140},{"t":1675869695486,"x":278,"y":544,"d":80},{"t":1675869695741,"x":262,"y":656,"d":248},{"t":1675869695929,"x":271,"y":632,"d":180},{"t":1675869696122,"x":271,"y":664,"d":186},{"t":1675869696297,"x":243,"y":607,"d":166},{"t":1675869696431,"x":205,"y":593,"d":126},{"t":1675869696538,"x":307,"y":643,"d":100},{"t":1675869696726,"x":431,"y":630,"d":180},{"t":1675869696913,"x":434,"y":627,"d":180},{"t":1675869697161,"x":235,"y":562,"d":220},{"t":1675869697449,"x":256,"y":507,"d":281},{"t":1675869697637,"x":300,"y":795,"d":161},{"t":1675869697764,"x":265,"y":786,"d":125},{"t":1675869697978,"x":304,"y":801,"d":208},{"t":1675869698246,"x":378,"y":866,"d":261},{"t":1675869698407,"x":327,"y":837,"d":114},{"t":1675869698601,"x":283,"y":857,"d":187},{"t":1675869698715,"x":327,"y":834,"d":107},{"t":1675869699143,"x":554,"y":808,"d":401},{"t":1675869699425,"x":198,"y":875,"d":254},{"t":1675869699666,"x":276,"y":871,"d":234},{"t":1675869699827,"x":311,"y":888,"d":154},{"t":1675869700061,"x":330,"y":865,"d":227},{"t":1675869700216,"x":235,"y":804,"d":107},{"t":1675869700310,"x":65,"y":665,"d":87},{"t":1675869700396,"x":143,"y":761,"d":81},{"t":1675869700571,"x":264,"y":796,"d":167},{"t":1675869700725,"x":266,"y":690,"d":86},{"t":1675869700839,"x":336,"y":721,"d":87},{"t":1675869700945,"x":324,"y":678,"d":100},{"t":1675869701093,"x":372,"y":777,"d":140},{"t":1675869701273,"x":255,"y":801,"d":133},{"t":1675869701447,"x":228,"y":740,"d":166},{"t":1675869701683,"x":258,"y":783,"d":227},{"t":1675869701816,"x":247,"y":754,"d":126},{"t":1675869702070,"x":240,"y":923,"d":207},{"t":1675869702386,"x":186,"y":871,"d":126},{"t":1675869702687,"x":210,"y":912,"d":294},{"t":1675869702854,"x":281,"y":629,"d":140},{"t":1675869703042,"x":279,"y":656,"d":180},{"t":1675869703276,"x":227,"y":640,"d":227},{"t":1675869703391,"x":228,"y":631,"d":107},{"t":1675869703598,"x":199,"y":556,"d":180},{"t":1675869703692,"x":237,"y":592,"d":85},{"t":1675869703893,"x":386,"y":616,"d":173},{"t":1675869703979,"x":412,"y":429,"d":80},{"t":1675869704215,"x":506,"y":576,"d":208},{"t":1675869704335,"x":548,"y":617,"d":113},{"t":1675869704495,"x":546,"y":604,"d":153},{"t":1675869704677,"x":456,"y":620,"d":174},{"t":1675869704831,"x":445,"y":640,"d":147},{"t":1675869704965,"x":386,"y":647,"d":126},{"t":1675869705092,"x":297,"y":625,"d":120},{"t":1675869705158,"x":298,"y":660,"d":19},{"t":1675869705307,"x":262,"y":462,"d":81},{"t":1675869705440,"x":353,"y":595,"d":107},{"t":1675869705541,"x":277,"y":576,"d":94},{"t":1675869705748,"x":223,"y":645,"d":200},{"t":1675869705882,"x":214,"y":652,"d":126},{"t":1675869706137,"x":189,"y":622,"d":248},{"t":1675869706277,"x":176,"y":589,"d":133},{"t":1675869706485,"x":195,"y":614,"d":201},{"t":1675869706599,"x":235,"y":599,"d":106},{"t":1675869706727,"x":254,"y":582,"d":121},{"t":1675869706826,"x":297,"y":590,"d":92},{"t":1675869706947,"x":257,"y":593,"d":114},{"t":1675869707102,"x":208,"y":574,"d":126},{"t":1675869707228,"x":193,"y":569,"d":121},{"t":1675869707315,"x":139,"y":343,"d":80},{"t":1675869707430,"x":200,"y":481,"d":86},{"t":1675869707530,"x":301,"y":543,"d":93},{"t":1675869707784,"x":352,"y":510,"d":248},{"t":1675869707952,"x":408,"y":552,"d":161},{"t":1675869708060,"x":463,"y":651,"d":100},{"t":1675869708180,"x":446,"y":516,"d":93},{"t":1675869708320,"x":422,"y":328,"d":113},{"t":1675869708440,"x":527,"y":497,"d":113},{"t":1675869708595,"x":543,"y":585,"d":147},{"t":1675869708769,"x":593,"y":641,"d":166},{"t":1675869708877,"x":621,"y":635,"d":101},{"t":1675869709098,"x":238,"y":674,"d":133},{"t":1675869709245,"x":134,"y":540,"d":121},{"t":1675869709439,"x":279,"y":663,"d":187},{"t":1675869709674,"x":323,"y":664,"d":228},{"t":1675869709961,"x":346,"y":669,"d":160},{"t":1675869710122,"x":353,"y":672,"d":153},{"t":1675869710370,"x":384,"y":625,"d":241},{"t":1675869710604,"x":426,"y":604,"d":227},{"t":1675869710691,"x":110,"y":607,"d":80},{"t":1675869710859,"x":139,"y":628,"d":50},{"t":1675869710973,"x":77,"y":544,"d":106},{"t":1675869711080,"x":129,"y":625,"d":100},{"t":1675869711488,"x":236,"y":723,"d":380},{"t":1675869711710,"x":201,"y":750,"d":154},{"t":1675869711857,"x":228,"y":747,"d":140},{"t":1675869711965,"x":198,"y":696,"d":100},{"t":1675869712099,"x":217,"y":700,"d":107},{"t":1675869712300,"x":250,"y":767,"d":194},{"t":1675869712453,"x":247,"y":727,"d":147},{"t":1675869712493,"x":163,"y":612,"d":33},{"t":1675869712647,"x":201,"y":641,"d":86},{"t":1675869712882,"x":261,"y":721,"d":166},{"t":1675869713170,"x":289,"y":716,"d":161},{"t":1675869713331,"x":250,"y":624,"d":154},{"t":1675869713532,"x":364,"y":769,"d":174},{"t":1675869713706,"x":354,"y":736,"d":166},{"t":1675869713907,"x":368,"y":711,"d":194},{"t":1675869714020,"x":350,"y":676,"d":106},{"t":1675869714228,"x":301,"y":691,"d":201},{"t":1675869714523,"x":305,"y":727,"d":288},{"t":1675869714730,"x":301,"y":746,"d":200},{"t":1675869715039,"x":340,"y":740,"d":301},{"t":1675869715354,"x":410,"y":754,"d":308},{"t":1675869715461,"x":448,"y":705,"d":100},{"t":1675869715622,"x":502,"y":745,"d":114},{"t":1675869716070,"x":588,"y":757,"d":441},{"t":1675869716178,"x":585,"y":733,"d":100},{"t":1675869716325,"x":180,"y":730,"d":121},{"t":1675869716452,"x":134,"y":776,"d":120},{"t":1675869716613,"x":190,"y":804,"d":154},{"t":1675869716733,"x":201,"y":750,"d":113},{"t":1675869716848,"x":237,"y":798,"d":107},{"t":1675869717002,"x":262,"y":767,"d":147},{"t":1675869717303,"x":299,"y":761,"d":293},{"t":1675869717524,"x":341,"y":763,"d":214},{"t":1675869717806,"x":395,"y":770,"d":274},{"t":1675869717966,"x":406,"y":777,"d":153},{"t":1675869718415,"x":218,"y":789,"d":166},{"t":1675869718616,"x":252,"y":821,"d":194},{"t":1675869718797,"x":288,"y":929,"d":174},{"t":1675869719052,"x":288,"y":969,"d":248},{"t":1675869719373,"x":232,"y":944,"d":314},{"t":1675869719526,"x":259,"y":957,"d":146},{"t":1675869719768,"x":240,"y":931,"d":225},{"t":1675869720149,"x":224,"y":951,"d":375},{"t":1675869720444,"x":223,"y":957,"d":282},{"t":1675869720720,"x":237,"y":946,"d":268},{"t":1675869720961,"x":281,"y":966,"d":234},{"t":1675869721376,"x":280,"y":952,"d":409},{"t":1675869721684,"x":273,"y":955,"d":300},{"t":1675869721878,"x":240,"y":962,"d":187},{"t":1675869722246,"x":268,"y":1051,"d":361},{"t":1675869722400,"x":261,"y":1054,"d":147},{"t":1675869722709,"x":251,"y":1131,"d":301},{"t":1675869722936,"x":253,"y":1161,"d":221},{"t":1675869723131,"x":304,"y":1173,"d":187},{"t":1675869723459,"x":227,"y":1204,"d":321},{"t":1675869723773,"x":280,"y":1271,"d":307},{"t":1675869723867,"x":149,"y":1239,"d":86},{"t":1675869723975,"x":183,"y":1183,"d":100},{"t":1675869724343,"x":210,"y":1437,"d":234},{"t":1675869724591,"x":255,"y":1488,"d":241},{"t":1675869725200,"x":238,"y":455,"d":147},{"t":1675869725643,"x":232,"y":389,"d":227},{"t":1675869726554,"x":256,"y":129,"d":616},{"t":1675869726808,"x":238,"y":120,"d":247},{"t":1675869727217,"x":199,"y":160,"d":402},{"t":1675869727505,"x":268,"y":137,"d":147},{"t":1675869727679,"x":318,"y":129,"d":166},{"t":1675869728208,"x":472,"y":52,"d":328},{"t":1675869728449,"x":243,"y":46,"d":213},{"t":1675869728583,"x":236,"y":303,"d":86},{"t":1675869728704,"x":247,"y":211,"d":114},{"t":1675869729005,"x":512,"y":100,"d":274},{"t":1675869729261,"x":541,"y":98,"d":249},{"t":1675869729393,"x":225,"y":172,"d":107},{"t":1675869729608,"x":250,"y":204,"d":208},{"t":1675869729755,"x":314,"y":177,"d":139},{"t":1675869729996,"x":328,"y":183,"d":234},{"t":1675869730244,"x":367,"y":148,"d":240},{"t":1675869730352,"x":205,"y":231,"d":100},{"t":1675869730499,"x":203,"y":211,"d":140},{"t":1675869730686,"x":203,"y":278,"d":180},{"t":1675869730780,"x":301,"y":292,"d":86},{"t":1675869730987,"x":529,"y":194,"d":179},{"t":1675869731195,"x":448,"y":281,"d":200},{"t":1675869731282,"x":378,"y":14,"d":80},{"t":1675869731430,"x":477,"y":236,"d":100},{"t":1675869731544,"x":494,"y":265,"d":107},{"t":1675869731678,"x":506,"y":232,"d":126},{"t":1675869731919,"x":474,"y":232,"d":234},{"t":1675869732080,"x":546,"y":6,"d":134},{"t":1675869732374,"x":597,"y":189,"d":106},{"t":1675869732609,"x":591,"y":181,"d":228},{"t":1675869732877,"x":209,"y":299,"d":241},{"t":1675869733018,"x":263,"y":805,"d":114},{"t":1675869733373,"x":268,"y":816,"d":167},{"t":1675869733460,"x":339,"y":522,"d":81},{"t":1675869733654,"x":465,"y":187,"d":167},{"t":1675869733794,"x":478,"y":148,"d":133},{"t":1675869733929,"x":496,"y":169,"d":127},{"t":1675869734170,"x":579,"y":147,"d":234},{"t":1675869734290,"x":622,"y":177,"d":114},{"t":1675869734457,"x":615,"y":203,"d":160},{"t":1675869734719,"x":417,"y":190,"d":234},{"t":1675869734934,"x":279,"y":860,"d":167},{"t":1675869735135,"x":227,"y":749,"d":194},{"t":1675869735315,"x":274,"y":812,"d":174},{"t":1675869735529,"x":288,"y":874,"d":208},{"t":1675869735790,"x":214,"y":827,"d":113},{"t":1675869736105,"x":234,"y":887,"d":308},{"t":1675869736293,"x":238,"y":561,"d":160},{"t":1675869736468,"x":255,"y":498,"d":167},{"t":1675869736574,"x":215,"y":474,"d":100},{"t":1675869736782,"x":251,"y":497,"d":201},{"t":1675869737010,"x":278,"y":551,"d":220},{"t":1675869737137,"x":344,"y":583,"d":121},{"t":1675869737251,"x":338,"y":539,"d":107},{"t":1675869737419,"x":293,"y":398,"d":161},{"t":1675869737532,"x":290,"y":385,"d":107},{"t":1675869737646,"x":289,"y":370,"d":107},{"t":1675869737800,"x":241,"y":372,"d":147},{"t":1675869737893,"x":329,"y":528,"d":86},{"t":1675869738169,"x":444,"y":672,"d":247},{"t":1675869738343,"x":399,"y":675,"d":167},{"t":1675869738463,"x":386,"y":724,"d":113},{"t":1675869738758,"x":257,"y":715,"d":267},{"t":1675869739066,"x":256,"y":671,"d":301},{"t":1675869739287,"x":185,"y":621,"d":213},{"t":1675869739528,"x":198,"y":614,"d":234},{"t":1675869739723,"x":258,"y":604,"d":187},{"t":1675869739943,"x":324,"y":552,"d":213},{"t":1675869740071,"x":367,"y":476,"d":121},{"t":1675869740212,"x":398,"y":502,"d":134},{"t":1675869740366,"x":456,"y":529,"d":147},{"t":1675869740473,"x":505,"y":575,"d":100},{"t":1675869740573,"x":504,"y":547,"d":93},{"t":1675869740821,"x":484,"y":596,"d":241},{"t":1675869741016,"x":582,"y":581,"d":187},{"t":1675869741105,"x":367,"y":585,"d":83},{"t":1675869741323,"x":232,"y":522,"d":214},{"t":1675869741611,"x":200,"y":575,"d":281},{"t":1675869741893,"x":165,"y":522,"d":274},{"t":1675869742094,"x":174,"y":580,"d":194},{"t":1675869742181,"x":189,"y":635,"d":80},{"t":1675869742375,"x":230,"y":872,"d":166},{"t":1675869742543,"x":180,"y":750,"d":141},{"t":1675869742937,"x":260,"y":754,"d":388},{"t":1675869743172,"x":231,"y":858,"d":227},{"t":1675869743434,"x":340,"y":797,"d":234},{"t":1675869743647,"x":343,"y":799,"d":207},{"t":1675869743842,"x":350,"y":765,"d":187},{"t":1675869744036,"x":719,"y":292,"d":166},{"t":1675869744217,"x":765,"y":248,"d":173},{"t":1675869744331,"x":744,"y":241,"d":107},{"t":1675869744525,"x":725,"y":253,"d":187}],CK={"x":452.77074542897327,"y":554.7792436235708},FR=60,SW=1280,N=297,
+T0=1675869686122,TD=58590,MND=19,MXD=616;
+const rF=d=>8+(d-MND)/(MXD-MND+1)*22;
+const cF=(i,n)=>{const t=n>1?i/(n-1):0;return`rgb(${Math.round(50+205*t)},${Math.round(50+100*(1-Math.abs(t-.5)*2))},${Math.round(255-205*t)})`};
+const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
+fr=document.getElementById('foveal-ring'),vw=document.getElementById('viewer'),
+lt=document.getElementById('lines-toggle'),nt=document.getElementById('numbers-toggle'),
+tt=document.getElementById('timeline-track');
+let ci=N-1,pl=false,pt=null;
+const ns='http://www.w3.org/2000/svg';
+function se(t,a){const e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e}
+const tEl=document.getElementById('timeline-ticks');
+F.forEach((f,i)=>{const t=document.createElement('div');t.className='timeline-tick';
+t.style.left=(N>1?(f.t-T0)/TD*100:0)+'%';t.style.width=Math.max(.5,f.d/TD*100)+'%';
+t.style.height=Math.min(100,20+f.d/10)+'%';t.style.background=cF(i,N);t.style.opacity='.5';tEl.appendChild(t)});
+const lE=[],cE=[],tE=[];
+for(let i=0;i<N;i++){const f=F[i],r=rF(f.d),c=cF(i,N);
+if(i>0){const p=F[i-1];const l=se('line',{x1:p.x,y1:p.y,x2:f.x,y2:f.y,stroke:c,'stroke-width':1.5,'stroke-opacity':.4});svg.appendChild(l);lE.push(l)}else lE.push(null);
+const cr=se('circle',{cx:f.x,cy:f.y,r,fill:c,'fill-opacity':.25,stroke:c,'stroke-width':2,'stroke-opacity':.8});svg.appendChild(cr);cE.push(cr);
+const fs=Math.max(9,Math.min(14,r));const tx=se('text',{x:f.x,y:f.y,'text-anchor':'middle','dominant-baseline':'central','font-family':'monospace','font-weight':'bold','font-size':fs,fill:'white',stroke:'rgba(0,0,0,.6)','stroke-width':2,'paint-order':'stroke'});tx.textContent=i+1;svg.appendChild(tx);tE.push(tx)}
+if(CK){const s=se('polygon',{points:[0,-16,6,-4,16,-4,8,4,12,16,0,8,-12,16,-8,4,-16,-4,-6,-4].reduce((a,v,i)=>{a.push(i%2===0?CK.x+v:CK.y+v);return a},[]).join(','),fill:'#f00','fill-opacity':.5,stroke:'#f00','stroke-width':2});svg.appendChild(s);
+const l=se('text',{x:CK.x+18,y:CK.y+4,'font-family':'monospace','font-weight':'bold','font-size':11,fill:'#f00',stroke:'white','stroke-width':2,'paint-order':'stroke'});l.textContent='CLICK';svg.appendChild(l)}
+function uv(){for(let i=0;i<N;i++){const v=i<=ci;cE[i].style.display=v?'':'none';tE[i].style.display=v&&nt.checked?'':'none';
+if(lE[i])lE[i].style.display=v&&lt.checked?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',pl&&i===ci?1:.8)}
+if(ci>=0&&N>1)ph.style.left=(F[ci].t-T0)/TD*100+'%';
+if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px';
+const vr=vw.getBoundingClientRect(),fy=f.y-vw.scrollTop;if(fy<100||fy>vr.height-100)vw.scrollTo({top:f.y-vr.height/2,behavior:'smooth'})}else fr.style.display='none';
+if(ci>=0){const f=F[ci];document.getElementById('info-pos').textContent='('+f.x+','+f.y+')';
+document.getElementById('info-dur').textContent=f.d+'ms';document.getElementById('info-seen').textContent=ci+1;
+document.getElementById('time-label').textContent='Fixation '+(ci+1)+' / '+N;
+document.getElementById('duration-label').textContent=((f.t-T0)/1000).toFixed(1)+'s / '+(TD/1000).toFixed(1)+'s'}}
+function sf(i){ci=Math.max(-1,Math.min(N-1,i));uv()}
+lt.addEventListener('change',uv);nt.addEventListener('change',uv);
+let dr=false;function ts(e){const r=tt.getBoundingClientRect(),p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
+let b=0;for(let i=0;i<N;i++)if(F[i].t<=T0+p*TD)b=i;sf(b)}
+tt.addEventListener('mousedown',e=>{dr=true;ts(e)});document.addEventListener('mousemove',e=>{if(dr)ts(e)});document.addEventListener('mouseup',()=>{dr=false});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){sf(ci+1);e.preventDefault()}if(e.key==='ArrowLeft'){sf(ci-1);e.preventDefault()}
+if(e.key===' '){tp();e.preventDefault()}if(e.key==='Home'){sf(0);e.preventDefault()}if(e.key==='End'){sf(N-1);e.preventDefault()}});
+function tp(){pl=!pl;document.getElementById('play-btn').textContent=pl?'⏸ Pause':'▶ Play';
+document.getElementById('play-btn').classList.toggle('active',pl);if(pl){if(ci>=N-1)ci=-1;pn()}else{clearTimeout(pt);fr.style.display='none';ci=N-1;uv()}}
+function pn(){if(!pl)return;const n=ci+1;if(n>=N){pl=false;document.getElementById('play-btn').textContent='▶ Play';fr.style.display='none';ci=N-1;uv();return}
+sf(n);pt=setTimeout(pn,Math.max(100,F[n].d*.5))}
+document.getElementById('play-btn').addEventListener('click',tp);
+document.getElementById('reset-btn').addEventListener('click',()=>{pl=false;clearTimeout(pt);document.getElementById('play-btn').textContent='▶ Play';ci=N-1;uv();vw.scrollTo({top:0})});
+uv();
+</script></body></html>

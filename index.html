@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<title>AdSERP Scanpath Explorer — Attentional Foraging on Search Engine Results</title>
+<meta name="description" content="Interactive foveated vision scanpath replays of eye-tracking data from the AdSERP dataset, rendered through Scrutinizer's neuroscience-based peripheral vision simulation.">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: system-ui, -apple-system, sans-serif; max-width: 900px; margin: 0 auto; padding: 2em 1em; background: #111; color: #eee; }
+h1 { font-size: 1.6em; margin-bottom: 0.3em; }
+h1 a { color: #ff9933; text-decoration: none; }
+.subtitle { color: #aaa; margin-bottom: 1.5em; line-height: 1.5; }
+.subtitle a { color: #6af; text-decoration: none; }
+.trial { margin: 0.6em 0; padding: 0.8em 1em; background: #1a1a1a; border-radius: 6px; border-left: 3px solid #333; transition: border-color 0.2s; }
+.trial:hover { border-left-color: #ff9933; }
+.trial a { color: #eee; text-decoration: none; font-weight: 600; font-size: 0.95em; }
+.trial .tag { color: #ff9933; font-size: 0.8em; text-transform: uppercase; letter-spacing: 0.5px; }
+.trial .query { color: #aaa; font-size: 0.85em; margin-top: 2px; }
+.trial .meta { color: #666; font-size: 0.8em; margin-top: 2px; }
+kbd { background: #333; padding: 1px 6px; border-radius: 3px; font-size: 0.85em; color: #ccc; }
+.controls-help { color: #888; font-size: 0.85em; margin-bottom: 1.5em; }
+footer { margin-top: 2em; padding-top: 1em; border-top: 1px solid #333; color: #666; font-size: 0.8em; }
+footer a { color: #888; }
+</style></head><body>
+<h1><a href="https://github.com/andyed/scrutinizer">Scrutinizer</a> × AdSERP</h1>
+<p class="subtitle">
+  Interactive scanpath replays of eye-tracking data from the
+  <a href="https://doi.org/10.1145/3726302.3730325">AdSERP dataset</a>,
+  rendered through Scrutinizer's neuroscience-based foveated vision simulation
+  (LGN/V1/DoG peripheral degradation with infinite visual memory).
+</p>
+<p class="controls-help">
+  <kbd>←</kbd><kbd>→</kbd> step &middot; <kbd>Space</kbd> play/pause &middot; drag timeline to scrub
+</p>
+<div class="trial">
+  <span class="tag">scanner</span>
+  <div><a href="p045-b2-t6.html">p045-b2-t6</a></div>
+  <div class="query">"buy gates gates 22650 lower radiator hose"</div>
+  <div class="meta">312 fixations · Scrutinizer rendered</div>
+</div>
+<div class="trial">
+  <span class="tag">heavy scroller</span>
+  <div><a href="p037-b5-t10.html">p037-b5-t10</a></div>
+  <div class="query">"buy mg decky washed polo caps mango"</div>
+  <div class="meta">206 fixations · Scrutinizer rendered</div>
+</div>
+<div class="trial">
+  <span class="tag">scroll without reading</span>
+  <div><a href="p009-b1-t3.html">p009-b1-t3</a></div>
+  <div class="query">"buy lascar electronics usb temp data logger"</div>
+  <div class="meta">40 fixations · Scrutinizer rendered</div>
+</div>
+<div class="trial">
+  <span class="tag">mouse follower</span>
+  <div><a href="p041-b1-t10.html">p041-b1-t10</a></div>
+  <div class="query">"buy lowrance lowrance 000 10027 001 bracket"</div>
+  <div class="meta">1 fixations · Scrutinizer rendered</div>
+</div>
+<div class="trial">
+  <span class="tag">mouse independent</span>
+  <div><a href="p021-b5-t8.html">p021-b5-t8</a></div>
+  <div class="query">"buy angelic music"</div>
+  <div class="meta">94 fixations · Scrutinizer rendered</div>
+</div>
+<div class="trial">
+  <span class="tag">ad focused</span>
+  <div><a href="p029-b2-t10.html">p029-b2-t10</a></div>
+  <div class="query">"buy nike nike 375833 pro bra"</div>
+  <div class="meta">22 fixations · Scrutinizer rendered</div>
+</div>
+<div class="trial">
+  <span class="tag">ad ignorer</span>
+  <div><a href="p020-b6-t5.html">p020-b6-t5</a></div>
+  <div class="query">"buy remy remy 25216 premium remanufactured starter"</div>
+  <div class="meta">297 fixations · Scrutinizer rendered</div>
+</div>
+<div class="trial">
+  <span class="tag">deep explorer</span>
+  <div><a href="p011-b3-t2.html">p011-b3-t2</a></div>
+  <div class="query">"buy playmobil gymnast on balance beam"</div>
+  <div class="meta">91 fixations · Scrutinizer rendered</div>
+</div>
+<div class="trial">
+  <span class="tag">top only</span>
+  <div><a href="p031-b4-t5.html">p031-b4-t5</a></div>
+  <div class="query">"buy rotary carburetor kit for zama"</div>
+  <div class="meta">0 fixations · Scrutinizer rendered</div>
+</div>
+<div class="trial">
+  <span class="tag">long trial</span>
+  <div><a href="p037-b2-t5.html">p037-b2-t5</a></div>
+  <div class="query">"buy fusion ms wr600cv dust cover"</div>
+  <div class="meta">276 fixations · Scrutinizer rendered</div>
+</div>
+<footer>
+  <a href="https://github.com/andyed/scrutinizer">Scrutinizer</a> ·
+  <a href="https://github.com/andyed/attentional-foraging">attentional-foraging</a> ·
+  <a href="https://doi.org/10.1145/3726302.3730325">AdSERP paper</a> ·
+  Built 2026-04-02
+</footer>
+</body></html>
