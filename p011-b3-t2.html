@@ -35,10 +35,10 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .back { font-size: 12px; }
 .back a { color: #6af; text-decoration: none; }
 </style></head><body>
-<div class="header">
+<div class="header"><div style="display:flex;align-items:center;gap:12px;"><span class="back"><a href="index.html">&larr; All</a></span>
   <div style="display:flex;align-items:center;gap:12px;">
     <span class="back"><a href="index.html">&larr; All</a></span>
-    <h1>p011-b3-t2 <span>— buy playmobil gymnast on balance beam</span></h1>
+    <h1>p011-b3-t2 <span>— buy playmobil gymnast on balance beam</span></h1></div>
   </div>
   <div class="controls">
     <label><input type="checkbox" id="lines-toggle" checked> Lines</label>
@@ -50,7 +50,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
       <option value="25">25</option>
       <option value="0" selected>All</option>
     </select>
-    <button class="btn" id="play-btn">&#9654; Play</button>
+    <span style="color:#888">Window:</span><select id="window-size" style="background:#333;color:#eee;border:1px solid #555;border-radius:3px;padding:2px 4px;font-size:11px;"><option value="5">5</option><option value="10">10</option><option value="25">25</option><option value="0" selected>All</option></select><button class="btn" id="play-btn">&#9654; Play</button>
     <button class="btn" id="reset-btn">Reset</button>
   </div>
 </div>
@@ -87,7 +87,7 @@ const cF=(i,n)=>{const t=n>1?i/(n-1):0;return`rgb(${Math.round(50+205*t)},${Math
 const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
 fr=document.getElementById('foveal-ring'),vw=document.getElementById('viewer'),
 lt=document.getElementById('lines-toggle'),nt=document.getElementById('numbers-toggle'),
-ws=document.getElementById('window-size'),tt=document.getElementById('timeline-track');
+ws=document.getElementById('window-size'),tt=document.getElementById('timeline-track'),ws=document.getElementById('window-size');
 let ci=N-1,pl=false,pt=null;
 const ns='http://www.w3.org/2000/svg';
 function se(t,a){const e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e}
@@ -113,7 +113,7 @@ document.getElementById('info-dur').textContent=f.d+'ms';document.getElementById
 document.getElementById('time-label').textContent='Fixation '+(ci+1)+' / '+N;
 document.getElementById('duration-label').textContent=((f.t-T0)/1000).toFixed(1)+'s / '+(TD/1000).toFixed(1)+'s'}}
 function sf(i){ci=Math.max(-1,Math.min(N-1,i));uv()}
-lt.addEventListener('change',uv);nt.addEventListener('change',uv);ws.addEventListener('change',uv);
+lt.addEventListener('change',uv);nt.addEventListener('change',uv);ws.addEventListener('change',uv);ws.addEventListener('change',uv);
 let dr=false;function ts(e){const r=tt.getBoundingClientRect(),p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
 let b=0;for(let i=0;i<N;i++)if(F[i].t<=T0+p*TD)b=i;sf(b)}
 tt.addEventListener('mousedown',e=>{dr=true;ts(e)});document.addEventListener('mousemove',e=>{if(dr)ts(e)});document.addEventListener('mouseup',()=>{dr=false});
