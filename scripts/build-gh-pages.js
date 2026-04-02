@@ -127,15 +127,21 @@ for (const trial of trials) {
         .filter(m => isFinite(m.t) && isFinite(m.x) && ['mousemove','mouseover','click','mousedown','mouseup'].includes(m.e))
         .map(m => ({ t: m.t - (fixations.length > 0 ? fixations[0].t : 0), x: m.x * rx, y: m.y, e: m.e }));
 
-    // Measure actual image heights — SVG must match exactly
+    // Measure actual image heights — SVG must match the primary background exactly.
+    // The gazeplot is the primary view (the whole point of the project).
+    // The serp-render is the fallback when no gazeplot exists.
+    const gazeplotFullPath = hasGazeplot ? path.join(SITE_DIR, 'gazeplots', id + '.png') : null;
+    const primaryImgPath = gazeplotFullPath || serpRenderPath;
+    const primaryImgH = parseInt(require('child_process').execSync(
+        `sips -g pixelHeight "${primaryImgPath}" | tail -1`
+    ).toString().match(/\d+/)?.[0] || '0');
     const serpImgH = fs.existsSync(serpRenderPath)
         ? parseInt(require('child_process').execSync(`sips -g pixelHeight "${serpRenderPath}" | tail -1`).toString().match(/\d+/)?.[0] || '0')
         : docH;
     const gazeplotImgH = hasGazeplot
-        ? parseInt(require('child_process').execSync(`sips -g pixelHeight "${path.join(SITE_DIR, 'gazeplots', id + '.png')}" | tail -1`).toString().match(/\d+/)?.[0] || '0')
-        : serpImgH;
-    // Default to serp-render height — no padding, no max(docH, fixY)
-    const maxY = serpImgH;
+        ? parseInt(require('child_process').execSync(`sips -g pixelHeight "${gazeplotFullPath}" | tail -1`).toString().match(/\d+/)?.[0] || '0')
+        : 0;
+    const maxY = primaryImgH;
     const fovealR = 60;
     const N = fixations.length;
     const T0 = N > 0 ? fixations[0].t : 0;
@@ -195,7 +201,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
     <h1>${id} <span>— ${query}</span></h1>
   </div>
   <div class="controls">
-    ${hasGazeplot ? `<button class="btn" id="mode-btn">Gazeplot</button>` : ''}
+    ${hasGazeplot ? `<button class="btn" id="mode-btn">Raw SERP</button>` : ''}
     <label><input type="checkbox" id="lines-toggle" checked> Lines</label>
     <label><input type="checkbox" id="numbers-toggle" checked> Numbers</label>
     <button class="btn" id="play-btn">&#9654; Play</button>
@@ -204,9 +210,9 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 </div>
 <div class="viewer" id="viewer">
   <div class="serp-container">
-    <img id="bg-img" src="${serpRenderRelPath}" />
+    <img id="bg-img" src="${hasGazeplot ? gazeplotRelPath : serpRenderRelPath}" />
     <svg class="scanpath-svg" id="scanpath-svg" xmlns="http://www.w3.org/2000/svg"
-         width="${screenW}" height="${serpImgH}" viewBox="0 0 ${screenW} ${serpImgH}"></svg>
+         width="${screenW}" height="${primaryImgH}" viewBox="0 0 ${screenW} ${primaryImgH}"></svg>
     <div class="foveal-ring" id="foveal-ring"></div>
     <div class="mouse-cursor" id="mouse-cursor"><svg viewBox="0 0 20 28"><path d="M0,0 L0,22 L5.5,17 L10,28 L14,26 L9,16 L16,16 Z" fill="#ff9933" stroke="#000" stroke-width="1"/></svg></div>
   </div>
@@ -287,13 +293,13 @@ document.getElementById('play-btn').addEventListener('click',tp);
 document.getElementById('reset-btn').addEventListener('click',()=>{pl=false;clearTimeout(pt);document.getElementById('play-btn').textContent='▶ Play';ci=N-1;uv();vw.scrollTo({top:0})});
 uv();
 // Gazeplot toggle
-let bgMode='serp';
+let bgMode=GAZEPLOT_SRC?'gazeplot':'serp';
 const modeBtn=document.getElementById('mode-btn');
 const bgImg=document.getElementById('bg-img');
-if(modeBtn&&GAZEPLOT_SRC){modeBtn.addEventListener('click',()=>{
-  bgMode=bgMode==='serp'?'gazeplot':'serp';
-  modeBtn.textContent=bgMode==='serp'?'Gazeplot':'SERP';
-  modeBtn.classList.toggle('active',bgMode==='gazeplot');
+if(modeBtn){modeBtn.addEventListener('click',()=>{
+  bgMode=bgMode==='gazeplot'?'serp':'gazeplot';
+  modeBtn.textContent=bgMode==='gazeplot'?'Raw SERP':'Gazeplot';
+  modeBtn.classList.toggle('active',bgMode==='serp');
   const h=bgMode==='gazeplot'?GAZEPLOT_H:SERP_H;
   const src=bgMode==='gazeplot'?GAZEPLOT_SRC:SERP_SRC;
   bgImg.src=src;
