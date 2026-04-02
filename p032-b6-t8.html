@@ -23,6 +23,10 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .foveal-ring { position: absolute; z-index: 11; pointer-events: none; border: 2px solid rgba(255,255,255,0.7);
   border-radius: 50%; width: 120px; height: 120px; transform: translate(-50%, -50%);
   box-shadow: 0 0 20px rgba(255,255,255,0.3); transition: left 0.08s, top 0.08s; display: none; }
+.mouse-cursor { position: absolute; z-index: 999; pointer-events: none; display: none;
+  width: 20px; height: 20px; transition: left 0.03s linear, top 0.03s linear; }
+.mouse-cursor svg { width: 20px; height: 28px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); }
+.mouse-cursor.clicking svg path { fill: #ff3333; }
 .timeline { width: 1280px; background: #1a1a1a; padding: 8px 16px; border-top: 1px solid #333; }
 .timeline-track { position: relative; height: 40px; background: #222; border-radius: 4px; cursor: pointer; overflow: hidden; }
 .timeline-ticks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
@@ -56,6 +60,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
     <svg class="scanpath-svg" id="scanpath-svg" xmlns="http://www.w3.org/2000/svg"
          width="1280" height="2741" viewBox="0 0 1280 2741"></svg>
     <div class="foveal-ring" id="foveal-ring"></div>
+    <div class="mouse-cursor" id="mouse-cursor"><svg viewBox="0 0 20 28"><path d="M0,0 L0,22 L5.5,17 L10,28 L14,26 L9,16 L16,16 Z" fill="#ff9933" stroke="#000" stroke-width="1"/></svg></div>
   </div>
 </div>
 <div class="timeline">
@@ -77,14 +82,15 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   <span><a href="png/p032-b6-t8.png" download style="color:#6af;text-decoration:none;">Download PNG</a></span>
 </div>
 <script>
-const F=[{"t":1677152663221,"x":671,"y":176,"d":293},{"t":1677152663443,"x":526,"y":237,"d":213},{"t":1677152663630,"x":321,"y":286,"d":161},{"t":1677152663871,"x":190,"y":291,"d":234},{"t":1677152664038,"x":193,"y":218,"d":160},{"t":1677152664179,"x":210,"y":124,"d":133},{"t":1677152664314,"x":244,"y":113,"d":127},{"t":1677152664588,"x":302,"y":91,"d":267},{"t":1677152664743,"x":751,"y":27,"d":107}],CK={"x":423.0661040787623,"y":220},FR=60,SW=1280,N=9,
+const F=[{"t":1677152663221,"x":671,"y":176,"d":293},{"t":1677152663443,"x":526,"y":237,"d":213},{"t":1677152663630,"x":321,"y":286,"d":161},{"t":1677152663871,"x":190,"y":291,"d":234},{"t":1677152664038,"x":193,"y":218,"d":160},{"t":1677152664179,"x":210,"y":124,"d":133},{"t":1677152664314,"x":244,"y":113,"d":127},{"t":1677152664588,"x":302,"y":91,"d":267},{"t":1677152664743,"x":751,"y":27,"d":107}],CK={"x":423.0661040787623,"y":220},ME=[{"t":237,"x":624.6976090014065,"y":245,"e":"mouseover"},{"t":238,"x":624.6976090014065,"y":245,"e":"mousemove"},{"t":244,"x":624.6976090014065,"y":246,"e":"mousemove"},{"t":255,"x":624.6976090014065,"y":247,"e":"mousemove"},{"t":272,"x":624.6976090014065,"y":250,"e":"mousemove"},{"t":288,"x":624.6976090014065,"y":251,"e":"mousemove"},{"t":304,"x":623.7974683544304,"y":252,"e":"mousemove"},{"t":322,"x":623.7974683544304,"y":253,"e":"mousemove"},{"t":348,"x":622.8973277074542,"y":255,"e":"mousemove"},{"t":388,"x":621.0970464135021,"y":257,"e":"mousemove"},{"t":405,"x":617.4964838255977,"y":261,"e":"mousemove"},{"t":422,"x":614.7960618846695,"y":264,"e":"mousemove"},{"t":438,"x":612.0956399437412,"y":266,"e":"mousemove"},{"t":455,"x":596.7932489451476,"y":278,"e":"mousemove"},{"t":472,"x":581.4908579465541,"y":291,"e":"mouseover"},{"t":472,"x":581.4908579465541,"y":291,"e":"mousemove"},{"t":489,"x":564.3881856540085,"y":302,"e":"mousemove"},{"t":504,"x":550.8860759493671,"y":311,"e":"mouseover"},{"t":504,"x":550.8860759493671,"y":311,"e":"mousemove"},{"t":521,"x":538.2841068917018,"y":315,"e":"mouseover"},{"t":521,"x":538.2841068917018,"y":315,"e":"mousemove"},{"t":537,"x":527.4824191279887,"y":318,"e":"mousemove"},{"t":554,"x":519.381153305204,"y":324,"e":"mousemove"},{"t":572,"x":511.2798874824191,"y":325,"e":"mousemove"},{"t":588,"x":505.87904360056257,"y":326,"e":"mousemove"},{"t":604,"x":501.3783403656821,"y":326,"e":"mousemove"},{"t":621,"x":499.5780590717299,"y":326,"e":"mousemove"},{"t":639,"x":495.0773558368495,"y":326,"e":"mousemove"},{"t":654,"x":492.37693389592124,"y":326,"e":"mousemove"},{"t":672,"x":491.4767932489451,"y":326,"e":"mousemove"},{"t":688,"x":487.8762306610408,"y":326,"e":"mousemove"},{"t":704,"x":486.0759493670886,"y":325,"e":"mousemove"},{"t":721,"x":481.5752461322081,"y":325,"e":"mousemove"},{"t":738,"x":480.67510548523205,"y":323,"e":"mousemove"},{"t":755,"x":478.87482419127986,"y":323,"e":"mousemove"},{"t":772,"x":477.07454289732766,"y":322,"e":"mousemove"},{"t":788,"x":474.3741209563994,"y":321,"e":"mousemove"},{"t":820,"x":473.4739803094233,"y":320,"e":"mousemove"},{"t":884,"x":472.57383966244726,"y":320,"e":"mousemove"},{"t":900,"x":471.67369901547113,"y":318,"e":"mousemove"},{"t":938,"x":468.0731364275668,"y":313,"e":"mousemove"},{"t":955,"x":461.77215189873414,"y":305,"e":"mouseover"},{"t":955,"x":461.77215189873414,"y":305,"e":"mousemove"},{"t":971,"x":455.47116736990154,"y":295,"e":"mouseover"},{"t":971,"x":455.47116736990154,"y":295,"e":"mousemove"},{"t":988,"x":443.76933895921235,"y":271,"e":"mouseover"},{"t":988,"x":443.76933895921235,"y":271,"e":"mousemove"},{"t":1005,"x":434.7679324894515,"y":254,"e":"mouseover"},{"t":1005,"x":434.7679324894515,"y":254,"e":"mousemove"},{"t":1021,"x":428.4669479606188,"y":238,"e":"mouseover"},{"t":1021,"x":428.4669479606188,"y":238,"e":"mousemove"},{"t":1037,"x":426.66666666666663,"y":232,"e":"mouseover"},{"t":1038,"x":426.66666666666663,"y":232,"e":"mousemove"},{"t":1054,"x":424.8663853727145,"y":227,"e":"mousemove"},{"t":1072,"x":423.96624472573836,"y":225,"e":"mousemove"},{"t":1087,"x":423.0661040787623,"y":223,"e":"mousemove"},{"t":1105,"x":423.0661040787623,"y":221,"e":"mousemove"},{"t":1206,"x":423.0661040787623,"y":221,"e":"mousedown"},{"t":1357,"x":423.0661040787623,"y":220,"e":"mousemove"},{"t":1358,"x":423.0661040787623,"y":220,"e":"mouseup"},{"t":2260,"x":423.0661040787623,"y":220,"e":"click"}],FR=60,SW=1280,N=9,
 T0=1677152663221,TD=1629,MND=107,MXD=293;
 const rF=d=>8+(d-MND)/(MXD-MND+1)*22;
 const cF=(i,n)=>{const t=n>1?i/(n-1):0;return`rgb(${Math.round(50+205*t)},${Math.round(50+100*(1-Math.abs(t-.5)*2))},${Math.round(255-205*t)})`};
 const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
-fr=document.getElementById('foveal-ring'),vw=document.getElementById('viewer'),
+fr=document.getElementById('foveal-ring'),mc=document.getElementById('mouse-cursor'),
+vw=document.getElementById('viewer'),
 lt=document.getElementById('lines-toggle'),nt=document.getElementById('numbers-toggle'),
-tt=document.getElementById('timeline-track');
+ws=document.getElementById('window-size'),tt=document.getElementById('timeline-track');
 let ci=N-1,pl=false,pt=null;
 const ns='http://www.w3.org/2000/svg';
 function se(t,a){const e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e}
@@ -103,7 +109,15 @@ function uv(){for(let i=0;i<N;i++){const v=i<=ci;cE[i].style.display=v?'':'none'
 if(lE[i])lE[i].style.display=v&&lt.checked?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',pl&&i===ci?1:.8)}
 if(ci>=0&&N>1)ph.style.left=(F[ci].t-T0)/TD*100+'%';
 if(ci>=0){const f=F[ci];const vr=vw.getBoundingClientRect(),fy=f.y-vw.scrollTop;if(fy<100||fy>vr.height-100)vw.scrollTo({top:f.y-vr.height/2,behavior:'smooth'})}
-if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px'}else fr.style.display='none';
+if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px';
+// Mouse cursor: interpolate position at current fixation time (relative)
+if(ME.length>0){const ft=f.t-T0;let mi=0;for(let i=0;i<ME.length;i++){if(ME[i].t<=ft)mi=i;else break;}
+const m0=ME[mi],m1=ME[Math.min(mi+1,ME.length-1)];
+let mx=m0.x,my=m0.y;if(m1.t>m0.t){const p=(ft-m0.t)/(m1.t-m0.t);mx=m0.x+(m1.x-m0.x)*p;my=m0.y+(m1.y-m0.y)*p;}
+mc.style.display='block';mc.style.left=mx+'px';mc.style.top=my+'px';mc.style.opacity='1';
+mc.classList.toggle('clicking',m0.e==='click'||m0.e==='mousedown');
+console.log('CURSOR',mx.toFixed(0),my.toFixed(0),m0.e);
+}}else{fr.style.display='none';mc.style.display='none';}
 if(ci>=0){const f=F[ci];document.getElementById('info-pos').textContent='('+f.x+','+f.y+')';
 document.getElementById('info-dur').textContent=f.d+'ms';document.getElementById('info-seen').textContent=ci+1;
 document.getElementById('time-label').textContent='Fixation '+(ci+1)+' / '+N;
@@ -116,8 +130,8 @@ tt.addEventListener('mousedown',e=>{dr=true;ts(e)});document.addEventListener('m
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){sf(ci+1);e.preventDefault()}if(e.key==='ArrowLeft'){sf(ci-1);e.preventDefault()}
 if(e.key===' '){tp();e.preventDefault()}if(e.key==='Home'){sf(0);e.preventDefault()}if(e.key==='End'){sf(N-1);e.preventDefault()}});
 function tp(){pl=!pl;document.getElementById('play-btn').textContent=pl?'⏸ Pause':'▶ Play';
-document.getElementById('play-btn').classList.toggle('active',pl);if(pl){if(ci>=N-1)ci=-1;pn()}else{clearTimeout(pt);fr.style.display='none';ci=N-1;uv()}}
-function pn(){if(!pl)return;const n=ci+1;if(n>=N){pl=false;document.getElementById('play-btn').textContent='▶ Play';fr.style.display='none';ci=N-1;uv();return}
+document.getElementById('play-btn').classList.toggle('active',pl);if(pl){if(ci>=N-1)ci=-1;pn()}else{clearTimeout(pt);fr.style.display='none';mc.style.display='none';ci=N-1;uv()}}
+function pn(){if(!pl)return;const n=ci+1;if(n>=N){pl=false;document.getElementById('play-btn').textContent='▶ Play';fr.style.display='none';mc.style.display='none';ci=N-1;uv();return}
 sf(n);pt=setTimeout(pn,Math.max(100,F[n].d*.5))}
 document.getElementById('play-btn').addEventListener('click',tp);
 document.getElementById('reset-btn').addEventListener('click',()=>{pl=false;clearTimeout(pt);document.getElementById('play-btn').textContent='▶ Play';ci=N-1;uv();vw.scrollTo({top:0})});

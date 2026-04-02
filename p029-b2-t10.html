@@ -23,6 +23,10 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .foveal-ring { position: absolute; z-index: 11; pointer-events: none; border: 2px solid rgba(255,255,255,0.7);
   border-radius: 50%; width: 120px; height: 120px; transform: translate(-50%, -50%);
   box-shadow: 0 0 20px rgba(255,255,255,0.3); transition: left 0.08s, top 0.08s; display: none; }
+.mouse-cursor { position: absolute; z-index: 999; pointer-events: none; display: none;
+  width: 20px; height: 20px; transition: left 0.03s linear, top 0.03s linear; }
+.mouse-cursor svg { width: 20px; height: 28px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); }
+.mouse-cursor.clicking svg path { fill: #ff3333; }
 .timeline { width: 1280px; background: #1a1a1a; padding: 8px 16px; border-top: 1px solid #333; }
 .timeline-track { position: relative; height: 40px; background: #222; border-radius: 4px; cursor: pointer; overflow: hidden; }
 .timeline-ticks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
@@ -56,6 +60,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
     <svg class="scanpath-svg" id="scanpath-svg" xmlns="http://www.w3.org/2000/svg"
          width="1280" height="3856" viewBox="0 0 1280 3856"></svg>
     <div class="foveal-ring" id="foveal-ring"></div>
+    <div class="mouse-cursor" id="mouse-cursor"><svg viewBox="0 0 20 28"><path d="M0,0 L0,22 L5.5,17 L10,28 L14,26 L9,16 L16,16 Z" fill="#ff9933" stroke="#000" stroke-width="1"/></svg></div>
   </div>
 </div>
 <div class="timeline">
@@ -77,14 +82,15 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   <span><a href="png/p029-b2-t10.png" download style="color:#6af;text-decoration:none;">Download PNG</a></span>
 </div>
 <script>
-const F=[{"t":1676552337529,"x":476,"y":165,"d":242},{"t":1676552337836,"x":494,"y":349,"d":281},{"t":1676552337956,"x":448,"y":296,"d":112},{"t":1676552338224,"x":429,"y":228,"d":259},{"t":1676552338419,"x":412,"y":338,"d":187},{"t":1676552339122,"x":450,"y":363,"d":696},{"t":1676552339632,"x":474,"y":388,"d":502},{"t":1676552339825,"x":436,"y":380,"d":186},{"t":1676552340194,"x":438,"y":308,"d":362},{"t":1676552340476,"x":463,"y":218,"d":274},{"t":1676552340703,"x":339,"y":326,"d":201},{"t":1676552340857,"x":281,"y":343,"d":147},{"t":1676552341052,"x":193,"y":333,"d":188},{"t":1676552341219,"x":209,"y":212,"d":160},{"t":1676552341601,"x":464,"y":222,"d":354},{"t":1676552341708,"x":552,"y":258,"d":100},{"t":1676552341998,"x":600,"y":252,"d":283},{"t":1676552342196,"x":645,"y":350,"d":193},{"t":1676552342347,"x":669,"y":351,"d":142},{"t":1676552342579,"x":578,"y":339,"d":228},{"t":1676552343115,"x":576,"y":356,"d":530},{"t":1676552343423,"x":454,"y":353,"d":301}],CK={"x":469.873417721519,"y":292},FR=60,SW=1280,N=22,
+const F=[{"t":1676552337529,"x":476,"y":165,"d":242},{"t":1676552337836,"x":494,"y":349,"d":281},{"t":1676552337956,"x":448,"y":296,"d":112},{"t":1676552338224,"x":429,"y":228,"d":259},{"t":1676552338419,"x":412,"y":338,"d":187},{"t":1676552339122,"x":450,"y":363,"d":696},{"t":1676552339632,"x":474,"y":388,"d":502},{"t":1676552339825,"x":436,"y":380,"d":186},{"t":1676552340194,"x":438,"y":308,"d":362},{"t":1676552340476,"x":463,"y":218,"d":274},{"t":1676552340703,"x":339,"y":326,"d":201},{"t":1676552340857,"x":281,"y":343,"d":147},{"t":1676552341052,"x":193,"y":333,"d":188},{"t":1676552341219,"x":209,"y":212,"d":160},{"t":1676552341601,"x":464,"y":222,"d":354},{"t":1676552341708,"x":552,"y":258,"d":100},{"t":1676552341998,"x":600,"y":252,"d":283},{"t":1676552342196,"x":645,"y":350,"d":193},{"t":1676552342347,"x":669,"y":351,"d":142},{"t":1676552342579,"x":578,"y":339,"d":228},{"t":1676552343115,"x":576,"y":356,"d":530},{"t":1676552343423,"x":454,"y":353,"d":301}],CK={"x":469.873417721519,"y":292},ME=[{"t":2729,"x":662.5035161744022,"y":307,"e":"mouseover"},{"t":2730,"x":662.5035161744022,"y":307,"e":"mousemove"},{"t":2745,"x":660.70323488045,"y":308,"e":"mousemove"},{"t":2763,"x":660.70323488045,"y":310,"e":"mousemove"},{"t":2781,"x":658.9029535864979,"y":311,"e":"mousemove"},{"t":2796,"x":658.0028129395217,"y":312,"e":"mousemove"},{"t":2812,"x":654.4022503516175,"y":313,"e":"mousemove"},{"t":2828,"x":650.8016877637131,"y":315,"e":"mouseover"},{"t":2828,"x":650.8016877637131,"y":315,"e":"mousemove"},{"t":2846,"x":646.3009845288326,"y":316,"e":"mouseover"},{"t":2846,"x":646.3009845288326,"y":316,"e":"mousemove"},{"t":2863,"x":640,"y":316,"e":"mouseover"},{"t":2863,"x":640,"y":316,"e":"mousemove"},{"t":2879,"x":628.2981715893108,"y":316,"e":"mouseover"},{"t":2880,"x":628.2981715893108,"y":316,"e":"mousemove"},{"t":2896,"x":609.395218002813,"y":316,"e":"mousemove"},{"t":2912,"x":588.6919831223629,"y":320,"e":"mousemove"},{"t":2929,"x":558.0872011251757,"y":323,"e":"mousemove"},{"t":2944,"x":544.5850914205345,"y":325,"e":"mousemove"},{"t":2963,"x":536.4838255977496,"y":326,"e":"mousemove"},{"t":2978,"x":527.4824191279887,"y":326,"e":"mouseover"},{"t":2978,"x":527.4824191279887,"y":326,"e":"mousemove"},{"t":2995,"x":522.0815752461322,"y":326,"e":"mouseover"},{"t":2995,"x":522.0815752461322,"y":326,"e":"mousemove"},{"t":3012,"x":514.8804500703235,"y":326,"e":"mouseover"},{"t":3012,"x":514.8804500703235,"y":326,"e":"mousemove"},{"t":3030,"x":509.4796061884669,"y":326,"e":"mousemove"},{"t":3045,"x":504.0787623066104,"y":324,"e":"mousemove"},{"t":3062,"x":499.5780590717299,"y":324,"e":"mousemove"},{"t":3078,"x":495.9774964838256,"y":322,"e":"mousemove"},{"t":3096,"x":492.37693389592124,"y":320,"e":"mousemove"},{"t":3112,"x":489.676511954993,"y":318,"e":"mousemove"},{"t":3129,"x":484.2756680731364,"y":316,"e":"mousemove"},{"t":3146,"x":481.5752461322081,"y":314,"e":"mousemove"},{"t":3161,"x":478.87482419127986,"y":313,"e":"mousemove"},{"t":3179,"x":477.9746835443038,"y":312,"e":"mousemove"},{"t":3196,"x":477.9746835443038,"y":311,"e":"mousemove"},{"t":3211,"x":477.07454289732766,"y":310,"e":"mousemove"},{"t":3230,"x":477.07454289732766,"y":307,"e":"mousemove"},{"t":3245,"x":475.2742616033755,"y":302,"e":"mousemove"},{"t":3262,"x":474.3741209563994,"y":300,"e":"mousemove"},{"t":3279,"x":473.4739803094233,"y":296,"e":"mousemove"},{"t":3295,"x":472.57383966244726,"y":294,"e":"mousemove"},{"t":3312,"x":471.67369901547113,"y":294,"e":"mousemove"},{"t":3345,"x":470.77355836849506,"y":294,"e":"mousemove"},{"t":3362,"x":470.77355836849506,"y":293,"e":"mousemove"},{"t":3384,"x":469.873417721519,"y":292,"e":"mousemove"},{"t":4554,"x":469.873417721519,"y":292,"e":"mousedown"},{"t":4696,"x":469.873417721519,"y":292,"e":"mousemove"},{"t":4719,"x":469.873417721519,"y":292,"e":"mouseup"},{"t":6479,"x":469.873417721519,"y":292,"e":"click"}],FR=60,SW=1280,N=22,
 T0=1676552337529,TD=6195,MND=100,MXD=696;
 const rF=d=>8+(d-MND)/(MXD-MND+1)*22;
 const cF=(i,n)=>{const t=n>1?i/(n-1):0;return`rgb(${Math.round(50+205*t)},${Math.round(50+100*(1-Math.abs(t-.5)*2))},${Math.round(255-205*t)})`};
 const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
-fr=document.getElementById('foveal-ring'),vw=document.getElementById('viewer'),
+fr=document.getElementById('foveal-ring'),mc=document.getElementById('mouse-cursor'),
+vw=document.getElementById('viewer'),
 lt=document.getElementById('lines-toggle'),nt=document.getElementById('numbers-toggle'),
-tt=document.getElementById('timeline-track');
+ws=document.getElementById('window-size'),tt=document.getElementById('timeline-track');
 let ci=N-1,pl=false,pt=null;
 const ns='http://www.w3.org/2000/svg';
 function se(t,a){const e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e}
@@ -103,7 +109,15 @@ function uv(){for(let i=0;i<N;i++){const v=i<=ci;cE[i].style.display=v?'':'none'
 if(lE[i])lE[i].style.display=v&&lt.checked?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',pl&&i===ci?1:.8)}
 if(ci>=0&&N>1)ph.style.left=(F[ci].t-T0)/TD*100+'%';
 if(ci>=0){const f=F[ci];const vr=vw.getBoundingClientRect(),fy=f.y-vw.scrollTop;if(fy<100||fy>vr.height-100)vw.scrollTo({top:f.y-vr.height/2,behavior:'smooth'})}
-if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px'}else fr.style.display='none';
+if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px';
+// Mouse cursor: interpolate position at current fixation time (relative)
+if(ME.length>0){const ft=f.t-T0;let mi=0;for(let i=0;i<ME.length;i++){if(ME[i].t<=ft)mi=i;else break;}
+const m0=ME[mi],m1=ME[Math.min(mi+1,ME.length-1)];
+let mx=m0.x,my=m0.y;if(m1.t>m0.t){const p=(ft-m0.t)/(m1.t-m0.t);mx=m0.x+(m1.x-m0.x)*p;my=m0.y+(m1.y-m0.y)*p;}
+mc.style.display='block';mc.style.left=mx+'px';mc.style.top=my+'px';mc.style.opacity='1';
+mc.classList.toggle('clicking',m0.e==='click'||m0.e==='mousedown');
+console.log('CURSOR',mx.toFixed(0),my.toFixed(0),m0.e);
+}}else{fr.style.display='none';mc.style.display='none';}
 if(ci>=0){const f=F[ci];document.getElementById('info-pos').textContent='('+f.x+','+f.y+')';
 document.getElementById('info-dur').textContent=f.d+'ms';document.getElementById('info-seen').textContent=ci+1;
 document.getElementById('time-label').textContent='Fixation '+(ci+1)+' / '+N;
@@ -116,8 +130,8 @@ tt.addEventListener('mousedown',e=>{dr=true;ts(e)});document.addEventListener('m
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){sf(ci+1);e.preventDefault()}if(e.key==='ArrowLeft'){sf(ci-1);e.preventDefault()}
 if(e.key===' '){tp();e.preventDefault()}if(e.key==='Home'){sf(0);e.preventDefault()}if(e.key==='End'){sf(N-1);e.preventDefault()}});
 function tp(){pl=!pl;document.getElementById('play-btn').textContent=pl?'⏸ Pause':'▶ Play';
-document.getElementById('play-btn').classList.toggle('active',pl);if(pl){if(ci>=N-1)ci=-1;pn()}else{clearTimeout(pt);fr.style.display='none';ci=N-1;uv()}}
-function pn(){if(!pl)return;const n=ci+1;if(n>=N){pl=false;document.getElementById('play-btn').textContent='▶ Play';fr.style.display='none';ci=N-1;uv();return}
+document.getElementById('play-btn').classList.toggle('active',pl);if(pl){if(ci>=N-1)ci=-1;pn()}else{clearTimeout(pt);fr.style.display='none';mc.style.display='none';ci=N-1;uv()}}
+function pn(){if(!pl)return;const n=ci+1;if(n>=N){pl=false;document.getElementById('play-btn').textContent='▶ Play';fr.style.display='none';mc.style.display='none';ci=N-1;uv();return}
 sf(n);pt=setTimeout(pn,Math.max(100,F[n].d*.5))}
 document.getElementById('play-btn').addEventListener('click',tp);
 document.getElementById('reset-btn').addEventListener('click',()=>{pl=false;clearTimeout(pt);document.getElementById('play-btn').textContent='▶ Play';ci=N-1;uv();vw.scrollTo({top:0})});
