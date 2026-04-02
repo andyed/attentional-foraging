@@ -188,20 +188,29 @@ This confirms that the lower dwell ratios at positions 6-8 when regressions are 
 
 **Notebook:** [scroll_kinematics.ipynb](../notebooks/scroll_kinematics.ipynb)
 
-## 9. The serial evaluation assumption is wrong for most SERP sessions
+## 9. Where does relaxing the serial evaluation assumption help?
 
-Click models (Chuklin et al. 2015), cascade models (Craswell et al. 2008), and even the two-stage examination model (Liu et al. CIKM 2014) assume monotonic top-to-bottom examination: the user scans result 1, then 2, then 3, and either clicks or abandons. This assumption is embedded in offline evaluation metrics (C/W/L framework, Azzopardi SIGIR 2014) and in the examination hypothesis that underlies position bias correction.
+Click models (Chuklin et al. 2015), cascade models (Craswell et al. 2008), and the two-stage examination model (Liu et al. CIKM 2014) assume monotonic top-to-bottom examination. This has been a useful simplification — it makes position bias estimable and evaluation metrics tractable (Azzopardi SIGIR 2014, C/W/L framework). The question isn't whether serial evaluation is "wrong" but where allowing for complexity buys you something.
 
-Our data shows this assumption fails for the majority of search sessions:
+**What we observe in AdSERP (with caveats):**
 
-- **69% of trials contain at least one scroll regression.** The typical session involves 2.8 regressions traversing ~7 result positions. Only 31% of trials are pure one-pass sequential scans.
-- **Regression targets are position-specific** (ANOVA η² = 0.87) — users scroll back to a remembered region, not randomly or always to the top. But landing precision is region-level, not result-level (offset from nearest result center ≈ random baseline). After landing, ~6 fixations of visual search are needed to locate the target. This implies spatial memory for SERP layout that is coarser than individual results — consistent with Solman & Kingstone (2024) on spatial memory in naturalistic visual search.
+- **69% of trials contain at least one scroll regression.** Mean 2.8 regressions/trial, ~7 result positions of travel. This aligns with Lorigo et al.'s (2008) ~66% nonlinear scanpaths from a different era and task. **However:** both studies are lab-scale with constrained tasks. The AdSERP forced-click design (no abandonment option) likely inflates regression rates — participants *must* choose, so they re-evaluate rather than leave. We don't know the at-scale regression rate on production SERPs because, remarkably, nobody has measured it. NN/g's 130K-fixation scrolling study (2020) measures only forward attention allocation. Huang, White & Buscher (2012) use scroll events to infer examination but don't decompose direction. Click models don't model it.
+
+- **Regression targets are position-specific** (ANOVA η² = 0.87) but landing precision is region-level, not result-level (offset from nearest result center ≈ random baseline). After landing, ~6 fixations of visual search are needed to locate the target. This implies spatial memory for SERP layout that is coarser than individual results — consistent with Solman & Kingstone (2024) on spatial memory in naturalistic visual search.
+
 - **Revisit behavior is asymmetric.** Clicked results get +32% more fixations and +37% more time on revisit (deep confirmation). Non-clicked results get −17% fewer fixations (quick rejection). Per-fixation duration drops slightly on revisit (210 vs 216ms) — recognition, not re-reading.
-- **The satisfice/optimize dimension maps to regression rate.** Per-participant regression rate correlates with LHIPA (pupillometric cognitive load) at ρ = −0.55. Optimizers (86% regression rate, lower LHIPA = more load) click higher (mean position 2.7) than satisficers (43% rate, position 3.4). Optimizers don't forage deeper — they forage more thoroughly. This connects to Schwartz's maximizing/satisficing construct but via a physiological measure rather than self-report.
 
-**Implications:** Any evaluation model that assumes serial examination will systematically mischaracterize sessions with regressions. Position bias estimates derived from cascade models absorb regression effects into the position parameter — the "position 7 penalty" includes both natural decay and the fact that position 7 is a transit zone during ballistic backward scrolling (see §8). Click models need a re-examination state, not just examine → click/skip.
+- **The satisfice/optimize dimension maps to regression rate.** Per-participant regression rate correlates with LHIPA (pupillometric cognitive load) at ρ = −0.55. Optimizers (86% regression rate, lower LHIPA = more load) click higher (mean position 2.7) than satisficers (43% rate, position 3.4). Optimizers don't forage deeper — they forage more thoroughly.
 
-Maxwell & Azzopardi (ECIR 2018) model SERP-level stopping using information scent but not within-page re-evaluation. Our data suggests the stopping decision and the regression decision are competing alternatives at the bottom-of-page deliberation point: the user can stop (click what they've seen), scroll back (regress to re-evaluate), or paginate (next SERP). The forced-choice task in AdSERP makes the regression path visible where naturalistic search would allow abandonment — regressions are the alternative to abandoning.
+**Where complexity helps:**
+
+1. **Position bias estimation.** Cascade models absorb regression effects into the position parameter. The "position 7 penalty" includes both natural examination decay and the ballistic transit effect (§8) — users fly past position 7 at 1400 px/s on the way to their regression target at position 2-4. Separating these would sharpen position bias estimates for sessions where regressions occur.
+
+2. **The stopping/regression/paginate decision.** Maxwell & Azzopardi (ECIR 2018) model SERP-level stopping using information scent, but the model has one exit: leave. Our data suggests three competing actions at the bottom-of-page deliberation point: click what you've seen, scroll back to re-evaluate, or paginate. The forced-choice task makes regression visible where naturalistic search allows abandonment — regressions may be what abandonment looks like when leaving isn't an option.
+
+3. **Evaluation metrics for re-finding tasks.** Navigational and re-finding queries may have higher natural regression rates than informational queries, because the user has a specific target in memory. Serial evaluation metrics would penalize SERPs that support efficient regression (e.g., distinctive visual landmarks at each result).
+
+**Where simplification is fine:** For aggregate ranking evaluation, offline metrics, and most A/B testing, the serial assumption produces useful rankings. The regression phenomenon matters most at the session level — understanding individual search episodes, detecting struggle, and modeling the foraging dynamics within a single query.
 
 **Notebooks:** [regression_decisions.ipynb](../notebooks/regression_decisions.ipynb), [scroll_kinematics.ipynb](../notebooks/scroll_kinematics.ipynb)
 
