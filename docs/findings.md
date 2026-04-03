@@ -93,7 +93,9 @@ Tested at three levels of granularity. Null at all of them.
 
 **Why the aggregate correlation was misleading:** Position and overlap are confounded — both increase monotonically down the SERP. The aggregate partial r = -0.054 (p = 2.4×10⁻⁹) was driven by this confound, not by content. The regression-vs-no-regression split compounded the problem: lower dwell on revisit reflects recognition/memory and ballistic scroll kinematics (§8), not semantic priming.
 
-**What remains:** Token-level fixation analysis (do previously-encountered words receive shorter fixations within a result?) and at-scale production logs with larger N. But the result-level hypothesis — that cumulative overlap predicts faster evaluation — is tested and null.
+**Survey-to-evaluate vocabulary transfer (fourth test):** If the survey builds a lexical context that primes subsequent reading, then results whose vocabulary was well-represented in the survey-fixated results should get faster evaluation. Tested on 24,025 forward-only evaluate episodes at non-surveyed positions. Survey vocabulary overlap with the evaluated result (mean 0.31) does not predict episode duration (ρ = 0.011, p = 0.094) or fixation count (ρ = 0.012, p = 0.063). Null at every position within-position (all p > 0.06). Tercile split: low-overlap episodes are if anything slightly *faster* (689ms vs 718ms, KW p = 0.10). The survey's output is a strategy decision, not a processing facilitation.
+
+**What remains:** Token-level fixation analysis (do previously-encountered words receive shorter fixations within a result?) and at-scale production logs with larger N. But the result-level hypothesis — that content overlap predicts faster evaluation — is now tested at four granularities and null at all of them.
 
 **Notebook:** [serp_priming.ipynb](../notebooks/serp_priming.ipynb), Step 4; [fixation_coverage.ipynb](../notebooks/fixation_coverage.ipynb), decomposition analysis
 
