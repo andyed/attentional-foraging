@@ -1,30 +1,23 @@
 # Findings
 
-Reanalysis of the AdSERP dataset (Latifzadeh, Gwizdka & Leiva, SIGIR 2025). The [journey doc](journey.md) records how this started; this document records what we think we found.
+Reanalysis of the [AdSERP dataset](https://github.com/kayhan-latifzadeh/AdSERP) (Latifzadeh, Gwizdka & Leiva, SIGIR 2025). The [journey doc](journey.md) records how this started; this document records what we found.
 
-**Status:** v6, 2026-04-02. Priming hypothesis tested at three granularities (bag-of-words, semantic embeddings, within-position) — null at all. Forward-only dwell increases with position (ρ = +0.82). §9 added: where relaxing serial evaluation helps. Orientation time (194ms median) reflects well-memorized SERP layout.
+**Status:** v7, 2026-04-03. Ski-jump decomposition (§0). Task model: Orient–Survey–Evaluate–Commit (§3b). SERP difficulty via relevance spread (§3c). Reading episode pooling (§3d). Prior versions: priming null at three granularities (§2), forward-only dwell increases with position (ρ = +0.82, §3a), scroll kinematics confound (§8).
 
 ---
 
-## Theoretical framework: The Attentional-Foraging Equilibrium
+## Task model
 
-These findings are interpreted through the **Attentional-Foraging Equilibrium (AFE)** — a framework synthesizing Rational Inattention (Sims 2003) with Information Foraging Theory (Pirolli & Card 1999). The core equation: **ρ = V / (τ + T_s + σ²)**, where V = expected value, τ = handling time, T_s = travel time between patches, σ² = uncertainty. The user leaves a patch when ρ falls below threshold.
+SERP evaluation decomposes into four measurable phases. See the [pre-submission draft](arxiv/task-model-paper.pdf) for the full argument.
 
-How each finding maps to AFE:
+```
+Orient → Survey → Evaluate ─┬─→ Click result
+                  ↑          ├─→ Next page / Reformulate query
+                  └──────────┘   └─→ Abandon search
+                  (regression)
+```
 
-- **Lexical priming** (Finding 2) — tested at three levels of granularity (bag-of-words, semantic embeddings, within-position controls) and null at all of them. Forward-only dwell *increases* with position (ρ = +0.82). Lower dwell during regressions is explained by repetition/recognition and ballistic scroll kinematics, not content priming. The mechanism, if it exists, operates below the result level (possibly token-level fixation duration) — but the most parsimonious explanation is that evaluation slows with foraging depth because the candidate set in working memory grows.
-- **Scroll regressions** (Finding 4) are travel costs (T_s) paid for re-evaluation. What triggers regressions remains untested — SERP-level homogeneity does not predict regression count (r = -0.015), and per-result novelty triggering has not been analyzed.
-- **Mouse-gaze convergence** (Finding 5) traces the transition from foraging (high T_s, moving between patches) to exploitation (low τ, evaluating within a patch).
-- **Per-participant variance** (Finding 7) maps to bandwidth λ — individual cognitive capacity differences.
-- The **forced-choice purchase task** creates a defined stopping criterion that makes the patch-leaving decision observable. Most SERP studies use open-ended tasks where the user can leave without clicking.
-
-Full presentation: [The Attentional-Foraging Equilibrium](https://gamma.app/docs/The-Attentional-Foraging-Equilibrium-A-Synthesis-of-Digital-Behav-aq0bw2ujjxwypbt)
-
-### SERP interaction task model
-
-![SERP task model](../assets/serp-task-model.svg)
-
-*SERP interaction model — after Marchionini (1995), Gwizdka (2010). The **Engage** zone contains the evaluation loop measured in this project: Locate → Evaluate → Click decision → End-of-page check → Deliberate (regress, choose visible, or paginate). The Deliberate diamond is where the forced-choice task inflates regression frequency — in naturalistic search, "next page" and query reformulation absorb decisions that become regressions here.*
+AdSERP's forced-choice task eliminates reformulation and abandonment, isolating the inner loop. Each phase has been studied in isolation in the literature (click models encode examination assumptions, Liu et al. 2014 identified skimming→reading, Pirolli & Card 1999 provided the foraging framework). The contribution is identifying them as phases of a single task with measurable saccadic transitions.
 
 ---
 
@@ -37,6 +30,26 @@ Two major caveats versus generalized SERP behavior. These pervade all findings.
 **2. Limited X-axis variation.** SERPs were served via localhost in a controlled lab environment. No competing browser chrome, no tabs, no bookmarks bar, no address bar. Mouse position variance is artificially constrained compared to real browsing where attention splits across the full browser window.
 
 **Bottom line:** The findings describe underlying mechanisms (priming, convergence, regression patterns), not base rates. The mechanisms should transfer to real SERP behavior; the exact numbers are specific to this task design.
+
+---
+
+## 0. The ski-jump: click distribution upticks at the boundary
+
+Click share drops monotonically from position 0 to 9, then upticks at position 10 (3.3% vs 2.9%). This replicates the "ski-jump" pattern observed in click-share data across product search engines (eBay, MSN Search, Redbubble, others). In production search, the boundary is "next page." In AdSERP's forced-choice task, position 10 IS the boundary.
+
+| Pos | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | **10** |
+|-----|---|---|---|---|---|---|---|---|---|---|--------|
+| Click % | 17.7 | 13.5 | 14.2 | 13.4 | 9.5 | 6.6 | 5.7 | 3.8 | 3.8 | 2.9 | **3.3** |
+
+**Who clicks at the boundary?** Optimizers (high regression rate) are 1.56× more likely to click at positions 9–10 than satisficers (14.5% vs 9.3%). They evaluated the whole SERP before committing.
+
+**Cognitive load at the boundary.** LHIPA drops sharply at positions 9–10 (0.041 vs 0.049, p < 0.0001). Lower LHIPA = higher cognitive load. Boundary clickers are working harder, not giving up. They've seen everything and still need to pick.
+
+**Difficulty modulation.** Easy SERPs (high relevance spread) produce more boundary clicks (13.6% vs 10.0%). Users who scroll all the way down on an easy SERP are likelier to click at the boundary because the standout was lower in the ranking.
+
+**Investment.** Boundary clickers invested ~100 fixations and 26.5s, vs ~89 fixations and ~23s for mid-range clickers (positions 3–6).
+
+**Notebook:** [00_skijump.ipynb](../notebooks-v2/00_skijump.ipynb)
 
 ---
 
@@ -112,7 +125,63 @@ The key insight: **per-fixation duration does not vary with position.** Each rea
 
 **Note on per-fixation duration as a priming metric:** It isn't one. Fixation duration is a low-level oculomotor parameter driven by saccade planning and foveal information extraction mechanics, not by result-level content familiarity. No one in the reading literature would predict that result-level lexical overlap changes individual fixation durations — the grain size is wrong. The flat ~220ms finding is a useful decomposition fact but says nothing about priming. The valid priming metrics at this granularity are fixation *count* (fewer looks needed) and p(fixate) (skip entirely). Both are null within-position. See "What we got wrong" in [journey.md](journey.md) for how we initially misframed this.
 
-**Notebook:** [fixation_coverage.ipynb](../notebooks/fixation_coverage.ipynb), decomposition analysis
+**Notebook:** [fixation_coverage.ipynb](../notebooks/fixation_coverage.ipynb), [04_fixation_coverage.ipynb](../notebooks-v2/04_fixation_coverage.ipynb)
+
+## 3b. Orient–Survey–Evaluate–Commit: the phase structure
+
+Saccade amplitude distinguishes two scanning modes within each trial:
+
+| Phase | Saccade amplitude | Duration | Behavior |
+|-------|-------------------|----------|----------|
+| **Survey** (fixations 1–~5) | 117px median, 56% major | ~1s, ~3.5 fixations | Wide jumps between results, gist sampling |
+| **Evaluate** (fixations ~6+) | 76px median, 40% major | Variable | Narrow saccades within results, reading episodes |
+
+Per-trial amplitude slope over first 20 saccades: mean ρ = −0.128, p = 1.5 × 10⁻⁶¹ (N = 991). The transition is detectable within individual trials.
+
+**Survey duration is fixed.** ~3.5 saccades, ~1s. No correlation with relevance spread (ρ = −0.000), distinctive density (ρ = 0.020), or Jaccard (ρ = −0.012). All p > 0.3. The survey's *output* — an impression of result set composition — modulates subsequent evaluation strategy, but its *duration* does not respond to SERP content.
+
+**Orientation is a learned prior.** Median orientation time: 0ms. 58% of first fixations land directly on a result. No learning effect across 60 trials (ρ = 0.02, p = 0.30). The SERP layout is memorized.
+
+**Survey and scroll are decoupled.** Survey ends at fixation ~3. First scroll happens at fixation ~20 (median). 92% of trials: survey ends well before the first scroll. The user evaluates ~17 fixations of first-viewport results between survey and scroll.
+
+**Notebook:** [06_orientation_evaluation.ipynb](../notebooks-v2/06_orientation_evaluation.ipynb)
+
+## 3c. SERP difficulty is discriminability, not similarity
+
+Three difficulty measures tested:
+
+| Measure | Mean | What it measures |
+|---------|------|-----------------|
+| Jaccard | 0.151 | Bag-of-words token overlap between results |
+| Relevance spread | 0.052 | Std of query–result embedding cosine similarity |
+| Distinctive density | 0.460 | TF-IDF-weighted unique-token fraction per result |
+
+Jaccard and relevance spread are strongly anti-correlated (ρ = −0.450) — different constructs.
+
+**Relevance spread is the strongest predictor.** Within-participant: coverage (ρ̄ = 0.089, p < 0.001), duration (ρ̄ = 0.042, p = 0.031). Between-trial: coverage (ρ = 0.098, p < 0.001), click position (ρ = 0.046, p = 0.047), duration (ρ = 0.043, p = 0.03). Jaccard is null for duration, fixations, and regressions.
+
+**Why token overlap fails for transactional queries.** All AdSERP queries are "buy [brand] [product]." Results *should* share vocabulary — they're all selling the same thing. High overlap doesn't mean the results are hard to tell apart. What matters is whether one result clearly matches the query better than the others (high relevance spread) or whether they're all equidistant (low spread). Low spread → satisfice early (49% coverage). High spread → explore deeply (53% coverage).
+
+**Notebook:** [09_difficulty.ipynb](../notebooks-v2/09_difficulty.ipynb); [compute_difficulty_measures.py](../scripts/compute_difficulty_measures.py)
+
+## 3d. Reading episodes and parafoveal processing
+
+Consecutive fixations on the same result connected by minor saccades (<100px) form **reading episodes** — continuous processing units where the parafovea preprocesses the next landing during each fixation.
+
+| Metric | Value |
+|--------|-------|
+| Total episodes | 95,328 across 2,334 trials |
+| Single-fixation episodes | 50.5% |
+| Multi-fixation episodes | 49.5% (mean 2.16 fixations, 499ms) |
+| Parafoveal time per trial | ~866ms (inter-fixation gap time within episodes) |
+
+**Difficulty effect.** Proportion of multi-fixation episodes is higher on hard SERPs (51% vs 49%, p = 0.004). Other episode metrics (fixations per episode, episode duration, parafoveal time) are null against Jaccard difficulty.
+
+The ~866ms of parafoveal processing time per trial is invisible to raw FPOGD summation. Episode pooling recovers it.
+
+**Notebook:** [09_difficulty.ipynb](../notebooks-v2/09_difficulty.ipynb)
+
+---
 
 ## 4. Scroll regressions are the dominant browsing pattern
 
@@ -142,16 +211,14 @@ Per-participant acquisition onset ranges from 0.2s to 13.8s (SD=2.5s). Regressio
 
 ## Theoretical connections
 
-The **Attentional-Foraging Equilibrium** provides the overarching frame. AFE models the SERP as a patch environment where the user's reward rate ρ = V / (τ + T_s + σ²) determines when to stop evaluating and commit to a click. The mechanisms below all operate on components of that equation.
+The task model (§3b) maps onto several theoretical traditions:
 
-The theoretical connections remain relevant even though the bag-of-words overlap measure didn't survive within-position controls:
+- **Information foraging** (Pirolli & Card 1999): The survey phase is patch quality assessment. The commit decision is the marginal value threshold. Scroll regressions are travel costs. The satisfice/optimize dimension maps to individual differences in foraging strategy.
+- **Surprisal theory** (Hale 2001, Levy 2008): Predicts high-overlap content has low surprisal → faster processing. The theory is sound; the measure (result-level bag-of-words) was too coarse. Token-level surprisal within fixation sequences is the right test — untested.
+- **E-Z Reader** (Reichle, Rayner, Pollatsek): Per-fixation duration is flat (~220ms) across positions — consistent with a fixed-duration sampling process. The reading episode (§3d) is the appropriate unit, not the individual fixation.
+- **Rational Inattention** (Sims 2003): Per-participant variance in regression rates and TTI reflects differences in processing bandwidth. Well-supported by the user strategies analysis (regression rate 0%–98% range, TTI calibration at r = 0.77).
 
-- **Surprisal theory** (Hale 2001, Levy 2008): Predicts that high-overlap content has low surprisal → faster processing. The theory is sound; the measure (result-level bag-of-words) may be too coarse. Token-level surprisal within fixation sequences is the right test.
-- **E-Z Reader** (Reichle, Rayner, Pollatsek): Predicts fewer refixations on familiar words. Our decomposition confirms per-fixation duration is flat (~220ms) across positions — the right level for this model is word-level, not result-level.
-- **Given-new contract** (Clark & Haviland 1977): Predicts faster integration of "given" information. Still theoretically grounded — needs a measure that tracks given/new at the appropriate granularity.
-- **Rational Inattention** (Sims 2003): Per-participant variance in regression rates and TTI reflects differences in bandwidth λ. This is well-supported by the user strategies analysis (regression rate 0%–98% range, TTI calibration at r=0.77).
-
-The decomposition finding — that position-dependent evaluation decline comes from fewer fixations per result, not shorter fixations — suggests the mechanism operates at the **allocation** level (how many fixations to invest) rather than the **processing** level (how long each fixation takes). This is an attention-allocation decision, not a lexical processing effect. It may still be content-driven, but the signal pathway is different from what we initially hypothesized.
+The decomposition finding — that position-dependent evaluation decline comes from fewer fixations per result, not shorter fixations — means the mechanism operates at the **allocation** level (how many looks to invest) rather than the **processing** level (how long each look takes).
 
 ---
 
@@ -267,4 +334,4 @@ The gaze-cursor lag replicates Huang, White & Buscher (2012) in direction and ma
 
 ---
 
-*v6, 2026-04-02. v1: aggregate priming correlation. v2: regression-stratified split (re-evaluation vs first-pass). v3: within-position controls show bag-of-words overlap does not survive position confound. v4: viewport time bug fix; forward-only shape test shows dwell increases with position (ρ = +0.73), reversing priming prediction; metric renamed to gaze dwell ratio. v5: FPOGY clamp fix (24.5% of fixations out-of-bounds); position 9 dwell ratio 1.25 → 0.79; scroll kinematics analysis confirms ballistic regression confound (ρ = -0.762); regression-trial "priming" reframed as triple confound (position, repetition, kinematics).*
+*v7, 2026-04-03. v1: aggregate priming correlation. v2: regression-stratified split. v3: within-position controls null. v4: viewport time bug fix; forward-only dwell reversal (ρ = +0.73). v5: FPOGY clamp; ballistic kinematics confound. v6: §9 relaxing serial evaluation. v7: ski-jump decomposition (§0); task model Orient–Survey–Evaluate–Commit (§3b); SERP difficulty via relevance spread (§3c); reading episode pooling (§3d).*
