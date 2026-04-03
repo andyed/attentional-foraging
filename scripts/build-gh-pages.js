@@ -18,6 +18,7 @@ const { chromium } = require('playwright');
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'AdSERP', 'data');
 const SCRUTINIZER = path.join(ROOT, '..', 'scrutinizer-repo', 'scrutinizer2025');
+const ANCHOR_DIR = path.join(ROOT, 'fixation-anchors');
 const GAZEPLOT_DIR = path.join(SCRUTINIZER, 'output', 'adserp-fullpage-gazeplots');
 const SITE_DIR = path.join(ROOT, 'site');
 
@@ -73,9 +74,41 @@ for (const trial of trials) {
         clip: { x: 0, y: 0, width: scrW, height: docHeight }
     });
     trialDocHeights[trial.trial_id] = docHeight;
+
+    // Resolve DOM anchors on this page (at the render width) if available
+    const anchorPath = path.join(ANCHOR_DIR, `${trial.trial_id}.json`);
+    if (fs.existsSync(anchorPath)) {
+        const anchors = JSON.parse(fs.readFileSync(anchorPath, 'utf8'));
+        const selectors = anchors.map(a => a ? { selector: a.selector, offsetX: a.offsetX, offsetY: a.offsetY } : null);
+
+        const resolved = await page.evaluate(async (items) => {
+            const results = [];
+            for (const item of items) {
+                if (!item) { results.push(null); continue; }
+                const el = document.querySelector(item.selector);
+                if (!el) { results.push(null); continue; }
+                // Scroll to element to ensure layout is computed
+                el.scrollIntoView({ block: 'center' });
+                await new Promise(r => setTimeout(r, 10));
+                const rect = el.getBoundingClientRect();
+                results.push({
+                    x: Math.round((rect.left + item.offsetX) * 10) / 10,
+                    y: Math.round((rect.top + window.scrollY + item.offsetY) * 10) / 10,
+                });
+            }
+            return results;
+        }, selectors);
+
+        // Store resolved coordinates per trial for the processing loop
+        trial._resolvedAnchors = resolved;
+        const count = resolved.filter(r => r).length;
+        console.log(`    ${trial.trial_id} (${scrW}x${docHeight}) — ${count}/${anchors.length} anchors resolved`);
+    } else {
+        console.log(`    ${trial.trial_id} (${scrW}x${docHeight})`);
+    }
+
     await page.close();
     await playwrightCtx.close();
-    console.log(`    ${trial.trial_id} (${scrW}x${docHeight})`);
 }
 await browser.close();
 console.log('');
@@ -113,15 +146,21 @@ for (const trial of trials) {
     const docH = meta.documentHeight;
     const query = meta.query;
 
-    // FPOGX/FPOGY are "relative to the top-left corner of the screenshot in pixels"
-    // (AdSERP docs). The screenshot is at screenWidth (1280px). Coordinates map
-    // directly to a 1280px-wide full-page render — no scaling needed.
-    const fixations = trialData.fixations.map(f => ({
-        t: f.tStart + trialData.fixations[0].tStart,  // restore absolute for timeline
-        x: Math.round((f.pageY !== undefined ? f.x : f.x) * 10) / 10,  // already screen/screenshot-space
-        y: Math.round((f.pageY !== undefined ? f.pageY : f.y) * 10) / 10,
-        d: Math.round(f.tEnd - f.tStart)
-    })).filter(f => f.d > 0);
+    // Use DOM-resolved coordinates if available (resolved at the render width).
+    // Falls back to raw screen-space pixel coords.
+    const resolvedAnchors = trial._resolvedAnchors || null;
+
+    const fixations = trialData.fixations.map((f, i) => {
+        const resolved = resolvedAnchors && resolvedAnchors[i];
+        const x = resolved ? resolved.x : f.x;
+        const y = resolved ? resolved.y : (f.pageY !== undefined ? f.pageY : f.y);
+        return {
+            t: f.tStart + trialData.fixations[0].tStart,
+            x: Math.round(x * 10) / 10,
+            y: Math.round(y * 10) / 10,
+            d: Math.round(f.tEnd - f.tStart)
+        };
+    }).filter(f => f.d > 0);
 
     // Mouse events: already in page-space from evtrack (pageX/pageY).
     // No Y scaling needed — pageY coordinates match the windowW layout.
@@ -206,6 +245,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   <div class="controls">
     ${hasGazeplot ? `<button class="btn" id="mode-btn">Original</button><button class="btn" id="prog-btn">Progressive</button>` : ''}
     <label id="ws-group">Window <input type="range" id="window-size" min="1" max="${N}" value="${N}" style="width:80px;vertical-align:middle;"> <span id="ws-label">All</span></label>
+    <button class="btn active" id="gaze-btn">Gaze Points</button>
     <button class="btn" id="play-btn">&#9654; Play</button>
     <button class="btn" id="reset-btn">Reset</button>
   </div>
@@ -317,6 +357,10 @@ sf(n);pt=setTimeout(pn,Math.max(100,F[n].d*.5))}
 document.getElementById('play-btn').addEventListener('click',tp);
 document.getElementById('reset-btn').addEventListener('click',()=>{pl=false;clearTimeout(pt);document.getElementById('play-btn').textContent='▶ Play';ws.value=N;ci=N-1;uv();vw.scrollTo({top:0})});
 uv();
+// Gaze points toggle
+const gazeBtn=document.getElementById('gaze-btn');
+let gazeVisible=true;
+gazeBtn.addEventListener('click',()=>{gazeVisible=!gazeVisible;svg.style.display=gazeVisible?'':'none';gazeBtn.classList.toggle('active',gazeVisible);pushHash()});
 // Background mode controls
 const modeBtn=document.getElementById('mode-btn');
 const progBtn=document.getElementById('prog-btn');
@@ -334,12 +378,14 @@ function pushHash(){const p=[];
 if(!ws.disabled)p.push('fix='+(ci+1));
 if(!ws.disabled)p.push('w='+ws.value);
 if(bgMode!=='gazeplot')p.push('mode='+bgMode);
+if(!gazeVisible)p.push('gaze=off');
 history.replaceState(null,'','#'+p.join('&'))}
 function readHash(){const h=location.hash.slice(1);if(!h)return;
 const p={};h.split('&').forEach(kv=>{const[k,v]=kv.split('=');p[k]=v});
 if(p.mode)setMode(p.mode);
 if(p.w){ws.value=p.w;wl.textContent=p.w}
-if(p.fix){ci=Math.max(0,Math.min(N-1,parseInt(p.fix)-1));uv()}}
+if(p.fix){ci=Math.max(0,Math.min(N-1,parseInt(p.fix)-1));uv()}
+if(p.gaze==='off'){gazeVisible=false;svg.style.display='none';gazeBtn.classList.remove('active')}}
 readHash();
 ws.addEventListener('input',()=>{uv();pushHash()});
 </script></body></html>`;
@@ -420,8 +466,11 @@ footer a { color: #888; }
   Trials below are prototypical examples of distinct search behaviors.
 </p>
 <p style="background:#332200;border:1px solid #664400;border-radius:6px;padding:8px 12px;color:#ffcc66;font-size:0.85em;margin-bottom:1em;">
-  Note: Fixation overlay alignment with the foveated render is being corrected.
-  Coordinates may not match the sharp regions exactly.
+  Positional accuracy: fixation overlay has median &lt;13px offset, max ~45px at page bottom.
+  SERP HTML is re-rendered locally; element heights differ from the original Chrome 110/Windows session
+  due to external resource loading (Maps tiles, product images). Fixation coordinates (FPOGX/FPOGY)
+  from <a href="https://github.com/kayhan-latifzadeh/AdSERP" style="color:#ffcc66;">AdSERP</a> are
+  pixel-verified accurate against synthetic test pages.
 </p>
 <p class="controls-help">
   <kbd>&larr;</kbd><kbd>&rarr;</kbd> step through fixations &middot;

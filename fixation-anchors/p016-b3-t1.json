@@ -1,0 +1,482 @@
+[
+  {
+    "selector": "#slim_appbar > div",
+    "offsetX": 475.5,
+    "offsetY": 12.3,
+    "resolvedX": 655.5,
+    "resolvedY": 144.3,
+    "tag": "div"
+  },
+  {
+    "selector": "#rcnt > div:nth-of-type(1) > div > div > div:nth-of-type(5)",
+    "offsetX": 448.8,
+    "offsetY": 22.3,
+    "resolvedX": 628.8,
+    "resolvedY": 284.3,
+    "tag": "div"
+  },
+  {
+    "selector": "#platop2",
+    "offsetX": 93.8,
+    "offsetY": 41,
+    "resolvedX": 538.8,
+    "resolvedY": 397.5,
+    "tag": "img"
+  },
+  {
+    "selector": "#platop2",
+    "offsetX": 82.7,
+    "offsetY": 122.1,
+    "resolvedX": 527.7,
+    "resolvedY": 478.6,
+    "tag": "img"
+  },
+  {
+    "selector": "#vplap2",
+    "offsetX": 82.7,
+    "offsetY": 238.2,
+    "resolvedX": 527.7,
+    "resolvedY": 565.2,
+    "tag": "a"
+  },
+  {
+    "selector": "#vplap2",
+    "offsetX": 44.9,
+    "offsetY": 239.3,
+    "resolvedX": 489.9,
+    "resolvedY": 566.3,
+    "tag": "a"
+  },
+  {
+    "selector": "#rcnt > div:nth-of-type(1)",
+    "offsetX": 249.9,
+    "offsetY": 2.7,
+    "resolvedX": 429.9,
+    "resolvedY": 177.7,
+    "tag": "div"
+  },
+  {
+    "selector": "#result-stats > nobr",
+    "offsetX": 77.1,
+    "offsetY": 11.6,
+    "resolvedX": 393.3,
+    "resolvedY": 156.6,
+    "tag": "nobr"
+  },
+  {
+    "selector": "#rcnt > div:nth-of-type(1) > div > div > div:nth-of-type(3) > div:nth-of-type(1) > div > div:nth-of-type(2) > div > div > div > div:nth-of-type(1) > span",
+    "offsetX": 10.5,
+    "offsetY": 11.9,
+    "resolvedX": 265.5,
+    "resolvedY": 199.9,
+    "tag": "span"
+  },
+  {
+    "selector": "#rcnt > div:nth-of-type(1) > div > div > div:nth-of-type(5)",
+    "offsetX": 306.6,
+    "offsetY": 7.8,
+    "resolvedX": 486.6,
+    "resolvedY": 269.8,
+    "tag": "div"
+  },
+  {
+    "selector": "#rcnt > div:nth-of-type(1) > div > div > div:nth-of-type(5)",
+    "offsetX": 356.6,
+    "offsetY": 13.4,
+    "resolvedX": 536.6,
+    "resolvedY": 275.4,
+    "tag": "div"
+  },
+  {
+    "selector": "#rcnt > div:nth-of-type(1) > div > div > div:nth-of-type(4)",
+    "offsetX": 588.8,
+    "offsetY": 0,
+    "resolvedX": 588.8,
+    "resolvedY": 262,
+    "tag": "div"
+  },
+  {
+    "selector": "#tvcap > div > div",
+    "offsetX": 138.8,
+    "offsetY": 2.8,
+    "resolvedX": 318.8,
+    "resolvedY": 289.8,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div > div > div > div > div > div:nth-of-type(2) > a > div",
+    "offsetX": 43.7,
+    "offsetY": 41.8,
+    "resolvedX": 337.7,
+    "resolvedY": 830.5,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album",
+    "offsetX": 138.8,
+    "offsetY": 186.5,
+    "resolvedX": 318.8,
+    "resolvedY": 880.5,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 47.7,
+    "offsetY": 20.6,
+    "resolvedX": 227.7,
+    "resolvedY": 937.1,
+    "tag": "h3"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 47.7,
+    "offsetY": 5.1,
+    "resolvedX": 227.7,
+    "resolvedY": 921.6,
+    "tag": "h3"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > div > cite > span",
+    "offsetX": 9.3,
+    "offsetY": 1.4,
+    "resolvedX": 333.3,
+    "resolvedY": 899.4,
+    "tag": "span"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album",
+    "offsetX": 185.5,
+    "offsetY": 172.1,
+    "resolvedX": 365.5,
+    "resolvedY": 866.1,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > div > div:nth-of-type(2) > span",
+    "offsetX": 11.4,
+    "offsetY": 7.1,
+    "resolvedX": 437.7,
+    "resolvedY": 906,
+    "tag": "span"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > div > div:nth-of-type(2) > a",
+    "offsetX": 46.3,
+    "offsetY": -0.9,
+    "resolvedX": 486.6,
+    "resolvedY": 896.1,
+    "tag": "a"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > div > div:nth-of-type(2) > a > span",
+    "offsetX": 104.1,
+    "offsetY": 3.6,
+    "resolvedX": 544.4,
+    "resolvedY": 901.6,
+    "tag": "span"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album",
+    "offsetX": 323.3,
+    "offsetY": 184.3,
+    "resolvedX": 503.3,
+    "resolvedY": 878.3,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album",
+    "offsetX": 133.3,
+    "offsetY": 193.2,
+    "resolvedX": 313.3,
+    "resolvedY": 887.2,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album",
+    "offsetX": 67.7,
+    "offsetY": 177.6,
+    "resolvedX": 247.7,
+    "resolvedY": 871.6,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > div",
+    "offsetX": 23.3,
+    "offsetY": 19.8,
+    "resolvedX": 203.3,
+    "resolvedY": 1092.6,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > div:nth-of-type(2) > div > span",
+    "offsetX": 28.9,
+    "offsetY": 34.3,
+    "resolvedX": 208.9,
+    "resolvedY": 1013.8,
+    "tag": "span"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > div:nth-of-type(3) > div > g-review-stars",
+    "offsetX": 36.6,
+    "offsetY": 15.6,
+    "resolvedX": 216.6,
+    "resolvedY": 1039.3,
+    "tag": "g-review-stars"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 25.5,
+    "offsetY": 30.3,
+    "resolvedX": 205.5,
+    "resolvedY": 1123.7,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rcnt",
+    "offsetX": 170,
+    "offsetY": 945.3,
+    "resolvedX": 170,
+    "resolvedY": 1120.3,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 88.8,
+    "offsetY": 5.9,
+    "resolvedX": 268.8,
+    "resolvedY": 1099.2,
+    "tag": "h3"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div",
+    "offsetX": 90,
+    "offsetY": 168.9,
+    "resolvedX": 270,
+    "resolvedY": 1064.8,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > div > cite > span",
+    "offsetX": 27.7,
+    "offsetY": 13.3,
+    "resolvedX": 363.3,
+    "resolvedY": 1088.1,
+    "tag": "span"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > div",
+    "offsetX": 271,
+    "offsetY": 18.6,
+    "resolvedX": 451,
+    "resolvedY": 1091.5,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 304.4,
+    "offsetY": 22.5,
+    "resolvedX": 484.4,
+    "resolvedY": 1115.9,
+    "tag": "h3"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 402.1,
+    "offsetY": 15.9,
+    "resolvedX": 582.1,
+    "resolvedY": 1109.2,
+    "tag": "h3"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album",
+    "offsetX": 388.8,
+    "offsetY": 172.1,
+    "resolvedX": 568.8,
+    "resolvedY": 866.1,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(2)",
+    "offsetX": 5.2,
+    "offsetY": 13.4,
+    "resolvedX": 733.2,
+    "resolvedY": 909.4,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > div > cite > span",
+    "offsetX": 162.1,
+    "offsetY": 12.2,
+    "resolvedX": 497.7,
+    "resolvedY": 1087,
+    "tag": "span"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > div:nth-of-type(2) > div > span",
+    "offsetX": 222.2,
+    "offsetY": 5.4,
+    "resolvedX": 402.2,
+    "resolvedY": 984.9,
+    "tag": "span"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > div:nth-of-type(2) > div",
+    "offsetX": 195.5,
+    "offsetY": 41.7,
+    "resolvedX": 375.5,
+    "resolvedY": 1018.2,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div",
+    "offsetX": 101.1,
+    "offsetY": 156.6,
+    "resolvedX": 281.1,
+    "resolvedY": 1052.6,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div",
+    "offsetX": 94.4,
+    "offsetY": 155.5,
+    "resolvedX": 274.4,
+    "resolvedY": 1051.5,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div",
+    "offsetX": 60,
+    "offsetY": 168.9,
+    "resolvedX": 240,
+    "resolvedY": 1064.8,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(3) > div > span:nth-of-type(1)",
+    "offsetX": 32.2,
+    "offsetY": 14.6,
+    "resolvedX": 281.1,
+    "resolvedY": 1189.2,
+    "tag": "span"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div",
+    "offsetX": 81.1,
+    "offsetY": 303.2,
+    "resolvedX": 261.1,
+    "resolvedY": 1199.2,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(3) > div",
+    "offsetX": 130,
+    "offsetY": 22,
+    "resolvedX": 310,
+    "resolvedY": 1193.6,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(3) > div > span:nth-of-type(1)",
+    "offsetX": 63.3,
+    "offsetY": 11.3,
+    "resolvedX": 312.2,
+    "resolvedY": 1185.9,
+    "tag": "span"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 149.9,
+    "offsetY": 48.4,
+    "resolvedX": 329.9,
+    "resolvedY": 964.9,
+    "tag": "h3"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(3) > div > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 153.3,
+    "offsetY": 17.1,
+    "resolvedX": 333.3,
+    "resolvedY": 1261.4,
+    "tag": "h3"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(3) > div > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > span",
+    "offsetX": 60,
+    "offsetY": 4.6,
+    "resolvedX": 240,
+    "resolvedY": 1285.8,
+    "tag": "span"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(1) > div > div > div:nth-of-type(2) > div > div > div > div > div > div",
+    "offsetX": 291,
+    "offsetY": 79.9,
+    "resolvedX": 471,
+    "resolvedY": 813.9,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 375.5,
+    "offsetY": 25.1,
+    "resolvedX": 555.5,
+    "resolvedY": 941.6,
+    "tag": "h3"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 356.6,
+    "offsetY": 26.2,
+    "resolvedX": 536.6,
+    "resolvedY": 942.7,
+    "tag": "h3"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 321,
+    "offsetY": 11.8,
+    "resolvedX": 501,
+    "resolvedY": 928.3,
+    "tag": "h3"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(2) > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > div > div:nth-of-type(2) > a > span",
+    "offsetX": 47.4,
+    "offsetY": 11.4,
+    "resolvedX": 487.7,
+    "resolvedY": 909.4,
+    "tag": "span"
+  },
+  {
+    "selector": "#tvcap > div > div > div > div > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(5)",
+    "offsetX": 41.9,
+    "offsetY": 339.1,
+    "resolvedX": 749.9,
+    "resolvedY": 665.1,
+    "tag": "div"
+  },
+  {
+    "selector": "#tvcap > div > div",
+    "offsetX": 604.3,
+    "offsetY": 388.1,
+    "resolvedX": 784.3,
+    "resolvedY": 675.1,
+    "tag": "div"
+  },
+  {
+    "selector": "#kp-wp-tab-default_tab\\:action\\:listen_album > div:nth-of-type(1) > div > div",
+    "offsetX": 605.4,
+    "offsetY": 27.7,
+    "resolvedX": 785.4,
+    "resolvedY": 721.7,
+    "tag": "div"
+  },
+  {
+    "selector": "#center_col",
+    "offsetX": 606.5,
+    "offsetY": 404.7,
+    "resolvedX": 786.5,
+    "resolvedY": 691.7,
+    "tag": "div"
+  }
+]

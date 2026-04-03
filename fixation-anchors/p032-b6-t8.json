@@ -1,0 +1,74 @@
+[
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(2) > div > div > a > g-img > div",
+    "offsetX": 5.4,
+    "offsetY": 9.4,
+    "resolvedX": 745.4,
+    "resolvedY": 195.4,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(2) > div:nth-of-type(1)",
+    "offsetX": 404.4,
+    "offsetY": 24.6,
+    "resolvedX": 584.4,
+    "resolvedY": 263.2,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(2) > div:nth-of-type(3) > span:nth-of-type(2)",
+    "offsetX": 27.5,
+    "offsetY": -0.3,
+    "resolvedX": 356.6,
+    "resolvedY": 317.6,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(2) > div:nth-of-type(3) > g-review-stars > span > span",
+    "offsetX": 31.1,
+    "offsetY": 4.3,
+    "resolvedX": 211.1,
+    "resolvedY": 323.1,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(2) > div:nth-of-type(1) > span > em:nth-of-type(1)",
+    "offsetX": 34.4,
+    "offsetY": 0.5,
+    "resolvedX": 214.4,
+    "resolvedY": 242.1,
+    "tag": "em"
+  },
+  {
+    "selector": "#result-stats",
+    "offsetX": 53.3,
+    "offsetY": 4.7,
+    "resolvedX": 233.3,
+    "resolvedY": 137.7,
+    "tag": "div"
+  },
+  {
+    "selector": "#hdtb-msb > div:nth-of-type(1) > div > div:nth-of-type(2) > a",
+    "offsetX": 40.5,
+    "offsetY": 40.5,
+    "resolvedX": 271.1,
+    "resolvedY": 125.5,
+    "tag": "a"
+  },
+  {
+    "selector": "#hdtb-msb > div:nth-of-type(1) > div > div:nth-of-type(3) > a",
+    "offsetX": 0.8,
+    "offsetY": 16,
+    "resolvedX": 335.5,
+    "resolvedY": 101,
+    "tag": "a"
+  },
+  {
+    "selector": "#tsf > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button",
+    "offsetX": 27.3,
+    "offsetY": 3,
+    "resolvedX": 834.3,
+    "resolvedY": 30,
+    "tag": "button"
+  }
+]
