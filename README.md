@@ -12,6 +12,8 @@ Two decades of building search and recommendation systems at eBay, Microsoft, Me
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Click % | 17.7 | 13.5 | 14.2 | 13.4 | 9.5 | 6.6 | 5.7 | 3.8 | 3.8 | 2.9 | **3.3** |
 
+→ [Ski-jump notebook](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/00_skijump.ipynb) — decomposition by user strategy, LHIPA, difficulty
+
 **The priming conjecture.** By position 5, 55% of a result's tokens have already appeared. Maybe evaluation speeds up from lexical priming, not declining effort. ([CHIIR 2021 workshop talk](https://www.linkedin.com/in/andyed/).)
 
 Both turned out to need the same thing: decomposing SERP evaluation into measurable cognitive phases rather than treating it as a single process. [Latifzadeh, Gwizdka & Leiva's AdSERP dataset](https://github.com/kayhan-latifzadeh/AdSERP) (SIGIR 2025) — one of the richest public datasets of search behavior, with simultaneous eye tracking, mouse, scroll, and pupil data — made this possible. An AI-assisted [journey.md](./docs/journey.md) validated the dataset's utility; the [findings.md](./docs/findings.md) have been growing since.
