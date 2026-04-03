@@ -25,7 +25,7 @@ AdSERP's forced-choice task eliminates reformulation and abandonment, isolating 
 
 Two major caveats versus generalized SERP behavior. These pervade all findings.
 
-**1. Forced choice with optimizing intent.** Participants were instructed to "click on the item they would typically choose" for product purchase queries, with up to 1 minute per trial and a confirmation step. Every trial ends with a click — no abandonment, no query reformulation. This is optimizing behavior ("what would I actually buy?"), not satisficing ("is this good enough?"). The 69% regression rate and thorough evaluation patterns reflect this constraint.
+**1. Forced choice with optimizing intent.** Participants were instructed to "click on the item they would typically choose" for product purchase queries, with up to 1 minute per trial and a confirmation step. Every trial ends with a click — no abandonment, no query reformulation. This is optimizing behavior ("what would I actually buy?"), not satisficing ("is this good enough?"). The 65% regression rate and thorough evaluation patterns reflect this constraint.
 
 **2. Limited X-axis variation.** SERPs were served via localhost in a controlled lab environment. No competing browser chrome, no tabs, no bookmarks bar, no address bar. Mouse position variance is artificially constrained compared to real browsing where attention splits across the full browser window.
 
@@ -185,9 +185,9 @@ The ~866ms of parafoveal processing time per trial is invisible to raw FPOGD sum
 
 ## 4. Scroll regressions are the dominant browsing pattern
 
-69.1% of trials contain at least one scroll regression. Mean 2.8 regressions per trial, mean magnitude 1,118px (~7 result slots). Regression count correlates with decision time (r=0.660).
+65% of trials contain at least one scroll regression (catalog computation; 2,341 trials with behavioral tags). Mean 2.8 regressions per trial, mean magnitude 1,118px (~7 result slots). Regression count correlates with decision time (r=0.660).
 
-**Caveat:** The 69% rate is likely inflated by the forced-choice optimizing task. Participants who would normally abandon and reformulate are instead forced to re-evaluate. In real browsing, regression rates are probably lower.
+**Caveat:** The 65% rate is likely inflated by the forced-choice optimizing task. Participants who would normally abandon and reformulate are instead forced to re-evaluate. In real browsing, regression rates are probably lower.
 
 **Notebook:** [scroll_regressions.ipynb](../notebooks/scroll_regressions.ipynb)
 
@@ -215,7 +215,7 @@ The task model (§3b) maps onto several theoretical traditions:
 
 - **Information foraging** (Pirolli & Card 1999): The survey phase is patch quality assessment. The commit decision is the marginal value threshold. Scroll regressions are travel costs. The satisfice/optimize dimension maps to individual differences in foraging strategy.
 - **Surprisal theory** (Hale 2001, Levy 2008): Predicts high-overlap content has low surprisal → faster processing. The theory is sound; the measure (result-level bag-of-words) was too coarse. Token-level surprisal within fixation sequences is the right test — untested.
-- **E-Z Reader** (Reichle, Rayner, Pollatsek): Per-fixation duration is flat (~220ms) across positions — consistent with a fixed-duration sampling process. The reading episode (§3d) is the appropriate unit, not the individual fixation.
+- **E-Z Reader** (Reichle et al. 1998): Per-fixation duration is flat (~220ms) across positions — consistent with a fixed-duration sampling process. The reading episode (§3d) is the appropriate unit, not the individual fixation.
 - **Rational Inattention** (Sims 2003): Per-participant variance in regression rates and TTI reflects differences in processing bandwidth. Well-supported by the user strategies analysis (regression rate 0%–98% range, TTI calibration at r = 0.77).
 
 The decomposition finding — that position-dependent evaluation decline comes from fewer fixations per result, not shorter fixations — means the mechanism operates at the **allocation** level (how many looks to invest) rather than the **processing** level (how long each look takes).
@@ -256,7 +256,7 @@ Click models (Chuklin et al. 2015), cascade models (Craswell et al. 2008), and t
 
 **What we observe in AdSERP (with caveats):**
 
-- **69% of trials contain at least one scroll regression.** Mean 2.8 regressions/trial, ~7 result positions of travel. This aligns with Lorigo et al.'s (2008) ~66% nonlinear scanpaths from a different era and task. **However:** both studies are lab-scale with constrained tasks. The AdSERP forced-click design (no abandonment option) likely inflates regression rates — participants *must* choose, so they re-evaluate rather than leave. We don't know the at-scale regression rate on production SERPs because, remarkably, nobody has measured it. NN/g's 130K-fixation scrolling study (2020) measures only forward attention allocation. Huang, White & Buscher (2012) use scroll events to infer examination but don't decompose direction. Click models don't model it.
+- **65% of trials contain at least one scroll regression.** Mean 2.8 regressions/trial, ~7 result positions of travel. This aligns with Lorigo et al.'s (2008) ~66% nonlinear scanpaths from a different era and task. **However:** both studies are lab-scale with constrained tasks. The AdSERP forced-click design (no abandonment option) likely inflates regression rates — participants *must* choose, so they re-evaluate rather than leave. We don't know the at-scale regression rate on production SERPs because, remarkably, nobody has measured it. NN/g's 130K-fixation scrolling study (2020) measures only forward attention allocation. Huang, White & Buscher (2012) use scroll events to infer examination but don't decompose direction. Click models don't model it.
 
 - **Regression targets are position-specific** (ANOVA η² = 0.87) but landing precision is region-level, not result-level (offset from nearest result center ≈ random baseline). After landing, ~6 fixations of visual search are needed to locate the target. This implies spatial memory for SERP layout that is coarser than individual results — consistent with Solman & Kingstone (2024) on spatial memory in naturalistic visual search.
 
@@ -274,7 +274,7 @@ Click models (Chuklin et al. 2015), cascade models (Craswell et al. 2008), and t
 
 **An unmeasured signal at scale.** The simplest regression indicator — `click_position < max_scroll_depth` — is trivially computable from standard search telemetry. Every search engine logs scroll events and click positions. Yet as of this writing, no published work reports the at-scale prevalence of this signal on production SERPs. Huang, White & Buscher (2012) recorded "all SERP interactions including cursor and scroll movements" at Bing and used scroll to infer examination — but didn't decompose scroll direction. NN/g's 130K-fixation scrolling study (2020) measured only forward attention allocation. The cascade model's success at ranking evaluation may have created a blind spot: if the forward-only assumption produces useful metrics, there's no pressure to instrument for the thing it can't represent.
 
-The natural rate is almost certainly much lower than AdSERP's 69%. From personal observation (unverifiable; internal data), `click_rank < max_scroll_offset` appears in roughly 15% of sessions in large-scale e-commerce search logs — still a meaningful minority, but the forced-click task inflates regression prevalence by roughly 4–5x by eliminating the abandonment alternative. The true question for production systems is whether that ~15% is random noise or a behaviorally coherent segment worth modeling.
+The natural rate is almost certainly much lower than AdSERP's 65%. From personal observation (unverifiable; internal data), `click_rank < max_scroll_offset` appears in roughly 15% of sessions in large-scale e-commerce search logs — still a meaningful minority, but the forced-click task inflates regression prevalence by roughly 4–5x by eliminating the abandonment alternative. The true question for production systems is whether that ~15% is random noise or a behaviorally coherent segment worth modeling.
 
 **Where simplification is fine:** For aggregate ranking evaluation, offline metrics, and most A/B testing, the serial assumption produces useful rankings. The regression phenomenon matters most at the session level — understanding individual search episodes, detecting struggle, and modeling the foraging dynamics within a single query.
 

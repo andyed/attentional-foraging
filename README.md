@@ -54,7 +54,7 @@ AdSERP eliminates two of the three exit paths. Participants *must* click a resul
 
 Survey → evaluate transition: saccade amplitude drop, p = 10⁻⁶¹ within individual trials. Survey ends at fixation ~3; first scroll at fixation ~20 — decoupled events. Full model with evidence: [task-model-paper.pdf](./docs/arxiv/task-model-paper.pdf).
 
-**What we can't test here:** the stay/refine/abandon decision — the core foraging choice in production search. The forced-choice constraint means every trial ends with a click, inflating regression rates (69% of trials) and eliminating the abandonment signal entirely. Validating the full model requires production log data with natural stopping behavior.
+**What we can't test here:** the stay/refine/abandon decision — the core foraging choice in production search. The forced-choice constraint means every trial ends with a click, inflating regression rates (65% of trials) and eliminating the abandonment signal entirely. Validating the full model requires production log data with natural stopping behavior.
 
 ---
 
@@ -65,7 +65,7 @@ Detailed write-up with all statistical tests: [findings.md](./docs/findings.md).
 ### Decomposition
 
 - **The ski-jump is allocation, not speed.** Per-fixation duration flat at ~220ms across all positions. Fixation *count* drops. The position effect is an attention allocation decision. → [§3a](docs/findings.md#3a-evaluation-time-decomposes-into-four-independent-components)
-- **Forward-only dwell *****increases***** with position** (ρ = +0.82). Later results take longer per unit of committed evaluation — working memory load from holding more candidates. → [§3a](docs/findings.md#3a-evaluation-time-decomposes-into-four-independent-components)
+- **Forward-only dwell \*increases\* with position** (ρ = +0.82). Later results take longer per unit of committed evaluation — working memory load from holding more candidates. → [§3a](docs/findings.md#3a-evaluation-time-decomposes-into-four-independent-components)
 - **Survey duration is content-independent.** ~3.5 saccades, ~1s, no correlation with any difficulty measure. The survey's *output* modulates strategy, not its duration.
 
 ### Priming (null)
@@ -115,13 +115,26 @@ Detailed write-up with all statistical tests: [findings.md](./docs/findings.md).
 
 Legacy notebooks in `notebooks/`.
 
+## Reusable components
+
+Several pieces of this project are designed for reuse beyond AdSERP:
+
+| Component | Location | What it does |
+| --- | --- | --- |
+| **Shared data loader** | [data_loader.py](./notebooks-v2/data_loader.py) | Trial loading, scroll interpolation, result band estimation, SERP text extraction, fixation-to-position mapping. Eliminates per-notebook boilerplate. |
+| **LHIPA computation** | [05_lhipa.ipynb](./notebooks-v2/05_lhipa.ipynb) | Duchowski et al. 2020 pupillometric cognitive load index, validated against behavioral measures on AdSERP. Reusable on any Gazepoint GP3 pupil stream. |
+| **Reading episode pooling** | [09_difficulty.ipynb](./notebooks-v2/09_difficulty.ipynb) | Merges consecutive same-result fixations connected by minor saccades (<100px) into reading episodes. Recovers ~866ms/trial of parafoveal processing time invisible to raw FPOGD summation. Threshold is principled but needs sensitivity analysis. |
+| **Relevance spread** | [compute_difficulty_measures.py](./scripts/compute_difficulty_measures.py) | SERP difficulty via embedding-based query-result alignment variance. Requires local embedding server (mxbai-embed-large on port 8890). Also computes TF-IDF distinctive density. |
+| **Saccade phase detection** | Survey→evaluate transition via sliding-window amplitude threshold. Not yet extracted into a standalone function — currently inline in analysis code. |
+| **Foveated scanpath replay** | [`site/`](https://andyed.github.io/attentional-foraging/) + [build-gh-pages.js](./scripts/build-gh-pages.js) | SVG scanpath overlay on Scrutinizer foveated renders. Playback, timeline scrubbing, gaze toggle. Self-contained HTML per trial. |
+
 ## Paper
 
 [task-model-paper.pdf](./docs/arxiv/task-model-paper.pdf) — Orient–Survey–Evaluate–Commit: A Cognitive Task Model for SERP Evaluation. Pre-submission draft, target CHIIR 2027 or SIGIR resource track.
 
 ## Docs
 
-- [findings.md](./docs/findings.md) — All findings with statistical tests (v6)
+- [findings.md](./docs/findings.md) — All findings with statistical tests (v7)
 - [CHANGELOG.md](./CHANGELOG.md) — Version history and corrections
 - [references.bib](./references.bib) — Verified BibTeX library
 - [journey.md](./docs/journey.md) — The first session, frozen at v0
