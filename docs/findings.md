@@ -35,7 +35,7 @@ Two major caveats versus generalized SERP behavior. These pervade all findings.
 
 ## 0. The ski-jump: click distribution upticks at the boundary
 
-Click share drops monotonically from position 0 to 9, then upticks at position 10 (3.3% vs 2.9%). This replicates the "ski-jump" pattern observed in click-share data across product search engines (eBay, MSN Search, Redbubble, others). In production search, the boundary is "next page." In AdSERP's forced-choice task, position 10 IS the boundary.
+Click share drops monotonically from position 0 to 9, then deviates upward at position 10 (91 clicks vs 81 at position 9). The pos-10-vs-pos-9 comparison is not individually significant (binomial p = 0.25, bootstrap 95% CI for rate difference: [−0.6, +1.3]pp). However, the deviation from the log-linear trend fitted to positions 5–9 IS significant: 91 observed vs 65 expected, 39% excess, χ² = 10.0, p = 0.0015. This replicates the "ski-jump" boundary effect observed in click-share data across product search engines (eBay, MSN Search, Redbubble, others). In production search, the boundary is "next page." In AdSERP's forced-choice task, position 10 IS the boundary.
 
 | Pos | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | **10** |
 |-----|---|---|---|---|---|---|---|---|---|---|--------|
