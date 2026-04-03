@@ -38,6 +38,8 @@ const trials = [
     { tag: 'deep_explorer',       trial_id: 'p011-b3-t2',  query: 'buy playmobil gymnast on balance beam' },
     { tag: 'long_trial',          trial_id: 'p037-b2-t5',  query: 'buy fusion ms wr600cv dust cover' },
     { tag: 'scanner',             trial_id: 'p045-b2-t6',  query: 'buy gates gates 22650 lower radiator hose' },
+    { tag: 'clean_serp',          trial_id: 'p020-b6-t10', query: 'buy acdelco acdelco 18a753 brake rotor' },
+    { tag: 'clean_serp_2',        trial_id: 'p047-b2-t6',  query: 'buy stens solid state module briggs 397358' },
 ];
 
 async function main() {
@@ -236,6 +238,9 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   <span>Fixations: <span class="val" id="info-seen">0</span></span>
   ${click ? `<span>Click: <span class="val">(${Math.round(click.x)}, ${Math.round(click.y)})</span></span>` : ''}
   <span><a href="png/${id}.png" download style="color:#6af;text-decoration:none;">Download PNG</a></span>
+</div>
+<div style="width:${screenW}px;padding:6px 16px;background:#1a1a1a;font-size:10px;color:#666;border-top:1px solid #222;">
+  Fixation overlay alignment: median &lt;13px offset, max ~45px at page bottom. SERP HTML is re-rendered locally; element heights differ from original Chrome 110/Windows session due to external resource loading (Maps tiles, product images). Fixation coordinates (FPOGX/FPOGY) from <a href="https://github.com/kayhan-latifzadeh/AdSERP" style="color:#888;">AdSERP dataset</a> are pixel-verified accurate against synthetic test pages.
 </div>
 <script>
 const F=${JSON.stringify(fixations)},CK=${JSON.stringify(click)},ME=${JSON.stringify(mouseEvents)},FR=${fovealR},SW=${screenW},N=${N},
