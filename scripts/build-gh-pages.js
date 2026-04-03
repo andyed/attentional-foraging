@@ -350,6 +350,35 @@ ws.addEventListener('input',()=>{uv();pushHash()});
     results.push({ tag: trial.tag, id, query: trial.query, n: N, hasGazeplot });
 }
 
+// Generate PNG exports (scanpath overlay on gazeplot) + thumbnails
+console.log('\n  Generating PNG exports...');
+const pngBrowser = await chromium.launch();
+for (const r of results) {
+    const pagePath = path.join(SITE_DIR, `${r.id}.html`);
+    const ctx = await pngBrowser.newContext({ viewport: { width: 1280, height: 1024 } });
+    const page = await ctx.newPage();
+    await page.goto(`file://${path.resolve(pagePath)}`, { waitUntil: 'networkidle', timeout: 15000 }).catch(() => {});
+    await page.waitForTimeout(1000);
+
+    // Get the serp-container dimensions (full page height)
+    const box = await page.evaluate(() => {
+        const el = document.querySelector('.serp-container');
+        return el ? { w: el.offsetWidth, h: el.offsetHeight } : null;
+    });
+    if (!box) { console.log(`    skip ${r.id} — no container`); await ctx.close(); continue; }
+
+    // Scroll viewer to top, capture the serp-container at full height
+    await page.evaluate(() => document.querySelector('.viewer').scrollTo(0, 0));
+    const serpContainer = await page.$('.serp-container');
+    const pngBuf = await serpContainer.screenshot();
+    fs.writeFileSync(path.join(SITE_DIR, 'png', `${r.id}.png`), pngBuf);
+    console.log(`    ${r.id}.png (${(pngBuf.length / 1024 / 1024).toFixed(1)}MB, ${box.w}x${box.h})`);
+
+    await ctx.close();
+}
+await pngBrowser.close();
+console.log('');
+
 // Build index page
 const indexHtml = `<!DOCTYPE html>
 <html><head><meta charset="utf-8">
