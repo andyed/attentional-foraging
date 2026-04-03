@@ -29,7 +29,7 @@ Two major caveats versus generalized SERP behavior. These pervade all findings.
 
 **2. Limited X-axis variation.** SERPs were served via localhost in a controlled lab environment. No competing browser chrome, no tabs, no bookmarks bar, no address bar. Mouse position variance is artificially constrained compared to real browsing where attention splits across the full browser window.
 
-**Bottom line:** The findings describe underlying mechanisms (priming, convergence, regression patterns), not base rates. The mechanisms should transfer to real SERP behavior; the exact numbers are specific to this task design.
+**However:** The within-SERP scanning behavior converges with free-reformulation studies. Lorigo et al. (2008) found ~66% nonlinear scanpaths under informational queries where users could freely reformulate, abandon, and navigate — compared to our 65% under forced choice. The phase structure, reading depth, and position effects appear to be intrinsic properties of SERP evaluation, not artifacts of forced choice. What the forced-choice task limits is generalization about the **exit decision** (stay, refine, abandon) — not about how people read the results once they're on the page.
 
 ---
 
