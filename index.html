@@ -38,8 +38,11 @@ footer a { color: #888; }
   Trials below are prototypical examples of distinct search behaviors.
 </p>
 <p style="background:#332200;border:1px solid #664400;border-radius:6px;padding:8px 12px;color:#ffcc66;font-size:0.85em;margin-bottom:1em;">
-  Note: Fixation overlay alignment with the foveated render is being corrected.
-  Coordinates may not match the sharp regions exactly.
+  Positional accuracy: fixation overlay has median &lt;13px offset, max ~45px at page bottom.
+  SERP HTML is re-rendered locally; element heights differ from the original Chrome 110/Windows session
+  due to external resource loading (Maps tiles, product images). Fixation coordinates (FPOGX/FPOGY)
+  from <a href="https://github.com/kayhan-latifzadeh/AdSERP" style="color:#ffcc66;">AdSERP</a> are
+  pixel-verified accurate against synthetic test pages.
 </p>
 <p class="controls-help">
   <kbd>&larr;</kbd><kbd>&rarr;</kbd> step through fixations &middot;
@@ -187,9 +190,28 @@ sharp where they looked, degraded where they didn't.</p>
   walks each fixation through Scrutinizer's Electron-based WebGL pipeline with
   <code style="background:#222;padding:1px 4px;border-radius:2px;">TEST_VISUAL_MEMORY=-1</code> (infinite accumulation),
   then tile-captures the full page at each scroll position and stitches them</li>
-<li>The interactive overlay (fixation numbers, saccade lines, timeline scrubber)
-  is generated as self-contained HTML with the gazeplot PNG as background</li>
+<li>The <strong>batch gazeplot mode</strong> bulk-loads all fixation positions into
+  the visual memory buffer at once (instead of walking them one-by-one through
+  the render loop), then tile-captures the page — reducing capture time from
+  minutes to seconds per trial</li>
+<li>The interactive overlay is generated as self-contained HTML with the
+  gazeplot PNG as background</li>
 </ol>
+
+<p style="margin-top:0.8em;"><strong>DOM-anchored fixation positioning:</strong>
+Fixation coordinates from the eye tracker are in screen-pixel space
+(1280&times;1024), but the SERP was displayed at 1422 CSS pixels (90% display
+scaling). Rendering at a different width causes content reflow, shifting
+elements vertically. Instead of coordinate transforms, each fixation is
+<em>anchored to the DOM element it landed on</em>: during the build step,
+<a href="https://github.com/andyed/attentional-foraging/blob/main/scripts/generate-anchors.js" style="color:#6af;">generate-anchors.js</a>
+loads each SERP in Playwright at the original window width, uses
+<code style="background:#222;padding:1px 4px;border-radius:2px;">elementFromPoint</code>
+to map each fixation to a CSS selector + offset, then the build script
+re-resolves those anchors at the render width. The fixation dot lands
+on the correct element regardless of layout width. This approach was inspired
+by DOM-based event logging (Edmonds, 2003) — the same principle that anchors
+interaction events to page structure rather than screen coordinates.</p>
 
 <p style="margin-top:0.8em;"><strong>Data:</strong>
 <a href="https://doi.org/10.1145/3726302.3730325" style="color:#6af;">AdSERP</a> —
