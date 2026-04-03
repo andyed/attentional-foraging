@@ -49,7 +49,17 @@ Click share drops monotonically from position 0 to 9, then deviates upward at po
 
 **Investment.** Boundary clickers invested ~100 fixations and 26.5s, vs ~89 fixations and ~23s for mid-range clickers (positions 3–6).
 
-**Why the ski-jump happens.** The decline is attention allocation under diminishing returns. Each successive result gets fewer fixations (not shorter ones — per-fixation duration is flat at ~220ms) as the working memory comparison cost grows. The user invests less in each new candidate because the marginal value of evaluating one more drops as the candidate set expands (§3a). The uptick at the boundary is a forced-commitment effect: users who evaluated the whole SERP without finding a clear winner must still pick. They're under higher cognitive load, invested more time, and are disproportionately optimizers. They didn't give up — they exhausted their options. In production search, the boundary is "next page" and the same dynamics apply: the uptick represents users deciding that the cost of pagination exceeds the cost of picking from what they've already seen.
+**Why the ski-jump happens.** The decline is attention allocation under diminishing returns. Each successive result gets fewer fixations (not shorter ones — per-fixation duration is flat at ~220ms) as the working memory comparison cost grows. The user invests less in each new candidate because the marginal value of evaluating one more drops as the candidate set expands (§3a).
+
+The uptick at the boundary is a micro-economic phenomenon. By position 9–10, three costs collapse simultaneously:
+
+- **Handling cost (τ) drops.** The user has built well-formed selection criteria from evaluating 8+ results. Each remaining result is evaluated against a crisp comparison set, not a vague initial intent. The question has narrowed from "is this what I want?" to "is this better than the one I liked at position 3?"
+- **Travel cost (T_s) approaches zero.** There's nowhere left to scroll. The cost that normally competes with continued evaluation — paginate, reformulate, abandon — is eliminated (in this task) or maximized (in production search, where "next page" is the expensive alternative).
+- **Uncertainty (σ²) is low.** The user has seen the full page. There's no possibility of a better result below the fold.
+
+These cost reductions are observable in the data: boundary clickers show higher cognitive load (LHIPA, confirming they're doing real evaluation, not satisficing), more fixations (confirming continued investment), and are disproportionately optimizers (confirming thorough evaluation preceded the decision). The reward rate spikes not because the last result is better, but because the cost of evaluating it is near zero and the comparison framework is maximally refined.
+
+In production search, the boundary is "next page" and the same dynamics apply: the uptick represents users deciding that the cost of pagination exceeds the cost of picking from what they've already seen.
 
 **Notebook:** [00_skijump.ipynb](../notebooks-v2/00_skijump.ipynb)
 
