@@ -152,6 +152,8 @@ Per-trial amplitude slope over first 20 saccades: mean ρ = −0.128, p = 1.5 ×
 
 **Survey duration is fixed.** ~3.5 saccades, ~1s. No correlation with relevance spread (ρ = −0.000), distinctive density (ρ = 0.020), or Jaccard (ρ = −0.012). All p > 0.3. The survey's *output* — an impression of result set composition — modulates subsequent evaluation strategy, but its *duration* does not respond to SERP content.
 
+**Prior work:** Zhang, Abualsaud & Smucker (CHIIR 2018) documented a "result inspection phase" where users evaluate the top 2–3 results to decide whether the SERP is worth continued evaluation or immediate requery. This is the survey phase in the context of the stay/reformulate decision — the naturalistic exit path that AdSERP's forced-choice task eliminates. Their observation dates to ~2011. In naturalistic search, the survey phase serves a dual purpose: assessing result quality (what we measure here) AND deciding whether to stay on the SERP at all (what we cannot measure here).
+
 **Orientation is a learned prior.** Median orientation time: 0ms. 58% of first fixations land directly on a result. No learning effect across 60 trials (ρ = 0.02, p = 0.30). The SERP layout is memorized.
 
 **Survey and scroll are decoupled.** Survey ends at fixation ~3. First scroll happens at fixation ~20 (median). 92% of trials: survey ends well before the first scroll. The user evaluates ~17 fixations of first-viewport results between survey and scroll.
