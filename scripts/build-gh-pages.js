@@ -243,7 +243,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
     <h1>${id} <span>— ${query}</span></h1>
   </div>
   <div class="controls">
-    ${hasGazeplot ? `<button class="btn" id="mode-btn">Original</button><button class="btn" id="prog-btn">Progressive</button>` : ''}
+    ${hasGazeplot ? `<button class="btn" id="mode-btn">Original</button>` : ''}
     <label id="ws-group">Window <input type="range" id="window-size" min="1" max="${N}" value="${N}" style="width:80px;vertical-align:middle;"> <span id="ws-label">All</span></label>
     <button class="btn active" id="gaze-btn">Gaze Points</button>
     <button class="btn" id="play-btn">&#9654; Play</button>

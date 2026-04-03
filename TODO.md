@@ -12,7 +12,7 @@
 
 - [ ] **Gwizdka 2010 — cognitive load distribution in web search:** "Distribution of Cognitive Load in Web Search" (JASIST 61(11), 2167-2187). Same Gwizdka who co-authored AdSERP. Found cognitive load peaks during query formulation and document evaluation, not during SERP scanning. Re-evaluation during scroll regressions may be a distinct load peak — connect to the forward-only dwell increase (ρ = +0.82), which is consistent with increasing cognitive load from holding more candidates in working memory. [Scholar link](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gto9D-8AAAAJ&citation_for_view=gto9D-8AAAAJ:Se3iqnhoufwC)
 
-- [x] **Semantic similarity (embeddings):** Tested with mxbai-embed-large cosine similarity. Also null within-position — sentence-level semantic similarity does not predict evaluation time. Sentence-level embeddings would capture paraphrase and synonym priming.
+- [x] **Semantic similarity (embeddings):** Tested with mxbai-embed-large cosine similarity. Also null within-position — sentence-level semantic similarity does not predict evaluation time. Both bag-of-words and embedding similarity are dead ends as difficulty measures. See "SERP Difficulty — Better Measures" section for why and what to try instead.
 
 - [ ] **Local novelty → regression triggers:** Per-result novelty (deviation from cumulative overlap trend) predicting next scroll-back event. Time-series analysis, not aggregate.
 
@@ -43,6 +43,54 @@
 - [ ] **Forward-only regression stratification.** The ρ = +0.82 forward-only shape test pools all trials. Separate: (a) trials with zero regressions (pure forward scan), (b) forward segments within regression trials. Are they different?
 - [ ] **Re-export HTML notebooks.** `html/serp_priming.html` is stale — pre-v4 metric names and viewport computation. Re-export after notebook is stable.
 - [ ] **Pupil dilation × position (cognitive load from comparative decision-making).** The forward-only dwell increase (ρ = +0.82) suggests increasing cognitive load as users hold more candidates in working memory. AdSERP Gazepoint GP3 HD records pupil diameter. Shi, Jayawardena & Gwizdka (2025) and Jayawardena et al. (2025) provide methodology. Pupil data available on Zenodo (129MB). Test: does pupil dilation increase with position during forward scanning? If so, the dwell increase is cognitive load, not attention.
+
+## SERP Difficulty — Better Measures
+
+Bag-of-words Jaccard (mean=0.151) and sentence embeddings both null within-position. The % multi-fixation episode signal (p=0.004) suggests *something* is there, but token overlap is the wrong lens. The problem: these are transactional product queries. "Difficulty" isn't about lexical similarity — it's about **discriminability of the purchase decision.**
+
+### Why token overlap fails
+
+All AdSERP queries are "buy [brand] [product]" — results *should* share vocabulary (they're all selling the same thing). High token overlap doesn't mean the results are hard to tell apart. A user can instantly discriminate two flashlights if one costs $12 and the other $45, even if they share 80% of tokens. Conversely, two results with low token overlap might both be plausible purchases.
+
+### Product-type taxonomy
+
+The queries span a product taxonomy (flashlights, padlocks, adhesives, wine decanters, brake shoes...). Different product categories have different discriminability structures:
+- **Commodity products** (batteries, cables, basic tools): results are genuinely interchangeable → high difficulty regardless of overlap
+- **Branded differentiated** (specific model flashlights, electronics): brand/model is the discriminating feature → difficulty depends on whether brand names differ
+- **Experiential** (wine, music, art supplies): harder to evaluate from snippet text alone → difficulty comes from information insufficiency, not similarity
+
+A product-type classifier on the query (even a simple keyword heuristic) could partition trials into categories where "difficulty" means different things. Then test: do commodity-product SERPs show different foraging patterns than branded-differentiated ones?
+
+### Alternative difficulty operationalizations
+
+Ordered by conceptual promise, not implementation effort:
+
+- [ ] **Relevance spread (query-result alignment variance):** Embed query + each result, compute cosine similarities. If all results are equidistant from the query (low variance in query-result similarity), the SERP is hard. If one result is much closer, it's easy. This captures "is there an obvious best answer?" which is the actual decision difficulty.
+
+- [ ] **Distinctive feature density:** Instead of measuring what results *share*, measure what's *unique* to each result. Count tokens that appear in only one result on the SERP. High unique-token density = easy (each result has clear distinguishing features). Low = hard (results blur together). Weight by TF-IDF so product-category terms ("buy", "flashlight") don't count.
+
+- [ ] **Named entity / brand diversity:** Extract brand names, model numbers, prices from snippets. SERPs where all results are from different brands are easier (brand is a fast heuristic). SERPs with multiple results from the same brand or no recognizable brands are harder.
+
+- [ ] **Price variance (where extractable):** Product SERPs often show prices. High price variance = easy discrimination axis. Low/no price variance = must read deeper. Extractable via regex on snippet text.
+
+- [ ] **Visual distinctiveness (rendered SERP):** Token-level analysis ignores that SERPs have visual structure — bold titles, star ratings, thumbnails, price callouts. Render the SERP HTML, compute image-level perceptual hashing or SSIM between result blocks. This captures what the *eye* actually discriminates, not what NLP measures.
+
+- [ ] **Product taxonomy partition:** Classify queries into product categories (heuristic or LLM-based). Analyze foraging behavior *within* category. "Difficulty" may not be a continuous variable — it may be categorical, with different foraging strategies for different product types.
+
+- [ ] **Information sufficiency:** Some products can be evaluated from a snippet (price, brand, rating). Others require clicking through (fit, compatibility, reviews). Measure how much decision-relevant information is visible in the SERP snippet vs. requiring a click. Low snippet informativeness = harder evaluation = more fixations needed.
+
+- [ ] **Adjacent-pair similarity:** All-pairs Jaccard weights position 0 vs position 9 equally with position 3 vs position 4. But users scan sequentially. Consecutive-pair similarity (result N vs N+1) is what the eye actually encounters. High adjacent similarity = "didn't I just read this?" = re-reading trigger.
+
+### Reading episode analysis (completed 2026-04-02)
+
+`notebooks/serp_difficulty.ipynb` — Episode pooling (minor saccade threshold 100px) merges consecutive same-result fixations into reading episodes. 50.5% single-fixation, 49.5% multi-fixation. Mean episode = 2.16 fixations, 499ms (vs raw 222ms). One signal: % multi-fixation episodes higher on hard SERPs (p=0.004). All other episode metrics null against Jaccard difficulty.
+
+## Interactive Demo (gh-pages)
+
+- [ ] **Progressive foveation reveal:** Synch foveated content with the playback timeline — only show foveated (sharp) regions for fixations that have already been reached. Currently disabled (Progressive button removed). Requires per-fixation gazeplot captures or a client-side foveation shader. The DOM-anchored clip-mask approach (radial gradient mask over gazeplot image, composited with `source-in`) is implemented but has coordinate/canvas sizing issues.
+- [ ] **Pupil dilation visualization:** Overlay pupil diameter data on the timeline and/or as fixation circle size modulation. AdSERP pupil data available on Zenodo (129MB). More immediately valuable than progressive foveation — shows cognitive load in real time.
+- [ ] **Scrutinizer gazeplot at window width:** Re-capture gazeplots at 1422px (original CSS viewport) using DOM-anchored fixation positions in the batch capture pipeline. Currently at 1280px (screen pixel width). Would eliminate the layout mismatch between gazeplot and SERP render.
+- [ ] **Scanpath overlay controls:** Replace Lines/Numbers toggles with: scanpath overlay on/off, foveated filter on/off. Popover menus with transparency sliders for gazeplot and scanpath layers.
 
 ## Design / Product Connections (from Peter Dixon-Moses)
 
