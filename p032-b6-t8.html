@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html><head><meta charset="utf-8"><title>Scanpath: p032-b6-t8 — buy hartleys hartleys lemon jelly 135g</title>
-<meta name="viewport" content="width=1422">
+<meta name="viewport" content="width=1280">
 <script>!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
 posthog.init('phc_cUZalkUiHgfuv7k5hPzhuLhYQkjUWOQBl82pdDgHAmZ',{api_host:'https://us.i.posthog.com',person_profiles:'identified_only'});</script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: #111; color: #eee; font-family: system-ui, -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; }
-.header { width: 1422px; padding: 10px 16px; background: #1a1a1a; border-bottom: 1px solid #333;
+.header { width: 1280px; padding: 10px 16px; background: #1a1a1a; border-bottom: 1px solid #333;
   display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
 .header h1 { font-size: 14px; font-weight: 600; }
 .header h1 span { color: #aaa; font-weight: 400; }
@@ -15,9 +15,11 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .btn { background: #333; border: 1px solid #555; color: #eee; padding: 3px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; }
 .btn:hover { background: #444; }
 .btn.active { background: #2a5a8a; border-color: #4a8aca; }
-.viewer { position: relative; width: 1422px; height: 70vh; overflow-y: auto; overflow-x: hidden; background: #000; }
-.serp-container { position: relative; width: 1422px; }
-#bg-img { width: 1422px; display: block; }
+.viewer { position: relative; width: 1280px; height: 70vh; overflow-y: auto; overflow-x: hidden; background: #000; }
+.serp-container { position: relative; width: 1280px; }
+#serp-img, #gazeplot-img { width: 1280px; height: 2644px; display: block; }
+#gazeplot-img { position: absolute; top: 0; left: 0; z-index: 1; }
+#prog-canvas { position: absolute; top: 0; left: 0; z-index: 5; pointer-events: none; display: none; }
 .scanpath-svg { position: absolute; top: 0; left: 0; z-index: 10; pointer-events: none; }
 .foveal-ring { position: absolute; z-index: 11; pointer-events: none; border: 2px solid rgba(255,255,255,0.7);
   border-radius: 50%; width: 120px; height: 120px; transform: translate(-50%, -50%);
@@ -26,13 +28,13 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   width: 20px; height: 20px; transition: left 0.03s linear, top 0.03s linear; }
 .mouse-cursor svg { width: 20px; height: 28px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); }
 .mouse-cursor.clicking svg path { fill: #ff3333; }
-.timeline { width: 1422px; background: #1a1a1a; padding: 8px 16px; border-top: 1px solid #333; }
+.timeline { width: 1280px; background: #1a1a1a; padding: 8px 16px; border-top: 1px solid #333; }
 .timeline-track { position: relative; height: 40px; background: #222; border-radius: 4px; cursor: pointer; overflow: hidden; }
 .timeline-ticks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 .timeline-tick { position: absolute; bottom: 0; border-radius: 2px 2px 0 0; min-width: 2px; }
 .timeline-playhead { position: absolute; top: 0; width: 2px; height: 100%; background: #ff4444; z-index: 2; }
 .timeline-info { display: flex; justify-content: space-between; margin-top: 4px; font-size: 11px; color: #aaa; }
-.info-panel { width: 1422px; padding: 6px 16px; background: #1a1a1a; font-size: 11px; color: #aaa;
+.info-panel { width: 1280px; padding: 6px 16px; background: #1a1a1a; font-size: 11px; color: #aaa;
   display: flex; gap: 20px; border-top: 1px solid #222; }
 .info-panel .val { color: #ccc; }
 .info-panel a { color: #ff9933; text-decoration: none; font-weight: 600; }
@@ -46,17 +48,19 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
     <h1>p032-b6-t8 <span>— buy hartleys hartleys lemon jelly 135g</span></h1>
   </div>
   <div class="controls">
-    <button class="btn" id="mode-btn">Raw SERP</button>
-    <label>Window <input type="range" id="window-size" min="1" max="9" value="9" style="width:80px;vertical-align:middle;"> <span id="ws-label">9</span></label>
+    <button class="btn" id="mode-btn">Original</button><button class="btn" id="prog-btn">Progressive</button>
+    <label id="ws-group">Window <input type="range" id="window-size" min="1" max="9" value="9" style="width:80px;vertical-align:middle;"> <span id="ws-label">All</span></label>
     <button class="btn" id="play-btn">&#9654; Play</button>
     <button class="btn" id="reset-btn">Reset</button>
   </div>
 </div>
 <div class="viewer" id="viewer">
   <div class="serp-container">
-    <img id="bg-img" src="gazeplots/p032-b6-t8.png" />
+    <img id="serp-img" src="serp-renders/p032-b6-t8.png" width="1280" height="2644" />
+    <img id="gazeplot-img" src="gazeplots/p032-b6-t8.png" />
+    <canvas id="prog-canvas" width="1280" height="2644"></canvas>
     <svg class="scanpath-svg" id="scanpath-svg" xmlns="http://www.w3.org/2000/svg"
-         width="1422" height="2644" viewBox="0 0 1422 2644"></svg>
+         width="1280" height="2644" viewBox="0 0 1280 2644"></svg>
     <div class="foveal-ring" id="foveal-ring"></div>
     <div class="mouse-cursor" id="mouse-cursor"><svg viewBox="0 0 20 28"><path d="M0,0 L0,22 L5.5,17 L10,28 L14,26 L9,16 L16,16 Z" fill="#ff9933" stroke="#000" stroke-width="1"/></svg></div>
   </div>
@@ -76,12 +80,15 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   <span>Position: <span class="val" id="info-pos">—</span></span>
   <span>Duration: <span class="val" id="info-dur">—</span></span>
   <span>Fixations: <span class="val" id="info-seen">0</span></span>
-  <span>Click: <span class="val">(470, 220)</span></span>
+  <span>Click: <span class="val">(423, 198)</span></span>
   <span><a href="png/p032-b6-t8.png" download style="color:#6af;text-decoration:none;">Download PNG</a></span>
 </div>
+<div style="width:1280px;padding:6px 16px;background:#1a1a1a;font-size:10px;color:#666;border-top:1px solid #222;">
+  Fixation overlay alignment: median &lt;13px offset, max ~45px at page bottom. SERP HTML is re-rendered locally; element heights differ from original Chrome 110/Windows session due to external resource loading (Maps tiles, product images). Fixation coordinates (FPOGX/FPOGY) from <a href="https://github.com/kayhan-latifzadeh/AdSERP" style="color:#888;">AdSERP dataset</a> are pixel-verified accurate against synthetic test pages.
+</div>
 <script>
-const F=[{"t":1677152663221,"x":745.4390625,"y":195.421875,"d":293},{"t":1677152663443,"x":584.353125,"y":263.1533203125,"d":213},{"t":1677152663630,"x":356.61093750000003,"y":317.560546875,"d":161},{"t":1677152663871,"x":211.078125,"y":323.1123046875,"d":234},{"t":1677152664038,"x":214.41093750000002,"y":242.056640625,"d":160},{"t":1677152664179,"x":233.296875,"y":137.68359375,"d":133},{"t":1677152664314,"x":271.06875,"y":125.4697265625,"d":127},{"t":1677152664588,"x":335.503125,"y":101.0419921875,"d":267},{"t":1677152664743,"x":834.3140625000001,"y":29.9794921875,"d":107}],CK={"x":470,"y":220},ME=[{"t":237,"x":694,"y":245,"e":"mouseover"},{"t":238,"x":694,"y":245,"e":"mousemove"},{"t":244,"x":694,"y":246,"e":"mousemove"},{"t":255,"x":694,"y":247,"e":"mousemove"},{"t":272,"x":694,"y":250,"e":"mousemove"},{"t":288,"x":694,"y":251,"e":"mousemove"},{"t":304,"x":693,"y":252,"e":"mousemove"},{"t":322,"x":693,"y":253,"e":"mousemove"},{"t":348,"x":692,"y":255,"e":"mousemove"},{"t":388,"x":690,"y":257,"e":"mousemove"},{"t":405,"x":686,"y":261,"e":"mousemove"},{"t":422,"x":683,"y":264,"e":"mousemove"},{"t":438,"x":680,"y":266,"e":"mousemove"},{"t":455,"x":663,"y":278,"e":"mousemove"},{"t":472,"x":646,"y":291,"e":"mouseover"},{"t":472,"x":646,"y":291,"e":"mousemove"},{"t":489,"x":627,"y":302,"e":"mousemove"},{"t":504,"x":612,"y":311,"e":"mouseover"},{"t":504,"x":612,"y":311,"e":"mousemove"},{"t":521,"x":598,"y":315,"e":"mouseover"},{"t":521,"x":598,"y":315,"e":"mousemove"},{"t":537,"x":586,"y":318,"e":"mousemove"},{"t":554,"x":577,"y":324,"e":"mousemove"},{"t":572,"x":568,"y":325,"e":"mousemove"},{"t":588,"x":562,"y":326,"e":"mousemove"},{"t":604,"x":557,"y":326,"e":"mousemove"},{"t":621,"x":555,"y":326,"e":"mousemove"},{"t":639,"x":550,"y":326,"e":"mousemove"},{"t":654,"x":547,"y":326,"e":"mousemove"},{"t":672,"x":546,"y":326,"e":"mousemove"},{"t":688,"x":542,"y":326,"e":"mousemove"},{"t":704,"x":540,"y":325,"e":"mousemove"},{"t":721,"x":535,"y":325,"e":"mousemove"},{"t":738,"x":534,"y":323,"e":"mousemove"},{"t":755,"x":532,"y":323,"e":"mousemove"},{"t":772,"x":530,"y":322,"e":"mousemove"},{"t":788,"x":527,"y":321,"e":"mousemove"},{"t":820,"x":526,"y":320,"e":"mousemove"},{"t":884,"x":525,"y":320,"e":"mousemove"},{"t":900,"x":524,"y":318,"e":"mousemove"},{"t":938,"x":520,"y":313,"e":"mousemove"},{"t":955,"x":513,"y":305,"e":"mouseover"},{"t":955,"x":513,"y":305,"e":"mousemove"},{"t":971,"x":506,"y":295,"e":"mouseover"},{"t":971,"x":506,"y":295,"e":"mousemove"},{"t":988,"x":493,"y":271,"e":"mouseover"},{"t":988,"x":493,"y":271,"e":"mousemove"},{"t":1005,"x":483,"y":254,"e":"mouseover"},{"t":1005,"x":483,"y":254,"e":"mousemove"},{"t":1021,"x":476,"y":238,"e":"mouseover"},{"t":1021,"x":476,"y":238,"e":"mousemove"},{"t":1037,"x":474,"y":232,"e":"mouseover"},{"t":1038,"x":474,"y":232,"e":"mousemove"},{"t":1054,"x":472,"y":227,"e":"mousemove"},{"t":1072,"x":471,"y":225,"e":"mousemove"},{"t":1087,"x":470,"y":223,"e":"mousemove"},{"t":1105,"x":470,"y":221,"e":"mousemove"},{"t":1206,"x":470,"y":221,"e":"mousedown"},{"t":1357,"x":470,"y":220,"e":"mousemove"},{"t":1358,"x":470,"y":220,"e":"mouseup"},{"t":2260,"x":470,"y":220,"e":"click"}],FR=60,SW=1422,N=9,
-T0=1677152663221,TD=1629,MND=107,MXD=293,
+const F=[{"t":0,"x":671,"y":176,"d":293},{"t":222,"x":526,"y":237,"d":213},{"t":409,"x":321,"y":286,"d":161},{"t":650,"x":190,"y":291,"d":234},{"t":817,"x":193,"y":218,"d":160},{"t":958,"x":210,"y":124,"d":133},{"t":1093,"x":244,"y":113,"d":127},{"t":1367,"x":302,"y":91,"d":267},{"t":1522,"x":751,"y":27,"d":107}],CK={"x":423.0661040787623,"y":198.1354441512753},ME=[{"t":237,"x":624.6976090014065,"y":220.65083553210204,"e":"mouseover"},{"t":238,"x":624.6976090014065,"y":220.65083553210204,"e":"mousemove"},{"t":244,"x":624.6976090014065,"y":221.5514511873351,"e":"mousemove"},{"t":255,"x":624.6976090014065,"y":222.45206684256817,"e":"mousemove"},{"t":272,"x":624.6976090014065,"y":225.1539138082674,"e":"mousemove"},{"t":288,"x":624.6976090014065,"y":226.05452946350044,"e":"mousemove"},{"t":304,"x":623.7974683544304,"y":226.95514511873353,"e":"mousemove"},{"t":322,"x":623.7974683544304,"y":227.85576077396658,"e":"mousemove"},{"t":348,"x":622.8973277074542,"y":229.65699208443272,"e":"mousemove"},{"t":388,"x":621.0970464135021,"y":231.45822339489888,"e":"mousemove"},{"t":405,"x":617.4964838255977,"y":235.06068601583115,"e":"mousemove"},{"t":422,"x":614.7960618846695,"y":237.76253298153034,"e":"mousemove"},{"t":438,"x":612.0956399437412,"y":239.5637642919965,"e":"mousemove"},{"t":455,"x":596.7932489451476,"y":250.37115215479332,"e":"mousemove"},{"t":472,"x":581.4908579465541,"y":262.0791556728232,"e":"mouseover"},{"t":472,"x":581.4908579465541,"y":262.0791556728232,"e":"mousemove"},{"t":489,"x":564.3881856540085,"y":271.985927880387,"e":"mousemove"},{"t":504,"x":550.8860759493671,"y":280.09146877748464,"e":"mouseover"},{"t":504,"x":550.8860759493671,"y":280.09146877748464,"e":"mousemove"},{"t":521,"x":538.2841068917018,"y":283.6939313984169,"e":"mouseover"},{"t":521,"x":538.2841068917018,"y":283.6939313984169,"e":"mousemove"},{"t":537,"x":527.4824191279887,"y":286.3957783641161,"e":"mousemove"},{"t":554,"x":519.381153305204,"y":291.79947229551453,"e":"mousemove"},{"t":572,"x":511.2798874824191,"y":292.7000879507476,"e":"mousemove"},{"t":588,"x":505.87904360056257,"y":293.60070360598064,"e":"mousemove"},{"t":604,"x":501.3783403656821,"y":293.60070360598064,"e":"mousemove"},{"t":621,"x":499.5780590717299,"y":293.60070360598064,"e":"mousemove"},{"t":639,"x":495.0773558368495,"y":293.60070360598064,"e":"mousemove"},{"t":654,"x":492.37693389592124,"y":293.60070360598064,"e":"mousemove"},{"t":672,"x":491.4767932489451,"y":293.60070360598064,"e":"mousemove"},{"t":688,"x":487.8762306610408,"y":293.60070360598064,"e":"mousemove"},{"t":704,"x":486.0759493670886,"y":292.7000879507476,"e":"mousemove"},{"t":721,"x":481.5752461322081,"y":292.7000879507476,"e":"mousemove"},{"t":738,"x":480.67510548523205,"y":290.89885664028145,"e":"mousemove"},{"t":755,"x":478.87482419127986,"y":290.89885664028145,"e":"mousemove"},{"t":772,"x":477.07454289732766,"y":289.99824098504837,"e":"mousemove"},{"t":788,"x":474.3741209563994,"y":289.09762532981534,"e":"mousemove"},{"t":820,"x":473.4739803094233,"y":288.19700967458226,"e":"mousemove"},{"t":884,"x":472.57383966244726,"y":288.19700967458226,"e":"mousemove"},{"t":900,"x":471.67369901547113,"y":286.3957783641161,"e":"mousemove"},{"t":938,"x":468.0731364275668,"y":281.89270008795074,"e":"mousemove"},{"t":955,"x":461.77215189873414,"y":274.6877748460862,"e":"mouseover"},{"t":955,"x":461.77215189873414,"y":274.6877748460862,"e":"mousemove"},{"t":971,"x":455.47116736990154,"y":265.6816182937555,"e":"mouseover"},{"t":971,"x":455.47116736990154,"y":265.6816182937555,"e":"mousemove"},{"t":988,"x":443.76933895921235,"y":244.06684256816183,"e":"mouseover"},{"t":988,"x":443.76933895921235,"y":244.06684256816183,"e":"mousemove"},{"t":1005,"x":434.7679324894515,"y":228.75637642919966,"e":"mouseover"},{"t":1005,"x":434.7679324894515,"y":228.75637642919966,"e":"mousemove"},{"t":1021,"x":428.4669479606188,"y":214.34652594547055,"e":"mouseover"},{"t":1021,"x":428.4669479606188,"y":214.34652594547055,"e":"mousemove"},{"t":1037,"x":426.66666666666663,"y":208.94283201407214,"e":"mouseover"},{"t":1038,"x":426.66666666666663,"y":208.94283201407214,"e":"mousemove"},{"t":1054,"x":424.8663853727145,"y":204.43975373790678,"e":"mousemove"},{"t":1072,"x":423.96624472573836,"y":202.63852242744065,"e":"mousemove"},{"t":1087,"x":423.0661040787623,"y":200.8372911169745,"e":"mousemove"},{"t":1105,"x":423.0661040787623,"y":199.03605980650838,"e":"mousemove"},{"t":1206,"x":423.0661040787623,"y":199.03605980650838,"e":"mousedown"},{"t":1357,"x":423.0661040787623,"y":198.1354441512753,"e":"mousemove"},{"t":1358,"x":423.0661040787623,"y":198.1354441512753,"e":"mouseup"},{"t":2260,"x":423.0661040787623,"y":198.1354441512753,"e":"click"}],FR=60,SW=1280,N=9,
+T0=0,TD=1629,MND=107,MXD=293,
 SERP_SRC='serp-renders/p032-b6-t8.png',
 GAZEPLOT_SRC='gazeplots/p032-b6-t8.png';
 const rF=d=>8+(d-MND)/(MXD-MND+1)*22;
@@ -92,6 +99,21 @@ vw=document.getElementById('viewer'),
 ws=document.getElementById('window-size'),wl=document.getElementById('ws-label'),
 tt=document.getElementById('timeline-track');
 let ci=N-1,pl=false,pt=null;
+// Progressive foveation state
+const pc=document.getElementById('prog-canvas');
+const pCtx=pc?pc.getContext('2d'):null;
+let bgMode=GAZEPLOT_SRC?'gazeplot':'serp';
+let gpImg=null,gpLoaded=false;
+if(GAZEPLOT_SRC){gpImg=new Image();gpImg.onload=()=>{gpLoaded=true;if(bgMode==='progressive')drawProg()};gpImg.src=GAZEPLOT_SRC}
+function drawProg(){if(!pCtx||!gpImg||!gpLoaded)return;
+const w=pc.width,h=pc.height;pCtx.clearRect(0,0,w,h);
+pCtx.globalCompositeOperation='source-over';
+for(let i=0;i<=ci;i++){const f=F[i],r=FR*2.5;
+const g=pCtx.createRadialGradient(f.x,f.y,0,f.x,f.y,r);
+g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(0.5,'rgba(255,255,255,0.7)');g.addColorStop(1,'rgba(255,255,255,0)');
+pCtx.fillStyle=g;pCtx.beginPath();pCtx.arc(f.x,f.y,r,0,Math.PI*2);pCtx.fill()}
+pCtx.globalCompositeOperation='source-in';
+pCtx.drawImage(gpImg,0,0,w,h);pCtx.globalCompositeOperation='source-over'}
 const ns='http://www.w3.org/2000/svg';
 function se(t,a){const e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e}
 const tEl=document.getElementById('timeline-ticks');
@@ -105,7 +127,8 @@ const cr=se('circle',{cx:f.x,cy:f.y,r,fill:c,'fill-opacity':.25,stroke:c,'stroke
 const fs=Math.max(9,Math.min(14,r));const tx=se('text',{x:f.x,y:f.y,'text-anchor':'middle','dominant-baseline':'central','font-family':'monospace','font-weight':'bold','font-size':fs,fill:'white',stroke:'rgba(0,0,0,.6)','stroke-width':2,'paint-order':'stroke'});tx.textContent=i+1;svg.appendChild(tx);tE.push(tx)}
 if(CK){const s=se('polygon',{points:[0,-16,6,-4,16,-4,8,4,12,16,0,8,-12,16,-8,4,-16,-4,-6,-4].reduce((a,v,i)=>{a.push(i%2===0?CK.x+v:CK.y+v);return a},[]).join(','),fill:'#f00','fill-opacity':.5,stroke:'#f00','stroke-width':2});svg.appendChild(s);
 const l=se('text',{x:CK.x+18,y:CK.y+4,'font-family':'monospace','font-weight':'bold','font-size':11,fill:'#f00',stroke:'white','stroke-width':2,'paint-order':'stroke'});l.textContent='CLICK';svg.appendChild(l)}
-function uv(){const wn=parseInt(ws.value);wl.textContent=wn;
+function uv(){const wn=parseInt(ws.value);
+wl.textContent=wn>=N?'All':wn;
 const lo=Math.max(0,ci-wn+1);
 for(let i=0;i<N;i++){const v=i>=lo&&i<=ci;cE[i].style.display=v?'':'none';tE[i].style.display=v?'':'none';
 if(lE[i])lE[i].style.display=(v&&i>lo)?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',pl&&i===ci?1:.8)}
@@ -123,29 +146,44 @@ console.log('CURSOR',mx.toFixed(0),my.toFixed(0),m0.e);
 if(ci>=0){const f=F[ci];document.getElementById('info-pos').textContent='('+f.x+','+f.y+')';
 document.getElementById('info-dur').textContent=f.d+'ms';document.getElementById('info-seen').textContent=ci+1;
 document.getElementById('time-label').textContent='Fixation '+(ci+1)+' / '+N;
-document.getElementById('duration-label').textContent=((f.t-T0)/1000).toFixed(1)+'s / '+(TD/1000).toFixed(1)+'s'}}
-function sf(i){ci=Math.max(-1,Math.min(N-1,i));uv()}
-ws.addEventListener('input',uv);
+document.getElementById('duration-label').textContent=((f.t-T0)/1000).toFixed(1)+'s / '+(TD/1000).toFixed(1)+'s'}
+if(bgMode==='progressive')drawProg()}
+function sf(i){ci=Math.max(-1,Math.min(N-1,i));uv();if(typeof pushHash==='function')pushHash()}
 let dr=false;function ts(e){const r=tt.getBoundingClientRect(),p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
 let b=0;for(let i=0;i<N;i++)if(F[i].t<=T0+p*TD)b=i;sf(b)}
 tt.addEventListener('mousedown',e=>{dr=true;ts(e)});document.addEventListener('mousemove',e=>{if(dr)ts(e)});document.addEventListener('mouseup',()=>{dr=false});
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){sf(ci+1);e.preventDefault()}if(e.key==='ArrowLeft'){sf(ci-1);e.preventDefault()}
 if(e.key===' '){tp();e.preventDefault()}if(e.key==='Home'){sf(0);e.preventDefault()}if(e.key==='End'){sf(N-1);e.preventDefault()}});
 function tp(){pl=!pl;document.getElementById('play-btn').textContent=pl?'⏸ Pause':'▶ Play';
-document.getElementById('play-btn').classList.toggle('active',pl);if(pl){if(ci>=N-1)ci=-1;pn()}else{clearTimeout(pt);fr.style.display='none';mc.style.display='none';ci=N-1;uv()}}
+document.getElementById('play-btn').classList.toggle('active',pl);if(pl){if(ci>=N-1)ci=-1;pn()}else{clearTimeout(pt);fr.style.display='none';mc.style.display='none';uv()}}
 function pn(){if(!pl)return;const n=ci+1;if(n>=N){pl=false;document.getElementById('play-btn').textContent='▶ Play';fr.style.display='none';mc.style.display='none';ci=N-1;uv();return}
 sf(n);pt=setTimeout(pn,Math.max(100,F[n].d*.5))}
 document.getElementById('play-btn').addEventListener('click',tp);
-document.getElementById('reset-btn').addEventListener('click',()=>{pl=false;clearTimeout(pt);document.getElementById('play-btn').textContent='▶ Play';ci=N-1;uv();vw.scrollTo({top:0})});
+document.getElementById('reset-btn').addEventListener('click',()=>{pl=false;clearTimeout(pt);document.getElementById('play-btn').textContent='▶ Play';ws.value=N;ci=N-1;uv();vw.scrollTo({top:0})});
 uv();
-// Gazeplot toggle
-let bgMode=GAZEPLOT_SRC?'gazeplot':'serp';
+// Background mode controls
 const modeBtn=document.getElementById('mode-btn');
-const bgImg=document.getElementById('bg-img');
-if(modeBtn){modeBtn.addEventListener('click',()=>{
-  bgMode=bgMode==='gazeplot'?'serp':'gazeplot';
-  modeBtn.textContent=bgMode==='gazeplot'?'Raw SERP':'Gazeplot';
-  modeBtn.classList.toggle('active',bgMode==='serp');
-  bgImg.src=bgMode==='gazeplot'?GAZEPLOT_SRC:SERP_SRC;
-})}
+const progBtn=document.getElementById('prog-btn');
+const serpEl=document.getElementById('serp-img');
+const gpEl=document.getElementById('gazeplot-img');
+function setMode(m){bgMode=m;
+// SERP img always visible (defines container height). Gazeplot + progressive canvas toggle on top.
+if(m==='gazeplot'){if(gpEl)gpEl.style.display='';pc.style.display='none';modeBtn.textContent='Original';modeBtn.classList.remove('active');progBtn.classList.remove('active')}
+else if(m==='serp'){if(gpEl)gpEl.style.display='none';pc.style.display='none';modeBtn.textContent='Foveated';modeBtn.classList.add('active');progBtn.classList.remove('active')}
+else if(m==='progressive'){if(gpEl)gpEl.style.display='none';pc.style.display='block';modeBtn.textContent='Foveated';modeBtn.classList.remove('active');progBtn.classList.add('active');drawProg()}}
+if(modeBtn){modeBtn.addEventListener('click',()=>{setMode(bgMode==='gazeplot'?'serp':'gazeplot');pushHash()})}
+if(progBtn){progBtn.addEventListener('click',()=>{const next=bgMode==='progressive'?'gazeplot':'progressive';setMode(next);progBtn.textContent=next==='progressive'?'Cumulative':'Progressive';pushHash()})}
+// Hash permalinks: #fix=50&w=20&mode=progressive
+function pushHash(){const p=[];
+if(!ws.disabled)p.push('fix='+(ci+1));
+if(!ws.disabled)p.push('w='+ws.value);
+if(bgMode!=='gazeplot')p.push('mode='+bgMode);
+history.replaceState(null,'','#'+p.join('&'))}
+function readHash(){const h=location.hash.slice(1);if(!h)return;
+const p={};h.split('&').forEach(kv=>{const[k,v]=kv.split('=');p[k]=v});
+if(p.mode)setMode(p.mode);
+if(p.w){ws.value=p.w;wl.textContent=p.w}
+if(p.fix){ci=Math.max(0,Math.min(N-1,parseInt(p.fix)-1));uv()}}
+readHash();
+ws.addEventListener('input',()=>{uv();pushHash()});
 </script></body></html>
