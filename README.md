@@ -115,6 +115,8 @@ Detailed write-up with all statistical tests: [findings.md](./docs/findings.md).
 | 09 | [difficulty](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/09_difficulty.ipynb) | Relevance spread, episodes, TF-IDF density |
 | 10 | [strategies](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/10_strategies.ipynb) | Satisfice vs optimize segmentation |
 | 11 | [individual_differences](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/11_individual_differences.ipynb) | Two independent trait dimensions |
+| 12 | [regression_precision](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/12_regression_precision_by_load.ipynb) | Regression targeting precision by cognitive load |
+| 13 | [survey_phase](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/13_survey_phase.ipynb) | Saccade amplitude evidence for the survey phase |
 
 Legacy notebooks in `notebooks/`.
 
