@@ -182,6 +182,8 @@ In naturalistic search (Zhang et al. CHIIR 2018), this same signal gates the sta
 
 **3. Spatial spread is 3.3x higher during survey.** Unique result positions per fixation: 0.447 (survey) vs 0.137 (evaluate), p ≈ 0. Survey fixations scatter across many result positions; evaluate fixations cluster within one or two. This is the strongest evidence that survey and evaluate are qualitatively different scanning modes.
 
+**4. The survey does not repeat after scrolling.** Post-scroll saccades are narrower than pre-scroll (151px vs 172px, p = 10⁻⁷⁵). No amplitude spike after forward scroll events. The user goes straight into reading newly exposed content. The survey happens once at the beginning of the trial; scrolling does not reset the phase.
+
 ## 3c. SERP difficulty is discriminability, not similarity
 
 Three difficulty measures tested:
