@@ -160,6 +160,28 @@ Per-trial amplitude slope over first 20 saccades: mean ρ = −0.128, p = 1.5 ×
 
 **Notebook:** [06_orientation_evaluation.ipynb](../notebooks-v2/06_orientation_evaluation.ipynb)
 
+## 3b-ii. Survey phase characterization
+
+Three analyses of what the survey phase does:
+
+**1. Saccade direction: survey reads across, evaluate reads down.** Survey saccades are more horizontal (45.7% primarily vertical) than evaluate saccades (51.2%). Mean horizontal displacement: 149px (survey) vs 72px (evaluate). The survey is scanning across titles and snippets — gist extraction from text — not just jumping between result slots.
+
+**2. Survey fixations predict clicks — but only at lower positions.** Controlling for position (eliminating the top-result prior):
+
+| Position | P(click \| surveyed) | P(click \| not surveyed) | Lift |
+|----------|---------------------|-------------------------|------|
+| 0–2 | 14–16% | 14–15% | ~1.0x |
+| 4 | 19% | 10% | 1.9x |
+| 6 | 17% | 5.6% | 3.0x |
+| 8 | 22% | 3.8% | 5.8x |
+| 9 | 20% | 2.9% | 6.8x |
+
+At positions 0–2, everyone surveys and everyone clicks — no signal above the prior. At position 7+, a survey fixation means 4–7x higher click probability. The survey IS doing candidate identification at lower positions, not just layout sampling. A result at position 7 that catches the eye during the survey has a fundamentally different trajectory than one that doesn't.
+
+In naturalistic search (Zhang et al. CHIIR 2018), this same signal gates the stay/reformulate decision: if survey fixations at the top land on relevant-looking results, the user stays. In AdSERP, that exit path is closed, so the survey output only modulates evaluation depth.
+
+**3. Spatial spread is 3.3x higher during survey.** Unique result positions per fixation: 0.447 (survey) vs 0.137 (evaluate), p ≈ 0. Survey fixations scatter across many result positions; evaluate fixations cluster within one or two. This is the strongest evidence that survey and evaluate are qualitatively different scanning modes.
+
 ## 3c. SERP difficulty is discriminability, not similarity
 
 Three difficulty measures tested:
