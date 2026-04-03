@@ -51,7 +51,7 @@ AdSERP eliminates two of the three exit paths. Participants *must* click a resul
 | --- | --- | --- |
 | **Orient** | 0ms (learned) | 58% of first fixations land directly on a result |
 | **Survey** | ~1s, fixed | Wide saccades (117px), gist sampling ~3.5 results |
-| **Evaluate** | Variable | Narrow saccades (76px), reading episodes, 220ms/fixation |
+| **Evaluate** | Variable | Narrow saccades (76px), reading episodes (~2 fix, ~500ms) |
 | **Commit** | Terminal | Click (forced in this task) |
 
 Survey → evaluate transition: saccade amplitude drop, p = 10⁻⁶¹ within individual trials. Survey ends at fixation ~3; first scroll at fixation ~20 — decoupled events. Full model with evidence: [task-model-paper.pdf](./docs/arxiv/task-model-paper.pdf).
@@ -66,7 +66,7 @@ Detailed write-up with all statistical tests: [findings.md](./docs/findings.md).
 
 ### Decomposition
 
-- **The ski-jump is allocation, not speed.** Per-fixation duration flat at ~220ms across all positions. Fixation *count* drops. The position effect is an attention allocation decision. → [§3a](docs/findings.md#3a-evaluation-time-decomposes-into-four-independent-components)
+- **The ski-jump is allocation, not speed.** Forward-pass reading depth is constant (~2 fixations, ~500ms per episode at every position). What declines is how many episodes each result gets. The position effect is a revisitation decision, not a reading depth change. → [§3e](docs/findings.md#3e-forward-pass-reading-depth-is-constant-the-position-effect-is-revisitation)
 - **Forward-only dwell \*increases\* with position** (ρ = +0.82). Later results take longer per unit of committed evaluation — working memory load from holding more candidates. → [§3a](docs/findings.md#3a-evaluation-time-decomposes-into-four-independent-components)
 - **Survey duration is content-independent.** ~3.5 saccades, ~1s, no correlation with any difficulty measure. The survey's *output* modulates strategy, not its duration.
 
