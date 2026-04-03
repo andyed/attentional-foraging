@@ -204,6 +204,31 @@ During a follow-up session, these findings were connected to the **Attentional-F
 
 ---
 
+---
+
+## Coordinate System Deep Dive (2026-04-02)
+
+During gazeplot overlay alignment work, discovered a subtlety in the recording setup:
+
+**Window exceeds screen.** Trial metadata reports `window: 1422x1137` on `screen: 1280x1024`. The browser window is 142px wider and 113px taller than the physical display. On Windows, maximized browser windows extend beyond the screen edges (the frame/shadow is off-screen). The visible content area is smaller than `windowWidth`.
+
+**FPOGX/FPOGY are page-space, confirmed by Y values exceeding screenHeight** (max pageY=1833 in p037-b2-t5 on a 1024px screen). The Gazepoint GP3 HD eye tracker reports gaze in screen pixels (0–1280 × 0–1024). The conversion to page-space requires adding the scroll offset — either the Gazepoint SDK was configured to do this, or it was applied in post-processing. The fixation CSV column names (`FPOGX`/`FPOGY`) follow Gazepoint naming conventions but the values are definitively page-space.
+
+**The coordinate mapping for gazeplot overlays:**
+- FPOGX is page-space X at the window-width layout (1422px). Range observed: 190–796.
+- FPOGY (pageY) is page-space Y at the window-width layout. Range: 17–1833.
+- For SVG overlay on a 1422px-wide SERP render: X needs screen→window scaling (`× windowW/screenW`), Y maps directly (pageY is already in the 1422px layout's coordinate system).
+- ~30px vertical drift at the bottom of long pages (2359px). Likely cross-browser rendering difference between the original Chrome 110 (Windows) and Playwright's Chromium (macOS). Within tolerance for the visualization but worth documenting.
+
+**Resolved (same session).** The AdSERP README states explicitly: FPOGX/FPOGY are *"relative to the top-left corner of the screenshot in pixels."* The screenshot is at `screenWidth` (1280px). This means:
+
+- FPOGX/FPOGY map directly to a 1280px-wide full-page screenshot. No scaling needed.
+- We had been rendering SERPs at `windowWidth` (1422px) and applying screen→window coordinate transforms. This was wrong — the 30px drift at the bottom of the page was reflow from rendering at the wrong width, not a cross-browser difference.
+- **Fix:** Render SERPs at 1280px (screen width). Map FPOGX/FPOGY directly. No coordinate transforms.
+- The `window: 1422x1137` metadata is the browser window outer size (extends beyond the 1280×1024 physical screen on Windows). It's irrelevant for fixation coordinate mapping.
+
+---
+
 **Git repo made public 8:38am PT, 2026-04-01.** ~3.5 hours from dataset discovery to public release.
 
 *v0 frozen 2026-04-01. Corrections appended as they were discovered. The dataset is rich enough for a full paper.*

@@ -44,37 +44,36 @@ async function main() {
 
 console.log(`Building site with ${trials.length} trials...\n`);
 
-// Step 1: Pre-render SERP screenshots at each trial's original window width.
-// The SERP was displayed at windowW CSS pixels during the study (e.g., 1422px).
-// Rendering at the same width preserves the exact layout — no reflow drift.
-console.log('  Rendering SERP screenshots at original window widths...');
+// Step 1: Pre-render SERP screenshots at screenWidth (1280px).
+// FPOGX/FPOGY are "relative to the top-left corner of the screenshot in pixels"
+// (AdSERP docs). The screenshot is at screenWidth, not windowWidth.
+console.log('  Rendering SERP screenshots at screen width (1280px)...');
 const browser = await chromium.launch();
 
-// Read each trial's window width from metadata, render at that width
 const trialDocHeights = {};
 for (const trial of trials) {
     const serpSrc = path.join(DATA_DIR, 'serps', `${trial.trial_id}.html`);
     if (!fs.existsSync(serpSrc)) continue;
     const metaXml = fs.readFileSync(path.join(DATA_DIR, 'trial-metadata', `${trial.trial_id}.xml`), 'utf8');
     const get = (tag) => { const m = metaXml.match(new RegExp(`<${tag}>([^<]*)</${tag}>`)); return m ? m[1].trim() : ''; };
-    const windowW = parseInt(get('window').split('x')[0]) || 1422;
-    const windowH = parseInt(get('window').split('x')[1]) || 1137;
+    const scrW = parseInt(get('screen').split('x')[0]) || 1280;
+    const scrH = parseInt(get('screen').split('x')[1]) || 1024;
 
-    const playwrightCtx = await browser.newContext({ viewport: { width: windowW, height: windowH } });
+    const playwrightCtx = await browser.newContext({ viewport: { width: scrW, height: scrH } });
     const page = await playwrightCtx.newPage();
     await page.goto(`file://${path.resolve(serpSrc)}`, { waitUntil: 'networkidle' });
     await page.waitForTimeout(500);
     const docHeight = await page.evaluate(() => Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight));
-    await page.setViewportSize({ width: windowW, height: docHeight });
+    await page.setViewportSize({ width: scrW, height: docHeight });
     await page.waitForTimeout(300);
     await page.screenshot({
         path: path.join(SITE_DIR, 'serp-renders', `${trial.trial_id}.png`),
-        clip: { x: 0, y: 0, width: windowW, height: docHeight }
+        clip: { x: 0, y: 0, width: scrW, height: docHeight }
     });
     trialDocHeights[trial.trial_id] = docHeight;
     await page.close();
     await playwrightCtx.close();
-    console.log(`    ${trial.trial_id} (${windowW}x${docHeight})`);
+    console.log(`    ${trial.trial_id} (${scrW}x${docHeight})`);
 }
 await browser.close();
 console.log('');
@@ -101,39 +100,42 @@ for (const trial of trials) {
         fs.copyFileSync(gazeplotSrc, path.join(SITE_DIR, 'gazeplots', `${id}.png`));
     }
 
-    // Load trial data
-    const fixCsv = fs.readFileSync(path.join(DATA_DIR, 'fixation-data', `${id}.csv`), 'utf8');
-    const mouseCsv = fs.readFileSync(path.join(DATA_DIR, 'mouse-movement-data', `${id}.csv`), 'utf8');
-    const metaXml = fs.readFileSync(path.join(DATA_DIR, 'trial-metadata', `${id}.xml`), 'utf8');
+    // Load trial data via the adserp-importer (scroll-corrected coordinates)
+    const adserp = require(path.join(SCRUTINIZER, 'renderer', 'scanpath', 'importers', 'adserp-importer'));
+    const trialData = adserp.loadTrial(DATA_DIR, id);
+    const meta = trialData.meta;
+    const screenW = meta.screenWidth;
+    const screenH = meta.screenHeight;
+    const windowW = meta.windowWidth;
+    const windowH = meta.windowHeight;
+    const docH = meta.documentHeight;
+    const query = meta.query;
 
-    const get = (tag) => { const m = metaXml.match(new RegExp(`<${tag}>([^<]*)</${tag}>`)); return m ? m[1].trim() : ''; };
-    const screenW = parseInt(get('screen').split('x')[0]) || 1280;
-    const screenH = parseInt(get('screen').split('x')[1]) || 1024;
-    const windowW = parseInt(get('window').split('x')[0]) || 1422;
-    const windowH = parseInt(get('window').split('x')[1]) || 1137;
-    const docH = parseInt(get('document').split('x')[1]) || 2642;
-    const query = get('task').split('|').pop().trim().replace(/-/g, ' ');
+    // FPOGX/FPOGY are "relative to the top-left corner of the screenshot in pixels"
+    // (AdSERP docs). The screenshot is at screenWidth (1280px). Coordinates map
+    // directly to a 1280px-wide full-page render — no scaling needed.
+    const fixations = trialData.fixations.map(f => ({
+        t: f.tStart + trialData.fixations[0].tStart,  // restore absolute for timeline
+        x: Math.round((f.pageY !== undefined ? f.x : f.x) * 10) / 10,  // already screen/screenshot-space
+        y: Math.round((f.pageY !== undefined ? f.pageY : f.y) * 10) / 10,
+        d: Math.round(f.tEnd - f.tStart)
+    })).filter(f => f.d > 0);
 
-    // Fixations are in screen-pixel page-space (1280-wide). Scale to CSS page-space
-    // (windowW-wide) to match the SERP render at its original window width.
-    const rx = screenW / windowW, ry = screenH / windowH;
-    const fixations = fixCsv.trim().split('\n').slice(1).map(l => {
-        const [t, x, y, d] = l.split(',').map(Number);
-        return { t, x: x / rx, y: y / ry, d };
-    }).filter(f => isFinite(f.t) && isFinite(f.x) && f.d > 0);
+    // Mouse events: already in page-space from evtrack (pageX/pageY).
+    // No Y scaling needed — pageY coordinates match the windowW layout.
+    const mouseTimeline = trialData.mouseTimeline || [];
+    const T0_offset = trialData.fixations.length > 0 ? trialData.fixations[0].tStart : 0;
+    const mouseEvents = mouseTimeline
+        .filter(m => ['mousemove','mouseover','click','mousedown','mouseup'].includes(m.event))
+        .map(m => ({ t: m.t - T0_offset, x: m.x, y: m.y, e: m.event }));
 
-    // Click and mouse are already in CSS page-space (evtrack pageX/pageY) — no scaling.
-    const clickLines = mouseCsv.trim().split('\n').slice(1).filter(l => l.includes(',click,'));
+    // Click: last click event
+    const clickEvts = mouseTimeline.filter(m => m.event === 'click');
     let click = null;
-    if (clickLines.length > 0) {
-        const c = clickLines[clickLines.length - 1].split(',');
-        click = { x: parseFloat(c[1]), y: parseFloat(c[2]) };
+    if (clickEvts.length > 0) {
+        const c = clickEvts[clickEvts.length - 1];
+        click = { x: c.x, y: c.y };
     }
-
-    const mouseEvents = mouseCsv.trim().split('\n').slice(1)
-        .map(l => { const c = l.split(','); return { t: parseInt(c[0]), x: parseFloat(c[1]), y: parseFloat(c[2]), e: (c[3]||'').trim() }; })
-        .filter(m => isFinite(m.t) && isFinite(m.x) && ['mousemove','mouseover','click','mousedown','mouseup'].includes(m.e))
-        .map(m => ({ t: m.t - (fixations.length > 0 ? fixations[0].t : 0), x: m.x, y: m.y, e: m.e }));
 
     // SERP render is at windowW × docHeight (original layout, no reflow).
     // Use the Playwright-measured docHeight as authoritative.
@@ -152,13 +154,13 @@ for (const trial of trials) {
 
     const html = `<!DOCTYPE html>
 <html><head><meta charset="utf-8"><title>Scanpath: ${id} — ${query}</title>
-<meta name="viewport" content="width=${windowW}">
+<meta name="viewport" content="width=${screenW}">
 <script>!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
 posthog.init('phc_cUZalkUiHgfuv7k5hPzhuLhYQkjUWOQBl82pdDgHAmZ',{api_host:'https://us.i.posthog.com',person_profiles:'identified_only'});</script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: #111; color: #eee; font-family: system-ui, -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; }
-.header { width: ${windowW}px; padding: 10px 16px; background: #1a1a1a; border-bottom: 1px solid #333;
+.header { width: ${screenW}px; padding: 10px 16px; background: #1a1a1a; border-bottom: 1px solid #333;
   display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
 .header h1 { font-size: 14px; font-weight: 600; }
 .header h1 span { color: #aaa; font-weight: 400; }
@@ -167,9 +169,11 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .btn { background: #333; border: 1px solid #555; color: #eee; padding: 3px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; }
 .btn:hover { background: #444; }
 .btn.active { background: #2a5a8a; border-color: #4a8aca; }
-.viewer { position: relative; width: ${windowW}px; height: 70vh; overflow-y: auto; overflow-x: hidden; background: #000; }
-.serp-container { position: relative; width: ${windowW}px; }
-#bg-img { width: ${windowW}px; display: block; }
+.viewer { position: relative; width: ${screenW}px; height: 70vh; overflow-y: auto; overflow-x: hidden; background: #000; }
+.serp-container { position: relative; width: ${screenW}px; }
+#serp-img, #gazeplot-img { width: ${screenW}px; height: ${primaryImgH}px; display: block; }
+#gazeplot-img { position: absolute; top: 0; left: 0; z-index: 1; }
+#prog-canvas { position: absolute; top: 0; left: 0; z-index: 5; pointer-events: none; display: none; }
 .scanpath-svg { position: absolute; top: 0; left: 0; z-index: 10; pointer-events: none; }
 .foveal-ring { position: absolute; z-index: 11; pointer-events: none; border: 2px solid rgba(255,255,255,0.7);
   border-radius: 50%; width: ${fovealR*2}px; height: ${fovealR*2}px; transform: translate(-50%, -50%);
@@ -178,13 +182,13 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   width: 20px; height: 20px; transition: left 0.03s linear, top 0.03s linear; }
 .mouse-cursor svg { width: 20px; height: 28px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); }
 .mouse-cursor.clicking svg path { fill: #ff3333; }
-.timeline { width: ${windowW}px; background: #1a1a1a; padding: 8px 16px; border-top: 1px solid #333; }
+.timeline { width: ${screenW}px; background: #1a1a1a; padding: 8px 16px; border-top: 1px solid #333; }
 .timeline-track { position: relative; height: 40px; background: #222; border-radius: 4px; cursor: pointer; overflow: hidden; }
 .timeline-ticks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 .timeline-tick { position: absolute; bottom: 0; border-radius: 2px 2px 0 0; min-width: 2px; }
 .timeline-playhead { position: absolute; top: 0; width: 2px; height: 100%; background: #ff4444; z-index: 2; }
 .timeline-info { display: flex; justify-content: space-between; margin-top: 4px; font-size: 11px; color: #aaa; }
-.info-panel { width: ${windowW}px; padding: 6px 16px; background: #1a1a1a; font-size: 11px; color: #aaa;
+.info-panel { width: ${screenW}px; padding: 6px 16px; background: #1a1a1a; font-size: 11px; color: #aaa;
   display: flex; gap: 20px; border-top: 1px solid #222; }
 .info-panel .val { color: #ccc; }
 .info-panel a { color: #ff9933; text-decoration: none; font-weight: 600; }
@@ -198,18 +202,19 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
     <h1>${id} <span>— ${query}</span></h1>
   </div>
   <div class="controls">
-    ${hasGazeplot ? `<button class="btn" id="mode-btn">Raw SERP</button>` : ''}
-    <label><input type="checkbox" id="lines-toggle" checked> Lines</label>
-    <label><input type="checkbox" id="numbers-toggle" checked> Numbers</label>
+    ${hasGazeplot ? `<button class="btn" id="mode-btn">Original</button><button class="btn" id="prog-btn">Progressive</button>` : ''}
+    <label id="ws-group">Window <input type="range" id="window-size" min="1" max="${N}" value="${N}" style="width:80px;vertical-align:middle;"> <span id="ws-label">All</span></label>
     <button class="btn" id="play-btn">&#9654; Play</button>
     <button class="btn" id="reset-btn">Reset</button>
   </div>
 </div>
 <div class="viewer" id="viewer">
   <div class="serp-container">
-    <img id="bg-img" src="${hasGazeplot ? gazeplotRelPath : serpRenderRelPath}" />
+    <img id="serp-img" src="${serpRenderRelPath}" width="${screenW}" height="${primaryImgH}" />
+    ${hasGazeplot ? `<img id="gazeplot-img" src="${gazeplotRelPath}" />` : ''}
+    <canvas id="prog-canvas" width="${screenW}" height="${primaryImgH}"></canvas>
     <svg class="scanpath-svg" id="scanpath-svg" xmlns="http://www.w3.org/2000/svg"
-         width="${windowW}" height="${primaryImgH}" viewBox="0 0 ${windowW} ${primaryImgH}"></svg>
+         width="${screenW}" height="${primaryImgH}" viewBox="0 0 ${screenW} ${primaryImgH}"></svg>
     <div class="foveal-ring" id="foveal-ring"></div>
     <div class="mouse-cursor" id="mouse-cursor"><svg viewBox="0 0 20 28"><path d="M0,0 L0,22 L5.5,17 L10,28 L14,26 L9,16 L16,16 Z" fill="#ff9933" stroke="#000" stroke-width="1"/></svg></div>
   </div>
@@ -233,7 +238,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   <span><a href="png/${id}.png" download style="color:#6af;text-decoration:none;">Download PNG</a></span>
 </div>
 <script>
-const F=${JSON.stringify(fixations)},CK=${JSON.stringify(click)},ME=${JSON.stringify(mouseEvents)},FR=${fovealR},SW=${windowW},N=${N},
+const F=${JSON.stringify(fixations)},CK=${JSON.stringify(click)},ME=${JSON.stringify(mouseEvents)},FR=${fovealR},SW=${screenW},N=${N},
 T0=${T0},TD=${TOTAL_DUR},MND=${minD},MXD=${maxD},
 SERP_SRC='${serpRenderRelPath}',
 GAZEPLOT_SRC=${hasGazeplot ? `'${gazeplotRelPath}'` : 'null'};
@@ -242,9 +247,24 @@ const cF=(i,n)=>{const t=n>1?i/(n-1):0;return\`rgb(\${Math.round(50+205*t)},\${M
 const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
 fr=document.getElementById('foveal-ring'),mc=document.getElementById('mouse-cursor'),
 vw=document.getElementById('viewer'),
-lt=document.getElementById('lines-toggle'),nt=document.getElementById('numbers-toggle'),
-ws=document.getElementById('window-size'),tt=document.getElementById('timeline-track');
+ws=document.getElementById('window-size'),wl=document.getElementById('ws-label'),
+tt=document.getElementById('timeline-track');
 let ci=N-1,pl=false,pt=null;
+// Progressive foveation state
+const pc=document.getElementById('prog-canvas');
+const pCtx=pc?pc.getContext('2d'):null;
+let bgMode=GAZEPLOT_SRC?'gazeplot':'serp';
+let gpImg=null,gpLoaded=false;
+if(GAZEPLOT_SRC){gpImg=new Image();gpImg.onload=()=>{gpLoaded=true;if(bgMode==='progressive')drawProg()};gpImg.src=GAZEPLOT_SRC}
+function drawProg(){if(!pCtx||!gpImg||!gpLoaded)return;
+const w=pc.width,h=pc.height;pCtx.clearRect(0,0,w,h);
+pCtx.globalCompositeOperation='source-over';
+for(let i=0;i<=ci;i++){const f=F[i],r=FR*2.5;
+const g=pCtx.createRadialGradient(f.x,f.y,0,f.x,f.y,r);
+g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(0.5,'rgba(255,255,255,0.7)');g.addColorStop(1,'rgba(255,255,255,0)');
+pCtx.fillStyle=g;pCtx.beginPath();pCtx.arc(f.x,f.y,r,0,Math.PI*2);pCtx.fill()}
+pCtx.globalCompositeOperation='source-in';
+pCtx.drawImage(gpImg,0,0,w,h);pCtx.globalCompositeOperation='source-over'}
 const ns='http://www.w3.org/2000/svg';
 function se(t,a){const e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e}
 const tEl=document.getElementById('timeline-ticks');
@@ -258,8 +278,11 @@ const cr=se('circle',{cx:f.x,cy:f.y,r,fill:c,'fill-opacity':.25,stroke:c,'stroke
 const fs=Math.max(9,Math.min(14,r));const tx=se('text',{x:f.x,y:f.y,'text-anchor':'middle','dominant-baseline':'central','font-family':'monospace','font-weight':'bold','font-size':fs,fill:'white',stroke:'rgba(0,0,0,.6)','stroke-width':2,'paint-order':'stroke'});tx.textContent=i+1;svg.appendChild(tx);tE.push(tx)}
 if(CK){const s=se('polygon',{points:[0,-16,6,-4,16,-4,8,4,12,16,0,8,-12,16,-8,4,-16,-4,-6,-4].reduce((a,v,i)=>{a.push(i%2===0?CK.x+v:CK.y+v);return a},[]).join(','),fill:'#f00','fill-opacity':.5,stroke:'#f00','stroke-width':2});svg.appendChild(s);
 const l=se('text',{x:CK.x+18,y:CK.y+4,'font-family':'monospace','font-weight':'bold','font-size':11,fill:'#f00',stroke:'white','stroke-width':2,'paint-order':'stroke'});l.textContent='CLICK';svg.appendChild(l)}
-function uv(){for(let i=0;i<N;i++){const v=i<=ci;cE[i].style.display=v?'':'none';tE[i].style.display=v&&nt.checked?'':'none';
-if(lE[i])lE[i].style.display=v&&lt.checked?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',pl&&i===ci?1:.8)}
+function uv(){const wn=parseInt(ws.value);
+wl.textContent=wn>=N?'All':wn;
+const lo=Math.max(0,ci-wn+1);
+for(let i=0;i<N;i++){const v=i>=lo&&i<=ci;cE[i].style.display=v?'':'none';tE[i].style.display=v?'':'none';
+if(lE[i])lE[i].style.display=(v&&i>lo)?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',pl&&i===ci?1:.8)}
 if(ci>=0&&N>1)ph.style.left=(F[ci].t-T0)/TD*100+'%';
 if(ci>=0){const f=F[ci];const vr=vw.getBoundingClientRect(),fy=f.y-vw.scrollTop;if(fy<100||fy>vr.height-100)vw.scrollTo({top:f.y-vr.height/2,behavior:'smooth'})}
 if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px';
@@ -274,31 +297,46 @@ console.log('CURSOR',mx.toFixed(0),my.toFixed(0),m0.e);
 if(ci>=0){const f=F[ci];document.getElementById('info-pos').textContent='('+f.x+','+f.y+')';
 document.getElementById('info-dur').textContent=f.d+'ms';document.getElementById('info-seen').textContent=ci+1;
 document.getElementById('time-label').textContent='Fixation '+(ci+1)+' / '+N;
-document.getElementById('duration-label').textContent=((f.t-T0)/1000).toFixed(1)+'s / '+(TD/1000).toFixed(1)+'s'}}
-function sf(i){ci=Math.max(-1,Math.min(N-1,i));uv()}
-lt.addEventListener('change',uv);nt.addEventListener('change',uv);
+document.getElementById('duration-label').textContent=((f.t-T0)/1000).toFixed(1)+'s / '+(TD/1000).toFixed(1)+'s'}
+if(bgMode==='progressive')drawProg()}
+function sf(i){ci=Math.max(-1,Math.min(N-1,i));uv();if(typeof pushHash==='function')pushHash()}
 let dr=false;function ts(e){const r=tt.getBoundingClientRect(),p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
 let b=0;for(let i=0;i<N;i++)if(F[i].t<=T0+p*TD)b=i;sf(b)}
 tt.addEventListener('mousedown',e=>{dr=true;ts(e)});document.addEventListener('mousemove',e=>{if(dr)ts(e)});document.addEventListener('mouseup',()=>{dr=false});
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){sf(ci+1);e.preventDefault()}if(e.key==='ArrowLeft'){sf(ci-1);e.preventDefault()}
 if(e.key===' '){tp();e.preventDefault()}if(e.key==='Home'){sf(0);e.preventDefault()}if(e.key==='End'){sf(N-1);e.preventDefault()}});
 function tp(){pl=!pl;document.getElementById('play-btn').textContent=pl?'⏸ Pause':'▶ Play';
-document.getElementById('play-btn').classList.toggle('active',pl);if(pl){if(ci>=N-1)ci=-1;pn()}else{clearTimeout(pt);fr.style.display='none';mc.style.display='none';ci=N-1;uv()}}
+document.getElementById('play-btn').classList.toggle('active',pl);if(pl){if(ci>=N-1)ci=-1;pn()}else{clearTimeout(pt);fr.style.display='none';mc.style.display='none';uv()}}
 function pn(){if(!pl)return;const n=ci+1;if(n>=N){pl=false;document.getElementById('play-btn').textContent='▶ Play';fr.style.display='none';mc.style.display='none';ci=N-1;uv();return}
 sf(n);pt=setTimeout(pn,Math.max(100,F[n].d*.5))}
 document.getElementById('play-btn').addEventListener('click',tp);
-document.getElementById('reset-btn').addEventListener('click',()=>{pl=false;clearTimeout(pt);document.getElementById('play-btn').textContent='▶ Play';ci=N-1;uv();vw.scrollTo({top:0})});
+document.getElementById('reset-btn').addEventListener('click',()=>{pl=false;clearTimeout(pt);document.getElementById('play-btn').textContent='▶ Play';ws.value=N;ci=N-1;uv();vw.scrollTo({top:0})});
 uv();
-// Gazeplot toggle
-let bgMode=GAZEPLOT_SRC?'gazeplot':'serp';
+// Background mode controls
 const modeBtn=document.getElementById('mode-btn');
-const bgImg=document.getElementById('bg-img');
-if(modeBtn){modeBtn.addEventListener('click',()=>{
-  bgMode=bgMode==='gazeplot'?'serp':'gazeplot';
-  modeBtn.textContent=bgMode==='gazeplot'?'Raw SERP':'Gazeplot';
-  modeBtn.classList.toggle('active',bgMode==='serp');
-  bgImg.src=bgMode==='gazeplot'?GAZEPLOT_SRC:SERP_SRC;
-})}
+const progBtn=document.getElementById('prog-btn');
+const serpEl=document.getElementById('serp-img');
+const gpEl=document.getElementById('gazeplot-img');
+function setMode(m){bgMode=m;
+// SERP img always visible (defines container height). Gazeplot + progressive canvas toggle on top.
+if(m==='gazeplot'){if(gpEl)gpEl.style.display='';pc.style.display='none';modeBtn.textContent='Original';modeBtn.classList.remove('active');progBtn.classList.remove('active')}
+else if(m==='serp'){if(gpEl)gpEl.style.display='none';pc.style.display='none';modeBtn.textContent='Foveated';modeBtn.classList.add('active');progBtn.classList.remove('active')}
+else if(m==='progressive'){if(gpEl)gpEl.style.display='none';pc.style.display='block';modeBtn.textContent='Foveated';modeBtn.classList.remove('active');progBtn.classList.add('active');drawProg()}}
+if(modeBtn){modeBtn.addEventListener('click',()=>{setMode(bgMode==='gazeplot'?'serp':'gazeplot');pushHash()})}
+if(progBtn){progBtn.addEventListener('click',()=>{const next=bgMode==='progressive'?'gazeplot':'progressive';setMode(next);progBtn.textContent=next==='progressive'?'Cumulative':'Progressive';pushHash()})}
+// Hash permalinks: #fix=50&w=20&mode=progressive
+function pushHash(){const p=[];
+if(!ws.disabled)p.push('fix='+(ci+1));
+if(!ws.disabled)p.push('w='+ws.value);
+if(bgMode!=='gazeplot')p.push('mode='+bgMode);
+history.replaceState(null,'','#'+p.join('&'))}
+function readHash(){const h=location.hash.slice(1);if(!h)return;
+const p={};h.split('&').forEach(kv=>{const[k,v]=kv.split('=');p[k]=v});
+if(p.mode)setMode(p.mode);
+if(p.w){ws.value=p.w;wl.textContent=p.w}
+if(p.fix){ci=Math.max(0,Math.min(N-1,parseInt(p.fix)-1));uv()}}
+readHash();
+ws.addEventListener('input',()=>{uv();pushHash()});
 </script></body></html>`;
 
     fs.writeFileSync(path.join(SITE_DIR, `${id}.html`), html);
