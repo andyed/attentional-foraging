@@ -193,6 +193,34 @@ The ~866ms of parafoveal processing time per trial is invisible to raw FPOGD sum
 
 **Notebook:** [09_difficulty.ipynb](../notebooks-v2/09_difficulty.ipynb)
 
+## 3e. Forward-pass reading depth is constant; the position effect is revisitation
+
+Separating forward-pass episodes (first encounter during the scan) from regression episodes (revisits after scrolling back) reveals two different processes:
+
+**Forward pass (generalizable):**
+
+| Pos | Episodes | Fix/Episode | Episode Duration |
+|-----|----------|-------------|-----------------|
+| 0 | 3.2 | 2.11 | 529ms |
+| 4 | 2.2 | 2.15 | 528ms |
+| 8 | 2.0 | 2.01 | 506ms |
+
+Fix/episode declines 5% from position 0 to 8. Episode duration declines 4%. Both are essentially flat. **On first encounter, the user reads each result at roughly the same depth regardless of position.** What declines is how many episodes the result receives (38% decline) — how many times the user's gaze returns to it during the forward scan.
+
+**Regression revisits (task-specific):**
+
+| Pos | Episodes | Fix/Episode | Episode Duration |
+|-----|----------|-------------|-----------------|
+| 0 | 6.0 | 2.10 | 497ms |
+| 4 | 3.5 | 1.87 | 418ms |
+| 8 | 2.5 | 1.74 | 383ms |
+
+Fix/episode declines 17%. Duration declines 23%. Both reading depth and revisit frequency drop substantially. This is recognition/confirmation behavior, not re-reading — and it's heavily shaped by the forced-choice constraint. Users who would normally abandon or reformulate are forced to scroll back, producing revisit patterns that may not generalize to naturalistic search.
+
+**The correct decomposition of the position effect:** On first encounter, reading depth per episode is constant. The position effect comes from fewer episodes per result (fewer returns to it during scanning). The regression revisit pattern adds a second layer — shallower, declining re-reading — but this layer is entangled with the forced-choice paradigm and should not be treated as a general property of search behavior.
+
+**Notebook:** [00_skijump.ipynb](../notebooks-v2/00_skijump.ipynb)
+
 ---
 
 ## 4. Scroll regressions are the dominant browsing pattern
