@@ -1,0 +1,237 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+% --- Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=0.65in,top=0.75in,bottom=0.65in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{natbib}
+\usepackage{microtype}
+
+% Compact spacing
+\setlength{\parskip}{1.5pt plus 1pt}
+\setlength{\parindent}{0.5em}
+\setlength{\abovecaptionskip}{4pt}
+\setlength{\belowcaptionskip}{2pt}
+\setlength{\textfloatsep}{6pt}
+\setlength{\floatsep}{4pt}
+\setlength{\dbltextfloatsep}{6pt}
+
+% Compact sections
+\makeatletter
+\renewcommand\section{\@startsection{section}{1}{\z@}{5pt}{2pt}{\normalfont\bfseries\normalsize}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}{3pt}{1.5pt}{\normalfont\bfseries\small}}
+\makeatother
+
+% Compact abstract
+\renewenvironment{abstract}{\small\noindent\textbf{Abstract.}\enspace\ignorespaces}{\par\vspace{4pt}}
+
+\hypersetup{colorlinks=true, linkcolor=blue!70!black, citecolor=blue!70!black, urlcolor=blue!70!black}
+
+\title{\vspace{-8pt}\textbf{Orient--Survey--Evaluate--Commit:\\A Cognitive Task Model for SERP Evaluation}\\[4pt]
+{\normalfont\small\textcolor{red}{PRE-SUBMISSION DRAFT --- Do not distribute}}\vspace{-4pt}}
+
+\author{
+  Andy Edmonds\\[-2pt]
+  {\small Independent Researcher, San Francisco, CA}\\[-2pt]
+  {\small\texttt{andyed@alum.cmu.edu}}
+}
+
+\date{\vspace{-4pt}\small Draft of \today\vspace{-8pt}}
+
+\begin{document}
+\maketitle
+
+% ============================================================
+\begin{abstract}
+We propose a four-phase cognitive task model for SERP evaluation---\textsc{Orient}, \textsc{Survey}, \textsc{Evaluate}, \textsc{Commit}---grounded in eye-tracking evidence from 2,776 product search trials (AdSERP dataset, 47 participants). Saccade amplitude analysis reveals a previously unidentified \emph{survey phase}: ${\sim}3.5$ wide saccades ($117$\,px median) over ${\sim}1$\,s, during which users sample the result set before committing to reading. The survey--evaluate transition is marked by an amplitude drop detectable at $p = 10^{-61}$ within individual trials. Survey duration is fixed and does not respond to SERP content, but its output---an impression of result set composition---modulates subsequent evaluation strategy. We operationalize SERP difficulty as \emph{relevance spread} (variance in query-result embedding similarity) and show it predicts page coverage ($\rho = 0.098$, $p < 0.001$), click position ($\rho = 0.046$, $p = 0.047$), and trial duration ($\rho = 0.043$, $p = 0.031$), all within-participant. The model bridges session-level information seeking models, implicit task assumptions in click models, and HCI task analysis at the granularity where search evaluation actually happens: the 3--30 seconds between SERP render and first click.
+\end{abstract}
+
+% ============================================================
+\section{Introduction}
+
+Every phase in this model has been studied in isolation. Orientation is implicit in click models' position-bias assumptions. The scanning-then-reading progression appears in Liu et al.'s two-stage model~\cite{liu2014skimming}. Committed evaluation is the subject of decades of relevance assessment research. Satisficing as a stopping rule is central to Payne \& Duggan's foraging account. Scroll regressions are documented by Lorigo et al.~\cite{lorigo2008eyetracking}. What has not been done is to identify these as phases of a single task with measurable transitions between them.
+
+The contribution is the \emph{survey phase} and the saccadic evidence for phase boundaries. Click models assume serial top-down examination. Eye-tracking studies describe ``scanning'' but do not separate gist sampling (wide saccades, $117$\,px median) from committed reading (narrow saccades, $76$\,px). The amplitude transition at fixation ${\sim}5$ ($p = 10^{-61}$) is the evidence that these are distinct cognitive operations.
+
+We test this decomposition on a forced-choice product search task (AdSERP) that eliminates two of the three natural exit paths from SERP evaluation---reformulation and abandonment. This isolates the orient--survey--evaluate--commit sequence but cannot characterize the full foraging decision (stay, refine, or quit). Validating the complete model requires production log data with natural stopping behavior.
+
+% ============================================================
+\section{Related Work}
+
+Each phase of our model has precedent in the literature. The contribution is not any single phase but the identification of measurable transitions between them.
+
+\subsection{Process models of information seeking}
+\textcolor{gray}{\emph{Stub.} Kuhlthau ISP, Marchionini 8 sub-processes, Bates berrypicking, Belkin ASK. These model the full search session. Our work zooms into Marchionini's ``examine results'' sub-process and decomposes it further. Session-level models don't predict within-SERP behavior.}
+
+\subsection{Click models as implicit task models}
+\textcolor{gray}{\emph{Stub.} Cascade~\cite{craswell2008positionbias} assumes serial top-down examination with a stopping rule---implicitly modeling \textsc{Evaluate} + \textsc{Commit}. DBN~\cite{chapelle2009dbn} adds skip/examine decisions---implicitly modeling what we call the survey impression. UBM~\cite{dupret2008ubm} adds position-dependent examination probability---implicitly modeling orientation effects. Each encodes one or two phases as statistical parameters without identifying the cognitive operations that generate them.}
+
+\subsection{Two-stage examination models}
+\textcolor{gray}{\emph{Stub.} Liu et al.~\cite{liu2014skimming}: skimming $\rightarrow$ reading. Closest prior work---explicitly identifies two temporal phases. Our model adds \textsc{Orient} before skimming, decomposes their ``skimming'' into \textsc{Survey} (gist, wide saccades) and early \textsc{Evaluate} (committed reading, narrow saccades), and provides the saccade amplitude marker for the transition.}
+
+\subsection{Eye tracking on SERPs}
+\textcolor{gray}{\emph{Stub.} Granka et al.~\cite{granka2004eyetracking}: initial scan then re-examination---evidence for phase structure, not formalized. Cutrell \& Guan~\cite{cutrell2007eyetracking}: snippet length shifts evaluation effort---the survey phase determines how much reading is needed. Lorigo et al.~\cite{lorigo2008eyetracking}: $\sim$2/3 of scanpaths are non-sequential---challenges cascade assumption, consistent with survey-phase sampling. Buscher et al.\ 2010: distinct ad vs.\ organic fixation patterns---visual classification during orientation.}
+
+\subsection{Foraging theory and satisficing}
+\textcolor{gray}{\emph{Stub.} Pirolli \& Card~\cite{pirolli1999foraging}: information scent guides patch assessment---the theoretical account for what the survey phase computes. SNIF-ACT~\cite{fu2007snifact}: ACT-R implementation of scent-based navigation---models the \textsc{Evaluate} $\rightarrow$ \textsc{Commit} transition as spreading activation. Payne \& Duggan: satisficing with aspiration levels---models the commit decision. Brumby \& Howes~\cite{brumby2004goodenough}: ``good enough but I'll just check''---directly models the survey $\rightarrow$ evaluate transition as attentional refocusing.}
+
+\subsection{Task analysis in HCI}
+\textcolor{gray}{\emph{Stub.} GOMS (Card, Moran \& Newell 1983) provides the methodology for decomposing tasks into cognitive, perceptual, and motor operators. Hornof \& Kieras 1997: CPM-GOMS for menu search---interleaved systematic and opportunistic scanning within a display, directly analogous to survey + evaluate. The language and tools exist in HCI but have not been applied at the SERP evaluation granularity.}
+
+% ============================================================
+\section{The Model}
+\label{sec:model}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figures/task-model-adserp.png}
+  \caption{Orient--Survey--Evaluate--Commit task model as instantiated for the AdSERP forced-choice paradigm. Orient is collapsed (learned prior, 0\,ms median). Survey is fixed-duration (${\sim}1$\,s). Evaluation duration is modulated by the difficulty impression formed during survey. No abandonment path (forced click).}
+  \label{fig:model}
+\end{figure*}
+
+\subsection{Orient}
+Layout recognition. For familiar SERP layouts, this is a learned prior: 58\% of AdSERP trials show first fixation already on a result (0\,ms orientation). No learning effect across 60 trials ($\rho = 0.02$, $p = 0.30$).
+
+\subsection{Survey}
+Wide saccades (117\,px median), ${\sim}3.5$ fixations, ${\sim}1$\,s. Gist sampling: the user builds an impression of result set composition without committed reading. Duration is \emph{fixed}---does not correlate with any difficulty measure (all $p > 0.3$). The survey's output, not its duration, modulates subsequent behavior.
+
+\subsection{Evaluate}
+Narrow saccades (76\,px median). Consecutive fixations on the same result connected by minor saccades ($<100$\,px) form \emph{reading episodes}: mean 2.16 fixations, 499\,ms. Per-fixation duration is flat (${\sim}220$\,ms across all positions). The position effect in total fixation time is driven by fixation count, not processing speed. Forward-only dwell \emph{increases} with position ($\rho = +0.82$), consistent with working memory accumulation.
+
+\subsection{Commit}
+Click. Satisficing threshold crossed. In AdSERP (forced choice), every trial ends with a click. In naturalistic search, this phase competes with abandonment and query reformulation.
+
+\subsection{Regression loop}
+65\% of trials include at least one scroll regression (Evaluate $\rightarrow$ re-Survey). Backward scrolling is ballistic ($\rho = 0.867$), with 87\% of regression targets at positions 0--4. Regression velocity mediates the dwell delta ($\rho = -0.762$, $p = 0.017$).
+
+% ============================================================
+\section{Data and Methods}
+
+\subsection{AdSERP dataset}
+AdSERP~\cite{latifzadeh2025adserp}: 2,776 trials, 47 participants, 60 unique product purchase queries (``buy [brand] [product]''). 10 trials per participant across 6 batches. Gazepoint GP3 HD eye tracker (150\,Hz). Fixations pre-segmented by the tracker's internal I-DT filter (FPOG stream). Mean fixation duration 219\,ms, median 193\,ms.
+
+\subsection{Saccade classification}
+Saccade amplitude computed as Euclidean distance between consecutive fixation coordinates (FPOGX, FPOGY in screen pixels). Minor saccade threshold: 100\,px. Fixations $<60$\,ms filtered as sub-threshold artifacts (1.4\% of data).
+
+\subsection{Phase identification}
+Survey--evaluate transition: sliding window of 3 saccades. First window where mean amplitude $< 100$\,px marks the transition. Median transition at saccade 2 (51\% of trials transition within first 2 saccades).
+
+\subsection{SERP difficulty measures}
+Three measures computed per SERP:
+\begin{itemize}\setlength\itemsep{0pt}
+  \item \textbf{Jaccard:} mean pairwise token-set overlap across results (mean = 0.151)
+  \item \textbf{Relevance spread:} std of query--result cosine similarity (mxbai-embed-large, 1024-d). Low spread = all results equidistant from query = hard (mean = 0.052)
+  \item \textbf{Distinctive density:} mean TF-IDF-weighted unique-token fraction per result (mean = 0.460)
+\end{itemize}
+
+Jaccard and relevance spread are strongly anti-correlated ($\rho = -0.450$), confirming they measure different constructs.
+
+% ============================================================
+\section{Results}
+
+\subsection{Saccade amplitude distinguishes survey from evaluation}
+Early saccades (fixations 1--5): 117\,px median, 56\% major ($>100$\,px). Late saccades (fixations 6+): 76\,px median, 40\% major. Per-trial amplitude slope over first 20 saccades: mean $\rho = -0.128$, $p = 1.5 \times 10^{-61}$ ($N = 991$).
+
+\subsection{Orientation is a learned prior}
+Median orientation time: 0\,ms (58\% of first fixations land on a result). No learning across batches ($\rho = 0.02$, $p = 0.30$). No within-participant trend ($\rho = -0.022$, $p = 0.26$).
+
+\subsection{Survey duration is content-independent}
+Mean 3.5 saccades, ${\sim}1$\,s. No correlation with relevance spread ($\rho = -0.000$), distinctive density ($\rho = 0.020$), or Jaccard ($\rho = -0.012$). All $p > 0.3$.
+
+\subsection{Relevance spread predicts evaluation strategy}
+
+\begin{table}[h]
+\centering
+\small
+\caption{Spearman correlations: difficulty measure $\times$ behavioral DV ($N = 2{,}334$). Spread and density: positive $\rho$ = easier SERPs $\rightarrow$ more of DV.}
+\label{tab:correlations}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+& Dur. & Fix. & Cov. & Reg. & Click Y \\
+\midrule
+Jaccard  & $-.019$ & $-.021$ & $-.046^*$ & $.005$ & $-.055^{**}$ \\
+Spread   & $.043^*$ & $.047^*$ & $\mathbf{.098^{***}}$ & $.035$ & $.046^*$ \\
+Density  & $.014$ & $.015$ & $\mathbf{.071^{***}}$ & $.004$ & $-.052^*$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Within-participant: relevance spread $\rightarrow$ coverage ($\bar{\rho} = 0.089$, $p < 0.001$) and duration ($\bar{\rho} = 0.042$, $p = 0.031$).
+
+Tercile analysis (relevance spread): hard SERPs (low spread) produce 49.0\% page coverage vs.\ 53.3\% for easy SERPs ($p < 0.001$). Click Y: 814\,px (hard) vs.\ 870\,px (easy, $p = 0.047$).
+
+\subsection{Reading episodes and SERP difficulty}
+Episode pooling (minor saccade threshold 100\,px): 95,328 episodes across 2,334 trials. 50.5\% single-fixation, 49.5\% multi-fixation (mean 2.16 fixations, 499\,ms). Proportion of multi-fixation episodes is higher on hard SERPs ($p = 0.004$).
+
+\subsection{Fixation decomposition}
+Per-fixation duration flat at ${\sim}220$\,ms (range 202--228\,ms across positions 0--9). Fixation count declines with position (${\sim}10$ at position 0 $\rightarrow$ ${\sim}7$ at position 9). The position effect is an allocation decision, not a processing speed change.
+
+% ============================================================
+\section{Discussion}
+
+\subsection{What the survey phase is}
+\textcolor{gray}{\emph{Stub.} Not orientation (layout is known). Not reading (saccades too wide). It's patch quality assessment---estimating the decision landscape before investing in evaluation. Fixed duration suggests a sampling routine, not a content-driven process. Output modulates strategy: satisfice early vs.\ explore deeply.}
+
+\subsection{Implications for click models}
+\textcolor{gray}{\emph{Stub.} Cascade model assumes serial top-down. Survey violates this---users sample 3--5 results before systematic evaluation. Position bias research conflates survey exposure with evaluation exposure.}
+
+\subsection{Difficulty as discriminability}
+\textcolor{gray}{\emph{Stub.} Bag-of-words and embedding similarity are null within-position. Relevance spread works because it captures ``is there an obvious best answer?'' These are transactional queries---the user needs to discriminate, not comprehend.}
+
+\subsection{Limitations}
+\textcolor{gray}{\emph{Stub.} Forced-choice paradigm. Product search only. GP3 HD filter parameters unknown. 100\,px threshold principled but arbitrary. No novel layout variation (all Google SERPs). Survey duration ceiling from repeat trials.}
+
+% ============================================================
+\section{Conclusion}
+
+\textcolor{gray}{\emph{Stub.} The orient--survey--evaluate--commit model provides an explicit cognitive task analysis at the granularity where search evaluation happens. The survey phase is the key contribution: a fixed-duration gist sampling routine whose output modulates subsequent foraging strategy.}
+
+% ============================================================
+\small
+\bibliographystyle{plainnat}
+\bibliography{../../references}
+
+% ============================================================
+\appendix
+\section{Reproducibility and Interactive Materials}
+
+All analysis code, notebooks, and interactive demos are available at:
+
+\begin{itemize}\setlength\itemsep{0pt}
+  \item \textbf{Repository:} \url{https://github.com/andyed/attentional-foraging}
+  \item \textbf{Interactive scanpath replays:} \url{https://andyed.github.io/attentional-foraging/} --- 10 curated trials with foveated vision rendering, playback controls, and gaze point toggle
+\end{itemize}
+
+\noindent\textbf{Notebooks} (rendered via nbviewer):
+
+\begin{small}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Analysis & Notebook \\
+\midrule
+Fixation decomposition & \texttt{fixation\_coverage.ipynb} \\
+Scroll regressions & \texttt{scroll\_regressions.ipynb} \\
+Scroll kinematics & \texttt{scroll\_kinematics.ipynb} \\
+User strategies & \texttt{user\_strategies.ipynb} \\
+Lexical priming (null) & \texttt{serp\_priming.ipynb} \\
+SERP difficulty \& episodes & \texttt{serp\_difficulty.ipynb} \\
+Orientation \& evaluation & \texttt{orientation\_evaluation.ipynb} \\
+LHIPA validation & \texttt{lhipa\_validation.ipynb} \\
+Regression decisions & \texttt{regression\_decisions.ipynb} \\
+\bottomrule
+\end{tabular}
+\end{small}
+
+\vspace{4pt}
+\noindent\textbf{Findings document:} \texttt{docs/findings.md} --- comprehensive write-up with all statistical tests (v4, updated continuously).
+
+\end{document}
