@@ -101,6 +101,7 @@ Detailed write-up with all statistical tests: [findings.md](./docs/findings.md).
 
 | # | Notebook | Topic |
 | --- | --- | --- |
+| 00 | [skijump](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/00_skijump.ipynb) | Click distribution by position, boundary uptick, LHIPA, satisficer/optimizer split |
 | 01 | [convergence](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/01_convergence.ipynb) | Mouse-gaze distance, scroll-enriched click prediction |
 | 02 | [gaze_cursor_lag](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/02_gaze_cursor_lag.ipynb) | Temporal lag, split-half reliability |
 | 03 | [early_predictors](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/03_early_predictors.ipynb) | Early-trial signals of click target |
