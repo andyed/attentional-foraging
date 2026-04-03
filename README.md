@@ -6,7 +6,7 @@
 
 Two decades of building search and recommendation systems at eBay, Microsoft, Meta, and Quora produced two observations that needed explanation:
 
-**The ski-jump.** Click share drops from position 1 to ~8, then upticks at the boundary — the last result before "next page." Every search engine sees this. It's attributed to "position bias," which is a label, not an explanation. AdSERP replicates it: position 10 gets more clicks than position 9 (3.3% vs 2.9%), with the forced-choice task boundary replacing the pagination boundary.
+**The ski-jump.** Click share drops from position 1 to ~8, then upticks at the boundary — the last result before "next page." Every search engine sees this. It's attributed to "position bias," which is a label, not an explanation. AdSERP replicates it: position 10 deviates 39% above the log-linear trend from positions 5–9 (χ² = 10.0, p = 0.0015), with the forced-choice task boundary replacing the pagination boundary.
 
 | Pos | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | **10** |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
