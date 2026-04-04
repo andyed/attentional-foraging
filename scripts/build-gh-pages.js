@@ -162,6 +162,20 @@ for (const trial of trials) {
         };
     }).filter(f => f.d > 0);
 
+    // Load per-fixation pupil data if available
+    const pupilPath = path.join(DATA_DIR, 'fixation-pupil', `${id}.json`);
+    let hasPupil = false;
+    if (fs.existsSync(pupilPath)) {
+        const pupilData = JSON.parse(fs.readFileSync(pupilPath, 'utf8'));
+        fixations.forEach((f, i) => {
+            if (pupilData[i] && pupilData[i].mean_pd != null) {
+                f.pd = pupilData[i].mean_pd;
+                f.pdc = pupilData[i].pd_change;
+            }
+        });
+        hasPupil = fixations.some(f => f.pd != null);
+    }
+
     // Mouse events: already in page-space from evtrack (pageX/pageY).
     // No Y scaling needed — pageY coordinates match the windowW layout.
     const mouseTimeline = trialData.mouseTimeline || [];
@@ -246,6 +260,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
     ${hasGazeplot ? `<button class="btn" id="mode-btn">Original</button>` : ''}
     <label id="ws-group">Window <input type="range" id="window-size" min="1" max="${N}" value="${N}" style="width:80px;vertical-align:middle;"> <span id="ws-label">All</span></label>
     <button class="btn active" id="gaze-btn">Gaze Points</button>
+    ${hasPupil ? `<button class="btn" id="color-btn">Color: Sequence</button>` : ''}
     <button class="btn" id="play-btn">&#9654; Play</button>
     <button class="btn" id="reset-btn">Reset</button>
   </div>
@@ -289,6 +304,12 @@ SERP_SRC='${serpRenderRelPath}',
 GAZEPLOT_SRC=${hasGazeplot ? `'${gazeplotRelPath}'` : 'null'};
 const rF=d=>8+(d-MND)/(MXD-MND+1)*22;
 const cF=(i,n)=>{const t=n>1?i/(n-1):0;return\`rgb(\${Math.round(50+205*t)},\${Math.round(50+100*(1-Math.abs(t-.5)*2))},\${Math.round(255-205*t)})\`};
+// Cognitive load color: blue (constricted/low load) → red (dilated/high load)
+const PDC=F.filter(f=>f.pdc!=null).map(f=>f.pdc);
+const PDC_MIN=PDC.length?Math.min(...PDC):0,PDC_MAX=PDC.length?Math.max(...PDC):1;
+const cPD=(pdc)=>{if(pdc==null)return'#888';const t=(pdc-PDC_MIN)/(PDC_MAX-PDC_MIN+0.001);return\`rgb(\${Math.round(50+205*t)},\${Math.round(60)},\${Math.round(255-205*t)})\`};
+let colorMode='sequence'; // 'sequence' or 'load'
+function getColor(i){return colorMode==='load'&&F[i].pdc!=null?cPD(F[i].pdc):cF(i,N)}
 const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
 fr=document.getElementById('foveal-ring'),mc=document.getElementById('mouse-cursor'),
 vw=document.getElementById('viewer'),
@@ -361,6 +382,16 @@ uv();
 const gazeBtn=document.getElementById('gaze-btn');
 let gazeVisible=true;
 gazeBtn.addEventListener('click',()=>{gazeVisible=!gazeVisible;svg.style.display=gazeVisible?'':'none';gazeBtn.classList.toggle('active',gazeVisible);pushHash()});
+// Color mode toggle (sequence vs cognitive load)
+const colorBtn=document.getElementById('color-btn');
+function recolor(){for(let i=0;i<N;i++){const c=getColor(i);
+cE[i].setAttribute('fill',c);cE[i].setAttribute('stroke',c);
+if(lE[i]){lE[i].setAttribute('stroke',c)}}}
+if(colorBtn){colorBtn.addEventListener('click',()=>{
+colorMode=colorMode==='sequence'?'load':'sequence';
+colorBtn.textContent=colorMode==='sequence'?'Color: Sequence':'Color: Pupil Load';
+colorBtn.classList.toggle('active',colorMode==='load');
+recolor()})}
 // Background mode controls
 const modeBtn=document.getElementById('mode-btn');
 const progBtn=document.getElementById('prog-btn');
