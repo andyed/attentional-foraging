@@ -35,7 +35,7 @@ This is a 2×2 interaction (topical relevance × perceived relevance), not a mai
 
 Curious users and moderately familiar users invest *more* cognitive effort. This contradicts the naive prediction that familiarity reduces load. The resolution: familiarity gives you the tools to engage deeply, curiosity gives you the motivation. Complete novices don't engage because they can't.
 
-**Connection to our data:** We observe that per-result LHIPA declines during forward scanning (Phase 3 of our process model) — consistent with increasing cognitive load as the user builds familiarity with the SERP content. Each new result is evaluated against a growing comparison set. This is "within-session familiarity accumulation" analogous to their between-task familiarity effect.
+**Connection to our data:** Per-result wavelet LHIPA appeared to decline during forward scanning, but Duchowski (2026) established that wavelet decomposition requires 7.5–10s minimum — our per-result segments (~2s) were below this threshold, making per-result LHIPA unreliable. Using Duchowski's recommended Butterworth IIR method (1s minimum window), we find cognitive load *decreases* with position (LF/HF ρ = −0.618, §3b-iv of findings.md). This is the opposite of the working memory accumulation prediction. The resolution: within-session "familiarity" compiles evaluation criteria rather than building load — the user gets more efficient, not more burdened. This contrasts with Shi et al.'s between-task familiarity finding (deeper engagement), because within-SERP familiarity serves discrimination, not comprehension.
 
 ### 4. Confirmation bias reduces cognitive load
 

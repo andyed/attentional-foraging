@@ -622,9 +622,13 @@ for (const r of results) {
     // Scroll viewer to top, capture the serp-container at full height
     await page.evaluate(() => document.querySelector('.viewer').scrollTo(0, 0));
     const serpContainer = await page.$('.serp-container');
-    const pngBuf = await serpContainer.screenshot();
-    fs.writeFileSync(path.join(SITE_DIR, 'png', `${r.id}.png`), pngBuf);
-    console.log(`    ${r.id}.png (${(pngBuf.length / 1024 / 1024).toFixed(1)}MB, ${box.w}x${box.h})`);
+    try {
+        const pngBuf = await serpContainer.screenshot();
+        fs.writeFileSync(path.join(SITE_DIR, 'png', `${r.id}.png`), pngBuf);
+        console.log(`    ${r.id}.png (${(pngBuf.length / 1024 / 1024).toFixed(1)}MB, ${box.w}x${box.h})`);
+    } catch (err) {
+        console.log(`    ⚠ ${r.id}.png FAILED: ${err.message}`);
+    }
 
     await ctx.close();
 }

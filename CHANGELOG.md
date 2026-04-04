@@ -1,5 +1,27 @@
 # Changelog
 
+## v8 — 2026-04-04
+
+### Per-position cognitive load: working memory hypothesis reversed
+
+Duchowski (2026, PACM CGIT) recommended Butterworth IIR over wavelet LHIPA for short-window cognitive load. Minimum windows: FFT 10s, DWT 7.5s, Butterworth 1s. Implemented per-position LF/HF ratio for all 2,719 trials.
+
+**The working memory hypothesis was wrong.** LF/HF *decreases* with position (ρ = −0.618, p = 0.04). Cognitive load peaks at position 0, drops steeply through 0–3, plateaus through 4–10. This contradicts the §3a interpretation that forward-only dwell increase (ρ = +0.82) reflects growing working memory load.
+
+**Correction:** The prior interpretation in §3a ("cognitive load increases with foraging depth because the candidate set in working memory grows") has been revised. The dissociation between increasing dwell time and decreasing cognitive effort indicates evaluation becomes *routinized* through framework compilation, not overloaded through working memory accumulation. The Shi et al. (2025) lit note connection claiming per-result LHIPA showed increasing load was also corrected — wavelet LHIPA at ~2s granularity was below Duchowski's stated 7.5s minimum, making that trend unreliable.
+
+**New files:** `scripts/compute_butterworth_lfhf.py`, `notebooks-v2/14_butterworth_cognitive_load.ipynb`, `docs/lit-notes/duchowski2026-realtime-pupil-lfhf.md`, `AdSERP/data/butterworth-lfhf-by-position.json`
+
+**Updated:** `data_loader.py` (added `load_pupil_trial()`, `remove_blinks()`), `references.bib` (added `duchowski2026realtime`), `findings.md` (§3b-iv, §3a correction), `README.md` (notebook 14, key insight)
+
+### Thumbnail screenshot fix
+
+`build-gh-pages.js` PNG screenshot loop crashed without error handling, producing only 2 of 10 thumbnails. Added try/catch.
+
+## v7 — 2026-04-03
+
+(See git log for v7 changes — survey phase, ski-jump decomposition, forward/regression split, README rewrite, arxiv stub)
+
 ## v6 — 2026-04-02
 
 ### Semantic embeddings tested and null

@@ -86,6 +86,7 @@ Detailed write-up with all statistical tests: [findings.md](./docs/findings.md).
 - **Mouse proximity reveals the consideration set.** 26.9% click rate at <66px cursor-gaze distance vs 2.4% baseline. 14% of non-clicked results were deeply evaluated with cursor nearby. Deployable from mouse telemetry. → [§10](docs/findings.md#10-mouse-proximity-predicts-click--and-reveals-the-consideration-set)
 - **Backward scrolling is ballistic** (ρ = 0.867). 87% of regression targets at positions 0–4. Regression velocity mediates the dwell delta. → [§8](docs/findings.md#8-backward-scrolling-is-ballistic--the-viewport-mechanics-confound)
 - **LHIPA validates against behavior.** Pupillometric cognitive load monotonic with foraging depth (ρ = −0.90 with click position). → [§5 LHIPA notebook](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/05_lhipa.ipynb)
+- **Per-position cognitive load declines, not increases.** Butterworth LF/HF ratio (Duchowski 2026) peaks at position 0 and drops through positions 0–3, then plateaus (ρ = −0.618). Users build evaluation criteria at the first result, then apply them efficiently — framework compilation, not working memory overload. → [§3b-iv](docs/findings.md#3b-iv-per-position-cognitive-load-decreases-not-increases--framework-compilation-not-working-memory-overload)
 
 ### Individual differences
 
@@ -117,6 +118,7 @@ Detailed write-up with all statistical tests: [findings.md](./docs/findings.md).
 | 11 | [individual_differences](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/11_individual_differences.ipynb) | Two independent trait dimensions |
 | 12 | [regression_precision](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/12_regression_precision_by_load.ipynb) | Regression targeting precision by cognitive load |
 | 13 | [survey_phase](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/13_survey_phase.ipynb) | Saccade amplitude evidence for the survey phase |
+| 14 | [butterworth_cognitive_load](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/14_butterworth_cognitive_load.ipynb) | Per-position Butterworth LF/HF cognitive load (Duchowski 2026) |
 
 Legacy notebooks in `notebooks/`.
 

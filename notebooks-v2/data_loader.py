@@ -34,6 +34,7 @@ MOUSE_DIR = DATA_DIR / 'mouse-movement-data'
 METADATA_DIR = DATA_DIR / 'trial-metadata'
 SERP_DIR = DATA_DIR / 'serps'
 AD_DIR = DATA_DIR / 'ad-boundary-data'
+PUPIL_DIR = DATA_DIR / 'pupil-data'
 
 # ── Trial discovery ────────────────────────────────────────────────────────
 
@@ -281,6 +282,105 @@ def load_lhipa():
     path = Path(__file__).parent / 'lhipa_per_trial.json'
     with open(path) as f:
         return json.load(f)
+
+def remove_blinks(timestamps, pupil_diameters, validity, exclusion_ms=200):
+    """Remove blink samples and interpolate gaps.
+
+    Blinks identified by validity=0 or pupil_diameter<=0.
+    A 200ms exclusion window removes pre- and post-blink artifacts.
+
+    Returns (clean_timestamps, clean_pupil_diameters) as numpy arrays,
+    or (None, None) if >50% of samples are invalid.
+    """
+    ts = np.array(timestamps, dtype=float)
+    pd = np.array(pupil_diameters, dtype=float)
+    val = np.array(validity, dtype=int)
+
+    invalid = (val == 0) | (pd <= 0)
+
+    if invalid.any():
+        invalid_times = ts[invalid]
+        for it in invalid_times:
+            mask = (ts >= it - exclusion_ms) & (ts <= it + exclusion_ms)
+            invalid[mask] = True
+
+    if invalid.sum() > len(invalid) * 0.5:
+        return None, None
+
+    valid_mask = ~invalid
+    if valid_mask.sum() < 50:
+        return None, None
+
+    clean_pd = pd.copy()
+    valid_indices = np.where(valid_mask)[0]
+    invalid_indices = np.where(invalid)[0]
+
+    if len(invalid_indices) > 0 and len(valid_indices) > 1:
+        clean_pd[invalid_indices] = np.interp(
+            ts[invalid_indices], ts[valid_indices], pd[valid_indices]
+        )
+
+    return ts, clean_pd
+
+
+def load_pupil_trial(trial_id):
+    """Load and blink-clean pupil data for a trial.
+
+    Combines left and right eyes (mean when both valid, single-eye fallback).
+    Returns dict with ts, clean_pd, raw_pd, validity, bpogx, bpogy.
+    Returns None if trial is unusable (>50% blinks or <100 samples).
+    """
+    pupil_path = PUPIL_DIR / f'{trial_id}.csv'
+    if not pupil_path.exists():
+        return None
+
+    timestamps, mean_pd, combined_val = [], [], []
+    bpogx_list, bpogy_list = [], []
+
+    with open(pupil_path) as f:
+        for row in csv.DictReader(f):
+            try:
+                t = int(float(row['timestamp']))
+                lpd = float(row['LPD'])
+                rpd = float(row['RPD'])
+                lv = int(row['LPV'])
+                rv = int(row['RPV'])
+            except (ValueError, KeyError):
+                continue
+
+            timestamps.append(t)
+            bpogx_list.append(float(row.get('BPOGX', 0)))
+            bpogy_list.append(float(row.get('BPOGY', 0)))
+
+            if lv and rv:
+                mean_pd.append((lpd + rpd) / 2)
+                combined_val.append(1)
+            elif lv:
+                mean_pd.append(lpd)
+                combined_val.append(1)
+            elif rv:
+                mean_pd.append(rpd)
+                combined_val.append(1)
+            else:
+                mean_pd.append(0)
+                combined_val.append(0)
+
+    if len(timestamps) < 100:
+        return None
+
+    clean_ts, clean_pd = remove_blinks(timestamps, mean_pd, combined_val)
+    if clean_ts is None:
+        return None
+
+    return {
+        'ts': clean_ts,
+        'clean_pd': clean_pd,
+        'raw_pd': mean_pd,
+        'validity': combined_val,
+        'bpogx': bpogx_list,
+        'bpogy': bpogy_list,
+    }
+
 
 def load_difficulty_measures():
     """Load pre-computed SERP difficulty measures.

@@ -49,7 +49,7 @@ Click share drops monotonically from position 0 to 9, then deviates upward at po
 
 **Investment.** Boundary clickers invested ~100 fixations and 26.5s, vs ~89 fixations and ~23s for mid-range clickers (positions 3–6).
 
-**Why the ski-jump happens.** The decline is attention allocation under diminishing returns. Each successive result gets fewer fixations (not shorter ones — per-fixation duration is flat at ~220ms) as the working memory comparison cost grows. The user invests less in each new candidate because the marginal value of evaluating one more drops as the candidate set expands (§3a).
+**Why the ski-jump happens.** The decline is attention allocation under diminishing returns. Each successive result gets fewer fixations (not shorter ones — per-fixation duration is flat at ~220ms). The user invests less in each new candidate because the marginal value of evaluating one more drops as evaluation criteria compile and the remaining uncertainty shrinks (§3a, §3b-iv).
 
 The uptick at the boundary is a micro-economic phenomenon. By position 9–10, three costs collapse simultaneously:
 
@@ -89,7 +89,7 @@ Tested at three levels of granularity. Null at all of them.
 
 **Semantic embeddings (mxbai-embed-large):** Cosine similarity between each result's snippet embedding and the centroid of all prior result embeddings. Also null within-position — sentence-level semantic similarity does not predict evaluation time any better than bag-of-words.
 
-**The forward-only curve reverses the prediction:** Isolating forward-scanning periods (excluding regressions), gaze dwell ratio *increases* with position (Spearman ρ = +0.82). Users dwell longer on later results during first-pass scanning. The most parsimonious explanation: cognitive load increases with foraging depth because the candidate set in working memory grows. Each new result must be compared against an expanding set of already-evaluated alternatives.
+**The forward-only curve reverses the prediction:** Isolating forward-scanning periods (excluding regressions), gaze dwell ratio *increases* with position (Spearman ρ = +0.82). Users dwell longer on later results during first-pass scanning. The naive explanation — cognitive load increases with foraging depth as working memory grows — is contradicted by per-position pupillometry (§3b-iv), which shows cognitive load *decreasing* with position. The dissociation suggests evaluation becomes *routinized*: the comparison set grows (more time), but compiled evaluation criteria make each comparison cheaper (less cognitive effort per unit time).
 
 **Why the aggregate correlation was misleading:** Position and overlap are confounded — both increase monotonically down the SERP. The aggregate partial r = -0.054 (p = 2.4×10⁻⁹) was driven by this confound, not by content. The regression-vs-no-regression split compounded the problem: lower dwell on revisit reflects recognition/memory and ballistic scroll kinematics (§8), not semantic priming.
 
@@ -203,6 +203,26 @@ Per-fixation mean pupil diameter (binocular average, blink-cleaned, N = 2,720 tr
 Survey vs evaluate pupil diameter: p = 10⁻¹¹⁷. The survey phase *constricts* pupils — it is a cheap sampling routine, not effortful processing. The cognitive work comes during committed reading (evaluate phase), where the pupil gradually recovers and eventually approaches baseline as working memory load builds from holding multiple candidates.
 
 **Notebook:** [13_survey_phase.ipynb](../notebooks-v2/13_survey_phase.ipynb)
+
+## 3b-iv. Per-position cognitive load decreases, not increases — framework compilation, not working memory overload
+
+Duchowski (2026) Butterworth IIR method enables per-result cognitive load measurement at the ~2-second per-position granularity where wavelet LHIPA cannot operate (minimum 7.5s). Two 4th-order Butterworth filters (LF: 0–1.6 Hz, HF: 1.6–4 Hz) applied to the full blink-cleaned 150 Hz pupil stream; LF/HF variance ratio computed per position during forward scanning. Higher LF/HF = higher cognitive load.
+
+**The working memory hypothesis is wrong.** LF/HF *decreases* with position (ρ = −0.618, p = 0.04 on position medians, N = 2,719 trials). Cognitive load peaks at position 0 and drops steeply through positions 0–3, then plateaus at approximately half the initial level through positions 4–10.
+
+| Positions | Median LF/HF | N valid segments |
+|-----------|-------------|-----------------|
+| 0 | 30.0 | 1,015 |
+| 1–3 | 18.5 | 2,417 |
+| 4–10 | 16.9 | 3,150 |
+
+Within-trial: median ρ = −0.200 (56.6% of 1,167 trials show declining load). Cross-validation: trial-mean LF/HF anti-correlates with LHIPA (ρ = −0.122, p < 10⁻⁹), confirming both measures capture the same construct.
+
+**Interpretation.** The first result demands the highest cognitive effort because the user is constructing evaluation criteria from scratch. As criteria compile, subsequent results require less effort per unit of committed evaluation time — even as behavioral dwell time *increases* (forward-only dwell ρ = +0.82, §3a). This dissociation between time and cognitive effort indicates evaluation becomes *routinized*, not *overloaded*.
+
+**Connection to priming (§2).** The declining cognitive load profile is superficially consistent with lexical priming (repeated tokens easier to process). But priming was null at four granularities, and the load decrease happens within the first 3 positions before substantial overlap accumulates. Framework compilation — not lexical facilitation — is the parsimonious explanation.
+
+**Notebook:** [14_butterworth_cognitive_load.ipynb](../notebooks-v2/14_butterworth_cognitive_load.ipynb)
 
 ## 3c. SERP difficulty is discriminability, not similarity
 
