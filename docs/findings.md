@@ -147,20 +147,22 @@ Saccade amplitude distinguishes two scanning modes within each trial:
 
 | Phase | Saccade amplitude | Duration | Behavior |
 |-------|-------------------|----------|----------|
-| **Survey** (fixations 1–~5) | 117px median, 56% major | ~1s, ~3.5 fixations | Wide jumps between results, gist sampling |
-| **Evaluate** (fixations ~6+) | 76px median, 40% major | Variable | Narrow saccades within results, reading episodes |
+| **Survey** (fixations 1–~5) | 108px median, 53% major | ~1.3s (median) | Wide jumps between results, gist sampling |
+| **Evaluate** (fixations ~6+) | 74px median, 40% major | Variable | Narrow saccades within results, reading episodes |
 
-Per-trial amplitude slope over first 20 saccades: mean ρ = −0.128, p = 1.5 × 10⁻⁶¹ (N = 991). The transition is detectable within individual trials.
+Per-trial amplitude slope over first 20 saccades: mean ρ = −0.114, p = 10⁻¹²⁸ (N = 2,754). The transition is detectable within individual trials (69.6% have negative slope).
 
-**Survey duration is fixed.** ~3.5 saccades, ~1s. No correlation with relevance spread (ρ = −0.000), distinctive density (ρ = 0.020), or Jaccard (ρ = −0.012). All p > 0.3. The survey's *output* — an impression of result set composition — modulates subsequent evaluation strategy, but its *duration* does not respond to SERP content.
+**Survey duration is fixed.** Median 1.28s (IQR 1.06–1.58s). Survey duration shows weak negative correlation with total fixation count (ρ = −0.163) — quick deciders may spend relatively more time surveying — but does not respond to SERP content difficulty.
+
+**SERP complexity is not driving the survey.** Splitting 2,768 trials by right-panel presence (858 complex vs 1,910 simple): the survey amplitude drop survives in simple SERPs (107px vs 74px, p = 10⁻¹⁵⁰). Only 3.4% of survey fixations land on the right panel. The survey is cognitive gist sampling, not feature-driven navigation.
 
 **Prior work:** Zhang, Abualsaud & Smucker (CHIIR 2018) documented a "result inspection phase" where users evaluate the top 2–3 results to decide whether the SERP is worth continued evaluation or immediate requery. This is the survey phase in the context of the stay/reformulate decision — the naturalistic exit path that AdSERP's forced-choice task eliminates. Their observation dates to ~2011. In naturalistic search, the survey phase serves a dual purpose: assessing result quality (what we measure here) AND deciding whether to stay on the SERP at all (what we cannot measure here).
 
 **Orientation is a learned prior.** Median orientation time: 0ms. 58% of first fixations land directly on a result. No learning effect across 60 trials (ρ = 0.02, p = 0.30). The SERP layout is memorized.
 
-**Survey and scroll are decoupled.** Survey ends at fixation ~3. First scroll happens at fixation ~20 (median). 92% of trials: survey ends well before the first scroll. The user evaluates ~17 fixations of first-viewport results between survey and scroll.
+**Survey and scroll are decoupled.** Survey ends at fixation ~5. First scroll at fixation ~21 (median). 94.6% of trials: survey ends well before the first scroll. The user evaluates ~16 fixations of first-viewport results between survey and scroll.
 
-**Notebook:** [06_orientation_evaluation.ipynb](../notebooks-v2/06_orientation_evaluation.ipynb)
+**Notebook:** [06_orientation_evaluation.ipynb](../notebooks-v2/06_orientation_evaluation.ipynb), [13_survey_phase.ipynb](../notebooks-v2/13_survey_phase.ipynb)
 
 ## 3b-ii. Survey phase characterization
 
@@ -186,7 +188,21 @@ In naturalistic search (Zhang et al. CHIIR 2018), this same signal gates the sta
 
 **3. Spatial spread is 3.3x higher during survey.** Unique result positions per fixation: 0.447 (survey) vs 0.137 (evaluate), p ≈ 0. Survey fixations scatter across many result positions; evaluate fixations cluster within one or two. This is the strongest evidence that survey and evaluate are qualitatively different scanning modes.
 
-**4. The survey does not repeat after scrolling.** Post-scroll saccades are narrower than pre-scroll (151px vs 172px, p = 10⁻⁷⁵). No amplitude spike after forward scroll events. The user goes straight into reading newly exposed content. The survey happens once at the beginning of the trial; scrolling does not reset the phase.
+**4. The survey does not repeat after scrolling.** Post-scroll saccades are not wider than pre-scroll (median 78px vs 75px). No amplitude spike after forward scroll events. The user goes straight into reading newly exposed content. The survey happens once at the beginning of the trial; scrolling does not reset the phase.
+
+## 3b-iii. Pupil dilation confirms the survey is low-load
+
+Per-fixation mean pupil diameter (binocular average, blink-cleaned, N = 2,720 trials) reveals a three-phase trajectory:
+
+| Phase | Fixations | Pupil change from baseline | Interpretation |
+|-------|-----------|---------------------------|----------------|
+| **Orienting** | 1–2 | +1.2% dilation | Arousal/novelty response to new stimulus |
+| **Survey** | 3–5 | −3.0% constriction | Low-load gist sampling; visual system calibrating |
+| **Evaluate** | 6–20 | −1.3% → 0% (gradual recovery) | Cognitive work; working memory load builds |
+
+Survey vs evaluate pupil diameter: p = 10⁻¹¹⁷. The survey phase *constricts* pupils — it is a cheap sampling routine, not effortful processing. The cognitive work comes during committed reading (evaluate phase), where the pupil gradually recovers and eventually approaches baseline as working memory load builds from holding multiple candidates.
+
+**Notebook:** [13_survey_phase.ipynb](../notebooks-v2/13_survey_phase.ipynb)
 
 ## 3c. SERP difficulty is discriminability, not similarity
 
