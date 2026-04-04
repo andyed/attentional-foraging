@@ -43,8 +43,8 @@
 - [ ] **Forward-only regression stratification.** The ρ = +0.82 forward-only shape test pools all trials. Separate: (a) trials with zero regressions (pure forward scan), (b) forward segments within regression trials. Are they different?
 - [ ] **Satisficer vs optimizer LHIPA.** Do satisficers (low-regression users) have higher trial-level LHIPA (less cognitive load) than optimizers? The satisfice/optimize segmentation (notebook 10) + LHIPA (notebook 05) should cross. From shi2025-key-claims.md.
 - [ ] **Explicit attention definitions per notebook.** Zhang et al. (CHIIR 2026) argues "attention" conflates 4+ constructs. Each notebook should state which it measures: overt visual attention (fixation coverage), processing speed (TTI), cognitive load (LHIPA), engagement (dwell). From zhang2026-attention-chiir.md.
-- [ ] **Re-export HTML notebooks.** `html/serp_priming.html` is stale — pre-v4 metric names and viewport computation. Re-export after notebook is stable.
-- [ ] **Pupil dilation × position (cognitive load from comparative decision-making).** The forward-only dwell increase (ρ = +0.82) suggests increasing cognitive load as users hold more candidates in working memory. AdSERP Gazepoint GP3 HD records pupil diameter. Shi, Jayawardena & Gwizdka (2025) and Jayawardena et al. (2025) provide methodology. Pupil data available on Zenodo (129MB). Test: does pupil dilation increase with position during forward scanning? If so, the dwell increase is cognitive load, not attention.
+- [x] **Re-export HTML notebooks.** All 9 HTML exports regenerated 2026-04-03.
+- [x] **Pupil dilation × position (cognitive load).** LHIPA monotonic with click position (ρ = −0.90). Done in notebook 05. Boundary clickers (pos 9–10) have lowest LHIPA = highest load.
 
 ## SERP Difficulty — Better Measures
 
