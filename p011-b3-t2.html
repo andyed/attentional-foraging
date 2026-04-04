@@ -91,7 +91,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
       </div>
     </div>
     <div class="timeline-row">
-      <div class="timeline-label lbl-lfhf">LF/HF</div>
+      <div class="timeline-label lbl-lfhf">Pupil LF/HF</div>
       <div class="timeline-track" id="track-lfhf">
         <div class="timeline-ticks" id="ticks-lfhf"></div>
       </div>
@@ -313,7 +313,7 @@ function recolor(){for(let i=0;i<N;i++){const c=getColor(i);
 cE[i].setAttribute('fill',c);cE[i].setAttribute('stroke',c);
 if(lE[i]){lE[i].setAttribute('stroke',c)}
 if(tkE[i])tkE[i].style.background=c}}
-const COLOR_LABELS={sequence:'Color: Sequence',load:'Color: Pupil Load',lfhf:'Color: LF/HF Load',saliency:'Color: Saliency'};
+const COLOR_LABELS={sequence:'Color: Sequence',load:'Color: Pupil Load',lfhf:'Color: Pupil LF/HF',saliency:'Color: Saliency'};
 if(colorBtn){colorBtn.addEventListener('click',()=>{
 const ci_cm=COLOR_MODES.indexOf(colorMode);colorMode=COLOR_MODES[(ci_cm+1)%COLOR_MODES.length];
 colorBtn.textContent=COLOR_LABELS[colorMode];
