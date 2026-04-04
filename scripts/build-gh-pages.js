@@ -369,7 +369,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
       </div>
     </div>` : ''}
     ${hasLFHF ? `<div class="timeline-row">
-      <div class="timeline-label lbl-lfhf">LF/HF</div>
+      <div class="timeline-label lbl-lfhf">Pupil LF/HF</div>
       <div class="timeline-track" id="track-lfhf">
         <div class="timeline-ticks" id="ticks-lfhf"></div>
       </div>
@@ -591,7 +591,7 @@ function recolor(){for(let i=0;i<N;i++){const c=getColor(i);
 cE[i].setAttribute('fill',c);cE[i].setAttribute('stroke',c);
 if(lE[i]){lE[i].setAttribute('stroke',c)}
 if(tkE[i])tkE[i].style.background=c}}
-const COLOR_LABELS={sequence:'Color: Sequence',load:'Color: Pupil Load',lfhf:'Color: LF/HF Load',saliency:'Color: Saliency'};
+const COLOR_LABELS={sequence:'Color: Sequence',load:'Color: Pupil Load',lfhf:'Color: Pupil LF/HF',saliency:'Color: Saliency'};
 if(colorBtn){colorBtn.addEventListener('click',()=>{
 const ci_cm=COLOR_MODES.indexOf(colorMode);colorMode=COLOR_MODES[(ci_cm+1)%COLOR_MODES.length];
 colorBtn.textContent=COLOR_LABELS[colorMode];
@@ -711,6 +711,11 @@ footer a { color: #888; }
   due to external resource loading (Maps tiles, product images). Fixation coordinates (FPOGX/FPOGY)
   from <a href="https://github.com/kayhan-latifzadeh/AdSERP" style="color:#ffcc66;">AdSERP</a> are
   pixel-verified accurate against synthetic test pages.
+</p>
+<p style="background:#1a1a00;border:1px solid #554400;border-radius:6px;padding:8px 12px;color:#f5c542;font-size:0.85em;margin-bottom:1em;">
+  <strong>Pupil LF/HF</strong> &mdash; Low/High frequency power ratio of pupil diameter oscillations
+  (Duchowski 2026, Butterworth IIR: LF 0&ndash;1.6&thinsp;Hz / HF 1.6&ndash;4&thinsp;Hz, 1s sliding window).
+  Higher values = higher cognitive load. Amber timeline track and color mode.
 </p>
 <p class="controls-help">
   <kbd>&larr;</kbd><kbd>&rarr;</kbd> step through fixations &middot;
