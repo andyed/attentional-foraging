@@ -149,12 +149,11 @@ Several pieces of this project are designed for reuse beyond AdSERP:
 
 Highlights from the full [TODO.md](./TODO.md):
 
-- **Ski-jump notebook** — click distribution by position, satisficer/optimizer splits, LHIPA at the boundary, difficulty modulation
-- **Visualize LHIPA by position** — pupil dilation during forward scanning as a cognitive load trajectory
-- **Product taxonomy partition** — commodity vs branded vs experiential queries may have different foraging strategies
+- **Saliency-guided survey** — do survey saccades target visually salient SERP regions? Requires Scrutinizer saliency export ([spec-saliency-export-cli.md](./../scrutinizer-repo/scrutinizer2025/docs/spec-saliency-export-cli.md))
+- **Product taxonomy partition** — commodity vs branded vs experiential queries may have different foraging strategies and difficulty structures
 - **Full model validation** — the stay/refine/abandon decision needs production log data with natural stopping
-- **Token-level fixation analysis** — the only untested priming granularity (word-level AOI mapping)
-- **Survey phase characterization** — what features does the gist scan extract? Can saccade targets be predicted from visual saliency?
+- **Windowed LHIPA by position** — pupil dilation during forward scanning as a cognitive load trajectory (pending Duchowski consultation on minimum window size)
+- **Token-level fixation analysis** — the only untested priming granularity (word-level AOI mapping against SERP HTML)
 
 ## Citation
 
