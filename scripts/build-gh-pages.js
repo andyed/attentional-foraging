@@ -190,6 +190,20 @@ for (const trial of trials) {
         hasPupil = fixations.some(f => f.pd != null);
     }
 
+    // Load per-fixation Butterworth LF/HF cognitive load if available
+    const lfhfPath = path.join(DATA_DIR, 'fixation-lfhf-demo.json');
+    let hasLFHF = false;
+    if (fs.existsSync(lfhfPath)) {
+        const lfhfAll = JSON.parse(fs.readFileSync(lfhfPath, 'utf8'));
+        if (lfhfAll[id]) {
+            const lfhfData = lfhfAll[id];
+            fixations.forEach((f, i) => {
+                if (lfhfData[i] != null) f.lfhf = lfhfData[i];
+            });
+            hasLFHF = fixations.some(f => f.lfhf != null);
+        }
+    }
+
     // Attach scroll position at each fixation time
     const scrollTL = trialData.scrollTimeline || [];
     if (scrollTL.length > 0) {
@@ -299,6 +313,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .timeline-label { width: 60px; flex-shrink: 0; font-size: 9px; font-weight: 700; display: flex; align-items: center; padding-right: 6px; text-align: right; justify-content: flex-end; text-transform: uppercase; letter-spacing: 0.5px; position: relative; z-index: 3; background: #1a1a1a; }
 .timeline-label.lbl-saliency { color: #ffa040; text-shadow: 0 0 6px rgba(255,160,64,0.4); }
 .timeline-label.lbl-pupil { color: #40e0ff; text-shadow: 0 0 6px rgba(64,224,255,0.4); }
+.timeline-label.lbl-lfhf { color: #f59e0b; text-shadow: 0 0 6px rgba(245,158,11,0.4); }
 .timeline-label.lbl-scroll { color: #44dd66; text-shadow: 0 0 6px rgba(68,221,102,0.4); }
 .timeline-label.lbl-dwell { color: #c8a8f0; text-shadow: 0 0 6px rgba(200,168,240,0.4); }
 .timeline-track { position: relative; flex: 1; background: #222; border-radius: 2px; overflow: hidden; }
@@ -353,6 +368,12 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
         <div class="timeline-ticks" id="ticks-pupil"></div>
       </div>
     </div>` : ''}
+    ${hasLFHF ? `<div class="timeline-row">
+      <div class="timeline-label lbl-lfhf">LF/HF</div>
+      <div class="timeline-track" id="track-lfhf">
+        <div class="timeline-ticks" id="ticks-lfhf"></div>
+      </div>
+    </div>` : ''}
     <div class="timeline-row">
       <div class="timeline-label lbl-scroll">Scroll</div>
       <div class="timeline-track" id="track-scroll">
@@ -401,8 +422,8 @@ const SAL_MIN=SAL.length?Math.min(...SAL):0,SAL_MAX=SAL.length?Math.max(...SAL):
 const cSal=(s)=>{if(s==null)return'#333';const t=Math.max(0,Math.min(1,(s-SAL_MIN)/(SAL_MAX-SAL_MIN+0.001)));
 return\`rgb(\${Math.round(40+215*t)},\${Math.round(20+140*t)},\${Math.round(10+20*t)})\`};
 let colorMode='sequence'; // 'sequence', 'load', or 'saliency'
-const COLOR_MODES=['sequence','load','saliency'];
-function getColor(i){if(colorMode==='load'&&F[i].pdc!=null)return cPD(F[i].pdc);if(colorMode==='saliency'&&F[i].sal!=null)return cSal(F[i].sal);return cF(i,N)}
+const COLOR_MODES=['sequence','load','lfhf','saliency'];
+function getColor(i){if(colorMode==='load'&&F[i].pdc!=null)return cPD(F[i].pdc);if(colorMode==='lfhf'&&F[i].lfhf!=null)return cLFHF(F[i].lfhf);if(colorMode==='saliency'&&F[i].sal!=null)return cSal(F[i].sal);return cF(i,N)}
 const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
 fr=document.getElementById('foveal-ring'),mc=document.getElementById('mouse-cursor'),
 vw=document.getElementById('viewer'),
@@ -476,6 +497,15 @@ const tkSal = buildTrack('ticks-saliency', i => cSal(F[i].sal), i => {
 const tkPup = buildTrack('ticks-pupil', i => cPD(F[i].pdc), i => {
     if(F[i].pdc==null) return 0.15;
     return (F[i].pdc - PDC_MIN) / (PDC_MAX - PDC_MIN + 0.001);
+});
+// LF/HF cognitive load: amber (low load) → red (high load)
+const LFHF=F.filter(f=>f.lfhf!=null).map(f=>f.lfhf);
+const LFHF_MIN=LFHF.length?Math.min(...LFHF):0,LFHF_MAX=LFHF.length?Math.max(...LFHF):1;
+const cLFHF=(v)=>{if(v==null)return'#333';const t=Math.max(0,Math.min(1,(v-LFHF_MIN)/(LFHF_MAX-LFHF_MIN+0.001)));
+return\`rgb(\${Math.round(200+55*t)},\${Math.round(160-110*t)},\${Math.round(40-30*t)})\`};
+const tkLFHF = buildTrack('ticks-lfhf', i => cLFHF(F[i].lfhf), i => {
+    if(F[i].lfhf==null) return 0.15;
+    return (F[i].lfhf - LFHF_MIN) / (LFHF_MAX - LFHF_MIN + 0.001);
 });
 // Scroll: height = normalized scroll position, color = direction
 function buildScrollTrack() {
@@ -561,7 +591,7 @@ function recolor(){for(let i=0;i<N;i++){const c=getColor(i);
 cE[i].setAttribute('fill',c);cE[i].setAttribute('stroke',c);
 if(lE[i]){lE[i].setAttribute('stroke',c)}
 if(tkE[i])tkE[i].style.background=c}}
-const COLOR_LABELS={sequence:'Color: Sequence',load:'Color: Pupil Load',saliency:'Color: Saliency'};
+const COLOR_LABELS={sequence:'Color: Sequence',load:'Color: Pupil Load',lfhf:'Color: LF/HF Load',saliency:'Color: Saliency'};
 if(colorBtn){colorBtn.addEventListener('click',()=>{
 const ci_cm=COLOR_MODES.indexOf(colorMode);colorMode=COLOR_MODES[(ci_cm+1)%COLOR_MODES.length];
 colorBtn.textContent=COLOR_LABELS[colorMode];
