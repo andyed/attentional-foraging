@@ -12,7 +12,7 @@ Two decades of building search and recommendation systems at eBay, Microsoft, Me
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Click % | 17.7 | 13.5 | 14.2 | 13.4 | 9.5 | 6.6 | 5.7 | 3.8 | 3.8 | 2.9 | **3.3** |
 
-→ [Ski-jump notebook](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/00_skijump.ipynb) — decomposition by user strategy, LHIPA, difficulty
+→ [Ski-jump notebook](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/00_skijump.ipynb) — decomposition by user strategy, LHIPA, difficulty
 
 **The priming conjecture.** By position 5, 55% of a result's tokens have already appeared. Maybe evaluation speeds up from lexical priming, not declining effort. ([CHIIR 2021 workshop talk](https://www.linkedin.com/in/andyed/).)
 
@@ -85,7 +85,7 @@ Detailed write-up with all statistical tests: [findings.md](./docs/findings.md).
 - **Viewport state beats mouse-gaze distance** for click prediction. AUC 0.704 vs 0.548. Scroll-stop is the signal. → [§6](docs/findings.md#6-viewport-state-predicts-clicks-better-than-distance)
 - **Mouse proximity reveals the consideration set.** 26.9% click rate at <66px cursor-gaze distance vs 2.4% baseline. 14% of non-clicked results were deeply evaluated with cursor nearby. Deployable from mouse telemetry. → [§10](docs/findings.md#10-mouse-proximity-predicts-click--and-reveals-the-consideration-set)
 - **Backward scrolling is ballistic** (ρ = 0.867). 87% of regression targets at positions 0–4. Regression velocity mediates the dwell delta. → [§8](docs/findings.md#8-backward-scrolling-is-ballistic--the-viewport-mechanics-confound)
-- **LHIPA validates against behavior.** Pupillometric cognitive load monotonic with foraging depth (ρ = −0.90 with click position). → [§5 LHIPA notebook](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/05_lhipa.ipynb)
+- **LHIPA validates against behavior.** Pupillometric cognitive load monotonic with foraging depth (ρ = −0.90 with click position). → [§5 LHIPA notebook](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/05_lhipa.ipynb)
 
 ### Individual differences
 
@@ -103,20 +103,20 @@ Detailed write-up with all statistical tests: [findings.md](./docs/findings.md).
 
 | # | Notebook | Topic |
 | --- | --- | --- |
-| 00 | [skijump](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/00_skijump.ipynb) | Click distribution by position, boundary uptick, LHIPA, satisficer/optimizer split |
-| 01 | [convergence](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/01_convergence.ipynb) | Mouse-gaze distance, scroll-enriched click prediction |
-| 02 | [gaze_cursor_lag](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/02_gaze_cursor_lag.ipynb) | Temporal lag, split-half reliability |
-| 03 | [early_predictors](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/03_early_predictors.ipynb) | Early-trial signals of click target |
-| 04 | [fixation_coverage](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/04_fixation_coverage.ipynb) | Coverage, TTI, decomposition |
-| 05 | [lhipa](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/05_lhipa.ipynb) | Pupillometric cognitive load validation |
-| 06 | [orientation_evaluation](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/06_orientation_evaluation.ipynb) | Cognitive phases, working memory ramp |
-| 07a–c | [regressions](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/07a_regressions_prevalence.ipynb) | Prevalence, triggers, kinematics |
-| 08 | [priming](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/08_priming.ipynb) | Lexical priming — null at three granularities |
-| 09 | [difficulty](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/09_difficulty.ipynb) | Relevance spread, episodes, TF-IDF density |
-| 10 | [strategies](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/10_strategies.ipynb) | Satisfice vs optimize segmentation |
-| 11 | [individual_differences](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/11_individual_differences.ipynb) | Two independent trait dimensions |
-| 12 | [regression_precision](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/12_regression_precision_by_load.ipynb) | Regression targeting precision by cognitive load |
-| 13 | [survey_phase](https://nbviewer.org/github/andyed/attentional-foraging/blob/main/notebooks-v2/13_survey_phase.ipynb) | Saccade amplitude evidence for the survey phase |
+| 00 | [skijump](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/00_skijump.ipynb) | Click distribution by position, boundary uptick, LHIPA, satisficer/optimizer split |
+| 01 | [convergence](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/01_convergence.ipynb) | Mouse-gaze distance, scroll-enriched click prediction |
+| 02 | [gaze_cursor_lag](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/02_gaze_cursor_lag.ipynb) | Temporal lag, split-half reliability |
+| 03 | [early_predictors](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/03_early_predictors.ipynb) | Early-trial signals of click target |
+| 04 | [fixation_coverage](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/04_fixation_coverage.ipynb) | Coverage, TTI, decomposition |
+| 05 | [lhipa](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/05_lhipa.ipynb) | Pupillometric cognitive load validation |
+| 06 | [orientation_evaluation](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/06_orientation_evaluation.ipynb) | Cognitive phases, working memory ramp |
+| 07a–c | [regressions](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/07a_regressions_prevalence.ipynb) | Prevalence, triggers, kinematics |
+| 08 | [priming](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/08_priming.ipynb) | Lexical priming — null at three granularities |
+| 09 | [difficulty](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/09_difficulty.ipynb) | Relevance spread, episodes, TF-IDF density |
+| 10 | [strategies](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/10_strategies.ipynb) | Satisfice vs optimize segmentation |
+| 11 | [individual_differences](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/11_individual_differences.ipynb) | Two independent trait dimensions |
+| 12 | [regression_precision](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/12_regression_precision_by_load.ipynb) | Regression targeting precision by cognitive load |
+| 13 | [survey_phase](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/13_survey_phase.ipynb) | Saccade amplitude evidence for the survey phase |
 
 Legacy notebooks in `notebooks/`.
 
