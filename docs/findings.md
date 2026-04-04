@@ -168,17 +168,19 @@ Three analyses of what the survey phase does:
 
 **1. Saccade direction: survey reads across, evaluate reads down.** Survey saccades are more horizontal (45.7% primarily vertical) than evaluate saccades (51.2%). Mean horizontal displacement: 149px (survey) vs 72px (evaluate). The survey is scanning across titles and snippets — gist extraction from text — not just jumping between result slots.
 
-**2. Survey fixations predict clicks — but only at lower positions.** Controlling for position (eliminating the top-result prior):
+**2. Survey fixations predict clicks at mid-fold positions.** Controlling for position, with viewport-bounded analysis (FPOGY clamped to screen height, positions 0–6 only — positions 7+ are below the fold and not visible during the pre-scroll survey phase):
 
-| Position | P(click \| surveyed) | P(click \| not surveyed) | Lift |
-|----------|---------------------|-------------------------|------|
-| 0–2 | 14–16% | 14–15% | ~1.0x |
-| 4 | 19% | 10% | 1.9x |
-| 6 | 17% | 5.6% | 3.0x |
-| 8 | 22% | 3.8% | 5.8x |
-| 9 | 20% | 2.9% | 6.8x |
+| Position | P(click \| surveyed) | P(click \| not surveyed) | Lift | p (Fisher) |
+|----------|---------------------|-------------------------|------|------------|
+| 0–2 | 8–9% | 7–10% | ~1.0x | n.s. |
+| 3 | 22.7% | 16.1% | 1.4x | 0.002 |
+| 4 | 6.8% | 6.9% | 1.0x | n.s. |
+| 5 | 19.7% | 16.8% | 1.2x | n.s. |
+| 6 | 7.5% | 8.2% | 0.9x | n.s. |
 
-At positions 0–2, everyone surveys and everyone clicks — no signal above the prior. At position 7+, a survey fixation means 4–7x higher click probability. The survey IS doing candidate identification at lower positions, not just layout sampling. A result at position 7 that catches the eye during the survey has a fundamentally different trajectory than one that doesn't.
+Position 3 is the only individually significant position (p = 0.002). Aggregate positions 3–6: 16.9% vs 11.9%, 1.4x lift. The survey identifies candidates at the edge of the first viewport, modestly but reliably.
+
+**Correction (v7):** Earlier analysis reported 4–7x lifts at positions 7–9. These were artifacts of out-of-bounds FPOGY values (24.5% of Gazepoint fixations exceed screen height) mapped to below-fold positions that aren't visible during the survey phase (94.6% of surveys end before the first scroll). Clamping FPOGY to screen height and restricting to above-fold positions eliminates the spurious signal.
 
 In naturalistic search (Zhang et al. CHIIR 2018), this same signal gates the stay/reformulate decision: if survey fixations at the top land on relevant-looking results, the user stays. In AdSERP, that exit path is closed, so the survey output only modulates evaluation depth.
 
