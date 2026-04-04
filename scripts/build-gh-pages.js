@@ -19,6 +19,7 @@ const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'AdSERP', 'data');
 const SCRUTINIZER = path.join(ROOT, '..', 'scrutinizer-repo', 'scrutinizer2025');
 const ANCHOR_DIR = path.join(ROOT, 'fixation-anchors');
+const LAYOUT_DIR = path.join(ROOT, 'layout-freeze');
 const GAZEPLOT_DIR = path.join(SCRUTINIZER, 'output', 'adserp-fullpage-gazeplots');
 const SITE_DIR = path.join(ROOT, 'site');
 
@@ -66,6 +67,19 @@ for (const trial of trials) {
     const page = await playwrightCtx.newPage();
     await page.goto(`file://${path.resolve(serpSrc)}`, { waitUntil: 'networkidle' });
     await page.waitForTimeout(500);
+
+    // Inject layout freeze: force original element dimensions so layout holds
+    // even when external resources (images, Maps tiles) fail to load
+    const layoutPath = path.join(LAYOUT_DIR, `${trial.trial_id}.json`);
+    if (fs.existsSync(layoutPath)) {
+        const layoutEntries = JSON.parse(fs.readFileSync(layoutPath, 'utf8'));
+        const cssRules = layoutEntries.map(e =>
+            `${e.selector} { min-width: ${e.width}px !important; min-height: ${e.height}px !important; max-height: ${e.height}px !important; }`
+        ).join('\n');
+        await page.addStyleTag({ content: cssRules });
+        await page.waitForTimeout(200);
+    }
+
     const docHeight = await page.evaluate(() => Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight));
     await page.setViewportSize({ width: scrW, height: docHeight });
     await page.waitForTimeout(300);
@@ -176,6 +190,35 @@ for (const trial of trials) {
         hasPupil = fixations.some(f => f.pd != null);
     }
 
+    // Attach scroll position at each fixation time
+    const scrollTL = trialData.scrollTimeline || [];
+    if (scrollTL.length > 0) {
+        fixations.forEach(f => {
+            const ft = f.t - fixations[0].t; // relative time matching scrollTimeline
+            let sy = 0;
+            for (const s of scrollTL) {
+                if (s.t <= ft) sy = s.scrollY;
+                else break;
+            }
+            f.scr = Math.round(sy);
+        });
+    }
+
+    // Load per-fixation saliency data if available
+    const salPath = path.join(DATA_DIR, 'saliency', `${id}.json`);
+    let hasSaliency = false;
+    if (fs.existsSync(salPath)) {
+        const salData = JSON.parse(fs.readFileSync(salPath, 'utf8'));
+        const salCoords = salData.coordinates || [];
+        fixations.forEach((f, i) => {
+            if (salCoords[i] && salCoords[i].saliency_mean != null) {
+                f.sal = salCoords[i].saliency_mean;
+                f.cong = salCoords[i].congestion_mean;
+            }
+        });
+        hasSaliency = fixations.some(f => f.sal != null);
+    }
+
     // Mouse events: already in page-space from evtrack (pageX/pageY).
     // No Y scaling needed — pageY coordinates match the windowW layout.
     const mouseTimeline = trialData.mouseTimeline || [];
@@ -184,12 +227,24 @@ for (const trial of trials) {
         .filter(m => ['mousemove','mouseover','click','mousedown','mouseup'].includes(m.event))
         .map(m => ({ t: m.t - T0_offset, x: m.x, y: m.y, e: m.event }));
 
-    // Click: last click event
+    // Click: last click event — convert from importer viewport-space to page-space.
+    // The adserp-importer transforms mouse Y as: (rawScreenY - scrollY) * ry
+    //   where ry = screenH/windowH ≈ 0.9
+    // Raw screen Y is viewport-relative. Page-space = rawScreenY + scrollY.
+    // So: pageY = c.y / ry + 2 * scrollAtClick
+    //   because c.y/ry recovers (rawY - scroll), then + 2*scroll = rawY + scroll = pageY
+    const scrollTimeline = trialData.scrollTimeline || [];
     const clickEvts = mouseTimeline.filter(m => m.event === 'click');
     let click = null;
     if (clickEvts.length > 0) {
         const c = clickEvts[clickEvts.length - 1];
-        click = { x: c.x, y: c.y };
+        const ry = screenH / windowH;
+        let scrollAtClick = 0;
+        for (const s of scrollTimeline) {
+            if (s.t <= c.t) scrollAtClick = s.scrollY;
+            else break;
+        }
+        click = { x: c.x, y: c.y / ry + 2 * scrollAtClick };
     }
 
     // SERP render is at windowW × docHeight (original layout, no reflow).
@@ -237,12 +292,20 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   width: 20px; height: 20px; transition: left 0.03s linear, top 0.03s linear; }
 .mouse-cursor svg { width: 20px; height: 28px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); }
 .mouse-cursor.clicking svg path { fill: #ff3333; }
-.timeline { width: ${screenW}px; background: #1a1a1a; padding: 8px 16px; border-top: 1px solid #333; }
-.timeline-track { position: relative; height: 40px; background: #222; border-radius: 4px; cursor: pointer; overflow: hidden; }
+.timeline { width: ${screenW}px; background: #1a1a1a; padding: 6px 16px; border-top: 1px solid #333; }
+.timeline-tracks { position: relative; cursor: pointer; user-select: none; -webkit-user-select: none; }
+.timeline-row { display: flex; align-items: stretch; height: 22px; margin-bottom: 1px; }
+.timeline-row:last-child { margin-bottom: 0; }
+.timeline-label { width: 60px; flex-shrink: 0; font-size: 9px; font-weight: 700; display: flex; align-items: center; padding-right: 6px; text-align: right; justify-content: flex-end; text-transform: uppercase; letter-spacing: 0.5px; position: relative; z-index: 3; background: #1a1a1a; }
+.timeline-label.lbl-saliency { color: #ffa040; text-shadow: 0 0 6px rgba(255,160,64,0.4); }
+.timeline-label.lbl-pupil { color: #40e0ff; text-shadow: 0 0 6px rgba(64,224,255,0.4); }
+.timeline-label.lbl-scroll { color: #44dd66; text-shadow: 0 0 6px rgba(68,221,102,0.4); }
+.timeline-label.lbl-dwell { color: #c8a8f0; text-shadow: 0 0 6px rgba(200,168,240,0.4); }
+.timeline-track { position: relative; flex: 1; background: #222; border-radius: 2px; overflow: hidden; }
 .timeline-ticks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-.timeline-tick { position: absolute; bottom: 0; border-radius: 2px 2px 0 0; min-width: 2px; }
-.timeline-playhead { position: absolute; top: 0; width: 2px; height: 100%; background: #ff4444; z-index: 2; }
-.timeline-info { display: flex; justify-content: space-between; margin-top: 4px; font-size: 11px; color: #aaa; }
+.timeline-tick { position: absolute; top: 0; min-width: 2px; height: 100%; }
+.timeline-playhead { position: absolute; top: 0; width: 2px; height: 100%; background: #ff4444; z-index: 2; pointer-events: none; }
+.timeline-info { display: flex; justify-content: space-between; margin-top: 4px; font-size: 11px; color: #aaa; padding-left: 64px; }
 .info-panel { width: ${screenW}px; padding: 6px 16px; background: #1a1a1a; font-size: 11px; color: #aaa;
   display: flex; gap: 20px; border-top: 1px solid #222; }
 .info-panel .val { color: #ccc; }
@@ -260,7 +323,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
     ${hasGazeplot ? `<button class="btn" id="mode-btn">Original</button>` : ''}
     <label id="ws-group">Window <input type="range" id="window-size" min="1" max="${N}" value="${N}" style="width:80px;vertical-align:middle;"> <span id="ws-label">All</span></label>
     <button class="btn active" id="gaze-btn">Gaze Points</button>
-    ${hasPupil ? `<button class="btn" id="color-btn">Color: Sequence</button>` : ''}
+    <button class="btn" id="color-btn">Color: Sequence</button>
     <button class="btn" id="play-btn">&#9654; Play</button>
     <button class="btn" id="reset-btn">Reset</button>
   </div>
@@ -277,8 +340,31 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   </div>
 </div>
 <div class="timeline">
-  <div class="timeline-track" id="timeline-track">
-    <div class="timeline-ticks" id="timeline-ticks"></div>
+  <div class="timeline-tracks" id="timeline-tracks">
+    ${hasSaliency ? `<div class="timeline-row">
+      <div class="timeline-label lbl-saliency">Saliency</div>
+      <div class="timeline-track" id="track-saliency">
+        <div class="timeline-ticks" id="ticks-saliency"></div>
+      </div>
+    </div>` : ''}
+    ${hasPupil ? `<div class="timeline-row">
+      <div class="timeline-label lbl-pupil">Pupil</div>
+      <div class="timeline-track" id="track-pupil">
+        <div class="timeline-ticks" id="ticks-pupil"></div>
+      </div>
+    </div>` : ''}
+    <div class="timeline-row">
+      <div class="timeline-label lbl-scroll">Scroll</div>
+      <div class="timeline-track" id="track-scroll">
+        <div class="timeline-ticks" id="ticks-scroll"></div>
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-label lbl-dwell">Dwell</div>
+      <div class="timeline-track" id="track-dwell">
+        <div class="timeline-ticks" id="ticks-dwell"></div>
+      </div>
+    </div>
     <div class="timeline-playhead" id="playhead"></div>
   </div>
   <div class="timeline-info">
@@ -307,14 +393,21 @@ const cF=(i,n)=>{const t=n>1?i/(n-1):0;return\`rgb(\${Math.round(50+205*t)},\${M
 // Cognitive load color: blue (constricted/low load) → red (dilated/high load)
 const PDC=F.filter(f=>f.pdc!=null).map(f=>f.pdc);
 const PDC_MIN=PDC.length?Math.min(...PDC):0,PDC_MAX=PDC.length?Math.max(...PDC):1;
-const cPD=(pdc)=>{if(pdc==null)return'#888';const t=(pdc-PDC_MIN)/(PDC_MAX-PDC_MIN+0.001);return\`rgb(\${Math.round(50+205*t)},\${Math.round(60)},\${Math.round(255-205*t)})\`};
-let colorMode='sequence'; // 'sequence' or 'load'
-function getColor(i){return colorMode==='load'&&F[i].pdc!=null?cPD(F[i].pdc):cF(i,N)}
+// Pupil color: dark cyan → bright cyan
+const cPD=(pdc)=>{if(pdc==null)return'#333';const t=(pdc-PDC_MIN)/(PDC_MAX-PDC_MIN+0.001);return\`rgb(\${Math.round(10+30*t)},\${Math.round(40+200*t)},\${Math.round(60+195*t)})\`};
+// Saliency color: black → bright orange (unmistakable)
+const SAL=F.filter(f=>f.sal!=null).map(f=>f.sal);
+const SAL_MIN=SAL.length?Math.min(...SAL):0,SAL_MAX=SAL.length?Math.max(...SAL):1;
+const cSal=(s)=>{if(s==null)return'#333';const t=Math.max(0,Math.min(1,(s-SAL_MIN)/(SAL_MAX-SAL_MIN+0.001)));
+return\`rgb(\${Math.round(40+215*t)},\${Math.round(20+140*t)},\${Math.round(10+20*t)})\`};
+let colorMode='sequence'; // 'sequence', 'load', or 'saliency'
+const COLOR_MODES=['sequence','load','saliency'];
+function getColor(i){if(colorMode==='load'&&F[i].pdc!=null)return cPD(F[i].pdc);if(colorMode==='saliency'&&F[i].sal!=null)return cSal(F[i].sal);return cF(i,N)}
 const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
 fr=document.getElementById('foveal-ring'),mc=document.getElementById('mouse-cursor'),
 vw=document.getElementById('viewer'),
 ws=document.getElementById('window-size'),wl=document.getElementById('ws-label'),
-tt=document.getElementById('timeline-track');
+tt=document.getElementById('timeline-tracks');
 let ci=N-1,pl=false,pt=null;
 // Progressive foveation state
 const pc=document.getElementById('prog-canvas');
@@ -333,10 +426,89 @@ pCtx.globalCompositeOperation='source-in';
 pCtx.drawImage(gpImg,0,0,w,h);pCtx.globalCompositeOperation='source-over'}
 const ns='http://www.w3.org/2000/svg';
 function se(t,a){const e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e}
-const tEl=document.getElementById('timeline-ticks');
-F.forEach((f,i)=>{const t=document.createElement('div');t.className='timeline-tick';
-t.style.left=(N>1?(f.t-T0)/TD*100:0)+'%';t.style.width=Math.max(.5,f.d/TD*100)+'%';
-t.style.height=Math.min(100,20+f.d/10)+'%';t.style.background=cF(i,N);t.style.opacity='.5';tEl.appendChild(t)});
+// ── Build multi-track timeline ──────────────────────────────────────
+function buildTrack(containerId, colorFn, valueFn) {
+    const el = document.getElementById(containerId);
+    if (!el) return [];
+    const ticks = [];
+    F.forEach((f, i) => {
+        const t = document.createElement('div');
+        t.className = 'timeline-tick';
+        t.style.left = (N > 1 ? (f.t - T0) / TD * 100 : 0) + '%';
+        t.style.width = Math.max(0.5, f.d / TD * 100) + '%';
+        t.style.background = colorFn(i);
+        const v = valueFn ? valueFn(i) : 1;
+        const hPct = Math.max(15, v * 100);
+        t.style.height = hPct + '%';
+        t.style.bottom = '0';
+        t.style.top = 'auto';
+        t.style.opacity = '.8';
+        el.appendChild(t);
+        ticks.push(t);
+    });
+    return ticks;
+}
+// Dwell: height encodes duration (taller = longer fixation)
+function buildDwellTrack() {
+    const el = document.getElementById('ticks-dwell');
+    if (!el) return [];
+    const ticks = [];
+    F.forEach((f, i) => {
+        const t = document.createElement('div');
+        t.className = 'timeline-tick';
+        t.style.left = (N > 1 ? (f.t - T0) / TD * 100 : 0) + '%';
+        t.style.width = Math.max(0.5, f.d / TD * 100) + '%';
+        const hPct = Math.min(100, 20 + f.d / 8);
+        t.style.height = hPct + '%';
+        t.style.bottom = '0';
+        t.style.top = 'auto';
+        t.style.background = '#b8a0d8';
+        t.style.opacity = '.6';
+        el.appendChild(t);
+        ticks.push(t);
+    });
+    return ticks;
+}
+const tkSal = buildTrack('ticks-saliency', i => cSal(F[i].sal), i => {
+    if(F[i].sal==null) return 0.15;
+    return (F[i].sal - SAL_MIN) / (SAL_MAX - SAL_MIN + 0.001);
+});
+const tkPup = buildTrack('ticks-pupil', i => cPD(F[i].pdc), i => {
+    if(F[i].pdc==null) return 0.15;
+    return (F[i].pdc - PDC_MIN) / (PDC_MAX - PDC_MIN + 0.001);
+});
+// Scroll: height = normalized scroll position, color = direction
+function buildScrollTrack() {
+    const el = document.getElementById('ticks-scroll');
+    if (!el) return [];
+    const ticks = [];
+    const scrVals = F.filter(f => f.scr != null).map(f => f.scr);
+    const scrMax = scrVals.length ? Math.max(...scrVals, 1) : 1;
+    F.forEach((f, i) => {
+        const t = document.createElement('div');
+        t.className = 'timeline-tick';
+        t.style.left = (N > 1 ? (f.t - T0) / TD * 100 : 0) + '%';
+        t.style.width = Math.max(0.5, f.d / TD * 100) + '%';
+        const sv = f.scr != null ? f.scr : 0;
+        const hPct = Math.max(10, (sv / scrMax) * 100);
+        t.style.height = hPct + '%';
+        t.style.bottom = '0';
+        t.style.top = 'auto';
+        // Color: green=forward, red=regression
+        const prev = i > 0 && F[i-1].scr != null ? F[i-1].scr : sv;
+        const delta = sv - prev;
+        if (delta < -5) t.style.background = '#ef4444'; // regression
+        else if (delta > 5) t.style.background = '#22c55e'; // forward
+        else t.style.background = '#666'; // stationary
+        t.style.opacity = '.8';
+        el.appendChild(t);
+        ticks.push(t);
+    });
+    return ticks;
+}
+const tkScroll = buildScrollTrack();
+const tkDwell = buildDwellTrack();
+const tkE = tkSal; // backward compat for recolor
 const lE=[],cE=[],tE=[];
 for(let i=0;i<N;i++){const f=F[i],r=rF(f.d),c=cF(i,N);
 if(i>0){const p=F[i-1];const l=se('line',{x1:p.x,y1:p.y,x2:f.x,y2:f.y,stroke:c,'stroke-width':1.5,'stroke-opacity':.4});svg.appendChild(l);lE.push(l)}else lE.push(null);
@@ -349,7 +521,7 @@ wl.textContent=wn>=N?'All':wn;
 const lo=Math.max(0,ci-wn+1);
 for(let i=0;i<N;i++){const v=i>=lo&&i<=ci;cE[i].style.display=v?'':'none';tE[i].style.display=v?'':'none';
 if(lE[i])lE[i].style.display=(v&&i>lo)?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',pl&&i===ci?1:.8)}
-if(ci>=0&&N>1)ph.style.left=(F[ci].t-T0)/TD*100+'%';
+if(ci>=0&&N>1){const tr=firstTrack.getBoundingClientRect(),tc=tt.getBoundingClientRect();const off=tr.left-tc.left;const pct=(F[ci].t-T0)/TD;ph.style.left=(off+pct*tr.width)+'px';}
 if(ci>=0){const f=F[ci];const vr=vw.getBoundingClientRect(),fy=f.y-vw.scrollTop;if(fy<100||fy>vr.height-100)vw.scrollTo({top:f.y-vr.height/2,behavior:'smooth'})}
 if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px';
 // Mouse cursor: interpolate position at current fixation time (relative)
@@ -366,7 +538,8 @@ document.getElementById('time-label').textContent='Fixation '+(ci+1)+' / '+N;
 document.getElementById('duration-label').textContent=((f.t-T0)/1000).toFixed(1)+'s / '+(TD/1000).toFixed(1)+'s'}
 if(bgMode==='progressive')drawProg()}
 function sf(i){ci=Math.max(-1,Math.min(N-1,i));uv();if(typeof pushHash==='function')pushHash()}
-let dr=false;function ts(e){const r=tt.getBoundingClientRect(),p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
+const firstTrack=tt.querySelector('.timeline-track');
+let dr=false;function ts(e){const r=firstTrack.getBoundingClientRect(),p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
 let b=0;for(let i=0;i<N;i++)if(F[i].t<=T0+p*TD)b=i;sf(b)}
 tt.addEventListener('mousedown',e=>{dr=true;ts(e)});document.addEventListener('mousemove',e=>{if(dr)ts(e)});document.addEventListener('mouseup',()=>{dr=false});
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){sf(ci+1);e.preventDefault()}if(e.key==='ArrowLeft'){sf(ci-1);e.preventDefault()}
@@ -386,11 +559,13 @@ gazeBtn.addEventListener('click',()=>{gazeVisible=!gazeVisible;svg.style.display
 const colorBtn=document.getElementById('color-btn');
 function recolor(){for(let i=0;i<N;i++){const c=getColor(i);
 cE[i].setAttribute('fill',c);cE[i].setAttribute('stroke',c);
-if(lE[i]){lE[i].setAttribute('stroke',c)}}}
+if(lE[i]){lE[i].setAttribute('stroke',c)}
+if(tkE[i])tkE[i].style.background=c}}
+const COLOR_LABELS={sequence:'Color: Sequence',load:'Color: Pupil Load',saliency:'Color: Saliency'};
 if(colorBtn){colorBtn.addEventListener('click',()=>{
-colorMode=colorMode==='sequence'?'load':'sequence';
-colorBtn.textContent=colorMode==='sequence'?'Color: Sequence':'Color: Pupil Load';
-colorBtn.classList.toggle('active',colorMode==='load');
+const ci_cm=COLOR_MODES.indexOf(colorMode);colorMode=COLOR_MODES[(ci_cm+1)%COLOR_MODES.length];
+colorBtn.textContent=COLOR_LABELS[colorMode];
+colorBtn.classList.toggle('active',colorMode!=='sequence');
 recolor()})}
 // Background mode controls
 const modeBtn=document.getElementById('mode-btn');
