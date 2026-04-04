@@ -17,7 +17,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .btn.active { background: #2a5a8a; border-color: #4a8aca; }
 .viewer { position: relative; width: 1280px; height: 70vh; overflow-y: auto; overflow-x: hidden; background: #000; }
 .serp-container { position: relative; width: 1280px; }
-#serp-img, #gazeplot-img { width: 1280px; height: 2644px; display: block; }
+#serp-img, #gazeplot-img { width: 1280px; height: 2692px; display: block; }
 #gazeplot-img { position: absolute; top: 0; left: 0; z-index: 1; }
 #prog-canvas { position: absolute; top: 0; left: 0; z-index: 5; pointer-events: none; display: none; }
 .scanpath-svg { position: absolute; top: 0; left: 0; z-index: 10; pointer-events: none; }
@@ -28,12 +28,20 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   width: 20px; height: 20px; transition: left 0.03s linear, top 0.03s linear; }
 .mouse-cursor svg { width: 20px; height: 28px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); }
 .mouse-cursor.clicking svg path { fill: #ff3333; }
-.timeline { width: 1280px; background: #1a1a1a; padding: 8px 16px; border-top: 1px solid #333; }
-.timeline-track { position: relative; height: 40px; background: #222; border-radius: 4px; cursor: pointer; overflow: hidden; }
+.timeline { width: 1280px; background: #1a1a1a; padding: 6px 16px; border-top: 1px solid #333; }
+.timeline-tracks { position: relative; cursor: pointer; user-select: none; -webkit-user-select: none; }
+.timeline-row { display: flex; align-items: stretch; height: 22px; margin-bottom: 1px; }
+.timeline-row:last-child { margin-bottom: 0; }
+.timeline-label { width: 60px; flex-shrink: 0; font-size: 9px; font-weight: 700; display: flex; align-items: center; padding-right: 6px; text-align: right; justify-content: flex-end; text-transform: uppercase; letter-spacing: 0.5px; position: relative; z-index: 3; background: #1a1a1a; }
+.timeline-label.lbl-saliency { color: #ffa040; text-shadow: 0 0 6px rgba(255,160,64,0.4); }
+.timeline-label.lbl-pupil { color: #40e0ff; text-shadow: 0 0 6px rgba(64,224,255,0.4); }
+.timeline-label.lbl-scroll { color: #44dd66; text-shadow: 0 0 6px rgba(68,221,102,0.4); }
+.timeline-label.lbl-dwell { color: #c8a8f0; text-shadow: 0 0 6px rgba(200,168,240,0.4); }
+.timeline-track { position: relative; flex: 1; background: #222; border-radius: 2px; overflow: hidden; }
 .timeline-ticks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-.timeline-tick { position: absolute; bottom: 0; border-radius: 2px 2px 0 0; min-width: 2px; }
-.timeline-playhead { position: absolute; top: 0; width: 2px; height: 100%; background: #ff4444; z-index: 2; }
-.timeline-info { display: flex; justify-content: space-between; margin-top: 4px; font-size: 11px; color: #aaa; }
+.timeline-tick { position: absolute; top: 0; min-width: 2px; height: 100%; }
+.timeline-playhead { position: absolute; top: 0; width: 2px; height: 100%; background: #ff4444; z-index: 2; pointer-events: none; }
+.timeline-info { display: flex; justify-content: space-between; margin-top: 4px; font-size: 11px; color: #aaa; padding-left: 64px; }
 .info-panel { width: 1280px; padding: 6px 16px; background: #1a1a1a; font-size: 11px; color: #aaa;
   display: flex; gap: 20px; border-top: 1px solid #222; }
 .info-panel .val { color: #ccc; }
@@ -51,24 +59,48 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
     <button class="btn" id="mode-btn">Original</button>
     <label id="ws-group">Window <input type="range" id="window-size" min="1" max="9" value="9" style="width:80px;vertical-align:middle;"> <span id="ws-label">All</span></label>
     <button class="btn active" id="gaze-btn">Gaze Points</button>
+    <button class="btn" id="color-btn">Color: Sequence</button>
     <button class="btn" id="play-btn">&#9654; Play</button>
     <button class="btn" id="reset-btn">Reset</button>
   </div>
 </div>
 <div class="viewer" id="viewer">
   <div class="serp-container">
-    <img id="serp-img" src="serp-renders/p032-b6-t8.png" width="1280" height="2644" />
+    <img id="serp-img" src="serp-renders/p032-b6-t8.png" width="1280" height="2692" />
     <img id="gazeplot-img" src="gazeplots/p032-b6-t8.png" />
-    <canvas id="prog-canvas" width="1280" height="2644"></canvas>
+    <canvas id="prog-canvas" width="1280" height="2692"></canvas>
     <svg class="scanpath-svg" id="scanpath-svg" xmlns="http://www.w3.org/2000/svg"
-         width="1280" height="2644" viewBox="0 0 1280 2644"></svg>
+         width="1280" height="2692" viewBox="0 0 1280 2692"></svg>
     <div class="foveal-ring" id="foveal-ring"></div>
     <div class="mouse-cursor" id="mouse-cursor"><svg viewBox="0 0 20 28"><path d="M0,0 L0,22 L5.5,17 L10,28 L14,26 L9,16 L16,16 Z" fill="#ff9933" stroke="#000" stroke-width="1"/></svg></div>
   </div>
 </div>
 <div class="timeline">
-  <div class="timeline-track" id="timeline-track">
-    <div class="timeline-ticks" id="timeline-ticks"></div>
+  <div class="timeline-tracks" id="timeline-tracks">
+    <div class="timeline-row">
+      <div class="timeline-label lbl-saliency">Saliency</div>
+      <div class="timeline-track" id="track-saliency">
+        <div class="timeline-ticks" id="ticks-saliency"></div>
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-label lbl-pupil">Pupil</div>
+      <div class="timeline-track" id="track-pupil">
+        <div class="timeline-ticks" id="ticks-pupil"></div>
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-label lbl-scroll">Scroll</div>
+      <div class="timeline-track" id="track-scroll">
+        <div class="timeline-ticks" id="ticks-scroll"></div>
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-label lbl-dwell">Dwell</div>
+      <div class="timeline-track" id="track-dwell">
+        <div class="timeline-ticks" id="ticks-dwell"></div>
+      </div>
+    </div>
     <div class="timeline-playhead" id="playhead"></div>
   </div>
   <div class="timeline-info">
@@ -81,24 +113,37 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   <span>Position: <span class="val" id="info-pos">—</span></span>
   <span>Duration: <span class="val" id="info-dur">—</span></span>
   <span>Fixations: <span class="val" id="info-seen">0</span></span>
-  <span>Click: <span class="val">(423, 198)</span></span>
+  <span>Click: <span class="val">(423, 220)</span></span>
   <span><a href="png/p032-b6-t8.png" download style="color:#6af;text-decoration:none;">Download PNG</a></span>
 </div>
 <div style="width:1280px;padding:6px 16px;background:#1a1a1a;font-size:10px;color:#666;border-top:1px solid #222;">
   Fixation overlay alignment: median &lt;13px offset, max ~45px at page bottom. SERP HTML is re-rendered locally; element heights differ from original Chrome 110/Windows session due to external resource loading (Maps tiles, product images). Fixation coordinates (FPOGX/FPOGY) from <a href="https://github.com/kayhan-latifzadeh/AdSERP" style="color:#888;">AdSERP dataset</a> are pixel-verified accurate against synthetic test pages.
 </div>
 <script>
-const F=[{"t":0,"x":672.9,"y":195.4,"d":293},{"t":222,"x":511.9,"y":263.1,"d":213},{"t":409,"x":284.1,"y":317.6,"d":161},{"t":650,"x":138.6,"y":323.2,"d":234},{"t":817,"x":141.9,"y":242,"d":160},{"t":958,"x":160.8,"y":137.7,"d":133},{"t":1093,"x":198.6,"y":125.5,"d":127},{"t":1367,"x":263,"y":101,"d":267},{"t":1522,"x":761.8,"y":30,"d":107}],CK={"x":423.0661040787623,"y":198.1354441512753},ME=[{"t":237,"x":624.6976090014065,"y":220.65083553210204,"e":"mouseover"},{"t":238,"x":624.6976090014065,"y":220.65083553210204,"e":"mousemove"},{"t":244,"x":624.6976090014065,"y":221.5514511873351,"e":"mousemove"},{"t":255,"x":624.6976090014065,"y":222.45206684256817,"e":"mousemove"},{"t":272,"x":624.6976090014065,"y":225.1539138082674,"e":"mousemove"},{"t":288,"x":624.6976090014065,"y":226.05452946350044,"e":"mousemove"},{"t":304,"x":623.7974683544304,"y":226.95514511873353,"e":"mousemove"},{"t":322,"x":623.7974683544304,"y":227.85576077396658,"e":"mousemove"},{"t":348,"x":622.8973277074542,"y":229.65699208443272,"e":"mousemove"},{"t":388,"x":621.0970464135021,"y":231.45822339489888,"e":"mousemove"},{"t":405,"x":617.4964838255977,"y":235.06068601583115,"e":"mousemove"},{"t":422,"x":614.7960618846695,"y":237.76253298153034,"e":"mousemove"},{"t":438,"x":612.0956399437412,"y":239.5637642919965,"e":"mousemove"},{"t":455,"x":596.7932489451476,"y":250.37115215479332,"e":"mousemove"},{"t":472,"x":581.4908579465541,"y":262.0791556728232,"e":"mouseover"},{"t":472,"x":581.4908579465541,"y":262.0791556728232,"e":"mousemove"},{"t":489,"x":564.3881856540085,"y":271.985927880387,"e":"mousemove"},{"t":504,"x":550.8860759493671,"y":280.09146877748464,"e":"mouseover"},{"t":504,"x":550.8860759493671,"y":280.09146877748464,"e":"mousemove"},{"t":521,"x":538.2841068917018,"y":283.6939313984169,"e":"mouseover"},{"t":521,"x":538.2841068917018,"y":283.6939313984169,"e":"mousemove"},{"t":537,"x":527.4824191279887,"y":286.3957783641161,"e":"mousemove"},{"t":554,"x":519.381153305204,"y":291.79947229551453,"e":"mousemove"},{"t":572,"x":511.2798874824191,"y":292.7000879507476,"e":"mousemove"},{"t":588,"x":505.87904360056257,"y":293.60070360598064,"e":"mousemove"},{"t":604,"x":501.3783403656821,"y":293.60070360598064,"e":"mousemove"},{"t":621,"x":499.5780590717299,"y":293.60070360598064,"e":"mousemove"},{"t":639,"x":495.0773558368495,"y":293.60070360598064,"e":"mousemove"},{"t":654,"x":492.37693389592124,"y":293.60070360598064,"e":"mousemove"},{"t":672,"x":491.4767932489451,"y":293.60070360598064,"e":"mousemove"},{"t":688,"x":487.8762306610408,"y":293.60070360598064,"e":"mousemove"},{"t":704,"x":486.0759493670886,"y":292.7000879507476,"e":"mousemove"},{"t":721,"x":481.5752461322081,"y":292.7000879507476,"e":"mousemove"},{"t":738,"x":480.67510548523205,"y":290.89885664028145,"e":"mousemove"},{"t":755,"x":478.87482419127986,"y":290.89885664028145,"e":"mousemove"},{"t":772,"x":477.07454289732766,"y":289.99824098504837,"e":"mousemove"},{"t":788,"x":474.3741209563994,"y":289.09762532981534,"e":"mousemove"},{"t":820,"x":473.4739803094233,"y":288.19700967458226,"e":"mousemove"},{"t":884,"x":472.57383966244726,"y":288.19700967458226,"e":"mousemove"},{"t":900,"x":471.67369901547113,"y":286.3957783641161,"e":"mousemove"},{"t":938,"x":468.0731364275668,"y":281.89270008795074,"e":"mousemove"},{"t":955,"x":461.77215189873414,"y":274.6877748460862,"e":"mouseover"},{"t":955,"x":461.77215189873414,"y":274.6877748460862,"e":"mousemove"},{"t":971,"x":455.47116736990154,"y":265.6816182937555,"e":"mouseover"},{"t":971,"x":455.47116736990154,"y":265.6816182937555,"e":"mousemove"},{"t":988,"x":443.76933895921235,"y":244.06684256816183,"e":"mouseover"},{"t":988,"x":443.76933895921235,"y":244.06684256816183,"e":"mousemove"},{"t":1005,"x":434.7679324894515,"y":228.75637642919966,"e":"mouseover"},{"t":1005,"x":434.7679324894515,"y":228.75637642919966,"e":"mousemove"},{"t":1021,"x":428.4669479606188,"y":214.34652594547055,"e":"mouseover"},{"t":1021,"x":428.4669479606188,"y":214.34652594547055,"e":"mousemove"},{"t":1037,"x":426.66666666666663,"y":208.94283201407214,"e":"mouseover"},{"t":1038,"x":426.66666666666663,"y":208.94283201407214,"e":"mousemove"},{"t":1054,"x":424.8663853727145,"y":204.43975373790678,"e":"mousemove"},{"t":1072,"x":423.96624472573836,"y":202.63852242744065,"e":"mousemove"},{"t":1087,"x":423.0661040787623,"y":200.8372911169745,"e":"mousemove"},{"t":1105,"x":423.0661040787623,"y":199.03605980650838,"e":"mousemove"},{"t":1206,"x":423.0661040787623,"y":199.03605980650838,"e":"mousedown"},{"t":1357,"x":423.0661040787623,"y":198.1354441512753,"e":"mousemove"},{"t":1358,"x":423.0661040787623,"y":198.1354441512753,"e":"mouseup"},{"t":2260,"x":423.0661040787623,"y":198.1354441512753,"e":"click"}],FR=60,SW=1280,N=9,
+const F=[{"t":0,"x":672.9,"y":195.4,"d":293,"pd":16.782,"pdc":0.0854,"sal":0.1712,"cong":0.0846},{"t":222,"x":511.9,"y":263.1,"d":213,"pd":16.841,"pdc":0.0892,"sal":0.051,"cong":0.0929},{"t":409,"x":284.1,"y":317.6,"d":161,"pd":16.219,"pdc":0.049,"sal":0.1047,"cong":0.3234},{"t":650,"x":138.6,"y":323.2,"d":234,"pd":15.287,"pdc":-0.0113,"sal":0.105,"cong":0.2496},{"t":817,"x":141.9,"y":242,"d":160,"pd":15.078,"pdc":-0.0248,"sal":0.1323,"cong":0.3626},{"t":958,"x":160.8,"y":137.7,"d":133,"pd":14.939,"pdc":-0.0338,"sal":0.0683,"cong":0.1383},{"t":1093,"x":198.6,"y":125.5,"d":127,"pd":14.91,"pdc":-0.0357,"sal":0.0628,"cong":0.1383},{"t":1367,"x":263,"y":101,"d":267,"pd":14.722,"pdc":-0.0479,"sal":0.0566,"cong":0.1498},{"t":1522,"x":761.8,"y":30,"d":107,"pd":14.675,"pdc":-0.0509,"sal":0.0745,"cong":0.0421}],CK={"x":423.0661040787623,"y":220},ME=[{"t":237,"x":624.6976090014065,"y":220.65083553210204,"e":"mouseover"},{"t":238,"x":624.6976090014065,"y":220.65083553210204,"e":"mousemove"},{"t":244,"x":624.6976090014065,"y":221.5514511873351,"e":"mousemove"},{"t":255,"x":624.6976090014065,"y":222.45206684256817,"e":"mousemove"},{"t":272,"x":624.6976090014065,"y":225.1539138082674,"e":"mousemove"},{"t":288,"x":624.6976090014065,"y":226.05452946350044,"e":"mousemove"},{"t":304,"x":623.7974683544304,"y":226.95514511873353,"e":"mousemove"},{"t":322,"x":623.7974683544304,"y":227.85576077396658,"e":"mousemove"},{"t":348,"x":622.8973277074542,"y":229.65699208443272,"e":"mousemove"},{"t":388,"x":621.0970464135021,"y":231.45822339489888,"e":"mousemove"},{"t":405,"x":617.4964838255977,"y":235.06068601583115,"e":"mousemove"},{"t":422,"x":614.7960618846695,"y":237.76253298153034,"e":"mousemove"},{"t":438,"x":612.0956399437412,"y":239.5637642919965,"e":"mousemove"},{"t":455,"x":596.7932489451476,"y":250.37115215479332,"e":"mousemove"},{"t":472,"x":581.4908579465541,"y":262.0791556728232,"e":"mouseover"},{"t":472,"x":581.4908579465541,"y":262.0791556728232,"e":"mousemove"},{"t":489,"x":564.3881856540085,"y":271.985927880387,"e":"mousemove"},{"t":504,"x":550.8860759493671,"y":280.09146877748464,"e":"mouseover"},{"t":504,"x":550.8860759493671,"y":280.09146877748464,"e":"mousemove"},{"t":521,"x":538.2841068917018,"y":283.6939313984169,"e":"mouseover"},{"t":521,"x":538.2841068917018,"y":283.6939313984169,"e":"mousemove"},{"t":537,"x":527.4824191279887,"y":286.3957783641161,"e":"mousemove"},{"t":554,"x":519.381153305204,"y":291.79947229551453,"e":"mousemove"},{"t":572,"x":511.2798874824191,"y":292.7000879507476,"e":"mousemove"},{"t":588,"x":505.87904360056257,"y":293.60070360598064,"e":"mousemove"},{"t":604,"x":501.3783403656821,"y":293.60070360598064,"e":"mousemove"},{"t":621,"x":499.5780590717299,"y":293.60070360598064,"e":"mousemove"},{"t":639,"x":495.0773558368495,"y":293.60070360598064,"e":"mousemove"},{"t":654,"x":492.37693389592124,"y":293.60070360598064,"e":"mousemove"},{"t":672,"x":491.4767932489451,"y":293.60070360598064,"e":"mousemove"},{"t":688,"x":487.8762306610408,"y":293.60070360598064,"e":"mousemove"},{"t":704,"x":486.0759493670886,"y":292.7000879507476,"e":"mousemove"},{"t":721,"x":481.5752461322081,"y":292.7000879507476,"e":"mousemove"},{"t":738,"x":480.67510548523205,"y":290.89885664028145,"e":"mousemove"},{"t":755,"x":478.87482419127986,"y":290.89885664028145,"e":"mousemove"},{"t":772,"x":477.07454289732766,"y":289.99824098504837,"e":"mousemove"},{"t":788,"x":474.3741209563994,"y":289.09762532981534,"e":"mousemove"},{"t":820,"x":473.4739803094233,"y":288.19700967458226,"e":"mousemove"},{"t":884,"x":472.57383966244726,"y":288.19700967458226,"e":"mousemove"},{"t":900,"x":471.67369901547113,"y":286.3957783641161,"e":"mousemove"},{"t":938,"x":468.0731364275668,"y":281.89270008795074,"e":"mousemove"},{"t":955,"x":461.77215189873414,"y":274.6877748460862,"e":"mouseover"},{"t":955,"x":461.77215189873414,"y":274.6877748460862,"e":"mousemove"},{"t":971,"x":455.47116736990154,"y":265.6816182937555,"e":"mouseover"},{"t":971,"x":455.47116736990154,"y":265.6816182937555,"e":"mousemove"},{"t":988,"x":443.76933895921235,"y":244.06684256816183,"e":"mouseover"},{"t":988,"x":443.76933895921235,"y":244.06684256816183,"e":"mousemove"},{"t":1005,"x":434.7679324894515,"y":228.75637642919966,"e":"mouseover"},{"t":1005,"x":434.7679324894515,"y":228.75637642919966,"e":"mousemove"},{"t":1021,"x":428.4669479606188,"y":214.34652594547055,"e":"mouseover"},{"t":1021,"x":428.4669479606188,"y":214.34652594547055,"e":"mousemove"},{"t":1037,"x":426.66666666666663,"y":208.94283201407214,"e":"mouseover"},{"t":1038,"x":426.66666666666663,"y":208.94283201407214,"e":"mousemove"},{"t":1054,"x":424.8663853727145,"y":204.43975373790678,"e":"mousemove"},{"t":1072,"x":423.96624472573836,"y":202.63852242744065,"e":"mousemove"},{"t":1087,"x":423.0661040787623,"y":200.8372911169745,"e":"mousemove"},{"t":1105,"x":423.0661040787623,"y":199.03605980650838,"e":"mousemove"},{"t":1206,"x":423.0661040787623,"y":199.03605980650838,"e":"mousedown"},{"t":1357,"x":423.0661040787623,"y":198.1354441512753,"e":"mousemove"},{"t":1358,"x":423.0661040787623,"y":198.1354441512753,"e":"mouseup"},{"t":2260,"x":423.0661040787623,"y":198.1354441512753,"e":"click"}],FR=60,SW=1280,N=9,
 T0=0,TD=1629,MND=107,MXD=293,
 SERP_SRC='serp-renders/p032-b6-t8.png',
 GAZEPLOT_SRC='gazeplots/p032-b6-t8.png';
 const rF=d=>8+(d-MND)/(MXD-MND+1)*22;
 const cF=(i,n)=>{const t=n>1?i/(n-1):0;return`rgb(${Math.round(50+205*t)},${Math.round(50+100*(1-Math.abs(t-.5)*2))},${Math.round(255-205*t)})`};
+// Cognitive load color: blue (constricted/low load) → red (dilated/high load)
+const PDC=F.filter(f=>f.pdc!=null).map(f=>f.pdc);
+const PDC_MIN=PDC.length?Math.min(...PDC):0,PDC_MAX=PDC.length?Math.max(...PDC):1;
+// Pupil color: dark cyan → bright cyan
+const cPD=(pdc)=>{if(pdc==null)return'#333';const t=(pdc-PDC_MIN)/(PDC_MAX-PDC_MIN+0.001);return`rgb(${Math.round(10+30*t)},${Math.round(40+200*t)},${Math.round(60+195*t)})`};
+// Saliency color: black → bright orange (unmistakable)
+const SAL=F.filter(f=>f.sal!=null).map(f=>f.sal);
+const SAL_MIN=SAL.length?Math.min(...SAL):0,SAL_MAX=SAL.length?Math.max(...SAL):1;
+const cSal=(s)=>{if(s==null)return'#333';const t=Math.max(0,Math.min(1,(s-SAL_MIN)/(SAL_MAX-SAL_MIN+0.001)));
+return`rgb(${Math.round(40+215*t)},${Math.round(20+140*t)},${Math.round(10+20*t)})`};
+let colorMode='sequence'; // 'sequence', 'load', or 'saliency'
+const COLOR_MODES=['sequence','load','saliency'];
+function getColor(i){if(colorMode==='load'&&F[i].pdc!=null)return cPD(F[i].pdc);if(colorMode==='saliency'&&F[i].sal!=null)return cSal(F[i].sal);return cF(i,N)}
 const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
 fr=document.getElementById('foveal-ring'),mc=document.getElementById('mouse-cursor'),
 vw=document.getElementById('viewer'),
 ws=document.getElementById('window-size'),wl=document.getElementById('ws-label'),
-tt=document.getElementById('timeline-track');
+tt=document.getElementById('timeline-tracks');
 let ci=N-1,pl=false,pt=null;
 // Progressive foveation state
 const pc=document.getElementById('prog-canvas');
@@ -117,10 +162,89 @@ pCtx.globalCompositeOperation='source-in';
 pCtx.drawImage(gpImg,0,0,w,h);pCtx.globalCompositeOperation='source-over'}
 const ns='http://www.w3.org/2000/svg';
 function se(t,a){const e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e}
-const tEl=document.getElementById('timeline-ticks');
-F.forEach((f,i)=>{const t=document.createElement('div');t.className='timeline-tick';
-t.style.left=(N>1?(f.t-T0)/TD*100:0)+'%';t.style.width=Math.max(.5,f.d/TD*100)+'%';
-t.style.height=Math.min(100,20+f.d/10)+'%';t.style.background=cF(i,N);t.style.opacity='.5';tEl.appendChild(t)});
+// ── Build multi-track timeline ──────────────────────────────────────
+function buildTrack(containerId, colorFn, valueFn) {
+    const el = document.getElementById(containerId);
+    if (!el) return [];
+    const ticks = [];
+    F.forEach((f, i) => {
+        const t = document.createElement('div');
+        t.className = 'timeline-tick';
+        t.style.left = (N > 1 ? (f.t - T0) / TD * 100 : 0) + '%';
+        t.style.width = Math.max(0.5, f.d / TD * 100) + '%';
+        t.style.background = colorFn(i);
+        const v = valueFn ? valueFn(i) : 1;
+        const hPct = Math.max(15, v * 100);
+        t.style.height = hPct + '%';
+        t.style.bottom = '0';
+        t.style.top = 'auto';
+        t.style.opacity = '.8';
+        el.appendChild(t);
+        ticks.push(t);
+    });
+    return ticks;
+}
+// Dwell: height encodes duration (taller = longer fixation)
+function buildDwellTrack() {
+    const el = document.getElementById('ticks-dwell');
+    if (!el) return [];
+    const ticks = [];
+    F.forEach((f, i) => {
+        const t = document.createElement('div');
+        t.className = 'timeline-tick';
+        t.style.left = (N > 1 ? (f.t - T0) / TD * 100 : 0) + '%';
+        t.style.width = Math.max(0.5, f.d / TD * 100) + '%';
+        const hPct = Math.min(100, 20 + f.d / 8);
+        t.style.height = hPct + '%';
+        t.style.bottom = '0';
+        t.style.top = 'auto';
+        t.style.background = '#b8a0d8';
+        t.style.opacity = '.6';
+        el.appendChild(t);
+        ticks.push(t);
+    });
+    return ticks;
+}
+const tkSal = buildTrack('ticks-saliency', i => cSal(F[i].sal), i => {
+    if(F[i].sal==null) return 0.15;
+    return (F[i].sal - SAL_MIN) / (SAL_MAX - SAL_MIN + 0.001);
+});
+const tkPup = buildTrack('ticks-pupil', i => cPD(F[i].pdc), i => {
+    if(F[i].pdc==null) return 0.15;
+    return (F[i].pdc - PDC_MIN) / (PDC_MAX - PDC_MIN + 0.001);
+});
+// Scroll: height = normalized scroll position, color = direction
+function buildScrollTrack() {
+    const el = document.getElementById('ticks-scroll');
+    if (!el) return [];
+    const ticks = [];
+    const scrVals = F.filter(f => f.scr != null).map(f => f.scr);
+    const scrMax = scrVals.length ? Math.max(...scrVals, 1) : 1;
+    F.forEach((f, i) => {
+        const t = document.createElement('div');
+        t.className = 'timeline-tick';
+        t.style.left = (N > 1 ? (f.t - T0) / TD * 100 : 0) + '%';
+        t.style.width = Math.max(0.5, f.d / TD * 100) + '%';
+        const sv = f.scr != null ? f.scr : 0;
+        const hPct = Math.max(10, (sv / scrMax) * 100);
+        t.style.height = hPct + '%';
+        t.style.bottom = '0';
+        t.style.top = 'auto';
+        // Color: green=forward, red=regression
+        const prev = i > 0 && F[i-1].scr != null ? F[i-1].scr : sv;
+        const delta = sv - prev;
+        if (delta < -5) t.style.background = '#ef4444'; // regression
+        else if (delta > 5) t.style.background = '#22c55e'; // forward
+        else t.style.background = '#666'; // stationary
+        t.style.opacity = '.8';
+        el.appendChild(t);
+        ticks.push(t);
+    });
+    return ticks;
+}
+const tkScroll = buildScrollTrack();
+const tkDwell = buildDwellTrack();
+const tkE = tkSal; // backward compat for recolor
 const lE=[],cE=[],tE=[];
 for(let i=0;i<N;i++){const f=F[i],r=rF(f.d),c=cF(i,N);
 if(i>0){const p=F[i-1];const l=se('line',{x1:p.x,y1:p.y,x2:f.x,y2:f.y,stroke:c,'stroke-width':1.5,'stroke-opacity':.4});svg.appendChild(l);lE.push(l)}else lE.push(null);
@@ -133,7 +257,7 @@ wl.textContent=wn>=N?'All':wn;
 const lo=Math.max(0,ci-wn+1);
 for(let i=0;i<N;i++){const v=i>=lo&&i<=ci;cE[i].style.display=v?'':'none';tE[i].style.display=v?'':'none';
 if(lE[i])lE[i].style.display=(v&&i>lo)?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',pl&&i===ci?1:.8)}
-if(ci>=0&&N>1)ph.style.left=(F[ci].t-T0)/TD*100+'%';
+if(ci>=0&&N>1){const tr=firstTrack.getBoundingClientRect(),tc=tt.getBoundingClientRect();const off=tr.left-tc.left;const pct=(F[ci].t-T0)/TD;ph.style.left=(off+pct*tr.width)+'px';}
 if(ci>=0){const f=F[ci];const vr=vw.getBoundingClientRect(),fy=f.y-vw.scrollTop;if(fy<100||fy>vr.height-100)vw.scrollTo({top:f.y-vr.height/2,behavior:'smooth'})}
 if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px';
 // Mouse cursor: interpolate position at current fixation time (relative)
@@ -150,7 +274,8 @@ document.getElementById('time-label').textContent='Fixation '+(ci+1)+' / '+N;
 document.getElementById('duration-label').textContent=((f.t-T0)/1000).toFixed(1)+'s / '+(TD/1000).toFixed(1)+'s'}
 if(bgMode==='progressive')drawProg()}
 function sf(i){ci=Math.max(-1,Math.min(N-1,i));uv();if(typeof pushHash==='function')pushHash()}
-let dr=false;function ts(e){const r=tt.getBoundingClientRect(),p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
+const firstTrack=tt.querySelector('.timeline-track');
+let dr=false;function ts(e){const r=firstTrack.getBoundingClientRect(),p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
 let b=0;for(let i=0;i<N;i++)if(F[i].t<=T0+p*TD)b=i;sf(b)}
 tt.addEventListener('mousedown',e=>{dr=true;ts(e)});document.addEventListener('mousemove',e=>{if(dr)ts(e)});document.addEventListener('mouseup',()=>{dr=false});
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){sf(ci+1);e.preventDefault()}if(e.key==='ArrowLeft'){sf(ci-1);e.preventDefault()}
@@ -166,6 +291,18 @@ uv();
 const gazeBtn=document.getElementById('gaze-btn');
 let gazeVisible=true;
 gazeBtn.addEventListener('click',()=>{gazeVisible=!gazeVisible;svg.style.display=gazeVisible?'':'none';gazeBtn.classList.toggle('active',gazeVisible);pushHash()});
+// Color mode toggle (sequence vs cognitive load)
+const colorBtn=document.getElementById('color-btn');
+function recolor(){for(let i=0;i<N;i++){const c=getColor(i);
+cE[i].setAttribute('fill',c);cE[i].setAttribute('stroke',c);
+if(lE[i]){lE[i].setAttribute('stroke',c)}
+if(tkE[i])tkE[i].style.background=c}}
+const COLOR_LABELS={sequence:'Color: Sequence',load:'Color: Pupil Load',saliency:'Color: Saliency'};
+if(colorBtn){colorBtn.addEventListener('click',()=>{
+const ci_cm=COLOR_MODES.indexOf(colorMode);colorMode=COLOR_MODES[(ci_cm+1)%COLOR_MODES.length];
+colorBtn.textContent=COLOR_LABELS[colorMode];
+colorBtn.classList.toggle('active',colorMode!=='sequence');
+recolor()})}
 // Background mode controls
 const modeBtn=document.getElementById('mode-btn');
 const progBtn=document.getElementById('prog-btn');
