@@ -77,6 +77,17 @@ const html = `<!DOCTYPE html>
       line-height: 1.3;
     }
     @media (max-width: 1100px) { .outer-note { display: none; } }
+    @media (max-width: 768px) {
+      .mg-margin, aside.mg-sidebar {
+        float: none;
+        width: 100%;
+        margin: 1em 0;
+        font-size: 0.85em;
+      }
+      .page-header h1 { font-size: 1.6em; }
+      #content { padding: 0 1em 3em; }
+      .page-header { padding: 0 1em; }
+    }
     /* Links */
     #content a { color: #2a6496; text-decoration: none; border-bottom: 1px solid #2a649640; }
     #content a:visited { color: #6a4c93; border-bottom-color: #6a4c9340; }

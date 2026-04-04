@@ -5,7 +5,7 @@
 <p style="font-size:0.75em;color:#999;margin-top:4px;line-height:1.4;">Image: <a href="https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/" style="color:#888;">NNG</a>. Nielsen's team studied the F on general web pages; their <a href="https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/" style="color:#888;">2017 follow-up</a> identified five other scanning patterns, specified the F as a conditional fallback, and acknowledged users are "globally rational." The F-on-SERPs extrapolation was mostly the industry's work. Our analysis is SERP-specific.</p>
 </div>
 
-{dropcap} You may know this image. The F-pattern — horizontal bars at the top, vertical stem down the left. The most recognized finding in web design, widely applied to search results pages.
+{dropcap} You may know this image. The F-pattern — horizontal bars at the top, vertical stem down the left. In 2006, Nielsen's F was a sledgehammer that broke the industry's assumption that users read websites like novels. That was a necessary correction. The F became the most recognized finding in web design, widely applied to search results pages.
 
 ==A heatmap collapses time.== It shows *where* people looked, never *when*. On search results pages — where the F-pattern's influence on design runs deepest — we can now replay the tape.
 
@@ -115,6 +115,14 @@ Per-fixation pupil diameter across 2,720 trials reveals a three-phase trajectory
 
 <span class="outer-note">Cheap to sample, expensive to read.</span>The survey *constricts* pupils (p = 10⁻¹¹⁷ vs evaluate). It is cheap. The cognitive work comes later, during committed reading, where the pupil gradually recovers as working memory fills with candidates.
 
+**See it in action** — this interactive replay shows a real search session with the pupil load color overlay. Toggle "Color: Pupil Load" to watch the constriction→dilation trajectory unfold:
+
+<div style="overflow:hidden;border:1px solid #e0e0e0;border-radius:6px;margin:1em 0;height:560px;">
+<iframe src="https://andyed.github.io/attentional-foraging/p047-b1-t9.html#fix=5&w=5&mode=gazeplot" style="width:142%;height:142%;border:none;transform:scale(0.7);transform-origin:top left;" loading="lazy"></iframe>
+</div>
+
+<p style="font-size:0.85em;color:#555;text-align:center;">Interactive scanpath replay: p047-b1-t9 (mouse follower, 65 fixations). Press Play, then toggle "Color: Pupil Load." <a href="https://andyed.github.io/attentional-foraging/" style="color:#2a6496;">More sessions →</a></p>
+
 ---
 
 ## Evaluate
@@ -148,19 +156,22 @@ Position 10 clicks concentrate in homogeneous SERPs — where the results all lo
 
 ## The model
 
-```
-Page load → ORIENT (0ms) → SURVEY (~1.3s, 5 fixations)
-                                    ↓
-                              EVALUATE (serial reading)
-                                    ↓
-                              ┌─────┴─────┐
-                         COMMIT        REGRESSION
-                        (click)     (scroll back up)
-                                        ↓
-                                   RE-EVALUATE
-                                        ↓
-                                     COMMIT
-```
+On SERPs, orientation is nearly instant — the layout is so familiar that the visual system skips calibration entirely. This may not hold for novel interfaces, but for any page a user has seen hundreds of times, the motor plan is stored.
+
+<div style="max-width:520px;margin:1em auto;">
+<pre style="font-size:0.7em;line-height:1.6;white-space:pre;overflow:visible;">
+  ORIENT → SURVEY → EVALUATE
+  (0ms)    (1.3s)    (serial reading)
+                          ↓
+                    ┌─────┴─────┐
+               COMMIT        REGRESSION
+              (click)      (scroll back)
+                                ↓
+                           RE-EVALUATE
+                                ↓
+                             COMMIT
+</pre>
+</div>
 
 69% of trials include at least one scroll regression — a return to previously evaluated content. The regression rate correlates with decision time (r = 0.66). Scroll regressions are not noise; they are the behavioral cost of comparison under working memory load.
 
