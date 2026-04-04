@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Search Results F-Heatmap, Stroke by Stroke</title>
+  <meta name="description" content="The F-pattern is two cognitive phases superimposed in one heatmap. 2,776 eye-tracked search sessions decomposed stroke by stroke.">
+  <meta property="og:title" content="The Search Results F-Heatmap, Stroke by Stroke">
+  <meta property="og:description" content="The F-pattern is two cognitive phases superimposed in one heatmap. We decomposed 2,776 eye-tracked search sessions stroke by stroke.">
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2026-04-04">
+  <meta name="author" content="Andy Edmonds">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/marginalia@latest/marginalia.css">
+
+  <style>
+    :root { --mg-max-width: 900px; }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: #fafaf8;
+      color: #222;
+      line-height: 1.75;
+      margin: 0; padding: 0;
+    }
+    .page-header {
+      max-width: 660px; margin: 3em auto 0; padding: 0 2em;
+    }
+    .page-header h1 {
+      font-size: 2.2em; line-height: 1.2; margin-bottom: 0.2em; color: #111;
+    }
+    .page-header .subtitle {
+      font-size: 1.05em; color: #666; margin-bottom: 0.5em;
+    }
+    .page-header .byline {
+      font-size: 0.85em; color: #999; margin-bottom: 2em;
+    }
+    .page-header .byline a { color: #888; }
+    /* Outside-margin callouts — short punchy labels on wide screens */
+    .outer-note {
+      position: absolute;
+      right: -180px;
+      width: 150px;
+      font-size: 0.75em;
+      font-weight: 600;
+      color: #b08050;
+      line-height: 1.3;
+    }
+    @media (max-width: 1100px) { .outer-note { display: none; } }
+    /* Links */
+    #content a { color: #2a6496; text-decoration: none; border-bottom: 1px solid #2a649640; }
+    #content a:visited { color: #6a4c93; border-bottom-color: #6a4c9340; }
+    #content a:hover { color: #1a4a7a; border-bottom-color: #1a4a7a; }
+    #content {
+      max-width: 920px; margin: 0 auto; padding: 0 2em 4em;
+    }
+    /* Margin notes and sidebars float right within the content area */
+    .mg-margin, aside.mg-sidebar {
+      float: right;
+      clear: right;
+      width: 230px;
+      margin: 0 0 1em 1.5em;
+      font-size: 0.8em;
+      line-height: 1.5;
+      color: #5a4a3a;
+      border-left: 3px solid #d4a574;
+      background: #fdf8f2;
+      border-radius: 0 4px 4px 0;
+      padding: 8px 12px;
+    }
+    #content img {
+      max-width: 100%; display: block; margin: 1.5em auto;
+      clear: both;
+    }
+    /* Callouts — subtle tinted backgrounds with left accent */
+    .mg-callout { font-size: 0.9em; border: none; border-radius: 0 4px 4px 0; padding: 10px 14px; margin: 1em 0; }
+    .mg-callout[data-type="important"] { background: #fdf5f5; border-left: 3px solid #cc444480; }
+    .mg-callout[data-type="note"] { background: #f5f8fd; border-left: 3px solid #2266cc80; }
+    .mg-callout[data-type="warning"] { background: #fdf9f0; border-left: 3px solid #cc880080; }
+    .mg-callout[data-type="tip"] { background: #f2faf4; border-left: 3px solid #22883380; }
+    .stats-detail {
+      font-size: 0.82em; color: #6a5a4a; background: #f8f4ee; border-radius: 3px;
+      padding: 3px 8px; margin: 0.2em 0; display: inline;
+      border-bottom: 1px dashed #d4a574;
+    }
+    #content h2 {
+      font-size: 1.5em; margin-top: 2.5em;
+      border-bottom: 1px solid #ddd; padding-bottom: 0.3em;
+    }
+    #content h3 { font-size: 1.15em; margin-top: 1.8em; }
+    /* References: two-column, compact */
+    #content h3:last-of-type, #content h3:nth-last-of-type(2) { margin-top: 1.2em; }
+    #content ul:last-of-type, #content ul:nth-last-of-type(2) {
+      columns: 2; column-gap: 2em; font-size: 0.82em; line-height: 1.5;
+    }
+    #content ul:last-of-type li, #content ul:nth-last-of-type(2) li {
+      break-inside: avoid; margin-bottom: 0.4em;
+    }
+    #content table { font-size: 0.9em; border-collapse: collapse; width: 100%; margin: 1em 0; }
+    #content th, #content td { text-align: left; padding: 6px 12px; border-bottom: 1px solid #eee; }
+    #content th { font-weight: 600; border-bottom: 2px solid #ddd; }
+    #content code {
+      font-size: 0.85em; background: #f0efe8; padding: 1px 5px; border-radius: 3px;
+    }
+    #content pre {
+      background: #f0efe8; padding: 1em; border-radius: 6px;
+      overflow-x: auto; font-size: 0.8em; line-height: 1.5;
+    }
+    #content hr { border: none; border-top: 1px solid #ddd; margin: 2.5em 0; }
+    /* OSEC stage colors */
+    #content h2:nth-of-type(1) { color: #b8860b; border-bottom-color: #b8860b40; } /* Orient = gold */
+    #content h2:nth-of-type(2) { color: #cc4444; border-bottom-color: #cc444440; } /* Survey = red */
+    #content h2:nth-of-type(3) { color: #2266cc; border-bottom-color: #2266cc40; } /* Evaluate = blue */
+    #content h2:nth-of-type(4) { color: #228833; border-bottom-color: #22883340; } /* Commit = green */
+    /* Dropcap */
+    p.has-dropcap::first-letter {
+      float: left; font-size: 3.4em; line-height: 0.8;
+      padding-right: 0.08em; padding-top: 0.05em;
+      color: #333; font-family: Georgia, serif;
+    }
+    footer {
+      max-width: 660px; margin: 0 auto; padding: 2em 2em;
+      border-top: 1px solid #ddd; font-size: 0.8em; color: #999;
+    }
+    footer a { color: #888; }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>The Search Results F-Heatmap, Stroke by Stroke</h1>
+  <div class="subtitle">2,776 eye-tracked search sessions reveal that the F-pattern's horizontal bars and vertical stem are two distinct cognitive operations — drawn 1.3 seconds apart</div>
+  <div class="byline">Andy Edmonds · April 2026 · Based on <a href="https://doi.org/10.1145/3726302.3730325">AdSERP</a> (Latifzadeh, Gwizdka &amp; Leiva, SIGIR 2025)</div>
+</div>
+
+<div id="content">
+<p><div style="float:right;margin:0 0 1em 1.5em;max-width:320px;"> <img src="heat-map-f-shape.jpg" alt="The classic F-pattern heatmap on a Google SERP" style="width:100%;border-radius:4px;"> <p style="font-size:0.75em;color:#999;margin-top:4px;line-height:1.4;">Image: <a href="https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/" style="color:#888;">NNG</a>. Nielsen's team studied the F on general web pages; their <a href="https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/" style="color:#888;">2017 follow-up</a> identified five other scanning patterns, specified the F as a conditional fallback, and acknowledged users are "globally rational." The F-on-SERPs extrapolation was mostly the industry's work. Our analysis is SERP-specific.</p> </div></p>
+<p class="has-dropcap">You may know this image. The F-pattern — horizontal bars at the top, vertical stem down the left. The most recognized finding in web design, widely applied to search results pages.</p>
+<p><mark class="mg-mark">A heatmap collapses time.</mark> It shows <em>where</em> people looked, never <em>when</em>. On search results pages — where the F-pattern's influence on design runs deepest — we can now replay the tape.</p>
+<p>From years of eye-tracking studies and SERP experiments at eBay, Microsoft, and Quora, I've suspected the first moments on a results page involve a distinct sampling phase before committed reading. The AdSERP dataset — 2,776 sessions at 150Hz with pupillometry — finally gave enough resolution to test it. We're writing up the full analysis; along the way, the F-pattern fell out of the decomposition.</p>
+<p><span class="outer-note" style="margin-top:0.5em;">Two operations, one letter.</span></p>
+<p><strong>The F is two operations painted on top of each other:</strong></p>
+<p><strong>The horizontal bars</strong> are the <strong>survey phase</strong>. For about one second, the eyes make wide jumps across the result set — sampling titles, not reading them. Pupils constrict. It's cognitively cheap.</p>
+<p><strong>The vertical stem</strong> is the <strong>evaluate phase</strong>. The eyes narrow into serial reading — left to right within each result, then down to the next. Pupils dilate. It's expensive.</p>
+<p>Overlay them and the F emerges:</p>
+<p><img src="f-decomposition.png" alt="Survey + Evaluate = the F-pattern."></p>
+<p>Strip them apart and the F disappears:</p>
+<p><img src="f-dissection.png" alt="Dissecting the F: subtract the survey phase, then regressions, then quick clickers. What remains is a uniform vertical reading column."></p>
+<h3>And the shorter lower bar? That's not narrower reading — it's fewer readers.</h3>
+<p>The original F-pattern description says users "read less" of results further down the page — the lower horizontal bar is shorter than the upper one. This has been interpreted as declining reading effort with position.</p>
+<p>In these 2,776 transactional search sessions, it doesn't hold. Horizontal fixation spread (IQR of X coordinates during evaluate) is constant across positions:</p>
+<p><table> <tr><th>Position</th><th>X Spread (IQR)</th><th>X Std</th><th>Fixations</th></tr> <tr><td>0</td><td>237px</td><td>211px</td><td>21,941</td></tr> <tr><td>3</td><td>244px</td><td>210px</td><td>10,147</td></tr> <tr><td>5</td><td>244px</td><td>210px</td><td>7,383</td></tr> <tr><td>7</td><td>214px</td><td>214px</td><td>3,634</td></tr> </table></p>
+<div class="mg-callout" data-type="warning"><p><strong>Warning:</strong> The F narrows because the denominator drops — fewer users scroll that far — not because individual reading behavior changes. Users who reach position 5 read it with the same horizontal spread as position 1. The heatmap gets cooler because fewer trials contribute heat, not because people read less.</p></div>
+<p>On these SERPs, the F's vertical fade is a survival effect masquerading as a scanning strategy. Any aggregate heatmap of scrollable content faces the same confound — it conflates "fewer people looked here" with "people looked here less carefully." The per-fixation data separates them.</p>
+<p><img src="f-survival-effect.png" alt="Left: attrition curve — 86% of trials reach position 0, 42% reach position 7. Right: horizontal spread is constant at ~210px while fixation count drops 6x."></p>
+<h3>The F is a useful shorthand. The real story is deeper.</h3>
+<div class="mg-margin"><p>"<a href="https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content-discovered/">The first two paragraphs must state the most important information</a>" (NNG). "<a href="https://little-fire.com/what-the-f-the-f-pattern-users-wont-read-your-website/">Users Won't Read Your Website</a>" (Little Fire). "<a href="https://www.uxmatters.com/mt/archives/2020/11/debunking-the-myth-of-the-fold.php">Debunking the Myth of the Fold</a>" (UXmatters). The F became a meme — and memes don't cite their caveats.</p></div>
+<p>"Put important content at the top" is good advice — not because users read the top more carefully, but because most users won't scroll far enough to see the rest. The F-pattern captured this correctly as a spatial summary. Where the story went sideways was the <em>reason</em>:</p>
+<p><ol> <li><b>What the F-pattern showed:</b> Heatmap is cooler at lower positions.</li> <li><b>What the industry inferred:</b> Users read less carefully further down.</li> <li><b>What 2,776 SERP sessions show:</b> Users who reach lower positions read them with the same horizontal spread (~210px std at every depth). The heatmap cools because fewer people get there — a scroll commitment problem, not a reading depth problem.</li> </ol></p>
+<p>The distinction matters for design. If you think users <em>can't read</em> lower content (the F-pattern interpretation), you cram everything above the fold. If you know users <em>who reach lower content read it normally</em> (the survival interpretation), the design problem shifts: <mark class="mg-mark">how do you earn the scroll?</mark></p>
+<p>Normalize the X distributions by depth and the illusion collapses. Positions 0–1, 3–4, and 6–7 all show the same horizontal fixation profile — same leftward peak at the title start, same rightward reading spread:</p>
+<p><img src="f-horizontal-by-depth.png" alt="Horizontal fixation distribution is identical at every depth. The F narrows from attrition, not reading behavior."></p>
+<p>The F-pattern was the best we could do with aggregate heatmaps. Duchowski et al. warned at ETRA 2012 that heatmaps discard the temporal and cognitive dimensions of gaze data — two operations painted on top of each other look like one shape. The pupillometric methods Duchowski later developed (LHIPA, CHI 2020) recover exactly what the heatmap threw away: the cognitive cost of each fixation.</p>
+<p>The F served the field well for twenty years. But it's a shorthand — and any dataset with per-fixation timestamps can decompose it. On SERPs, that decomposition reveals a richer, more actionable picture. Whether the same phase structure appears on news articles, e-commerce pages, or long-form content is an open question that the same methodology can answer.</p>
+<hr>
+<h2>Orient</h2>
+<div class="mg-margin"><p><strong>Go deeper:</strong> Stored visual routines for familiar layouts connect to Hayhoe & Ballard's work on eye movements in natural tasks (Trends in Cognitive Sciences, 2005) — the visual system learns task-specific scanpaths that become automatic.</p></div>
+<p><span class="outer-note">0ms to first fixation.</span><mark class="mg-mark">The eyes land before the mind engages.</mark> Median orientation time: 0ms. 58% of first fixations land directly on a result. The SERP layout is memorized from thousands of prior searches — the user doesn't need to "find" the results. <span class="stats-detail">No learning effect across 60 trials per participant (ρ = 0.02, p = 0.30).</span></p>
+<p>This is not reading. This is the visual system executing a stored motor plan: saccade to the content area, calibrate to the luminance, prepare for sampling.</p>
+<hr>
+<h2>Survey</h2>
+<p>The survey phase has not been reported before in the search literature. For approximately 1.3 seconds — exactly 5 fixations, regardless of what's on the page — the eyes execute wide saccades across the result set. Median amplitude: 108 pixels, compared to 74 pixels during subsequent reading.</p>
+<p><img src="survey-vs-evaluate.png" alt="Survey vs Evaluate: wide scattered saccades during gist sampling narrow to sequential reading"></p>
+<p>This is gist sampling. The user is not reading results. They are building a rapid impression of what the result set contains: brands, price points, product types, relevance signals visible in peripheral vision.</p>
+<p><span class="stats-detail">The transition is detectable within individual trials: mean ρ = −0.114, p = 10⁻¹²⁸, N = 2,754. 69.6% show a negative slope.</span></p>
+<p>Three lines of evidence that the survey is a distinct cognitive phase, not just "the first few fixations":</p>
+<p><strong>Content-independent duration.</strong> Survey length does not correlate with SERP difficulty, result similarity, or any content measure we tested. It's a fixed sampling routine — approximately 1.3 seconds, always.</p>
+<p><strong>Scroll-decoupled.</strong> The survey ends at fixation ~5. The first scroll happens at fixation ~21. In 94.6% of trials, the survey is complete before any scrolling occurs. The user evaluates ~16 fixations of first-viewport content between survey and scroll.</p>
+<p><strong>No post-scroll reset.</strong> When the user scrolls to new content, saccade amplitude does not spike back up. The survey happens once, at the beginning. Scrolling triggers direct evaluation, not re-sampling.</p>
+<h3>The metabolic cost of search</h3>
+<p>Per-fixation pupil diameter across 2,720 trials reveals a three-phase trajectory:</p>
+<p><table> <tr><th>Phase</th><th>Fixations</th><th>Pupil change</th><th>Interpretation</th></tr> <tr><td><b>Orienting</b></td><td>1–2</td><td>+1.2% dilation</td><td>Arousal response to new stimulus</td></tr> <tr><td><b>Survey</b></td><td>3–5</td><td>−3.0% constriction</td><td>Low-load gist sampling</td></tr> <tr><td><b>Evaluate</b></td><td>6–20</td><td>Gradual recovery → 0%</td><td>Cognitive work intensifies</td></tr> </table></p>
+<p><span class="outer-note">Cheap to sample, expensive to read.</span>The survey <em>constricts</em> pupils (p = 10⁻¹¹⁷ vs evaluate). It is cheap. The cognitive work comes later, during committed reading, where the pupil gradually recovers as working memory fills with candidates.</p>
+<hr>
+<h2>Evaluate</h2>
+<p>After the survey, the user transitions to serial reading. Saccades narrow. The eyes move within result snippets, not between them. Each result gets approximately 2 fixations and half a second — consistent from position 1 to position 8.</p>
+<p><mark class="mg-mark">In this dataset, the evaluation is fair.</mark> Per-result reading depth does not decline with position during forward scanning on these transactional SERPs. What declines is the <em>probability of being evaluated at all</em> — a function of scroll reach and available time, not position bias. This may differ for informational queries or non-SERP content, where task motivation varies more widely.</p>
+<p>By position 6, the user is holding 5+ candidates in working memory. The cost of evaluating one more against everything already seen is climbing. Pupil dilation increases monotonically with position (LHIPA ρ = −0.90 with click position), confirming the working memory load interpretation.</p>
+<div class="mg-callout" data-type="tip"><p><strong>Tip:</strong> For ranked list designers: the bottleneck by item 6 is working memory, not result quality. Surface differentiators early and make comparison easy.</p></div>
+<hr>
+<h2>Commit</h2>
+<p>The commit decision follows one of two paths, visible in the behavioral data:</p>
+<div class="mg-margin"><p><strong>Go deeper:</strong> The satisficer/optimizer split maps onto information foraging theory (Pirolli & Card, 1999). Satisficers follow the marginal value theorem. Optimizers exhaust the patch. Azzopardi & Maxwell (ECIR 2018) modeled the stop decision but assumed single-pass examination — our regression data shows the patch gets revisited.</p></div>
+<p><span class="outer-note">Same click, different mind.</span><strong>Satisficers</strong> click early (positions 1–4). Fast scrolling, shallow fixation depth, low pupil dilation. They found something adequate and stopped.</p>
+<p><strong>Optimizers</strong> click late (positions 7–10). Deep scrolling, scroll regressions back up the page, highest pupil dilation. They evaluated the full set and selected from a complete comparison. Position 10 clickers show the highest cognitive load of any click position — they read every result.</p>
+<p>Position 10 clicks concentrate in homogeneous SERPs — where the results all look alike. When there aren't enough differentiating signals to form a strong preference, the rational response is to evaluate everything. The last result gets clicked not because the user gave up, but because discriminating between near-identical options requires seeing all of them.</p>
+<hr>
+<h2>The model</h2>
+<pre class="mg-code"><code>Page load → ORIENT (0ms) → SURVEY (~1.3s, 5 fixations)
+                                    ↓
+                              EVALUATE (serial reading)
+                                    ↓
+                              ┌─────┴─────┐
+                         COMMIT        REGRESSION
+                        (click)     (scroll back up)
+                                        ↓
+                                   RE-EVALUATE
+                                        ↓
+                                     COMMIT</code></pre>
+<p>69% of trials include at least one scroll regression — a return to previously evaluated content. The regression rate correlates with decision time (r = 0.66). Scroll regressions are not noise; they are the behavioral cost of comparison under working memory load.</p>
+<p>The existing literature has gone remarkably far with the single-pass, top-down examination assumption. But 69% of these trials violate it. OSEC adds what the data shows: examination is a multi-pass process with distinct cognitive phases, and the interesting decision-making happens not at the stopping point but at the <em>re-evaluation</em> point.</p>
+<hr>
+<h2>The same simplification, twice</h2>
+<p>The F-pattern and search ranking algorithms make the same assumption from different directions.</p>
+<p>The F-pattern says: "Users scan in an F shape." But the same simplification runs deeper. Every time you click a search result (or don't), the search engine updates a mathematical model of how likely you are to examine each position on the page. These "click models" are how Google, Bing, and every other engine learn which results are good — they're the mathematical backbone of search ranking. The dominant ones — cascade (Craswell et al., 2008), DBN (Chapelle & Zhang, 2009), UBM (Dupret & Piwowarski, 2008) — all assume the same thing the F-pattern assumes: users examine results top-down with a single, monotonically decreasing probability. One behavior, top to bottom.</p>
+<p>Neither the visual heatmap nor the mathematical model accounts for the survey phase. In both, its fixations get merged with evaluate fixations, and the two-operation structure collapses into a single pattern or a single probability. Liu et al. (2014) came closest with a two-stage "skimming then reading" model, but without per-fixation saccade evidence they couldn't separate gist sampling from early reading.</p>
+<p>This isn't a criticism. Nielsen's heatmaps, Craswell's cascade model, and the twenty years of work built on them were correct at the resolution available. You can't decompose temporal phases from aggregate spatial heatmaps. You can't separate survey from evaluate without per-fixation saccade kinematics and pupillometry at scale.</p>
+<p>What changed is the resolution. The saccade amplitude transition is detectable within <em>individual trials</em> (p = 10⁻¹²⁸). The pupil signature separates the phases at p = 10⁻¹¹⁷. These aren't subtle aggregate effects — they're robust per-trial phenomena that previous datasets were too small or too coarsely sampled to detect.</p>
+<p>The F-pattern wasn't a map of how we read. It was a long-exposure photograph of two different behaviors. We just needed 150 frames per second to watch it get drawn.</p>
+<hr>
+<h2>Data and methods</h2>
+<div class="mg-callout" data-type="important"><p><strong>Important:</strong> <strong>Open data, open analysis.</strong> 13 reproducible notebooks, interactive scanpath replays with foveated vision rendering, per-fixation pupil overlays, and all statistical tests: github.com/andyed/attentional-foraging. Interactive demo: andyed.github.io/attentional-foraging/.</p></div>
+<p>All analysis uses the AdSERP dataset (Latifzadeh, Gwizdka & Leiva, SIGIR 2025): 2,776 transactional product search queries, 47 participants, simultaneous 150Hz eye tracking, mouse tracking, scroll recording, and pupil diameter. Scanpath replays render each session through Scrutinizer, a neuroscience-based peripheral vision simulator. Fixation positions are anchored to DOM elements for pixel-accurate overlay at any viewport width.</p>
+<p><h3>Academic references</h3> <ul> <li>Latifzadeh, Gwizdka & Leiva (2025). <a href="https://doi.org/10.1145/3726302.3730325">AdSERP: A large-scale dataset for studying attention on SERPs.</a> SIGIR.</li> <li>Duchowski et al. (2020). <a href="https://doi.org/10.1145/3313831.3376394">The Low/High Index of Pupillary Activity.</a> CHI.</li> <li>Duchowski et al. (2012). Aggregate gaze visualization with real-time heatmaps. ETRA.</li> <li>Craswell et al. (2008). <a href="https://doi.org/10.1145/1341531.1341545">An experimental comparison of click position-bias models.</a> WSDM.</li> <li>Liu et al. (2014). <a href="https://doi.org/10.1145/2661829.2661907">From Skimming to Reading: A Two-stage Examination Model.</a> CIKM.</li> <li>Pirolli & Card (1999). <a href="https://doi.org/10.1037/0033-295X.106.4.643">Information foraging.</a> Psychological Review.</li> <li>Hayhoe & Ballard (2005). <a href="https://doi.org/10.1016/j.tics.2005.06.005">Eye movements in natural behavior.</a> Trends in Cognitive Sciences.</li> <li>Kahneman & Beatty (1966). <a href="https://doi.org/10.1126/science.154.3756.1583">Pupil diameter and load on memory.</a> Science.</li> <li>Edmonds (2003). <a href="https://doi.org/10.3758/BF03202542">Uzilla: A new tool for web usability testing.</a> Behavior Research Methods.</li> </ul></p>
+<p><h3>The F-pattern conversation</h3> <ul> <li>Nielsen (2006). <a href="https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content-discovered/">F-Shaped Pattern for Reading Web Content.</a> NNG — the original.</li> <li>Pernice (2017, updated 2024). <a href="https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/">Misunderstood, But Still Relevant.</a> NNG — the correction.</li> <li>Friedman (2024). <a href="https://www.smashingmagazine.com/2024/04/f-shape-pattern-how-users-read/">F-Shape Pattern And How Users Read.</a> Smashing Magazine.</li> <li>Whitfield. <a href="https://medium.com/@jenniferwhitfield_41106/no-you-shouldnt-use-the-f-pattern-in-ux-design-c20119ad25">No, You Shouldn't Use the F Pattern in UX Design.</a> Medium.</li> <li><a href="https://little-fire.com/what-the-f-the-f-pattern-users-wont-read-your-website/">Users Won't Read Your Website.</a> Little Fire Agency.</li> <li><a href="https://www.uxmatters.com/mt/archives/2020/11/debunking-the-myth-of-the-fold.php">Debunking the Myth of the Fold.</a> UXmatters, 2020.</li> </ul></p>
+</div>
+
+<footer>
+  Andy Edmonds · andyed@alum.cmu.edu · github.com/andyed/attentional-foraging
+</footer>
+
+</body>
+</html>
