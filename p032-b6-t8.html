@@ -36,6 +36,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .timeline-label.lbl-saliency { color: #ffa040; text-shadow: 0 0 6px rgba(255,160,64,0.4); }
 .timeline-label.lbl-pupil { color: #40e0ff; text-shadow: 0 0 6px rgba(64,224,255,0.4); }
 .timeline-label.lbl-scroll { color: #44dd66; text-shadow: 0 0 6px rgba(68,221,102,0.4); }
+.timeline-label.lbl-congestion { color: #ff90b0; text-shadow: 0 0 6px rgba(255,144,176,0.4); }
 .timeline-label.lbl-dwell { color: #c8a8f0; text-shadow: 0 0 6px rgba(200,168,240,0.4); }
 .timeline-track { position: relative; flex: 1; background: #222; border-radius: 2px; overflow: hidden; }
 .timeline-ticks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
@@ -81,6 +82,12 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
       <div class="timeline-label lbl-saliency">Saliency</div>
       <div class="timeline-track" id="track-saliency">
         <div class="timeline-ticks" id="ticks-saliency"></div>
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-label lbl-congestion">Clutter</div>
+      <div class="timeline-track" id="track-congestion">
+        <div class="timeline-ticks" id="ticks-congestion"></div>
       </div>
     </div>
     <div class="timeline-row">
@@ -205,9 +212,18 @@ function buildDwellTrack() {
     });
     return ticks;
 }
+// Congestion color: dark → bright pink
+const CONG=F.filter(f=>f.cong!=null).map(f=>f.cong);
+const CONG_MIN=CONG.length?Math.min(...CONG):0,CONG_MAX=CONG.length?Math.max(...CONG):1;
+const cCong=(c)=>{if(c==null)return'#333';const t=Math.max(0,Math.min(1,(c-CONG_MIN)/(CONG_MAX-CONG_MIN+0.001)));
+return`rgb(${Math.round(40+215*t)},${Math.round(15+30*t)},${Math.round(30+80*t)})`};
 const tkSal = buildTrack('ticks-saliency', i => cSal(F[i].sal), i => {
     if(F[i].sal==null) return 0.15;
     return (F[i].sal - SAL_MIN) / (SAL_MAX - SAL_MIN + 0.001);
+});
+const tkCong = buildTrack('ticks-congestion', i => cCong(F[i].cong), i => {
+    if(F[i].cong==null) return 0.15;
+    return (F[i].cong - CONG_MIN) / (CONG_MAX - CONG_MIN + 0.001);
 });
 const tkPup = buildTrack('ticks-pupil', i => cPD(F[i].pdc), i => {
     if(F[i].pdc==null) return 0.15;
