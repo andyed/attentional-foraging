@@ -43,21 +43,35 @@ def get_trial_ids():
 
 # ── Fixation loading ───────────────────────────────────────────────────────
 
-def load_fixations(trial_id):
+def load_fixations(trial_id, clamp_y=True):
     """Load fixations for a trial.
 
-    Returns list of dicts: {t, x, y, d} where t is timestamp (ms),
+    Returns list of dicts: {t, x, y, y_raw, d} where t is timestamp (ms),
     x/y are screen-space pixels, d is duration (ms).
+
+    FPOGY clamp: 24.5% of Gazepoint GP3 HD fixations have FPOGY > screen
+    height (1024px). These are eye-tracker noise, not gaze at below-screen
+    content. Clamping to [0, screen_height] prevents downstream position
+    mapping errors. y_raw preserves the original value.
     """
     path = FIXATION_DIR / f'{trial_id}.csv'
+    # Get screen height for clamping
+    screen_h = 1024  # default
+    if clamp_y:
+        meta = get_trial_meta(trial_id)
+        if meta[1] is not None:
+            screen_h = meta[1]
+
     fixations = []
     with open(path) as f:
         for row in csv.DictReader(f):
             try:
+                y_raw = float(row['FPOGY'])
                 fixations.append({
                     't': float(row['timestamp']),
                     'x': float(row['FPOGX']),
-                    'y': float(row['FPOGY']),
+                    'y': min(y_raw, screen_h) if clamp_y else y_raw,
+                    'y_raw': y_raw,
                     'd': float(row['FPOGD']),
                 })
             except (ValueError, KeyError):
