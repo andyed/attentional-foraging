@@ -196,23 +196,7 @@ sharp where they looked, degraded where they didn't.</p>
   minutes to seconds per trial</li>
 <li>The interactive overlay is generated as self-contained HTML with the
   gazeplot PNG as background</li>
-<li>The <a href="https://github.com/andyed/scrutinizer2025/blob/main/scripts/export-saliency.js" style="color:#6af;">saliency export CLI</a>
-  (<a href="https://github.com/andyed/scrutinizer2025/blob/main/docs/developers_guide.md#saliency--congestion-export-cli" style="color:#6af;">docs</a>)
-  computes per-fixation saliency and Rosenholtz feature congestion
-  using the same Oklab DoG + local variance pipeline as the real-time
-  renderer — but headless in Node.js, no GPU required (~100ms/image)</li>
 </ol>
-
-<p style="margin-top:0.8em;"><strong>Multi-track timeline:</strong>
-The timeline strip shows five parallel data streams for each fixation:
-<strong style="color:#ffa040;">Saliency</strong> (visual pop-out at gaze location),
-<strong style="color:#ff90b0;">Clutter</strong> (Rosenholtz feature congestion),
-<strong style="color:#40e0ff;">Pupil</strong> (dilation from 150Hz pupillometry),
-<strong style="color:#44dd66;">Scroll</strong> (forward/regression direction + depth), and
-<strong style="color:#c8a8f0;">Dwell</strong> (fixation duration).
-Bar height encodes intensity within each track; color encodes the signal value.
-Scrub across fixations to see how visual complexity, cognitive load, motor behavior,
-and attention duration co-vary in real time.</p>
 
 <p style="margin-top:0.8em;"><strong>DOM-anchored fixation positioning:</strong>
 Fixation coordinates from the eye tracker are in screen-pixel space

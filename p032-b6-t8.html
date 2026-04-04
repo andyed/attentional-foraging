@@ -35,8 +35,8 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .timeline-label { width: 60px; flex-shrink: 0; font-size: 9px; font-weight: 700; display: flex; align-items: center; padding-right: 6px; text-align: right; justify-content: flex-end; text-transform: uppercase; letter-spacing: 0.5px; position: relative; z-index: 3; background: #1a1a1a; }
 .timeline-label.lbl-saliency { color: #ffa040; text-shadow: 0 0 6px rgba(255,160,64,0.4); }
 .timeline-label.lbl-pupil { color: #40e0ff; text-shadow: 0 0 6px rgba(64,224,255,0.4); }
+.timeline-label.lbl-lfhf { color: #f59e0b; text-shadow: 0 0 6px rgba(245,158,11,0.4); }
 .timeline-label.lbl-scroll { color: #44dd66; text-shadow: 0 0 6px rgba(68,221,102,0.4); }
-.timeline-label.lbl-congestion { color: #ff90b0; text-shadow: 0 0 6px rgba(255,144,176,0.4); }
 .timeline-label.lbl-dwell { color: #c8a8f0; text-shadow: 0 0 6px rgba(200,168,240,0.4); }
 .timeline-track { position: relative; flex: 1; background: #222; border-radius: 2px; overflow: hidden; }
 .timeline-ticks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
@@ -85,15 +85,15 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
       </div>
     </div>
     <div class="timeline-row">
-      <div class="timeline-label lbl-congestion">Clutter</div>
-      <div class="timeline-track" id="track-congestion">
-        <div class="timeline-ticks" id="ticks-congestion"></div>
-      </div>
-    </div>
-    <div class="timeline-row">
       <div class="timeline-label lbl-pupil">Pupil</div>
       <div class="timeline-track" id="track-pupil">
         <div class="timeline-ticks" id="ticks-pupil"></div>
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-label lbl-lfhf">LF/HF</div>
+      <div class="timeline-track" id="track-lfhf">
+        <div class="timeline-ticks" id="ticks-lfhf"></div>
       </div>
     </div>
     <div class="timeline-row">
@@ -127,7 +127,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   Fixation overlay alignment: median &lt;13px offset, max ~45px at page bottom. SERP HTML is re-rendered locally; element heights differ from original Chrome 110/Windows session due to external resource loading (Maps tiles, product images). Fixation coordinates (FPOGX/FPOGY) from <a href="https://github.com/kayhan-latifzadeh/AdSERP" style="color:#888;">AdSERP dataset</a> are pixel-verified accurate against synthetic test pages.
 </div>
 <script>
-const F=[{"t":0,"x":672.9,"y":195.4,"d":293,"pd":16.782,"pdc":0.0854,"sal":0.1712,"cong":0.0846},{"t":222,"x":511.9,"y":263.1,"d":213,"pd":16.841,"pdc":0.0892,"sal":0.051,"cong":0.0929},{"t":409,"x":284.1,"y":317.6,"d":161,"pd":16.219,"pdc":0.049,"sal":0.1047,"cong":0.3234},{"t":650,"x":138.6,"y":323.2,"d":234,"pd":15.287,"pdc":-0.0113,"sal":0.105,"cong":0.2496},{"t":817,"x":141.9,"y":242,"d":160,"pd":15.078,"pdc":-0.0248,"sal":0.1323,"cong":0.3626},{"t":958,"x":160.8,"y":137.7,"d":133,"pd":14.939,"pdc":-0.0338,"sal":0.0683,"cong":0.1383},{"t":1093,"x":198.6,"y":125.5,"d":127,"pd":14.91,"pdc":-0.0357,"sal":0.0628,"cong":0.1383},{"t":1367,"x":263,"y":101,"d":267,"pd":14.722,"pdc":-0.0479,"sal":0.0566,"cong":0.1498},{"t":1522,"x":761.8,"y":30,"d":107,"pd":14.675,"pdc":-0.0509,"sal":0.0745,"cong":0.0421}],CK={"x":423.0661040787623,"y":220},ME=[{"t":237,"x":624.6976090014065,"y":220.65083553210204,"e":"mouseover"},{"t":238,"x":624.6976090014065,"y":220.65083553210204,"e":"mousemove"},{"t":244,"x":624.6976090014065,"y":221.5514511873351,"e":"mousemove"},{"t":255,"x":624.6976090014065,"y":222.45206684256817,"e":"mousemove"},{"t":272,"x":624.6976090014065,"y":225.1539138082674,"e":"mousemove"},{"t":288,"x":624.6976090014065,"y":226.05452946350044,"e":"mousemove"},{"t":304,"x":623.7974683544304,"y":226.95514511873353,"e":"mousemove"},{"t":322,"x":623.7974683544304,"y":227.85576077396658,"e":"mousemove"},{"t":348,"x":622.8973277074542,"y":229.65699208443272,"e":"mousemove"},{"t":388,"x":621.0970464135021,"y":231.45822339489888,"e":"mousemove"},{"t":405,"x":617.4964838255977,"y":235.06068601583115,"e":"mousemove"},{"t":422,"x":614.7960618846695,"y":237.76253298153034,"e":"mousemove"},{"t":438,"x":612.0956399437412,"y":239.5637642919965,"e":"mousemove"},{"t":455,"x":596.7932489451476,"y":250.37115215479332,"e":"mousemove"},{"t":472,"x":581.4908579465541,"y":262.0791556728232,"e":"mouseover"},{"t":472,"x":581.4908579465541,"y":262.0791556728232,"e":"mousemove"},{"t":489,"x":564.3881856540085,"y":271.985927880387,"e":"mousemove"},{"t":504,"x":550.8860759493671,"y":280.09146877748464,"e":"mouseover"},{"t":504,"x":550.8860759493671,"y":280.09146877748464,"e":"mousemove"},{"t":521,"x":538.2841068917018,"y":283.6939313984169,"e":"mouseover"},{"t":521,"x":538.2841068917018,"y":283.6939313984169,"e":"mousemove"},{"t":537,"x":527.4824191279887,"y":286.3957783641161,"e":"mousemove"},{"t":554,"x":519.381153305204,"y":291.79947229551453,"e":"mousemove"},{"t":572,"x":511.2798874824191,"y":292.7000879507476,"e":"mousemove"},{"t":588,"x":505.87904360056257,"y":293.60070360598064,"e":"mousemove"},{"t":604,"x":501.3783403656821,"y":293.60070360598064,"e":"mousemove"},{"t":621,"x":499.5780590717299,"y":293.60070360598064,"e":"mousemove"},{"t":639,"x":495.0773558368495,"y":293.60070360598064,"e":"mousemove"},{"t":654,"x":492.37693389592124,"y":293.60070360598064,"e":"mousemove"},{"t":672,"x":491.4767932489451,"y":293.60070360598064,"e":"mousemove"},{"t":688,"x":487.8762306610408,"y":293.60070360598064,"e":"mousemove"},{"t":704,"x":486.0759493670886,"y":292.7000879507476,"e":"mousemove"},{"t":721,"x":481.5752461322081,"y":292.7000879507476,"e":"mousemove"},{"t":738,"x":480.67510548523205,"y":290.89885664028145,"e":"mousemove"},{"t":755,"x":478.87482419127986,"y":290.89885664028145,"e":"mousemove"},{"t":772,"x":477.07454289732766,"y":289.99824098504837,"e":"mousemove"},{"t":788,"x":474.3741209563994,"y":289.09762532981534,"e":"mousemove"},{"t":820,"x":473.4739803094233,"y":288.19700967458226,"e":"mousemove"},{"t":884,"x":472.57383966244726,"y":288.19700967458226,"e":"mousemove"},{"t":900,"x":471.67369901547113,"y":286.3957783641161,"e":"mousemove"},{"t":938,"x":468.0731364275668,"y":281.89270008795074,"e":"mousemove"},{"t":955,"x":461.77215189873414,"y":274.6877748460862,"e":"mouseover"},{"t":955,"x":461.77215189873414,"y":274.6877748460862,"e":"mousemove"},{"t":971,"x":455.47116736990154,"y":265.6816182937555,"e":"mouseover"},{"t":971,"x":455.47116736990154,"y":265.6816182937555,"e":"mousemove"},{"t":988,"x":443.76933895921235,"y":244.06684256816183,"e":"mouseover"},{"t":988,"x":443.76933895921235,"y":244.06684256816183,"e":"mousemove"},{"t":1005,"x":434.7679324894515,"y":228.75637642919966,"e":"mouseover"},{"t":1005,"x":434.7679324894515,"y":228.75637642919966,"e":"mousemove"},{"t":1021,"x":428.4669479606188,"y":214.34652594547055,"e":"mouseover"},{"t":1021,"x":428.4669479606188,"y":214.34652594547055,"e":"mousemove"},{"t":1037,"x":426.66666666666663,"y":208.94283201407214,"e":"mouseover"},{"t":1038,"x":426.66666666666663,"y":208.94283201407214,"e":"mousemove"},{"t":1054,"x":424.8663853727145,"y":204.43975373790678,"e":"mousemove"},{"t":1072,"x":423.96624472573836,"y":202.63852242744065,"e":"mousemove"},{"t":1087,"x":423.0661040787623,"y":200.8372911169745,"e":"mousemove"},{"t":1105,"x":423.0661040787623,"y":199.03605980650838,"e":"mousemove"},{"t":1206,"x":423.0661040787623,"y":199.03605980650838,"e":"mousedown"},{"t":1357,"x":423.0661040787623,"y":198.1354441512753,"e":"mousemove"},{"t":1358,"x":423.0661040787623,"y":198.1354441512753,"e":"mouseup"},{"t":2260,"x":423.0661040787623,"y":198.1354441512753,"e":"click"}],FR=60,SW=1280,N=9,
+const F=[{"t":0,"x":672.9,"y":195.4,"d":293,"pd":16.782,"pdc":0.0854,"sal":0.1712,"cong":0.0846},{"t":222,"x":511.9,"y":263.1,"d":213,"pd":16.841,"pdc":0.0892,"sal":0.051,"cong":0.0929},{"t":409,"x":284.1,"y":317.6,"d":161,"pd":16.219,"pdc":0.049,"sal":0.1047,"cong":0.3234},{"t":650,"x":138.6,"y":323.2,"d":234,"pd":15.287,"pdc":-0.0113,"sal":0.105,"cong":0.2496},{"t":817,"x":141.9,"y":242,"d":160,"pd":15.078,"pdc":-0.0248,"sal":0.1323,"cong":0.3626},{"t":958,"x":160.8,"y":137.7,"d":133,"pd":14.939,"pdc":-0.0338,"lfhf":72.349,"sal":0.0683,"cong":0.1383},{"t":1093,"x":198.6,"y":125.5,"d":127,"pd":14.91,"pdc":-0.0357,"lfhf":86.411,"sal":0.0628,"cong":0.1383},{"t":1367,"x":263,"y":101,"d":267,"pd":14.722,"pdc":-0.0479,"lfhf":50.51,"sal":0.0566,"cong":0.1498},{"t":1522,"x":761.8,"y":30,"d":107,"pd":14.675,"pdc":-0.0509,"lfhf":27.989,"sal":0.0745,"cong":0.0421}],CK={"x":423.0661040787623,"y":220},ME=[{"t":237,"x":624.6976090014065,"y":220.65083553210204,"e":"mouseover"},{"t":238,"x":624.6976090014065,"y":220.65083553210204,"e":"mousemove"},{"t":244,"x":624.6976090014065,"y":221.5514511873351,"e":"mousemove"},{"t":255,"x":624.6976090014065,"y":222.45206684256817,"e":"mousemove"},{"t":272,"x":624.6976090014065,"y":225.1539138082674,"e":"mousemove"},{"t":288,"x":624.6976090014065,"y":226.05452946350044,"e":"mousemove"},{"t":304,"x":623.7974683544304,"y":226.95514511873353,"e":"mousemove"},{"t":322,"x":623.7974683544304,"y":227.85576077396658,"e":"mousemove"},{"t":348,"x":622.8973277074542,"y":229.65699208443272,"e":"mousemove"},{"t":388,"x":621.0970464135021,"y":231.45822339489888,"e":"mousemove"},{"t":405,"x":617.4964838255977,"y":235.06068601583115,"e":"mousemove"},{"t":422,"x":614.7960618846695,"y":237.76253298153034,"e":"mousemove"},{"t":438,"x":612.0956399437412,"y":239.5637642919965,"e":"mousemove"},{"t":455,"x":596.7932489451476,"y":250.37115215479332,"e":"mousemove"},{"t":472,"x":581.4908579465541,"y":262.0791556728232,"e":"mouseover"},{"t":472,"x":581.4908579465541,"y":262.0791556728232,"e":"mousemove"},{"t":489,"x":564.3881856540085,"y":271.985927880387,"e":"mousemove"},{"t":504,"x":550.8860759493671,"y":280.09146877748464,"e":"mouseover"},{"t":504,"x":550.8860759493671,"y":280.09146877748464,"e":"mousemove"},{"t":521,"x":538.2841068917018,"y":283.6939313984169,"e":"mouseover"},{"t":521,"x":538.2841068917018,"y":283.6939313984169,"e":"mousemove"},{"t":537,"x":527.4824191279887,"y":286.3957783641161,"e":"mousemove"},{"t":554,"x":519.381153305204,"y":291.79947229551453,"e":"mousemove"},{"t":572,"x":511.2798874824191,"y":292.7000879507476,"e":"mousemove"},{"t":588,"x":505.87904360056257,"y":293.60070360598064,"e":"mousemove"},{"t":604,"x":501.3783403656821,"y":293.60070360598064,"e":"mousemove"},{"t":621,"x":499.5780590717299,"y":293.60070360598064,"e":"mousemove"},{"t":639,"x":495.0773558368495,"y":293.60070360598064,"e":"mousemove"},{"t":654,"x":492.37693389592124,"y":293.60070360598064,"e":"mousemove"},{"t":672,"x":491.4767932489451,"y":293.60070360598064,"e":"mousemove"},{"t":688,"x":487.8762306610408,"y":293.60070360598064,"e":"mousemove"},{"t":704,"x":486.0759493670886,"y":292.7000879507476,"e":"mousemove"},{"t":721,"x":481.5752461322081,"y":292.7000879507476,"e":"mousemove"},{"t":738,"x":480.67510548523205,"y":290.89885664028145,"e":"mousemove"},{"t":755,"x":478.87482419127986,"y":290.89885664028145,"e":"mousemove"},{"t":772,"x":477.07454289732766,"y":289.99824098504837,"e":"mousemove"},{"t":788,"x":474.3741209563994,"y":289.09762532981534,"e":"mousemove"},{"t":820,"x":473.4739803094233,"y":288.19700967458226,"e":"mousemove"},{"t":884,"x":472.57383966244726,"y":288.19700967458226,"e":"mousemove"},{"t":900,"x":471.67369901547113,"y":286.3957783641161,"e":"mousemove"},{"t":938,"x":468.0731364275668,"y":281.89270008795074,"e":"mousemove"},{"t":955,"x":461.77215189873414,"y":274.6877748460862,"e":"mouseover"},{"t":955,"x":461.77215189873414,"y":274.6877748460862,"e":"mousemove"},{"t":971,"x":455.47116736990154,"y":265.6816182937555,"e":"mouseover"},{"t":971,"x":455.47116736990154,"y":265.6816182937555,"e":"mousemove"},{"t":988,"x":443.76933895921235,"y":244.06684256816183,"e":"mouseover"},{"t":988,"x":443.76933895921235,"y":244.06684256816183,"e":"mousemove"},{"t":1005,"x":434.7679324894515,"y":228.75637642919966,"e":"mouseover"},{"t":1005,"x":434.7679324894515,"y":228.75637642919966,"e":"mousemove"},{"t":1021,"x":428.4669479606188,"y":214.34652594547055,"e":"mouseover"},{"t":1021,"x":428.4669479606188,"y":214.34652594547055,"e":"mousemove"},{"t":1037,"x":426.66666666666663,"y":208.94283201407214,"e":"mouseover"},{"t":1038,"x":426.66666666666663,"y":208.94283201407214,"e":"mousemove"},{"t":1054,"x":424.8663853727145,"y":204.43975373790678,"e":"mousemove"},{"t":1072,"x":423.96624472573836,"y":202.63852242744065,"e":"mousemove"},{"t":1087,"x":423.0661040787623,"y":200.8372911169745,"e":"mousemove"},{"t":1105,"x":423.0661040787623,"y":199.03605980650838,"e":"mousemove"},{"t":1206,"x":423.0661040787623,"y":199.03605980650838,"e":"mousedown"},{"t":1357,"x":423.0661040787623,"y":198.1354441512753,"e":"mousemove"},{"t":1358,"x":423.0661040787623,"y":198.1354441512753,"e":"mouseup"},{"t":2260,"x":423.0661040787623,"y":198.1354441512753,"e":"click"}],FR=60,SW=1280,N=9,
 T0=0,TD=1629,MND=107,MXD=293,
 SERP_SRC='serp-renders/p032-b6-t8.png',
 GAZEPLOT_SRC='gazeplots/p032-b6-t8.png';
@@ -144,8 +144,8 @@ const SAL_MIN=SAL.length?Math.min(...SAL):0,SAL_MAX=SAL.length?Math.max(...SAL):
 const cSal=(s)=>{if(s==null)return'#333';const t=Math.max(0,Math.min(1,(s-SAL_MIN)/(SAL_MAX-SAL_MIN+0.001)));
 return`rgb(${Math.round(40+215*t)},${Math.round(20+140*t)},${Math.round(10+20*t)})`};
 let colorMode='sequence'; // 'sequence', 'load', or 'saliency'
-const COLOR_MODES=['sequence','load','saliency'];
-function getColor(i){if(colorMode==='load'&&F[i].pdc!=null)return cPD(F[i].pdc);if(colorMode==='saliency'&&F[i].sal!=null)return cSal(F[i].sal);return cF(i,N)}
+const COLOR_MODES=['sequence','load','lfhf','saliency'];
+function getColor(i){if(colorMode==='load'&&F[i].pdc!=null)return cPD(F[i].pdc);if(colorMode==='lfhf'&&F[i].lfhf!=null)return cLFHF(F[i].lfhf);if(colorMode==='saliency'&&F[i].sal!=null)return cSal(F[i].sal);return cF(i,N)}
 const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
 fr=document.getElementById('foveal-ring'),mc=document.getElementById('mouse-cursor'),
 vw=document.getElementById('viewer'),
@@ -212,22 +212,22 @@ function buildDwellTrack() {
     });
     return ticks;
 }
-// Congestion color: dark → bright pink
-const CONG=F.filter(f=>f.cong!=null).map(f=>f.cong);
-const CONG_MIN=CONG.length?Math.min(...CONG):0,CONG_MAX=CONG.length?Math.max(...CONG):1;
-const cCong=(c)=>{if(c==null)return'#333';const t=Math.max(0,Math.min(1,(c-CONG_MIN)/(CONG_MAX-CONG_MIN+0.001)));
-return`rgb(${Math.round(40+215*t)},${Math.round(15+30*t)},${Math.round(30+80*t)})`};
 const tkSal = buildTrack('ticks-saliency', i => cSal(F[i].sal), i => {
     if(F[i].sal==null) return 0.15;
     return (F[i].sal - SAL_MIN) / (SAL_MAX - SAL_MIN + 0.001);
 });
-const tkCong = buildTrack('ticks-congestion', i => cCong(F[i].cong), i => {
-    if(F[i].cong==null) return 0.15;
-    return (F[i].cong - CONG_MIN) / (CONG_MAX - CONG_MIN + 0.001);
-});
 const tkPup = buildTrack('ticks-pupil', i => cPD(F[i].pdc), i => {
     if(F[i].pdc==null) return 0.15;
     return (F[i].pdc - PDC_MIN) / (PDC_MAX - PDC_MIN + 0.001);
+});
+// LF/HF cognitive load: amber (low load) → red (high load)
+const LFHF=F.filter(f=>f.lfhf!=null).map(f=>f.lfhf);
+const LFHF_MIN=LFHF.length?Math.min(...LFHF):0,LFHF_MAX=LFHF.length?Math.max(...LFHF):1;
+const cLFHF=(v)=>{if(v==null)return'#333';const t=Math.max(0,Math.min(1,(v-LFHF_MIN)/(LFHF_MAX-LFHF_MIN+0.001)));
+return`rgb(${Math.round(200+55*t)},${Math.round(160-110*t)},${Math.round(40-30*t)})`};
+const tkLFHF = buildTrack('ticks-lfhf', i => cLFHF(F[i].lfhf), i => {
+    if(F[i].lfhf==null) return 0.15;
+    return (F[i].lfhf - LFHF_MIN) / (LFHF_MAX - LFHF_MIN + 0.001);
 });
 // Scroll: height = normalized scroll position, color = direction
 function buildScrollTrack() {
@@ -313,7 +313,7 @@ function recolor(){for(let i=0;i<N;i++){const c=getColor(i);
 cE[i].setAttribute('fill',c);cE[i].setAttribute('stroke',c);
 if(lE[i]){lE[i].setAttribute('stroke',c)}
 if(tkE[i])tkE[i].style.background=c}}
-const COLOR_LABELS={sequence:'Color: Sequence',load:'Color: Pupil Load',saliency:'Color: Saliency'};
+const COLOR_LABELS={sequence:'Color: Sequence',load:'Color: Pupil Load',lfhf:'Color: LF/HF Load',saliency:'Color: Saliency'};
 if(colorBtn){colorBtn.addEventListener('click',()=>{
 const ci_cm=COLOR_MODES.indexOf(colorMode);colorMode=COLOR_MODES[(ci_cm+1)%COLOR_MODES.length];
 colorBtn.textContent=COLOR_LABELS[colorMode];
