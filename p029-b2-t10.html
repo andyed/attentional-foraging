@@ -318,7 +318,7 @@ if(colorBtn){colorBtn.addEventListener('click',()=>{
 const ci_cm=COLOR_MODES.indexOf(colorMode);colorMode=COLOR_MODES[(ci_cm+1)%COLOR_MODES.length];
 colorBtn.textContent=COLOR_LABELS[colorMode];
 colorBtn.classList.toggle('active',colorMode!=='sequence');
-recolor()})}
+recolor();pushHash()})}
 // Background mode controls
 const modeBtn=document.getElementById('mode-btn');
 const progBtn=document.getElementById('prog-btn');
@@ -337,13 +337,15 @@ if(!ws.disabled)p.push('fix='+(ci+1));
 if(!ws.disabled)p.push('w='+ws.value);
 if(bgMode!=='gazeplot')p.push('mode='+bgMode);
 if(!gazeVisible)p.push('gaze=off');
+if(colorMode!=='sequence')p.push('color='+colorMode);
 history.replaceState(null,'','#'+p.join('&'))}
 function readHash(){const h=location.hash.slice(1);if(!h)return;
 const p={};h.split('&').forEach(kv=>{const[k,v]=kv.split('=');p[k]=v});
 if(p.mode)setMode(p.mode);
 if(p.w){ws.value=p.w;wl.textContent=p.w}
 if(p.fix){ci=Math.max(0,Math.min(N-1,parseInt(p.fix)-1));uv()}
-if(p.gaze==='off'){gazeVisible=false;svg.style.display='none';gazeBtn.classList.remove('active')}}
+if(p.gaze==='off'){gazeVisible=false;svg.style.display='none';gazeBtn.classList.remove('active')}
+if(p.color&&COLOR_MODES.includes(p.color)){colorMode=p.color;colorBtn.textContent=COLOR_LABELS[colorMode];colorBtn.classList.toggle('active',colorMode!=='sequence');recolor()}}
 readHash();
-ws.addEventListener('input',()=>{uv();pushHash()});
+ws.addEventListener('input',()=>{const wn=parseInt(ws.value);if(ci>=N-1||ci<wn)ci=Math.min(wn-1,N-1);uv();pushHash()});
 </script></body></html>
