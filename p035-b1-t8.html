@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Scanpath: p035-b1-t8 — buy imak imak arthritis gloves small#cns=1</title>
+<meta name="viewport" content="width=1280">
+<script>!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init('phc_cUZalkUiHgfuv7k5hPzhuLhYQkjUWOQBl82pdDgHAmZ',{api_host:'https://us.i.posthog.com',person_profiles:'identified_only'});</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #111; color: #eee; font-family: system-ui, -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; }
+.header { width: 1280px; padding: 10px 16px; background: #1a1a1a; border-bottom: 1px solid #333;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.header h1 { font-size: 14px; font-weight: 600; }
+.header h1 span { color: #aaa; font-weight: 400; }
+.controls { display: flex; gap: 12px; align-items: center; font-size: 12px; }
+.controls label { cursor: pointer; user-select: none; }
+.btn { background: #333; border: 1px solid #555; color: #eee; padding: 3px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; }
+.btn:hover { background: #444; }
+.btn.active { background: #2a5a8a; border-color: #4a8aca; }
+.viewer { position: relative; width: 1280px; height: 70vh; overflow-y: auto; overflow-x: hidden; background: #000; }
+.serp-container { position: relative; width: 1280px; }
+#serp-img, #gazeplot-img { width: 1280px; height: 3209px; display: block; }
+#gazeplot-img { position: absolute; top: 0; left: 0; z-index: 1; }
+#prog-canvas { position: absolute; top: 0; left: 0; z-index: 5; pointer-events: none; display: none; }
+.scanpath-svg { position: absolute; top: 0; left: 0; z-index: 10; pointer-events: none; }
+.foveal-ring { position: absolute; z-index: 11; pointer-events: none; border: 2px solid rgba(255,255,255,0.7);
+  border-radius: 50%; width: 120px; height: 120px; transform: translate(-50%, -50%);
+  box-shadow: 0 0 20px rgba(255,255,255,0.3); transition: left 0.08s, top 0.08s; display: none; }
+.mouse-cursor { position: absolute; z-index: 999; pointer-events: none; display: none;
+  width: 20px; height: 20px; transition: left 0.03s linear, top 0.03s linear; }
+.mouse-cursor svg { width: 20px; height: 28px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); }
+.mouse-cursor.clicking svg path { fill: #ff3333; }
+.timeline { width: 1280px; background: #1a1a1a; padding: 6px 16px; border-top: 1px solid #333; }
+.timeline-tracks { position: relative; cursor: pointer; user-select: none; -webkit-user-select: none; }
+.timeline-row { display: flex; align-items: stretch; height: 22px; margin-bottom: 1px; }
+.timeline-row:last-child { margin-bottom: 0; }
+.timeline-label { width: 60px; flex-shrink: 0; font-size: 9px; font-weight: 700; display: flex; align-items: center; padding-right: 6px; text-align: right; justify-content: flex-end; text-transform: uppercase; letter-spacing: 0.5px; position: relative; z-index: 3; background: #1a1a1a; }
+.timeline-label.lbl-saliency { color: #ffa040; text-shadow: 0 0 6px rgba(255,160,64,0.4); }
+.timeline-label.lbl-pupil { color: #40e0ff; text-shadow: 0 0 6px rgba(64,224,255,0.4); }
+.timeline-label.lbl-lfhf { color: #f59e0b; text-shadow: 0 0 6px rgba(245,158,11,0.4); }
+.timeline-label.lbl-gaze-x { color: #e0e050; text-shadow: 0 0 6px rgba(224,224,80,0.4); }
+.timeline-label.lbl-gaze-y { color: #50c0e0; text-shadow: 0 0 6px rgba(80,192,224,0.4); }
+.timeline-label.lbl-scroll { color: #44dd66; text-shadow: 0 0 6px rgba(68,221,102,0.4); }
+.timeline-label.lbl-dwell { color: #c8a8f0; text-shadow: 0 0 6px rgba(200,168,240,0.4); }
+.timeline-track { position: relative; flex: 1; background: #222; border-radius: 2px; overflow: hidden; }
+.timeline-ticks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.timeline-tick { position: absolute; top: 0; min-width: 2px; height: 100%; }
+.timeline-playhead { position: absolute; top: 0; width: 2px; height: 100%; background: #ff4444; z-index: 2; pointer-events: none; }
+.timeline-info { display: flex; justify-content: space-between; margin-top: 4px; font-size: 11px; color: #aaa; padding-left: 64px; }
+.info-panel { width: 1280px; padding: 6px 16px; background: #1a1a1a; font-size: 11px; color: #aaa;
+  display: flex; gap: 20px; border-top: 1px solid #222; }
+.info-panel .val { color: #ccc; }
+.info-panel a { color: #ff9933; text-decoration: none; font-weight: 600; }
+.info-panel a:hover { text-decoration: underline; }
+.back { font-size: 12px; }
+.back a { color: #6af; text-decoration: none; }
+</style></head><body>
+<div class="header">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <span class="back"><a href="index.html">&larr; All</a></span>
+    <h1>p035-b1-t8 <span>— buy imak imak arthritis gloves small#cns=1</span></h1>
+  </div>
+  <div class="controls">
+    <button class="btn" id="mode-btn">Original</button>
+    <label id="ws-group">Window <input type="range" id="window-size" min="1" max="50" value="50" style="width:80px;vertical-align:middle;"> <span id="ws-label">All</span></label>
+    <button class="btn active" id="gaze-btn">Gaze Points</button>
+    <button class="btn" id="color-btn">Color: Sequence</button>
+    <button class="btn" id="play-btn">&#9654; Play</button>
+    <button class="btn" id="reset-btn">Reset</button>
+  </div>
+</div>
+<div class="viewer" id="viewer">
+  <div class="serp-container">
+    <img id="serp-img" src="serp-renders/p035-b1-t8.png" width="1280" height="3209" />
+    <img id="gazeplot-img" src="gazeplots/p035-b1-t8.png" />
+    <canvas id="prog-canvas" width="1280" height="3209"></canvas>
+    <svg class="scanpath-svg" id="scanpath-svg" xmlns="http://www.w3.org/2000/svg"
+         width="1280" height="3209" viewBox="0 0 1280 3209"></svg>
+    <div class="foveal-ring" id="foveal-ring"></div>
+    <div class="mouse-cursor" id="mouse-cursor"><svg viewBox="0 0 20 28"><path d="M0,0 L0,22 L5.5,17 L10,28 L14,26 L9,16 L16,16 Z" fill="#ff9933" stroke="#000" stroke-width="1"/></svg></div>
+  </div>
+</div>
+<div class="timeline">
+  <div class="timeline-tracks" id="timeline-tracks">
+    <div class="timeline-row">
+      <div class="timeline-label lbl-saliency">Saliency</div>
+      <div class="timeline-track" id="track-saliency">
+        <div class="timeline-ticks" id="ticks-saliency"></div>
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-label lbl-pupil">Pupil</div>
+      <div class="timeline-track" id="track-pupil">
+        <div class="timeline-ticks" id="ticks-pupil"></div>
+      </div>
+    </div>
+    
+    <div class="timeline-row">
+      <div class="timeline-label lbl-gaze-x">Gaze ΔX</div>
+      <div class="timeline-track" id="track-gaze-vx">
+        <div class="timeline-ticks" id="ticks-gaze-vx"></div>
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-label lbl-gaze-y">Gaze ΔY</div>
+      <div class="timeline-track" id="track-gaze-vy">
+        <div class="timeline-ticks" id="ticks-gaze-vy"></div>
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-label lbl-scroll">Scroll</div>
+      <div class="timeline-track" id="track-scroll">
+        <div class="timeline-ticks" id="ticks-scroll"></div>
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-label lbl-dwell">Dwell</div>
+      <div class="timeline-track" id="track-dwell">
+        <div class="timeline-ticks" id="ticks-dwell"></div>
+      </div>
+    </div>
+    <div class="timeline-playhead" id="playhead"></div>
+  </div>
+  <div class="timeline-info">
+    <span id="time-label">Fixation 0 / 50</span>
+    <span id="duration-label">0.0s / 14.8s</span>
+  </div>
+</div>
+<div class="info-panel">
+  <span><a href="https://github.com/andyed/scrutinizer2025">Scrutinizer rendering</a></span>
+  <span>Position: <span class="val" id="info-pos">—</span></span>
+  <span>Duration: <span class="val" id="info-dur">—</span></span>
+  <span>Fixations: <span class="val" id="info-seen">0</span></span>
+  <span>Click: <span class="val">(483, 1067)</span></span>
+  <span><a href="png/p035-b1-t8.png" download style="color:#6af;text-decoration:none;">Download PNG</a></span>
+</div>
+<div style="width:1280px;padding:6px 16px;background:#1a1a1a;font-size:10px;color:#666;border-top:1px solid #222;">
+  Fixation overlay alignment: median &lt;13px offset, max ~45px at page bottom. SERP HTML is re-rendered locally; element heights differ from original Chrome 110/Windows session due to external resource loading (Maps tiles, product images). Fixation coordinates (FPOGX/FPOGY) from <a href="https://github.com/kayhan-latifzadeh/AdSERP" style="color:#888;">AdSERP dataset</a> are pixel-verified accurate against synthetic test pages.
+</div>
+<script>
+const F=[{"t":0,"x":391.9,"y":171,"d":288,"vx":0,"vy":0,"pd":12.807,"pdc":0.0005,"scr":0,"sal":0.1035,"cong":0.2036},{"t":194,"x":476.3,"y":310.9,"d":187,"vx":84,"vy":140,"pd":12.929,"pdc":0.0101,"scr":0,"sal":0.2872,"cong":0.3821},{"t":361,"x":361.9,"y":411.9,"d":160,"vx":-114,"vy":101,"pd":12.613,"pdc":-0.0147,"scr":0,"sal":0.2838,"cong":0.4349},{"t":543,"x":289.7,"y":509.7,"d":174,"vx":-72,"vy":98,"pd":12.691,"pdc":-0.0085,"scr":0,"sal":0.2041,"cong":0.2873},{"t":757,"x":150.8,"y":665.1,"d":187,"vx":-139,"vy":155,"pd":12.987,"pdc":0.0145,"scr":0,"sal":0.1607,"cong":0.1981},{"t":1059,"x":166.4,"y":592.9,"d":294,"vx":16,"vy":-72,"pd":12.989,"pdc":0.0147,"scr":0,"sal":0.1594,"cong":0.1399},{"t":1260,"x":170.8,"y":822.8,"d":174,"vx":4,"vy":230,"pd":12.897,"pdc":0.0075,"scr":0,"sal":0.1607,"cong":0.1757},{"t":1930,"x":156.4,"y":1164.7,"d":121,"vx":-14,"vy":342,"pd":13.02,"pdc":0.0171,"scr":444,"sal":0.1146,"cong":0.2537},{"t":2030,"x":137.5,"y":1225.8,"d":93,"vx":-19,"vy":61,"pd":13.096,"pdc":0.0231,"scr":444,"sal":0.1098,"cong":0.2497},{"t":2458,"x":181.9,"y":1282.5,"d":421,"vx":44,"vy":57,"pd":12.522,"pdc":-0.0217,"scr":444,"sal":0.1188,"cong":0.2438},{"t":2807,"x":173,"y":1433.4,"d":120,"vx":-9,"vy":151,"pd":12.444,"pdc":-0.0279,"scr":556,"sal":0.0858,"cong":0.1328},{"t":3523,"x":156.4,"y":1779.9,"d":166,"vx":-17,"vy":347,"pd":12.801,"pdc":0,"scr":778,"sal":0.1334,"cong":0.1194},{"t":4542,"x":185.2,"y":1925.3,"d":187,"vx":29,"vy":145,"pd":13.086,"pdc":0.0223,"scr":1222,"sal":0.2126,"cong":0.3531},{"t":4883,"x":186.3,"y":1837.7,"d":334,"vx":1,"vy":-88,"pd":12.606,"pdc":-0.0152,"scr":1222,"sal":0.2109,"cong":0.3471},{"t":4991,"x":184.1,"y":1896.5,"d":100,"vx":-2,"vy":59,"pd":12.602,"pdc":-0.0155,"scr":1222,"sal":0.2126,"cong":0.3531},{"t":5661,"x":196.3,"y":2133,"d":187,"vx":12,"vy":237,"pd":12.815,"pdc":0.0011,"scr":1556,"sal":0.1827,"cong":0.3583},{"t":6625,"x":213,"y":2440.6,"d":207,"vx":17,"vy":308,"pd":12.739,"pdc":-0.0048,"scr":1889,"sal":0.0731,"cong":0.1359},{"t":6879,"x":209.7,"y":2510.5,"d":247,"vx":-3,"vy":70,"pd":12.558,"pdc":-0.0189,"scr":1889,"sal":0.0731,"cong":0.1359},{"t":7469,"x":183,"y":2176.3,"d":341,"vx":-27,"vy":-334,"pd":11.886,"pdc":-0.0714,"scr":1333,"sal":0.1843,"cong":0.3061},{"t":8025,"x":229.7,"y":978.2,"d":194,"vx":47,"vy":-1198,"pd":12.953,"pdc":0.0119,"scr":667,"sal":0.089,"cong":0.1072},{"t":8374,"x":221.9,"y":768.4,"d":341,"vx":-8,"vy":-210,"pd":13.394,"pdc":0.0464,"scr":438,"sal":0.0825,"cong":0.2406},{"t":8601,"x":226.3,"y":701.8,"d":221,"vx":4,"vy":-67,"pd":13.393,"pdc":0.0463,"scr":333,"sal":0.0569,"cong":0.1292},{"t":8883,"x":251.9,"y":659.5,"d":274,"vx":26,"vy":-42,"pd":13.552,"pdc":0.0587,"scr":333,"sal":0.0392,"cong":0.0515},{"t":9030,"x":273,"y":680.6,"d":140,"vx":21,"vy":21,"pd":13.664,"pdc":0.0674,"scr":333,"sal":0.0366,"cong":0.0484},{"t":9170,"x":330.8,"y":671.7,"d":133,"vx":58,"vy":-9,"pd":13.563,"pdc":0.0595,"scr":333,"sal":0.0303,"cong":0.0337},{"t":9365,"x":403,"y":645.1,"d":187,"vx":72,"vy":-27,"pd":13.286,"pdc":0.0379,"scr":333,"sal":0.0472,"cong":0.0626},{"t":9559,"x":469.6,"y":640.6,"d":187,"vx":67,"vy":-4,"pd":13.078,"pdc":0.0217,"scr":333,"sal":0.0559,"cong":0.0707},{"t":10088,"x":465.2,"y":762.8,"d":522,"vx":-4,"vy":122,"pd":13.109,"pdc":0.0241,"scr":333,"sal":0.0258,"cong":0.0318},{"t":10283,"x":277.4,"y":823.9,"d":188,"vx":-188,"vy":61,"pd":13.126,"pdc":0.0254,"scr":333,"sal":0.0674,"cong":0.2698},{"t":10671,"x":221.9,"y":773.9,"d":381,"vx":-55,"vy":-50,"pd":12.913,"pdc":0.0087,"scr":333,"sal":0.067,"cong":0.2495},{"t":10879,"x":407.4,"y":828.3,"d":180,"vx":185,"vy":54,"pd":12.737,"pdc":-0.005,"scr":333,"sal":0.0592,"cong":0.1208},{"t":11013,"x":446.3,"y":862.7,"d":127,"vx":39,"vy":34,"pd":12.826,"pdc":0.002,"scr":333,"sal":0.0372,"cong":0.0595},{"t":11180,"x":467.4,"y":949.4,"d":160,"vx":21,"vy":87,"pd":12.836,"pdc":0.0028,"scr":333,"sal":0.0493,"cong":0.0304},{"t":11656,"x":175.2,"y":1308,"d":241,"vx":-292,"vy":359,"pd":13.033,"pdc":0.0181,"scr":556,"sal":0.0858,"cong":0.1328},{"t":11850,"x":175.2,"y":1273.6,"d":187,"vx":0,"vy":-34,"pd":13.12,"pdc":0.0249,"scr":556,"sal":0.0858,"cong":0.1328},{"t":11977,"x":254.1,"y":1296.9,"d":120,"vx":79,"vy":23,"pd":12.778,"pdc":-0.0018,"scr":556,"sal":0.0838,"cong":0.0877},{"t":12138,"x":275.2,"y":1321.3,"d":154,"vx":21,"vy":24,"pd":12.49,"pdc":-0.0242,"scr":556,"sal":0.0878,"cong":0.0869},{"t":12614,"x":204.1,"y":1221.4,"d":94,"vx":-71,"vy":-100,"pd":12.173,"pdc":-0.0491,"scr":444,"sal":0.1238,"cong":0.2142},{"t":12881,"x":346.3,"y":662.8,"d":160,"vx":142,"vy":-559,"pd":12.525,"pdc":-0.0215,"scr":444,"sal":0.0712,"cong":0.1846},{"t":13076,"x":430.8,"y":612.9,"d":187,"vx":85,"vy":-50,"pd":12.979,"pdc":0.014,"scr":444,"sal":0.0277,"cong":0.0316},{"t":13163,"x":354.1,"y":823.9,"d":80,"vx":-77,"vy":211,"pd":12.969,"pdc":0.0131,"scr":444,"sal":0.0915,"cong":0.1306},{"t":13444,"x":206.3,"y":1359.1,"d":254,"vx":-148,"vy":535,"pd":12.51,"pdc":-0.0227,"scr":444,"sal":0.1238,"cong":0.2142},{"t":13638,"x":379.7,"y":1266.9,"d":166,"vx":173,"vy":-92,"pd":12.087,"pdc":-0.0558,"scr":444,"sal":0.1111,"cong":0.1388},{"t":13926,"x":436.3,"y":668.4,"d":260,"vx":57,"vy":-599,"pd":12.341,"pdc":-0.0359,"scr":444,"sal":0.0438,"cong":0.0751},{"t":14154,"x":502.9,"y":588.5,"d":120,"vx":67,"vy":-80,"pd":12.814,"pdc":0.0011,"scr":444,"sal":0.0245,"cong":0.0222},{"t":14281,"x":553,"y":631.8,"d":120,"vx":50,"vy":43,"pd":13.13,"pdc":0.0258,"scr":444,"sal":0.0102,"cong":0.0086},{"t":14369,"x":635.2,"y":537.4,"d":80,"vx":82,"vy":-94,"pd":13.211,"pdc":0.032,"scr":444,"sal":0.0197,"cong":0.011},{"t":14569,"x":690.7,"y":570.7,"d":133,"vx":56,"vy":33,"pd":13.475,"pdc":0.0527,"scr":444,"sal":0.0072,"cong":0.0029},{"t":14656,"x":689.6,"y":366.4,"d":80,"vx":-1,"vy":-204,"pd":13.597,"pdc":0.0622,"scr":444,"sal":0.1797,"cong":0.2615},{"t":14764,"x":689.6,"y":197.6,"d":80,"vx":0,"vy":-169,"pd":13.621,"pdc":0.0641,"scr":444,"sal":0.269,"cong":0.4111}],CK={"x":483.3755274261603,"y":1067.4444580078125},ME=[{"t":119,"x":594.9929676511955,"y":120.68249780123132,"e":"mouseover"},{"t":119,"x":594.9929676511955,"y":120.68249780123132,"e":"mousemove"},{"t":135,"x":594.9929676511955,"y":121.58311345646439,"e":"mousemove"},{"t":151,"x":594.9929676511955,"y":126.08619173262973,"e":"mousemove"},{"t":169,"x":592.2925457102672,"y":130.58927000879507,"e":"mousemove"},{"t":186,"x":590.492264416315,"y":137.79419525065964,"e":"mousemove"},{"t":202,"x":589.592123769339,"y":147.7009674582234,"e":"mousemove"},{"t":219,"x":588.6919831223629,"y":158.50835532102025,"e":"mouseover"},{"t":219,"x":588.6919831223629,"y":158.50835532102025,"e":"mousemove"},{"t":235,"x":588.6919831223629,"y":168.415127528584,"e":"mouseover"},{"t":235,"x":588.6919831223629,"y":168.415127528584,"e":"mousemove"},{"t":253,"x":590.492264416315,"y":177.4212840809147,"e":"mousemove"},{"t":270,"x":594.0928270042194,"y":186.4274406332454,"e":"mouseover"},{"t":270,"x":594.0928270042194,"y":186.4274406332454,"e":"mousemove"},{"t":287,"x":596.7932489451476,"y":194.53298153034302,"e":"mouseover"},{"t":287,"x":596.7932489451476,"y":194.53298153034302,"e":"mousemove"},{"t":301,"x":597.6933895921237,"y":196.33421284080916,"e":"mousemove"},{"t":319,"x":599.493670886076,"y":200.8372911169745,"e":"mouseover"},{"t":319,"x":599.493670886076,"y":200.8372911169745,"e":"mousemove"},{"t":336,"x":599.493670886076,"y":202.63852242744065,"e":"mousemove"},{"t":369,"x":599.493670886076,"y":203.5391380826737,"e":"mousemove"},{"t":485,"x":600.393811533052,"y":204.43975373790678,"e":"mousemove"},{"t":603,"x":601.2939521800281,"y":204.43975373790678,"e":"mousemove"},{"t":678,"x":603.0942334739802,"y":204.43975373790678,"e":"mousemove"},{"t":718,"x":603.9943741209564,"y":203.5391380826737,"e":"mousemove"},{"t":735,"x":608.4950773558368,"y":201.73790677220757,"e":"mousemove"},{"t":751,"x":619.29676511955,"y":199.93667546174143,"e":"mousemove"},{"t":770,"x":635.4992967651195,"y":199.93667546174143,"e":"mouseover"},{"t":770,"x":635.4992967651195,"y":199.93667546174143,"e":"mousemove"},{"t":786,"x":652.6019690576652,"y":198.1354441512753,"e":"mouseover"},{"t":786,"x":652.6019690576652,"y":198.1354441512753,"e":"mousemove"},{"t":802,"x":672.4050632911392,"y":198.1354441512753,"e":"mouseover"},{"t":802,"x":672.4050632911392,"y":198.1354441512753,"e":"mousemove"},{"t":818,"x":695.8087201125176,"y":198.1354441512753,"e":"mousemove"},{"t":837,"x":717.4120956399437,"y":196.33421284080916,"e":"mouseover"},{"t":837,"x":717.4120956399437,"y":196.33421284080916,"e":"mousemove"},{"t":853,"x":739.0154711673699,"y":194.53298153034302,"e":"mousemove"},{"t":868,"x":763.3192686357243,"y":194.53298153034302,"e":"mouseover"},{"t":868,"x":763.3192686357243,"y":194.53298153034302,"e":"mousemove"},{"t":885,"x":787.6230661040787,"y":194.53298153034302,"e":"mousemove"},{"t":902,"x":807.4261603375527,"y":194.53298153034302,"e":"mousemove"},{"t":919,"x":830.8298171589311,"y":198.1354441512753,"e":"mousemove"},{"t":936,"x":842.5316455696202,"y":199.03605980650838,"e":"mousemove"},{"t":951,"x":849.732770745429,"y":200.8372911169745,"e":"mousemove"},{"t":968,"x":855.1336146272855,"y":201.73790677220757,"e":"mousemove"},{"t":985,"x":856.0337552742616,"y":201.73790677220757,"e":"mousemove"},{"t":1018,"x":856.9338959212376,"y":201.73790677220757,"e":"mousemove"},{"t":1052,"x":856.9338959212376,"y":202.63852242744065,"e":"mousemove"},{"t":1382,"x":858.7341772151898,"y":202.63852242744065,"e":"mousemove"},{"t":1390,"x":859.634317862166,"y":202.63852242744065,"e":"mousemove"},{"t":1401,"x":860.534458509142,"y":202.63852242744065,"e":"mousemove"},{"t":1418,"x":864.1350210970463,"y":202.63852242744065,"e":"mousemove"},{"t":1434,"x":866.8354430379746,"y":204.43975373790678,"e":"mousemove"},{"t":1452,"x":869.535864978903,"y":204.43975373790678,"e":"mousemove"},{"t":1469,"x":873.1364275668072,"y":205.34036939313984,"e":"mousemove"},{"t":1487,"x":874.0365682137833,"y":205.34036939313984,"e":"mousemove"},{"t":1510,"x":874.0365682137833,"y":208.04221635883906,"e":"mousemove"},{"t":1526,"x":874.0365682137833,"y":209.8434476693052,"e":"mousemove"},{"t":1535,"x":874.0365682137833,"y":210.74406332453827,"e":"mousemove"},{"t":1552,"x":874.0365682137833,"y":212.5452946350044,"e":"mousemove"},{"t":1568,"x":874.0365682137833,"y":213.44591029023746,"e":"mousemove"},{"t":2094,"x":873.1364275668072,"y":213.66032950119364,"e":"mousemove"},{"t":2110,"x":871.3361462728551,"y":214.53495328330422,"e":"mousemove"},{"t":2126,"x":870.436005625879,"y":214.50896141018174,"e":"mousemove"},{"t":2168,"x":868.6357243319268,"y":215.3413483984683,"e":"mousemove"},{"t":2218,"x":866.8354430379746,"y":215.26012379496055,"e":"mousemove"},{"t":2703,"x":866.8354430379746,"y":216.64808707124013,"e":"mousemove"},{"t":2718,"x":865.9353023909986,"y":218.34927440633246,"e":"mousemove"},{"t":2736,"x":861.4345991561181,"y":223.69632411509934,"e":"mousemove"},{"t":2750,"x":855.1336146272855,"y":232.65842404982772,"e":"mousemove"},{"t":2767,"x":843.4317862165963,"y":241.61108328078416,"e":"mousemove"},{"t":2785,"x":831.7299578059071,"y":250.56059561048332,"e":"mousemove"},{"t":2802,"x":819.1279887482419,"y":259.51325484143973,"e":"mousemove"},{"t":2818,"x":799.324894514768,"y":269.3696766288865,"e":"mousemove"},{"t":2835,"x":783.1223628691982,"y":280.12356717030923,"e":"mousemove"},{"t":2851,"x":765.1195499296765,"y":289.979988957756,"e":"mousemove"},{"t":2868,"x":747.1167369901547,"y":300.73387949917856,"e":"mouseover"},{"t":2868,"x":747.1167369901547,"y":300.73387949917856,"e":"mousemove"},{"t":2884,"x":732.7144866385372,"y":307.88845432092626,"e":"mousemove"},{"t":2902,"x":722.8129395218002,"y":316.83796665062533,"e":"mousemove"},{"t":2919,"x":715.6118143459915,"y":323.08877891588253,"e":"mousemove"},{"t":2935,"x":712.9113924050632,"y":328.44212242716407,"e":"mousemove"},{"t":2950,"x":709.310829817159,"y":331.99738152923675,"e":"mousemove"},{"t":2967,"x":706.6104078762306,"y":336.44696248402784,"e":"mousemove"},{"t":2985,"x":703.9099859353024,"y":341.79401219279475,"e":"mouseover"},{"t":2985,"x":703.9099859353024,"y":341.79401219279475,"e":"mousemove"},{"t":3002,"x":703.0098452883262,"y":345.34297749235276,"e":"mousemove"},{"t":3019,"x":702.1097046413502,"y":345.2894801709785,"e":"mousemove"},{"t":3068,"x":702.1097046413502,"y":346.73702726473175,"e":"mousemove"},{"t":3662,"x":702.1097046413502,"y":344.7005134376658,"e":"mouseover"},{"t":3662,"x":702.1097046413502,"y":344.7005134376658,"e":"mousemove"},{"t":3678,"x":702.1097046413502,"y":343.7693416114457,"e":"mousemove"},{"t":3686,"x":702.1097046413502,"y":341.9528322154861,"e":"mousemove"},{"t":3704,"x":703.0098452883262,"y":340.11722521265955,"e":"mousemove"},{"t":3726,"x":703.0098452883262,"y":339.17459482231936,"e":"mousemove"},{"t":3734,"x":703.9099859353024,"y":339.1593167368259,"e":"mousemove"},{"t":3751,"x":703.9099859353024,"y":338.2262351499191,"e":"mousemove"},{"t":3768,"x":704.8101265822785,"y":336.3925379077793,"e":"mousemove"},{"t":3785,"x":705.7102672292546,"y":335.45945632087256,"e":"mousemove"},{"t":3801,"x":705.7102672292546,"y":334.5282844946525,"e":"mousemove"},{"t":3817,"x":707.5105485232067,"y":330.89526570273324,"e":"mousemove"},{"t":3834,"x":708.4106891701828,"y":329.96218411582646,"e":"mousemove"},{"t":3851,"x":709.310829817159,"y":329.9297181841528,"e":"mousemove"},{"t":3878,"x":711.1111111111111,"y":328.0769233351461,"e":"mousemove"},{"t":4152,"x":711.1111111111111,"y":328.02418645558487,"e":"mouseover"},{"t":4152,"x":711.1111111111111,"y":328.02418645558487,"e":"mousemove"},{"t":4731,"x":711.1111111111111,"y":327.20108668722986,"e":"mouseover"},{"t":5679,"x":711.1111111111111,"y":325.99848436849055,"e":"mouseover"},{"t":5679,"x":711.1111111111111,"y":325.99848436849055,"e":"mousemove"},{"t":6615,"x":711.1111111111111,"y":326.3626780250004,"e":"mouseover"},{"t":6615,"x":711.1111111111111,"y":326.3626780250004,"e":"mousemove"},{"t":7100,"x":709.310829817159,"y":324.4217238346526,"e":"mouseover"},{"t":7100,"x":709.310829817159,"y":324.4217238346526,"e":"mousemove"},{"t":8199,"x":707.5105485232067,"y":324.9221086191733,"e":"mouseover"},{"t":8199,"x":707.5105485232067,"y":324.9221086191733,"e":"mousemove"},{"t":8217,"x":703.9099859353024,"y":325.0221525945471,"e":"mouseover"},{"t":8217,"x":703.9099859353024,"y":325.0221525945471,"e":"mousemove"},{"t":8232,"x":700.309423347398,"y":323.7087662159191,"e":"mousemove"},{"t":8249,"x":695.8087201125176,"y":326.02286719437114,"e":"mouseover"},{"t":8249,"x":695.8087201125176,"y":326.02286719437114,"e":"mousemove"},{"t":8267,"x":689.507735583685,"y":325.92803661528495,"e":"mousemove"},{"t":8284,"x":680.506329113924,"y":327.8240985048373,"e":"mousemove"},{"t":8299,"x":660.70323488045,"y":331.7267480211082,"e":"mouseover"},{"t":8299,"x":660.70323488045,"y":331.7267480211082,"e":"mousemove"},{"t":8316,"x":643.6005625879043,"y":331.8045905404085,"e":"mouseover"},{"t":8316,"x":643.6005625879043,"y":331.8045905404085,"e":"mousemove"},{"t":8333,"x":625.5977496483825,"y":334.62873790677224,"e":"mouseover"},{"t":8333,"x":625.5977496483825,"y":334.62873790677224,"e":"mousemove"},{"t":8349,"x":614.7960618846695,"y":334.42859498680735,"e":"mouseover"},{"t":8349,"x":614.7960618846695,"y":334.42859498680735,"e":"mousemove"},{"t":8366,"x":601.2939521800281,"y":333.783706818626,"e":"mouseover"},{"t":8366,"x":601.2939521800281,"y":333.783706818626,"e":"mousemove"},{"t":8382,"x":594.9929676511955,"y":335.12909520668427,"e":"mousemove"},{"t":8399,"x":581.4908579465541,"y":335.20691176829865,"e":"mouseover"},{"t":8400,"x":581.4908579465541,"y":336.42996921723835,"e":"mousemove"},{"t":8418,"x":567.9887482419127,"y":340.9330474934037,"e":"mouseover"},{"t":8418,"x":567.9887482419127,"y":340.9330474934037,"e":"mousemove"},{"t":8434,"x":549.985935302391,"y":345.9364830694811,"e":"mouseover"},{"t":8434,"x":549.985935302391,"y":345.9364830694811,"e":"mousemove"},{"t":8451,"x":529.282700421941,"y":353.1414083113457,"e":"mouseover"},{"t":8451,"x":529.282700421941,"y":353.1414083113457,"e":"mousemove"},{"t":8466,"x":511.2798874824191,"y":357.14412928759896,"e":"mousemove"},{"t":8484,"x":496.87763713080165,"y":359.04543205804754,"e":"mouseover"},{"t":8484,"x":496.87763713080165,"y":359.04543205804754,"e":"mousemove"},{"t":8500,"x":482.47538677918425,"y":361.74155876871157,"e":"mousemove"},{"t":8516,"x":465.37271448663853,"y":361.7358385136764,"e":"mousemove"},{"t":8532,"x":457.27144866385373,"y":361.7301182586412,"e":"mousemove"},{"t":8548,"x":456.3713080168776,"y":361.72439800360604,"e":"mousemove"},{"t":9142,"x":455.47116736990154,"y":361.51203353542525,"e":"mousemove"},{"t":9158,"x":453.67088607594934,"y":361.5063132803901,"e":"mousemove"},{"t":9166,"x":453.67088607594934,"y":360.6028374976394,"e":"mousemove"},{"t":9181,"x":451.87060478199714,"y":359.6968591033109,"e":"mousemove"},{"t":9199,"x":442.8691983122363,"y":347.98242029836643,"e":"mouseover"},{"t":9199,"x":442.8691983122363,"y":347.98242029836643,"e":"mousemove"},{"t":9215,"x":436.5682137834036,"y":339.8711591462336,"e":"mousemove"},{"t":9232,"x":429.3670886075949,"y":331.7595404781611,"e":"mouseover"},{"t":9232,"x":429.3670886075949,"y":331.7595404781611,"e":"mousemove"},{"t":9248,"x":421.2658227848101,"y":322.74766367079525,"e":"mousemove"},{"t":9265,"x":415.86497890295357,"y":316.43727631318893,"e":"mouseover"},{"t":9265,"x":415.86497890295357,"y":316.43727631318893,"e":"mousemove"},{"t":9282,"x":414.9648382559775,"y":316.431198542214,"e":"mousemove"},{"t":9300,"x":414.9648382559775,"y":315.5241476000664,"e":"mousemove"},{"t":9316,"x":415.86497890295357,"y":310.1147334136328,"e":"mouseover"},{"t":9316,"x":415.86497890295357,"y":310.1147334136328,"e":"mousemove"},{"t":9331,"x":425.76652601969056,"y":299.3019828117405,"e":"mouseover"},{"t":9331,"x":425.76652601969056,"y":299.3019828117405,"e":"mousemove"},{"t":9349,"x":434.7679324894515,"y":288.48815966202903,"e":"mouseover"},{"t":9349,"x":434.7679324894515,"y":288.48815966202903,"e":"mousemove"},{"t":9368,"x":443.76933895921235,"y":274.0715163754457,"e":"mouseover"},{"t":9368,"x":443.76933895921235,"y":274.0715163754457,"e":"mousemove"},{"t":9383,"x":445.56962025316454,"y":271.36430667065105,"e":"mouseover"},{"t":9383,"x":445.56962025316454,"y":271.36430667065105,"e":"mousemove"},{"t":9399,"x":451.87060478199714,"y":264.1536611737513,"e":"mouseover"},{"t":9399,"x":451.87060478199714,"y":264.1536611737513,"e":"mousemove"},{"t":9416,"x":452.77074542897327,"y":263.24696774754335,"e":"mousemove"},{"t":9567,"x":452.77074542897327,"y":266.79544546158115,"e":"mousemove"},{"t":9582,"x":452.77074542897327,"y":267.6906983777188,"e":"mousemove"},{"t":9598,"x":452.77074542897327,"y":270.3868250883828,"e":"mousemove"},{"t":9696,"x":452.77074542897327,"y":271.2524041815255,"e":"mouseover"},{"t":9696,"x":452.77074542897327,"y":271.2524041815255,"e":"mousemove"},{"t":9726,"x":454.5710267229254,"y":271.2416787033345,"e":"mousemove"},{"t":9734,"x":455.47116736990154,"y":271.23881857581694,"e":"mousemove"},{"t":9750,"x":456.3713080168776,"y":270.3324826655487,"e":"mouseover"},{"t":9750,"x":456.3713080168776,"y":270.3324826655487,"e":"mousemove"},{"t":9765,"x":459.07172995780587,"y":269.42650427122015,"e":"mousemove"},{"t":9781,"x":460.87201125175807,"y":268.5201683609519,"e":"mousemove"},{"t":9798,"x":463.57243319268633,"y":266.7128592795109,"e":"mousemove"},{"t":9815,"x":468.97327707454286,"y":262.20370323237063,"e":"mousemove"},{"t":9831,"x":474.3741209563994,"y":259.4961360116363,"e":"mousemove"},{"t":9849,"x":477.07454289732766,"y":259.48970072472173,"e":"mousemove"},{"t":9865,"x":477.9746835443038,"y":257.6827491592204,"e":"mousemove"},{"t":10438,"x":477.9746835443038,"y":258.37850818100634,"e":"mousemove"},{"t":10447,"x":477.9746835443038,"y":260.1765218480152,"e":"mousemove"},{"t":10465,"x":477.9746835443038,"y":270.97747442389743,"e":"mouseover"},{"t":10465,"x":477.9746835443038,"y":270.97747442389743,"e":"mousemove"},{"t":10482,"x":477.9746835443038,"y":281.77878451571945,"e":"mouseover"},{"t":10482,"x":477.9746835443038,"y":281.77878451571945,"e":"mousemove"},{"t":10499,"x":477.9746835443038,"y":297.98378853893985,"e":"mouseover"},{"t":10499,"x":477.9746835443038,"y":297.98378853893985,"e":"mousemove"},{"t":10515,"x":480.67510548523205,"y":313.28853442286686,"e":"mouseover"},{"t":10515,"x":480.67510548523205,"y":313.28853442286686,"e":"mousemove"},{"t":10532,"x":486.0759493670886,"y":327.6923071356211,"e":"mouseover"},{"t":10532,"x":486.0759493670886,"y":327.6923071356211,"e":"mousemove"},{"t":10548,"x":489.676511954993,"y":342.096437364315,"e":"mouseover"},{"t":10548,"x":489.676511954993,"y":342.096437364315,"e":"mousemove"},{"t":10566,"x":490.57665260196904,"y":357.4004682163626,"e":"mouseover"},{"t":10566,"x":490.57665260196904,"y":357.4004682163626,"e":"mousemove"},{"t":10582,"x":495.0773558368495,"y":369.1027514793573,"e":"mouseover"},{"t":10582,"x":495.0773558368495,"y":369.1027514793573,"e":"mousemove"},{"t":10599,"x":496.87763713080165,"y":383.50652419211156,"e":"mouseover"},{"t":10599,"x":496.87763713080165,"y":383.50652419211156,"e":"mousemove"},{"t":10615,"x":496.87763713080165,"y":390.705729178941,"e":"mousemove"},{"t":10631,"x":497.77777777777777,"y":395.20308720007114,"e":"mouseover"},{"t":10631,"x":497.77777777777777,"y":395.20308720007114,"e":"mousemove"},{"t":10648,"x":498.67791842475384,"y":397.8988563947955,"e":"mousemove"},{"t":10830,"x":499.5780590717299,"y":398.73440414900347,"e":"mouseover"},{"t":10830,"x":499.5780590717299,"y":398.73440414900347,"e":"mousemove"},{"t":10846,"x":500.47819971870604,"y":397.8280682387352,"e":"mousemove"},{"t":10854,"x":502.27848101265823,"y":388.81905155888694,"e":"mouseover"},{"t":10854,"x":502.27848101265823,"y":388.81905155888694,"e":"mousemove"},{"t":10864,"x":504.9789029535865,"y":380.70993550239234,"e":"mouseover"},{"t":10864,"x":504.9789029535865,"y":380.70993550239234,"e":"mousemove"},{"t":10882,"x":511.2798874824191,"y":358.1881088346511,"e":"mouseover"},{"t":10882,"x":511.2798874824191,"y":358.1881088346511,"e":"mousemove"},{"t":10897,"x":519.381153305204,"y":332.9655077490296,"e":"mouseover"},{"t":10897,"x":519.381153305204,"y":332.9655077490296,"e":"mousemove"},{"t":10915,"x":524.7819971870605,"y":314.9467593574537,"e":"mouseover"},{"t":10915,"x":524.7819971870605,"y":314.9467593574537,"e":"mousemove"},{"t":10931,"x":526.5822784810126,"y":308.636729515787,"e":"mouseover"},{"t":10931,"x":526.5822784810126,"y":308.636729515787,"e":"mousemove"},{"t":10948,"x":529.282700421941,"y":305.0281891238799,"e":"mousemove"},{"t":10964,"x":529.282700421941,"y":304.1218532136116,"e":"mousemove"},{"t":10983,"x":529.282700421941,"y":302.31382910029123,"e":"mousemove"},{"t":10999,"x":531.0829817158931,"y":302.308108845256,"e":"mousemove"},{"t":11015,"x":531.9831223628692,"y":300.5011572797547,"e":"mousemove"},{"t":11262,"x":532.8832630098452,"y":300.4128508426493,"e":"mousemove"},{"t":11282,"x":532.8832630098452,"y":300.40570052385533,"e":"mousemove"},{"t":11482,"x":531.0829817158931,"y":300.905672823219,"e":"mouseover"},{"t":11482,"x":531.0829817158931,"y":300.905672823219,"e":"mousemove"},{"t":11500,"x":529.282700421941,"y":300.7055299032542,"e":"mouseover"},{"t":11500,"x":529.282700421941,"y":300.7055299032542,"e":"mousemove"},{"t":11515,"x":526.5822784810126,"y":302.20658462510994,"e":"mouseover"},{"t":11515,"x":526.5822784810126,"y":302.20658462510994,"e":"mousemove"},{"t":11531,"x":523.8818565400844,"y":304.00780562884785,"e":"mousemove"},{"t":11548,"x":520.28129395218,"y":304.8083773087071,"e":"mousemove"},{"t":11565,"x":517.5808720112517,"y":306.63003024428775,"e":"mousemove"},{"t":11581,"x":513.9803094233474,"y":308.45048190780267,"e":"mousemove"},{"t":11598,"x":504.0787623066104,"y":314.7752131195486,"e":"mouseover"},{"t":11598,"x":504.0787623066104,"y":314.7752131195486,"e":"mousemove"},{"t":11614,"x":496.87763713080165,"y":320.1981274039959,"e":"mousemove"},{"t":11632,"x":489.676511954993,"y":324.7228285773412,"e":"mousemove"},{"t":11648,"x":483.3755274261603,"y":330.1457428617885,"e":"mouseover"},{"t":11648,"x":483.3755274261603,"y":330.1457428617885,"e":"mousemove"},{"t":11667,"x":478.87482419127986,"y":335.57226096243244,"e":"mouseover"},{"t":11667,"x":478.87482419127986,"y":335.57226096243244,"e":"mousemove"},{"t":11683,"x":471.67369901547113,"y":342.7964065573459,"e":"mouseover"},{"t":11683,"x":471.67369901547113,"y":342.7964065573459,"e":"mousemove"},{"t":11697,"x":468.0731364275668,"y":349.1175339528952,"e":"mousemove"},{"t":11716,"x":463.57243319268633,"y":353.64343639830605,"e":"mousemove"},{"t":11731,"x":461.77215189873414,"y":357.26391810022164,"e":"mousemove"},{"t":11748,"x":460.87201125175807,"y":359.98618669103524,"e":"mousemove"},{"t":11764,"x":457.27144866385373,"y":364.50848532024946,"e":"mousemove"},{"t":11782,"x":456.3713080168776,"y":366.33133952789564,"e":"mousemove"},{"t":11798,"x":453.67088607594934,"y":368.15179119141055,"e":"mousemove"},{"t":11815,"x":450.070323488045,"y":374.47652240315654,"e":"mousemove"},{"t":11831,"x":446.4697609001406,"y":377.1975897219046,"e":"mouseover"},{"t":11831,"x":446.4697609001406,"y":377.1975897219046,"e":"mousemove"},{"t":11848,"x":443.76933895921235,"y":380.8204739679514,"e":"mousemove"},{"t":11865,"x":441.0689170182841,"y":383.5427425587649,"e":"mousemove"},{"t":11882,"x":439.2686357243319,"y":385.36439549434556,"e":"mousemove"},{"t":11897,"x":439.2686357243319,"y":386.2830302305619,"e":"mousemove"},{"t":11918,"x":439.2686357243319,"y":387.2088725991717,"e":"mousemove"},{"t":11990,"x":439.2686357243319,"y":388.19597984312463,"e":"mousemove"},{"t":12086,"x":438.3684950773558,"y":389.2119176166509,"e":"mousemove"},{"t":12158,"x":438.3684950773558,"y":388.3977935501378,"e":"mousemove"},{"t":12165,"x":438.3684950773558,"y":386.6049711441305,"e":"mousemove"},{"t":12181,"x":439.2686357243319,"y":383.02172887624715,"e":"mousemove"},{"t":12198,"x":452.77074542897327,"y":359.6261434653017,"e":"mouseover"},{"t":12198,"x":452.77074542897327,"y":359.6261434653017,"e":"mousemove"},{"t":12215,"x":462.67229254571026,"y":341.63425198575476,"e":"mousemove"},{"t":12231,"x":469.873417721519,"y":326.34300619984145,"e":"mouseover"},{"t":12231,"x":469.873417721519,"y":326.34300619984145,"e":"mousemove"},{"t":12247,"x":470.77355836849506,"y":317.35607000055967,"e":"mousemove"},{"t":12265,"x":472.57383966244726,"y":314.6758459320404,"e":"mousemove"},{"t":12281,"x":473.4739803094233,"y":311.09260366415697,"e":"mouseover"},{"t":12281,"x":473.4739803094233,"y":311.09260366415697,"e":"mousemove"},{"t":12298,"x":473.4739803094233,"y":308.41117832357213,"e":"mouseover"},{"t":12298,"x":473.4739803094233,"y":308.41117832357213,"e":"mousemove"},{"t":12314,"x":474.3741209563994,"y":304.8279360556887,"e":"mousemove"},{"t":12331,"x":477.07454289732766,"y":303.0471263703371,"e":"mousemove"},{"t":12358,"x":477.07454289732766,"y":302.17894506087396,"e":"mousemove"},{"t":12399,"x":477.07454289732766,"y":298.2038258575198,"e":"mouseover"},{"t":12399,"x":477.07454289732766,"y":298.2038258575198,"e":"mousemove"},{"t":12434,"x":477.9746835443038,"y":295.4019349164468,"e":"mouseover"},{"t":12434,"x":477.9746835443038,"y":295.4019349164468,"e":"mousemove"},{"t":12448,"x":477.9746835443038,"y":294.9016051011434,"e":"mousemove"},{"t":12532,"x":477.9746835443038,"y":292.27874600749897,"e":"mouseover"},{"t":12533,"x":477.9746835443038,"y":292.7000879507476,"e":"mousemove"},{"t":12566,"x":477.9746835443038,"y":291.39918645558487,"e":"mouseover"},{"t":12566,"x":477.9746835443038,"y":291.39918645558487,"e":"mousemove"},{"t":12599,"x":477.9746835443038,"y":290.49857080035184,"e":"mousemove"},{"t":12614,"x":477.07454289732766,"y":289.59795514511876,"e":"mousemove"},{"t":12632,"x":477.07454289732766,"y":288.6973394898857,"e":"mousemove"},{"t":12647,"x":475.2742616033755,"y":288.6973394898857,"e":"mousemove"},{"t":12665,"x":473.4739803094233,"y":285.9954925241865,"e":"mousemove"},{"t":12681,"x":472.57383966244726,"y":285.0948768689534,"e":"mousemove"},{"t":12697,"x":470.77355836849506,"y":282.3930299032542,"e":"mousemove"},{"t":12715,"x":469.873417721519,"y":281.49241424802113,"e":"mousemove"},{"t":12731,"x":468.0731364275668,"y":279.69118293755497,"e":"mouseover"},{"t":12731,"x":468.0731364275668,"y":279.69118293755497,"e":"mousemove"},{"t":12748,"x":468.0731364275668,"y":278.7905672823219,"e":"mousemove"},{"t":12765,"x":466.2728551336146,"y":272.4862576956904,"e":"mouseover"},{"t":12765,"x":466.2728551336146,"y":272.4862576956904,"e":"mousemove"},{"t":12781,"x":465.37271448663853,"y":267.9831794195251,"e":"mousemove"},{"t":12797,"x":461.77215189873414,"y":259.87763852242745,"e":"mouseover"},{"t":12797,"x":461.77215189873414,"y":259.87763852242745,"e":"mousemove"},{"t":12815,"x":447.36990154711674,"y":244.56717238346528,"e":"mouseover"},{"t":12815,"x":447.36990154711674,"y":244.56717238346528,"e":"mousemove"},{"t":12831,"x":439.2686357243319,"y":236.46163148636765,"e":"mouseover"},{"t":12831,"x":439.2686357243319,"y":236.46163148636765,"e":"mousemove"},{"t":12847,"x":438.3684950773558,"y":235.56101583113457,"e":"mousemove"},{"t":12865,"x":438.3684950773558,"y":233.75978452066843,"e":"mouseover"},{"t":12865,"x":438.3684950773558,"y":233.75978452066843,"e":"mousemove"},{"t":12881,"x":438.3684950773558,"y":231.9585532102023,"e":"mousemove"},{"t":12898,"x":438.3684950773558,"y":228.35609058927002,"e":"mousemove"},{"t":12914,"x":439.2686357243319,"y":223.85301231310467,"e":"mousemove"},{"t":12930,"x":441.0689170182841,"y":221.15116534740545,"e":"mousemove"},{"t":12947,"x":442.8691983122363,"y":215.74747141600704,"e":"mouseover"},{"t":12947,"x":442.8691983122363,"y":215.74747141600704,"e":"mousemove"},{"t":12964,"x":442.8691983122363,"y":213.04562445030783,"e":"mouseover"},{"t":12964,"x":442.8691983122363,"y":213.04562445030783,"e":"mousemove"},{"t":12981,"x":444.6694796061885,"y":208.5425461741425,"e":"mouseover"},{"t":12981,"x":444.6694796061885,"y":208.5425461741425,"e":"mousemove"},{"t":12997,"x":446.4697609001406,"y":205.84069920844328,"e":"mousemove"},{"t":13014,"x":447.36990154711674,"y":203.13885224274406,"e":"mousemove"},{"t":13037,"x":448.2700421940928,"y":201.33762093227793,"e":"mousemove"},{"t":13082,"x":450.070323488045,"y":200.43700527704488,"e":"mousemove"},{"t":13097,"x":450.9704641350211,"y":199.5363896218118,"e":"mousemove"},{"t":13126,"x":451.87060478199714,"y":198.63577396657874,"e":"mousemove"},{"t":13141,"x":451.87060478199714,"y":197.73515831134566,"e":"mousemove"},{"t":13180,"x":453.67088607594934,"y":196.83454265611257,"e":"mousemove"},{"t":13254,"x":453.67088607594934,"y":198.63577396657874,"e":"mousemove"},{"t":13263,"x":453.67088607594934,"y":205.84069920844328,"e":"mousemove"},{"t":13281,"x":456.3713080168776,"y":222.05178100263853,"e":"mouseover"},{"t":13281,"x":456.3713080168776,"y":222.05178100263853,"e":"mousemove"},{"t":13298,"x":456.3713080168776,"y":240.964709762533,"e":"mouseover"},{"t":13298,"x":456.3713080168776,"y":240.964709762533,"e":"mousemove"},{"t":13314,"x":456.3713080168776,"y":257.17579155672826,"e":"mouseover"},{"t":13314,"x":456.3713080168776,"y":257.17579155672826,"e":"mousemove"},{"t":13330,"x":456.3713080168776,"y":276.0887203166227,"e":"mouseover"},{"t":13330,"x":456.3713080168776,"y":276.0887203166227,"e":"mousemove"},{"t":13347,"x":456.3713080168776,"y":287.7967238346526,"e":"mouseover"},{"t":13347,"x":456.3713080168776,"y":287.7967238346526,"e":"mousemove"},{"t":13364,"x":456.3713080168776,"y":298.60411169744947,"e":"mouseover"},{"t":13364,"x":456.3713080168776,"y":298.60411169744947,"e":"mousemove"},{"t":13382,"x":456.3713080168776,"y":304.90842128408093,"e":"mouseover"},{"t":13382,"x":456.3713080168776,"y":304.90842128408093,"e":"mousemove"},{"t":13398,"x":456.3713080168776,"y":309.4114995602463,"e":"mousemove"},{"t":13415,"x":456.3713080168776,"y":311.2127308707124,"e":"mousemove"},{"t":13431,"x":456.3713080168776,"y":312.1133465259455,"e":"mousemove"},{"t":13510,"x":457.27144866385373,"y":312.1133465259455,"e":"mousemove"},{"t":13547,"x":457.27144866385373,"y":306.7096525945471,"e":"mousemove"},{"t":13563,"x":459.971870604782,"y":297.7034960422164,"e":"mouseover"},{"t":13563,"x":459.971870604782,"y":297.7034960422164,"e":"mousemove"},{"t":13581,"x":460.87201125175807,"y":281.49241424802113,"e":"mouseover"},{"t":13581,"x":460.87201125175807,"y":281.49241424802113,"e":"mousemove"},{"t":13597,"x":460.87201125175807,"y":268.88379507475815,"e":"mouseover"},{"t":13597,"x":460.87201125175807,"y":268.88379507475815,"e":"mousemove"},{"t":13613,"x":460.87201125175807,"y":260.77825417766053,"e":"mouseover"},{"t":13613,"x":460.87201125175807,"y":260.77825417766053,"e":"mousemove"},{"t":13632,"x":460.87201125175807,"y":249.07025065963063,"e":"mouseover"},{"t":13632,"x":460.87201125175807,"y":249.07025065963063,"e":"mousemove"},{"t":13647,"x":460.87201125175807,"y":242.76594107299914,"e":"mousemove"},{"t":13664,"x":464.4725738396624,"y":233.75978452066843,"e":"mouseover"},{"t":13664,"x":464.4725738396624,"y":233.75978452066843,"e":"mousemove"},{"t":13680,"x":466.2728551336146,"y":222.05178100263853,"e":"mousemove"},{"t":13698,"x":470.77355836849506,"y":205.84069920844328,"e":"mouseover"},{"t":13698,"x":470.77355836849506,"y":205.84069920844328,"e":"mousemove"},{"t":13715,"x":475.2742616033755,"y":188.72900175901495,"e":"mouseover"},{"t":13715,"x":475.2742616033755,"y":188.72900175901495,"e":"mousemove"},{"t":13731,"x":478.87482419127986,"y":173.41853562005278,"e":"mouseover"},{"t":13731,"x":478.87482419127986,"y":173.41853562005278,"e":"mousemove"},{"t":13748,"x":480.67510548523205,"y":168.01484168865437,"e":"mouseover"},{"t":13748,"x":480.67510548523205,"y":168.01484168865437,"e":"mousemove"},{"t":13765,"x":482.47538677918425,"y":164.41237906772207,"e":"mousemove"},{"t":13781,"x":483.3755274261603,"y":163.51176341248902,"e":"mousemove"},{"t":13797,"x":483.3755274261603,"y":161.71053210202288,"e":"mousemove"},{"t":13902,"x":483.3755274261603,"y":160.8099164467898,"e":"mousemove"},{"t":14080,"x":483.3755274261603,"y":160.8099164467898,"e":"mousedown"},{"t":14141,"x":483.3755274261603,"y":160.8099164467898,"e":"mouseup"},{"t":14893,"x":483.3755274261603,"y":160.8099164467898,"e":"click"}],FR=60,SW=1280,N=50,
+T0=0,TD=14844,MND=80,MXD=522,
+SERP_SRC='serp-renders/p035-b1-t8.png',
+GAZEPLOT_SRC='gazeplots/p035-b1-t8.png';
+const rF=d=>8+(d-MND)/(MXD-MND+1)*22;
+const cF=(i,n)=>{const t=n>1?i/(n-1):0;return`rgb(${Math.round(50+205*t)},${Math.round(50+100*(1-Math.abs(t-.5)*2))},${Math.round(255-205*t)})`};
+// Cognitive load color: blue (constricted/low load) → red (dilated/high load)
+const PDC=F.filter(f=>f.pdc!=null).map(f=>f.pdc);
+const PDC_MIN=PDC.length?Math.min(...PDC):0,PDC_MAX=PDC.length?Math.max(...PDC):1;
+// Pupil color: dark cyan → bright cyan
+const cPD=(pdc)=>{if(pdc==null)return'#333';const t=(pdc-PDC_MIN)/(PDC_MAX-PDC_MIN+0.001);return`rgb(${Math.round(10+30*t)},${Math.round(40+200*t)},${Math.round(60+195*t)})`};
+// Saliency color: black → bright orange (unmistakable)
+const SAL=F.filter(f=>f.sal!=null).map(f=>f.sal);
+const SAL_MIN=SAL.length?Math.min(...SAL):0,SAL_MAX=SAL.length?Math.max(...SAL):1;
+const cSal=(s)=>{if(s==null)return'#333';const t=Math.max(0,Math.min(1,(s-SAL_MIN)/(SAL_MAX-SAL_MIN+0.001)));
+return`rgb(${Math.round(40+215*t)},${Math.round(20+140*t)},${Math.round(10+20*t)})`};
+let colorMode='sequence'; // 'sequence', 'load', or 'saliency'
+const COLOR_MODES=['sequence','load','lfhf','saliency'];
+function getColor(i){if(colorMode==='load'&&F[i].pdc!=null)return cPD(F[i].pdc);if(colorMode==='lfhf'&&F[i].lfhf!=null)return cLFHF(F[i].lfhf);if(colorMode==='saliency'&&F[i].sal!=null)return cSal(F[i].sal);return cF(i,N)}
+const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
+fr=document.getElementById('foveal-ring'),mc=document.getElementById('mouse-cursor'),
+vw=document.getElementById('viewer'),
+ws=document.getElementById('window-size'),wl=document.getElementById('ws-label'),
+tt=document.getElementById('timeline-tracks');
+let ci=N-1,pl=false,pt=null;
+// Progressive foveation state
+const pc=document.getElementById('prog-canvas');
+const pCtx=pc?pc.getContext('2d'):null;
+let bgMode=GAZEPLOT_SRC?'gazeplot':'serp';
+let gpImg=null,gpLoaded=false;
+if(GAZEPLOT_SRC){gpImg=new Image();gpImg.onload=()=>{gpLoaded=true;if(bgMode==='progressive')drawProg()};gpImg.src=GAZEPLOT_SRC}
+function drawProg(){if(!pCtx||!gpImg||!gpLoaded)return;
+const w=pc.width,h=pc.height;pCtx.clearRect(0,0,w,h);
+pCtx.globalCompositeOperation='source-over';
+for(let i=0;i<=ci;i++){const f=F[i],r=FR*2.5;
+const g=pCtx.createRadialGradient(f.x,f.y,0,f.x,f.y,r);
+g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(0.5,'rgba(255,255,255,0.7)');g.addColorStop(1,'rgba(255,255,255,0)');
+pCtx.fillStyle=g;pCtx.beginPath();pCtx.arc(f.x,f.y,r,0,Math.PI*2);pCtx.fill()}
+pCtx.globalCompositeOperation='source-in';
+pCtx.drawImage(gpImg,0,0,w,h);pCtx.globalCompositeOperation='source-over'}
+const ns='http://www.w3.org/2000/svg';
+function se(t,a){const e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e}
+// ── Build multi-track timeline ──────────────────────────────────────
+function buildTrack(containerId, colorFn, valueFn) {
+    const el = document.getElementById(containerId);
+    if (!el) return [];
+    const ticks = [];
+    F.forEach((f, i) => {
+        const t = document.createElement('div');
+        t.className = 'timeline-tick';
+        t.style.left = (N > 1 ? (f.t - T0) / TD * 100 : 0) + '%';
+        t.style.width = Math.max(0.5, f.d / TD * 100) + '%';
+        t.style.background = colorFn(i);
+        const v = valueFn ? valueFn(i) : 1;
+        const hPct = Math.max(15, v * 100);
+        t.style.height = hPct + '%';
+        t.style.bottom = '0';
+        t.style.top = 'auto';
+        t.style.opacity = '.8';
+        el.appendChild(t);
+        ticks.push(t);
+    });
+    return ticks;
+}
+// Dwell: height encodes duration (taller = longer fixation)
+function buildDwellTrack() {
+    const el = document.getElementById('ticks-dwell');
+    if (!el) return [];
+    const ticks = [];
+    F.forEach((f, i) => {
+        const t = document.createElement('div');
+        t.className = 'timeline-tick';
+        t.style.left = (N > 1 ? (f.t - T0) / TD * 100 : 0) + '%';
+        t.style.width = Math.max(0.5, f.d / TD * 100) + '%';
+        const hPct = Math.min(100, 20 + f.d / 8);
+        t.style.height = hPct + '%';
+        t.style.bottom = '0';
+        t.style.top = 'auto';
+        t.style.background = '#b8a0d8';
+        t.style.opacity = '.6';
+        el.appendChild(t);
+        ticks.push(t);
+    });
+    return ticks;
+}
+const tkSal = buildTrack('ticks-saliency', i => cSal(F[i].sal), i => {
+    if(F[i].sal==null) return 0.15;
+    return (F[i].sal - SAL_MIN) / (SAL_MAX - SAL_MIN + 0.001);
+});
+const tkPup = buildTrack('ticks-pupil', i => cPD(F[i].pdc), i => {
+    if(F[i].pdc==null) return 0.15;
+    return (F[i].pdc - PDC_MIN) / (PDC_MAX - PDC_MIN + 0.001);
+});
+// LF/HF cognitive load: amber (low load) → red (high load)
+const LFHF=F.filter(f=>f.lfhf!=null).map(f=>f.lfhf);
+const LFHF_MIN=LFHF.length?Math.min(...LFHF):0,LFHF_MAX=LFHF.length?Math.max(...LFHF):1;
+const cLFHF=(v)=>{if(v==null)return'#333';const t=Math.max(0,Math.min(1,(v-LFHF_MIN)/(LFHF_MAX-LFHF_MIN+0.001)));
+return`rgb(${Math.round(200+55*t)},${Math.round(160-110*t)},${Math.round(40-30*t)})`};
+const tkLFHF = buildTrack('ticks-lfhf', i => cLFHF(F[i].lfhf), i => {
+    if(F[i].lfhf==null) return 0.15;
+    return (F[i].lfhf - LFHF_MIN) / (LFHF_MAX - LFHF_MIN + 0.001);
+});
+// Scroll: height = normalized scroll position, color = direction
+function buildScrollTrack() {
+    const el = document.getElementById('ticks-scroll');
+    if (!el) return [];
+    const ticks = [];
+    const scrVals = F.filter(f => f.scr != null).map(f => f.scr);
+    const scrMax = scrVals.length ? Math.max(...scrVals, 1) : 1;
+    F.forEach((f, i) => {
+        const t = document.createElement('div');
+        t.className = 'timeline-tick';
+        t.style.left = (N > 1 ? (f.t - T0) / TD * 100 : 0) + '%';
+        t.style.width = Math.max(0.5, f.d / TD * 100) + '%';
+        const sv = f.scr != null ? f.scr : 0;
+        const hPct = Math.max(10, (sv / scrMax) * 100);
+        t.style.height = hPct + '%';
+        t.style.bottom = '0';
+        t.style.top = 'auto';
+        // Color: green=forward, red=regression
+        const prev = i > 0 && F[i-1].scr != null ? F[i-1].scr : sv;
+        const delta = sv - prev;
+        if (delta < -5) t.style.background = '#ef4444'; // regression
+        else if (delta > 5) t.style.background = '#22c55e'; // forward
+        else t.style.background = '#666'; // stationary
+        t.style.opacity = '.8';
+        el.appendChild(t);
+        ticks.push(t);
+    });
+    return ticks;
+}
+// Gaze velocity tracks: displacement between consecutive fixations
+// Height = |displacement| normalized per-trial; color encodes direction
+const VX=F.map(f=>f.vx||0),VY=F.map(f=>f.vy||0);
+const VX_MAX=Math.max(1,...VX.map(Math.abs)),VY_MAX=Math.max(1,...VY.map(Math.abs));
+// ΔX color: yellow for rightward, blue-gray for leftward
+const cVX=(v)=>{if(v==null)return'#333';const t=v/VX_MAX;
+if(t>=0)return`rgb(${Math.round(80+175*t)},${Math.round(80+175*t)},${Math.round(30+20*t)})`;
+return`rgb(${Math.round(50+30*(-t))},${Math.round(50+50*(-t))},${Math.round(80+80*(-t))})`};
+// ΔY color: teal for downward (forward), red-orange for upward (regression)
+const cVY=(v)=>{if(v==null)return'#333';const t=v/VY_MAX;
+if(t>=0)return`rgb(${Math.round(30+20*t)},${Math.round(60+140*t)},${Math.round(80+140*t)})`;
+return`rgb(${Math.round(80+175*(-t))},${Math.round(40+30*(-t))},${Math.round(20+20*(-t))})`};
+const tkGazeVX = buildTrack('ticks-gaze-vx', i => cVX(F[i].vx), i => Math.abs(F[i].vx||0)/VX_MAX);
+const tkGazeVY = buildTrack('ticks-gaze-vy', i => cVY(F[i].vy), i => Math.abs(F[i].vy||0)/VY_MAX);
+const tkScroll = buildScrollTrack();
+const tkDwell = buildDwellTrack();
+const tkE = tkSal; // backward compat for recolor
+const lE=[],cE=[],tE=[];
+for(let i=0;i<N;i++){const f=F[i],r=rF(f.d),c=cF(i,N);
+if(i>0){const p=F[i-1];const l=se('line',{x1:p.x,y1:p.y,x2:f.x,y2:f.y,stroke:c,'stroke-width':1.5,'stroke-opacity':.4});svg.appendChild(l);lE.push(l)}else lE.push(null);
+const cr=se('circle',{cx:f.x,cy:f.y,r,fill:c,'fill-opacity':.25,stroke:c,'stroke-width':2,'stroke-opacity':.8});svg.appendChild(cr);cE.push(cr);
+const fs=Math.max(9,Math.min(14,r));const tx=se('text',{x:f.x,y:f.y,'text-anchor':'middle','dominant-baseline':'central','font-family':'monospace','font-weight':'bold','font-size':fs,fill:'white',stroke:'rgba(0,0,0,.6)','stroke-width':2,'paint-order':'stroke'});tx.textContent=i+1;svg.appendChild(tx);tE.push(tx)}
+if(CK){const s=se('polygon',{points:[0,-16,6,-4,16,-4,8,4,12,16,0,8,-12,16,-8,4,-16,-4,-6,-4].reduce((a,v,i)=>{a.push(i%2===0?CK.x+v:CK.y+v);return a},[]).join(','),fill:'#f00','fill-opacity':.5,stroke:'#f00','stroke-width':2});svg.appendChild(s);
+const l=se('text',{x:CK.x+18,y:CK.y+4,'font-family':'monospace','font-weight':'bold','font-size':11,fill:'#f00',stroke:'white','stroke-width':2,'paint-order':'stroke'});l.textContent='CLICK';svg.appendChild(l)}
+function uv(){const wn=parseInt(ws.value);
+wl.textContent=wn>=N?'All':wn;
+const lo=Math.max(0,ci-wn+1);
+for(let i=0;i<N;i++){const v=i>=lo&&i<=ci;cE[i].style.display=v?'':'none';tE[i].style.display=v?'':'none';
+if(lE[i])lE[i].style.display=(v&&i>lo)?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',pl&&i===ci?1:.8)}
+if(ci>=0&&N>1){const tr=firstTrack.getBoundingClientRect(),tc=tt.getBoundingClientRect();const off=tr.left-tc.left;const pct=(F[ci].t-T0)/TD;ph.style.left=(off+pct*tr.width)+'px';}
+if(ci>=0){const f=F[ci];const vr=vw.getBoundingClientRect(),fy=f.y-vw.scrollTop;if(fy<100||fy>vr.height-100)vw.scrollTo({top:f.y-vr.height/2,behavior:'smooth'})}
+if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px';
+// Mouse cursor: interpolate position at current fixation time (relative)
+if(ME.length>0){const ft=f.t-T0;let mi=0;for(let i=0;i<ME.length;i++){if(ME[i].t<=ft)mi=i;else break;}
+const m0=ME[mi],m1=ME[Math.min(mi+1,ME.length-1)];
+let mx=m0.x,my=m0.y;if(m1.t>m0.t){const p=(ft-m0.t)/(m1.t-m0.t);mx=m0.x+(m1.x-m0.x)*p;my=m0.y+(m1.y-m0.y)*p;}
+mc.style.display='block';mc.style.left=mx+'px';mc.style.top=my+'px';mc.style.opacity='1';
+mc.classList.toggle('clicking',m0.e==='click'||m0.e==='mousedown');
+console.log('CURSOR',mx.toFixed(0),my.toFixed(0),m0.e);
+}}else{fr.style.display='none';mc.style.display='none';}
+if(ci>=0){const f=F[ci];document.getElementById('info-pos').textContent='('+f.x+','+f.y+')';
+document.getElementById('info-dur').textContent=f.d+'ms';document.getElementById('info-seen').textContent=ci+1;
+document.getElementById('time-label').textContent='Fixation '+(ci+1)+' / '+N;
+document.getElementById('duration-label').textContent=((f.t-T0)/1000).toFixed(1)+'s / '+(TD/1000).toFixed(1)+'s'}
+if(bgMode==='progressive')drawProg()}
+function sf(i){ci=Math.max(-1,Math.min(N-1,i));uv();if(typeof pushHash==='function')pushHash()}
+const firstTrack=tt.querySelector('.timeline-track');
+let dr=false;function ts(e){const r=firstTrack.getBoundingClientRect(),p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
+let b=0;for(let i=0;i<N;i++)if(F[i].t<=T0+p*TD)b=i;sf(b)}
+tt.addEventListener('mousedown',e=>{dr=true;ts(e)});document.addEventListener('mousemove',e=>{if(dr)ts(e)});document.addEventListener('mouseup',()=>{dr=false});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){sf(ci+1);e.preventDefault()}if(e.key==='ArrowLeft'){sf(ci-1);e.preventDefault()}
+if(e.key===' '){tp();e.preventDefault()}if(e.key==='Home'){sf(0);e.preventDefault()}if(e.key==='End'){sf(N-1);e.preventDefault()}});
+function tp(){pl=!pl;document.getElementById('play-btn').textContent=pl?'⏸ Pause':'▶ Play';
+document.getElementById('play-btn').classList.toggle('active',pl);if(pl){if(ci>=N-1)ci=-1;pn()}else{clearTimeout(pt);fr.style.display='none';mc.style.display='none';uv()}}
+function pn(){if(!pl)return;const n=ci+1;if(n>=N){pl=false;document.getElementById('play-btn').textContent='▶ Play';fr.style.display='none';mc.style.display='none';ci=N-1;uv();return}
+sf(n);pt=setTimeout(pn,Math.max(100,F[n].d*.5))}
+document.getElementById('play-btn').addEventListener('click',tp);
+document.getElementById('reset-btn').addEventListener('click',()=>{pl=false;clearTimeout(pt);document.getElementById('play-btn').textContent='▶ Play';ws.value=N;ci=N-1;uv();vw.scrollTo({top:0})});
+uv();
+// Gaze points toggle
+const gazeBtn=document.getElementById('gaze-btn');
+let gazeVisible=true;
+gazeBtn.addEventListener('click',()=>{gazeVisible=!gazeVisible;svg.style.display=gazeVisible?'':'none';gazeBtn.classList.toggle('active',gazeVisible);pushHash()});
+// Color mode toggle (sequence vs cognitive load)
+const colorBtn=document.getElementById('color-btn');
+function recolor(){for(let i=0;i<N;i++){const c=getColor(i);
+cE[i].setAttribute('fill',c);cE[i].setAttribute('stroke',c);
+if(lE[i]){lE[i].setAttribute('stroke',c)}
+if(tkE[i])tkE[i].style.background=c}}
+const COLOR_LABELS={sequence:'Color: Sequence',load:'Color: Pupil Load',lfhf:'Color: Pupil LF/HF',saliency:'Color: Saliency'};
+if(colorBtn){colorBtn.addEventListener('click',()=>{
+const ci_cm=COLOR_MODES.indexOf(colorMode);colorMode=COLOR_MODES[(ci_cm+1)%COLOR_MODES.length];
+colorBtn.textContent=COLOR_LABELS[colorMode];
+colorBtn.classList.toggle('active',colorMode!=='sequence');
+recolor();pushHash()})}
+// Background mode controls
+const modeBtn=document.getElementById('mode-btn');
+const progBtn=document.getElementById('prog-btn');
+const serpEl=document.getElementById('serp-img');
+const gpEl=document.getElementById('gazeplot-img');
+function setMode(m){bgMode=m;
+// SERP img always visible (defines container height). Gazeplot + progressive canvas toggle on top.
+if(m==='gazeplot'){if(gpEl)gpEl.style.display='';pc.style.display='none';modeBtn.textContent='Original';modeBtn.classList.remove('active');progBtn.classList.remove('active')}
+else if(m==='serp'){if(gpEl)gpEl.style.display='none';pc.style.display='none';modeBtn.textContent='Foveated';modeBtn.classList.add('active');progBtn.classList.remove('active')}
+else if(m==='progressive'){if(gpEl)gpEl.style.display='none';pc.style.display='block';modeBtn.textContent='Foveated';modeBtn.classList.remove('active');progBtn.classList.add('active');drawProg()}}
+if(modeBtn){modeBtn.addEventListener('click',()=>{setMode(bgMode==='gazeplot'?'serp':'gazeplot');pushHash()})}
+if(progBtn){progBtn.addEventListener('click',()=>{const next=bgMode==='progressive'?'gazeplot':'progressive';setMode(next);progBtn.textContent=next==='progressive'?'Cumulative':'Progressive';pushHash()})}
+// Hash permalinks: #fix=50&w=20&mode=progressive
+function pushHash(){const p=[];
+if(!ws.disabled)p.push('fix='+(ci+1));
+if(!ws.disabled)p.push('w='+ws.value);
+if(bgMode!=='gazeplot')p.push('mode='+bgMode);
+if(!gazeVisible)p.push('gaze=off');
+if(colorMode!=='sequence')p.push('color='+colorMode);
+history.replaceState(null,'','#'+p.join('&'))}
+function readHash(){const h=location.hash.slice(1);if(!h)return;
+const p={};h.split('&').forEach(kv=>{const[k,v]=kv.split('=');p[k]=v});
+if(p.mode)setMode(p.mode);
+if(p.w){ws.value=p.w;wl.textContent=p.w}
+if(p.fix){ci=Math.max(0,Math.min(N-1,parseInt(p.fix)-1));uv()}
+if(p.gaze==='off'){gazeVisible=false;svg.style.display='none';gazeBtn.classList.remove('active')}
+if(p.color&&COLOR_MODES.includes(p.color)){colorMode=p.color;colorBtn.textContent=COLOR_LABELS[colorMode];colorBtn.classList.toggle('active',colorMode!=='sequence');recolor()}}
+readHash();
+ws.addEventListener('input',()=>{const wn=parseInt(ws.value);if(ci>=N-1||ci<wn)ci=Math.min(wn-1,N-1);uv();pushHash()});
+</script></body></html>

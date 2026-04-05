@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Scanpath: p021-b6-t2 — buy clauss clauss 18429 titanium wire cutters</title>
+<meta name="viewport" content="width=1280">
+<script>!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init('phc_cUZalkUiHgfuv7k5hPzhuLhYQkjUWOQBl82pdDgHAmZ',{api_host:'https://us.i.posthog.com',person_profiles:'identified_only'});</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #111; color: #eee; font-family: system-ui, -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; }
+.header { width: 1280px; padding: 10px 16px; background: #1a1a1a; border-bottom: 1px solid #333;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.header h1 { font-size: 14px; font-weight: 600; }
+.header h1 span { color: #aaa; font-weight: 400; }
+.controls { display: flex; gap: 12px; align-items: center; font-size: 12px; }
+.controls label { cursor: pointer; user-select: none; }
+.btn { background: #333; border: 1px solid #555; color: #eee; padding: 3px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; }
+.btn:hover { background: #444; }
+.btn.active { background: #2a5a8a; border-color: #4a8aca; }
+.viewer { position: relative; width: 1280px; height: 70vh; overflow-y: auto; overflow-x: hidden; background: #000; }
+.serp-container { position: relative; width: 1280px; }
+#serp-img, #gazeplot-img { width: 1280px; height: 2861px; display: block; }
+#gazeplot-img { position: absolute; top: 0; left: 0; z-index: 1; }
+#prog-canvas { position: absolute; top: 0; left: 0; z-index: 5; pointer-events: none; display: none; }
+.scanpath-svg { position: absolute; top: 0; left: 0; z-index: 10; pointer-events: none; }
+.foveal-ring { position: absolute; z-index: 11; pointer-events: none; border: 2px solid rgba(255,255,255,0.7);
+  border-radius: 50%; width: 120px; height: 120px; transform: translate(-50%, -50%);
+  box-shadow: 0 0 20px rgba(255,255,255,0.3); transition: left 0.08s, top 0.08s; display: none; }
+.mouse-cursor { position: absolute; z-index: 999; pointer-events: none; display: none;
+  width: 20px; height: 20px; transition: left 0.03s linear, top 0.03s linear; }
+.mouse-cursor svg { width: 20px; height: 28px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); }
+.mouse-cursor.clicking svg path { fill: #ff3333; }
+.timeline { width: 1280px; background: #1a1a1a; padding: 6px 16px; border-top: 1px solid #333; }
+.timeline-tracks { position: relative; cursor: pointer; user-select: none; -webkit-user-select: none; }
+.timeline-row { display: flex; align-items: stretch; height: 22px; margin-bottom: 1px; }
+.timeline-row:last-child { margin-bottom: 0; }
+.timeline-label { width: 60px; flex-shrink: 0; font-size: 9px; font-weight: 700; display: flex; align-items: center; padding-right: 6px; text-align: right; justify-content: flex-end; text-transform: uppercase; letter-spacing: 0.5px; position: relative; z-index: 3; background: #1a1a1a; }
+.timeline-label.lbl-saliency { color: #ffa040; text-shadow: 0 0 6px rgba(255,160,64,0.4); }
+.timeline-label.lbl-pupil { color: #40e0ff; text-shadow: 0 0 6px rgba(64,224,255,0.4); }
+.timeline-label.lbl-lfhf { color: #f59e0b; text-shadow: 0 0 6px rgba(245,158,11,0.4); }
+.timeline-label.lbl-gaze-x { color: #e0e050; text-shadow: 0 0 6px rgba(224,224,80,0.4); }
+.timeline-label.lbl-gaze-y { color: #50c0e0; text-shadow: 0 0 6px rgba(80,192,224,0.4); }
+.timeline-label.lbl-scroll { color: #44dd66; text-shadow: 0 0 6px rgba(68,221,102,0.4); }
+.timeline-label.lbl-dwell { color: #c8a8f0; text-shadow: 0 0 6px rgba(200,168,240,0.4); }
+.timeline-track { position: relative; flex: 1; background: #222; border-radius: 2px; overflow: hidden; }
+.timeline-ticks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.timeline-tick { position: absolute; top: 0; min-width: 2px; height: 100%; }
+.timeline-playhead { position: absolute; top: 0; width: 2px; height: 100%; background: #ff4444; z-index: 2; pointer-events: none; }
+.timeline-info { display: flex; justify-content: space-between; margin-top: 4px; font-size: 11px; color: #aaa; padding-left: 64px; }
+.info-panel { width: 1280px; padding: 6px 16px; background: #1a1a1a; font-size: 11px; color: #aaa;
+  display: flex; gap: 20px; border-top: 1px solid #222; }
+.info-panel .val { color: #ccc; }
+.info-panel a { color: #ff9933; text-decoration: none; font-weight: 600; }
+.info-panel a:hover { text-decoration: underline; }
+.back { font-size: 12px; }
+.back a { color: #6af; text-decoration: none; }
+</style></head><body>
+<div class="header">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <span class="back"><a href="index.html">&larr; All</a></span>
+    <h1>p021-b6-t2 <span>— buy clauss clauss 18429 titanium wire cutters</span></h1>
+  </div>
+  <div class="controls">
+    <button class="btn" id="mode-btn">Original</button>
+    <label id="ws-group">Window <input type="range" id="window-size" min="1" max="54" value="54" style="width:80px;vertical-align:middle;"> <span id="ws-label">All</span></label>
+    <button class="btn active" id="gaze-btn">Gaze Points</button>
+    <button class="btn" id="color-btn">Color: Sequence</button>
+    <button class="btn" id="play-btn">&#9654; Play</button>
+    <button class="btn" id="reset-btn">Reset</button>
+  </div>
+</div>
+<div class="viewer" id="viewer">
+  <div class="serp-container">
+    <img id="serp-img" src="serp-renders/p021-b6-t2.png" width="1280" height="2861" />
+    <img id="gazeplot-img" src="gazeplots/p021-b6-t2.png" />
+    <canvas id="prog-canvas" width="1280" height="2861"></canvas>
+    <svg class="scanpath-svg" id="scanpath-svg" xmlns="http://www.w3.org/2000/svg"
+         width="1280" height="2861" viewBox="0 0 1280 2861"></svg>
+    <div class="foveal-ring" id="foveal-ring"></div>
+    <div class="mouse-cursor" id="mouse-cursor"><svg viewBox="0 0 20 28"><path d="M0,0 L0,22 L5.5,17 L10,28 L14,26 L9,16 L16,16 Z" fill="#ff9933" stroke="#000" stroke-width="1"/></svg></div>
+  </div>
+</div>
+<div class="timeline">
+  <div class="timeline-tracks" id="timeline-tracks">
+    <div class="timeline-row">
+      <div class="timeline-label lbl-saliency">Saliency</div>
+      <div class="timeline-track" id="track-saliency">
+        <div class="timeline-ticks" id="ticks-saliency"></div>
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-label lbl-pupil">Pupil</div>
+      <div class="timeline-track" id="track-pupil">
+        <div class="timeline-ticks" id="ticks-pupil"></div>
+      </div>
+    </div>
+    
+    <div class="timeline-row">
+      <div class="timeline-label lbl-gaze-x">Gaze ΔX</div>
+      <div class="timeline-track" id="track-gaze-vx">
+        <div class="timeline-ticks" id="ticks-gaze-vx"></div>
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-label lbl-gaze-y">Gaze ΔY</div>
+      <div class="timeline-track" id="track-gaze-vy">
+        <div class="timeline-ticks" id="ticks-gaze-vy"></div>
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-label lbl-scroll">Scroll</div>
+      <div class="timeline-track" id="track-scroll">
+        <div class="timeline-ticks" id="ticks-scroll"></div>
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-label lbl-dwell">Dwell</div>
+      <div class="timeline-track" id="track-dwell">
+        <div class="timeline-ticks" id="ticks-dwell"></div>
+      </div>
+    </div>
+    <div class="timeline-playhead" id="playhead"></div>
+  </div>
+  <div class="timeline-info">
+    <span id="time-label">Fixation 0 / 54</span>
+    <span id="duration-label">0.0s / 14.2s</span>
+  </div>
+</div>
+<div class="info-panel">
+  <span><a href="https://github.com/andyed/scrutinizer2025">Scrutinizer rendering</a></span>
+  <span>Position: <span class="val" id="info-pos">—</span></span>
+  <span>Duration: <span class="val" id="info-dur">—</span></span>
+  <span>Fixations: <span class="val" id="info-seen">0</span></span>
+  <span>Click: <span class="val">(244, 1089)</span></span>
+  <span><a href="png/p021-b6-t2.png" download style="color:#6af;text-decoration:none;">Download PNG</a></span>
+</div>
+<div style="width:1280px;padding:6px 16px;background:#1a1a1a;font-size:10px;color:#666;border-top:1px solid #222;">
+  Fixation overlay alignment: median &lt;13px offset, max ~45px at page bottom. SERP HTML is re-rendered locally; element heights differ from original Chrome 110/Windows session due to external resource loading (Maps tiles, product images). Fixation coordinates (FPOGX/FPOGY) from <a href="https://github.com/kayhan-latifzadeh/AdSERP" style="color:#888;">AdSERP dataset</a> are pixel-verified accurate against synthetic test pages.
+</div>
+<script>
+const F=[{"t":0,"x":576.3,"y":289.8,"d":161,"vx":0,"vy":0,"pd":13.663,"pdc":0.0788,"scr":0,"sal":0.191,"cong":0.4159},{"t":187,"x":416.3,"y":466.3,"d":160,"vx":-160,"vy":177,"pd":13.322,"pdc":0.0518,"scr":0,"sal":0.109,"cong":0.1443},{"t":529,"x":155.5,"y":456.4,"d":314,"vx":-261,"vy":-10,"pd":12.486,"pdc":-0.0141,"scr":0,"sal":0.1507,"cong":0.2276},{"t":623,"x":159.6,"y":560.8,"d":86,"vx":4,"vy":104,"pd":12.676,"pdc":0.0008,"scr":0,"sal":0.2825,"cong":0.5488},{"t":823,"x":566.3,"y":807.2,"d":173,"vx":407,"vy":246,"pd":12.784,"pdc":0.0094,"scr":0,"sal":0.2244,"cong":0.3416},{"t":991,"x":640.7,"y":806.1,"d":161,"vx":74,"vy":-1,"pd":12.961,"pdc":0.0234,"scr":0,"sal":0.1449,"cong":0.1898},{"t":1111,"x":580.7,"y":772.8,"d":113,"vx":-60,"vy":-33,"pd":12.972,"pdc":0.0243,"scr":0,"sal":0.2192,"cong":0.3153},{"t":1279,"x":214.1,"y":700.6,"d":140,"vx":-367,"vy":-72,"pd":13.188,"pdc":0.0413,"scr":0,"sal":0.2139,"cong":0.4298},{"t":1527,"x":141.1,"y":750.6,"d":240,"vx":-73,"vy":50,"pd":13.086,"pdc":0.0332,"scr":0,"sal":0.1588,"cong":0.2806},{"t":1701,"x":96.7,"y":817.2,"d":166,"vx":-44,"vy":67,"scr":0,"sal":0.1122,"cong":0.1704},{"t":1781,"x":150,"y":863.9,"d":73,"vx":53,"vy":47,"scr":0,"sal":0.136,"cong":0.2212},{"t":2411,"x":170.8,"y":842.7,"d":408,"vx":21,"vy":-21,"pd":13.498,"pdc":0.0658,"scr":0,"sal":0.1753,"cong":0.2511},{"t":2693,"x":270.8,"y":852.7,"d":274,"vx":100,"vy":10,"pd":13.152,"pdc":0.0385,"scr":0,"sal":0.1458,"cong":0.2461},{"t":2920,"x":345.2,"y":812.7,"d":220,"vx":74,"vy":-40,"pd":12.862,"pdc":0.0155,"scr":0,"sal":0.1656,"cong":0.2718},{"t":3141,"x":181.9,"y":381.9,"d":193,"vx":-163,"vy":-431,"pd":12.971,"pdc":0.0242,"scr":0,"sal":0.1977,"cong":0.3207},{"t":3269,"x":77.8,"y":314.2,"d":120,"vx":-104,"vy":-68,"pd":12.876,"pdc":0.0166,"scr":0,"sal":0.0348,"cong":0.0386},{"t":3483,"x":55.5,"y":272,"d":208,"vx":-22,"vy":-42,"pd":13.234,"pdc":0.0449,"scr":0,"sal":0.0242,"cong":0.023},{"t":3637,"x":68.9,"y":232.1,"d":146,"vx":13,"vy":-40,"pd":13.154,"pdc":0.0386,"scr":0,"sal":0.0474,"cong":0.0721},{"t":3744,"x":62.2,"y":206.5,"d":100,"vx":-7,"vy":-26,"pd":13.102,"pdc":0.0345,"scr":0,"sal":0.0374,"cong":0.0488},{"t":4106,"x":384.1,"y":1510.1,"d":94,"vx":322,"vy":1304,"pd":13.116,"pdc":0.0356,"scr":667,"sal":0.2576,"cong":0.4563},{"t":4347,"x":439.6,"y":1483.4,"d":234,"vx":56,"vy":-27,"pd":13.276,"pdc":0.0483,"scr":667,"sal":0.2348,"cong":0.4604},{"t":4809,"x":460.8,"y":1994.2,"d":268,"vx":21,"vy":511,"pd":12.721,"pdc":0.0044,"scr":1222,"sal":0.1298,"cong":0.1791},{"t":5204,"x":314.1,"y":2557.1,"d":146,"vx":-147,"vy":563,"pd":13.32,"pdc":0.0517,"scr":1667,"sal":0.2343,"cong":0.1456},{"t":5586,"x":198.6,"y":2642.6,"d":100,"vx":-116,"vy":86,"pd":13.529,"pdc":0.0682,"scr":1743,"sal":0.0349,"cong":0.0238},{"t":6142,"x":165.2,"y":2492.8,"d":234,"vx":-33,"vy":-150,"scr":1632,"sal":0.0635,"cong":0.0885},{"t":7475,"x":121.9,"y":1483.4,"d":200,"vx":-43,"vy":-1009,"pd":12.984,"pdc":0.0252,"scr":632,"sal":0.2463,"cong":0.6216},{"t":7797,"x":155.2,"y":1450.1,"d":314,"vx":33,"vy":-33,"pd":12.835,"pdc":0.0134,"scr":632,"sal":0.2473,"cong":0.6523},{"t":8004,"x":137.8,"y":1447.9,"d":194,"vx":-17,"vy":-2,"pd":12.67,"pdc":0.0004,"scr":632,"sal":0.1726,"cong":0.3572},{"t":8125,"x":150,"y":1452.3,"d":113,"vx":12,"vy":4,"pd":12.513,"pdc":-0.012,"scr":632,"sal":0.1883,"cong":0.4201},{"t":8400,"x":165.5,"y":1405.7,"d":268,"vx":16,"vy":-47,"pd":12.502,"pdc":-0.0129,"scr":632,"sal":0.2062,"cong":0.4812},{"t":8689,"x":133,"y":1394.6,"d":282,"vx":-32,"vy":-11,"pd":12.432,"pdc":-0.0184,"scr":632,"sal":0.2463,"cong":0.6216},{"t":9256,"x":171.1,"y":1118.1,"d":207,"vx":38,"vy":-276,"pd":12.437,"pdc":-0.018,"scr":299,"sal":0.1607,"cong":0.3284},{"t":9866,"x":129.7,"y":1129.2,"d":602,"vx":-41,"vy":11,"pd":11.389,"pdc":-0.1007,"scr":299,"sal":0.1514,"cong":0.361},{"t":10014,"x":169.7,"y":1073.7,"d":140,"vx":40,"vy":-55,"pd":11.563,"pdc":-0.087,"scr":299,"sal":0.1128,"cong":0.1959},{"t":10128,"x":135.2,"y":919.4,"d":87,"vx":-34,"vy":-154,"pd":10.342,"pdc":-0.1834,"scr":299,"sal":0.2265,"cong":0.6134},{"t":10316,"x":152.2,"y":909.4,"d":181,"vx":17,"vy":-10,"pd":10.929,"pdc":-0.1371,"scr":299,"sal":0.2117,"cong":0.4832},{"t":10469,"x":123,"y":868.3,"d":146,"vx":-29,"vy":-41,"pd":10.582,"pdc":-0.1645,"scr":299,"sal":0.1899,"cong":0.4501},{"t":10637,"x":164.1,"y":870.6,"d":160,"vx":41,"vy":2,"scr":299,"sal":0.1885,"cong":0.4585},{"t":10992,"x":158.6,"y":842.7,"d":166,"vx":-5,"vy":-28,"pd":11.705,"pdc":-0.0758,"scr":299,"sal":0.1659,"cong":0.3367},{"t":11106,"x":170,"y":812.8,"d":106,"vx":11,"vy":-30,"pd":11.634,"pdc":-0.0814,"scr":299,"sal":0.1885,"cong":0.3854},{"t":11434,"x":156.6,"y":777.2,"d":321,"vx":-13,"vy":-36,"pd":11.928,"pdc":-0.0582,"scr":299,"sal":0.2246,"cong":0.4549},{"t":11629,"x":116.4,"y":793.9,"d":187,"vx":-40,"vy":17,"pd":11.745,"pdc":-0.0726,"scr":299,"sal":0.2298,"cong":0.4739},{"t":11776,"x":146.4,"y":792.8,"d":140,"vx":30,"vy":-1,"pd":11.921,"pdc":-0.0588,"scr":299,"sal":0.2115,"cong":0.432},{"t":11930,"x":167.5,"y":790.5,"d":147,"vx":21,"vy":-2,"pd":11.817,"pdc":-0.0669,"scr":299,"sal":0.1969,"cong":0.4044},{"t":12204,"x":130.8,"y":800.5,"d":268,"vx":-37,"vy":10,"pd":12.174,"pdc":-0.0388,"scr":299,"sal":0.2141,"cong":0.4324},{"t":12400,"x":116.4,"y":798.3,"d":188,"vx":-14,"vy":-2,"pd":12.315,"pdc":-0.0276,"scr":299,"sal":0.2151,"cong":0.4334},{"t":12599,"x":173,"y":789.4,"d":192,"vx":57,"vy":-9,"pd":12.494,"pdc":-0.0135,"scr":299,"sal":0.1896,"cong":0.3798},{"t":12961,"x":341.9,"y":817.2,"d":354,"vx":169,"vy":28,"pd":12.579,"pdc":-0.0068,"scr":299,"sal":0.1508,"cong":0.2265},{"t":13169,"x":521.9,"y":469.7,"d":181,"vx":180,"vy":-348,"pd":12.48,"pdc":-0.0146,"scr":299,"sal":0.215,"cong":0.3702},{"t":13330,"x":574.1,"y":425.3,"d":154,"vx":52,"vy":-44,"pd":12.239,"pdc":-0.0337,"scr":299,"sal":0.2114,"cong":0.2963},{"t":13578,"x":641.8,"y":395.2,"d":241,"vx":68,"vy":-30,"pd":11.721,"pdc":-0.0745,"scr":299,"sal":0.1373,"cong":0.1789},{"t":13745,"x":647.4,"y":398.6,"d":161,"vx":6,"vy":3,"pd":11.889,"pdc":-0.0613,"scr":299,"sal":0.1154,"cong":0.1391},{"t":13960,"x":642.9,"y":329.7,"d":208,"vx":-4,"vy":-69,"pd":12.272,"pdc":-0.0311,"scr":299,"sal":0.1925,"cong":0.2559},{"t":14086,"x":607.4,"y":411.9,"d":120,"vx":-35,"vy":82,"pd":12.354,"pdc":-0.0246,"scr":299,"sal":0.1767,"cong":0.2215}],CK={"x":243.9381153305204,"y":1088.8888854980469},ME=[{"t":1631,"x":811.0267229254571,"y":342.2339489885664,"e":"mouseover"},{"t":1631,"x":811.0267229254571,"y":342.2339489885664,"e":"mousemove"},{"t":1639,"x":811.0267229254571,"y":343.1345646437995,"e":"mousemove"},{"t":2041,"x":810.126582278481,"y":344.03518029903256,"e":"mousemove"},{"t":2320,"x":810.126582278481,"y":344.93579595426564,"e":"mousemove"},{"t":2559,"x":808.3263009845288,"y":345.83641160949867,"e":"mousemove"},{"t":2921,"x":808.3263009845288,"y":346.73702726473175,"e":"mousemove"},{"t":3272,"x":808.3263009845288,"y":347.63764291996483,"e":"mousemove"},{"t":3288,"x":808.3263009845288,"y":348.5382585751979,"e":"mousemove"},{"t":3304,"x":811.0267229254571,"y":349.438874230431,"e":"mousemove"},{"t":3736,"x":811.9268635724331,"y":351.2401055408971,"e":"mousemove"},{"t":3771,"x":811.9268635724331,"y":352.1407211961302,"e":"mousemove"},{"t":3820,"x":811.9268635724331,"y":353.04133685136327,"e":"mousemove"},{"t":3837,"x":811.9268635724331,"y":353.9419525065963,"e":"mousemove"},{"t":3853,"x":811.9268635724331,"y":354.8425681618294,"e":"mousemove"},{"t":3871,"x":811.9268635724331,"y":356.64379947229554,"e":"mousemove"},{"t":3889,"x":811.9268635724331,"y":357.8446200596416,"e":"mousemove"},{"t":3905,"x":811.9268635724331,"y":358.64516683157433,"e":"mousemove"},{"t":3921,"x":811.9268635724331,"y":359.4457144624011,"e":"mousemove"},{"t":3971,"x":811.0267229254571,"y":360.6465341908531,"e":"mousemove"},{"t":4351,"x":811.0267229254571,"y":359.68505743096165,"e":"mousemove"},{"t":4359,"x":810.126582278481,"y":361.43309607085155,"e":"mousemove"},{"t":4405,"x":810.126582278481,"y":363.4484388742305,"e":"mousemove"},{"t":4422,"x":810.126582278481,"y":365.7055085263364,"e":"mousemove"},{"t":4437,"x":810.126582278481,"y":366.05018689533864,"e":"mousemove"},{"t":4454,"x":808.3263009845288,"y":365.5498570800352,"e":"mousemove"},{"t":4471,"x":808.3263009845288,"y":370.45320898074857,"e":"mousemove"},{"t":4571,"x":807.4261603375527,"y":366.85070360598064,"e":"mousemove"},{"t":4807,"x":807.4261603375527,"y":367.307480887626,"e":"mousemove"},{"t":4872,"x":807.4261603375527,"y":371.45394678979767,"e":"mousemove"},{"t":5264,"x":806.5260196905766,"y":372.3516667286039,"e":"mousemove"},{"t":5271,"x":805.6258790436005,"y":373.22761823801204,"e":"mousemove"},{"t":5287,"x":805.6258790436005,"y":374.07185870278835,"e":"mousemove"},{"t":5337,"x":805.6258790436005,"y":375.45657431838174,"e":"mousemove"},{"t":5354,"x":805.6258790436005,"y":376.75747581354443,"e":"mousemove"},{"t":6463,"x":805.6258790436005,"y":377.8412110069425,"e":"mousemove"},{"t":6479,"x":805.6258790436005,"y":378.8099641647485,"e":"mousemove"},{"t":8920,"x":806.5260196905766,"y":378.4586906332454,"e":"mousemove"},{"t":8937,"x":808.3263009845288,"y":378.4586906332454,"e":"mousemove"},{"t":8969,"x":810.126582278481,"y":378.85897647317506,"e":"mousemove"},{"t":9086,"x":810.126582278481,"y":377.45803100263856,"e":"mousemove"},{"t":9102,"x":811.0267229254571,"y":377.45803100263856,"e":"mousemove"},{"t":9119,"x":811.9268635724331,"y":377.45803100263856,"e":"mousemove"},{"t":9435,"x":811.9268635724331,"y":376.5574153474055,"e":"mousemove"},{"t":9561,"x":811.9268635724331,"y":375.6567996921724,"e":"mousemove"},{"t":9703,"x":811.9268635724331,"y":374.7561840369393,"e":"mousemove"},{"t":10055,"x":811.9268635724331,"y":372.9549527264732,"e":"mousemove"},{"t":10068,"x":811.0267229254571,"y":372.9549527264732,"e":"mousemove"},{"t":10095,"x":811.0267229254571,"y":372.0543370712401,"e":"mousemove"},{"t":10135,"x":808.3263009845288,"y":371.15372141600704,"e":"mousemove"},{"t":10192,"x":808.3263009845288,"y":370.25310576077396,"e":"mousemove"},{"t":10207,"x":808.3263009845288,"y":368.45187445030786,"e":"mousemove"},{"t":10336,"x":808.3263009845288,"y":366.6506431398417,"e":"mousemove"},{"t":10423,"x":807.4261603375527,"y":365.7500274846086,"e":"mousemove"},{"t":10519,"x":807.4261603375527,"y":364.8494118293756,"e":"mousemove"},{"t":10600,"x":807.4261603375527,"y":363.9487961741425,"e":"mousemove"},{"t":10615,"x":805.6258790436005,"y":363.0481805189094,"e":"mousemove"},{"t":10696,"x":804.7257383966245,"y":363.0481805189094,"e":"mousemove"},{"t":10703,"x":803.8255977496483,"y":362.14756486367634,"e":"mousemove"},{"t":10719,"x":802.9254571026722,"y":361.2469492084433,"e":"mousemove"},{"t":10735,"x":802.0253164556962,"y":361.2469492084433,"e":"mousemove"},{"t":10752,"x":799.324894514768,"y":361.2469492084433,"e":"mousemove"},{"t":10769,"x":793.9240506329113,"y":359.44571789797715,"e":"mousemove"},{"t":10785,"x":787.6230661040787,"y":358.54510224274406,"e":"mousemove"},{"t":10801,"x":783.1223628691982,"y":358.54510224274406,"e":"mousemove"},{"t":10817,"x":775.9212376933896,"y":358.54510224274406,"e":"mousemove"},{"t":10835,"x":762.4191279887482,"y":358.54510224274406,"e":"mousemove"},{"t":10852,"x":748.9170182841069,"y":358.54510224274406,"e":"mousemove"},{"t":10868,"x":738.1153305203937,"y":358.54510224274406,"e":"mouseover"},{"t":10868,"x":738.1153305203937,"y":358.54510224274406,"e":"mousemove"},{"t":10885,"x":725.5133614627285,"y":358.54510224274406,"e":"mousemove"},{"t":10902,"x":714.7116736990155,"y":358.54510224274406,"e":"mousemove"},{"t":10919,"x":703.0098452883262,"y":358.54510224274406,"e":"mousemove"},{"t":10935,"x":694.9085794655415,"y":358.54510224274406,"e":"mouseover"},{"t":10935,"x":694.9085794655415,"y":358.54510224274406,"e":"mousemove"},{"t":10951,"x":687.7074542897327,"y":358.54510224274406,"e":"mousemove"},{"t":10968,"x":677.8059071729957,"y":358.54510224274406,"e":"mousemove"},{"t":10984,"x":666.1040787623066,"y":359.44571789797715,"e":"mousemove"},{"t":11001,"x":657.1026722925457,"y":361.2469492084433,"e":"mousemove"},{"t":11018,"x":646.3009845288326,"y":362.14756486367634,"e":"mousemove"},{"t":11034,"x":631.8987341772151,"y":364.8494118293756,"e":"mousemove"},{"t":11051,"x":614.7960618846695,"y":366.6506431398417,"e":"mouseover"},{"t":11051,"x":614.7960618846695,"y":366.6506431398417,"e":"mousemove"},{"t":11068,"x":594.9929676511955,"y":368.45187445030786,"e":"mousemove"},{"t":11086,"x":582.3909985935302,"y":372.0543370712401,"e":"mouseover"},{"t":11086,"x":582.3909985935302,"y":372.0543370712401,"e":"mousemove"},{"t":11102,"x":577.8902953586497,"y":372.0543370712401,"e":"mousemove"},{"t":11392,"x":577.8902953586497,"y":371.15372141600704,"e":"mouseover"},{"t":11392,"x":577.8902953586497,"y":371.15372141600704,"e":"mousemove"},{"t":11607,"x":578.7904360056259,"y":370.25310576077396,"e":"mousemove"},{"t":11623,"x":579.690576652602,"y":368.45187445030786,"e":"mouseover"},{"t":11623,"x":579.690576652602,"y":368.45187445030786,"e":"mousemove"},{"t":11711,"x":579.690576652602,"y":367.5512587950748,"e":"mousemove"},{"t":11719,"x":577.8902953586497,"y":367.5512587950748,"e":"mousemove"},{"t":11734,"x":576.9901547116737,"y":366.6506431398417,"e":"mousemove"},{"t":11752,"x":568.8888888888889,"y":364.8494118293756,"e":"mousemove"},{"t":11768,"x":560.7876230661041,"y":364.8494118293756,"e":"mousemove"},{"t":11784,"x":547.2855133614627,"y":364.8494118293756,"e":"mousemove"},{"t":11800,"x":537.3839662447257,"y":363.9487961741425,"e":"mousemove"},{"t":11819,"x":531.0829817158931,"y":363.0481805189094,"e":"mousemove"},{"t":11834,"x":523.8818565400844,"y":361.2469492084433,"e":"mousemove"},{"t":11851,"x":516.6807313642756,"y":361.2469492084433,"e":"mousemove"},{"t":11868,"x":506.77918424753864,"y":361.2469492084433,"e":"mousemove"},{"t":11885,"x":495.0773558368495,"y":362.14756486367634,"e":"mousemove"},{"t":11901,"x":475.2742616033755,"y":365.7500274846086,"e":"mousemove"},{"t":11919,"x":456.3713080168776,"y":367.5512587950748,"e":"mousemove"},{"t":11934,"x":443.76933895921235,"y":371.15372141600704,"e":"mouseover"},{"t":11934,"x":443.76933895921235,"y":371.15372141600704,"e":"mousemove"},{"t":11951,"x":433.86779184247536,"y":374.7561840369393,"e":"mouseover"},{"t":11951,"x":433.86779184247536,"y":374.7561840369393,"e":"mousemove"},{"t":11968,"x":414.06469760900137,"y":380.15987796833775,"e":"mouseover"},{"t":11968,"x":414.06469760900137,"y":380.15987796833775,"e":"mousemove"},{"t":11985,"x":393.3614627285513,"y":381.06049362357084,"e":"mousemove"},{"t":12001,"x":369.957805907173,"y":381.06049362357084,"e":"mousemove"},{"t":12019,"x":353.75527426160335,"y":381.06049362357084,"e":"mousemove"},{"t":12034,"x":338.4528832630098,"y":381.96110927880386,"e":"mousemove"},{"t":12052,"x":322.25035161744023,"y":384.6629562445031,"e":"mousemove"},{"t":12068,"x":306.0478199718706,"y":390.96726583113457,"e":"mouseover"},{"t":12068,"x":306.0478199718706,"y":390.96726583113457,"e":"mousemove"},{"t":12087,"x":293.4458509142053,"y":393.6691127968338,"e":"mousemove"},{"t":12101,"x":291.6455696202531,"y":394.56972845206684,"e":"mousemove"},{"t":12117,"x":285.3445850914205,"y":397.2715754177661,"e":"mouseover"},{"t":12117,"x":285.3445850914205,"y":397.2715754177661,"e":"mousemove"},{"t":12134,"x":272.74261603375527,"y":400.87403803869836,"e":"mousemove"},{"t":12151,"x":252.93952180028128,"y":406.27773197009674,"e":"mousemove"},{"t":12168,"x":249.33895921237692,"y":408.0789632805629,"e":"mousemove"},{"t":12185,"x":248.43881856540082,"y":408.979578935796,"e":"mousemove"},{"t":12201,"x":248.43881856540082,"y":411.6814259014952,"e":"mousemove"},{"t":12217,"x":248.43881856540082,"y":415.28388852242745,"e":"mousemove"},{"t":12234,"x":248.43881856540082,"y":418.8863511433597,"e":"mousemove"},{"t":12252,"x":243.9381153305204,"y":425.19066072999124,"e":"mouseover"},{"t":12252,"x":243.9381153305204,"y":425.19066072999124,"e":"mousemove"},{"t":12268,"x":243.0379746835443,"y":427.8925076956904,"e":"mousemove"},{"t":12284,"x":241.23769338959212,"y":429.6937390061566,"e":"mousemove"},{"t":12301,"x":240.33755274261603,"y":429.6937390061566,"e":"mousemove"},{"t":12318,"x":240.33755274261603,"y":430.5943546613896,"e":"mousemove"},{"t":12335,"x":240.33755274261603,"y":433.29620162708886,"e":"mousemove"},{"t":12351,"x":240.33755274261603,"y":434.19681728232194,"e":"mousemove"},{"t":12367,"x":240.33755274261603,"y":435.09743293755497,"e":"mousemove"},{"t":12384,"x":240.33755274261603,"y":436.89866424802113,"e":"mousemove"},{"t":12400,"x":241.23769338959212,"y":437.7992799032542,"e":"mouseover"},{"t":12400,"x":241.23769338959212,"y":437.7992799032542,"e":"mousemove"},{"t":12417,"x":241.23769338959212,"y":439.6005112137203,"e":"mousemove"},{"t":12439,"x":243.0379746835443,"y":440.5011268689534,"e":"mousemove"},{"t":12463,"x":243.9381153305204,"y":442.30235817941957,"e":"mousemove"},{"t":12698,"x":243.9381153305204,"y":442.30235817941957,"e":"mousedown"},{"t":12871,"x":243.9381153305204,"y":442.30235817941957,"e":"mouseup"},{"t":14263,"x":243.9381153305204,"y":442.30235817941957,"e":"click"}],FR=60,SW=1280,N=54,
+T0=0,TD=14206,MND=73,MXD=602,
+SERP_SRC='serp-renders/p021-b6-t2.png',
+GAZEPLOT_SRC='gazeplots/p021-b6-t2.png';
+const rF=d=>8+(d-MND)/(MXD-MND+1)*22;
+const cF=(i,n)=>{const t=n>1?i/(n-1):0;return`rgb(${Math.round(50+205*t)},${Math.round(50+100*(1-Math.abs(t-.5)*2))},${Math.round(255-205*t)})`};
+// Cognitive load color: blue (constricted/low load) → red (dilated/high load)
+const PDC=F.filter(f=>f.pdc!=null).map(f=>f.pdc);
+const PDC_MIN=PDC.length?Math.min(...PDC):0,PDC_MAX=PDC.length?Math.max(...PDC):1;
+// Pupil color: dark cyan → bright cyan
+const cPD=(pdc)=>{if(pdc==null)return'#333';const t=(pdc-PDC_MIN)/(PDC_MAX-PDC_MIN+0.001);return`rgb(${Math.round(10+30*t)},${Math.round(40+200*t)},${Math.round(60+195*t)})`};
+// Saliency color: black → bright orange (unmistakable)
+const SAL=F.filter(f=>f.sal!=null).map(f=>f.sal);
+const SAL_MIN=SAL.length?Math.min(...SAL):0,SAL_MAX=SAL.length?Math.max(...SAL):1;
+const cSal=(s)=>{if(s==null)return'#333';const t=Math.max(0,Math.min(1,(s-SAL_MIN)/(SAL_MAX-SAL_MIN+0.001)));
+return`rgb(${Math.round(40+215*t)},${Math.round(20+140*t)},${Math.round(10+20*t)})`};
+let colorMode='sequence'; // 'sequence', 'load', or 'saliency'
+const COLOR_MODES=['sequence','load','lfhf','saliency'];
+function getColor(i){if(colorMode==='load'&&F[i].pdc!=null)return cPD(F[i].pdc);if(colorMode==='lfhf'&&F[i].lfhf!=null)return cLFHF(F[i].lfhf);if(colorMode==='saliency'&&F[i].sal!=null)return cSal(F[i].sal);return cF(i,N)}
+const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
+fr=document.getElementById('foveal-ring'),mc=document.getElementById('mouse-cursor'),
+vw=document.getElementById('viewer'),
+ws=document.getElementById('window-size'),wl=document.getElementById('ws-label'),
+tt=document.getElementById('timeline-tracks');
+let ci=N-1,pl=false,pt=null;
+// Progressive foveation state
+const pc=document.getElementById('prog-canvas');
+const pCtx=pc?pc.getContext('2d'):null;
+let bgMode=GAZEPLOT_SRC?'gazeplot':'serp';
+let gpImg=null,gpLoaded=false;
+if(GAZEPLOT_SRC){gpImg=new Image();gpImg.onload=()=>{gpLoaded=true;if(bgMode==='progressive')drawProg()};gpImg.src=GAZEPLOT_SRC}
+function drawProg(){if(!pCtx||!gpImg||!gpLoaded)return;
+const w=pc.width,h=pc.height;pCtx.clearRect(0,0,w,h);
+pCtx.globalCompositeOperation='source-over';
+for(let i=0;i<=ci;i++){const f=F[i],r=FR*2.5;
+const g=pCtx.createRadialGradient(f.x,f.y,0,f.x,f.y,r);
+g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(0.5,'rgba(255,255,255,0.7)');g.addColorStop(1,'rgba(255,255,255,0)');
+pCtx.fillStyle=g;pCtx.beginPath();pCtx.arc(f.x,f.y,r,0,Math.PI*2);pCtx.fill()}
+pCtx.globalCompositeOperation='source-in';
+pCtx.drawImage(gpImg,0,0,w,h);pCtx.globalCompositeOperation='source-over'}
+const ns='http://www.w3.org/2000/svg';
+function se(t,a){const e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e}
+// ── Build multi-track timeline ──────────────────────────────────────
+function buildTrack(containerId, colorFn, valueFn) {
+    const el = document.getElementById(containerId);
+    if (!el) return [];
+    const ticks = [];
+    F.forEach((f, i) => {
+        const t = document.createElement('div');
+        t.className = 'timeline-tick';
+        t.style.left = (N > 1 ? (f.t - T0) / TD * 100 : 0) + '%';
+        t.style.width = Math.max(0.5, f.d / TD * 100) + '%';
+        t.style.background = colorFn(i);
+        const v = valueFn ? valueFn(i) : 1;
+        const hPct = Math.max(15, v * 100);
+        t.style.height = hPct + '%';
+        t.style.bottom = '0';
+        t.style.top = 'auto';
+        t.style.opacity = '.8';
+        el.appendChild(t);
+        ticks.push(t);
+    });
+    return ticks;
+}
+// Dwell: height encodes duration (taller = longer fixation)
+function buildDwellTrack() {
+    const el = document.getElementById('ticks-dwell');
+    if (!el) return [];
+    const ticks = [];
+    F.forEach((f, i) => {
+        const t = document.createElement('div');
+        t.className = 'timeline-tick';
+        t.style.left = (N > 1 ? (f.t - T0) / TD * 100 : 0) + '%';
+        t.style.width = Math.max(0.5, f.d / TD * 100) + '%';
+        const hPct = Math.min(100, 20 + f.d / 8);
+        t.style.height = hPct + '%';
+        t.style.bottom = '0';
+        t.style.top = 'auto';
+        t.style.background = '#b8a0d8';
+        t.style.opacity = '.6';
+        el.appendChild(t);
+        ticks.push(t);
+    });
+    return ticks;
+}
+const tkSal = buildTrack('ticks-saliency', i => cSal(F[i].sal), i => {
+    if(F[i].sal==null) return 0.15;
+    return (F[i].sal - SAL_MIN) / (SAL_MAX - SAL_MIN + 0.001);
+});
+const tkPup = buildTrack('ticks-pupil', i => cPD(F[i].pdc), i => {
+    if(F[i].pdc==null) return 0.15;
+    return (F[i].pdc - PDC_MIN) / (PDC_MAX - PDC_MIN + 0.001);
+});
+// LF/HF cognitive load: amber (low load) → red (high load)
+const LFHF=F.filter(f=>f.lfhf!=null).map(f=>f.lfhf);
+const LFHF_MIN=LFHF.length?Math.min(...LFHF):0,LFHF_MAX=LFHF.length?Math.max(...LFHF):1;
+const cLFHF=(v)=>{if(v==null)return'#333';const t=Math.max(0,Math.min(1,(v-LFHF_MIN)/(LFHF_MAX-LFHF_MIN+0.001)));
+return`rgb(${Math.round(200+55*t)},${Math.round(160-110*t)},${Math.round(40-30*t)})`};
+const tkLFHF = buildTrack('ticks-lfhf', i => cLFHF(F[i].lfhf), i => {
+    if(F[i].lfhf==null) return 0.15;
+    return (F[i].lfhf - LFHF_MIN) / (LFHF_MAX - LFHF_MIN + 0.001);
+});
+// Scroll: height = normalized scroll position, color = direction
+function buildScrollTrack() {
+    const el = document.getElementById('ticks-scroll');
+    if (!el) return [];
+    const ticks = [];
+    const scrVals = F.filter(f => f.scr != null).map(f => f.scr);
+    const scrMax = scrVals.length ? Math.max(...scrVals, 1) : 1;
+    F.forEach((f, i) => {
+        const t = document.createElement('div');
+        t.className = 'timeline-tick';
+        t.style.left = (N > 1 ? (f.t - T0) / TD * 100 : 0) + '%';
+        t.style.width = Math.max(0.5, f.d / TD * 100) + '%';
+        const sv = f.scr != null ? f.scr : 0;
+        const hPct = Math.max(10, (sv / scrMax) * 100);
+        t.style.height = hPct + '%';
+        t.style.bottom = '0';
+        t.style.top = 'auto';
+        // Color: green=forward, red=regression
+        const prev = i > 0 && F[i-1].scr != null ? F[i-1].scr : sv;
+        const delta = sv - prev;
+        if (delta < -5) t.style.background = '#ef4444'; // regression
+        else if (delta > 5) t.style.background = '#22c55e'; // forward
+        else t.style.background = '#666'; // stationary
+        t.style.opacity = '.8';
+        el.appendChild(t);
+        ticks.push(t);
+    });
+    return ticks;
+}
+// Gaze velocity tracks: displacement between consecutive fixations
+// Height = |displacement| normalized per-trial; color encodes direction
+const VX=F.map(f=>f.vx||0),VY=F.map(f=>f.vy||0);
+const VX_MAX=Math.max(1,...VX.map(Math.abs)),VY_MAX=Math.max(1,...VY.map(Math.abs));
+// ΔX color: yellow for rightward, blue-gray for leftward
+const cVX=(v)=>{if(v==null)return'#333';const t=v/VX_MAX;
+if(t>=0)return`rgb(${Math.round(80+175*t)},${Math.round(80+175*t)},${Math.round(30+20*t)})`;
+return`rgb(${Math.round(50+30*(-t))},${Math.round(50+50*(-t))},${Math.round(80+80*(-t))})`};
+// ΔY color: teal for downward (forward), red-orange for upward (regression)
+const cVY=(v)=>{if(v==null)return'#333';const t=v/VY_MAX;
+if(t>=0)return`rgb(${Math.round(30+20*t)},${Math.round(60+140*t)},${Math.round(80+140*t)})`;
+return`rgb(${Math.round(80+175*(-t))},${Math.round(40+30*(-t))},${Math.round(20+20*(-t))})`};
+const tkGazeVX = buildTrack('ticks-gaze-vx', i => cVX(F[i].vx), i => Math.abs(F[i].vx||0)/VX_MAX);
+const tkGazeVY = buildTrack('ticks-gaze-vy', i => cVY(F[i].vy), i => Math.abs(F[i].vy||0)/VY_MAX);
+const tkScroll = buildScrollTrack();
+const tkDwell = buildDwellTrack();
+const tkE = tkSal; // backward compat for recolor
+const lE=[],cE=[],tE=[];
+for(let i=0;i<N;i++){const f=F[i],r=rF(f.d),c=cF(i,N);
+if(i>0){const p=F[i-1];const l=se('line',{x1:p.x,y1:p.y,x2:f.x,y2:f.y,stroke:c,'stroke-width':1.5,'stroke-opacity':.4});svg.appendChild(l);lE.push(l)}else lE.push(null);
+const cr=se('circle',{cx:f.x,cy:f.y,r,fill:c,'fill-opacity':.25,stroke:c,'stroke-width':2,'stroke-opacity':.8});svg.appendChild(cr);cE.push(cr);
+const fs=Math.max(9,Math.min(14,r));const tx=se('text',{x:f.x,y:f.y,'text-anchor':'middle','dominant-baseline':'central','font-family':'monospace','font-weight':'bold','font-size':fs,fill:'white',stroke:'rgba(0,0,0,.6)','stroke-width':2,'paint-order':'stroke'});tx.textContent=i+1;svg.appendChild(tx);tE.push(tx)}
+if(CK){const s=se('polygon',{points:[0,-16,6,-4,16,-4,8,4,12,16,0,8,-12,16,-8,4,-16,-4,-6,-4].reduce((a,v,i)=>{a.push(i%2===0?CK.x+v:CK.y+v);return a},[]).join(','),fill:'#f00','fill-opacity':.5,stroke:'#f00','stroke-width':2});svg.appendChild(s);
+const l=se('text',{x:CK.x+18,y:CK.y+4,'font-family':'monospace','font-weight':'bold','font-size':11,fill:'#f00',stroke:'white','stroke-width':2,'paint-order':'stroke'});l.textContent='CLICK';svg.appendChild(l)}
+function uv(){const wn=parseInt(ws.value);
+wl.textContent=wn>=N?'All':wn;
+const lo=Math.max(0,ci-wn+1);
+for(let i=0;i<N;i++){const v=i>=lo&&i<=ci;cE[i].style.display=v?'':'none';tE[i].style.display=v?'':'none';
+if(lE[i])lE[i].style.display=(v&&i>lo)?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',pl&&i===ci?1:.8)}
+if(ci>=0&&N>1){const tr=firstTrack.getBoundingClientRect(),tc=tt.getBoundingClientRect();const off=tr.left-tc.left;const pct=(F[ci].t-T0)/TD;ph.style.left=(off+pct*tr.width)+'px';}
+if(ci>=0){const f=F[ci];const vr=vw.getBoundingClientRect(),fy=f.y-vw.scrollTop;if(fy<100||fy>vr.height-100)vw.scrollTo({top:f.y-vr.height/2,behavior:'smooth'})}
+if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px';
+// Mouse cursor: interpolate position at current fixation time (relative)
+if(ME.length>0){const ft=f.t-T0;let mi=0;for(let i=0;i<ME.length;i++){if(ME[i].t<=ft)mi=i;else break;}
+const m0=ME[mi],m1=ME[Math.min(mi+1,ME.length-1)];
+let mx=m0.x,my=m0.y;if(m1.t>m0.t){const p=(ft-m0.t)/(m1.t-m0.t);mx=m0.x+(m1.x-m0.x)*p;my=m0.y+(m1.y-m0.y)*p;}
+mc.style.display='block';mc.style.left=mx+'px';mc.style.top=my+'px';mc.style.opacity='1';
+mc.classList.toggle('clicking',m0.e==='click'||m0.e==='mousedown');
+console.log('CURSOR',mx.toFixed(0),my.toFixed(0),m0.e);
+}}else{fr.style.display='none';mc.style.display='none';}
+if(ci>=0){const f=F[ci];document.getElementById('info-pos').textContent='('+f.x+','+f.y+')';
+document.getElementById('info-dur').textContent=f.d+'ms';document.getElementById('info-seen').textContent=ci+1;
+document.getElementById('time-label').textContent='Fixation '+(ci+1)+' / '+N;
+document.getElementById('duration-label').textContent=((f.t-T0)/1000).toFixed(1)+'s / '+(TD/1000).toFixed(1)+'s'}
+if(bgMode==='progressive')drawProg()}
+function sf(i){ci=Math.max(-1,Math.min(N-1,i));uv();if(typeof pushHash==='function')pushHash()}
+const firstTrack=tt.querySelector('.timeline-track');
+let dr=false;function ts(e){const r=firstTrack.getBoundingClientRect(),p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
+let b=0;for(let i=0;i<N;i++)if(F[i].t<=T0+p*TD)b=i;sf(b)}
+tt.addEventListener('mousedown',e=>{dr=true;ts(e)});document.addEventListener('mousemove',e=>{if(dr)ts(e)});document.addEventListener('mouseup',()=>{dr=false});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){sf(ci+1);e.preventDefault()}if(e.key==='ArrowLeft'){sf(ci-1);e.preventDefault()}
+if(e.key===' '){tp();e.preventDefault()}if(e.key==='Home'){sf(0);e.preventDefault()}if(e.key==='End'){sf(N-1);e.preventDefault()}});
+function tp(){pl=!pl;document.getElementById('play-btn').textContent=pl?'⏸ Pause':'▶ Play';
+document.getElementById('play-btn').classList.toggle('active',pl);if(pl){if(ci>=N-1)ci=-1;pn()}else{clearTimeout(pt);fr.style.display='none';mc.style.display='none';uv()}}
+function pn(){if(!pl)return;const n=ci+1;if(n>=N){pl=false;document.getElementById('play-btn').textContent='▶ Play';fr.style.display='none';mc.style.display='none';ci=N-1;uv();return}
+sf(n);pt=setTimeout(pn,Math.max(100,F[n].d*.5))}
+document.getElementById('play-btn').addEventListener('click',tp);
+document.getElementById('reset-btn').addEventListener('click',()=>{pl=false;clearTimeout(pt);document.getElementById('play-btn').textContent='▶ Play';ws.value=N;ci=N-1;uv();vw.scrollTo({top:0})});
+uv();
+// Gaze points toggle
+const gazeBtn=document.getElementById('gaze-btn');
+let gazeVisible=true;
+gazeBtn.addEventListener('click',()=>{gazeVisible=!gazeVisible;svg.style.display=gazeVisible?'':'none';gazeBtn.classList.toggle('active',gazeVisible);pushHash()});
+// Color mode toggle (sequence vs cognitive load)
+const colorBtn=document.getElementById('color-btn');
+function recolor(){for(let i=0;i<N;i++){const c=getColor(i);
+cE[i].setAttribute('fill',c);cE[i].setAttribute('stroke',c);
+if(lE[i]){lE[i].setAttribute('stroke',c)}
+if(tkE[i])tkE[i].style.background=c}}
+const COLOR_LABELS={sequence:'Color: Sequence',load:'Color: Pupil Load',lfhf:'Color: Pupil LF/HF',saliency:'Color: Saliency'};
+if(colorBtn){colorBtn.addEventListener('click',()=>{
+const ci_cm=COLOR_MODES.indexOf(colorMode);colorMode=COLOR_MODES[(ci_cm+1)%COLOR_MODES.length];
+colorBtn.textContent=COLOR_LABELS[colorMode];
+colorBtn.classList.toggle('active',colorMode!=='sequence');
+recolor();pushHash()})}
+// Background mode controls
+const modeBtn=document.getElementById('mode-btn');
+const progBtn=document.getElementById('prog-btn');
+const serpEl=document.getElementById('serp-img');
+const gpEl=document.getElementById('gazeplot-img');
+function setMode(m){bgMode=m;
+// SERP img always visible (defines container height). Gazeplot + progressive canvas toggle on top.
+if(m==='gazeplot'){if(gpEl)gpEl.style.display='';pc.style.display='none';modeBtn.textContent='Original';modeBtn.classList.remove('active');progBtn.classList.remove('active')}
+else if(m==='serp'){if(gpEl)gpEl.style.display='none';pc.style.display='none';modeBtn.textContent='Foveated';modeBtn.classList.add('active');progBtn.classList.remove('active')}
+else if(m==='progressive'){if(gpEl)gpEl.style.display='none';pc.style.display='block';modeBtn.textContent='Foveated';modeBtn.classList.remove('active');progBtn.classList.add('active');drawProg()}}
+if(modeBtn){modeBtn.addEventListener('click',()=>{setMode(bgMode==='gazeplot'?'serp':'gazeplot');pushHash()})}
+if(progBtn){progBtn.addEventListener('click',()=>{const next=bgMode==='progressive'?'gazeplot':'progressive';setMode(next);progBtn.textContent=next==='progressive'?'Cumulative':'Progressive';pushHash()})}
+// Hash permalinks: #fix=50&w=20&mode=progressive
+function pushHash(){const p=[];
+if(!ws.disabled)p.push('fix='+(ci+1));
+if(!ws.disabled)p.push('w='+ws.value);
+if(bgMode!=='gazeplot')p.push('mode='+bgMode);
+if(!gazeVisible)p.push('gaze=off');
+if(colorMode!=='sequence')p.push('color='+colorMode);
+history.replaceState(null,'','#'+p.join('&'))}
+function readHash(){const h=location.hash.slice(1);if(!h)return;
+const p={};h.split('&').forEach(kv=>{const[k,v]=kv.split('=');p[k]=v});
+if(p.mode)setMode(p.mode);
+if(p.w){ws.value=p.w;wl.textContent=p.w}
+if(p.fix){ci=Math.max(0,Math.min(N-1,parseInt(p.fix)-1));uv()}
+if(p.gaze==='off'){gazeVisible=false;svg.style.display='none';gazeBtn.classList.remove('active')}
+if(p.color&&COLOR_MODES.includes(p.color)){colorMode=p.color;colorBtn.textContent=COLOR_LABELS[colorMode];colorBtn.classList.toggle('active',colorMode!=='sequence');recolor()}}
+readHash();
+ws.addEventListener('input',()=>{const wn=parseInt(ws.value);if(ci>=N-1||ci<wn)ci=Math.min(wn-1,N-1);uv();pushHash()});
+</script></body></html>

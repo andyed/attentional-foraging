@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Scanpath: p034-b2-t3 — buy portal</title>
+<meta name="viewport" content="width=1280">
+<script>!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init('phc_cUZalkUiHgfuv7k5hPzhuLhYQkjUWOQBl82pdDgHAmZ',{api_host:'https://us.i.posthog.com',person_profiles:'identified_only'});</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #111; color: #eee; font-family: system-ui, -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; }
+.header { width: 1280px; padding: 10px 16px; background: #1a1a1a; border-bottom: 1px solid #333;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.header h1 { font-size: 14px; font-weight: 600; }
+.header h1 span { color: #aaa; font-weight: 400; }
+.controls { display: flex; gap: 12px; align-items: center; font-size: 12px; }
+.controls label { cursor: pointer; user-select: none; }
+.btn { background: #333; border: 1px solid #555; color: #eee; padding: 3px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; }
+.btn:hover { background: #444; }
+.btn.active { background: #2a5a8a; border-color: #4a8aca; }
+.viewer { position: relative; width: 1280px; height: 70vh; overflow-y: auto; overflow-x: hidden; background: #000; }
+.serp-container { position: relative; width: 1280px; }
+#serp-img, #gazeplot-img { width: 1280px; height: 3657px; display: block; }
+#gazeplot-img { position: absolute; top: 0; left: 0; z-index: 1; }
+#prog-canvas { position: absolute; top: 0; left: 0; z-index: 5; pointer-events: none; display: none; }
+.scanpath-svg { position: absolute; top: 0; left: 0; z-index: 10; pointer-events: none; }
+.foveal-ring { position: absolute; z-index: 11; pointer-events: none; border: 2px solid rgba(255,255,255,0.7);
+  border-radius: 50%; width: 120px; height: 120px; transform: translate(-50%, -50%);
+  box-shadow: 0 0 20px rgba(255,255,255,0.3); transition: left 0.08s, top 0.08s; display: none; }
+.mouse-cursor { position: absolute; z-index: 999; pointer-events: none; display: none;
+  width: 20px; height: 20px; transition: left 0.03s linear, top 0.03s linear; }
+.mouse-cursor svg { width: 20px; height: 28px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); }
+.mouse-cursor.clicking svg path { fill: #ff3333; }
+.timeline { width: 1280px; background: #1a1a1a; padding: 6px 16px; border-top: 1px solid #333; }
+.timeline-tracks { position: relative; cursor: pointer; user-select: none; -webkit-user-select: none; }
+.timeline-row { display: flex; align-items: stretch; height: 22px; margin-bottom: 1px; }
+.timeline-row:last-child { margin-bottom: 0; }
+.timeline-label { width: 60px; flex-shrink: 0; font-size: 9px; font-weight: 700; display: flex; align-items: center; padding-right: 6px; text-align: right; justify-content: flex-end; text-transform: uppercase; letter-spacing: 0.5px; position: relative; z-index: 3; background: #1a1a1a; }
+.timeline-label.lbl-saliency { color: #ffa040; text-shadow: 0 0 6px rgba(255,160,64,0.4); }
+.timeline-label.lbl-pupil { color: #40e0ff; text-shadow: 0 0 6px rgba(64,224,255,0.4); }
+.timeline-label.lbl-lfhf { color: #f59e0b; text-shadow: 0 0 6px rgba(245,158,11,0.4); }
+.timeline-label.lbl-gaze-x { color: #e0e050; text-shadow: 0 0 6px rgba(224,224,80,0.4); }
+.timeline-label.lbl-gaze-y { color: #50c0e0; text-shadow: 0 0 6px rgba(80,192,224,0.4); }
+.timeline-label.lbl-scroll { color: #44dd66; text-shadow: 0 0 6px rgba(68,221,102,0.4); }
+.timeline-label.lbl-dwell { color: #c8a8f0; text-shadow: 0 0 6px rgba(200,168,240,0.4); }
+.timeline-track { position: relative; flex: 1; background: #222; border-radius: 2px; overflow: hidden; }
+.timeline-ticks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.timeline-tick { position: absolute; top: 0; min-width: 2px; height: 100%; }
+.timeline-playhead { position: absolute; top: 0; width: 2px; height: 100%; background: #ff4444; z-index: 2; pointer-events: none; }
+.timeline-info { display: flex; justify-content: space-between; margin-top: 4px; font-size: 11px; color: #aaa; padding-left: 64px; }
+.info-panel { width: 1280px; padding: 6px 16px; background: #1a1a1a; font-size: 11px; color: #aaa;
+  display: flex; gap: 20px; border-top: 1px solid #222; }
+.info-panel .val { color: #ccc; }
+.info-panel a { color: #ff9933; text-decoration: none; font-weight: 600; }
+.info-panel a:hover { text-decoration: underline; }
+.back { font-size: 12px; }
+.back a { color: #6af; text-decoration: none; }
+</style></head><body>
+<div class="header">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <span class="back"><a href="index.html">&larr; All</a></span>
+    <h1>p034-b2-t3 <span>— buy portal</span></h1>
+  </div>
+  <div class="controls">
+    <button class="btn" id="mode-btn">Original</button>
+    <label id="ws-group">Window <input type="range" id="window-size" min="1" max="50" value="50" style="width:80px;vertical-align:middle;"> <span id="ws-label">All</span></label>
+    <button class="btn active" id="gaze-btn">Gaze Points</button>
+    <button class="btn" id="color-btn">Color: Sequence</button>
+    <button class="btn" id="play-btn">&#9654; Play</button>
+    <button class="btn" id="reset-btn">Reset</button>
+  </div>
+</div>
+<div class="viewer" id="viewer">
+  <div class="serp-container">
+    <img id="serp-img" src="serp-renders/p034-b2-t3.png" width="1280" height="3657" />
+    <img id="gazeplot-img" src="gazeplots/p034-b2-t3.png" />
+    <canvas id="prog-canvas" width="1280" height="3657"></canvas>
+    <svg class="scanpath-svg" id="scanpath-svg" xmlns="http://www.w3.org/2000/svg"
+         width="1280" height="3657" viewBox="0 0 1280 3657"></svg>
+    <div class="foveal-ring" id="foveal-ring"></div>
+    <div class="mouse-cursor" id="mouse-cursor"><svg viewBox="0 0 20 28"><path d="M0,0 L0,22 L5.5,17 L10,28 L14,26 L9,16 L16,16 Z" fill="#ff9933" stroke="#000" stroke-width="1"/></svg></div>
+  </div>
+</div>
+<div class="timeline">
+  <div class="timeline-tracks" id="timeline-tracks">
+    <div class="timeline-row">
+      <div class="timeline-label lbl-saliency">Saliency</div>
+      <div class="timeline-track" id="track-saliency">
+        <div class="timeline-ticks" id="ticks-saliency"></div>
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-label lbl-pupil">Pupil</div>
+      <div class="timeline-track" id="track-pupil">
+        <div class="timeline-ticks" id="ticks-pupil"></div>
+      </div>
+    </div>
+    
+    <div class="timeline-row">
+      <div class="timeline-label lbl-gaze-x">Gaze ΔX</div>
+      <div class="timeline-track" id="track-gaze-vx">
+        <div class="timeline-ticks" id="ticks-gaze-vx"></div>
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-label lbl-gaze-y">Gaze ΔY</div>
+      <div class="timeline-track" id="track-gaze-vy">
+        <div class="timeline-ticks" id="ticks-gaze-vy"></div>
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-label lbl-scroll">Scroll</div>
+      <div class="timeline-track" id="track-scroll">
+        <div class="timeline-ticks" id="ticks-scroll"></div>
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-label lbl-dwell">Dwell</div>
+      <div class="timeline-track" id="track-dwell">
+        <div class="timeline-ticks" id="ticks-dwell"></div>
+      </div>
+    </div>
+    <div class="timeline-playhead" id="playhead"></div>
+  </div>
+  <div class="timeline-info">
+    <span id="time-label">Fixation 0 / 50</span>
+    <span id="duration-label">0.0s / 10.2s</span>
+  </div>
+</div>
+<div class="info-panel">
+  <span><a href="https://github.com/andyed/scrutinizer2025">Scrutinizer rendering</a></span>
+  <span>Position: <span class="val" id="info-pos">—</span></span>
+  <span>Duration: <span class="val" id="info-dur">—</span></span>
+  <span>Fixations: <span class="val" id="info-seen">0</span></span>
+  <span>Click: <span class="val">(330, 2440)</span></span>
+  <span><a href="png/p034-b2-t3.png" download style="color:#6af;text-decoration:none;">Download PNG</a></span>
+</div>
+<div style="width:1280px;padding:6px 16px;background:#1a1a1a;font-size:10px;color:#666;border-top:1px solid #222;">
+  Fixation overlay alignment: median &lt;13px offset, max ~45px at page bottom. SERP HTML is re-rendered locally; element heights differ from original Chrome 110/Windows session due to external resource loading (Maps tiles, product images). Fixation coordinates (FPOGX/FPOGY) from <a href="https://github.com/kayhan-latifzadeh/AdSERP" style="color:#888;">AdSERP dataset</a> are pixel-verified accurate against synthetic test pages.
+</div>
+<script>
+const F=[{"t":0,"x":419.6,"y":164.3,"d":228,"vx":0,"vy":0,"pd":13.649,"pdc":0.082,"scr":0,"sal":0.065,"cong":0.0844},{"t":255,"x":276.3,"y":88.8,"d":248,"vx":-143,"vy":-76,"pd":13.551,"pdc":0.0742,"scr":0,"sal":0.0668,"cong":0.1253},{"t":402,"x":188.6,"y":88.8,"d":140,"vx":-88,"vy":0,"pd":13.293,"pdc":0.0538,"scr":0,"sal":0.1051,"cong":0.0719},{"t":864,"x":258.8,"y":13.3,"d":221,"vx":70,"vy":-75,"pd":12.114,"pdc":-0.0397,"scr":0,"sal":0.0807,"cong":0.0291},{"t":1058,"x":220.8,"y":91,"d":187,"vx":-38,"vy":78,"pd":11.949,"pdc":-0.0528,"scr":0,"sal":0.076,"cong":0.0832},{"t":1299,"x":228.6,"y":123.2,"d":234,"vx":8,"vy":32,"pd":12.116,"pdc":-0.0396,"scr":0,"sal":0.0805,"cong":0.1111},{"t":1621,"x":288.6,"y":178.8,"d":314,"vx":60,"vy":56,"pd":12.629,"pdc":0.0011,"scr":0,"sal":0.0906,"cong":0.1483},{"t":1721,"x":328.5,"y":305.3,"d":93,"vx":40,"vy":127,"pd":12.787,"pdc":0.0136,"scr":0,"sal":0.1037,"cong":0.0786},{"t":1989,"x":228.6,"y":845,"d":241,"vx":-100,"vy":540,"pd":12.489,"pdc":-0.01,"scr":71,"sal":0.0952,"cong":0.131},{"t":2123,"x":206.3,"y":1123.7,"d":127,"vx":-22,"vy":279,"pd":12.526,"pdc":-0.007,"scr":444,"sal":0.1897,"cong":0.3318},{"t":2545,"x":181.9,"y":1073.7,"d":415,"vx":-24,"vy":-50,"pd":12.21,"pdc":-0.0321,"scr":444,"sal":0.1904,"cong":0.2893},{"t":2780,"x":188.6,"y":1395.7,"d":187,"vx":7,"vy":322,"pd":12.048,"pdc":-0.045,"scr":444,"sal":0.1827,"cong":0.3214},{"t":3088,"x":178.6,"y":1620,"d":93,"vx":-10,"vy":224,"pd":12.303,"pdc":-0.0247,"scr":1000,"sal":0.2734,"cong":0.3097},{"t":3249,"x":173.1,"y":1463.5,"d":154,"vx":-5,"vy":-156,"pd":12.434,"pdc":-0.0143,"scr":1000,"sal":0.2665,"cong":0.3067},{"t":3456,"x":174.1,"y":1329.1,"d":201,"vx":1,"vy":-134,"pd":12.295,"pdc":-0.0254,"scr":1000,"sal":0.2665,"cong":0.3067},{"t":3624,"x":190.8,"y":1320.3,"d":160,"vx":17,"vy":-9,"pd":12.215,"pdc":-0.0317,"scr":1000,"sal":0.2734,"cong":0.3097},{"t":3784,"x":204.1,"y":1343.6,"d":154,"vx":13,"vy":23,"pd":12.105,"pdc":-0.0404,"scr":1000,"sal":0.273,"cong":0.3101},{"t":3958,"x":151.9,"y":1323.6,"d":166,"vx":-52,"vy":-20,"pd":12.403,"pdc":-0.0168,"scr":1000,"sal":0.2647,"cong":0.3021},{"t":4146,"x":147.5,"y":1424.6,"d":180,"vx":-4,"vy":101,"pd":13.002,"pdc":0.0307,"scr":1000,"sal":0.2647,"cong":0.3021},{"t":4334,"x":140.8,"y":1363.5,"d":180,"vx":-7,"vy":-61,"pd":12.845,"pdc":0.0183,"scr":1000,"sal":0.2634,"cong":0.2958},{"t":4628,"x":263,"y":1345.8,"d":288,"vx":122,"vy":-18,"pd":12.599,"pdc":-0.0013,"scr":1000,"sal":0.2254,"cong":0.2636},{"t":4917,"x":320.8,"y":1391.3,"d":281,"vx":58,"vy":46,"pd":12.517,"pdc":-0.0078,"scr":1000,"sal":0.1254,"cong":0.165},{"t":5090,"x":366.3,"y":1371.3,"d":167,"vx":46,"vy":-20,"pd":12.446,"pdc":-0.0134,"scr":1000,"sal":0.1046,"cong":0.1172},{"t":5298,"x":449.6,"y":1447.9,"d":200,"vx":83,"vy":77,"pd":12.125,"pdc":-0.0388,"scr":1000,"sal":0.0306,"cong":0.0227},{"t":5399,"x":503,"y":1365.7,"d":93,"vx":53,"vy":-82,"pd":12.173,"pdc":-0.035,"scr":1000,"sal":0.0203,"cong":0.0088},{"t":5580,"x":501.9,"y":1353.6,"d":174,"vx":-1,"vy":-12,"pd":12.531,"pdc":-0.0066,"scr":1000,"sal":0.0203,"cong":0.0088},{"t":6042,"x":195.2,"y":1592.2,"d":435,"vx":-307,"vy":239,"pd":12.391,"pdc":-0.0177,"scr":1000,"sal":0.273,"cong":0.3101},{"t":6216,"x":188.6,"y":1584.5,"d":167,"vx":-7,"vy":-8,"pd":12.374,"pdc":-0.0191,"scr":1000,"sal":0.2734,"cong":0.3097},{"t":6450,"x":254.1,"y":1628.8,"d":227,"vx":66,"vy":44,"pd":12.432,"pdc":-0.0145,"scr":1000,"sal":0.2413,"cong":0.2829},{"t":6605,"x":300.8,"y":1587.8,"d":147,"vx":47,"vy":-41,"pd":12.343,"pdc":-0.0215,"scr":1000,"sal":0.1658,"cong":0.2157},{"t":6745,"x":239.7,"y":1452.4,"d":113,"vx":-61,"vy":-135,"pd":11.986,"pdc":-0.0499,"scr":1000,"sal":0.2413,"cong":0.2829},{"t":6906,"x":245.2,"y":1439.1,"d":154,"vx":6,"vy":-13,"pd":11.835,"pdc":-0.0618,"scr":1000,"sal":0.2413,"cong":0.2829},{"t":7127,"x":231.9,"y":1462.4,"d":154,"vx":-13,"vy":23,"pd":12.351,"pdc":-0.0209,"scr":1000,"sal":0.2533,"cong":0.2974},{"t":7200,"x":74.4,"y":614,"d":46,"vx":-157,"vy":-848,"pd":12.422,"pdc":-0.0153,"scr":1000,"sal":0.0516,"cong":0.057},{"t":7441,"x":343,"y":1395.7,"d":214,"vx":269,"vy":782,"pd":12.603,"pdc":-0.0009,"scr":1000,"sal":0.1144,"cong":0.1406},{"t":7783,"x":176.4,"y":1532.3,"d":314,"vx":-167,"vy":137,"pd":13.336,"pdc":0.0572,"scr":1000,"sal":0.2734,"cong":0.3097},{"t":8018,"x":258.6,"y":1565.6,"d":228,"vx":82,"vy":33,"pd":13.455,"pdc":0.0666,"scr":1000,"sal":0.2254,"cong":0.2636},{"t":8205,"x":303,"y":1523.4,"d":180,"vx":44,"vy":-42,"pd":13.342,"pdc":0.0576,"scr":1000,"sal":0.1408,"cong":0.1902},{"t":8346,"x":320.8,"y":1563.4,"d":133,"vx":18,"vy":40,"pd":13.22,"pdc":0.048,"scr":1000,"sal":0.1254,"cong":0.165},{"t":8480,"x":368.5,"y":1571.2,"d":127,"vx":48,"vy":8,"pd":13.073,"pdc":0.0363,"scr":1000,"sal":0.0868,"cong":0.095},{"t":8842,"x":688.5,"y":1435.7,"d":333,"vx":320,"vy":-135,"pd":13.108,"pdc":0.0391,"scr":1000,"sal":0.0199,"cong":0.0024},{"t":8976,"x":721.8,"y":1402.3,"d":127,"vx":33,"vy":-33,"pd":13.106,"pdc":0.0389,"scr":1000,"sal":0.0215,"cong":0.0024},{"t":9069,"x":755.1,"y":1288,"d":86,"vx":33,"vy":-114,"pd":13.157,"pdc":0.043,"scr":1000,"sal":0.0193,"cong":0.002},{"t":9176,"x":917.6,"y":847.2,"d":79,"vx":163,"vy":-441,"pd":12.729,"pdc":0.0091,"scr":1000,"sal":0.054,"cong":0.0301},{"t":9297,"x":899.9,"y":996,"d":93,"vx":-18,"vy":149,"pd":12.528,"pdc":-0.0069,"scr":1000,"sal":0.1035,"cong":0.1244},{"t":9404,"x":953.2,"y":902.7,"d":80,"vx":53,"vy":-93,"pd":12.224,"pdc":-0.031,"scr":1000,"sal":0.0319,"cong":0.0166},{"t":9491,"x":955.4,"y":781.7,"d":80,"vx":2,"vy":-121,"pd":12.141,"pdc":-0.0376,"scr":1000,"sal":0.0109,"cong":0.0024},{"t":9612,"x":835.4,"y":1094.8,"d":93,"vx":-120,"vy":313,"pd":12.374,"pdc":-0.0191,"scr":1000,"sal":0.0472,"cong":0.0228},{"t":9753,"x":834.3,"y":1093.7,"d":134,"vx":-1,"vy":-1,"pd":12.728,"pdc":0.009,"scr":1000,"sal":0.0472,"cong":0.0228},{"t":9960,"x":832.1,"y":1099.2,"d":200,"vx":-2,"vy":6,"pd":12.78,"pdc":0.0131,"scr":1000,"sal":0.0472,"cong":0.0228}],CK={"x":330.351617440225,"y":2440},ME=[{"t":1681,"x":508.57946554149083,"y":335.02902374670185,"e":"mouseover"},{"t":1682,"x":508.57946554149083,"y":335.02902374670185,"e":"mousemove"},{"t":1739,"x":506.77918424753864,"y":335.02902374670185,"e":"mousemove"},{"t":1809,"x":505.87904360056257,"y":335.02902374670185,"e":"mousemove"},{"t":1905,"x":504.9789029535865,"y":335.02902374670185,"e":"mousemove"},{"t":1932,"x":502.27848101265823,"y":337.130459989281,"e":"mouseover"},{"t":1932,"x":502.27848101265823,"y":337.130459989281,"e":"mousemove"},{"t":1949,"x":501.3783403656821,"y":338.0310747856201,"e":"mouseover"},{"t":1949,"x":501.3783403656821,"y":338.0310747856201,"e":"mousemove"},{"t":1966,"x":500.47819971870604,"y":339.9323745022232,"e":"mousemove"},{"t":1983,"x":500.47819971870604,"y":339.4320305628848,"e":"mouseover"},{"t":1983,"x":500.47819971870604,"y":339.4320305628848,"e":"mousemove"},{"t":2001,"x":499.5780590717299,"y":342.13387752858404,"e":"mouseover"},{"t":2001,"x":499.5780590717299,"y":342.13387752858404,"e":"mousemove"},{"t":2161,"x":499.5780590717299,"y":342.6641859656953,"e":"mouseover"},{"t":2161,"x":499.5780590717299,"y":342.6641859656953,"e":"mousemove"},{"t":2289,"x":498.67791842475384,"y":342.4732948319433,"e":"mousemove"},{"t":2481,"x":497.77777777777777,"y":342.18695813131535,"e":"mousemove"},{"t":2532,"x":497.77777777777777,"y":341.210284289978,"e":"mousemove"},{"t":2849,"x":496.87763713080165,"y":341.73359168865437,"e":"mouseover"},{"t":2849,"x":496.87763713080165,"y":341.73359168865437,"e":"mousemove"},{"t":2866,"x":495.9774964838256,"y":341.53344876868954,"e":"mousemove"},{"t":2882,"x":495.0773558368495,"y":344.02341203631846,"e":"mouseover"},{"t":2882,"x":495.0773558368495,"y":344.02341203631846,"e":"mousemove"},{"t":2898,"x":493.2770745428973,"y":344.93579595426564,"e":"mouseover"},{"t":2898,"x":493.2770745428973,"y":344.93579595426564,"e":"mousemove"},{"t":2916,"x":493.2770745428973,"y":345.43612576956906,"e":"mouseover"},{"t":2916,"x":493.2770745428973,"y":345.43612576956906,"e":"mousemove"},{"t":2949,"x":492.37693389592124,"y":346.6369283201407,"e":"mouseover"},{"t":2949,"x":492.37693389592124,"y":346.6369283201407,"e":"mousemove"},{"t":3370,"x":491.4767932489451,"y":346.73702726473175,"e":"mouseover"},{"t":3370,"x":491.4767932489451,"y":346.73702726473175,"e":"mousemove"},{"t":3617,"x":490.57665260196904,"y":346.73702726473175,"e":"mousemove"},{"t":3665,"x":489.676511954993,"y":346.73702726473175,"e":"mousemove"},{"t":3697,"x":488.77637130801685,"y":345.83641160949867,"e":"mousemove"},{"t":3802,"x":487.8762306610408,"y":345.83641160949867,"e":"mousemove"},{"t":3873,"x":487.8762306610408,"y":347.63764291996483,"e":"mousemove"},{"t":3889,"x":487.8762306610408,"y":348.5382585751979,"e":"mousemove"},{"t":3897,"x":487.8762306610408,"y":351.2401055408971,"e":"mousemove"},{"t":3922,"x":487.8762306610408,"y":352.1407211961302,"e":"mousemove"},{"t":3936,"x":487.8762306610408,"y":353.9419525065963,"e":"mousemove"},{"t":3953,"x":487.8762306610408,"y":354.8425681618294,"e":"mousemove"},{"t":3964,"x":487.8762306610408,"y":356.64379947229554,"e":"mousemove"},{"t":3980,"x":487.8762306610408,"y":357.5444151275286,"e":"mousemove"},{"t":3998,"x":487.8762306610408,"y":360.2462620932278,"e":"mousemove"},{"t":4014,"x":487.8762306610408,"y":363.8487247141601,"e":"mouseover"},{"t":4014,"x":487.8762306610408,"y":363.8487247141601,"e":"mousemove"},{"t":4031,"x":487.8762306610408,"y":365.64995602462625,"e":"mousemove"},{"t":4048,"x":488.77637130801685,"y":367.45118733509236,"e":"mousemove"},{"t":4064,"x":488.77637130801685,"y":371.0536499560246,"e":"mousemove"},{"t":4080,"x":488.77637130801685,"y":372.8548812664908,"e":"mousemove"},{"t":4097,"x":488.77637130801685,"y":380.9604221635884,"e":"mouseover"},{"t":4097,"x":488.77637130801685,"y":380.9604221635884,"e":"mousemove"},{"t":4114,"x":488.77637130801685,"y":389.9665787159191,"e":"mouseover"},{"t":4114,"x":488.77637130801685,"y":389.9665787159191,"e":"mousemove"},{"t":4130,"x":488.77637130801685,"y":398.9727352682498,"e":"mousemove"},{"t":4147,"x":488.77637130801685,"y":411.58135444151276,"e":"mouseover"},{"t":4147,"x":488.77637130801685,"y":411.58135444151276,"e":"mousemove"},{"t":4164,"x":488.77637130801685,"y":426.8918205804749,"e":"mouseover"},{"t":4164,"x":488.77637130801685,"y":426.8918205804749,"e":"mousemove"},{"t":4181,"x":483.3755274261603,"y":444.00351802990326,"e":"mouseover"},{"t":4181,"x":483.3755274261603,"y":444.00351802990326,"e":"mousemove"},{"t":4196,"x":480.67510548523205,"y":457.5127528583993,"e":"mouseover"},{"t":4196,"x":480.67510548523205,"y":457.5127528583993,"e":"mousemove"},{"t":4213,"x":477.9746835443038,"y":470.1213720316623,"e":"mousemove"},{"t":4230,"x":475.2742616033755,"y":479.127528583993,"e":"mouseover"},{"t":4230,"x":475.2742616033755,"y":479.127528583993,"e":"mousemove"},{"t":4247,"x":473.4739803094233,"y":483.6306068601583,"e":"mousemove"},{"t":4264,"x":471.67369901547113,"y":489.9349164467898,"e":"mousemove"},{"t":4281,"x":468.97327707454286,"y":497.13984168865437,"e":"mouseover"},{"t":4281,"x":468.97327707454286,"y":497.13984168865437,"e":"mousemove"},{"t":4298,"x":463.57243319268633,"y":513.3509234828497,"e":"mouseover"},{"t":4298,"x":463.57243319268633,"y":513.3509234828497,"e":"mousemove"},{"t":4314,"x":460.87201125175807,"y":518.7546174142481,"e":"mouseover"},{"t":4314,"x":460.87201125175807,"y":518.7546174142481,"e":"mousemove"},{"t":4331,"x":460.87201125175807,"y":523.2576956904134,"e":"mousemove"},{"t":4346,"x":460.87201125175807,"y":524.1583113456464,"e":"mousemove"},{"t":4364,"x":460.87201125175807,"y":525.0589270008795,"e":"mousemove"},{"t":6937,"x":454.5710267229254,"y":525.0589270008795,"e":"mousemove"},{"t":6946,"x":445.56962025316454,"y":525.0589270008795,"e":"mousemove"},{"t":6963,"x":430.267229254571,"y":525.9595426561126,"e":"mousemove"},{"t":6979,"x":417.66526019690576,"y":525.9595426561126,"e":"mousemove"},{"t":6996,"x":402.36286919831224,"y":525.9595426561126,"e":"mousemove"},{"t":7012,"x":396.96202531645565,"y":525.9595426561126,"e":"mousemove"},{"t":7029,"x":394.2616033755274,"y":525.9595426561126,"e":"mousemove"},{"t":7046,"x":391.5611814345991,"y":525.9595426561126,"e":"mousemove"},{"t":7063,"x":387.0604781997187,"y":525.9595426561126,"e":"mousemove"},{"t":7079,"x":376.2587904360056,"y":525.9595426561126,"e":"mousemove"},{"t":7097,"x":360.056258790436,"y":525.9595426561126,"e":"mousemove"},{"t":7114,"x":338.4528832630098,"y":526.8601583113457,"e":"mousemove"},{"t":7129,"x":307.8481012658228,"y":531.363236587511,"e":"mousemove"},{"t":7147,"x":291.6455696202531,"y":533.1644678979771,"e":"mousemove"},{"t":7164,"x":285.3445850914205,"y":533.1644678979771,"e":"mousemove"},{"t":7180,"x":284.44444444444446,"y":533.1644678979771,"e":"mousemove"},{"t":7196,"x":283.54430379746833,"y":532.2638522427441,"e":"mousemove"},{"t":7212,"x":282.64416315049226,"y":524.1583113456464,"e":"mousemove"},{"t":7230,"x":282.64416315049226,"y":516.9533861037819,"e":"mouseover"},{"t":7230,"x":282.64416315049226,"y":516.9533861037819,"e":"mousemove"},{"t":7245,"x":282.64416315049226,"y":507.04661389621816,"e":"mouseover"},{"t":7245,"x":282.64416315049226,"y":507.04661389621816,"e":"mousemove"},{"t":7263,"x":282.64416315049226,"y":490.8355321020229,"e":"mouseover"},{"t":7263,"x":282.64416315049226,"y":490.8355321020229,"e":"mousemove"},{"t":7280,"x":285.3445850914205,"y":477.32629727352685,"e":"mouseover"},{"t":7280,"x":285.3445850914205,"y":477.32629727352685,"e":"mousemove"},{"t":7296,"x":290.74542897327706,"y":460.2145998240985,"e":"mouseover"},{"t":7296,"x":290.74542897327706,"y":460.2145998240985,"e":"mousemove"},{"t":7315,"x":297.9465541490858,"y":444.00351802990326,"e":"mouseover"},{"t":7315,"x":297.9465541490858,"y":444.00351802990326,"e":"mousemove"},{"t":7329,"x":299.746835443038,"y":439.5004397537379,"e":"mousemove"},{"t":7346,"x":300.64697609001405,"y":434.99736147757255,"e":"mousemove"},{"t":7362,"x":303.3473980309423,"y":432.29551451187336,"e":"mousemove"},{"t":7379,"x":303.3473980309423,"y":429.5936675461742,"e":"mouseover"},{"t":7379,"x":303.3473980309423,"y":429.5936675461742,"e":"mousemove"},{"t":7396,"x":306.0478199718706,"y":427.792436235708,"e":"mousemove"},{"t":7413,"x":307.8481012658228,"y":425.0905892700088,"e":"mouseover"},{"t":7413,"x":307.8481012658228,"y":425.0905892700088,"e":"mousemove"},{"t":7429,"x":310.54852320675104,"y":420.58751099384347,"e":"mousemove"},{"t":7446,"x":312.34880450070324,"y":417.8856640281443,"e":"mousemove"},{"t":7462,"x":315.0492264416315,"y":416.0844327176781,"e":"mousemove"},{"t":7479,"x":315.0492264416315,"y":414.283201407212,"e":"mousemove"},{"t":7496,"x":316.84950773558364,"y":411.58135444151276,"e":"mousemove"},{"t":7513,"x":317.74964838255977,"y":410.6807387862797,"e":"mouseover"},{"t":7513,"x":317.74964838255977,"y":410.6807387862797,"e":"mousemove"},{"t":7529,"x":319.54992967651197,"y":407.9788918205805,"e":"mouseover"},{"t":7529,"x":319.54992967651197,"y":407.9788918205805,"e":"mousemove"},{"t":7617,"x":320.45007032348803,"y":407.0782761653474,"e":"mouseover"},{"t":7617,"x":320.45007032348803,"y":407.0782761653474,"e":"mousemove"},{"t":7663,"x":322.25035161744023,"y":405.2770448548813,"e":"mousemove"},{"t":7680,"x":324.05063291139237,"y":403.47581354441513,"e":"mousemove"},{"t":7695,"x":324.9507735583685,"y":402.57519788918205,"e":"mousemove"},{"t":7769,"x":325.85091420534457,"y":401.674582233949,"e":"mousemove"},{"t":7785,"x":326.75105485232064,"y":400.77396657871594,"e":"mousemove"},{"t":7796,"x":327.65119549929676,"y":399.87335092348286,"e":"mousemove"},{"t":7812,"x":328.55133614627283,"y":398.07211961301675,"e":"mousemove"},{"t":7829,"x":330.351617440225,"y":396.2708883025506,"e":"mousemove"},{"t":7891,"x":330.351617440225,"y":396.2708883025506,"e":"mousedown"},{"t":7976,"x":330.351617440225,"y":396.2708883025506,"e":"mouseup"},{"t":10137,"x":330.351617440225,"y":396.2708883025506,"e":"click"}],FR=60,SW=1280,N=50,
+T0=0,TD=10160,MND=46,MXD=435,
+SERP_SRC='serp-renders/p034-b2-t3.png',
+GAZEPLOT_SRC='gazeplots/p034-b2-t3.png';
+const rF=d=>8+(d-MND)/(MXD-MND+1)*22;
+const cF=(i,n)=>{const t=n>1?i/(n-1):0;return`rgb(${Math.round(50+205*t)},${Math.round(50+100*(1-Math.abs(t-.5)*2))},${Math.round(255-205*t)})`};
+// Cognitive load color: blue (constricted/low load) → red (dilated/high load)
+const PDC=F.filter(f=>f.pdc!=null).map(f=>f.pdc);
+const PDC_MIN=PDC.length?Math.min(...PDC):0,PDC_MAX=PDC.length?Math.max(...PDC):1;
+// Pupil color: dark cyan → bright cyan
+const cPD=(pdc)=>{if(pdc==null)return'#333';const t=(pdc-PDC_MIN)/(PDC_MAX-PDC_MIN+0.001);return`rgb(${Math.round(10+30*t)},${Math.round(40+200*t)},${Math.round(60+195*t)})`};
+// Saliency color: black → bright orange (unmistakable)
+const SAL=F.filter(f=>f.sal!=null).map(f=>f.sal);
+const SAL_MIN=SAL.length?Math.min(...SAL):0,SAL_MAX=SAL.length?Math.max(...SAL):1;
+const cSal=(s)=>{if(s==null)return'#333';const t=Math.max(0,Math.min(1,(s-SAL_MIN)/(SAL_MAX-SAL_MIN+0.001)));
+return`rgb(${Math.round(40+215*t)},${Math.round(20+140*t)},${Math.round(10+20*t)})`};
+let colorMode='sequence'; // 'sequence', 'load', or 'saliency'
+const COLOR_MODES=['sequence','load','lfhf','saliency'];
+function getColor(i){if(colorMode==='load'&&F[i].pdc!=null)return cPD(F[i].pdc);if(colorMode==='lfhf'&&F[i].lfhf!=null)return cLFHF(F[i].lfhf);if(colorMode==='saliency'&&F[i].sal!=null)return cSal(F[i].sal);return cF(i,N)}
+const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
+fr=document.getElementById('foveal-ring'),mc=document.getElementById('mouse-cursor'),
+vw=document.getElementById('viewer'),
+ws=document.getElementById('window-size'),wl=document.getElementById('ws-label'),
+tt=document.getElementById('timeline-tracks');
+let ci=N-1,pl=false,pt=null;
+// Progressive foveation state
+const pc=document.getElementById('prog-canvas');
+const pCtx=pc?pc.getContext('2d'):null;
+let bgMode=GAZEPLOT_SRC?'gazeplot':'serp';
+let gpImg=null,gpLoaded=false;
+if(GAZEPLOT_SRC){gpImg=new Image();gpImg.onload=()=>{gpLoaded=true;if(bgMode==='progressive')drawProg()};gpImg.src=GAZEPLOT_SRC}
+function drawProg(){if(!pCtx||!gpImg||!gpLoaded)return;
+const w=pc.width,h=pc.height;pCtx.clearRect(0,0,w,h);
+pCtx.globalCompositeOperation='source-over';
+for(let i=0;i<=ci;i++){const f=F[i],r=FR*2.5;
+const g=pCtx.createRadialGradient(f.x,f.y,0,f.x,f.y,r);
+g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(0.5,'rgba(255,255,255,0.7)');g.addColorStop(1,'rgba(255,255,255,0)');
+pCtx.fillStyle=g;pCtx.beginPath();pCtx.arc(f.x,f.y,r,0,Math.PI*2);pCtx.fill()}
+pCtx.globalCompositeOperation='source-in';
+pCtx.drawImage(gpImg,0,0,w,h);pCtx.globalCompositeOperation='source-over'}
+const ns='http://www.w3.org/2000/svg';
+function se(t,a){const e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e}
+// ── Build multi-track timeline ──────────────────────────────────────
+function buildTrack(containerId, colorFn, valueFn) {
+    const el = document.getElementById(containerId);
+    if (!el) return [];
+    const ticks = [];
+    F.forEach((f, i) => {
+        const t = document.createElement('div');
+        t.className = 'timeline-tick';
+        t.style.left = (N > 1 ? (f.t - T0) / TD * 100 : 0) + '%';
+        t.style.width = Math.max(0.5, f.d / TD * 100) + '%';
+        t.style.background = colorFn(i);
+        const v = valueFn ? valueFn(i) : 1;
+        const hPct = Math.max(15, v * 100);
+        t.style.height = hPct + '%';
+        t.style.bottom = '0';
+        t.style.top = 'auto';
+        t.style.opacity = '.8';
+        el.appendChild(t);
+        ticks.push(t);
+    });
+    return ticks;
+}
+// Dwell: height encodes duration (taller = longer fixation)
+function buildDwellTrack() {
+    const el = document.getElementById('ticks-dwell');
+    if (!el) return [];
+    const ticks = [];
+    F.forEach((f, i) => {
+        const t = document.createElement('div');
+        t.className = 'timeline-tick';
+        t.style.left = (N > 1 ? (f.t - T0) / TD * 100 : 0) + '%';
+        t.style.width = Math.max(0.5, f.d / TD * 100) + '%';
+        const hPct = Math.min(100, 20 + f.d / 8);
+        t.style.height = hPct + '%';
+        t.style.bottom = '0';
+        t.style.top = 'auto';
+        t.style.background = '#b8a0d8';
+        t.style.opacity = '.6';
+        el.appendChild(t);
+        ticks.push(t);
+    });
+    return ticks;
+}
+const tkSal = buildTrack('ticks-saliency', i => cSal(F[i].sal), i => {
+    if(F[i].sal==null) return 0.15;
+    return (F[i].sal - SAL_MIN) / (SAL_MAX - SAL_MIN + 0.001);
+});
+const tkPup = buildTrack('ticks-pupil', i => cPD(F[i].pdc), i => {
+    if(F[i].pdc==null) return 0.15;
+    return (F[i].pdc - PDC_MIN) / (PDC_MAX - PDC_MIN + 0.001);
+});
+// LF/HF cognitive load: amber (low load) → red (high load)
+const LFHF=F.filter(f=>f.lfhf!=null).map(f=>f.lfhf);
+const LFHF_MIN=LFHF.length?Math.min(...LFHF):0,LFHF_MAX=LFHF.length?Math.max(...LFHF):1;
+const cLFHF=(v)=>{if(v==null)return'#333';const t=Math.max(0,Math.min(1,(v-LFHF_MIN)/(LFHF_MAX-LFHF_MIN+0.001)));
+return`rgb(${Math.round(200+55*t)},${Math.round(160-110*t)},${Math.round(40-30*t)})`};
+const tkLFHF = buildTrack('ticks-lfhf', i => cLFHF(F[i].lfhf), i => {
+    if(F[i].lfhf==null) return 0.15;
+    return (F[i].lfhf - LFHF_MIN) / (LFHF_MAX - LFHF_MIN + 0.001);
+});
+// Scroll: height = normalized scroll position, color = direction
+function buildScrollTrack() {
+    const el = document.getElementById('ticks-scroll');
+    if (!el) return [];
+    const ticks = [];
+    const scrVals = F.filter(f => f.scr != null).map(f => f.scr);
+    const scrMax = scrVals.length ? Math.max(...scrVals, 1) : 1;
+    F.forEach((f, i) => {
+        const t = document.createElement('div');
+        t.className = 'timeline-tick';
+        t.style.left = (N > 1 ? (f.t - T0) / TD * 100 : 0) + '%';
+        t.style.width = Math.max(0.5, f.d / TD * 100) + '%';
+        const sv = f.scr != null ? f.scr : 0;
+        const hPct = Math.max(10, (sv / scrMax) * 100);
+        t.style.height = hPct + '%';
+        t.style.bottom = '0';
+        t.style.top = 'auto';
+        // Color: green=forward, red=regression
+        const prev = i > 0 && F[i-1].scr != null ? F[i-1].scr : sv;
+        const delta = sv - prev;
+        if (delta < -5) t.style.background = '#ef4444'; // regression
+        else if (delta > 5) t.style.background = '#22c55e'; // forward
+        else t.style.background = '#666'; // stationary
+        t.style.opacity = '.8';
+        el.appendChild(t);
+        ticks.push(t);
+    });
+    return ticks;
+}
+// Gaze velocity tracks: displacement between consecutive fixations
+// Height = |displacement| normalized per-trial; color encodes direction
+const VX=F.map(f=>f.vx||0),VY=F.map(f=>f.vy||0);
+const VX_MAX=Math.max(1,...VX.map(Math.abs)),VY_MAX=Math.max(1,...VY.map(Math.abs));
+// ΔX color: yellow for rightward, blue-gray for leftward
+const cVX=(v)=>{if(v==null)return'#333';const t=v/VX_MAX;
+if(t>=0)return`rgb(${Math.round(80+175*t)},${Math.round(80+175*t)},${Math.round(30+20*t)})`;
+return`rgb(${Math.round(50+30*(-t))},${Math.round(50+50*(-t))},${Math.round(80+80*(-t))})`};
+// ΔY color: teal for downward (forward), red-orange for upward (regression)
+const cVY=(v)=>{if(v==null)return'#333';const t=v/VY_MAX;
+if(t>=0)return`rgb(${Math.round(30+20*t)},${Math.round(60+140*t)},${Math.round(80+140*t)})`;
+return`rgb(${Math.round(80+175*(-t))},${Math.round(40+30*(-t))},${Math.round(20+20*(-t))})`};
+const tkGazeVX = buildTrack('ticks-gaze-vx', i => cVX(F[i].vx), i => Math.abs(F[i].vx||0)/VX_MAX);
+const tkGazeVY = buildTrack('ticks-gaze-vy', i => cVY(F[i].vy), i => Math.abs(F[i].vy||0)/VY_MAX);
+const tkScroll = buildScrollTrack();
+const tkDwell = buildDwellTrack();
+const tkE = tkSal; // backward compat for recolor
+const lE=[],cE=[],tE=[];
+for(let i=0;i<N;i++){const f=F[i],r=rF(f.d),c=cF(i,N);
+if(i>0){const p=F[i-1];const l=se('line',{x1:p.x,y1:p.y,x2:f.x,y2:f.y,stroke:c,'stroke-width':1.5,'stroke-opacity':.4});svg.appendChild(l);lE.push(l)}else lE.push(null);
+const cr=se('circle',{cx:f.x,cy:f.y,r,fill:c,'fill-opacity':.25,stroke:c,'stroke-width':2,'stroke-opacity':.8});svg.appendChild(cr);cE.push(cr);
+const fs=Math.max(9,Math.min(14,r));const tx=se('text',{x:f.x,y:f.y,'text-anchor':'middle','dominant-baseline':'central','font-family':'monospace','font-weight':'bold','font-size':fs,fill:'white',stroke:'rgba(0,0,0,.6)','stroke-width':2,'paint-order':'stroke'});tx.textContent=i+1;svg.appendChild(tx);tE.push(tx)}
+if(CK){const s=se('polygon',{points:[0,-16,6,-4,16,-4,8,4,12,16,0,8,-12,16,-8,4,-16,-4,-6,-4].reduce((a,v,i)=>{a.push(i%2===0?CK.x+v:CK.y+v);return a},[]).join(','),fill:'#f00','fill-opacity':.5,stroke:'#f00','stroke-width':2});svg.appendChild(s);
+const l=se('text',{x:CK.x+18,y:CK.y+4,'font-family':'monospace','font-weight':'bold','font-size':11,fill:'#f00',stroke:'white','stroke-width':2,'paint-order':'stroke'});l.textContent='CLICK';svg.appendChild(l)}
+function uv(){const wn=parseInt(ws.value);
+wl.textContent=wn>=N?'All':wn;
+const lo=Math.max(0,ci-wn+1);
+for(let i=0;i<N;i++){const v=i>=lo&&i<=ci;cE[i].style.display=v?'':'none';tE[i].style.display=v?'':'none';
+if(lE[i])lE[i].style.display=(v&&i>lo)?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',pl&&i===ci?1:.8)}
+if(ci>=0&&N>1){const tr=firstTrack.getBoundingClientRect(),tc=tt.getBoundingClientRect();const off=tr.left-tc.left;const pct=(F[ci].t-T0)/TD;ph.style.left=(off+pct*tr.width)+'px';}
+if(ci>=0){const f=F[ci];const vr=vw.getBoundingClientRect(),fy=f.y-vw.scrollTop;if(fy<100||fy>vr.height-100)vw.scrollTo({top:f.y-vr.height/2,behavior:'smooth'})}
+if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px';
+// Mouse cursor: interpolate position at current fixation time (relative)
+if(ME.length>0){const ft=f.t-T0;let mi=0;for(let i=0;i<ME.length;i++){if(ME[i].t<=ft)mi=i;else break;}
+const m0=ME[mi],m1=ME[Math.min(mi+1,ME.length-1)];
+let mx=m0.x,my=m0.y;if(m1.t>m0.t){const p=(ft-m0.t)/(m1.t-m0.t);mx=m0.x+(m1.x-m0.x)*p;my=m0.y+(m1.y-m0.y)*p;}
+mc.style.display='block';mc.style.left=mx+'px';mc.style.top=my+'px';mc.style.opacity='1';
+mc.classList.toggle('clicking',m0.e==='click'||m0.e==='mousedown');
+console.log('CURSOR',mx.toFixed(0),my.toFixed(0),m0.e);
+}}else{fr.style.display='none';mc.style.display='none';}
+if(ci>=0){const f=F[ci];document.getElementById('info-pos').textContent='('+f.x+','+f.y+')';
+document.getElementById('info-dur').textContent=f.d+'ms';document.getElementById('info-seen').textContent=ci+1;
+document.getElementById('time-label').textContent='Fixation '+(ci+1)+' / '+N;
+document.getElementById('duration-label').textContent=((f.t-T0)/1000).toFixed(1)+'s / '+(TD/1000).toFixed(1)+'s'}
+if(bgMode==='progressive')drawProg()}
+function sf(i){ci=Math.max(-1,Math.min(N-1,i));uv();if(typeof pushHash==='function')pushHash()}
+const firstTrack=tt.querySelector('.timeline-track');
+let dr=false;function ts(e){const r=firstTrack.getBoundingClientRect(),p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
+let b=0;for(let i=0;i<N;i++)if(F[i].t<=T0+p*TD)b=i;sf(b)}
+tt.addEventListener('mousedown',e=>{dr=true;ts(e)});document.addEventListener('mousemove',e=>{if(dr)ts(e)});document.addEventListener('mouseup',()=>{dr=false});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){sf(ci+1);e.preventDefault()}if(e.key==='ArrowLeft'){sf(ci-1);e.preventDefault()}
+if(e.key===' '){tp();e.preventDefault()}if(e.key==='Home'){sf(0);e.preventDefault()}if(e.key==='End'){sf(N-1);e.preventDefault()}});
+function tp(){pl=!pl;document.getElementById('play-btn').textContent=pl?'⏸ Pause':'▶ Play';
+document.getElementById('play-btn').classList.toggle('active',pl);if(pl){if(ci>=N-1)ci=-1;pn()}else{clearTimeout(pt);fr.style.display='none';mc.style.display='none';uv()}}
+function pn(){if(!pl)return;const n=ci+1;if(n>=N){pl=false;document.getElementById('play-btn').textContent='▶ Play';fr.style.display='none';mc.style.display='none';ci=N-1;uv();return}
+sf(n);pt=setTimeout(pn,Math.max(100,F[n].d*.5))}
+document.getElementById('play-btn').addEventListener('click',tp);
+document.getElementById('reset-btn').addEventListener('click',()=>{pl=false;clearTimeout(pt);document.getElementById('play-btn').textContent='▶ Play';ws.value=N;ci=N-1;uv();vw.scrollTo({top:0})});
+uv();
+// Gaze points toggle
+const gazeBtn=document.getElementById('gaze-btn');
+let gazeVisible=true;
+gazeBtn.addEventListener('click',()=>{gazeVisible=!gazeVisible;svg.style.display=gazeVisible?'':'none';gazeBtn.classList.toggle('active',gazeVisible);pushHash()});
+// Color mode toggle (sequence vs cognitive load)
+const colorBtn=document.getElementById('color-btn');
+function recolor(){for(let i=0;i<N;i++){const c=getColor(i);
+cE[i].setAttribute('fill',c);cE[i].setAttribute('stroke',c);
+if(lE[i]){lE[i].setAttribute('stroke',c)}
+if(tkE[i])tkE[i].style.background=c}}
+const COLOR_LABELS={sequence:'Color: Sequence',load:'Color: Pupil Load',lfhf:'Color: Pupil LF/HF',saliency:'Color: Saliency'};
+if(colorBtn){colorBtn.addEventListener('click',()=>{
+const ci_cm=COLOR_MODES.indexOf(colorMode);colorMode=COLOR_MODES[(ci_cm+1)%COLOR_MODES.length];
+colorBtn.textContent=COLOR_LABELS[colorMode];
+colorBtn.classList.toggle('active',colorMode!=='sequence');
+recolor();pushHash()})}
+// Background mode controls
+const modeBtn=document.getElementById('mode-btn');
+const progBtn=document.getElementById('prog-btn');
+const serpEl=document.getElementById('serp-img');
+const gpEl=document.getElementById('gazeplot-img');
+function setMode(m){bgMode=m;
+// SERP img always visible (defines container height). Gazeplot + progressive canvas toggle on top.
+if(m==='gazeplot'){if(gpEl)gpEl.style.display='';pc.style.display='none';modeBtn.textContent='Original';modeBtn.classList.remove('active');progBtn.classList.remove('active')}
+else if(m==='serp'){if(gpEl)gpEl.style.display='none';pc.style.display='none';modeBtn.textContent='Foveated';modeBtn.classList.add('active');progBtn.classList.remove('active')}
+else if(m==='progressive'){if(gpEl)gpEl.style.display='none';pc.style.display='block';modeBtn.textContent='Foveated';modeBtn.classList.remove('active');progBtn.classList.add('active');drawProg()}}
+if(modeBtn){modeBtn.addEventListener('click',()=>{setMode(bgMode==='gazeplot'?'serp':'gazeplot');pushHash()})}
+if(progBtn){progBtn.addEventListener('click',()=>{const next=bgMode==='progressive'?'gazeplot':'progressive';setMode(next);progBtn.textContent=next==='progressive'?'Cumulative':'Progressive';pushHash()})}
+// Hash permalinks: #fix=50&w=20&mode=progressive
+function pushHash(){const p=[];
+if(!ws.disabled)p.push('fix='+(ci+1));
+if(!ws.disabled)p.push('w='+ws.value);
+if(bgMode!=='gazeplot')p.push('mode='+bgMode);
+if(!gazeVisible)p.push('gaze=off');
+if(colorMode!=='sequence')p.push('color='+colorMode);
+history.replaceState(null,'','#'+p.join('&'))}
+function readHash(){const h=location.hash.slice(1);if(!h)return;
+const p={};h.split('&').forEach(kv=>{const[k,v]=kv.split('=');p[k]=v});
+if(p.mode)setMode(p.mode);
+if(p.w){ws.value=p.w;wl.textContent=p.w}
+if(p.fix){ci=Math.max(0,Math.min(N-1,parseInt(p.fix)-1));uv()}
+if(p.gaze==='off'){gazeVisible=false;svg.style.display='none';gazeBtn.classList.remove('active')}
+if(p.color&&COLOR_MODES.includes(p.color)){colorMode=p.color;colorBtn.textContent=COLOR_LABELS[colorMode];colorBtn.classList.toggle('active',colorMode!=='sequence');recolor()}}
+readHash();
+ws.addEventListener('input',()=>{const wn=parseInt(ws.value);if(ci>=N-1||ci<wn)ci=Math.min(wn-1,N-1);uv();pushHash()});
+</script></body></html>
