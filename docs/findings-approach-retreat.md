@@ -128,12 +128,25 @@ Position 0 has the highest almost-clicked rate (15.8%) — consistent with the s
 
 The approach-retreat signal is invisible in aggregate heatmaps — it's a temporal motor behavior that requires per-fixation cursor tracking. Just as the F-pattern's horizontal bars and vertical stem are two overlaid operations, the non-click class is two overlaid populations (evaluated-rejected vs never-evaluated). Both are examples of temporal structure that aggregate spatial analysis collapses.
 
+## Scroll retreat: the transportation vs evaluation split (notebook 17)
+
+On desktop, scroll kinematics during regression do NOT discriminate click targets:
+- Scroll velocity doesn't decelerate near the click target (ρ = −0.013, n.s.)
+- Scroll dwell: 167ms for both clicked and non-clicked results (p = 0.31)
+- Scroll pause duration: 440ms for both (p = 0.46)
+
+3,617 scroll approach-retreat episodes exist (regression → pause → resume forward) but the pattern doesn't predict click outcome. **The scroll is ballistic transportation; the cursor is the evaluation probe.** On desktop, the two motor channels specialize.
+
+**Mobile prediction:** On touch devices where scroll is the only motor channel, scroll dwell and deceleration SHOULD discriminate click targets — because there's no cursor to absorb the evaluation function. The desktop null result is specific to a two-channel motor system. A mobile eye-tracking dataset would test this directly.
+
 ## Open questions
 
-- [ ] **Element-type cost structure validation:** Run notebook 15 analysis split by ad boundary data. Do approach signatures differ by element type as Azzopardi's framework predicts?
-- [ ] **Regression-triggered approaches:** Do approach-retreat episodes cluster near scroll regressions? If users regress to re-evaluate, the approach signal during regressions should be stronger.
-- [ ] **Cross-dataset generalizability:** AdSERP is transactional product search with forced choice. Does approach-retreat appear in informational queries? In naturalistic (non-forced) search? The motor signature should generalize; the rates may differ.
-- [ ] **Temporal dynamics:** Does approach velocity change during the trial? If working memory fills, later approach-retreat episodes should show longer evaluation (higher dwell-in-proximity) as the comparison gets harder.
+- [ ] **Element-type approach signatures:** Run notebook 15 split by ad boundary data. Do approach-retreat profiles differ by element type?
+- [ ] **Scroll × cursor cross-reference:** For trials where both signals exist, does scroll retreat co-occur with cursor approach-retreat at the same result?
+- [ ] **Mobile scroll evaluation:** Test the prediction that touch scroll dwell discriminates click targets on mobile datasets (no cursor available).
+- [ ] **Cross-dataset generalizability:** AdSERP is transactional product search with forced choice. Does approach-retreat appear in informational queries? In naturalistic search?
+- [ ] **Temporal dynamics:** Does approach velocity change during the trial? If working memory fills, later episodes should show longer evaluation.
+- [ ] **Rosenholtz Feature Congestion:** Score visual clutter by element type — does congestion predict approach-retreat rate?
 
 ## Notebooks
 
