@@ -12,6 +12,8 @@ Two decades of building search and recommendation systems at eBay, Microsoft, Me
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Click % | 17.7 | 13.5 | 14.2 | 13.4 | 9.5 | 6.6 | 5.7 | 3.8 | 3.8 | 2.9 | **3.3** |
 
+[![Ski-jump filmstrip](assets/ski-jump-filmstrip.png)](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/00_skijump.ipynb)
+
 → [Ski-jump notebook](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/00_skijump.ipynb) — decomposition by user strategy, LHIPA, difficulty
 
 **The priming conjecture.** By position 5, 55% of a result's tokens have already appeared. Maybe evaluation speeds up from lexical priming, not declining effort. ([CHIIR 2021 workshop talk](https://www.linkedin.com/in/andyed/).)
