@@ -214,9 +214,12 @@ All analysis uses the AdSERP dataset (Latifzadeh, Gwizdka & Leiva, SIGIR 2025): 
 <ul>
 <li>Latifzadeh, Gwizdka & Leiva (2025). <a href="https://doi.org/10.1145/3726302.3730325">AdSERP: A large-scale dataset for studying attention on SERPs.</a> SIGIR.</li>
 <li>Duchowski et al. (2020). <a href="https://doi.org/10.1145/3313831.3376394">The Low/High Index of Pupillary Activity.</a> CHI.</li>
-<li>Duchowski et al. (2012). Aggregate gaze visualization with real-time heatmaps. ETRA.</li>
+<li>Duchowski et al. (2012). <a href="https://doi.org/10.1145/2168556.2168657">Aggregate gaze visualization with real-time heatmaps.</a> ETRA.</li>
 <li>Craswell et al. (2008). <a href="https://doi.org/10.1145/1341531.1341545">An experimental comparison of click position-bias models.</a> WSDM.</li>
+<li>Chapelle & Zhang (2009). <a href="https://doi.org/10.1145/1526709.1526711">A Dynamic Bayesian Network click model for web search ranking.</a> WWW.</li>
+<li>Dupret & Piwowarski (2008). <a href="https://doi.org/10.1145/1390334.1390392">A user browsing model to predict search engine click data.</a> SIGIR.</li>
 <li>Liu et al. (2014). <a href="https://doi.org/10.1145/2661829.2661907">From Skimming to Reading: A Two-stage Examination Model.</a> CIKM.</li>
+<li>Maxwell & Azzopardi (2018). <a href="https://doi.org/10.1007/978-3-319-76941-7_17">Information Scent, Searching and Stopping.</a> ECIR.</li>
 <li>Pirolli & Card (1999). <a href="https://doi.org/10.1037/0033-295X.106.4.643">Information foraging.</a> Psychological Review.</li>
 <li>Hayhoe & Ballard (2005). <a href="https://doi.org/10.1016/j.tics.2005.06.005">Eye movements in natural behavior.</a> Trends in Cognitive Sciences.</li>
 <li>Kahneman & Beatty (1966). <a href="https://doi.org/10.1126/science.154.3756.1583">Pupil diameter and load on memory.</a> Science.</li>
