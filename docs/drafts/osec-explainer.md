@@ -86,7 +86,7 @@ This is not reading. This is the visual system executing a stored motor plan: sa
 
 ## Survey
 
-The survey phase has not been reported before in the search literature. For approximately 1.3 seconds — exactly 5 fixations, regardless of what's on the page — the eyes execute wide saccades across the result set. Median amplitude: 108 pixels, compared to 74 pixels during subsequent reading.
+The survey phase has not been reported before in the search literature. For approximately 1.3 seconds — the first 5 fixations, regardless of what's on the page — the eyes execute wide saccades across the result set. Median amplitude: 108 pixels, compared to 74 pixels during subsequent reading.
 
 ![Survey vs Evaluate: wide scattered saccades during gist sampling narrow to sequential reading](survey-vs-evaluate.png)
 
@@ -166,7 +166,7 @@ On SERPs, orientation is nearly instant — the layout is so familiar that the v
 
 69% of trials include at least one scroll regression — a return to previously evaluated content. The regression rate correlates with decision time (r = 0.66). Scroll regressions are not noise; they are the behavioral cost of comparison under working memory load.
 
-The existing literature has gone remarkably far with the single-pass, top-down examination assumption. But 69% of these trials violate it. OSEC adds what the data shows: examination is a multi-pass process with distinct cognitive phases, and the interesting decision-making happens not at the stopping point but at the *re-evaluation* point.
+The existing literature has gone far with the single-pass, top-down examination assumption. But 69% of these trials violate it. OSEC adds what the data shows: examination is a multi-pass process with distinct cognitive phases, and the interesting decision-making happens not at the stopping point but at the *re-evaluation* point.
 
 ---
 
@@ -199,7 +199,7 @@ This isn't a criticism — both were correct at the resolution available. What c
 <tr><td><b>Design advice</b></td><td>Put important content at the top.</td><td>Still true — but because users don't scroll, not because they can't read.</td></tr>
 </table>
 
-<p style="font-size:1.4em;font-style:italic;text-align:center;color:#333;margin:1.5em 0;line-height:1.4;">The F-pattern wasn't a map of how we read; it was a long-exposure photograph of two different behaviors. We just needed 150 frames per second to watch it get drawn. 🎤</p>
+<p style="font-size:1.4em;font-style:italic;text-align:center;color:#333;margin:1.5em 0;line-height:1.4;">The F-pattern wasn't a map of how we read; it was a long-exposure photograph of two different behaviors. We just needed 150 frames per second to watch it get drawn.</p>
 
 ---
 
