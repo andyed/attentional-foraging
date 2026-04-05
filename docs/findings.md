@@ -2,7 +2,7 @@
 
 Reanalysis of the [AdSERP dataset](https://github.com/kayhan-latifzadeh/AdSERP) (Latifzadeh, Gwizdka & Leiva, SIGIR 2025). The [journey doc](journey.md) records how this started; this document records what we found.
 
-**Status:** v7, 2026-04-03. Ski-jump decomposition (§0). Task model: Orient–Survey–Evaluate–Commit (§3b). SERP difficulty via relevance spread (§3c). Reading episode pooling (§3d). Prior versions: priming null at three granularities (§2), forward-only dwell increases with position (ρ = +0.82, §3a), scroll kinematics confound (§8).
+**Status:** v8, 2026-04-05. Cursor approach-retreat as covert evaluation signal (§10b). Element-type cost analysis (§10b). Scroll retreat null on desktop (§10b). Survey phase with pupil trajectory (§3b-iii). Prior: ski-jump (§0), OSEC task model (§3b), SERP difficulty (§3c), priming null (§2), scroll kinematics confound (§8).
 
 ---
 
@@ -409,6 +409,28 @@ Huang, White & Buscher (2012) showed cursor proximity is the best single predict
 The signal is deployable from standard mouse telemetry: `min_cursor_distance_to_result_center` per impression. No eye tracker needed. The eye tracking in AdSERP validates the interpretation (mouse proximity during genuine visual evaluation, not accidental hover), but the production metric is cursor-only.
 
 **Notebooks:** [individual_differences.ipynb](../notebooks/individual_differences.ipynb)
+
+## 10b. Cursor approach-retreat: the consideration set has a motor signature
+
+Cursor approach-retreat goes beyond proximity. During evaluation, the mouse makes partial approach movements toward results that are ultimately rejected. This is a covert evaluation signal with a distinctive motor signature:
+
+| Category | N | Retreat Distance | Click Rate |
+|----------|---|-----------------|-----------|
+| **Clicked** | 1,981 | 119px | 100% |
+| **Approached-rejected** | 2,280 | 244px | 0% |
+| **Peripherally seen** | 4,548 | 180px | — |
+
+Short retreat (119px) = committed. Long retreat (244px) = actively rejected (p = 5.3×10⁻⁹²). Pupillometry confirms: LF/HF is 23.8 during approach vs 17.2 when cursor is far (p = 4.9×10⁻¹²). These are genuine evaluation episodes.
+
+**Approach predicts regression.** 78.3% of approached results get regressed to (odds ratio 3.67×, p = 10⁻¹⁹⁹). Approach + regression → 36.5% click rate. Approach + no regression → 29.5% (hard negative). No approach → ~6%.
+
+**Scroll doesn't carry this signal on desktop.** Scroll dwell and deceleration during regression are identical for clicked vs non-clicked results (all p > 0.3, notebook 17). The scroll is ballistic transportation; the cursor is the evaluation probe. On mobile, where scroll is the only motor channel, this may differ.
+
+**Element-type cost surprise.** Top ads show the highest pupil dilation during evaluation (+0.41%), contradicting the prediction that ads are cheaper to evaluate. Users may work harder to discriminate ads from organic results (notebook 16).
+
+**Deep dive:** [findings-approach-retreat.md](findings-approach-retreat.md)
+
+**Notebooks:** [15_cursor_approach.ipynb](../notebooks-v2/15_cursor_approach.ipynb), [16_element_type.ipynb](../notebooks-v2/16_element_type.ipynb), [17_scroll_retreat.ipynb](../notebooks-v2/17_scroll_retreat.ipynb)
 
 ## 11. Two orthogonal individual difference dimensions
 
