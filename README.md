@@ -24,7 +24,7 @@ Both turned out to need the same thing: decomposing SERP evaluation into measura
 
 [**andyed.github.io/attentional-foraging**](https://andyed.github.io/attentional-foraging/) — 10 curated search sessions replayed through [Scrutinizer](https://github.com/andyed/scrutinizer2025)'s foveated vision pipeline. What each participant could actually resolve at each fixation: sharp where they looked, degraded where they didn't. Scanpath overlay, timeline scrubbing, playback, gaze point toggle.
 
-[![Foveated scanpath replay](assets/scanpath-sidebyside_sm.png)](assets/scanpath-sidebyside.png)
+[![Page → Perception → Cognition](assets/scanpath-three-panel_sm.png)](assets/scanpath-three-panel.png)
 
 ---
 
