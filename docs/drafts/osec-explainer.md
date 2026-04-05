@@ -1,8 +1,8 @@
-# The Search Results F-Heatmap, Stroke by Stroke
+# The Search Results F-Heatmap, Frame by Frame
 
 <div style="float:right;margin:0 0 1em 1.5em;max-width:320px;">
 <img src="heat-map-f-shape.jpg" alt="The classic F-pattern heatmap on a Google SERP" style="width:100%;border-radius:4px;">
-<p style="font-size:0.75em;color:#999;margin-top:4px;line-height:1.4;">Image: <a href="https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/" style="color:#888;">NNG</a>. Nielsen's team studied the F on general web pages; their <a href="https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/" style="color:#888;">2017 follow-up</a> identified five other scanning patterns, specified the F as a conditional fallback, and acknowledged users are "globally rational." The F-on-SERPs extrapolation was mostly the industry's work. Our analysis is SERP-specific.</p>
+<p style="font-size:0.75em;color:#555;margin-top:4px;line-height:1.4;">Image: <a href="https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/" style="color:#446688;">NNG</a>. Nielsen's team studied the F on general web pages; their <a href="https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/" style="color:#446688;">2017 follow-up</a> identified five other scanning patterns, specified the F as a conditional fallback, and acknowledged users are "globally rational." The F-on-SERPs extrapolation was mostly the industry's work. Our analysis is SERP-specific.</p>
 </div>
 
 {dropcap} You may know this image. The F-pattern — horizontal bars at the top, vertical stem down the left. In 2006, Nielsen's F was a sledgehammer that broke the industry's assumption that users read websites like novels. That was a necessary correction. The F became the most recognized finding in web design, widely applied to search results pages.
@@ -125,7 +125,7 @@ In this session, the participant internalized the query on the prior screen — 
 <iframe src="https://andyed.github.io/attentional-foraging/p047-b1-t9.html#fix=6&w=6&mode=gazeplot&color=load" style="width:142%;height:142%;border:none;transform:scale(0.7);transform-origin:top left;" loading="lazy"></iframe>
 </div>
 
-<p style="font-size:0.85em;color:#555;text-align:center;">Interactive scanpath replay: p047-b1-t9 (mouse follower, 65 fixations). Press Play, then toggle "Color: Pupil Load." <a href="https://andyed.github.io/attentional-foraging/" style="color:#2a6496;">More sessions →</a></p>
+<p style="font-size:0.85em;color:#555;text-align:center;">Interactive scanpath replay: p047-b1-t9 (65 fixations). More sessions showing the orient→survey transition: <a href="https://andyed.github.io/attentional-foraging/p031-b3-t9.html#fix=12&w=46&color=load" style="color:#2a6496;">p031-b3-t9</a> · <a href="https://andyed.github.io/attentional-foraging/p020-b6-t10.html#fix=8&w=230&color=load" style="color:#2a6496;">p020-b6-t10</a> · <a href="https://andyed.github.io/attentional-foraging/p049-b2-t6.html#fix=8&w=26&color=load" style="color:#2a6496;">p049-b2-t6</a> · <a href="https://andyed.github.io/attentional-foraging/" style="color:#2a6496;">all sessions →</a></p>
 
 ---
 
@@ -172,17 +172,21 @@ The existing literature has gone remarkably far with the single-pass, top-down e
 
 ## The same simplification, twice
 
-The F-pattern and search ranking algorithms make the same assumption from different directions.
+The F-pattern and click models — used in machine learning from user SERP behavior — make the same assumption from different directions:
 
-The F-pattern says: "Users scan in an F shape." But the same simplification runs deeper. Every time you click a search result (or don't), the search engine updates a mathematical model of how likely you are to examine each position on the page. These "click models" are how Google, Bing, and every other engine learn which results are good — they're the mathematical backbone of search ranking. The dominant ones — cascade (Craswell et al., 2008), DBN (Chapelle & Zhang, 2009), UBM (Dupret & Piwowarski, 2008) — all assume the same thing the F-pattern assumes: users examine results top-down with a single, monotonically decreasing probability. One behavior, top to bottom.
+<table>
+<tr><th></th><th>F-Pattern (UX)</th><th>Click Models (IR)</th></tr>
+<tr><td><b>Says</b></td><td>"Users scan in an F shape."</td><td>"Users examine top-down with decreasing probability."</td></tr>
+<tr><td><b>Assumes</b></td><td>One scanning behavior.</td><td>One examination function.</td></tr>
+<tr><td><b>Misses</b></td><td>The horizontal bars are a separate phase.</td><td>Survey and evaluate have different probability distributions.</td></tr>
+<tr><td><b>Tool</b></td><td>Aggregate heatmaps (30–60Hz).</td><td>Click logs (no gaze data).</td></tr>
+<tr><td><b>Key models</b></td><td>Nielsen (2006)</td><td>Cascade (2008), DBN (2009), UBM (2008)</td></tr>
+</table>
 
-Neither the visual heatmap nor the mathematical model accounts for the survey phase. In both, its fixations get merged with evaluate fixations, and the two-operation structure collapses into a single pattern or a single probability. Liu et al. (2014) came closest with a two-stage "skimming then reading" model, but without per-fixation saccade evidence they couldn't separate gist sampling from early reading.
+Neither accounts for the survey phase. In both, survey fixations merge with evaluate fixations and the two-operation structure collapses. Liu et al. (2014) came closest with "skimming then reading," but without per-fixation saccade evidence couldn't separate gist sampling from early reading.
 
-This isn't a criticism. Nielsen's heatmaps, Craswell's cascade model, and the twenty years of work built on them were correct at the resolution available. You can't decompose temporal phases from aggregate spatial heatmaps. You can't separate survey from evaluate without per-fixation saccade kinematics and pupillometry at scale.
+This isn't a criticism — both were correct at the resolution available. What changed is the data. <span class="stats-detail">Saccade amplitude transition: p = 10⁻¹²⁸. Pupil signature: p = 10⁻¹¹⁷. Detectable within individual trials.</span>
 
-What changed is the resolution. The saccade amplitude transition is detectable within *individual trials* (p = 10⁻¹²⁸). The pupil signature separates the phases at p = 10⁻¹¹⁷. These aren't subtle aggregate effects — they're robust per-trial phenomena that previous datasets were too small or too coarsely sampled to detect.
-
-The F-pattern wasn't a map of how we read. It was a long-exposure photograph of two different behaviors. We just needed 150 frames per second to watch it get drawn.
 
 ### The F-pattern: then and now
 
@@ -194,6 +198,8 @@ The F-pattern wasn't a map of how we read. It was a long-exposure photograph of 
 <tr><td><b>Vertical stem</b></td><td>A downward scan.</td><td><b>Evaluate phase:</b> High-load serial reading (pupil dilation).</td></tr>
 <tr><td><b>Design advice</b></td><td>Put important content at the top.</td><td>Still true — but because users don't scroll, not because they can't read.</td></tr>
 </table>
+
+<p style="font-size:1.4em;font-style:italic;text-align:center;color:#333;margin:1.5em 0;line-height:1.4;">The F-pattern wasn't a map of how we read; it was a long-exposure photograph of two different behaviors. We just needed 150 frames per second to watch it get drawn. 🎤</p>
 
 ---
 

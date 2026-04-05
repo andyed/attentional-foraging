@@ -34,10 +34,10 @@ const html = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Search Results F-Heatmap, Stroke by Stroke</title>
-  <meta name="description" content="The F-pattern is two cognitive phases superimposed in one heatmap. 2,776 eye-tracked search sessions decomposed stroke by stroke.">
-  <meta property="og:title" content="The Search Results F-Heatmap, Stroke by Stroke">
-  <meta property="og:description" content="The F-pattern is two cognitive phases superimposed in one heatmap. We decomposed 2,776 eye-tracked search sessions stroke by stroke.">
+  <title>The Search Results F-Heatmap, Frame by Frame</title>
+  <meta name="description" content="The F-pattern is two cognitive phases superimposed in one heatmap. 2,776 eye-tracked search sessions decomposed frame by frame.">
+  <meta property="og:title" content="The Search Results F-Heatmap, Frame by Frame">
+  <meta property="og:description" content="The F-pattern is two cognitive phases superimposed in one heatmap. We decomposed 2,776 eye-tracked search sessions frame by frame.">
   <meta property="og:image" content="https://andyed.github.io/attentional-foraging/explainer/og-image.png">
   <meta property="og:image:width" content="1800">
   <meta property="og:image:height" content="940">
@@ -174,7 +174,7 @@ const html = `<!DOCTYPE html>
 <body>
 
 <div class="page-header">
-  <h1>The Search Results F-Heatmap, Stroke by Stroke</h1>
+  <h1>The Search Results F-Heatmap, Frame by Frame</h1>
   <div class="subtitle">2,776 eye-tracked search sessions reveal that the F-pattern's horizontal bars and vertical stem are two distinct cognitive operations — drawn 1.3 seconds apart</div>
   <div class="byline">Andy Edmonds · April 2026 · Based on <a href="https://doi.org/10.1145/3726302.3730325">AdSERP</a> (Latifzadeh, Gwizdka &amp; Leiva, SIGIR 2025)</div>
 </div>
