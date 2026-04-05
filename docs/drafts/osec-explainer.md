@@ -7,9 +7,9 @@
 
 {dropcap} You may know this image. The F-pattern — horizontal bars at the top, vertical stem down the left. In 2006, Nielsen's F was a sledgehammer that broke the industry's assumption that users read websites like novels. That was a necessary correction. The F became the most recognized finding in web design, widely applied to search results pages.
 
-==A heatmap collapses time.== It shows *where* people looked, never *when*. On search results pages — where the F-pattern's influence on design runs deepest — we can now replay the tape.
+==A heatmap collapses time.== It shows *where* people looked, never *when*. Nielsen's team worked with the eye trackers of 2006 — typically 30–60Hz, no pupil measurement, aggregate heatmaps as the primary analysis tool. Today we have 150Hz tracking with simultaneous pupillometry, per-fixation timestamps, and datasets large enough to detect phase transitions within individual trials. On search results pages — where the F-pattern's influence on design runs deepest — we can now replay the tape frame by frame.
 
-From years of eye-tracking studies and SERP experiments at eBay, Microsoft, and Quora, I've suspected the first moments on a results page involve a distinct sampling phase before committed reading. The AdSERP dataset — 2,776 sessions at 150Hz with pupillometry — finally gave enough resolution to test it. We're writing up the full analysis; along the way, the F-pattern fell out of the decomposition.
+From years of eye-tracking studies and SERP experiments at eBay, Microsoft, and Meta, I've suspected the first moments on a results page involve a distinct sampling phase before committed reading. The AdSERP dataset (Latifzadeh, Gwizdka & Leiva, SIGIR 2025) — 2,776 sessions at 150Hz with pupillometry — finally gave enough resolution to test it. We're writing up the full analysis; along the way, the F-pattern fell out of the decomposition.
 
 <span class="outer-note" style="margin-top:0.5em;">Two operations, one letter.</span>
 
@@ -115,7 +115,11 @@ Per-fixation pupil diameter across 2,720 trials reveals a three-phase trajectory
 
 <span class="outer-note">Cheap to sample, expensive to read.</span>The survey *constricts* pupils (p = 10⁻¹¹⁷ vs evaluate). It is cheap. The cognitive work comes later, during committed reading, where the pupil gradually recovers as working memory fills with candidates.
 
-**See it in action** — this interactive replay shows a real search session with the pupil load color overlay. Toggle "Color: Pupil Load" to watch the constriction→dilation trajectory unfold:
+**See it in action.** This real session (p047-b1-t9) shows the survey phase — fixations 1–5 in the first second, clustered around the search bar and nav, then the LF/HF pupil spike as evaluate begins:
+
+![Survey phase in a real session — 5 fixations in 1.0s, then cognitive load spikes](survey-gaze-plot-cropped.png)
+
+Toggle "Color: Pupil Load" in the interactive replay below to watch the constriction→dilation trajectory unfold:
 
 <div style="overflow:hidden;border:1px solid #e0e0e0;border-radius:6px;margin:1em 0;height:560px;">
 <iframe src="https://andyed.github.io/attentional-foraging/p047-b1-t9.html#fix=5&w=5&mode=gazeplot" style="width:142%;height:142%;border:none;transform:scale(0.7);transform-origin:top left;" loading="lazy"></iframe>
@@ -158,20 +162,7 @@ Position 10 clicks concentrate in homogeneous SERPs — where the results all lo
 
 On SERPs, orientation is nearly instant — the layout is so familiar that the visual system skips calibration entirely. This may not hold for novel interfaces, but for any page a user has seen hundreds of times, the motor plan is stored.
 
-<div style="max-width:520px;margin:1em auto;">
-<pre style="font-size:0.7em;line-height:1.6;white-space:pre;overflow:visible;">
-  ORIENT → SURVEY → EVALUATE
-  (0ms)    (1.3s)    (serial reading)
-                          ↓
-                    ┌─────┴─────┐
-               COMMIT        REGRESSION
-              (click)      (scroll back)
-                                ↓
-                           RE-EVALUATE
-                                ↓
-                             COMMIT
-</pre>
-</div>
+![The OSEC model: Orient → Survey → Evaluate, then branch to Commit or Regression (69% of trials), Re-evaluate, Commit.](osec-model.png)
 
 69% of trials include at least one scroll regression — a return to previously evaluated content. The regression rate correlates with decision time (r = 0.66). Scroll regressions are not noise; they are the behavioral cost of comparison under working memory load.
 
@@ -197,7 +188,7 @@ The F-pattern wasn't a map of how we read. It was a long-exposure photograph of 
 
 ## Data and methods
 
-> [!IMPORTANT]
+> [!TIP]
 > **Open data, open analysis.** 13 reproducible notebooks, interactive scanpath replays with foveated vision rendering, per-fixation pupil overlays, and all statistical tests: github.com/andyed/attentional-foraging. Interactive demo: andyed.github.io/attentional-foraging/.
 
 All analysis uses the AdSERP dataset (Latifzadeh, Gwizdka & Leiva, SIGIR 2025): 2,776 transactional product search queries, 47 participants, simultaneous 150Hz eye tracking, mouse tracking, scroll recording, and pupil diameter. Scanpath replays render each session through Scrutinizer, a neuroscience-based peripheral vision simulator. Fixation positions are anchored to DOM elements for pixel-accurate overlay at any viewport width.

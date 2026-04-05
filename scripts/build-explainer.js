@@ -38,6 +38,11 @@ const html = `<!DOCTYPE html>
   <meta name="description" content="The F-pattern is two cognitive phases superimposed in one heatmap. 2,776 eye-tracked search sessions decomposed stroke by stroke.">
   <meta property="og:title" content="The Search Results F-Heatmap, Stroke by Stroke">
   <meta property="og:description" content="The F-pattern is two cognitive phases superimposed in one heatmap. We decomposed 2,776 eye-tracked search sessions stroke by stroke.">
+  <meta property="og:image" content="https://andyed.github.io/attentional-foraging/explainer/og-image.png">
+  <meta property="og:image:width" content="1800">
+  <meta property="og:image:height" content="940">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://andyed.github.io/attentional-foraging/explainer/og-image.png">
   <meta property="og:type" content="article">
   <meta property="article:published_time" content="2026-04-04">
   <meta name="author" content="Andy Edmonds">
