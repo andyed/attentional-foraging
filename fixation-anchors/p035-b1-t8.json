@@ -1,0 +1,402 @@
+[
+  {
+    "selector": "#slim_appbar > div",
+    "offsetX": 284.4,
+    "offsetY": 38,
+    "resolvedX": 464.4,
+    "resolvedY": 171,
+    "tag": "div"
+  },
+  {
+    "selector": "#platop2",
+    "offsetX": 99.8,
+    "offsetY": 90.9,
+    "resolvedX": 548.8,
+    "resolvedY": 310.9,
+    "tag": "img"
+  },
+  {
+    "selector": "#vplap1",
+    "offsetX": 121.4,
+    "offsetY": 195.9,
+    "resolvedX": 434.4,
+    "resolvedY": 411.9,
+    "tag": "a"
+  },
+  {
+    "selector": "#vplap1",
+    "offsetX": 49.2,
+    "offsetY": 293.7,
+    "resolvedX": 362.2,
+    "resolvedY": 509.7,
+    "tag": "a"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(2) > div:nth-of-type(1) > span",
+    "offsetX": 43.3,
+    "offsetY": 22.6,
+    "resolvedX": 223.3,
+    "resolvedY": 665.1,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > a > div > cite",
+    "offsetX": 58.9,
+    "offsetY": 6.9,
+    "resolvedX": 238.9,
+    "resolvedY": 592.9,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(2) > ul > li > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > a > h3",
+    "offsetX": 47.3,
+    "offsetY": 44.3,
+    "resolvedX": 243.3,
+    "resolvedY": 822.8,
+    "tag": "h3"
+  },
+  {
+    "selector": "#MV-iYrjqN-WL4-EPtLGK2A4__43 > div > div > div:nth-of-type(1) > div:nth-of-type(4)",
+    "offsetX": 48.9,
+    "offsetY": 20.8,
+    "resolvedX": 228.9,
+    "resolvedY": 1164.8,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso",
+    "offsetX": 30,
+    "offsetY": 642.8,
+    "resolvedX": 210,
+    "resolvedY": 1225.8,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(3) > div > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 74.4,
+    "offsetY": 16,
+    "resolvedX": 254.4,
+    "resolvedY": 1282.5,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(3) > div > div:nth-of-type(2) > ul > li > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(2) > div:nth-of-type(1)",
+    "offsetX": 49.5,
+    "offsetY": 17.2,
+    "resolvedX": 245.5,
+    "resolvedY": 1433.5,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(5) > div > div:nth-of-type(1) > div:nth-of-type(3) > div",
+    "offsetX": 48.9,
+    "offsetY": 7.7,
+    "resolvedX": 228.9,
+    "resolvedY": 1779.9,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(6) > div > div:nth-of-type(3) > div",
+    "offsetX": 77.7,
+    "offsetY": 2.3,
+    "resolvedX": 257.7,
+    "resolvedY": 1925.3,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(6) > div > div:nth-of-type(1) > div > a > div > cite",
+    "offsetX": 78.8,
+    "offsetY": 12.4,
+    "resolvedX": 258.8,
+    "resolvedY": 1837.6,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(6) > div > div:nth-of-type(2) > div > span > em",
+    "offsetX": 76.6,
+    "offsetY": 14.7,
+    "resolvedX": 256.6,
+    "resolvedY": 1896.5,
+    "tag": "em"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(8) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 88.8,
+    "offsetY": 8.6,
+    "resolvedX": 268.8,
+    "resolvedY": 2133,
+    "tag": "h3"
+  },
+  {
+    "selector": "#tadsb",
+    "offsetX": 105.5,
+    "offsetY": 79.2,
+    "resolvedX": 285.5,
+    "resolvedY": 2440.6,
+    "tag": "div"
+  },
+  {
+    "selector": "#tadsb > div:nth-of-type(2) > div > div > div > div:nth-of-type(1) > a > div:nth-of-type(1) > span",
+    "offsetX": 102.2,
+    "offsetY": 14.8,
+    "resolvedX": 282.2,
+    "resolvedY": 2510.5,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(8) > div > div:nth-of-type(1) > div:nth-of-type(2) > div > span",
+    "offsetX": 75.5,
+    "offsetY": 14.9,
+    "resolvedX": 255.5,
+    "resolvedY": 2176.3,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div > div:nth-of-type(1) > h3 > span:nth-of-type(1)",
+    "offsetX": 122.2,
+    "offsetY": -0.7,
+    "resolvedX": 302.2,
+    "resolvedY": 978.2,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(2) > ul > li > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > a > div > cite",
+    "offsetX": 98.4,
+    "offsetY": 9.4,
+    "resolvedX": 294.4,
+    "resolvedY": 768.4,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div > span:nth-of-type(1)",
+    "offsetX": 118.8,
+    "offsetY": 10,
+    "resolvedX": 298.8,
+    "resolvedY": 701.7,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(2) > div:nth-of-type(1)",
+    "offsetX": 144.4,
+    "offsetY": 20,
+    "resolvedX": 324.4,
+    "resolvedY": 659.5,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(2) > div:nth-of-type(1) > span",
+    "offsetX": 165.5,
+    "offsetY": 38.1,
+    "resolvedX": 345.5,
+    "resolvedY": 680.6,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(2) > div:nth-of-type(1) > span",
+    "offsetX": 223.3,
+    "offsetY": 29.2,
+    "resolvedX": 403.3,
+    "resolvedY": 671.8,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(2) > div:nth-of-type(1) > span > em:nth-of-type(2)",
+    "offsetX": 11.4,
+    "offsetY": 2.6,
+    "resolvedX": 475.5,
+    "resolvedY": 645.1,
+    "tag": "em"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(2) > div:nth-of-type(1)",
+    "offsetX": 362.1,
+    "offsetY": 1.1,
+    "resolvedX": 542.1,
+    "resolvedY": 640.7,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(2) > ul > li > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > a > div > cite > span",
+    "offsetX": 186.1,
+    "offsetY": 2.8,
+    "resolvedX": 537.7,
+    "resolvedY": 762.8,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(2) > ul > li > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > a > h3",
+    "offsetX": 153.9,
+    "offsetY": 45.4,
+    "resolvedX": 349.9,
+    "resolvedY": 823.9,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(2) > ul > li > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > a > div > cite",
+    "offsetX": 98.4,
+    "offsetY": 14.9,
+    "resolvedX": 294.4,
+    "resolvedY": 773.9,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(2) > ul > li > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > a > h3",
+    "offsetX": 283.9,
+    "offsetY": 49.8,
+    "resolvedX": 479.9,
+    "resolvedY": 828.3,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(2) > ul > li > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(2) > div:nth-of-type(1) > span",
+    "offsetX": 322.8,
+    "offsetY": 24.2,
+    "resolvedX": 518.8,
+    "resolvedY": 862.7,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso",
+    "offsetX": 359.9,
+    "offsetY": 366.4,
+    "resolvedX": 539.9,
+    "resolvedY": 949.4,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(3) > div > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div:nth-of-type(2) > div > span",
+    "offsetX": 67.7,
+    "offsetY": 4.5,
+    "resolvedX": 247.7,
+    "resolvedY": 1308,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(3) > div > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 67.7,
+    "offsetY": 7.1,
+    "resolvedX": 247.7,
+    "resolvedY": 1273.6,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(3) > div > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 146.6,
+    "offsetY": 30.4,
+    "resolvedX": 326.6,
+    "resolvedY": 1296.9,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(3) > div > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div:nth-of-type(2) > div",
+    "offsetX": 167.7,
+    "offsetY": 20.8,
+    "resolvedX": 347.7,
+    "resolvedY": 1321.3,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso",
+    "offsetX": 96.6,
+    "offsetY": 638.4,
+    "resolvedX": 276.6,
+    "resolvedY": 1221.4,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(2) > div:nth-of-type(1)",
+    "offsetX": 238.8,
+    "offsetY": 23.3,
+    "resolvedX": 418.8,
+    "resolvedY": 662.9,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > a > h3",
+    "offsetX": 323.3,
+    "offsetY": 7.4,
+    "resolvedX": 503.3,
+    "resolvedY": 612.9,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(2) > ul > li > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > a > h3",
+    "offsetX": 230.6,
+    "offsetY": 45.4,
+    "resolvedX": 426.6,
+    "resolvedY": 823.9,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(3) > div > div:nth-of-type(2) > ul",
+    "offsetX": 98.8,
+    "offsetY": 14.4,
+    "resolvedX": 278.8,
+    "resolvedY": 1359.1,
+    "tag": "ul"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(3) > div > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > div",
+    "offsetX": 272.2,
+    "offsetY": 21,
+    "resolvedX": 452.2,
+    "resolvedY": 1266.9,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(2) > div:nth-of-type(1) > span",
+    "offsetX": 328.8,
+    "offsetY": 25.9,
+    "resolvedX": 508.8,
+    "resolvedY": 668.4,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > div > div:nth-of-type(3) > div > div > div",
+    "offsetX": 34,
+    "offsetY": 3.5,
+    "resolvedX": 575.5,
+    "resolvedY": 588.5,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > a > h3",
+    "offsetX": 445.5,
+    "offsetY": 26.3,
+    "resolvedX": 625.5,
+    "resolvedY": 631.8,
+    "tag": "h3"
+  },
+  {
+    "selector": "#_MV-iYrjqN-WL4-EPtLGK2A416 > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div:nth-of-type(5)",
+    "offsetX": -0.3,
+    "offsetY": 322.4,
+    "resolvedX": 707.7,
+    "resolvedY": 537.4,
+    "tag": "div"
+  },
+  {
+    "selector": "#tvcap > div",
+    "offsetX": 583.2,
+    "offsetY": 394.7,
+    "resolvedX": 763.2,
+    "resolvedY": 570.7,
+    "tag": "div"
+  },
+  {
+    "selector": "#platop4",
+    "offsetX": 49.1,
+    "offsetY": 146.4,
+    "resolvedX": 762.1,
+    "resolvedY": 366.4,
+    "tag": "img"
+  },
+  {
+    "selector": "#tvcap > div > div > div > div > span > div",
+    "offsetX": 580.1,
+    "offsetY": 12.6,
+    "resolvedX": 762.1,
+    "resolvedY": 197.6,
+    "tag": "div"
+  }
+]

@@ -1,0 +1,402 @@
+[
+  {
+    "selector": "#Odp5De > div > div > div:nth-of-type(1) > div:nth-of-type(3)",
+    "offsetX": 52.1,
+    "offsetY": 22.3,
+    "resolvedX": 559.9,
+    "resolvedY": 606.3,
+    "tag": "div"
+  },
+  {
+    "selector": "#Odp5De > div > div > div:nth-of-type(1) > div:nth-of-type(2) > div > div:nth-of-type(1) > div > div:nth-of-type(1) > div",
+    "offsetX": 19.3,
+    "offsetY": 24.5,
+    "resolvedX": 333.3,
+    "resolvedY": 608.5,
+    "tag": "div"
+  },
+  {
+    "selector": "#tsuid27 > div > div > a > div > div:nth-of-type(2) > div:nth-of-type(1) > span",
+    "offsetX": 76.6,
+    "offsetY": 0.8,
+    "resolvedX": 386.6,
+    "resolvedY": 642.9,
+    "tag": "span"
+  },
+  {
+    "selector": "#platop1",
+    "offsetX": 37.9,
+    "offsetY": 24.2,
+    "resolvedX": 404.4,
+    "resolvedY": 288.7,
+    "tag": "img"
+  },
+  {
+    "selector": "#vplaurlg0 > div > div",
+    "offsetX": 108,
+    "offsetY": 161.5,
+    "resolvedX": 305.5,
+    "resolvedY": 377.5,
+    "tag": "div"
+  },
+  {
+    "selector": "#vplaurlt0 > span",
+    "offsetX": 68.7,
+    "offsetY": 9.4,
+    "resolvedX": 257.7,
+    "resolvedY": 416.4,
+    "tag": "span"
+  },
+  {
+    "selector": "#vplaurlt1 > span",
+    "offsetX": 62.6,
+    "offsetY": 32.7,
+    "resolvedX": 416.6,
+    "resolvedY": 439.7,
+    "tag": "span"
+  },
+  {
+    "selector": "#vplaurlt2 > span",
+    "offsetX": 75.4,
+    "offsetY": 22.7,
+    "resolvedX": 594.4,
+    "resolvedY": 429.7,
+    "tag": "span"
+  },
+  {
+    "selector": "#vplaurlt3 > span",
+    "offsetX": 92.5,
+    "offsetY": 24.9,
+    "resolvedX": 776.5,
+    "resolvedY": 431.9,
+    "tag": "span"
+  },
+  {
+    "selector": "#iur > div:nth-of-type(1) > div > g-expandable-container > div > g-expandable-content > span > a:nth-of-type(2) > div",
+    "offsetX": 79.9,
+    "offsetY": 25.7,
+    "resolvedX": 397.7,
+    "resolvedY": 1064.8,
+    "tag": "div"
+  },
+  {
+    "selector": "#dimg_23",
+    "offsetX": 66.3,
+    "offsetY": 73,
+    "resolvedX": 423.3,
+    "resolvedY": 1158.1,
+    "tag": "img"
+  },
+  {
+    "selector": "#dimg_23",
+    "offsetX": 59.6,
+    "offsetY": 25.2,
+    "resolvedX": 416.6,
+    "resolvedY": 1110.4,
+    "tag": "img"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 311,
+    "offsetY": 22.6,
+    "resolvedX": 491,
+    "resolvedY": 1359.1,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > div",
+    "offsetX": 112.2,
+    "offsetY": 22,
+    "resolvedX": 292.2,
+    "resolvedY": 1338,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > div > cite",
+    "offsetX": 96.6,
+    "offsetY": 15.4,
+    "resolvedX": 276.6,
+    "resolvedY": 1332.4,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rso",
+    "offsetX": 111.1,
+    "offsetY": 446.3,
+    "resolvedX": 291.1,
+    "resolvedY": 1443.5,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(3) > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > a > div > cite",
+    "offsetX": 127.7,
+    "offsetY": 14.7,
+    "resolvedX": 307.7,
+    "resolvedY": 1484.5,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(2) > div",
+    "offsetX": 483.2,
+    "offsetY": 19.6,
+    "resolvedX": 663.2,
+    "resolvedY": 1390.2,
+    "tag": "div"
+  },
+  {
+    "selector": "#dimg_5",
+    "offsetX": 55.4,
+    "offsetY": 78.6,
+    "resolvedX": 795.4,
+    "resolvedY": 1394.6,
+    "tag": "img"
+  },
+  {
+    "selector": "#dimg_63",
+    "offsetX": 32.1,
+    "offsetY": 62.7,
+    "resolvedX": 772.1,
+    "resolvedY": 1736.6,
+    "tag": "img"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(4) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 199.9,
+    "offsetY": 16.6,
+    "resolvedX": 379.9,
+    "resolvedY": 1711.1,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(4) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 277.7,
+    "offsetY": 23.3,
+    "resolvedX": 457.7,
+    "resolvedY": 1717.7,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(4) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 295.5,
+    "offsetY": 14.4,
+    "resolvedX": 475.5,
+    "resolvedY": 1708.8,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(4) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > div > cite",
+    "offsetX": 102.2,
+    "offsetY": 11.7,
+    "resolvedX": 282.2,
+    "resolvedY": 1686.6,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(5) > div > div:nth-of-type(1) > div:nth-of-type(2) > div > span:nth-of-type(2)",
+    "offsetX": 113.3,
+    "offsetY": 6.3,
+    "resolvedX": 293.3,
+    "resolvedY": 1866.5,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(5) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > div > cite",
+    "offsetX": 123.3,
+    "offsetY": 4,
+    "resolvedX": 303.3,
+    "resolvedY": 1807.7,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(6) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > div > cite",
+    "offsetX": 133.3,
+    "offsetY": 2.9,
+    "resolvedX": 313.3,
+    "resolvedY": 1935.3,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(6) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > div",
+    "offsetX": 149.9,
+    "offsetY": 19.5,
+    "resolvedX": 329.9,
+    "resolvedY": 1950.9,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(6) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 371,
+    "offsetY": 26.7,
+    "resolvedX": 551,
+    "resolvedY": 1978.6,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(6) > div > div:nth-of-type(1) > div:nth-of-type(3) > div > span:nth-of-type(3)",
+    "offsetX": 95.9,
+    "offsetY": -0.1,
+    "resolvedX": 504.4,
+    "resolvedY": 2033.1,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(6) > div > div:nth-of-type(1) > div:nth-of-type(3) > div > span:nth-of-type(3)",
+    "offsetX": 53.7,
+    "offsetY": -0.1,
+    "resolvedX": 462.2,
+    "resolvedY": 2033.1,
+    "tag": "span"
+  },
+  {
+    "selector": "#dimg_57",
+    "offsetX": 54.3,
+    "offsetY": 66.1,
+    "resolvedX": 794.3,
+    "resolvedY": 1997.5,
+    "tag": "img"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(7) > div > div:nth-of-type(1) > div:nth-of-type(2) > div",
+    "offsetX": 426.6,
+    "offsetY": 36.1,
+    "resolvedX": 606.6,
+    "resolvedY": 2173,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(7) > div > div:nth-of-type(1) > div:nth-of-type(2) > div",
+    "offsetX": 327.7,
+    "offsetY": 20.6,
+    "resolvedX": 507.7,
+    "resolvedY": 2157.4,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(7) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > div > cite > span",
+    "offsetX": 102.7,
+    "offsetY": 8.7,
+    "resolvedX": 403.3,
+    "resolvedY": 2093,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(6) > div > div:nth-of-type(1) > div:nth-of-type(3) > div > span:nth-of-type(3)",
+    "offsetX": 79.3,
+    "offsetY": 13.2,
+    "resolvedX": 487.7,
+    "resolvedY": 2046.4,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso",
+    "offsetX": 296.6,
+    "offsetY": 788.3,
+    "resolvedX": 476.6,
+    "resolvedY": 1785.4,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(5) > div > div:nth-of-type(1) > div:nth-of-type(2) > div > span:nth-of-type(2) > em:nth-of-type(3)",
+    "offsetX": 6.1,
+    "offsetY": 10.7,
+    "resolvedX": 665.5,
+    "resolvedY": 1870.9,
+    "tag": "em"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div:nth-of-type(2)",
+    "offsetX": 40.8,
+    "offsetY": 104.2,
+    "resolvedX": 768.8,
+    "resolvedY": 1420.1,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(1) > div",
+    "offsetX": 325.5,
+    "offsetY": 52,
+    "resolvedX": 505.5,
+    "resolvedY": 1368,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(2) > div > span > em:nth-of-type(1)",
+    "offsetX": 239.9,
+    "offsetY": 13.3,
+    "resolvedX": 419.9,
+    "resolvedY": 1386.8,
+    "tag": "em"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(2) > div",
+    "offsetX": 172.2,
+    "offsetY": 21.9,
+    "resolvedX": 352.2,
+    "resolvedY": 1392.4,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(3) > div > span:nth-of-type(3)",
+    "offsetX": 22.6,
+    "offsetY": 1.3,
+    "resolvedX": 431,
+    "resolvedY": 1419,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 157.7,
+    "offsetY": 8.1,
+    "resolvedX": 337.7,
+    "resolvedY": 1344.6,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 318.8,
+    "offsetY": 10.3,
+    "resolvedX": 498.8,
+    "resolvedY": 1346.9,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 399.9,
+    "offsetY": 13.7,
+    "resolvedX": 579.9,
+    "resolvedY": 1350.2,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso",
+    "offsetX": 88.8,
+    "offsetY": 299.8,
+    "resolvedX": 268.8,
+    "resolvedY": 1296.9,
+    "tag": "div"
+  },
+  {
+    "selector": "#dimg_5",
+    "offsetX": 46.5,
+    "offsetY": 32,
+    "resolvedX": 786.5,
+    "resolvedY": 1348,
+    "tag": "img"
+  },
+  {
+    "selector": "#dimg_3",
+    "offsetX": 61.8,
+    "offsetY": 84.1,
+    "resolvedX": 798.8,
+    "resolvedY": 1169.2,
+    "tag": "img"
+  },
+  {
+    "selector": "#dimg_3",
+    "offsetX": 80.6,
+    "offsetY": 38.6,
+    "resolvedX": 817.7,
+    "resolvedY": 1123.7,
+    "tag": "img"
+  }
+]

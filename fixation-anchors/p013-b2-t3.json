@@ -1,0 +1,114 @@
+[
+  {
+    "selector": "#platop4",
+    "offsetX": 58.2,
+    "offsetY": 54.9,
+    "resolvedX": 783.2,
+    "resolvedY": 270.9,
+    "tag": "img"
+  },
+  {
+    "selector": "#vplaurlg4 > div > div",
+    "offsetX": 14.2,
+    "offsetY": 81.6,
+    "resolvedX": 723.2,
+    "resolvedY": 297.6,
+    "tag": "div"
+  },
+  {
+    "selector": "#vplap3",
+    "offsetX": 75.1,
+    "offsetY": 127.1,
+    "resolvedX": 652.1,
+    "resolvedY": 343.1,
+    "tag": "a"
+  },
+  {
+    "selector": "#vplap1",
+    "offsetX": 110.3,
+    "offsetY": 217,
+    "resolvedX": 423.3,
+    "resolvedY": 433,
+    "tag": "a"
+  },
+  {
+    "selector": "#tads > div > div > div > div > div:nth-of-type(1) > a > div:nth-of-type(2) > span:nth-of-type(2)",
+    "offsetX": 56.6,
+    "offsetY": 17.6,
+    "resolvedX": 270,
+    "resolvedY": 539.6,
+    "tag": "span"
+  },
+  {
+    "selector": "#_UnSiYoynKuehkPIPsMOp4Aw16 > div:nth-of-type(1) > div > div > div:nth-of-type(1)",
+    "offsetX": 132.2,
+    "offsetY": 280.1,
+    "resolvedX": 312.2,
+    "resolvedY": 494.1,
+    "tag": "div"
+  },
+  {
+    "selector": "#_UnSiYoynKuehkPIPsMOp4Aw16 > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(3) > div > a > div",
+    "offsetX": 66.7,
+    "offsetY": 12.7,
+    "resolvedX": 387.7,
+    "resolvedY": 479.7,
+    "tag": "div"
+  },
+  {
+    "selector": "#_UnSiYoynKuehkPIPsMOp4Aw16 > div:nth-of-type(1) > div > div > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(3) > div > a > div",
+    "offsetX": 57.8,
+    "offsetY": 9.3,
+    "resolvedX": 378.8,
+    "resolvedY": 476.3,
+    "tag": "div"
+  },
+  {
+    "selector": "#tads > div > div > div > div > div:nth-of-type(1)",
+    "offsetX": 211,
+    "offsetY": 6.5,
+    "resolvedX": 391,
+    "resolvedY": 528.5,
+    "tag": "div"
+  },
+  {
+    "selector": "#_UnSiYoynKuehkPIPsMOp4Aw16 > div:nth-of-type(1)",
+    "offsetX": 213.3,
+    "offsetY": 295.9,
+    "resolvedX": 393.3,
+    "resolvedY": 501.9,
+    "tag": "div"
+  },
+  {
+    "selector": "#tvcap > div:nth-of-type(1) > div > div > div",
+    "offsetX": 465.5,
+    "offsetY": 22.2,
+    "resolvedX": 645.5,
+    "resolvedY": 203.2,
+    "tag": "div"
+  },
+  {
+    "selector": "#tsf > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button",
+    "offsetX": 11.8,
+    "offsetY": -0.4,
+    "resolvedX": 818.8,
+    "resolvedY": 26.6,
+    "tag": "button"
+  },
+  {
+    "selector": "#tsf > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button",
+    "offsetX": 22.9,
+    "offsetY": 5.2,
+    "resolvedX": 829.9,
+    "resolvedY": 32.2,
+    "tag": "button"
+  },
+  {
+    "selector": "#hdtb-msb",
+    "offsetX": 819.9,
+    "offsetY": 15.9,
+    "resolvedX": 819.9,
+    "resolvedY": 89.9,
+    "tag": "div"
+  }
+]

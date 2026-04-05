@@ -32,6 +32,14 @@ function getArg(name, def) {
 const ALL_TRIALS = [
     'p032-b6-t8', 'p029-b2-t10', 'p016-b3-t1', 'p047-b1-t9',
     'p035-b4-t2', 'p011-b3-t2', 'p037-b2-t5', 'p045-b2-t6',
+    'p020-b6-t10', 'p047-b2-t6',
+    'p031-b5-t2', 'p049-b2-t6', 'p017-b3-t3',
+    'p021-b6-t2', 'p019-b6-t5', 'p021-b2-t10',
+    'p013-b2-t3', 'p026-b4-t9', 'p032-b4-t9',
+    'p004-b2-t4', 'p007-b6-t8', 'p035-b1-t8',
+    'p014-b6-t8', 'p034-b2-t3', 'p027-b3-t6',
+    'p038-b5-t9', 'p010-b4-t7', 'p031-b3-t9',
+    'p024-b3-t5', 'p035-b4-t1', 'p024-b5-t5',
 ];
 
 const singleTrial = getArg('trial', null);

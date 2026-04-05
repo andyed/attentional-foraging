@@ -23,8 +23,15 @@ const LAYOUT_DIR = path.join(ROOT, 'layout-freeze');
 const GAZEPLOT_DIR = path.join(SCRUTINIZER, 'output', 'adserp-fullpage-gazeplots');
 const SITE_DIR = path.join(ROOT, 'site');
 
-// Clean and create site structure
-if (fs.existsSync(SITE_DIR)) fs.rmSync(SITE_DIR, { recursive: true });
+// Clean site structure — preserve explainer/ and other standalone subdirectories
+const preserveDirs = new Set(['explainer']);
+if (fs.existsSync(SITE_DIR)) {
+    for (const entry of fs.readdirSync(SITE_DIR)) {
+        if (preserveDirs.has(entry)) continue;
+        const p = path.join(SITE_DIR, entry);
+        fs.rmSync(p, { recursive: true, force: true });
+    }
+}
 fs.mkdirSync(path.join(SITE_DIR, 'serp-renders'), { recursive: true });
 fs.mkdirSync(path.join(SITE_DIR, 'gazeplots'), { recursive: true });
 fs.mkdirSync(path.join(SITE_DIR, 'png'), { recursive: true });
@@ -42,6 +49,28 @@ const trials = [
     { tag: 'scanner',             trial_id: 'p045-b2-t6',  query: 'buy gates gates 22650 lower radiator hose' },
     { tag: 'clean_serp',          trial_id: 'p020-b6-t10', query: 'buy acdelco acdelco 18a753 brake rotor' },
     { tag: 'clean_serp_2',        trial_id: 'p047-b2-t6',  query: 'buy stens solid state module briggs 397358' },
+    // ── Behavioral strategy groups (3 per) ──
+    { tag: 'satisficer', trial_id: 'p031-b5-t2', query: 'buy ganz rooster oil bottle by walterdrake' },
+    { tag: 'satisficer', trial_id: 'p049-b2-t6', query: 'buy robert sorby robert sorby 410 sandmaster' },
+    { tag: 'satisficer', trial_id: 'p017-b3-t3', query: 'buy hampton direct microwave egg poacher' },
+    { tag: 'optimizer', trial_id: 'p021-b6-t2', query: 'buy clauss clauss 18429 titanium wire cutters' },
+    { tag: 'optimizer', trial_id: 'p019-b6-t5', query: 'buy dolce gabbana dolce gabbana dg2075 sunglasses' },
+    { tag: 'optimizer', trial_id: 'p021-b2-t10', query: 'buy home win arsenal fc fleece blanket' },
+    { tag: 'instant_decision', trial_id: 'p013-b2-t3', query: 'buy romantic music for cello' },
+    { tag: 'instant_decision', trial_id: 'p026-b4-t9', query: 'buy shimano shimano bhaltair reel bag medium' },
+    { tag: 'instant_decision', trial_id: 'p032-b4-t9', query: 'buy epakitin epakitin powder 180gm' },
+    { tag: 'regressive', trial_id: 'p004-b2-t4', query: 'buy acdelco acdelco 6k458 fan belt' },
+    { tag: 'regressive', trial_id: 'p007-b6-t8', query: 'buy dermalogica dermalogica active moist 3 5oz' },
+    { tag: 'regressive', trial_id: 'p035-b1-t8', query: 'buy imak imak arthritis gloves small' },
+    { tag: 'forward_only', trial_id: 'p014-b6-t8', query: 'buy alessi alessi birillo toothbrush holder' },
+    { tag: 'forward_only', trial_id: 'p034-b2-t3', query: 'buy portal' },
+    { tag: 'forward_only', trial_id: 'p027-b3-t6', query: 'buy denso 673 1306 ignition coil' },
+    { tag: 'scanner', trial_id: 'p038-b5-t9', query: 'buy copernicus piezo electric rocks' },
+    { tag: 'scanner', trial_id: 'p010-b4-t7', query: 'buy vdo vdo pm151 blower motor' },
+    { tag: 'scanner', trial_id: 'p031-b3-t9', query: 'buy timken timken 1932s seal' },
+    { tag: 'deep_click', trial_id: 'p024-b3-t5', query: 'buy lego lego dinosaurs mosasaurus 6721' },
+    { tag: 'deep_click', trial_id: 'p035-b4-t1', query: 'buy spy spy optic discord square sunglasses' },
+    { tag: 'deep_click', trial_id: 'p024-b5-t5', query: 'buy m a c mac lipglass prrr' },
 ];
 
 async function main() {
@@ -175,6 +204,19 @@ for (const trial of trials) {
             d: Math.round(f.tEnd - f.tStart)
         };
     }).filter(f => f.d > 0);
+
+    // Compute inter-fixation saccade displacement (px)
+    // vx/vy = displacement from previous fixation to this one
+    // Sign: vy positive = downward (forward scan), negative = upward (regression)
+    for (let i = 0; i < fixations.length; i++) {
+        if (i === 0) {
+            fixations[i].vx = 0;
+            fixations[i].vy = 0;
+        } else {
+            fixations[i].vx = Math.round(fixations[i].x - fixations[i - 1].x);
+            fixations[i].vy = Math.round(fixations[i].y - fixations[i - 1].y);
+        }
+    }
 
     // Load per-fixation pupil data if available
     const pupilPath = path.join(DATA_DIR, 'fixation-pupil', `${id}.json`);
@@ -314,6 +356,8 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .timeline-label.lbl-saliency { color: #ffa040; text-shadow: 0 0 6px rgba(255,160,64,0.4); }
 .timeline-label.lbl-pupil { color: #40e0ff; text-shadow: 0 0 6px rgba(64,224,255,0.4); }
 .timeline-label.lbl-lfhf { color: #f59e0b; text-shadow: 0 0 6px rgba(245,158,11,0.4); }
+.timeline-label.lbl-gaze-x { color: #e0e050; text-shadow: 0 0 6px rgba(224,224,80,0.4); }
+.timeline-label.lbl-gaze-y { color: #50c0e0; text-shadow: 0 0 6px rgba(80,192,224,0.4); }
 .timeline-label.lbl-scroll { color: #44dd66; text-shadow: 0 0 6px rgba(68,221,102,0.4); }
 .timeline-label.lbl-dwell { color: #c8a8f0; text-shadow: 0 0 6px rgba(200,168,240,0.4); }
 .timeline-track { position: relative; flex: 1; background: #222; border-radius: 2px; overflow: hidden; }
@@ -374,6 +418,18 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
         <div class="timeline-ticks" id="ticks-lfhf"></div>
       </div>
     </div>` : ''}
+    <div class="timeline-row">
+      <div class="timeline-label lbl-gaze-x">Gaze ΔX</div>
+      <div class="timeline-track" id="track-gaze-vx">
+        <div class="timeline-ticks" id="ticks-gaze-vx"></div>
+      </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-label lbl-gaze-y">Gaze ΔY</div>
+      <div class="timeline-track" id="track-gaze-vy">
+        <div class="timeline-ticks" id="ticks-gaze-vy"></div>
+      </div>
+    </div>
     <div class="timeline-row">
       <div class="timeline-label lbl-scroll">Scroll</div>
       <div class="timeline-track" id="track-scroll">
@@ -536,6 +592,20 @@ function buildScrollTrack() {
     });
     return ticks;
 }
+// Gaze velocity tracks: displacement between consecutive fixations
+// Height = |displacement| normalized per-trial; color encodes direction
+const VX=F.map(f=>f.vx||0),VY=F.map(f=>f.vy||0);
+const VX_MAX=Math.max(1,...VX.map(Math.abs)),VY_MAX=Math.max(1,...VY.map(Math.abs));
+// ΔX color: yellow for rightward, blue-gray for leftward
+const cVX=(v)=>{if(v==null)return'#333';const t=v/VX_MAX;
+if(t>=0)return\`rgb(\${Math.round(80+175*t)},\${Math.round(80+175*t)},\${Math.round(30+20*t)})\`;
+return\`rgb(\${Math.round(50+30*(-t))},\${Math.round(50+50*(-t))},\${Math.round(80+80*(-t))})\`};
+// ΔY color: teal for downward (forward), red-orange for upward (regression)
+const cVY=(v)=>{if(v==null)return'#333';const t=v/VY_MAX;
+if(t>=0)return\`rgb(\${Math.round(30+20*t)},\${Math.round(60+140*t)},\${Math.round(80+140*t)})\`;
+return\`rgb(\${Math.round(80+175*(-t))},\${Math.round(40+30*(-t))},\${Math.round(20+20*(-t))})\`};
+const tkGazeVX = buildTrack('ticks-gaze-vx', i => cVX(F[i].vx), i => Math.abs(F[i].vx||0)/VX_MAX);
+const tkGazeVY = buildTrack('ticks-gaze-vy', i => cVY(F[i].vy), i => Math.abs(F[i].vy||0)/VY_MAX);
 const tkScroll = buildScrollTrack();
 const tkDwell = buildDwellTrack();
 const tkE = tkSal; // backward compat for recolor
@@ -596,7 +666,7 @@ if(colorBtn){colorBtn.addEventListener('click',()=>{
 const ci_cm=COLOR_MODES.indexOf(colorMode);colorMode=COLOR_MODES[(ci_cm+1)%COLOR_MODES.length];
 colorBtn.textContent=COLOR_LABELS[colorMode];
 colorBtn.classList.toggle('active',colorMode!=='sequence');
-recolor()})}
+recolor();pushHash()})}
 // Background mode controls
 const modeBtn=document.getElementById('mode-btn');
 const progBtn=document.getElementById('prog-btn');
@@ -615,15 +685,17 @@ if(!ws.disabled)p.push('fix='+(ci+1));
 if(!ws.disabled)p.push('w='+ws.value);
 if(bgMode!=='gazeplot')p.push('mode='+bgMode);
 if(!gazeVisible)p.push('gaze=off');
+if(colorMode!=='sequence')p.push('color='+colorMode);
 history.replaceState(null,'','#'+p.join('&'))}
 function readHash(){const h=location.hash.slice(1);if(!h)return;
 const p={};h.split('&').forEach(kv=>{const[k,v]=kv.split('=');p[k]=v});
 if(p.mode)setMode(p.mode);
 if(p.w){ws.value=p.w;wl.textContent=p.w}
 if(p.fix){ci=Math.max(0,Math.min(N-1,parseInt(p.fix)-1));uv()}
-if(p.gaze==='off'){gazeVisible=false;svg.style.display='none';gazeBtn.classList.remove('active')}}
+if(p.gaze==='off'){gazeVisible=false;svg.style.display='none';gazeBtn.classList.remove('active')}
+if(p.color&&COLOR_MODES.includes(p.color)){colorMode=p.color;colorBtn.textContent=COLOR_LABELS[colorMode];colorBtn.classList.toggle('active',colorMode!=='sequence');recolor()}}
 readHash();
-ws.addEventListener('input',()=>{uv();pushHash()});
+ws.addEventListener('input',()=>{const wn=parseInt(ws.value);if(ci>=N-1||ci<wn)ci=Math.min(wn-1,N-1);uv();pushHash()});
 </script></body></html>`;
 
     fs.writeFileSync(path.join(SITE_DIR, `${id}.html`), html);

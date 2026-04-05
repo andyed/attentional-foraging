@@ -1,0 +1,494 @@
+[
+  {
+    "selector": "#logo > img",
+    "width": 92,
+    "height": 30,
+    "tag": "img"
+  },
+  {
+    "selector": "#tsf > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div > div:nth-of-type(3) > div:nth-of-type(1) > span:nth-of-type(1) > svg",
+    "width": 24,
+    "height": 44,
+    "tag": "svg"
+  },
+  {
+    "selector": "#tsf > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div > div:nth-of-type(3) > div:nth-of-type(2) > svg",
+    "width": 24,
+    "height": 24,
+    "tag": "svg"
+  },
+  {
+    "selector": "#tsf > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button > div > span > svg",
+    "width": 24,
+    "height": 24,
+    "tag": "svg"
+  },
+  {
+    "selector": "#hdtb-msb > div:nth-of-type(1) > div > div:nth-of-type(1) > span > span > svg",
+    "width": 16,
+    "height": 16,
+    "tag": "svg"
+  },
+  {
+    "selector": "#hdtb-msb > div:nth-of-type(1) > div > div:nth-of-type(2) > a > span > svg",
+    "width": 16,
+    "height": 16,
+    "tag": "svg"
+  },
+  {
+    "selector": "#hdtb-msb > div:nth-of-type(1) > div > div:nth-of-type(3) > a > span > svg",
+    "width": 16,
+    "height": 16,
+    "tag": "svg"
+  },
+  {
+    "selector": "#hdtb-msb > div:nth-of-type(1) > div > div:nth-of-type(4) > a > span > svg",
+    "width": 16,
+    "height": 16,
+    "tag": "svg"
+  },
+  {
+    "selector": "#hdtb-msb > div:nth-of-type(1) > div > div:nth-of-type(5) > a > span > svg",
+    "width": 16,
+    "height": 16,
+    "tag": "svg"
+  },
+  {
+    "selector": "#hdtb-msb > div:nth-of-type(1) > span > g-popup > div:nth-of-type(1) > div > span > svg",
+    "width": 16,
+    "height": 16,
+    "tag": "svg"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(1) > div > div:nth-of-type(3) > div > div > div > span > span > svg",
+    "width": 18,
+    "height": 18,
+    "tag": "svg"
+  },
+  {
+    "selector": "#dimg_3",
+    "width": 92,
+    "height": 92,
+    "tag": "img"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(2) > ul > li > div > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(3) > div > div > div > span > span > svg",
+    "width": 18,
+    "height": 18,
+    "tag": "svg"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div > div:nth-of-type(1) > div > div:nth-of-type(3) > div > div > div > span > span > svg",
+    "width": 18,
+    "height": 18,
+    "tag": "svg"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(3) > div > div:nth-of-type(1) > div > div > div:nth-of-type(3) > div > div > div > span > span > svg",
+    "width": 18,
+    "height": 18,
+    "tag": "svg"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(4) > div > div:nth-of-type(1) > div > div > div:nth-of-type(3) > div > div > div > span > span > svg",
+    "width": 18,
+    "height": 18,
+    "tag": "svg"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(5) > div > div:nth-of-type(1) > div > div > div:nth-of-type(3) > div > div > div > span > span > svg",
+    "width": 18,
+    "height": 18,
+    "tag": "svg"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(6) > div > div:nth-of-type(1) > div > div > div:nth-of-type(3) > div > div > div > span > span > svg",
+    "width": 18,
+    "height": 18,
+    "tag": "svg"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(7) > div > div > div:nth-of-type(1) > div > div:nth-of-type(3) > div > div > div > span > span > svg",
+    "width": 18,
+    "height": 18,
+    "tag": "svg"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(8) > div > div:nth-of-type(1) > div > div > div:nth-of-type(3) > div > div > div > span > span > svg",
+    "width": 18,
+    "height": 18,
+    "tag": "svg"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(9) > div > div > div:nth-of-type(1) > div > div > div:nth-of-type(3) > div > div > div > span > span > svg",
+    "width": 18,
+    "height": 18,
+    "tag": "svg"
+  },
+  {
+    "selector": "#w3bYAd > div > div:nth-of-type(1) > h3 > span:nth-of-type(2) > div > div > div > span > span > svg",
+    "width": 18,
+    "height": 18,
+    "tag": "svg"
+  },
+  {
+    "selector": "#dimg_7",
+    "width": 90,
+    "height": 160,
+    "tag": "img"
+  },
+  {
+    "selector": "#lu_map",
+    "width": 363,
+    "height": 80,
+    "tag": "img"
+  },
+  {
+    "selector": "#media_result_group > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > a > div > img",
+    "width": 24,
+    "height": 24,
+    "tag": "img"
+  },
+  {
+    "selector": "#dimg_9",
+    "width": 363,
+    "height": 79,
+    "tag": "img"
+  },
+  {
+    "selector": "#_60SiYqXICrjVkPIPqOm1wAI23 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div > div > span:nth-of-type(4) > g-bubble > span > span > svg",
+    "width": 16,
+    "height": 16,
+    "tag": "svg"
+  },
+  {
+    "selector": "#kp-wp-tab-overview > div:nth-of-type(4) > div > div > div > div > div > div > c-wiz > div > div:nth-of-type(1) > span > g-bubble > span > svg",
+    "width": 48,
+    "height": 48,
+    "tag": "svg"
+  },
+  {
+    "selector": "#i3 > div > div > svg",
+    "width": 24,
+    "height": 16,
+    "tag": "svg"
+  },
+  {
+    "selector": "#kp-wp-tab-overview > div:nth-of-type(4) > div > div > div > div > div > div > c-wiz > div > div:nth-of-type(3) > svg",
+    "width": 38,
+    "height": 36,
+    "tag": "svg"
+  },
+  {
+    "selector": "#kp-wp-tab-overview > div:nth-of-type(4) > div > div > div > div > div > div > c-wiz > div > div:nth-of-type(3) > svg > g:nth-of-type(1) > rect",
+    "width": 24,
+    "height": 24,
+    "tag": "rect"
+  },
+  {
+    "selector": "#kp-wp-tab-overview > div:nth-of-type(5) > div > div > div > div > div > div > div > div:nth-of-type(2) > span:nth-of-type(2) > g-bubble > span > span > svg",
+    "width": 16,
+    "height": 16,
+    "tag": "svg"
+  },
+  {
+    "selector": "#dimg_25",
+    "width": 40,
+    "height": 40,
+    "tag": "img"
+  },
+  {
+    "selector": "#dimg_27",
+    "width": 40,
+    "height": 40,
+    "tag": "img"
+  },
+  {
+    "selector": "#dimg_29",
+    "width": 40,
+    "height": 40,
+    "tag": "img"
+  },
+  {
+    "selector": "#dimg_11",
+    "width": 32,
+    "height": 32,
+    "tag": "img"
+  },
+  {
+    "selector": "#dimg_13",
+    "width": 32,
+    "height": 32,
+    "tag": "img"
+  },
+  {
+    "selector": "#dimg_15",
+    "width": 72,
+    "height": 72,
+    "tag": "img"
+  },
+  {
+    "selector": "#dimg_17",
+    "width": 72,
+    "height": 72,
+    "tag": "img"
+  },
+  {
+    "selector": "#dimg_19",
+    "width": 72,
+    "height": 72,
+    "tag": "img"
+  },
+  {
+    "selector": "#dimg_21",
+    "width": 72,
+    "height": 72,
+    "tag": "img"
+  },
+  {
+    "selector": "#dimg_23",
+    "width": 72,
+    "height": 72,
+    "tag": "img"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(2) > div:nth-of-type(3) > g-review-stars > span",
+    "width": 65,
+    "height": 13,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > div > div:nth-of-type(2) > div:nth-of-type(3) > g-review-stars > span > span",
+    "width": 59,
+    "height": 13,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(2) > ul > li > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(3) > g-review-stars > span",
+    "width": 65,
+    "height": 13,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(2) > ul > li > div > div > div > div > div:nth-of-type(2) > div:nth-of-type(3) > g-review-stars > span > span",
+    "width": 53,
+    "height": 13,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(6) > div > div:nth-of-type(3) > div > g-review-stars > span",
+    "width": 65,
+    "height": 13,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(6) > div > div:nth-of-type(3) > div > g-review-stars > span > span",
+    "width": 66,
+    "height": 13,
+    "tag": "span"
+  },
+  {
+    "selector": "#tadsb > div:nth-of-type(2) > div > div > div > w-ad-seller-rating > div > span > div",
+    "width": 65,
+    "height": 15,
+    "tag": "div"
+  },
+  {
+    "selector": "#tadsb > div:nth-of-type(2) > div > div > div > w-ad-seller-rating > div > span > div > span",
+    "width": 58,
+    "height": 15,
+    "tag": "span"
+  },
+  {
+    "selector": "#w3bYAd > div > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(1) > a > div:nth-of-type(1)",
+    "width": 40,
+    "height": 40,
+    "tag": "div"
+  },
+  {
+    "selector": "#w3bYAd > div > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(2) > a > div:nth-of-type(1)",
+    "width": 40,
+    "height": 40,
+    "tag": "div"
+  },
+  {
+    "selector": "#w3bYAd > div > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(3) > a > div:nth-of-type(1)",
+    "width": 40,
+    "height": 40,
+    "tag": "div"
+  },
+  {
+    "selector": "#w3bYAd > div > div:nth-of-type(2) > div > div:nth-of-type(1) > div:nth-of-type(4) > a > div:nth-of-type(1)",
+    "width": 40,
+    "height": 40,
+    "tag": "div"
+  },
+  {
+    "selector": "#w3bYAd > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div:nth-of-type(1) > a > div:nth-of-type(1)",
+    "width": 40,
+    "height": 40,
+    "tag": "div"
+  },
+  {
+    "selector": "#w3bYAd > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div:nth-of-type(2) > a > div:nth-of-type(1)",
+    "width": 40,
+    "height": 40,
+    "tag": "div"
+  },
+  {
+    "selector": "#w3bYAd > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div:nth-of-type(3) > a > div:nth-of-type(1)",
+    "width": 40,
+    "height": 40,
+    "tag": "div"
+  },
+  {
+    "selector": "#w3bYAd > div > div:nth-of-type(2) > div > div:nth-of-type(2) > div:nth-of-type(4) > a > div:nth-of-type(1)",
+    "width": 40,
+    "height": 40,
+    "tag": "div"
+  },
+  {
+    "selector": "#botstuff > div > div:nth-of-type(2) > table > tbody > tr > td:nth-of-type(1) > span",
+    "width": 28,
+    "height": 40,
+    "tag": "span"
+  },
+  {
+    "selector": "#botstuff > div > div:nth-of-type(2) > table > tbody > tr > td:nth-of-type(2) > span",
+    "width": 20,
+    "height": 40,
+    "tag": "span"
+  },
+  {
+    "selector": "#botstuff > div > div:nth-of-type(2) > table > tbody > tr > td:nth-of-type(3) > a > span",
+    "width": 20,
+    "height": 40,
+    "tag": "span"
+  },
+  {
+    "selector": "#botstuff > div > div:nth-of-type(2) > table > tbody > tr > td:nth-of-type(4) > a > span",
+    "width": 20,
+    "height": 40,
+    "tag": "span"
+  },
+  {
+    "selector": "#botstuff > div > div:nth-of-type(2) > table > tbody > tr > td:nth-of-type(5) > a > span",
+    "width": 20,
+    "height": 40,
+    "tag": "span"
+  },
+  {
+    "selector": "#botstuff > div > div:nth-of-type(2) > table > tbody > tr > td:nth-of-type(6) > a > span",
+    "width": 20,
+    "height": 40,
+    "tag": "span"
+  },
+  {
+    "selector": "#botstuff > div > div:nth-of-type(2) > table > tbody > tr > td:nth-of-type(7) > a > span",
+    "width": 20,
+    "height": 40,
+    "tag": "span"
+  },
+  {
+    "selector": "#botstuff > div > div:nth-of-type(2) > table > tbody > tr > td:nth-of-type(8) > a > span",
+    "width": 20,
+    "height": 40,
+    "tag": "span"
+  },
+  {
+    "selector": "#pnnext > span:nth-of-type(1)",
+    "width": 71,
+    "height": 40,
+    "tag": "span"
+  },
+  {
+    "selector": "#_60SiYqXICrjVkPIPqOm1wAI23 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > a",
+    "width": 72,
+    "height": 29,
+    "tag": "a"
+  },
+  {
+    "selector": "#_60SiYqXICrjVkPIPqOm1wAI23 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div > div > div > div:nth-of-type(2) > a",
+    "width": 72,
+    "height": 29,
+    "tag": "a"
+  },
+  {
+    "selector": "#_60SiYqXICrjVkPIPqOm1wAI23 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div > div > div > span > g-popup > div:nth-of-type(1) > a",
+    "width": 72,
+    "height": 29,
+    "tag": "a"
+  },
+  {
+    "selector": "#_60SiYqXICrjVkPIPqOm1wAI23 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div > div > span:nth-of-type(2)",
+    "width": 68,
+    "height": 11.4,
+    "tag": "span"
+  },
+  {
+    "selector": "#_60SiYqXICrjVkPIPqOm1wAI23 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div > div > span:nth-of-type(2) > span",
+    "width": 56,
+    "height": 11.4,
+    "tag": "span"
+  },
+  {
+    "selector": "#kp-wp-tab-overview > div:nth-of-type(3) > div > div > div > div > div > div > div:nth-of-type(2) > span > a",
+    "width": 96.3,
+    "height": 29,
+    "tag": "a"
+  },
+  {
+    "selector": "#kp-wp-tab-overview > div:nth-of-type(4) > div > div > div > div > div > div > c-wiz > div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2)",
+    "width": 424,
+    "height": 85,
+    "tag": "div"
+  },
+  {
+    "selector": "#wrkpb",
+    "width": 91.8,
+    "height": 29,
+    "tag": "a"
+  },
+  {
+    "selector": "#kp-wp-tab-overview > div:nth-of-type(5) > div > div > div > div > div > div > div > div:nth-of-type(1) > div > span:nth-of-type(2) > span > a",
+    "width": 82.2,
+    "height": 29,
+    "tag": "a"
+  },
+  {
+    "selector": "#kp-wp-tab-overview > div:nth-of-type(5) > div > div > div > div > div > div > div > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div > g-review-stars > span",
+    "width": 69,
+    "height": 13,
+    "tag": "span"
+  },
+  {
+    "selector": "#kp-wp-tab-overview > div:nth-of-type(5) > div > div > div > div > div > div > div > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div > g-review-stars > span > span",
+    "width": 56,
+    "height": 13,
+    "tag": "span"
+  },
+  {
+    "selector": "#kp-wp-tab-overview > div:nth-of-type(5) > div > div > div > div > div > div > div > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2) > div > g-review-stars > span",
+    "width": 69,
+    "height": 13,
+    "tag": "span"
+  },
+  {
+    "selector": "#kp-wp-tab-overview > div:nth-of-type(5) > div > div > div > div > div > div > div > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2) > div > g-review-stars > span > span",
+    "width": 56,
+    "height": 13,
+    "tag": "span"
+  },
+  {
+    "selector": "#kp-wp-tab-overview > div:nth-of-type(5) > div > div > div > div > div > div > div > div:nth-of-type(3) > div:nth-of-type(3) > div:nth-of-type(2) > div > g-review-stars > span",
+    "width": 69,
+    "height": 13,
+    "tag": "span"
+  },
+  {
+    "selector": "#kp-wp-tab-overview > div:nth-of-type(5) > div > div > div > div > div > div > div > div:nth-of-type(3) > div:nth-of-type(3) > div:nth-of-type(2) > div > g-review-stars > span > span",
+    "width": 56,
+    "height": 13,
+    "tag": "span"
+  }
+]

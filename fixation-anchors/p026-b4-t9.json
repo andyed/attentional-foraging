@@ -1,0 +1,114 @@
+[
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div:nth-of-type(1) > div > div > div:nth-of-type(2)",
+    "offsetX": 8.6,
+    "offsetY": 7.7,
+    "resolvedX": 736.6,
+    "resolvedY": 508.5,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(2) > g-section-with-header > div:nth-of-type(4) > g-more-link > a > div",
+    "offsetX": 66.2,
+    "offsetY": 15.3,
+    "resolvedX": 422.2,
+    "resolvedY": 435.3,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div:nth-of-type(2) > ul > li > div > div > div > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 35.1,
+    "offsetY": 12.6,
+    "resolvedX": 231.1,
+    "resolvedY": 672.9,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(3) > div > div:nth-of-type(1) > div:nth-of-type(2) > div > span",
+    "offsetX": 70,
+    "offsetY": 35.9,
+    "resolvedX": 250,
+    "resolvedY": 859.4,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(4) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > div > cite",
+    "offsetX": 91.1,
+    "offsetY": 9.3,
+    "resolvedX": 271.1,
+    "resolvedY": 927.1,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rcnt",
+    "offsetX": 173.3,
+    "offsetY": 671.2,
+    "resolvedX": 173.3,
+    "resolvedY": 847.2,
+    "tag": "div"
+  },
+  {
+    "selector": "#rcnt",
+    "offsetX": 61.1,
+    "offsetY": 496.9,
+    "resolvedX": 61.1,
+    "resolvedY": 672.9,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(3) > div > div:nth-of-type(1) > div:nth-of-type(2) > div > span > em",
+    "offsetX": 15.5,
+    "offsetY": 7,
+    "resolvedX": 195.5,
+    "resolvedY": 830.5,
+    "tag": "em"
+  },
+  {
+    "selector": "#rso",
+    "offsetX": 81.1,
+    "offsetY": 711.8,
+    "resolvedX": 261.1,
+    "resolvedY": 893.8,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(3) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 176.6,
+    "offsetY": 10.7,
+    "resolvedX": 356.6,
+    "resolvedY": 797.2,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso",
+    "offsetX": 506.6,
+    "offsetY": 555.3,
+    "resolvedX": 686.6,
+    "resolvedY": 737.3,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div:nth-of-type(2) > ul > li > div > div > div > div:nth-of-type(1) > div",
+    "offsetX": 549.4,
+    "offsetY": 25.4,
+    "resolvedX": 745.4,
+    "resolvedY": 665.1,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso",
+    "offsetX": 585.4,
+    "offsetY": 306.6,
+    "resolvedX": 765.4,
+    "resolvedY": 488.6,
+    "tag": "div"
+  },
+  {
+    "selector": "#dimg_17",
+    "offsetX": 41,
+    "offsetY": 9.9,
+    "resolvedX": 781,
+    "resolvedY": 510.8,
+    "tag": "img"
+  }
+]

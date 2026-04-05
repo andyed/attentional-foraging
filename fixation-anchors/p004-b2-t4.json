@@ -1,0 +1,402 @@
+[
+  {
+    "selector": "#pTwnEc",
+    "offsetX": 508.8,
+    "offsetY": 55.9,
+    "resolvedX": 508.8,
+    "resolvedY": 129.9,
+    "tag": "div"
+  },
+  {
+    "selector": "#platop1",
+    "offsetX": 54.3,
+    "offsetY": 33.9,
+    "resolvedX": 503.3,
+    "resolvedY": 255.4,
+    "tag": "img"
+  },
+  {
+    "selector": "#hdtb-msb > div:nth-of-type(1)",
+    "offsetX": 285.5,
+    "offsetY": 1.5,
+    "resolvedX": 285.5,
+    "resolvedY": 75.5,
+    "tag": "div"
+  },
+  {
+    "selector": "#tsf > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div > div:nth-of-type(2) > input",
+    "offsetX": 110.1,
+    "offsetY": 26.5,
+    "resolvedX": 291.1,
+    "resolvedY": 55.5,
+    "tag": "input"
+  },
+  {
+    "selector": "#vplaurlg1 > div",
+    "offsetX": 182.2,
+    "offsetY": 111.6,
+    "resolvedX": 583.2,
+    "resolvedY": 327.6,
+    "tag": "div"
+  },
+  {
+    "selector": "#platop2",
+    "offsetX": 55.3,
+    "offsetY": 57.5,
+    "resolvedX": 724.3,
+    "resolvedY": 302,
+    "tag": "img"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(3) > div > span:nth-of-type(2)",
+    "offsetX": 54.2,
+    "offsetY": 2.8,
+    "resolvedX": 383.3,
+    "resolvedY": 669.5,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(2) > div > span > em:nth-of-type(1)",
+    "offsetX": 28.9,
+    "offsetY": 12.6,
+    "resolvedX": 208.9,
+    "resolvedY": 635.1,
+    "tag": "em"
+  },
+  {
+    "selector": "#tvcap > div",
+    "offsetX": 30,
+    "offsetY": 379.2,
+    "resolvedX": 210,
+    "resolvedY": 555.2,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(1) > div > a > div > cite",
+    "offsetX": 48.9,
+    "offsetY": 1.4,
+    "resolvedX": 228.9,
+    "resolvedY": 567.4,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 68.8,
+    "offsetY": 17.4,
+    "resolvedX": 248.8,
+    "resolvedY": 602.9,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div:nth-of-type(1) > div > a > div > cite",
+    "offsetX": 37.7,
+    "offsetY": 9.3,
+    "resolvedX": 217.7,
+    "resolvedY": 726.2,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(2) > div > span",
+    "offsetX": 21.1,
+    "offsetY": 37,
+    "resolvedX": 201.1,
+    "resolvedY": 659.5,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(2) > div > span",
+    "offsetX": 74.4,
+    "offsetY": 38.1,
+    "resolvedX": 254.4,
+    "resolvedY": 660.7,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(4) > div > div > div:nth-of-type(2) > div:nth-of-type(2) > div > div:nth-of-type(1) > div",
+    "offsetX": 37.7,
+    "offsetY": 0.6,
+    "resolvedX": 217.7,
+    "resolvedY": 1195.8,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(4) > div > div > div:nth-of-type(2) > div:nth-of-type(2) > div > div:nth-of-type(1) > div",
+    "offsetX": 51.1,
+    "offsetY": 19.4,
+    "resolvedX": 231.1,
+    "resolvedY": 1214.7,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(4) > div > div > div:nth-of-type(1) > a > div > cite",
+    "offsetX": 46.6,
+    "offsetY": 10,
+    "resolvedX": 226.6,
+    "resolvedY": 1102.6,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(4) > div > div > div:nth-of-type(1) > a > div > cite",
+    "offsetX": 57.7,
+    "offsetY": 1.2,
+    "resolvedX": 237.7,
+    "resolvedY": 1093.7,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(4) > div > div > div:nth-of-type(2)",
+    "offsetX": 254.4,
+    "offsetY": 45.3,
+    "resolvedX": 434.4,
+    "resolvedY": 1191.4,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(4) > div > div > div:nth-of-type(2) > div:nth-of-type(3)",
+    "offsetX": 405.5,
+    "offsetY": 20.1,
+    "resolvedX": 585.5,
+    "resolvedY": 1242.5,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso",
+    "offsetX": 581,
+    "offsetY": 826.3,
+    "resolvedX": 761,
+    "resolvedY": 1391.3,
+    "tag": "div"
+  },
+  {
+    "selector": "#dimg_3",
+    "offsetX": 12.1,
+    "offsetY": 41.4,
+    "resolvedX": 752.1,
+    "resolvedY": 1573.4,
+    "tag": "img"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(6) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > div > cite",
+    "offsetX": 33.3,
+    "offsetY": 2.6,
+    "resolvedX": 213.3,
+    "resolvedY": 1406.8,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(6) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > div > cite",
+    "offsetX": 30,
+    "offsetY": 4.8,
+    "resolvedX": 210,
+    "resolvedY": 1409,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rso",
+    "offsetX": 34.4,
+    "offsetY": 829.6,
+    "resolvedX": 214.4,
+    "resolvedY": 1394.6,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(6) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > div > cite",
+    "offsetX": 26.6,
+    "offsetY": 4.8,
+    "resolvedX": 206.6,
+    "resolvedY": 1409,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(7) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 76.6,
+    "offsetY": 24.2,
+    "resolvedX": 256.6,
+    "resolvedY": 1576.7,
+    "tag": "h3"
+  },
+  {
+    "selector": "#tadsb > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > a > div:nth-of-type(1) > span",
+    "offsetX": 33.3,
+    "offsetY": 1.2,
+    "resolvedX": 213.3,
+    "resolvedY": 1947.6,
+    "tag": "span"
+  },
+  {
+    "selector": "#tadsb > div:nth-of-type(1) > div > div > div > div:nth-of-type(1) > a > div:nth-of-type(1) > span",
+    "offsetX": 84.4,
+    "offsetY": 3.4,
+    "resolvedX": 264.4,
+    "resolvedY": 1949.8,
+    "tag": "span"
+  },
+  {
+    "selector": "#tadsb > div:nth-of-type(2) > div > div > div > div:nth-of-type(2) > div > div",
+    "offsetX": 40,
+    "offsetY": 14.9,
+    "resolvedX": 220,
+    "resolvedY": 2183,
+    "tag": "div"
+  },
+  {
+    "selector": "#tadsb > div:nth-of-type(2) > div > div > div > div:nth-of-type(1) > a > div:nth-of-type(2) > span:nth-of-type(2)",
+    "offsetX": 26.6,
+    "offsetY": 15.6,
+    "resolvedX": 240,
+    "resolvedY": 2128.5,
+    "tag": "span"
+  },
+  {
+    "selector": "#tadsb",
+    "offsetX": 11.1,
+    "offsetY": 169.2,
+    "resolvedX": 191.1,
+    "resolvedY": 2087.5,
+    "tag": "div"
+  },
+  {
+    "selector": "#tadsb > div:nth-of-type(1) > div > div > div > div:nth-of-type(4) > a",
+    "offsetX": 26.6,
+    "offsetY": 19,
+    "resolvedX": 206.6,
+    "resolvedY": 2080.8,
+    "tag": "a"
+  },
+  {
+    "selector": "#tadsb > div:nth-of-type(3) > div > div > div > div:nth-of-type(2) > div > div",
+    "offsetX": 26.6,
+    "offsetY": 2.5,
+    "resolvedX": 206.6,
+    "resolvedY": 2387.3,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(6) > div > div:nth-of-type(1) > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 103.3,
+    "offsetY": 14.1,
+    "resolvedX": 283.3,
+    "resolvedY": 1437.9,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(6) > div > div:nth-of-type(1) > div:nth-of-type(2) > div > span",
+    "offsetX": 71.1,
+    "offsetY": 29.3,
+    "resolvedX": 251.1,
+    "resolvedY": 1490.1,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(3) > div > div:nth-of-type(2) > ul > li > div > div > div > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 17.3,
+    "offsetY": 8.1,
+    "resolvedX": 213.3,
+    "resolvedY": 1016,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div:nth-of-type(1) > div > a > div > cite",
+    "offsetX": 23.3,
+    "offsetY": 11.5,
+    "resolvedX": 203.3,
+    "resolvedY": 728.4,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(1) > div > a > h3",
+    "offsetX": 23.3,
+    "offsetY": 6.3,
+    "resolvedX": 203.3,
+    "resolvedY": 591.8,
+    "tag": "h3"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(1) > div > a > div > cite",
+    "offsetX": 87.7,
+    "offsetY": 0.3,
+    "resolvedX": 267.7,
+    "resolvedY": 566.3,
+    "tag": "cite"
+  },
+  {
+    "selector": "#tvcap > div",
+    "offsetX": 126.6,
+    "offsetY": 378.1,
+    "resolvedX": 306.6,
+    "resolvedY": 554.1,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(1) > div > a > div",
+    "offsetX": 172.2,
+    "offsetY": 23.5,
+    "resolvedX": 352.2,
+    "resolvedY": 588.5,
+    "tag": "div"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(1) > div > div:nth-of-type(2) > div > span",
+    "offsetX": 144.4,
+    "offsetY": 3.7,
+    "resolvedX": 324.4,
+    "resolvedY": 626.2,
+    "tag": "span"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div:nth-of-type(1) > div > a > div > cite",
+    "offsetX": 57.7,
+    "offsetY": 13.8,
+    "resolvedX": 237.7,
+    "resolvedY": 730.6,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div:nth-of-type(1) > div > a > div > cite",
+    "offsetX": 82.2,
+    "offsetY": 11.5,
+    "resolvedX": 262.2,
+    "resolvedY": 728.4,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rso > div:nth-of-type(2) > div > div:nth-of-type(1) > div > a > div > cite",
+    "offsetX": 110,
+    "offsetY": 11.5,
+    "resolvedX": 290,
+    "resolvedY": 728.4,
+    "tag": "cite"
+  },
+  {
+    "selector": "#rso",
+    "offsetX": 108.8,
+    "offsetY": 147.8,
+    "resolvedX": 288.8,
+    "resolvedY": 712.8,
+    "tag": "div"
+  },
+  {
+    "selector": "#slim_appbar > div",
+    "offsetX": 481,
+    "offsetY": 35.8,
+    "resolvedX": 661,
+    "resolvedY": 168.8,
+    "tag": "div"
+  },
+  {
+    "selector": "#hdtb-msb",
+    "offsetX": 759.9,
+    "offsetY": 23.7,
+    "resolvedX": 759.9,
+    "resolvedY": 97.7,
+    "tag": "div"
+  },
+  {
+    "selector": "#center_col",
+    "offsetX": 113.3,
+    "offsetY": 386.9,
+    "resolvedX": 293.3,
+    "resolvedY": 562.9,
+    "tag": "div"
+  }
+]
