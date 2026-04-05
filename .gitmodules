@@ -1,0 +1,3 @@
+[submodule "vendor/eyetrackingguidelines"]
+	path = vendor/eyetrackingguidelines
+	url = https://github.com/eyetrackingguidelines/eyetrackingguidelines_code.git
