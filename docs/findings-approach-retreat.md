@@ -24,6 +24,32 @@ Approach-retreat reveals a hidden class that click models can't see:
 
 Feed-forward models collapse the last two into one class. Approach-retreat splits them — and the split is deployable from standard mouse telemetry.
 
+### Retreat distance predicts click outcome
+
+| Category | N | Retreat | Min Dist | Dwell in Proximity | Click Rate |
+|----------|---|---------|----------|--------------------|-----------|
+| **Clicked** | 1,981 | 119px | 167px | 2,360ms | 100% |
+| **Approached-rejected** | 2,280 | 244px | 59px | 1,653ms | 0% |
+| **Peripherally seen** | 4,548 | 180px | 191px | 592ms | — |
+| **Unseen** | 6,588 | — | — | — | — |
+
+Short retreat (119px) = the cursor stayed close and committed. Long retreat (244px) = the cursor actively withdrew. The difference is p = 5.3×10⁻⁹².
+
+### Approach + regression = the return-to-click pathway
+
+Cursor approach predicts scroll regression (odds ratio 3.67×, p = 10⁻¹⁹⁹):
+
+| Pathway | N | Click Rate |
+|---------|---|-----------|
+| **Approach + regression** | 2,745 | 36.5% |
+| **Approach + no regression** | 762 | 29.5% |
+| **No approach + regression** | 5,892 | 6.6% |
+| **No approach + no regression** | 5,998 | 6.1% |
+
+**Short retreat + regression = future return to click.** The cursor lingered, the user scrolled away to compare, then came back. 78.3% of approached results get regressed to.
+
+**Long retreat + no regression = hard negative.** The user evaluated, rejected, and moved on. The 70.5% non-click rate in the "approach + no regression" pathway is the clearest hard-negative signal available from cursor data. The regression is the behavioral commitment to re-evaluate — without it, approach-then-retreat is a rejection.
+
 ## Cost structures by element type
 
 Azzopardi, Thomas & Craswell (SIGIR 2018) formalized per-element cost within the C/W/L framework: ads cost less to evaluate than organic results, answer boxes cost less than both. Their model predicts that approach-retreat behavior should differ by element type — if evaluation cost varies, so should the motor signature of evaluation.
@@ -36,16 +62,43 @@ AdSERP has ad boundary data (`ad-boundary-data/*.json`) with three element types
 - `dd_right`: Right-side panel (Knowledge Panel, Shopping sidebar)
 
 **Predicted cost ordering** (from Azzopardi's framework):
-- **Right panel** (visual, image-heavy): Lowest evaluation cost → shortest approach, fastest retreat, lowest pupil load
-- **Top ads** (text, familiar format): Medium cost → moderate approach, standard retreat
-- **Organic results** (text, novel content): Highest evaluation cost → longest approach, deepest pupil load, longest retreat distance when rejected
+- **Right panel** (visual, image-heavy): Lowest evaluation cost
+- **Top ads** (text, familiar format): Medium cost
+- **Organic results** (text, novel content): Highest evaluation cost
 
-**What to test:**
+### Notebook 16 results: Evaluation cost by element type
+
+| Element | Med. Duration | Med. Saccade | Pupil %chg | N fixations |
+|---------|--------------|-------------|-----------|------------|
+| **Organic** | 193ms | 61px | −0.25% | 162,479 |
+| **Native Ad** | 181ms | 71px | −0.08% | 13,249 |
+| **Top Ad Block** | 187ms | 74px | **+0.41%** | 33,329 |
+| **Right Panel** | 201ms | 71px | +0.11% | 11,424 |
+
+**Azzopardi's prediction partially holds, partially overturned:**
+
+- Organic results have the **tightest saccades** (61px) — most within-result text processing. Confirms highest reading cost.
+- Native ads have the **shortest duration** (181ms) — quickest to dismiss. Confirms low evaluation cost for familiar ad format.
+- **Top ads show the HIGHEST pupil dilation** (+0.41%) — the opposite of the predicted ordering. Users work harder evaluating top ads than organic results. Possible explanation: discrimination cost ("is this what I want or an ad trying to sell me something else?") adds cognitive load that pure text similarity doesn't capture.
+- Right panel has the **longest duration** (201ms) — visual/image content takes time to process even though pupil load is moderate.
+
+### Survey phase oversamples top ads
+
+| Element | Survey % | Evaluate % |
+|---------|---------|-----------|
+| Organic | 48.1% | 73.7% |
+| Top Ad Block | 39.2% | 15.1% |
+| Native Ad | 9.3% | 6.0% |
+| Right Panel | 3.4% | 5.2% |
+
+Top ads capture 39% of survey fixations but only 15% of evaluate fixations — the survey phase oversamples them 2.6×. This may reflect their visual prominence in the first viewport, or it may indicate that the survey is doing ad-vs-organic discrimination as part of its gist sampling.
+
+### Remaining to test
 1. Approach rate by element type (controlling for position)
 2. Retreat distance by element type (approached-rejected only)
-3. Dwell-in-proximity by element type
-4. Pupil LF/HF during approach by element type
-5. Approach-to-click conversion rate by element type
+3. Dwell-in-proximity by element type during approach
+4. Approach-to-click conversion rate by element type
+5. Rosenholtz Feature Congestion scores by element type (requires rendering all 2,776 SERPs)
 
 ### Why this matters
 
