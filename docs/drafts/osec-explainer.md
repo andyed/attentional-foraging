@@ -119,10 +119,10 @@ Per-fixation pupil diameter across 2,720 trials reveals a three-phase trajectory
 
 ![Survey phase in a real session — 5 fixations in 1.0s, then cognitive load spikes](survey-gaze-plot-cropped.png)
 
-Toggle "Color: Pupil Load" in the interactive replay below to watch the constriction→dilation trajectory unfold:
+In this session, the participant internalized the query on the prior screen — orientation is instant, and the survey begins immediately. The pupil load coloring (blue = low load, red = high) shows the constriction→dilation trajectory in real time:
 
 <div style="overflow:hidden;border:1px solid #e0e0e0;border-radius:6px;margin:1em 0;height:560px;">
-<iframe src="https://andyed.github.io/attentional-foraging/p047-b1-t9.html#fix=5&w=5&mode=gazeplot" style="width:142%;height:142%;border:none;transform:scale(0.7);transform-origin:top left;" loading="lazy"></iframe>
+<iframe src="https://andyed.github.io/attentional-foraging/p047-b1-t9.html#fix=6&w=6&mode=gazeplot&color=load" style="width:142%;height:142%;border:none;transform:scale(0.7);transform-origin:top left;" loading="lazy"></iframe>
 </div>
 
 <p style="font-size:0.85em;color:#555;text-align:center;">Interactive scanpath replay: p047-b1-t9 (mouse follower, 65 fixations). Press Play, then toggle "Color: Pupil Load." <a href="https://andyed.github.io/attentional-foraging/" style="color:#2a6496;">More sessions →</a></p>
@@ -134,7 +134,7 @@ Toggle "Color: Pupil Load" in the interactive replay below to watch the constric
 After the survey, the user transitions to serial reading. Saccades narrow. The eyes move within result snippets, not between them. Each result gets approximately 2 fixations and half a second — consistent from position 1 to position 8.
 
 
-==In this dataset, the evaluation is fair.== Per-result reading depth does not decline with position during forward scanning on these transactional SERPs. What declines is the *probability of being evaluated at all* — a function of scroll reach and available time, not position bias. This may differ for informational queries or non-SERP content, where task motivation varies more widely.
+==Each result gets a fair read.== Per-result reading depth does not decline with position during forward scanning on these transactional SERPs. What declines is the *probability of being reached at all* — a function of scroll commitment, not reading effort. This may differ for informational queries or non-SERP content, where task motivation varies more widely.
 
 By position 6, the user is holding 5+ candidates in working memory. The cost of evaluating one more against everything already seen is climbing. Pupil dilation increases monotonically with position (LHIPA ρ = −0.90 with click position), confirming the working memory load interpretation.
 
@@ -183,6 +183,17 @@ This isn't a criticism. Nielsen's heatmaps, Craswell's cascade model, and the tw
 What changed is the resolution. The saccade amplitude transition is detectable within *individual trials* (p = 10⁻¹²⁸). The pupil signature separates the phases at p = 10⁻¹¹⁷. These aren't subtle aggregate effects — they're robust per-trial phenomena that previous datasets were too small or too coarsely sampled to detect.
 
 The F-pattern wasn't a map of how we read. It was a long-exposure photograph of two different behaviors. We just needed 150 frames per second to watch it get drawn.
+
+### The F-pattern: then and now
+
+<table>
+<tr><th>Feature</th><th>2006 Interpretation (NNG)</th><th>2026 Decomposition (AdSERP)</th></tr>
+<tr><td><b>Shape cause</b></td><td>Declining interest/effort over distance.</td><td>Two distinct behaviors (Survey + Evaluate) overlaid.</td></tr>
+<tr><td><b>Lower horizontal bar</b></td><td>Users read less of the lower content.</td><td><b>Survival effect:</b> Fewer users reach that depth.</td></tr>
+<tr><td><b>First 1.3 seconds</b></td><td>"Early reading."</td><td><b>Survey phase:</b> Cheap gist-sampling (pupil constriction).</td></tr>
+<tr><td><b>Vertical stem</b></td><td>A downward scan.</td><td><b>Evaluate phase:</b> High-load serial reading (pupil dilation).</td></tr>
+<tr><td><b>Design advice</b></td><td>Put important content at the top.</td><td>Still true — but because users don't scroll, not because they can't read.</td></tr>
+</table>
 
 ---
 
