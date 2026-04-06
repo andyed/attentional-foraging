@@ -1,56 +1,39 @@
-# Backlog: Margin Plan Events (Spatial Indexing Before Targeted Selection)
+# Margin Fixations and Parafoveal Preview on SERPs
 
-## Observation
+**Status:** Completed — [notebook 19](../notebooks-v2/19_margin_fixations.ipynb)
 
-Fixation 47 in p011-b3-t2 lands in the left margin, away from result content. It looks like the eye is "bookmarking" a result position — collecting spatial index data to guide a subsequent targeted selection via regression.
+## Original Hypothesis
 
-## Hypothesis
+Some fixations in the left gutter/margin serve as deliberate spatial encoding events ("margin plans") — bookmarking result positions to guide subsequent regressions. Prediction: trials with margin-plan fixations should have better regression landing precision regardless of cognitive load.
 
-Some fixations in the left gutter/margin serve as deliberate spatial encoding events ("margin plans"). These are distinct from content-reading fixations:
-- Low saliency (no content to process)
-- Short dwell (spatial encoding, not reading)
-- Positioned in left gutter (x < 100px or in margin area)
-- Followed by a forward scroll, then a regression that lands precisely on the indexed result
+## Results
 
-**Prediction:** Trials with margin-plan fixations should have *better* regression landing precision regardless of cognitive load, because the user explicitly encoded spatial position rather than relying on incidental encoding during content reading. This would explain some of the null result in notebook 12 — the load-precision relationship is moderated by encoding strategy.
+The notebook reframed the question around parafoveal preview: does peripheral content at result boundaries influence saccade planning?
 
-## Detection Criteria (Draft)
+| Test | Effect size | p-value | Interpretation |
+|------|-------------|---------|----------------|
+| Margin → p(land N+1) | 23.4% vs 7.7% | ≈ 0 | Geometric (trivial) |
+| Raw preview benefit | Δ = −2 ms | 0.22 | Null |
+| Amplitude-matched | Δ = −6 to +7 ms | n.s. | Null |
+| Partial r (dist → next_dur \| cur_dur) | r = 0.013 | 0.05 | Negligible |
+| 2×2 short+margin vs short+interior | Δ = −6 ms | 0.06 | Borderline, tiny |
+| Survey phase preview | Δ = −5 ms | — | Null |
+| Evaluate phase preview | Δ = −1 ms | — | Null |
+| Left-margin saccade precision | SD 93 vs 97 px | 0.011 | Small |
 
-```
-margin_plan_fixation:
-  x < 100px OR x > result_right_edge
-  saliency_mean < 0.1 (low visual content)
-  duration < 200ms (quick spatial sample)
-  NOT the first fixation on a page (not orientation)
-  followed within 5s by a regression to within ±1 result position
-```
+**The parafoveal preview benefit — well-established in text reading (Rayner 1998, 2009) — does not transfer to SERP reading.** In text, the preview zone contains the next word with distinctive orthographic features. On a SERP, the preview zone shows another structurally identical result block. There's nothing distinctive to preview.
 
-## Analysis Plan
+This strengthens the content-independence finding from notebook 13: survey saccades are ballistic, position-based, and structurally guided rather than content-guided. The eye knows where results ARE (structural regularity) but doesn't know what they SAY until foveating them.
 
-1. Detect margin-plan fixations across all 2,776 trials
-2. Compute: prevalence (% trials), frequency (per trial), timing (when in trial)
-3. Test: regression precision WITH margin plan vs WITHOUT (within-participant)
-4. Test: interaction with LHIPA — does margin planning compensate for high load?
-5. Connect to Rayner: this is a deliberate preview strategy, not incidental parafoveal processing
+## Design Implication
 
-## Connection to Existing Notebooks
+Making result boundaries more visually distinctive (color bands, icons, thumbnails) could potentially enable parafoveal pre-evaluation — giving the eye something to discriminate before landing. Current SERP designs are optimized for reading, not for peripheral scanning.
 
-- **07b (regression triggers):** Margin plans may be a detectable pre-regression signal
-- **07c (regression kinematics):** Do regressions after margin plans have different velocity profiles? (more ballistic = more confident target)
-- **12 (precision by load):** Margin plans as a moderator variable — split the null result
-- **Scrutinizer:** Foveation mask at margin-plan fixations should show minimal content processing — the eye is there for spatial coordinates, not visual features
-
-## Priority
-
-Medium — requires new notebook (13?). The margin-plan hypothesis explains individual differences in regression precision better than cognitive load alone.
-
----
-
-# Also backlogged: Larger foveal radius captures
+## Backlogged: Larger Foveal Radius Captures
 
 Re-capture gazeplots with a larger foveal radius (e.g., 90px instead of 45px). Benefits:
 1. More readable — shows more of the result text the participant was evaluating
 2. Hides alignment imprecision — mask is larger than the offset error
 3. Better matches the actual useful field of view during reading (~2° parafoveal)
 
-Currently `TEST_RADIUS=45` in the capture script. Try 75-90px and compare.
+Currently `TEST_RADIUS=45` in the capture script. Try 75–90px and compare.
