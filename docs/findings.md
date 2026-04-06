@@ -2,7 +2,7 @@
 
 Reanalysis of the [AdSERP dataset](https://github.com/kayhan-latifzadeh/AdSERP) (Latifzadeh, Gwizdka & Leiva, SIGIR 2025). The [journey doc](journey.md) records how this started; this document records what we found.
 
-**Status:** v8, 2026-04-05. Cursor approach-retreat as covert evaluation signal (§10b). Element-type cost analysis (§10b). Scroll retreat null on desktop (§10b). Survey phase with pupil trajectory (§3b-iii). Prior: ski-jump (§0), OSEC task model (§3b), SERP difficulty (§3c), priming null (§2), scroll kinematics confound (§8).
+**Status:** v10, 2026-04-05. Element-type approach-retreat signatures (§10b). Parafoveal preview null between results (§3d-ii). Cursor approach-retreat as covert evaluation signal (§10b). Element-type cost analysis (§10b). Scroll retreat null on desktop (§10b). Survey phase with pupil trajectory (§3b-iii). Prior: ski-jump (§0), OSEC task model (§3b), SERP difficulty (§3c), priming null (§2), scroll kinematics confound (§8).
 
 ---
 
@@ -259,6 +259,28 @@ The ~866ms of parafoveal processing time per trial is invisible to raw FPOGD sum
 
 **Notebook:** [09_difficulty.ipynb](../notebooks-v2/09_difficulty.ipynb)
 
+## 3d-ii. Parafoveal preview benefit is null between results (margin fixations)
+
+Within reading episodes, parafoveal preprocessing helps (~866ms recovered per trial, §3d above). But **between results**, the classic parafoveal preview benefit (Rayner 1998, 2009) does not transfer to SERP reading.
+
+20.2% of fixations (39,442 of 195,468) fall within 48 px (~2° visual angle) of the next result's boundary — the vertical parafoveal preview zone. These "margin fixations" are geometrically more likely to saccade to result N+1 (23.4% vs 6.1%), but the preview benefit test is null:
+
+| Test | Effect | p |
+|------|--------|---|
+| Raw next-fixation duration (margin vs interior) | Δ = -3 ms | 0.20 |
+| Amplitude-matched comparison | Δ = -2 to -5 ms | n.s. |
+| Partial r(dist, next_dur \| current_dur) | r = 0.013 | 0.053 |
+| 2×2 (short/long) × (margin/interior) | Δ = -6 ms (short), -3 ms (long) | 0.06 / 0.37 |
+| By OSEC phase (survey / evaluate) | Δ = -4 ms / -3 ms | n.s. |
+
+The apparent benefit of short margin fixations (-49 ms) is fixation duration autocorrelation (lag-1 r = 0.191): short fixations beget short fixations regardless of position.
+
+**Why preview fails between results:** In text reading, the preview zone contains the next word with distinctive orthographic features. On a SERP, the preview zone shows another structurally identical result block — title, URL, snippet, in the same layout. There is nothing distinctive to preview. This is consistent with the content-independence of survey saccades (§3b).
+
+Left-margin fixations (x < 200 px) near boundaries are shorter (207 ms vs 225 ms) and cluster in the survey phase (39% vs 31% center). These are vertical sweep landmarks — the scan's structural skeleton — not preview-guided planning saccades.
+
+**Notebook:** [19_margin_fixations.ipynb](../notebooks-v2/19_margin_fixations.ipynb)
+
 ## 3e. Forward-pass reading depth is constant; the position effect is revisitation
 
 Separating forward-pass episodes (first encounter during the scan) from regression episodes (revisits after scrolling back) reveals two different processes:
@@ -417,6 +439,7 @@ Cursor approach-retreat goes beyond proximity. During evaluation, the mouse make
 | Category | N | Retreat Distance | Click Rate |
 |----------|---|-----------------|-----------|
 | **Clicked** | 1,981 | 119px | 100% |
+| **Deferred (clicked on revisit)** | 2,745 | — | 36.5% |
 | **Approached-rejected** | 2,280 | 244px | 0% |
 | **Peripherally seen** | 4,548 | 180px | — |
 
@@ -427,6 +450,10 @@ Short retreat (119px) = committed. Long retreat (244px) = actively rejected (p =
 **Scroll doesn't carry this signal on desktop.** Scroll dwell and deceleration during regression are identical for clicked vs non-clicked results (all p > 0.3, notebook 17). The scroll is ballistic transportation; the cursor is the evaluation probe. On mobile, where scroll is the only motor channel, this may differ.
 
 **Element-type cost surprise.** Top ads show the highest pupil dilation during evaluation (+0.41%), contradicting the prediction that ads are cheaper to evaluate. Users may work harder to discriminate ads from organic results (notebook 16).
+
+**Element-type approach signatures confirm this from motor data (notebook 20).** Top ads have 2× the approach rate (42.9% vs 21.0% organic), 50 px more retreat (279 vs 228 px, p = 7×10⁻⁸), 2.3× longer dwell in proximity (4,586 vs 2,023 ms for clicked results, p = 3×10⁻¹³), and 1.7× more direction changes (2.7 vs 1.6). All effects survive position controls. Azzopardi's C/W/L cost framework (SIGIR 2018) is overturned for top ads — discrimination cost outweighs reading cost. Native ads show avoidance: lowest approach rate (17.5%), largest cursor distance, lowest click rate (8.0%).
+
+**Notebooks:** [cursor_approach.ipynb](../notebooks-v2/15_cursor_approach.ipynb), [element_type.ipynb](../notebooks-v2/16_element_type.ipynb), [scroll_retreat.ipynb](../notebooks-v2/17_scroll_retreat.ipynb), [approach_by_element.ipynb](../notebooks-v2/20_approach_by_element.ipynb). Detailed findings: [findings-approach-retreat.md](findings-approach-retreat.md).
 
 **Deep dive:** [findings-approach-retreat.md](findings-approach-retreat.md)
 

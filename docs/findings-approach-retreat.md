@@ -29,11 +29,14 @@ Feed-forward models collapse the last two into one class. Approach-retreat split
 | Category | N | Retreat | Min Dist | Dwell in Proximity | Click Rate |
 |----------|---|---------|----------|--------------------|-----------|
 | **Clicked** | 1,981 | 119px | 167px | 2,360ms | 100% |
-| **Approached-rejected** | 2,280 | 244px | 59px | 1,653ms | 0% |
+| **Deferred (clicked on revisit)** | 2,745 | — | — | — | 36.5% |
+| **Approached-rejected** | 2,280 | 244px | 59px | 1,653ms | 0%* |
 | **Peripherally seen** | 4,548 | 180px | 191px | 592ms | — |
 | **Unseen** | 6,588 | — | — | — | — |
 
 Short retreat (119px) = the cursor stayed close and committed. Long retreat (244px) = the cursor actively withdrew. The difference is p = 5.3×10⁻⁹².
+
+**\*Methodology note:** The 0% click rate for "approached-rejected" is definitional — the category is constructed as `min_dist < 100px AND NOT clicked`. The empirical content is not the 0% itself but the motor signature separation: clicked results show short retreat (119px) with long dwell (2,360ms), while non-clicked approached results show long retreat (244px) with short dwell (1,653ms). These distributions are well-separated (p = 5.3×10⁻⁹²), which motivates fitting a classifier that predicts click outcome from approach features alone — replacing the post-hoc label split with a predictive threshold. See TODO: "Regression click model."
 
 ### Approach + regression = the return-to-click pathway
 
@@ -93,18 +96,34 @@ AdSERP has ad boundary data (`ad-boundary-data/*.json`) with three element types
 
 Top ads capture 39% of survey fixations but only 15% of evaluate fixations — the survey phase oversamples them 2.6×. This may reflect their visual prominence in the first viewport, or it may indicate that the survey is doing ad-vs-organic discrimination as part of its gist sampling.
 
+### Approach-retreat by element type (notebook 20)
+
+Items 1–4 below are now tested. All four confirm the discrimination cost hypothesis.
+
+| Metric | Organic | Top Ad | Native Ad | p (Org vs Top) |
+|--------|---------|--------|-----------|----------------|
+| Approach rate | 21.0% | **42.9%** | 17.5% | 10⁻⁹² |
+| Retreat distance (rejected) | 228 px | **279 px** | 281 px | 7×10⁻⁸ |
+| Dwell in proximity (clicked) | 2,023 ms | **4,586 ms** | 2,001 ms | 3×10⁻¹³ |
+| Direction changes | 1.6 | **2.7** | 1.7 | — |
+| Min distance (clicked) | 170 px | **56 px** | 307 px | — |
+
+Position-controlled (organic vs top-ad at positions 0–2): retreat 232 vs 279 px (p = 2×10⁻⁵), dwell 1,634 vs 2,525 ms (p = 2×10⁻⁷). Effects survive.
+
+**Azzopardi's prediction is overturned for top ads.** The C/W/L framework predicted ads cost LESS to evaluate. Top ads cost MORE — by every metric: pupil dilation (notebook 16), cursor dwell, retreat distance, and hesitation. The cost is discrimination ("is this what I want or an ad?"), not reading difficulty.
+
+**Native ads show avoidance**, not evaluation: lowest approach rate, largest cursor distance, lowest click rate. Users don't evaluate them — they keep the cursor away.
+
 ### Remaining to test
-1. Approach rate by element type (controlling for position)
-2. Retreat distance by element type (approached-rejected only)
-3. Dwell-in-proximity by element type during approach
-4. Approach-to-click conversion rate by element type
+1. ~~Approach rate by element type (controlling for position)~~ Done — notebook 20
+2. ~~Retreat distance by element type (approached-rejected only)~~ Done
+3. ~~Dwell-in-proximity by element type during approach~~ Done
+4. ~~Approach-to-click conversion rate by element type~~ Done
 5. Rosenholtz Feature Congestion scores by element type (requires rendering all 2,776 SERPs)
 
 ### Why this matters
 
-If the cost structure prediction holds, it validates Azzopardi's theoretical framework with behavioral evidence — and it means the approach-retreat signal should be calibrated by element type in production. A cursor approach to an ad means something different than an approach to an organic result, because the evaluation cost is different.
-
-This also connects to the OSEC model: the survey phase samples across element types (93% of survey fixations land on organic results or ads, only 3.4% on right panel), but the evaluate phase should show element-type-dependent approach signatures because that's where the cost differences manifest.
+The cost structure prediction is **partially validated, partially overturned** — and the surprise is the interesting part. Azzopardi's framework correctly predicts native ad behavior (low cost, fast dismissal) but wrong for top ads (high cost from discrimination burden). The approach-retreat signal must be calibrated by element type in production: a cursor approach to a top ad means deliberation, while an approach to an organic result is more likely commitment.
 
 ## Optimizer vs satisficer approach profiles
 
@@ -116,13 +135,20 @@ Optimizers approach more results and spend longer evaluating them before retreat
 
 ## Position effects
 
-| Position | Click Rate | Almost-Clicked | Mean Min Distance | Mean Retreat |
-|----------|-----------|----------------|-------------------|-------------|
-| 0 | 21.0% | 15.8% | 174px | 252px |
-| 1 | 15.0% | 9.2% | — | — |
-| 3 | — | — | — | — |
+| Position | N | Click Rate | Almost-Clicked | Mean Min Distance | Mean Retreat |
+|----------|---|-----------|----------------|-------------------|-------------|
+| 0 | 2,310 | 21.0% | 15.8% | 174px | 252px |
+| 1 | 2,208 | 15.0% | 9.2% | 228px | 170px |
+| 2 | 1,999 | 15.7% | 7.2% | 264px | 145px |
+| 3 | 1,793 | 15.9% | 5.9% | 283px | 134px |
+| 4 | 1,620 | 11.5% | 6.4% | 284px | 138px |
+| 5 | 1,426 | 8.1% | 5.6% | 314px | 131px |
+| 6 | 1,201 | 6.0% | 3.2% | 387px | 133px |
+| 7 | 988 | 5.5% | 2.2% | 511px | 120px |
+| 8 | 814 | 4.2% | 0.9% | 646px | 99px |
+| 9 | 661 | 6.8% | 0.3% | 779px | 87px |
 
-Position 0 has the highest almost-clicked rate (15.8%) — consistent with the survey phase depositing the cursor near the top result before committed evaluation begins. After controlling for orient-phase confound (fixations 1-5 vs 6+), the approach signal remains.
+Position 0 has the highest almost-clicked rate (15.8%) and shortest cursor distance (174px) — consistent with the survey phase depositing the cursor near the top result before committed evaluation begins. After controlling for orient-phase confound (fixations 1-5 vs 6+), the approach signal remains. Almost-clicked rate drops ~50× from position 0 to 9. Mean cursor distance grows monotonically (174→779px), confirming users hold the cursor progressively farther from lower-ranked results. Retreat distance stabilizes around 130–145px for positions 2–6, then drops below 100px at the SERP bottom where evaluation episodes are rare.
 
 ## Connection to the F-pattern decomposition
 
@@ -141,12 +167,13 @@ On desktop, scroll kinematics during regression do NOT discriminate click target
 
 ## Open questions
 
-- [ ] **Element-type approach signatures:** Run notebook 15 split by ad boundary data. Do approach-retreat profiles differ by element type?
-- [ ] **Scroll × cursor cross-reference:** For trials where both signals exist, does scroll retreat co-occur with cursor approach-retreat at the same result?
-- [ ] **Mobile scroll evaluation:** Test the prediction that touch scroll dwell discriminates click targets on mobile datasets (no cursor available).
+- [x] **Element-type approach signatures:** Done — notebook 20. Top ads 2× approach rate, 50px more retreat, 2.3× longer dwell. Azzopardi's cost framework overturned for top ads. See §"Approach-retreat by element type" above.
+- [x] **Scroll × cursor cross-reference:** Done — notebook 17. Null result on desktop: scroll kinematics don't discriminate click targets (all p > 0.3). Scroll is ballistic transportation; cursor is the evaluation probe.
+- [ ] **Mobile scroll evaluation:** Test the prediction that touch scroll dwell discriminates click targets on mobile datasets (no cursor available). RecGaze dataset is the best candidate.
 - [ ] **Cross-dataset generalizability:** AdSERP is transactional product search with forced choice. Does approach-retreat appear in informational queries? In naturalistic search?
-- [ ] **Temporal dynamics:** Does approach velocity change during the trial? If working memory fills, later episodes should show longer evaluation.
-- [ ] **Rosenholtz Feature Congestion:** Score visual clutter by element type — does congestion predict approach-retreat rate?
+- [~] **Temporal dynamics:** Notebook 18 (learning curve) addresses across-trial dynamics. Within-trial approach velocity change still open — framework compilation predicts later approaches should be *faster* (criteria already compiled), not slower.
+- [ ] **Rosenholtz Feature Congestion:** Score visual clutter by element type — does congestion predict approach-retreat rate? Requires rendering all 2,776 SERPs.
+- [ ] **Regression click model:** Fit a logistic regression (or gradient-boosted tree) predicting click from approach features alone: retreat distance, min distance, dwell in proximity, direction changes, approach velocity. This replaces the current post-hoc category split (which makes the 0% click rate tautological) with a learned threshold — producing an ROC curve and optimal operating point for approach-retreat severity. Compare against the position+dwell AUC baseline (0.618 → 0.823 with approach features). Element-type calibration needed (§"Cost structures").
 
 ## Notebooks
 
