@@ -503,7 +503,6 @@
     "resolvedY": 1688.8,
     "tag": "span"
   },
-  null,
   {
     "selector": "#rso > div:nth-of-type(9) > div > div > div:nth-of-type(1) > div > a > div > cite",
     "offsetX": 58.9,
@@ -536,7 +535,6 @@
     "resolvedY": 1992,
     "tag": "div"
   },
-  null,
   {
     "selector": "#rcnt",
     "offsetX": 144.4,

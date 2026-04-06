@@ -20,7 +20,12 @@ const { chromium } = require('playwright');
 
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'AdSERP', 'data');
+const SCRUTINIZER = path.join(ROOT, '..', 'scrutinizer-repo', 'scrutinizer2025');
 const OUT_DIR = path.join(ROOT, 'fixation-anchors');
+const LAYOUT_DIR = path.join(ROOT, 'layout-freeze');
+
+// Use the same importer as the capture pipeline so fixation indices match
+const adserp = require(path.join(SCRUTINIZER, 'renderer', 'scanpath', 'importers', 'adserp-importer'));
 
 const args = process.argv.slice(2);
 function getArg(name, def) {
@@ -46,6 +51,7 @@ const singleTrial = getArg('trial', null);
 const trials = singleTrial ? [singleTrial] : ALL_TRIALS;
 
 fs.mkdirSync(OUT_DIR, { recursive: true });
+fs.mkdirSync(LAYOUT_DIR, { recursive: true });
 
 (async () => {
     console.log(`Generating DOM anchors for ${trials.length} trial(s)...\n`);
@@ -53,33 +59,34 @@ fs.mkdirSync(OUT_DIR, { recursive: true });
 
     for (const trialId of trials) {
         const serpPath = path.join(DATA_DIR, 'serps', `${trialId}.html`);
-        const fixPath = path.join(DATA_DIR, 'fixation-data', `${trialId}.csv`);
-        const metaPath = path.join(DATA_DIR, 'trial-metadata', `${trialId}.xml`);
 
-        if (!fs.existsSync(serpPath) || !fs.existsSync(fixPath)) {
-            console.log(`  ✗ ${trialId}: missing data`);
+        if (!fs.existsSync(serpPath)) {
+            console.log(`  ✗ ${trialId}: missing SERP HTML`);
             continue;
         }
 
-        // Read metadata for coordinate scaling
-        const metaXml = fs.readFileSync(metaPath, 'utf8');
-        const get = (tag) => { const m = metaXml.match(new RegExp(`<${tag}>([^<]*)</${tag}>`)); return m ? m[1].trim() : ''; };
-        const screenW = parseInt(get('screen').split('x')[0]) || 1280;
-        const screenH = parseInt(get('screen').split('x')[1]) || 1024;
-        const windowW = parseInt(get('window').split('x')[0]) || 1422;
-        const windowH = parseInt(get('window').split('x')[1]) || 1137;
+        // Use the adserp-importer to get the SAME filtered fixation list
+        // as the capture pipeline and viewer. This ensures anchor indices
+        // match fixation indices everywhere.
+        let scanpathData;
+        try {
+            scanpathData = adserp.loadTrial(DATA_DIR, trialId);
+        } catch (e) {
+            console.log(`  ✗ ${trialId}: importer failed: ${e.message}`);
+            continue;
+        }
+        const meta = scanpathData.meta;
+        const fixations = scanpathData.fixations;
+        const windowW = meta.windowWidth || 1422;
+        const windowH = meta.windowHeight || 1137;
+        const screenW = meta.screenWidth || 1280;
+        const screenH = meta.screenHeight || 1024;
 
-        // Parse fixations — raw screen-space coordinates
-        const fixCsv = fs.readFileSync(fixPath, 'utf8');
-        const fixations = fixCsv.trim().split('\n').slice(1).map(l => {
-            const [t, x, y, d] = l.split(',').map(Number);
-            return { t, x, y, d };
-        }).filter(f => isFinite(f.t) && isFinite(f.x) && f.d > 0);
-
-        // Convert fixations to CSS page-space at windowW
+        // Importer fixations have x in screen-space, pageY in page-space.
+        // For elementFromPoint we need CSS page-space at windowW.
         const cssFixations = fixations.map(f => ({
             x: f.x * (windowW / screenW),
-            y: f.y * (windowH / screenH),
+            y: (f.pageY !== undefined ? f.pageY : f.y) * (windowH / screenH),
         }));
 
         // Load SERP at original window width
@@ -141,6 +148,75 @@ fs.mkdirSync(OUT_DIR, { recursive: true });
             if (anchor) resolved++;
         }
 
+        // ── Layout freeze: capture rendered dimensions of all layout-affecting elements ──
+        // Walk the DOM and record selector + width/height for elements that could shift
+        // if external resources fail to load (images, iframes, replaced content, and any
+        // element with explicit dimensions that holds space for async content).
+        const layoutFreeze = await page.evaluate(() => {
+            const entries = [];
+            const seen = new Set();
+
+            function selectorFor(el) {
+                const parts = [];
+                let node = el;
+                while (node && node !== document.body && node !== document.documentElement) {
+                    let sel = node.tagName.toLowerCase();
+                    if (node.id) {
+                        parts.unshift('#' + CSS.escape(node.id));
+                        break;
+                    }
+                    const parent = node.parentNode;
+                    if (parent) {
+                        const siblings = [...parent.children].filter(c => c.tagName === node.tagName);
+                        if (siblings.length > 1) {
+                            sel += ':nth-of-type(' + (siblings.indexOf(node) + 1) + ')';
+                        }
+                    }
+                    parts.unshift(sel);
+                    node = node.parentNode;
+                }
+                return parts.join(' > ');
+            }
+
+            // Capture images, iframes, video, canvas, svg, and any element with
+            // explicit width/height attributes or background-image
+            const candidates = document.querySelectorAll('img, iframe, video, canvas, svg, [width], [height]');
+            for (const el of candidates) {
+                const rect = el.getBoundingClientRect();
+                if (rect.width < 2 && rect.height < 2) continue; // skip invisible
+                const sel = selectorFor(el);
+                if (seen.has(sel)) continue;
+                seen.add(sel);
+                entries.push({
+                    selector: sel,
+                    width: Math.round(rect.width * 10) / 10,
+                    height: Math.round(rect.height * 10) / 10,
+                    tag: el.tagName.toLowerCase(),
+                });
+            }
+
+            // Also capture any element with a computed background-image (non-none)
+            // that has significant size — these hold space for CSS background images
+            const allDivs = document.querySelectorAll('div, span, a');
+            for (const el of allDivs) {
+                const bg = getComputedStyle(el).backgroundImage;
+                if (bg === 'none' || bg === '') continue;
+                const rect = el.getBoundingClientRect();
+                if (rect.width < 10 || rect.height < 10) continue;
+                const sel = selectorFor(el);
+                if (seen.has(sel)) continue;
+                seen.add(sel);
+                entries.push({
+                    selector: sel,
+                    width: Math.round(rect.width * 10) / 10,
+                    height: Math.round(rect.height * 10) / 10,
+                    tag: el.tagName.toLowerCase(),
+                });
+            }
+
+            return entries;
+        });
+
         await page.close();
         await ctx.close();
 
@@ -148,8 +224,12 @@ fs.mkdirSync(OUT_DIR, { recursive: true });
         const outPath = path.join(OUT_DIR, `${trialId}.json`);
         fs.writeFileSync(outPath, JSON.stringify(anchors, null, 2));
 
+        // Write layout freeze JSON
+        const layoutPath = path.join(LAYOUT_DIR, `${trialId}.json`);
+        fs.writeFileSync(layoutPath, JSON.stringify(layoutFreeze, null, 2));
+
         const pct = ((resolved / fixations.length) * 100).toFixed(0);
-        console.log(`  ✓ ${trialId}: ${resolved}/${fixations.length} anchored (${pct}%) → ${outPath}`);
+        console.log(`  ✓ ${trialId}: ${resolved}/${fixations.length} anchored (${pct}%), ${layoutFreeze.length} elements frozen`);
     }
 
     await browser.close();

@@ -146,6 +146,12 @@ for (const trial of trials) {
         trial._resolvedAnchors = resolved;
         const count = resolved.filter(r => r).length;
         console.log(`    ${trial.trial_id} (${scrW}x${docHeight}) — ${count}/${anchors.length} anchors resolved`);
+
+        // Save resolved positions so the capture pipeline uses identical coordinates.
+        // This is the single source of truth — no re-resolution in Electron.
+        const resolvedPath = path.join(ROOT, 'fixation-resolved', `${trial.trial_id}.json`);
+        fs.mkdirSync(path.dirname(resolvedPath), { recursive: true });
+        fs.writeFileSync(resolvedPath, JSON.stringify(resolved, null, 2));
     } else {
         console.log(`    ${trial.trial_id} (${scrW}x${docHeight})`);
     }
@@ -243,6 +249,20 @@ for (const trial of trials) {
                 if (lfhfData[i] != null) f.lfhf = lfhfData[i];
             });
             hasLFHF = fixations.some(f => f.lfhf != null);
+        }
+    }
+
+    // Load per-fixation RIPA2 cognitive load if available
+    const ripa2Path = path.join(DATA_DIR, 'fixation-ripa2-demo.json');
+    let hasRIPA2 = false;
+    if (fs.existsSync(ripa2Path)) {
+        const ripa2All = JSON.parse(fs.readFileSync(ripa2Path, 'utf8'));
+        if (ripa2All[id]) {
+            const ripa2Data = ripa2All[id];
+            fixations.forEach((f, i) => {
+                if (ripa2Data[i] != null) f.ripa2 = ripa2Data[i];
+            });
+            hasRIPA2 = fixations.some(f => f.ripa2 != null);
         }
     }
 
@@ -356,9 +376,11 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .timeline-label.lbl-saliency { color: #ffa040; text-shadow: 0 0 6px rgba(255,160,64,0.4); }
 .timeline-label.lbl-pupil { color: #40e0ff; text-shadow: 0 0 6px rgba(64,224,255,0.4); }
 .timeline-label.lbl-lfhf { color: #f59e0b; text-shadow: 0 0 6px rgba(245,158,11,0.4); }
+.timeline-label.lbl-ripa2 { color: #a78bfa; text-shadow: 0 0 6px rgba(167,139,250,0.4); }
 .timeline-label.lbl-gaze-x { color: #e0e050; text-shadow: 0 0 6px rgba(224,224,80,0.4); }
 .timeline-label.lbl-gaze-y { color: #50c0e0; text-shadow: 0 0 6px rgba(80,192,224,0.4); }
 .timeline-label.lbl-scroll { color: #44dd66; text-shadow: 0 0 6px rgba(68,221,102,0.4); }
+.timeline-label.lbl-congestion { color: #ff90b0; text-shadow: 0 0 6px rgba(255,144,176,0.4); }
 .timeline-label.lbl-dwell { color: #c8a8f0; text-shadow: 0 0 6px rgba(200,168,240,0.4); }
 .timeline-track { position: relative; flex: 1; background: #222; border-radius: 2px; overflow: hidden; }
 .timeline-ticks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
@@ -405,6 +427,12 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
       <div class="timeline-track" id="track-saliency">
         <div class="timeline-ticks" id="ticks-saliency"></div>
       </div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-label lbl-congestion">Clutter</div>
+      <div class="timeline-track" id="track-congestion">
+        <div class="timeline-ticks" id="ticks-congestion"></div>
+      </div>
     </div>` : ''}
     ${hasPupil ? `<div class="timeline-row">
       <div class="timeline-label lbl-pupil">Pupil</div>
@@ -416,6 +444,12 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
       <div class="timeline-label lbl-lfhf">Pupil LF/HF</div>
       <div class="timeline-track" id="track-lfhf">
         <div class="timeline-ticks" id="ticks-lfhf"></div>
+      </div>
+    </div>` : ''}
+    ${hasRIPA2 ? `<div class="timeline-row">
+      <div class="timeline-label lbl-ripa2">RIPA2</div>
+      <div class="timeline-track" id="track-ripa2">
+        <div class="timeline-ticks" id="ticks-ripa2"></div>
       </div>
     </div>` : ''}
     <div class="timeline-row">
@@ -478,8 +512,8 @@ const SAL_MIN=SAL.length?Math.min(...SAL):0,SAL_MAX=SAL.length?Math.max(...SAL):
 const cSal=(s)=>{if(s==null)return'#333';const t=Math.max(0,Math.min(1,(s-SAL_MIN)/(SAL_MAX-SAL_MIN+0.001)));
 return\`rgb(\${Math.round(40+215*t)},\${Math.round(20+140*t)},\${Math.round(10+20*t)})\`};
 let colorMode='sequence'; // 'sequence', 'load', or 'saliency'
-const COLOR_MODES=['sequence','load','lfhf','saliency'];
-function getColor(i){if(colorMode==='load'&&F[i].pdc!=null)return cPD(F[i].pdc);if(colorMode==='lfhf'&&F[i].lfhf!=null)return cLFHF(F[i].lfhf);if(colorMode==='saliency'&&F[i].sal!=null)return cSal(F[i].sal);return cF(i,N)}
+const COLOR_MODES=['sequence','load','lfhf','ripa2','saliency'];
+function getColor(i){if(colorMode==='load'&&F[i].pdc!=null)return cPD(F[i].pdc);if(colorMode==='lfhf'&&F[i].lfhf!=null)return cLFHF(F[i].lfhf);if(colorMode==='ripa2'&&F[i].ripa2!=null)return cRIPA2(F[i].ripa2);if(colorMode==='saliency'&&F[i].sal!=null)return cSal(F[i].sal);return cF(i,N)}
 const svg=document.getElementById('scanpath-svg'),ph=document.getElementById('playhead'),
 fr=document.getElementById('foveal-ring'),mc=document.getElementById('mouse-cursor'),
 vw=document.getElementById('viewer'),
@@ -546,9 +580,18 @@ function buildDwellTrack() {
     });
     return ticks;
 }
+// Congestion color: dark → bright pink
+const CONG=F.filter(f=>f.cong!=null).map(f=>f.cong);
+const CONG_MIN=CONG.length?Math.min(...CONG):0,CONG_MAX=CONG.length?Math.max(...CONG):1;
+const cCong=(c)=>{if(c==null)return'#333';const t=Math.max(0,Math.min(1,(c-CONG_MIN)/(CONG_MAX-CONG_MIN+0.001)));
+return\`rgb(\${Math.round(40+215*t)},\${Math.round(15+30*t)},\${Math.round(30+80*t)})\`};
 const tkSal = buildTrack('ticks-saliency', i => cSal(F[i].sal), i => {
     if(F[i].sal==null) return 0.15;
     return (F[i].sal - SAL_MIN) / (SAL_MAX - SAL_MIN + 0.001);
+});
+const tkCong = buildTrack('ticks-congestion', i => cCong(F[i].cong), i => {
+    if(F[i].cong==null) return 0.15;
+    return (F[i].cong - CONG_MIN) / (CONG_MAX - CONG_MIN + 0.001);
 });
 const tkPup = buildTrack('ticks-pupil', i => cPD(F[i].pdc), i => {
     if(F[i].pdc==null) return 0.15;
@@ -562,6 +605,15 @@ return\`rgb(\${Math.round(200+55*t)},\${Math.round(160-110*t)},\${Math.round(40-
 const tkLFHF = buildTrack('ticks-lfhf', i => cLFHF(F[i].lfhf), i => {
     if(F[i].lfhf==null) return 0.15;
     return (F[i].lfhf - LFHF_MIN) / (LFHF_MAX - LFHF_MIN + 0.001);
+});
+// RIPA2 cognitive load: violet (low) → bright purple (high)
+const RIPA2=F.filter(f=>f.ripa2!=null).map(f=>f.ripa2);
+const RIPA2_MIN=RIPA2.length?Math.min(...RIPA2):0,RIPA2_MAX=RIPA2.length?Math.max(...RIPA2):1;
+const cRIPA2=(v)=>{if(v==null)return'#333';const t=Math.max(0,Math.min(1,(v-RIPA2_MIN)/(RIPA2_MAX-RIPA2_MIN+0.001)));
+return\`rgb(\${Math.round(80+120*t)},\${Math.round(40+60*t)},\${Math.round(160+90*t)})\`};
+const tkRIPA2 = buildTrack('ticks-ripa2', i => cRIPA2(F[i].ripa2), i => {
+    if(F[i].ripa2==null) return 0.15;
+    return (F[i].ripa2 - RIPA2_MIN) / (RIPA2_MAX - RIPA2_MIN + 0.001);
 });
 // Scroll: height = normalized scroll position, color = direction
 function buildScrollTrack() {
@@ -842,7 +894,23 @@ sharp where they looked, degraded where they didn't.</p>
   minutes to seconds per trial</li>
 <li>The interactive overlay is generated as self-contained HTML with the
   gazeplot PNG as background</li>
+<li>The <a href="https://github.com/andyed/scrutinizer2025/blob/main/scripts/export-saliency.js" style="color:#6af;">saliency export CLI</a>
+  (<a href="https://github.com/andyed/scrutinizer2025/blob/main/docs/developers_guide.md#saliency--congestion-export-cli" style="color:#6af;">docs</a>)
+  computes per-fixation saliency and Rosenholtz feature congestion
+  using the same Oklab DoG + local variance pipeline as the real-time
+  renderer — but headless in Node.js, no GPU required (~100ms/image)</li>
 </ol>
+
+<p style="margin-top:0.8em;"><strong>Multi-track timeline:</strong>
+The timeline strip shows five parallel data streams for each fixation:
+<strong style="color:#ffa040;">Saliency</strong> (visual pop-out at gaze location),
+<strong style="color:#ff90b0;">Clutter</strong> (Rosenholtz feature congestion),
+<strong style="color:#40e0ff;">Pupil</strong> (dilation from 150Hz pupillometry),
+<strong style="color:#44dd66;">Scroll</strong> (forward/regression direction + depth), and
+<strong style="color:#c8a8f0;">Dwell</strong> (fixation duration).
+Bar height encodes intensity within each track; color encodes the signal value.
+Scrub across fixations to see how visual complexity, cognitive load, motor behavior,
+and attention duration co-vary in real time.</p>
 
 <p style="margin-top:0.8em;"><strong>DOM-anchored fixation positioning:</strong>
 Fixation coordinates from the eye tracker are in screen-pixel space
