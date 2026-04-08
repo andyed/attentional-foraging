@@ -20,13 +20,11 @@ The ski-jump replicates in this lab data: position 10 deviates 39% above the log
 
 ## What started this
 
-Two observations from two decades of building search and recommendation systems:
+The ski-jump has been sitting unexplained in every search engine I have worked on for twenty years. "Position bias" is a label, not a mechanism. Explaining it required decomposing page scanning into measurable cognitive phases rather than treating the whole scan as one blob — and that required a dataset rich enough to see phase structure, not just clicks.
 
-**The ski-jump** (described above). And **the priming conjecture**: by position 5, 55% of a result's words have already appeared in earlier results. Maybe later results are faster to evaluate because your brain has been primed by the repetition — not because you're giving up. I gave a [CHIIR 2021 workshop talk](https://www.linkedin.com/in/andyed/) on this idea.
+[Latifzadeh, Gwizdka & Leiva's AdSERP dataset](https://github.com/kayhan-latifzadeh/AdSERP) (SIGIR 2025) made it possible: one of the richest public datasets of search behavior, with simultaneous eye tracking, mouse tracking, scrolling, and pupil dilation from 47 participants across 2,776 trials. An AI-assisted [journey.md](./docs/journey.md) validated the dataset's utility; the [findings](./docs/findings.md) have been growing since.
 
-**The priming conjecture was wrong** — tested at three granularities, all null (see [below](#priming-null-result)). But the investigation uncovered something more interesting: a *framework compilation* process where cognitive load peaks at position 0 and drops through positions 0–3, then plateaus. Users aren't primed by repetition — they're building evaluation criteria at the first result and applying them efficiently to the rest. The dwell time increase at later positions reflects growing comparison-set cost, not declining effort.
-
-Both questions needed the same thing: decomposing search-result evaluation into measurable cognitive phases, rather than treating the whole page scan as one blob. [Latifzadeh, Gwizdka & Leiva's AdSERP dataset](https://github.com/kayhan-latifzadeh/AdSERP) (SIGIR 2025) made this possible — it's one of the richest public datasets of search behavior, with simultaneous eye tracking, mouse tracking, scrolling, and pupil dilation data from 47 participants. An AI-assisted [journey.md](./docs/journey.md) validated the dataset's utility; the [findings](./docs/findings.md) have been growing since.
+A parallel hypothesis — that lexical priming between results explained the declining dwell curve — drove the early work but tested null at four granularities. The investigation surfaced a better answer (framework compilation) as a byproduct. Full writeup: [priming-null-result.md](./docs/priming-null-result.md).
 
 ![Temporal Spectrum of AdSERP Signals](assets/temporal-spectrum.png)
 
@@ -108,12 +106,9 @@ Both time and cognitive load decline with result position — but load drops *fa
 - **Butterworth LF/HF declines faster** (rho = -0.618, p = 0.04) — cognitive effort peaks during framework construction at position 0, then plateaus. → [§3b-iv](docs/findings.md#3b-iv-per-position-cognitive-load-decreases-not-increases--framework-compilation-not-working-memory-overload)
 - **Survey duration is content-independent.** ~5 fixations, ~1.3 s median, no correlation with any difficulty measure. The survey's *output* (an impression of the result set) modulates strategy; its *duration* doesn't vary.
 
-<a id="priming-null-result"></a>
-### Priming (null result — with a more interesting alternate explanation)
+### Framework compilation — the reframe that came out of the priming null
 
-The priming conjecture was wrong. Lexical overlap between results doesn't predict evaluation speed — tested at three granularities (bag-of-words Jaccard, sentence-level semantic embeddings, within-position controls), all null. The aggregate correlation was a position-overlap confound: later positions naturally have more overlap *and* less dwell time, but the two aren't causally linked. → [§2](docs/findings.md#2-cumulative-content-overlap-does-not-predict-evaluation-speed)
-
-What *does* explain the speedup? The pupil data points to **compiled evaluation criteria**. Cognitive load (pupil-derived LF/HF) peaks at position 0 and drops monotonically through positions 0–3 (rho = −0.618), then plateaus. Users aren't getting primed by word repetition — they're building selection criteria at the first result ("I want this price range, this brand tier, these features") and then applying those criteria with decreasing effort. Forward-only gaze dwell *ratio* (fixation time / viewport time) increases with position (rho = +0.82) because the comparison set grows, but the cognitive cost per comparison *decreases* because the criteria are already compiled. → [§3b-iv](docs/findings.md#3b-iv-per-position-cognitive-load-decreases-not-increases--framework-compilation-not-working-memory-overload)
+Cognitive load (Butterworth LF/HF) peaks at position 0 and drops steeply through positions 0–3 (ρ = −0.618, *p* = 0.04), then plateaus. Users aren't getting primed by repetition — they're building evaluation criteria at the first result ("I want this price range, this brand tier, these features") and then applying those criteria with decreasing effort. Forward-only gaze dwell *ratio* increases with position (ρ = +0.82) because the comparison set grows, while cost per comparison drops because criteria are already compiled. → [§3b-iv](docs/findings.md#3b-iv-per-position-cognitive-load-decreases-not-increases--framework-compilation-not-working-memory-overload). The failed-priming investigation that surfaced this is documented separately in [priming-null-result.md](./docs/priming-null-result.md).
 
 ### Difficulty
 
@@ -150,7 +145,7 @@ Two independent trait dimensions emerged across participants: **deliberation sty
 | 05 | [lhipa](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/05_lhipa.ipynb) | Pupil-based cognitive load index, validated against behavioral measures |
 | 06 | [orientation_evaluation](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/06_orientation_evaluation.ipynb) | Cognitive phases, working memory ramp |
 | 07a–c | [regressions](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/07a_regressions_prevalence.ipynb) | How often, why, and how fast people scroll back up |
-| 08 | [priming](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/08_priming.ipynb) | Lexical priming — null at three granularities |
+| 08 | [priming](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/08_priming.ipynb) | Lexical priming — null at four granularities ([full writeup](./docs/priming-null-result.md)) |
 | 09 | [difficulty](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/09_difficulty.ipynb) | What makes a search results page hard: relevance spread, reading episodes |
 | 10 | [strategies](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/10_strategies.ipynb) | Satisficer vs optimizer segmentation |
 | 11 | [individual_differences](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/11_individual_differences.ipynb) | Two independent trait dimensions across searchers |
@@ -189,6 +184,7 @@ Several pieces of this project are designed for reuse beyond AdSERP:
 ## Docs
 
 - [findings.md](./docs/findings.md) — All findings with statistical tests (v8)
+- [priming-null-result.md](./docs/priming-null-result.md) — The hypothesis that drove the early work, why it was wrong, and what the investigation found instead
 - [CHANGELOG.md](./CHANGELOG.md) — Version history and corrections
 - [references.bib](./references.bib) — Verified BibTeX library
 - [methodological-threats.md](./docs/methodological-threats.md) — Threats to validity and mitigations
@@ -203,8 +199,7 @@ Highlights from the full [TODO.md](./TODO.md):
 - **Product taxonomy partition** — commodity vs branded vs experiential queries ("buy AA batteries" vs "buy Nike Air Max" vs "buy winter jacket") may produce different foraging strategies
 - **Full model validation** — the stay/refine/abandon decision needs production log data with natural stopping behavior
 - **Windowed LHIPA by position** — pupil dilation trajectories during forward scanning as a cognitive load timeline (pending consultation on minimum analysis window size)
-- **Token-level fixation analysis** — the only untested priming granularity: mapping individual eye fixations to specific words on the page
-- **Forward-only vs regressive split across analyses** — most findings currently pool forward reading with regressive (scroll-back) behavior. 1,465 of 2,341 trials are tagged `regressive_scroller`. Splitting these is likely a cross-cutting refactor affecting NB23 rank effects, NB24 retreat geometry, NB20 cursor features, and the mouse/gaze distance work
+- **Forward-only vs regressive splits landed** in NB01/05/17/20/23/24 (April 2026). Cross-repo: `approach-retreat` Episode now carries direction natively. The remaining priming granularity — token-level fixation analysis mapping individual fixations to specific words — is tractable on AdSERP but not a priority now that framework compilation explains what the original conjecture was trying to explain. Context: [priming-null-result.md](./docs/priming-null-result.md)
 - **Mouse dwell vs time on screen** — normalize cursor dwell at each result by how long the result was actually in the viewport. Current dwell measures conflate "cursor lingered there" with "the result was visible for a long time"
 - **Mouse resting position analyses** — characterize where cursors park between interactions (right margin? last clicked? centered?). Individual-differences candidate, connects to `mouse_independent` tag
 
