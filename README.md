@@ -194,6 +194,19 @@ Highlights from the full [TODO.md](./TODO.md):
 - **Full model validation** — the stay/refine/abandon decision needs production log data with natural stopping behavior
 - **Windowed LHIPA by position** — pupil dilation trajectories during forward scanning as a cognitive load timeline (pending consultation on minimum analysis window size)
 - **Token-level fixation analysis** — the only untested priming granularity: mapping individual eye fixations to specific words on the page
+- **Forward-only vs regressive split across analyses** — most findings currently pool forward reading with regressive (scroll-back) behavior. 1,465 of 2,341 trials are tagged `regressive_scroller`. Splitting these is likely a cross-cutting refactor affecting NB23 rank effects, NB24 retreat geometry, NB20 cursor features, and the mouse/gaze distance work
+- **Mouse dwell vs time on screen** — normalize cursor dwell at each result by how long the result was actually in the viewport. Current dwell measures conflate "cursor lingered there" with "the result was visible for a long time"
+- **Mouse resting position analyses** — characterize where cursors park between interactions (right margin? last clicked? centered?). Individual-differences candidate, connects to `mouse_independent` tag
+
+## Sister project: approach-retreat
+
+[**andyed/approach-retreat**](https://github.com/andyed/approach-retreat) — the deployable form of this research. Two focused goals:
+
+1. **Practical harvesting of user decision-making signals.** A vendor-agnostic JavaScript library that captures the four-class taxonomy (clicked / deferred / evaluated-rejected / not-approached) from cursor telemetry alone — no eye tracker required. Drop it on a SERP, get the consideration set back as structured events.
+
+2. **Deeper connection to prior work on cursor signals.** Reference docs trace the lineage through Huang/White/Buscher (gaze-cursor alignment, CHI '12), Guo & Agichtein (cursor for relevance, WWW '12 and earlier), Arapakis & Leiva (engagement from 638 cursor features, SIGIR '16), and the Attentive Cursor Dataset (2,737 users, Frontiers '20). The contribution of this project — the OSEC task model — is what that 15-year feature-engineering tradition was missing.
+
+A CIKM 2026 paper draft is in progress; the library is the deployable form for production search UIs.
 
 ## Citation
 
