@@ -106,3 +106,33 @@ Ordered by conceptual promise, not implementation effort:
 
 - E-comm intentionally introduces diversity to slow evaluation and reduce bounce. If content similarity affects re-evaluation speed (still unconfirmed — the bag-of-words signal was confounded by position, repetition, and scroll kinematics), then diversity would slow *re-evaluation* of previously seen items. Topic shifts may recapture attention on return visits, but this needs testing with finer-grained similarity measures.
 - Mouse is "falling as an available signal" — mobile/touch has no cursor. Scroll + viewport features are the only behavioral signals. Our viewport-state finding (AUC 0.704 vs 0.548) is directly relevant.
+
+## v9 audit fixes (2026-04-07)
+
+### Notebooks to update (from science-audit)
+
+- [ ] **NB 05 (lhipa):** Cell 0 key measures table, cell 9 figure title "Cognitive Load Increases with Foraging Depth", cell 12 summary "monotonically decreases" — all need boundary-step reframing. Lead with trial-level rho = -0.088 (N=2700+), demote position-mean rho = -0.903 (N=10 points).
+- [ ] **NB 06 (orientation_evaluation):** Cell 0 "LHIPA decreases with click depth (rho = -0.90)" — old framing. Cell 10 title "Working Memory Accumulation" — rejected by NB14. Cell 14 summary claims per-result LHIPA shows WM ramp — superseded by Butterworth.
+- [ ] **NB 14 (butterworth):** Cells 5/8/12 — rho = -0.618 should state "N=11 position medians" not imply trial-level. Add survivor bias caveat for later positions.
+- [ ] **NB 23 (rank_effects):** Cell 0 "per fixation" → "per position". Cell 14 summary table: split LHIPA and Butterworth into separate rows with correct framing.
+
+### Docs to update
+
+- [ ] **findings.md line ~211:** "N = 2,719 trials" next to a correlation computed on 11 points — misleading df. Fix: "N=11 position medians (from 2,719 trials)"
+- [ ] **findings.md line ~92:** Forward dwell ratio rho = +0.82 — add "(N=9 position means)"
+- [ ] **README lines 96-98, 106:** Add N for position-aggregate correlations
+- [ ] **README line 117:** Reconcile rho = -0.87 vs -0.903 vs -0.90 discrepancy
+- [ ] **methodological-threats.md:** Add "Survivor bias in per-position analyses" section
+
+### Systemic: position-median correlations
+
+All three headline rhos are on tiny N:
+- LHIPA rho = -0.903: N=10 position means
+- Butterworth rho = -0.618: N=11 position medians
+- Forward dwell ratio rho = +0.82: N=9 position means
+
+Every citation should state the actual N. The trial-level or within-trial statistics should lead.
+
+### Explainer TODO
+
+- [ ] **F-pattern survivor bias:** The aggregate F-heatmap conflates three effects: (1) compiled criteria (real), (2) survey phase concentration at top (real), (3) survivor selection — fewer trials contribute at later positions. The heatmap doesn't normalize by trial count per pixel row. Add to explainer as a third decomposition layer.
