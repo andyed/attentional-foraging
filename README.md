@@ -215,6 +215,10 @@ A CIKM 2026 paper draft is in progress; the library is the deployable form for p
 
 ## Related work
 
+![Go-go gadget peer review](assets/gogogadget-peer-review.png)
+
+*The arms are AI. The microscope is yours.*
+
 [**andre-inter-collab-llc/research-workflow-assistant**](https://github.com/andre-inter-collab-llc/research-workflow-assistant) — André Nogueira's open-source Research Workflow Assistant: a VS Code + GitHub Copilot stack of custom agents and MCP servers (PubMed, OpenAlex, Semantic Scholar, Europe PMC, CrossRef, Zotero) for systematic reviews, academic writing, data analysis, and ICMJE-compliant authorship. Different domain from this project (biomedical research workflows vs SERP evaluation), same underlying bet: researchers already have VS Code, git, Python, R, Quarto, and Markdown — give them an LLM with the right agent scaffolding and they can assemble their own compliant research assistants in weeks instead of waiting for a platform. This repo is built on similar principles (science-audit agent, Plan/Explore subagents, conventional-commit discipline, plan files as first-class artifacts) but targeted at a single research program rather than a generic workflow; RWA is the systematic, multi-domain version of the same idea.
 
 ## Citation
