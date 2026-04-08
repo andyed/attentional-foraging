@@ -20,6 +20,18 @@ New notebook `23_rank_effects.ipynb` consolidates all by-position effects:
 
 **Updated:** `README.md` (temporal spectrum graphic, rank effects hero chart, LHIPA reframing), `notebooks-v2/README.md` (NB 23 entry)
 
+### Methodological patterns identified (science audit)
+
+Three systemic issues affecting how results were reported throughout the project:
+
+**1. Position-aggregate correlations reported as if trial-level.** The three headline rhos — LHIPA ρ = −0.903, Butterworth ρ = −0.618, forward dwell ratio ρ = +0.82 — are all computed on N = 9–11 position-level aggregates (means or medians), not individual trials. Citing "N = 2,719 trials" alongside a correlation computed on 11 points creates a false impression of statistical power. Trial-level correlations are much weaker (e.g., LHIPA ρ = −0.088). Every position-aggregate statistic now states the actual N of the aggregation.
+
+**2. Survivor bias in per-position analyses.** Not all trials reach every position (pos 0: 2,742; pos 9: 640). Position means at later positions come from self-selected thorough scanners who scrolled the full page. This inflates apparent dwell at later positions and may bias Butterworth LF/HF medians. Added to methodological-threats.md. This also connects to the F-pattern: Nielsen's aggregate heatmap conflates compiled criteria (real), survey-phase concentration at top (real), and survivor selection (artifact).
+
+**3. Mean vs median LHIPA sensitivity.** The LHIPA "gradient" by click position appears in means (right-skewed distribution pulls the mean up at early positions) but disappears in medians (flat 0–8). The gradient in the mean is partly a confound: high-LHIPA (low-load) trials tend to be easy trials where the user clicked early. The median is the robust estimator and reveals the boundary-step pattern.
+
+**Corrected notebooks:** NB05 (LHIPA: figure title, summary, key measures table), NB06 (orientation/evaluation: "Working Memory Accumulation" → "Evaluation Effort by Position," removed WM ramp narrative, corrected LHIPA claims, "dwell" → "gaze dwell ratio").
+
 ## v8 — 2026-04-04
 
 ### Per-position cognitive load: working memory hypothesis reversed
