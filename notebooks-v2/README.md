@@ -20,6 +20,7 @@ Sequentially numbered notebooks with shared utilities in [`data_loader.py`](data
 | `09_difficulty.ipynb` | SERP difficulty (relevance spread, TF-IDF density), reading episodes |
 | `10_strategies.ipynb` | Satisfice vs optimize segmentation |
 | `11_individual_differences.ipynb` | Two independent individual difference dimensions |
+| `23_rank_effects.ipynb` | **Unified rank effects** — all by-position measures on one page, framework compilation narrative |
 
 ## Quick Start
 

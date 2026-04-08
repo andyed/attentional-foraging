@@ -91,7 +91,7 @@ Your satisficer/optimizer × LHIPA finding (ρ=-0.55) appears to be the first em
 
 3. **Ballistic scroll kinematics as a methodological confound.** Your observation that backward scroll velocity is significantly higher (915 vs 784 px/s) with a ballistic velocity profile (ρ=0.87) means any analysis using dwell ratios during regressions is confounded by viewport mechanics. This hasn't been reported.
 
-4. **LHIPA × foraging depth × satisficing.** The three-way connection between pupillometric cognitive load, click position, and regression rate is new.
+4. **LHIPA × boundary decision cost × satisficing.** The three-way connection between pupillometric cognitive load, boundary click behavior, and regression rate is new.
 
 5. **Regression as the alternative to abandonment.** The forced-choice task makes this explicit — where naturalistic search allows abandonment, forced-choice reveals the full re-evaluation cycle that abandonment normally hides. This reframes Diriye et al.'s (2012) abandonment taxonomy.
 
@@ -126,7 +126,7 @@ For the full attentional-foraging findings paper (if written):
 1. **Within-page re-evaluation modeling** — MVT/IFT model patch-leaving but not patch-revisiting. We show regressions serve two distinct functions: confirmation (to the winner, +32% fixations) and rejection (of alternatives, -17% fixations). This is a new behavioral decomposition.
 2. **Spatial memory precision for SERP positions** — η²=0.87 for position-specific scroll targeting, but landing precision ≈ random baseline. Region-level spatial memory with salience weighting (click target remembered ~1.8x better). No prior work on SERP spatial memory at this granularity.
 3. **Ballistic scroll kinematics as methodological confound** — Backward velocity > forward (915 vs 784 px/s), ballistic profile (ρ=0.87). Nobody has reported the velocity asymmetry or its implications for dwell ratio analysis during regressions. This is a methods contribution.
-4. **LHIPA × foraging depth × satisficing** — Three-way connection: trial-level LHIPA decreases with click position (ρ=-0.90), regression rate correlates with LHIPA (ρ=-0.55), optimizers click higher not deeper. Each pair may exist in isolation in the literature; the triangle is new.
+4. **LHIPA × boundary cost × satisficing** — Three-way connection: trial-level LHIPA is flat across click positions 0–8 then steps down at boundary 9–10 (aggregate ρ=-0.90, driven by boundary step), regression rate correlates with LHIPA (ρ=-0.55), optimizers click higher not deeper. Each pair may exist in isolation in the literature; the triangle is new.
 5. **Regression as alternative to abandonment** — Forced-choice reveals what naturalistic search hides: when users can't abandon, they regress. The 69% regression rate is the behavioral cost of forced commitment.
 
 ### Framing for the paper

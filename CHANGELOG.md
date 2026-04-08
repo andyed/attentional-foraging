@@ -1,5 +1,25 @@
 # Changelog
 
+## v9 — 2026-04-07
+
+### LHIPA reinterpretation: boundary step, not position gradient
+
+Trial-level LHIPA by click position is **flat across positions 0–8** (range: 0.0385–0.0392, delta = 0.0008), then steps down at positions 9–10 (0.0376–0.0380). The previously reported ρ = −0.87 is driven almost entirely by the boundary step, not a gradual decline. Excluding positions 9–10: ρ = −0.78 but delta is within noise.
+
+**Correction:** Prior claims that "LHIPA decreases monotonically with foraging depth" (README §Behavioral signals, findings.md, lit-review-scroll-regressions.md) overstated the position effect. LHIPA tracks the **boundary decision cost** — the same phenomenon as the ski-jump click distribution uptick — not a per-position scanning cost. Butterworth LF/HF (NB 14) remains the valid per-position cognitive load measure, and it shows framework compilation (steep drop 0–3, plateau after).
+
+### Unified rank effects notebook (NB 23)
+
+New notebook `23_rank_effects.ipynb` consolidates all by-position effects:
+- Click share, fixation count, dwell time, Butterworth LF/HF, LHIPA — all on shared x-axis
+- Forward-pass vs regression dwell decomposition (stacked bar): regression share peaks at positions 2–3 (~30%), drops to ~10% at position 9
+- Normalized dissociation plot: time and cognitive load both decline, but load drops faster (framework compilation)
+- Publication-quality hero chart with IQR bands
+
+**New files:** `notebooks-v2/23_rank_effects.ipynb`, `assets/rank-effects-dissociation.png`, `assets/temporal-spectrum.png`
+
+**Updated:** `README.md` (temporal spectrum graphic, rank effects hero chart, LHIPA reframing), `notebooks-v2/README.md` (NB 23 entry)
+
 ## v8 — 2026-04-04
 
 ### Per-position cognitive load: working memory hypothesis reversed

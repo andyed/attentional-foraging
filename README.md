@@ -28,6 +28,10 @@ Two observations from two decades of building search and recommendation systems:
 
 Both questions needed the same thing: decomposing search-result evaluation into measurable cognitive phases, rather than treating the whole page scan as one blob. [Latifzadeh, Gwizdka & Leiva's AdSERP dataset](https://github.com/kayhan-latifzadeh/AdSERP) (SIGIR 2025) made this possible — it's one of the richest public datasets of search behavior, with simultaneous eye tracking, mouse tracking, scrolling, and pupil dilation data from 47 participants. An AI-assisted [journey.md](./docs/journey.md) validated the dataset's utility; the [findings](./docs/findings.md) have been growing since.
 
+![Temporal Spectrum of AdSERP Signals](assets/temporal-spectrum.png)
+
+The AdSERP signals span five orders of magnitude in time — from 7 ms pupil samples to 60-second trials. Our augmentations (reading episodes, cursor approach episodes, Butterworth LF/HF windows, LHIPA) bridge the gap between raw sensor events and trial-level cognition, making per-result and per-phase analysis possible.
+
 ## Interactive foveated scanpath replays
 
 [**andyed.github.io/attentional-foraging**](https://andyed.github.io/attentional-foraging/) — 10 curated search sessions replayed through a [foveated vision simulator](https://github.com/andyed/scrutinizer2025). Each frame shows what the participant could actually resolve at each eye fixation: sharp where they looked, blurred where they didn't — the same resolution falloff your retina produces. Includes scanpath overlay, timeline scrubbing, playback controls, and a cognitive load timeline derived from pupil dilation.
@@ -86,8 +90,12 @@ Boundary clickers show *higher* cognitive load in their pupil dilation (LHIPA = 
 
 ### Decomposition
 
-- **Forward-only dwell *increases* with position** (rho = +0.82). Later results take longer per committed evaluation pass. The pupil data says this isn't working memory overload — it's the cost of comparing against an ever-growing candidate set. → [§3a](docs/findings.md#3a-evaluation-time-decomposes-into-four-independent-components)
-- **Per-position cognitive load *decreases*** (rho = -0.618). Pupil-derived effort peaks at position 0 and drops through 0–3, then plateaus. Users build their evaluation framework at the first result, then apply it efficiently — what we call *framework compilation*. → [§3b-iv](docs/findings.md#3b-iv-per-position-cognitive-load-decreases-not-increases--framework-compilation-not-working-memory-overload)
+[![Rank effects dissociation](assets/rank-effects-dissociation.png)](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/23_rank_effects.ipynb)
+
+Both time and cognitive load decline with result position — but load drops *faster*. Cognitive effort (Butterworth LF/HF) peaks at position 0 where the user is building evaluation criteria from scratch, then drops steeply through positions 0–3 as criteria compile. By position 4, the framework is built and both curves plateau. This is **framework compilation**: the user becomes an expert evaluator within a single SERP scan.
+
+- **Fixation count declines** (rho = -0.44), **total dwell time declines** (rho = -0.52, forward + regression) — less total investment at lower positions. → [§3a](docs/findings.md#3a-evaluation-time-decomposes-into-four-independent-components)
+- **Butterworth LF/HF declines faster** (rho = -0.618, p = 0.04) — cognitive effort peaks during framework construction at position 0, then plateaus. → [§3b-iv](docs/findings.md#3b-iv-per-position-cognitive-load-decreases-not-increases--framework-compilation-not-working-memory-overload)
 - **Survey duration is content-independent.** ~5 fixations, ~1.3 s median, no correlation with any difficulty measure. The survey's *output* (an impression of the result set) modulates strategy; its *duration* doesn't vary.
 
 <a id="priming-null-result"></a>
@@ -95,7 +103,7 @@ Boundary clickers show *higher* cognitive load in their pupil dilation (LHIPA = 
 
 The priming conjecture was wrong. Lexical overlap between results doesn't predict evaluation speed — tested at three granularities (bag-of-words Jaccard, sentence-level semantic embeddings, within-position controls), all null. The aggregate correlation was a position-overlap confound: later positions naturally have more overlap *and* less dwell time, but the two aren't causally linked. → [§2](docs/findings.md#2-cumulative-content-overlap-does-not-predict-evaluation-speed)
 
-What *does* explain the speedup? The pupil data points to **compiled evaluation criteria**. Cognitive load (pupil-derived LF/HF) peaks at position 0 and drops monotonically through positions 0–3 (rho = −0.618), then plateaus. Users aren't getting primed by word repetition — they're building selection criteria at the first result ("I want this price range, this brand tier, these features") and then applying those criteria with decreasing effort. Forward-only dwell *increases* with position (rho = +0.82) because the comparison set grows, but the cognitive cost per comparison *decreases* because the criteria are already compiled. → [§3b-iv](docs/findings.md#3b-iv-per-position-cognitive-load-decreases-not-increases--framework-compilation-not-working-memory-overload)
+What *does* explain the speedup? The pupil data points to **compiled evaluation criteria**. Cognitive load (pupil-derived LF/HF) peaks at position 0 and drops monotonically through positions 0–3 (rho = −0.618), then plateaus. Users aren't getting primed by word repetition — they're building selection criteria at the first result ("I want this price range, this brand tier, these features") and then applying those criteria with decreasing effort. Forward-only gaze dwell *ratio* (fixation time / viewport time) increases with position (rho = +0.82) because the comparison set grows, but the cognitive cost per comparison *decreases* because the criteria are already compiled. → [§3b-iv](docs/findings.md#3b-iv-per-position-cognitive-load-decreases-not-increases--framework-compilation-not-working-memory-overload)
 
 ### Difficulty
 
@@ -106,7 +114,7 @@ SERP difficulty isn't about how similar the results look to each other — it's 
 - **Viewport state beats mouse-gaze distance** for click prediction. AUC 0.704 vs 0.548. Where the user stopped scrolling is a stronger signal than where their cursor is. → [§6](docs/findings.md#6-viewport-state-predicts-clicks-better-than-distance)
 - **Mouse proximity reveals the consideration set.** 26.9% click rate when the cursor is within 66 px of where the user is looking, vs 2.4% baseline. 14% of non-clicked results were deeply evaluated with the cursor nearby — a "consideration set" visible from mouse telemetry alone. → [§10](docs/findings.md#10-mouse-proximity-predicts-click--and-reveals-the-consideration-set)
 - **Backward scrolling is ballistic** (rho = 0.867). 87% of regression targets land at positions 0–4. When users scroll back up, they're going to a specific result, not re-scanning. → [§8](docs/findings.md#8-backward-scrolling-is-ballistic--the-viewport-mechanics-confound)
-- **Pupillometric cognitive load tracks foraging depth.** LHIPA (an index of cognitive effort derived from pupil dilation frequency analysis) is monotonically correlated with click position (rho = -0.90). People who click later on the page were working harder throughout. → [§5](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/05_lhipa.ipynb)
+- **Pupillometric cognitive load is a boundary signal, not a gradient.** Trial-level LHIPA is flat across click positions 0–8, then steps down at positions 9–10 (the boundary). The rho = -0.87 is driven by the boundary step, not by a gradual position effect. Boundary clickers are working harder because the decision is hardest at the end of the page. → [§5](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/05_lhipa.ipynb), [NB 23](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/23_rank_effects.ipynb)
 
 ### Individual differences
 
