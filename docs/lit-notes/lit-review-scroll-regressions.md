@@ -82,17 +82,9 @@ Brückner, L., Arapakis, I., & Leiva, L. A. (2021). When Choice Happens: A Syste
 
 **Why it matters:** Directly studies mouse movement during choice on SERPs, including ad notice, abandonment, and frustration scenarios. Shows that mouse movement length discriminates between decision states. The closest published work to "cursor trajectory encodes decision confidence."
 
-**Gap your work fills:** They use total movement length as a scalar feature. The arc geometry decomposition (arc ratio, lateral displacement, Fitts' law ID) recovers the *shape* of the movement, not just its magnitude. The three rejection subtypes (snap, deliberative, categorical) are invisible to movement length alone — they require the interaction of curvature with dwell time and element type.
+**Gap your work fills:** They use total movement length as a scalar feature. The arc geometry decomposition (arc ratio, max retreat distance, Fitts' law ID) recovers the *shape* of the movement, not just its magnitude. NB24 (rebuilt 2026-04-08) shows these features discriminate deferred (re-approached) from rejected cursor episodes (Mann-Whitney p < 10⁻³, N = 731 retreats), while scalar movement length does not.
 
-### 12. Kirsh & Maglio — Epistemic vs Pragmatic Action (Cognitive Science 1994)
-
-Kirsh, D. & Maglio, P. (1994). On Distinguishing Epistemic from Pragmatic Action. Cognitive Science, 18(4), 513-549.
-
-**Why it matters:** Defines the theoretical distinction between *pragmatic actions* (actions that bring you closer to a goal) and *epistemic actions* (actions that change the world to simplify cognitive computation). Classic example: Tetris players rotate pieces to see what fits, not to place them — the rotation is a computational shortcut offloaded to the environment.
-
-**Gap your work fills:** Provides the theoretical framework for interpreting cursor retreat as an epistemic action. Moving the cursor away from a rejected result increases the motor cost (Fitts' law) of returning — encoding rejection confidence into physical space. This is working memory offloading: the user is using the cursor's distance from the result as an external representation of their evaluation state, analogous to short-order cooks arranging silverware to encode dish state. No prior work has applied the epistemic/pragmatic distinction to cursor behavior on SERPs.
-
-### 13. Leiva & Arapakis — The Attentive Cursor Dataset (Frontiers 2020)
+### 12. Leiva & Arapakis — The Attentive Cursor Dataset (Frontiers 2020)
 
 Leiva, L. A. & Arapakis, I. (2020). The Attentive Cursor Dataset. Frontiers in Human Neuroscience, 14:565664.
 
@@ -162,8 +154,7 @@ For the full attentional-foraging findings paper (if written):
 | **Chuklin et al. (click models)** | Assume monotonic examination (top-to-bottom, single pass) | Our data breaks monotonic assumption — 69% of trials are non-monotonic. |
 | **Arapakis & Leiva SIGIR 2016** | 638 cursor features, AUC 0.86 for attention prediction | Aggregate features; we decompose into episodes with geometric properties (arc ratio, Fitts' ID) |
 | **Guo & Agichtein WWW 2012** | Post-click cursor features predict relevance | Post-click; we capture pre-click evaluation phase (approach-retreat) |
-| **Brückner et al. SIGIR 2021** | Mouse movement length discriminates decision states | Scalar length; we recover trajectory *shape* (curvature, lateral displacement) and three rejection subtypes |
-| **Kirsh & Maglio CogSci 1994** | Epistemic vs pragmatic action distinction | Theoretical framework for retreat-as-WM-offloading; not previously applied to SERP cursor behavior |
+| **Brückner et al. SIGIR 2021** | Mouse movement length discriminates decision states | Scalar length; we recover trajectory *shape* (arc ratio, max retreat distance, Fitts' ID) which discriminates re-approached from committed-rejection retreats (NB24, p < 10⁻³) |
 | **Leiva & Arapakis Frontiers 2020** | 2,737-user cursor+attention dataset, binary attention labels | Binary (attended/not); our four-class taxonomy splits non-clicks into three behavioral categories |
 
 ### What's novel (not in the literature)
@@ -174,7 +165,7 @@ For the full attentional-foraging findings paper (if written):
 4. **LHIPA × boundary cost × satisficing** — Three-way connection: trial-level LHIPA is flat across click positions 0–8 then steps down at boundary 9–10 (aggregate ρ=-0.90, driven by boundary step), regression rate correlates with LHIPA (ρ=-0.55), optimizers click higher not deeper. Each pair may exist in isolation in the literature; the triangle is new.
 5. **Regression as alternative to abandonment** — Forced-choice reveals what naturalistic search hides: when users can't abandon, they regress. The 69% regression rate is the behavioral cost of forced commitment. (Note: this rate is likely inflated 3-5x by the forced-choice design; the mechanism transfers but the base rate does not.)
 
-6. **Retreat arc geometry as rejection confidence signal.** No prior work examines the *shape* of cursor retreat trajectories after SERP result evaluation. Arapakis & Leiva (2016) use aggregate cursor features (distance, speed, direction changes); Brückner et al. (2021) use movement length. Neither decomposes the post-evaluation retreat arc into geometric properties (arc ratio, lateral displacement, Fitts' law ID). The finding that top ads produce 2.2x more curved retreats than organic results (p = 10⁻⁹), and that curvature is decoupled from dwell time for ads but not organic — discriminating snap, deliberative, and categorical rejection — is new. The epistemic action interpretation (Kirsh & Maglio, 1994) connects cursor retreat to the distributed cognition literature, which has not been applied to SERP interaction.
+6. **Retreat arc geometry as deliberation/commitment signal.** No prior work examines the *shape* of cursor retreat trajectories after SERP result evaluation. Arapakis & Leiva (2016) use aggregate cursor features (distance, speed, direction changes); Brückner et al. (2021) use movement length. Neither decomposes the post-evaluation retreat into geometric properties. NB24 (rebuilt 2026-04-08, AdSERP 2,776 trials, N = 731 retreats) shows three retreat features predict whether the user re-approaches the result later in the same trial: arc ratio (path length / direct distance, p = 8.4 × 10⁻⁴), Fitts' law ID at max retreat point (p = 3.5 × 10⁻⁴), and max retreat distance (p = 0.022). The pattern is **curved + close + low ID = "I'll be back"; straight + far + high ID = "I'm done."** This provides a continuous deliberation/commitment signal recoverable from cursor telemetry alone, complementing the four-class taxonomy by giving a within-class continuous measure for the deferred-vs-rejected boundary. (Caveats: pooled-arcs statistics, mixed-effects model needed for reportable inference; the original "epistemic action / WM offloading" hypothesis we initially proposed was *not* supported and has been discarded — far retreats reflect commitment that has already happened cognitively, not commitment caused by raised motor cost.)
 
 ### Framing for the paper
 
@@ -200,5 +191,4 @@ Sources:
 - [Arapakis & Leiva SIGIR 2016 — Predicting User Engagement with Direct Displays](https://dl.acm.org/doi/10.1145/2911451.2911505)
 - [Guo & Agichtein WWW 2012 — Beyond Dwell Time](https://dl.acm.org/doi/10.1145/2187836.2187914)
 - [Brückner, Arapakis & Leiva SIGIR 2021 — Mouse Movement Length for Decision Making](https://dl.acm.org/doi/10.1145/3404835.3463088)
-- [Kirsh & Maglio CogSci 1994 — Epistemic vs Pragmatic Action](https://doi.org/10.1207/s15516709cog1804_1)
 - [Leiva & Arapakis Frontiers 2020 — The Attentive Cursor Dataset](https://doi.org/10.3389/fnhum.2020.565664)
