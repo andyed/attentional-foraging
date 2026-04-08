@@ -423,6 +423,74 @@ def load_trial(trial_id):
         'scroll_ys': scroll_ys,
     }
 
+# ── Forward/regression classification ─────────────────────────────────────
+
+def classify_fixations(trial, hwm_tolerance=50):
+    """Classify each fixation as forward-pass or regression.
+
+    A fixation is 'forward' if the scroll offset at fixation time is within
+    hwm_tolerance pixels of the scroll high-water mark. Otherwise it's a
+    regression — the user scrolled back up.
+
+    Args:
+        trial: dict from load_trial()
+        hwm_tolerance: pixels below HWM that still count as forward (default 50)
+
+    Returns:
+        List of dicts, one per fixation, each with:
+          t, x, y, d: original fixation fields
+          scroll_y: scroll offset at fixation time
+          page_y: y position in page coordinates (y + scroll_y)
+          position: result position (0–9), or -1 if outside result bands
+          is_forward: True if forward-pass, False if regression
+    """
+    fixations = trial['fixations']
+    scr_h = trial['screen_height']
+    doc_h = trial['doc_height']
+    sts = trial['scroll_ts']
+    sys_ = trial['scroll_ys']
+
+    bands = result_bands(10, doc_h)
+    tops = [b[0] for b in bands]
+
+    hwm = 0.0
+    result = []
+
+    for fix in fixations:
+        so = 0.0
+        if sts:
+            if fix['t'] <= sts[0]:
+                so = sys_[0]
+            elif fix['t'] >= sts[-1]:
+                so = sys_[-1]
+            else:
+                so = sys_[bisect_right(sts, fix['t']) - 1]
+
+        if so > hwm:
+            hwm = so
+
+        is_forward = (so >= hwm - hwm_tolerance)
+
+        fy = max(0.0, min(fix['y'], scr_h))
+        page_y = fy + so
+        pos = bisect_right(tops, page_y) - 1
+        if pos < 0 or pos > 9:
+            pos = -1
+
+        result.append({
+            't': fix['t'],
+            'x': fix['x'],
+            'y': fix['y'],
+            'd': fix['d'],
+            'scroll_y': so,
+            'page_y': page_y,
+            'position': pos,
+            'is_forward': is_forward,
+        })
+
+    return result
+
+
 # ── Plotting defaults ──────────────────────────────────────────────────────
 
 def setup_plotting():
