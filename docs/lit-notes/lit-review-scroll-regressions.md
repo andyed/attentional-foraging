@@ -8,7 +8,7 @@ Compiled 2026-04-02 for the attentional-foraging project. Focus on empirical wor
 
 ### 1. Maxwell & Azzopardi — Information Scent, Searching and Stopping (ECIR 2018)
 
-Maxwell, D. & Azzopardi, L. (2018). Information Scent, Searching and Stopping — Modelling SERP Level Stopping Behaviour. ECIR 2018.
+Maxwell, D. & Azzopardi, L. (2018). Information Scent, Searching and Stopping: Modelling SERP Level Stopping Behaviour. In Advances in Information Retrieval, ECIR 2018, LNCS vol. 10772, pp. 210-222. Springer.
 
 **Why it matters:** Models SERP-level stopping decisions using information foraging theory. Introduces a formal stopping model where the user evaluates the "scent" of remaining results against the cost of continued examination. Directly relevant to your patch-leaving framework — this is the IR community's closest analog to MVT applied at the SERP level. Azzopardi's broader program (SIGIR 2014, CHI 2019, CHIIR 2021) builds economic cost-benefit models of search interaction.
 
@@ -33,8 +33,8 @@ Also: Riding the Carousel (2025) — extensive analysis of browsing behavior in 
 
 ### 4. Lorigo et al. — Eye Tracking & Behavior on Search Result Pages (JASIST 2008)
 
-Lorigo, L., Pan, B., Hembrooke, H., Joachims, T., Granka, L., & Gay, G. (2008). The influence of task and gender on search and evaluation behavior using Google. IP&M, 44(1), 426-446.
-Also: Lorigo et al. (2006). The Influence of Task and Gender on Search and Evaluation Behavior using Google. Technical Report.
+Lorigo, L., Haridasan, M., Brynjarsdóttir, H., Xia, L., Joachims, T., Gay, G., Granka, L., Pellacini, F., & Pan, B. (2008). Eye tracking and online search: Lessons learned and challenges ahead. JASIST, 59(7), 1041-1052.
+Also relevant: Lorigo, L., Pan, B., Hembrooke, H., Joachims, T., Granka, L., & Gay, G. (2006). The influence of task and gender on search and evaluation behavior using Google. IP&M, 42(4), 1123-1131.
 
 **Why it matters:** You already cite the ~66% nonlinear scanpath finding. This is still the primary empirical baseline for regression prevalence on SERPs. No one has substantially updated this number since — until your 69% (which aligns remarkably well despite a very different task and 17 years of SERP evolution).
 
@@ -60,6 +60,46 @@ eyeScrollR: A software method for reproducible mapping of eye-tracking data from
 
 Already in your docs as `shi2025-pupillometric-cognitive-load.md`. Directly validates your LHIPA findings.
 
+### 9. Arapakis & Leiva — Predicting User Engagement with Direct Displays (SIGIR 2016)
+
+Arapakis, I. & Leiva, L. A. (2016). Predicting User Engagement with Direct Displays Using Mouse Cursor Information. SIGIR '16, pp. 599-608.
+
+**Why it matters:** The most directly relevant prior work on cursor trajectory features for SERP evaluation. Extracts 638 cursor features (movement patterns, pauses, direction changes, hover behavior) and achieves AUC 0.86 for predicting user attention to SERP components. This is the feature-engineering predecessor to AdSight's neural approach.
+
+**Gap your work fills:** Their 638 features are aggregate statistics (mean velocity, total distance, direction change count). They don't decompose cursor trajectories into *episodes* with geometric properties (arc ratio, lateral displacement, Fitts' law ID). The approach-retreat decomposition — enter/dwell/exit per result — is a different representational choice that preserves temporal structure and spatial geometry.
+
+### 10. Guo & Agichtein — Beyond Dwell Time (WWW 2012)
+
+Guo, Q. & Agichtein, E. (2012). Beyond dwell time: estimating document relevance from cursor movements and other post-click searcher behavior. WWW '12, pp. 569-578.
+
+**Why it matters:** Established cursor movement as a relevance signal, showing that post-click cursor features (movement speed, scroll patterns, cursor position relative to content) predict document relevance better than dwell time alone.
+
+**Gap your work fills:** Their work is *post-click* — cursor behavior after the user has already committed. Approach-retreat analysis captures the *pre-click* evaluation phase where the user is deciding whether to commit. The complementary phases: Guo & Agichtein tell you what the user thought after clicking; approach-retreat tells you what the user thought before clicking.
+
+### 11. Brückner, Arapakis & Leiva — Mouse Movement Length for Decision Making (SIGIR 2021)
+
+Brückner, L., Arapakis, I., & Leiva, L. A. (2021). When Choice Happens: A Systematic Examination of Mouse Movement Length for Decision Making in Web Search. SIGIR '21, pp. 1510-1514.
+
+**Why it matters:** Directly studies mouse movement during choice on SERPs, including ad notice, abandonment, and frustration scenarios. Shows that mouse movement length discriminates between decision states. The closest published work to "cursor trajectory encodes decision confidence."
+
+**Gap your work fills:** They use total movement length as a scalar feature. The arc geometry decomposition (arc ratio, lateral displacement, Fitts' law ID) recovers the *shape* of the movement, not just its magnitude. The three rejection subtypes (snap, deliberative, categorical) are invisible to movement length alone — they require the interaction of curvature with dwell time and element type.
+
+### 12. Kirsh & Maglio — Epistemic vs Pragmatic Action (Cognitive Science 1994)
+
+Kirsh, D. & Maglio, P. (1994). On Distinguishing Epistemic from Pragmatic Action. Cognitive Science, 18(4), 513-549.
+
+**Why it matters:** Defines the theoretical distinction between *pragmatic actions* (actions that bring you closer to a goal) and *epistemic actions* (actions that change the world to simplify cognitive computation). Classic example: Tetris players rotate pieces to see what fits, not to place them — the rotation is a computational shortcut offloaded to the environment.
+
+**Gap your work fills:** Provides the theoretical framework for interpreting cursor retreat as an epistemic action. Moving the cursor away from a rejected result increases the motor cost (Fitts' law) of returning — encoding rejection confidence into physical space. This is working memory offloading: the user is using the cursor's distance from the result as an external representation of their evaluation state, analogous to short-order cooks arranging silverware to encode dish state. No prior work has applied the epistemic/pragmatic distinction to cursor behavior on SERPs.
+
+### 13. Leiva & Arapakis — The Attentive Cursor Dataset (Frontiers 2020)
+
+Leiva, L. A. & Arapakis, I. (2020). The Attentive Cursor Dataset. Frontiers in Human Neuroscience, 14:565664.
+
+**Why it matters:** Largest public cursor+attention dataset for SERPs — 2,737 users, cursor traces with attention labels and original SERP HTML. Provides the methodological precedent for capturing cursor behavior at scale on real search pages. Their attention labeling (attended vs not-attended) is the binary version of our four-class taxonomy (clicked / deferred / evaluated-rejected / not-approached).
+
+**Gap your work fills:** Their binary attention label collapses the non-attended class. Our four-class taxonomy splits non-clicks into three behaviorally distinct categories recoverable from cursor trajectory geometry alone.
+
 ---
 
 ## Papers that may exist but I couldn't confirm
@@ -68,7 +108,7 @@ Already in your docs as `shi2025-pupillometric-cognitive-load.md`. Directly vali
 
 Your finding (η²=0.87 for regression target specificity, but region-level not result-level precision) appears genuinely novel. The closest analog is:
 
-- **Spatial memory in visual search:** Solman & Kingstone (2024). "Knowing where to go: Spatial memory guides eye and body movements in a naturalistic visual search task." JOV 24(9). Shows spatial memory guides return fixations in real-world search — but in physical environments, not web pages.
+- **Spatial memory in visual search:** Aivar, P., Li, C.-L., Tong, M. H., Kit, D., & Hayhoe, M. M. (2024). "Knowing where to go: Spatial memory guides eye and body movements in a naturalistic visual search task." JOV 24(9). Shows spatial memory guides return fixations in real-world search — but in physical environments, not web pages. (Note: earlier work by Solman & Smilek, 2010, established spatial memory effects in simpler visual search tasks.)
 
 - **Revisit behavior in web browsing** (Cockburn & McKenzie 2001, Obendorf et al. 2007) — characterizes page-level revisitation patterns but not within-page spatial memory for specific content positions.
 
@@ -114,12 +154,17 @@ For the full attentional-foraging findings paper (if written):
 
 | Paper | Finding | Gap our work fills |
 |---|---|---|
-| **Lorigo et al. JASIST 2008** | ~66% nonlinear scanpaths on SERPs | Our 69% confirms across 17 years; we add scroll-level quantification (magnitude, timing, kinematics) |
+| **Lorigo et al. JASIST 2008** | ~66% nonlinear scanpaths on SERPs | Our 69% is comparable but under forced-choice (inflated base rate); we add scroll-level quantification (magnitude, timing, kinematics) |
 | **Azzopardi & Maxwell (IFT stopping models)** | Model SERP-level stopping decisions | Single-pass assumption — don't model within-page re-evaluation. Our regressions break this. |
 | **Liu et al. CIKM 2014** | Two-stage model: skim → read | Needs a third stage: **re-evaluate**. Our confirmation/rejection split on revisit characterizes it. |
 | **RecGaze, SIGIR 2025** | Carousel analog — horizontal scroll regressions | Same behavioral pattern in a different UI paradigm. Cross-validates. |
 | **eyeScrollR, BRM 2024** | Validates scroll-correction methodology for eye tracking | Confirms our approach to coordinate correction. |
 | **Chuklin et al. (click models)** | Assume monotonic examination (top-to-bottom, single pass) | Our data breaks monotonic assumption — 69% of trials are non-monotonic. |
+| **Arapakis & Leiva SIGIR 2016** | 638 cursor features, AUC 0.86 for attention prediction | Aggregate features; we decompose into episodes with geometric properties (arc ratio, Fitts' ID) |
+| **Guo & Agichtein WWW 2012** | Post-click cursor features predict relevance | Post-click; we capture pre-click evaluation phase (approach-retreat) |
+| **Brückner et al. SIGIR 2021** | Mouse movement length discriminates decision states | Scalar length; we recover trajectory *shape* (curvature, lateral displacement) and three rejection subtypes |
+| **Kirsh & Maglio CogSci 1994** | Epistemic vs pragmatic action distinction | Theoretical framework for retreat-as-WM-offloading; not previously applied to SERP cursor behavior |
+| **Leiva & Arapakis Frontiers 2020** | 2,737-user cursor+attention dataset, binary attention labels | Binary (attended/not); our four-class taxonomy splits non-clicks into three behavioral categories |
 
 ### What's novel (not in the literature)
 
@@ -127,7 +172,9 @@ For the full attentional-foraging findings paper (if written):
 2. **Spatial memory precision for SERP positions** — η²=0.87 for position-specific scroll targeting, but landing precision ≈ random baseline. Region-level spatial memory with salience weighting (click target remembered ~1.8x better). No prior work on SERP spatial memory at this granularity.
 3. **Ballistic scroll kinematics as methodological confound** — Backward velocity > forward (915 vs 784 px/s), ballistic profile (ρ=0.87). Nobody has reported the velocity asymmetry or its implications for dwell ratio analysis during regressions. This is a methods contribution.
 4. **LHIPA × boundary cost × satisficing** — Three-way connection: trial-level LHIPA is flat across click positions 0–8 then steps down at boundary 9–10 (aggregate ρ=-0.90, driven by boundary step), regression rate correlates with LHIPA (ρ=-0.55), optimizers click higher not deeper. Each pair may exist in isolation in the literature; the triangle is new.
-5. **Regression as alternative to abandonment** — Forced-choice reveals what naturalistic search hides: when users can't abandon, they regress. The 69% regression rate is the behavioral cost of forced commitment.
+5. **Regression as alternative to abandonment** — Forced-choice reveals what naturalistic search hides: when users can't abandon, they regress. The 69% regression rate is the behavioral cost of forced commitment. (Note: this rate is likely inflated 3-5x by the forced-choice design; the mechanism transfers but the base rate does not.)
+
+6. **Retreat arc geometry as rejection confidence signal.** No prior work examines the *shape* of cursor retreat trajectories after SERP result evaluation. Arapakis & Leiva (2016) use aggregate cursor features (distance, speed, direction changes); Brückner et al. (2021) use movement length. Neither decomposes the post-evaluation retreat arc into geometric properties (arc ratio, lateral displacement, Fitts' law ID). The finding that top ads produce 2.2x more curved retreats than organic results (p = 10⁻⁹), and that curvature is decoupled from dwell time for ads but not organic — discriminating snap, deliberative, and categorical rejection — is new. The epistemic action interpretation (Kirsh & Maglio, 1994) connects cursor retreat to the distributed cognition literature, which has not been applied to SERP interaction.
 
 ### Framing for the paper
 
@@ -149,4 +196,9 @@ Sources:
 - [Diriye et al. CIKM 2012 — Search Abandonment](https://dl.acm.org/doi/10.1145/2396761.2398399)
 - [Shi et al. CHIIR 2025 — LHIPA Pupillometry](https://doi.org/10.1145/3698204.3716458)
 - [Zhai et al. 2022 — Satisficing IR Model](https://www.sciencedirect.com/science/article/abs/pii/S095741742101650X)
-- [Solman & Kingstone 2024 — Spatial Memory in Visual Search](https://jov.arvojournals.org/article.aspx?articleid=2800746)
+- [Aivar et al. JOV 2024 — Spatial Memory in Visual Search](https://jov.arvojournals.org/article.aspx?articleid=2800746)
+- [Arapakis & Leiva SIGIR 2016 — Predicting User Engagement with Direct Displays](https://dl.acm.org/doi/10.1145/2911451.2911505)
+- [Guo & Agichtein WWW 2012 — Beyond Dwell Time](https://dl.acm.org/doi/10.1145/2187836.2187914)
+- [Brückner, Arapakis & Leiva SIGIR 2021 — Mouse Movement Length for Decision Making](https://dl.acm.org/doi/10.1145/3404835.3463088)
+- [Kirsh & Maglio CogSci 1994 — Epistemic vs Pragmatic Action](https://doi.org/10.1207/s15516709cog1804_1)
+- [Leiva & Arapakis Frontiers 2020 — The Attentive Cursor Dataset](https://doi.org/10.3389/fnhum.2020.565664)
