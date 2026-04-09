@@ -71,14 +71,11 @@ The AdSERP experiment eliminates two exit paths. Participants *must* click a res
 
 ![Task model](docs/arxiv/figures/task-model-adserp.png)
 
-| Phase | Duration | What you'd see in the eye data |
-| --- | --- | --- |
-| **Orient** | ~0 ms (learned layout) | 58% of first fixations land directly on a result |
-| **Survey** | ~1.3 s, fixed | Wide eye jumps (108 px), gist sampling across ~5 fixations |
-| **Evaluate** | Variable | Narrow eye jumps (74 px), reading episodes (~2 fixations, ~500 ms) |
-| **Commit** | Terminal | Click |
+![Measurement timescales — OSEC lives in the 1–30 s band, between fixation-level reading research and session-level search research](./assets/timescale-map.png)
 
-The transition from survey to evaluate is marked by a drop in saccade amplitude (the distance your eyes jump between fixations), detectable at p = 10⁻¹²⁸ within individual trials (N = 2,754). Survey ends around fixation 5; the first scroll happens around fixation 21 — these are decoupled events (94.6% of trials). Full evidence: [task-model-paper.pdf](./docs/arxiv/task-model-paper.pdf). Interactive explainer: [The Search Results F-Heatmap, Frame by Frame](https://andyed.github.io/attentional-foraging/explainer/).
+The AdSERP pipeline measures signals across five orders of magnitude in time — from 20 ms saccades to 30-minute task resolutions. OSEC's contribution is the 1–30 s band (shaded) where fixation-level and session-level research previously left a gap. Orient (~0 ms, 58% of first fixations land directly on a result), Survey (~1.3 s with wide saccades at 107.8 px median, fixations 1–5), Evaluate (narrow saccades at 69.4 px median, fixations 6+, reading episodes ~500 ms), and Commit (click).
+
+The transition from survey to evaluate is marked by a drop in saccade amplitude (the distance your eyes jump between fixations), detectable at p = 9.33 × 10⁻¹⁶⁸ within individual trials (mean per-trial Spearman ρ = −0.135, t = −29.63, N = 2,754). Survey ends around fixation 5; the first scroll happens around fixation 21 — these are decoupled events (94.6% of trials). Full evidence: [task-model-paper.pdf](./docs/arxiv/task-model-paper.pdf). Interactive explainer: [The Search Results F-Heatmap, Frame by Frame](https://andyed.github.io/attentional-foraging/explainer/).
 
 **What this task can't tell us:** the stay/refine/abandon decision — the core foraging choice in real search. The forced-choice constraint means every trial ends with a click, which inflates regression rates (65% of trials) and eliminates the abandonment signal. Participants also completed ~60 trials each, so the crisp phase transitions likely reflect practiced behavior — the expert version of page scanning that power users exhibit in production. Validating the full model on first-time searchers requires production log data with natural stopping behavior.
 
