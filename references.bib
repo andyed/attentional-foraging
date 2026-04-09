@@ -155,14 +155,28 @@
 % MOUSE-GAZE COORDINATION / ATTENTION PREDICTION
 % ═══════════════════════════════════════════════════════════════════════════
 
-@inproceedings{leiva2020efficient,
-  author    = {Leiva, Luis A. and Arapakis, Ioannis and Iordanou, Costas},
+@inproceedings{arapakis2020learning,
+  author    = {Arapakis, Ioannis and Leiva, Luis A.},
   title     = {Learning Efficient Representations of Mouse Movements to Predict User Attention},
   booktitle = {Proceedings of the 43rd International ACM SIGIR Conference on Research and Development in Information Retrieval},
   series    = {SIGIR '20},
   year      = {2020},
+  pages     = {1309--1318},
   publisher = {ACM},
   doi       = {10.1145/3397271.3401031},
+  note      = {Corrected 2026-04-08: prior bib entry `leiva2020efficient` had wrong author list (was Leiva/Arapakis/Iordanou; the Iordanou-coauthored paper is the CHIIR '21 privacy paper). Actual SIGIR '20 paper has 2 authors.},
+}
+
+@article{leiva2020attentive,
+  author    = {Leiva, Luis A. and Arapakis, Ioannis},
+  title     = {The Attentive Cursor Dataset},
+  journal   = {Frontiers in Human Neuroscience},
+  volume    = {14},
+  pages     = {565664},
+  year      = {2020},
+  publisher = {Frontiers},
+  doi       = {10.3389/fnhum.2020.565664},
+  note      = {The dataset companion paper. 2,737 participants, cursor + self-reported attention labels + SERP HTML snapshots. Used as the benchmark in four follow-up papers by the same group (Arapakis \& Leiva SIGIR '20, Arapakis et al. TOIS '20, Br\"{u}ckner et al. SIGIR '21, Leiva et al. CHIIR '21). Referenced by the approach-retreat Attentive Cursor replication in §4.7.},
 }
 
 % ═══════════════════════════════════════════════════════════════════════════
@@ -824,3 +838,218 @@
   doi       = {10.1145/2983323.2983829},
   note      = {CAS model: jointly captures clicks, attention, and satisfaction for SERP evaluation.},
 }
+
+% ═══════════════════════════════════════════════════════════════════════════
+% QUERY PERFORMANCE PREDICTION (system-side difficulty)
+% ═══════════════════════════════════════════════════════════════════════════
+
+@inproceedings{cronentownsend2002clarity,
+  author    = {Cronen-Townsend, Steve and Zhou, Yun and Croft, W. Bruce},
+  title     = {Predicting Query Performance},
+  booktitle = {Proceedings of the 25th Annual International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  series    = {SIGIR '02},
+  year      = {2002},
+  pages     = {299--306},
+  publisher = {ACM},
+  doi       = {10.1145/564376.564429},
+  note      = {Clarity score: KL divergence between query language model and collection language model. Founding pre-retrieval QPP predictor. DOI to re-verify against publisher metadata.},
+}
+
+@article{shtok2012nqc,
+  author    = {Shtok, Anna and Kurland, Oren and Carmel, David and Raiber, Fiana and Markovits, Gad},
+  title     = {Predicting Query Performance by Query-Drift Estimation},
+  journal   = {ACM Transactions on Information Systems},
+  volume    = {30},
+  number    = {2},
+  pages     = {11:1--11:35},
+  year      = {2012},
+  publisher = {ACM},
+  doi       = {10.1145/2180868.2180873},
+  note      = {NQC (Normalized Query Commitment): standard deviation of top-$k$ retrieval scores as a post-retrieval difficulty predictor. Direct conceptual ancestor of our \emph{relevance spread} measure (std of dense query-document cosine similarity). DOI to re-verify against publisher metadata.},
+}
+
+@inproceedings{faggioli2023neuralqpp,
+  author    = {Faggioli, Guglielmo and Formal, Thibault and Marchesin, Stefano and Clinchant, St\'{e}phane and Ferro, Nicola and Piwowarski, Benjamin},
+  title     = {Query Performance Prediction for Neural {IR}: Are We There Yet?},
+  booktitle = {Advances in Information Retrieval: 45th European Conference on Information Retrieval (ECIR 2023)},
+  year      = {2023},
+  publisher = {Springer},
+  note     = {Recent benchmark of classical QPP predictors (NQC, WIG, UEF) ported to dense retrievers; classical std-of-scores still competitive against neural alternatives. Full bibliographic details to verify.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% TASK MODEL PAPER — §6.4–§6.6 ADDITIONS (2026-04-09)
+% ═══════════════════════════════════════════════════════════════════════════
+% Entries added to support the foraging-structural reframe of §6.4 (Commit as
+% patch-leaving with four exits), §6.5 (forced-choice reveals transactional
+% deltas), and §6.6 (Nav/Info/known-item conjectures). All DOIs below are from
+% LLM knowledge at the time of insertion; spot-check against Crossref or the
+% publisher page before any external submission.
+
+% ── Query intent taxonomy ─────────────────────────────────────────────────
+@article{broder2002taxonomy,
+  author    = {Broder, Andrei},
+  title     = {A Taxonomy of Web Search},
+  journal   = {SIGIR Forum},
+  volume    = {36},
+  number    = {2},
+  pages     = {3--10},
+  year      = {2002},
+  month     = {September},
+  publisher = {ACM},
+  doi       = {10.1145/792550.792552},
+  note      = {The navigational / informational / transactional tripartite — the canonical taxonomy for query intent. DOI from LLM knowledge, re-verify against Crossref.},
+}
+
+@inproceedings{rose2004goals,
+  author    = {Rose, Daniel E. and Levinson, Danny},
+  title     = {Understanding User Goals in Web Search},
+  booktitle = {Proceedings of the 13th International Conference on World Wide Web},
+  series    = {WWW '04},
+  pages     = {13--19},
+  year      = {2004},
+  publisher = {ACM},
+  doi       = {10.1145/988672.988675},
+  note      = {Refines Broder 2002 with resource-intent subtypes. DOI from LLM knowledge, re-verify.},
+}
+
+@article{jansen2008determining,
+  author    = {Jansen, Bernard J. and Booth, Danielle L. and Spink, Amanda},
+  title     = {Determining the Informational, Navigational, and Transactional Intent of Web Queries},
+  journal   = {Information Processing \& Management},
+  volume    = {44},
+  number    = {3},
+  pages     = {1251--1266},
+  year      = {2008},
+  publisher = {Elsevier},
+  doi       = {10.1016/j.ipm.2007.07.015},
+  note      = {Empirical base rates for the Broder tripartite from query logs. DOI from LLM knowledge, re-verify.},
+}
+
+@inproceedings{teevan2007refinding,
+  author    = {Teevan, Jaime and Adar, Eytan and Jones, Rosie and Potts, Michael A. S.},
+  title     = {Information Re-Retrieval: Repeat Queries in {Yahoo}'s Logs},
+  booktitle = {Proceedings of the 30th Annual International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  series    = {SIGIR '07},
+  pages     = {151--158},
+  year      = {2007},
+  publisher = {ACM},
+  doi       = {10.1145/1277741.1277770},
+  note      = {Canonical reference for known-item re-finding. The psychologically-distinct degenerate case of NavSERP in §6.6. DOI from LLM knowledge, re-verify.},
+}
+
+% ── Query reformulation and session struggle ─────────────────────────────
+@inproceedings{huang2009reformulation,
+  author    = {Huang, Jeff and Efthimiadis, Efthimis N.},
+  title     = {Analyzing and Evaluating Query Reformulation Strategies in Web Search Logs},
+  booktitle = {Proceedings of the 18th ACM International Conference on Information and Knowledge Management},
+  series    = {CIKM '09},
+  pages     = {77--86},
+  year      = {2009},
+  publisher = {ACM},
+  doi       = {10.1145/1645953.1645966},
+  note      = {Taxonomy of reformulation strategies (substitution, specialization, generalization, parallel) from query logs. Cited in §6.4 as the session-level reference that OSEC's commit-to-requery exit would operationalize at the motor-signature level. DOI from LLM knowledge, re-verify.},
+}
+
+@inproceedings{hassan2014struggling,
+  author    = {Hassan Awadallah, Ahmed and White, Ryen W. and Pantel, Patrick and Dumais, Susan T. and Wang, Yi-Min},
+  title     = {Struggling or Exploring? {Disambiguating} Long Search Sessions},
+  booktitle = {Proceedings of the 7th ACM International Conference on Web Search and Data Mining},
+  series    = {WSDM '14},
+  pages     = {53--62},
+  year      = {2014},
+  publisher = {ACM},
+  doi       = {10.1145/2556195.2556221},
+  note      = {Session-level classification of struggle vs exploration from click and dwell behavior. Prior art for the §6.5 reformulation-precursor framing — this paper does it at the session level; OSEC proposes the motor-signature level. DOI from LLM knowledge, re-verify.},
+}
+
+% ── Good abandonment (companion to the SEARCH ABANDONMENT section above) ─
+@inproceedings{li2009goodabandonment,
+  author    = {Li, Jane and Huffman, Scott B. and Tokuda, Akihito},
+  title     = {Good Abandonment in Mobile and {PC} Internet Search},
+  booktitle = {Proceedings of the 32nd International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  series    = {SIGIR '09},
+  pages     = {43--50},
+  year      = {2009},
+  publisher = {ACM},
+  doi       = {10.1145/1571941.1571951},
+  note      = {Coined "good abandonment" — some non-clicks are successful (answer visible in SERP, featured snippet, knowledge panel). The commit-to-good-abandonment exit in §6.4 and the InfoSERP prediction in §6.6 rest on this construct. DOI from LLM knowledge, re-verify.},
+}
+
+% ── C/W/L evaluation framework (rank-level patch-staying decision) ───────
+@article{moffat2017cwl,
+  author    = {Moffat, Alistair and Bailey, Peter and Scholer, Falk and Thomas, Paul},
+  title     = {Incorporating User Expectations and Behavior into the Measurement of Search Effectiveness},
+  journal   = {ACM Transactions on Information Systems},
+  volume    = {35},
+  number    = {3},
+  pages     = {24:1--24:38},
+  year      = {2017},
+  publisher = {ACM},
+  doi       = {10.1145/3052768},
+  note      = {The C/W/L framework: continuation probability at each rank is the stay-or-leave decision per position. Directly maps to IFT patch-staying applied within a SERP at result granularity. Cited in §6.4 for the commit-to-deepen exit. DOI from LLM knowledge, re-verify.},
+}
+
+% ── Information foraging / sensemaking (extending Pirolli) ───────────────
+@book{pirolli2007book,
+  author    = {Pirolli, Peter},
+  title     = {Information Foraging Theory: Adaptive Interaction with Information},
+  publisher = {Oxford University Press},
+  address   = {Oxford; New York},
+  year      = {2007},
+  isbn      = {978-0-19-517332-1},
+  note      = {The comprehensive book-length treatment of IFT. Chapters 7--8 cover the sensemaking loop — the meta-level iteration over multiple patches that OSEC's within-patch model is a component of. Held back as a deliberate extension hook for the §6.6 "where we stop" paragraph. ISBN from LLM knowledge, re-verify.},
+}
+
+@article{pirolli2011sensemaking,
+  author    = {Pirolli, Peter and Russell, Daniel M.},
+  title     = {Introduction to This Special Issue on Sensemaking},
+  journal   = {Human--Computer Interaction},
+  volume    = {26},
+  number    = {1--2},
+  pages     = {1--8},
+  year      = {2011},
+  publisher = {Taylor \& Francis},
+  doi       = {10.1080/07370024.2011.556557},
+  note      = {Sensemaking as a meta-level loop over information foraging patches. Anchor for Pirolli's post-2007 work and current IHMC interests. Cited in §6.6 as the juicy extension territory OSEC's commit-to-requery exit opens toward. DOI from LLM knowledge, re-verify.},
+}
+
+% ── Extended cognition / epistemic action (for the re-steer log) ─────────
+@article{kirsh1994epistemic,
+  author    = {Kirsh, David and Maglio, Paul},
+  title     = {On Distinguishing Epistemic from Pragmatic Action},
+  journal   = {Cognitive Science},
+  volume    = {18},
+  number    = {4},
+  pages     = {513--549},
+  year      = {1994},
+  publisher = {Cognitive Science Society},
+  doi       = {10.1207/s15516709cog1804_1},
+  note      = {Coined "epistemic action" — actions that modify the agent's cognitive state rather than the world. Anchored the initial (disproven) epistemic-retreat hypothesis: see docs/drafts/task-model-paper-resteer-log.md. DOI from LLM knowledge, re-verify.},
+}
+
+@article{clark1998extended,
+  author    = {Clark, Andy and Chalmers, David J.},
+  title     = {The Extended Mind},
+  journal   = {Analysis},
+  volume    = {58},
+  number    = {1},
+  pages     = {7--19},
+  year      = {1998},
+  publisher = {Oxford University Press},
+  doi       = {10.1093/analys/58.1.7},
+  note      = {The extended-mind thesis — external tools and environment can constitute cognitive processes. Background for the original (disproven) cursor-as-extended-memory hypothesis. See the re-steer log entry for the disproof and the stronger counter-explanation that replaced it. DOI from LLM knowledge, re-verify.},
+}
+
+% ═══════════════════════════════════════════════════════════════════════════
+% APPROACH-RETREAT LIBRARY (DEPLOYMENT ARTIFACT FOR CIKM §4.3)
+% ═══════════════════════════════════════════════════════════════════════════
+
+@misc{edmonds2026approachretreat,
+  author       = {Edmonds, Andy},
+  title        = {Approach/Retreat: Cursor Approach-Retreat Dynamics on Ranked List Layouts},
+  year         = {2026},
+  howpublished = {\url{https://github.com/andyed/approach-retreat}},
+  note         = {JavaScript library implementing the four-class approach-retreat taxonomy (clicked / deferred / evaluated-rejected / not-approached) as in-page SERP instrumentation. Discovers result bounding boxes via \texttt{getBoundingClientRect()} at runtime, binds a standard DOM \texttt{mousemove} listener, and emits a 19-field episode record per cursor visit to each result. Ships a PostHog adapter and an in-repo validation against the Attentive Cursor Dataset \cite{leiva2020attentive} at \texttt{analysis/attcur-validation/}. Sister library to ClickSense. Current iteration of a cursor-instrumentation line that began with the Optimoz Firefox gesture extension (2001) and Uzilla (2003).},
+}
+

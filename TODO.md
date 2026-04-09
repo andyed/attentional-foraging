@@ -4,7 +4,31 @@
 
 - [ ] **Single arXiv paper → CHI/CHIIR submission, if findings warrant.** Core contribution: decomposing "attention" on SERPs into four measurable constructs (overt fixation, viewport exposure, interaction latency, processing speed) where the field uses one undifferentiated term (Zhang et al. CHIIR '26). Novel findings: (1) lexical priming does NOT predict first-pass evaluation — forward-only gaze dwell ratio reverses (ρ = +0.82); aggregate correlation was position confound + regression artifact; regression-trial signal is triply confounded (position, repetition/recognition, scroll kinematics), (2) TTI-to-first-scroll calibrates individual processing speed at r=0.77 (zero-training-data signal, complementary to AdSight's Transformer approach), (3) satisfice/optimize is a continuous user trait visible from scroll regressions. Frame relative to AdSight (same data, prediction focus) and Zhang et al. (same lab, definitional focus). Venue candidates: CHI, CHIIR, CIKM, SIGIR resource track.
 
+## Task-model paper — post-audit (2026-04-08)
+
+**Canonical source:** `docs/drafts/task-model-paper.md`. The `.tex` is a derivative artifact with known drift — see the warning header in `docs/arxiv/task-model-paper.tex`. When ready to submit, regenerate the .tex from the .md rather than editing both.
+
+**Blocking + High items resolved 2026-04-08** (B1, B2, B3, H1, H5 — see commits). Remaining audit items:
+
+- [ ] **H2 / L2 — Unplaced citations in §2 Related Work.** Kuhlthau, Marchionini, Bates, Belkin, Hornof & Kieras, Payne & Duggan are mentioned inline without `\cite{}` and have no entries in `references.bib`. Add bib entries before any arxiv compile. Not invented, just never placed.
+- [ ] **H3 — Stale `ρ = −0.762` regression-velocity mediation figure.** Only in the .tex (line 120). Not in any notebooks-v2 cell. Either source it to a specific cell (possibly the old `notebooks/` tree) or drop — mediation is a strong causal word with *p* = 0.017 close to the α cliff. MD is clean; this only matters when we regenerate the .tex.
+- [ ] **H4 — Uncited fixation duration stats.** "Mean 219 ms, median 193 ms" appears in the .tex without a notebook citation. Source to NB04 or NB06 on regeneration.
+- [ ] **M1 — Thesis rhetoric: "click models cannot see this."** Rephrase as a construct-inventory claim, not an expressivity claim. A neural ranker *with* saccade features can see phase structure; it just isn't trained on them. Frame around what constructs are named, not what functions can be approximated.
+- [ ] **M2 — Null-as-support on survey duration "content-independence."** §5.3 concludes fixed-duration from three null difficulty correlations. Reframe as "not detected at this granularity (spread, Jaccard, density all ρ ≈ 0, *p* > 0.3), consistent with a fixed-budget sampling routine." Andy's own "empirical results are detection limits" rule applies.
+- [ ] **M3 — Overly-general claim in §5.8.** "The task model's Commit transition has an alternative pathway that click models cannot represent" is a structural claim about the click-model family from one forced-choice dataset. Soften to "that click models as currently specified do not represent; the present result motivates doing so."
+- [ ] **M4 — Mind-reading in §3.5.** Drop the scare-quoted "cognitive state of 'I already know what I'm looking for'" framing at `task-model-paper.md:68`. CHI reviewers will circle it. Hedge to "consistent with a verification-mode interpretation, not uniquely identifying one."
+- [ ] **M5 — Ski-jump table needs units.** The §5.8 position × fixation count table does not specify per-trial-mean or per-row-median. Match the CIKM sibling's "mean fix count" label.
+- [ ] **M6 — "~866 ms parafoveal processing time" is load-bearing and uncited.** Source to NB04 (fixation decomposition) on next pass. Also: "parafoveal processing" has a specific Reichle-et-al meaning in reading research; don't use the term loosely — prefer "inter-fixation time not integrated by FPOGD."
+- [ ] **M7 — MD's Appendix references `docs/references.bib`** which does not exist (the bib lives at repo root). Fix the prose path or move the bib.
+- [ ] **M8 — Cross-paper drift on "> 15 s time-to-click" boundary.** The .md §5.7 mentions this as the window where the cursor-gaze gap collapses; the CIKM sibling doesn't mention the 15 s boundary. Check which notebook produced the 15 s cutoff and align both papers.
+- [ ] **L3 — Draft-only title note in MD:3** ("CHI 2027 Pittsburgh — CMU reconnect") must never get pasted into the TeX or arxiv abstract.
+- [ ] **L4 — Abstract underscore italics.** The entire abstract in `task-model-paper.md:13` is wrapped in `_..._`. If rendered to HTML directly, the whole paragraph italicizes.
+- [ ] **L5 — §6.5 productization claim.** "Computable live from scroll history alone, without eye tracking" is a deployability note, not a scientific contribution of this paper. Label accordingly.
+- [ ] **L6 — Four-class taxonomy cross-ref.** Intro alludes to "the approach-retreat taxonomy" without unpacking; add one sentence "(see companion CIKM 2026 paper for the four-class taxonomy)" for reviewer orientation.
+
 ## Cross-cutting refactors
+
+- [ ] **Fix NB02 `compute_lag`.** Uses an undefined `RY` global (likely copy-pasted from NB01 where `RY = 1024 / meta['win_h']`). Will NameError the moment it's re-executed. Fix: use the canonical `compute_lag_for_trial()` now in `data_loader.py` (assumes mouse and gaze share the same pixel coordinate space, RY ≡ 1 — verified against GP3 pixel coords). May shift NB02's published lag numbers slightly; re-export HTML after fix.
 
 - [ ] **Forward-only vs regressive split across all analyses.** Most current findings pool forward reading with regressive (scroll-back) behavior. 1,465 of 2,341 tagged trials are `regressive_scroller`. Re-run NB23 (rank effects), NB24 (retreat arc geometry), NB20 (cursor features), NB01 (convergence / mouse-gaze distance), and NB05 (LHIPA) with an explicit forward-only vs regressive partition. Expected impact: the retreat direction and the "retreat as epistemic action" claims are likely direction-specific. The approach-retreat four-class taxonomy needs this split to handle regressive seeking cleanly. Track which findings survive the split and which are artifacts of pooling.
 
