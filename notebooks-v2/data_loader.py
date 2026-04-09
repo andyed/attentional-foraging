@@ -36,6 +36,9 @@ SERP_DIR = DATA_DIR / 'serps'
 AD_DIR = DATA_DIR / 'ad-boundary-data'
 PUPIL_DIR = DATA_DIR / 'pupil-data'
 
+# Legacy aliases — older notebooks reference FIX_DIR directly
+FIX_DIR = FIXATION_DIR
+
 # ── Trial discovery ────────────────────────────────────────────────────────
 
 def get_trial_ids():
@@ -102,6 +105,117 @@ def load_mouse_events(trial_id):
             elif evt == 'click':
                 clicks.append((t, x, y))
     return all_events, scrolls, clicks
+
+
+def load_mouse_and_scroll(trial_id):
+    """Compatibility wrapper returning (mouse, scrolls) in the shape that
+    NB11 and NB02 expect.
+
+    Returns:
+        mouse: list of (t, x, y) cursor-position samples (mousemove family,
+               plus click for the terminal position)
+        scrolls: list of (t, y) scroll events
+    """
+    events, scrolls, _ = load_mouse_events(trial_id)
+    pos_events = {'mousemove', 'mouseover', 'mouseout',
+                  'mousedown', 'mouseup', 'click'}
+    mouse = [(t, x, y) for (t, evt, x, y) in events if evt in pos_events]
+    return mouse, scrolls
+
+
+def has_regression(scrolls, threshold_px=30):
+    """True if the scroll trace contains a backward movement of at least
+    threshold_px below the running high-water mark.
+
+    Args:
+        scrolls: list of (t, y) as returned by load_mouse_events()
+        threshold_px: minimum backward travel to count as a regression
+    """
+    if not scrolls:
+        return False
+    hwm = scrolls[0][1]
+    for _, y in scrolls:
+        if hwm - y > threshold_px:
+            return True
+        if y > hwm:
+            hwm = y
+    return False
+
+
+def compute_lag_for_trial(fix, mouse, scrolls, step_ms=50, max_offset=2000):
+    """Scroll-corrected gaze–cursor Y cross-correlation.
+
+    Returns best_lag_ms (int) where the correlation between gaze-Y and
+    cursor-Y peaks. Negative = gaze leads cursor (Huang et al. 2012
+    reports ~-700ms). Returns None if insufficient data.
+
+    Accepts fixations in either tuple (t, x, y, d) or dict
+    {t, x, y, d, ...} form — both NB02 and data_loader shapes are OK.
+
+    This is the canonical replacement for NB02's `compute_lag`, which
+    references an undefined `RY` global. Assumes mouse and gaze share
+    the same pixel coordinate space (RY ≡ 1), which is correct for the
+    AdSERP dataset (Gazepoint GP3 pixel coords + evtrack pageY).
+    """
+    if len(fix) < 5 or len(mouse) < 20:
+        return None
+
+    def _fx(f):
+        if isinstance(f, dict):
+            return f['t'], f['y'], f['d']
+        return f[0], f[2], f[3]
+
+    fix_t = np.array([_fx(f)[0] for f in fix], dtype=float)
+    fix_y = np.array([_fx(f)[1] for f in fix], dtype=float)
+    fix_d = np.array([_fx(f)[2] for f in fix], dtype=float)
+
+    mt = np.array([m[0] for m in mouse], dtype=float)
+    my = np.array([m[2] for m in mouse], dtype=float)
+
+    t0 = min(fix_t.min(), mt.min())
+    t1 = max((fix_t + fix_d).max(), mt.max())
+    times = np.arange(t0, t1, step_ms)
+    if len(times) < 20:
+        return None
+
+    # Rasterize gaze-Y to timebase (screen-space)
+    gy = np.full(len(times), np.nan)
+    for t, y, d in zip(fix_t, fix_y, fix_d):
+        mask = (times >= t) & (times < t + d)
+        gy[mask] = y
+
+    # Rasterize mouse-Y to timebase, subtract scroll to bring into screen-space
+    if scrolls:
+        st = np.array([s[0] for s in scrolls], dtype=float)
+        sy = np.array([s[1] for s in scrolls], dtype=float)
+        mouse_scroll = np.interp(mt, st, sy, left=sy[0], right=sy[-1])
+    else:
+        mouse_scroll = np.zeros_like(mt)
+    mouse_screen_y = my - mouse_scroll
+    my_interp = np.interp(times, mt, mouse_screen_y, left=np.nan, right=np.nan)
+
+    offsets = np.arange(-max_offset, max_offset + 1, step_ms)
+    corrs = np.full(len(offsets), np.nan)
+    for i, off in enumerate(offsets):
+        shift = int(off / step_ms)
+        if shift >= 0:
+            g = gy[shift:]
+            m = my_interp[:len(g)]
+        else:
+            m = my_interp[-shift:]
+            g = gy[:len(m)]
+        v = np.isfinite(g) & np.isfinite(m)
+        if v.sum() < 20:
+            continue
+        gv, mv = g[v], m[v]
+        if gv.std() < 1 or mv.std() < 1:
+            continue
+        corrs[i] = np.corrcoef(gv, mv)[0, 1]
+
+    if not np.isfinite(corrs).any():
+        return None
+    return int(offsets[int(np.nanargmax(corrs))])
+
 
 # ── Trial metadata ─────────────────────────────────────────────────────────
 

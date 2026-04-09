@@ -1,0 +1,170 @@
+[
+  {
+    "chattiness_measure": "events_per_sec",
+    "nb11_measure": "median_lag_ms",
+    "rho": 0.025560953725743858,
+    "p": 0.8645806643055276,
+    "n": 47
+  },
+  {
+    "chattiness_measure": "events_per_sec",
+    "nb11_measure": "median_tti_s",
+    "rho": -0.5250077089115017,
+    "p": 0.00017971232184380115,
+    "n": 46
+  },
+  {
+    "chattiness_measure": "events_per_sec",
+    "nb11_measure": "regression_rate",
+    "rho": -0.4470595105727305,
+    "p": 0.0016305596740092553,
+    "n": 47
+  },
+  {
+    "chattiness_measure": "events_per_sec",
+    "nb11_measure": "mean_lhipa",
+    "rho": 0.5453283996299723,
+    "p": 7.374870893204873e-05,
+    "n": 47
+  },
+  {
+    "chattiness_measure": "events_per_sec",
+    "nb11_measure": "mean_click_pos",
+    "rho": -0.12257169287696579,
+    "p": 0.4117697636925587,
+    "n": 47
+  },
+  {
+    "chattiness_measure": "events_per_sec",
+    "nb11_measure": "mean_fixations",
+    "rho": -0.5939695298946434,
+    "p": 1.0762777601455614e-05,
+    "n": 47
+  },
+  {
+    "chattiness_measure": "path_per_sec",
+    "nb11_measure": "median_lag_ms",
+    "rho": 0.19072403933824264,
+    "p": 0.19908786595998268,
+    "n": 47
+  },
+  {
+    "chattiness_measure": "path_per_sec",
+    "nb11_measure": "median_tti_s",
+    "rho": -0.5694110391612704,
+    "p": 3.630877246081055e-05,
+    "n": 46
+  },
+  {
+    "chattiness_measure": "path_per_sec",
+    "nb11_measure": "regression_rate",
+    "rho": -0.10669057004355034,
+    "p": 0.4753637592492096,
+    "n": 47
+  },
+  {
+    "chattiness_measure": "path_per_sec",
+    "nb11_measure": "mean_lhipa",
+    "rho": 0.46126271970397786,
+    "p": 0.0011015278655530994,
+    "n": 47
+  },
+  {
+    "chattiness_measure": "path_per_sec",
+    "nb11_measure": "mean_click_pos",
+    "rho": 0.050416281221091576,
+    "p": 0.7364610004321496,
+    "n": 47
+  },
+  {
+    "chattiness_measure": "path_per_sec",
+    "nb11_measure": "mean_fixations",
+    "rho": -0.48330490610233856,
+    "p": 0.0005790916152046646,
+    "n": 47
+  },
+  {
+    "chattiness_measure": "dir_changes_per_sec",
+    "nb11_measure": "median_lag_ms",
+    "rho": 0.27891511271326386,
+    "p": 0.05762723075872442,
+    "n": 47
+  },
+  {
+    "chattiness_measure": "dir_changes_per_sec",
+    "nb11_measure": "median_tti_s",
+    "rho": -0.5029293863706444,
+    "p": 0.00036775725544678354,
+    "n": 46
+  },
+  {
+    "chattiness_measure": "dir_changes_per_sec",
+    "nb11_measure": "regression_rate",
+    "rho": -0.13242352596191345,
+    "p": 0.37490643553118963,
+    "n": 47
+  },
+  {
+    "chattiness_measure": "dir_changes_per_sec",
+    "nb11_measure": "mean_lhipa",
+    "rho": 0.3404255319148936,
+    "p": 0.01921119379683605,
+    "n": 47
+  },
+  {
+    "chattiness_measure": "dir_changes_per_sec",
+    "nb11_measure": "mean_click_pos",
+    "rho": 0.063945420906568,
+    "p": 0.669364407541229,
+    "n": 47
+  },
+  {
+    "chattiness_measure": "dir_changes_per_sec",
+    "nb11_measure": "mean_fixations",
+    "rho": -0.4077939350089477,
+    "p": 0.004437768413663634,
+    "n": 47
+  },
+  {
+    "chattiness_measure": "active_fraction",
+    "nb11_measure": "median_lag_ms",
+    "rho": 0.11404117816101107,
+    "p": 0.44530278182739824,
+    "n": 47
+  },
+  {
+    "chattiness_measure": "active_fraction",
+    "nb11_measure": "median_tti_s",
+    "rho": -0.495282146160962,
+    "p": 0.0004660619006857647,
+    "n": 46
+  },
+  {
+    "chattiness_measure": "active_fraction",
+    "nb11_measure": "regression_rate",
+    "rho": -0.3767420400182821,
+    "p": 0.00904844684713863,
+    "n": 47
+  },
+  {
+    "chattiness_measure": "active_fraction",
+    "nb11_measure": "mean_lhipa",
+    "rho": 0.4343200740055504,
+    "p": 0.0022859099513101977,
+    "n": 47
+  },
+  {
+    "chattiness_measure": "active_fraction",
+    "nb11_measure": "mean_click_pos",
+    "rho": -0.0583950046253469,
+    "p": 0.6966187093885128,
+    "n": 47
+  },
+  {
+    "chattiness_measure": "active_fraction",
+    "nb11_measure": "mean_fixations",
+    "rho": -0.5231996764349875,
+    "p": 0.0001610652818296726,
+    "n": 47
+  }
+]
