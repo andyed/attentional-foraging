@@ -45,6 +45,7 @@ NOTEBOOK_LABELS = {
     "11_individual_differences.ipynb": ("NB11", "11_individual_differences", "two-factor motor individual differences"),
     "11_5_chattiness_traits.ipynb": ("NB11.5", "11_5_chattiness_traits", "cursor chattiness as a stable individual-differences trait"),
     "14_butterworth_cognitive_load.ipynb": ("NB14", "14_butterworth_cognitive_load", "cognitive load decreases with SERP position"),
+    "15_cursor_approach.ipynb": ("NB15", "15_cursor_approach", "cursor approach features and consideration set"),
     "21_click_prediction.ipynb": ("NB21", "21_click_prediction", "LOSO click prediction and four-class taxonomy"),
     "22_four_class_taxonomy.ipynb": ("NB22", "22_four_class_taxonomy", "regression-based four-class taxonomy and element-type interactions"),
     "23_rank_effects.ipynb": ("NB23", "23_rank_effects", "unified rank effects — framework compilation"),
@@ -204,6 +205,48 @@ NB14_BODY = """### Cognitive load decreases with SERP position (the Butterworth 
 > **Coordinate-space audit (2026-04-09).** `compute_butterworth_lfhf.py` previously double-counted scroll offset when deriving `click_pos` from evtrack `ypos` (already page-space). The fix moved K6 only: N_clicked 1,145 → 1,110, clicked median 22.86 → 22.24, *p* 3.9 × 10⁻⁷ → 1.3 × 10⁻⁴. Direction and significance preserved. K1–K5, K7, K8 are unchanged because they use fixation position (gaze → page-space conversion, which was always correct), not `click_pos`. See `CHANGELOG.md`."""
 
 
+NB15_BODY = r"""### Cursor approach features (per result-position record)
+
+| ID | Claim | Value |
+|---|---|---|
+| **K1** | Records / trials / base click rate | 15,397 records / 2,340 trials / 14.4% (2,214 clicks) |
+| **K2** | Mean min\_dist (clicked vs not) | 204 px vs 427 px |
+| **K3** | Almost-clicked (min\_dist < 58 px, not clicked) | 734 records (4.8% of all; 5.57% of non-clicked) |
+| **K4** | Approached (min\_dist < 100 px) | 2,488 records (16.2%), click rate 41.5%, lift 2.9× |
+| **K5** | Best single-threshold AUC | min\_dist < 150 px → AUC 0.699 |
+
+### Approach → regression → click pathway
+
+| ID | Claim | Value |
+|---|---|---|
+| **K6** | Approach → regression rate | 83.8% (vs 50.7% no-approach) |
+| **K7** | Approach → regression odds ratio | **5.04×**, p = 1.9 × 10⁻²⁰³ |
+| **K8** | Approach + regression → click rate | **43.5%** (N = 2,086) |
+| **K9** | Approach + no regression → click rate | 30.8% (N = 402) |
+| **K10** | No approach + regression → click rate | 11.6% (N = 6,551) |
+| **K11** | No approach + no regression → click rate | 6.7% (N = 6,358) |
+
+### Position gradient
+
+| ID | Claim | Value |
+|---|---|---|
+| **K12** | Position 0: almost-clicked rate | 15.5% (N = 2,310) |
+| **K13** | Position 0: mean min\_dist | 170 px |
+| **K14** | Position 9: almost-clicked rate | 0.0% (N = 661) |
+| **K15** | Position 9: mean min\_dist | 683 px |
+
+### Click prediction (replicates NB21 from raw features)
+
+| ID | Claim | Value |
+|---|---|---|
+| **K16** | Position + dwell + all approach (LOSO) | AUC 0.797 ± 0.021 |
+| **K17** | Position coefficient (full model) | −0.380 (→ skip; correct direction post-fix) |
+| **K18** | direction\_changes coefficient | −0.005 (≈ 0; was scroll artifact pre-fix) |
+
+> **Coordinate-space audit (2026-04-09).** Two bug sites in the feature computation (`my + fix_scroll` where `my` is already page-space) inflated cursor proximity on scrolled trials (82% of corpus). Pre-fix: almost-clicked was 14%, M3 AUC was 0.827, `position` coefficient was +0.21 (wrong direction), `direction_changes` was +0.20 (scroll artifact). All values above are post-fix. See `CHANGELOG.md`.
+"""
+
+
 NB21_BODY = """### LOSO click prediction — pooled results
 
 | ID | Claim | Value |
@@ -330,6 +373,7 @@ TARGETS = [
     ("11_individual_differences.ipynb", NB11_BODY),
     ("11_5_chattiness_traits.ipynb", NB11_5_BODY),
     ("14_butterworth_cognitive_load.ipynb", NB14_BODY),
+    ("15_cursor_approach.ipynb", NB15_BODY),
     ("21_click_prediction.ipynb", NB21_BODY),
     ("22_four_class_taxonomy.ipynb", NB22_BODY),
     ("23_rank_effects.ipynb", NB23_BODY),

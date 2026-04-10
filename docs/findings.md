@@ -410,21 +410,17 @@ The natural rate is almost certainly much lower than AdSERP's 65%. From personal
 
 ## 10. Mouse proximity predicts click — and reveals the consideration set
 
-> **⚠️ SUPERSEDED in part by the 2026-04-09 coordinate-space audit.** The tables and ratios in this section were computed from `cursor-approach-features.json` before a scroll double-counting bug in `notebooks-v2/15_cursor_approach.ipynb` was fixed. The bug inflated "close-distance" rates on scrolled trials (82 % of corpus), which is exactly what deep-scan regression analyses rely on. The headline direction ("mouse proximity predicts click, and reveals a consideration set") survives — NB21's M3 LOSO AUC post-fix is still **0.792 ± 0.062** (was 0.827 ± 0.047) with approach features carrying the dominant signal. But the *magnitudes* below are stale. The canonical post-fix values live in the NB21 Key Claims block; see `docs/notebook-key-claims.md` §NB21 and `CHANGELOG.md` Unreleased entry. Numbers in the distance-bin table and the "14 % almost-clicked" figure need recomputation before citing in any new draft.
+Gaze-cursor distance during fixations on a result predicts whether that result will be clicked. Per-result `min_dist` thresholds (NB15, post coordinate-space audit 2026-04-09, N = 15,397 result-position records across 2,340 trials, base click rate 14.4%):
 
-Gaze-cursor distance during fixations on a result predicts whether that result will be clicked. The gradient (pre-fix values, displayed for comparison only — do not cite):
+| Threshold | Prevalence | Click rate | Lift |
+|---|---|---|---|
+| min_dist < 58px | 8.9% | 46.4% | 3.2× |
+| min_dist < 100px | 16.2% | 41.5% | 2.9× |
+| min_dist < 150px | 23.6% | 35.1% | 2.4× |
 
-| Min gaze-cursor distance | Click rate | Relative to baseline |
-|---|---|---|
-| 0–66px | 26.9% | 11× |
-| 66–145px | 10.7% | 4.5× |
-| 145–251px | 5.7% | 2.4× |
-| 251–399px | 3.2% | 1.3× |
-| 399+px | 2.4% | baseline |
+Closer approach → higher click probability. The gradient is monotonic and strong.
 
-This was computed per result-region per trial (n=25,886 result-fixation records across 2,772 trials). For each result the user fixated, we measured the minimum distance between gaze and cursor at any point during fixation. Closer approach → higher click probability. **The direction is robust; the specific bin rates are not.**
-
-**The "almost clicked" segment (pre-fix figures, superseded).** 14% of non-clicked results had the mouse within 58px of gaze. Post-fix this figure is **5.57 %** at the feature-record level (see NB15 feature-level verification in `CHANGELOG.md`). The "consideration set" interpretation — cursor approaches during covert evaluation, then either commits or withdraws — still holds, but the scale of the signal is smaller than previously reported. NB21:K15 ("Evaluated-rejected" class) dropped from 994 to 344 records in the post-fix taxonomy.
+**The "almost clicked" segment.** 4.8% of all result-position records (734 / 15,397) had `min_dist < 58px` and were not clicked — the consideration set made visible. These received **more fixations** than clicked results (22.2 vs 19.0 mean). Users evaluated them deeply, moved the cursor close, then chose something else. NB21:K15 ("Evaluated-rejected" class) contains 344 records (2.2% of corpus) in the classifier-derived taxonomy.
 
 **Why this matters for production.** Click models treat non-clicks as ambiguous — maybe the user examined the result and found it irrelevant, maybe they never saw it. Mouse proximity resolves this ambiguity without eye tracking. A non-clicked result where `min_cursor_distance < 100px` is a high-confidence **evaluated-and-rejected** signal. A non-clicked result where the cursor never approached is **unseen or unconsidered**. These carry opposite relevance implications.
 
@@ -438,18 +434,18 @@ The signal is deployable from standard mouse telemetry: `min_cursor_distance_to_
 
 Cursor approach-retreat goes beyond proximity. During evaluation, the mouse makes partial approach movements toward results that are ultimately rejected. This is a covert evaluation signal with a distinctive motor signature:
 
-> **Pre-fix values shown; superseded by 2026-04-09 audit — see §10 note and `CHANGELOG.md`.** Post-fix, `Clicked` rises to 2,214 (re-attributing 233 clicks that were previously mis-positioned by the scroll bug) and the `Approached-rejected` class collapses substantially because the deep-position approach signal that populated it was largely scroll-bug artifact. NB21:K13–K16 (in `docs/notebook-key-claims.md`) carry the canonical post-fix taxonomy.
+Four-class taxonomy (NB22, regression-based split, post coordinate-space audit 2026-04-09):
 
-| Category | N | Retreat Distance | Click Rate |
-|----------|---|-----------------|-----------|
-| **Clicked** | 1,981 | 119px | 100% |
-| **Deferred (clicked on revisit)** | 2,745 | — | 36.5% |
-| **Approached-rejected** | 2,280 | 244px | 0% |
-| **Peripherally seen** | 4,548 | 180px | — |
+| Category | N | % | Retreat (px) | Gaze Dwell (ms) | Dwell in Proximity (ms) |
+|----------|---|---|---|---|---|
+| **Clicked** | 2,214 | 14.4% | — | — | — |
+| **Deferred** (approached + regressed to) | 1,178 | 7.7% | 191.3 | 3,842 | 1,219 |
+| **Evaluated-rejected** (approached + no regression) | 278 | 1.8% | 96.4 | 2,018 | 682 |
+| **Not approached** | 11,727 | 76.2% | — | — | — |
 
-Short retreat (119px) = committed. Long retreat (244px) = actively rejected (p = 5.3×10⁻⁹²). Pupillometry confirms: LF/HF is 23.8 during approach vs 17.2 when cursor is far (p = 4.9×10⁻¹²). These are genuine evaluation episodes.
+Motor signature separation: deferred vs rejected shows 2× retreat distance (191 vs 96 px, p = 1.9×10⁻¹¹), 1.9× gaze dwell (3,842 vs 2,018 ms, p = 3.7×10⁻²⁶), 1.8× proximity dwell (1,219 vs 682 ms, p = 5.0×10⁻⁹). Source: NB22:K1–K7.
 
-**Approach predicts regression.** 78.3% of approached results get regressed to (odds ratio 3.67×, p = 10⁻¹⁹⁹). Approach + regression → 36.5% click rate. Approach + no regression → 29.5% (hard negative). No approach → ~6%.
+**Approach predicts regression.** 83.8% of approached results get regressed to (odds ratio 5.04×, p = 1.9×10⁻²⁰³). Approach + regression → 43.5% click rate. Approach + no regression → 30.8%. No approach + regression → 11.6%. No approach + no regression → 6.7%. Source: NB15 cell 22.
 
 **Scroll doesn't carry this signal on desktop.** Scroll dwell and deceleration during regression are identical for clicked vs non-clicked results (all p > 0.3, notebook 17). The scroll is ballistic transportation; the cursor is the evaluation probe. On mobile, where scroll is the only motor channel, this may differ.
 

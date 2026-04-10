@@ -26,15 +26,13 @@ The ski-jump has been sitting unexplained in every search engine I have worked o
 
 A parallel hypothesis — that lexical priming between results explained the declining dwell curve — drove the early work but tested null at four granularities. The investigation surfaced a better answer (framework compilation) as a byproduct. Full writeup: [priming-null-result.md](./docs/priming-null-result.md).
 
-![Temporal Spectrum of AdSERP Signals](assets/temporal-spectrum.png)
-
-The AdSERP signals span five orders of magnitude in time — from 7 ms pupil samples to 60-second trials. Our augmentations (reading episodes, cursor approach episodes, Butterworth LF/HF windows, LHIPA) bridge the gap between raw sensor events and trial-level cognition, making per-result and per-phase analysis possible.
+The AdSERP signals span five orders of magnitude in time — from 7 ms pupil samples to 60-second trials. Our augmentations (reading episodes, cursor approach episodes, Butterworth LF/HF windows, LHIPA) bridge the gap between raw sensor events and trial-level cognition, making per-result and per-phase analysis possible. ([Signal timescale breakdown](assets/temporal-spectrum.png))
 
 ## Why a task model, not another classifier
 
 Twenty years of web search modeling has been dominated by a single move: treat user behavior as a signal stream and learn a mapping from that stream to relevance. Click models (cascade, DBN, UBM) encode examination and stopping as statistical parameters. Cursor-feature classifiers extract 638-dimensional feature bags from mouse trajectories. Transformer-based sequence models now learn end-to-end maps from raw `(x, y, t)` to click. These approaches have produced real engineering gains and are the default framing in SIGIR, CIKM, and WSDM.
 
-This project argues the framing misses a critical dimension. The user is running a *cognitive task*, and when that task is modeled explicitly — using the vocabulary of psychology and HCI task analysis the field already has — structure comes out of the data that pure signal-decoding leaves untouched. Phase boundaries become testable. Content-independent vs. content-modulated subprocesses separate. Forward evaluation and regressive re-evaluation stop being one blob. The four-class consideration-set taxonomy (clicked / deferred / evaluated-rejected / not-approached) recovers information that a 638-feature classifier leaves on the table, using ~6 features, because the task model tells you which features matter.
+This project argues the framing misses a critical dimension. The user is running a *cognitive task*, and when that task is modeled explicitly — using the vocabulary of psychology and HCI task analysis the field already has — structure comes out of the data that pure signal-decoding leaves untouched. Phase boundaries become testable. Content-independent vs. content-modulated subprocesses separate. Forward evaluation and regressive re-evaluation stop being one blob. The four-class consideration-set taxonomy (clicked / deferred / evaluated-rejected / not-approached) recovers information that a 638-feature classifier leaves on the table, using 11 features, because the task model tells you which features matter.
 
 The Survey phase operationalized in this paper was hypothesized by Zhang, Abualsaud & Smucker (CHIIR 2018) in the context of immediate requery behavior. We give it a saccade-level signature. The same move applies across the project: psychology and HCI already have the vocabulary; what this work adds is the measurement.
 
@@ -89,9 +87,9 @@ Detailed write-up with all statistical tests: [findings.md](./docs/findings.md).
 
 People read every result at the same depth: ~2 fixations, ~500 ms per reading episode, whether it's result 1 or result 8. What declines is how many *episodes* each result gets — how many times you come back to re-read it. The position effect is a revisitation decision, not a reading depth change.
 
-The uptick at the boundary is a cost collapse. By the last result, three things converge: (1) you've built sharp selection criteria from evaluating 8+ candidates, so judging one more is cheap; (2) there's nowhere left to scroll, so the "travel cost" of continuing is zero; (3) you've seen everything, so there's no uncertainty about what else might be below the fold. The reward rate for evaluating that last result spikes — not because it's better, but because the cost of evaluating it is near zero.
+The uptick at the boundary is consistent with a cost collapse. By the last result, three things converge: (1) you've built sharp selection criteria from evaluating 8+ candidates, so judging one more is cheap; (2) there's nowhere left to scroll, so the "travel cost" of continuing is zero; (3) you've seen everything, so there's no uncertainty about what else might be below the fold. The reward rate for evaluating that last result spikes — not because it's better, but because the cost of evaluating it is near zero.
 
-Boundary clickers show *higher* cognitive load in their pupil dilation (LHIPA = 0.041 vs 0.049, p < 0.0001; lower = harder), invest more fixations (~100 vs ~89), and are disproportionately "optimizers" who evaluated the whole page. They're not giving up. They're finishing the job.
+Boundary clickers show higher cognitive load in their pupil dilation (LHIPA = 0.041 vs 0.049 for mid-page clickers; lower LHIPA = higher load; p < 0.0001), invest more fixations (~100 vs ~89), and are disproportionately "optimizers" who evaluated the whole page. They're not giving up. They're finishing the job.
 
 ### Decomposition
 
@@ -99,8 +97,8 @@ Boundary clickers show *higher* cognitive load in their pupil dilation (LHIPA = 
 
 Both time and cognitive load decline with result position — but load drops *faster*. Cognitive effort (Butterworth LF/HF) peaks at position 0 where the user is building evaluation criteria from scratch, then drops steeply through positions 0–3 as criteria compile. By position 4, the framework is built and both curves plateau. This is **framework compilation**: the user becomes an expert evaluator within a single SERP scan.
 
-- **Fixation count declines** (rho = -0.44), **total dwell time declines** (rho = -0.52, forward + regression) — less total investment at lower positions. → [§3a](docs/findings.md#3a-evaluation-time-decomposes-into-four-independent-components)
-- **Butterworth LF/HF declines faster** (rho = -0.618, p = 0.04) — cognitive effort peaks during framework construction at position 0, then plateaus. → [§3b-iv](docs/findings.md#3b-iv-per-position-cognitive-load-decreases-not-increases--framework-compilation-not-working-memory-overload)
+- **Fixation count and dwell time decline directionally** (rho = -0.44 and -0.52, both ns at N = 10 positions) — less total investment at lower positions, though not significant at the position level. → [§3a](docs/findings.md#3a-evaluation-time-decomposes-into-four-independent-components)
+- **Butterworth LF/HF declines significantly** (rho = -0.618, p = 0.04) — cognitive effort peaks during framework construction at position 0, then plateaus. → [§3b-iv](docs/findings.md#3b-iv-per-position-cognitive-load-decreases-not-increases--framework-compilation-not-working-memory-overload)
 - **Survey duration is content-independent.** ~5 fixations, ~1.3 s median, no correlation with any difficulty measure. The survey's *output* (an impression of the result set) modulates strategy; its *duration* doesn't vary.
 
 ### Framework compilation — the reframe that came out of the priming null
@@ -113,14 +111,14 @@ SERP difficulty isn't about how similar the results look to each other — it's 
 
 ### Behavioral signals (useful for search engineers)
 
-- **Viewport state beats mouse-gaze distance** for click prediction. AUC 0.704 vs 0.548. Where the user stopped scrolling is a stronger signal than where their cursor is. → [§6](docs/findings.md#6-viewport-state-predicts-clicks-better-than-distance)
-- **Mouse proximity reveals the consideration set.** Cursor approach features raise click prediction AUC from 0.670 (position only) to 0.792 (LOSO, 47-fold); approach alone matches the full model (M3 = M4). 5.6% of non-clicked results had the cursor within 58 px — a "consideration set" visible from mouse telemetry alone. → [§10](docs/findings.md#10-mouse-proximity-predicts-click--and-reveals-the-consideration-set), [NB21 Key Claims](docs/notebook-key-claims.md)
+- **Scroll context beats mouse-gaze distance** for click prediction. AUC 0.687 vs 0.531 (NB01, post coordinate-space audit). Where the user stopped scrolling is a stronger signal than where their cursor is. → [§6](docs/findings.md#6-viewport-state-predicts-clicks-better-than-distance)
+- **Mouse proximity reveals the consideration set.** Cursor approach features raise click prediction AUC from 0.670 (position only) to 0.792 (LOSO, 47-fold); approach alone matches the full model (M3 = M4). 4.8% of results (5.6% of non-clicked) had the cursor within 58 px — a "consideration set" visible from mouse telemetry alone. → [§10](docs/findings.md#10-mouse-proximity-predicts-click--and-reveals-the-consideration-set), [NB21 Key Claims](docs/notebook-key-claims.md)
 - **Backward scrolling is ballistic** (rho = 0.867). 87% of regression targets land at positions 0–4. When users scroll back up, they're going to a specific result, not re-scanning. → [§8](docs/findings.md#8-backward-scrolling-is-ballistic--the-viewport-mechanics-confound)
 - **Pupillometric cognitive load is a boundary signal, not a gradient.** Trial-level LHIPA is flat across click positions 0–8, then steps down at positions 9–10 (the boundary). The rho = -0.87 is driven by the boundary step, not by a gradual position effect. Boundary clickers are working harder because the decision is hardest at the end of the page. → [§5](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/05_lhipa.ipynb), [NB 23](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/23_rank_effects.ipynb)
 
 ### Individual differences
 
-Two independent trait dimensions emerged across participants: **deliberation style** (regression rate, time to first interaction, cognitive load) and **motor coupling** (how closely the cursor tracks gaze, split-half reliability r = 0.76). Neither predicts the other — how carefully you search and how you move your mouse are orthogonal traits. → [§11](docs/findings.md#11-two-orthogonal-individual-difference-dimensions)
+Two independent trait dimensions emerged across participants: **deliberation style** (regression rate, time to first interaction, cognitive load) and **motor coupling** (how closely the cursor tracks gaze, split-half reliability r = 0.84 Spearman-Brown corrected). Neither predicts the other — how carefully you search and how you move your mouse are orthogonal traits. → [§11](docs/findings.md#11-two-orthogonal-individual-difference-dimensions)
 
 ---
 

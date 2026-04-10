@@ -28,27 +28,29 @@ Feed-forward models collapse the last two into one class. Approach-retreat split
 
 ### Retreat distance predicts click outcome
 
-| Category | N | Retreat | Min Dist | Dwell in Proximity | Click Rate |
-|----------|---|---------|----------|--------------------|-----------|
-| **Clicked** | 1,981 | 119px | 167px | 2,360ms | 100% |
-| **Deferred (clicked on revisit)** | 2,745 | — | — | — | 36.5% |
-| **Approached-rejected** | 2,280 | 244px | 59px | 1,653ms | 0%* |
-| **Peripherally seen** | 4,548 | 180px | 191px | 592ms | — |
-| **Unseen** | 6,588 | — | — | — | — |
+Four-class taxonomy (NB22, regression-based split, post coordinate-space audit 2026-04-09):
 
-Short retreat (119px) = the cursor stayed close and committed. Long retreat (244px) = the cursor actively withdrew. The difference is p = 5.3×10⁻⁹².
+| Category | N | % | Retreat (px) | Gaze Dwell (ms) | Prox Dwell (ms) |
+|----------|---|---|---|---|---|
+| **Clicked** | 2,214 | 14.4% | — | — | — |
+| **Deferred** (approached + regressed) | 1,178 | 7.7% | 191.3 | 3,842 | 1,219 |
+| **Evaluated-rejected** (approached, no regression) | 278 | 1.8% | 96.4 | 2,018 | 682 |
+| **Not approached** | 11,727 | 76.2% | — | — | — |
 
-**\*Methodology note:** The 0% click rate for "approached-rejected" is definitional — the category is constructed as `min_dist < 100px AND NOT clicked`. The empirical content is not the 0% itself but the motor signature separation: clicked results show short retreat (119px) with long dwell (2,360ms), while non-clicked approached results show long retreat (244px) with short dwell (1,653ms). These distributions are well-separated (p = 5.3×10⁻⁹²), which motivates fitting a classifier that predicts click outcome from approach features alone — replacing the post-hoc label split with a predictive threshold. See TODO: "Regression click model."
+Deferred vs rejected motor separation: 2× retreat distance (191 vs 96 px, p = 1.9×10⁻¹¹), 1.9× gaze dwell (p = 3.7×10⁻²⁶), 1.8× proximity dwell (p = 5.0×10⁻⁹). Source: NB22:K5–K7.
+
+**Methodology note:** The regression-based split (NB22) uses scroll regression as the deferred/rejected criterion. The classifier-derived split (NB21:K13–K16) uses the LOSO M3 predicted probability at Youden's J threshold (p = 0.495) and yields 1,112 deferred / 344 evaluated-rejected. Both approaches are available; the classifier-derived version is the paper's canonical taxonomy (§4.3).
 
 ### Approach + regression = the return-to-click pathway
 
-Cursor approach predicts scroll regression (odds ratio 3.67×, p = 10⁻¹⁹⁹):
+Cursor approach predicts scroll regression (odds ratio 5.04×, p = 1.9×10⁻²⁰³):
 
 | Pathway | N | Click Rate |
 |---------|---|-----------|
-| **Approach + regression** | 2,745 | 36.5% |
-| **Approach + no regression** | 762 | 29.5% |
-| **No approach + regression** | 5,892 | 6.6% |
+| **Approach + regression** | 2,086 | 43.5% |
+| **Approach + no regression** | 402 | 30.8% |
+| **No approach + regression** | 6,551 | 11.6% |
+| **No approach + no regression** | 6,358 | 6.7% |
 | **No approach + no regression** | 5,998 | 6.1% |
 
 **Short retreat + regression = future return to click.** The cursor lingered, the user scrolled away to compare, then came back. 78.3% of approached results get regressed to.
