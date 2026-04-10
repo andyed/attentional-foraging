@@ -33,6 +33,7 @@ from data_loader import (
     result_band_tops,
     extract_serp_results,
     load_trial,
+    click_to_position,
 )
 from episode_classifier import classify_trial_episodes, clear_cache
 
@@ -151,19 +152,13 @@ def extract_retreat_arcs_v2(trial_id, min_dwell_ms=100, retreat_pause_ms=500,
         if x == 0 and y == 0:
             continue
         in_col = RESULT_COL_X_MIN <= x <= RESULT_COL_X_MAX
-        sy = interpolate_scroll(t, scroll_ts, scroll_ys)
-        mouse_pts.append((t, x, y + sy, in_col))
+        # evtrack ypos is already page-space — do not add scroll.
+        mouse_pts.append((t, x, y, in_col))
     if len(mouse_pts) < 10:
         return []
 
-    click_pos = None
-    if clicks:
-        ct, _cx_click, cy_click = clicks[0]
-        sy = interpolate_scroll(ct, scroll_ts, scroll_ys)
-        click_page_y = cy_click + sy
-        idx = bisect_right(tops, click_page_y) - 1
-        if 0 <= idx < n_results:
-            click_pos = idx
+    # Coordinate-safe: evtrack clicks are already page-space.
+    click_pos = click_to_position(clicks, tops, n_results)
 
     def page_y_to_pos(py, in_col):
         if not in_col:

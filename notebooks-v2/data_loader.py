@@ -12,6 +12,47 @@ Usage:
     fixations = load_fixations('p004-b1-t1')
     events, scrolls, clicks = load_mouse_events('p004-b1-t1')
     doc_h, scr_h, ts = get_trial_meta('p004-b1-t1')
+
+═══════════════════════════════════════════════════════════════════════════
+COORDINATE SYSTEM CONVENTIONS — READ BEFORE TOUCHING ANY CURSOR/CLICK CODE
+═══════════════════════════════════════════════════════════════════════════
+
+AdSERP combines two streams with DIFFERENT coordinate spaces. Mixing them
+silently produces a scroll-proportional bug that looks plausible but breaks
+every click_pos and gaze-cursor distance on scrolled trials (82% of corpus).
+
+  1. GAZE  (fixation-data/*.csv, columns FPOGX/FPOGY)
+     SOURCE:  Gazepoint GP3 HD — physical eye tracker, no scroll awareness.
+     SPACE:   SCREEN-space (viewport pixels, 0..scr_h).
+     CONVERT: To page-space, ADD scroll offset at fixation time:
+                  page_y = fix['y'] + scroll_at_t
+              `load_fixations()` clamps FPOGY to [0, scr_h] to drop noise.
+
+  2. CURSOR (mouse-movement-data/*.csv, columns xpos/ypos)
+     SOURCE:  evtrack JS library — listens to DOM events.
+     SPACE:   PAGE-space (pageY, already includes scroll). Verified
+              empirically: `p004-b2-t3` has mouseY up to 1902 px while
+              the browser window is only 1137 px tall.
+     CONVERT: To screen-space, SUBTRACT scroll offset at cursor time:
+                  screen_y = cursor['y'] - scroll_at_t
+              DO NOT add scroll — that double-counts it. This is the bug
+              that contaminated NB01/03/05/06/07b/10/12/15/18/23/24 and
+              two precomputed-data scripts prior to the 2026-04 audit.
+
+  3. CLICK EVENTS (clicks[-1] from load_mouse_events)
+     Same convention as cursor. `clicks[-1][2]` is ALREADY page-space.
+     Never add scroll to it.
+
+  4. RESULT BAND TOPS (`result_band_tops(n_results, doc_h)`)
+     PAGE-space, measured from doc top. Compare page-space Ys directly;
+     do NOT add scroll to either side.
+
+USE THE HELPERS BELOW — don't cargo-cult. If you find yourself writing
+`+ scroll` on a mouse coordinate, stop and use `click_to_position()` or
+`gaze_cursor_distance()` instead.
+
+See `test_coordinate_invariants.py` for the regression test that makes
+these invariants enforceable.
 """
 
 import csv
@@ -298,22 +339,151 @@ def count_results_html(trial_id):
     except Exception:
         return 0
 
-def assign_fixation_to_position(fix_y, scroll_y, tops, n_results):
-    """Map a fixation to a result position using scroll-corrected page-space Y.
+def assign_fixation_to_position(screen_fix_y, scroll_y_at_t, tops, n_results):
+    """Map a SCREEN-SPACE gaze fixation to a result position.
+
+    *** FOR GAZE FIXATIONS ONLY — DO NOT PASS CURSOR OR CLICK Y HERE. ***
+
+    Gazepoint FPOGY is screen-space (viewport pixels). This function adds
+    the scroll offset at fixation time to convert to page-space, then
+    bisects against the page-space result band tops.
+
+    If you have a cursor or click Y, it is ALREADY page-space — use
+    `click_to_position()` or `cursor_to_position()` instead. Calling this
+    function with a page-space Y double-counts the scroll and silently
+    mis-assigns positions on scrolled trials.
 
     Args:
-        fix_y: raw FPOGY (screen pixels)
-        scroll_y: scroll offset at fixation time
-        tops: result band top boundaries (from result_band_tops)
-        n_results: total number of results
+        screen_fix_y: screen-space FPOGY (viewport pixels, 0..scr_h).
+        scroll_y_at_t: scroll offset at fixation time, from interpolate_scroll().
+        tops: result band top boundaries (page-space, from result_band_tops).
+        n_results: total number of results.
 
     Returns: position index (0-based), or -1 if outside all bands.
     """
-    page_y = fix_y + scroll_y
+    page_y = screen_fix_y + scroll_y_at_t
     pos = bisect_right(tops, page_y) - 1
     if 0 <= pos < n_results:
         return pos
     return -1
+
+
+# ── Canonical cursor/click helpers (coordinate-safe) ──────────────────────
+#
+# These are the ONLY correct ways to get click position, cursor position,
+# and gaze-cursor distance from AdSERP data. Use them instead of cargo-
+# culting `+ scroll` onto raw mouse Ys. See module docstring for why.
+
+def get_click_page_xy(clicks):
+    """Return the last click's (x_page, y_page) in page-space, or None.
+
+    `clicks` is the third element of the tuple returned by
+    `load_mouse_events()`. Values are taken AS-IS — evtrack ypos is already
+    page-space, so adding scroll would double-count it.
+    """
+    if not clicks:
+        return None
+    _, x, y = clicks[-1]
+    return (float(x), float(y))
+
+
+def click_to_position(clicks, tops, n_results):
+    """Map the last click to a result position via its page-space Y.
+
+    The coordinate-safe replacement for `assign_fixation_to_position(
+    clicks[-1][2], click_scroll, tops, n_results)` — which is WRONG because
+    `clicks[-1][2]` is already page-space.
+
+    Args:
+        clicks: list of (t, x, y) from load_mouse_events().
+        tops: result band top boundaries (page-space).
+        n_results: total number of results.
+
+    Returns: position index (0-based), or None if no click / outside bands.
+    """
+    xy = get_click_page_xy(clicks)
+    if xy is None:
+        return None
+    _, page_y = xy
+    pos = bisect_right(tops, page_y) - 1
+    if 0 <= pos < n_results:
+        return pos
+    return None
+
+
+def cursor_to_position(cursor_y_page, tops, n_results):
+    """Map a page-space cursor Y to a result position.
+
+    Use for "cursor is near result N" analyses (NB15's dwell-in-proximity,
+    NB24's retreat arc target). `cursor_y_page` must come straight from an
+    evtrack mouse event, not with scroll added.
+    """
+    pos = bisect_right(tops, float(cursor_y_page)) - 1
+    if 0 <= pos < n_results:
+        return pos
+    return -1
+
+
+def screen_y_to_page_y(screen_y, scroll_y_at_t):
+    """Convert a SCREEN-space Y (gaze) to PAGE-space by adding scroll."""
+    return float(screen_y) + float(scroll_y_at_t)
+
+
+def page_y_to_screen_y(page_y, scroll_y_at_t):
+    """Convert a PAGE-space Y (cursor/click) to SCREEN-space by subtracting scroll."""
+    return float(page_y) - float(scroll_y_at_t)
+
+
+def gaze_cursor_distance(
+    fix_x_screen, fix_y_screen, cursor_x_page, cursor_y_page, scroll_y_at_t
+):
+    """Euclidean distance between gaze and cursor, in SCREEN-space pixels.
+
+    The one true way. Gaze comes from FPOGX/Y (screen-space); cursor comes
+    from evtrack xpos/ypos (page-space); we collapse both to screen-space
+    at the given scroll offset, then compute the Euclidean distance.
+
+    This is the correct replacement for NB15's buggy formula
+        dist = hypot(fix_x - mx, (fix_y + fix_scroll) - (my + fix_scroll))
+    which silently measures `fix_y - my` — an incoherent mix of screen- and
+    page-space Ys that leaks scroll into the result.
+
+    Args:
+        fix_x_screen, fix_y_screen: gaze position (FPOGX, FPOGY).
+        cursor_x_page, cursor_y_page: cursor position (xpos, ypos) from
+            an interpolated mouse event.
+        scroll_y_at_t: scroll offset at the relevant time.
+
+    Returns: distance in pixels (float).
+    """
+    cursor_y_screen = float(cursor_y_page) - float(scroll_y_at_t)
+    dx = float(fix_x_screen) - float(cursor_x_page)
+    dy = float(fix_y_screen) - cursor_y_screen
+    return float(np.hypot(dx, dy))
+
+
+def interpolate_cursor_at(t, mouse_ts, mouse_xs, mouse_ys):
+    """Linear-interpolate cursor position at time t. Returns (x_page, y_page) or None.
+
+    Helper for per-fixation gaze-cursor analyses. `mouse_ts/xs/ys` should be
+    numpy arrays extracted from `load_mouse_events()` (positional events
+    only: mousemove, click, mouseover). Values stay in evtrack page-space.
+    """
+    n = len(mouse_ts)
+    if n == 0:
+        return None
+    if n == 1:
+        return (float(mouse_xs[0]), float(mouse_ys[0]))
+    idx = int(np.searchsorted(mouse_ts, t))
+    if idx <= 0:
+        return (float(mouse_xs[0]), float(mouse_ys[0]))
+    if idx >= n:
+        return (float(mouse_xs[-1]), float(mouse_ys[-1]))
+    t0, t1 = float(mouse_ts[idx - 1]), float(mouse_ts[idx])
+    frac = 0.0 if t1 == t0 else (float(t) - t0) / (t1 - t0)
+    x = float(mouse_xs[idx - 1]) + frac * (float(mouse_xs[idx]) - float(mouse_xs[idx - 1]))
+    y = float(mouse_ys[idx - 1]) + frac * (float(mouse_ys[idx]) - float(mouse_ys[idx - 1]))
+    return (x, y)
 
 # ── SERP text extraction ──────────────────────────────────────────────────
 

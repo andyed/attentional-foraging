@@ -34,7 +34,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / 'notebooks-v2'))
 from data_loader import (
     get_trial_ids, load_pupil_trial, load_fixations, load_mouse_events,
     get_trial_meta, interpolate_scroll, result_band_tops, count_results_html,
-    assign_fixation_to_position,
+    assign_fixation_to_position, click_to_position,
 )
 
 # ── Butterworth filter parameters (Duchowski 2026) ───────────────────────
@@ -139,12 +139,8 @@ def process_trial(trial_id, lf_sos, hf_sos):
         n_results = 11
     tops = result_band_tops(n_results, doc_h)
 
-    # Find click position
-    click_pos = None
-    if clicks:
-        last_click = clicks[-1]
-        click_scroll = interpolate_scroll(last_click[0], scroll_ts, scroll_ys)
-        click_pos = assign_fixation_to_position(last_click[2], click_scroll, tops, n_results)
+    # Find click position (coordinate-safe: clicks[-1][2] is page-space).
+    click_pos = click_to_position(clicks, tops, n_results)
 
     # Identify forward-pass fixation segments per position
     forward_segs = identify_forward_pass(fixations, scroll_ts, scroll_ys, tops, n_results)

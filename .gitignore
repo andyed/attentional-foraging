@@ -20,3 +20,20 @@ site/
 AdSERP/
 docs/drafts/
 docs/plans/
+
+# Agent workspace dirs
+.claude/
+.claire/
+
+# LaTeX build artifacts
+docs/arxiv/*.aux
+docs/arxiv/*.bbl
+docs/arxiv/*.blg
+docs/arxiv/*.log
+docs/arxiv/*.out
+
+# Audit/diagnostic scripts (local utility, not production)
+notebooks-v2/_*.py
+
+# Pre-fix backup JSONs (local reproducibility)
+*.prefix-bug.json
