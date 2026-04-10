@@ -17,7 +17,7 @@ def code(src):
 # ── 0. Header ────────────────────────────────────────────────────────────
 md("""# NB11.5 — Cursor chattiness as a per-participant trait
 
-**Question.** Our CIKM click model (NB21, M3) runs at LOSO AUC 0.827. The feature set is *episode-level* — every feature describes the geometry of one cursor approach to one result. The per-participant individual-differences panel (NB11) measures gaze–cursor *lag* but not cursor *activity volume*. These are orthogonal motor traits — a user can have tight gaze–cursor coupling and still park the cursor; a user can chatter constantly with a loose cursor-to-gaze relationship.
+**Question.** Our CIKM click model (NB21, M3) runs at LOSO AUC 0.792. The feature set is *episode-level* — every feature describes the geometry of one cursor approach to one result. The per-participant individual-differences panel (NB11) measures gaze–cursor *lag* but not cursor *activity volume*. These are orthogonal motor traits — a user can have tight gaze–cursor coupling and still park the cursor; a user can chatter constantly with a loose cursor-to-gaze relationship.
 
 This notebook operationalizes **chattiness** — how much a user moves the cursor overall — and asks three things:
 

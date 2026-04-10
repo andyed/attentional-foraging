@@ -1,5 +1,7 @@
 # Cursor Approach-Retreat as Covert Evaluation Signal
 
+> **⚠️ SUPERSEDED (2026-04-09 coordinate-space audit).** The numbers throughout this document were computed from `cursor-approach-features.json` before a scroll double-counting bug in NB15 was fixed. Headline direction survives (approach predicts click, M3 > M1), but magnitudes are stale. The canonical post-fix values live in `docs/notebook-key-claims.md` §NB21. Key shifts: M3 AUC 0.827 → 0.792, clicked N 1,981 → 2,214, Evaluated-rejected 994 → 344. See `CHANGELOG.md` Unreleased entry for the full before/after table.
+
 ## The finding
 
 During SERP evaluation, the mouse cursor makes partial approach movements toward results that are ultimately rejected. This is not idle hovering — it's a covert evaluation signal with a distinctive motor signature, cognitive load confirmation, and predictive power.
