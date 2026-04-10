@@ -1053,3 +1053,62 @@
   note         = {JavaScript library implementing the four-class approach-retreat taxonomy (clicked / deferred / evaluated-rejected / not-approached) as in-page SERP instrumentation. Discovers result bounding boxes via \texttt{getBoundingClientRect()} at runtime, binds a standard DOM \texttt{mousemove} listener, and emits a 19-field episode record per cursor visit to each result. Ships a PostHog adapter and an in-repo validation against the Attentive Cursor Dataset \cite{leiva2020attentive} at \texttt{analysis/attcur-validation/}. Sister library to ClickSense. Current iteration of a cursor-instrumentation line that began with the Optimoz Firefox gesture extension (2001) and Uzilla (2003).},
 }
 
+% ═══════════════════════════════════════════════════════════════════════════
+% HARD NEGATIVE MINING — DENSE RETRIEVAL / LEARNING-TO-RANK
+% ═══════════════════════════════════════════════════════════════════════════
+% Added 2026-04-09 to support CIKM §2.6 "Hard negative mining in dense
+% retrieval" and the §4.1 framing of the evaluated-rejected class as a
+% behaviorally-verified hard negative. Narrative writeup in the sister
+% repo at approach-retreat/docs/references/hard-negatives-in-ltr.md.
+% All DOIs from LLM knowledge; re-verify against Crossref / ACL Anthology
+% / ACM DL before any external submission.
+
+@inproceedings{karpukhin2020dpr,
+  author    = {Karpukhin, Vladimir and O\u{g}uz, Barlas and Min, Sewon and Lewis, Patrick and Wu, Ledell and Edunov, Sergey and Chen, Danqi and Yih, Wen-tau},
+  title     = {Dense Passage Retrieval for Open-Domain Question Answering},
+  booktitle = {Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing},
+  series    = {EMNLP '20},
+  pages     = {6769--6781},
+  year      = {2020},
+  publisher = {Association for Computational Linguistics},
+  doi       = {10.18653/v1/2020.emnlp-main.550},
+  url       = {\url{https://arxiv.org/abs/2004.04906}},
+  note      = {DPR. Dense bi-encoder retriever for open-domain QA. Established "in-batch negatives + BM25 hard negatives" as the canonical training recipe that every subsequent hard-negative paper is benchmarked against. Baseline anchor for the modern dense-retrieval hard-negative literature. DOI from LLM knowledge, re-verify.},
+}
+
+@inproceedings{xiong2021ance,
+  author    = {Xiong, Lee and Xiong, Chenyan and Li, Ye and Tang, Kwok-Fung and Liu, Jialin and Bennett, Paul N. and Ahmed, Junaid and Overwijk, Arnold},
+  title     = {Approximate Nearest Neighbor Negative Contrastive Learning for Dense Text Retrieval},
+  booktitle = {Proceedings of the 9th International Conference on Learning Representations},
+  series    = {ICLR '21},
+  year      = {2021},
+  url       = {\url{https://openreview.net/forum?id=zeFrfgyZln}},
+  note      = {ANCE. Theoretical argument that "the bottleneck of dense retrieval is the domination of uninformative negatives sampled in mini-batch training, which yield diminishing gradient norms, large gradient variances, and slow convergence." Fix: globally re-mine hard negatives from the entire corpus every ~10k training steps using the current model's index, approximating oracle importance sampling. The "hard negatives matter" headline for modern dense retrieval. Also on arXiv at 2007.00808.},
+}
+
+@inproceedings{zhan2021hardnegatives,
+  author    = {Zhan, Jingtao and Mao, Jiaxin and Liu, Yiqun and Guo, Jiafeng and Zhang, Min and Ma, Shaoping},
+  title     = {Optimizing Dense Retrieval Model Training with Hard Negatives},
+  booktitle = {Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  series    = {SIGIR '21},
+  pages     = {1503--1512},
+  year      = {2021},
+  publisher = {ACM},
+  doi       = {10.1145/3404835.3462880},
+  url       = {\url{https://arxiv.org/abs/2104.08051}},
+  note      = {ADORE / STAR. The crucial nuance that makes a behavioral hard-negative source non-redundant: "static hard negative sampling does not necessarily lead to performance improvements compared with random negative sampling. It improves the top-ranking performance but may harm the recall capability." BM25 Neg almost underperforms Rand Neg on every metric in their experiments. Value comes from dynamically updating the hard-negative set as the model improves — not from mere hardness. Key citation for the argument that mining procedure matters more than mere hardness. DOI from LLM knowledge, re-verify.},
+}
+
+@inproceedings{qu2021rocketqa,
+  author    = {Qu, Yingqi and Ding, Yuchen and Liu, Jing and Liu, Kai and Ren, Ruiyang and Zhao, Wayne Xin and Dong, Daxiang and Wu, Hua and Wang, Haifeng},
+  title     = {{RocketQA}: An Optimized Training Approach to Dense Passage Retrieval for Open-Domain Question Answering},
+  booktitle = {Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies},
+  series    = {NAACL-HLT '21},
+  pages     = {5835--5847},
+  year      = {2021},
+  publisher = {Association for Computational Linguistics},
+  doi       = {10.18653/v1/2021.naacl-main.466},
+  url       = {\url{https://arxiv.org/abs/2010.08191}},
+  note      = {RocketQA. Three technical contributions: cross-batch negatives, denoised hard negatives, and data augmentation. Most important for the approach-retreat framing: false negatives in mined hard-negative pools are a real failure mode, addressed by filtering the pool with a stronger cross-encoder that scores "plausibly relevant" candidates out of the training set. Establishes that denoising is load-bearing for hard-negative mining, not optional. Approach-retreat's evaluated-rejected class addresses this by construction — the user's retreat is behavioral evidence of active rejection rather than a model-inferred guess at irrelevance. DOI from LLM knowledge, re-verify.},
+}
+
