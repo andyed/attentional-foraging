@@ -46,6 +46,8 @@ NOTEBOOK_LABELS = {
     "11_5_chattiness_traits.ipynb": ("NB11.5", "11_5_chattiness_traits", "cursor chattiness as a stable individual-differences trait"),
     "14_butterworth_cognitive_load.ipynb": ("NB14", "14_butterworth_cognitive_load", "cognitive load decreases with SERP position"),
     "21_click_prediction.ipynb": ("NB21", "21_click_prediction", "LOSO click prediction and four-class taxonomy"),
+    "22_four_class_taxonomy.ipynb": ("NB22", "22_four_class_taxonomy", "regression-based four-class taxonomy and element-type interactions"),
+    "23_rank_effects.ipynb": ("NB23", "23_rank_effects", "unified rank effects — framework compilation"),
 }
 
 
@@ -251,6 +253,76 @@ NB21_BODY = """### LOSO click prediction — pooled results
 > **Coordinate-space audit (2026-04-09).** NB15's `compute_approach_features` double-counted scroll offset on the cursor coordinate (`my + fix_scroll` — `my` is already page-space). Impact was concentrated on scrolled trials, which are 82 % of the corpus. Regenerating `cursor-approach-features.json` after fixing the two bug sites and re-running NB21 shifts every row above. Headline changes: click rate 12.9 % → 14.4 % (233 correctly re-labeled clicks), M3 LOSO AUC **0.827 → 0.792** (−0.035; approach still the dominant source of signal above position+dwell), K21 (`position`) flips sign +0.21 → −0.38 (the rank effect in the correct direction — later positions click less), K27 (`direction_changes`) drops from +0.20 to ≈0 (was largely scroll artifact). Four-class Evaluated-rejected N drops 994 → 344 because the pre-fix "approach" signal at deep positions was mostly the scroll leak. Direction of every headline result (approach > position + dwell, M4 ≈ M3, per-participant all > 0.5) is preserved. See `CHANGELOG.md` for before/after table and NB15 feature-level diff."""
 
 
+# ── NB22 — four-class taxonomy ────────────────────────────────────────
+NB22_BODY = """### Regression-based four-class taxonomy
+
+NB22 defines the four classes via cursor approach (min_dist < 100 px) + scroll regression to that position, not via the classifier threshold used in NB21. The class definitions are complementary, not competing.
+
+| ID | Class | N | % |
+|---|---|---|---|
+| **K1** | Clicked | 2,214 | 14.4 % |
+| **K2** | Deferred (approached + regressed to) | 1,178 | 7.7 % |
+| **K3** | Evaluated-rejected (approached + no regression) | 278 | 1.8 % |
+| **K4** | Not approached | 11,727 | 76.2 % |
+
+### Motor signature separation (deferred vs evaluated-rejected)
+
+| ID | Metric | Deferred | Eval-Rejected | *p* |
+|---|---|---|---|---|
+| **K5** | Retreat distance (px) | 191.3 | 96.4 | 1.9 × 10⁻¹¹ |
+| **K6** | Total gaze dwell (ms) | 3,842 | 2,018 | 3.7 × 10⁻²⁶ |
+| **K7** | Dwell in proximity (ms) | 1,219 | 682 | 5.0 × 10⁻⁹ |
+
+### Click prediction with element-type interactions
+
+| ID | Element type | N | Click% | M3 AUC | M3+interactions AUC | Δ |
+|---|---|---|---|---|---|---|
+| **K8** | organic | 12,030 | 15.1 % | 0.797 | 0.803 | +0.007 |
+| **K9** | dd_top | 1,384 | 17.8 % | 0.871 | **0.899** | **+0.028** |
+| **K10** | native_ad | 1,983 | 7.7 % | 0.798 | 0.786 | −0.011 |
+
+| ID | Model | LOSO AUC |
+|---|---|---|
+| **K11** | M3 (replication of NB21) | 0.792 ± 0.062 |
+| **K12** | M3 + regression feature | 0.792 ± 0.061 (regression adds +0.000) |
+
+> **Interaction features help where discrimination cost is highest.** Top ads gain +0.028 AUC from element-type interactions. Native ads lose −0.011 (avoidance behavior muddies the signal). Regression features add exactly zero to any model variant — the forward-pass approach features carry the full signal."""
+
+
+# ── NB23 — rank effects ──────────────────────────────────────────────
+NB23_BODY = """### Unified rank effects (position 0–10)
+
+| ID | Measure | Spearman ρ | *p* | N positions |
+|---|---|---|---|---|
+| **K1** | Click share × position | **−0.973** | 5.1 × 10⁻⁷ | 11 |
+| **K2** | Fixation count × position | −0.442 | 0.200 (ns) | 10 |
+| **K3** | Total dwell × position | −0.515 | 0.128 (ns) | 10 |
+| **K4** | Butterworth LF/HF × position | **−0.618** | **0.0426** | 11 |
+| **K5** | LHIPA × click position | **−0.955** | < 10⁻⁵ | 11 |
+
+### Corpus composition
+
+| ID | Claim | Value |
+|---|---|---|
+| **K6** | Trials with clicks | 2,764 |
+| **K7** | (trial, position) rows | 16,335 |
+| **K8** | Forward fixations (% of classified) | 74 % (150,993) |
+| **K9** | Regression fixations (% of classified) | 26 % (53,583) |
+
+### Position-level summary (per-result medians/means)
+
+| ID | Pos | Click% | Fix count | Dwell (s) | LF/HF | LHIPA |
+|---|---|---|---|---|---|---|
+| **K10** | 0 | 22.0 | 19.9 | 4.24 | 30.0 | 0.039 |
+| **K11** | 1 | 26.9 | 14.2 | 3.18 | 21.2 | 0.039 |
+| **K12** | 2 | 24.3 | 10.6 | 2.37 | 18.3 | 0.039 |
+| **K13** | 3 | 11.9 | 10.0 | 2.21 | 16.0 | 0.039 |
+
+> **Framework compilation, not declining interest.** K4 (LF/HF ρ = −0.618) is the key result: cognitive load peaks at position 0 where the user is constructing evaluation criteria from scratch, drops steeply through positions 0–3 as criteria compile, then plateaus. K2 and K3 are non-significant at the position level (N = 10 points), but the direction is consistent: both time and effort decline. The dissociation between K2/K3 (declining time) and K4 (declining effort that drops *faster*) is the framework compilation signature.
+>
+> **K4 matches NB14:K3 exactly** (ρ = −0.618, p = 0.0426) — same data, independent computation path. Cross-notebook replication."""
+
+
 # ── Drive ─────────────────────────────────────────────────────────────
 
 TARGETS = [
@@ -259,6 +331,8 @@ TARGETS = [
     ("11_5_chattiness_traits.ipynb", NB11_5_BODY),
     ("14_butterworth_cognitive_load.ipynb", NB14_BODY),
     ("21_click_prediction.ipynb", NB21_BODY),
+    ("22_four_class_taxonomy.ipynb", NB22_BODY),
+    ("23_rank_effects.ipynb", NB23_BODY),
 ]
 
 

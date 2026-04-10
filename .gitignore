@@ -37,3 +37,4 @@ notebooks-v2/_*.py
 
 # Pre-fix backup JSONs (local reproducibility)
 *.prefix-bug.json
+*.html
