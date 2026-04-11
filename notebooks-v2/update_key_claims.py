@@ -201,9 +201,26 @@ NB14_BODY = """### Cognitive load decreases with SERP position (the Butterworth 
 | **K7** | Cross-index validation: trial-mean LF/HF × LHIPA | ρ = −0.122, *p* = 9.29 × 10⁻¹⁰, N = 2,492 (correct sign: both indices agree on load direction) |
 | **K8** | Position-level medians (load by rank) | pos 0: 29.98 (N = 1,015) → pos 1: 21.20 → pos 2: 18.29 → pos 3: 16.00 → pos 4: 16.27 … (monotone decline) |
 
+### Piecewise gradient (steep phase + plateau)
+
+| ID | Claim | Value |
+|---|---|---|
+| **K9** | Steep phase (pos 0–3): Mann–Whitney pos 0 vs pos 3 | *U* = 405,358, ***p* = 4.1 × 10⁻²²** (N = 1,015 vs 623) |
+| **K10** | Steep phase (pos 0–3) medians | 30.0 → 21.2 → 18.3 → 16.0 (Spearman ρ = −1.000) |
+| **K11** | Plateau phase (pos 4–10) Spearman | ρ = −0.393, *p* = 0.383 (ns) — flat, as predicted |
+| **K12** | Pooled early (0–3) vs late (4–10) | median 22.01 vs 17.20, Mann–Whitney *p* = 5.9 × 10⁻¹⁷, Cohen's *d* = 0.165 |
+
+### Within-trial gradient by evaluation depth
+
+| ID | Threshold | N trials | Mean ρ | % negative | Sign test *p* | *t*-test *p* |
+|---|---|---|---|---|---|---|
+| **K13** | ≥ 3 positions | 1,167 | −0.105 | 56.6% | 3.2 × 10⁻⁶ | 4.2 × 10⁻⁹ |
+| **K14** | ≥ 5 positions | 278 | −0.101 | 57.9% | 4.9 × 10⁻³ | 1.0 × 10⁻³ |
+| **K15** | ≥ 7 positions | 43 | −0.296 | 79.1% | 8.5 × 10⁻⁵ | 8.5 × 10⁻⁶ |
+
 > **Not working memory accumulation.** If prose says "forward-only dwell increases with position *consistent with working memory accumulation*," the prose is wrong. K3 shows per-fixation cognitive load *decreasing* with position — extra dwell at deeper positions reflects allocation / comparison-set growth, not WM overload. Framework compilation, not working-memory accumulation. This is the load-bearing claim for the ETTAC 2026 and CHI 2027 framings.
 >
-> **Caveat on K3.** The *p* = 0.043 at the position level is borderline at α = 0.05; the 1–10 subset (K4) is non-significant. The robust claim is the direction: every measurement stream (between-position LF/HF, within-trial LF/HF, median-by-position table, cross-index LHIPA) points the same way — load declines with position.
+> **Caveat on K3.** The *p* = 0.043 at the position level is borderline at α = 0.05; the 1–10 subset (K4) is non-significant. The robust claim is piecewise: steep decline 0–3 (*p* = 4.1 × 10⁻²², K9) then plateau 4–10 (ns, K11). The gradient strengthens with evaluation depth: at ≥ 7 positions visited, 79.1% of trials show declining load (K15). Every measurement stream (between-position LF/HF, within-trial LF/HF, cross-index LHIPA) points the same way.
 >
 > **Coordinate-space audit (2026-04-09).** `compute_butterworth_lfhf.py` previously double-counted scroll offset when deriving `click_pos` from evtrack `ypos` (already page-space). The fix moved K6 only: N_clicked 1,145 → 1,110, clicked median 22.86 → 22.24, *p* 3.9 × 10⁻⁷ → 1.3 × 10⁻⁴. Direction and significance preserved. K1–K5, K7, K8 are unchanged because they use fixation position (gaze → page-space conversion, which was always correct), not `click_pos`. See `CHANGELOG.md`."""
 

@@ -1,6 +1,19 @@
 # Changelog
 
-## Unreleased — 2026-04-09
+## Unreleased — 2026-04-10
+
+### ETTAC infrastructure
+
+- **Key Claims expanded to 11 notebooks** (~145 canonical rows). New: NB05 (LHIPA, K1–K15), NB12 (regression precision null, K1–K14), NB18 (RIPA2 vs LF/HF, K1–K17).
+- **NB14 piecewise gradient analysis** (K9–K15). Resolves K3's borderline p = 0.043:
+  - Steep phase (pos 0–3): Mann–Whitney p = 4.1 × 10⁻²², medians 30.0 → 16.0
+  - Plateau phase (pos 4–10): Spearman ns — flat, as predicted by framework compilation
+  - Within-trial gradient strengthens with evaluation depth: 79.1% negative at ≥7 positions (K15)
+- **findings.md v11**: corrected 8 stale values (NB13, NB11, NB14), added Key Claims `[NB__:K__]` references throughout.
+- **NB14:K5 inclusion criterion documented**: ≥3 valid LF/HF segments at positions 0–10 (Spearman with N=2 is degenerate).
+- **pupil-lfhf validation pipeline**: self-contained AdSERP analysis (`adserp_loader.py`, `validate_adserp.py`) with coordinate-audited click_pos. All values match Key Claims exactly.
+
+## 2026-04-09
 
 ### Coordinate-space audit: scroll double-counting bug in click position
 
