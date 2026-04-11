@@ -2,7 +2,7 @@
 
 Reanalysis of the [AdSERP dataset](https://github.com/kayhan-latifzadeh/AdSERP) (Latifzadeh, Gwizdka & Leiva, SIGIR 2025). The [journey doc](journey.md) records how this started; this document records what we found.
 
-**Status:** v10, 2026-04-05. Element-type approach-retreat signatures (§10b). Parafoveal preview null between results (§3d-ii). Cursor approach-retreat as covert evaluation signal (§10b). Element-type cost analysis (§10b). Scroll retreat null on desktop (§10b). Survey phase with pupil trajectory (§3b-iii). Prior: ski-jump (§0), OSEC task model (§3b), SERP difficulty (§3c), priming null (§2), scroll kinematics confound (§8).
+**Status:** v11, 2026-04-10. Key Claims references added throughout; stale NB13/NB11/NB14 values corrected to match canonical `notebook-key-claims.md`. Prior: v10 element-type approach-retreat (§10b), parafoveal preview null (§3d-ii), survey phase pupil trajectory (§3b-iii), ski-jump (§0), OSEC (§3b), difficulty (§3c), priming null (§2), scroll kinematics (§8).
 
 ---
 
@@ -147,10 +147,10 @@ Saccade amplitude distinguishes two scanning modes within each trial:
 
 | Phase | Saccade amplitude | Duration | Behavior |
 |-------|-------------------|----------|----------|
-| **Survey** (fixations 1–~5) | 108px median, 53% major | ~1.3s (median) | Wide jumps between results, gist sampling |
-| **Evaluate** (fixations ~6+) | 74px median, 40% major | Variable | Narrow saccades within results, reading episodes |
+| **Survey** (fixations 1–~5) | 107.8 px median, 53% major | ~1.3s (median) | Wide jumps between results, gist sampling [NB13:K5] |
+| **Evaluate** (fixations ~6+) | 69.4 px median, 40% major | Variable | Narrow saccades within results, reading episodes [NB13:K6] |
 
-Per-trial amplitude slope over first 20 saccades: mean ρ = −0.114, p = 10⁻¹²⁸ (N = 2,754). The transition is detectable within individual trials (69.6% have negative slope).
+Per-trial amplitude slope over first 20 saccades: mean ρ = −0.135, p = 9.33 × 10⁻¹⁶⁸ (N = 2,754) [NB13:K2–K3]. The transition is detectable within individual trials (71.8% have negative slope) [NB13:K4].
 
 **Survey duration is fixed.** Median 1.28s (IQR 1.06–1.58s). Survey duration shows weak negative correlation with total fixation count (ρ = −0.163) — quick deciders may spend relatively more time surveying — but does not respond to SERP content difficulty.
 
@@ -208,7 +208,7 @@ Survey vs evaluate pupil diameter: p = 10⁻¹¹⁷. The survey phase *constrict
 
 Duchowski (2026) Butterworth IIR method enables per-result cognitive load measurement at the ~2-second per-position granularity where wavelet LHIPA cannot operate (minimum 7.5s). Two 4th-order Butterworth filters (LF: 0–1.6 Hz, HF: 1.6–4 Hz) applied to the full blink-cleaned 150 Hz pupil stream; LF/HF variance ratio computed per position during forward scanning. Higher LF/HF = higher cognitive load.
 
-**The working memory hypothesis is wrong.** LF/HF *decreases* with position (ρ = −0.618, p = 0.04 on position medians, N = 2,719 trials). Cognitive load peaks at position 0 and drops steeply through positions 0–3, then plateaus at approximately half the initial level through positions 4–10.
+**The working memory hypothesis is wrong.** LF/HF *decreases* with position (ρ = −0.618, p = 0.0426 on position medians, N = 2,719 trials) [NB14:K3]. Cognitive load peaks at position 0 and drops steeply through positions 0–3, then plateaus at approximately half the initial level through positions 4–10.
 
 | Positions | Median LF/HF | N valid segments |
 |-----------|-------------|-----------------|
@@ -216,13 +216,13 @@ Duchowski (2026) Butterworth IIR method enables per-result cognitive load measur
 | 1–3 | 18.5 | 2,417 |
 | 4–10 | 16.9 | 3,150 |
 
-Within-trial: median ρ = −0.200 (56.6% of 1,167 trials show declining load). Cross-validation: trial-mean LF/HF anti-correlates with LHIPA (ρ = −0.122, p < 10⁻⁹), confirming both measures capture the same construct.
+Within-trial: median ρ = −0.200 (56.6% of 1,167 trials show declining load) [NB14:K5]. Cross-validation: trial-mean LF/HF anti-correlates with LHIPA (ρ = −0.122, p = 9.29 × 10⁻¹⁰) [NB14:K7], confirming both measures capture the same construct.
 
 **Interpretation.** The first result demands the highest cognitive effort because the user is constructing evaluation criteria from scratch. As criteria compile, subsequent results require less effort per unit of committed evaluation time — even as behavioral gaze dwell *ratio* increases (forward-only dwell ratio ρ = +0.82, §2). This dissociation between time and cognitive effort indicates evaluation becomes *routinized*, not *overloaded*.
 
 **Connection to priming (§2).** The declining cognitive load profile is superficially consistent with lexical priming (repeated tokens easier to process). But priming was null at four granularities, and the load decrease happens within the first 3 positions before substantial overlap accumulates. Framework compilation — not lexical facilitation — is the parsimonious explanation.
 
-**Notebook:** [14_butterworth_cognitive_load.ipynb](../notebooks-v2/14_butterworth_cognitive_load.ipynb)
+**Canonical values:** [NB14:K1–K8](notebook-key-claims.md#nb14-14_butterworth_cognitive_load). **Notebook:** [14_butterworth_cognitive_load.ipynb](../notebooks-v2/14_butterworth_cognitive_load.ipynb)
 
 ## 3c. SERP difficulty is discriminability, not similarity
 
@@ -410,7 +410,7 @@ The natural rate is almost certainly much lower than AdSERP's 65%. From personal
 
 ## 10. Mouse proximity predicts click — and reveals the consideration set
 
-Gaze-cursor distance during fixations on a result predicts whether that result will be clicked. Per-result `min_dist` thresholds (NB15, post coordinate-space audit 2026-04-09, N = 15,397 result-position records across 2,340 trials, base click rate 14.4%):
+Gaze-cursor distance during fixations on a result predicts whether that result will be clicked. Per-result `min_dist` thresholds (NB15, post coordinate-space audit 2026-04-09, N = 15,397 records / 2,340 trials / 14.4% click rate) [NB15:K1]:
 
 | Threshold | Prevalence | Click rate | Lift |
 |---|---|---|---|
@@ -420,7 +420,7 @@ Gaze-cursor distance during fixations on a result predicts whether that result w
 
 Closer approach → higher click probability. The gradient is monotonic and strong.
 
-**The "almost clicked" segment.** 4.8% of all result-position records (734 / 15,397) had `min_dist < 58px` and were not clicked — the consideration set made visible. These received **more fixations** than clicked results (22.2 vs 19.0 mean). Users evaluated them deeply, moved the cursor close, then chose something else. NB21:K15 ("Evaluated-rejected" class) contains 344 records (2.2% of corpus) in the classifier-derived taxonomy.
+**The "almost clicked" segment.** 4.8% of all result-position records (734 / 15,397) had `min_dist < 58px` and were not clicked — the consideration set made visible. These received **more fixations** than clicked results (22.2 vs 19.0 mean). Users evaluated them deeply, moved the cursor close, then chose something else. [NB21:K15] ("Evaluated-rejected" class) contains 344 records (2.2% of corpus) in the classifier-derived taxonomy.
 
 **Why this matters for production.** Click models treat non-clicks as ambiguous — maybe the user examined the result and found it irrelevant, maybe they never saw it. Mouse proximity resolves this ambiguity without eye tracking. A non-clicked result where `min_cursor_distance < 100px` is a high-confidence **evaluated-and-rejected** signal. A non-clicked result where the cursor never approached is **unseen or unconsidered**. These carry opposite relevance implications.
 
@@ -443,9 +443,9 @@ Four-class taxonomy (NB22, regression-based split, post coordinate-space audit 2
 | **Evaluated-rejected** (approached + no regression) | 278 | 1.8% | 96.4 | 2,018 | 682 |
 | **Not approached** | 11,727 | 76.2% | — | — | — |
 
-Motor signature separation: deferred vs rejected shows 2× retreat distance (191 vs 96 px, p = 1.9×10⁻¹¹), 1.9× gaze dwell (3,842 vs 2,018 ms, p = 3.7×10⁻²⁶), 1.8× proximity dwell (1,219 vs 682 ms, p = 5.0×10⁻⁹). Source: NB22:K1–K7.
+Motor signature separation: deferred vs rejected shows 2× retreat distance (191 vs 96 px, p = 1.9×10⁻¹¹), 1.9× gaze dwell (3,842 vs 2,018 ms, p = 3.7×10⁻²⁶), 1.8× proximity dwell (1,219 vs 682 ms, p = 5.0×10⁻⁹) [NB22:K5–K7].
 
-**Approach predicts regression.** 83.8% of approached results get regressed to (odds ratio 5.04×, p = 1.9×10⁻²⁰³). Approach + regression → 43.5% click rate. Approach + no regression → 30.8%. No approach + regression → 11.6%. No approach + no regression → 6.7%. Source: NB15 cell 22.
+**Approach predicts regression.** 83.8% of approached results get regressed to (odds ratio 5.04×, p = 1.9×10⁻²⁰³) [NB15:K6–K7]. Approach + regression → 43.5% click rate. Approach + no regression → 30.8%. No approach + regression → 11.6%. No approach + no regression → 6.7% [NB15:K8–K11].
 
 **Scroll doesn't carry this signal on desktop.** Scroll dwell and deceleration during regression are identical for clicked vs non-clicked results (all p > 0.3, notebook 17). The scroll is ballistic transportation; the cursor is the evaluation probe. On mobile, where scroll is the only motor channel, this may differ.
 
@@ -463,11 +463,11 @@ Motor signature separation: deferred vs rejected shows 2× retreat distance (191
 
 Per-participant correlations across 46 participants reveal two independent axes of variation:
 
-**Dimension 1: Deliberation style.** TTI-to-first-scroll, regression rate, LHIPA (cognitive load), fixation count, and trial duration are all highly intercorrelated (Spearman ρ = 0.57 to 0.94). This is the satisfice/optimize axis: some users evaluate quickly with few regressions and low cognitive load (satisficers), others take longer with more re-evaluation and higher load (optimizers). Regression rate × LHIPA: ρ = −0.574 (p < 0.0001).
+**Dimension 1: Deliberation style.** TTI-to-first-scroll, regression rate, LHIPA (cognitive load), fixation count, and trial duration are all highly intercorrelated (Spearman ρ = 0.57 to 0.94). This is the satisfice/optimize axis: some users evaluate quickly with few regressions and low cognitive load (satisficers), others take longer with more re-evaluation and higher load (optimizers). Regression rate × LHIPA: ρ = −0.568 (p < 0.001) [NB11:K12].
 
-**Dimension 2: Motor coupling.** Gaze-cursor lag (median −825ms, gaze leads) is a reliable individual trait (split-half reliability r = 0.76, Spearman-Brown corrected) but is **uncorrelated** with any deliberation measure (lag × TTI: ρ = −0.17 ns; lag × LHIPA: ρ = −0.07 ns; lag × regression rate: ρ = +0.25, p = 0.10). Some people keep their cursor tracking their eyes; others park it. This style is stable across trials but orthogonal to how deliberate the search strategy is.
+**Dimension 2: Motor coupling.** Gaze-cursor lag (median −650 ms, gaze leads) [NB11:K1] is a reliable individual trait (split-half reliability 0.838 Spearman–Brown corrected, raw r = 0.721) [NB11:K3] but is **uncorrelated** with any deliberation measure (lag × TTI: ρ = −0.072 ns; lag × LHIPA: ρ = −0.149 ns; lag × regression rate: ρ = +0.159, p = 0.293) [NB11:K9–K11]. Some people keep their cursor tracking their eyes; others park it. This style is stable across trials but orthogonal to how deliberate the search strategy is.
 
-The gaze-cursor lag replicates Huang, White & Buscher (2012) in direction and magnitude (our −825ms vs their −700ms, both gaze-leads) but extends it: the lag is a stable trait that varies independently of search depth.
+The gaze-cursor lag replicates Huang, White & Buscher (2012) in direction and magnitude (our −650 ms vs their −700 ms, both gaze-leads) [NB11:K1] but extends it: the lag is a stable trait that varies independently of search depth.
 
 **Notebooks:** [individual_differences.ipynb](../notebooks/individual_differences.ipynb), [gaze_cursor_lag.ipynb](../notebooks/gaze_cursor_lag.ipynb)
 
@@ -489,4 +489,4 @@ The gaze-cursor lag replicates Huang, White & Buscher (2012) in direction and ma
 
 ---
 
-*v7, 2026-04-03. v1: aggregate priming correlation. v2: regression-stratified split. v3: within-position controls null. v4: viewport time bug fix; forward-only dwell reversal (ρ = +0.73). v5: FPOGY clamp; ballistic kinematics confound. v6: §9 relaxing serial evaluation. v7: ski-jump decomposition (§0); task model Orient–Survey–Evaluate–Commit (§3b); SERP difficulty via relevance spread (§3c); reading episode pooling (§3d).*
+*v11, 2026-04-10. v11: Key Claims refs + stale value corrections. v10: element-type approach-retreat. v9: coordinate-space audit post-fix values. v8: approach-retreat motor signature. v7: ski-jump decomposition (§0); task model OSEC (§3b); SERP difficulty (§3c); reading episode pooling (§3d). v6: §9 relaxing serial evaluation. v5: FPOGY clamp; ballistic kinematics confound. v4: viewport time bug fix; forward-only dwell reversal (ρ = +0.73). v3: within-position controls null. v2: regression-stratified split. v1: aggregate priming correlation.*

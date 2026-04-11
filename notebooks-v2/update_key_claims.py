@@ -49,6 +49,9 @@ NOTEBOOK_LABELS = {
     "21_click_prediction.ipynb": ("NB21", "21_click_prediction", "LOSO click prediction and four-class taxonomy"),
     "22_four_class_taxonomy.ipynb": ("NB22", "22_four_class_taxonomy", "regression-based four-class taxonomy and element-type interactions"),
     "23_rank_effects.ipynb": ("NB23", "23_rank_effects", "unified rank effects — framework compilation"),
+    "05_lhipa.ipynb": ("NB05", "05_lhipa", "LHIPA pupillometric cognitive load validation"),
+    "12_regression_precision_by_load.ipynb": ("NB12", "12_regression_precision_by_load", "regression landing precision under cognitive load (null)"),
+    "18_ripa2_vs_lfhf.ipynb": ("NB18", "18_ripa2_vs_lfhf", "RIPA2 vs Butterworth LF/HF comparison"),
 }
 
 
@@ -193,7 +196,7 @@ NB14_BODY = """### Cognitive load decreases with SERP position (the Butterworth 
 | **K2** | Position-segment count (click position × LF/HF) | 6,874 |
 | **K3** | **Position × median LF/HF (load DECREASES with deeper click)** | **ρ = −0.618, *p* = 0.0426** |
 | **K4** | Positions 1–10 only (excluding pos 0) | ρ = −0.491, *p* = 0.150 (ns) |
-| **K5** | Within-trial Spearman (position vs LF/HF) | N = 1,167 trials, mean ρ = −0.105, median ρ = −0.200, 56.6 % negative |
+| **K5** | Within-trial Spearman (position vs LF/HF, ≥ 3 valid segments at positions 0–10) | N = 1,167 trials, mean ρ = −0.105, median ρ = −0.200, 56.6 % negative |
 | **K6** | Clicked vs non-clicked median LF/HF | **22.24 (N = 1,110)** vs **19.01 (N = 5,472)**; Mann–Whitney *U* = 3,257,823, *p* = 1.30 × 10⁻⁴ — clicked results carry more load than non-clicked |
 | **K7** | Cross-index validation: trial-mean LF/HF × LHIPA | ρ = −0.122, *p* = 9.29 × 10⁻¹⁰, N = 2,492 (correct sign: both indices agree on load direction) |
 | **K8** | Position-level medians (load by rank) | pos 0: 29.98 (N = 1,015) → pos 1: 21.20 → pos 2: 18.29 → pos 3: 16.00 → pos 4: 16.27 … (monotone decline) |
@@ -366,6 +369,156 @@ NB23_BODY = """### Unified rank effects (position 0–10)
 > **K4 matches NB14:K3 exactly** (ρ = −0.618, p = 0.0426) — same data, independent computation path. Cross-notebook replication."""
 
 
+# ── NB05 — LHIPA ────────────────────────────────────────────────────
+NB05_BODY = """### Dataset
+
+| ID | Claim | Value |
+|---|---|---|
+| **K1** | Trials with usable LHIPA | 2,721 (of 2,776; 55 failed) |
+| **K2** | Mean valid pupil sample percentage | 97.8% |
+
+### LHIPA distribution (trial-level, N = 2,721)
+
+| ID | Claim | Value |
+|---|---|---|
+| **K3** | LHIPA mean / median / SD | 0.0483 / 0.0389 / 0.0190 |
+| **K4** | LHIPA range | 0.0165 – 0.0914 |
+
+### Behavioral proxy correlations (trial-level Spearman, N = 2,720)
+
+| ID | Pair | *ρ* | *p* |
+|---|---|---|---|
+| **K5** | LHIPA × trial duration | **−0.650** | ≈ 0 |
+| **K6** | LHIPA × fixation count | **−0.621** | 2.5 × 10⁻²⁹⁰ |
+| **K7** | LHIPA × regression count | **−0.435** | 3.5 × 10⁻¹²⁶ |
+| **K8** | LHIPA × click position | **−0.088** | 4.1 × 10⁻⁶ |
+
+### LHIPA by click position
+
+| ID | Claim | Value |
+|---|---|---|
+| **K9** | Spearman on N = 10 position means | ρ = **−0.903**, *p* = 3.4 × 10⁻⁴ |
+| **K10** | Trial-level ρ (individual trials) | −0.088 |
+| **K11** | Per-participant LHIPA range (mean across trials) | 0.035 – 0.075 |
+
+### LHIPA × regressive fraction
+
+| ID | Claim | Value |
+|---|---|---|
+| **K12** | Spearman ρ (regressive fraction × LHIPA) | **−0.381**, *p* = 9.0 × 10⁻⁹⁵ |
+| **K13** | Kruskal–Wallis H (tercile split) | H = 466.2, *p* = 5.9 × 10⁻¹⁰² |
+| **K14** | Low-regression tercile median LHIPA | 0.068 (n = 1,204) |
+| **K15** | High-regression tercile median LHIPA | 0.038 (n = 897) |
+
+> **Ecological fallacy warning on K9.** The ρ = −0.903 on N = 10 position means is driven by a step-down at positions 9–10. LHIPA is approximately flat across positions 0–8, then drops. The trial-level ρ (K10) is −0.088 — statistically significant but small. Do not cite K9 as evidence for a monotonic position gradient.
+>
+> **Minimum window constraint.** Per-result LHIPA computation (cell 12) requires ≥ 64 samples (~0.4 s at 150 Hz), yielding 13,649 / 17,393 segments (78%). However, Duchowski (2026) recommends a minimum 7.5–10 s window for stable LF/HF separation. Per-result LHIPA at ~2 s segments is below this threshold; use NB14's Butterworth method for per-position claims.
+>
+> **Cross-index validation.** NB14:K7 (trial-mean LF/HF × LHIPA ρ = −0.122, p = 9.29 × 10⁻¹⁰) confirms both indices measure the same construct. LHIPA direction (lower = higher load) and LF/HF direction (higher = higher load) are anti-correlated as expected."""
+
+
+# ── NB12 — regression precision by load ─────────────────────────────
+NB12_BODY = """### Dataset
+
+| ID | Claim | Value |
+|---|---|---|
+| **K1** | Trials with all measures (LHIPA + regression + encoding fixation + landing fixation) | 1,170 trials, 45 participants |
+| **K2** | Trials with encoding pupil diameter | 1,164 |
+| **K3** | Trials with encoding pupil SD | 1,158 |
+
+### Summary statistics
+
+| ID | Measure | Median | IQR |
+|---|---|---|---|
+| **K4** | Landing offset (px) | 59.7 | [31.7, 86.7] |
+| **K5** | Encoding–regression time gap (ms) | 14,656 | [9,048, 20,825] |
+| **K6** | Regression distance (px) | 555.6 | [222, 1,222] |
+| **K7** | Encoding pupil diameter (mm) | 15.0 | [13.3, 16.7] |
+
+### Main tests (all null)
+
+| ID | Test | ρ | *p* | Partial ρ | Partial *p* |
+|---|---|---|---|---|---|
+| **K8** | Trial-level LHIPA × landing offset | −0.007 | 0.816 | +0.004 | 0.882 |
+| **K9** | Encoding pupil diameter × landing offset | −0.013 | 0.659 | −0.009 | 0.750 |
+| **K10** | Encoding pupil SD × landing offset | −0.043 | 0.147 | −0.044 | 0.139 |
+
+### Control variables (also null)
+
+| ID | Test | ρ | *p* |
+|---|---|---|---|
+| **K11** | Regression distance × landing offset | +0.018 | 0.529 |
+| **K12** | Time gap × landing offset | +0.048 | 0.101 |
+
+### Per-participant analysis
+
+| ID | Claim | Value |
+|---|---|---|
+| **K13** | Participants with ≥ 3 qualifying trials | 43 |
+| **K14** | Per-participant median encoding PD × median landing offset | ρ = −0.092, *p* = 0.558 |
+
+> **Comprehensive null.** Neither coarse-grain load (trial-level LHIPA, K8) nor fine-grain load (encoding-fixation pupil diameter, K9; encoding pupil variability, K10) predicts regression landing precision. Partial correlations controlling for regression distance and encoding–regression time gap are also null. The per-participant analysis (K14) confirms this is not a within-person effect masked by between-person variance.
+>
+> **Interpretation.** Spatial memory for SERP result positions is robust to normal cognitive load variation during browsing. The motor system may rely on non-pupillometric cues (proprioceptive scroll memory, visual landmarks) rather than purely spatial memory. This is relevant for ETTAC because it bounds where Butterworth LF/HF *cannot* predict behavior — regression precision is not one of its targets.
+>
+> **Gazepoint caveat.** Pupil diameter values from the GP3 HD are in arbitrary units, not calibrated mm. Cross-participant comparisons of absolute PD are invalid. The within-participant correlations (K8–K10) are unaffected."""
+
+
+# ── NB18 — RIPA2 vs LF/HF ──────────────────────────────────────────
+NB18_BODY = """### Dataset
+
+| ID | Claim | Value |
+|---|---|---|
+| **K1** | Trials with both Butterworth LF/HF and RIPA2 | 2,719 |
+| **K2** | Paired observations (same trial, same position) | 6,874 |
+
+### Observation-level correlation (near zero — different constructs at per-fixation scale)
+
+| ID | Test | Value | *p* |
+|---|---|---|---|
+| **K3** | Pearson *r* (RIPA2 × LF/HF) | −0.023 | 0.057 (ns) |
+| **K4** | Spearman ρ (RIPA2 × LF/HF) | +0.001 | 0.956 (ns) |
+
+### Positional gradient (both decline — agreement at aggregate level)
+
+| ID | Metric | Spearman ρ with position | *p* |
+|---|---|---|---|
+| **K5** | Butterworth LF/HF × position (median per position) | **−0.618** | 0.0426 |
+| **K6** | RIPA2 × position (median per position) | **−0.827** | 0.00168 |
+
+### Click-position quadrant analysis
+
+| ID | Quadrant | Click rate |
+|---|---|---|
+| **K7** | Effortful (high LF/HF + high RIPA2) | 17.8% |
+| **K8** | Deliberation (high LF/HF + low RIPA2) | 17.4% |
+| **K9** | Quick decision (low LF/HF + high RIPA2) | 16.4% |
+| **K10** | Routine scanning (low LF/HF + low RIPA2) | 13.1% |
+
+### RIPA2 at regression onset (underpowered — demo trials only)
+
+| ID | Comparison | RIPA2 median | Mann–Whitney *p* |
+|---|---|---|---|
+| **K11** | Regression fixations (N = 100) | 0.080 | 0.243 (ns) |
+| **K12** | Forward fixations (N = 205) | 0.077 | — |
+
+### Encoding vs retrieval (RIPA2 first-pass signal)
+
+| ID | Claim | Value |
+|---|---|---|
+| **K13** | RIPA2 observations: will-regress vs no-regress | 10,391 vs 8,153 |
+| **K14** | RIPA2 median: will-regress vs no-regress | 0.077 vs 0.081 (ratio 0.948×) |
+| **K15** | RIPA2 one-sided Mann–Whitney (will-regress < no-regress) | ***p* = 0.0022** |
+| **K16** | First-pass dwell: will-regress vs no-regress | 194 ms vs 207 ms, *p* = 4.1 × 10⁻²⁴ |
+| **K17** | LF/HF observations for same comparison | N = 17 vs 24 (underpowered) |
+
+> **Complementary, not competing.** K3–K4 confirm the two metrics are uncorrelated at the observation level — they measure different temporal aspects of cognitive dynamics. K5–K6 confirm both agree on the aggregate positional gradient (load declines with position). RIPA2's advantage is per-fixation temporal resolution (K13–K16 show 18,500+ usable observations where LF/HF has only 41). LF/HF's advantage is interpretability and direct tie to Duchowski (2026).
+>
+> **Encoding insight (K14–K15).** Items that will later receive scroll regressions show *lower* RIPA2 at first pass (0.077 vs 0.081, p = 0.002). This rejects the Pirolli scent-following prediction (higher arousal at scent-rich items) and supports encoding-completion: regressions go to items that were *insufficiently* processed, not items that triggered high arousal. Reframing: regressions are a completion mechanism, not a scent-following mechanism.
+>
+> **Positional gradient discrepancy.** K5 matches NB14:K3 exactly (ρ = −0.618). The notebook's summary markdown cites ρ = −0.926 for LF/HF, which comes from a different analysis (batch comparison script with different aggregation). The code-computed value (K5) is canonical."""
+
+
 # ── Drive ─────────────────────────────────────────────────────────────
 
 TARGETS = [
@@ -377,6 +530,9 @@ TARGETS = [
     ("21_click_prediction.ipynb", NB21_BODY),
     ("22_four_class_taxonomy.ipynb", NB22_BODY),
     ("23_rank_effects.ipynb", NB23_BODY),
+    ("05_lhipa.ipynb", NB05_BODY),
+    ("12_regression_precision_by_load.ipynb", NB12_BODY),
+    ("18_ripa2_vs_lfhf.ipynb", NB18_BODY),
 ]
 
 
