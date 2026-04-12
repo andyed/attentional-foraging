@@ -318,25 +318,113 @@ def interpolate_scroll(t, scroll_ts, scroll_ys):
         return scroll_ys[idx] + frac * (scroll_ys[idx + 1] - scroll_ys[idx])
     return scroll_ys[-1]
 
-# ── Result band estimation ─────────────────────────────────────────────────
+# ── Rank semantics ─────────────────────────────────────────────────────────
+#
+# POSITION SEMANTICS — READ BEFORE COMPUTING OR CITING "POSITION"
+#
+# The SERP has two distinct notions of "position":
+#
+#   1. ABSOLUTE RANK  (slot index, ads + organic pooled)
+#      0..N-1 where N is the total number of h3 result slots in the DOM.
+#      N is typically 11-17 because AdSERP Google results interleave
+#      dd_top (direct-display ads at top), native_ad (in-stream ads), and
+#      organic results. The first h3 may be a dd_top ad, pushing the
+#      first organic result to absolute_rank 1 or 2.
+#      Use when: the analysis *should* count ads as first-class slots
+#      (e.g., NB22 element-type interaction, discrimination-cost claims,
+#      NB24 retreat-arc geometry that cares about the visual region of
+#      the clicked element regardless of its type).
+#
+#   2. ORGANIC RANK  (ads excluded)
+#      0..M-1 where M is the number of organic h3 slots in the DOM.
+#      M is typically 10 in AdSERP. This is the canonical "SERP position"
+#      used in the search-behavior literature (click-through-rate by rank,
+#      position bias, rank effects papers).
+#      Use when: the claim is about the user's experience of results as
+#      a ranked organic list (e.g., click-by-rank curves, NB23 rank
+#      effects, comparisons with prior SERP literature).
+#
+# Helpers below come in pairs — `count_absolute_ranks()` /
+# `count_organic_ranks()`, `absolute_rank_band_tops()` /
+# `organic_rank_band_tops()`, and `absolute_to_organic_rank()` for
+# per-trial mapping. The legacy names `count_results_html()` and
+# `result_band_tops()` are retained as aliases for the *absolute* family
+# (that's what they always computed, despite the misleading "organic"
+# wording in prior docstrings) so existing callers don't break, but new
+# code should prefer the precise names above.
+#
+# Post-2026-04-12 observation: across 2,776 AdSERP trials,
+#   count_absolute_ranks distribution = {10: 188, 11: 632, 12: 879,
+#   13: 644, 14: 228, 15: 117, 16: 41, 17: 12}
+# Only 7% of trials have exactly 10 absolute slots; 92% have 11+ because
+# of interleaved ads. Any "position 0-10" claim based on absolute rank
+# is *not* the same curve as the canonical organic-rank click-through
+# from the search literature.
+#
+# See add_etype_to_features.py for the ad-overlap classification rule
+# (adopted canonical from NB24's classify_position). Ad-boundary data
+# lives at AdSERP/data/ad-boundary-data/<trial_id>.json.
+# ───────────────────────────────────────────────────────────────────────────
+
+# Result column x-range, same constants as add_etype_to_features.py
+_RESULT_COL_X_MIN = 162
+_RESULT_COL_X_MAX = 702
+
+
+def _load_ad_regions(trial_id):
+    """Load ad boundary rects for a trial.
+
+    Returns dict {etype: [(x, y, w, h), ...]}. Excludes `dd_right` because
+    right-rail ads are outside the result column and don't displace ranks.
+    Returns {} if ad-boundary-data is missing for the trial.
+    """
+    path = AD_DIR / f'{trial_id}.json'
+    if not path.exists():
+        return {}
+    try:
+        d = json.load(open(path))
+    except Exception:
+        return {}
+    out = {}
+    for etype, elements in d.items():
+        if etype == 'dd_right':
+            continue
+        rects = []
+        for el in elements:
+            loc = el.get('location', {})
+            size = el.get('size', {})
+            rects.append((loc.get('x', 0), loc.get('y', 0),
+                          size.get('width', 0), size.get('height', 0)))
+        if rects:
+            out[etype] = rects
+    return out
+
+
+def _rect_in_result_column(rx, rw):
+    return rx < _RESULT_COL_X_MAX and (rx + rw) > _RESULT_COL_X_MIN
+
 
 def result_bands(n_results, doc_height):
-    """Estimate Y-coordinate boundaries for each result position.
+    """Estimate Y-coordinate boundaries for each absolute-rank slot.
 
-    Returns list of (top, bottom) tuples for each result.
+    Returns list of (top, bottom) tuples. Uses uniform subdivision of
+    `(200, doc_height - 400)` into `n_results` bands. The caller decides
+    whether `n_results` is absolute or organic; this function just divides.
     """
     header = 200
     per_res = (doc_height - 400) / max(n_results, 1)
     return [(header + i * per_res, header + (i + 1) * per_res) for i in range(n_results)]
 
-def result_band_tops(n_results, doc_height):
-    """Return just the top Y-coordinates for bisect_right lookup."""
-    header = 200
-    per_res = (doc_height - 400) / max(n_results, 1)
-    return [header + i * per_res for i in range(n_results)]
 
-def count_results_html(trial_id):
-    """Count organic results in SERP HTML (by h3 tags)."""
+# ── Absolute rank (all h3 slots, ads + organic) ────────────────────────────
+
+def count_absolute_ranks(trial_id):
+    """Count every h3 result slot in the SERP (ads + organic pooled).
+
+    This is the total number of visually-distinct ranked slots the user
+    could approach, regardless of element type. For most AdSERP trials
+    this is 11-13 (10 organic + 1-3 ads).
+    """
     path = SERP_DIR / f'{trial_id}.html'
     if not path.exists():
         return 0
@@ -347,6 +435,119 @@ def count_results_html(trial_id):
         return len(soup.find_all('h3'))
     except Exception:
         return 0
+
+
+def absolute_rank_band_tops(n_absolute, doc_height):
+    """Return top Y-coordinates for absolute-rank band lookup.
+
+    n_absolute should come from `count_absolute_ranks(tid)`.
+    """
+    header = 200
+    per_res = (doc_height - 400) / max(n_absolute, 1)
+    return [header + i * per_res for i in range(n_absolute)]
+
+
+# ── Organic rank (ads excluded) ────────────────────────────────────────────
+
+def absolute_to_organic_rank(trial_id, doc_height=None):
+    """Build a per-trial map: absolute_rank → organic_rank (or None for ad slots).
+
+    Uses ad-boundary-data to identify which absolute-rank slots overlap
+    ad rectangles in the result column (dd_top, native_ad). Slots not
+    overlapping any ad are labeled organic and assigned sequential
+    organic ranks starting from 0. Ad slots get None.
+
+    Args:
+        trial_id: e.g., 'p004-b1-t1'
+        doc_height: optional override; defaults to trial metadata.
+
+    Returns:
+        {absolute_rank: organic_rank_or_None}. Keys cover 0..n_absolute-1.
+        len([v for v in result.values() if v is not None]) == organic count.
+    """
+    if doc_height is None:
+        meta = get_trial_meta(trial_id)
+        doc_height = meta[0] if meta[0] else 2642
+    n_abs = count_absolute_ranks(trial_id)
+    if n_abs == 0:
+        return {}
+    tops = absolute_rank_band_tops(n_abs, doc_height)
+    ad_regions = _load_ad_regions(trial_id)
+
+    result = {}
+    organic_counter = 0
+    for abs_rank in range(n_abs):
+        top = tops[abs_rank]
+        bottom = tops[abs_rank + 1] if abs_rank + 1 < n_abs else doc_height - 200
+        center_y = (top + bottom) / 2
+        is_ad = False
+        for etype, rects in ad_regions.items():
+            for rx, ry, rw, rh in rects:
+                if not _rect_in_result_column(rx, rw):
+                    continue
+                if ry <= center_y <= ry + rh:
+                    is_ad = True
+                    break
+            if is_ad:
+                break
+        if is_ad:
+            result[abs_rank] = None
+        else:
+            result[abs_rank] = organic_counter
+            organic_counter += 1
+    return result
+
+
+def count_organic_ranks(trial_id, doc_height=None):
+    """Count organic-only result slots (ads excluded)."""
+    mapping = absolute_to_organic_rank(trial_id, doc_height)
+    return sum(1 for v in mapping.values() if v is not None)
+
+
+def organic_rank_band_tops(trial_id, doc_height=None):
+    """Return top Y-coordinates for organic-rank band lookup.
+
+    Unlike `absolute_rank_band_tops`, this is trial-specific because the
+    ad layout differs per trial. Returns a list of length organic count.
+    """
+    if doc_height is None:
+        meta = get_trial_meta(trial_id)
+        doc_height = meta[0] if meta[0] else 2642
+    n_abs = count_absolute_ranks(trial_id)
+    abs_tops = absolute_rank_band_tops(n_abs, doc_height)
+    mapping = absolute_to_organic_rank(trial_id, doc_height)
+    return [abs_tops[abs_rank]
+            for abs_rank in range(n_abs)
+            if mapping.get(abs_rank) is not None]
+
+
+# ── Legacy aliases (retained for backward compatibility) ──────────────────
+#
+# These names were written before the absolute-vs-organic distinction was
+# made explicit. They always computed *absolute* rank despite docstrings
+# that sometimes said "organic". New code should use the precise helpers
+# above; existing callers (many notebooks and scripts) continue to work.
+
+def result_band_tops(n_results, doc_height):
+    """DEPRECATED alias for `absolute_rank_band_tops`.
+
+    Historically computed on `count_results_html` which returns the total
+    h3 count (absolute rank, ads pooled with organic). New code should
+    call `absolute_rank_band_tops` or `organic_rank_band_tops` explicitly.
+    """
+    return absolute_rank_band_tops(n_results, doc_height)
+
+
+def count_results_html(trial_id):
+    """DEPRECATED alias for `count_absolute_ranks`.
+
+    Historical docstring said "Count organic results in SERP HTML (by
+    h3 tags)" but the implementation returned every h3 — including ads.
+    The 2026-04-12 analysis of `count_absolute_ranks` distribution
+    (92% of trials have 11+ slots) made the drift visible. New code
+    should call `count_absolute_ranks` or `count_organic_ranks` by intent.
+    """
+    return count_absolute_ranks(trial_id)
 
 def assign_fixation_to_position(page_y, tops, n_results):
     """Map a page-space fixation Y to a result position.
