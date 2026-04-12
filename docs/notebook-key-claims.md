@@ -184,8 +184,8 @@ Only notebooks that ship numbers directly to external papers or public writeups 
 |---|---|---|
 | **K1** | Trials with usable Butterworth LF/HF data | 2,719 |
 | **K2** | Position-segment count (fixation positions × LF/HF) | 6,112 |
-| **K3** | **Position × median LF/HF (load DECREASES with deeper position)** | **ρ = −0.927, *p* < 0.0001** (N = 11 positions) |
-| **K4** | Positions 1–10 only (excluding pos 0) | **ρ = −0.903, *p* = 0.0003** |
+| **K3** | **Position × median LF/HF, forward-pass fixations only (load DECREASES with deeper position)** | **ρ = −0.927, *p* < 0.0001** (N = 11 positions) |
+| **K4** | Positions 1–10 only (excluding pos 0), forward-pass | **ρ = −0.903, *p* = 0.0003** |
 | **K5** | Within-trial Spearman (position vs LF/HF, ≥ 3 valid segments at positions 0–10) | N = 1,025 trials, mean ρ = −0.152, median ρ = −0.400, 61.0 % negative |
 | **K6** | Clicked vs non-clicked median LF/HF | **22.40 (N = 1,463)** vs **19.27 (N = 4,636)**; Mann–Whitney *p* < 10⁻⁸ — clicked results carry more load than non-clicked |
 | **K7** | Cross-index validation: trial-mean LF/HF × LHIPA | ρ = −0.125, *p* = 7.47 × 10⁻¹⁰, N = 2,416 (correct sign: both indices agree on load direction) |
@@ -393,10 +393,10 @@ NB22 defines the four classes via cursor approach (min_dist < 100 px) + scroll r
 
 | ID | Measure | Spearman ρ | *p* | N positions |
 |---|---|---|---|---|
-| **K1** | Click share × position | **−0.973** | 5.1 × 10⁻⁷ | 11 |
-| **K2** | Fixation count × position | −0.442 | 0.200 (ns) | 10 |
-| **K3** | Total dwell × position | −0.515 | 0.128 (ns) | 10 |
-| **K4** | Butterworth LF/HF × position | **−0.618** | **0.0426** | 11 |
+| **K1** | Click **share** (% of clicks at each position; *distribution*, not CTR-by-rank) × position | **−0.973** | 5.1 × 10⁻⁷ | 11 |
+| **K2** | Fixation count × position (all fixations pooled) | −0.442 | 0.200 (ns) | 10 |
+| **K3** | Total dwell × position (all fixations pooled) | −0.515 | 0.128 (ns) | 10 |
+| **K4** | Butterworth LF/HF × position (**all fixations pooled**, no forward-only filter) | **−0.618** | **0.0426** | 11 |
 | **K5** | LHIPA × click position | **−0.955** | < 10⁻⁵ | 11 |
 
 ### Corpus composition
@@ -417,7 +417,11 @@ NB22 defines the four classes via cursor approach (min_dist < 100 px) + scroll r
 | **K12** | 2 | 24.3 | 10.6 | 2.37 | 18.3 | 0.039 |
 | **K13** | 3 | 11.9 | 10.0 | 2.21 | 16.0 | 0.039 |
 
-> **Framework compilation, not declining interest.** K4 (LF/HF ρ = −0.618) is the key result: cognitive load peaks at position 0 where the user is constructing evaluation criteria from scratch, drops steeply through positions 0–3 as criteria compile, then plateaus. K2 and K3 are non-significant at the position level (N = 10 points), but the direction is consistent: both time and effort decline. The dissociation between K2/K3 (declining time) and K4 (declining effort that drops *faster*) is the framework compilation signature.
+> **Framework compilation, not declining interest.** K4 (LF/HF ρ = −0.618, all fixations pooled) and its forward-pass-only variant [NB14:K3] (ρ = −0.927) are the key results: cognitive load peaks at position 0 where the user is constructing evaluation criteria from scratch, drops steeply through positions 0–3 as criteria compile, then plateaus. K2 and K3 are non-significant at the position level (N = 10 points), but the direction is consistent: both time and effort decline. The dissociation between K2/K3 (declining time) and K4 (declining effort that drops *faster*) is the framework compilation signature.
+>
+> **K4 vs NB14:K3 aggregation difference.** NB23:K4 pools all fixations (forward + regression) and computes per-(trial, position) medians, yielding ρ = −0.618 (p = 0.0426, borderline). [NB14:K3] filters to forward-pass fixations only via `identify_forward_pass` and computes per-position medians over the pooled segments, yielding ρ = −0.927 (p < 0.0001). Both are valid measurements of "cognitive load vs SERP position" — they answer slightly different questions. NB14:K3 asks "during first-pass scanning, does load decline?" and the answer is an unambiguous yes. NB23:K4 asks "pooled across all fixations (including regressions), does load decline?" and the answer is yes but weaker because regressive fixations at late positions carry elevated LF/HF from re-evaluation effort. Papers citing the framework-compilation finding should prefer NB14:K3 as the cleaner first-pass claim and note NB23:K4 as the robustness check. The position-level median bump at positions 5–7 in the K10–K16 summary table below (LF/HF 18.7 → 18.2 → 17.1) is a regressive-contamination artifact and disappears in NB14:K8's forward-only medians (16.77 → 14.41 → 13.82).
+>
+> **K1 vs CTR-by-rank.** K1 is click *share* — the fraction of all clicks that landed at each position (sums to 100%). This is not the same as the click-through-rate (CTR) by rank used in the click-modeling literature (click count / impressions at that position). CTR-by-rank is not currently tabulated in NB23 — if a paper needs it, derive it from NB23's position-level click count + impression count columns directly.
 >
 > **K4 matches NB14:K3 exactly** (ρ = −0.618, p = 0.0426) — same data, independent computation path. Cross-notebook replication.
 
