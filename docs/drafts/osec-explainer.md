@@ -113,7 +113,7 @@ Per-fixation pupil diameter across 2,720 trials reveals a three-phase trajectory
 <tr><td><b>Evaluate</b></td><td>6–20</td><td>Gradual recovery → 0%</td><td>Cognitive work intensifies</td></tr>
 </table>
 
-<span class="outer-note">Cheap to sample, expensive to read.</span>The survey *constricts* pupils (p = 10⁻¹¹⁷ vs evaluate). It is cheap. The cognitive work comes later, during committed reading, where the pupil gradually recovers as working memory fills with candidates.
+<span class="outer-note">Cheap to sample, expensive to read.</span>The survey *constricts* pupils (p = 10⁻¹¹⁷ vs evaluate). It is cheap. The cognitive work comes later, during committed reading, where the pupil gradually recovers during committed reading of each candidate.
 
 **See it in action.** This real session (p047-b1-t9) shows the survey phase — fixations 1–5 in the first second, clustered around the search bar and nav, then the LF/HF pupil spike as evaluate begins:
 
@@ -136,10 +136,10 @@ After the survey, the user transitions to serial reading. Saccades narrow. The e
 
 ==Each result gets a fair read.== Per-result reading depth does not decline with position during forward scanning on these transactional SERPs. What declines is the *probability of being reached at all* — a function of scroll commitment, not reading effort. This may differ for informational queries or non-SERP content, where task motivation varies more widely.
 
-By position 6, the user is holding 5+ candidates in working memory. The cost of evaluating one more against everything already seen is climbing. Pupil dilation increases monotonically with position (LHIPA ρ = −0.90 with click position), confirming the working memory load interpretation.
+By position 6, the user has sharpened their evaluation criteria against everything already seen. Each new result gets a faster, more decisive read — per-position cognitive load *decreases* with position (Butterworth LF/HF ρ = −0.618, p = 0.043), consistent with framework compilation rather than working memory overload.
 
 > [!TIP]
-> For ranked list designers: the bottleneck by item 6 is working memory, not result quality. Surface differentiators early and make comparison easy.
+> For ranked list designers: by item 6 the user's criteria are sharp, not the quality of what's left. Surface differentiators early and make comparison easy.
 
 ---
 
@@ -164,7 +164,7 @@ On SERPs, orientation is nearly instant — the layout is so familiar that the v
 
 ![The OSEC model: Orient → Survey → Evaluate, then branch to Commit or Regression (69% of trials), Re-evaluate, Commit.](osec-model.png)
 
-69% of trials include at least one scroll regression — a return to previously evaluated content. The regression rate correlates with decision time (r = 0.66). Scroll regressions are not noise; they are the behavioral cost of comparison under working memory load.
+69% of trials include at least one scroll regression — a return to previously evaluated content. The regression rate correlates with decision time (r = 0.66). Scroll regressions are not noise; they are the behavioral cost of comparison against previously evaluated candidates.
 
 The existing literature has gone far with the single-pass, top-down examination assumption. But 69% of these trials violate it. OSEC adds what the data shows: examination is a multi-pass process with distinct cognitive phases, and the interesting decision-making happens not at the stopping point but at the *re-evaluation* point.
 
