@@ -106,7 +106,7 @@ NB23 (rank_effects) is a **separate case**: its local `click_positions` derivati
 
 **Still pending:**
 - Regenerate `ripa2` output via `compute_ripa2.py` + re-run NB18-ripa2_vs_lfhf
-- Re-execute NB23 so panel 1 (click share by position) and the ski-jump histogram reflect the corrected `click_positions` list; panels 4–5 already consume the fixed butterworth JSON
+- ~~Re-execute NB23~~ **Done** (2026-04-09): NB23 uses `click_to_position()` from `data_loader` (coordinate-safe); all 9 code cells executed with correct output. K1 = ρ = −0.973 on 2,764 trials.
 - Phase 3 structural migration: remove the cargo-culted mini-loaders in the ten patched notebooks and replace with `data_loader` imports (the root cause of this whole bug class)
 - `docs/findings.md` §10 and `docs/findings-approach-retreat.md` marked with loud "SUPERSEDED" notes pointing at the Key Claims aggregate — the prose narrative is preserved but numeric tables need recomputation before any new citation
 - `docs/drafts/` is gitignored but still needs a grep pass for pre-fix values the drafts may be citing: `0.827`, `0.821`, `0.746` (NB21 AUCs), `1,981`, `12.87 %` / `12.9 %` (click counts), `256.5` px (median gaze-cursor distance), `11×` and `14 %` (Finding #10 lift and almost-clicked), `+0.21` (old `position` coefficient), `22.86` / `1,145` / `18.97` / `5,437` (old NB14:K6), and the `994` / `1,286` / `11,136` 4-class N's
