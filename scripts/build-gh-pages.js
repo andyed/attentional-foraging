@@ -17,6 +17,17 @@ const { chromium } = require('playwright');
 
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'AdSERP', 'data');
+const BOUNDS_STATUS_PATH = path.join(ROOT, 'scripts', 'output', 'fixation_bounds_status.json');
+const boundsStatus = fs.existsSync(BOUNDS_STATUS_PATH)
+    ? JSON.parse(fs.readFileSync(BOUNDS_STATUS_PATH, 'utf8'))
+    : null;
+function trialBoundsClass(id) {
+    if (!boundsStatus || !boundsStatus.trials[id]) return 'unknown';
+    return boundsStatus.trials[id].class;
+}
+function trialBoundsInfo(id) {
+    return boundsStatus ? boundsStatus.trials[id] : null;
+}
 const SCRUTINIZER = path.join(ROOT, '..', 'scrutinizer-repo', 'scrutinizer2025');
 const ANCHOR_DIR = path.join(ROOT, 'fixation-anchors');
 const LAYOUT_DIR = path.join(ROOT, 'layout-freeze');
@@ -753,7 +764,15 @@ ws.addEventListener('input',()=>{const wn=parseInt(ws.value);if(ci>=N-1||ci<wn)c
     fs.writeFileSync(path.join(SITE_DIR, `${id}.html`), html);
     const sizeMB = hasGazeplot ? (fs.statSync(gazeplotSrc).size / 1024 / 1024).toFixed(1) : '—';
     console.log(`  ✓ ${trial.tag}: ${id} (${N} fix, gazeplot: ${hasGazeplot ? sizeMB + 'MB' : 'no'})`);
-    results.push({ tag: trial.tag, id, query: trial.query, n: N, hasGazeplot });
+    results.push({
+        tag: trial.tag,
+        id,
+        query: trial.query,
+        n: N,
+        hasGazeplot,
+        boundsClass: trialBoundsClass(id),
+        boundsInfo: trialBoundsInfo(id),
+    });
 }
 
 // Generate PNG exports (scanpath overlay on gazeplot) + thumbnails
@@ -805,6 +824,18 @@ h1 a { color: #ff9933; text-decoration: none; }
 .subtitle a { color: #6af; text-decoration: none; }
 .trial { margin: 0.6em 0; background: #1a1a1a; border-radius: 6px; border-left: 3px solid #333; transition: border-color 0.2s, background 0.2s; cursor: pointer; }
 .trial:hover { border-left-color: #ff9933; background: #222; }
+.trial.aligned { border-left-color: #22c55e; }
+.trial.noisy { border-left-color: #f5c542; }
+.trial.anomaly { border-left-color: #ef4444; }
+.trial .bounds-badge { display: inline-block; margin-left: 6px; padding: 1px 6px; border-radius: 3px; font-size: 0.7em; font-weight: 600; vertical-align: middle; }
+.trial.aligned .bounds-badge { background: #14532d; color: #86efac; }
+.trial.noisy .bounds-badge { background: #422006; color: #fde047; }
+.trial.anomaly .bounds-badge { background: #450a0a; color: #fca5a5; }
+.group-header { margin: 1.2em 0 0.4em; padding: 6px 10px; border-radius: 4px; font-size: 0.85em; font-weight: 600; letter-spacing: 0.3px; }
+.group-header.aligned { background: #14532d; color: #86efac; border-left: 3px solid #22c55e; }
+.group-header.noisy { background: #422006; color: #fde047; border-left: 3px solid #f5c542; }
+.group-header.anomaly { background: #450a0a; color: #fca5a5; border-left: 3px solid #ef4444; }
+.group-header .desc { color: #ccc; font-weight: 400; font-size: 0.92em; margin-left: 8px; }
 .trial a { display: block; padding: 0.8em 1em; color: #eee; text-decoration: none; cursor: pointer; }
 .trial .tag { color: #ff9933; font-size: 0.8em; text-transform: uppercase; letter-spacing: 0.5px; }
 .trial .id { font-weight: 600; font-size: 0.95em; }
@@ -847,17 +878,44 @@ footer a { color: #888; }
   drag timeline to scrub &middot;
   Window selector limits visible fixation history
 </p>
-${results.map(r => `<div class="trial"><a href="${r.id}.html">
+${(() => {
+    const groups = {
+        aligned: { label: 'Aligned — raw-screenshot bounds clean', desc: 'every fixation lands within the authors\' full-page screenshot', items: [] },
+        noisy:   { label: 'Noisy — residual eye-tracker dropout',  desc: 'some fixations fall past the page edge; known GP3 HD clamp + scroll artifact (< 20% of trial)', items: [] },
+        anomaly: { label: 'Anomaly — coordinate system mismatch',  desc: '20%+ of fixations out of bounds; flagged for investigation (possible multi-monitor or metadata error)', items: [] },
+        unknown: { label: 'Unverified',                             desc: 'no raw screenshot available for this trial yet', items: [] },
+    };
+    for (const r of results) {
+        (groups[r.boundsClass] || groups.unknown).items.push(r);
+    }
+    const renderCard = (r) => {
+        const cls = r.boundsClass || 'unknown';
+        const b = r.boundsInfo;
+        let badge = '';
+        if (cls === 'aligned') badge = `<span class="bounds-badge">bounds ok</span>`;
+        else if (cls === 'noisy' && b) badge = `<span class="bounds-badge">${b.pct_bad}% off-page</span>`;
+        else if (cls === 'anomaly' && b) badge = `<span class="bounds-badge">${b.pct_bad}% off-page</span>`;
+        return `<div class="trial ${cls}"><a href="${r.id}.html">
   <div style="display:flex;gap:12px;align-items:start;">
     <img src="png/${r.id}.png" style="width:180px;height:120px;object-fit:cover;object-position:center 15%;border-radius:4px;flex-shrink:0;background:#222;" loading="lazy" alt="${r.tag}">
     <div>
-      <span class="tag">${r.tag.replace(/_/g, ' ')}</span>
+      <span class="tag">${r.tag.replace(/_/g, ' ')}</span>${badge}
       <div class="id">${r.id}</div>
       <div class="query">"${r.query}"</div>
       <div class="meta">${r.n} fixations${r.hasGazeplot ? ' · Scrutinizer rendered' : ''}</div>
     </div>
   </div>
-</a></div>`).join('\n')}
+</a></div>`;
+    };
+    const out = [];
+    for (const key of ['aligned', 'noisy', 'anomaly', 'unknown']) {
+        const g = groups[key];
+        if (g.items.length === 0) continue;
+        out.push(`<div class="group-header ${key}">${g.label} (${g.items.length})<span class="desc">— ${g.desc}</span></div>`);
+        out.push(g.items.map(renderCard).join('\n'));
+    }
+    return out.join('\n');
+})()}
 <details style="margin-top:2em;color:#aaa;">
 <summary style="cursor:pointer;color:#ccc;font-size:0.95em;margin-bottom:0.8em;">How this was built</summary>
 <div style="line-height:1.7;font-size:0.85em;">

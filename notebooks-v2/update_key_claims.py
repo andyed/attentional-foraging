@@ -34,7 +34,7 @@ import nbformat as nbf
 NBDIR = Path("/Users/andyed/Documents/dev/attentional-foraging/notebooks-v2")
 DOCSDIR = Path("/Users/andyed/Documents/dev/attentional-foraging/docs")
 AGGREGATE_PATH = DOCSDIR / "notebook-key-claims.md"
-VERIFIED = date(2026, 4, 9).isoformat()
+VERIFIED = date(2026, 4, 12).isoformat()
 
 KEY_CLAIMS_MARKER = "## Key Claims (authoritative for paper writers)"
 
@@ -161,28 +161,30 @@ NB11_5_BODY = """### Chattiness trait stability (split-half reliability, n = 47)
 
 | ID | Tercile | Median events/s | LOSO M3 AUC |
 |---|---|---|---|
-| **K9** | Low | 9.5 | 0.803 ± 0.052 (n = 15) |
-| **K10** | Mid | 14.7 | 0.780 ± 0.065 (n = 16) |
-| **K11** | High | 28.8 | 0.793 ± 0.064 (n = 16) |
-| **K12** | Pooled LOSO M3 AUC (replication of NB21 §4.3) | — | **0.792** (n = 47) |
+| **K9** | Low | 9.5 | **0.869** (n ≈ 15) |
+| **K10** | Mid | 14.7 | **0.855** (n ≈ 16) |
+| **K11** | High | 28.8 | **0.855** (n ≈ 16) |
+| **K12** | Pooled LOSO M3 AUC (replication of NB21 §4.3) | — | **0.859** (n = 47) |
 
 | ID | Spearman | *ρ* | *p* |
 |---|---|---|---|
-| **K13** | Per-participant chattiness (events/s) × per-participant AUC | −0.01 | 0.96 |
-| **K14** | Per-participant `path_per_sec` × AUC | −0.06 | 0.69 |
-| **K15** | Per-participant `dir_changes_per_sec` × AUC | −0.11 | 0.48 |
-| **K16** | Per-participant `active_fraction` × AUC | −0.00 | 0.98 |
+| **K13** | Per-participant chattiness (events/s) × per-participant AUC | **−0.187** | **0.209** (ns) |
+| **K14** | Per-participant `path_per_sec` × AUC | **−0.105** | **0.481** (ns) |
+| **K15** | Per-participant `dir_changes_per_sec` × AUC | **−0.161** | **0.281** (ns) |
+| **K16** | Per-participant `active_fraction` × AUC | **−0.155** | **0.297** (ns) |
 
 ### Exposure-bias check (records per trial × chattiness)
 
 | ID | Pair | *ρ* | *p* |
 |---|---|---|---|
-| **K17** | Records per trial × `events_per_sec` | **−0.50** | **0.0004** |
-| **K18** | Records per trial × `active_fraction` | −0.39 | 0.007 |
-| **K19** | Records per trial × `path_per_sec` | −0.08 | 0.59 (null) |
-| **K20** | Records per trial × `dir_changes_per_sec` | −0.18 | 0.23 (null) |
+| **K17** | Records per trial × `events_per_sec` | **−0.516** | **0.0002** |
+| **K18** | Records per trial × `active_fraction` | **−0.411** | **0.0041** |
+| **K19** | Records per trial × `path_per_sec` | −0.112 | 0.454 (null) |
+| **K20** | Records per trial × `dir_changes_per_sec` | −0.218 | 0.142 (null) |
 
-> **Three headline claims.** (1) Chattiness is a 10×-range, high-reliability individual-differences trait (K1–K4). (2) LOSO M3 AUC is flat across chattiness terciles; all 4 Spearmans are ns (K12–K16). (3) Chatty users fixate *fewer* positions per trial, not more (K17) — the four-class taxonomy is not inflated by parker mechanical undersampling."""
+> **Three headline claims.** (1) Chattiness is a 10×-range, high-reliability individual-differences trait (K1–K4). (2) LOSO M3 AUC is flat across chattiness terciles; all 4 Spearmans are ns (K13–K16). (3) Chatty users fixate *fewer* positions per trial, not more (K17) — the four-class taxonomy is not inflated by mechanical undersampling.
+>
+> **Coordinate-space audit (2026-04-12).** NB11.5 re-run on the regenerated `cursor-approach-features.json`. K1–K8 (chattiness distribution and reliability) are unchanged — those measures come from `mouse-movement-data`, not from FPOGY. K9–K16 shifted with the post-fix feature set: pooled LOSO M3 AUC 0.792 → **0.859**, tercile AUCs 0.803/0.780/0.793 → **0.869/0.855/0.855**. The deployability story gets **better**: every tercile's AUC climbed, and all four per-participant chattiness × AUC correlations remain ns (no exposure bias). K17/K18 bias checks also strengthened slightly."""
 
 
 # ── NB14 — Butterworth cognitive load ───────────────────────────────
@@ -193,77 +195,85 @@ NB14_BODY = """### Cognitive load decreases with SERP position (the Butterworth 
 | ID | Claim | Value |
 |---|---|---|
 | **K1** | Trials with usable Butterworth LF/HF data | 2,719 |
-| **K2** | Position-segment count (click position × LF/HF) | 6,874 |
-| **K3** | **Position × median LF/HF (load DECREASES with deeper click)** | **ρ = −0.618, *p* = 0.0426** |
-| **K4** | Positions 1–10 only (excluding pos 0) | ρ = −0.491, *p* = 0.150 (ns) |
-| **K5** | Within-trial Spearman (position vs LF/HF, ≥ 3 valid segments at positions 0–10) | N = 1,167 trials, mean ρ = −0.105, median ρ = −0.200, 56.6 % negative |
-| **K6** | Clicked vs non-clicked median LF/HF | **22.24 (N = 1,110)** vs **19.01 (N = 5,472)**; Mann–Whitney *U* = 3,257,823, *p* = 1.30 × 10⁻⁴ — clicked results carry more load than non-clicked |
-| **K7** | Cross-index validation: trial-mean LF/HF × LHIPA | ρ = −0.122, *p* = 9.29 × 10⁻¹⁰, N = 2,492 (correct sign: both indices agree on load direction) |
-| **K8** | Position-level medians (load by rank) | pos 0: 29.98 (N = 1,015) → pos 1: 21.20 → pos 2: 18.29 → pos 3: 16.00 → pos 4: 16.27 … (monotone decline) |
+| **K2** | Position-segment count (fixation positions × LF/HF) | 6,112 |
+| **K3** | **Position × median LF/HF (load DECREASES with deeper position)** | **ρ = −0.927, *p* < 0.0001** (N = 11 positions) |
+| **K4** | Positions 1–10 only (excluding pos 0) | **ρ = −0.903, *p* = 0.0003** |
+| **K5** | Within-trial Spearman (position vs LF/HF, ≥ 3 valid segments at positions 0–10) | N = 1,025 trials, mean ρ = −0.152, median ρ = −0.400, 61.0 % negative |
+| **K6** | Clicked vs non-clicked median LF/HF | **22.40 (N = 1,463)** vs **19.27 (N = 4,636)**; Mann–Whitney *p* < 10⁻⁸ — clicked results carry more load than non-clicked |
+| **K7** | Cross-index validation: trial-mean LF/HF × LHIPA | ρ = −0.125, *p* = 7.47 × 10⁻¹⁰, N = 2,416 (correct sign: both indices agree on load direction) |
+| **K8** | Position-level medians (load by rank) | pos 0: 29.64 (N = 1,036) → pos 1: 22.17 → pos 2: 18.96 → pos 3: 18.30 → pos 4: 17.23 → pos 5: 16.77 → pos 6: 14.41 → pos 7: 13.82 → pos 8: 13.31 → pos 9: 15.58 → pos 10: 13.49 (monotone decline through pos 8) |
 
 ### Piecewise gradient (steep phase + plateau)
 
 | ID | Claim | Value |
 |---|---|---|
-| **K9** | Steep phase (pos 0–3): Mann–Whitney pos 0 vs pos 3 | *U* = 405,358, ***p* = 4.1 × 10⁻²²** (N = 1,015 vs 623) |
-| **K10** | Steep phase (pos 0–3) medians | 30.0 → 21.2 → 18.3 → 16.0 (Spearman ρ = −1.000) |
-| **K11** | Plateau phase (pos 4–10) Spearman | ρ = −0.393, *p* = 0.383 (ns) — flat, as predicted |
-| **K12** | Pooled early (0–3) vs late (4–10) | median 22.01 vs 17.20, Mann–Whitney *p* = 5.9 × 10⁻¹⁷, Cohen's *d* = 0.165 |
+| **K9** | Steep (pos 0–3) vs plateau (pos 4–10) Mann–Whitney on raw segments | **U = 4,583,556, *p* = 3.2 × 10⁻²³** (N = 4,229 vs 1,870; steep median 22.0 vs plateau 15.7) |
+| **K10** | Steep phase (pos 0–3) Spearman on position medians | **ρ = −1.000, *p* ≈ 0** — perfect monotone decline. Medians: 29.64 → 22.17 → 18.96 → 18.30 |
+| **K11** | Plateau phase (pos 4–10) Spearman | **ρ = −0.714, *p* = 0.071** — marginal, clearly weaker gradient than steep phase |
+| **K12** | Pooled early (0–3) vs late (4–10) medians | early 22.0 (N = 4,229) vs late 15.7 (N = 1,870) — see K9 for the Mann–Whitney *U*/*p* |
 
 ### Within-trial gradient by evaluation depth
 
-| ID | Threshold | N trials | Mean ρ | % negative | Sign test *p* | *t*-test *p* |
-|---|---|---|---|---|---|---|
-| **K13** | ≥ 3 positions | 1,167 | −0.105 | 56.6% | 3.2 × 10⁻⁶ | 4.2 × 10⁻⁹ |
-| **K14** | ≥ 5 positions | 278 | −0.101 | 57.9% | 4.9 × 10⁻³ | 1.0 × 10⁻³ |
-| **K15** | ≥ 7 positions | 43 | −0.296 | 79.1% | 8.5 × 10⁻⁵ | 8.5 × 10⁻⁶ |
+| ID | Threshold | N trials | Mean ρ | Median ρ | % negative |
+|---|---|---|---|---|---|
+| **K13** | ≥ 3 positions | 1,025 | −0.152 | −0.400 | 61.0% |
+| **K14** | ≥ 5 positions | 212 | −0.179 | — | 67.0% |
+| **K15** | ≥ 7 positions | 32 | −0.207 | — | 71.9% |
+
+*(K14/K15 values from `pupil-lfhf/validation/validate_adserp.py` output, which uses the same forward-pass classifier as `compute_butterworth_lfhf.py`. Pupil-lfhf's within-trial N differs from NB14 cell[8]'s N = 1,025 at the ≥3 threshold — different exclusion criteria in the two pipelines; both agree on direction.)*
 
 > **Not working memory accumulation.** If prose says "forward-only dwell increases with position *consistent with working memory accumulation*," the prose is wrong. K3 shows per-fixation cognitive load *decreasing* with position — extra dwell at deeper positions reflects allocation / comparison-set growth, not WM overload. Framework compilation, not working-memory accumulation. This is the load-bearing claim for the ETTAC 2026 and CHI 2027 framings.
 >
-> **Caveat on K3.** The *p* = 0.043 at the position level is borderline at α = 0.05; the 1–10 subset (K4) is non-significant. The robust claim is piecewise: steep decline 0–3 (*p* = 4.1 × 10⁻²², K9) then plateau 4–10 (ns, K11). The gradient strengthens with evaluation depth: at ≥ 7 positions visited, 79.1% of trials show declining load (K15). Every measurement stream (between-position LF/HF, within-trial LF/HF, cross-index LHIPA) points the same way.
+> **K3 post-2026-04-12 audit.** The headline between-position gradient **strengthened dramatically**: pre-fix ρ = −0.618 (p = 0.0426, borderline) → post-fix **ρ = −0.927 (p < 0.0001, unambiguous)**. The 1–10 subset (K4) flipped from non-significant (ρ = −0.491, p = 0.150) to highly significant (ρ = −0.903, p = 0.0003). The steep/plateau partition is preserved — steep phase still perfect monotone, plateau still flat. The pre-fix scroll double-count was injecting noise in the position direction, masking the signal.
 >
-> **Coordinate-space audit (2026-04-09).** `compute_butterworth_lfhf.py` previously double-counted scroll offset when deriving `click_pos` from evtrack `ypos` (already page-space). The fix moved K6 only: N_clicked 1,145 → 1,110, clicked median 22.86 → 22.24, *p* 3.9 × 10⁻⁷ → 1.3 × 10⁻⁴. Direction and significance preserved. K1–K5, K7, K8 are unchanged because they use fixation position (gaze → page-space conversion, which was always correct), not `click_pos`. See `CHANGELOG.md`."""
+> **Coordinate-space audit (2026-04-09, cursor side).** `compute_butterworth_lfhf.py` previously double-counted scroll offset when deriving `click_pos` from evtrack `ypos` (already page-space). Fixed in 2026-04-09. K6 moved: N_clicked 1,145 → 1,110, clicked median 22.86 → 22.24.
+>
+> **Coordinate-space audit (2026-04-12, fixation side).** FPOGY was also mis-documented as screen-space; the pipeline was adding scroll to fixation Y to derive page_y. Per the AdSERP README, FPOGY is already page-space. Fixing this regenerated `butterworth-lfhf-by-position.json` and shifted K1 (unchanged), K2 (6,874 → 6,112, -11%), K3 (−0.618 → −0.927), K4 (−0.491 ns → −0.903 sig), K5 (1,167 → 1,025 trials, mean ρ −0.105 → −0.152), K6 (1,110/5,472 → 1,463/4,636, p 1.3e-4 → <1e-8), K7 (essentially unchanged), K8 (position medians shifted by ≲1 unit each). Direction and significance **strengthened** throughout. K9–K15 re-computed from post-fix position medians; some piecewise statistics (K12, K14, K15) need a verbose-print re-run. See module docstring and `docs/drafts/coord_fix_snapshot_20260412/`."""
 
 
 NB15_BODY = r"""### Cursor approach features (per result-position record)
 
 | ID | Claim | Value |
 |---|---|---|
-| **K1** | Records / trials / base click rate | 15,397 records / 2,340 trials / 14.4% (2,214 clicks) |
-| **K2** | Mean min\_dist (clicked vs not) | 204 px vs 427 px |
-| **K3** | Almost-clicked (min\_dist < 58 px, not clicked) | 734 records (4.8% of all; 5.57% of non-clicked) |
-| **K4** | Approached (min\_dist < 100 px) | 2,488 records (16.2%), click rate 41.5%, lift 2.9× |
-| **K5** | Best single-threshold AUC | min\_dist < 150 px → AUC 0.699 |
+| **K1** | Records / trials / base click rate | **13,419 records / 2,340 trials / 16.6%** (2,228 clicks) |
+| **K2** | Mean min\_dist (clicked vs not) | **110 px vs 299 px** (overall mean 268 px) |
+| **K3** | Almost-clicked (min\_dist < 58 px, not clicked) | **1,122 records (8.4% of all)** |
+| **K4** | Approached (min\_dist < 100 px) | **3,783 records (28.2%)**, click rate 37.7%, lift 2.3× |
+| **K5** | Best single-threshold AUC | min\_dist < 150 px → **AUC 0.735** |
 
 ### Approach → regression → click pathway
 
 | ID | Claim | Value |
 |---|---|---|
-| **K6** | Approach → regression rate | 83.8% (vs 50.7% no-approach) |
-| **K7** | Approach → regression odds ratio | **5.04×**, p = 1.9 × 10⁻²⁰³ |
-| **K8** | Approach + regression → click rate | **43.5%** (N = 2,086) |
-| **K9** | Approach + no regression → click rate | 30.8% (N = 402) |
-| **K10** | No approach + regression → click rate | 11.6% (N = 6,551) |
-| **K11** | No approach + no regression → click rate | 6.7% (N = 6,358) |
+| **K6** | Approach → regression rate | **81.6%** (vs 58.0% no-approach) |
+| **K7** | Approach → regression odds ratio | **3.21×**, χ² = 661.1, p = 8.72 × 10⁻¹⁴⁶ |
+| **K8** | Approach + regression → click rate | **37.9% (N = 3,087)** |
+| **K9** | Approach + no regression → click rate | 36.9% (N = 696) |
+| **K10** | No approach + regression → click rate | 8.1% (N = 5,589) |
+| **K11** | No approach + no regression → click rate | 8.6% (N = 4,047) |
 
 ### Position gradient
 
 | ID | Claim | Value |
 |---|---|---|
-| **K12** | Position 0: almost-clicked rate | 15.5% (N = 2,310) |
-| **K13** | Position 0: mean min\_dist | 170 px |
-| **K14** | Position 9: almost-clicked rate | 0.0% (N = 661) |
-| **K15** | Position 9: mean min\_dist | 683 px |
+| **K12** | Position 0: almost-clicked rate | **15.9%** (N = 2,320) |
+| **K13** | Position 0: mean min\_dist | **167 px** |
+| **K14** | Position 9: almost-clicked rate | **2.1%** (N = 192) |
+| **K15** | Position 9: mean min\_dist | **488 px** |
 
 ### Click prediction (replicates NB21 from raw features)
 
 | ID | Claim | Value |
 |---|---|---|
-| **K16** | Position + dwell + all approach (LOSO) | AUC 0.797 ± 0.021 |
-| **K17** | Position coefficient (full model) | −0.380 (→ skip; correct direction post-fix) |
-| **K18** | direction\_changes coefficient | −0.005 (≈ 0; was scroll artifact pre-fix) |
+| **K16** | Position + dwell + all approach (5-fold CV) | **AUC 0.859 ± 0.019** |
+| **K17** | Position coefficient (full model) | **−0.130** (→ skip; correct direction) |
+| **K18** | direction\_changes coefficient | **+0.061** (→ click; small positive) |
 
-> **Coordinate-space audit (2026-04-09).** Two bug sites in the feature computation (`my + fix_scroll` where `my` is already page-space) inflated cursor proximity on scrolled trials (82% of corpus). Pre-fix: almost-clicked was 14%, M3 AUC was 0.827, `position` coefficient was +0.21 (wrong direction), `direction_changes` was +0.20 (scroll artifact). All values above are post-fix. See `CHANGELOG.md`.
+> **Coordinate-space audit (2026-04-09, cursor side).** Two bug sites in `compute_approach_features` double-counted scroll offset on cursor Y (`my + fix_scroll` where `my` is already page-space), inflating cursor proximity on scrolled trials (82% of corpus).
+>
+> **Coordinate-space audit (2026-04-12, fixation side).** The symmetric bug existed on the gaze side: FPOGY was treated as screen-space and had scroll added to it, but per the AdSERP README FPOGY is already page-space. Fixing this (and regenerating `cursor-approach-features.json`) shifted every row above. Headline changes: records 15,397 → **13,419** (−12.9%; phantom records from scroll-leaked approach signal at deep positions), base click rate 14.4% → **16.6%**, mean clicked min\_dist 204 px → **110 px** (cursor was always closer than the buggy pipeline reported), almost-clicked 734 → **1,122** records, approach-regression odds ratio 5.04× → **3.21×** (weaker but still highly significant — 36% of the pre-fix signal was scroll artifact). Direction of every headline result preserved. Approach + regression is still the dominant pathway to click (37.9% click rate vs 8% baseline). Position 9 mean min\_dist dropped from 683 px → **488 px**, consistent with the broader pattern: cursor was closer than the bug let us see.
+>
+> **K8 click rate note.** Pre-fix K8 (43.5% click rate for approach + regression at N = 2,086) was over-concentrated because the scroll leak mislabeled many deep-position results as "approached." Post-fix: 37.9% at N = 3,087 — lower rate on a larger, cleaner sample. Still the dominant decision-to-click signature in the corpus.
 """
 
 
@@ -271,49 +281,51 @@ NB21_BODY = """### LOSO click prediction — pooled results
 
 | ID | Claim | Value |
 |---|---|---|
-| **K1** | Records / participants / click rate | 15,397 episodes / 47 participants / 14.4 % click rate (2,214 clicks) |
-| **K2** | Records per participant | median 320, range 76–562 |
-| **K3** | **M3 (position + dwell + approach) pooled LOSO AUC** | **0.792 ± 0.062** (47-fold) |
-| **K4** | M4 (approach features only) LOSO AUC | 0.792 ± 0.061 |
-| **K5** | M2 (position + dwell) LOSO AUC | 0.707 ± 0.081 |
-| **K6** | M1 (position only) LOSO AUC | 0.670 ± 0.085 |
-| **K7** | LOSO M3 AP | 0.491 ± 0.118 |
-| **K8** | Leakage Δ (Random KFold − LOSO) for M2/M3/M4 | +0.018 / +0.006 / +0.001 (mild, direction now consistent with leakage) |
-| **K9** | **Per-participant LOSO M3 AUC** | **median 0.798, IQR [0.759, 0.831], range [0.589, 0.889]** (all 47 participants above chance) |
-| **K10** | Youden's J threshold (M3 OOF) | *p* = 0.495 (TPR = 0.708, FPR = 0.253) |
-| **K11** | F1-optimal threshold | *p* = 0.660, F1 = 0.480 |
-| **K12** | Brier score (M3 OOF) | 0.1781 |
+| **K1** | Records / participants / click rate | **13,419 episodes / 47 participants / 16.6 % click rate** (2,228 clicks) |
+| **K2** | Records per participant | **median 294, range 76–497** |
+| **K3** | **M3 (position + dwell + approach) pooled LOSO AUC** | **0.859 ± 0.044** (47-fold) |
+| **K4** | M4 (approach features only) LOSO AUC | **0.861 ± 0.043** |
+| **K5** | M2 (position + dwell) LOSO AUC | **0.743 ± 0.076** |
+| **K6** | M1 (position only) LOSO AUC | **0.613 ± 0.090** |
+| **K7** | LOSO M3 AP | **0.611 ± 0.097** |
+| **K8** | Leakage Δ (Random KFold − LOSO) for M2/M3/M4 | **+0.002 / −0.000 / −0.002** (direction now consistent with near-zero leakage — stronger LOSO invalidates prior leakage concern) |
+| **K9** | **Per-participant LOSO M3 AUC** | **median 0.860, IQR [0.827, 0.901], range [0.745, 0.934]** (all 47 participants well above chance; min now 0.745, previously 0.589) |
+| **K10** | Youden's J threshold (M3 OOF) | *p* = **0.493** (TPR = **0.798**, FPR = **0.222**) |
+| **K11** | F1-optimal threshold | *p* = **0.637**, F1 = **0.584** |
+| **K12** | Brier score (M3 OOF) | **0.1526** |
 
 ### Four-class taxonomy (classifier-derived, tautology fix)
 
 | ID | Class | N | % | Mean *p*(click) |
 |---|---|---|---|---|
-| **K13** | Clicked | 2,214 | 14.4 % | 0.633 |
-| **K14** | Deferred candidate | 1,112 | 7.2 % | 0.714 |
-| **K15** | Evaluated-rejected | 344 | 2.2 % | 0.391 |
-| **K16** | No signal | 11,727 | 76.2 % | 0.331 |
+| **K13** | Clicked | **2,228** | **16.6 %** | **0.690** |
+| **K14** | Deferred candidate | **1,381** | **10.3 %** | **0.709** |
+| **K15** | Evaluated-rejected | **974** | **7.3 %** | **0.313** |
+| **K16** | No signal | **8,836** | **65.8 %** | **0.247** |
 
 ### M3 standardized feature coefficients (full-data refit)
 
 | ID | Feature | Coefficient | Direction |
 |---|---|---|---|
-| **K17** | `mean_dist` | +0.672 | → click |
-| **K18** | `final_dist` | −0.642 | → skip |
-| **K19** | `dwell_in_proximity_ms` | +0.639 | → click |
-| **K20** | `min_dist` | −0.557 | → skip |
-| **K21** | `position` | −0.380 | → skip |
-| **K22** | `retreat_dist` | −0.172 | → skip |
-| **K23** | `mean_approach_velocity` | +0.152 | → click |
-| **K24** | `max_approach_velocity` | +0.121 | → click |
-| **K25** | `frac_decreasing` | +0.095 | → click |
-| **K26** | `total_dwell_ms` | −0.088 | → skip |
-| **K27** | `direction_changes` | −0.005 | neutral |
+| **K17** | `mean_dist` | **+0.589** | → click |
+| **K18** | `final_dist` | **−0.967** | → skip |
+| **K19** | `dwell_in_proximity_ms` | **+0.738** | → click |
+| **K20** | `min_dist` | **−0.904** | → skip |
+| **K21** | `position` | **−0.130** | → skip |
+| **K22** | `retreat_dist` | **−0.206** | → skip |
+| **K23** | `mean_approach_velocity` | **+0.069** | → click |
+| **K24** | `max_approach_velocity` | **+0.207** | → click |
+| **K25** | `frac_decreasing` | **+0.031** | → click |
+| **K26** | `total_dwell_ms` | **−0.040** | → skip |
+| **K27** | `direction_changes` | **+0.061** | → click |
 
 > **Robustness to individual cursor activity lives in NB11.5.** The chattiness-stratified AUC figure (§4.3 robustness paragraph of `docs/drafts/cikm-2026/paper.md`) uses [NB11_5:K9–K16], not NB21 directly.
 >
 > **Previously fixed bug (2026-04-08):** Cell 20 used `y_p_full` before definition (lines 14–15 were dead code from a pre-rewrite version). Symptom: `NameError: name 'y_p_full' is not defined`. Fix: delete the old block.
 >
-> **Coordinate-space audit (2026-04-09).** NB15's `compute_approach_features` double-counted scroll offset on the cursor coordinate (`my + fix_scroll` — `my` is already page-space). Impact was concentrated on scrolled trials, which are 82 % of the corpus. Regenerating `cursor-approach-features.json` after fixing the two bug sites and re-running NB21 shifts every row above. Headline changes: click rate 12.9 % → 14.4 % (233 correctly re-labeled clicks), M3 LOSO AUC **0.827 → 0.792** (−0.035; approach still the dominant source of signal above position+dwell), K21 (`position`) flips sign +0.21 → −0.38 (the rank effect in the correct direction — later positions click less), K27 (`direction_changes`) drops from +0.20 to ≈0 (was largely scroll artifact). Four-class Evaluated-rejected N drops 994 → 344 because the pre-fix "approach" signal at deep positions was mostly the scroll leak. Direction of every headline result (approach > position + dwell, M4 ≈ M3, per-participant all > 0.5) is preserved. See `CHANGELOG.md` for before/after table and NB15 feature-level diff."""
+> **Coordinate-space audit (2026-04-09, cursor side).** NB15's `compute_approach_features` double-counted scroll offset on the cursor coordinate (`my + fix_scroll`). First fix landed 2026-04-09 and moved M3 LOSO AUC 0.827 → 0.792.
+>
+> **Coordinate-space audit (2026-04-12, fixation side).** FPOGY was similarly mis-documented as viewport-space; the position assignment pipeline was adding scroll to a page-space value. Per the AdSERP README, FPOGY is already page-space. Fixing this regenerated `cursor-approach-features.json` with a cleaner feature set, and **NB21 moved dramatically**: records 15,397 → **13,419** (−12.9%), click rate 14.4% → **16.6%**, **M3 LOSO AUC 0.792 → 0.859** (+0.067), M4 (approach only) 0.792 → **0.861**, M3 AP 0.491 → **0.611** (+0.120, very large jump in precision-recall), leakage Δ essentially zero across all models (+0.006 → −0.000 for M3), per-participant LOSO M3 median 0.798 → **0.860** with the minimum participant climbing from 0.589 → **0.745**. K21 (`position`) coefficient weakened from −0.380 → **−0.130** (position is a much weaker predictor once the scroll artifact is gone — the gradient lives in the approach features now). K27 (`direction_changes`) flipped sign from −0.005 → **+0.061** (now a small positive contribution). Classifier taxonomy Evaluated-rejected jumped from N = 344 → **974** because many formerly-"no signal" records are now approached records with low p(click) — the coord fix surfaced real evaluative rejections that were previously invisible. Direction of every headline result preserved. See `CHANGELOG.md` and `docs/drafts/coord_fix_snapshot_20260412/`."""
 
 
 # ── NB22 — four-class taxonomy ────────────────────────────────────────
@@ -323,33 +335,44 @@ NB22 defines the four classes via cursor approach (min_dist < 100 px) + scroll r
 
 | ID | Class | N | % |
 |---|---|---|---|
-| **K1** | Clicked | 2,214 | 14.4 % |
-| **K2** | Deferred (approached + regressed to) | 1,178 | 7.7 % |
-| **K3** | Evaluated-rejected (approached + no regression) | 278 | 1.8 % |
-| **K4** | Not approached | 11,727 | 76.2 % |
+| **K1** | Clicked | **2,228** | **16.6 %** |
+| **K2** | Deferred (approached + regressed to) | **1,916** | **14.3 %** |
+| **K3** | Evaluated-rejected (approached + no regression) | **439** | **3.3 %** |
+| **K4** | Not approached | **8,836** | **65.8 %** |
 
 ### Motor signature separation (deferred vs evaluated-rejected)
 
 | ID | Metric | Deferred | Eval-Rejected | *p* |
 |---|---|---|---|---|
-| **K5** | Retreat distance (px) | 191.3 | 96.4 | 1.9 × 10⁻¹¹ |
-| **K6** | Total gaze dwell (ms) | 3,842 | 2,018 | 3.7 × 10⁻²⁶ |
-| **K7** | Dwell in proximity (ms) | 1,219 | 682 | 5.0 × 10⁻⁹ |
+| **K5** | Retreat distance (px) | **234.5** | **90.8** | **1.76 × 10⁻³⁸** |
+| **K6** | Total gaze dwell (ms) | **4,137** | **1,612** | **9.76 × 10⁻⁷⁰** |
+| **K7** | Dwell in proximity (ms) | **1,212.5** | **690.0** | **1.36 × 10⁻¹⁶** |
 
 ### Click prediction with element-type interactions
 
-| ID | Element type | N | Click% | M3 AUC | M3+interactions AUC | Δ |
+| ID | Element type | N | Click% | M3 AUC | M3ei AUC | Δ |
 |---|---|---|---|---|---|---|
-| **K8** | organic | 12,030 | 15.1 % | 0.797 | 0.803 | +0.007 |
-| **K9** | dd_top | 1,384 | 17.8 % | 0.871 | **0.899** | **+0.028** |
-| **K10** | native_ad | 1,983 | 7.7 % | 0.798 | 0.786 | −0.011 |
+| **K8** | organic | **10,379** | **17.6 %** | **0.857** | **0.859** | **+0.002** |
+| **K9** | dd_top | **1,394** | **17.6 %** | **0.909** | **0.919** | **+0.010** |
+| **K10** | native_ad | **1,646** | **9.2 %** | **0.830** | **0.817** | **−0.014** |
 
 | ID | Model | LOSO AUC |
 |---|---|---|
-| **K11** | M3 (replication of NB21) | 0.792 ± 0.062 |
-| **K12** | M3 + regression feature | 0.792 ± 0.061 (regression adds +0.000) |
+| **K11** | M3 (replication of NB21) | **0.859 ± 0.044** |
+| **K12** | M3 + regression feature | **0.863 ± 0.042** (regression adds +0.003) |
 
-> **Interaction features help where discrimination cost is highest.** Top ads gain +0.028 AUC from element-type interactions. Native ads lose −0.011 (avoidance behavior muddies the signal). Regression features add exactly zero to any model variant — the forward-pass approach features carry the full signal."""
+> **Interaction features still help most on top ads.** Top ads gain +0.010 AUC from element-type interactions. Native ads lose −0.014 (avoidance behavior muddies the signal). Regression features add +0.003 to M3 — essentially zero; the forward-pass approach features carry the full signal.
+>
+> **Coordinate-space audit (2026-04-12, fixation side).** NB22 consumes `cursor-approach-features.json`, which was regenerated after the FPOGY page-space fix. The four-class split **strengthened dramatically**:
+> - K2 deferred: 1,178 → **1,916** (+62.6%) — half the pre-fix "not approached" records were actually approached + regressed trials mislabeled by the scroll leak
+> - K3 evaluated-rejected: 278 → **439** (+57.9%)
+> - K4 not approached: 11,727 → **8,836** (−24.7%)
+> - K5 retreat-distance gap: 191 vs 96 (p 1.9 × 10⁻¹¹) → **234 vs 91 (p 1.76 × 10⁻³⁸)** — 27 orders of magnitude stronger motor signature
+> - K6 gaze-dwell gap: p 3.7 × 10⁻²⁶ → **9.76 × 10⁻⁷⁰** (44 orders of magnitude)
+> - K7 proximity-dwell gap: p 5.0 × 10⁻⁹ → **1.36 × 10⁻¹⁶**
+> - K11 M3 LOSO AUC: 0.792 → **0.859** (+0.067, a large effect in prediction space)
+>
+> Direction and significance of every headline result preserved; magnitudes all strengthened. The deferred vs rejected motor-signature dissociation — the CIKM 2026 paper's central empirical claim — is now on dramatically firmer statistical ground. See `docs/drafts/coord_fix_snapshot_20260412/`."""
 
 
 # ── NB23 — rank effects ──────────────────────────────────────────────
@@ -439,46 +462,48 @@ NB12_BODY = """### Dataset
 
 | ID | Claim | Value |
 |---|---|---|
-| **K1** | Trials with all measures (LHIPA + regression + encoding fixation + landing fixation) | 1,170 trials, 45 participants |
-| **K2** | Trials with encoding pupil diameter | 1,164 |
-| **K3** | Trials with encoding pupil SD | 1,158 |
+| **K1** | Trials with all measures (LHIPA + regression + encoding fixation + landing fixation) | **1,272 trials, 45 participants** |
+| **K2** | Trials with encoding pupil diameter | **1,266** |
+| **K3** | Trials with encoding pupil SD | **1,261** |
 
 ### Summary statistics
 
 | ID | Measure | Median | IQR |
 |---|---|---|---|
-| **K4** | Landing offset (px) | 59.7 | [31.7, 86.7] |
-| **K5** | Encoding–regression time gap (ms) | 14,656 | [9,048, 20,825] |
-| **K6** | Regression distance (px) | 555.6 | [222, 1,222] |
-| **K7** | Encoding pupil diameter (mm) | 15.0 | [13.3, 16.7] |
+| **K4** | Landing offset (px) | **60.24** | **[32.34, 87.83]** |
+| **K5** | Encoding–regression time gap (ms) | **13,269.5** | **[8,069.75, 19,370.25]** |
+| **K6** | Regression distance (px) | **666.67** | **[333.33, 1,320.56]** |
+| **K7** | Encoding pupil diameter (mm) | **14.86** | **[13.20, 16.76]** |
 
 ### Main tests (all null)
 
 | ID | Test | ρ | *p* | Partial ρ | Partial *p* |
 |---|---|---|---|---|---|
-| **K8** | Trial-level LHIPA × landing offset | −0.007 | 0.816 | +0.004 | 0.882 |
-| **K9** | Encoding pupil diameter × landing offset | −0.013 | 0.659 | −0.009 | 0.750 |
-| **K10** | Encoding pupil SD × landing offset | −0.043 | 0.147 | −0.044 | 0.139 |
+| **K8** | Trial-level LHIPA × landing offset | **−0.0430** | **0.125** | **−0.0430** | **0.125** |
+| **K9** | Encoding pupil diameter × landing offset | **+0.0116** | **0.681** | **+0.0120** | **0.671** |
+| **K10** | Encoding pupil SD × landing offset | **−0.0453** | **0.108** | **−0.0458** | **0.104** |
 
 ### Control variables (also null)
 
 | ID | Test | ρ | *p* |
 |---|---|---|---|
-| **K11** | Regression distance × landing offset | +0.018 | 0.529 |
-| **K12** | Time gap × landing offset | +0.048 | 0.101 |
+| **K11** | Regression distance × landing offset | **+0.0272** | **0.333** |
+| **K12** | Time gap × landing offset | **+0.0085** | **0.761** |
 
 ### Per-participant analysis
 
 | ID | Claim | Value |
 |---|---|---|
 | **K13** | Participants with ≥ 3 qualifying trials | 43 |
-| **K14** | Per-participant median encoding PD × median landing offset | ρ = −0.092, *p* = 0.558 |
+| **K14** | Per-participant median encoding PD × median landing offset | **ρ = −0.0074, *p* = 0.962** |
 
-> **Comprehensive null.** Neither coarse-grain load (trial-level LHIPA, K8) nor fine-grain load (encoding-fixation pupil diameter, K9; encoding pupil variability, K10) predicts regression landing precision. Partial correlations controlling for regression distance and encoding–regression time gap are also null. The per-participant analysis (K14) confirms this is not a within-person effect masked by between-person variance.
+> **Comprehensive null, preserved post-fix.** Neither coarse-grain load (trial-level LHIPA, K8) nor fine-grain load (encoding-fixation pupil diameter, K9; encoding pupil variability, K10) predicts regression landing precision. Partial correlations controlling for regression distance and encoding–regression time gap are also null. The per-participant analysis (K14) confirms this is not a within-person effect masked by between-person variance.
 >
 > **Interpretation.** Spatial memory for SERP result positions is robust to normal cognitive load variation during browsing. The motor system may rely on non-pupillometric cues (proprioceptive scroll memory, visual landmarks) rather than purely spatial memory. This is relevant for ETTAC because it bounds where Butterworth LF/HF *cannot* predict behavior — regression precision is not one of its targets.
 >
-> **Gazepoint caveat.** Pupil diameter values from the GP3 HD are in arbitrary units, not calibrated mm. Cross-participant comparisons of absolute PD are invalid. The within-participant correlations (K8–K10) are unaffected."""
+> **Gazepoint caveat.** Pupil diameter values from the GP3 HD are in arbitrary units, not calibrated mm. Cross-participant comparisons of absolute PD are invalid. The within-participant correlations (K8–K10) are unaffected.
+>
+> **Coordinate-space audit (2026-04-12).** FPOGY page-space fix regenerated the fixation-to-position mapping used to identify "encoding fixation on clicked result" and "landing fixation on clicked result". Trial count rose 1,170 → **1,272** (+8.7%) because more fixations now correctly map to result bands. All null findings preserved; K9 sign flipped (−0.013 → +0.012) but both values are trivially close to zero. Comprehensive null is robust to the coord fix."""
 
 
 # ── NB18 — RIPA2 vs LF/HF ──────────────────────────────────────────
@@ -487,53 +512,53 @@ NB18_BODY = """### Dataset
 | ID | Claim | Value |
 |---|---|---|
 | **K1** | Trials with both Butterworth LF/HF and RIPA2 | 2,719 |
-| **K2** | Paired observations (same trial, same position) | 6,874 |
+| **K2** | Paired observations (same trial, same position) | **6,112** |
 
 ### Observation-level correlation (near zero — different constructs at per-fixation scale)
 
 | ID | Test | Value | *p* |
 |---|---|---|---|
-| **K3** | Pearson *r* (RIPA2 × LF/HF) | −0.023 | 0.057 (ns) |
-| **K4** | Spearman ρ (RIPA2 × LF/HF) | +0.001 | 0.956 (ns) |
+| **K3** | Pearson *r* (RIPA2 × LF/HF) | **−0.028** | **0.030** (borderline) |
+| **K4** | Spearman ρ (RIPA2 × LF/HF) | **−0.016** | **0.224** (ns) |
 
 ### Positional gradient (both decline — agreement at aggregate level)
 
 | ID | Metric | Spearman ρ with position | *p* |
 |---|---|---|---|
-| **K5** | Butterworth LF/HF × position (median per position) | **−0.618** | 0.0426 |
-| **K6** | RIPA2 × position (median per position) | **−0.827** | 0.00168 |
+| **K5** | Butterworth LF/HF × position (median per position) | **−0.927** | **3.97 × 10⁻⁵** |
+| **K6** | RIPA2 × position (median per position) | **−0.909** | **1.06 × 10⁻⁴** |
 
-### Click-position quadrant analysis
+### Click-position quadrant analysis (click rate by LF/HF × RIPA2 quadrant)
 
 | ID | Quadrant | Click rate |
 |---|---|---|
-| **K7** | Effortful (high LF/HF + high RIPA2) | 17.8% |
-| **K8** | Deliberation (high LF/HF + low RIPA2) | 17.4% |
-| **K9** | Quick decision (low LF/HF + high RIPA2) | 16.4% |
-| **K10** | Routine scanning (low LF/HF + low RIPA2) | 13.1% |
+| **K7** | Effortful (high LF/HF + high RIPA2) | **26.3%** (407 / 1,548) |
+| **K8** | Deliberation (high LF/HF + low RIPA2) | **25.2%** (380 / 1,508) |
+| **K9** | Quick decision (low LF/HF + high RIPA2) | **23.9%** (360 / 1,508) |
+| **K10** | Routine scanning (low LF/HF + low RIPA2) | **20.4%** (316 / 1,548) |
 
 ### RIPA2 at regression onset (underpowered — demo trials only)
 
 | ID | Comparison | RIPA2 median | Mann–Whitney *p* |
 |---|---|---|---|
-| **K11** | Regression fixations (N = 100) | 0.080 | 0.243 (ns) |
-| **K12** | Forward fixations (N = 205) | 0.077 | — |
+| **K11** | Regression fixations (N = 118) | **0.0695** | **0.441** (two-sided, ns) |
+| **K12** | Forward fixations (N = 263) | **0.0770** | — |
 
 ### Encoding vs retrieval (RIPA2 first-pass signal)
 
 | ID | Claim | Value |
 |---|---|---|
-| **K13** | RIPA2 observations: will-regress vs no-regress | 10,391 vs 8,153 |
-| **K14** | RIPA2 median: will-regress vs no-regress | 0.077 vs 0.081 (ratio 0.948×) |
-| **K15** | RIPA2 one-sided Mann–Whitney (will-regress < no-regress) | ***p* = 0.0022** |
-| **K16** | First-pass dwell: will-regress vs no-regress | 194 ms vs 207 ms, *p* = 4.1 × 10⁻²⁴ |
-| **K17** | LF/HF observations for same comparison | N = 17 vs 24 (underpowered) |
+| **K13** | RIPA2 observations: will-regress vs no-regress | **10,466 vs 5,850** |
+| **K14** | RIPA2 median: will-regress vs no-regress | **0.0777 vs 0.0809 (ratio 0.960×)** |
+| **K15** | RIPA2 one-sided Mann–Whitney (will-regress < no-regress) | ***p* = 0.0106** |
+| **K16** | First-pass dwell: will-regress vs no-regress | **194 ms vs 214 ms, *p* = 8.14 × 10⁻³²** |
+| **K17** | LF/HF observations for same comparison | N = 20 vs 17 (underpowered) |
 
-> **Complementary, not competing.** K3–K4 confirm the two metrics are uncorrelated at the observation level — they measure different temporal aspects of cognitive dynamics. K5–K6 confirm both agree on the aggregate positional gradient (load declines with position). RIPA2's advantage is per-fixation temporal resolution (K13–K16 show 18,500+ usable observations where LF/HF has only 41). LF/HF's advantage is interpretability and direct tie to Duchowski (2026).
+> **Complementary, not competing.** K3–K4 confirm the two metrics are nearly uncorrelated at the observation level — they measure different temporal aspects of cognitive dynamics. K5–K6 confirm both agree on the aggregate positional gradient (load declines with position). RIPA2's advantage is per-fixation temporal resolution. LF/HF's advantage is interpretability and direct tie to Duchowski (2026).
 >
-> **Encoding insight (K14–K15).** Items that will later receive scroll regressions show *lower* RIPA2 at first pass (0.077 vs 0.081, p = 0.002). This rejects the Pirolli scent-following prediction (higher arousal at scent-rich items) and supports encoding-completion: regressions go to items that were *insufficiently* processed, not items that triggered high arousal. Reframing: regressions are a completion mechanism, not a scent-following mechanism.
+> **Encoding insight (K14–K15).** Items that will later receive scroll regressions show *lower* RIPA2 at first pass. This rejects the Pirolli scent-following prediction (higher arousal at scent-rich items) and supports encoding-completion: regressions go to items that were *insufficiently* processed, not items that triggered high arousal. Reframing: regressions are a completion mechanism, not a scent-following mechanism.
 >
-> **Positional gradient discrepancy.** K5 matches NB14:K3 exactly (ρ = −0.618). The notebook's summary markdown cites ρ = −0.926 for LF/HF, which comes from a different analysis (batch comparison script with different aggregation). The code-computed value (K5) is canonical."""
+> **Coordinate-space audit (2026-04-12).** FPOGY page-space fix regenerated `butterworth-lfhf-by-position.json` and `ripa2-by-position.json`. Main shifts: K5 (LF/HF positional gradient) −0.618 → **−0.927** (matches NB14:K3), K6 (RIPA2 positional gradient) −0.827 → **−0.909**, K15 (RIPA2 will-regress one-sided *p*) 0.0022 → **0.0106** (weaker but still significant), K16 (first-pass dwell *p*) 4.1 × 10⁻²⁴ → **8.1 × 10⁻³²** (stronger). The main encoding-completion finding (K14, K15) is preserved and slightly weakened on RIPA2 while the dwell-time signature (K16) is strengthened. Both position gradients now strongly agree at ρ < −0.9."""
 
 
 # ── Drive ─────────────────────────────────────────────────────────────

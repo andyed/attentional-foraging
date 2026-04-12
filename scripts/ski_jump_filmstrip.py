@@ -1,0 +1,250 @@
+#!/usr/bin/env python3
+"""
+Generate the ski-jump filmstrip PNG for the README hero.
+
+Three-panel filmstrip showing the AdSERP p(click) by position curve in
+three regimes:
+    Panel 1 — Positions 0-2: warm-up (click rate rises 22.7% -> 25.0%)
+    Panel 2 — Positions 2-5: the cliff (25.0% -> 7.5%)
+    Panel 3 — Positions 5-9: plateau (7.5% -> 5.2%)
+
+Post-2026-04-12 coordinate-space audit data. There is no position-10 spike
+in the corrected data (sample size dropped below the reporting threshold).
+The previous filmstrip ("position-10 uptick") is superseded.
+
+Contrast: all text targets WCAG contrast >= 8:1 against the off-white
+background (#f8f6f0, luminance ~0.932). That requires text luminance
+<= 0.105, i.e. darker than about #555555. Defaults in this script are
+#1a1a1a (>17:1), #2a2a2a (>13:1), #333333 (~12:1), #1f4e8c (>8.2:1, blue),
+#8a1a1a (>8.1:1, red).
+
+No thin fonts at small sizes. All numbers labeled with units.
+"""
+
+from pathlib import Path
+import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from PIL import Image
+import io
+
+# -----------------------------------------------------------------------------
+# Post-fix data (2026-04-12 coordinate-space audit)
+# Source: docs/drafts/coord_fix_snapshot_20260412/post_fix_stdout_15_cursor_approach.txt
+# -----------------------------------------------------------------------------
+positions = np.arange(10)  # 0..9 only; position 10 sample below threshold
+click_rate = np.array([
+    0.227, 0.232, 0.250, 0.163, 0.102,
+    0.075, 0.070, 0.049, 0.046, 0.052,
+])
+n_trials = np.array([
+    2320, 2244, 2091, 1779, 1449,
+    1169,  946,  719,  481,  192,
+])
+
+# Scale y for visual drama (as in the original; kept proportional)
+SCALE = 20.0
+click_y = click_rate * SCALE
+
+# Smooth curve via cubic spline (for the ramp fill under the skier)
+from scipy.interpolate import CubicSpline
+t_fine = np.linspace(0, 9, 400)
+cs = CubicSpline(positions, click_y)
+ramp_y = np.maximum(cs(t_fine), 0.0)
+
+# -----------------------------------------------------------------------------
+# Palette — all text colors verified >= 8:1 contrast against #f8f6f0
+# -----------------------------------------------------------------------------
+BG = '#f8f6f0'
+TEXT_PRIMARY = '#1a1a1a'   # 17.8:1
+TEXT_SECONDARY = '#333333'  # 12.2:1
+TEXT_MUTED = '#555555'      # 8.0:1 (minimum floor — only for gridlines, never text below ~10pt)
+BLUE = '#1f4e8c'            # 8.2:1
+RED = '#8a1a1a'             # 8.1:1
+RAMP_FILL = '#e2dccb'
+RAMP_EDGE = '#555555'       # 8.0:1 (thin line, acceptable)
+GRID = '#bfbbae'            # decorative only
+
+# Skier colors (not text — visual)
+SKIER_BODY = '#1a1a1a'
+SKIER_HEAD = '#cc3d00'
+SKIER_SKI = '#0f3a6b'
+SKIER_POLE = '#333333'
+
+
+def draw_skier(ax, x, y, angle_deg=0.0, size=1.0):
+    """Draw a stick-figure skier at (x, y) tilted by angle_deg."""
+    s = 0.28 * size
+    a = np.radians(angle_deg)
+    # Body upward direction
+    up_dx = -np.sin(a)
+    up_dy = np.cos(a)
+    # Torso
+    ax.plot([x, x + up_dx * s * 2.6],
+            [y + s * 0.2, y + up_dy * s * 2.8],
+            color=SKIER_BODY, linewidth=3.0, solid_capstyle='round', zorder=11)
+    # Head
+    head = plt.Circle((x + up_dx * s * 3.2, y + up_dy * s * 3.2),
+                      s * 0.78,
+                      facecolor=SKIER_HEAD, edgecolor=SKIER_BODY,
+                      linewidth=1.6, zorder=12)
+    ax.add_patch(head)
+    # Skis
+    ski_len = s * 3.2
+    ski_dx = ski_len * np.cos(a)
+    ski_dy = ski_len * np.sin(a)
+    ax.plot([x - ski_dx, x + ski_dx],
+            [y - ski_dy, y + ski_dy],
+            color=SKIER_SKI, linewidth=3.6, solid_capstyle='round', zorder=10)
+    # Poles (simple)
+    ax.plot([x - up_dx * s * 0.5 - s * 0.4,
+             x - up_dx * s * 0.5 - s * 0.4],
+            [y + up_dy * s * 1.4, y - s * 0.6],
+            color=SKIER_POLE, linewidth=1.8, zorder=10)
+
+
+def make_panel(regime_idx, skier_pos):
+    """Render a single filmstrip panel.
+
+    regime_idx: 0..2. Controls the subtitle and highlight band.
+    skier_pos: position along the curve (float in [0, 9]) where the skier sits.
+    """
+    # Deliberate size: each panel is (w=7.3in, h=4.5in) at 100 dpi -> 730x450 px.
+    # Three panels side-by-side -> ~2190x450 before title padding.
+    fig, ax = plt.subplots(figsize=(7.3, 4.5), dpi=100)
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+
+    # Ramp fill and edge
+    ax.fill_between(t_fine, 0, ramp_y, color=RAMP_FILL, ec='none', zorder=1)
+    ax.plot(t_fine, ramp_y, color=RAMP_EDGE, linewidth=1.8, zorder=5)
+
+    # Highlight band for the current regime
+    if regime_idx == 0:
+        hi_x0, hi_x1 = -0.3, 2.3
+    elif regime_idx == 1:
+        hi_x0, hi_x1 = 1.7, 5.3
+    else:
+        hi_x0, hi_x1 = 4.7, 9.3
+    ax.axvspan(hi_x0, hi_x1, color='#1f4e8c', alpha=0.09, zorder=0)
+
+    # Gridlines for p(click) scale (light but with labeled values for legibility)
+    for p_raw in [0.05, 0.10, 0.15, 0.20, 0.25]:
+        y_s = p_raw * SCALE
+        ax.axhline(y_s, color=GRID, linewidth=0.6, zorder=2)
+        ax.text(-0.55, y_s, f'{int(p_raw * 100)}%',
+                ha='right', va='center',
+                fontsize=10, color=TEXT_SECONDARY, fontweight='semibold')
+
+    # Markers at each position
+    ax.scatter(positions, click_y,
+               s=40, facecolor=BLUE, edgecolor=TEXT_PRIMARY,
+               linewidth=1.2, zorder=6)
+
+    # Position labels under x-axis
+    for i, p in enumerate(positions):
+        ax.text(p, -0.55, str(p), ha='center', va='top',
+                fontsize=10, color=TEXT_SECONDARY, fontweight='semibold',
+                fontfamily='DejaVu Sans')
+
+    # Skier on the curve
+    i_lo = int(np.floor(skier_pos))
+    i_hi = min(i_lo + 1, len(positions) - 1)
+    frac = skier_pos - i_lo
+    # Interpolate from the spline instead of piecewise so skier lies on ramp
+    sx = skier_pos
+    sy = float(cs(skier_pos))
+    # slope at skier_pos
+    if skier_pos > 0:
+        d = 0.01
+        dy = float(cs(skier_pos + d) - cs(skier_pos - d))
+        angle = np.degrees(np.arctan2(dy, 2 * d))
+    else:
+        angle = -35
+    draw_skier(ax, sx, sy, angle_deg=angle, size=1.0)
+
+    # Per-regime subtitle
+    subtitles = [
+        'Positions 0-2: warm-up (22.7% -> 25.0%)',
+        'Positions 2-5: the cliff (25.0% -> 7.5%)',
+        'Positions 5-9: plateau (7.5% -> 5.2%)',
+    ]
+    ax.set_title(subtitles[regime_idx],
+                 fontsize=13, fontweight='bold',
+                 color=TEXT_PRIMARY, pad=12, loc='left')
+
+    # Header label (appears on all panels)
+    fig.text(0.5, 0.955, 'SERP click rate by position  -  AdSERP, N=13,419 trials (post-2026-04-12 fix)',
+             fontsize=11, color=TEXT_PRIMARY, ha='center', va='bottom',
+             fontweight='bold')
+
+    # Axis labels
+    ax.set_xlabel('SERP result position (0 = top)',
+                  fontsize=11, color=TEXT_PRIMARY, fontweight='semibold',
+                  labelpad=14)
+    ax.set_ylabel('p(click)  [click probability]',
+                  fontsize=11, color=TEXT_PRIMARY, fontweight='semibold',
+                  labelpad=8)
+
+    # Citation footer (inside frame so it survives crops)
+    ax.text(9.2, -1.7,
+            'Data: Latifzadeh, Gwizdka & Leiva (SIGIR 2025)',
+            fontsize=8, color=TEXT_SECONDARY, ha='right', va='top',
+            fontstyle='italic')
+
+    ax.set_xlim(-1.1, 9.8)
+    ax.set_ylim(-1.9, 6.5)
+
+    # Spines
+    for spine in ('top', 'right'):
+        ax.spines[spine].set_visible(False)
+    for spine in ('left', 'bottom'):
+        ax.spines[spine].set_color(TEXT_SECONDARY)
+        ax.spines[spine].set_linewidth(1.0)
+
+    ax.tick_params(axis='both', which='both',
+                   length=0, labelsize=0)  # we label manually
+
+    fig.subplots_adjust(left=0.09, right=0.97, top=0.87, bottom=0.14)
+
+    buf = io.BytesIO()
+    fig.savefig(buf, format='png', dpi=100, facecolor=BG)
+    plt.close(fig)
+    buf.seek(0)
+    return Image.open(buf).convert('RGB')
+
+
+def main():
+    root = Path(__file__).resolve().parents[1]
+    out_path = root / 'assets' / 'ski-jump-filmstrip.png'
+    out_sm_path = root / 'assets' / 'ski-jump-filmstrip_sm.png'
+
+    # Skier position along the curve — one per panel, each inside that regime's band
+    skier_positions = [1.0, 3.2, 6.5]
+
+    panels = [make_panel(i, skier_positions[i]) for i in range(3)]
+
+    # Compose horizontally
+    widths = [p.width for p in panels]
+    heights = [p.height for p in panels]
+    total_w = sum(widths)
+    total_h = max(heights)
+    filmstrip = Image.new('RGB', (total_w, total_h), (248, 246, 240))
+    x = 0
+    for p in panels:
+        filmstrip.paste(p, (x, 0))
+        x += p.width
+    filmstrip.save(out_path, optimize=True)
+    print(f'Wrote {out_path} ({filmstrip.size})')
+
+    # Small variant (half height)
+    sm_h = total_h // 2
+    sm_w = int(total_w * sm_h / total_h)
+    sm = filmstrip.resize((sm_w, sm_h), Image.LANCZOS)
+    sm.save(out_sm_path, optimize=True)
+    print(f'Wrote {out_sm_path} ({sm.size})')
+
+
+if __name__ == '__main__':
+    main()

@@ -35,7 +35,7 @@ This is a 2×2 interaction (topical relevance × perceived relevance), not a mai
 
 Curious users and moderately familiar users invest *more* cognitive effort. This contradicts the naive prediction that familiarity reduces load. The resolution: familiarity gives you the tools to engage deeply, curiosity gives you the motivation. Complete novices don't engage because they can't.
 
-**Connection to our data:** Per-result wavelet LHIPA appeared to decline during forward scanning, but Duchowski (2026) established that wavelet decomposition requires 7.5–10s minimum — our per-result segments (~2s) were below this threshold, making per-result LHIPA unreliable. Using Duchowski's recommended Butterworth IIR method (1s minimum window), we find cognitive load *decreases* with position (LF/HF ρ = −0.618, §3b-iv of findings.md). This is the opposite of the working memory accumulation prediction. The resolution: within-session "familiarity" compiles evaluation criteria rather than building load — the user gets more efficient, not more burdened. This contrasts with Shi et al.'s between-task familiarity finding (deeper engagement), because within-SERP familiarity serves discrimination, not comprehension.
+**Connection to our data:** Per-result wavelet LHIPA appeared to decline during forward scanning, but Duchowski (2026) established that wavelet decomposition requires 7.5–10s minimum — our per-result segments (~2s) were below this threshold, making per-result LHIPA unreliable. Using Duchowski's recommended Butterworth IIR method (1s minimum window), we find cognitive load *decreases* with position (LF/HF ρ = −0.927, §3b-iv of findings.md). This is the opposite of the working memory accumulation prediction. The resolution: within-session "familiarity" compiles evaluation criteria rather than building load — the user gets more efficient, not more burdened. This contrasts with Shi et al.'s between-task familiarity finding (deeper engagement), because within-SERP familiarity serves discrimination, not comprehension.
 
 ### 4. Confirmation bias reduces cognitive load
 
@@ -55,7 +55,7 @@ Bias doesn't change *what* users judge as relevant, only *how much effort* they 
 
 | Gap | Our contribution |
 |-----|-----------------|
-| No temporal process model | We decompose search into orientation → evaluation → working memory accumulation → regression → commitment phases, each with distinct behavioral and pupillometric signatures |
+| No temporal process model | We decompose search into orientation → survey → evaluation → regression → commitment phases, each with distinct behavioral and pupillometric signatures |
 | Trial-level LHIPA only | We extend LHIPA to per-result segments during naturalistic SERP browsing (78% computable at ≥64 samples) |
 | 300 Hz Tobii only | We demonstrate LHIPA at 150 Hz on Gazepoint GP3 HD — lower cost, broader accessibility |
 | Lab documents, not SERPs | We apply LHIPA to SERP browsing with scroll, regression, and click behavior |

@@ -198,9 +198,9 @@ Per-fixation mean pupil diameter (binocular average, blink-cleaned, N = 2,720 tr
 |-------|-----------|---------------------------|----------------|
 | **Orienting** | 1–2 | +1.2% dilation | Arousal/novelty response to new stimulus |
 | **Survey** | 3–5 | −3.0% constriction | Low-load gist sampling; visual system calibrating |
-| **Evaluate** | 6–20 | −1.3% → 0% (gradual recovery) | Cognitive work; working memory load builds |
+| **Evaluate** | 6–20 | −1.3% → 0% (gradual recovery) | Cognitive work; evaluation deepens (but per-position load decreases — see §3b-iv) |
 
-Survey vs evaluate pupil diameter: p = 10⁻¹¹⁷. The survey phase *constricts* pupils — it is a cheap sampling routine, not effortful processing. The cognitive work comes during committed reading (evaluate phase), where the pupil gradually recovers and eventually approaches baseline as working memory load builds from holding multiple candidates.
+Survey vs evaluate pupil diameter: p = 10⁻¹¹⁷. The survey phase *constricts* pupils — it is a cheap sampling routine, not effortful processing. The cognitive work comes during committed reading (evaluate phase), where the pupil gradually recovers toward baseline during deliberate evaluation of each candidate.
 
 **Notebook:** [13_survey_phase.ipynb](../notebooks-v2/13_survey_phase.ipynb)
 
@@ -208,15 +208,15 @@ Survey vs evaluate pupil diameter: p = 10⁻¹¹⁷. The survey phase *constrict
 
 Duchowski (2026) Butterworth IIR method enables per-result cognitive load measurement at the ~2-second per-position granularity where wavelet LHIPA cannot operate (minimum 7.5s). Two 4th-order Butterworth filters (LF: 0–1.6 Hz, HF: 1.6–4 Hz) applied to the full blink-cleaned 150 Hz pupil stream; LF/HF variance ratio computed per position during forward scanning. Higher LF/HF = higher cognitive load.
 
-**The working memory hypothesis is wrong.** LF/HF *decreases* with position (ρ = −0.618, p = 0.0426 on position medians, N = 2,719 trials) [NB14:K3]. Cognitive load peaks at position 0 and drops steeply through positions 0–3, then plateaus at approximately half the initial level through positions 4–10.
+**The working memory hypothesis is wrong.** LF/HF *decreases* with position (**ρ = −0.927, p < 0.0001** on position medians, N = 2,719 trials) [NB14:K3]. Cognitive load peaks at position 0 and drops steeply through positions 0–3, then plateaus at approximately half the initial level through positions 4–10.
 
 | Positions | Median LF/HF | N valid segments |
 |-----------|-------------|-----------------|
-| 0 | 30.0 | 1,015 |
-| 1–3 | 18.5 | 2,417 |
-| 4–10 | 16.9 | 3,150 |
+| 0 | 29.64 | 1,036 |
+| 1–3 | 19.7 | 3,193 |
+| 4–10 | 14.9 | 1,870 |
 
-Within-trial: median ρ = −0.200 (56.6% of 1,167 trials show declining load) [NB14:K5]. Cross-validation: trial-mean LF/HF anti-correlates with LHIPA (ρ = −0.122, p = 9.29 × 10⁻¹⁰) [NB14:K7], confirming both measures capture the same construct.
+Within-trial: median ρ = −0.400 (61.0% of 1,025 trials show declining load) [NB14:K5]. Cross-validation: trial-mean LF/HF anti-correlates with LHIPA (ρ = −0.125, p = 7.47 × 10⁻¹⁰, N = 2,416) [NB14:K7], confirming both measures capture the same construct.
 
 **Interpretation.** The first result demands the highest cognitive effort because the user is constructing evaluation criteria from scratch. As criteria compile, subsequent results require less effort per unit of committed evaluation time — even as behavioral gaze dwell *ratio* increases (forward-only dwell ratio ρ = +0.82, §2). This dissociation between time and cognitive effort indicates evaluation becomes *routinized*, not *overloaded*.
 
@@ -410,17 +410,17 @@ The natural rate is almost certainly much lower than AdSERP's 65%. From personal
 
 ## 10. Mouse proximity predicts click — and reveals the consideration set
 
-Gaze-cursor distance during fixations on a result predicts whether that result will be clicked. Per-result `min_dist` thresholds (NB15, post coordinate-space audit 2026-04-09, N = 15,397 records / 2,340 trials / 14.4% click rate) [NB15:K1]:
+Gaze-cursor distance during fixations on a result predicts whether that result will be clicked. Per-result `min_dist` thresholds (NB15, post coordinate-space audit 2026-04-12, **N = 13,419 records / 2,340 trials / 16.6% click rate**) [NB15:K1]:
 
 | Threshold | Prevalence | Click rate | Lift |
 |---|---|---|---|
-| min_dist < 58px | 8.9% | 46.4% | 3.2× |
-| min_dist < 100px | 16.2% | 41.5% | 2.9× |
-| min_dist < 150px | 23.6% | 35.1% | 2.4× |
+| min_dist < 58px | 14.6% | 42.7% | 2.6× |
+| min_dist < 100px | 28.2% | 37.7% | 2.3× |
+| min_dist < 150px | 41.3% | 32.3% | 1.9× |
 
 Closer approach → higher click probability. The gradient is monotonic and strong.
 
-**The "almost clicked" segment.** 4.8% of all result-position records (734 / 15,397) had `min_dist < 58px` and were not clicked — the consideration set made visible. These received **more fixations** than clicked results (22.2 vs 19.0 mean). Users evaluated them deeply, moved the cursor close, then chose something else. [NB21:K15] ("Evaluated-rejected" class) contains 344 records (2.2% of corpus) in the classifier-derived taxonomy.
+**The "almost clicked" segment.** **8.4%** of all result-position records (**1,122 / 13,419**) had `min_dist < 58px` and were not clicked — the consideration set made visible. These received **more fixations** than clicked results (24.0 vs 24.4 mean). Users evaluated them deeply, moved the cursor close, then chose something else. [NB21:K15] ("Evaluated-rejected" class) contains **974 records (7.3% of corpus)** in the classifier-derived taxonomy, or **439 records (3.3%)** using the NB22 cursor-approach + regression definition.
 
 **Why this matters for production.** Click models treat non-clicks as ambiguous — maybe the user examined the result and found it irrelevant, maybe they never saw it. Mouse proximity resolves this ambiguity without eye tracking. A non-clicked result where `min_cursor_distance < 100px` is a high-confidence **evaluated-and-rejected** signal. A non-clicked result where the cursor never approached is **unseen or unconsidered**. These carry opposite relevance implications.
 
@@ -434,18 +434,18 @@ The signal is deployable from standard mouse telemetry: `min_cursor_distance_to_
 
 Cursor approach-retreat goes beyond proximity. During evaluation, the mouse makes partial approach movements toward results that are ultimately rejected. This is a covert evaluation signal with a distinctive motor signature:
 
-Four-class taxonomy (NB22, regression-based split, post coordinate-space audit 2026-04-09):
+Four-class taxonomy (NB22, regression-based split, post coordinate-space audit 2026-04-12):
 
 | Category | N | % | Retreat (px) | Gaze Dwell (ms) | Dwell in Proximity (ms) |
 |----------|---|---|---|---|---|
-| **Clicked** | 2,214 | 14.4% | — | — | — |
-| **Deferred** (approached + regressed to) | 1,178 | 7.7% | 191.3 | 3,842 | 1,219 |
-| **Evaluated-rejected** (approached + no regression) | 278 | 1.8% | 96.4 | 2,018 | 682 |
-| **Not approached** | 11,727 | 76.2% | — | — | — |
+| **Clicked** | 2,228 | 16.6% | — | — | — |
+| **Deferred** (approached + regressed to) | 1,916 | 14.3% | 234.5 | 4,137 | 1,212.5 |
+| **Evaluated-rejected** (approached + no regression) | 439 | 3.3% | 90.8 | 1,612 | 690.0 |
+| **Not approached** | 8,836 | 65.8% | — | — | — |
 
-Motor signature separation: deferred vs rejected shows 2× retreat distance (191 vs 96 px, p = 1.9×10⁻¹¹), 1.9× gaze dwell (3,842 vs 2,018 ms, p = 3.7×10⁻²⁶), 1.8× proximity dwell (1,219 vs 682 ms, p = 5.0×10⁻⁹) [NB22:K5–K7].
+Motor signature separation: deferred vs rejected shows **2.6× retreat distance (234.5 vs 90.8 px, p = 1.76 × 10⁻³⁸)**, **2.6× gaze dwell (4,137 vs 1,612 ms, p = 9.76 × 10⁻⁷⁰)**, **1.8× proximity dwell (1,212.5 vs 690.0 ms, p = 1.36 × 10⁻¹⁶)** [NB22:K5–K7]. All three separations strengthened dramatically with the fixation-side coordinate fix (retreat-distance p went from 10⁻¹¹ to 10⁻³⁸, gaze-dwell p went from 10⁻²⁶ to 10⁻⁷⁰).
 
-**Approach predicts regression.** 83.8% of approached results get regressed to (odds ratio 5.04×, p = 1.9×10⁻²⁰³) [NB15:K6–K7]. Approach + regression → 43.5% click rate. Approach + no regression → 30.8%. No approach + regression → 11.6%. No approach + no regression → 6.7% [NB15:K8–K11].
+**Approach predicts regression.** **81.6%** of approached results get regressed to (odds ratio **3.21×**, χ² = 661.1, p = 8.72 × 10⁻¹⁴⁶) [NB15:K6–K7]. Approach + regression → **37.9%** click rate (N = 3,087). Approach + no regression → **36.9%** (N = 696). No approach + regression → **8.1%** (N = 5,589). No approach + no regression → **8.6%** (N = 4,047) [NB15:K8–K11].
 
 **Scroll doesn't carry this signal on desktop.** Scroll dwell and deceleration during regression are identical for clicked vs non-clicked results (all p > 0.3, notebook 17). The scroll is ballistic transportation; the cursor is the evaluation probe. On mobile, where scroll is the only motor channel, this may differ.
 

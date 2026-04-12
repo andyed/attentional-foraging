@@ -1,5 +1,100 @@
 # Changelog
 
+## 2026-04-12 — Fixation-side coordinate-space audit (symmetric to 2026-04-09)
+
+### The bug
+
+`notebooks-v2/data_loader.py` documented Gazepoint FPOGY as **screen-space** (viewport pixels, 0..scr_h) and provided helpers (`assign_fixation_to_position`, `gaze_cursor_distance`) that added scroll offset internally. Per the AdSERP README (https://github.com/kayhan-latifzadeh/AdSERP), FPOGY is actually **page-space** — "relative to the top-left corner of the screenshot in pixels." The JS `adserp-importer.js` in Scrutinizer had the correct interpretation all along. The Python loader was wrong.
+
+Empirical verification on 20 scrolled trials: Pearson *r*(FPOGY, scrollY) ≈ 0.95; (FPOGY − scrollY) falls inside the viewport [0, scr_h] for 98%+ of fixations; max FPOGY exceeds scr_h on scrolled trials (e.g. 2,143 on a 1,024-tall screen). This is definitionally impossible under the screen-space interpretation.
+
+The result: every `fix.y + scroll_y` in Python code was **double-counting scroll**. This is the symmetric bug to the 2026-04-09 cursor-side audit (which fixed the opposite sign error: adding scroll to values that were already page-space). Both bugs originated from the same miscommunication about coordinate conventions across the two language pipelines.
+
+### Discovery
+
+Found while validating the 31 canonical gazeplot trials against the authors' own full-page screenshots (Zenodo record 15236546, downloaded 2026-04-12). Empirically falsifiable: fixations plotted in page-space coordinates on the raw screenshots landed on meaningful content; the same fixations under the buggy `fix.y + scroll` interpretation landed off-page (past `doc_h`) on 842 of 2,776 trials.
+
+### Fix
+
+- `notebooks-v2/data_loader.py` — module docstring rewritten (FPOGY is page-space, full audit history); `load_fixations` drops `clamp_y`; `assign_fixation_to_position(page_y, tops, n_results)` new 3-arg signature; `gaze_cursor_distance` scroll-free (both inputs page-space); `screen_y_to_page_y` / `page_y_to_screen_y` renamed to `viewport_y_to_page_y` / `page_y_to_viewport_y`; `classify_fixations` no longer clamps or adds scroll.
+- `notebooks-v2/test_coordinate_invariants.py` — rewritten. New invariants enforce the correct page-space contract and fail loudly on any regression. Corpus-wide check: 234,333 / 234,339 fixations (100.00%) land within page bounds; 2,889 / 2,889 clicks (100.00%); 842 / 2,776 trials would have overflowed `doc_h` under the old `fix.y + scroll` formula.
+- **Notebook callers fixed:** NB07c, NB12, NB15, NB18_learning_curve, NB19, NB22 — removed `+ scroll` patterns and updated `assign_fixation_to_position` calls to the new signature. 17 substitutions across 5 notebooks plus the NB07c / NB12 structural rewrites.
+- **Script callers fixed:** `compute_butterworth_lfhf.py`, `compute_ripa2.py`, `compute_encoding_vs_retrieval.py`, `generate_explainer_heatmaps.py`.
+- **Downstream propagation:** `pupil-lfhf/validation/adserp_loader.py` forked loader patched in-place on `main` (not `feat/ripa2-comparison`, which Duchowski requested be kept isolated). `compute_butterworth_lfhf.py` and `compute_ripa2.py` in pupil-lfhf updated and re-run. `validation/README.md` and `CLAUDE.md` noted.
+- **approach-retreat:** README.md, docs/one-pager.md, docs/references/arapakis-leiva-2016.md, CLAUDE.md, and the 2026-04-10 historical memo (appended with a 2026-04-12 update section) — updated to post-fix values.
+
+### NB14 — the headline moved dramatically
+
+| K | Pre-fix (2026-04-10) | Post-fix (2026-04-12) |
+|---|---|---|
+| K1 Trials with usable LF/HF | 2,719 | 2,719 (unchanged) |
+| K2 Position-segments | 6,874 | **6,112** |
+| **K3** Pos × median LF/HF | **ρ = −0.618, *p* = 0.0426** (borderline) | **ρ = −0.927, *p* < 0.0001** |
+| K4 Positions 1–10 only | ρ = −0.491, *p* = 0.150 (**ns**) | **ρ = −0.903, *p* = 0.0003** (**sig**) |
+| K5 Within-trial (≥3 pos) | N=1,167, mean ρ = −0.105, 56.6% neg | **N=1,025, mean ρ = −0.152, median ρ = −0.400, 61.0% neg** |
+| K6 Clicked vs non-clicked LF/HF | 22.24 (N=1,110) vs 19.01 (N=5,472); *p* = 1.30 × 10⁻⁴ | **22.40 (N=1,463) vs 19.27 (N=4,636); *p* < 10⁻⁸** |
+| K9 Steep vs plateau (MW raw) | *p* = 4.1 × 10⁻²² | ***p* = 3.2 × 10⁻²³** |
+| K10 Steep phase Spearman (pos 0–3) | — | **ρ = −1.000** (perfect monotone) |
+| K11 Plateau phase (pos 4–10) | ρ = −0.393, *p* = 0.383 (**ns**) | **ρ = −0.714, *p* = 0.071** (marginal) |
+
+**The 2026-04-10 note in NB14_BODY that said "K3 unchanged by the 2026-04-09 audit because it uses fixation position, not click_pos" is now superseded — the fixation-side bug *does* touch K3.** The claim was right for the 2026-04-09 scope, wrong for the 2026-04-12 scope.
+
+### NB21 — M3 LOSO AUC moved too
+
+| K | Pre-fix (2026-04-10) | Post-fix (2026-04-12) |
+|---|---|---|
+| K1 Records / participants / click rate | 15,397 / 47 / 14.4% (2,214 clicks) | **13,419 / 47 / 16.6% (2,228 clicks)** |
+| K3 M3 LOSO AUC | **0.792 ± 0.062** | **0.859 ± 0.044** (+0.067) |
+| K4 M4 (approach only) AUC | 0.792 ± 0.061 | **0.861 ± 0.043** |
+| K7 M3 LOSO AP | 0.491 | **0.611** (+0.120) |
+| K9 Per-participant LOSO M3 AUC | median 0.798, IQR [0.759, 0.831], min 0.589 | **median 0.860, IQR [0.827, 0.901], min 0.745** |
+| K12 Brier score | 0.1781 | **0.1526** |
+| K15 Evaluated-rejected (classifier) | 344 (2.2%) | **974 (7.3%)** |
+| K21 position coefficient | −0.380 | −0.130 (same direction, weaker) |
+| K27 direction_changes coefficient | −0.005 | +0.061 |
+
+### NB22 — four-class taxonomy strengthened
+
+| K | Pre-fix | Post-fix |
+|---|---|---|
+| K2 Deferred N | 1,178 (7.7%) | **1,916 (14.3%)** |
+| K3 Evaluated-rejected N | 278 (1.8%) | **439 (3.3%)** |
+| K4 Not approached N | 11,727 (76.2%) | **8,836 (65.8%)** |
+| K5 Retreat distance (def vs rej) | 191.3 vs 96.4 px, *p* = 1.9 × 10⁻¹¹ | **234.5 vs 90.8 px, *p* = 1.76 × 10⁻³⁸** |
+| K6 Gaze dwell (def vs rej) | 3,842 vs 2,018 ms, *p* = 3.7 × 10⁻²⁶ | **4,137 vs 1,612 ms, *p* = 9.76 × 10⁻⁷⁰** |
+| K11 M3 LOSO AUC | 0.792 ± 0.062 | **0.859 ± 0.044** |
+
+### NB18 — RIPA2 vs LF/HF
+
+| K | Pre-fix | Post-fix |
+|---|---|---|
+| K5 LF/HF × position | ρ = −0.618 | **ρ = −0.927** |
+| K6 RIPA2 × position | ρ = −0.827 | **ρ = −0.909** |
+| K15 Will-regress one-sided *p* | 0.0022 | 0.0106 (weaker but still sig) |
+| K16 First-pass dwell *p* | 4.1 × 10⁻²⁴ | **8.1 × 10⁻³²** (stronger) |
+
+### Headline interpretation
+
+**No sign flips. No direction changes. Every effect got *stronger*.** The pre-fix scroll double-count was injecting noise in the position direction, masking the true signal. The framework-compilation story (steep decline early, plateau later) is preserved and sharpened. The deferred-vs-rejected motor signature dissociation — the CIKM 2026 paper's central empirical claim — is now on dramatically firmer statistical ground (retreat-distance *p* went from 10⁻¹¹ to 10⁻³⁸; gaze-dwell *p* from 10⁻²⁶ to 10⁻⁷⁰).
+
+K3 moving from ρ = −0.618, *p* = 0.0426 (borderline at α = 0.05) to **ρ = −0.927, *p* < 0.0001** is the biggest single win. K4 (positions 1–10 only) flipping from non-significant (ρ = −0.491, *p* = 0.150) to highly significant (ρ = −0.903, *p* = 0.0003) is the second biggest — pre-fix the 1–10 subset could not be cited; post-fix it's a robust effect.
+
+### Propagation
+
+All Key Claims blocks regenerated via `notebooks-v2/update_key_claims.py` (VERIFIED date bumped to 2026-04-12). `docs/findings.md` and `docs/findings-approach-retreat.md` refreshed. CIKM paper draft (`docs/drafts/cikm-2026/paper.md`) and model-analysis sidecar refreshed. Task-model paper, OSEC explainer, Duchowski correspondence drafts, publication roadmap, ETTAC brief, priming null result doc, Shi 2025 lit note — all substantive stale values replaced. Cross-repo: attentional-foraging / pupil-lfhf / approach-retreat are consistent. `science-agent notebook-audit` across all three repos returns zero substantive hits (remaining warnings are false positives on AttCur-dataset tables and historical audit memos).
+
+### Where the pre-fix state is preserved
+
+Snapshot at `docs/drafts/coord_fix_snapshot_20260412/`:
+- `key_claims_before.json` — extracted K-ID tables as of 2026-04-12 08:51 (just before the re-runs)
+- `butterworth-lfhf-by-position.json`, `ripa2-by-position.json`, `cursor-approach-features.json`, `cursor-approach-features-typed.json`, `encoding-vs-retrieval.json` — pre-fix copies
+- `notebook-key-claims.md` — pre-fix aggregate
+- `post_fix_stdout_{nb}.txt` — dumped cell outputs per notebook
+- `cell_output_diff.md` — naive diff (superseded by this entry)
+- `git_state.txt` — HEAD sha + working tree at snapshot time
+
+Historical audit memos that describe the 2026-04-09 state (`attentional-foraging/CHANGELOG.md` entry below, `approach-retreat/docs/drafts/2026-04-10-coord-audit-update.md`, `docs/findings-approach-retreat.md` "Refreshed" banner) have been left in place as the historical record of what was known at those dates — the 2026-04-12 entries build on them rather than replacing them.
+
 ## Unreleased — 2026-04-10
 
 ### ETTAC infrastructure

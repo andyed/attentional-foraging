@@ -131,8 +131,8 @@ def identify_forward_pass(fixations, scroll_ts, scroll_ys, tops, n_results):
     visited = set()
 
     for fix in fixations:
-        scroll_y = interpolate_scroll(fix['t'], scroll_ts, scroll_ys)
-        pos = assign_fixation_to_position(fix['y'], scroll_y, tops, n_results)
+        # FPOGY is page-space (2026-04-12 audit) — bisect directly, no scroll.
+        pos = assign_fixation_to_position(fix['y'], tops, n_results)
         if pos is None or pos < 0:
             continue
 

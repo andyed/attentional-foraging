@@ -1,6 +1,6 @@
 # Cursor Approach-Retreat as Covert Evaluation Signal
 
-> **⚠️ SUPERSEDED (2026-04-09 coordinate-space audit).** The numbers throughout this document were computed from `cursor-approach-features.json` before a scroll double-counting bug in NB15 was fixed. Headline direction survives (approach predicts click, M3 > M1), but magnitudes are stale. The canonical post-fix values live in `docs/notebook-key-claims.md` §NB21. Key shifts: M3 AUC 0.827 → 0.792, clicked N 1,981 → 2,214, Evaluated-rejected 994 → 344. See `CHANGELOG.md` Unreleased entry for the full before/after table.
+> **Refreshed 2026-04-12** to reflect the fixation-side coordinate-space audit (symmetric to the 2026-04-09 cursor-side audit). Pre-2026-04-09 numbers were contaminated by a scroll double-count on cursor Y; pre-2026-04-12 numbers carried a similar double-count on gaze (FPOGY). The canonical post-fix values live in `docs/notebook-key-claims.md` §NB21/§NB22. Headline direction preserved through both audits; magnitudes **strengthened** in the second audit. Key shifts from the 2026-04-12 fix: M3 LOSO AUC **0.792 → 0.859**, clicked N **2,214 → 2,228**, Deferred N **1,178 → 1,916**, Evaluated-rejected N **278 → 439**, retreat-distance dissociation *p* **1.9 × 10⁻¹¹ → 1.76 × 10⁻³⁸**. See `CHANGELOG.md` and `docs/drafts/coord_fix_snapshot_20260412/` for before/after.
 
 ## The finding
 
@@ -8,11 +8,11 @@ During SERP evaluation, the mouse cursor makes partial approach movements toward
 
 ### Key numbers (notebook 15, N = 2,340 trials)
 
-- **14.8%** of fixated results had the cursor approach within 100px and then withdraw without a click
+- **17.5%** of fixated results had the cursor approach within 100px and then withdraw without a click (**2,355 / 13,419** post-fix)
 - **Universal:** 100% of participants (47/47) show it. 55% of trials have at least one instance.
-- **Cognitively loaded:** Pupil LF/HF is 23.8 (close) vs 17.2 (far), p = 4.9×10⁻¹². These are genuine evaluation episodes.
-- **Distinctive motor signature:** Retreat distance for rejected results is 244px vs 119px for clicked results (p = 5.3×10⁻⁹²). The cursor approaches, the user evaluates, then actively withdraws.
-- **Predictive:** Position + dwell + approach features → AUC 0.823 vs position-only 0.618. Cursor-only signal, no eye tracker needed.
+- **Cognitively loaded:** Pupil LF/HF is **22.7** (close, <100px) vs **18.0** (far, >300px), *p* = **6.99 × 10⁻⁵**. These are genuine evaluation episodes.
+- **Distinctive motor signature:** Retreat distance for approached-rejected results is **208 px** vs **75.5 px** for clicked results (*p* = **1.15 × 10⁻¹³¹**). The cursor approaches, the user evaluates, then actively withdraws.
+- **Predictive:** Position + dwell + approach features → **AUC 0.859 ± 0.044 (LOSO M3)** vs position-only **0.613**. Cursor-only signal, no eye tracker needed.
 
 ### The consideration set
 
@@ -28,30 +28,29 @@ Feed-forward models collapse the last two into one class. Approach-retreat split
 
 ### Retreat distance predicts click outcome
 
-Four-class taxonomy (NB22, regression-based split, post coordinate-space audit 2026-04-09):
+Four-class taxonomy (NB22, regression-based split, post coordinate-space audit 2026-04-12):
 
 | Category | N | % | Retreat (px) | Gaze Dwell (ms) | Prox Dwell (ms) |
 |----------|---|---|---|---|---|
-| **Clicked** | 2,214 | 14.4% | — | — | — |
-| **Deferred** (approached + regressed) | 1,178 | 7.7% | 191.3 | 3,842 | 1,219 |
-| **Evaluated-rejected** (approached, no regression) | 278 | 1.8% | 96.4 | 2,018 | 682 |
-| **Not approached** | 11,727 | 76.2% | — | — | — |
+| **Clicked** | 2,228 | 16.6% | — | — | — |
+| **Deferred** (approached + regressed) | 1,916 | 14.3% | 234.5 | 4,137 | 1,212.5 |
+| **Evaluated-rejected** (approached, no regression) | 439 | 3.3% | 90.8 | 1,612 | 690.0 |
+| **Not approached** | 8,836 | 65.8% | — | — | — |
 
-Deferred vs rejected motor separation: 2× retreat distance (191 vs 96 px, p = 1.9×10⁻¹¹), 1.9× gaze dwell (p = 3.7×10⁻²⁶), 1.8× proximity dwell (p = 5.0×10⁻⁹). Source: NB22:K5–K7.
+Deferred vs rejected motor separation: **2.6× retreat distance (234.5 vs 90.8 px, *p* = 1.76 × 10⁻³⁸)**, **2.6× gaze dwell (*p* = 9.76 × 10⁻⁷⁰)**, **1.8× proximity dwell (*p* = 1.36 × 10⁻¹⁶)**. Source: NB22:K5–K7. All three separations strengthened dramatically after the 2026-04-12 fixation-side fix (retreat-distance *p* went from 10⁻¹¹ → 10⁻³⁸, gaze-dwell *p* from 10⁻²⁶ → 10⁻⁷⁰).
 
-**Methodology note:** The regression-based split (NB22) uses scroll regression as the deferred/rejected criterion. The classifier-derived split (NB21:K13–K16) uses the LOSO M3 predicted probability at Youden's J threshold (p = 0.495) and yields 1,112 deferred / 344 evaluated-rejected. Both approaches are available; the classifier-derived version is the paper's canonical taxonomy (§4.3).
+**Methodology note:** The regression-based split (NB22) uses scroll regression as the deferred/rejected criterion. The classifier-derived split (NB21:K13–K16) uses the LOSO M3 predicted probability at Youden's J threshold (*p* = 0.493) and yields 1,381 deferred / 974 evaluated-rejected. Both approaches are available; the classifier-derived version is the paper's canonical taxonomy (§4.3).
 
 ### Approach + regression = the return-to-click pathway
 
-Cursor approach predicts scroll regression (odds ratio 5.04×, p = 1.9×10⁻²⁰³):
+Cursor approach predicts scroll regression (odds ratio **3.21×**, χ² = 661.1, *p* = 8.72 × 10⁻¹⁴⁶):
 
 | Pathway | N | Click Rate |
 |---------|---|-----------|
-| **Approach + regression** | 2,086 | 43.5% |
-| **Approach + no regression** | 402 | 30.8% |
-| **No approach + regression** | 6,551 | 11.6% |
-| **No approach + no regression** | 6,358 | 6.7% |
-| **No approach + no regression** | 5,998 | 6.1% |
+| **Approach + regression** | 3,087 | 37.9% |
+| **Approach + no regression** | 696 | 36.9% |
+| **No approach + regression** | 5,589 | 8.1% |
+| **No approach + no regression** | 4,047 | 8.6% |
 
 **Short retreat + regression = future return to click.** The cursor lingered, the user scrolled away to compare, then came back. 78.3% of approached results get regressed to.
 
@@ -177,7 +176,7 @@ On desktop, scroll kinematics during regression do NOT discriminate click target
 - [ ] **Cross-dataset generalizability:** AdSERP is transactional product search with forced choice. Does approach-retreat appear in informational queries? In naturalistic search?
 - [~] **Temporal dynamics:** Notebook 18 (learning curve) addresses across-trial dynamics. Within-trial approach velocity change still open — framework compilation predicts later approaches should be *faster* (criteria already compiled), not slower.
 - [ ] **Rosenholtz Feature Congestion:** Score visual clutter by element type — does congestion predict approach-retreat rate? Requires rendering all 2,776 SERPs.
-- [ ] **Regression click model:** Fit a logistic regression (or gradient-boosted tree) predicting click from approach features alone: retreat distance, min distance, dwell in proximity, direction changes, approach velocity. This replaces the current post-hoc category split (which makes the 0% click rate tautological) with a learned threshold — producing an ROC curve and optimal operating point for approach-retreat severity. Compare against the position+dwell AUC baseline (0.618 → 0.823 with approach features). Element-type calibration needed (§"Cost structures").
+- [ ] **Regression click model:** Fit a logistic regression (or gradient-boosted tree) predicting click from approach features alone: retreat distance, min distance, dwell in proximity, direction changes, approach velocity. This replaces the current post-hoc category split (which makes the 0% click rate tautological) with a learned threshold — producing an ROC curve and optimal operating point for approach-retreat severity. Compare against the position+dwell AUC baseline (0.613 → 0.859 with approach features). Element-type calibration needed (§"Cost structures").
 
 ## Notebooks
 

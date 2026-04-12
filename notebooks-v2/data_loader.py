@@ -14,45 +14,61 @@ Usage:
     doc_h, scr_h, ts = get_trial_meta('p004-b1-t1')
 
 ═══════════════════════════════════════════════════════════════════════════
-COORDINATE SYSTEM CONVENTIONS — READ BEFORE TOUCHING ANY CURSOR/CLICK CODE
+COORDINATE SYSTEM CONVENTIONS — READ BEFORE TOUCHING FIXATION/CURSOR CODE
 ═══════════════════════════════════════════════════════════════════════════
 
-AdSERP combines two streams with DIFFERENT coordinate spaces. Mixing them
-silently produces a scroll-proportional bug that looks plausible but breaks
-every click_pos and gaze-cursor distance on scrolled trials (82% of corpus).
+AdSERP gaze, cursor, and click streams are ALL in PAGE-SPACE (coordinates
+relative to the top-left of the full-page screenshot, with scroll already
+baked in). There is no screen-space / page-space conversion to do at the
+fixation level — comparing any two streams is just `(x1, y1)` vs `(x2, y2)`.
 
   1. GAZE  (fixation-data/*.csv, columns FPOGX/FPOGY)
-     SOURCE:  Gazepoint GP3 HD — physical eye tracker, no scroll awareness.
-     SPACE:   SCREEN-space (viewport pixels, 0..scr_h).
-     CONVERT: To page-space, ADD scroll offset at fixation time:
-                  page_y = fix['y'] + scroll_at_t
-              `load_fixations()` clamps FPOGY to [0, scr_h] to drop noise.
+     SOURCE: Gazepoint GP3 HD, 150 Hz.
+     SPACE:  PAGE-space. Per the AdSERP README
+             (https://github.com/kayhan-latifzadeh/AdSERP):
+               "FPOGX/FPOGY: Fixation positions ... relative to the
+                top-left corner of the screenshot in pixels."
+             The screenshot is the full-page capture, so FPOGY can exceed
+             `screen_height` whenever the user has scrolled.
+     VERIFY: For 18/20 scrolled trials sampled on 2026-04-12,
+             Pearson r(FPOGY, scrollY) ≈ 0.95 and (FPOGY − scrollY) falls
+             inside the viewport [0, scr_h] for 98%+ of fixations — proof
+             that FPOGY already includes scroll.
 
   2. CURSOR (mouse-movement-data/*.csv, columns xpos/ypos)
-     SOURCE:  evtrack JS library — listens to DOM events.
-     SPACE:   PAGE-space (pageY, already includes scroll). Verified
-              empirically: `p004-b2-t3` has mouseY up to 1902 px while
-              the browser window is only 1137 px tall.
-     CONVERT: To screen-space, SUBTRACT scroll offset at cursor time:
-                  screen_y = cursor['y'] - scroll_at_t
-              DO NOT add scroll — that double-counts it. This is the bug
-              that contaminated NB01/03/05/06/07b/10/12/15/18/23/24 and
-              two precomputed-data scripts prior to the 2026-04 audit.
+     SOURCE: evtrack JS library, pageX/pageY from DOM events.
+     SPACE:  PAGE-space. Same convention as gaze.
 
   3. CLICK EVENTS (clicks[-1] from load_mouse_events)
-     Same convention as cursor. `clicks[-1][2]` is ALREADY page-space.
-     Never add scroll to it.
+     Same convention as cursor — page-space, already includes scroll.
 
   4. RESULT BAND TOPS (`result_band_tops(n_results, doc_h)`)
-     PAGE-space, measured from doc top. Compare page-space Ys directly;
-     do NOT add scroll to either side.
+     PAGE-space, measured from doc top. Compare page-space Ys directly.
 
-USE THE HELPERS BELOW — don't cargo-cult. If you find yourself writing
-`+ scroll` on a mouse coordinate, stop and use `click_to_position()` or
-`gaze_cursor_distance()` instead.
+To map a fixation or cursor Y to a viewport position (for "which result
+was on screen at this moment" type questions), SUBTRACT the scroll offset
+at that timestamp. Nothing in this module adds scroll to a fixation or
+cursor Y — if you find yourself writing `+ scroll` on either, stop.
 
-See `test_coordinate_invariants.py` for the regression test that makes
-these invariants enforceable.
+═══════════════════════════════════════════════════════════════════════════
+AUDIT HISTORY
+═══════════════════════════════════════════════════════════════════════════
+
+  2026-04-09 — CURSOR/CLICK bug fixed. Prior code added scroll to cursor
+               and click Ys (which were already page-space), double-counting
+               scroll on 82% of the corpus. Affected NB01/03/05/06/07b/10/
+               12/15/18/23/24 plus two precomputed scripts.
+
+  2026-04-12 — FIXATION bug fixed. Prior docstring and helpers falsely
+               documented FPOGX/FPOGY as screen-space (viewport pixels),
+               so callers did `page_y = fix.y + scroll` — the same
+               double-count on the gaze side. Discovered while validating
+               the 31 canonical gazeplot trials against the authors' own
+               full-page screenshots (Zenodo record 15236546). Empirical
+               falsification above. AdSERP README is authoritative.
+               Affected NB14/15/18/19/22 and the pupil-lfhf forked loader.
+
+See `test_coordinate_invariants.py` for the regression tests.
 """
 
 import csv
@@ -88,35 +104,28 @@ def get_trial_ids():
 
 # ── Fixation loading ───────────────────────────────────────────────────────
 
-def load_fixations(trial_id, clamp_y=True):
+def load_fixations(trial_id):
     """Load fixations for a trial.
 
-    Returns list of dicts: {t, x, y, y_raw, d} where t is timestamp (ms),
-    x/y are screen-space pixels, d is duration (ms).
+    Returns list of dicts: {t, x, y, d} where t is timestamp (ms), x/y are
+    page-space pixels (relative to the full-page screenshot, includes scroll),
+    and d is duration (ms).
 
-    FPOGY clamp: 24.5% of Gazepoint GP3 HD fixations have FPOGY > screen
-    height (1024px). These are eye-tracker noise, not gaze at below-screen
-    content. Clamping to [0, screen_height] prevents downstream position
-    mapping errors. y_raw preserves the original value.
+    No clamping: prior versions clamped FPOGY to [0, scr_h] under the false
+    assumption that FPOGY was viewport-space and that values above scr_h were
+    eye-tracker noise. Per the AdSERP README, FPOGY is page-space — values
+    above scr_h are legitimate gazes at below-fold content after the user
+    scrolled. See module docstring audit history (2026-04-12).
     """
     path = FIXATION_DIR / f'{trial_id}.csv'
-    # Get screen height for clamping
-    screen_h = 1024  # default
-    if clamp_y:
-        meta = get_trial_meta(trial_id)
-        if meta[1] is not None:
-            screen_h = meta[1]
-
     fixations = []
     with open(path) as f:
         for row in csv.DictReader(f):
             try:
-                y_raw = float(row['FPOGY'])
                 fixations.append({
                     't': float(row['timestamp']),
                     'x': float(row['FPOGX']),
-                    'y': min(y_raw, screen_h) if clamp_y else y_raw,
-                    'y_raw': y_raw,
+                    'y': float(row['FPOGY']),
                     'd': float(row['FPOGD']),
                 })
             except (ValueError, KeyError):
@@ -339,30 +348,24 @@ def count_results_html(trial_id):
     except Exception:
         return 0
 
-def assign_fixation_to_position(screen_fix_y, scroll_y_at_t, tops, n_results):
-    """Map a SCREEN-SPACE gaze fixation to a result position.
+def assign_fixation_to_position(page_y, tops, n_results):
+    """Map a page-space fixation Y to a result position.
 
-    *** FOR GAZE FIXATIONS ONLY — DO NOT PASS CURSOR OR CLICK Y HERE. ***
-
-    Gazepoint FPOGY is screen-space (viewport pixels). This function adds
-    the scroll offset at fixation time to convert to page-space, then
-    bisects against the page-space result band tops.
-
-    If you have a cursor or click Y, it is ALREADY page-space — use
-    `click_to_position()` or `cursor_to_position()` instead. Calling this
-    function with a page-space Y double-counts the scroll and silently
-    mis-assigns positions on scrolled trials.
+    FPOGY from load_fixations() is already page-space (see module docstring).
+    This function just bisects against the page-space result band tops — no
+    scroll arithmetic. The function accepts cursor_y and click_y too, since
+    all three streams share the page-space convention; the separate helpers
+    `click_to_position()` and `cursor_to_position()` are kept for clarity at
+    call sites.
 
     Args:
-        screen_fix_y: screen-space FPOGY (viewport pixels, 0..scr_h).
-        scroll_y_at_t: scroll offset at fixation time, from interpolate_scroll().
+        page_y: page-space Y (fixation, cursor, or click).
         tops: result band top boundaries (page-space, from result_band_tops).
         n_results: total number of results.
 
     Returns: position index (0-based), or -1 if outside all bands.
     """
-    page_y = screen_fix_y + scroll_y_at_t
-    pos = bisect_right(tops, page_y) - 1
+    pos = bisect_right(tops, float(page_y)) - 1
     if 0 <= pos < n_results:
         return pos
     return -1
@@ -424,41 +427,40 @@ def cursor_to_position(cursor_y_page, tops, n_results):
     return -1
 
 
-def screen_y_to_page_y(screen_y, scroll_y_at_t):
-    """Convert a SCREEN-space Y (gaze) to PAGE-space by adding scroll."""
-    return float(screen_y) + float(scroll_y_at_t)
+def page_y_to_viewport_y(page_y, scroll_y_at_t):
+    """Subtract scroll to get the viewport-relative Y at a given moment.
 
-
-def page_y_to_screen_y(page_y, scroll_y_at_t):
-    """Convert a PAGE-space Y (cursor/click) to SCREEN-space by subtracting scroll."""
+    Use when you need "where on the visible screen was this thing at time t"
+    — e.g. for rendering, for viewport-containment tests, or for mapping
+    to eye-tracker calibration targets. The result can be negative (the
+    point has scrolled off the top) or exceed screen_height (hasn't scrolled
+    into view yet).
+    """
     return float(page_y) - float(scroll_y_at_t)
 
 
-def gaze_cursor_distance(
-    fix_x_screen, fix_y_screen, cursor_x_page, cursor_y_page, scroll_y_at_t
-):
-    """Euclidean distance between gaze and cursor, in SCREEN-space pixels.
+def viewport_y_to_page_y(viewport_y, scroll_y_at_t):
+    """Add scroll to a viewport-relative Y to get page-space.
 
-    The one true way. Gaze comes from FPOGX/Y (screen-space); cursor comes
-    from evtrack xpos/ypos (page-space); we collapse both to screen-space
-    at the given scroll offset, then compute the Euclidean distance.
-
-    This is the correct replacement for NB15's buggy formula
-        dist = hypot(fix_x - mx, (fix_y + fix_scroll) - (my + fix_scroll))
-    which silently measures `fix_y - my` — an incoherent mix of screen- and
-    page-space Ys that leaks scroll into the result.
-
-    Args:
-        fix_x_screen, fix_y_screen: gaze position (FPOGX, FPOGY).
-        cursor_x_page, cursor_y_page: cursor position (xpos, ypos) from
-            an interpolated mouse event.
-        scroll_y_at_t: scroll offset at the relevant time.
-
-    Returns: distance in pixels (float).
+    The inverse of `page_y_to_viewport_y`. Rarely needed for AdSERP data
+    since all three streams (gaze, cursor, click) arrive in page-space —
+    this exists for callers synthesizing gaze at a target screen location.
     """
-    cursor_y_screen = float(cursor_y_page) - float(scroll_y_at_t)
-    dx = float(fix_x_screen) - float(cursor_x_page)
-    dy = float(fix_y_screen) - cursor_y_screen
+    return float(viewport_y) + float(scroll_y_at_t)
+
+
+def gaze_cursor_distance(fix_x, fix_y, cursor_x, cursor_y):
+    """Euclidean distance between gaze and cursor, in page-space pixels.
+
+    Both streams are page-space per the module docstring, so no scroll
+    arithmetic enters — the distance is just hypot of the deltas. Scroll
+    cancels even under the old (wrong) screen-space interpretation, which
+    is why the original NB15 bug (adding scroll to both sides) was
+    algebraically a no-op on dx/dy but still produced nonsense when the
+    code later compared fix_y to a mixed-space quantity.
+    """
+    dx = float(fix_x) - float(cursor_x)
+    dy = float(fix_y) - float(cursor_y)
     return float(np.hypot(dx, dy))
 
 
@@ -755,8 +757,7 @@ def classify_fixations(trial, hwm_tolerance=50):
 
         is_forward = (so >= hwm - hwm_tolerance)
 
-        fy = max(0.0, min(fix['y'], scr_h))
-        page_y = fy + so
+        page_y = fix['y']  # FPOGY is already page-space (see module docstring)
         pos = bisect_right(tops, page_y) - 1
         if pos < 0 or pos > 9:
             pos = -1

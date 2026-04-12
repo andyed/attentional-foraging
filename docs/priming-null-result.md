@@ -73,7 +73,7 @@ Also null in forward scanning. The structural reason is that forward-only p(fixa
 
 The more interesting question, once priming was ruled out, became *why* dwell time declines with position at all if content overlap is not the mechanism. The pupil data answered it.
 
-**Per-position cognitive load decreases with position, not increases** (Butterworth LF/HF, ρ = −0.618, *p* = 0.04; findings.md §3b-iv). Load peaks at position 0 where the user is building evaluation criteria from scratch, drops steeply through positions 0–3, then plateaus. By position 4 the framework is built and load stays flat all the way down.
+**Per-position cognitive load decreases with position, not increases** (Butterworth LF/HF, ρ = −0.927, *p* < 0.0001; findings.md §3b-iv). Load peaks at position 0 where the user is building evaluation criteria from scratch, drops steeply through positions 0–3, then plateaus. By position 4 the framework is built and load stays flat all the way down.
 
 This is **framework compilation**: the user becomes a domain-specific expert evaluator within a single SERP scan. The first result is expensive because the user is constructing selection criteria — "I want this price range, this brand tier, these features". Subsequent results are cheaper because the criteria are already compiled; each comparison just matches a candidate against a fixed rubric.
 
