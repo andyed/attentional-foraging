@@ -52,6 +52,7 @@ NOTEBOOK_LABELS = {
     "05_lhipa.ipynb": ("NB05", "05_lhipa", "LHIPA pupillometric cognitive load validation"),
     "12_regression_precision_by_load.ipynb": ("NB12", "12_regression_precision_by_load", "regression landing precision under cognitive load (null)"),
     "18_ripa2_vs_lfhf.ipynb": ("NB18", "18_ripa2_vs_lfhf", "RIPA2 vs Butterworth LF/HF comparison"),
+    "25_serp_composition.ipynb": ("NB25", "25_serp_composition", "corpus SERP structure — absolute vs organic rank, ad types, validation cohorts"),
 }
 
 
@@ -603,6 +604,93 @@ NB18_BODY = """### Dataset
 > **Coordinate-space audit (2026-04-12).** FPOGY page-space fix regenerated `butterworth-lfhf-by-position.json` and `ripa2-by-position.json`. Main shifts: K5 (LF/HF positional gradient) −0.618 → **−0.927** (matches NB14:K3), K6 (RIPA2 positional gradient) −0.827 → **−0.909**, K15 (RIPA2 will-regress one-sided *p*) 0.0022 → **0.0106** (weaker but still significant), K16 (first-pass dwell *p*) 4.1 × 10⁻²⁴ → **8.1 × 10⁻³²** (stronger). The main encoding-completion finding (K14, K15) is preserved and slightly weakened on RIPA2 while the dwell-time signature (K16) is strengthened. Both position gradients now strongly agree at ρ < −0.9."""
 
 
+# ── NB25 — SERP composition / corpus structure ────────────────────────
+NB25_BODY = """### Corpus size and preprocessing coverage
+
+| ID | Claim | Value |
+|---|---|---|
+| **K1** | Total AdSERP trials | **2,776** |
+| **K2** | Trials with ≥ 1 click inside a result band | **2,764** |
+| **K3** | Trials with ad-boundary-data file present | 2,776 (100%) |
+| **K4** | Trials with non-empty ad-boundary rects | 2,723 |
+| **K5** | Unique queries | **2,776** (every trial has a unique query — forced-choice task) |
+| **K6** | Unique brands | 1,320 |
+
+### Absolute rank (all h3 slots, ads + organic pooled)
+
+| ID | Claim | Value |
+|---|---|---|
+| **K7** | Modal absolute-rank count (h3 slots per trial) | **12** (31.7 %, 879 trials) |
+| **K8** | Range of absolute-rank count | 1 – 17 |
+| **K9** | Trials with ≥ 11 absolute slots (i.e., at least 1 ad interleaved) | **92 %** (2,553 / 2,776) |
+| **K10** | Trials with exactly 10 absolute slots | 188 (6.8 %) |
+
+### Organic rank (ads filtered via ad-boundary overlap)
+
+| ID | Claim | Value |
+|---|---|---|
+| **K11** | Modal organic-rank count | **10** (26.3 %, 731 trials) |
+| **K12** | Range of organic-rank count | 1 – 15 |
+| **K13** | Trials with organic count ∈ {9, 10, 11} | **70.4 %** (1,938 / 2,776) |
+| **K14** | Trials with exactly 10 organic results (any ads) | 731 (26.3 %) |
+
+### Ad type distributions — `dd_top` is binary, `native_ad` is bimodal
+
+| ID | Claim | Value |
+|---|---|---|
+| **K15** | Trials with 0 dd_top ads | **1,194** (43.01 %) |
+| **K16** | Trials with 1 dd_top ad | **1,582** (57.0 %) |
+| **K17** | Trials with ≥ 2 dd_top ads | 0 (dd_top is binary per trial) |
+| **K18** | dd_top absolute-rank location (83.5 % at rank 0, 16.5 % at rank 1) | rank 0 when no native ads above; rank 1 when displaced |
+| **K19** | Modal native_ad count per trial | **3** (49.6 %) |
+| **K20** | Max native_ad count per trial | 7 |
+| **K21** | Native ad absolute-rank distribution (bimodal) | **25.6 %** at abs ranks 0–2; **73 %** at abs ranks 6–11; modal abs rank 8 |
+| **K22** | Mean total ads per trial (dd_top + native) | 3.89 |
+| **K23** | Participant-level ad exposure mean range | **3.28 – 4.33** (±13 % flat across 47 pids) |
+| **K24** | Block-level ad exposure | flat across blocks 1–6 (no block effect) |
+
+### Click distribution — absolute rank is non-monotone, organic rank is textbook
+
+| ID | Claim | Value |
+|---|---|---|
+| **K25** | Total clicks inside result bands | 2,875 |
+| **K26** | Clicks in ad slots (dd_top + native, in-column) | **407** (14.2 %) |
+| **K27** | Click distribution × **absolute** rank peaks at | **rank 2 (24.5 %)**, not rank 0 (19.0 %) — dd_top displacement |
+| **K28** | Click distribution × **organic** rank peaks at | **rank 0 (41.3 %)** — textbook monotonic ski-jump |
+| **K29** | Clicks unassignable to any rank (outside all bands) | 14 |
+
+### Validation cohorts for position-based analyses
+
+| ID | Cohort | N | % | Definition |
+|---|---|---|---|---|
+| **K30** | `textbook_10org` | **16** | 0.58 % | Exactly 10 organic, 0 ads of any type |
+| **K31** | `canonical_10org_leq2ddtop` | 35 | 1.26 % | 10 organic + 0–2 dd_top + 0 native |
+| **K32** | `no_any_ad` | 53 | 1.91 % | Zero ad rects in result column (includes irregular organic counts) |
+| **K33** | **`plain_top`** | **776** | **27.95 %** | No dd_top ad at absolute rank 0 (any native_ad allowed) — **cohort used for ski-jump validation in NB23:K19** |
+| **K34** | `no_ddtop` | 1,194 | 43.01 % | Zero dd_top ads (any native_ad allowed) |
+| **K35** | **`clean_for_ctr`** | **555** | **19.99 %** | `plain_top` ∩ organic rank count ∈ {9, 10, 11} — **recommended cohort for ETTAC/CIKM CTR-by-rank figures** (NB23:K19) |
+
+### Query/brand-level ad density (top automotive-parts brands)
+
+| ID | Brand | N trials | dd_top / trial |
+|---|---|---|---|
+| **K36** | delphi | 40 | 0.93 |
+| **K37** | gates | n/a | 0.89 |
+| **K38** | monroe | n/a | 0.76 |
+| **K39** | bosch | n/a | 0.64 |
+| **K40** | denso | 113 | 0.58 (highest-volume brand) |
+
+> **AdSERP is not a "10-result SERP dataset."** Only 0.58 % of trials match the textbook "10 organic + no ads" shape. The modal trial has 12 h3 slots; 37.5 % have 13 +. Any paper framing that calls AdSERP a 10-result corpus is wrong — use "47 participants, 2,776 commercial search trials, Gazepoint GP3 HD at 150 Hz" and add "modal 12 h3 slots per SERP with heavy ad interleaving" if rank structure matters.
+>
+> **Any position-based claim must specify absolute vs organic rank.** The non-monotone click-distribution dip at absolute rank 0 → 1 → 2 (19.0 % → 19.0 % → 24.5 %) is **dd_top displacement**, not a cognitive effect. [NB23:K1] reports this as-is (ρ = −0.973 on absolute rank); [NB23:K18–K19] report the clean organic-rank versions (ρ = −1.000 on full corpus, ρ = −0.988 on `clean_for_ctr`).
+>
+> **Ad exposure is query/brand-intrinsic.** Participant- and block-level ad exposure is flat (±13 %, no confound). Automotive-parts commerce drives ad density: delphi, gates, monroe, bosch, denso. Any confound story at the participant or block level is a dead end; brand/category stories have traction.
+>
+> **`clean_for_ctr` (555 trials, 19.99 %)** is the recommended figure cohort for the ETTAC and CIKM CTR-by-rank plots. All 47 participants, all 6 blocks represented. Excludes dd_top displacement; constrains organic rank count to the 9–11 band where per-rank denominators are stable.
+>
+> **Supporting analyses.** NB13 saccade-amplitude Survey-phase finding is robust to the ad-heterogeneity of this corpus; the Survey phase is gist formation + top-ad attention capture, not deliberate ad-mapping. See `docs/survey-phase-vs-ads.md`. For paper-facing narrative, see `docs/serp-structure-survey.md`."""
+
+
 # ── Drive ─────────────────────────────────────────────────────────────
 
 TARGETS = [
@@ -617,6 +705,7 @@ TARGETS = [
     ("05_lhipa.ipynb", NB05_BODY),
     ("12_regression_precision_by_load.ipynb", NB12_BODY),
     ("18_ripa2_vs_lfhf.ipynb", NB18_BODY),
+    ("25_serp_composition.ipynb", NB25_BODY),
 ]
 
 
