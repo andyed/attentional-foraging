@@ -1,0 +1,9 @@
+stat,value
+n_trials,1988
+observed_median_angdiff_deg,71.565051177078
+observed_mean_angdiff_deg,79.97890339374916
+null_median_mean,82.11290335475663
+null_median_ci_lo,78.99676424967016
+null_median_ci_hi,85.0230721446555
+p_one_sided_obs_le_null,0.0
+n_boot,2000

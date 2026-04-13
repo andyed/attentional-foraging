@@ -1,0 +1,7 @@
+cohort,n_trials,dd_top_n_trials_with_rect,dd_top_base_rate,dd_top_p_survey_col,dd_top_p_eval_col,dd_top_ratio_survey_over_base,dd_top_ratio_survey_over_eval,dd_top_vw_p_survey,dd_top_tot_survey_col_fix,dd_top_tot_survey_on_rect,dd_right_n_trials_with_rect,dd_right_base_rate,dd_right_p_survey_strip,dd_right_p_eval_strip,dd_right_ratio_survey_over_base,dd_right_ratio_survey_over_eval,dd_right_vw_p_survey,dd_right_tot_survey_strip_fix,dd_right_tot_survey_on_rect,mean_n_survey_in_col,mean_n_survey_in_right
+all,2774,1581,0.1607,0.4330,0.1669,2.6948,2.5945,0.3864,12367,5355,860,0.1110,0.3738,0.4353,3.3673,0.8587,0.0336,1244,465,4.4582,0.4484
+has_ddtop,1581,1581,0.2819,0.7105,0.2772,2.5201,2.5632,0.6775,7537,5355,0,0.0000,0.0000,0.0000,nan,nan,0.0000,231,0,4.7672,0.1461
+has_ddright,860,0,0.0000,0.0000,0.0000,nan,nan,0.0000,3355,0,860,0.3581,0.5394,0.6986,1.5066,0.7722,0.1083,862,465,3.9012,1.0023
+only_ddtop,1581,1581,0.2819,0.7105,0.2772,2.5201,2.5632,0.6775,7537,5355,0,0.0000,0.0000,0.0000,nan,nan,0.0000,231,0,4.7672,0.1461
+only_ddright,860,0,0.0000,0.0000,0.0000,nan,nan,0.0000,3355,0,860,0.3581,0.5394,0.6986,1.5066,0.7722,0.1083,862,465,3.9012,1.0023
+neither,333,0,0.0000,0.0000,0.0000,nan,nan,0.0000,1475,0,0,0.0000,0.0000,0.0000,nan,nan,0.0000,151,0,4.4294,0.4535

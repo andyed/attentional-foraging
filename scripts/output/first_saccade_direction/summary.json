@@ -1,0 +1,73 @@
+{
+  "n_trials_processed": 2774,
+  "n_skipped": 2,
+  "n_missing_ad_json": 53,
+  "n_less_than_two_fix": 2,
+  "circ_summary": {
+    "plain_top": {
+      "n": 775,
+      "mean_theta_deg": 119.97088846239859,
+      "resultant_R": 0.3854743175820747,
+      "mode_bin_low": 150,
+      "mode_bin_count": 125,
+      "down_frac": 0.26064516129032256
+    },
+    "ad_top": {
+      "n": 1999,
+      "mean_theta_deg": 131.4564217393215,
+      "resultant_R": 0.4996438920836084,
+      "mode_bin_low": 150,
+      "mode_bin_count": 414,
+      "down_frac": 0.2741370685342671
+    }
+  },
+  "test_b": {
+    "n_ad_top_with_angdiff": 1988,
+    "observed_median_angdiff_deg": 71.565051177078,
+    "observed_mean_angdiff_deg": 79.97890339374916,
+    "null_median_mean": 82.11290335475663,
+    "null_median_ci_lo": 78.99676424967016,
+    "null_median_ci_hi": 85.0230721446555,
+    "p_one_sided_obs_le_null": 0.0,
+    "n_boot": 2000,
+    "plain_top_control_median_angdiff_deg": 60.64224645720873,
+    "plain_top_control_mean_angdiff_deg": 67.47024741017836,
+    "ad_top_inside_rect": {
+      "n": 920,
+      "observed_median_angdiff_deg": 125.66739661795772,
+      "null_median_mean": 110.01797902968951,
+      "p_one_sided_obs_le_null": 1.0
+    },
+    "ad_top_outside_rect": {
+      "n": 1068,
+      "observed_median_angdiff_deg": 35.06480779543655,
+      "null_median_mean": 46.81680812655497,
+      "p_one_sided_obs_le_null": 0.0
+    }
+  },
+  "test_c": {
+    "plain_top_median_r0_px": 119.05040949110591,
+    "ad_top_median_r0_px": 125.39936203984452,
+    "diff_median_px": -6.348952548738609,
+    "perm_p_two_sided": 0.314
+  },
+  "test_d": [
+    {
+      "stratum": "shallow_top",
+      "n": 991,
+      "mean_theta_deg": 129.48892703778756,
+      "down_frac": 0.2966700302724521,
+      "median_angdiff_deg": 70.75899585076087,
+      "median_r0_px": 118.69709347747316
+    },
+    {
+      "stratum": "deep_top",
+      "n": 1008,
+      "mean_theta_deg": 133.39570869740976,
+      "down_frac": 0.251984126984127,
+      "median_angdiff_deg": 72.22241599351054,
+      "median_r0_px": 134.50832233144436
+    }
+  ],
+  "runtime_s": 1.4247188568115234
+}

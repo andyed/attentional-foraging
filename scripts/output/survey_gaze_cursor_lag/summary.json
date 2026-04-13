@@ -1,0 +1,72 @@
+{
+  "n_records": 2767,
+  "n_ad_top": 1580,
+  "n_plain_top": 1187,
+  "n_first_fix_in_ad": 1093,
+  "n_first_fix_in_organic": 1619,
+  "summary_all": {
+    "cohort": "all",
+    "n_trials": 2767,
+    "median_d_survey_px": 340.6126883429442,
+    "median_d_eval_px": 352.0127838587684,
+    "median_d_click_px": 302.2554501124758,
+    "median_diff_s_minus_e_px": -10.860907487432229,
+    "median_ratio_s_over_e": 0.9664906923719888,
+    "frac_trials_survey_looser": 0.47271413082761116,
+    "wilcoxon_W": 1778352.0,
+    "wilcoxon_p": 0.0011715181930865215,
+    "wilcoxon_n_nonzero": 2767
+  },
+  "summary_plain_top": {
+    "cohort": "plain_top",
+    "n_trials": 1187,
+    "median_d_survey_px": 335.3356527421443,
+    "median_d_eval_px": 351.0056979594491,
+    "median_d_click_px": 290.69743720920553,
+    "median_diff_s_minus_e_px": -13.381132214095942,
+    "median_ratio_s_over_e": 0.9604533005528751,
+    "frac_trials_survey_looser": 0.4675652906486942,
+    "wilcoxon_W": 331195.0,
+    "wilcoxon_p": 0.07078959842323779,
+    "wilcoxon_n_nonzero": 1187
+  },
+  "summary_ad_top": {
+    "cohort": "ad_top",
+    "n_trials": 1580,
+    "median_d_survey_px": 342.83708170984954,
+    "median_d_eval_px": 354.4816923022547,
+    "median_d_click_px": 309.2412006913453,
+    "median_diff_s_minus_e_px": -8.861027908254385,
+    "median_ratio_s_over_e": 0.9735282678982022,
+    "frac_trials_survey_looser": 0.47658227848101264,
+    "wilcoxon_W": 575442.0,
+    "wilcoxon_p": 0.006843614721335151,
+    "wilcoxon_n_nonzero": 1580
+  },
+  "summary_first_fix_in_ad": {
+    "cohort": "first_fix_in_ad",
+    "n_trials": 1093,
+    "median_d_survey_px": 338.99004282566784,
+    "median_d_eval_px": 355.3952265872231,
+    "median_d_click_px": 309.7127701597078,
+    "median_diff_s_minus_e_px": -11.104618150675947,
+    "median_ratio_s_over_e": 0.9657004764740118,
+    "frac_trials_survey_looser": 0.47483989021043,
+    "wilcoxon_W": 273898.0,
+    "wilcoxon_p": 0.016458969044231497,
+    "wilcoxon_n_nonzero": 1093
+  },
+  "summary_first_fix_in_organic": {
+    "cohort": "first_fix_in_organic",
+    "n_trials": 1619,
+    "median_d_survey_px": 341.603571409902,
+    "median_d_eval_px": 350.7853121284277,
+    "median_d_click_px": 296.95369827966067,
+    "median_diff_s_minus_e_px": -10.934311095515113,
+    "median_ratio_s_over_e": 0.9664906923719888,
+    "frac_trials_survey_looser": 0.47066090179122916,
+    "wilcoxon_W": 614810.0,
+    "wilcoxon_p": 0.029771471856523065,
+    "wilcoxon_n_nonzero": 1619
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "ddtop_paired": {
+    "n": 1575,
+    "mean_diff": 0.43170556650349207,
+    "frac_pos": 0.8761904761904762,
+    "wilcoxon_p": 1.757342965292731e-216
+  },
+  "ddright_paired_cond": {
+    "n": 382,
+    "mean_diff": -0.04458188650588619,
+    "frac_pos": 0.4424083769633508,
+    "wilcoxon_p": 0.04331280032121586
+  },
+  "ddright_paired_uncond": {
+    "n": 858,
+    "mean_diff": -0.04477097348377759,
+    "frac_pos": 0.2062937062937063,
+    "wilcoxon_p": 1.9981032320101002e-13
+  },
+  "ddright_cohort_any_survey_fix_in_strip": {
+    "frac": 0.4558139534883721,
+    "n_tot": 860
+  },
+  "ddright_cohort_any_eval_fix_in_strip": {
+    "frac": 0.9534883720930233,
+    "n_tot": 860
+  },
+  "ddtop_cohort_any_survey_fix_in_col": {
+    "frac": 0.9974699557242251,
+    "n_tot": 1581
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "distribution_shape": {
+    "n": 47,
+    "mean": 0.723836604314218,
+    "median": 0.7277777777777777,
+    "std": 0.1254415734762876,
+    "min": 0.45806451612903226,
+    "max": 0.9347826086956522,
+    "q25": 0.6397058823529411,
+    "q75": 0.818918918918919,
+    "iqr": 0.17921303656597787,
+    "skewness": -0.1530392649263456,
+    "kurtosis_excess": -0.8370826556625026,
+    "simple_dip_stat": 0.14557668713505884,
+    "shapiro_W": 0.968560160834128,
+    "shapiro_p": 0.2333696277075243,
+    "gmm": {
+      "k1": {
+        "bic": -55.06630102905103,
+        "aic": -58.76659623247115,
+        "log_likelihood": 31.383298116235576,
+        "means": [
+          0.7238366043142184
+        ],
+        "stds": [
+          0.1241039427413454
+        ],
+        "weights": [
+          1.0
+        ]
+      },
+      "k2": {
+        "bic": -45.72352820379137,
+        "aic": -54.97426621234166,
+        "log_likelihood": 32.48713310617083,
+        "means": [
+          0.6347637199107438,
+          0.8210380238464453
+        ],
+        "stds": [
+          0.08721782182384011,
+          0.07616978851952179
+        ],
+        "weights": [
+          0.5218187236699022,
+          0.47818127633009766
+        ]
+      },
+      "delta_bic_k1_minus_k2": -9.342772825259665,
+      "preferred": "k1"
+    }
+  },
+  "tercile_tests_low_vs_high": {
+    "p_ad_survey": {
+      "low_median": 0.609375,
+      "high_median": 0.8829268292682927,
+      "diff_high_minus_low": 0.2735518292682927,
+      "mannwhitney_u": 0.0,
+      "mannwhitney_p": 2.3056318633021253e-06,
+      "n_low": 16,
+      "n_high": 15
+    },
+    "ad_over_index": {
+      "low_median": 2.0218959336076376,
+      "high_median": 2.8762410409728467,
+      "diff_high_minus_low": 0.8543451073652091,
+      "mannwhitney_u": 0.0,
+      "mannwhitney_p": 2.316463851638489e-06,
+      "n_low": 16,
+      "n_high": 15
+    },
+    "mean_lhipa": {
+      "low_median": 0.04100218019901371,
+      "high_median": 0.04440055334167827,
+      "diff_high_minus_low": 0.003398373142664564,
+      "mannwhitney_u": 102.0,
+      "mannwhitney_p": 0.4890954478935938,
+      "n_low": 16,
+      "n_high": 15
+    },
+    "regression_rate": {
+      "low_median": 0.575,
+      "high_median": 0.5666666666666667,
+      "diff_high_minus_low": -0.008333333333333304,
+      "mannwhitney_u": 124.5,
+      "mannwhitney_p": 0.8743544998555755,
+      "n_low": 16,
+      "n_high": 15
+    },
+    "mean_click_pos": {
+      "low_median": 5.587651600753295,
+      "high_median": 5.709777777777777,
+      "diff_high_minus_low": 0.12212617702448192,
+      "mannwhitney_u": 104.0,
+      "mannwhitney_p": 0.5400804783898524,
+      "n_low": 16,
+      "n_high": 15
+    },
+    "median_tti_s": {
+      "low_median": 5.79925,
+      "high_median": 5.2995,
+      "diff_high_minus_low": -0.4997499999999997,
+      "mannwhitney_u": 127.0,
+      "mannwhitney_p": 0.5466597306783725,
+      "n_low": 16,
+      "n_high": 14
+    },
+    "mean_fixations": {
+      "low_median": 84.96807909604519,
+      "high_median": 90.48333333333333,
+      "diff_high_minus_low": 5.515254237288147,
+      "mannwhitney_u": 129.0,
+      "mannwhitney_p": 0.7368768981757916,
+      "n_low": 16,
+      "n_high": 15
+    },
+    "events_per_sec": {
+      "low_median": 16.626084071235212,
+      "high_median": 13.481703752141977,
+      "diff_high_minus_low": -3.1443803190932353,
+      "mannwhitney_u": 153.0,
+      "mannwhitney_p": 0.19890577328380388,
+      "n_low": 16,
+      "n_high": 15
+    },
+    "dir_changes_per_sec": {
+      "low_median": 0.8051478045488611,
+      "high_median": 0.544888455111878,
+      "diff_high_minus_low": -0.26025934943698315,
+      "mannwhitney_u": 161.0,
+      "mannwhitney_p": 0.10939839054172913,
+      "n_low": 16,
+      "n_high": 15
+    }
+  },
+  "conditional_over_index_by_tercile": {
+    "low": {
+      "mean_p_ad_survey": 0.586431592083908,
+      "mean_ad_area_frac": 0.2929347543075721,
+      "over_index_ratio": 2.0019188008950746,
+      "n_participants": 16
+    },
+    "mid": {
+      "mean_p_ad_survey": 0.7269255585993911,
+      "mean_ad_area_frac": 0.2976545606248596,
+      "over_index_ratio": 2.4421784671243483,
+      "n_participants": 16
+    },
+    "high": {
+      "mean_p_ad_survey": 0.8671070661223648,
+      "mean_ad_area_frac": 0.299325271827463,
+      "over_index_ratio": 2.896872224748809,
+      "n_participants": 15
+    }
+  },
+  "inputs": {
+    "per_trial": "/Users/andyed/Documents/dev/attentional-foraging/scripts/output/survey_vs_ads/per_trial.csv",
+    "panel": "/Users/andyed/Documents/dev/attentional-foraging/notebooks-v2/nb11_participant_panel.json",
+    "chattiness": "/Users/andyed/Documents/dev/attentional-foraging/notebooks-v2/chattiness_per_participant.json"
+  }
+}
