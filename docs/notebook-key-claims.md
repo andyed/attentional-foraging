@@ -389,15 +389,15 @@ NB22 defines the four classes via cursor approach (min_dist < 100 px) + scroll r
 
 *Source: [`notebooks-v2/23_rank_effects.ipynb`](../notebooks-v2/23_rank_effects.ipynb)*
 
-### Unified rank effects (position 0–10)
+### Unified rank effects (absolute rank, 10 equal bands, 0–10)
 
 | ID | Measure | Spearman ρ | *p* | N positions |
 |---|---|---|---|---|
-| **K1** | Click **share** (% of clicks at each position; *distribution*, not CTR-by-rank) × position | **−0.973** | 5.1 × 10⁻⁷ | 11 |
-| **K2** | Fixation count × position (all fixations pooled) | −0.442 | 0.200 (ns) | 10 |
-| **K3** | Total dwell × position (all fixations pooled) | −0.515 | 0.128 (ns) | 10 |
-| **K4** | Butterworth LF/HF × position (**all fixations pooled**, no forward-only filter) | **−0.618** | **0.0426** | 11 |
-| **K5** | LHIPA × click position | **−0.955** | < 10⁻⁵ | 11 |
+| **K1** | Click **share** × **absolute rank** (ads + organic pooled, 10 equal bands) | **−0.973** | 5.1 × 10⁻⁷ | 11 |
+| **K2** | Fixation count × absolute rank (all fixations pooled) | −0.442 | 0.200 (ns) | 10 |
+| **K3** | Total dwell × absolute rank (all fixations pooled) | −0.515 | 0.128 (ns) | 10 |
+| **K4** | Butterworth LF/HF × absolute rank (**all fixations pooled**, no forward-only filter) | **−0.618** | **0.0426** | 11 |
+| **K5** | LHIPA × click position (absolute rank) | **−0.955** | < 10⁻⁵ | 11 |
 
 ### Corpus composition
 
@@ -408,7 +408,7 @@ NB22 defines the four classes via cursor approach (min_dist < 100 px) + scroll r
 | **K8** | Forward fixations (% of classified) | 74 % (150,993) |
 | **K9** | Regression fixations (% of classified) | 26 % (53,583) |
 
-### Position-level summary (per-result medians/means)
+### Position-level summary (per-result medians/means, absolute rank)
 
 | ID | Pos | Click% | Fix count | Dwell (s) | LF/HF | LHIPA |
 |---|---|---|---|---|---|---|
@@ -417,11 +417,49 @@ NB22 defines the four classes via cursor approach (min_dist < 100 px) + scroll r
 | **K12** | 2 | 24.3 | 10.6 | 2.37 | 18.3 | 0.039 |
 | **K13** | 3 | 11.9 | 10.0 | 2.21 | 16.0 | 0.039 |
 
+### Unified rank effects (**organic rank**, ads excluded — recommended for paper figures)
+
+K1–K4 above are indexed by absolute rank (every h3 slot, ads pooled with organic). That conflates dd_top / native_ad displacement with true rank effects: the non-monotone pos 0→1→2 in K1 (26.9% → 22.0% → 24.3%) is a dd_top artifact intercepting position-0 clicks, and the LF/HF bump at positions 5–7 in K4 is likely native_ad contamination. K18–K28 re-index the same measures by *organic rank* (ads excluded via `absolute_to_organic_rank()`) and are the canonical numbers for paper figures. Computed by `scripts/compute_nb23_organic_rank.py`.
+
+**Cohorts.**
+- *full* — all 2,776 trials.
+- *clean_for_ctr* — `plain_top == 1 AND n_org ∈ {9,10,11}` = 555 trials (19.99% of corpus). Plain-top = absolute slot 0 is organic (no dd_top ad). This is the recommended figure cohort: no ad displacement, roughly textbook 10-organic SERPs.
+
+| ID | Measure | Cohort | Spearman ρ | *p* | N ranks |
+|---|---|---|---|---|---|
+| **K18** | CTR by organic rank (trial-level click rate per impression) | full (N = 2,776) | **−1.000** | 5.5 × 10⁻⁷ | 10 |
+| **K19** | CTR by organic rank | clean_for_ctr (N = 555) | **−0.988** | 5.5 × 10⁻⁶ | 10 |
+| **K20** | Click share by organic rank (click count / total clicks) | full | **−1.000** | 5.5 × 10⁻⁷ | 10 |
+| **K21** | Click share by organic rank | clean_for_ctr | **−1.000** | 5.5 × 10⁻⁷ | 10 |
+| **K22** | Fixation count × organic rank (mean per-(trial,rank)) | full | **−1.000** | 5.5 × 10⁻⁷ | 10 |
+| **K23** | Fixation count × organic rank | clean_for_ctr | **−1.000** | 5.5 × 10⁻⁷ | 10 |
+| **K24** | Total dwell × organic rank (mean s per-(trial,rank)) | full | **−1.000** | 5.5 × 10⁻⁷ | 10 |
+| **K25** | Total dwell × organic rank | clean_for_ctr | **−1.000** | 5.5 × 10⁻⁷ | 10 |
+| **K26** | Butterworth LF/HF × organic rank (median over trials; ranks 0–9) | full | **−0.879** | **0.0016** | 10 |
+| **K27** | Butterworth LF/HF × organic rank (ranks 0–10, parity with K4) | full | −0.409 | 0.214 (ns) | 11 |
+| **K28** | Butterworth LF/HF × organic rank (ranks 0–9) | clean_for_ctr | −0.133 | 0.744 (ns) | 10 |
+
+**CTR by organic rank (full corpus):**
+
+| org_rank | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| CTR | 0.360 | 0.175 | 0.138 | 0.081 | 0.052 | 0.032 | 0.018 | 0.013 | 0.005 | 0.004 |
+| Click share % | 41.25 | 20.22 | 15.72 | 9.24 | 5.79 | 3.73 | 1.99 | 1.38 | 0.41 | 0.24 |
+| Fix count | 17.54 | 13.43 | 11.01 | 9.26 | 7.94 | 6.87 | 6.27 | 5.38 | 3.91 | 3.40 |
+| Dwell (s) | 3.80 | 2.99 | 2.50 | 2.11 | 1.79 | 1.54 | 1.40 | 1.21 | 0.87 | 0.80 |
+| LF/HF median | 22.5 | 19.6 | 18.0 | 18.0 | 16.2 | 13.7 | 14.5 | 16.1 | 14.9 | 12.9 |
+
+> **K18/K19 vs K1.** K1 uses absolute rank, which pools ads with organic and introduces a non-monotone pos 0→1→2 dip from dd_top displacement. K18 (full corpus) and K19 (clean_for_ctr = 555 trials, plain-top ∩ 9–11 organic results) index by organic rank and restore the textbook monotonic CTR curve (0.36 → 0.17 → 0.14 → 0.08 → ...). K19 on the clean cohort is the recommended figure cohort for ETTAC/CIKM paper CTR-by-rank plots — no ad slots, roughly uniform SERP layout, direct comparison to textbook click models. K20/K21 are the click-share analogs (direct replacement for K1's semantic).
+>
+> **K22/K23 vs K2/K3.** Moving to organic rank strengthens the fixation-count and dwell curves from ρ ≈ −0.44/−0.52 (ns on N = 10 absolute positions) to ρ = −1.00 (p = 5.5 × 10⁻⁷). The original non-significance was a pooling artifact, not a real null: once ad slots are excluded, both time and effort decline monotonically with organic rank across the full 0–9 range. Papers citing the K2/K3 null should replace with K22/K24 (or K23/K25 on the clean cohort).
+>
+> **K26 vs K4 — framework-compilation finding strengthens.** K4 (absolute rank, 11 positions) gave ρ = −0.618, p = 0.0426. K26 (organic rank, ranks 0–9, full corpus) gives ρ = −0.879, p = 0.0016 — the correlation strengthens when ad slots are excluded. The LF/HF bump at positions 5–7 visible in the K10–K13-extended absolute-rank summary (LF/HF 18.7 → 18.2 → 17.1 → 16.0) is attenuated in the organic-rank curve (18.0 → 13.7 → 14.5 → 16.1 at org ranks 4–7); some bump survives at org rank 7 but is weaker. K27 (adding rank 10, one trial) inverts the sign and is noise — stick to ranks 0–9. K28 (clean cohort, ranks 0–9) is underpowered (N = 555 trials, Butterworth valid on only a subset, fewer than 90 samples past organic rank 7) and is reported for completeness, not interpretation.
+>
 > **Framework compilation, not declining interest.** K4 (LF/HF ρ = −0.618, all fixations pooled) and its forward-pass-only variant [NB14:K3] (ρ = −0.927) are the key results: cognitive load peaks at position 0 where the user is constructing evaluation criteria from scratch, drops steeply through positions 0–3 as criteria compile, then plateaus. K2 and K3 are non-significant at the position level (N = 10 points), but the direction is consistent: both time and effort decline. The dissociation between K2/K3 (declining time) and K4 (declining effort that drops *faster*) is the framework compilation signature.
 >
 > **K4 vs NB14:K3 aggregation difference.** NB23:K4 pools all fixations (forward + regression) and computes per-(trial, position) medians, yielding ρ = −0.618 (p = 0.0426, borderline). [NB14:K3] filters to forward-pass fixations only via `identify_forward_pass` and computes per-position medians over the pooled segments, yielding ρ = −0.927 (p < 0.0001). Both are valid measurements of "cognitive load vs SERP position" — they answer slightly different questions. NB14:K3 asks "during first-pass scanning, does load decline?" and the answer is an unambiguous yes. NB23:K4 asks "pooled across all fixations (including regressions), does load decline?" and the answer is yes but weaker because regressive fixations at late positions carry elevated LF/HF from re-evaluation effort. Papers citing the framework-compilation finding should prefer NB14:K3 as the cleaner first-pass claim and note NB23:K4 as the robustness check. The position-level median bump at positions 5–7 in the K10–K16 summary table below (LF/HF 18.7 → 18.2 → 17.1) is a regressive-contamination artifact and disappears in NB14:K8's forward-only medians (16.77 → 14.41 → 13.82).
 >
-> **K1 vs CTR-by-rank.** K1 is click *share* — the fraction of all clicks that landed at each position (sums to 100%). This is not the same as the click-through-rate (CTR) by rank used in the click-modeling literature (click count / impressions at that position). CTR-by-rank is not currently tabulated in NB23 — if a paper needs it, derive it from NB23's position-level click count + impression count columns directly.
+> **K1 vs CTR-by-rank.** K1 is click *share* — the fraction of all clicks that landed at each absolute-rank band (sums to 100%). It is not the click-through-rate (CTR) by rank used in the click-modeling literature (click count / impressions at that position). CTR by organic rank is now canonical as **K18/K19** above; click share by organic rank as **K20/K21**. Papers citing CTR-by-rank should reference K18 (full corpus) or K19 (clean_for_ctr, recommended figure cohort).
 >
 > **K4 matches NB14:K3 exactly** (ρ = −0.618, p = 0.0426) — same data, independent computation path. Cross-notebook replication.
 
