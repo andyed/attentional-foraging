@@ -1,0 +1,86 @@
+{
+  "textbook_10org": {
+    "name": "textbook_10org",
+    "n_trials": 16,
+    "pct_of_corpus": 0.58,
+    "unique_participants": 11,
+    "block_distribution": {
+      "b1": 4,
+      "b6": 2,
+      "b3": 3,
+      "b5": 4,
+      "b2": 2,
+      "b4": 1
+    }
+  },
+  "plain_top": {
+    "name": "plain_top",
+    "n_trials": 776,
+    "pct_of_corpus": 27.95,
+    "unique_participants": 47,
+    "block_distribution": {
+      "b1": 117,
+      "b2": 135,
+      "b3": 115,
+      "b4": 153,
+      "b5": 120,
+      "b6": 136
+    }
+  },
+  "no_ddtop": {
+    "name": "no_ddtop",
+    "n_trials": 1194,
+    "pct_of_corpus": 43.01,
+    "unique_participants": 47,
+    "block_distribution": {
+      "b1": 197,
+      "b2": 198,
+      "b3": 189,
+      "b4": 216,
+      "b5": 191,
+      "b6": 203
+    }
+  },
+  "no_any_ad": {
+    "name": "no_any_ad",
+    "n_trials": 53,
+    "pct_of_corpus": 1.91,
+    "unique_participants": 33,
+    "block_distribution": {
+      "b1": 8,
+      "b3": 7,
+      "b6": 9,
+      "b5": 10,
+      "b4": 7,
+      "b2": 12
+    }
+  },
+  "canonical_10org_leq2ddtop": {
+    "name": "canonical_10org_leq2ddtop",
+    "n_trials": 35,
+    "pct_of_corpus": 1.26,
+    "unique_participants": 22,
+    "block_distribution": {
+      "b1": 11,
+      "b2": 7,
+      "b6": 6,
+      "b3": 4,
+      "b5": 5,
+      "b4": 2
+    }
+  },
+  "clean_for_ctr": {
+    "name": "clean_for_ctr",
+    "n_trials": 555,
+    "pct_of_corpus": 19.99,
+    "unique_participants": 47,
+    "block_distribution": {
+      "b1": 87,
+      "b2": 96,
+      "b3": 83,
+      "b4": 110,
+      "b5": 77,
+      "b6": 102
+    }
+  }
+}

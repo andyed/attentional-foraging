@@ -1,0 +1,36 @@
+{
+  "n_trials": 2776,
+  "n_trials_with_clicks": 2764,
+  "n_meta_missing": 0,
+  "n_html_missing": 0,
+  "n_ads_ok": 2723,
+  "n_ads_missing": 0,
+  "n_ads_file_empty": 53,
+  "clicks_total_inside_bands": 2875,
+  "clicks_in_ad_slot": 407,
+  "clicks_no_rank_assigned": 14,
+  "abs_count_mode": [
+    12,
+    879
+  ],
+  "org_count_mode": [
+    10,
+    731
+  ],
+  "n_ddtop_zero": 1194,
+  "n_native_zero": 129,
+  "n_no_any_ad": 53,
+  "n_textbook_10org": 16,
+  "n_canonical_10org_leq2ddtop": 35,
+  "n_clean_for_ctr": 555,
+  "frac_canonical": 0.0126,
+  "frac_textbook": 0.0058,
+  "frac_plain_top": 0.2795,
+  "frac_clean_for_ctr": 0.1999,
+  "participant_ad_exposure_min": 3.276,
+  "participant_ad_exposure_max": 4.328,
+  "participant_ad_exposure_mean": 3.891,
+  "unique_queries": 2776,
+  "unique_brands": 1320,
+  "elapsed_seconds": 125.06
+}
