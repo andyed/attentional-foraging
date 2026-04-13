@@ -1,0 +1,128 @@
+{
+  "n_trials_analyzed": 2768,
+  "n_plain_top": 1188,
+  "n_ad_top": 1580,
+  "median_ad_area_frac_all": 0.27473065496242965,
+  "iqr_ad_area_frac_all": [
+    0.20312963212505053,
+    0.3151169073582867
+  ],
+  "median_ad_area_frac_plain_top": 0.1929085534953146,
+  "median_ad_area_frac_ad_top": 0.2931673115153588,
+  "K5_all": {
+    "cohort": "all",
+    "K": 5,
+    "n_trials": 2768,
+    "base_rate_ad_area": 0.2574646046880613,
+    "p_ad_survey_fix_weighted": 0.5122621717427476,
+    "p_ad_eval_fix_weighted": 0.2599628989957142,
+    "ratio_fix_s_over_e": 1.97052030778897,
+    "ratio_survey_over_base": 1.9896411483954992,
+    "p_ad_survey_trial_mean": 0.5120122832369942,
+    "p_ad_eval_trial_mean": 0.25120568850973485,
+    "mean_trial_diff_s_minus_e": 0.2619263595077261,
+    "frac_trials_survey_gt_eval": 0.635867588213896,
+    "median_dist_to_ad_survey_px": -10.0,
+    "median_dist_to_ad_eval_px": 140.0,
+    "median_survey_ms": 1121.5
+  },
+  "K5_ad_top": {
+    "cohort": "ad_top",
+    "K": 5,
+    "n_trials": 1580,
+    "base_rate_ad_area": 0.296789566762546,
+    "p_ad_survey_fix_weighted": 0.7264210659577162,
+    "p_ad_eval_fix_weighted": 0.34277832616512727,
+    "ratio_fix_s_over_e": 2.119215278528946,
+    "ratio_survey_over_base": 2.4475963689751525,
+    "p_ad_survey_trial_mean": 0.7263924050632912,
+    "p_ad_eval_trial_mean": 0.3410214905233618,
+    "mean_trial_diff_s_minus_e": 0.3855142916172335,
+    "frac_trials_survey_gt_eval": 0.863837872070931,
+    "median_dist_to_ad_survey_px": -44.5,
+    "median_dist_to_ad_eval_px": 85.5,
+    "median_survey_ms": 1078.0
+  },
+  "K5_plain_top": {
+    "cohort": "plain_top",
+    "K": 5,
+    "n_trials": 1188,
+    "base_rate_ad_area": 0.20516372920179388,
+    "p_ad_survey_fix_weighted": 0.22670492910195814,
+    "p_ad_eval_fix_weighted": 0.13320833108509145,
+    "ratio_fix_s_over_e": 1.7018825118163405,
+    "ratio_survey_over_base": 1.1049951664652033,
+    "p_ad_survey_trial_mean": 0.2268939393939394,
+    "p_ad_eval_trial_mean": 0.12999273861271177,
+    "mean_trial_diff_s_minus_e": 0.09513546651549336,
+    "frac_trials_survey_gt_eval": 0.3282051282051282,
+    "median_dist_to_ad_survey_px": 1105.5,
+    "median_dist_to_ad_eval_px": 645.0,
+    "median_survey_ms": 1227.5
+  },
+  "K3_all": {
+    "cohort": "all",
+    "K": 3,
+    "n_trials": 2768,
+    "base_rate_ad_area": 0.2574646046880613,
+    "p_ad_survey_fix_weighted": 0.5172870738465245,
+    "p_ad_eval_fix_weighted": 0.2669611325717955,
+    "ratio_fix_s_over_e": 1.937686841763032,
+    "ratio_survey_over_base": 2.009158014062782,
+    "p_ad_survey_trial_mean": 0.5171604046242775,
+    "p_ad_eval_trial_mean": 0.2628072921155624,
+    "mean_trial_diff_s_minus_e": 0.254746091887333,
+    "frac_trials_survey_gt_eval": 0.6073108939558451,
+    "median_dist_to_ad_survey_px": -12.0,
+    "median_dist_to_ad_eval_px": 132.0,
+    "median_survey_ms": 576.0
+  },
+  "K7_all": {
+    "cohort": "all",
+    "K": 7,
+    "n_trials": 2768,
+    "base_rate_ad_area": 0.2574646046880613,
+    "p_ad_survey_fix_weighted": 0.4892317249948229,
+    "p_ad_eval_fix_weighted": 0.2547953630637606,
+    "ratio_fix_s_over_e": 1.9200966576161609,
+    "ratio_survey_over_base": 1.900190224545878,
+    "p_ad_survey_trial_mean": 0.48870853977429124,
+    "p_ad_eval_trial_mean": 0.24416255614666627,
+    "mean_trial_diff_s_minus_e": 0.2462285693155492,
+    "frac_trials_survey_gt_eval": 0.6306963179001094,
+    "median_dist_to_ad_survey_px": -5.0,
+    "median_dist_to_ad_eval_px": 146.5,
+    "median_survey_ms": 1686.5
+  },
+  "first_fix": [
+    {
+      "cohort": "all",
+      "n_trials": 2768,
+      "pct_first_fix_inside_ad": 39.52312138728324,
+      "pct_first_fix_within_50px": 15.390173410404625,
+      "pct_first_fix_beyond_200px": 24.096820809248555,
+      "median_d_to_ad_px": 33.0
+    },
+    {
+      "cohort": "plain_top",
+      "n_trials": 1188,
+      "pct_first_fix_inside_ad": 20.117845117845118,
+      "pct_first_fix_within_50px": 10.942760942760943,
+      "pct_first_fix_beyond_200px": 54.54545454545455,
+      "median_d_to_ad_px": 942.0
+    },
+    {
+      "cohort": "ad_top",
+      "n_trials": 1580,
+      "pct_first_fix_inside_ad": 54.11392405063291,
+      "pct_first_fix_within_50px": 18.734177215189874,
+      "pct_first_fix_beyond_200px": 1.2025316455696202,
+      "median_d_to_ad_px": -7.0
+    }
+  ],
+  "ad_count_vs_survey_ms": {
+    "rho_total_ads_vs_survey_ms_K5": -0.004569967261612648,
+    "p": 0.8100769256186141,
+    "n": 2768
+  }
+}

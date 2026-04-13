@@ -1,0 +1,4 @@
+cohort,K,n_trials,base_rate_ad_area,p_ad_survey_fix_weighted,p_ad_eval_fix_weighted,ratio_fix_s_over_e,ratio_survey_over_base,p_ad_survey_trial_mean,p_ad_eval_trial_mean,mean_trial_diff_s_minus_e,frac_trials_survey_gt_eval,median_dist_to_ad_survey_px,median_dist_to_ad_eval_px,median_survey_ms
+all,3,2768,0.2575,0.5173,0.2670,1.9377,2.0092,0.5172,0.2628,0.2547,0.6073,-12.0000,132.0000,576.0000
+plain_top,3,1188,0.2052,0.2440,0.1353,1.8038,1.1895,0.2440,0.1369,0.1069,0.3195,1123.0000,657.0000,601.0000
+ad_top,3,1580,0.2968,0.7226,0.3533,2.0451,2.4346,0.7226,0.3571,0.3655,0.8228,-48.0000,75.0000,563.0000
