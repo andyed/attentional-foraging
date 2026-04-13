@@ -786,7 +786,41 @@ NB09_BODY = """### Jaccard token overlap as a difficulty proxy
 >
 > **Relationship to the ski-jump rank-9 uptick (§0 findings.md).** The majority of users on homogeneous SERPs collapse forward (click earlier, shown here). A minority — the cohort A trials where the user scrolled all the way to rank 9 — collapse backward and pick the last result, producing the muted rank-9 uptick. Both patterns coexist within homogeneous SERPs and represent different exits from Evaluate.
 >
-> **Answer to Peter's question.** Yes, AdSERP is varied enough to detect SERP-diversity effects on evaluation depth. The range is [0.029, 0.395] Jaccard (11× spread), effect sizes are small but consistent across tercile / continuous / within-participant tests, and the direction is the opposite of the naive "homogeneous → deeper" hypothesis."""
+> **Answer to Peter's question.** Yes, AdSERP is varied enough to detect SERP-diversity effects on evaluation depth. The range is [0.029, 0.395] Jaccard (11× spread), effect sizes are small but consistent across tercile / continuous / within-participant tests, and the direction is the opposite of the naive "homogeneous → deeper" hypothesis.
+
+### Step 8: Butterworth LF/HF cognitive load by SERP diversity
+
+*Cross-reference to the NB14 Butterworth LF/HF per-position cache (`AdSERP/data/butterworth-lfhf-by-position.json`). Per-trial LF/HF = mean of valid LF/HF values across positions visited in that trial.*
+
+| ID | Claim | Value |
+|---|---|---|
+| **K41** | Trials with valid trial-mean LF/HF | **2,416** (from 2,719 NB14 cache entries; rest have no valid position) |
+| **K42** | Depth-analysis rows matched to LF/HF | 2,411 |
+| **K43** | Corpus-mean trial LF/HF (mean) | 39.1 |
+| **K44** | Corpus-mean trial LF/HF (median) | 25.7 |
+
+#### LF/HF by Jaccard tercile (log-transformed; distribution is right-skewed)
+
+| ID | Tercile | n | raw mean | median | log₁₀ mean |
+|---|---|---|---|---|---|
+| **K45** | Easy (diverse) | 806 | 39.65 | 25.22 | 1.397 |
+| **K46** | Medium | 776 | 39.74 | 25.88 | 1.398 |
+| **K47** | Hard (homogeneous) | 829 | 37.90 | 26.15 | 1.403 |
+
+#### Null tests — cognitive load does not change with SERP diversity
+
+| ID | Test | Statistic | *p* |
+|---|---|---|---|
+| **K48** | Kruskal-Wallis across terciles (raw) | *H* = 0.229 | **0.8916** |
+| **K49** | Kruskal-Wallis across terciles (log₁₀) | *H* = 0.229 | **0.8916** |
+| **K50** | Continuous partial Spearman (log LF/HF × difficulty, controlling n_organic) | *r* = **−0.0017** | **0.9347** |
+| **K51** | Within-participant rank correlation (log LF/HF × difficulty, N=46) | mean ρ = **+0.007**, *t* = +0.32 | **0.7500** |
+
+> **The Evaluate step does not get harder on homogeneous SERPs — it gets shorter.** LF/HF cognitive load is clean null across Jaccard terciles (all four tests *p* > 0.75). TFT (K30/K35/K40) moves only marginally (*p* ≈ 0.04–0.09). The depth measures (K26–K38) move strongly and consistently in the "shallower on homogeneous" direction.
+>
+> **Synthesis.** When results look alike, the marginal value of evaluating one more candidate drops to zero faster. The user picks sooner. The process operating on each candidate is identical (LF/HF flat, TFT nearly flat); there are just fewer candidates processed. This is the same cost/reward collapse that produces the cohort A rank-9 uptick in §0 — the "first-looks-good-enough" and "last-looks-good-enough" endpoints of the same mechanism.
+>
+> **Caveat on effect magnitude.** Trial-mean LF/HF averages positions visited in that trial, which partially confounds difficulty with trial depth (hard SERPs visit fewer positions, so the mean is computed over fewer — but still stable — samples). The null survives the log transform, the nonparametric test, and the within-participant correlation, so the confound is not driving the zero signal."""
 
 
 # ── NB06 — orientation + evaluation (OSEC phases) ─────────────────────
