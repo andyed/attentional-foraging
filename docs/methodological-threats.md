@@ -97,3 +97,23 @@ Threats to validity that pervade the analysis. Each entry names the threat, stat
 **Mitigation:**
 - Trial-level LHIPA uses the full trial duration, which is typically sufficient (mean ~22 s)
 - Per-position cognitive load is measured via Butterworth LF/HF (§3b-iv), not per-position LHIPA. Trial-level LHIPA is flat across click positions 0–8 with a step down at boundary positions 9–10 (see CHANGELOG v9). The wavelet method requires minimum ~7.5s windows; per-result segments (~2s) are below this threshold.
+
+---
+
+## 8. Survivor Bias in Per-Position Aggregates
+
+**Threat:** Position-level summary statistics (means or medians at each of N ≈ 10 positions) condition on the user having reached that position. Deep positions (6–9) are populated by a self-selected subset — users who chose to scroll past earlier results. Position-level correlations (ρ on *N* = 10 points) are therefore *not* estimates of a within-trial gradient across all users; they are estimates of an aggregate pattern among successively shrinking subsets.
+
+**What it affects:**
+- All "ρ × position" correlations on tiny *N* (position-mean or position-median rhos): LHIPA × click position (ρ = −0.903, *N* = 10), Butterworth LF/HF × position (ρ = −0.927, *N* = 11), forward-only gaze dwell × position (ρ = +0.82, *N* = 9).
+- The headline "position effect" framing in papers that cite these as monotonic gradients.
+- Boundary-step findings (positions 9–10) are especially vulnerable — the cohort at position 9 may be fundamentally different from the cohort at position 0 (thorough-evaluator optimizers vs decisive first-clickers).
+
+**Why it matters:** A ρ = −0.927 on 11 points looks like strong evidence for a monotonic gradient but has *df* = 9. The confidence interval is wide, the *p*-value is fragile, and the interpretation hinges on assuming the population is stable across positions — which it is not (survivorship).
+
+**Mitigation:**
+- **Lead with trial-level statistics when available.** NB05 reports LHIPA × click position at ρ = −0.088 on *N* = 2,721 trials (*p* = 4.1 × 10⁻⁶) [NB05:K8] — significant but small. The ρ = −0.903 on 10 points is demoted to a secondary "position-mean" companion with an explicit ecological-fallacy warning [NB05:K9].
+- **Every citation of a position-aggregate rho must state the N.** We have retrofitted this into findings.md §0, §3b-iv, §3d-ii and README lines 100–101, 106, 117.
+- **Report within-participant alongside between-trial.** NB09 Key Claims K16–K19 (SERP difficulty) and K36–K40 (evaluation depth) show that within-participant rank correlations — which avoid the survivorship issue by holding participant fixed — are the cleaner test.
+- **For boundary-step findings, distinguish a step from a gradient.** LHIPA at positions 9–10 shows a step (flat across 0–8, drops at 9–10). Calling this a "ρ = −0.903 gradient" misreads the shape. The correct framing is "boundary effect," visible as a discrete drop, and the ρ is a summary statistic of a piecewise shape, not a linear trend.
+- **For Butterworth LF/HF × position, the post-audit ρ = −0.927 is a position-median correlation.** Paper drafts that cite it must write "on *N* = 11 position medians aggregated from 2,719 trials" — not "on 2,719 trials."

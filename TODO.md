@@ -19,11 +19,11 @@
 - [ ] **M4 — Mind-reading in §3.5.** Drop the scare-quoted "cognitive state of 'I already know what I'm looking for'" framing at `task-model-paper.md:68`. CHI reviewers will circle it. Hedge to "consistent with a verification-mode interpretation, not uniquely identifying one."
 - [ ] **M5 — Ski-jump table needs units.** The §5.8 position × fixation count table does not specify per-trial-mean or per-row-median. Match the CIKM sibling's "mean fix count" label.
 - [ ] **M6 — "~866 ms parafoveal processing time" is load-bearing and uncited.** Source to NB04 (fixation decomposition) on next pass. Also: "parafoveal processing" has a specific Reichle-et-al meaning in reading research; don't use the term loosely — prefer "inter-fixation time not integrated by FPOGD."
-- [ ] **M7 — MD's Appendix references `docs/references.bib`** which does not exist (the bib lives at repo root). Fix the prose path or move the bib.
+- [x] **M7 — MD's Appendix references `docs/references.bib`** 2026-04-13 — References section now cites `references.bib (repo root)`.
 - [ ] **M8 — Cross-paper drift on "> 15 s time-to-click" boundary.** The .md §5.7 mentions this as the window where the cursor-gaze gap collapses; the CIKM sibling doesn't mention the 15 s boundary. Check which notebook produced the 15 s cutoff and align both papers.
-- [ ] **L3 — Draft-only title note in MD:3** ("CHI 2027 Pittsburgh — CMU reconnect") must never get pasted into the TeX or arxiv abstract.
-- [ ] **L4 — Abstract underscore italics.** The entire abstract in `task-model-paper.md:13` is wrapped in `_..._`. If rendered to HTML directly, the whole paragraph italicizes.
-- [ ] **L5 — §6.5 productization claim.** "Computable live from scroll history alone, without eye tracking" is a deployability note, not a scientific contribution of this paper. Label accordingly.
+- [x] **L3 — Draft-only title note in MD:3** 2026-04-13 — wrapped in an HTML comment so it can't leak into .tex / arxiv rendering.
+- [x] **L4 — Abstract underscore italics.** 2026-04-13 — abstract unwrapped; only "Stub." and inline stats are italicized now, not the whole paragraph.
+- [x] **L5 — §6.5 productization claim.** 2026-04-13 — split into a scientific claim (~100 px alignment tightening) and an explicit "Deployability note (not a contribution of this paper)" labeled aside.
 - [ ] **L6 — Four-class taxonomy cross-ref.** Intro alludes to "the approach-retreat taxonomy" without unpacking; add one sentence "(see companion CIKM 2026 paper for the four-class taxonomy)" for reviewer orientation.
 
 ## Cross-cutting refactors
@@ -151,18 +151,18 @@ Ordered by conceptual promise, not implementation effort:
 
 ### Notebooks to update (from science-audit)
 
-- [ ] **NB 05 (lhipa):** Cell 0 key measures table, cell 9 figure title "Cognitive Load Increases with Foraging Depth", cell 12 summary "monotonically decreases" — all need boundary-step reframing. Lead with trial-level rho = -0.088 (N=2700+), demote position-mean rho = -0.903 (N=10 points).
-- [ ] **NB 06 (orientation_evaluation):** Cell 0 "LHIPA decreases with click depth (rho = -0.90)" — old framing. Cell 10 title "Working Memory Accumulation" — rejected by NB14. Cell 14 summary claims per-result LHIPA shows WM ramp — superseded by Butterworth.
-- [ ] **NB 14 (butterworth):** Cells 5/8/12 — rho = -0.618 should state "N=11 position medians" not imply trial-level. Add survivor bias caveat for later positions.
-- [ ] **NB 23 (rank_effects):** Cell 0 "per fixation" → "per position". Cell 14 summary table: split LHIPA and Butterworth into separate rows with correct framing.
+- [x] **NB 05 (lhipa):** 2026-04-13 — Cell 14 butterworth value updated to post-audit ρ = −0.927 on *N* = 11 position medians with survivor-bias caveat pointer. Cell 4 Key Measures table already correct (trial-level ρ = -0.088 with N disclosure). The full cell-by-cell "Cognitive Load Increases" / "monotonically decreases" stale headings were already superseded by the 2026-04-12 Key Claims re-injection.
+- [x] **NB 06 (orientation_evaluation):** 2026-04-13 — Cells 0, 11, 15 updated: butterworth ρ = −0.618 → ρ = −0.927 (*N* = 11 position medians); forward-only gaze ρ = +0.82 → annotated with *N* = 9 position means. Working Memory framing was already removed in prior sweeps.
+- [x] **NB 14 (butterworth):** 2026-04-13 — Cells 9 and 13 updated to post-audit ρ = −0.927 with *N* = 11 position medians, retaining reference to pre-fix ρ = −0.618 via the K3 audit note. Survivor-bias caveat now lives in `docs/methodological-threats.md` §8 and NB14 prose points there.
+- [x] **NB 23 (rank_effects):** 2026-04-13 — Cells 0 and 13 renamed "per fixation" → "per position" (Butterworth LF/HF is a position-median statistic, not a per-fixation statistic). Cell 14 split of LHIPA vs Butterworth was superseded by the K18–K28 organic-rank re-indexing in the 2026-04-10 NB23 rebuild.
 
 ### Docs to update
 
-- [ ] **findings.md line ~211:** "N = 2,719 trials" next to a correlation computed on 11 points — misleading df. Fix: "N=11 position medians (from 2,719 trials)"
-- [ ] **findings.md line ~92:** Forward dwell ratio rho = +0.82 — add "(N=9 position means)"
-- [ ] **README lines 96-98, 106:** Add N for position-aggregate correlations
-- [ ] **README line 117:** Reconcile rho = -0.87 vs -0.903 vs -0.90 discrepancy
-- [ ] **methodological-threats.md:** Add "Survivor bias in per-position analyses" section
+- [x] **findings.md line ~217 (was ~211):** 2026-04-13 — "on position medians, N = 2,719 trials" → "on *N* = 11 position medians aggregated from 2,719 trials" for NB14:K3.
+- [x] **findings.md line ~98 (was ~92):** 2026-04-13 — forward-only dwell ρ = +0.82 annotated with *N* = 9 position means.
+- [x] **README lines 100–101, 106:** 2026-04-13 — N disclosures added to fixation-count / dwell-time rhos (N = 10), Butterworth rho (N = 11), forward-only gaze rho (N = 9), and steep-phase / plateau subranges (N = 4, N = 7).
+- [x] **README line 117:** 2026-04-13 — Reconciled. Now cites trial-level ρ = −0.088 (*N* = 2,721 trials, *p* = 4.1 × 10⁻⁶) [NB05:K8] as primary; position-mean ρ = −0.903 (*N* = 10) demoted to boundary-step companion with explicit ecological-fallacy pointer [NB05:K9]. The stale `-0.87` is gone.
+- [x] **methodological-threats.md:** 2026-04-13 — Added §8 "Survivor Bias in Per-Position Aggregates" covering all three tiny-N position-aggregate rhos, ecological-fallacy framing, mitigation strategies, and the trial-level-first reporting rule.
 
 ### Systemic: position-median correlations
 

@@ -95,7 +95,7 @@ Tested at three levels of granularity. Null at all of them.
 
 **Semantic embeddings (mxbai-embed-large):** Cosine similarity between each result's snippet embedding and the centroid of all prior result embeddings. Also null within-position — sentence-level semantic similarity does not predict evaluation time any better than bag-of-words.
 
-**The forward-only curve reverses the prediction:** Isolating forward-scanning periods (excluding regressions), gaze dwell ratio *increases* with position (Spearman ρ = +0.82). Users dwell longer on later results during first-pass scanning. The naive explanation — cognitive load increases with foraging depth as working memory grows — is contradicted by per-position pupillometry (§3b-iv), which shows cognitive load *decreasing* with position. The dissociation suggests evaluation becomes *routinized*: the comparison set grows (more time), but compiled evaluation criteria make each comparison cheaper (less cognitive effort per unit time).
+**The forward-only curve reverses the prediction:** Isolating forward-scanning periods (excluding regressions), gaze dwell ratio *increases* with position (Spearman ρ = +0.82 on *N* = 9 position means). Users dwell longer on later results during first-pass scanning. The naive explanation — cognitive load increases with foraging depth as working memory grows — is contradicted by per-position pupillometry (§3b-iv), which shows cognitive load *decreasing* with position. The dissociation suggests evaluation becomes *routinized*: the comparison set grows (more time), but compiled evaluation criteria make each comparison cheaper (less cognitive effort per unit time).
 
 **Why the aggregate correlation was misleading:** Position and overlap are confounded — both increase monotonically down the SERP. The aggregate partial r = -0.054 (p = 2.4×10⁻⁹) was driven by this confound, not by content. The regression-vs-no-regression split compounded the problem: lower dwell on revisit reflects recognition/memory and ballistic scroll kinematics (§8), not semantic priming.
 
@@ -214,7 +214,7 @@ Survey vs evaluate pupil diameter: p = 10⁻¹¹⁷. The survey phase *constrict
 
 Duchowski (2026) Butterworth IIR method enables per-result cognitive load measurement at the ~2-second per-position granularity where wavelet LHIPA cannot operate (minimum 7.5s). Two 4th-order Butterworth filters (LF: 0–1.6 Hz, HF: 1.6–4 Hz) applied to the full blink-cleaned 150 Hz pupil stream; LF/HF variance ratio computed per position during forward scanning. Higher LF/HF = higher cognitive load.
 
-**The working memory hypothesis is wrong.** LF/HF *decreases* with position (**ρ = −0.927, p < 0.0001** on position medians, N = 2,719 trials) [NB14:K3]. Cognitive load peaks at position 0 and drops steeply through positions 0–3, then plateaus at approximately half the initial level through positions 4–10.
+**The working memory hypothesis is wrong.** LF/HF *decreases* with position (**ρ = −0.927, p < 0.0001** on *N* = 11 position medians aggregated from 2,719 trials) [NB14:K3]. Cognitive load peaks at position 0 and drops steeply through positions 0–3, then plateaus at approximately half the initial level through positions 4–10.
 
 | Positions | Median LF/HF | N valid segments |
 |-----------|-------------|-----------------|
