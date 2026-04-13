@@ -89,7 +89,7 @@ People read every result at the same depth: ~2 fixations, ~500 ms per reading ep
 
 The uptick at the boundary is consistent with a cost collapse. By the last result, three things converge: (1) you've built sharp selection criteria from evaluating 8+ candidates, so judging one more is cheap; (2) there's nowhere left to scroll, so the "travel cost" of continuing is zero; (3) you've seen everything, so there's no uncertainty about what else might be below the fold. The reward rate for evaluating that last result spikes — not because it's better, but because the cost of evaluating it is near zero.
 
-Boundary clickers show higher cognitive load in their pupil dilation (LHIPA = 0.041 vs 0.049 for mid-page clickers; lower LHIPA = higher load; p < 0.0001), invest more fixations (~100 vs ~89), and are disproportionately "optimizers" who evaluated the whole page. They're not giving up. They're finishing the job.
+Boundary clickers show higher cognitive load in their pupil dilation (LHIPA = 0.041 vs 0.049 for mid-page clickers; lower LHIPA = higher load; p < 0.0001) and invest more fixations (~100 vs ~89). They're not giving up. They're finishing the job. *The pre-audit "disproportionately optimizers" framing did not survive the 2026-04-12 coordinate-space audit — see findings.md §0 for the full sat/opt × boundary breakdown (post-fix opt/sat ratio = 1.06× on the full corpus, inverted within cohort A; the small-n boundary cluster is participant-concentrated and ad-contaminated rather than tier-driven).*
 
 ### Decomposition
 

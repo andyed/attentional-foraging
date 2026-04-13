@@ -2,7 +2,7 @@
 
 Reanalysis of the [AdSERP dataset](https://github.com/kayhan-latifzadeh/AdSERP) (Latifzadeh, Gwizdka & Leiva, SIGIR 2025). The [journey doc](journey.md) records how this started; this document records what we found.
 
-**Status:** v12, 2026-04-12. §0 ski-jump rebuilt on post-coord-fix data (cohort A only; full-corpus uptick at pos 10 was a pre-audit artifact). Prior: v11 Key Claims refs + stale value corrections. v10 element-type approach-retreat (§10b), parafoveal preview null (§3d-ii), survey phase pupil trajectory (§3b-iii), ski-jump (§0), OSEC (§3b), difficulty (§3c), priming null (§2), scroll kinematics (§8).
+**Status:** v13, 2026-04-13. §0 ski-jump satisfice/optimize decomposition retracted: pre-audit "1.56× more likely" claim collapsed on post-fix data (full-corpus opt/sat ratio = 1.06× and *inverted* within cohort A). The mixed-tier apparent elevation is participant-concentrated (50 % from 2 of 16 mixed users) and ad-contaminated (53 % of mixed boundary clicks land on ad slots, not organic results). Prior: v12 §0 ski-jump rebuilt on cohort A only. v11 Key Claims refs + stale value corrections. v10 element-type approach-retreat (§10b), parafoveal preview null (§3d-ii), survey phase pupil trajectory (§3b-iii), ski-jump (§0), OSEC (§3b), difficulty (§3c), priming null (§2), scroll kinematics (§8).
 
 ---
 
@@ -47,15 +47,33 @@ The magnitude is muted relative to production search for a structural reason: Ad
 
 Full-corpus numbers: `scripts/output/ski_jump_canonical.csv`. Cohort A numbers: `scripts/output/ski_jump_rank10/ctr_by_rank_by_cohort.csv`.
 
-**Who clicks at the boundary?** Optimizers (high regression rate) are 1.56× more likely to click at positions 9–10 than satisficers (14.5% vs 9.3%). They evaluated the whole SERP before committing.
+**Who clicks at the boundary? — the satisficer/optimizer story does not survive the audit.**
 
-**Cognitive load at the boundary.** LHIPA drops sharply at positions 9–10 (0.041 vs 0.049, p < 0.0001). Lower LHIPA = higher cognitive load. Boundary clickers are working harder, not giving up. They've seen everything and still need to pick.
+The pre-audit version of this section reported "Optimizers (high regression rate) are 1.56× more likely to click at positions 9–10 than satisficers (14.5% vs 9.3%). They evaluated the whole SERP before committing." On post-coord-fix data, that decomposition collapses:
 
-**Difficulty modulation.** Easy SERPs (high relevance spread) produce more boundary clicks (13.6% vs 10.0%). Users who scroll all the way down on an easy SERP are likelier to click at the boundary because the standout was lower in the ranking.
+| Slice | Satisficer | Mixed | Optimizer | Ratio (Opt/Sat) |
+|---|---|---|---|---|
+| Full corpus, abs rank 9–10 | 6/940 = 0.64 % | 30/951 = **3.15 %** | 6/884 = 0.68 % | **1.06×** (was claimed 1.56×) |
+| Full corpus, organic rank 8–9 | 3/795 = 0.38 % | 8/823 = 0.97 % | 3/755 = 0.40 % | 1.05× |
+| Cohort A (n=131), rank 9 only | 1/18 = 5.6 % | 2/38 = 5.3 % | 1/75 = 1.3 % | **0.24× (inverted)** |
 
-**Investment.** Boundary clickers invested ~100 fixations and 26.5s, vs ~89 fixations and ~23s for mid-range clickers (positions 3–6).
+Three things died:
 
-**Why the ski-jump happens.** The decline is attention allocation under diminishing returns. Each successive result gets fewer fixations (not shorter ones — per-fixation duration is flat at ~220ms). The user invests less in each new candidate because the marginal value of evaluating one more drops as evaluation criteria compile and the remaining uncertainty shrinks (§3a, §3b-iv).
+1. **The 1.56× ratio is gone.** Post-fix it is 1.06× full-corpus and *inverted* inside cohort A. The pre-audit 14.5 % vs 9.3 % shares were coordinate-bug artifacts an order of magnitude larger than the post-fix values (now 0.6–3 %).
+2. **The "mixed" tier looks higher than both extremes** (3.15 % vs ~0.7 %), but this is **not a tier-level effect**. Of the 30 mixed-tier boundary clicks, **50 % come from two participants (p044 + p020)** and **53 % are clicks on AD slots** at abs rank 9–10, not on organic results. Stripping ads or stripping those two participants both kill the apparent mixed-tier elevation.
+3. **Boundary-click trials are 42 of 2,775 total (1.5 %).** This is a small-*n* tail where idiosyncratic individuals dominate.
+
+What does survive: **cohort A is itself an optimizer-skewed cohort by construction.** 75 of 131 cohort A trials (57 %) come from the high-regression tercile, vs 18 from the satisficer tercile (14 %). Reaching rank 9 by scrolling *is* an optimizer-like behavior. But conditional on being in cohort A, the rank-9 click is not disproportionately produced by optimizers — it is a small tail (1/2/1 split at rank 9 across the three tiers).
+
+**Honest synthesis:** the rank-9 uptick in cohort A is real (2.3 % → 3.1 %), small, and does not decompose along the satisfice/optimize axis. The pre-audit "optimizer outcome" framing was a coordinate-bug artifact. AdSERP's forced-choice constraint plus the small *n* at the boundary plus participant-level idiosyncrasy makes any tier story unreliable on this dataset. See `scripts/ski_jump_satopt.py` and `scripts/ski_jump_mixed_tier.py` for the full breakdown.
+
+**Cognitive load at the boundary.** LHIPA drops sharply at positions 9–10 (0.041 vs 0.049, p < 0.0001). Lower LHIPA = higher cognitive load. Boundary clickers are working harder, not giving up. They've seen everything and still need to pick. *Caveat: this LHIPA finding predates the satisfice/optimize collapse and should be re-verified on cohort A directly — boundary clickers as a population may not be the right reference class anymore.*
+
+**Difficulty modulation.** Easy SERPs (high relevance spread) produce more boundary clicks (13.6% vs 10.0%). Users who scroll all the way down on an easy SERP are likelier to click at the boundary because the standout was lower in the ranking. *Caveat: as with the LHIPA finding, this used a pre-audit boundary-click definition.*
+
+**Investment.** Boundary clickers invested ~100 fixations and 26.5s, vs ~89 fixations and ~23s for mid-range clickers (positions 3–6). *Same caveat.*
+
+**Why the ski-jump happens (theoretical framing).** The decline is attention allocation under diminishing returns. Each successive result gets fewer fixations (not shorter ones — per-fixation duration is flat at ~220ms). The user invests less in each new candidate because the marginal value of evaluating one more drops as evaluation criteria compile and the remaining uncertainty shrinks (§3a, §3b-iv).
 
 The uptick at the boundary is a micro-economic phenomenon. By position 9–10, three costs collapse simultaneously:
 
@@ -63,11 +81,9 @@ The uptick at the boundary is a micro-economic phenomenon. By position 9–10, t
 - **Travel cost (T_s) approaches zero.** There's nowhere left to scroll. The cost that normally competes with continued evaluation — paginate, reformulate, abandon — is eliminated (in this task) or maximized (in production search, where "next page" is the expensive alternative).
 - **Uncertainty (σ²) is low.** The user has seen the full page. There's no possibility of a better result below the fold.
 
-These cost reductions are observable in the data: boundary clickers show higher cognitive load (LHIPA, confirming they're doing real evaluation, not satisficing), more fixations (confirming continued investment), and are disproportionately optimizers (confirming thorough evaluation preceded the decision). The reward rate spikes not because the last result is better, but because the cost of evaluating it is near zero and the comparison framework is maximally refined.
+The theoretical framing still holds; the empirical decomposition into "optimizer outcome" does not. In AdSERP the cohort-A uptick is small, the satisfice/optimize split is null, and boundary-click trials are too few (42/2,775) and too participant-concentrated to test the theory cleanly. Production-search data with natural "next page" exits is the right test bed for the cost-collapse model. AdSERP shows that *something* survives at rank 9 in the right cohort; production data is needed to show *who* it is.
 
-In production search, the boundary is "next page" and the same dynamics apply: the uptick represents users deciding that the cost of pagination exceeds the cost of picking from what they've already seen.
-
-**Notebook:** [00_skijump.ipynb](../notebooks-v2/00_skijump.ipynb)
+**Notebook:** [00_skijump.ipynb](../notebooks-v2/00_skijump.ipynb). **Sat/opt analysis:** `scripts/ski_jump_satopt.py`, `scripts/ski_jump_mixed_tier.py`, outputs in `scripts/output/ski_jump_satopt/`.
 
 ---
 
@@ -495,4 +511,4 @@ The gaze-cursor lag replicates Huang, White & Buscher (2012) in direction and ma
 
 ---
 
-*v12, 2026-04-12. v12: §0 ski-jump rebuilt on post-fix data — full-corpus uptick at pos 10 does not survive the coord audit; the rank-9 uptick only survives in the homogeneous cohort A (plain-top, ≥10 organic, reached rank 9, n=131). v11: Key Claims refs + stale value corrections. v10: element-type approach-retreat. v9: coordinate-space audit post-fix values. v8: approach-retreat motor signature. v7: ski-jump decomposition (§0); task model OSEC (§3b); SERP difficulty (§3c); reading episode pooling (§3d). v6: §9 relaxing serial evaluation. v5: FPOGY clamp; ballistic kinematics confound. v4: viewport time bug fix; forward-only dwell reversal (ρ = +0.73). v3: within-position controls null. v2: regression-stratified split. v1: aggregate priming correlation.*
+*v13, 2026-04-13. v13: §0 sat/opt boundary-click decomposition retracted. Post-fix opt/sat ratio at abs ranks 9–10 is 1.06× (was claimed 1.56×); within cohort A it inverts to 0.24× at rank 9. The "mixed" tercile elevation is a participant-concentration + ad-contamination artifact (p044+p020 = 50 %; 53 % of mixed boundary clicks are on ad slots). v12: §0 ski-jump rebuilt on post-fix data — full-corpus uptick at pos 10 does not survive the coord audit; the rank-9 uptick only survives in the homogeneous cohort A (plain-top, ≥10 organic, reached rank 9, n=131). v11: Key Claims refs + stale value corrections. v10: element-type approach-retreat. v9: coordinate-space audit post-fix values. v8: approach-retreat motor signature. v7: ski-jump decomposition (§0); task model OSEC (§3b); SERP difficulty (§3c); reading episode pooling (§3d). v6: §9 relaxing serial evaluation. v5: FPOGY clamp; ballistic kinematics confound. v4: viewport time bug fix; forward-only dwell reversal (ρ = +0.73). v3: within-position controls null. v2: regression-stratified split. v1: aggregate priming correlation.*

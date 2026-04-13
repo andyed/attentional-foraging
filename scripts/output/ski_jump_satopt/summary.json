@@ -1,0 +1,28 @@
+{
+  "tier_boundaries_regression_rate": {
+    "t1": 0.4666666666666667,
+    "t2": 0.7
+  },
+  "participant_counts": {
+    "satisficer": 16,
+    "mixed": 16,
+    "optimizer": 15
+  },
+  "full_corpus_n": 2775,
+  "cohort_A_n": 131,
+  "cohort_A_n_by_tier": {
+    "satisficer": 18,
+    "mixed": 38,
+    "optimizer": 75
+  },
+  "full_corpus_pos910_abs": {
+    "satisficer_share": 0.006382978723404255,
+    "optimizer_share": 0.006787330316742082,
+    "ratio_opt_over_sat": 1.0633484162895928
+  },
+  "full_corpus_org89": {
+    "satisficer_share": 0.0037735849056603774,
+    "optimizer_share": 0.003973509933774834,
+    "ratio_opt_over_sat": 1.0529801324503312
+  }
+}
