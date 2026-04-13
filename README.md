@@ -10,13 +10,13 @@ Google a product — headphones, a winter jacket, anything. You'll scan the resu
 
 Every search engine sees this. At eBay, Microsoft, and Meta, we called it **the ski-jump**. The standard explanation — "position bias" — is a label, not a mechanism. This project decomposes the ski-jump and the broader question of how people actually evaluate a page of search results, using eye tracking, pupil dilation, mouse movement, and scrolling data from 2,776 search trials.
 
-| Pos | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | **10** |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Click % | 17.7 | 13.5 | 14.2 | 13.4 | 9.5 | 6.6 | 5.7 | 3.8 | 3.8 | 2.9 | **3.3** |
+| Rank | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | **9** |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Click % | 35.1 | 7.6 | 9.2 | 9.9 | 10.7 | 6.1 | 6.9 | 6.1 | 2.3 | **3.1** |
 
 [![Ski-jump filmstrip](assets/ski-jump-filmstrip.png)](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/00_skijump.ipynb)
 
-The ski-jump replicates in this lab data: position 10 deviates 39% above the log-linear trend from positions 5–9 (chi-squared = 10.0, p = 0.0015). More on why below.
+The rank-9 uptick (2.3% → 3.1%) survives in AdSERP only when you strip the data down to the cohort where the industry ski-jump lives: **plain-top SERPs** (no ads above the first organic), **≥10 organic results**, and **the user actually scrolled the last result into view** (n=131 trials). AdSERP is a forced-choice task — participants *must* click something — so the "regress / refine / abandon" escape valve is mostly closed (2.3% of this cohort) and the uptick can't grow large. In production web search it reaches 20–30% because that escape valve is wide open. The shape is the same; the task structure caps its magnitude.
 
 ## What started this
 

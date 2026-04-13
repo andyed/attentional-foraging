@@ -2,7 +2,7 @@
 
 Reanalysis of the [AdSERP dataset](https://github.com/kayhan-latifzadeh/AdSERP) (Latifzadeh, Gwizdka & Leiva, SIGIR 2025). The [journey doc](journey.md) records how this started; this document records what we found.
 
-**Status:** v11, 2026-04-10. Key Claims references added throughout; stale NB13/NB11/NB14 values corrected to match canonical `notebook-key-claims.md`. Prior: v10 element-type approach-retreat (§10b), parafoveal preview null (§3d-ii), survey phase pupil trajectory (§3b-iii), ski-jump (§0), OSEC (§3b), difficulty (§3c), priming null (§2), scroll kinematics (§8).
+**Status:** v12, 2026-04-12. §0 ski-jump rebuilt on post-coord-fix data (cohort A only; full-corpus uptick at pos 10 was a pre-audit artifact). Prior: v11 Key Claims refs + stale value corrections. v10 element-type approach-retreat (§10b), parafoveal preview null (§3d-ii), survey phase pupil trajectory (§3b-iii), ski-jump (§0), OSEC (§3b), difficulty (§3c), priming null (§2), scroll kinematics (§8).
 
 ---
 
@@ -35,11 +35,17 @@ Two major caveats versus generalized SERP behavior. These pervade all findings.
 
 ## 0. The ski-jump: click distribution upticks at the boundary
 
-Click share drops monotonically from position 0 to 9, then deviates upward at position 10 (91 clicks vs 81 at position 9). The pos-10-vs-pos-9 comparison is not individually significant (binomial p = 0.25, bootstrap 95% CI for rate difference: [−0.6, +1.3]pp). However, the deviation from the log-linear trend fitted to positions 5–9 IS significant: 91 observed vs 65 expected, 39% excess, χ² = 10.0, p = 0.0015. This replicates the "ski-jump" boundary effect observed in click-share data across product search engines (eBay, MSN Search, Redbubble, others). In production search, the boundary is "next page." In AdSERP's forced-choice task, position 10 IS the boundary.
+*Updated 2026-04-12 (post coordinate-space audit).* The pre-audit version of this section reported a 39% excess at position 10 (χ² = 10.0, p = 0.0015) using `count_absolute_ranks` and a click-y coordinate that mis-applied scroll. After the coord fix, the full-cohort click distribution is monotonic: pos 0 = 18.9%, pos 1 = 18.7%, pos 2 = 25.0% (first organic after DoubleDeck ads), then a clean decay to pos 9 = 1.1%, pos 10 = 0.4%. **The full-corpus rank-10 uptick does not survive the audit.**
 
-| Pos | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | **10** |
-|-----|---|---|---|---|---|---|---|---|---|---|--------|
-| Click % | 17.7 | 13.5 | 14.2 | 13.4 | 9.5 | 6.6 | 5.7 | 3.8 | 3.8 | 2.9 | **3.3** |
+The uptick DOES survive in the cohort where the industry ski-jump actually lives: plain-top SERPs (no ads above the first organic result), ≥10 organic results, and the user actually scrolled rank 9 into view. In this cohort (n=131 trials), rank 7 = 6.1% → rank 8 = 2.3% → **rank 9 = 3.1%**, a +33% relative uptick.
+
+| Rank | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | **9** |
+|-----|---|---|---|---|---|---|---|---|---|--------|
+| Click % | 35.1 | 7.6 | 9.2 | 9.9 | 10.7 | 6.1 | 6.9 | 6.1 | 2.3 | **3.1** |
+
+The magnitude is muted relative to production search for a structural reason: AdSERP is forced-choice. In this cohort, only 3 of 131 trials (2.3%) regress without clicking. In naturalistic search that number is 20–30% — users who reach the bottom routinely give up or refine, and the residual "I'll just click the last one" population produces the large industry spike. AdSERP closes that escape valve, so the uptick can only grow as large as the small fraction of users who, having seen everything, genuinely prefer the last result. The shape is the same; the task structure caps its magnitude.
+
+Full-corpus numbers: `scripts/output/ski_jump_canonical.csv`. Cohort A numbers: `scripts/output/ski_jump_rank10/ctr_by_rank_by_cohort.csv`.
 
 **Who clicks at the boundary?** Optimizers (high regression rate) are 1.56× more likely to click at positions 9–10 than satisficers (14.5% vs 9.3%). They evaluated the whole SERP before committing.
 
@@ -489,4 +495,4 @@ The gaze-cursor lag replicates Huang, White & Buscher (2012) in direction and ma
 
 ---
 
-*v11, 2026-04-10. v11: Key Claims refs + stale value corrections. v10: element-type approach-retreat. v9: coordinate-space audit post-fix values. v8: approach-retreat motor signature. v7: ski-jump decomposition (§0); task model OSEC (§3b); SERP difficulty (§3c); reading episode pooling (§3d). v6: §9 relaxing serial evaluation. v5: FPOGY clamp; ballistic kinematics confound. v4: viewport time bug fix; forward-only dwell reversal (ρ = +0.73). v3: within-position controls null. v2: regression-stratified split. v1: aggregate priming correlation.*
+*v12, 2026-04-12. v12: §0 ski-jump rebuilt on post-fix data — full-corpus uptick at pos 10 does not survive the coord audit; the rank-9 uptick only survives in the homogeneous cohort A (plain-top, ≥10 organic, reached rank 9, n=131). v11: Key Claims refs + stale value corrections. v10: element-type approach-retreat. v9: coordinate-space audit post-fix values. v8: approach-retreat motor signature. v7: ski-jump decomposition (§0); task model OSEC (§3b); SERP difficulty (§3c); reading episode pooling (§3d). v6: §9 relaxing serial evaluation. v5: FPOGY clamp; ballistic kinematics confound. v4: viewport time bug fix; forward-only dwell reversal (ρ = +0.73). v3: within-position controls null. v2: regression-stratified split. v1: aggregate priming correlation.*

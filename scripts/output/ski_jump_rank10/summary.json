@@ -1,0 +1,26 @@
+{
+  "A_plain_top_10plus_reached9": {
+    "n_trials": 131,
+    "n_clicked_organic": 128,
+    "p_click_rank9_among_reached": 0.030534351145038167,
+    "p_any_click": 0.9770992366412213
+  },
+  "B_plain_top_10plus_any_scroll": {
+    "n_trials": 431,
+    "n_clicked_organic": 423,
+    "p_click_rank9_among_reached": 0.009280742459396751,
+    "p_any_click": 0.9814385150812065
+  },
+  "C_any_10plus_reached9": {
+    "n_trials": 363,
+    "n_clicked_organic": 307,
+    "p_click_rank9_among_reached": 0.01652892561983471,
+    "p_any_click": 0.8457300275482094
+  },
+  "D_all_10plus": {
+    "n_trials": 1552,
+    "n_clicked_organic": 1341,
+    "p_click_rank9_among_reached": 0.003865979381443299,
+    "p_any_click": 0.8640463917525774
+  }
+}

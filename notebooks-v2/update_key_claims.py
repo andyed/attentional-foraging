@@ -53,6 +53,9 @@ NOTEBOOK_LABELS = {
     "12_regression_precision_by_load.ipynb": ("NB12", "12_regression_precision_by_load", "regression landing precision under cognitive load (null)"),
     "18_ripa2_vs_lfhf.ipynb": ("NB18", "18_ripa2_vs_lfhf", "RIPA2 vs Butterworth LF/HF comparison"),
     "25_serp_composition.ipynb": ("NB25", "25_serp_composition", "corpus SERP structure — absolute vs organic rank, ad types, validation cohorts"),
+    "09_difficulty.ipynb": ("NB09", "09_difficulty", "SERP difficulty (Jaccard token overlap) and its effect on page coverage"),
+    "06_orientation_evaluation.ipynb": ("NB06", "06_orientation_evaluation", "OSEC phase boundaries — orient, survey, evaluate, commit"),
+    "04_fixation_coverage.ipynb": ("NB04", "04_fixation_coverage", "fixation coverage and viewport-scan behavior"),
 }
 
 
@@ -691,6 +694,204 @@ NB25_BODY = """### Corpus size and preprocessing coverage
 > **Supporting analyses.** NB13 saccade-amplitude Survey-phase finding is robust to the ad-heterogeneity of this corpus; the Survey phase is gist formation + top-ad attention capture, not deliberate ad-mapping. See `docs/survey-phase-vs-ads.md`. For paper-facing narrative, see `docs/serp-structure-survey.md`."""
 
 
+# ── NB09 — SERP difficulty (Jaccard token overlap) ────────────────────
+
+NB09_BODY = """### Jaccard token overlap as a difficulty proxy
+
+| ID | Claim | Value |
+|---|---|---|
+| **K1** | Trials with computed Jaccard difficulty | **2,772** (of 2,776) |
+| **K2** | Jaccard difficulty distribution | **mean 0.151**, median 0.150, SD 0.033, range [0.029, 0.395] |
+| **K3** | Difficulty × organic-result count | Spearman **ρ = −0.040**, *p* = 0.035 (trivial) |
+
+### Tercile comparison — the one positive effect is on page coverage
+
+| ID | Claim | Value |
+|---|---|---|
+| **K4** | Tercile boundaries (Jaccard) | 0.136 / 0.162 |
+| **K5** | Tercile group sizes | Easy 915, Medium 914, Hard 942 |
+| **K6** | Duration (s) by tercile | Easy 23.33, Medium 22.22, Hard 22.47 (KW *p* = 0.186) |
+| **K7** | Fixation count by tercile | Easy 87.41, Medium 82.82, Hard 83.21 (KW *p* = 0.130) |
+| **K8** | **Page coverage (%) by tercile** | **Easy 57.0, Medium 53.6, Hard 53.6** (KW *p* = 0.010) |
+| **K9** | Regressions by tercile | Easy 0.86, Medium 0.81, Hard 0.83 (KW *p* = 0.697) |
+| **K10** | Click Y by tercile | Easy 848, Medium 829, Hard 797 (KW *p* = 0.132) |
+
+### Partial correlations (controlling for n_results)
+
+| ID | Claim | Value |
+|---|---|---|
+| **K11** | Difficulty → coverage | *r* = **−0.056**, *p* = 0.003 |
+| **K12** | Difficulty → click Y | *r* = **−0.049**, *p* = 0.010 |
+| **K13** | Difficulty → duration | *r* = −0.034, *p* = 0.072 (ns) |
+| **K14** | Difficulty → fixations | *r* = −0.035, *p* = 0.068 (ns) |
+| **K15** | Difficulty → regressions | *r* = −0.008, *p* = 0.686 (ns) |
+
+### Within-participant (N=47 except regressions N=46)
+
+| ID | Claim | Value |
+|---|---|---|
+| **K16** | Difficulty → duration (within-participant) | mean ρ = **−0.043**, *p* = 0.014 |
+| **K17** | Difficulty → fixations | mean ρ = −0.042, *p* = 0.021 |
+| **K18** | Difficulty → coverage | mean ρ = **−0.056**, *p* = 0.014 |
+| **K19** | Difficulty → regressions | mean ρ = −0.006, *p* = 0.770 (ns) |
+
+> **Jaccard is a weak predictor** — all significant effects are small (|r| < 0.06). The one substantive signal is on page coverage: easier SERPs produce more coverage (5-pp absolute difference across terciles). Duration, fixations, and regressions are effectively null. See findings §3c for why token overlap is the wrong measure for transactional queries — `docs/findings.md` points to `compute_difficulty_measures.py` for the complementary "relevance spread" measure that has stronger effects.
+
+### Step 7: Evaluation depth and cognitive effort by SERP diversity (Peter Dixon-Moses question)
+
+*Operationalization.* Depth = click organic rank, max organic rank reached (via scroll), count and fraction of organic results fixated. Cognitive effort = total fixation time (TFT = Σ fixation durations). Stratified by Jaccard tercile, partial correlation (controlling for organic result count), and within-participant rank correlation.
+
+| ID | Claim | Value |
+|---|---|---|
+| **K20** | Trials with evaluation-depth metrics | **2,771** |
+| **K21** | Trials with assignable click organic rank | **2,419** |
+| **K22** | Corpus-mean click organic rank | **1.57** |
+| **K23** | Corpus-mean max organic rank reached | 5.32 |
+| **K24** | Corpus-mean fraction of organic results fixated | 0.481 |
+| **K25** | Corpus-mean TFT | **18.4 s** |
+
+#### Tercile comparison (Easy → Hard = diverse → homogeneous)
+
+| ID | Measure | Easy | Medium | Hard | KW *p* |
+|---|---|---|---|---|---|
+| **K26** | Click organic rank | **1.77** | 1.52 | **1.42** | **< 0.0001** *** |
+| **K27** | Max rank reached | **5.67** | 5.19 | **5.11** | **< 0.0001** *** |
+| **K28** | N org results fixated | 4.89 | 4.50 | 4.43 | 0.0001 *** |
+| **K29** | Frac org results fixated | 0.498 | 0.470 | 0.475 | 0.035 * |
+| **K30** | **TFT (s)** | 19.1 | 17.8 | **18.4** | **0.088** (ns) |
+
+#### Continuous partial correlations (controlling for n_organic)
+
+| ID | Measure | *r* | *p* |
+|---|---|---|---|
+| **K31** | Click organic rank × difficulty | **−0.093** | < 0.0001 *** |
+| **K32** | Max rank reached × difficulty | −0.080 | < 0.0001 *** |
+| **K33** | N org fixated × difficulty | −0.076 | 0.0001 *** |
+| **K34** | Frac org fixated × difficulty | −0.073 | 0.0001 *** |
+| **K35** | **TFT × difficulty** | **−0.039** | **0.041 *** |
+
+#### Within-participant rank correlations (N = 47)
+
+| ID | Measure | mean ρ | *t* | *p* |
+|---|---|---|---|---|
+| **K36** | Click organic rank | **−0.101** | −6.01 | < 0.0001 *** |
+| **K37** | Max rank reached | −0.105 | −5.82 | < 0.0001 *** |
+| **K38** | N org fixated | −0.093 | −5.06 | < 0.0001 *** |
+| **K39** | Frac org fixated | −0.045 | −2.27 | 0.028 * |
+| **K40** | **TFT** | **−0.036** | −2.12 | **0.039 *** |
+
+> **Homogeneous SERPs produce shallower evaluation, not deeper.** All five depth measures point the same direction and all four primary ones are highly significant within-participant (*p* < 0.001). When results look alike (high Jaccard), users satisfice earlier — click organic rank drops from 1.77 on diverse SERPs to 1.42 on homogeneous ones, max scroll rank drops from 5.67 to 5.11. This is the "first-looks-good-enough" collapse: when there are no real distinctions to discover, picking the first option is cheap.
+>
+> **Cognitive effort (TFT) barely moves.** Tercile KW *p* = 0.088 (ns); continuous and within-participant are marginal (*p* ≈ 0.04). Homogeneity compresses the evaluation **window**, not the processing load per result. The Evaluate step gets shorter, not harder.
+>
+> **Relationship to the ski-jump rank-9 uptick (§0 findings.md).** The majority of users on homogeneous SERPs collapse forward (click earlier, shown here). A minority — the cohort A trials where the user scrolled all the way to rank 9 — collapse backward and pick the last result, producing the muted rank-9 uptick. Both patterns coexist within homogeneous SERPs and represent different exits from Evaluate.
+>
+> **Answer to Peter's question.** Yes, AdSERP is varied enough to detect SERP-diversity effects on evaluation depth. The range is [0.029, 0.395] Jaccard (11× spread), effect sizes are small but consistent across tercile / continuous / within-participant tests, and the direction is the opposite of the naive "homogeneous → deeper" hypothesis."""
+
+
+# ── NB06 — orientation + evaluation (OSEC phases) ─────────────────────
+
+NB06_BODY = """### Orientation (page-load → first result fixation)
+
+| ID | Claim | Value |
+|---|---|---|
+| **K1** | Trials with orientation data | **2,773** |
+| **K2** | Orientation time (cohort-wide) | **median 194 ms**, mean 464 ms |
+| **K3** | Orientation (first-viewport clickers) | median 194 ms (N=512) |
+| **K4** | Orientation (scrollers) | median 194 ms (N=2,261) |
+| **K5** | Pre-result fixations (header/chrome) | median 1, mean 1.7 |
+
+### First fixated result position — most users land directly on result 0
+
+| ID | Claim | Value |
+|---|---|---|
+| **K6** | Position 0 | **2,516 (90.7 %)** |
+| **K7** | Position 1 | 180 (6.5 %) |
+| **K8** | Positions 0–1 combined | **97.2 %** |
+| **K9** | Position 2 | 46 (1.7 %) |
+| **K10** | Position ≥ 3 | 31 (1.1 %) |
+
+### Time-to-interaction (first mouse/scroll event)
+
+| ID | Claim | Value |
+|---|---|---|
+| **K11** | TTI median | **835 ms** |
+| **K12** | TTI mean | 2,435 ms |
+
+### Per-result evaluation metrics (forward scanning only)
+
+| ID | Claim | Value |
+|---|---|---|
+| **K13** | Evaluation observations | 16,326 |
+| **K14** | Fixation count × position (Spearman on pos 0–9 means) | ρ = **−0.442** (directional, *p* = 0.20 at N = 10) |
+| **K15** | Per-fixation duration × position | ρ = 0.358 (flat, *p* = 0.31) |
+| **K16** | Scanning rate | **2.09 s per position** (intercept 2.16 s) |
+| **K17** | Fixation count at position 0 / position 9 | 19.9 / 12.2 |
+
+### Per-participant TTI ↔ cognitive load (N = 46 with valid LHIPA)
+
+| ID | Claim | Value |
+|---|---|---|
+| **K18** | TTI × LHIPA correlation | **ρ = −0.557, *p* = 5.8 × 10⁻⁵** (longer TTI → higher load) |
+| **K19** | Orientation × click depth | ρ = −0.078, *p* = 0.61 (ns) |
+| **K20** | TTI × click depth | ρ = 0.203, *p* = 0.18 (ns) |
+
+> **The orient phase is nearly a no-op.** 90.7 % of trials land the very first fixation directly on result 0, with a stereotyped 194 ms latency. The "looking for where the results are" story fails — users know. Orientation variance lives in TTI (pre-interaction reading), not in landing-position search. TTI × LHIPA is the strongest per-participant cognitive-load anchor in the notebook."""
+
+
+# ── NB04 — fixation coverage and viewport scanning ────────────────────
+
+NB04_BODY = """### Coverage of the clicked region
+
+| ID | Claim | Value |
+|---|---|---|
+| **K1** | Trials processed | **2,761 / 2,776** |
+| **K2** | First-viewport clickers | **502 (18.2 %)** — click without scrolling |
+| **K3** | Scrollers | 2,259 (81.8 %) |
+| **K4** | Mean share of results-above-click fixated | **94.7 %** (median 100 %) |
+| **K5** | Trials with 100 % above-click fixation | **82.0 %** (2,263) |
+| **K6** | Mean share of max-scroll-depth results fixated | 82.8 % (median 85.7 %) |
+
+### First-viewport scanning completeness
+
+| ID | Claim | Value |
+|---|---|---|
+| **K7** | FV clickers — share of first-screen results fixated | **68.3 %** |
+| **K8** | Scrollers — share of first-screen results fixated | **91.7 %** |
+| **K9** | Time-to-click — FV clickers | **11.4 s** (median) |
+| **K10** | Time-to-click — scrollers | **23.8 s** — 2.1× slower |
+| **K11** | First-move TTI — both cohorts | 1.7 s |
+| **K12** | First-scroll TTI — scrollers only | 5.9 s |
+
+### Fixation budget by position (share of total fixation time)
+
+| ID | Claim | Value |
+|---|---|---|
+| **K13** | FV clickers — position 0 budget | **42 %** |
+| **K14** | FV clickers — position 1 budget | 32 % |
+| **K15** | Scrollers — position 0 budget | **21 %** |
+| **K16** | Scrollers — position 1 budget | 15 % |
+
+### User-level calibration: TTI predicts per-trial investment
+
+| ID | Claim | Value |
+|---|---|---|
+| **K17** | TTI(move) → fix/result (N=47) | *r* = **0.460**, *p* = 0.001 |
+| **K18** | TTI(move) → viewport time per result | *r* = 0.358, *p* = 0.014 |
+| **K19** | TTI(move) → time-to-click | *r* = 0.417, *p* = 0.004 |
+| **K20** | TTI(scroll) → fix/result (N=46) | *r* = **0.771**, *p* < 0.0001 |
+| **K21** | TTI(scroll) → viewport time | *r* = 0.735, *p* < 0.0001 |
+| **K22** | Calibration — first-5 TTI → remaining trials fix/result | *r* = 0.422, *p* = 0.003 |
+
+### Per-position TTI predictiveness
+
+| ID | Claim | Value |
+|---|---|---|
+| **K23** | TTI predicts fixation time significantly for positions | **0–7** (fades at 8–9 due to ski-jump variance) |
+
+> **First-viewport clickers are not satisficers — they're faster deciders.** They fixate 68 % of the first screen (vs scrollers' 92 %) but reach a click in 11 s vs 23 s. Fixation budget on result 0 doubles (42 % vs 21 %). TTI is a stable per-user trait: a participant's first-5-trial TTI predicts the fix/result investment on their remaining trials (r = 0.42). The TTI(scroll) → investment correlation (r = 0.77) is among the strongest user-level signals in the corpus."""
+
+
 # ── Drive ─────────────────────────────────────────────────────────────
 
 TARGETS = [
@@ -706,6 +907,9 @@ TARGETS = [
     ("12_regression_precision_by_load.ipynb", NB12_BODY),
     ("18_ripa2_vs_lfhf.ipynb", NB18_BODY),
     ("25_serp_composition.ipynb", NB25_BODY),
+    ("09_difficulty.ipynb", NB09_BODY),
+    ("06_orientation_evaluation.ipynb", NB06_BODY),
+    ("04_fixation_coverage.ipynb", NB04_BODY),
 ]
 
 

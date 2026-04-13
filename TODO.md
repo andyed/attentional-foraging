@@ -28,7 +28,15 @@
 
 ## Cross-cutting refactors
 
-- [ ] **Fix NB02 `compute_lag`.** Uses an undefined `RY` global (likely copy-pasted from NB01 where `RY = 1024 / meta['win_h']`). Will NameError the moment it's re-executed. Fix: use the canonical `compute_lag_for_trial()` now in `data_loader.py` (assumes mouse and gaze share the same pixel coordinate space, RY ≡ 1 — verified against GP3 pixel coords). May shift NB02's published lag numbers slightly; re-export HTML after fix.
+- [x] **Fix NB02 `compute_lag`.** ~~Uses an undefined `RY` global.~~ Resolved 2026-04-13: set `RY = 1.0` (gaze and cursor share pixel space) and switched the driver to `load_fixations_tuples` to match the tuple destructure. NB02 green, 202 KB output.
+
+- [ ] **Extend Key Claims to remaining exploratory-but-cited notebooks.** After the 2026-04-12 stale-notebook triage (see CHANGELOG), 9 notebooks were re-executed and 3 of the most-cited (NB09, NB06, NB04) got first-class Key Claims blocks. Four more are worth promoting:
+    - `01_convergence` — mouse-gaze distance AUC curves, scroll-enriched click prediction (1 findings citation). Candidate K-IDs: ROC-AUC per model variant, per-participant model stability.
+    - `02_gaze_cursor_lag` — Huang −700 ms gaze-leads-cursor replication (1 citation). Candidate K-IDs: median lag by cohort (scroll vs no-scroll), within-participant SD, Huang CI overlap.
+    - `08_priming` — §2 four-granularity null result (1 citation). Candidate K-IDs: Jaccard/semantic/forward-only/survey-vocabulary each with the null test statistic. The null-result story is load-bearing; hardcoding its values protects it from future drift.
+    - `10_strategies` — satisficer/optimizer split, 1.56× boundary effect at positions 9–10 (1 citation, §0). Candidate K-IDs: tercile boundaries on regression rate, boundary-click proportion by tercile, investment-by-tercile deltas.
+    Pattern: pull 5–8 numbers per notebook from current cell output, add `NB##_BODY` to `notebooks-v2/update_key_claims.py`, register in `NOTEBOOK_LABELS` + `TARGETS`, run once to inject. Est. 1–2 hours.
+
 
 - [ ] **Forward-only vs regressive split across all analyses.** Most current findings pool forward reading with regressive (scroll-back) behavior. 1,465 of 2,341 tagged trials are `regressive_scroller`. Re-run NB23 (rank effects), NB24 (retreat arc geometry), NB20 (cursor features), NB01 (convergence / mouse-gaze distance), and NB05 (LHIPA) with an explicit forward-only vs regressive partition. Expected impact: the retreat direction and the "retreat as epistemic action" claims are likely direction-specific. The approach-retreat four-class taxonomy needs this split to handle regressive seeking cleanly. Track which findings survive the split and which are artifacts of pooling.
 
@@ -164,6 +172,14 @@ All three headline rhos are on tiny N:
 - Forward dwell ratio rho = +0.82: N=9 position means
 
 Every citation should state the actual N. The trial-level or within-trial statistics should lead.
+
+### Individual differences & strategy segmentation (2026-04-11)
+
+- [ ] **LF/HF trajectory segments vs satisficer/optimizer:** Cross-tab is null (chi2 = 0.52, p = 0.77). LOO logistic regression from 6 LF/HF features → AUC = 0.43 (below chance). **LF/HF trajectory is orthogonal to sat/opt.** Strongest trend: early/late ratio (p = 0.106, d = 0.44). This is a meaningful null: load trajectory and behavioral strategy are independent dimensions.
+- [ ] **Connect to Dumais et al. (IIiX 2010):** Their economic vs exhaustive evaluator clusters (gaze AOI fixation impact, scanpath completeness/linearity) map conceptually to our speed terciles. Do our 3 LF/HF segments (declining/flat/increasing) align with their 3 gaze clusters? Need scanpath completeness and linearity from AdSERP fixation data.
+- [ ] **Connect to Buscher/Huang et al. (WSDM 2012):** Cursor-feature clustering on Bing. AdSERP has cursor data — replicate cursor-based strategy identification and cross-reference with LF/HF segments.
+- [ ] **Stability of LF/HF segments across blocks:** "Increasing" group (N=8) could be noise. Test within-subject consistency across the 6 blocks per participant.
+- [ ] **Dumais 2010 as F-pattern reference:** Good empirical F-pattern characterization with individual differences decomposition — add to OSEC explainer references.
 
 ### Explainer TODO
 
