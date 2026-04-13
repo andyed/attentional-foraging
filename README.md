@@ -6,23 +6,13 @@
 
 ## The puzzle
 
-Google a product — headphones, a winter jacket, anything. You'll scan the results top to bottom. Click rates drop steadily from result 1 through result 8. Then something happens: result 10, the *last* one, gets clicked *more* than result 9.
+People scan a page of search results in a recognizable shape — the **F-pattern** in heatmaps, with a steep click decay from top to bottom and odd boundary effects at the last visible result. Twenty years of web search literature has explained this as "position bias" — a *label* for the shape, not a *mechanism* for it. This project asks the mechanism question: what cognitive operations are actually running while a user evaluates a search results page, and which of the patterns we see are the operations vs. which are statistical artifacts of how the data was aggregated?
 
-Every search engine sees this. At eBay, Microsoft, and Meta, we called it **the ski-jump**. The standard explanation — "position bias" — is a label, not a mechanism. This project decomposes the ski-jump and the broader question of how people actually evaluate a page of search results, using eye tracking, pupil dilation, mouse movement, and scrolling data from 2,776 search trials.
-
-| Rank | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | **9** |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Click % | 35.1 | 7.6 | 9.2 | 9.9 | 10.7 | 6.1 | 6.9 | 6.1 | 2.3 | **3.1** |
-
-[![Ski-jump filmstrip](assets/ski-jump-filmstrip.png)](https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/00_skijump.ipynb)
-
-The rank-9 uptick (2.3% → 3.1%) survives in AdSERP only when you strip the data down to the cohort where the industry ski-jump lives: **plain-top SERPs** (no ads above the first organic), **≥10 organic results**, and **the user actually scrolled the last result into view** (n=131 trials). AdSERP is a forced-choice task — participants *must* click something — so the "regress / refine / abandon" escape valve is mostly closed (2.3% of this cohort) and the uptick can't grow large. In production web search it reaches 20–30% because that escape valve is wide open. The shape is the same; the task structure caps its magnitude.
-
-## What started this
-
-The ski-jump has been sitting unexplained in every search engine I have worked on for twenty years. "Position bias" is a label, not a mechanism. Explaining it required decomposing page scanning into measurable cognitive phases rather than treating the whole scan as one blob — and that required a dataset rich enough to see phase structure, not just clicks.
+The answer turns out to be a four-phase task model — **Orient → Survey → Evaluate → Commit** — recoverable from eye tracking, pupil dilation, mouse trajectories, and scroll telemetry on 2,776 commercial search trials.
 
 [Latifzadeh, Gwizdka & Leiva's AdSERP dataset](https://github.com/kayhan-latifzadeh/AdSERP) (SIGIR 2025) made it possible: one of the richest public datasets of search behavior, with simultaneous eye tracking, mouse tracking, scrolling, and pupil dilation from 47 participants across 2,776 trials. An AI-assisted [journey.md](./docs/journey.md) validated the dataset's utility; the [findings](./docs/findings.md) have been growing since.
+
+> **A note on the ski-jump.** I came into this project hoping to test the classic "ski-jump" — the terminal-click uptick at the last result that production search engines see in their click logs. After a 2026-04-12 coordinate-space audit, the AdSERP full-corpus uptick at the last position turned out to be a coordinate-handling bug, not a real signal. The cleaned-up data shows a small terminal cluster (4 of 131 trials) only in a narrow cohort (plain-top SERPs where the user scrolled all 10 organic results into view), and that cluster looks like deliberate "I evaluated the whole page and chose the last one" behavior — but n = 4 is too small to claim a pattern at this scale. The full unwinding is documented in [findings.md §0](./docs/findings.md#0-the-ski-jump-click-distribution-upticks-at-the-boundary). The task-model story below survived the same audit cleanly and is the primary contribution of this work.
 
 A parallel hypothesis — that lexical priming between results explained the declining dwell curve — drove the early work but tested null at four granularities. The investigation surfaced a better answer (framework compilation) as a byproduct. Full writeup: [priming-null-result.md](./docs/priming-null-result.md).
 
