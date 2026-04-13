@@ -2,7 +2,7 @@
 
 Reanalysis of the [AdSERP dataset](https://github.com/kayhan-latifzadeh/AdSERP) (Latifzadeh, Gwizdka & Leiva, SIGIR 2025). The [journey doc](journey.md) records how this started; this document records what we found.
 
-**Status:** v13, 2026-04-13. §0 ski-jump satisfice/optimize decomposition retracted: pre-audit "1.56× more likely" claim collapsed on post-fix data (full-corpus opt/sat ratio = 1.06× and *inverted* within cohort A). The mixed-tier apparent elevation is participant-concentrated (50 % from 2 of 16 mixed users) and ad-contaminated (53 % of mixed boundary clicks land on ad slots, not organic results). Prior: v12 §0 ski-jump rebuilt on cohort A only. v11 Key Claims refs + stale value corrections. v10 element-type approach-retreat (§10b), parafoveal preview null (§3d-ii), survey phase pupil trajectory (§3b-iii), ski-jump (§0), OSEC (§3b), difficulty (§3c), priming null (§2), scroll kinematics (§8).
+**Status:** v14, 2026-04-13. §10b NB22 K5 metric renamed and reinterpreted: "Retreat distance" → "Post-closest drift" (the metric is `distances[-1] − distances[min_dist_idx]` from `15_cursor_approach.ipynb:325`, not max-excursion). Earlier "curved-close vs straight-far" interpretation was the wrong geometric metaphor — corrected to "deferred = cursor parked, eyes wandering; eval-rejected = cursor moving on with the eyes." The motor-signature dissociation is real and strong; only the metaphor needed updating. v13: §0 ski-jump satisfice/optimize decomposition retracted: pre-audit "1.56× more likely" claim collapsed on post-fix data (full-corpus opt/sat ratio = 1.06× and *inverted* within cohort A). The mixed-tier apparent elevation is participant-concentrated (50 % from 2 of 16 mixed users) and ad-contaminated (53 % of mixed boundary clicks land on ad slots, not organic results). Prior: v12 §0 ski-jump rebuilt on cohort A only. v11 Key Claims refs + stale value corrections. v10 element-type approach-retreat (§10b), parafoveal preview null (§3d-ii), survey phase pupil trajectory (§3b-iii), ski-jump (§0), OSEC (§3b), difficulty (§3c), priming null (§2), scroll kinematics (§8).
 
 ---
 
@@ -458,14 +458,20 @@ Cursor approach-retreat goes beyond proximity. During evaluation, the mouse make
 
 Four-class taxonomy (NB22, regression-based split, post coordinate-space audit 2026-04-12):
 
-| Category | N | % | Retreat (px) | Gaze Dwell (ms) | Dwell in Proximity (ms) |
+| Category | N | % | Post-closest drift (px)¹ | Gaze Dwell (ms) | Dwell in Proximity (ms) |
 |----------|---|---|---|---|---|
 | **Clicked** | 2,228 | 16.6% | — | — | — |
 | **Deferred** (approached + regressed to) | 1,916 | 14.3% | 234.5 | 4,137 | 1,212.5 |
 | **Evaluated-rejected** (approached + no regression) | 439 | 3.3% | 90.8 | 1,612 | 690.0 |
 | **Not approached** | 8,836 | 65.8% | — | — | — |
 
-Motor signature separation: deferred vs rejected shows **2.6× retreat distance (234.5 vs 90.8 px, p = 1.76 × 10⁻³⁸)**, **2.6× gaze dwell (4,137 vs 1,612 ms, p = 9.76 × 10⁻⁷⁰)**, **1.8× proximity dwell (1,212.5 vs 690.0 ms, p = 1.36 × 10⁻¹⁶)** [NB22:K5–K7]. All three separations strengthened dramatically with the fixation-side coordinate fix (retreat-distance p went from 10⁻¹¹ to 10⁻³⁸, gaze-dwell p went from 10⁻²⁶ to 10⁻⁷⁰).
+> **Definition note.** "Evaluated-rejected" in this table uses the **NB22 regression-based** definition (approached cursor + no scroll regression, *N* = 439). NB21:K15 uses a different definition — the **classifier-threshold** cut (`p_click ≤ threshold`, *N* = 974, 7.3 % of corpus) — which lives in §10 above. The two cuts measure complementary things and are not interchangeable. The motor-signature *p* values (10⁻³⁸ to 10⁻⁷⁰) are computed on the regression-based cut. See `docs/notebook-key-claims.md` NB21 K13–K15 vs NB22 K1–K3 for the full split.
+
+> ¹ "Post-closest drift" is `distances[-1] − distances[min_dist_idx]` from `notebooks-v2/15_cursor_approach.ipynb:325` — *how far the cursor had drifted from its closest-approach point by the time the episode ended*. Not max excursion, not arc length, not net Euclidean displacement. **Deferred has the larger value (234 vs 91 px)** because deferred users park the cursor while fixating other candidates before regressing; eval-rejected users actively move the cursor to the next target, so post-closest drift stays small. The corrected geometric framing is "deferred = cursor parked, eyes wandering; eval-rejected = cursor moving on with the eyes." Earlier prose framed this as "curved-close vs straight-far" — that intuition is inverted under the actual K5 metric and has been retracted in `approach-retreat/docs/theory.md`. The motor-signature dissociation itself is real and strong; only the geometric metaphor needed updating.
+
+**Audit note (2026-04-13).** The "Notebook:" definitional label "Retreat distance (px)" in the prior version of this section was misleading — readers naturally read it as max-excursion-from-AOI. Renamed to "post-closest drift" everywhere as of v14.
+
+Motor signature separation: deferred vs rejected shows **2.6× post-closest drift (234.5 vs 90.8 px, *p* = 1.76 × 10⁻³⁸)**, **2.6× gaze dwell (4,137 vs 1,612 ms, *p* = 9.76 × 10⁻⁷⁰)**, **1.8× proximity dwell (1,212.5 vs 690.0 ms, *p* = 1.36 × 10⁻¹⁶)** [NB22:K5–K7]. All three *p*-values improved dramatically with the fixation-side coordinate fix (retreat-distance gap *p* went from 10⁻¹¹ to 10⁻³⁸, gaze-dwell gap *p* went from 10⁻²⁶ to 10⁻⁷⁰), driven primarily by cohort size doubling and cleaner class separation rather than effect-size explosion (the absolute gap on K5 grew from 95 px to 144 px).
 
 **Approach predicts regression.** **81.6%** of approached results get regressed to (odds ratio **3.21×**, χ² = 661.1, p = 8.72 × 10⁻¹⁴⁶) [NB15:K6–K7]. Approach + regression → **37.9%** click rate (N = 3,087). Approach + no regression → **36.9%** (N = 696). No approach + regression → **8.1%** (N = 5,589). No approach + no regression → **8.6%** (N = 4,047) [NB15:K8–K11].
 
@@ -476,10 +482,6 @@ Motor signature separation: deferred vs rejected shows **2.6× retreat distance 
 **Element-type approach signatures confirm this from motor data (notebook 20).** Top ads have 2× the approach rate (42.9% vs 21.0% organic), 50 px more retreat (279 vs 228 px, p = 7×10⁻⁸), 2.3× longer dwell in proximity (4,586 vs 2,023 ms for clicked results, p = 3×10⁻¹³), and 1.7× more direction changes (2.7 vs 1.6). All effects survive position controls. Azzopardi's C/W/L cost framework (SIGIR 2018) is overturned for top ads — discrimination cost outweighs reading cost. Native ads show avoidance: lowest approach rate (17.5%), largest cursor distance, lowest click rate (8.0%).
 
 **Notebooks:** [cursor_approach.ipynb](../notebooks-v2/15_cursor_approach.ipynb), [element_type.ipynb](../notebooks-v2/16_element_type.ipynb), [scroll_retreat.ipynb](../notebooks-v2/17_scroll_retreat.ipynb), [approach_by_element.ipynb](../notebooks-v2/20_approach_by_element.ipynb). Detailed findings: [findings-approach-retreat.md](findings-approach-retreat.md).
-
-**Deep dive:** [findings-approach-retreat.md](findings-approach-retreat.md)
-
-**Notebooks:** [15_cursor_approach.ipynb](../notebooks-v2/15_cursor_approach.ipynb), [16_element_type.ipynb](../notebooks-v2/16_element_type.ipynb), [17_scroll_retreat.ipynb](../notebooks-v2/17_scroll_retreat.ipynb)
 
 ## 11. Two orthogonal individual difference dimensions
 

@@ -355,9 +355,11 @@ NB22 defines the four classes via cursor approach (min_dist < 100 px) + scroll r
 
 | ID | Metric | Deferred | Eval-Rejected | *p* |
 |---|---|---|---|---|
-| **K5** | Retreat distance (px) | **234.5** | **90.8** | **1.76 × 10⁻³⁸** |
+| **K5** | **Post-closest-approach drift** (px)¹ | **234.5** | **90.8** | **1.76 × 10⁻³⁸** |
 | **K6** | Total gaze dwell (ms) | **4,137** | **1,612** | **9.76 × 10⁻⁷⁰** |
 | **K7** | Dwell in proximity (ms) | **1,212.5** | **690.0** | **1.36 × 10⁻¹⁶** |
+
+> ¹ **K5 is `distances[-1] − distances[min_dist_idx]`** in `notebooks-v2/15_cursor_approach.ipynb:325`. It measures **how far the cursor had drifted from its closest-approach point by the time the episode ended** — *not* max excursion, *not* arc length, *not* net Euclidean distance from the AOI. **Deferred has the larger K5 value (234 vs 91 px)** because deferred users park the cursor while fixating other candidates before regressing; eval-rejected users actively move the cursor to the next target, so post-closest drift stays small. This is the *opposite* direction from the "curved-close vs straight-far" intuition in earlier `approach-retreat/docs/theory.md` framings — the corrected interpretation is "deferred = cursor parked, eyes wandering; eval-rejected = cursor moving on with the eyes." The dissociation is real and strong; only the geometric metaphor needed updating.
 
 ### Click prediction with element-type interactions
 
@@ -378,8 +380,8 @@ NB22 defines the four classes via cursor approach (min_dist < 100 px) + scroll r
 > - K2 deferred: 1,178 → **1,916** (+62.6%) — half the pre-fix "not approached" records were actually approached + regressed trials mislabeled by the scroll leak
 > - K3 evaluated-rejected: 278 → **439** (+57.9%)
 > - K4 not approached: 11,727 → **8,836** (−24.7%)
-> - K5 retreat-distance gap: 191 vs 96 (p 1.9 × 10⁻¹¹) → **234 vs 91 (p 1.76 × 10⁻³⁸)** — 27 orders of magnitude stronger motor signature
-> - K6 gaze-dwell gap: p 3.7 × 10⁻²⁶ → **9.76 × 10⁻⁷⁰** (44 orders of magnitude)
+> - K5 post-closest-approach drift gap: 191 vs 96 (p 1.9 × 10⁻¹¹) → **234 vs 91 (p 1.76 × 10⁻³⁸)** — *p*-value improved by 27 orders of magnitude (driven by cohort size doubling and cleaner class separation; effect size grew modestly from Δ = 95 px to Δ = 144 px)
+> - K6 gaze-dwell gap: p 3.7 × 10⁻²⁶ → **9.76 × 10⁻⁷⁰** (*p*-value improved by 44 orders of magnitude; cohort doubling + cleaner separation, not effect-size explosion)
 > - K7 proximity-dwell gap: p 5.0 × 10⁻⁹ → **1.36 × 10⁻¹⁶**
 > - K11 M3 LOSO AUC: 0.792 → **0.859** (+0.067, a large effect in prediction space)
 >
