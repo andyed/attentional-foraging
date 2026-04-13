@@ -975,7 +975,20 @@ K1–K4 above are indexed by absolute rank (every h3 slot, ads pooled with organ
 |---|---|---|
 | **K23** | TTI predicts fixation time significantly for positions | **0–7** (fades at 8–9 due to ski-jump variance) |
 
+### Corpus-wide fixation duration (single-fixation FPOGD distribution)
+
+*Computed across all single fixations from `get_trial_ids()` × `load_fixations()` post 2026-04-12 coordinate-space audit. The ".tex Mean fixation duration 219 ms, median 193 ms" stat in `task-model-paper.tex` is sourced here.*
+
+| ID | Claim | Value |
+|---|---|---|
+| **K24** | Total single-fixation events | **234,339** |
+| **K25** | Mean single-fixation duration | **218.1 ms** (post-audit; pre-audit value was 219 ms — within rounding) |
+| **K26** | Median single-fixation duration | **187.0 ms** (post-audit; pre-audit value was 193 ms — drifted ~3% downward after coord fix) |
+| **K27** | Single-fixation duration SD / IQR | SD = 130.6 ms; IQR = [133, 268] ms |
+
 > **First-viewport clickers are not satisficers — they're faster deciders.** They fixate 68 % of the first screen (vs scrollers' 92 %) but reach a click in 11 s vs 23 s. Fixation budget on result 0 doubles (42 % vs 21 %). TTI is a stable per-user trait: a participant's first-5-trial TTI predicts the fix/result investment on their remaining trials (r = 0.42). The TTI(scroll) → investment correlation (r = 0.77) is among the strongest user-level signals in the corpus.
+>
+> **K24–K27 are the canonical fixation-duration source for paper drafts.** Cite as `[NB04:K25]` for mean, `[NB04:K26]` for median. The `task-model-paper.tex` line 150 figures should be updated to the post-audit values on the next .tex regeneration.
 
 ---
 
