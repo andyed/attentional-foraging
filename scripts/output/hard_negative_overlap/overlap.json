@@ -1,0 +1,55 @@
+{
+  "youden_j_threshold": 0.5029153707685498,
+  "cohort_sizes": {
+    "regression_rule_deferred": 1916,
+    "regression_rule_rejected": 439,
+    "classifier_threshold_deferred": 1418,
+    "classifier_threshold_rejected": 937,
+    "corpus_total": 13419,
+    "clicked": 2228,
+    "approached": 3783
+  },
+  "overlap": {
+    "both_definitions": 153,
+    "only_regression_rule": 286,
+    "only_classifier_threshold": 784,
+    "union": 1223,
+    "jaccard": 0.12510220768601799,
+    "fraction_of_regression_rule_also_classifier": 0.34851936218678814,
+    "fraction_of_classifier_also_regression_rule": 0.1632870864461046
+  },
+  "coupling_k7_over_k6": {
+    "regression_rule_deferred": {
+      "n": 1916,
+      "k6_median_ms": 4137.0,
+      "k7_median_ms": 1212.5,
+      "k7_over_k6_median": 0.34454852152318616,
+      "k7_over_k6_mean": 0.38990817938964556,
+      "retreat_dist_median_px": 234.54104118482402
+    },
+    "regression_rule_rejected": {
+      "n": 439,
+      "k6_median_ms": 1612.0,
+      "k7_median_ms": 690.0,
+      "k7_over_k6_median": 0.5385054192812322,
+      "k7_over_k6_mean": 0.5360781416908338,
+      "retreat_dist_median_px": 90.77759591467033
+    },
+    "classifier_deferred": {
+      "n": 1418,
+      "k6_median_ms": 4343.5,
+      "k7_median_ms": 1526.5,
+      "k7_over_k6_median": 0.4454923953728305,
+      "k7_over_k6_mean": 0.4711775060076248,
+      "retreat_dist_median_px": 109.72544459772473
+    },
+    "classifier_rejected": {
+      "n": 937,
+      "k6_median_ms": 2715.0,
+      "k7_median_ms": 662.0,
+      "k7_over_k6_median": 0.27576503693281745,
+      "k7_over_k6_mean": 0.33540306552190524,
+      "retreat_dist_median_px": 404.0864147176886
+    }
+  }
+}
