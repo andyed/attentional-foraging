@@ -1,0 +1,69 @@
+{
+  "youden_j_threshold": 0.5029153707685498,
+  "part1_peter_fn_rate": {
+    "full_corpus": {
+      "tp": 1785,
+      "fn": 443,
+      "tn": 8706,
+      "fp": 2485,
+      "tpr": 0.8011669658886894,
+      "fn_rate": 0.1988330341113106
+    },
+    "approached_subset": {
+      "n_approached": 3783,
+      "tp": 1331,
+      "fn": 97,
+      "tn": 937,
+      "fp": 1418,
+      "n_clicked_in_subset": 1428,
+      "n_non_clicked_in_subset": 2355,
+      "tpr_recall": 0.9320728291316527,
+      "fn_rate_miss_rate": 0.06792717086834733,
+      "precision": 0.48417606402328117
+    }
+  },
+  "part2_per_class_coupling": {
+    "classes": {
+      "clicked": {
+        "label": "clicked",
+        "n": 1428,
+        "median_px": 305.7374994350687,
+        "mean_px": 340.5941586373504,
+        "p25_px": 221.76319253219,
+        "p75_px": 437.37471702125316
+      },
+      "deferred_regression_rule": {
+        "label": "deferred (regression rule)",
+        "n": 1916,
+        "median_px": 283.27540674261866,
+        "mean_px": 315.66510671781253,
+        "p25_px": 217.6782911697453,
+        "p75_px": 388.3370326228769
+      },
+      "evaluated_rejected_regression_rule": {
+        "label": "evaluated-rejected (regression rule)",
+        "n": 439,
+        "median_px": 196.64282130702955,
+        "mean_px": 230.83989333751094,
+        "p25_px": 131.1392894086357,
+        "p75_px": 300.33037148117137
+      },
+      "not_approached": {
+        "label": "not approached",
+        "n": 9636,
+        "median_px": 444.80178604289614,
+        "mean_px": 482.6140696233605,
+        "p25_px": 316.0581402480915,
+        "p75_px": 594.9241902228357
+      }
+    },
+    "dissociation_test": {
+      "mannwhitney_u": 589334.0,
+      "mannwhitney_p": 2.123547674207765e-39,
+      "deferred_median_px": 283.27540674261866,
+      "evaluated_rejected_median_px": 196.64282130702955,
+      "n_deferred": 1916,
+      "n_evaluated_rejected": 439
+    }
+  }
+}
