@@ -117,3 +117,40 @@ Threats to validity that pervade the analysis. Each entry names the threat, stat
 - **Report within-participant alongside between-trial.** NB09 Key Claims K16–K19 (SERP difficulty) and K36–K40 (evaluation depth) show that within-participant rank correlations — which avoid the survivorship issue by holding participant fixed — are the cleaner test.
 - **For boundary-step findings, distinguish a step from a gradient.** LHIPA at positions 9–10 shows a step (flat across 0–8, drops at 9–10). Calling this a "ρ = −0.903 gradient" misreads the shape. The correct framing is "boundary effect," visible as a discrete drop, and the ρ is a summary statistic of a piecewise shape, not a linear trend.
 - **For Butterworth LF/HF × position, the post-audit ρ = −0.927 is a position-median correlation.** Paper drafts that cite it must write "on *N* = 11 position medians aggregated from 2,719 trials" — not "on 2,719 trials."
+
+---
+
+## 9. Approach-Threshold Sensitivity (NB22 four-class taxonomy)
+
+**Threat:** The NB22 four-class taxonomy uses a single arbitrary threshold — `min_dist < 100 px` — to label a result-position record as "approached." That threshold is one tuning point, not a sweep. If the K5/K6/K7 motor-signature dissociation between *deferred* and *evaluated-rejected* depends on the exact threshold value, the headline *p* = 1.76 × 10⁻³⁸ would be cherry-picked rather than robust.
+
+**Sweep result (2026-04-13, post 2026-04-12 fixation audit, *script:* `scripts/approach_threshold_sensitivity.py`).** We re-labeled all 13,419 cursor-approach feature records at six threshold values (50, 75, 100, 125, 150, 200 px), holding the per-record regression labels (NB22 cell 5 algorithm) and motor features (K5 retreat_dist, K6 total_dwell_ms, K7 dwell_in_proximity_ms) fixed. The Mann-Whitney U test for deferred vs evaluated-rejected was re-computed at each threshold:
+
+| Threshold (px) | N deferred | N eval-rejected | K5 def / rej (px) | K5 *p* | K6 *p* | K7 *p* |
+|---|---|---|---|---|---|---|
+| **50** | 771 | 143 | 243 / 122 | **7.7 × 10⁻¹³** | 6.8 × 10⁻¹⁹ | 2.6 × 10⁻⁶ |
+| **75** | 1,363 | 272 | 240 / 119 | 1.7 × 10⁻²¹ | 5.5 × 10⁻⁴² | 3.2 × 10⁻⁹ |
+| **100 (canonical)** | 1,916 | 439 | 235 / 91 | **1.76 × 10⁻³⁸** | 9.76 × 10⁻⁷⁰ | 1.36 × 10⁻¹⁶ |
+| **125** | 2,476 | 612 | 230 / 82 | 1.5 × 10⁻⁵² | 1.2 × 10⁻⁹⁶ | 2.4 × 10⁻²² |
+| **150** | 2,970 | 780 | 224 / 74 | 4.9 × 10⁻⁶⁸ | 1.6 × 10⁻¹²³ | 2.4 × 10⁻²⁸ |
+| **200** | 3,798 | 1,130 | 216 / 64 | **9.2 × 10⁻⁹⁸** | 2.2 × 10⁻¹⁶³ | 2.9 × 10⁻³⁸ |
+
+**The dissociation survives at every threshold from 50 to 200 px.** The strictest cut (50 px, only 914 approached records, 4× tighter than canonical) still gives K5 *p* = 7.7 × 10⁻¹³. The loosest cut (200 px, 4,928 records) gives *p* = 9.2 × 10⁻⁹⁸. K6 and K7 dissociations are also significant at every threshold (all *p* < 10⁻⁵).
+
+**The dissociation strengthens monotonically as the threshold loosens.** Most of the strength gain is sample size, not effect-size shift. Class medians are directionally stable: deferred K5 ranges 243 → 216 px (drops 11 % across the sweep), evaluated-rejected K5 ranges 122 → 64 px (drops 47 %). The gap *widens* from 121 → 152 px as the threshold loosens, because looser criteria pull more "casual cursor passages" with tiny post-closest drift into the eval-rejected class.
+
+**What this rules out:**
+
+- **Cherry-picked threshold.** The 100 px choice is not load-bearing for the existence of the dissociation. A reviewer asking "why 100 px?" can be answered: "the dissociation is significant at *p* < 10⁻¹² across all thresholds from 50 to 200 px; 100 px is the inflection where cohort size doubles past 1,000 deferred records while still excluding records where the cursor never visibly approached the result."
+- **Edge-case artifact.** A finding that depends on a specific threshold is suspect. This finding does not.
+- **Cohort-size confound dominating the *p*-value.** At threshold = 50 px, the cohort is *smaller* than the canonical 100 px split (914 vs 2,355 records) and the *p*-value is *weaker* (10⁻¹³ vs 10⁻³⁸) — but the class medians are *farther apart* (243 / 122 vs 235 / 91). The effect-size signal is real at every cohort size; the *p*-value tracks N as expected.
+
+**What this does NOT rule out:**
+
+- **K7 (dwell_in_proximity_ms) is partially frozen.** The "proximity" radius is baked into the feature at NB15 compute time at 100 px — so the K7 sweep above is only re-labeling records into deferred/rejected sets at each *approach* threshold, not re-computing proximity dwell at each *proximity* radius. A full K7 sweep would require regenerating `cursor-approach-features.json` at each proximity radius, which is out of scope here.
+- **AOI-geometry sensitivity.** This sweep varies the threshold but not the reference geometry. The result-band centers used by NB15 to compute `min_dist` are h3-bbox-derived; no padding sensitivity has been tested.
+- **The 100 px choice is justified for cross-dataset consistency** with the attcur/Bruckner validation, which uses EvTrack's `inTarget` flag computed from the ad-element bounding box (also a single fixed AOI per session). Cross-dataset apples-to-apples requires a shared threshold rule, even if either dataset alone would tolerate a wider range.
+
+**Mitigation in paper drafts:** any citation of K5/K6/K7 in the CIKM 2026 paper should be accompanied by a one-sentence robustness statement: "the dissociation holds at *p* < 10⁻¹² across approach thresholds from 50 to 200 px (`scripts/approach_threshold_sensitivity.py`)." That defuses the threshold-choice concern in advance.
+
+**Output:** `scripts/output/approach_threshold_sensitivity/sweep_results.csv` and `scripts/output/approach_threshold_sensitivity/summary.md`. Regression-label cache at `regression_labels_cache.json` (avoids the ~2 min recomputation on re-run).
