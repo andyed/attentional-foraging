@@ -38,3 +38,6 @@ notebooks-v2/_*.py
 # Pre-fix backup JSONs (local reproducibility)
 *.prefix-bug.json
 *.html
+
+# Per-record figure caches — large (10-15 MB), reproducible from source scripts
+scripts/output/figures/per_record_*.json
