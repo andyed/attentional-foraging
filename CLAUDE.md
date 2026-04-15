@@ -2,6 +2,24 @@
 
 SERP evaluation task model (OSEC) built on AdSERP eye+cursor dataset. 11 Tier-A analysis notebooks, 4 producer scripts, comprehensive Key Claims system.
 
+## LAB / WILD Convention (CIKM paper organizational axis)
+
+Every quantitative claim in the CIKM paper, and every figure/table in `scripts/output/`, must be tagged with its regime. Two labels, no middle:
+
+- **LAB** — AdSERP (Latifzadeh, Gwizdka & Leiva, SIGIR 2025). Controlled lab: 47 participants, Gazepoint GP3 HD 150 Hz eye tracker, evtrack mouse telemetry, pupil diameter, full scroll signal, SERP HTML snapshots, ad bounding boxes. **Instrumentation stack:** pupil → gaze → cursor → scroll → click. Used for every claim that depends on eye movements, pupil dilation, or gaze-cursor coupling.
+- **WILD** — ACD, the Attentive Cursor Dataset (Leiva & Arapakis, *Frontiers in Human Neuroscience* 2020). In-the-wild crowdsourced: ~2,909 sessions, cursor + click only, no eye tracker, no pupil. **Instrumentation stack:** cursor → click. Used for replicating any claim that the LAB observed via eye tracking but must survive without gaze to matter for deployment.
+
+**Do not say "deployed" or "production."** ACD is crowdsourced Mechanical Turk, not real production search logs. `WILD` is honest; `deployed` is not.
+
+**Rules:**
+- Every number, figure caption, and Key Claim row gets a regime tag: `[LAB, NB22:K3]` or `[WILD, ACD-retreat]` or `[BOTH]` when the same statistic has been computed in both datasets.
+- The cross-regime bridge is the **four-class taxonomy** (clicked / deferred / evaluated-rejected / not-approached). It must be recoverable from the shared substrate (cursor + click) so that a LAB finding with gaze has a WILD replication without it.
+- When a claim is LAB-only (pupil, LHIPA, LF/HF, direct gaze-cursor coupling medians), say so explicitly. Do not imply it transfers unless tested.
+- `docs/notebook-key-claims.md` should carry the tag on every row. Prose in `findings.md`, `paper.md`, and README.md citations pass the tag through untouched.
+- When writing §4/§5 of the CIKM paper, mirror the split: §4 LAB findings (pupil, gaze, motor signature) → §5 What survives to WILD (four-class taxonomy rebuilt from cursor alone, validated on ACD) → §6 deployment implication.
+
+The point of the convention is that a reader should never be uncertain which regime a number came from. The "three coupling scalars" confusion (306 vs 338 vs 381) was entirely within LAB; a WILD version of that statistic is either computable on ACD or isn't, and that binary is the axis the reader holds.
+
 ## Notebook Conventions
 
 Every Tier-A notebook has a **Key Claims block** at the top with stable K-IDs (K1, K2, ...). These are the canonical source of truth for all quantitative findings.
