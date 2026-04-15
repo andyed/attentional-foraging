@@ -93,7 +93,13 @@ def classify_records(raw, regression_labels):
 
 
 def compute_record_offsets(raw, i):
-    """Per-fixation (dx, dy, duration) offsets from cursor anchor for one record."""
+    """Per-fixation (dx, dy, duration) offsets from the cursor position
+    at the fixation's timestamp (nearest-in-time interpolation).
+
+    This is the same reference frame used by render_coupling_traces.py,
+    so the r50 density concentration radius is directly comparable to
+    the followup_peter_leif cursor-gaze coupling median.
+    """
     r = raw[i]
     tid = r["trial_id"]
     entry = r["entry_t"]
@@ -105,14 +111,13 @@ def compute_record_offsets(raw, i):
         return None
 
     pos_evts = {"mousemove", "mouseover", "mouseout", "mousedown", "mouseup", "click"}
-    curs = [(x, y) for (t, ev, x, y) in events
+    curs = [(t, x, y) for (t, ev, x, y) in events
             if ev in pos_evts and entry <= t <= exit_]
     if len(curs) < 5:
         return None
-    cx = np.array([c[0] for c in curs], dtype=float)
-    cy = np.array([c[1] for c in curs], dtype=float)
-    cx_med = float(np.median(cx))
-    cy_med = float(np.median(cy))
+    m_ts = np.array([c[0] for c in curs], dtype=np.int64)
+    m_xs = np.array([c[1] for c in curs], dtype=float)
+    m_ys = np.array([c[2] for c in curs], dtype=float)
 
     wfix = [f for f in fixes if entry <= f["t"] <= exit_]
     if len(wfix) < 3:
@@ -120,8 +125,16 @@ def compute_record_offsets(raw, i):
 
     out = []
     for f in wfix:
-        dx = float(f["x"]) - cx_med
-        dy = float(f["y"]) - cy_med
+        ft = int(f["t"])
+        pos = int(np.searchsorted(m_ts, ft))
+        if pos == 0:
+            j = 0
+        elif pos >= len(m_ts):
+            j = len(m_ts) - 1
+        else:
+            j = pos if abs(m_ts[pos] - ft) < abs(m_ts[pos - 1] - ft) else pos - 1
+        dx = float(f["x"]) - float(m_xs[j])
+        dy = float(f["y"]) - float(m_ys[j])
         dur = float(f.get("d", 200))
         out.append((dx, dy, dur))
     return out
@@ -318,29 +331,60 @@ def main():
         },
         "per_class": {},
     }
+    # Precompute per-bin radius from origin once (grid is square, symmetric)
+    n_bins = int(2 * EXTENT / BIN_PX)
+    bin_edges = np.linspace(-EXTENT, EXTENT, n_bins + 1)
+    bin_centers = (bin_edges[:-1] + bin_edges[1:]) / 2
+    bx, by = np.meshgrid(bin_centers, bin_centers)
+    bin_radius = np.hypot(bx, by)
+
     for cls in class_order:
         n_rec, n_fix = pooled_counts[cls]
-        # Radial magnitude distribution (how far from cursor anchor)
+        H = densities[cls]
+
+        # Two aggregations, both from (dx, dy) offsets with cursor at
+        # fixation timestamp — the same reference frame as followup.
         mask = np.where(labels == cls)[0]
-        radii = []
+        per_episode_medians = []  # median-of-medians — matches followup
+        pooled_radii = []         # pooled — heatmap sees this distribution
         for i in mask:
-            if i in all_offsets:
-                for dx, dy, _dur in all_offsets[i]:
-                    if abs(dx) <= EXTENT and abs(dy) <= EXTENT:
-                        radii.append(float(np.hypot(dx, dy)))
-        radii_arr = np.array(radii) if radii else np.array([0.0])
+            if i not in all_offsets:
+                continue
+            offs = all_offsets[i]
+            if not offs:
+                continue
+            rs = [float(np.hypot(dx, dy)) for dx, dy, _dur in offs]
+            per_episode_medians.append(float(np.median(rs)))
+            pooled_radii.extend(rs)
+
+        per_ep_arr = np.array(per_episode_medians)
+        pooled_arr = np.array(pooled_radii)
+
         summary["per_class"][cls] = {
             "class_n_total": int(class_n[cls]),
             "class_n_pooled": int(n_rec),
             "n_fixations_pooled": int(n_fix),
-            "radial_offset_px": {
-                "median": float(np.median(radii_arr)),
-                "p25": float(np.percentile(radii_arr, 25)),
-                "p75": float(np.percentile(radii_arr, 75)),
-                "p90": float(np.percentile(radii_arr, 90)),
-                "mean": float(radii_arr.mean()),
+            "cursor_gaze_distance_px": {
+                "median_of_episode_medians": float(np.median(per_ep_arr)),
+                "mean_of_episode_medians": float(per_ep_arr.mean()),
+                "episode_median_p25": float(np.percentile(per_ep_arr, 25)),
+                "episode_median_p75": float(np.percentile(per_ep_arr, 75)),
+                "pooled_fixation_median": float(np.median(pooled_arr)),
+                "pooled_fixation_p25": float(np.percentile(pooled_arr, 25)),
+                "pooled_fixation_p75": float(np.percentile(pooled_arr, 75)),
             },
             "density_peak_value": float(densities[cls].max()),
+            "note": (
+                "median_of_episode_medians is the canonical coupling "
+                "statistic — each episode contributes one value (median "
+                "of its per-fixation cursor-gaze distances), then median "
+                "across episodes. Matches scripts/output/followup_peter_leif "
+                "and the §5 paper language. pooled_fixation_median pools "
+                "all fixations into one bag, so long episodes dominate — "
+                "this is the distribution the heatmap visualizes, not the "
+                "coupling statistic. Cursor position is nearest-in-time "
+                "to each fixation."
+            ),
         }
     json.dump(summary, open(out_json, "w"), indent=2)
     print(f"wrote {out_json}")

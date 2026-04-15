@@ -1,7 +1,7 @@
 {
   "figure": "gaze_density_class.png",
   "script": "scripts/render_gaze_density.py",
-  "generated": "2026-04-14T23:58:42.426181Z",
+  "generated": "2026-04-15T00:09:13.106214Z",
   "config": {
     "extent_px": 600,
     "bin_px": 12,
@@ -14,41 +14,50 @@
     "evaluated-rejected": {
       "class_n_total": 439,
       "class_n_pooled": 274,
-      "n_fixations_pooled": 5900,
-      "radial_offset_px": {
-        "median": 234.73415432726682,
-        "p25": 142.63239450816312,
-        "p75": 362.5113774769113,
-        "p90": 489.5866623577537,
-        "mean": 263.35012072845774
+      "n_fixations_pooled": 6072,
+      "cursor_gaze_distance_px": {
+        "median_of_episode_medians": 213.6414890596734,
+        "mean_of_episode_medians": 249.62981213775603,
+        "episode_median_p25": 147.5611528670035,
+        "episode_median_p75": 310.5059149921517,
+        "pooled_fixation_median": 251.0019920239678,
+        "pooled_fixation_p25": 136.56134152826706,
+        "pooled_fixation_p75": 406.12620869571725
       },
-      "density_peak_value": 1251.0351465219812
+      "density_peak_value": 1675.8155228722926,
+      "note": "median_of_episode_medians is the canonical coupling statistic \u2014 each episode contributes one value (median of its per-fixation cursor-gaze distances), then median across episodes. Matches scripts/output/followup_peter_leif and the \u00a75 paper language. pooled_fixation_median pools all fixations into one bag, so long episodes dominate \u2014 this is the distribution the heatmap visualizes, not the coupling statistic. Cursor position is nearest-in-time to each fixation."
     },
     "deferred": {
       "class_n_total": 1916,
       "class_n_pooled": 1854,
-      "n_fixations_pooled": 114115,
-      "radial_offset_px": {
-        "median": 297.3213749463701,
-        "p25": 185.8268683451936,
-        "p75": 432.24530072633524,
-        "p90": 545.0068806905102,
-        "mean": 314.4319133983479
+      "n_fixations_pooled": 129713,
+      "cursor_gaze_distance_px": {
+        "median_of_episode_medians": 284.18564030052653,
+        "mean_of_episode_medians": 316.38511718643156,
+        "episode_median_p25": 218.32314979121352,
+        "episode_median_p75": 388.5385986772439,
+        "pooled_fixation_median": 301.5592810709032,
+        "pooled_fixation_p25": 175.32826355154492,
+        "pooled_fixation_p75": 472.1048608482872
       },
-      "density_peak_value": 13821.792495566517
+      "density_peak_value": 22752.0232116369,
+      "note": "median_of_episode_medians is the canonical coupling statistic \u2014 each episode contributes one value (median of its per-fixation cursor-gaze distances), then median across episodes. Matches scripts/output/followup_peter_leif and the \u00a75 paper language. pooled_fixation_median pools all fixations into one bag, so long episodes dominate \u2014 this is the distribution the heatmap visualizes, not the coupling statistic. Cursor position is nearest-in-time to each fixation."
     },
     "clicked": {
       "class_n_total": 2228,
       "class_n_pooled": 2057,
-      "n_fixations_pooled": 110256,
-      "radial_offset_px": {
-        "median": 306.04084694693944,
-        "p25": 193.14178721494875,
-        "p75": 438.9762948493451,
-        "p90": 549.3351663219307,
-        "mean": 321.0165267219037
+      "n_fixations_pooled": 117850,
+      "cursor_gaze_distance_px": {
+        "median_of_episode_medians": 337.76915193664445,
+        "mean_of_episode_medians": 373.16369443336777,
+        "episode_median_p25": 242.99176940793694,
+        "episode_median_p75": 476.03781362408597,
+        "pooled_fixation_median": 351.17232237179513,
+        "pooled_fixation_p25": 201.30076999355964,
+        "pooled_fixation_p75": 534.6400658386912
       },
-      "density_peak_value": 13933.144424788143
+      "density_peak_value": 19319.658972690766,
+      "note": "median_of_episode_medians is the canonical coupling statistic \u2014 each episode contributes one value (median of its per-fixation cursor-gaze distances), then median across episodes. Matches scripts/output/followup_peter_leif and the \u00a75 paper language. pooled_fixation_median pools all fixations into one bag, so long episodes dominate \u2014 this is the distribution the heatmap visualizes, not the coupling statistic. Cursor position is nearest-in-time to each fixation."
     }
   }
 }

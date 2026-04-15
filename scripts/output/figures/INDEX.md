@@ -60,6 +60,21 @@ window, 12 px bins, σ = 3 Gaussian smoothing.
 
 ---
 
+## Metric provenance
+
+Three different cursor-gaze coupling scalars circulate the repo. They are all computed on the same population but answer slightly different questions. **Don't cite them side-by-side without saying which is which.**
+
+| Where | Aggregation | Reference frame | clicked | deferred | eval-rej |
+|---|---|---|---|---|---|
+| [`scripts/output/followup_peter_leif/summary.json`](../../followup_peter_leif/summary.json) | median of per-episode medians | cursor at fixation timestamp | **306** | **283** | **197** |
+| `gaze_density_class_summary.json` → `median_of_episode_medians` | same | same | 338 | 284 | 214 |
+| `coupling_traces_summary.json` → per-bin `median_px` (median of medians-per-episode within each bin) | median-of-per-bin-medians | cursor at fixation timestamp | ~381 | ~305 | ~229 |
+| `gaze_density_class_summary.json` → `pooled_fixation_median` | pooled raw fixations | same | 351 | 302 | 251 |
+
+**Rule of thumb for the paper:** cite the **followup_peter_leif** median as the canonical coupling number (`clicked 306 / deferred 283 / eval-rej 197 px`). The coupling_traces figure shows a bin-equal-weighted curve that runs higher because binning lets long-tail episodes push the per-bin medians up. The gaze_density heatmap visualizes the pooled-fixation distribution, not the median-of-medians, so its hot cores look slightly wider than the coupling scalar would suggest.
+
+The gaze_density summary also exposes both aggregations explicitly — use `median_of_episode_medians` if you need to quote from it; `pooled_fixation_median` matches what the heatmap renders.
+
 ## Conventions
 
 - **Class colors:** eval-rejected = `#b2182b` (red), deferred = `#e08214` (orange), clicked = `#2ca25f` (green). Consistent across every figure.
