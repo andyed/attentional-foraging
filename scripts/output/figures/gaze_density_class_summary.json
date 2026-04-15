@@ -1,0 +1,54 @@
+{
+  "figure": "gaze_density_class.png",
+  "script": "scripts/render_gaze_density.py",
+  "generated": "2026-04-14T23:58:42.426181Z",
+  "config": {
+    "extent_px": 600,
+    "bin_px": 12,
+    "smoothing_sigma_bins": 3.0,
+    "weighted_by_fixation_duration": true,
+    "normalization": "per-class peak",
+    "colormap": "magma"
+  },
+  "per_class": {
+    "evaluated-rejected": {
+      "class_n_total": 439,
+      "class_n_pooled": 274,
+      "n_fixations_pooled": 5900,
+      "radial_offset_px": {
+        "median": 234.73415432726682,
+        "p25": 142.63239450816312,
+        "p75": 362.5113774769113,
+        "p90": 489.5866623577537,
+        "mean": 263.35012072845774
+      },
+      "density_peak_value": 1251.0351465219812
+    },
+    "deferred": {
+      "class_n_total": 1916,
+      "class_n_pooled": 1854,
+      "n_fixations_pooled": 114115,
+      "radial_offset_px": {
+        "median": 297.3213749463701,
+        "p25": 185.8268683451936,
+        "p75": 432.24530072633524,
+        "p90": 545.0068806905102,
+        "mean": 314.4319133983479
+      },
+      "density_peak_value": 13821.792495566517
+    },
+    "clicked": {
+      "class_n_total": 2228,
+      "class_n_pooled": 2057,
+      "n_fixations_pooled": 110256,
+      "radial_offset_px": {
+        "median": 306.04084694693944,
+        "p25": 193.14178721494875,
+        "p75": 438.9762948493451,
+        "p90": 549.3351663219307,
+        "mean": 321.0165267219037
+      },
+      "density_peak_value": 13933.144424788143
+    }
+  }
+}

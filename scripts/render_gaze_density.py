@@ -302,6 +302,49 @@ def main():
     print(f"\nwrote {out_png}")
     print(f"wrote {out_pdf}")
 
+    # ── Persist machine-readable stats alongside the figure ──
+    out_json = OUT_DIR / "gaze_density_class_summary.json"
+    summary = {
+        "figure": "gaze_density_class.png",
+        "script": "scripts/render_gaze_density.py",
+        "generated": __import__("datetime").datetime.utcnow().isoformat() + "Z",
+        "config": {
+            "extent_px": EXTENT,
+            "bin_px": BIN_PX,
+            "smoothing_sigma_bins": SIGMA,
+            "weighted_by_fixation_duration": True,
+            "normalization": "per-class peak",
+            "colormap": "magma",
+        },
+        "per_class": {},
+    }
+    for cls in class_order:
+        n_rec, n_fix = pooled_counts[cls]
+        # Radial magnitude distribution (how far from cursor anchor)
+        mask = np.where(labels == cls)[0]
+        radii = []
+        for i in mask:
+            if i in all_offsets:
+                for dx, dy, _dur in all_offsets[i]:
+                    if abs(dx) <= EXTENT and abs(dy) <= EXTENT:
+                        radii.append(float(np.hypot(dx, dy)))
+        radii_arr = np.array(radii) if radii else np.array([0.0])
+        summary["per_class"][cls] = {
+            "class_n_total": int(class_n[cls]),
+            "class_n_pooled": int(n_rec),
+            "n_fixations_pooled": int(n_fix),
+            "radial_offset_px": {
+                "median": float(np.median(radii_arr)),
+                "p25": float(np.percentile(radii_arr, 25)),
+                "p75": float(np.percentile(radii_arr, 75)),
+                "p90": float(np.percentile(radii_arr, 90)),
+                "mean": float(radii_arr.mean()),
+            },
+            "density_peak_value": float(densities[cls].max()),
+        }
+    json.dump(summary, open(out_json, "w"), indent=2)
+    print(f"wrote {out_json}")
+
 
 if __name__ == "__main__":
     main()

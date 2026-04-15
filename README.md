@@ -116,6 +116,10 @@ Two independent trait dimensions emerged across participants: **deliberation sty
 
 [AdSERP](https://github.com/kayhan-latifzadeh/AdSERP) ([paper](https://doi.org/10.1145/3726302.3730325), [Zenodo](https://zenodo.org/records/15236546)) — Latifzadeh, Gwizdka & Leiva, SIGIR 2025. 2,776 transactional product queries, 47 participants, simultaneous eye tracking (Gazepoint GP3 HD, 150 Hz), mouse, scroll, pupil, SERP HTML snapshots, ad bounding boxes.
 
+## Figure gallery
+
+Canonical visualizations with source scripts, timestamps, and stats dumps live in [`scripts/output/figures/INDEX.md`](./scripts/output/figures/INDEX.md). Each canonical figure has a companion `*_summary.json` next to it for downstream citation.
+
 ## Notebooks
 
 `notebooks-v2/` with shared [data_loader.py](./notebooks-v2/data_loader.py). Numbered to match paper sections.

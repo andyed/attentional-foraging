@@ -371,6 +371,48 @@ def main():
     print(f"\nwrote {out_png}")
     print(f"wrote {out_pdf}")
 
+    # ── Persist machine-readable stats alongside the figure ──
+    out_json = OUT_DIR / "coupling_traces_summary.json"
+    summary = {
+        "figure": "coupling_traces.png",
+        "script": "scripts/render_coupling_traces.py",
+        "generated": __import__("datetime").datetime.utcnow().isoformat() + "Z",
+        "config": {
+            "n_bins": 24,
+            "t_max_s": 6.0,
+            "min_frac": 0.40,
+            "trace_metric": "per-fixation cursor-gaze Euclidean distance (px)",
+            "cursor_sampling": "nearest-in-time interpolation to fixation timestamp",
+        },
+        "cohort_counts": {
+            cls: {
+                "class_n_total": int((labels == cls).sum()),
+                "class_n_pooled": int(sum(
+                    1 for i in np.where(labels == cls)[0]
+                    if i in all_traces and all_traces[i]
+                )),
+            }
+            for cls in ("clicked", "deferred", "evaluated-rejected")
+        },
+        "per_class": {},
+    }
+    for cls in ("clicked", "deferred", "evaluated-rejected"):
+        bc, med, q25, q75, n_per_bin, min_samples = stats_by_cls[cls]
+        valid = np.isfinite(med)
+        last_valid_idx = int(np.where(valid)[0].max()) if valid.any() else -1
+        summary["per_class"][cls] = {
+            "min_samples_threshold": int(min_samples),
+            "n_valid_bins": int(valid.sum()),
+            "last_valid_bin_center_s": float(bc[last_valid_idx]) if last_valid_idx >= 0 else None,
+            "bin_centers_s": bc.tolist(),
+            "median_px": [None if np.isnan(v) else float(v) for v in med],
+            "q25_px": [None if np.isnan(v) else float(v) for v in q25],
+            "q75_px": [None if np.isnan(v) else float(v) for v in q75],
+            "n_per_bin": n_per_bin.tolist(),
+        }
+    json.dump(summary, open(out_json, "w"), indent=2)
+    print(f"wrote {out_json}")
+
 
 if __name__ == "__main__":
     main()
