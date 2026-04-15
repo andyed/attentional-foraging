@@ -1,0 +1,30 @@
+M5 — cursor-only classifier trained on NB22 labels
+Generated: 2026-04-15T01:48:28.567173+00:00
+
+Population: 2,355 approached non-click episodes
+  deferred:   1,916
+  eval-rej:   439
+
+LOSO AUC: 0.7935
+Youden-J threshold: 0.3953
+
+Confusion at Youden-J:
+  TP deferred correct:    1598
+  FN deferred missed:     318
+  FP eval-rej flagged:    173
+  TN eval-rej correct:    266
+
+Hard-negative purity (M5 'eval-rejected' pool):
+  size: 584  contamination: 54.45%
+  vs NB21 6.80%  vs NB22 0.00% ([LAB]-only)
+
+Coefficients (standardized):
+                       mean_dist  +0.737  -> deferred
+               direction_changes  +0.567  -> deferred
+           dwell_in_proximity_ms  +0.398  -> deferred
+                    retreat_dist  +0.252  -> deferred
+                      final_dist  +0.237  -> deferred
+           max_approach_velocity  +0.170  -> deferred
+                        min_dist  -0.139  -> eval-rej
+          mean_approach_velocity  -0.051  -> eval-rej
+                 frac_decreasing  +0.047  -> deferred

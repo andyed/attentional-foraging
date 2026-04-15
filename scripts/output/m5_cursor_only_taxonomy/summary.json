@@ -1,0 +1,81 @@
+{
+  "experiment": "M5 \u2014 cursor-only classifier for NB22 taxonomy bootstrap",
+  "script": "scripts/m5_cursor_only_taxonomy.py",
+  "generated": "2026-04-15T01:48:28.567173+00:00",
+  "regime": "LAB",
+  "inference_wild_compatible": true,
+  "training_features": [
+    "min_dist",
+    "mean_dist",
+    "final_dist",
+    "retreat_dist",
+    "dwell_in_proximity_ms",
+    "mean_approach_velocity",
+    "max_approach_velocity",
+    "direction_changes",
+    "frac_decreasing"
+  ],
+  "training_features_note": "M4 approach-only feature set \u2014 no position, no total_dwell, no gaze, no scroll. WILD-compatible at inference time.",
+  "target_label": "NB22 gaze_regression_label (1 = deferred, 0 = eval-rejected)",
+  "target_label_note": "Labels are [LAB]-only (require eye tracker). The classifier learns to approximate them from cursor-only features.",
+  "population": {
+    "description": "approached non-click episodes from AdSERP",
+    "approached_threshold_px": 100,
+    "n_total": 2355,
+    "n_deferred_nb22": 1916,
+    "n_eval_rej_nb22": 439
+  },
+  "protocol": {
+    "model": "LogisticRegression(class_weight='balanced', C=1.0) + StandardScaler",
+    "cv": "GroupKFold by participant, 47 folds (LOSO)",
+    "metric_reporting": "AUC on out-of-fold predict_proba; Youden-J for operating threshold"
+  },
+  "results": {
+    "loso_auc": 0.7935025037925443,
+    "per_participant_auc": {
+      "median": 0.7943037974683544,
+      "p25": 0.7068452380952381,
+      "p75": 0.869281045751634,
+      "min": 0.2222222222222222,
+      "n_users_with_both_classes": 47
+    },
+    "youden_j_threshold": 0.39533936217675925,
+    "confusion_matrix_at_youden_j": {
+      "tp_deferred_correct": 1598,
+      "fn_deferred_missed": 318,
+      "fp_eval_rej_flagged_as_deferred": 173,
+      "tn_eval_rej_correct": 266
+    },
+    "precision_deferred": 0.9023150762281197,
+    "recall_deferred": 0.8340292275574113,
+    "f1_deferred": 0.8668294005966911
+  },
+  "hard_negative_purity": {
+    "question": "If we use M5's predicted 'eval-rejected' pool as the hard-negative training source, what fraction are actually NB22-deferred?",
+    "pool_size": 584,
+    "true_deferred_contamination_count": 318,
+    "m5_fn_rate": 0.5445205479452054,
+    "comparison": {
+      "nb21_classifier_threshold_fn_rate": 0.068,
+      "nb22_gaze_regression_fn_rate": 0.0,
+      "m5_cursor_only_fn_rate": 0.5445205479452054
+    }
+  },
+  "deferred_pool_purity": {
+    "question": "If we use M5's predicted 'deferred' pool as a semantically-considered-but-declined pool, what fraction are actually NB22-deferred?",
+    "pool_size": 1771,
+    "true_deferred_count": 1598,
+    "m5_deferred_precision": 0.9023150762281197
+  },
+  "coefficients_standardized": {
+    "min_dist": -0.13871256607957647,
+    "mean_dist": 0.7366091223810435,
+    "final_dist": 0.2368747640839102,
+    "retreat_dist": 0.2519444830167115,
+    "dwell_in_proximity_ms": 0.39800548193164387,
+    "mean_approach_velocity": -0.05141788007775056,
+    "max_approach_velocity": 0.16976704261287157,
+    "direction_changes": 0.5667945475015062,
+    "frac_decreasing": 0.0465154688717824
+  }
+}
