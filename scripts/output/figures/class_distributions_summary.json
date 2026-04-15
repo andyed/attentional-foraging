@@ -1,9 +1,9 @@
 {
   "figure": "class_distributions.png",
   "script": "scripts/render_class_distributions.py",
-  "generated": "2026-04-15T00:50:54.887641+00:00",
+  "generated": "2026-04-15T01:05:32.997868+00:00",
   "regime": "LAB",
-  "classification_rule": "NB22 four-class taxonomy. clicked from click event; deferred = approached AND NOT clicked AND gaze_regression_label; evaluated-rejected = approached \u2227 \u00acclicked \u2227 \u00acgaze_regression_label; not-approached = \u00acapproached. gaze_regression_label is the gaze-fixation sequence revisiting earlier result positions \u2014 this is a [LAB]-only feature, not a scroll feature despite the legacy 'scroll_regressed_back' name.",
+  "classification_rule": "NB22 four-class taxonomy. clicked from click event; deferred = approached AND NOT clicked AND gaze_regression_label; evaluated-rejected = approached AND NOT clicked AND NOT gaze_regression_label; not-approached = NOT approached. gaze_regression_label is computed from the gaze-fixation sequence revisiting earlier result positions in notebooks-v2/22_four_class_taxonomy.ipynb \u2014 the regressed_pos set is built from fix['y'], not from scroll events. The variable name in code is regression_labels; prose should call it gaze_regression_label. This is a [LAB]-only feature \u2014 a scroll-only proxy is future work.",
   "n_trials": 2287,
   "class_counts": {
     "evaluated-rejected": 439,

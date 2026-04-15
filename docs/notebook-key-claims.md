@@ -342,7 +342,7 @@ Only notebooks that ship numbers directly to external papers or public writeups 
 
 ### Regression-based four-class taxonomy
 
-NB22 defines the four classes via cursor approach (min_dist < 100 px) + scroll regression to that position, not via the classifier threshold used in NB21. The class definitions are complementary, not competing.
+NB22 defines the four classes via cursor approach (min_dist < 100 px) + **gaze regression** to that position (the gaze-fixation sequence revisiting an earlier result band, detected from `fix['y']`, not scroll events), not via the classifier threshold used in NB21. **This makes the four-class taxonomy `[LAB]`-only by construction** — the variable is `regression_labels` in code for historical neutrality, but prose should call it `gaze_regression_label`. A scroll-only proxy is named future work. Class definitions are complementary to NB21, not competing.
 
 | ID | Class | N | % |
 |---|---|---|---|
@@ -635,7 +635,7 @@ K1–K4 above are indexed by absolute rank (every h3 slot, ads pooled with organ
 
 > **Complementary, not competing.** K3–K4 confirm the two metrics are nearly uncorrelated at the observation level — they measure different temporal aspects of cognitive dynamics. K5–K6 confirm both agree on the aggregate positional gradient (load declines with position). RIPA2's advantage is per-fixation temporal resolution. LF/HF's advantage is interpretability and direct tie to Duchowski (2026).
 >
-> **Encoding insight (K14–K15).** Items that will later receive scroll regressions show *lower* RIPA2 at first pass. This rejects the Pirolli scent-following prediction (higher arousal at scent-rich items) and supports encoding-completion: regressions go to items that were *insufficiently* processed, not items that triggered high arousal. Reframing: regressions are a completion mechanism, not a scent-following mechanism.
+> **Encoding insight (K14–K15).** Items that will later receive a **gaze regression** (see NB22 — this is the same `regression_labels` boolean derived from the gaze-fixation sequence, not from scroll events) show *lower* RIPA2 at first pass. This rejects the Pirolli scent-following prediction (higher arousal at scent-rich items) and supports encoding-completion: gaze regressions go to items that were *insufficiently* processed, not items that triggered high arousal. Reframing: gaze regressions are a completion mechanism, not a scent-following mechanism.
 >
 > **Coordinate-space audit (2026-04-12).** FPOGY page-space fix regenerated `butterworth-lfhf-by-position.json` and `ripa2-by-position.json`. Main shifts: K5 (LF/HF positional gradient) −0.618 → **−0.927** (matches NB14:K3), K6 (RIPA2 positional gradient) −0.827 → **−0.909**, K15 (RIPA2 will-regress one-sided *p*) 0.0022 → **0.0106** (weaker but still significant), K16 (first-pass dwell *p*) 4.1 × 10⁻²⁴ → **8.1 × 10⁻³²** (stronger). The main encoding-completion finding (K14, K15) is preserved and slightly weakened on RIPA2 while the dwell-time signature (K16) is strengthened. Both position gradients now strongly agree at ρ < −0.9.
 

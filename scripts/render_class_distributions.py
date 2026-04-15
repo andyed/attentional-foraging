@@ -359,11 +359,14 @@ def main():
         "classification_rule": (
             "NB22 four-class taxonomy. clicked from click event; "
             "deferred = approached AND NOT clicked AND gaze_regression_label; "
-            "evaluated-rejected = approached ∧ ¬clicked ∧ ¬gaze_regression_label; "
-            "not-approached = ¬approached. gaze_regression_label is the "
-            "gaze-fixation sequence revisiting earlier result positions — "
-            "this is a [LAB]-only feature, not a scroll feature despite "
-            "the legacy 'scroll_regressed_back' name."
+            "evaluated-rejected = approached AND NOT clicked AND NOT gaze_regression_label; "
+            "not-approached = NOT approached. gaze_regression_label is computed "
+            "from the gaze-fixation sequence revisiting earlier result positions "
+            "in notebooks-v2/22_four_class_taxonomy.ipynb — the regressed_pos "
+            "set is built from fix['y'], not from scroll events. The variable "
+            "name in code is regression_labels; prose should call it "
+            "gaze_regression_label. This is a [LAB]-only feature — a "
+            "scroll-only proxy is future work."
         ),
         "n_trials": int(n_trials),
         "class_counts": class_n,

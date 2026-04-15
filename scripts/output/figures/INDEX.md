@@ -42,7 +42,7 @@ Central paper figure for the 2×2 hard-negative taxonomy. Four panels:
 - **(c) Episode order within trial.** Which ordinal position each class's episodes take in the trial's entry-sorted sequence. Eval-rejected front-loads (dismiss-first), clicked back-loads with peak at the 4th–5th episode (commit-after-surveying), deferred spans the middle. Maps onto OSEC Survey → Evaluate → Commit.
 - **(d) Co-occurrence within trial.** Presence-pattern breakdown: 42.2 % of trials contain both a click and a deferred episode (the "comparison shopper"), 41.3 % are click-only (the "immediate committer"), 9.0 % contain all three classes. The 2×2 split is homogeneous in the minority and mixed in the majority.
 
-Classes via NB22 regression rule. **The deferred / evaluated-rejected split is `[LAB]`-only by construction** — the `gaze_regression_label` boolean used in the rule is computed from the gaze-fixation sequence revisiting earlier result positions, not from scroll events. The legacy feature name `scroll_regressed_back` is misleading and is being retired. A scroll-only proxy is named future work required before this taxonomy can earn `[BOTH]`.
+Classes via NB22 regression rule. **The deferred / evaluated-rejected split is `[LAB]`-only by construction** — the `gaze_regression_label` boolean used in the rule is computed from the gaze-fixation sequence revisiting earlier result positions (NB22 cell `regressed_pos.add(p)` where `p` comes from `fix['y']`), not from scroll events. The variable is `regression_labels` in code; prose should call it `gaze_regression_label`. A scroll-only proxy is named future work required before this taxonomy can earn `[BOTH]`.
 
 ---
 
