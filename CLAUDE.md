@@ -13,8 +13,8 @@ Every quantitative claim in the CIKM paper, and every figure/table in `scripts/o
 
 **Rules:**
 - Every number, figure caption, and Key Claim row gets a regime tag: `[LAB, NB22:K3]` or `[WILD, ACD-retreat]` or `[BOTH]` when the same statistic has been computed in both datasets.
-- The cross-regime bridge is the **four-class taxonomy** (clicked / deferred / evaluated-rejected / not-approached). It must be recoverable from the shared substrate (cursor + click) so that a LAB finding with gaze has a WILD replication without it.
-- When a claim is LAB-only (pupil, LHIPA, LF/HF, direct gaze-cursor coupling medians), say so explicitly. Do not imply it transfers unless tested.
+- **The four-class taxonomy (clicked / deferred / evaluated-rejected / not-approached) is `[LAB]`-only by construction until further notice.** The deferred/eval-rejected split depends on `regression_labels`, which is computed in `notebooks-v2/22_four_class_taxonomy.ipynb` from the **gaze-fixation sequence** revisiting earlier result positions — not from the scroll stream. The feature name conventionally used in prose, `scroll_regressed_back`, is misleading: the detection is gaze-regression, not scroll-regression. A scroll-only detector is a named piece of future work that would earn `[BOTH]` for the taxonomy if validated against the gaze-based version.
+- When a claim is LAB-only (pupil, LHIPA, LF/HF, direct gaze-cursor coupling medians, **the four-class taxonomy itself**), say so explicitly. Do not imply it transfers unless tested.
 - `docs/notebook-key-claims.md` should carry the tag on every row. Prose in `findings.md`, `paper.md`, and README.md citations pass the tag through untouched.
 - When writing §4/§5 of the CIKM paper, mirror the split: §4 LAB findings (pupil, gaze, motor signature) → §5 What survives to WILD (four-class taxonomy rebuilt from cursor alone, validated on ACD) → §6 deployment implication.
 
