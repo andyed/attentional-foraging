@@ -20,6 +20,10 @@ Every quantitative claim in the CIKM paper, and every figure/table in `scripts/o
 
 The point of the convention is that a reader should never be uncertain which regime a number came from. The "three coupling scalars" confusion (306 vs 338 vs 381) was entirely within LAB; a WILD version of that statistic is either computable on ACD or isn't, and that binary is the axis the reader holds.
 
+## Null findings
+
+**Principle (2026-04-15).** Null and near-null findings get written up in `docs/null-findings/` as markdown even when they don't make it into the published paper. See `docs/null-findings/README.md` for the principle statement, format conventions, and current index. This is a research-integrity commitment, not a bureaucratic one — the file-drawer cost of not documenting nulls on a single-lab project is re-walking the same paths months later.
+
 ## Notebook Conventions
 
 Every Tier-A notebook has a **Key Claims block** at the top with stable K-IDs (K1, K2, ...). These are the canonical source of truth for all quantitative findings.

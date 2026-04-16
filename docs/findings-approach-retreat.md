@@ -168,11 +168,49 @@ On desktop, scroll kinematics during regression do NOT discriminate click target
 
 **Mobile prediction:** On touch devices where scroll is the only motor channel, scroll dwell and deceleration SHOULD discriminate click targets — because there's no cursor to absorb the evaluation function. The desktop null result is specific to a two-channel motor system. A mobile eye-tracking dataset would test this directly.
 
+## Mobile portability: cursor ablation (notebook 27, 2026-04-15)
+
+Peter Dixon-Moses raised a direct question: if we ablate the cursor approach signal on AdSERP and attempt click prediction from *only* features a mobile deployment could compute, how much of the desktop M4 AUC is recoverable? NB27 answers this with 46-fold LOPO click prediction on a matched 12,588-record subset.
+
+### Feature sets tested
+
+| Set | Features | Mobile-portable? |
+|---|---|---|
+| **Text-only (baseline)** | 5 text features (lex_overlap, avg_tf, cos_sim query/title, query/snippet, query/combined) | Yes |
+| **Cursor-free (candidate)** | 5 text + `viewport_dwell_ms` + `viewport_dwell_residual` = 7 features | Yes (scroll + text telemetry only) |
+| **M4 cursor (desktop baseline)** | 9 cursor approach features from `cursor-approach-features.json` | No (desktop only) |
+
+Viewport dwell per result is computed by walking the scroll event stream and, for each time interval between consecutive events, checking whether the result's Y-band intersects the viewport `[scroll_y, scroll_y + screen_h]`. The residual is `log(1 + dwell) − f(text_length, cos_query)` — Peter's refinement of the lexical-novelty-deviation idea from NB25, applied to viewport exposure rather than fixation duration.
+
+### Key numbers (NB27:K1–K8)
+
+| K-ID | Finding | Value |
+|---|---|---:|
+| K1 | Spearman ρ(viewport_dwell_ms, clicked) | **+0.162**, *p* = 4.4 × 10⁻⁷⁵ |
+| K3 | Cursor-free LOSO AUC (7 features) | **0.630** (per-fold 0.631 ± 0.065) |
+| K4 | Text-only LOSO AUC (5 features) | **0.527** (per-fold 0.519 ± 0.051) |
+| K5 | Viewport contribution (K3 − K4) | **+0.104 AUC**, cursor-free beats text-only in **44 / 46 folds** |
+| K6 | M4 cursor baseline LOSO AUC (matched subset) | **0.860** |
+| **K7** | **Cursor-free recovery ratio: K3 / K6** | **73.3 %** |
+| — | Paired per-fold M4 − cursor-free | +0.230 ± 0.057, M4 > cursor-free in **46 / 46 folds** |
+
+### What this says about mobile portability
+
+**Viewport dwell is the key cursor-free signal.** Adding `viewport_dwell_ms` + residual to 5 text features moves LOSO AUC from 0.527 (barely above chance) to 0.630 — a **10.4 AUC-point gain with 44/46 direction-consistency**. Peter's "time-in-viewport" intuition is empirically validated at the click-prediction level. **Text features alone are not enough** for cursor-free click prediction, but viewport exposure + text together recover a substantial chunk of the desktop signal.
+
+**But cursor still has an irreducible ~27 % advantage.** M4 beats the cursor-free feature set in **46 / 46 folds (100 %)** with a mean paired margin of +0.23 AUC. The cursor signal contains roughly 27 % of the desktop click-prediction AUC that a scroll + text feature set literally cannot reproduce. This is sub-viewport information — which specific result the hand is hovering over, the approach-retreat geometry during evaluation — that viewport dwell cannot see.
+
+**Mobile deployment implication.** A mobile click predictor built on scroll position + SERP text alone should expect to recover ~70–75 % of the click-prediction AUC a desktop cursor-based predictor achieves. Closing the remaining gap requires new instrumentation — mobile gaze (webcam-based), swipe kinematics, haptic hover, or tap-before-commit signals — to substitute for what cursor tracks on desktop. The **scroll-is-ballistic / cursor-is-evaluation-probe** split from NB17 remains intact; this notebook quantifies the cost of removing the cursor channel.
+
+### Secondary null: novelty-baseline residual is redundant with raw viewport dwell
+
+The `viewport_dwell_residual` variable (Peter's refinement applying lexical-novelty deviation to viewport exposure) is empirically indistinguishable from raw `viewport_dwell_ms` — K1 and K2 Spearman correlations with click are +0.1623 and +0.1617 respectively, same to the fourth decimal. The cos-sim + text-length baseline regression explains essentially none of the viewport-dwell variance, so the residual collapses to `log(1 + viewport_dwell_ms) − constant`. Same pattern observed in NB25 (K6/K8: fixation-dwell residual ≈ absolute fixation dwell). **Two independent shots at "lexical-novelty-baseline residual as a feature" have now returned the same null** — documented in `docs/null-findings/2026-04-15-novelty-baseline-residual-redundancy.md`. At the sentence-embedding centroid grain on AdSERP, text features and gaze/viewport dwell share only a trivial amount of variance, so the residual is the raw variable in disguise.
+
 ## Open questions
 
 - [x] **Element-type approach signatures:** Done — notebook 20. Top ads 2× approach rate, 50px more retreat, 2.3× longer dwell. Azzopardi's cost framework overturned for top ads. See §"Approach-retreat by element type" above.
 - [x] **Scroll × cursor cross-reference:** Done — notebook 17. Null result on desktop: scroll kinematics don't discriminate click targets (all p > 0.3). Scroll is ballistic transportation; cursor is the evaluation probe.
-- [ ] **Mobile scroll evaluation:** Test the prediction that touch scroll dwell discriminates click targets on mobile datasets (no cursor available). RecGaze dataset is the best candidate.
+- [~] **Mobile scroll evaluation:** Partially addressed by NB27 (2026-04-15) on AdSERP via a cursor-ablation simulation. Cursor-free feature set (5 text + viewport dwell + residual) recovers **73.3 %** of the M4 desktop click-prediction AUC (0.630 vs 0.860), with viewport dwell contributing +10.4 AUC pts over text alone. The remaining ~27 % is cursor-specific (sub-viewport intent) and cannot be recovered from scroll + text alone. **Real-mobile replication** — test on a mobile eye-tracking dataset where scroll is the only motor channel — is still open. RecGaze is the best candidate.
 - [ ] **Cross-dataset generalizability:** AdSERP is transactional product search with forced choice. Does approach-retreat appear in informational queries? In naturalistic search?
 - [~] **Temporal dynamics:** Notebook 18 (learning curve) addresses across-trial dynamics. Within-trial approach velocity change still open — framework compilation predicts later approaches should be *faster* (criteria already compiled), not slower.
 - [ ] **Rosenholtz Feature Congestion:** Score visual clutter by element type — does congestion predict approach-retreat rate? Requires rendering all 2,776 SERPs.
@@ -183,3 +221,4 @@ On desktop, scroll kinematics during regression do NOT discriminate click target
 - [15_cursor_approach.ipynb](../notebooks-v2/15_cursor_approach.ipynb) — Core analysis
 - [13_survey_phase.ipynb](../notebooks-v2/13_survey_phase.ipynb) — OSEC phase model, survey fixation targets
 - [05_lhipa.ipynb](../notebooks-v2/05_lhipa.ipynb) — Pupillometric validation
+- [27_mobile_portable_ablation.ipynb](../notebooks-v2/27_mobile_portable_ablation.ipynb) — Cursor-ablation simulation: cursor-free feature set recovers 73.3 % of M4 click-prediction AUC; viewport dwell carries the load (+10.4 pts over text alone)
