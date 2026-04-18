@@ -204,10 +204,35 @@ def main():
     ])
     pipe_full.fit(X, y)
     coefs = pipe_full.named_steps["lr"].coef_[0]
+    intercept = float(pipe_full.named_steps["lr"].intercept_[0])
+    scaler = pipe_full.named_steps["scaler"]
+    scaler_mean = scaler.mean_.tolist()
+    scaler_scale = scaler.scale_.tolist()
     coef_pairs = sorted(
         zip(M4_FEATURES, coefs),
         key=lambda p: abs(p[1]), reverse=True,
     )
+
+    # ── Save the full-data model so it can be applied at inference time ──
+    model_json = OUT_DIR / "m5_final_model.json"
+    json.dump({
+        "model": "LogisticRegression(class_weight='balanced', C=1.0) + StandardScaler",
+        "trained_on": "all 47 participants, no holdout (full-data refit)",
+        "n_episodes": int(len(y)),
+        "n_deferred": int((y == 1).sum()),
+        "n_eval_rej": int((y == 0).sum()),
+        "operating_threshold": float(j_threshold),
+        "operating_threshold_method": "Youden-J on LOSO out-of-fold predictions",
+        "loso_auc": float(auc),
+        "features": list(M4_FEATURES),
+        "scaler_mean": scaler_mean,
+        "scaler_scale": scaler_scale,
+        "coefficients_raw": [float(c) for c in coefs],
+        "intercept": intercept,
+        "apply": "score = sigmoid(sum_i(coef_i * (feat_i - scaler_mean_i) / scaler_scale_i) + intercept); pred_deferred = score >= operating_threshold",
+        "regime_for_inference": "WILD-compatible (cursor features only); supervision was [LAB, NB22 gaze-derived]",
+    }, open(model_json, "w"), indent=2)
+    print(f"wrote {model_json}")
     for name, c in coef_pairs:
         sign = "+" if c >= 0 else "-"
         direction = "→ deferred" if c > 0 else "→ eval-rej"
