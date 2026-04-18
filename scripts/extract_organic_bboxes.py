@@ -74,6 +74,87 @@ def detect_cards(png_path: Path) -> list[tuple[int, int]]:
     return [(s, e) for s, e in merged if e - s >= MIN_CARD_H]
 
 
+def subdivide_horizontal(png_path: Path, bbox: dict, *, min_cell_w: int = 60, peak_height_frac: float = 0.4, peak_distance: int = 80) -> list[dict]:
+    """Vertical-edge peak detection. Use for horizontally-stacked elements
+    like dd_top product carousels where columnar whitespace gaps don't
+    exist (cards touch or have only sub-pixel separators).
+
+    Sums the per-column horizontal-derivative magnitude (|dx|) across all
+    rows in the bbox; strong vertical edges = product card boundaries.
+    `scipy.signal.find_peaks` with `distance=peak_distance` enforces a
+    minimum card width.
+
+    Returns list of cell bboxes. Returns [] if fewer than 2 cells found.
+    """
+    from scipy import signal as _sig
+
+    img = np.array(Image.open(png_path).convert("L")).astype(float)
+    x = bbox["location"]["x"]
+    y = bbox["location"]["y"]
+    w = bbox["size"]["width"]
+    h = bbox["size"]["height"]
+    crop = img[y:y + h, x:x + w]
+    if crop.size == 0 or crop.shape[1] < 2:
+        return []
+
+    edge_strength = np.abs(np.diff(crop, axis=1)).sum(axis=0)
+    if edge_strength.max() == 0:
+        return []
+    peaks, _ = _sig.find_peaks(edge_strength, height=edge_strength.max() * peak_height_frac, distance=peak_distance)
+    if len(peaks) < 2:
+        return []
+
+    cells: list[dict] = []
+    for i in range(len(peaks) - 1):
+        cs, ce = int(peaks[i]), int(peaks[i + 1])
+        if ce - cs >= min_cell_w:
+            cells.append({
+                "position": len(cells) + 1,
+                "location": {"x": int(x + cs), "y": int(y)},
+                "size": {"height": int(h), "width": int(ce - cs)},
+            })
+    return cells if len(cells) >= 2 else []
+
+
+def subdivide_vertical(png_path: Path, bbox: dict, *, min_cell_h: int = 50, gap_merge: int = 12, std_threshold: int = 3) -> list[dict]:
+    """Row-projection sub-segmentation. Use for vertically-stacked elements
+    like dd_right product columns. Same algorithm as detect_cards but
+    constrained to a parent bbox."""
+    img = np.array(Image.open(png_path).convert("L"))
+    x = bbox["location"]["x"]
+    y = bbox["location"]["y"]
+    w = bbox["size"]["width"]
+    h = bbox["size"]["height"]
+    crop = img[y:y + h, x:x + w]
+    if crop.size == 0:
+        return []
+    content = crop.std(axis=1) >= std_threshold
+
+    diff = np.diff(content.astype(int))
+    starts = list(np.where(diff == 1)[0] + 1)
+    ends = list(np.where(diff == -1)[0] + 1)
+    if content[0]:
+        starts.insert(0, 0)
+    if content[-1]:
+        ends.append(len(content))
+
+    merged: list[tuple[int, int]] = []
+    for rs, re in zip(starts, ends):
+        if merged and rs - merged[-1][1] <= gap_merge:
+            merged[-1] = (merged[-1][0], re)
+        else:
+            merged.append((rs, re))
+
+    cells: list[dict] = []
+    for i, (rs, re) in enumerate(c for c in merged if c[1] - c[0] >= min_cell_h):
+        cells.append({
+            "position": i + 1,
+            "location": {"x": int(x), "y": int(y + rs)},
+            "size": {"height": int(re - rs), "width": int(w)},
+        })
+    return cells if len(cells) >= 2 else []
+
+
 def overlap_fraction(card: tuple[int, int], ad_y: int, ad_h: int) -> float:
     """Return fraction of card height that overlaps the ad y-range."""
     cs, ce = card
@@ -117,15 +198,30 @@ def extract_trial(trial_id: str) -> dict | None:
         if e - s >= SUSPICIOUS_H:
             flags.append(f"organic_{position}_suspiciously_tall_h={e - s}")
 
+    # Sub-segment ads into per-product cells where the layout permits.
+    # dd_top is a horizontal carousel → column-projection. dd_right is a
+    # vertical product stack → row-projection. native_ad stays as-is
+    # (it's a single text ad block at the dataset's intended granularity).
+    dd_top_cells: list[dict] = []
+    for parent in ads.get("dd_top", []):
+        dd_top_cells.extend(subdivide_horizontal(png, parent))
+    dd_right_cells: list[dict] = []
+    for parent in ads.get("dd_right", []):
+        dd_right_cells.extend(subdivide_vertical(png, parent))
+
     return {
         "organic_result": organics,
         "native_ad": ads.get("native_ad", []),
         "dd_top": ads.get("dd_top", []),
         "dd_right": ads.get("dd_right", []),
+        "dd_top_cell": dd_top_cells,
+        "dd_right_cell": dd_right_cells,
         "_meta": {
             "trial": trial_id,
             "card_count": len(cards),
             "organic_count": len(organics),
+            "dd_top_cell_count": len(dd_top_cells),
+            "dd_right_cell_count": len(dd_right_cells),
             "flags": flags,
             "params": {
                 "col_x": COL_X, "col_w": COL_W,
