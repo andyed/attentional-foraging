@@ -143,6 +143,7 @@ Ordered by conceptual promise, not implementation effort:
 - [ ] **Time offset hash param:** Support `#t=1.4s` in viewer URLs to jump to a specific timestamp (not just fixation index). Useful for deep-linking to phase transitions in explainer iframes.
 - [ ] **Gaze velocity timeline tracks:** Add X-velocity and Y-velocity as two multitrack lines below the existing timeline. Wide X jumps + big Y drops during survey phase, tight X oscillations + small Y steps during evaluate. Would make the orient→survey→evaluate transition visually obvious in the timeline — the saccade amplitude difference rendered as raw speed.
 - [ ] **Scanpath overlay controls:** Replace Lines/Numbers toggles with: scanpath overlay on/off, foveated filter on/off. Popover menus with transparency sliders for gazeplot and scanpath layers.
+- [ ] **Sub-segmenter for tall organic cards (`extract_organic_bboxes.py`):** Row-projection merges visually-dense blocks (Maps places carousel, local-business pack, image carousels) into one tall card. First seen on `p007-b6-t8` where Sephora result + Barcelona Maps + local pack collapsed into a single h=436 organic. Fix: within any flagged tall card (h ≥ SUSPICIOUS_H), run a second pass that finds horizontal edges or color-transition rows to split into sub-cards. Implement when >2 of the curated AR replay trials hit this.
 
 ## Design / Product Connections (from Peter Dixon-Moses)
 
