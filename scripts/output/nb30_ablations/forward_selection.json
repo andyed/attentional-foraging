@@ -1,0 +1,46 @@
+{
+  "baseline_B": {
+    "per_p_mean": 0.8107140573309254
+  },
+  "selected": [
+    "min_abs_velocity",
+    "n_reversals"
+  ],
+  "history": [
+    {
+      "step": 1,
+      "selected": [
+        "min_abs_velocity"
+      ],
+      "new_feature": "min_abs_velocity",
+      "delta_per_p": 0.007695843193926266,
+      "wilcoxon_p": 0.03903241056858889,
+      "pooled": 0.803345091546085,
+      "per_p_mean": 0.8184099005248516
+    },
+    {
+      "step": 2,
+      "selected": [
+        "min_abs_velocity",
+        "n_reversals"
+      ],
+      "new_feature": "n_reversals",
+      "delta_per_p": 0.009745756905815264,
+      "wilcoxon_p": 0.038421837527940456,
+      "pooled": 0.8142946272166631,
+      "per_p_mean": 0.8281556574306671
+    }
+  ],
+  "final_minimal_set": [
+    "vt_any",
+    "vt_center_ms",
+    "avg_viewport_y",
+    "max_overlap_frac",
+    "min_abs_velocity",
+    "n_reversals"
+  ],
+  "final_minimal_pooled_auc": 0.8142946272166631,
+  "full_pooled_auc": 0.816820243323015,
+  "full_minus_minimal_delta_per_p": 0.001105067776113425,
+  "full_minus_minimal_p": 0.35583309993602663
+}

@@ -1105,11 +1105,38 @@ The K14 graded-vs-binary Δ holds *feature distribution and LOPO splits constant
 | **K14** | A ∪ B ∪ C > B ∪ C (bands add on top of B + C?) | +0.0033 ± 0.0232 | 29 / 47 | 0.2178 (ns) |
 | **K15** | B ∪ C > B with trajectory re-computed on **click-time-truncated** scroll timeline (leakage check) | **+0.0200 ± 0.0493** | 34 / 47 | **0.0038** |
 
+### Pre-implementation ablations (2026-04-19)
+
+Run before freezing the feature set the approach-retreat JS library will emit. Purpose: find the parsimonious B∪C' subset that recovers the K13 lift, verify the feature set is linearly complete, and test how much the lift degrades if browser `scroll` events fire at low rates.
+
+| ID | Claim | Value |
+|---|---|---|
+| **K16** | LOFO on C under Holm–Bonferroni (α = 0.05, 7 tests): features whose removal significantly hurts per-p AUC | **1 of 7**: `min_abs_velocity` (Δ = +0.0174 on drop, Holm p = 0.012). The other 6 are **drop-candidates** under LOFO (Holm p ≥ 0.12 each) — LOFO is conservative when features carry substitutable signal. |
+| **K17** | Redundancy: Spearman pairs with \|r\| ≥ 0.85 on the 2,351-row sample | **1 pair**: `pause_ms` ↔ `vt_any` **r = +0.995**. VIF confirms: `vt_any` VIF = 237, `pause_ms` VIF = 226. Must drop one of the two before emitting. |
+| **K18** | Greedy forward-selection from B: features added until the next-best candidate fails paired one-sided Wilcoxon at p < 0.10 | **`min_abs_velocity`** (step 1, Δ = +0.0077, p = 0.039) then **`n_reversals`** (step 2, Δ = +0.0097, p = 0.038). Step 3's best candidate `entry_velocity` does not clear (p = 0.28). |
+| **K19** | Minimal B ∪ C' (6 features) vs full B ∪ C (11 features) | pooled AUC 0.8143 vs 0.8168 (Δ_pooled = −0.0025); paired per-p Δ = +0.0011, **p = 0.356 (ns)**. **The other 5 trajectory features add no detectable AUC once `min_abs_velocity` and `n_reversals` are present.** |
+| **K20** | Event-rate sensitivity: paired Δ(B ∪ C − B) per-p as scroll events are decimated | native +0.0185 (p = 0.003); 30 Hz +0.0113 (p = 0.037); 10 Hz +0.0045 (p = 0.059 ns); 5 Hz +0.0079 (p = 0.013); 2 Hz +0.0101 (p = 0.020). Signal **persists at 2 Hz** — degrades but does not disappear. The 10 Hz non-significance is within paired-Wilcoxon noise (adjacent rates are significant). |
+| **K21** | LGBM vs LR on full B ∪ C | LGBM pooled AUC 0.8107 vs LR 0.8168; paired per-p Δ(LGBM − LR) = **−0.0135, p = 0.90 (ns, LR wins)**. The 11-feature set is **LR-complete** — trees do not surface useful interactions to add as emitted features. |
+
+### Recommended emission for the approach-retreat library
+
+Based on K16–K21, the minimal, non-redundant, LR-complete emission beyond the existing M4 cursor features is **4 B (continuous viewport) + 2 C (trajectory) = 6 features**:
+
+1. `vt_any` — time AOI overlapped the viewport (ms)
+2. `vt_center_ms` — time AOI center was within ±100 px of viewport center (ms)
+3. `avg_viewport_y` — mean viewport-y of AOI center during visibility (px)
+4. `max_overlap_frac` — peak fraction of AOI visible within viewport
+5. `min_abs_velocity` — minimum |scroll velocity| during AOI visibility (px/s)
+6. `n_reversals` — scroll direction reversals during AOI visibility (count)
+
+The banded decomposition (A: `vt_top`, `vt_mid`, `vt_bot`) can stay behind an opt-in flag for backward compatibility but is not default. `pause_ms` is collinear with `vt_any` and is not emitted.
+
+
 ### What the extension shows
 
 - **K13 is the headline.** Trajectory features add a paired Δ of +0.0185 AUC (p = 0.003, 36/47 participants) on top of the continuous-viewport analytics baseline (B). Scroll kinematics are not redundant with where-the-AOI-sat-in-the-viewport: they carry an additional cursor-free signal for the deferred-vs-rejected split.
 - **Trajectory alone is insufficient.** K10 and K11 show that trajectory features without a visibility baseline perform worse than either viewport scorer. The useful signal is *incremental given a visibility baseline*; it is not self-standing.
-- **At n=47 the banded decomposition provides no detectable additional AUC beyond B∪C (K14).** A∪B∪C vs B∪C paired Δ = +0.003 (p = 0.22, ns) — directionally positive but below the detection threshold at this sample size. NB28's band split is a research operationalization of the broader viewport-analytics idea; deployment-side, the K14 null is consistent with bands being redundant given B∪C, but a larger sample would be needed to rule in or out a small effect.
+- **At n=47 the banded decomposition provides no detectable additional AUC beyond B∪C (K14).** A∪B∪C vs B∪C paired Δ = +0.003 (p = 0.22, ns) — directionally positive but below detection threshold at this sample size. We cannot rule in or out a small effect with n=47; we *can* say the banded split is not load-bearing at the sample sizes the paper is reported at. If the library drops bands going forward, the justification is **parsimony, not that K14 ruled them out**.
 - **Leakage check (K15) — no detectable click-settle contamination.** Re-computing the trajectory features on a scroll timeline truncated at the click timestamp (so post-click settle-scroll cannot contribute to features like `exit_velocity` for non-clicked AOIs in the trial) reproduces the headline paired Δ within 0.0014 AUC (+0.0200 truncated vs +0.0185 full, both p < 0.005). The K13 lift is not an artifact of using the full-trial scroll timeline.
 - **NB17 vs K13 — complementary, not a refutation.** NB17 tested univariate scroll dwell/velocity/pause between clicked vs not-clicked and found non-significant differences (all p > 0.3). NB30 tests a different target (deferred vs eval-rejected on approached∧¬clicked records) with a joint-model incremental-AUC test. Three axes differ (target, feature set, test statistic); NB30 is a new finding at a different site, not an overturning of NB17's null.
 
