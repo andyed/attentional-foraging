@@ -1,0 +1,95 @@
+{
+  "n_rows_used": 2351,
+  "n_deferred": 1916,
+  "n_eval_rejected": 435,
+  "n_participants": 47,
+  "features_A": [
+    "vt_any",
+    "vt_top",
+    "vt_mid",
+    "vt_bot"
+  ],
+  "features_B": [
+    "vt_any",
+    "vt_center_ms",
+    "avg_viewport_y",
+    "max_overlap_frac"
+  ],
+  "features_C": [
+    "max_abs_velocity",
+    "min_abs_velocity",
+    "pause_ms",
+    "n_reversals",
+    "max_decel_near_center",
+    "entry_velocity",
+    "exit_velocity"
+  ],
+  "pooled_auc": {
+    "A bands (NB28)": {
+      "pooled": 0.7989855541957622,
+      "per_p_mean": 0.8050786253201133
+    },
+    "B continuous viewport": {
+      "pooled": 0.7977827370239724,
+      "per_p_mean": 0.8107140573309254
+    },
+    "C trajectory": {
+      "pooled": 0.7496118589974324,
+      "per_p_mean": 0.7558696537604531
+    },
+    "A \u222a C": {
+      "pooled": 0.8104246154584503,
+      "per_p_mean": 0.8178584409703229
+    },
+    "B \u222a C": {
+      "pooled": 0.816820243323015,
+      "per_p_mean": 0.8292607252067802
+    },
+    "A \u222a B \u222a C": {
+      "pooled": 0.8200177573008902,
+      "per_p_mean": 0.8325682253185764
+    }
+  },
+  "paired_wilcoxon": {
+    "C > A": {
+      "delta": -0.049208971559660246,
+      "sd": 0.10240579638420064,
+      "a_ge_b": 14,
+      "n": 47,
+      "W": 236.0,
+      "p": 0.9992571077080256
+    },
+    "C > B": {
+      "delta": -0.0548444035704723,
+      "sd": 0.11272108573814883,
+      "a_ge_b": 12,
+      "n": 47,
+      "W": 230.0,
+      "p": 0.999653493551239
+    },
+    "A \u222a C > A": {
+      "delta": 0.012779815650209593,
+      "sd": 0.04168836640683772,
+      "a_ge_b": 29,
+      "n": 47,
+      "W": 676.0,
+      "p": 0.03679777142376349
+    },
+    "B \u222a C > B": {
+      "delta": 0.018546667875854954,
+      "sd": 0.04560303128952941,
+      "a_ge_b": 36,
+      "n": 47,
+      "W": 670.0,
+      "p": 0.0031470744148998806
+    },
+    "A \u222a B \u222a C > B \u222a C": {
+      "delta": 0.0033075001117961727,
+      "sd": 0.02315127521307065,
+      "a_ge_b": 29,
+      "n": 47,
+      "W": 468.0,
+      "p": 0.21781457813643135
+    }
+  }
+}

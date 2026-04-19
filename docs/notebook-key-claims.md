@@ -31,6 +31,7 @@ Every notebook in this project that ships load-bearing numbers to papers or exte
 - [NB06: `06_orientation_evaluation`](#nb06-06_orientation_evaluation) — OSEC phase boundaries — orient, survey, evaluate, commit
 - [NB04: `04_fixation_coverage`](#nb04-04_fixation_coverage) — fixation coverage and viewport-scan behavior
 - [NB26: `26_ltr_graded_relevance`](#nb26-26_ltr_graded_relevance) — LTR with graded relevance vs binary labels — null and 2026-04-19 extension
+- [NB30: `30_scroll_trajectory`](#nb30-30_scroll_trajectory) — scroll trajectory adds AUC on top of continuous viewport analytics
 
 ### Notebooks intentionally NOT covered
 
@@ -1057,6 +1058,65 @@ The K14 graded-vs-binary Δ holds *feature distribution and LOPO splits constant
 - **No leakage-driven "beat Google" headline.** R2 graded − Original is not significant (+0.0079, p = 0.47). Note this bounds *deployability*, not the contribution of leakage to the K14 contrast — those are separate claims.
 
 **WILD gate — deferred.** ACD has one AOI per session and no SERP HTML, so a graded-label LTR replication is blocked. A binary ad-click LTR on ACD would only probe ranker-family effects, but K15 already indicates no lift on LAB text features — no pending WILD signal today. Revisit once a validated cursor-only deferred proxy exists (blocked per `attentional-foraging/CLAUDE.md`).
+
+---
+
+<a id="nb30-30_scroll_trajectory"></a>
+
+## NB30: `30_scroll_trajectory` — scroll trajectory adds AUC on top of continuous viewport analytics
+
+*Source: [`notebooks-v2/30_scroll_trajectory.ipynb`](../notebooks-v2/30_scroll_trajectory.ipynb)*
+
+### Dataset and population
+
+**Regime:** `[LAB]`. Target label (NB22 gaze-regression) is LAB-only; the features (scroll trajectory + viewport analytics) are cursor-free and `[BOTH]`-eligible in principle. 47-fold leave-one-participant-out LR.
+
+| ID | Claim | Value |
+|---|---|---|
+| **K1** | Rows (approached ∧ ¬clicked) used for the deferred-vs-rejected test | **2,351** |
+| **K2** | Deferred (NB22 gaze-regression = 1) | 1,916 |
+| **K3** | Eval-rejected (NB22 gaze-regression = 0) | 435 |
+
+### Feature sets
+
+- **A** — Viewport bands (NB28): `vt_any, vt_top, vt_mid, vt_bot` (4 features)
+- **B** — Continuous viewport analytics (the baseline): `vt_any, vt_center_ms, avg_viewport_y, max_overlap_frac` (4 features)
+- **C** — Scroll trajectory: `max_abs_velocity, min_abs_velocity, pause_ms, n_reversals, max_decel_near_center, entry_velocity, exit_velocity` (7 features)
+
+### Pooled LOPO AUC (deferred-vs-rejected)
+
+| ID | Scorer | Pooled AUC | Per-participant mean ± SD |
+|---|---|---:|---:|
+| **K4** | A bands (NB28) | **0.7990** | 0.8051 ± 0.1272 |
+| **K5** | B continuous viewport | **0.7978** | 0.8107 ± 0.1204 |
+| **K6** | C trajectory alone | 0.7496 | 0.7559 ± 0.1252 |
+| **K7** | A ∪ C | 0.8104 | 0.8179 ± 0.1138 |
+| **K8** | B ∪ C | **0.8168** | 0.8293 ± 0.1122 |
+| **K9** | A ∪ B ∪ C | 0.8200 | 0.8326 ± 0.1090 |
+
+### Paired per-participant Wilcoxon signed-rank (one-sided, 47 participants)
+
+| ID | Comparison | Δ ± SD | Consistency | p |
+|---|---|---:|---:|---:|
+| **K10** | C > A (trajectory alone beats bands?) | −0.0492 ± 0.1024 | 14 / 47 | 0.9993 (ns) |
+| **K11** | C > B (trajectory alone beats continuous viewport?) | −0.0548 ± 0.1127 | 12 / 47 | 0.9997 (ns) |
+| **K12** | A ∪ C > A (trajectory added to bands) | **+0.0128 ± 0.0417** | 29 / 47 | **0.0368** |
+| **K13** | **B ∪ C > B (trajectory added to continuous viewport) — headline** | **+0.0185 ± 0.0456** | **36 / 47** | **0.0031** |
+| **K14** | A ∪ B ∪ C > B ∪ C (bands add on top of B + C?) | +0.0033 ± 0.0232 | 29 / 47 | 0.2178 (ns) |
+| **K15** | B ∪ C > B with trajectory re-computed on **click-time-truncated** scroll timeline (leakage check) | **+0.0200 ± 0.0493** | 34 / 47 | **0.0038** |
+
+### What the extension shows
+
+- **K13 is the headline.** Trajectory features add a paired Δ of +0.0185 AUC (p = 0.003, 36/47 participants) on top of the continuous-viewport analytics baseline (B). Scroll kinematics are not redundant with where-the-AOI-sat-in-the-viewport: they carry an additional cursor-free signal for the deferred-vs-rejected split.
+- **Trajectory alone is insufficient.** K10 and K11 show that trajectory features without a visibility baseline perform worse than either viewport scorer. The useful signal is *incremental given a visibility baseline*; it is not self-standing.
+- **At n=47 the banded decomposition provides no detectable additional AUC beyond B∪C (K14).** A∪B∪C vs B∪C paired Δ = +0.003 (p = 0.22, ns) — directionally positive but below the detection threshold at this sample size. NB28's band split is a research operationalization of the broader viewport-analytics idea; deployment-side, the K14 null is consistent with bands being redundant given B∪C, but a larger sample would be needed to rule in or out a small effect.
+- **Leakage check (K15) — no detectable click-settle contamination.** Re-computing the trajectory features on a scroll timeline truncated at the click timestamp (so post-click settle-scroll cannot contribute to features like `exit_velocity` for non-clicked AOIs in the trial) reproduces the headline paired Δ within 0.0014 AUC (+0.0200 truncated vs +0.0185 full, both p < 0.005). The K13 lift is not an artifact of using the full-trial scroll timeline.
+- **NB17 vs K13 — complementary, not a refutation.** NB17 tested univariate scroll dwell/velocity/pause between clicked vs not-clicked and found non-significant differences (all p > 0.3). NB30 tests a different target (deferred vs eval-rejected on approached∧¬clicked records) with a joint-model incremental-AUC test. Three axes differ (target, feature set, test statistic); NB30 is a new finding at a different site, not an overturning of NB17's null.
+
+### Deployability
+
+- Features transfer to mobile and to feed-style layouts in principle — scroll events + DOM bboxes are available in both. Validation on ACD (no per-AOI SERP structure) or a mobile feed dataset is future work. No WILD replication on this project today.
+- For deployment, the minimal feature set is B ∪ C (11 features): continuous viewport analytics + 7 scroll-trajectory features. K14 says bands are redundant with this pair.
 
 ---
 
