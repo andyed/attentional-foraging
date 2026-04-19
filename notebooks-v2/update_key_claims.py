@@ -742,7 +742,7 @@ NB09_BODY = """### Jaccard token overlap as a difficulty proxy
 
 > **Jaccard is a weak predictor** — all significant effects are small (|r| < 0.06). The one substantive signal is on page coverage: easier SERPs produce more coverage (5-pp absolute difference across terciles). Duration, fixations, and regressions are effectively null. See findings §3c for why token overlap is the wrong measure for transactional queries — `docs/findings.md` points to `compute_difficulty_measures.py` for the complementary "relevance spread" measure that has stronger effects.
 
-### Step 7: Evaluation depth and cognitive effort by SERP diversity (Peter Dixon-Moses question)
+### Step 7: Evaluation depth and cognitive effort by SERP diversity
 
 *Operationalization.* Depth = click organic rank, max organic rank reached (via scroll), count and fraction of organic results fixated. Cognitive effort = total fixation time (TFT = Σ fixation durations). Stratified by Jaccard tercile, partial correlation (controlling for organic result count), and within-participant rank correlation.
 
@@ -791,7 +791,7 @@ NB09_BODY = """### Jaccard token overlap as a difficulty proxy
 >
 > **Relationship to the ski-jump rank-9 uptick (§0 findings.md).** The majority of users on homogeneous SERPs collapse forward (click earlier, shown here). A minority — the cohort A trials where the user scrolled all the way to rank 9 — collapse backward and pick the last result, producing the muted rank-9 uptick. Both patterns coexist within homogeneous SERPs and represent different exits from Evaluate.
 >
-> **Answer to Peter's question.** Yes, AdSERP is varied enough to detect SERP-diversity effects on evaluation depth. The range is [0.029, 0.395] Jaccard (11× spread), effect sizes are small but consistent across tercile / continuous / within-participant tests, and the direction is the opposite of the naive "homogeneous → deeper" hypothesis.
+> **Bottom line.** Yes, AdSERP is varied enough to detect SERP-diversity effects on evaluation depth. The range is [0.029, 0.395] Jaccard (11× spread), effect sizes are small but consistent across tercile / continuous / within-participant tests, and the direction is the opposite of the naive "homogeneous → deeper" hypothesis.
 
 ### Step 8: Butterworth LF/HF cognitive load by SERP diversity
 
@@ -881,7 +881,7 @@ NB06_BODY = """### Orientation (page-load → first result fixation)
 # ── NB26 — LTR graded vs binary (null + 2026-04-19 extension) ─────────
 NB26_BODY = """### Original null-findings protocol (2026-04-15) — labeled-subset MRR, LR/Ridge, 5 text features
 
-**Regime:** `[LAB]` four-cell labels (requires NB22 gaze-regression). 47-fold LOPO. Peter Dixon-Moses exclusion: not-approached-below-click records dropped from training.
+**Regime:** `[LAB]` four-cell labels (requires NB22 gaze-regression). 47-fold LOPO. Training-side exclusion: not-approached-below-click records dropped.
 
 | ID | Claim | Value |
 |---|---|---|
@@ -891,11 +891,11 @@ NB26_BODY = """### Original null-findings protocol (2026-04-15) — labeled-subs
 | **K4** | Paired Δ(graded − binary) on labeled subset, 47-participant Wilcoxon one-sided | Δ = **+0.0046 ± 0.0209**, 31/47, *W* = 720.5, ***p* = 0.0246** |
 | **K5** | Paired Δ(graded − original) on labeled subset, 47-participant Wilcoxon one-sided | Δ = **+0.2065**, *W* = 1128, ***p* ≈ 1 × 10⁻⁹** |
 
-The labeled-subset framing is known to compress the MRR competition — Peter's exclusion rule drops rarely-clicked positions 4–9 where Google trivially wins, artificially narrowing the ranker-vs-Google gap. See `docs/null-findings/nb26-ltr-graded-vs-binary.md` for the full-SERP reanalysis that revealed the original headline was labeled-subset-artefact-inflated.
+The labeled-subset framing is known to compress the MRR competition — the training-side exclusion drops rarely-clicked positions 4–9 where Google trivially wins, artificially narrowing the ranker-vs-Google gap. See `docs/null-findings/nb26-ltr-graded-vs-binary.md` for the full-SERP reanalysis that revealed the original headline was labeled-subset-artefact-inflated.
 
 ### 2026-04-19 extension — full-SERP MRR, LambdaMART, M4 cursor features
 
-**Regime:** `[LAB]`. 47-fold LOPO. Training uses Peter's not-approached-below-click exclusion; held-out **inference scores all 10 positions per trial** (stricter than the null-doc "scorable-subset" protocol). LGBM rungs are averaged across seeds 0/1/2 for stability. 1,826 held-out trials (trials with missing embeddings at any position are dropped — stricter than the null-doc protocol).
+**Regime:** `[LAB]`. 47-fold LOPO. Training uses the not-approached-below-click exclusion; held-out **inference scores all 10 positions per trial** (stricter than the null-doc "scorable-subset" protocol). LGBM rungs are averaged across seeds 0/1/2 for stability. 1,826 held-out trials (trials with missing embeddings at any position are dropped — stricter than the null-doc protocol).
 
 | ID | Claim | Value |
 |---|---|---|
