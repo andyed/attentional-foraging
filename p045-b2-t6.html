@@ -321,9 +321,10 @@ const tkGazeVY = buildTrack('ticks-gaze-vy', i => cVY(F[i].vy), i => Math.abs(F[
 const tkScroll = buildScrollTrack();
 const tkDwell = buildDwellTrack();
 const tkE = tkSal; // backward compat for recolor
-const lE=[],cE=[],tE=[];
+const lE=[],cE=[],hE=[],tE=[];
 for(let i=0;i<N;i++){const f=F[i],r=rF(f.d),c=cF(i,N);
 if(i>0){const p=F[i-1];const l=se('line',{x1:p.x,y1:p.y,x2:f.x,y2:f.y,stroke:c,'stroke-width':1.5,'stroke-opacity':.4});svg.appendChild(l);lE.push(l)}else lE.push(null);
+const hr=se('circle',{cx:f.x,cy:f.y,r:r+6,fill:'none',stroke:'#fff','stroke-width':6,'stroke-opacity':0});svg.appendChild(hr);hE.push(hr);
 const cr=se('circle',{cx:f.x,cy:f.y,r,fill:c,'fill-opacity':.25,stroke:c,'stroke-width':2,'stroke-opacity':.8});svg.appendChild(cr);cE.push(cr);
 const fs=Math.max(9,Math.min(14,r));const tx=se('text',{x:f.x,y:f.y,'text-anchor':'middle','dominant-baseline':'central','font-family':'monospace','font-weight':'bold','font-size':fs,fill:'white',stroke:'rgba(0,0,0,.6)','stroke-width':2,'paint-order':'stroke'});tx.textContent=i+1;svg.appendChild(tx);tE.push(tx)}
 if(CK){const s=se('polygon',{points:[0,-16,6,-4,16,-4,8,4,12,16,0,8,-12,16,-8,4,-16,-4,-6,-4].reduce((a,v,i)=>{a.push(i%2===0?CK.x+v:CK.y+v);return a},[]).join(','),fill:'#f00','fill-opacity':.5,stroke:'#f00','stroke-width':2});svg.appendChild(s);
@@ -331,8 +332,10 @@ const l=se('text',{x:CK.x+18,y:CK.y+4,'font-family':'monospace','font-weight':'b
 function uv(){const wn=parseInt(ws.value);
 wl.textContent=wn>=N?'All':wn;
 const lo=Math.max(0,ci-wn+1);
+const GLOW_OP=[.9,.55,.32,.18,.08],GLOW_R=[10,8,6,5,4];
 for(let i=0;i<N;i++){const v=i>=lo&&i<=ci;cE[i].style.display=v?'':'none';tE[i].style.display=v?'':'none';
-if(lE[i])lE[i].style.display=(v&&i>lo)?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',pl&&i===ci?1:.8)}
+if(lE[i])lE[i].style.display=(v&&i>lo)?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',pl&&i===ci?1:.8);
+const rec=ci-i;if(v&&rec>=0&&rec<5){const br=parseFloat(cE[i].getAttribute('r'));hE[i].setAttribute('r',br+GLOW_R[rec]);hE[i].setAttribute('stroke-opacity',GLOW_OP[rec]);hE[i].style.display=''}else{hE[i].style.display='none'}}
 if(ci>=0&&N>1){const tr=firstTrack.getBoundingClientRect(),tc=tt.getBoundingClientRect();const off=tr.left-tc.left;const pct=(F[ci].t-T0)/TD;ph.style.left=(off+pct*tr.width)+'px';}
 if(ci>=0){const f=F[ci];const vr=vw.getBoundingClientRect(),fy=f.y-vw.scrollTop;if(fy<100||fy>vr.height-100)vw.scrollTo({top:f.y-vr.height/2,behavior:'smooth'})}
 if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px';
