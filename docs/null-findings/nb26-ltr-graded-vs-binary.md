@@ -101,6 +101,87 @@ Leave-one-participant-out, 47 folds (matches §4.1 M4 LOSO). Binary ranker: `skl
 - Related published finding: the CIKM paper's §4.3 graded-relevance reframe (theoretical motivation — not claimed to be validated by this notebook)
 - Related prior null: [`priming-null-result.md`](priming-null-result.md) — four methodologies invalidating priming at the result-summary level; same genre of honest-negative reporting
 
-## Status
+## Status (as of 2026-04-15)
 
 **Kept out of the CIKM paper.** The narrow contrast result does not justify a §4.3 paragraph because the full-SERP MRR is a null against Google. The CIKM paper's graded-relevance framing stands on its theoretical argument (Peter's "relevant-but-not-chosen" mapping to LTR graded relevance, §4.3 existing prose); it does not need and should not claim an empirical MRR validation. A stronger production-scale replication is a legitimate follow-up experiment for another venue.
+
+---
+
+## 2026-04-19 extension — LambdaMART + M4 cursor features
+
+**Motivation.** Per Peter's renewed feedback not to leave the null sitting, we executed the two in-reach paths from the "What we'd need" list: (i) swap the LR/Ridge ranker family for LambdaMART, and (ii) add the 9 M4 cursor-approach features to the 5 text features. Path (iii) — production-scale data — remains out of reach. All numbers below come from seed-averaged (seeds 0/1/2) LGBMRanker under the same 47-fold LOPO protocol, evaluated on **true full SERP** (all 10 positions per held-out trial). Implementation is NB26 cells 9–15 and `scripts/nb26_extension_fullserp_lambdamart.py`.
+
+### Protocol note — stricter eval than 2026-04-15
+
+The earlier "full-SERP" numbers in this doc (0.4502 binary, 0.4552 graded, 0.4793 Google) came from a one-off script that evaluated on a "scorable-positions" subset (~6 positions per trial, excluding not-approached-below-click from *evaluation* as well as training). The extension scores all 10 positions per trial without evaluation-side exclusion, and additionally drops trials with any missing per-position embedding rather than zero-filling — the click ranks lower in the candidate pool, so absolute MRRs are smaller but the ranker comparisons are more defensible. Held-out trial count is **1,826** (vs 1,919 in NB26 cell 7's labeled-subset protocol). Google baseline under this stricter protocol: **0.4125** full-SERP concat MRR.
+
+Google's full-SERP MRR dropped from 0.4793 (old protocol) to 0.4125 (strict protocol) primarily because trials with any missing embedding are now dropped wholesale rather than zero-filled; this lowers the click's rank in the candidate pool, which lowers every ranker's MRR roughly equally. Numbers across protocols are not apples-to-apples, and the old figures are retained above only for historical comparison.
+
+### Rung ladder (all numbers are concat MRR, 1,826 held-out trials, 47 participants, LGBM seed-averaged 0/1/2)
+
+| Rung | Ranker | Features | Binary MRR | Graded MRR |
+|---|---|---|---:|---:|
+| — | Original SERP (Google) | — | 0.4125 | — |
+| **0** | LR / Ridge (null-doc baseline) | 5 text | 0.2878 | 0.2922 |
+| **1** | LambdaMART | 5 text | 0.2893 | 0.2821 |
+| **2** | LambdaMART | 5 text + 9 M4 + approached flag | 0.3723 | **0.4326** |
+
+### Paired per-participant Wilcoxon (one-sided, 47 participants)
+
+| Comparison | Δ mean ± SD | Consistency | p |
+|---|---:|---:|---:|
+| **Rung 1 graded − binary** (LambdaMART on text) | −0.0042 ± 0.0450 | 22 / 47 | 0.7891 (ns) |
+| **Rung 2 graded − binary** (LambdaMART on text + M4) | **+0.0591 ± 0.0826** | **39 / 47** | **< 0.0001** |
+| **Ranker-family isolated** (R1 grad − R0 Ridge grad) | −0.0041 ± 0.0537 | 23 / 47 | 0.6645 (ns) |
+| **Feature-add isolated** (R2 grad − R1 grad) | +0.1343 ± 0.1458 | 39 / 47 | < 0.0001 |
+| R2 LGBM graded − Original (Google) | +0.0079 ± 0.1354 | 21 / 47 | **0.4687 (ns)** |
+| R2 LGBM binary − Original (Google) | −0.0512 ± 0.1250 | 17 / 47 | 0.9962 (ns) |
+| R0 Ridge grad − R0 LR bin (full-SERP analogue of K4) | +0.0039 ± 0.0259 | 29 / 47 | 0.0719 (marginal) |
+
+### M4 leakage caveat — reportable, bounded
+
+The 9 M4 cursor features are aggregates over the full cursor trajectory on each result. For clicked results the trajectory includes the movement *to* the click target, so clicked records carry click-indicative feature values:
+
+| Feature | Clicked median | Not-clicked median |
+|---|---:|---:|
+| `min_dist` (px) | 73.1 | 235.3 |
+| `final_dist` (px) | 182.7 | 427.9 |
+| `dwell_in_proximity_ms` | 1,759.5 | 194.0 |
+
+Clicked and not-clicked records are therefore partially separable in M4 space — the features do not just "hint" at clicks, they substantially encode them.
+
+**Two separate bounding questions, to keep them separate:**
+
+1. *Does the leakage produce a deployable-ranker headline against Google?* No. R2 LGBM graded vs Original Google is not significant (+0.0079, p = 0.47). Even with click-indicative features, the R2 ranker does not dominate Google's ordering on paired per-participant MRR.
+
+2. *Does the leakage explain away the graded-vs-binary paired Δ at R2 (K14 = +0.0591)?* **This is a separate, and weaker, claim** — the vs-Google null above does not bound it. What holds in K14 is that the feature set is held identical across the two rankers and the LOPO splits are identical, so feature-level leakage is symmetric across the contrast. What does *not* hold fully is loss-geometry symmetry: LambdaMART with `label_gain=[0,1]` optimizes a different pairwise loss than with `label_gain=[0,1,2]`. The extra gradient band between grades 1 and 2 gives the graded ranker more room to exploit the same leaky features to separate clicked (gain 2) from deferred (gain 1) where the binary loss lumps them together. So the defensible reading is: **the K14 contrast isolates label encoding plus any loss-structure interaction with the leaky features** — not label encoding alone. A clean replication on pre-click-truncated M4 features (not yet built) is what would unambiguously attribute +0.0591 to graded labels teaching the ranker new structure.
+
+**What K14 can be cited as today:** on matched features (5 text + 9 M4 cursor-approach aggregates), a matched LambdaMART ranker, and matched 47-participant LOPO splits, training on graded labels produces a **paired per-participant MRR gain of +0.0591** over training on binary click labels (paired one-sided Wilcoxon signed-rank on per-participant means, 39/47 participants with graded ≥ binary, *p* < 0.0001). The feature set includes post-hoc cursor-trajectory aggregates that partially encode whether a click occurred, so this validates that the graded label encoding yields measurable MRR gain under those features; it does **not** establish that the gain would persist under pre-click-truncated features alone. Neither the graded nor binary ranker at this rung significantly beats Google's original ordering on paired per-participant full-SERP MRR.
+
+A pre-click-truncated version of M4 (features computed strictly from pre-click trajectory) would isolate a genuinely predictive setting. That is a separate work-item and is not covered here.
+
+### What we learned
+
+1. **LambdaMART alone does not break the null.** On Peter's exact 5-text-feature set, the ranker-family swap produces a paired lift of −0.0041 over Ridge graded — directionally negative and not statistically distinguishable from zero (p = 0.665). Path (i) from the "What we'd need" list is, on its own, *insufficient*. (Minor caveat: K15 compares a seed-averaged LGBM to a deterministic Ridge. Seed-averaging narrows LGBM's CI and widens the gap that would need to appear to reach significance, so this null is *conservatively* established — the bias cuts toward "no effect," which is the direction we report.)
+
+2. **Feature addition breaks the null on the graded-vs-binary axis — with a reportable leakage caveat.** Adding M4 cursor features produces a paired Δ of +0.0591 between graded-trained and binary-trained LambdaMART at Rung 2 (p < 0.0001, 39/47 participants, paired per-participant Wilcoxon signed-rank on per-participant means). This is the empirical validation the 2026-04-15 null couldn't produce, *with the qualification that K14 isolates label encoding plus any loss-structure interaction with leaky features, not label encoding alone*. A pre-click-truncated M4 variant would attribute the +0.0591 cleanly to labels; that variant does not exist today.
+
+3. **Consider whether to cite this in the CIKM paper.** Given the leakage and loss-geometry caveats above, the Rung 2 contrast is strong enough to *support* a paper-side citation only if the caveats are reported alongside. The cleanest paper-ready framing: *"On matched features (5 text + 9 M4 cursor-approach aggregates computed post-hoc over the full cursor trajectory), a matched LambdaMART ranker, and matched 47-participant LOPO splits, training on graded labels produces a paired per-participant MRR gain of +0.0591 over training on binary click labels (paired one-sided Wilcoxon signed-rank on per-participant means, 39 of 47 participants with graded ≥ binary, p < 0.0001). The M4 features partially encode whether a click occurred on the result, so this validates that the graded label encoding earns measurable MRR gain under features that are themselves click-indicative — it does not establish that the gain would persist under pre-click-truncated features. Neither the graded nor binary ranker at this rung significantly beats Google's original ordering on paired per-participant full-SERP MRR."* Decision on whether to include: defer to the Peter loop.
+
+### Deployability and WILD gate
+
+**WILD (ACD replication) is deferred.** ACD (Leiva & Arapakis 2020, ~2,909 sessions) has one AOI per session and no preserved SERP HTML. A graded-label replication is blocked without (a) a validated cursor-only deferred-vs-rejected proxy (NB17's scroll signal is explicitly weak), and (b) per-result SERP reconstruction. A binary ad-click LambdaMART on ACD would probe only the ranker-family axis — and K15 already indicates ranker-family alone has no effect on text features. No pending "WILD will validate this" signal exists today.
+
+### Promotion decision
+
+The CIKM paper's §4.3 theoretical argument does not *require* this empirical validation, but the Rung 2 graded-vs-binary contrast is strong enough to support a careful one-paragraph addition — if and only if the M4 leakage caveat is reported alongside. Defer the paper-side promotion decision to the Peter loop; the narrative is ready to propose but should not be merged without sign-off given the caveat.
+
+### Status (2026-04-19)
+
+**Extension landed; original null reinforced on the ranker-family axis; graded-vs-binary empirical validation achieved at Rung 2 under an explicit leakage caveat.** Keep this file as the audit trail. Any paper prose that cites the Rung 2 contrast must quote the caveat verbatim.
+
+### Pointers (extension)
+
+- NB26 cells 9–15 are the authoritative source (executed 2026-04-19 via `jupyter nbconvert --execute --inplace`).
+- `docs/notebook-key-claims.md` → NB26 section K6–K16 (regenerated by `update_key_claims.py`).
+- Earlier prototyping under `scripts/nb26_extension_fullserp_lambdamart.py` and `scripts/output/nb26_extension/` used a pre-strict-protocol filter (n=1,919) and its numbers disagree with the notebook's n=1,826 run; both were removed on 2026-04-19 to avoid future readers citing the wrong artifact.

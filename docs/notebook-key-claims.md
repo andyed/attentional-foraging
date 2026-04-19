@@ -30,6 +30,7 @@ Every notebook in this project that ships load-bearing numbers to papers or exte
 - [NB09: `09_difficulty`](#nb09-09_difficulty) — SERP difficulty (Jaccard token overlap) and its effect on page coverage
 - [NB06: `06_orientation_evaluation`](#nb06-06_orientation_evaluation) — OSEC phase boundaries — orient, survey, evaluate, commit
 - [NB04: `04_fixation_coverage`](#nb04-04_fixation_coverage) — fixation coverage and viewport-scan behavior
+- [NB26: `26_ltr_graded_relevance`](#nb26-26_ltr_graded_relevance) — LTR with graded relevance vs binary labels — null and 2026-04-19 extension
 
 ### Notebooks intentionally NOT covered
 
@@ -991,6 +992,69 @@ K1–K4 above are indexed by absolute rank (every h3 slot, ads pooled with organ
 > **First-viewport clickers are not satisficers — they're faster deciders.** They fixate 68 % of the first screen (vs scrollers' 92 %) but reach a click in 11 s vs 23 s. Fixation budget on result 0 doubles (42 % vs 21 %). TTI is a stable per-user trait: a participant's first-5-trial TTI predicts the fix/result investment on their remaining trials (r = 0.42). The TTI(scroll) → investment correlation (r = 0.77) is among the strongest user-level signals in the corpus.
 >
 > **K24–K27 are the canonical fixation-duration source for paper drafts.** Cite as `[NB04:K25]` for mean, `[NB04:K26]` for median. The `task-model-paper.tex` line 150 figures should be updated to the post-audit values on the next .tex regeneration.
+
+---
+
+<a id="nb26-26_ltr_graded_relevance"></a>
+
+## NB26: `26_ltr_graded_relevance` — LTR with graded relevance vs binary labels — null and 2026-04-19 extension
+
+*Source: [`notebooks-v2/26_ltr_graded_relevance.ipynb`](../notebooks-v2/26_ltr_graded_relevance.ipynb)*
+
+### Original null-findings protocol (2026-04-15) — labeled-subset MRR, LR/Ridge, 5 text features
+
+**Regime:** `[LAB]` four-cell labels (requires NB22 gaze-regression). 47-fold LOPO. Peter Dixon-Moses exclusion: not-approached-below-click records dropped from training.
+
+| ID | Claim | Value |
+|---|---|---|
+| **K1** | MRR@labeled-subset on original SERP ordering (Google baseline) | **0.4114** |
+| **K2** | MRR@labeled-subset on LR binary ranker | **0.6108** |
+| **K3** | MRR@labeled-subset on Ridge graded ranker | **0.6152** |
+| **K4** | Paired Δ(graded − binary) on labeled subset, 47-participant Wilcoxon one-sided | Δ = **+0.0046 ± 0.0209**, 31/47, *W* = 720.5, ***p* = 0.0246** |
+| **K5** | Paired Δ(graded − original) on labeled subset, 47-participant Wilcoxon one-sided | Δ = **+0.2065**, *W* = 1128, ***p* ≈ 1 × 10⁻⁹** |
+
+The labeled-subset framing is known to compress the MRR competition — Peter's exclusion rule drops rarely-clicked positions 4–9 where Google trivially wins, artificially narrowing the ranker-vs-Google gap. See `docs/null-findings/nb26-ltr-graded-vs-binary.md` for the full-SERP reanalysis that revealed the original headline was labeled-subset-artefact-inflated.
+
+### 2026-04-19 extension — full-SERP MRR, LambdaMART, M4 cursor features
+
+**Regime:** `[LAB]`. 47-fold LOPO. Training uses Peter's not-approached-below-click exclusion; held-out **inference scores all 10 positions per trial** (stricter than the null-doc "scorable-subset" protocol). LGBM rungs are averaged across seeds 0/1/2 for stability. 1,826 held-out trials (trials with missing embeddings at any position are dropped — stricter than the null-doc protocol).
+
+| ID | Claim | Value |
+|---|---|---|
+| **K6** | Full-SERP MRR on original SERP ordering (Google baseline) | **0.4125** |
+| **K7** | Full-SERP MRR, Rung 0: LR binary on 5 text features | **0.2878** |
+| **K8** | Full-SERP MRR, Rung 0: Ridge graded on 5 text features | **0.2922** |
+| **K9** | Full-SERP MRR, Rung 1: LambdaMART binary on 5 text features | **0.2893** |
+| **K10** | Full-SERP MRR, Rung 1: LambdaMART graded on 5 text features | **0.2821** |
+| **K11** | Full-SERP MRR, Rung 2: LambdaMART binary on 5 text + 9 M4 features (leakage) | **0.3723** |
+| **K12** | Full-SERP MRR, Rung 2: LambdaMART graded on 5 text + 9 M4 features (leakage) | **0.4326** |
+
+Paired per-participant Wilcoxon signed-rank (one-sided, 47 participants):
+
+| ID | Claim | Value |
+|---|---|---|
+| **K13** | Rung 1: graded − binary paired Δ (LambdaMART on text) | Δ = **−0.0042 ± 0.0450**, 22/47, *p* = **0.7891** (ns) |
+| **K14** | Rung 2: graded − binary paired Δ (LambdaMART on text + M4) | Δ = **+0.0591 ± 0.0826**, **39/47**, ***p* < 0.0001** |
+| **K15** | Ranker-family isolated: Rung 1 graded − Rung 0 Ridge graded | Δ = **−0.0041 ± 0.0537**, 23/47, *p* = **0.6645** (ns) |
+| **K16** | Feature-add isolated: Rung 2 graded − Rung 1 graded | Δ = **+0.1343 ± 0.1458**, 39/47, ***p* < 0.0001** |
+
+**Notable negatives** (defensibly bound the story):
+
+- R2 LGBM graded − Original (Google): Δ = +0.0079 ± 0.1354, 21/47, *p* = 0.4687 (ns). Even with M4 leakage, Rung 2 graded does not significantly beat Google on paired per-participant MRR. The leakage is not enough to produce a deployable-ranker claim.
+- R2 LGBM binary − Original: Δ = −0.0512, 17/47, *p* = 0.9962 (ns). Rung 2 binary loses to Google.
+- R0 Ridge graded − R0 LR binary: Δ = +0.0039, 29/47, *p* = 0.0719 (full-SERP analogue of K4; marginal under stricter eval).
+
+**M4 leakage caveat — reportable caveat on K11, K12, K14, K16.** The 9 M4 cursor features are aggregates over the full cursor trajectory on each result. For clicked results the trajectory includes the movement *to* the click target, so clicked records carry click-indicative feature values: `min_dist` ≈ 73 px median vs 235 px for not-clicked; `dwell_in_proximity_ms` ≈ 1760 ms vs 194 ms. This means the Rung-2 comparisons probe a regime where the features partially encode the click.
+
+The K14 graded-vs-binary Δ holds *feature distribution and LOPO splits constant* across the contrast; what it does **not** hold constant is loss geometry — LambdaMART with `label_gain=[0,1]` optimizes a different pairwise ranking loss than with `label_gain=[0,1,2]`, and the graded loss can exploit the leaky features more aggressively to separate clicked (gain 2) from deferred (gain 1). The defensible reading of K14 is therefore: **isolates label encoding plus any loss-structure interaction with the leaky features**, not label encoding alone. A pre-click-truncated M4 variant (not yet built) is what would attribute the +0.0591 cleanly to the graded labels. The K11/K12 absolute MRRs are not deployable-ranker values and should not be cited as such.
+
+**What the extension shows about the null:**
+
+- **Ranker family alone does not break the null (K15).** LambdaMART with 5 text features does not meaningfully outperform Ridge on the same features (paired Δ = −0.0041, ns). Minor caveat: K15 compares seed-averaged LGBM to deterministic Ridge, which biases the comparison *toward* finding no effect — the null is conservatively established.
+- **Feature addition yields a paired graded-vs-binary lift at Rung 2 (K14, K16) — with the loss-geometry + leakage caveat above.** +0.0591 (p < 0.0001, 39/47) for graded-vs-binary at Rung 2; +0.1343 (p < 0.0001, 39/47) for feature-add isolated.
+- **No leakage-driven "beat Google" headline.** R2 graded − Original is not significant (+0.0079, p = 0.47). Note this bounds *deployability*, not the contribution of leakage to the K14 contrast — those are separate claims.
+
+**WILD gate — deferred.** ACD has one AOI per session and no SERP HTML, so a graded-label LTR replication is blocked. A binary ad-click LTR on ACD would only probe ranker-family effects, but K15 already indicates no lift on LAB text features — no pending WILD signal today. Revisit once a validated cursor-only deferred proxy exists (blocked per `attentional-foraging/CLAUDE.md`).
 
 ---
 
