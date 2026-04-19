@@ -1212,3 +1212,72 @@
   note      = {RocketQA. Three technical contributions: cross-batch negatives, denoised hard negatives, and data augmentation. Most important for the approach-retreat framing: false negatives in mined hard-negative pools are a real failure mode, addressed by filtering the pool with a stronger cross-encoder that scores "plausibly relevant" candidates out of the training set. Establishes that denoising is load-bearing for hard-negative mining, not optional. Approach-retreat's evaluated-rejected class addresses this by construction — the user's retreat is behavioral evidence of active rejection rather than a model-inferred guess at irrelevance. DOI from LLM knowledge, re-verify.},
 }
 
+
+% ═══════════════════════════════════════════════════════════════════════════
+% VIEWPORT / SCROLL TRADITION — ANU SERP eye-tracking line
+% ═══════════════════════════════════════════════════════════════════════════
+% Direct precedent for our viewport-band signal (NB28 / NB29). This line of
+% work (ANU, 2012–2017) established that screen size and scroll structure
+% attention on SERPs, with scroll as the dominant attention-structuring
+% mechanism on small phones. We extend by operationalizing *viewport-y band
+% residence* as a per-AOI dwell signal — a downstream move that is not in
+% these papers; they do not test viewport-band dwell as an attention proxy.
+
+@article{kim2015eyetracking,
+  author    = {Kim, Jaewon and Thomas, Paul and Sankaranarayana, Ramesh and Gedeon, Tom and Yoon, Hwan-Jin},
+  title     = {Eye-Tracking Analysis of User Behavior and Performance in Web Search on Large and Small Screens},
+  journal   = {Journal of the Association for Information Science and Technology},
+  volume    = {66},
+  number    = {3},
+  pages     = {526--544},
+  year      = {2015},
+  publisher = {Wiley},
+  doi       = {10.1002/asi.23187},
+  note      = {Verified via Wiley 2026-04-19. Two task types on desktop vs mobile: users have more difficulty extracting information from search results on smaller screens but exhibit less eye movement due to infrequent scroll use. Establishes viewport-y differentiates attention across screen sizes.},
+}
+
+@inproceedings{kim2016pagination,
+  author    = {Kim, Jaewon and Thomas, Paul and Sankaranarayana, Ramesh and Gedeon, Tom and Yoon, Hwan-Jin},
+  title     = {Pagination versus Scrolling in Mobile Web Search},
+  booktitle = {Proceedings of the 25th ACM International on Conference on Information and Knowledge Management},
+  series    = {CIKM '16},
+  pages     = {751--760},
+  year      = {2016},
+  publisher = {ACM},
+  doi       = {10.1145/2983323.2983720},
+  note      = {Verified via ACM DL 2026-04-19. Participants using pagination found more relevant documents (especially over-the-fold), spent more time on relevant results, and clicked faster on a touch-enabled phone. Treats scroll as an attention-structuring mechanism.},
+}
+
+@article{kim2016understanding,
+  author    = {Kim, Jaewon and Thomas, Paul and Sankaranarayana, Ramesh and Gedeon, Tom and Yoon, Hwan-Jin},
+  title     = {Understanding Eye Movements on Mobile Devices for Better Presentation of Search Results},
+  journal   = {Journal of the Association for Information Science and Technology},
+  volume    = {67},
+  number    = {11},
+  pages     = {2607--2619},
+  year      = {2016},
+  publisher = {Wiley},
+  doi       = {10.1002/asi.23628},
+  note      = {Verified via Wiley 2026-04-19. Three *mobile* screen sizes (3.6", 4.7", 5.5" — not desktop): less eye-movement within top links on the phablet, fast reading with hesitation on the recent smartphone, frequent scroll use on the early smartphone. Within-mobile comparison only; no desktop comparator in this paper. The hesitation-before-choosing-a-link finding is a screen-size-dependent within-mobile signal and is relevant to the deferred-vs-rejected split by analogy, not by direct replication.},
+}
+
+@inproceedings{kim2017snippet,
+  author    = {Kim, Jaewon and Thomas, Paul and Sankaranarayana, Ramesh and Gedeon, Tom and Yoon, Hwan-Jin},
+  title     = {What Snippet Size is Needed in Mobile Web Search?},
+  booktitle = {Proceedings of the 2017 Conference on Human Information Interaction and Retrieval},
+  series    = {CHIIR '17},
+  year      = {2017},
+  publisher = {ACM},
+  note      = {Verified via sigir.org/chiir2017/accepted-papers 2026-04-19. Mobile users are best served by 2--3-line snippets (narrower than desktop). Relevant to content-residualized viewport-band work (NB29) because snippet size bounds the per-AOI content volume against which viewport residence is expected.},
+}
+
+@inproceedings{kim2012comparing,
+  author    = {Kim, Jaewon and Thomas, Paul and Sankaranarayana, Ramesh and Gedeon, Tom},
+  title     = {Comparing Scanning Behaviour in Web Search on Small and Large Screens},
+  booktitle = {Proceedings of the Seventeenth Australasian Document Computing Symposium},
+  series    = {ADCS '12},
+  pages     = {25--30},
+  year      = {2012},
+  publisher = {ACM},
+  note      = {Verified via dblp/researchr 2026-04-19. First in the Kim/Gedeon viewport-and-screen-size line of work. Eye-tracking comparison of scanning behaviour across screen sizes — foundational reference for the viewport-y-matters claim.},
+}
