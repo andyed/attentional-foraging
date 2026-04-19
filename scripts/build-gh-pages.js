@@ -672,9 +672,10 @@ const tkGazeVY = buildTrack('ticks-gaze-vy', i => cVY(F[i].vy), i => Math.abs(F[
 const tkScroll = buildScrollTrack();
 const tkDwell = buildDwellTrack();
 const tkE = tkSal; // backward compat for recolor
-const lE=[],cE=[],tE=[];
+const lE=[],cE=[],hE=[],tE=[];
 for(let i=0;i<N;i++){const f=F[i],r=rF(f.d),c=cF(i,N);
 if(i>0){const p=F[i-1];const l=se('line',{x1:p.x,y1:p.y,x2:f.x,y2:f.y,stroke:c,'stroke-width':1.5,'stroke-opacity':.4});svg.appendChild(l);lE.push(l)}else lE.push(null);
+const hr=se('circle',{cx:f.x,cy:f.y,r:r+6,fill:'none',stroke:'#fff','stroke-width':6,'stroke-opacity':0});svg.appendChild(hr);hE.push(hr);
 const cr=se('circle',{cx:f.x,cy:f.y,r,fill:c,'fill-opacity':.25,stroke:c,'stroke-width':2,'stroke-opacity':.8});svg.appendChild(cr);cE.push(cr);
 const fs=Math.max(9,Math.min(14,r));const tx=se('text',{x:f.x,y:f.y,'text-anchor':'middle','dominant-baseline':'central','font-family':'monospace','font-weight':'bold','font-size':fs,fill:'white',stroke:'rgba(0,0,0,.6)','stroke-width':2,'paint-order':'stroke'});tx.textContent=i+1;svg.appendChild(tx);tE.push(tx)}
 if(CK){const s=se('polygon',{points:[0,-16,6,-4,16,-4,8,4,12,16,0,8,-12,16,-8,4,-16,-4,-6,-4].reduce((a,v,i)=>{a.push(i%2===0?CK.x+v:CK.y+v);return a},[]).join(','),fill:'#f00','fill-opacity':.5,stroke:'#f00','stroke-width':2});svg.appendChild(s);
@@ -682,8 +683,10 @@ const l=se('text',{x:CK.x+18,y:CK.y+4,'font-family':'monospace','font-weight':'b
 function uv(){const wn=parseInt(ws.value);
 wl.textContent=wn>=N?'All':wn;
 const lo=Math.max(0,ci-wn+1);
+const GLOW_OP=[.9,.55,.32,.18,.08],GLOW_R=[10,8,6,5,4];
 for(let i=0;i<N;i++){const v=i>=lo&&i<=ci;cE[i].style.display=v?'':'none';tE[i].style.display=v?'':'none';
-if(lE[i])lE[i].style.display=(v&&i>lo)?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',pl&&i===ci?1:.8)}
+if(lE[i])lE[i].style.display=(v&&i>lo)?'':'none';cE[i].setAttribute('stroke-width',pl&&i===ci?4:2);cE[i].setAttribute('stroke-opacity',pl&&i===ci?1:.8);
+const rec=ci-i;if(v&&rec>=0&&rec<5){const br=parseFloat(cE[i].getAttribute('r'));hE[i].setAttribute('r',br+GLOW_R[rec]);hE[i].setAttribute('stroke-opacity',GLOW_OP[rec]);hE[i].style.display=''}else{hE[i].style.display='none'}}
 if(ci>=0&&N>1){const tr=firstTrack.getBoundingClientRect(),tc=tt.getBoundingClientRect();const off=tr.left-tc.left;const pct=(F[ci].t-T0)/TD;ph.style.left=(off+pct*tr.width)+'px';}
 if(ci>=0){const f=F[ci];const vr=vw.getBoundingClientRect(),fy=f.y-vw.scrollTop;if(fy<100||fy>vr.height-100)vw.scrollTo({top:f.y-vr.height/2,behavior:'smooth'})}
 if(pl&&ci>=0){const f=F[ci];fr.style.display='block';fr.style.left=f.x+'px';fr.style.top=f.y+'px';
@@ -811,8 +814,8 @@ console.log('');
 // Build index page
 const indexHtml = `<!DOCTYPE html>
 <html><head><meta charset="utf-8">
-<title>AdSERP Scanpath Explorer — Attentional Foraging on Search Engine Results</title>
-<meta name="description" content="Interactive foveated vision scanpath replays of eye-tracking data from the AdSERP dataset, rendered through Scrutinizer's neuroscience-based peripheral vision simulation.">
+<title>Cursor Plots — Attentional Foraging on AdSERP</title>
+<meta name="description" content="Interactive cursor plots: eye fixations, mouse path, scroll, pupil load, and foveated perception over AdSERP search trials. Part of the Attentional Foraging project.">
 <script>!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
 posthog.init('phc_cUZalkUiHgfuv7k5hPzhuLhYQkjUWOQBl82pdDgHAmZ',{api_host:'https://us.i.posthog.com',person_profiles:'identified_only'});</script>
 <style>
@@ -845,17 +848,40 @@ kbd { background: #333; padding: 1px 6px; border-radius: 3px; font-size: 0.85em;
 .controls-help { color: #888; font-size: 0.85em; margin-bottom: 1.5em; }
 footer { margin-top: 2em; padding-top: 1em; border-top: 1px solid #333; color: #666; font-size: 0.8em; }
 footer a { color: #888; }
+.hero-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0.8em 0 1.5em; }
+.hero-card { display: block; text-decoration: none; color: inherit; background: #0c0c0c; border-radius: 6px; padding: 4px; transition: transform 0.15s, background 0.15s; }
+.hero-card:hover { transform: translateY(-2px); background: #1a1a1a; }
+.hero-card img { width: 100%; display: block; border-radius: 4px; }
+.hero-card .cap { padding: 6px 4px 2px; display: flex; justify-content: space-between; align-items: baseline; gap: 6px; }
+.hero-card .cap .label { color: #ff9933; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; font-size: 0.78em; }
+.hero-card .cap .count { color: #888; font-family: ui-monospace, monospace; font-size: 0.75em; }
+.hero-caption { color: #888; font-size: 0.82em; margin-bottom: 1em; }
+@media (max-width: 700px) { .hero-strip { grid-template-columns: 1fr; } }
 </style></head><body>
-<h1><a href="https://github.com/andyed/scrutinizer2025">Scrutinizer</a> × AdSERP</h1>
+<h1>Cursor Plots <span style="color:#888;font-weight:400;">— <a href="https://github.com/andyed/attentional-foraging" style="color:#ff9933;">Attentional Foraging</a> on AdSERP</span></h1>
 <p class="subtitle">
-  Each page below replays a complete search session from the
-  <a href="https://doi.org/10.1145/3726302.3730325">AdSERP dataset</a>:
-  numbered eye fixations, mouse cursor path, page scroll positions, and
-  <a href="https://github.com/andyed/scrutinizer2025">Scrutinizer</a>-simulated
-  peripheral vision — showing what the searcher could actually resolve
-  at each moment. The background image is rendered through Scrutinizer's
-  LGN/V1/DoG foveated pipeline with infinite visual memory accumulation.
+  Each card below is a <em>cursor plot</em>: one complete search session from the
+  <a href="https://doi.org/10.1145/3726302.3730325">AdSERP dataset</a>, replayed
+  with numbered eye fixations, mouse cursor path, scroll, pupil-derived cognitive load,
+  and a <a href="https://github.com/andyed/scrutinizer2025">Scrutinizer</a>-simulated
+  foveated background — what the searcher could actually resolve at each moment.
+  Fixations are DOM-anchored so the overlay follows layout reflow.
 </p>
+<div class="hero-strip">
+  <a class="hero-card" href="p032-b6-t8.html">
+    <img src="assets/hero/p032-b6-t8_tilt.png" alt="Quick decider — 9 fixations" loading="lazy">
+    <div class="cap"><span class="label">Quick decider</span><span class="count">9 fix</span></div>
+  </a>
+  <a class="hero-card" href="p021-b6-t2.html">
+    <img src="assets/hero/p021-b6-t2_tilt.png" alt="Optimizer — 54 fixations" loading="lazy">
+    <div class="cap"><span class="label">Optimizer</span><span class="count">54 fix</span></div>
+  </a>
+  <a class="hero-card" href="p045-b2-t6.html">
+    <img src="assets/hero/p045-b2-t6_tilt.png" alt="Scanner — 312 fixations" loading="lazy">
+    <div class="cap"><span class="label">Scanner</span><span class="count">312 fix</span></div>
+  </a>
+</div>
+<p class="hero-caption">Three contrasting foraging strategies. Click a card to replay.</p>
 <p class="subtitle" style="color:#888;">
   AdSERP: 47 participants, 2,776 transactional Google queries, Gazepoint GP3 HD eye tracker at 150Hz.
   Trials below are prototypical examples of distinct search behaviors.

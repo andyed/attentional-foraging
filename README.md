@@ -1,6 +1,6 @@
 # Attentional Foraging on Search Results Pages
 
-[Demo](https://andyed.github.io/attentional-foraging/) | [Why a task model](#why-a-task-model-not-another-classifier) | [Task Model](#the-task-model) | [Key Insights](#key-insights) | [Notebooks](#notebooks) | [Data](#data) | [Paper](#paper) | [What's Next](#whats-next)
+[Cursor Plots](https://andyed.github.io/attentional-foraging/) | [Why a task model](#why-a-task-model-not-another-classifier) | [Task Model](#the-task-model) | [Key Insights](#key-insights) | [Notebooks](#notebooks) | [Data](#data) | [Paper](#paper) | [What's Next](#whats-next)
 
 ---
 
@@ -26,11 +26,35 @@ The Survey phase operationalized in this paper was hypothesized by Zhang, Abuals
 
 *Task models add a dimension, not just another feature.* That is the claim the whole repository is organized around.
 
-## Interactive foveated scanpath replays
+## Cursor plots — two views, one dataset
 
-[**andyed.github.io/attentional-foraging**](https://andyed.github.io/attentional-foraging/) — 10 curated search sessions replayed through a [foveated vision simulator](https://github.com/andyed/scrutinizer2025). Each frame shows what the participant could actually resolve at each eye fixation: sharp where they looked, blurred where they didn't — the same resolution falloff your retina produces. Includes scanpath overlay, timeline scrubbing, playback controls, and a cognitive load timeline derived from pupil dilation.
+We maintain **two** interactive cursor-plot viewers over the same AdSERP trials. They are complementary, not redundant — each makes a different trade:
+
+### [Foveated cursor plots](https://andyed.github.io/attentional-foraging/) *(this repo)*
+
+31 curated search sessions replayed on a **foveated-perception background** rendered by [Scrutinizer](https://github.com/andyed/scrutinizer2025) — sharp where the participant looked, blurred where they didn't, accumulated across the full scanpath. Adds an *LGN/V1/DoG-simulated visual-memory layer* that no other public SERP replay tool offers.
+
+Innovations on top of a standard gazeplot:
+
+1. **DOM-anchored fixations.** Fixations are pinned to the DOM element they landed on (via `elementFromPoint`), not to pixel coordinates — so the overlay survives layout reflow (Edmonds 2003 lineage).
+2. **Foveated-perception background.** Shows what the participant could *resolve*, not just raw SERP pixels.
+3. **Multi-track cognitive timeline.** Saliency, clutter, pupil, scroll, dwell as parallel ribbons; recency glow on the last 5 fixations.
+
+**Known trade-off.** The SERP background is re-rendered from archived HTML at a different window width than the original capture (1422 → 1280 CSS px, 90% display scaling). DOM anchoring compensates for fixation placement, but the re-rendered page can still differ from what the participant actually saw — external resource loading (Maps tiles, product images) reflows element heights. See the *Positional accuracy* note on the site.
+
+### [Screenshot-accurate cursor plots](https://andyed.github.io/approach-retreat/replay/) *(sister repo: approach-retreat)*
+
+86 curated trials replayed against the **original raw AdSERP screenshots** — pixel-for-pixel what the participant actually saw. No foveation, no HTML re-render. Overlays per-AOI **four-class taxonomy labels** (clicked / deferred / evaluated-rejected / not-approached) derived from cursor enter/dwell/exit episodes.
+
+- 100% coordinate fidelity — screenshot is the ground truth the participant saw.
+- Four-class taxonomy pills visualized inline on each result bbox.
+- Same multi-track timeline (cursor + pupil + LF/HF + gaze + AOI labels).
+
+**Known trade-off.** No foveated background — you see the SERP as a high-acuity reader would, not as peripheral vision delivers it mid-saccade.
 
 [![Page → Perception → Cognition](assets/scanpath-three-panel_sm.png)](assets/scanpath-three-panel.png)
+
+**Which to use?** The foveated viewer for perception-resolution questions (what could they actually see at each fixation?). The screenshot-accurate viewer for label-geometry questions (which AOIs got approached, dwelled, rejected?). They share the same AdSERP source data and the same four-class taxonomy vocabulary.
 
 ---
 
