@@ -1,0 +1,34 @@
+{
+  "baseline_B_per_p_mean": 0.8107140573309254,
+  "history": [
+    {
+      "step": 1,
+      "picked": "mean_dist",
+      "family": "M4",
+      "delta_per_p": 0.016287848045821472,
+      "wilcoxon_p": 0.01252288518731712,
+      "per_p_mean": 0.8270019053767469
+    },
+    {
+      "step": 2,
+      "picked": "min_abs_velocity",
+      "family": "C",
+      "delta_per_p": 0.0077811805081244015,
+      "wilcoxon_p": 0.04287723011049733,
+      "per_p_mean": 0.8347830858848712
+    }
+  ],
+  "final_set": [
+    "vt_any",
+    "vt_center_ms",
+    "avg_viewport_y",
+    "max_overlap_frac",
+    "mean_dist",
+    "min_abs_velocity"
+  ],
+  "final_per_p_mean": 0.8347830858848712,
+  "nb30_k18_per_p_mean": 0.8281556574306671,
+  "delta_vs_k18": 0.006627428454204347,
+  "p_vs_k18": 0.20213108702359706,
+  "dwell_in_proximity_picked": false
+}

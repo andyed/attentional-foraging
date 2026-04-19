@@ -1,0 +1,21 @@
+{
+  "n_trials_used": 2775,
+  "median_viewport_h_px": 1024,
+  "test1_scroll_to_next_fix": {
+    "n": 272150,
+    "mean_frac_of_scr_h": 0.4099648949764765,
+    "median_frac_of_scr_h": 0.4181857705116272,
+    "wilcoxon_vs_0.5_greater_p": 1.0
+  },
+  "test3_regression_to_next_fix": {
+    "n": 15413,
+    "mean_frac_of_scr_h": 0.22277355481428346,
+    "wilcoxon_vs_0.5_less_p": 0.0
+  },
+  "test4_mouse_to_fix": {
+    "n": 230749,
+    "median_actual_px": 416,
+    "median_random_px": 389,
+    "mannwhitney_p": 1.0
+  }
+}

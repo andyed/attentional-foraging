@@ -1074,7 +1074,13 @@ Direct Mann–Whitney two-sided tests of the raw features on the approached ∧ 
 ### Deployability
 
 - Features transfer to mobile and to feed-style layouts in principle — scroll events + DOM bboxes are available in both. Validation on ACD (no per-AOI SERP structure) or a mobile feed dataset is future work.
-- For deployment, the **minimal 6-feature set** (NB30:K18 forward-selection: 4 continuous viewport + `min_abs_velocity` + `n_reversals`) recovers the full 11-feature B∪C lift within +0.001 AUC (K19). The `approach-retreat` JS library emits these 6 features per AOI at session granularity; see its `getViewportAnalytics()` API."""
+- For deployment, the **minimal 6-feature set** (NB30:K18 forward-selection: 4 continuous viewport + `min_abs_velocity` + `n_reversals`) recovers the full 11-feature B∪C lift within +0.001 AUC (K19). The `approach-retreat` JS library emits these 6 features per AOI at session granularity; see its `getViewportAnalytics()` API.
+
+### Peter Dixon-Moses cursor-as-fourth-viewport extension (2026-04-19)
+
+| ID | Claim | Value |
+|---|---|---|
+| **K27** | Joint forward selection from B with candidates `C ∪ M4` (including `dwell_in_proximity_ms`, the cursor-viewport-residence feature Peter proposed — time with `|cursor_page_y − aoi_center_y| < 100` px) | Step 1 picks **`mean_dist`** (M4, Δ = +0.0163, *p* = 0.012); step 2 picks **`min_abs_velocity`** (C, Δ = +0.0078, *p* = 0.043); step 3 stops (best *p* = 0.159). **`dwell_in_proximity_ms` was not picked.** The binary in-band/out-of-band formulation loses to `mean_dist` (continuous mean cursor proximity), which captures the same signal with more gradient. Final B + `mean_dist` + `min_abs_velocity` = 6 features, per-p 0.8348. Vs NB30:K18 canonical (B + `min_abs_velocity` + `n_reversals`, per-p 0.8282): paired Δ = +0.0066, *p* = 0.20 ns. Peter's cursor-viewport intuition is correct in substance — cursor proximity is load-bearing — but the empirically strongest encoding is continuous mean distance, not time-in-band. |"""
 
 
 # ── NB04 — fixation coverage and viewport scanning ────────────────────
