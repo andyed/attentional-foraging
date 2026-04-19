@@ -724,6 +724,43 @@ K1–K4 above are indexed by absolute rank (every h3 slot, ads pooled with organ
 | **K39** | bosch | n/a | 0.64 |
 | **K40** | denso | 113 | 0.58 (highest-volume brand) |
 
+### Calibration-scope coverage — P0–P5 as the commit-action surface
+
+NB28 viewport-band calibration reports per-position CIs over organic
+ranks P0–P5 only. The exposure and composition implications for that
+scope, from this notebook's structural tables (K25–K29 click distribution
+and K1 trial count × org_count_hist):
+
+| ID | Claim | Value |
+|---|---|---|
+| **K41** | Share of organic-result clicks at ranks **P0–P5** (ranks 1–6) | **95.95 %** (2,368 of 2,468 organic clicks) |
+| **K42** | Share of organic-result clicks at ranks **P6–P9** (ranks 7–10) | 4.01 % (99 clicks; individually ≤ 2 % per rank) |
+| **K43** | Share of organic-result clicks at ranks **P10+** (rank 11+) | 0.04 % (1 click) |
+| **K44** | Trials with all 6 of P0–P5 structurally present (organic count ≥ 6) | **99.42 %** (2,760 of 2,776; only 16 trials have < 6 organic) |
+
+> **Calibration scope = commit-action surface, not a tight sampling
+> choice.** P0–P5 contains **96 % of user commitment** in the organic
+> column and is structurally present in **99 %** of trials. NB28's
+> restriction to P0–P5 is not a convenience — it is the dominant
+> action surface of the corpus. Deep-rank (P6+) lives in the 4 % click
+> tail and is a self-selected cohort (14 of 47 LAB participants never
+> reach approached-not-clicked AOIs at P6+), unreliable for population-
+> level claims. See NB28:K10.0–K10.5 for in-scope per-position
+> calibration; `scripts/output/viewport_time_calibration/
+> bootstrap_results.json:deep_rank_bucket` retains diagnostic-only
+> out-of-scope values.
+>
+> **Exposure vs composition vs commitment.** P0–P5 is *composed* in
+> every non-pathological trial (K44: 99 %). *Exposed* — reached by
+> scroll during the trial — approaches 100 % for ranks 1–3 and is
+> high through rank 6 for the majority of trials (organic rank 6 is
+> still above the fold on a 1024-tall viewport for most SERPs with a
+> dd_top ad). *Committed to* follows the textbook monotonic ski-jump
+> from K28 (41.3 % / 20.2 % / 15.7 % / 9.2 % / 5.8 % / 3.7 % across
+> P0–P5). The three distributions collapse the further up-SERP you go
+> — which is exactly why the band signal is load-bearing at P0–P5 and
+> evaporates past P5.
+
 > **AdSERP is not a "10-result SERP dataset."** Only 0.58 % of trials match the textbook "10 organic + no ads" shape. The modal trial has 12 h3 slots; 37.5 % have 13 +. Any paper framing that calls AdSERP a 10-result corpus is wrong — use "47 participants, 2,776 commercial search trials, Gazepoint GP3 HD at 150 Hz" and add "modal 12 h3 slots per SERP with heavy ad interleaving" if rank structure matters.
 >
 > **Any position-based claim must specify absolute vs organic rank.** The non-monotone click-distribution dip at absolute rank 0 → 1 → 2 (19.0 % → 19.0 % → 24.5 %) is **dd_top displacement**, not a cognitive effect. [NB23:K1] reports this as-is (ρ = −0.973 on absolute rank); [NB23:K18–K19] report the clean organic-rank versions (ρ = −1.000 on full corpus, ρ = −0.988 on `clean_for_ctr`).
