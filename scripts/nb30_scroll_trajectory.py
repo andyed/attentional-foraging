@@ -58,10 +58,11 @@ PAUSE_VEL_THRESHOLD = 5.0  # px/s; under this counts as "pause"
 CENTER_TOL = 100.0  # px around viewport center for "near center"
 
 
-def compute_features_for_trial(trial_id, n_positions=10, max_t=None):
+def compute_features_for_trial(trial_id, n_positions=10, max_t=None, min_t=None):
     """Returns per-position dict with A (bands), B (continuous viewport), C (trajectory).
     None if data missing. If max_t is provided, the timeline is truncated at max_t
-    (used for leakage-check: max_t = click_t to exclude post-click settle-scroll)."""
+    (leakage check; K15 uses max_t = click_t). If min_t is provided, the timeline
+    starts at min_t (windowing; Exp 6 uses min_t = click_t - 5000)."""
     try:
         doc_h, scr_h, _ = get_trial_meta(trial_id)
     except Exception:
@@ -73,6 +74,8 @@ def compute_features_for_trial(trial_id, n_positions=10, max_t=None):
     t_start, t_end = min(ts), max(ts)
     if max_t is not None:
         t_end = min(t_end, max_t)
+    if min_t is not None:
+        t_start = max(t_start, min_t)
     if t_end <= t_start:
         return None
 

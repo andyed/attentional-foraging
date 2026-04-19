@@ -1,0 +1,19 @@
+{
+  "window_ms": 5000,
+  "cumulative": {
+    "n": 2351,
+    "B_pooled": 0.7977827370239724,
+    "BC_pooled": 0.816820243323015,
+    "B_per_p_mean": 0.8107140573309254,
+    "BC_per_p_mean": 0.8292607252067802
+  },
+  "rolling_5s": {
+    "n": 2351,
+    "B_pooled": 0.7035706572600966,
+    "BC_pooled": 0.6984426367192187,
+    "B_per_p_mean": 0.7150405988251882,
+    "BC_per_p_mean": 0.7098920830866737
+  },
+  "cumulative_minus_rolling_BC_per_p": 0.11936864212010664,
+  "cumulative_vs_rolling_wilcoxon_p": 3.2618957988656693e-07
+}
