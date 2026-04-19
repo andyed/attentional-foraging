@@ -1,0 +1,86 @@
+[
+  {
+    "feature": "n_reversals",
+    "deferred_n": 1916,
+    "rejected_n": 435,
+    "deferred_mean": 1.9728601252609603,
+    "rejected_mean": 1.1149425287356323,
+    "deferred_median": 1.0,
+    "rejected_median": 1.0,
+    "U": 539040.0,
+    "p": 8.49980690135981e-23,
+    "direction": "deferred > rejected"
+  },
+  {
+    "feature": "min_abs_velocity",
+    "deferred_n": 1916,
+    "rejected_n": 435,
+    "deferred_mean": 0.06934891144136585,
+    "rejected_mean": 0.30942195674493767,
+    "deferred_median": 0.0,
+    "rejected_median": 0.10391014346703616,
+    "U": 267320.0,
+    "p": 1.9989667215162603e-47,
+    "direction": "deferred < rejected"
+  },
+  {
+    "feature": "vt_any",
+    "deferred_n": 1916,
+    "rejected_n": 435,
+    "deferred_mean": 22826.79018789144,
+    "rejected_mean": 13649.436781609196,
+    "deferred_median": 20967.0,
+    "rejected_median": 11203.0,
+    "U": 613228.0,
+    "p": 2.4462282735408494e-53,
+    "direction": "deferred > rejected"
+  },
+  {
+    "feature": "vt_center_ms",
+    "deferred_n": 1916,
+    "rejected_n": 435,
+    "deferred_mean": 4462.015135699374,
+    "rejected_mean": 2551.5862068965516,
+    "deferred_median": 1399.5,
+    "rejected_median": 652.0,
+    "U": 472978.5,
+    "p": 7.510603364987049e-06,
+    "direction": "deferred > rejected"
+  },
+  {
+    "feature": "avg_viewport_y",
+    "deferred_n": 1916,
+    "rejected_n": 435,
+    "deferred_mean": 453.3836290400003,
+    "rejected_mean": 621.6493949355039,
+    "deferred_median": 441.7716563212854,
+    "rejected_median": 644.1500000000001,
+    "U": 241996.0,
+    "p": 1.5094346060266545e-42,
+    "direction": "deferred < rejected"
+  },
+  {
+    "feature": "max_overlap_frac",
+    "deferred_n": 1916,
+    "rejected_n": 435,
+    "deferred_mean": 0.9997872263193561,
+    "rejected_mean": 0.996023498010676,
+    "deferred_median": 1.0,
+    "rejected_median": 1.0,
+    "U": 423961.0,
+    "p": 5.203285523527923e-07,
+    "direction": "deferred > rejected"
+  },
+  {
+    "feature": "pause_ms",
+    "deferred_n": 1916,
+    "rejected_n": 435,
+    "deferred_mean": 21090.590814196243,
+    "rejected_mean": 12388.790804597702,
+    "deferred_median": 19085.0,
+    "rejected_median": 9869.0,
+    "U": 609520.0,
+    "p": 2.067620794586183e-51,
+    "direction": "deferred > rejected"
+  }
+]

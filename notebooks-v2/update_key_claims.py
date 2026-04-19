@@ -1049,10 +1049,32 @@ The banded decomposition (A: `vt_top`, `vt_mid`, `vt_bot`) can stay behind an op
 - **Leakage check (K15) — no detectable click-settle contamination.** Re-computing the trajectory features on a scroll timeline truncated at the click timestamp (so post-click settle-scroll cannot contribute to features like `exit_velocity` for non-clicked AOIs in the trial) reproduces the headline paired Δ within 0.0014 AUC (+0.0200 truncated vs +0.0185 full, both p < 0.005). The K13 lift is not an artifact of using the full-trial scroll timeline.
 - **NB17 vs K13 — complementary, not a refutation.** NB17 tested univariate scroll dwell/velocity/pause between clicked vs not-clicked and found non-significant differences (all p > 0.3). NB30 tests a different target (deferred vs eval-rejected on approached∧¬clicked records) with a joint-model incremental-AUC test. Three axes differ (target, feature set, test statistic); NB30 is a new finding at a different site, not an overturning of NB17's null.
 
+### CENTER_TOL sensitivity (2026-04-19)
+
+| ID | Claim | Value |
+|---|---|---|
+| **K22** | CENTER_TOL sensitivity sweep on the minimal 6-feature set: pooled AUC at {25, 50, 100, 200, 400} px | {0.8142, 0.8140, 0.8143, 0.8140, 0.8151} — **flat across 16× range** (spread 0.001). Canonical 100 px is fine to freeze. |
+
+### Windowing — cumulative vs rolling (2026-04-19)
+
+| ID | Claim | Value |
+|---|---|---|
+| **K23** | Windowing — rolling 5-second window ending at click_t vs cumulative-since-AOI-first-seen | Cumulative B pooled 0.798 → rolling 0.704; cumulative B∪C pooled 0.817 → rolling 0.698. Paired Δ(cumulative − rolling) = **+0.1194 per-p** (43/47, **p < 0.0001**). Within the rolling window, B∪C > B is null (Δ = −0.005, p = 0.86). **The deferred-vs-rejected signal requires cumulative accumulation**; a 5-second window drops the features to near-chance. |
+
+### EWM empirical signatures (2026-04-19) — feeds §4.5 of the CIKM draft
+
+Direct Mann–Whitney two-sided tests of the raw features on the approached ∧ ¬clicked subset. Predictions from Gray & Fu 2004 / SCH framing (viewport as the external working memory buffer, trajectory features as EWM management actions).
+
+| ID | Claim | Value |
+|---|---|---|
+| **K24** | `n_reversals` deferred vs eval-rejected (EWM-reload-consistent) | Deferred mean = 1.97, eval-rejected = 1.12; **Δ = +0.86, p = 8.5 × 10⁻²³**. Deferred items accumulate ~1 additional scroll direction reversal during AOI visibility. |
+| **K25** | `min_abs_velocity` deferred vs eval-rejected (viewport stabilization) | Deferred mean = 0.07 px/s, eval-rejected = 0.31 px/s; deferred median = 0 (user at a full stop), eval-rejected median = 0.10 px/s. **Δ = −0.24 px/s, p = 2.0 × 10⁻⁴⁷**. |
+| **K26** | `avg_viewport_y` deferred vs eval-rejected (position in viewport) | Deferred mean = 453 px, eval-rejected = 622 px. **Δ = −169 px, p = 1.5 × 10⁻⁴²**. Deferred items spend more time near viewport *top* (where they reappear after a scroll-back); eval-rejected items near viewport bottom. |
+
 ### Deployability
 
-- Features transfer to mobile and to feed-style layouts in principle — scroll events + DOM bboxes are available in both. Validation on ACD (no per-AOI SERP structure) or a mobile feed dataset is future work. No WILD replication on this project today.
-- For deployment, the minimal feature set is B ∪ C (11 features): continuous viewport analytics + 7 scroll-trajectory features. K14 says bands are redundant with this pair."""
+- Features transfer to mobile and to feed-style layouts in principle — scroll events + DOM bboxes are available in both. Validation on ACD (no per-AOI SERP structure) or a mobile feed dataset is future work.
+- For deployment, the **minimal 6-feature set** (NB30:K18 forward-selection: 4 continuous viewport + `min_abs_velocity` + `n_reversals`) recovers the full 11-feature B∪C lift within +0.001 AUC (K19). The `approach-retreat` JS library emits these 6 features per AOI at session granularity; see its `getViewportAnalytics()` API."""
 
 
 # ── NB04 — fixation coverage and viewport scanning ────────────────────
