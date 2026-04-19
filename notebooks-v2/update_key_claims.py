@@ -895,6 +895,8 @@ The labeled-subset framing is known to compress the MRR competition — the trai
 
 ### 2026-04-19 extension — full-SERP MRR, LambdaMART, M4 cursor features
 
+*Extension rows K6–K16 verified against executed notebook output on 2026-04-19 (notebook cell 15). The file-wide `VERIFIED` date above covers the prior transcription pass for the other notebooks.*
+
 **Regime:** `[LAB]`. 47-fold LOPO. Training uses the not-approached-below-click exclusion; held-out **inference scores all 10 positions per trial** (stricter than the null-doc "scorable-subset" protocol). LGBM rungs are averaged across seeds 0/1/2 for stability. 1,826 held-out trials (trials with missing embeddings at any position are dropped — stricter than the null-doc protocol).
 
 | ID | Claim | Value |
