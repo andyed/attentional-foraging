@@ -25,6 +25,11 @@ docs/plans/
 .claude/
 .claire/
 
+# claude-mem scaffolding — regenerated per subdir, breaks SSG globs.
+# Keep the real root CLAUDE.md only.
+**/CLAUDE.md
+!/CLAUDE.md
+
 # LaTeX build artifacts
 docs/arxiv/*.aux
 docs/arxiv/*.bbl
@@ -38,6 +43,9 @@ notebooks-v2/_*.py
 # Pre-fix backup JSONs (local reproducibility)
 *.prefix-bug.json
 *.html
+# Replay app source HTML is kept in git; generated data dir is not
+!docs/schul-replay/*.html
+docs/schul-replay/data/
 
 # Per-record figure caches — large (10-15 MB), reproducible from source scripts
 scripts/output/figures/per_record_*.json

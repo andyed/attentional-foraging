@@ -12,7 +12,7 @@ Sequentially numbered notebooks with shared utilities in [`data_loader.py`](data
 | `03_early_predictors.ipynb` | Early-trial predictors of click target |
 | `04_fixation_coverage.ipynb` | Fixation coverage, TTI, evaluation time decomposition |
 | `05_lhipa.ipynb` | LHIPA pupillometric cognitive load validation |
-| `06_orientation_evaluation.ipynb` | Cognitive phases, working memory ramp, TTI calibrator |
+| `06_orientation_evaluation.ipynb` | Cognitive phases, evaluation effort by position, TTI calibrator |
 | `07a_regressions_prevalence.ipynb` | Scroll regression prevalence and rates |
 | `07b_regressions_triggers.ipynb` | Regression decision triggers, confirmation vs rejection |
 | `07c_regressions_kinematics.ipynb` | Scroll kinematics, ballistic backward scrolling |
@@ -45,6 +45,14 @@ Loads directly from `../AdSERP/data/` (per-trial CSV/XML/HTML files). No preproc
 
 ```bash
 uv sync   # from repo root
+source .venv/bin/activate
 ```
 
-Python >= 3.11. Core deps: `numpy`, `matplotlib`, `scipy`, `beautifulsoup4`.
+Python 3.13. Core deps: `numpy`, `scipy`, `polars`, `matplotlib`, `beautifulsoup4`, `ipykernel`. **No pandas, no seaborn.**
+
+To run a script without activating the venv:
+
+```bash
+PYTHON=$(pwd)/.venv/bin/python
+$PYTHON scripts/<name>.py
+```
