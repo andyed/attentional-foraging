@@ -1,0 +1,111 @@
+{
+  "participant": "1042",
+  "stimulus": "Q05_M",
+  "q_label": "Q05_Mobile",
+  "sliced": true,
+  "slice_window_ms": [
+    105947,
+    116056
+  ],
+  "session_duration_ms": 166771,
+  "session_timeline": [
+    {
+      "q_label": "Q04_M",
+      "stim_id": 1019,
+      "t_start_ms": 37501,
+      "t_end_ms": 47257,
+      "duration_ms": 9756
+    },
+    {
+      "q_label": "Q06_M",
+      "stim_id": 1021,
+      "t_start_ms": 50458,
+      "t_end_ms": 69818,
+      "duration_ms": 19360
+    },
+    {
+      "q_label": "Q08_M",
+      "stim_id": 1023,
+      "t_start_ms": 72715,
+      "t_end_ms": 83228,
+      "duration_ms": 10513
+    },
+    {
+      "q_label": "Q03_M",
+      "stim_id": 1018,
+      "t_start_ms": 88416,
+      "t_end_ms": 100611,
+      "duration_ms": 12195
+    },
+    {
+      "q_label": "Q05_M",
+      "stim_id": 1020,
+      "t_start_ms": 105947,
+      "t_end_ms": 116056,
+      "duration_ms": 10109
+    },
+    {
+      "q_label": "Q01_M",
+      "stim_id": 1016,
+      "t_start_ms": 119667,
+      "t_end_ms": 136130,
+      "duration_ms": 16463
+    },
+    {
+      "q_label": "Q07_M",
+      "stim_id": 1022,
+      "t_start_ms": 140399,
+      "t_end_ms": 157265,
+      "duration_ms": 16866
+    },
+    {
+      "q_label": "Q10_M",
+      "stim_id": 1025,
+      "t_start_ms": 162503,
+      "t_end_ms": 165856,
+      "duration_ms": 3353
+    }
+  ],
+  "click": {
+    "external_code": "P14",
+    "clicked_aoi": "o01",
+    "mapping_total_abs_gap_ms": 16335,
+    "mapping_margin_ms": 27891,
+    "mapping_confidence": "high",
+    "mapping_shared_qs": 8
+  },
+  "scroll_recovery": {
+    "phone_crop_bounds": [
+      511,
+      113,
+      966,
+      731
+    ],
+    "scale_crop_to_ref": 1.5824175824175823,
+    "reference_size_px": [
+      720,
+      8829
+    ],
+    "n_samples": 138,
+    "match_score_range": [
+      0.131,
+      0.3108
+    ]
+  },
+  "gaze_samples_total": 245,
+  "gaze_samples_valid": 245,
+  "gaze_duration_ms": 10057,
+  "video": {
+    "width": 1600,
+    "height": 896,
+    "duration_s": 10.009,
+    "frame_rate": "2000/1",
+    "nb_read_frames": "138"
+  },
+  "gaze_coord_space": "screen (WMV-native)",
+  "aoi_coord_space": "page (reference PNG)",
+  "notes": "Stimulus segment resolved from Data.xml <SceneFragment>. Gaze and video are sliced to the fragment window by default (pass --no-slice to build_schul_replay.py for the whole session). Gaze is in WMV screen coords. AOI polygons are in page coords of reference.png; scroll-offset recovery still required to project gaze onto the reference image.",
+  "source_zip": "M1_Students.zip",
+  "source_wmv_entry": "ProgramData\\iMotions\\Lab64\\Data\\Schulthei\u00df_MA_M1\\Capture\\sc_r001042__s001000.wmv",
+  "source_gaze_entry": "ProgramData\\iMotions\\Lab64\\Data\\Schulthei\u00df_MA_M1\\AutomatedAOI\\Q05_M\\Gaze\\RawGaze.1042.csv"
+}

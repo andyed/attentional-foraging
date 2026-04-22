@@ -1,0 +1,67 @@
+[
+  {
+    "name": "1017_Q05",
+    "participant": "1017",
+    "q_label": "Q05_Mobile",
+    "duration_ms": 18157,
+    "gaze_valid": 544,
+    "gaze_total": 565,
+    "click_aoi": "o05",
+    "external_code": "P23",
+    "total_in_aoi_ms": 6672,
+    "n_visits": 20,
+    "top_aoi": "o02a"
+  },
+  {
+    "name": "1021_Q07",
+    "participant": "1021",
+    "q_label": "Q07_Mobile",
+    "duration_ms": 15128,
+    "gaze_valid": 482,
+    "gaze_total": 496,
+    "click_aoi": "o06",
+    "external_code": "P22",
+    "total_in_aoi_ms": 4301,
+    "n_visits": 13,
+    "top_aoi": "o02"
+  },
+  {
+    "name": "1042_Q05",
+    "participant": "1042",
+    "q_label": "Q05_Mobile",
+    "duration_ms": 10057,
+    "gaze_valid": 245,
+    "gaze_total": 245,
+    "click_aoi": "o01",
+    "external_code": "P14",
+    "total_in_aoi_ms": 3261,
+    "n_visits": 7,
+    "top_aoi": "o01"
+  },
+  {
+    "name": "1042_Q06",
+    "participant": "1042",
+    "q_label": "Q06_Mobile",
+    "duration_ms": 19351,
+    "gaze_valid": 430,
+    "gaze_total": 490,
+    "click_aoi": "o05",
+    "external_code": "P14",
+    "total_in_aoi_ms": 6574,
+    "n_visits": 18,
+    "top_aoi": "tt01"
+  },
+  {
+    "name": "1042_Q10",
+    "participant": "1042",
+    "q_label": "Q10_Mobile",
+    "duration_ms": 3335,
+    "gaze_valid": 85,
+    "gaze_total": 85,
+    "click_aoi": "o01",
+    "external_code": "P14",
+    "total_in_aoi_ms": 147,
+    "n_visits": 1,
+    "top_aoi": "o10"
+  }
+]

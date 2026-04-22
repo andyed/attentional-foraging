@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Schul 2019 — gaze-on-video replay</title>
+<style>
+  :root {
+    --bg: #0b0d10;
+    --fg: #f5f7fa;
+    --dim: #9aa4b2;
+    --accent: #59d1ff;
+    --hit: #ffd84d;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+               font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  body { padding: 20px; }
+  h1 { margin: 0 0 4px 0; font-size: 18px; font-weight: 600; }
+  .meta { color: var(--dim); margin-bottom: 16px; font-size: 13px; }
+  .meta b { color: var(--fg); font-weight: 600; }
+  .panels { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+  .panel { background: #14181d; border: 1px solid #23292f; border-radius: 6px; padding: 12px; }
+  .panel h2 { font-size: 13px; font-weight: 600; margin: 0 0 10px 0; color: var(--dim); text-transform: uppercase; letter-spacing: 0.5px; }
+  .stage { position: relative; display: inline-block; }
+  video { display: block; max-width: 800px; height: auto; background: #000; }
+  canvas.overlay { position: absolute; inset: 0; pointer-events: none; }
+  .refwrap { position: relative; max-height: 70vh; overflow: auto;
+             border: 1px solid #23292f; background: #fff; }
+  .refwrap img { display: block; max-width: 420px; height: auto; }
+  .refwrap svg { position: absolute; top: 0; left: 0; pointer-events: none; }
+  .controls { display: flex; align-items: center; gap: 12px; margin-top: 10px; }
+  .controls button { background: #23292f; color: var(--fg); border: 1px solid #2d353d;
+                     border-radius: 4px; padding: 4px 10px; cursor: pointer; font: inherit; }
+  .controls button:hover { background: #2d353d; }
+  .controls input[type=range] { flex: 1; accent-color: var(--accent); }
+  .stat { color: var(--dim); font-size: 12px; }
+  .stat b { color: var(--fg); }
+  .legend { font-size: 12px; color: var(--dim); margin-top: 8px; }
+  .legend span.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%;
+                     vertical-align: middle; margin-right: 4px; }
+  .error { color: #ff6b6b; background: #2a1a1a; padding: 12px; border-radius: 6px;
+           border: 1px solid #5a2a2a; max-width: 800px; }
+  details summary { cursor: pointer; color: var(--dim); font-size: 12px; margin-bottom: 6px; }
+  pre { margin: 0; font-size: 11px; color: var(--dim); white-space: pre-wrap; }
+</style>
+</head>
+<body>
+
+<h1>Schultheiß &amp; Lewandowski 2019 — gaze-on-video replay</h1>
+<div class="meta" id="meta">loading…</div>
+<div class="meta" id="timelineWrap" style="display:none">
+  <div id="timelineLabel" style="margin-bottom:4px"></div>
+  <svg id="timeline" width="100%" height="48" style="background:#14181d; border:1px solid #23292f; border-radius:4px"></svg>
+</div>
+
+<div id="error" class="error" style="display:none"></div>
+
+<div class="panels" id="panels" style="display:none">
+
+  <div class="panel">
+    <h2>screen capture + gaze (native coords)</h2>
+    <div class="stage" id="stage">
+      <video id="v" controls preload="auto" playsinline muted></video>
+      <canvas class="overlay" id="overlay"></canvas>
+    </div>
+    <div class="controls">
+      <button id="playBtn">Play / Pause</button>
+      <button id="slowBtn">0.5×</button>
+      <button id="normBtn">1×</button>
+      <button id="fastBtn">2×</button>
+      <span class="stat" id="tick">t = 0.00 s | gaze (—, —)</span>
+    </div>
+    <div class="legend">
+      <span class="dot" style="background: var(--accent)"></span>current gaze sample &nbsp;
+      <span class="dot" style="background: #ffffff55"></span>gaze trail (last 1.5s)
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>reference SERP + AOI polygons (page coords)</h2>
+    <div class="refwrap" id="refwrap">
+      <img id="refimg" alt="reference SERP" />
+      <svg id="aoi" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+    <div class="legend">AOIs in <b>page space</b>. Viewport rect = current scroll window. Cyan dot = gaze projected to page. Orange = clicked AOI. AOI under gaze gets a cyan fill spike in real time.</div>
+  </div>
+
+  <div class="panel">
+    <h2>AOI dwell · transitions</h2>
+    <div id="aoiStats" style="min-width:320px; font-size:12px"></div>
+  </div>
+
+</div>
+
+<details style="margin-top:20px">
+  <summary>meta.json</summary>
+  <pre id="metadump"></pre>
+</details>
+
+<script>
+(async () => {
+  const $ = sel => document.querySelector(sel);
+
+  // Trial selection via ?trial=<name> → trials/<name>/ ; default = data/
+  const urlParams = new URLSearchParams(location.search);
+  const trialName = urlParams.get("trial");
+  const DATA = trialName ? `trials/${trialName}` : "data";
+  async function fetchJSON(path) {
+    const r = await fetch(path);
+    if (!r.ok) throw new Error(`${path}: ${r.status}`);
+    return r.json();
+  }
+
+  let meta, gaze, aois, scroll, aoiHits;
+  try {
+    [meta, gaze, aois, scroll, aoiHits] = await Promise.all([
+      fetchJSON(`${DATA}/meta.json`),
+      fetchJSON(`${DATA}/gaze.json`),
+      fetchJSON(`${DATA}/aois.json`),
+      fetchJSON(`${DATA}/scroll.json`).catch(() => null),
+      fetchJSON(`${DATA}/aoi_hits.json`).catch(() => null),
+    ]);
+  } catch (e) {
+    $("#error").style.display = "block";
+    $("#error").innerText =
+      "Couldn't load replay data. Run scripts/build_schul_replay.py first, then serve this directory over HTTP (e.g. `python3 -m http.server` in docs/schul-replay/).\n\n" + e.message;
+    return;
+  }
+
+  // Meta header
+  const m = meta;
+  const sliceStr = m.sliced
+    ? `<b>sliced</b> to ${m.q_label} (${m.slice_window_ms[0]}ms..${m.slice_window_ms[1]}ms of a ${(m.session_duration_ms/1000).toFixed(1)}s session)`
+    : `<b>whole session</b> (${m.session_timeline.length} stimuli in sequence)`;
+  $("#meta").innerHTML =
+    `respondent <b>${m.participant}</b> · ${sliceStr} · ` +
+    `video ${m.video.width}×${m.video.height}, ${m.video.duration_s.toFixed(1)}s · ` +
+    `gaze ${m.gaze_samples_valid}/${m.gaze_samples_total} valid (${m.gaze_duration_ms} ms) · ` +
+    `${aois.length} AOIs on this stimulus`;
+
+  // Session timeline
+  if (m.session_timeline && m.session_timeline.length) {
+    const wrap = $("#timelineWrap");
+    wrap.style.display = "block";
+    $("#timelineLabel").innerHTML =
+      `session timeline (${m.session_timeline.length} stimuli · ${(m.session_duration_ms/1000).toFixed(1)}s) — ` +
+      `orange = current slice`;
+    const svg = $("#timeline");
+    const W = svg.clientWidth || 800;
+    const H = 48;
+    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+    const totalMs = m.session_duration_ms;
+    const palette = {tt:"#ff6464", o:"#59d1ff", s:"#ffd750", tb:"#a078ff"};
+    m.session_timeline.forEach(f => {
+      const x = (f.t_start_ms / totalMs) * W;
+      const w = Math.max(2, ((f.t_end_ms - f.t_start_ms) / totalMs) * W);
+      const isCurrent = m.sliced && f.t_start_ms === m.slice_window_ms[0];
+      const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+      rect.setAttribute("x", x); rect.setAttribute("y", 10);
+      rect.setAttribute("width", w); rect.setAttribute("height", 24);
+      rect.setAttribute("fill", isCurrent ? "#ff9933" : "#59d1ff");
+      rect.setAttribute("opacity", isCurrent ? "1" : "0.5");
+      svg.appendChild(rect);
+      const txt = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      txt.setAttribute("x", x + 4); txt.setAttribute("y", 26);
+      txt.setAttribute("fill", "#0b0d10");
+      txt.setAttribute("font-size", "11");
+      txt.setAttribute("font-family", "monospace");
+      txt.textContent = f.q_label.replace("_M","").replace("_D","");
+      svg.appendChild(txt);
+      const sec = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      sec.setAttribute("x", x + 4); sec.setAttribute("y", 45);
+      sec.setAttribute("fill", "#9aa4b2");
+      sec.setAttribute("font-size", "9");
+      sec.setAttribute("font-family", "monospace");
+      sec.textContent = `${(f.duration_ms/1000).toFixed(1)}s`;
+      svg.appendChild(sec);
+    });
+  }
+  $("#metadump").textContent = JSON.stringify(m, null, 2);
+  $("#panels").style.display = "flex";
+
+  // Video + overlay
+  const v = $("#v");
+  const overlay = $("#overlay");
+  const ctx = overlay.getContext("2d");
+  v.src = `${DATA}/trial.mp4`;
+  v.addEventListener("loadedmetadata", () => {
+    // Size overlay to match the displayed video element
+    const sync = () => {
+      const r = v.getBoundingClientRect();
+      overlay.width  = v.videoWidth;
+      overlay.height = v.videoHeight;
+      overlay.style.width  = r.width + "px";
+      overlay.style.height = r.height + "px";
+    };
+    sync();
+    new ResizeObserver(sync).observe(v);
+    requestAnimationFrame(draw);
+  });
+
+  // Gaze is sorted by time_ms; keep a monotonic cursor
+  let cursor = 0;
+  function sampleAt(t_ms) {
+    while (cursor > 0 && gaze[cursor - 1][0] > t_ms) cursor--;
+    while (cursor < gaze.length - 1 && gaze[cursor + 1][0] <= t_ms) cursor++;
+    return gaze[cursor];
+  }
+
+  function gazeSlice(t_ms, window_ms) {
+    // linear scan around cursor for a short trail
+    const out = [];
+    let i = cursor;
+    while (i > 0 && gaze[i - 1][0] >= t_ms - window_ms) i--;
+    for (; i <= cursor; i++) {
+      const s = gaze[i];
+      if (s[1] !== -1 && s[2] !== -1) out.push(s);
+    }
+    return out;
+  }
+
+  function draw() {
+    const t_ms = v.currentTime * 1000;
+    ctx.clearRect(0, 0, overlay.width, overlay.height);
+    const trail = gazeSlice(t_ms, 1500);
+    // trail
+    ctx.strokeStyle = "rgba(255,255,255,0.35)";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    trail.forEach((s, i) => {
+      if (i === 0) ctx.moveTo(s[1], s[2]);
+      else ctx.lineTo(s[1], s[2]);
+    });
+    ctx.stroke();
+    // current dot
+    const s = sampleAt(t_ms);
+    if (s && s[1] !== -1) {
+      ctx.fillStyle = "#59d1ff";
+      ctx.beginPath();
+      ctx.arc(s[1], s[2], 10, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = "rgba(0,0,0,0.6)";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      $("#tick").innerHTML = `t = <b>${(t_ms/1000).toFixed(2)} s</b> | gaze (<b>${s[1]}</b>, <b>${s[2]}</b>)`;
+    } else {
+      $("#tick").innerHTML = `t = <b>${(t_ms/1000).toFixed(2)} s</b> | gaze (—, —)`;
+    }
+    requestAnimationFrame(draw);
+  }
+
+  // Controls
+  $("#playBtn").onclick = () => v.paused ? v.play() : v.pause();
+  $("#slowBtn").onclick = () => v.playbackRate = 0.5;
+  $("#normBtn").onclick = () => v.playbackRate = 1.0;
+  $("#fastBtn").onclick = () => v.playbackRate = 2.0;
+
+  // Reference SERP + AOIs
+  const img = $("#refimg");
+  img.src = `${DATA}/reference.png`;
+  const refwrap = $("#refwrap");
+  img.addEventListener("load", () => {
+    const svg = $("#aoi");
+    const w = img.naturalWidth, h = img.naturalHeight;
+    svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+    svg.setAttribute("width", img.width);
+    svg.setAttribute("height", img.height);
+    svg.style.width = "100%";
+    svg.style.height = "auto";
+    // Scale SVG to displayed image
+    new ResizeObserver(() => {
+      svg.setAttribute("width", img.clientWidth);
+      svg.setAttribute("height", img.clientHeight);
+    }).observe(img);
+
+    const colors = {
+      "tt": "rgba(255, 100, 100, 0.35)",  // text ads (red)
+      "o":  "rgba( 90, 209, 255, 0.30)",  // organic (cyan)
+      "s":  "rgba(255, 215,  80, 0.35)",  // shopping (yellow)
+      "tb": "rgba(160, 120, 255, 0.35)",  // bottom blocks (violet)
+      "_":  "rgba(150, 150, 150, 0.25)",
+    };
+    function color(id) {
+      if (id.startsWith("tto") || id.startsWith("tt")) return colors.tt;
+      if (id.startsWith("s"))  return colors.s;
+      if (id.startsWith("tb")) return colors.tb;
+      if (id.startsWith("o"))  return colors.o;
+      return colors._;
+    }
+
+    const clickAoi = (meta.click && meta.click.clicked_aoi) || null;
+    aois.forEach(a => {
+      const isClicked = clickAoi && a.id === clickAoi;
+      const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+      rect.setAttribute("x", a.x1);
+      rect.setAttribute("y", a.y1);
+      rect.setAttribute("width",  a.x2 - a.x1);
+      rect.setAttribute("height", a.y2 - a.y1);
+      rect.setAttribute("fill", isClicked ? "rgba(255,153,51,0.55)" : color(a.id));
+      rect.setAttribute("stroke", isClicked ? "#ff9933" : "rgba(0,0,0,0.7)");
+      rect.setAttribute("stroke-width", isClicked ? "5" : "2");
+      svg.appendChild(rect);
+      const txt = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      txt.setAttribute("x", a.x1 + 8);
+      txt.setAttribute("y", a.y1 + 22);
+      txt.setAttribute("fill", "#000");
+      txt.setAttribute("font-size", "16");
+      txt.setAttribute("font-family", "monospace");
+      txt.setAttribute("font-weight", isClicked ? "700" : "400");
+      txt.textContent = isClicked ? `${a.id} ← CLICKED` : a.id;
+      svg.appendChild(txt);
+    });
+    if (clickAoi) {
+      const legend = document.querySelector(".panel:nth-of-type(2) .legend");
+      const mc = meta.click;
+      legend.insertAdjacentHTML("afterbegin",
+        `<div style="margin-bottom:6px">participant <b>${meta.participant}</b> = external <b>${mc.external_code}</b> ` +
+        `(${mc.mapping_confidence}-confidence dwell-sum match, margin ${(mc.mapping_margin_ms/1000).toFixed(1)}s) · ` +
+        `clicked <b style="color:#ff9933">${clickAoi}</b> on ${meta.q_label}</div>`);
+    }
+
+    // --- Viewport rect + page-space gaze on the reference SERP ---
+    if (scroll && meta.scroll_recovery) {
+      const sr = meta.scroll_recovery;
+      const [cx0, cy0, cx1, cy1] = sr.phone_crop_bounds;
+      const cropW = cx1 - cx0;
+      const cropH = cy1 - cy0;
+      const scale = sr.scale_crop_to_ref;
+      const viewportW = Math.round(cropW * scale);
+      const viewportH = Math.round(cropH * scale);
+
+      const ns = "http://www.w3.org/2000/svg";
+      const vpRect = document.createElementNS(ns, "rect");
+      vpRect.setAttribute("x", 0);
+      vpRect.setAttribute("width", viewportW);
+      vpRect.setAttribute("height", viewportH);
+      vpRect.setAttribute("fill", "rgba(89,209,255,0.08)");
+      vpRect.setAttribute("stroke", "#59d1ff");
+      vpRect.setAttribute("stroke-width", 4);
+      vpRect.setAttribute("stroke-dasharray", "12,8");
+      svg.appendChild(vpRect);
+
+      const gazeDot = document.createElementNS(ns, "circle");
+      gazeDot.setAttribute("r", 24);
+      gazeDot.setAttribute("fill", "#59d1ff");
+      gazeDot.setAttribute("stroke", "rgba(0,0,0,0.7)");
+      gazeDot.setAttribute("stroke-width", 3);
+      gazeDot.style.display = "none";
+      svg.appendChild(gazeDot);
+
+      const scrollSamples = scroll.samples;
+      let scrollCursor = 0;
+      function scrollAt(t_ms) {
+        while (scrollCursor > 0 && scrollSamples[scrollCursor - 1].t_ms > t_ms) scrollCursor--;
+        while (scrollCursor < scrollSamples.length - 1
+               && scrollSamples[scrollCursor + 1].t_ms <= t_ms) scrollCursor++;
+        return scrollSamples[scrollCursor];
+      }
+
+      function updateRefOverlay() {
+        const t_ms = v.currentTime * 1000;
+        const sr_sample = scrollAt(t_ms);
+        const yOff = sr_sample.y_offset_px;
+        vpRect.setAttribute("y", yOff);
+
+        const g = sampleAt(t_ms);
+        if (g && g[1] !== -1 && g[2] !== -1) {
+          const inCropX = g[1] - cx0;
+          const inCropY = g[2] - cy0;
+          if (inCropX >= 0 && inCropX <= cropW && inCropY >= 0 && inCropY <= cropH) {
+            const pageX = inCropX * scale;
+            const pageY = yOff + inCropY * scale;
+            gazeDot.setAttribute("cx", pageX);
+            gazeDot.setAttribute("cy", pageY);
+            gazeDot.style.display = "block";
+          } else {
+            gazeDot.style.display = "none";
+          }
+        } else {
+          gazeDot.style.display = "none";
+        }
+
+        // Auto-scroll ref panel to keep viewport rect centered
+        const rel = (yOff + viewportH / 2) / img.naturalHeight;
+        refwrap.scrollTop = Math.max(0, rel * refwrap.scrollHeight - refwrap.clientHeight / 2);
+
+        requestAnimationFrame(updateRefOverlay);
+      }
+      requestAnimationFrame(updateRefOverlay);
+
+      const [lo, hi] = sr.match_score_range;
+      const legendEl = document.querySelector(".panel:nth-of-type(2) .legend");
+      legendEl.insertAdjacentHTML("beforeend",
+        ` · scroll recovery match score range ${lo.toFixed(2)}..${hi.toFixed(2)} ` +
+        `(low is typical: live SERP vs static PNG; DP continuity for reliability)`);
+    }
+
+    // --- AOI hit annotations (live highlight + dwell table) ---
+    if (aoiHits) {
+      const aoiSamples = aoiHits.samples;
+      // Build rect-id → SVG rect map for live highlight
+      const rectById = {};
+      svg.querySelectorAll("rect").forEach(r => {
+        // We don't have ids on rects yet — use a cheap approach by index into aois[]
+      });
+      // Re-add data-id to rects created in the earlier loop by re-scanning
+      Array.from(svg.querySelectorAll("rect")).forEach((r, i) => {
+        if (aois[i]) {
+          r.setAttribute("data-aoi", aois[i].id);
+          rectById[aois[i].id] = r;
+        }
+      });
+
+      // Pre-compute original fills so we can restore
+      const originalFill = {};
+      Object.entries(rectById).forEach(([id, r]) => {
+        originalFill[id] = r.getAttribute("fill");
+      });
+
+      // Lookup current AOI at given t_ms (linear, monotonic cursor)
+      let hitCursor = 0;
+      function aoiAt(t_ms) {
+        while (hitCursor > 0 && aoiSamples[hitCursor - 1].t_ms > t_ms) hitCursor--;
+        while (hitCursor < aoiSamples.length - 1
+               && aoiSamples[hitCursor + 1].t_ms <= t_ms) hitCursor++;
+        return aoiSamples[hitCursor] || null;
+      }
+
+      let lastHighlighted = null;
+      function highlightAt(t_ms) {
+        const s = aoiAt(t_ms);
+        const aid = s ? s.aoi_id : null;
+        if (aid === lastHighlighted) return;
+        if (lastHighlighted && rectById[lastHighlighted]) {
+          rectById[lastHighlighted].setAttribute("fill", originalFill[lastHighlighted]);
+        }
+        if (aid && rectById[aid]) {
+          rectById[aid].setAttribute("fill", "rgba(89,209,255,0.65)");
+        }
+        lastHighlighted = aid;
+      }
+      (function loop() { highlightAt(v.currentTime * 1000); requestAnimationFrame(loop); })();
+
+      // Build dwell table
+      const perAoi = aoiHits.summary.per_aoi;
+      const sorted = Object.entries(perAoi)
+        .filter(([_, e]) => e.visits > 0)
+        .sort((a, b) => b[1].dwell_ms - a[1].dwell_ms);
+      const visits = aoiHits.summary.visit_log;
+      const hm = aoiHits.meta;
+      const rows = sorted.map(([aid, e]) => {
+        const clicked = aid === clickAoi ? " style='background:rgba(255,153,51,0.2); font-weight:700'" : "";
+        return `<tr${clicked}><td style='padding:2px 10px 2px 0'>${aid}</td>` +
+               `<td style='color:var(--dim); padding:2px 10px 2px 0'>${e.category} · rank ${e.rank}</td>` +
+               `<td style='text-align:right'>${e.dwell_ms}ms</td>` +
+               `<td style='text-align:right; padding-left:10px'>${e.visits}v / ${e.revisits}rv</td>` +
+               `<td style='text-align:right; color:var(--dim); padding-left:10px'>@${e.first_entry_ms}ms</td></tr>`;
+      }).join("");
+      $("#aoiStats").innerHTML = `
+        <div style='margin-bottom:8px'>
+          <b>${hm.n_valid}</b>/${hm.n_samples} valid · <b>${hm.total_in_aoi_ms}ms</b> in AOIs · <b>${hm.n_visits}</b> visits ≥${hm.min_visit_ms}ms<br/>
+          <span style='color:var(--dim)'>(transitions: ${aoiHits.summary.transitions.length} — mostly brief crossings; visits filter out <${hm.min_visit_ms}ms noise)</span>
+        </div>
+        <table style='border-collapse:collapse; width:100%'>
+          <thead><tr style='color:var(--dim); font-weight:400; text-align:left; border-bottom:1px solid #23292f'>
+            <th>AOI</th><th></th><th style='text-align:right'>dwell</th><th style='text-align:right; padding-left:10px'>visits</th><th style='text-align:right; padding-left:10px'>first</th>
+          </tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+        <div style='margin-top:12px; color:var(--dim)'><b>visit log:</b></div>
+        <div style='max-height:240px; overflow:auto; font-size:11px'>
+          ${visits.map(v => `<div><span style='color:var(--fg)'>${v.aoi_id}</span> ${v.t_enter_ms}→${v.t_exit_ms}ms (${v.duration_ms}ms)</div>`).join("")}
+        </div>`;
+    }
+  });
+})();
+</script>
+</body>
+</html>

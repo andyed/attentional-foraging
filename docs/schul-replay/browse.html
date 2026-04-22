@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Schul replay — trial browser</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 24px; background: #0b0d10; color: #f5f7fa;
+         font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  h1 { margin: 0 0 4px 0; font-size: 18px; font-weight: 600; }
+  p.sub { color: #9aa4b2; margin: 0 0 20px 0; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+  .card { background: #14181d; border: 1px solid #23292f; border-radius: 6px;
+          padding: 12px; text-decoration: none; color: inherit; transition: border-color .15s; }
+  .card:hover { border-color: #59d1ff; }
+  .card h2 { margin: 0 0 8px 0; font-size: 15px; font-weight: 600; }
+  .card .code { color: #ff9933; }
+  .meta { color: #9aa4b2; font-size: 12px; }
+  .meta b { color: #f5f7fa; font-weight: 500; }
+  .row { display: flex; justify-content: space-between; margin: 4px 0; }
+  .clicked { background: rgba(255,153,51,0.15); padding: 2px 6px; border-radius: 3px; color: #ff9933; font-weight: 600; }
+  .bar { height: 8px; background: #23292f; border-radius: 2px; margin-top: 8px; position: relative; overflow: hidden; }
+  .bar .fill { background: #59d1ff; height: 100%; }
+  .empty { color: #9aa4b2; padding: 40px; text-align: center; border: 1px dashed #23292f; border-radius: 6px; }
+</style>
+</head>
+<body>
+<h1>Schultheiß &amp; Lewandowski 2019 — staged trials</h1>
+<p class="sub">Click a card to open the replay.</p>
+<div class="grid" id="grid"></div>
+<script>
+(async () => {
+  let trials = [];
+  try {
+    const r = await fetch("trials/trials.json");
+    if (r.ok) trials = await r.json();
+  } catch (e) {}
+  if (!trials.length) {
+    document.getElementById("grid").outerHTML =
+      `<div class="empty">no trials staged yet. Run <code>scripts/build_schul_replay.py --name &lt;label&gt; ...</code> to add some.</div>`;
+    return;
+  }
+  const grid = document.getElementById("grid");
+  trials.forEach(t => {
+    const dwellPct = t.duration_ms ? (t.total_in_aoi_ms / t.duration_ms * 100) : 0;
+    grid.insertAdjacentHTML("beforeend", `
+      <a class="card" href="index.html?trial=${encodeURIComponent(t.name)}">
+        <h2><span class="code">${t.name}</span></h2>
+        <div class="meta">
+          <div class="row"><span>participant</span><span><b>${t.participant}</b>${t.external_code ? " · " + t.external_code : ""}</span></div>
+          <div class="row"><span>stimulus</span><span><b>${t.q_label}</b></span></div>
+          <div class="row"><span>duration</span><span><b>${(t.duration_ms/1000).toFixed(1)}s</b></span></div>
+          <div class="row"><span>gaze valid</span><span><b>${t.gaze_valid}/${t.gaze_total}</b> (${(100*t.gaze_valid/t.gaze_total).toFixed(0)}%)</span></div>
+          <div class="row"><span>time in AOIs</span><span><b>${t.total_in_aoi_ms}ms</b> · ${t.n_visits} visits</span></div>
+          <div class="row"><span>top AOI / click</span><span>${t.top_aoi || "—"} ${t.click_aoi ? `→ <span class="clicked">clicked ${t.click_aoi}</span>` : ""}</span></div>
+          <div class="bar"><div class="fill" style="width:${dwellPct.toFixed(0)}%"></div></div>
+          <div style="text-align:right; font-size:11px; margin-top:2px">${dwellPct.toFixed(0)}% gaze time on AOIs</div>
+        </div>
+      </a>`);
+  });
+})();
+</script>
+</body>
+</html>
