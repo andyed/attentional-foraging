@@ -42,7 +42,7 @@ Innovations on top of a standard gazeplot:
 
 **Known trade-off.** The SERP background is re-rendered from archived HTML at a different window width than the original capture (1422 → 1280 CSS px, 90% display scaling). DOM anchoring compensates for fixation placement, but the re-rendered page can still differ from what the participant actually saw — external resource loading (Maps tiles, product images) reflows element heights. See the *Positional accuracy* note on the site.
 
-[![Page → Perception → Cognition](assets/scanpath-three-panel_sm.png)](assets/scanpath-three-panel.png)
+[![Foveated cursor plot, trial p029-b2-t10 — Scrutinizer LGN/V1/DoG background, DOM-anchored scanpath, multi-track cognitive timeline](assets/gazeplot-hero_sm.png)](assets/gazeplot-hero.png)
 
 ### [Screenshot-accurate cursor plots](https://andyed.github.io/approach-retreat/replay/) *(sister repo: approach-retreat)*
 
