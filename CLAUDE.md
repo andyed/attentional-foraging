@@ -20,6 +20,30 @@ Every quantitative claim in the CIKM paper, and every figure/table in `scripts/o
 
 The point of the convention is that a reader should never be uncertain which regime a number came from. The "three coupling scalars" confusion (306 vs 338 vs 381) was entirely within LAB; a WILD version of that statistic is either computable on ACD or isn't, and that binary is the axis the reader holds.
 
+## Two-pass citation workflow (pre-emptive discipline for research prose)
+
+**When editing any file under `docs/drafts/cikm-*/`, `docs/drafts/task-model-paper*`, or `docs/arxiv/`, use the two-pass workflow below.** This is a pre-emptive rule against citation confabulation under reframe pressure, not a post-hoc check.
+
+**Pass 1 — Prose generation.** Do NOT write in the prose:
+- Author names in citation position (e.g. "Stone et al.", "Chen & Anderson")
+- Venue+year citation tokens (e.g. "[TOCHI 2023]", "[CHIIR '18]")
+- Paraphrases of what specific source papers "showed" / "demonstrated" / "found"
+
+Instead use explicit placeholders:
+- `[CITE: <topic>]` or `[CITE: <author-guess> on <topic>]` for citations
+- `[ATTRIBUTE: <source-key>: <claim>]` for paraphrases of what a source shows
+- `[CHECK: <claim>]` for any factual claim whose source I'm not sure of
+
+**Pass 2 — Verification.** Walk every placeholder. For each:
+1. Locate a candidate source: first check `references.bib` (existing entry), then local lit-notes / PDFs, then WebSearch / WebFetch with the claim as the query.
+2. Read the abstract or the specific passage to verify the claim matches.
+3. If verified: replace the placeholder with the real citation + accurate paraphrase. Add the bib entry if it's new.
+4. If the candidate doesn't support the claim, or no candidate is found: either change the argument to use a source I do have, or drop the claim. **Do not resolve the placeholder by inventing.**
+
+**Why this discipline exists.** On 2026-04-15 during a reframe of paper-v3, two citation confabulations survived into the prose across multiple sections: `Stone et al. TOCHI 2023` was entirely fabricated (real paper is Stone & Chapman PACMHCI ETRA 2023 with a different claim), and my paraphrase of Zhang/Abualsaud/Smucker CHIIR 2018 ("saccade-resolution survey-phase analysis") was fabricated (the paper is actually about immediate requery behavior with a result-inspection-phase hypothesis). Both were caught — Stone by Andy Googling; Zhang by the science-audit agent — but one had propagated through abstract, §1, and §2.4 of the paper before detection. The mechanism was prose generation and citation generation in the same forward pass: a reframed argument needed a citation-shaped token sequence that supported a specific claim, and I produced one that matched the argument without verification. The two-pass workflow physically separates these stages so confabulation cannot occur during generation.
+
+**Rule of thumb.** If a citation token or a "X showed Y" paraphrase appears in the prose without first passing through the verification pass, it is presumptively confabulated. Treat it as a bug until verified.
+
 ## Null findings
 
 **Principle (2026-04-15).** Null and near-null findings get written up in `docs/null-findings/` as markdown even when they don't make it into the published paper. See `docs/null-findings/README.md` for the principle statement, format conventions, and current index. This is a research-integrity commitment, not a bureaucratic one — the file-drawer cost of not documenting nulls on a single-lab project is re-walking the same paths months later.
