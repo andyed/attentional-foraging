@@ -193,7 +193,7 @@ Only notebooks that ship numbers directly to external papers or public writeups 
 | **K3** | **Position × median LF/HF, forward-pass fixations only (load DECREASES with deeper position)** | **ρ = −0.927, *p* < 0.0001** (N = 11 positions) |
 | **K4** | Positions 1–10 only (excluding pos 0), forward-pass | **ρ = −0.903, *p* = 0.0003** |
 | **K5** | Within-trial Spearman (position vs LF/HF, ≥ 3 valid segments at positions 0–10) | N = 1,025 trials, mean ρ = −0.152, median ρ = −0.400, 61.0 % negative |
-| **K6** | Clicked vs non-clicked median LF/HF | **22.40 (N = 1,463)** vs **19.27 (N = 4,636)**; Mann–Whitney *p* < 10⁻⁸ — clicked results carry more load than non-clicked |
+| **K6** | Clicked vs non-clicked median LF/HF | **22.40 (N = 1,463)** vs **19.27 (N = 4,636)**; Mann–Whitney U = 3,654,266, *p* = 7.5 × 10⁻⁶ — clicked results carry more load than non-clicked |
 | **K7** | Cross-index validation: trial-mean LF/HF × LHIPA | ρ = −0.125, *p* = 7.47 × 10⁻¹⁰, N = 2,416 (correct sign: both indices agree on load direction) |
 | **K8** | Position-level medians (load by rank) | pos 0: 29.64 (N = 1,036) → pos 1: 22.17 → pos 2: 18.96 → pos 3: 18.30 → pos 4: 17.23 → pos 5: 16.77 → pos 6: 14.41 → pos 7: 13.82 → pos 8: 13.31 → pos 9: 15.58 → pos 10: 13.49 (monotone decline through pos 8) |
 
@@ -222,7 +222,7 @@ Only notebooks that ship numbers directly to external papers or public writeups 
 >
 > **Coordinate-space audit (2026-04-09, cursor side).** `compute_butterworth_lfhf.py` previously double-counted scroll offset when deriving `click_pos` from evtrack `ypos` (already page-space). Fixed in 2026-04-09. K6 moved: N_clicked 1,145 → 1,110, clicked median 22.86 → 22.24.
 >
-> **Coordinate-space audit (2026-04-12, fixation side).** FPOGY was also mis-documented as screen-space; the pipeline was adding scroll to fixation Y to derive page_y. Per the AdSERP README, FPOGY is already page-space. Fixing this regenerated `butterworth-lfhf-by-position.json` and shifted K1 (unchanged), K2 (6,874 → 6,112, -11%), K3 (−0.618 → −0.927), K4 (−0.491 ns → −0.903 sig), K5 (1,167 → 1,025 trials, mean ρ −0.105 → −0.152), K6 (1,110/5,472 → 1,463/4,636, p 1.3e-4 → <1e-8), K7 (essentially unchanged), K8 (position medians shifted by ≲1 unit each). Direction and significance **strengthened** throughout. K9–K15 re-computed from post-fix position medians; some piecewise statistics (K12, K14, K15) need a verbose-print re-run. See module docstring and `docs/drafts/coord_fix_snapshot_20260412/`.
+> **Coordinate-space audit (2026-04-12, fixation side).** FPOGY was also mis-documented as screen-space; the pipeline was adding scroll to fixation Y to derive page_y. Per the AdSERP README, FPOGY is already page-space. Fixing this regenerated `butterworth-lfhf-by-position.json` and shifted K1 (unchanged), K2 (6,874 → 6,112, -11%), K3 (−0.618 → −0.927), K4 (−0.491 ns → −0.903 sig), K5 (1,167 → 1,025 trials, mean ρ −0.105 → −0.152), K6 (1,110/5,472 → 1,463/4,636, p 1.3e-4 → 7.5e-6; the earlier `<1e-8` claim came from a 4-decimal printf of the post-fix p, not the actual U-derived value), K7 (essentially unchanged), K8 (position medians shifted by ≲1 unit each). Direction and significance **strengthened** throughout. K9–K15 re-computed from post-fix position medians; some piecewise statistics (K12, K14, K15) need a verbose-print re-run. See module docstring and `docs/drafts/coord_fix_snapshot_20260412/`.
 
 ---
 
@@ -630,16 +630,20 @@ K1–K4 above are indexed by absolute rank (every h3 slot, ads pooled with organ
 | ID | Claim | Value |
 |---|---|---|
 | **K13** | RIPA2 observations: will-regress vs no-regress | **10,466 vs 5,850** |
-| **K14** | RIPA2 median: will-regress vs no-regress | **0.0777 vs 0.0809 (ratio 0.960×)** |
-| **K15** | RIPA2 one-sided Mann–Whitney (will-regress < no-regress) | ***p* = 0.0106** |
-| **K16** | First-pass dwell: will-regress vs no-regress | **194 ms vs 214 ms, *p* = 8.14 × 10⁻³²** |
+| **K14** | RIPA2 median: will-regress vs no-regress | **0.000358 vs 0.000359 (ratio 0.997×)** *(retired — see note below)* |
+| **K15** | RIPA2 one-sided Mann–Whitney (will-regress < no-regress) | ***p* = 0.74 (NULL post-bug-fix)** *(retired)* |
+| **K16** | First-pass dwell: will-regress vs no-regress | **194 ms vs 214 ms, *p* = 8.14 × 10⁻³²** *(unaffected by RIPA2 bug fix — gaze data only)* |
 | **K17** | LF/HF observations for same comparison | N = 20 vs 17 (underpowered) |
 
 > **Complementary, not competing.** K3–K4 confirm the two metrics are nearly uncorrelated at the observation level — they measure different temporal aspects of cognitive dynamics. K5–K6 confirm both agree on the aggregate positional gradient (load declines with position). RIPA2's advantage is per-fixation temporal resolution. LF/HF's advantage is interpretability and direct tie to Duchowski (2026).
 >
-> **Encoding insight (K14–K15).** Items that will later receive a **gaze regression** (see NB22 — this is the same `regression_labels` boolean derived from the gaze-fixation sequence, not from scroll events) show *lower* RIPA2 at first pass. This rejects the Pirolli scent-following prediction (higher arousal at scent-rich items) and supports encoding-completion: gaze regressions go to items that were *insufficiently* processed, not items that triggered high arousal. Reframing: gaze regressions are a completion mechanism, not a scent-following mechanism.
+> **K14–K15 retired (2026-04-25, RIPA2 bug fix).** The original p = 0.0106 per-fixation will-regress < no-regress signal was driven by spurious P² weighting in our RIPA2 implementation (the `× signal` multiplication that's not in JEMR 2025 Algorithm 1). With the formula corrected to `LF² − VLF²` per the published spec, per-fixation RIPA2 medians at wr (0.000358) vs nr (0.000359) are essentially identical (p = 0.74). **The per-fixation wr/nr signal does not survive the corrected formula.** K16 (first-pass dwell) is unaffected — that's gaze-data-only.
 >
-> **Coordinate-space audit (2026-04-12).** FPOGY page-space fix regenerated `butterworth-lfhf-by-position.json` and `ripa2-by-position.json`. Main shifts: K5 (LF/HF positional gradient) −0.618 → **−0.927** (matches NB14:K3), K6 (RIPA2 positional gradient) −0.827 → **−0.909**, K15 (RIPA2 will-regress one-sided *p*) 0.0022 → **0.0106** (weaker but still significant), K16 (first-pass dwell *p*) 4.1 × 10⁻²⁴ → **8.1 × 10⁻³²** (stronger). The main encoding-completion finding (K14, K15) is preserved and slightly weakened on RIPA2 while the dwell-time signature (K16) is strengthened. Both position gradients now strongly agree at ρ < −0.9.
+> **What survives the bug fix at RIPA2:** the **per-(trial, position)** wr/nr dissociation against LF/HF lives on (R1 centerpiece in `scripts/output/ripa2_meet_visuals/R1_wrnr_dissociation.png`, p = 0.0058 one-sided). The signal is real at the position-aggregate level — the per-fixation aggregation was below the JEMR 2025 buffer floor (4 s @ 300 Hz) and the small effect was being amplified to detectability by the spurious P² factor.
+>
+> **Encoding insight retired in current form.** The "encoding-completion (under-processed)" interpretation hung partly on K14. With K14 retired, the calm-reading interpretation (built on the saccade-orientation max_horizontal_run finding + NB18 K16 dwell) survives in modified form: will-regress items receive brief, dense, reading-shaped engagement (saccade-orientation Test 3 holds at p = 10⁻⁵⁴), but we can no longer claim "low first-pass arousal" via RIPA2 at the per-fixation scale. Use only the per-(trial, position) wr/nr dissociation for arousal claims.
+>
+> **Coordinate-space audit (2026-04-12).** FPOGY page-space fix regenerated `butterworth-lfhf-by-position.json` and `ripa2-by-position.json`. Main shifts: K5 (LF/HF positional gradient) −0.618 → **−0.927** (matches NB14:K3), K6 (RIPA2 positional gradient) −0.827 → **−0.909**. (Pre-bug-fix K15 had drifted 0.0022 → 0.0106; the post-bug-fix K15 = 0.74 supersedes both.)
 
 ---
 
