@@ -184,7 +184,7 @@ Only notebooks that ship numbers directly to external papers or public writeups 
 
 ### Cognitive load decreases with SERP position (the Butterworth key finding)
 
-**Convention.** Butterworth LF/HF ratio (Duchowski's index): *higher* LF/HF = more load. LHIPA (Index of Pupillary Activity): *lower* LHIPA = more load. The two indices are negatively correlated by construction and both agree on direction (K7).
+**Polarity convention (pupillary LF/HF, not HRV).** Pupillary LF/HF (Peysakhovich 2015; Duchowski 2026) shares its name with the older HRV construct but indexes pupillary oscillation, not heart rate — HRV-style "↑ HF = ↑ activation" reasoning does not transfer. Within Duchowski's pupillary framework (Duchowski 2026, §2.2), polarity is **task-archetype dependent**: in *computation-dominated* tasks (mental arithmetic, active criterion comparison), more effort produces ↑ LF/HF; in *information-processing / memory-recall* tasks, more effort produces ↓ LF/HF. SERP evaluation is computation-dominated — the user actively compares each result against accumulating criteria and emits a binary attend/skip decision — so for this dataset **↑ LF/HF = ↑ effort**. Under that anchor: K3's negative gradient (LF/HF decreases with rank) reads as effort decreasing as compiled criteria make subsequent comparisons cheaper, and K6's clicked > non-clicked reads as the user investing more effort in items they commit to. LHIPA polarity is fixed by construction (lower LHIPA = more load); the two indices are negatively correlated and agree on direction (K7).
 
 | ID | Claim | Value |
 |---|---|---|
