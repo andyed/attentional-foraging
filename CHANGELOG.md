@@ -187,6 +187,46 @@ The "monotonic load decline by rank" finding is partly an **absolute-rank artifa
 
 Andy's proposed reframe: organic rank as primary, ads as essential distractors. Headline becomes **"cognitive engagement on organic search results is two-band — early evaluation-heavy band + late satisficer plateau, with clicked positions uniformly elevated regardless of band"**. K6 + K9 carry the new headline; K3/K4/K10/K11 retire to a robustness section that shows the absolute-rank curves and explains the ad-distractor contamination.
 
+### Click-attribution split (full corpus, n=2,775)
+
+Strict rectangle containment — click y-coord falls inside which AOI rectangle?
+
+| Bucket | Count | Share |
+|---|---|---|
+| Organic (algo) | 1,785 | **64.3%** |
+| Native ads | 160 | 5.8% |
+| dd_top (carousel) | 271 | 9.8% |
+| dd_right (rail) | 126 | 4.5% |
+| **All ads** | **557** | **20.1%** |
+| Off-AOI (KP, image carousel, footer, gaps) | 428 | 15.4% |
+| Widgets (filtered) | 5 | 0.2% |
+
+This is the "what do users actually click on" denominator. Bisect-band attribution gives an upper bound of ~85% organic by attributing gap-clicks to the nearest organic above; strict containment gives a lower bound of 64.3%. Truth is somewhere in between — gaps near a card are plausibly approaches to that card, but gaps below the last organic (e.g., below pagination) are not.
+
+For "ads as essential distractors" framing: distractors are 20% of clicks, not 5–10% as a strict reading of "ads are noise" might suggest. The dichotomy still holds (organic dominates), but the ad-distractor share matters.
+
+### NB15 cursor-approach-features producer migrated
+
+`scripts/compute_cursor_approach_features.py` extracted from NB15 cell 4 with `--attribution {absolute,organic}`. Output:
+
+- `AdSERP/data/cursor-approach-features.json` — legacy absolute (13,419 records, 2,339 trials)
+- `AdSERP/data/cursor-approach-features-organic.json` — bbox attribution (14,760 records, 2,701 trials)
+
+Coverage *increases* under organic (more trials have valid AOIs because the producer's `extract_serp_results`-or-fallback no longer rejects trials where h3 enumeration returns null). Per-position record counts:
+
+| Position | Absolute | Organic |
+|---|---|---|
+| 0 | 2,320 | 2,658 |
+| 1 | 2,244 | 2,360 |
+| 2 | 2,091 | 1,985 |
+| 7 | 719 | 936 |
+| 8 | 481 | 748 |
+| 9 | 192 | 401 |
+
+Approach share (min_dist < 100): 28.2% → 23.3% under organic. The drop reflects cleaner per-AOI distance calculations (no spurious "approaches" to gap regions previously included as positions).
+
+This unblocks NB20 (approach by element), NB21 (click prediction LOSO), NB22 numerical recompute, NB24 (retreat arc geometry), NB28 (viewport bands) — all consume `cursor-approach-features.json` directly. To rerun those under organic, point them at `cursor-approach-features-organic.json` (one-line change in cell 1 of each).
+
 ### What's measured vs. what's pending
 
 Side-by-side K-ID reports complete for **6 notebooks**:
