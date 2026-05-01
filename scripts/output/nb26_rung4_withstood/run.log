@@ -1,0 +1,41 @@
+tee: scripts/output/nb26_rung4_withstood/run.log: No such file or directory
+[load] cursor-approach-features.json
+       13,419 records
+[load] viewport-trajectory-features.json
+       27,760 rows
+[load] regression-labels cache (NB22 gaze_regression)
+       13,419 labels
+[load] embeddings
+[build] full-SERP trials: 2,115
+
+[labels] g10_pre  per-bucket counts: {0: 2115, 1: 2115, 2: 2115, 3: 2115, 4: 2115, 5: 2115, 6: 2115, 7: 2115, 8: 2115, 9: 2115}
+[labels] g10_full per-bucket counts: {0: 2115, 1: 2115, 2: 2115, 3: 2115, 4: 2115, 5: 2115, 6: 2115, 7: 2115, 8: 2115, 9: 2115}
+[labels] clicked by g10_pre bucket : {0: 47, 1: 12, 2: 19, 3: 20, 4: 63, 5: 79, 6: 138, 7: 224, 8: 567, 9: 946}
+[labels] clicked by g10_full bucket: {0: 46, 1: 13, 2: 21, 3: 20, 4: 63, 5: 75, 6: 138, 7: 226, 8: 563, 9: 950}
+
+[run] R3_3grade  label=g3  ranker=lgbm_3grade
+       MRR = 0.6770   NDCG@10 = 0.7588
+
+[run] R4a_10grade_pre  label=g10_pre  ranker=lgbm_10grade
+       MRR = 0.6559   NDCG@10 = 0.7410
+
+[run] R4b_10grade_full  label=g10_full  ranker=lgbm_10grade
+       MRR = 0.6549   NDCG@10 = 0.7402
+
+[run] R4c_continuous_pre  label=w_pre  ranker=ridge_mse
+       MRR = 0.6885   NDCG@10 = 0.7656
+
+[K6 — Google baseline] MRR = 0.4924  NDCG@10 = 0.6166
+
+-- Paired Wilcoxon vs R3 3-grade graded (greater) --
+  R4a_10grade_pre            MRR Δ = -0.0261 (p = 0.9773)   NDCG Δ = -0.0216 (p = 0.9864)
+  R4b_10grade_full           MRR Δ = -0.0269 (p = 0.9840)   NDCG Δ = -0.0222 (p = 0.9889)
+  R4c_continuous_pre         MRR Δ = +0.0080 (p = 0.2873)   NDCG Δ = +0.0043 (p = 0.3549)
+
+-- Paired Wilcoxon vs Google baseline --
+  R3_3grade                  MRR Δ = +0.1906 (p = 0.0000)   NDCG Δ = +0.1466 (p = 0.0000)
+  R4a_10grade_pre            MRR Δ = +0.1645 (p = 0.0000)   NDCG Δ = +0.1251 (p = 0.0000)
+  R4b_10grade_full           MRR Δ = +0.1637 (p = 0.0000)   NDCG Δ = +0.1244 (p = 0.0000)
+  R4c_continuous_pre         MRR Δ = +0.1986 (p = 0.0000)   NDCG Δ = +0.1509 (p = 0.0000)
+
+[out] scripts/output/nb26_rung4_withstood/summary.json

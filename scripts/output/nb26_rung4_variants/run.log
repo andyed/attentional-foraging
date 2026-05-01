@@ -1,0 +1,32 @@
+[load] cursor-approach-features.json
+       13,419 records
+[load] viewport-trajectory-features.json
+       27,760 rows
+[load] regression-labels cache (NB22 gaze_regression)
+       13,419 labels
+[load] embeddings
+[build] full-SERP trials: 2,115
+
+[labels] g10_hybrid per-bucket counts: {0: 2115, 1: 2115, 2: 2115, 3: 2115, 4: 2115, 5: 2115, 6: 2115, 7: 2115, 8: 2115, 9: 2115}
+[labels] clicked by g10_hybrid bucket: {9: 2115}
+
+[run] R4e_10grade_pre_linear  label=g10_pre  ranker=lgbm_10grade_linear
+       MRR = 0.6552   NDCG@10 = 0.7403
+
+[run] R4f_hybrid_exp  label=g10_hybrid  ranker=lgbm_10grade_exp
+       MRR = 0.8248   NDCG@10 = 0.8686
+
+[run] R4g_hybrid_linear  label=g10_hybrid  ranker=lgbm_10grade_linear
+       MRR = 0.7912   NDCG@10 = 0.8430
+
+-- Paired Wilcoxon vs R3_3grade (greater) --
+  R4e_10grade_pre_linear     MRR Δ = -0.0271 (p = 0.9790)   NDCG Δ = -0.0225 (p = 0.9882)
+  R4f_hybrid_exp             MRR Δ = +0.1425 (p = 0.0000)   NDCG Δ = +0.1059 (p = 0.0000)
+  R4g_hybrid_linear          MRR Δ = +0.1099 (p = 0.0000)   NDCG Δ = +0.0810 (p = 0.0000)
+
+-- Paired Wilcoxon vs R4a_10grade_pre (greater) — is the remedy working? --
+  R4e_10grade_pre_linear     MRR Δ = -0.0009 (p = 0.6962)   NDCG Δ = -0.0009 (p = 0.7270)
+  R4f_hybrid_exp             MRR Δ = +0.1686 (p = 0.0000)   NDCG Δ = +0.1275 (p = 0.0000)
+  R4g_hybrid_linear          MRR Δ = +0.1361 (p = 0.0000)   NDCG Δ = +0.1025 (p = 0.0000)
+
+[out] scripts/output/nb26_rung4_variants/summary.json
