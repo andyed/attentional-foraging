@@ -1,0 +1,16 @@
+{
+  "n_trials": 2776,
+  "n_aoi_rows": 33800,
+  "n_organic_rows": 26955,
+  "n_ad_rows": 6845,
+  "trial_id_format": "p{PPP}-b{B}-t{T} (zero-padded uid, 1-indexed batch/trial)",
+  "id_regex": "^p(\\d{3})-b(\\d+)-t(\\d+)$",
+  "coordinate_system": "page-space pixels (document coordinates, not viewport)",
+  "result_column_x_range": [
+    162,
+    702
+  ],
+  "header_offset_top_px": 200,
+  "footer_offset_bottom_px": 200,
+  "n_skipped_trials": 0
+}
