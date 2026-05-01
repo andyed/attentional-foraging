@@ -217,6 +217,30 @@ The 30 px tolerance rescues 396 clicks that strict containment loses — these a
 
 **Headline for paper framing**: under this attribution, 78.6% of clicks are on organic results, 20.1% on ads, 1.2% on content the pipeline doesn't model (Knowledge Panel, image carousel, etc.). The "ads as essential distractors" frame holds; the methodology limitation around right-pane / KP coverage affects ~1% of clicks, not 15%.
 
+### NB24 retreat arc geometry under organic_hybrid attribution
+
+`scripts/compute_retreat_arcs.py` extracts NB24's `extract_retreat_arcs_v2` into a producer with `--attribution {absolute, organic_hybrid}`. The hybrid mode combines bbox organics + shipped ad rectangles into one ordered position list with etype tags — preserving the organic-vs-top-ad-vs-native-ad comparison that NB24 needs.
+
+Output:
+- `AdSERP/data/retreat-arcs.json` — 1,490 raw arcs (legacy absolute)
+- `AdSERP/data/retreat-arcs-organic.json` — 5,201 raw arcs (organic_hybrid; 3.5× coverage gain)
+
+The coverage gain reflects bbox AOIs being pixel-accurate (cursor enters/exits positions cleanly) vs band estimation (cursor trajectory frequently fell into "no-position" gaps).
+
+| Metric | Absolute | Organic_hybrid | Verdict |
+|---|---|---|---|
+| Retreats (valid arcs, not clicked) | 907 | 1,651 | |
+| Top Ad arc ratio (median) | 1.51 | **1.55** | ✓ unchanged |
+| Top Ad lateral displacement (median px) | 63 | **62** | ✓ unchanged |
+| **Top Ad lateral/arc ratio (pooled)** | **0.166** | **0.170** | ✓ replicates |
+| Organic arc ratio | 1.22 | **1.11** | ✓ sharper (more linear) |
+| Organic lateral displacement | 33 px | **11 px** | ✓ sharper (cleaner) |
+| Organic vs Top Ad arc ratio MW p | 1.1e-5 | **4.0e-17** | ✓ much stronger |
+
+**The "retreat as lateral displacement" claim survives and strengthens.** Top ads still curve laterally (arc ratio 1.55, lateral 62 px) — that's stable across attribution methods. What changes is the *contrast*: organic retreats are now revealed to be much more linear (lateral disp 33 → 11 px) than previously thought. The Mann-Whitney p-value tightens 12 orders of magnitude (1e-5 → 4e-17).
+
+Implication for AR / CIKM: the brand claim that "top ads impose lateral retreat arcs" is more defensible under bbox attribution, not less. The 3.5× more retreat-arc data also enables sharper per-(direction × etype) splits for the forward/regressive analysis NB24 produces.
+
 ### NB15 cursor-approach-features producer migrated
 
 `scripts/compute_cursor_approach_features.py` extracted from NB15 cell 4 with `--attribution {absolute,organic}`. Output:
