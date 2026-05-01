@@ -1,5 +1,137 @@
 # Changelog
 
+## 2026-05-01 — AOI consumer cascade (branch `feat/aoi-pipeline-v2`)
+
+### What shipped
+
+Pipeline + consumer API for the bbox AOI enrichment, plus first-pass K-ID delta evidence under organic-rank attribution. **Notebook migrations not yet shipped** — Andy's deep dive on ETTAC paper this weekend will decide which findings move to organic-rank as primary.
+
+### Branch state
+
+- `60a2e7b9` widget filter + composite-cell split + `is_ad` x-overlap fix
+- `da0a8aae` band-y guard against featured-snippet false positives
+- This commit: consumer API in `data_loader.py` + producer migrations + comparison harness
+
+### Consumer API additions (`notebooks-v2/data_loader.py`)
+
+Three new functions consume the bbox JSONs written by `scripts/extract_organic_bboxes.py`:
+
+- `load_aois(trial_id, include_widgets=False, include_cells=False)` — full structured AOI dict; widgets and composite cells are opt-in (default-off matches "second-column variable" convention from methodology §7).
+- `organic_aoi_bands(trial_id)` — pixel-accurate `(y_top, y_bottom)` bands per organic; drop-in replacement for `result_bands(n, doc_h)`.
+- `organic_aoi_tops(trial_id)` — convenience for the y-tops, drop-in for `result_band_tops(n, doc_h)`.
+
+All three fall back to band estimation when a trial's bbox JSON is missing. The `'source'` field in the `load_aois` return discriminates `'bbox'` vs `'band_estimate'`.
+
+### Producer migrations
+
+Both `compute_butterworth_lfhf.py` and `compute_ripa2.py` gained `--attribution {absolute,organic}`. Default is `absolute` (legacy). Organic-attribution outputs land at:
+
+- `AdSERP/data/butterworth-lfhf-by-position-organic.json`
+- `AdSERP/data/ripa2-by-position-organic.json`
+
+### Headline AOI-side audit (full corpus, n=2,776)
+
+`pipeline_organic_count` vs `count_organic_ranks` (HTML-derived, ad-overlap excluded; not ground truth — includes some widget-heading h3s):
+
+```
+exact (delta=0):     683/2,776 = 24.6%
+|delta| ≤ 1:       1,801/2,776 = 64.9%
+|delta| ≤ 2:       2,451/2,776 = 88.3%
+median 0, mean -0.20
+```
+
+Widget filter caught 2,008 widgets across 1,628 trials (58.6%). Composite cells found in 166 trials (6.0%, 376 cells).
+
+### Consumer-side cascade evidence
+
+**Per-fixation re-attribution rate: 73.9%** (`scripts/output/aoi-consumer-cascade/per-rank-shifts.json`).
+
+```
+rank 0:  band 51,255 → bbox 48,908   (-4.6%)
+rank 1:  band 43,778 → bbox 28,130   (-35.7%)
+rank 2:  band 36,306 → bbox 17,094   (-52.9%)   ← rank-2 peak under absolute is artifactual
+rank 3:  band 24,094 → bbox 12,698   (-47.3%)
+rank 8:  band  3,872 → bbox  5,449   (+40.7%)
+rank 9:  band  2,245 → bbox  3,422   (+52.4%)
+rank 10: band    862 → bbox  1,320   (+53.1%)
+```
+
+Top re-attribution flow:
+
+```
+band rank 0 → bbox rank -1: 38,512 fixations  (band-attributed to organic but actually outside any AOI)
+band rank 1 → bbox rank -1: 21,791
+band rank 2 → bbox rank  0: 16,475  (re-numbered down by ad/widget exclusion)
+```
+
+`bbox rank -1` = fixation didn't land on any organic AOI. **~60K fixations were attributed by band estimation to organic ranks 0-1 that actually fall outside organic AOIs entirely** — likely on ad cards, search box, knowledge panels, widgets.
+
+### NB14 (Butterworth LF/HF × position) under organic attribution
+
+Full table at `scripts/output/aoi-consumer-cascade/nb14_nb18_comparison.md`.
+
+| K | Old (absolute, ads pooled) | New (organic, bbox) | Verdict |
+|---|---|---|---|
+| K1 trials | 2,416 | 2,174 (−242) | sample shrinks |
+| K2 segments | 6,112 | 4,450 (−1,662) | |
+| **K3** ρ all positions | **−0.807, p<0.001** | **−0.346, p=0.21** | ⚠ ns |
+| **K4** ρ pos 1–10 | **−0.903, p<0.001** | **−0.539, p=0.11** | ⚠ ns |
+| K6 clicked > non-clicked p | 3.5e-6 | **2.5e-7** | ✓ stronger |
+| K9 steep vs plateau MW | 1.6e-23 | **8.8e-9** | ✓ holds |
+| **K10** steep ρ (pos 0–3) | **−1.000 (perfect)** | **−0.800, p=0.20** | ⚠ ns |
+| **K11** plateau ρ | −0.714 | **+0.321** | ⚠ sign flip |
+
+### NB18a (RIPA2 × position) under organic attribution
+
+| K | Old | New | Verdict |
+|---|---|---|---|
+| K6 RIPA2 × position ρ | −0.262, p=0.366 | −0.080, p=0.776 | ⚠ ns under both |
+
+### NB23 (Click share × rank) under organic attribution
+
+Per-fixation comparison (`scripts/output/aoi-consumer-cascade/`):
+
+| K | Old (band, abs rank) | New (bbox, org rank) | Verdict |
+|---|---|---|---|
+| K1 click share × rank ρ | −0.952 | **−0.988** | ✓ sharper monotone |
+| Click N attributed | 2,764 | 2,363 (−14.5%) | clicks on ads/KP/widgets correctly excluded |
+| Rank 0 click share | 18.8% | **44.9%** | top organic now correctly captures top organic clicks |
+| Rank 2 click share | 24.6% (artifact peak) | 10.8% | ad-displacement artifact gone |
+
+The pre-fix rank-2 peak in click distribution was an artifact of ad-displacement (top-organic clicks attributed to rank 2 because ads occupied ranks 0–1).
+
+### NB25 (corpus structure) shifts
+
+| K | Old (h3) | New (bbox) |
+|---|---|---|
+| K11 modal organic count | **10** (26.3%) | **9** (33.1%) |
+| K12 range | 1–15 | 1–17 |
+| K13 ∈ {9,10,11} | 69.8% | 75.8% |
+| K14 exactly 10 | 26.3% (731) | 30.5% (847) |
+
+### What this means — summary
+
+The "monotonic load decline by rank" finding is partly an **absolute-rank artifact** driven by ad-screening discrimination cost contaminating early positions. Under organic-only attribution, the gradient collapses to ns; what survives strongly is **(a)** clicked > non-clicked (K6 strengthens) and **(b)** steep early band vs plateau late band dichotomy (K9 holds at p<10⁻⁸).
+
+Andy's proposed reframe: organic rank as primary, ads as essential distractors. Headline becomes **"cognitive engagement on organic search results is two-band — early evaluation-heavy band + late satisficer plateau, with clicked positions uniformly elevated regardless of band"**. K6 + K9 carry the new headline; K3/K4/K10/K11 retire to a robustness section that shows the absolute-rank curves and explains the ad-distractor contamination.
+
+### Status / next moves
+
+- ETTAC paper deep-dive scheduled for the weekend (May 2–3, deadline May 15).
+- Notebook migrations (NB14, NB18a, NB23, NB04, NB22) **deferred** to after the deep-dive — paper framing decision drives which K-IDs are primary.
+- Approach-retreat replay-bundle rebuild also deferred until NB22 four-class taxonomy is regenerated under organic attribution.
+
+### Files
+
+- `notebooks-v2/data_loader.py` — `load_aois`, `organic_aoi_bands`, `organic_aoi_tops`
+- `scripts/compute_butterworth_lfhf.py` — `--attribution` flag
+- `scripts/compute_ripa2.py` — `--attribution` flag
+- `scripts/compare_aoi_consumers.py` — full-corpus per-fixation re-attribution audit
+- `scripts/compare_nb14_nb18_under_attributions.py` — side-by-side K-ID report (NB14 + NB18a)
+- `scripts/output/aoi-consumer-cascade/` — generated reports for the weekend deep-dive
+
+---
+
 ## 2026-04-12 — Fixation-side coordinate-space audit (symmetric to 2026-04-09)
 
 ### The bug

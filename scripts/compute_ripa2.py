@@ -39,6 +39,7 @@ from data_loader import (
     get_trial_ids, load_pupil_trial, load_fixations, load_mouse_events,
     get_trial_meta, interpolate_scroll, result_band_tops, count_results_html,
     assign_fixation_to_position, click_to_position,
+    organic_aoi_tops,
 )
 
 # ── RIPA2 parameters (Jayawardena et al. 2025) ────────────────────────────
@@ -100,8 +101,11 @@ def compute_ripa2_signal(pupil_signal):
     sg_vlf = savgol_filter(signal, VLF_WINDOW, VLF_POLYORDER, deriv=1)
     sg_lf = savgol_filter(signal, LF_WINDOW, LF_POLYORDER, deriv=1)
 
-    # RIPA2 metric: (LF_deriv · P)² − (VLF_deriv · P)²
-    ripa2 = (sg_lf * signal) ** 2 - (sg_vlf * signal) ** 2
+    # RIPA2 metric per JEMR 2025 Algorithm 1: (LF)² − (VLF)²
+    # Bug fix 2026-04-25: was `(sg * signal)² − ...` which introduced a
+    # spurious P² weighting (~10× inflation, extra trial-to-trial variance
+    # from pupil-baseline differences). Correct formula has no signal mult.
+    ripa2 = sg_lf ** 2 - sg_vlf ** 2
 
     # Clip to [0, 1.5] per published spec
     ripa2 = np.clip(ripa2, 0, 1.5)
@@ -146,7 +150,7 @@ def identify_forward_pass(fixations, scroll_ts, scroll_ys, tops, n_results):
     return forward_segments
 
 
-def process_trial(trial_id):
+def process_trial(trial_id, attribution='absolute'):
     """Process a single trial: compute RIPA2, segment by position.
 
     Returns dict with per-position RIPA2 values, or None if trial unusable.
@@ -180,10 +184,16 @@ def process_trial(trial_id):
     scroll_ts = [s[0] for s in scrolls]
     scroll_ys = [s[1] for s in scrolls]
 
-    n_results = count_results_html(trial_id)
-    if n_results is None:
-        n_results = 11
-    tops = result_band_tops(n_results, doc_h)
+    if attribution == 'organic':
+        tops = organic_aoi_tops(trial_id)
+        n_results = len(tops)
+        if n_results == 0:
+            return None
+    else:  # 'absolute' (legacy)
+        n_results = count_results_html(trial_id)
+        if n_results is None:
+            n_results = 11
+        tops = result_band_tops(n_results, doc_h)
 
     # Find click position (coordinate-safe: clicks[-1][2] is page-space).
     click_pos = click_to_position(clicks, tops, n_results)
@@ -319,10 +329,15 @@ def main():
     parser.add_argument('--trial', help='Process single trial ID')
     parser.add_argument('--output', '-o', help='Output JSON path')
     parser.add_argument('--compare', help='Path to Butterworth LF/HF JSON for comparison')
+    parser.add_argument('--attribution', choices=['absolute', 'organic'], default='absolute',
+                        help='Position attribution method. "absolute" (default) uses '
+                             'count_results_html + result_band_tops. "organic" uses '
+                             'load_aois → organic_aoi_tops (pixel-accurate, organic-only). '
+                             'See docs/methodology/organic-result-aoi-extraction.md.')
     args = parser.parse_args()
 
     if args.trial:
-        result = process_trial(args.trial)
+        result = process_trial(args.trial, attribution=args.attribution)
         if result is None:
             print(f'{args.trial}: unusable', file=sys.stderr)
             sys.exit(1)
@@ -334,14 +349,14 @@ def main():
         for i, tid in enumerate(trial_ids):
             if (i + 1) % 100 == 0:
                 print(f'  {i+1}/{len(trial_ids)}...', file=sys.stderr)
-            result = process_trial(tid)
+            result = process_trial(tid, attribution=args.attribution)
             if result is not None:
                 out[tid] = result
                 n_ok += 1
             else:
                 n_fail += 1
 
-        print(f'\nDone: {n_ok} trials processed, {n_fail} skipped', file=sys.stderr)
+        print(f'\nDone ({args.attribution}): {n_ok} trials processed, {n_fail} skipped', file=sys.stderr)
 
     # Save results
     if args.output:
