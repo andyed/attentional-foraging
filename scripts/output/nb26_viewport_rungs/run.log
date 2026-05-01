@@ -1,0 +1,96 @@
+[load] cursor-approach-features.json
+       13,419 records
+[load] viewport-trajectory-features.json
+       27,760 rows
+[load] regression-labels cache (NB22 gaze_regression)
+       13,419 labels
+[load] embeddings
+[build] full-SERP trials: 2,115
+
+-- Label distributions --
+3-grade eligible counts: {0: 3206, 1: 1783, 2: 2115}
+2-grade eligible counts: {0: 355, 1: 1783, 2: 2115}
+
+[K6  — Google baseline] MRR = 0.4924  NDCG@10 = 0.6166
+
+[run] R1_text__3grade__lgbm_binary
+       MRR = 0.2900   NDCG@10 = 0.4522
+
+[run] R1_text__3grade__lgbm_graded
+       MRR = 0.2823   NDCG@10 = 0.4459
+
+[run] R1_text__2grade__lgbm_binary
+       MRR = 0.3040   NDCG@10 = 0.4636
+
+[run] R1_text__2grade__lgbm_graded
+       MRR = 0.2968   NDCG@10 = 0.4579
+
+[run] R2a_text_M4__3grade__lgbm_binary
+       MRR = 0.7549   NDCG@10 = 0.8156
+
+[run] R2a_text_M4__3grade__lgbm_graded
+       MRR = 0.7805   NDCG@10 = 0.8351
+
+[run] R2a_text_M4__2grade__lgbm_binary
+       MRR = 0.1940   NDCG@10 = 0.3694
+
+[run] R2a_text_M4__2grade__lgbm_graded
+       MRR = 0.2075   NDCG@10 = 0.3804
+
+[run] R2b_text_VP__3grade__lgbm_binary
+       MRR = 0.2665   NDCG@10 = 0.4345
+
+[run] R2b_text_VP__3grade__lgbm_graded
+       MRR = 0.2634   NDCG@10 = 0.4320
+
+[run] R2b_text_VP__2grade__lgbm_binary
+       MRR = 0.4327   NDCG@10 = 0.5710
+
+[run] R2b_text_VP__2grade__lgbm_graded
+       MRR = 0.3987   NDCG@10 = 0.5431
+
+[run] R3_text_M4_VP__3grade__lgbm_binary
+       MRR = 0.5440   NDCG@10 = 0.6579
+
+[run] R3_text_M4_VP__3grade__lgbm_graded
+       MRR = 0.6770   NDCG@10 = 0.7588
+
+[run] R3_text_M4_VP__2grade__lgbm_binary
+       MRR = 0.2715   NDCG@10 = 0.4377
+
+[run] R3_text_M4_VP__2grade__lgbm_graded
+       MRR = 0.3136   NDCG@10 = 0.4709
+
+============================================================================
+Summary table — MRR (NDCG@10 in parens)
+============================================================================
+rung                 |           3g_bin |          3g_grad |           2g_bin |          2g_grad
+----------------------------------------------------------------------------------------------------
+R1_text              | 0.2900 (0.4522) | 0.2823 (0.4459) | 0.3040 (0.4636) | 0.2968 (0.4579)
+R2a_text_M4          | 0.7549 (0.8156) | 0.7805 (0.8351) | 0.1940 (0.3694) | 0.2075 (0.3804)
+R2b_text_VP          | 0.2665 (0.4345) | 0.2634 (0.4320) | 0.4327 (0.5710) | 0.3987 (0.5431)
+R3_text_M4_VP        | 0.5440 (0.6579) | 0.6770 (0.7588) | 0.2715 (0.4377) | 0.3136 (0.4709)
+
+-- Paired graded − binary (Wilcoxon, one-sided) --
+  R1_text__3grade                 MRR Δ = -0.0062 (p = 0.9532, 20/47)   NDCG Δ = -0.0052 (p = 0.9552)
+  R1_text__2grade                 MRR Δ = -0.0095 (p = 0.9773, 19/47)   NDCG Δ = -0.0074 (p = 0.9879)
+  R2a_text_M4__3grade             MRR Δ = +0.0233 (p = 0.0005, 31/47)   NDCG Δ = +0.0177 (p = 0.0004)
+  R2a_text_M4__2grade             MRR Δ = +0.0151 (p = 0.0811, 26/47)   NDCG Δ = +0.0122 (p = 0.0796)
+  R2b_text_VP__3grade             MRR Δ = -0.0044 (p = 0.8665, 23/47)   NDCG Δ = -0.0036 (p = 0.8901)
+  R2b_text_VP__2grade             MRR Δ = -0.0354 (p = 1.0000, 9/47)   NDCG Δ = -0.0290 (p = 1.0000)
+  R3_text_M4_VP__3grade           MRR Δ = +0.1351 (p = 0.0000, 47/47)   NDCG Δ = +0.1024 (p = 0.0000)
+  R3_text_M4_VP__2grade           MRR Δ = +0.0422 (p = 0.0000, 35/47)   NDCG Δ = +0.0332 (p = 0.0000)
+
+-- Rung 2b, Rung 3 vs Google baseline (3-grade graded) --
+  R2b_3g_graded                   MRR Δ = -0.2324 (p = 1.0000)   NDCG Δ = -0.1878 (p = 1.0000)
+  R3_3g_graded                    MRR Δ = +0.1906 (p = 0.0000)   NDCG Δ = +0.1466 (p = 0.0000)
+  R2a_2g_graded                   MRR Δ = -0.2827 (p = 1.0000)   NDCG Δ = -0.2346 (p = 1.0000)
+  R2b_2g_graded                   MRR Δ = -0.0947 (p = 1.0000)   NDCG Δ = -0.0744 (p = 1.0000)
+  R3_2g_graded                    MRR Δ = -0.1808 (p = 1.0000)   NDCG Δ = -0.1476 (p = 1.0000)
+
+-- Feature-add isolated (3-grade graded): ΔΔ vs Rung 1 or Rung 2a --
+  R2b_vs_R1__vp_add                    MRR Δ = -0.0242 (p = 0.9453)   NDCG Δ = -0.0185 (p = 0.9295)
+  R3_vs_R2a__vp_on_top_of_m4           MRR Δ = -0.0994 (p = 1.0000)   NDCG Δ = -0.0733 (p = 1.0000)
+  R3_vs_R2b__m4_on_top_of_vp           MRR Δ = +0.4230 (p = 0.0000)   NDCG Δ = +0.3344 (p = 0.0000)
+
+[out] scripts/output/nb26_viewport_rungs/summary.json
