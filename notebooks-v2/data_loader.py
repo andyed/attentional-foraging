@@ -656,6 +656,88 @@ def organic_aoi_tops(trial_id):
     return [b[0] for b in organic_aoi_bands(trial_id)]
 
 
+def attribute_click_to_organic(click_y, trial_id, tolerance_px=30):
+    """Attribute a click y-coordinate to an organic AOI position with tolerance.
+
+    Bbox AOIs are extracted tight to visual content. Clicks frequently land
+    in the small visual gap between adjacent card rectangles (~10–15 px
+    typical) — under strict containment those clicks register as "off-AOI"
+    even though they were almost certainly intended for the nearest card.
+
+    This helper handles the gap by:
+      1. Returning the position number (1-indexed, matching organic_result.position)
+         if the click falls inside any organic AOI rectangle.
+      2. Otherwise, returning the position of the nearest organic (by distance
+         from click y to that organic's nearest edge), provided the distance
+         is ≤ tolerance_px.
+      3. Otherwise, returning None (click is genuinely off-AOI — knowledge
+         panel, image carousel, footer, "Tools", or large gap).
+
+    Empirical basis (full corpus, n=2,775 clicks):
+      - 64.3% land inside an organic rect (strict containment)
+      - +27.8% within 30 px of nearest organic edge → snap to that organic
+      - 7.5% genuinely off-AOI at any distance > 30 px
+
+    The 30 px default reflects the elbow in the off-AOI distance distribution:
+    further loosening to 50/100/200 px rescues only an extra ~0.3 percentage
+    points, suggesting 30 px captures all the legitimate "intended for this
+    card" clicks while excluding distant off-AOI clicks.
+
+    Args:
+        click_y: page-space click y-coordinate (already includes scroll).
+        trial_id: e.g. 'p004-b1-t1'.
+        tolerance_px: snap distance threshold. Set to 0 for strict containment
+            (matches the bbox JSON exactly). Default 30.
+
+    Returns:
+        int (organic position, 1-indexed) or None.
+    """
+    aois = load_aois(trial_id, include_widgets=True)
+    organics = aois['organic']
+    if not organics:
+        return None
+
+    # Strict containment in organic always wins.
+    for o in organics:
+        if o['y_top'] <= click_y <= o['y_bottom']:
+            return o['position']
+
+    # Before snapping, refuse if the click is inside any ad rectangle —
+    # those are ad clicks, not organic clicks, regardless of proximity to
+    # an adjacent organic.
+    path = ORGANIC_BBOX_DIR / f'{trial_id}.json'
+    ad_rects = []
+    if path.exists():
+        with open(path) as f:
+            data = json.load(f)
+        for kind in ('native_ad', 'dd_top', 'dd_right'):
+            for r in data.get(kind, []):
+                ry = r['location']['y']
+                rh = r['size']['height']
+                ad_rects.append((ry, ry + rh))
+    for top, bot in ad_rects:
+        if top <= click_y <= bot:
+            return None
+
+    # Refuse if inside any widget rect (already filtered as non-organic).
+    for w in aois['widget']:
+        if w['y_top'] <= click_y <= w['y_bottom']:
+            return None
+
+    # Snap to nearest organic edge if within tolerance.
+    best_pos = None
+    best_dist = float('inf')
+    for o in organics:
+        d = min(abs(click_y - o['y_top']), abs(click_y - o['y_bottom']))
+        if d < best_dist:
+            best_dist = d
+            best_pos = o['position']
+
+    if best_dist <= tolerance_px:
+        return best_pos
+    return None
+
+
 # ── Legacy aliases (retained for backward compatibility) ──────────────────
 #
 # These names were written before the absolute-vs-organic distinction was

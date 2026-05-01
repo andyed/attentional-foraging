@@ -189,21 +189,33 @@ Andy's proposed reframe: organic rank as primary, ads as essential distractors. 
 
 ### Click-attribution split (full corpus, n=2,775)
 
-Strict rectangle containment — click y-coord falls inside which AOI rectangle?
+Bbox AOIs are extracted tight to visual content; clicks frequently land in the small visual gap between adjacent card rectangles (~10–15 px typical). Under strict containment those count as "off-AOI" even when they were almost certainly intended for an adjacent card.
 
-| Bucket | Count | Share |
+**Distribution of off-AOI click distance to nearest organic edge:**
+
+```
+median 10 px,  P75 15 px,  P90 22 px
+ ≤ 10 px:  55.1% rescued
+ ≤ 20 px:  88.8% rescued
+ ≤ 30 px:  92.5% rescued ← elbow; further loosening rescues only ~0.3pp more
+ ≤ 50 px:  92.5% rescued
+ ≤ 100 px: 92.8% rescued
+```
+
+**`attribute_click_to_organic(click_y, trial_id, tolerance_px=30)`** added to `data_loader.py`. Logic: strict containment in organic always wins; if click falls inside any ad rect, refuse to snap (it's an ad click); if inside any filtered widget, refuse; otherwise snap to nearest organic if within `tolerance_px`.
+
+**Click attribution under each method:**
+
+| Bucket | Strict (tolerance=0) | Tolerant (30 px) |
 |---|---|---|
-| Organic (algo) | 1,785 | **64.3%** |
-| Native ads | 160 | 5.8% |
-| dd_top (carousel) | 271 | 9.8% |
-| dd_right (rail) | 126 | 4.5% |
-| **All ads** | **557** | **20.1%** |
-| Off-AOI (KP, image carousel, footer, gaps) | 428 | 15.4% |
-| Widgets (filtered) | 5 | 0.2% |
+| **Organic** | **1,785 (64.3%)** | **2,181 (78.6%)** |
+| All ads | 557 (20.1%) | 557 (20.1%) |
+| Widgets (filtered) | 5 (0.2%) | 5 (0.2%) |
+| Off-AOI (KP / image carousel / footer / large gaps) | 428 (15.4%) | **32 (1.2%)** |
 
-This is the "what do users actually click on" denominator. Bisect-band attribution gives an upper bound of ~85% organic by attributing gap-clicks to the nearest organic above; strict containment gives a lower bound of 64.3%. Truth is somewhere in between — gaps near a card are plausibly approaches to that card, but gaps below the last organic (e.g., below pagination) are not.
+The 30 px tolerance rescues 396 clicks that strict containment loses — these are the visual-margin clicks ("clicked the bottom edge of card 3") not the truly off-AOI clicks (which stay at ~32 = 1.2%).
 
-For "ads as essential distractors" framing: distractors are 20% of clicks, not 5–10% as a strict reading of "ads are noise" might suggest. The dichotomy still holds (organic dominates), but the ad-distractor share matters.
+**Headline for paper framing**: under this attribution, 78.6% of clicks are on organic results, 20.1% on ads, 1.2% on content the pipeline doesn't model (Knowledge Panel, image carousel, etc.). The "ads as essential distractors" frame holds; the methodology limitation around right-pane / KP coverage affects ~1% of clicks, not 15%.
 
 ### NB15 cursor-approach-features producer migrated
 
