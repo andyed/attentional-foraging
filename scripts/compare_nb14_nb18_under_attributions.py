@@ -56,7 +56,11 @@ def kclaims_butterworth(data, label):
 
     pos_ranks = sorted(by_pos.keys())
     medians = {p: float(np.median(by_pos[p])) for p in pos_ranks}
-    rho_all, p_all = spearmanr(pos_ranks, [medians[p] for p in pos_ranks])
+    # K3 in published Key Claims uses N=11 positions (0–10), not all positions
+    # found in the data. Match that denominator here so the comparison
+    # column lines up with the published value.
+    pr_010 = [p for p in pos_ranks if 0 <= p <= 10]
+    rho_all, p_all = spearmanr(pr_010, [medians[p] for p in pr_010]) if len(pr_010) >= 2 else (None, None)
 
     pr_410 = [p for p in pos_ranks if 1 <= p <= 10]
     rho_410, p_410 = (None, None)
@@ -163,7 +167,7 @@ def main():
     out_lines.append("")
     out_lines.append("Three things to know walking in:")
     out_lines.append("")
-    out_lines.append("1. **The monotone-decline headline (K3 / K4 / K10 / K11) does not survive organic-rank attribution.** ρ collapses from −0.9 to −0.5 (ns) on K4; K10 drops from a perfect −1.000 to −0.800 (ns); K11 reverses sign.")
+    out_lines.append("1. **The K3 monotone-decline survives but weakens** under organic-rank attribution (positions 0–10, N=11): ρ −0.927 (p=4e-5) → −0.655 (p=0.029). K4 (1–10), K10 (steep), and K11 (plateau) lose significance; K11 sign-flips.")
     out_lines.append("2. **Two other findings *strengthen* under organic-rank.** K6 (clicked > non-clicked) goes from p=3.5e-6 to p=2.5e-7 — clicked positions carry decisively more load when ads are factored out. K9 (steep vs plateau dichotomy) still p<10⁻⁸.")
     out_lines.append("3. **The mechanism is ad-distractor pollution.** Under absolute rank, positions 0–3 are inflated by ad-screening discrimination cost (Buscher 2010); the curve looks monotone because ad-load decays as the user moves past ads, then organic-evaluation load takes over.")
     out_lines.append("")

@@ -68,18 +68,18 @@ band rank 2 → bbox rank  0: 16,475  (re-numbered down by ad/widget exclusion)
 
 ### NB14 (Butterworth LF/HF × position) under organic attribution
 
-Full table at `scripts/output/aoi-consumer-cascade/nb14_nb18_comparison.md`.
+Full table at `scripts/output/aoi-consumer-cascade/nb14_nb18_comparison.md`. **K-IDs computed with the canonical published denominator (positions 0–10, N=11)**, matching the original Key Claims block — earlier draft of this entry used a wider position range and produced misleading K3 values.
 
-| K | Old (absolute, ads pooled) | New (organic, bbox) | Verdict |
-|---|---|---|---|
-| K1 trials | 2,416 | 2,174 (−242) | sample shrinks |
-| K2 segments | 6,112 | 4,450 (−1,662) | |
-| **K3** ρ all positions | **−0.807, p<0.001** | **−0.346, p=0.21** | ⚠ ns |
-| **K4** ρ pos 1–10 | **−0.903, p<0.001** | **−0.539, p=0.11** | ⚠ ns |
-| K6 clicked > non-clicked p | 3.5e-6 | **2.5e-7** | ✓ stronger |
-| K9 steep vs plateau MW | 1.6e-23 | **8.8e-9** | ✓ holds |
-| **K10** steep ρ (pos 0–3) | **−1.000 (perfect)** | **−0.800, p=0.20** | ⚠ ns |
-| **K11** plateau ρ | −0.714 | **+0.321** | ⚠ sign flip |
+| K | Claim | Old (absolute, ads pooled) | New (organic, bbox) | Verdict |
+|---|---|---|---|---|
+| K1 | trials | 2,416 | 2,174 (−242) | sample shrinks |
+| K2 | segments | 6,112 | 4,450 (−1,662) | |
+| **K3** | ρ pos 0–10 (N=11) | **−0.927, p=4e-5** | **−0.655, p=0.029** | ✓ **survives, weaker** |
+| **K4** | ρ pos 1–10 (N=10) | **−0.903, p=3e-4** | **−0.539, p=0.108** | ⚠ ns |
+| K6 | clicked > non-clicked p | 3.5e-6 | **2.5e-7** | ✓ stronger |
+| K9 | steep vs plateau MW p | 1.6e-23 | **8.8e-9** | ✓ holds |
+| **K10** | steep ρ (pos 0–3) | **−1.000 (perfect)** | **−0.800, p=0.20** | ⚠ ns |
+| **K11** | plateau ρ (pos 4–10) | −0.714, p=0.071 | **+0.321, p=0.482** | ⚠ sign flip |
 
 ### NB18a (RIPA2 × position) under organic attribution
 
@@ -187,11 +187,56 @@ The "monotonic load decline by rank" finding is partly an **absolute-rank artifa
 
 Andy's proposed reframe: organic rank as primary, ads as essential distractors. Headline becomes **"cognitive engagement on organic search results is two-band — early evaluation-heavy band + late satisficer plateau, with clicked positions uniformly elevated regardless of band"**. K6 + K9 carry the new headline; K3/K4/K10/K11 retire to a robustness section that shows the absolute-rank curves and explains the ad-distractor contamination.
 
+### What's measured vs. what's pending
+
+Side-by-side K-ID reports complete for **6 notebooks**:
+
+| Notebook | Method | Status | Headline shift |
+|---|---|---|---|
+| NB14 Butterworth | Producer rerun + comparison | ✓ done | Monotone-decline (K3) survives but weaker; perfect-steep (K10) and plateau-direction (K11) lose significance; clicked>nonclicked (K6) and dichotomy (K9) strengthen |
+| NB18a RIPA2 | Producer rerun + comparison | ✓ done | ρ stays ns under both |
+| NB23 rank effects | Per-trial recompute | ✓ done | ρ tightens, ski jump returns at rank 8 |
+| NB22 four-class | Per-trial recompute | ✓ done | 99.4% of trials shift; 411 click reattributions |
+| NB04 fixation coverage | Per-trial recompute | ✓ done | K13 FV pos-0 budget 45% → 68% |
+| NB25 SERP composition | Counts comparison | ✓ done | Modal organic count 10 → 9 |
+
+**Pending — heavier regeneration cost:**
+
+| Notebook | Why heavier |
+|---|---|
+| NB21 click prediction | Consumes `cursor-approach-features.json`; needs NB15 producer regenerated under organic AOIs |
+| NB28 viewport bands | Same — depends on cursor-approach-features + regression_labels_cache |
+| NB24 retreat arc geometry | Same upstream dependency |
+| NB20 approach by element | Same |
+| NB15 cursor approach itself | The producer; rerunning it cascades to NB20/21/22/24/28 |
+
+These all share one upstream artifact (`AdSERP/data/cursor-approach-features.json`), so regenerating it once under organic attribution unblocks the whole tier. **Estimated cost**: 1–2 hr to migrate NB15's per-AOI loops + re-run.
+
+**Probably unaffected (per code triage, no per-position attribution code):**
+
+- NB05 LHIPA — per-trial pupillometric index
+- NB07a regressions prevalence — count-based
+- NB09 difficulty — token-based difficulty measures
+- NB13 survey phase — saccade-amplitude phase classifier
+- NB17 scroll retreat — scroll-event based, AOI-independent
+
+(These should still be spot-checked, but no expected K-ID shifts from AOI cascade.)
+
+### What this picture supports for the ETTAC weekend deep-dive
+
+Six notebooks worth of K-ID evidence + the master TL;DRs:
+
+1. **The "monotonic load decline" framing weakens under organic but doesn't fully die.** K3 (ρ over positions 0–10) survives at p=0.029 vs absolute's p=4e-5 — significant but the strength halves. K4 (positions 1–10), K10 (steep-phase perfect monotone), and K11 (plateau direction) all lose significance and K11 sign-flips. The cleaner story is **dichotomy + decision-locking**: K9 steep-vs-plateau still p<10⁻⁸, and K6 (clicked > non-clicked) strengthens to p=2.5e-7.
+2. **Top-organic dominance is sharper than reported.** Click share at rank 0: 18.8% → 44.9%. Position-0 fixation budget for FV clickers: 45% → 68%. Spurious "rank-2 peak" was ad-displacement.
+3. **Ski jump returns at rank 8 under bbox** — terminal-click effect at end-of-first-viewport, masked under absolute attribution.
+4. **AR demos cannot ship as-is.** 99.4% of trials have shifted four-class labels, 411 click reattributions. Curation captions are stale until rebuild.
+
 ### Status / next moves
 
 - ETTAC paper deep-dive scheduled for the weekend (May 2–3, deadline May 15).
-- Notebook migrations (NB14, NB18a, NB23, NB04, NB22) **deferred** to after the deep-dive — paper framing decision drives which K-IDs are primary.
-- Approach-retreat replay-bundle rebuild also deferred until NB22 four-class taxonomy is regenerated under organic attribution.
+- Notebook code migrations (NB14, NB18a, NB23, NB04, NB22 cell rewrites) **deferred** to after the deep-dive — paper framing decision drives which K-IDs are primary.
+- Approach-retreat replay-bundle rebuild also deferred until NB22 four-class taxonomy is regenerated under organic attribution AND curation captions are validated.
+- NB15 producer migration (cursor-approach-features under organic) is the unlock for NB20/21/24/28; estimated 1–2 hr next iteration.
 
 ### Files
 
