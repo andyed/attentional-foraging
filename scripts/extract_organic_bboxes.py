@@ -333,8 +333,19 @@ def extract_trial(trial_id: str) -> dict | None:
     widget_y_floor_gap: int | None = None
     if widget_y_floor_html is not None and len(candidate_organics) >= 3:
         widget_y_floor_gap = _widget_floor_from_gap(candidate_organics)
-    # Prefer the gap-derived floor (sharper, layout-aware). Fall back to
-    # the band-y backstop. None means no widget heading in HTML at all.
+    # Prefer the gap-derived floor (sharper, layout-aware) WHEN it's
+    # plausibly near the band-y position of the widget heading. The gap
+    # heuristic can fire on featured-snippet-to-organics transitions
+    # (album Knowledge Graph at top → real organics below), in which
+    # case its floor is much earlier than the HTML widget heading
+    # actually sits. Reject gap floors that are < 60% of the band-y
+    # estimate; fall back to the band-y backstop.
+    if (
+        widget_y_floor_gap is not None
+        and widget_y_floor_html is not None
+        and widget_y_floor_gap < 0.6 * widget_y_floor_html
+    ):
+        widget_y_floor_gap = None
     widget_y_floor = (
         widget_y_floor_gap if widget_y_floor_gap is not None else widget_y_floor_html
     )
