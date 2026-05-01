@@ -16,10 +16,14 @@ ORGANIC_DIR = ROOT / "AdSERP" / "data" / "organic-boundary-data"
 OUT_DIR = ROOT / "scripts" / "output" / "organic-bbox-verify"
 
 COLORS = {
-    "organic_result": (0, 200, 80),   # green
-    "native_ad":      (220, 60, 60),  # red
-    "dd_top":         (220, 130, 30), # orange
-    "dd_right":       (180, 60, 200), # purple
+    "organic_result": (0, 200, 80),    # green (parent organic)
+    "native_ad":      (220, 60, 60),   # red
+    "dd_top":         (220, 130, 30),  # orange (parent — drawn before cells so cell outlines sit on top)
+    "dd_right":       (180, 60, 200),  # purple (parent)
+    "dd_top_cell":    (255, 215, 0),   # gold (carousel sub-cell)
+    "dd_right_cell":  (255, 90, 200),  # pink (rail sub-cell)
+    "organic_cell":   (60, 220, 200),  # teal (composite-organic sub-cell)
+    "widget":         (140, 140, 140), # gray (refinement widget rejected from organics)
 }
 
 
