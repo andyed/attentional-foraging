@@ -12,7 +12,7 @@ The answer turns out to be a four-phase task model — **Orient → Survey → E
 
 [Latifzadeh, Gwizdka & Leiva's AdSERP dataset](https://github.com/kayhan-latifzadeh/AdSERP) (SIGIR 2025) made it possible: one of the richest public datasets of search behavior, with simultaneous eye tracking, mouse tracking, scrolling, and pupil dilation from 47 participants across 2,776 trials. An AI-assisted [journey.md](./docs/journey.md) validated the dataset's utility; the [findings](./docs/findings.md) have been growing since.
 
-The AdSERP signals span five orders of magnitude in time — from 7 ms pupil samples to 60-second trials. Our augmentations (reading episodes, cursor approach episodes, Butterworth LF/HF windows, LHIPA) bridge the gap between raw sensor events and trial-level cognition, making per-result and per-phase analysis possible. ([Signal timescale breakdown](assets/temporal-spectrum.png))
+The AdSERP signals span five orders of magnitude in time — from 7 ms pupil samples to 60-second trials. Our augmentations (organic-result bounding boxes, reading episodes, cursor approach episodes, Butterworth LF/HF windows, LHIPA) bridge the gap between raw sensor events and trial-level cognition, making per-result and per-phase analysis possible. ([Signal timescale breakdown](assets/temporal-spectrum.png))
 
 > **On earlier framings.** This project began from two hypotheses that did not survive empirical test: the classic "ski-jump" terminal-click uptick at scale, and a lexical-priming explanation for the declining dwell curve. Both turned out to be either coordinate-bug artifacts or under-powered at the AdSERP grain, and the forward story (task model, cursor approach-retreat, graded-relevance reframe) overtook them. Audit back stories and what survived each one are documented in [`docs/null-findings/`](./docs/null-findings/) — the project documents null results in git even when they don't make it into papers, as a research-integrity commitment.
 
@@ -130,6 +130,13 @@ Two independent trait dimensions emerged across participants: **deliberation sty
 
 [AdSERP](https://github.com/kayhan-latifzadeh/AdSERP) ([paper](https://doi.org/10.1145/3726302.3730325), [Zenodo](https://zenodo.org/records/15236546)) — Latifzadeh, Gwizdka & Leiva, SIGIR 2025. 2,776 transactional product queries, 47 participants, simultaneous eye tracking (Gazepoint GP3 HD, 150 Hz), mouse, scroll, pupil, SERP HTML snapshots, ad bounding boxes.
 
+### Augmentations contributed by this project
+
+AdSERP v1 ships ad bounding boxes but not organic-result bounding boxes, so per-rank analyses default to band estimation from h3 count and document height. This project contributes the missing AOIs:
+
+- **Organic-result bounding boxes** in pixel-accurate screenshot coordinates, plus per-cell subdivisions of the dd_top carousel and dd_right product stack. Output JSON shape mirrors the v1 ad-boundary schema for drop-in compatibility. Pipeline: `scripts/extract_organic_bboxes.py` (CV row-projection + ad-rectangle subtraction). Methodology: [docs/methodology/organic-result-aoi-extraction.md](docs/methodology/organic-result-aoi-extraction.md). Status: pipeline complete; applied to 86 of 2,776 trials as of 2026-04-30, full-corpus run pending.
+- **Reading episodes**, **cursor approach/retreat episodes**, **Butterworth LF/HF cognitive-load windows**, and **LHIPA** are documented under [Reusable components](#reusable-components).
+
 ## Figure gallery
 
 Canonical visualizations with source scripts, timestamps, and stats dumps live in [`scripts/output/figures/INDEX.md`](./scripts/output/figures/INDEX.md). Each canonical figure has a companion `*_summary.json` next to it for downstream citation.
@@ -173,6 +180,7 @@ Several pieces of this project are designed for reuse beyond AdSERP:
 
 | Component | Location | What it does |
 | --- | --- | --- |
+| **Organic-result AOI extraction** | [extract_organic_bboxes.py](./scripts/extract_organic_bboxes.py) · [methodology](./docs/methodology/organic-result-aoi-extraction.md) | CV row-projection on AdSERP screenshots reconstructs organic-result bounding boxes (and dd_top / dd_right per-cell subdivisions) absent from the v1 release. Drop-in compatible with the shipped ad-boundary JSON schema. |
 | **Shared data loader** | [data_loader.py](./notebooks-v2/data_loader.py) | Trial loading, scroll interpolation, result band estimation, SERP text extraction, fixation-to-position mapping. Eliminates per-notebook boilerplate. |
 | **LHIPA computation** | [05_lhipa.ipynb](./notebooks-v2/05_lhipa.ipynb) | Cognitive load index from pupil dilation (Duchowski et al. 2020), validated against behavioral measures. Reusable on any Gazepoint GP3 pupil stream. |
 | **Reading episode pooling** | [09_difficulty.ipynb](./notebooks-v2/09_difficulty.ipynb) | Merges consecutive fixations on the same result (connected by small eye jumps <100 px) into reading episodes. Recovers ~866 ms/trial of processing time invisible to raw fixation summation. |
