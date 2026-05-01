@@ -1,6 +1,6 @@
 # Cross-Cutting Forward/Regressive Split
 
-**Status:** planned, not started
+**Status:** superseded by [docs/methodology/forward-regressive-split.md](../methodology/forward-regressive-split.md) on 2026-04-30. Implementation shipped 2026-04-08 (commit `0771e28`, `notebooks-v2/episode_classifier.py`); this plan is retained as design history. Canonical reference is the methodology doc.
 **Owner:** Andy
 **Date:** 2026-04-08
 

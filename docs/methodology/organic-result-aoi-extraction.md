@@ -87,9 +87,9 @@ All thresholds are emitted into `_meta.params` per trial so a downstream consume
 
 ## 5. Sensitivity tested
 
-### 5.1 Visual spot-check (2026-04-08 onward)
+### 5.1 Visual spot-check tool
 
-`scripts/verify_organic_bboxes.py` renders each extracted JSON as a colored bbox overlay on the source screenshot. Three trials currently rendered for human review (`scripts/output/organic-bbox-verify/`). Used as the sanity gate before any per-result claim cites organic bboxes.
+`scripts/verify_organic_bboxes.py` renders any trial's extracted JSON as a colored bbox overlay on the source screenshot, written to `scripts/output/organic-bbox-verify/{trial}.png`. Used during development as a per-trial spot-check; not a systematic validation. Inter-rater agreement, precision/recall against a hand-labeled reference, and any claim of corpus-level validity are open work (see §6.2).
 
 ### 5.2 Self-flagging on tall cards
 
@@ -138,4 +138,4 @@ Ordered by likelihood of changing a downstream result.
 
 **Status:** current as of 2026-04-30; canonical implementation: `scripts/extract_organic_bboxes.py`. Applied to 86 trials to date; full-corpus run (n=2,776) pending.
 
-Pre-meeting context, 2026-04-30: Jacek Gwizdka flagged this work positively in the RIPA2 team meeting today, with the qualifier "if not at scale." The scale concern is the documented gap above (item §6.3, full-corpus run pending) — the pipeline is shipping; the corpus-wide application is the work that closes the loop.
+Post-meeting context, 2026-04-30: Jacek Gwizdka flagged this work positively in the RIPA2 team meeting today, with the qualifier "if not at scale." The scale concern is the documented gap above (§6.3, full-corpus run pending) — the pipeline is shipping; the corpus-wide application is the work that closes the loop.

@@ -113,6 +113,5 @@ Ordered by likelihood of changing a downstream result.
 
 History:
 
-- 2026-04-08 — design captured in `docs/plans/forward-regressive-split.md`.
-- *(date of episode_classifier.py first commit)* — implementation shipped.
+- 2026-04-08 — design captured in `docs/plans/forward-regressive-split.md`; same-day implementation shipped in commit `0771e28` (`notebooks-v2/episode_classifier.py`).
 - 2026-04-30 — methodology doc created; plan doc retired in favor of this one.

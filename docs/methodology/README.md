@@ -48,7 +48,7 @@ The plan-doc trap (a `Status: planned, not started` header surviving a year afte
 
 ## Stable identifiers
 
-Every methodology doc owns a stable ID of the form `M:<slug>`, declared in the front matter of the file. Examples: `M:forward-regressive-split`, `M:saccade-classification`, `M:lhipa-computation`. These IDs are the same shape as Key Claims (`NB18:K6`) and serve the same role: papers and notebooks cite IDs, and if prose disagrees with the methodology doc the prose is wrong.
+Every methodology doc owns a stable ID of the form `M:<slug>`, declared as a `**Stable ID:** M:<slug>` line in the file header (immediately under the title, alongside the Status line). Examples: `M:forward-regressive-split`, `M:saccade-classification`, `M:lhipa-computation`. These IDs are the same shape as Key Claims (`NB18:K6`) and serve the same role: papers and notebooks cite IDs, and if prose disagrees with the methodology doc the prose is wrong.
 
 Once assigned, IDs are never renamed. A retired methodology gets `Status: superseded by M:<other>` and the superseding doc gets a fresh ID.
 
