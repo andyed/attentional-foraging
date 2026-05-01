@@ -116,6 +116,62 @@ rank 9:              1.12%       1.48%       −1.23
 
 Under absolute rank, the spurious "ski jump" was at rank 2 (24.57%, +5.46% above rank 1) — that was the ad-displacement artifact (top-organic clicks attributed to rank 2 because ads occupied ranks 0–1). Under bbox attribution, it's at rank 8 with a +0.51% bump (52 → 64 clicks at rank 8 vs rank 7) — the canonical end-of-first-viewport terminal-click effect.
 
+### NB04 (fixation coverage / per-position budget) under organic attribution
+
+Full table at `scripts/output/aoi-consumer-cascade/nb04_comparison.md`. abs n=2,764 / org n=2,363.
+
+| K | Claim | Absolute | Organic |
+|---|---|---|---|
+| K2 | First-viewport clickers | 504 (18.2%) | 382 (16.2%) |
+| K4 | Mean share of results-above-click fixated | 98.0% | 96.9% |
+| K6 | Mean share of max-scroll-depth results fixated | 74.0% | 70.7% |
+| **K7** | FV clickers — share of first-screen results fixated | **68.5%** | **60.3%** |
+| **K8** | Scrollers — share of first-screen results fixated | **93.9%** | **90.8%** |
+
+**Per-position fixation budget shifts dramatically for FV clickers:**
+
+| Position | K-ID | Absolute | Organic |
+|---|---|---|---|
+| **0** | K13 | **45.4%** | **67.9%** |
+| **1** | K14 | **35.7%** | **28.5%** |
+| 2 | — | 22.9% | 17.2% |
+| 3 | — | 16.1% | 12.2% |
+
+K13 jumps from 45.4% to **67.9%** under bbox attribution — when first-viewport clickers click, 68% of their fixation time is on position 0 (the top organic), not 45% as previously reported. This is consistent with the rank-0 click share jump (NB23 K1: 18.8% → 44.9%): under organic attribution, the top organic is clearly the dominant attentional target.
+
+The N=504 → N=382 shift in FV clickers reflects the 411 trials in NB22 where the click was on an ad/widget — those drop out of the FV-organic-clicker cohort under bbox.
+
+### NB22 (four-class taxonomy) under organic attribution
+
+Full table at `scripts/output/aoi-consumer-cascade/nb22_comparison.md`. Generated on n=2,775 trials.
+
+**Class distribution shifts:**
+
+| Class | Absolute share | Organic share | Δ |
+|---|---|---|---|
+| clicked | 8.2% | 8.9% | +0.7 |
+| deferred | 26.2% | 27.1% | +0.9 |
+| evaluated_rejected | 15.5% | 20.1% | **+4.6** |
+| not_approached | 50.1% | 43.9% | **−6.2** |
+
+The `evaluated_rejected` class grows substantially under bbox attribution because ad-slot positions that were "not_approached" under absolute rank simply don't exist as positions under organic rank — so the visited-but-not-clicked fraction shifts up.
+
+**Per-trial averages:**
+
+| | Absolute | Organic | Note |
+|---|---|---|---|
+| Mean visited positions / trial | 6.03 | 5.32 | bbox tighter — ad/widget visits not counted |
+| Mean regressed positions / trial | 3.86 | 3.15 | |
+| % of visited that are regressed | 64.0% | 59.3% | |
+
+**Per-trial label stability:**
+
+- **99.4% of trials (2,757/2,775) have at least one shifted four-class label** when switching from absolute to organic attribution.
+- **411 trials** have `clicked` count differing — i.e., the click landed on a different bucket (organic vs ad/widget) under the two methods.
+- **2,047 trials** have `deferred` count differing — gaze regression picked up different positions because position attribution shifted.
+
+**Implication for AR replay rebuild:** nearly every curated example in `approach-retreat/site/replay/data/curation.json` may have stale labels. Re-running `build_replay_trial.py` on those trials will produce fresh AOI labels via M5; caption claims like "5 DEFERRED AOIs" need automated cross-check against the regenerated labels before re-publishing demos. The 411 click-shifts are particularly load-bearing because curation.json filters trials by class profile.
+
 ### NB25 (corpus structure) shifts
 
 | K | Old (h3) | New (bbox) |
