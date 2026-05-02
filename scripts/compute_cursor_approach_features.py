@@ -1,22 +1,28 @@
 """Compute per-result cursor approach features for every trial.
 
 Extracts the `compute_approach_features` function from NB15 into a
-standalone producer with `--attribution {absolute, organic}`. The
-absolute mode reproduces the file currently shipped at
-`AdSERP/data/cursor-approach-features.json` (legacy band estimation
-on h3 count). The organic mode writes a sibling file
-`cursor-approach-features-organic.json` using bbox-derived AOIs.
+standalone producer with `--attribution {absolute, organic, organic_hybrid}`.
+
+- absolute: legacy band estimation on h3 count (pools ads + organics).
+  Output: `AdSERP/data/cursor-approach-features.json`.
+- organic: bbox-derived AOIs, organic results only (ads excluded).
+  Output: `AdSERP/data/cursor-approach-features-organic.json`.
+- organic_hybrid: bbox organics + shipped ad rectangles in the result
+  column (dd_right excluded), sorted in display order. Adds an `etype`
+  field per record (`organic` / `dd_top` / `native_ad`).
+  Output: `AdSERP/data/cursor-approach-features-organic-hybrid.json`.
 
 Output schema (per record):
-  trial_id, position, was_clicked, n_fixations, total_dwell_ms,
-  click_pos, entry_t, exit_t,
+  trial_id, position, etype (hybrid only), was_clicked, n_fixations,
+  total_dwell_ms, click_pos, entry_t, exit_t,
   min_dist, mean_dist, final_dist, retreat_dist,
   dwell_in_proximity_ms, mean_approach_velocity, max_approach_velocity,
   direction_changes, frac_decreasing
 
 Run:
+    .venv/bin/python scripts/compute_cursor_approach_features.py --attribution organic_hybrid
     .venv/bin/python scripts/compute_cursor_approach_features.py --attribution organic
-    .venv/bin/python scripts/compute_cursor_approach_features.py --attribution absolute  # regenerate legacy
+    .venv/bin/python scripts/compute_cursor_approach_features.py --attribution absolute
 """
 from __future__ import annotations
 
@@ -44,14 +50,72 @@ from data_loader import (  # noqa: E402
     click_to_position,
     gaze_cursor_distance,
     organic_aoi_tops,
+    organic_aoi_bands,
 )
+
+
+# Mirrors compute_retreat_arcs.py — the result column is roughly x ∈ [50, 750].
+AD_DIR = DATA_DIR / "ad-boundary-data"
+RESULT_COL_X_MIN = 50
+RESULT_COL_X_MAX = 750
+
+
+def _load_ad_regions(trial_id):
+    """Load shipped ad rectangles per trial. Same loader as compute_retreat_arcs.py."""
+    path = AD_DIR / f"{trial_id}.json"
+    if not path.exists():
+        return {}
+    d = json.load(open(path))
+    out = {}
+    for etype, elements in d.items():
+        rects = []
+        for el in elements:
+            loc = el.get("location", {})
+            size = el.get("size", {})
+            rects.append((loc.get("x", 0), loc.get("y", 0),
+                          size.get("width", 0), size.get("height", 0)))
+        if rects:
+            out[etype] = rects
+    return out
+
+
+def _rect_in_result_column(rx, rw):
+    return rx < RESULT_COL_X_MAX and (rx + rw) > RESULT_COL_X_MIN
+
+
+def build_hybrid_aois(trial_id):
+    """Return parallel (tops, bottoms, etypes) lists in display order.
+
+    Combines bbox organics (etype='organic') with shipped ad rectangles in the
+    result column (etype = 'dd_top' / 'native_ad'). dd_right (right-rail) is
+    excluded. Returns empty lists if neither organics nor in-column ads exist.
+    """
+    bands = organic_aoi_bands(trial_id) or []
+    items = [(t, b, "organic") for t, b in bands]
+    ad_regions = _load_ad_regions(trial_id)
+    for etype, rects in ad_regions.items():
+        if etype == "dd_right":
+            continue
+        for rx, ry, rw, rh in rects:
+            if not _rect_in_result_column(rx, rw):
+                continue
+            items.append((ry, ry + rh, etype))
+    if not items:
+        return [], [], []
+    items.sort(key=lambda r: r[0])
+    tops = [r[0] for r in items]
+    bottoms = [r[1] for r in items]
+    etypes = [r[2] for r in items]
+    return tops, bottoms, etypes
 
 
 def compute_approach_features(trial_id, attribution="absolute"):
     """Compute per-result cursor approach features for a trial.
 
     attribution: 'absolute' uses count_results_html + result_band_tops;
-                 'organic'  uses load_aois -> organic_aoi_tops.
+                 'organic'  uses load_aois -> organic_aoi_tops;
+                 'organic_hybrid' combines bbox organics + ad rectangles
+                                   (dd_top / native_ad) in display order.
     """
     fixations = load_fixations(trial_id)
     mouse_data = load_mouse_events(trial_id)
@@ -64,11 +128,19 @@ def compute_approach_features(trial_id, attribution="absolute"):
     if not fixations or not all_events or not doc_h:
         return None
 
+    etypes = None  # set only under organic_hybrid; tagged into output records.
     if attribution == "organic":
         tops = organic_aoi_tops(trial_id)
         n_results = len(tops)
         if n_results == 0:
             return None
+    elif attribution == "organic_hybrid":
+        tops_list, _bottoms, etypes_list = build_hybrid_aois(trial_id)
+        n_results = len(tops_list)
+        if n_results == 0:
+            return None
+        tops = tops_list
+        etypes = etypes_list
     else:
         serp = extract_serp_results(trial_id)
         n_results = len(serp) if serp else 10
@@ -184,7 +256,7 @@ def compute_approach_features(trial_id, attribution="absolute"):
         entry_t = int(pos_fixations[0]["t"])
         exit_t = int(pos_fixations[-1]["t"])
 
-        records.append({
+        rec = {
             "trial_id": trial_id,
             "position": pos,
             "was_clicked": bool(was_clicked),
@@ -199,25 +271,29 @@ def compute_approach_features(trial_id, attribution="absolute"):
             "max_approach_velocity": max_approach_velocity,
             "direction_changes": direction_changes,
             "frac_decreasing": frac_decreasing,
-        })
+        }
+        if etypes is not None:
+            rec["etype"] = etypes[pos]
+        records.append(rec)
 
     return records
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--attribution", choices=["absolute", "organic"], default="organic")
+    parser.add_argument("--attribution", choices=["absolute", "organic", "organic_hybrid"], default="organic")
     parser.add_argument("--output", "-o", help="Output JSON path (default depends on attribution)")
     parser.add_argument("--trial", help="Single trial only (for testing)")
     args = parser.parse_args()
 
     if args.output:
         out_path = Path(args.output)
+    elif args.attribution == "organic_hybrid":
+        out_path = DATA_DIR / "cursor-approach-features-organic-hybrid.json"
+    elif args.attribution == "organic":
+        out_path = DATA_DIR / "cursor-approach-features-organic.json"
     else:
-        if args.attribution == "organic":
-            out_path = DATA_DIR / "cursor-approach-features-organic.json"
-        else:
-            out_path = DATA_DIR / "cursor-approach-features.json"
+        out_path = DATA_DIR / "cursor-approach-features.json"
 
     if args.trial:
         recs = compute_approach_features(args.trial, attribution=args.attribution)

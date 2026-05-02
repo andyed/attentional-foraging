@@ -280,6 +280,85 @@ fourth-class branch), not pooled with organic clicks.
 This is the next experiment to run. Estimated cost: 2–3 hours producer
 work + 1 LOSO retrain + figure regen.
 
+### §4.1 Validation results (2026-05-02)
+
+Producer migration shipped: `compute_cursor_approach_features.py
+--attribution organic_hybrid` writes `cursor-approach-features-organic-hybrid.json`
+with **19,908 records / 2,774 trials / 13.0% click rate** (vs absolute's
+13,419 / 2,339 / 16.6% and organic's 14,760 / 2,701 / 14.9%). Each record
+carries an `etype` field: `organic`, `dd_top`, or `native_ad`. Hybrid
+expands corpus coverage by another ~+15 % over organic-only because top-
+and embedded-ads were previously unmodelled positions that the classifier
+now sees.
+
+**LOSO results (`scripts/nb21_loso_retrain_hybrid.py`,
+`scripts/output/aoi-consumer-cascade/nb21_loso_hybrid.json`):**
+
+| Model | Absolute (legacy) | Organic-only | **Hybrid** | Direction |
+|---|---|---|---|---|
+| M1 (position only) | 0.613 | 0.727 | **0.667** | ↗ above absolute, ↘ below organic |
+| M2 (position + dwell) | 0.743 | 0.784 | **0.762** | between |
+| M3 (full nine-cursor + position + dwell) | 0.859 | 0.865 | **0.870** | **best of three** |
+| M4 (approach-only nine cursor) | 0.861 | 0.864 | **0.870** | **best of three** |
+| Position standardized coefficient | −0.130 | −0.248 | **−0.112** | weakest under hybrid |
+| Per-participant median M3 AUC | 0.860 | 0.872 | 0.864 | between |
+| M3 Brier (OOF) | 0.1526 | 0.1437 | **0.1422** | best of three |
+| KFold − LOSO leakage Δ | +0.002/−0.000/−0.002 | +0.001/+0.000/+0.000 | **+0.001/+0.001/+0.001** | clean across the board |
+
+**Per-etype headline (M3 OOF on hybrid):**
+
+| Etype | n | Click rate | M3 AUC on subset |
+|---|---|---|---|
+| `dd_top` (top-of-page ad) | 1,581 | **17.1%** | **0.916** |
+| `organic` | 14,657 | 14.6% | 0.868 |
+| `native_ad` (embedded ad) | 3,670 | 5.2% | 0.831 |
+
+**Three findings the hybrid run surfaces:**
+
+1. **The full-feature M3 wins under hybrid (0.870 > 0.865 > 0.859).**
+   Adding ads as first-class AOIs *improves* classifier performance.
+   The legacy absolute attribution mixed ads into the rank pool but
+   didn't expose the etype-correlated motion patterns; the hybrid
+   classifier sees both rank and surface type and benefits from the
+   structure.
+
+2. **Position is *weakest* under hybrid (−0.112), strongest under
+   organic-only (−0.248).** This confirms the cleaner-construct logic:
+   organic-only sees position most clearly because the rank label is
+   homogeneous (all organics, no surface heterogeneity); hybrid pools
+   surfaces with different click policies (dd_top click rate 17.1% vs
+   native_ad 5.2%), so the rank-as-predictor signal is diluted in
+   exactly the way absolute attribution diluted it. **Implication for
+   paper prose:** the −0.130 → −0.248 strengthening under organic-only
+   is *not* a methodology artifact — it's a finding about what kind of
+   rank predicts behavior.
+
+3. **Top-of-page ads have the highest click rate of any SERP surface
+   (17.1%).** This was invisible under absolute attribution because
+   dd_top fixations and clicks were pooled into "organic position 1."
+   The hybrid surface-aware view says: the most clicked-on slot at the
+   top of an AdSERP page is *the ad*, not the first organic. This is
+   a publishable result on its own (and is consistent with the
+   ad-pooling-inflation explanation for the legacy K-bbox-1 click-rate
+   "drop" 16.6 % → 14.9 %).
+
+**Open follow-ups from this validation:**
+- Four-class taxonomy under hybrid (needs `compute_regression_labels.py
+  --attribution organic_hybrid`; the gaze-regression detector is AOI-
+  list-aware and ports cleanly).
+- Coupling-traces under hybrid (figure regen with the hybrid features +
+  hybrid regression labels; predicts partial recovery of three-band shape).
+- Hybrid Bbox + click-policy stratified analysis: does the model that
+  knows etype outperform a model that doesn't, on held-out clicks? If
+  yes, etype is a recoverable feature — even from cursor-only WILD
+  data — via classifier inversion.
+
+**Bottom line:** the hybrid attribution validates §2 per-finding
+synthesis. Organic-only is the cleaner *position* signal. Hybrid is the
+better *predictive* signal. Absolute is dominated by both. The path
+forward is to run paper prose against organic-only as primary (per §3)
+while reporting hybrid as the deployment-aware variant.
+
 ---
 
 ## §5 Decision checkpoint
