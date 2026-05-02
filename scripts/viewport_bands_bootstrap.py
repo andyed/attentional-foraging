@@ -42,8 +42,20 @@ sys.path.insert(0, str(ROOT / 'notebooks-v2'))
 sys.path.insert(0, str(ROOT / 'scripts'))
 from viewport_time_calibration import viewport_ms_for_trial
 
-FEATURES_JSON = ROOT / 'AdSERP/data/cursor-approach-features.json'
-REG_CACHE     = ROOT / 'scripts/output/approach_threshold_sensitivity/regression_labels_cache.json'
+import argparse as _argparse
+_ap = _argparse.ArgumentParser(description=__doc__)
+_ap.add_argument('--attribution', choices=['absolute', 'organic'], default='organic',
+                 help='organic (default; bbox-attributed; post-2026-05-01 cascade)')
+_ARGS = _ap.parse_args()
+_OUT_SUFFIX = '_organic' if _ARGS.attribution == 'organic' else ''
+print(f'[attribution] {_ARGS.attribution}', flush=True)
+
+if _ARGS.attribution == 'organic':
+    FEATURES_JSON = ROOT / 'AdSERP/data/cursor-approach-features-organic.json'
+    REG_CACHE     = ROOT / 'scripts/output/approach_threshold_sensitivity/regression_labels_cache_organic.json'
+else:
+    FEATURES_JSON = ROOT / 'AdSERP/data/cursor-approach-features.json'
+    REG_CACHE     = ROOT / 'scripts/output/approach_threshold_sensitivity/regression_labels_cache.json'
 OUT_DIR       = ROOT / 'scripts/output/viewport_time_calibration'
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -410,7 +422,7 @@ def main():
         'n_bootstrap_pooled': N_BOOTSTRAP,
         'n_bootstrap_per_position': 200,
     }
-    out_path = OUT_DIR / 'bootstrap_results.json'
+    out_path = OUT_DIR / f'bootstrap_results{_OUT_SUFFIX}.json'
     with open(out_path, 'w') as f:
         json.dump(out, f, indent=2, default=float)
     print(f'\nwrote {out_path}')
