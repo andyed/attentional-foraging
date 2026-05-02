@@ -1,5 +1,31 @@
 """Update Key Claims blocks in notebooks AND emit the aggregate doc.
 
+⚠️ STALE AS OF 2026-05-01 AOI CASCADE — DO NOT RUN UNTIL UPDATED.
+
+The hardcoded ``body_md`` values in this script reflect the pre-bbox
+attribution era. The 2026-05-01 cascade introduced bbox-attributed
+K-claims (K-bbox-*) into NB04, NB14, NB15, NB18, NB22, NB23, NB24,
+NB25 — those updated K-claims were committed directly to the
+notebooks at 16830c62, 352084f7, 452554ca, b5fb9f48. Running this
+script unmodified WILL OVERWRITE those bbox-aware K-claims with the
+pre-cascade hardcoded values, regressing all AOI-cascade work on
+the branch.
+
+Two paths to make this script safe to run again:
+  1. Update each affected notebook's ``body_md = '''...'''`` block
+     in the TARGETS list below to match the in-notebook bbox-aware
+     content. Brittle (two copies must stay in sync).
+  2. Refactor ``emit_aggregate_doc`` and ``patch_notebook`` so the
+     script READS the in-notebook K-claims block as canonical and
+     just generates the aggregate from it. Cleaner.
+
+Until one of those happens, the in-notebook K-claims are the source
+of truth, and ``docs/notebook-key-claims.md`` is best-effort stale.
+
+A guard at the top of ``main()`` aborts execution unless explicitly
+overridden with ``--force-clobber``, so an accidental
+``python update_key_claims.py`` will not regress the cascade.
+
 Usage:
     python update_key_claims.py
 
@@ -1379,6 +1405,18 @@ def emit_aggregate_doc():
 
 
 def main():
+    import sys as _sys
+    if "--force-clobber" not in _sys.argv:
+        print(
+            "REFUSED: this script's hardcoded body_md values are stale as of "
+            "the 2026-05-01 AOI cascade. Running it would OVERWRITE the bbox-"
+            "aware K-claims blocks committed directly to the notebooks. See the "
+            "module docstring for context. To proceed anyway, pass "
+            "--force-clobber. To regenerate just the aggregate doc safely, "
+            "write a small reader that pulls the current K-claims cell from "
+            "each notebook and concatenates."
+        )
+        _sys.exit(2)
     print(f"Writing Key Claims blocks (verified {VERIFIED})")
     for name, body in TARGETS:
         patch_notebook(name, body)
