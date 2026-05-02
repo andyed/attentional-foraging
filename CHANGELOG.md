@@ -16,9 +16,9 @@ inside `render_deferred_vs_rejected.py` are now keyed by attribution
 (`*_organic.json` vs the unsuffixed legacy file) so the n=14,760 cache
 doesn't collide with the n=13,419 cache.
 
-### Empirical change to flag in paper prose
+### Empirical changes to flag in paper prose
 
-`coupling_traces.png` previously showed three well-separated horizontal
+**`coupling_traces.png`** previously showed three well-separated horizontal
 bands (eval-rejected ≈ 220 px / deferred ≈ 300 px / clicked ≈ 390 px).
 Under bbox attribution the three traces collapse to ~400 px with heavily
 overlapping IQR ribbons. The renderer's hardcoded legend captions
@@ -26,6 +26,30 @@ overlapping IQR ribbons. The renderer's hardcoded legend captions
 longer match the data. The motor-signature dissociation in
 `deferred_vs_rejected_four_panel.png` (cursor-gaze distance and dwell
 deltas, p < 10⁻⁹ and p < 10⁻¹⁹) survives the cascade.
+
+**`r1_dissociation.png` / `r1_2x2_dissociation.png` (ETTAC-relevant).** The
+R1 per-(trial, position) RIPA2 vs LF/HF dissociation collapses on the
+RIPA2 side under bbox attribution. Per-fixation effect on later-returned
+vs never-returned items: LF/HF d=+0.041, **p=1.1e-03** (preserved, sign
+unchanged); RIPA2 d=+0.006, **p=8.0e-01** (was p=0.0058 under absolute,
+per the JEMR-2025 implementation-bug fix). The "lingered first time"
+LF/HF claim survives. The "lingered but processed shallowly" joint
+LF/HF × RIPA2 signature does not — the RIPA2 component appears to have
+been rank-pooling artifact, not a per-fixation arousal-amplitude
+difference. **ETTAC paper §3 should drop the RIPA2 leg of the joint
+dissociation claim** unless absolute-attribution is held as the primary.
+
+**`plot_approach_retreat_hero.png`** is pinned to absolute attribution.
+The curated COMMIT exemplar (`p015-b1-t5 pos=2`) reattributes away from
+'clicked' under bbox so the "Commit (clicked)" caption stops matching.
+New exemplars need hand-picked from `cursor-approach-features-organic.json`
+before this hero figure migrates.
+
+`plots-v1/plot_ettac_*.png` regenerated under bbox-organic. Headline
+position-load result holds (full-corpus ρ = -0.655, p < 10⁻⁴; steep-phase
+ρ = -1.000 over P0–P3, p = 3.2 × 10⁻²³). Plateau ρ flipped to +0.321
+(p=0.482, n.s.) — directional, but no longer surprising at this
+attribution.
 
 Aggregate refactor: `notebooks-v2/update_key_claims.py` is now a reader
 (notebooks are canonical) instead of a template-writer; emits
