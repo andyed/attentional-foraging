@@ -22,6 +22,8 @@ Output:
 
 from __future__ import annotations
 
+import argparse
+
 import json
 import sys
 from collections import defaultdict
@@ -41,8 +43,29 @@ from data_loader import (  # noqa: E402
     absolute_rank_band_tops,
 )
 
-FEATURES_JSON = ROOT / "AdSERP/data/cursor-approach-features.json"
-REG_CACHE = ROOT / "scripts/output/approach_threshold_sensitivity/regression_labels_cache.json"
+
+def resolve_inputs(attribution: str) -> tuple[Path, Path, str]:
+    """Return (features_path, reg_cache_path, output_suffix) for the chosen attribution.
+
+    organic (default, post-2026-05-01 cascade) reads bbox-attributed inputs and
+    writes to canonical filenames so paper drafts keep working.
+
+    absolute writes to ``*_absolute.{png,pdf,_summary.json}`` so the legacy
+    comparison can sit next to canonical without overwriting.
+    """
+    if attribution == "organic":
+        return (
+            ROOT / "AdSERP/data/cursor-approach-features-organic.json",
+            ROOT / "scripts/output/approach_threshold_sensitivity/regression_labels_cache_organic.json",
+            "",
+        )
+    if attribution == "absolute":
+        return (
+            ROOT / "AdSERP/data/cursor-approach-features.json",
+            ROOT / "scripts/output/approach_threshold_sensitivity/regression_labels_cache.json",
+            "_absolute",
+        )
+    raise ValueError(f"unknown attribution: {attribution!r}")
 OUT_DIR = ROOT / "scripts/output/figures"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -315,9 +338,17 @@ def draw_panel(ax, data, cls, is_first_in_row=False):
 
 
 def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--attribution", choices=["organic", "absolute"], default="organic",
+                    help="organic (default; bbox-attributed) or absolute (legacy h3+ads pooled)")
+    args = ap.parse_args()
+    features_path, reg_cache_path, suffix = resolve_inputs(args.attribution)
+    print(f"attribution: {args.attribution}")
+    print(f"  features: {features_path.name}")
+    print(f"  reg cache: {reg_cache_path.name}")
     print("loading features + regression labels...")
-    raw = json.load(open(FEATURES_JSON))
-    regression_labels = np.array(json.load(open(REG_CACHE)), dtype=bool)
+    raw = json.load(open(features_path))
+    regression_labels = np.array(json.load(open(reg_cache_path)), dtype=bool)
     assert len(regression_labels) == len(raw)
 
     labels = classify_records(raw, regression_labels)
@@ -377,8 +408,8 @@ def main():
 
     plt.subplots_adjust(top=0.91, bottom=0.04, left=0.08, right=0.98)
 
-    out_png = OUT_DIR / "cursor_gaze_array.png"
-    out_pdf = OUT_DIR / "cursor_gaze_array.pdf"
+    out_png = OUT_DIR / f"cursor_gaze_array{suffix}.png"
+    out_pdf = OUT_DIR / f"cursor_gaze_array{suffix}.pdf"
     fig.savefig(out_png, dpi=200, facecolor="white")
     fig.savefig(out_pdf, facecolor="white")
     plt.close(fig)

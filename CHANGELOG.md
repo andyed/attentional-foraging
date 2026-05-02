@@ -1,5 +1,38 @@
 # Changelog
 
+## 2026-05-02 — Render pipeline migrated to `--attribution organic` default
+
+`scripts/render_*.py` (the canonical paper-figure producers) now accept
+`--attribution {organic,absolute}` and default to organic. Bbox-attributed
+inputs (`cursor-approach-features-organic.json` +
+`regression_labels_cache_organic.json`) flow through to
+`class_distributions.png`, `coupling_traces.png`,
+`cursor_gaze_array.png`, `cursor_gaze_timeseries.png`,
+`deferred_vs_rejected_*.png`, `gaze_around_cursor.png`,
+`gaze_density_class.png`, `class_distributions_wild_mode.png`.
+
+The `per_record_coupling.json` and `per_record_trajectory.json` caches
+inside `render_deferred_vs_rejected.py` are now keyed by attribution
+(`*_organic.json` vs the unsuffixed legacy file) so the n=14,760 cache
+doesn't collide with the n=13,419 cache.
+
+### Empirical change to flag in paper prose
+
+`coupling_traces.png` previously showed three well-separated horizontal
+bands (eval-rejected ≈ 220 px / deferred ≈ 300 px / clicked ≈ 390 px).
+Under bbox attribution the three traces collapse to ~400 px with heavily
+overlapping IQR ribbons. The renderer's hardcoded legend captions
+("EVAL-REJECTED tracks gaze closely") describe the legacy shape and no
+longer match the data. The motor-signature dissociation in
+`deferred_vs_rejected_four_panel.png` (cursor-gaze distance and dwell
+deltas, p < 10⁻⁹ and p < 10⁻¹⁹) survives the cascade.
+
+Aggregate refactor: `notebooks-v2/update_key_claims.py` is now a reader
+(notebooks are canonical) instead of a template-writer; emits
+`docs/notebook-key-claims.md` directly from each notebook's K-claims
+cell. Eliminates the two-copy sync problem behind the 2026-05-01
+`--force-clobber` guard.
+
 ## 2026-05-01 — AOI consumer cascade (branch `feat/aoi-pipeline-v2`)
 
 ### What shipped
