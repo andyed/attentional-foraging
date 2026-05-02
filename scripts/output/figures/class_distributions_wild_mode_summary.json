@@ -1,0 +1,168 @@
+{
+  "figure": "class_distributions_wild_mode.png",
+  "script": "scripts/render_class_distributions_wild_mode.py",
+  "generated": "2026-05-02T14:11:36.604193+00:00",
+  "regime": "WILD-mode (M5 predicted-deferred, cursor-only)",
+  "m5_youden_j_threshold": 0.5300838175508013,
+  "m5_lab_jaccard": 0.11044876841750084,
+  "classification_rule": "Same as scripts/render_class_distributions.py except deferred / eval-rejected split uses M5 LOSO predicted-deferred (cursor-only) in place of NB22 gaze_regression_label. Threshold = Youden-J on the M5 ROC curve.",
+  "n_trials": 2404,
+  "class_counts_wild_mode": {
+    "evaluated-rejected": 944,
+    "deferred": 1126,
+    "clicked": 2205
+  },
+  "panels": {
+    "a_per_trial_histogram": {
+      "description": "Fraction of trials with N WILD-mode episodes of each class.",
+      "bins": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5+"
+      ],
+      "per_class": {
+        "evaluated-rejected": [
+          0.7433444259567388,
+          0.17304492512479203,
+          0.05490848585690516,
+          0.015806988352745424,
+          0.0074875207986688855,
+          0.005407653910149751
+        ],
+        "deferred": [
+          0.6813643926788685,
+          0.21173044925124793,
+          0.07820299500831947,
+          0.02038269550748752,
+          0.004575707154742097,
+          0.0037437603993344427
+        ],
+        "clicked": [
+          0.08277870216306156,
+          0.9172212978369384,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "b_rank_distribution": {
+      "description": "P(class | position) for positions 1..10, WILD-mode.",
+      "per_position_total": [
+        2658.0,
+        2360.0,
+        1985.0,
+        1706.0,
+        1457.0,
+        1233.0,
+        1089.0,
+        936.0,
+        748.0,
+        401.0
+      ],
+      "per_class": {
+        "evaluated-rejected": [
+          0.06583897667419113,
+          0.06186440677966102,
+          0.04584382871536524,
+          0.06037514654161782,
+          0.07069320521619767,
+          0.06326034063260341,
+          0.0642791551882461,
+          0.0641025641025641,
+          0.08021390374331551,
+          0.08977556109725686
+        ],
+        "deferred": [
+          0.11324303987960872,
+          0.14745762711864407,
+          0.10831234256926953,
+          0.06799531066822978,
+          0.04598490048043926,
+          0.030819140308191405,
+          0.01928374655647383,
+          0.011752136752136752,
+          0.008021390374331552,
+          0.007481296758104738
+        ],
+        "clicked": [
+          0.39541008276899925,
+          0.17372881355932204,
+          0.11687657430730479,
+          0.08089097303634232,
+          0.06932052161976665,
+          0.05677210056772101,
+          0.049586776859504134,
+          0.0405982905982906,
+          0.07620320855614973,
+          0.08229426433915212
+        ]
+      }
+    },
+    "d_cooccurrence": {
+      "description": "Per-trial WILD-mode presence patterns.",
+      "patterns": {
+        "000": {
+          "has_clicked": false,
+          "has_deferred": false,
+          "has_eval_rejected": false,
+          "n_trials": 0,
+          "fraction": 0.0
+        },
+        "100": {
+          "has_clicked": true,
+          "has_deferred": false,
+          "has_eval_rejected": false,
+          "n_trials": 1248,
+          "fraction": 0.519134775374376
+        },
+        "010": {
+          "has_clicked": false,
+          "has_deferred": true,
+          "has_eval_rejected": false,
+          "n_trials": 87,
+          "fraction": 0.03618968386023295
+        },
+        "001": {
+          "has_clicked": false,
+          "has_deferred": false,
+          "has_eval_rejected": true,
+          "n_trials": 84,
+          "fraction": 0.03494176372712146
+        },
+        "110": {
+          "has_clicked": true,
+          "has_deferred": true,
+          "has_eval_rejected": false,
+          "n_trials": 452,
+          "fraction": 0.18801996672212978
+        },
+        "101": {
+          "has_clicked": true,
+          "has_deferred": false,
+          "has_eval_rejected": true,
+          "n_trials": 306,
+          "fraction": 0.12728785357737105
+        },
+        "011": {
+          "has_clicked": false,
+          "has_deferred": true,
+          "has_eval_rejected": true,
+          "n_trials": 28,
+          "fraction": 0.011647254575707155
+        },
+        "111": {
+          "has_clicked": true,
+          "has_deferred": true,
+          "has_eval_rejected": true,
+          "n_trials": 199,
+          "fraction": 0.08277870216306156
+        }
+      }
+    }
+  }
+}

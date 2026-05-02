@@ -21,6 +21,8 @@ Outputs:
 
 from __future__ import annotations
 
+import argparse
+
 import json
 import sys
 from collections import defaultdict
@@ -37,10 +39,33 @@ sys.path.insert(0, str(Path("/Users/andyed/Documents/dev/attentional-foraging/no
 from data_loader import load_fixations, load_mouse_events
 
 ROOT = Path("/Users/andyed/Documents/dev/attentional-foraging")
-FEATURES = ROOT / "AdSERP/data/cursor-approach-features.json"
-REG_CACHE = ROOT / "scripts/output/approach_threshold_sensitivity/regression_labels_cache.json"
-COUPLING_CACHE = ROOT / "scripts/output/figures/per_record_coupling.json"
-TRAJECTORY_CACHE = ROOT / "scripts/output/figures/per_record_trajectory.json"
+
+def resolve_inputs(attribution: str) -> tuple[Path, Path, str]:
+    """Return (features_path, reg_cache_path, output_suffix) for the chosen attribution.
+
+    organic (default, post-2026-05-01 cascade) reads bbox-attributed inputs and
+    writes to canonical filenames so paper drafts keep working.
+
+    absolute writes to ``*_absolute.{png,pdf,_summary.json}`` so the legacy
+    comparison can sit next to canonical without overwriting.
+    """
+    if attribution == "organic":
+        return (
+            ROOT / "AdSERP/data/cursor-approach-features-organic.json",
+            ROOT / "scripts/output/approach_threshold_sensitivity/regression_labels_cache_organic.json",
+            "",
+        )
+    if attribution == "absolute":
+        return (
+            ROOT / "AdSERP/data/cursor-approach-features.json",
+            ROOT / "scripts/output/approach_threshold_sensitivity/regression_labels_cache.json",
+            "_absolute",
+        )
+    raise ValueError(f"unknown attribution: {attribution!r}")
+COUPLING_CACHE_ORGANIC = ROOT / "scripts/output/figures/per_record_coupling_organic.json"
+COUPLING_CACHE_ABSOLUTE = ROOT / "scripts/output/figures/per_record_coupling.json"
+TRAJECTORY_CACHE_ORGANIC = ROOT / "scripts/output/figures/per_record_trajectory_organic.json"
+TRAJECTORY_CACHE_ABSOLUTE = ROOT / "scripts/output/figures/per_record_trajectory.json"
 OUT = ROOT / "scripts/output/figures"
 OUT.mkdir(parents=True, exist_ok=True)
 
@@ -106,19 +131,21 @@ CLASS_COLORS = {
 CLASS_ORDER = ["not-approached", "clicked", "deferred", "evaluated-rejected"]
 
 
-def compute_per_record_coupling():
+def compute_per_record_coupling(attribution: str, features_path: Path):
     """Compute per-episode median cursor-gaze Euclidean distance per record.
 
-    Matches followup_peter_leif.py. Saves result to COUPLING_CACHE so
-    downstream figures can skip the ~3 min loop.
+    Matches followup_peter_leif.py. Cache is keyed by attribution so the
+    bbox-attributed (n=14,760) cache doesn't collide with the legacy
+    absolute (n=13,419) cache.
     """
-    if COUPLING_CACHE.exists():
-        print(f"loading cached coupling distances from {COUPLING_CACHE}")
-        cached = json.load(open(COUPLING_CACHE))
+    cache = COUPLING_CACHE_ORGANIC if attribution == "organic" else COUPLING_CACHE_ABSOLUTE
+    if cache.exists():
+        print(f"loading cached coupling distances from {cache}")
+        cached = json.load(open(cache))
         return np.array(cached, dtype=float)
 
-    print("computing per-record coupling (expensive, ~3 min)...")
-    raw = json.load(open(FEATURES))
+    print(f"computing per-record coupling for {attribution} (expensive, ~3 min)...")
+    raw = json.load(open(features_path))
     n = len(raw)
 
     records_by_trial = defaultdict(list)
@@ -166,26 +193,27 @@ def compute_per_record_coupling():
             if dists:
                 coupling[idx] = float(np.median(dists))
 
-    COUPLING_CACHE.parent.mkdir(parents=True, exist_ok=True)
-    json.dump(coupling.tolist(), open(COUPLING_CACHE, "w"))
+    cache.parent.mkdir(parents=True, exist_ok=True)
+    json.dump(coupling.tolist(), open(cache, "w"))
     return coupling
 
 
-def compute_per_record_trajectory(n_bins=10, sample_cap=400):
+def compute_per_record_trajectory(attribution: str, features_path: Path, n_bins=10, sample_cap=400):
     """Compute per-episode cursor-gaze distance as a function of normalized
     time, binned into `n_bins` uniform windows from 0 to 1.
 
-    Returns shape (n_records, n_bins) with NaN where missing. Sampling
-    cap limits the per-class records rendered in Figure 2 so the plot
-    doesn't take an hour.
+    Returns shape (n_records, n_bins) with NaN where missing. Cache is
+    keyed by attribution so the bbox-attributed (n=14,760) cache doesn't
+    collide with the legacy absolute (n=13,419) cache.
     """
-    if TRAJECTORY_CACHE.exists():
-        print(f"loading cached trajectories from {TRAJECTORY_CACHE}")
-        cached = json.load(open(TRAJECTORY_CACHE))
+    cache = TRAJECTORY_CACHE_ORGANIC if attribution == "organic" else TRAJECTORY_CACHE_ABSOLUTE
+    if cache.exists():
+        print(f"loading cached trajectories from {cache}")
+        cached = json.load(open(cache))
         return np.array(cached, dtype=float)
 
-    print(f"computing per-record trajectories binned into {n_bins} bins (expensive)...")
-    raw = json.load(open(FEATURES))
+    print(f"computing per-record trajectories for {attribution} binned into {n_bins} bins (expensive)...")
+    raw = json.load(open(features_path))
     n = len(raw)
 
     records_by_trial = defaultdict(list)
@@ -241,8 +269,8 @@ def compute_per_record_trajectory(n_bins=10, sample_cap=400):
                 if bin_dists:
                     traj[idx, b] = float(np.median(bin_dists))
 
-    TRAJECTORY_CACHE.parent.mkdir(parents=True, exist_ok=True)
-    json.dump(traj.tolist(), open(TRAJECTORY_CACHE, "w"))
+    cache.parent.mkdir(parents=True, exist_ok=True)
+    json.dump(traj.tolist(), open(cache, "w"))
     return traj
 
 
@@ -260,7 +288,7 @@ def classify_records(raw, regression_labels):
     return labels
 
 
-def figure_one_four_panel(raw, labels, coupling_dist):
+def figure_one_four_panel(raw, labels, coupling_dist, suffix=""):
     """Four-panel violin plot of the motor-signature metrics by class."""
     n = len(raw)
     retreat = np.array([r["retreat_dist"] for r in raw], dtype=float)
@@ -379,8 +407,8 @@ def figure_one_four_panel(raw, labels, coupling_dist):
         ax.set_axisbelow(True)
 
     plt.tight_layout(rect=[0, 0, 1, 0.97])
-    out_png = OUT / "deferred_vs_rejected_four_panel.png"
-    out_pdf = OUT / "deferred_vs_rejected_four_panel.pdf"
+    out_png = OUT / f"deferred_vs_rejected_four_panel{suffix}.png"
+    out_pdf = OUT / f"deferred_vs_rejected_four_panel{suffix}.pdf"
     fig.savefig(out_png, dpi=200, facecolor="white")
     fig.savefig(out_pdf, facecolor="white")
     plt.close(fig)
@@ -389,7 +417,7 @@ def figure_one_four_panel(raw, labels, coupling_dist):
     return p_vals
 
 
-def figure_two_trajectory(labels, trajectories, n_bins=10):
+def figure_two_trajectory(labels, trajectories, n_bins=10, suffix=""):
     """Median cursor-gaze distance trajectory over normalized episode time."""
     fig, ax = plt.subplots(figsize=(12, 7))
 
@@ -430,8 +458,8 @@ def figure_two_trajectory(labels, trajectories, n_bins=10):
     ax.set_axisbelow(True)
 
     plt.tight_layout()
-    out_png = OUT / "deferred_vs_rejected_trajectory.png"
-    out_pdf = OUT / "deferred_vs_rejected_trajectory.pdf"
+    out_png = OUT / f"deferred_vs_rejected_trajectory{suffix}.png"
+    out_pdf = OUT / f"deferred_vs_rejected_trajectory{suffix}.pdf"
     fig.savefig(out_png, dpi=200, facecolor="white")
     fig.savefig(out_pdf, facecolor="white")
     plt.close(fig)
@@ -440,27 +468,35 @@ def figure_two_trajectory(labels, trajectories, n_bins=10):
 
 
 def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--attribution", choices=["organic", "absolute"], default="organic",
+                    help="organic (default; bbox-attributed) or absolute (legacy h3+ads pooled)")
+    args = ap.parse_args()
+    features_path, reg_cache_path, suffix = resolve_inputs(args.attribution)
+    print(f"attribution: {args.attribution}")
+    print(f"  features: {features_path.name}")
+    print(f"  reg cache: {reg_cache_path.name}")
     print("loading features and regression labels...")
-    raw = json.load(open(FEATURES))
-    regression_labels = np.array(json.load(open(REG_CACHE)), dtype=bool)
+    raw = json.load(open(features_path))
+    regression_labels = np.array(json.load(open(reg_cache_path)), dtype=bool)
     assert len(regression_labels) == len(raw)
 
     labels = classify_records(raw, regression_labels)
     from collections import Counter
     print(f"class sizes: {dict(Counter(labels))}")
 
-    coupling = compute_per_record_coupling()
+    coupling = compute_per_record_coupling(args.attribution, features_path)
     print(f"coupling computed / loaded: {int(np.isfinite(coupling).sum())} / {len(coupling)} records")
 
     print("\nrendering Figure 1 — four-panel metric dissociation")
-    p_vals = figure_one_four_panel(raw, labels, coupling)
+    p_vals = figure_one_four_panel(raw, labels, coupling, suffix=suffix)
     for k, p in p_vals.items():
         print(f"  {k} deferred-vs-rej p = {p:.2e}")
 
     print("\nrendering Figure 2 — trajectory over normalized episode time")
-    trajectories = compute_per_record_trajectory(n_bins=10)
+    trajectories = compute_per_record_trajectory(args.attribution, features_path, n_bins=10)
     print(f"trajectories: {trajectories.shape}, valid rows: {int(np.isfinite(trajectories).any(axis=1).sum())}")
-    figure_two_trajectory(labels, trajectories, n_bins=10)
+    figure_two_trajectory(labels, trajectories, n_bins=10, suffix=suffix)
 
     print("\nDone.")
 

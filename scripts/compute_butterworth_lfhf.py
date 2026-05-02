@@ -35,6 +35,7 @@ from data_loader import (
     get_trial_ids, load_pupil_trial, load_fixations, load_mouse_events,
     get_trial_meta, interpolate_scroll, result_band_tops, count_results_html,
     assign_fixation_to_position, click_to_position,
+    organic_aoi_tops,
 )
 
 # ── Butterworth filter parameters (Duchowski 2026) ───────────────────────
@@ -102,7 +103,7 @@ def identify_forward_pass(fixations, scroll_ts, scroll_ys, tops, n_results):
     return forward_segments
 
 
-def process_trial(trial_id, lf_sos, hf_sos):
+def process_trial(trial_id, lf_sos, hf_sos, attribution='absolute'):
     """Process a single trial: filter stream, segment by position, compute LF/HF.
 
     Returns dict with per-position LF/HF ratios, or None if trial unusable.
@@ -134,10 +135,16 @@ def process_trial(trial_id, lf_sos, hf_sos):
     scroll_ts = [s[0] for s in scrolls]
     scroll_ys = [s[1] for s in scrolls]
 
-    n_results = count_results_html(trial_id)
-    if n_results is None:
-        n_results = 11
-    tops = result_band_tops(n_results, doc_h)
+    if attribution == 'organic':
+        tops = organic_aoi_tops(trial_id)
+        n_results = len(tops)
+        if n_results == 0:
+            return None
+    else:  # 'absolute' (legacy)
+        n_results = count_results_html(trial_id)
+        if n_results is None:
+            n_results = 11
+        tops = result_band_tops(n_results, doc_h)
 
     # Find click position (coordinate-safe: clicks[-1][2] is page-space).
     click_pos = click_to_position(clicks, tops, n_results)
@@ -189,12 +196,17 @@ def main():
     parser = argparse.ArgumentParser(description='Compute per-position Butterworth LF/HF ratio')
     parser.add_argument('--trial', help='Process single trial ID')
     parser.add_argument('--output', '-o', help='Output JSON path')
+    parser.add_argument('--attribution', choices=['absolute', 'organic'], default='absolute',
+                        help='Position attribution method. "absolute" (default) uses '
+                             'count_results_html + result_band_tops (legacy, ads-pooled). '
+                             '"organic" uses load_aois → organic_aoi_tops (pixel-accurate, '
+                             'organic-only). See docs/methodology/organic-result-aoi-extraction.md.')
     args = parser.parse_args()
 
     lf_sos, hf_sos = design_filters()
 
     if args.trial:
-        result = process_trial(args.trial, lf_sos, hf_sos)
+        result = process_trial(args.trial, lf_sos, hf_sos, attribution=args.attribution)
         if result is None:
             print(f'{args.trial}: unusable', file=sys.stderr)
             sys.exit(1)
@@ -206,14 +218,14 @@ def main():
         for i, tid in enumerate(trial_ids):
             if (i + 1) % 100 == 0:
                 print(f'  {i+1}/{len(trial_ids)}...', file=sys.stderr)
-            result = process_trial(tid, lf_sos, hf_sos)
+            result = process_trial(tid, lf_sos, hf_sos, attribution=args.attribution)
             if result is not None:
                 out[tid] = result
                 n_ok += 1
             else:
                 n_fail += 1
 
-        print(f'\nDone: {n_ok} trials processed, {n_fail} skipped', file=sys.stderr)
+        print(f'\nDone ({args.attribution}): {n_ok} trials processed, {n_fail} skipped', file=sys.stderr)
 
     if args.output:
         output_path = Path(args.output)

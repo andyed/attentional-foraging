@@ -92,6 +92,7 @@ METADATA_DIR = DATA_DIR / 'trial-metadata'
 SERP_DIR = DATA_DIR / 'serps'
 AD_DIR = DATA_DIR / 'ad-boundary-data'
 PUPIL_DIR = DATA_DIR / 'pupil-data'
+ORGANIC_BBOX_DIR = DATA_DIR / 'organic-boundary-data'
 
 # Legacy aliases — older notebooks reference FIX_DIR directly
 FIX_DIR = FIXATION_DIR
@@ -519,6 +520,222 @@ def organic_rank_band_tops(trial_id, doc_height=None):
     return [abs_tops[abs_rank]
             for abs_rank in range(n_abs)
             if mapping.get(abs_rank) is not None]
+
+
+# ── Pixel-accurate organic AOIs (from extract_organic_bboxes.py) ───────────
+#
+# Methodology spec: docs/methodology/organic-result-aoi-extraction.md
+# These functions consume the bbox JSONs written by
+# scripts/extract_organic_bboxes.py. They are the preferred path for
+# per-result fixation/cursor attribution; the band-estimation functions
+# below remain for backward compatibility and graceful fallback when no
+# bbox JSON exists for a trial.
+
+def load_aois(trial_id, include_widgets=False, include_cells=False):
+    """Load pixel-accurate AOIs from the organic-bbox enrichment.
+
+    Args:
+        trial_id: e.g. 'p004-b1-t1'.
+        include_widgets: if True, return refinement-widget AOIs alongside
+            organics. Default False — most analyses aggregate organics
+            only and including widgets silently changes per-rank
+            denominators. Set True for widget-visit analyses.
+        include_cells: if True, return composite-organic sub-cells
+            (local-pack listings, multi-row PAA expansions). Default
+            False — cells are a second-column variable, not a rank
+            overload; opt in only when sub-listing granularity is needed.
+
+    Returns:
+        dict with keys:
+            'organic':      list of {'position', 'y_top', 'y_bottom',
+                              'x_top', 'x_bottom'} dicts in rank order
+                              (position is 1-indexed from the JSON).
+            'widget':       same shape; empty unless include_widgets=True.
+            'organic_cell': same shape plus 'parent_position'; empty
+                              unless include_cells=True.
+            'meta':         trial-level metadata from extract_trial.
+            'source':       'bbox' if JSON present; 'band_estimate' if
+                              fallback synthesized from result_bands().
+
+    Falls back to band estimation if the bbox JSON is missing for the
+    trial, so callers get a uniform interface either way. Inspect the
+    'source' field to tell which they got.
+    """
+    path = ORGANIC_BBOX_DIR / f'{trial_id}.json'
+    if path.exists():
+        with open(path) as f:
+            data = json.load(f)
+        organic = [
+            {
+                'position': r['position'],
+                'y_top': r['location']['y'],
+                'y_bottom': r['location']['y'] + r['size']['height'],
+                'x_top': r['location']['x'],
+                'x_bottom': r['location']['x'] + r['size']['width'],
+            }
+            for r in data.get('organic_result', [])
+        ]
+        widgets = []
+        if include_widgets:
+            widgets = [
+                {
+                    'position': w['position'],
+                    'y_top': w['location']['y'],
+                    'y_bottom': w['location']['y'] + w['size']['height'],
+                    'x_top': w['location']['x'],
+                    'x_bottom': w['location']['x'] + w['size']['width'],
+                }
+                for w in data.get('widget', [])
+            ]
+        cells = []
+        if include_cells:
+            cells = [
+                {
+                    'position': c['position'],
+                    'parent_position': c.get('parent_position'),
+                    'y_top': c['location']['y'],
+                    'y_bottom': c['location']['y'] + c['size']['height'],
+                    'x_top': c['location']['x'],
+                    'x_bottom': c['location']['x'] + c['size']['width'],
+                }
+                for c in data.get('organic_cell', [])
+            ]
+        return {
+            'organic': organic,
+            'widget': widgets,
+            'organic_cell': cells,
+            'meta': data.get('_meta', {}),
+            'source': 'bbox',
+        }
+
+    # Fallback: synthesize organic AOIs from band estimation. Uses
+    # count_organic_ranks() for the denominator (excludes shipped ads
+    # but cannot exclude widget-heading h3s — see methodology §6.2).
+    meta = get_trial_meta(trial_id)
+    doc_h = meta[0] if meta and meta[0] else 2642
+    n_org = count_organic_ranks(trial_id, doc_h) or 0
+    if n_org == 0:
+        return {'organic': [], 'widget': [], 'organic_cell': [],
+                'meta': {}, 'source': 'band_estimate'}
+    bands = result_bands(n_org, doc_h)
+    organic = [
+        {
+            'position': i + 1,
+            'y_top': int(top), 'y_bottom': int(bot),
+            'x_top': 162, 'x_bottom': 748,  # main-column geometry from extract_organic_bboxes
+        }
+        for i, (top, bot) in enumerate(bands)
+    ]
+    return {'organic': organic, 'widget': [], 'organic_cell': [],
+            'meta': {}, 'source': 'band_estimate'}
+
+
+def organic_aoi_bands(trial_id):
+    """Pixel-accurate (y_top, y_bottom) bands for each organic on this trial.
+
+    Drop-in replacement for `result_bands(n, doc_h)` callers. Differences:
+      - Uses extracted bboxes when available (pixel-accurate; respects
+        actual rendered card heights and inter-card gaps).
+      - Falls back to band estimation when bbox JSON missing.
+      - Number of bands is determined by the trial's actual organic
+        count, not passed in — caller no longer needs to guess.
+
+    Returns list of (y_top, y_bottom) integer tuples in rank order.
+    """
+    aois = load_aois(trial_id)
+    return [(a['y_top'], a['y_bottom']) for a in aois['organic']]
+
+
+def organic_aoi_tops(trial_id):
+    """Convenience: just the y-tops of `organic_aoi_bands(trial_id)`.
+
+    Drop-in replacement for `result_band_tops(n, doc_h)` callers passing
+    an organic count. Use with `assign_fixation_to_position(page_y, tops, len(tops))`
+    to attribute a fixation to its organic-rank slot.
+    """
+    return [b[0] for b in organic_aoi_bands(trial_id)]
+
+
+def attribute_click_to_organic(click_y, trial_id, tolerance_px=30):
+    """Attribute a click y-coordinate to an organic AOI position with tolerance.
+
+    Bbox AOIs are extracted tight to visual content. Clicks frequently land
+    in the small visual gap between adjacent card rectangles (~10–15 px
+    typical) — under strict containment those clicks register as "off-AOI"
+    even though they were almost certainly intended for the nearest card.
+
+    This helper handles the gap by:
+      1. Returning the position number (1-indexed, matching organic_result.position)
+         if the click falls inside any organic AOI rectangle.
+      2. Otherwise, returning the position of the nearest organic (by distance
+         from click y to that organic's nearest edge), provided the distance
+         is ≤ tolerance_px.
+      3. Otherwise, returning None (click is genuinely off-AOI — knowledge
+         panel, image carousel, footer, "Tools", or large gap).
+
+    Empirical basis (full corpus, n=2,775 clicks):
+      - 64.3% land inside an organic rect (strict containment)
+      - +27.8% within 30 px of nearest organic edge → snap to that organic
+      - 7.5% genuinely off-AOI at any distance > 30 px
+
+    The 30 px default reflects the elbow in the off-AOI distance distribution:
+    further loosening to 50/100/200 px rescues only an extra ~0.3 percentage
+    points, suggesting 30 px captures all the legitimate "intended for this
+    card" clicks while excluding distant off-AOI clicks.
+
+    Args:
+        click_y: page-space click y-coordinate (already includes scroll).
+        trial_id: e.g. 'p004-b1-t1'.
+        tolerance_px: snap distance threshold. Set to 0 for strict containment
+            (matches the bbox JSON exactly). Default 30.
+
+    Returns:
+        int (organic position, 1-indexed) or None.
+    """
+    aois = load_aois(trial_id, include_widgets=True)
+    organics = aois['organic']
+    if not organics:
+        return None
+
+    # Strict containment in organic always wins.
+    for o in organics:
+        if o['y_top'] <= click_y <= o['y_bottom']:
+            return o['position']
+
+    # Before snapping, refuse if the click is inside any ad rectangle —
+    # those are ad clicks, not organic clicks, regardless of proximity to
+    # an adjacent organic.
+    path = ORGANIC_BBOX_DIR / f'{trial_id}.json'
+    ad_rects = []
+    if path.exists():
+        with open(path) as f:
+            data = json.load(f)
+        for kind in ('native_ad', 'dd_top', 'dd_right'):
+            for r in data.get(kind, []):
+                ry = r['location']['y']
+                rh = r['size']['height']
+                ad_rects.append((ry, ry + rh))
+    for top, bot in ad_rects:
+        if top <= click_y <= bot:
+            return None
+
+    # Refuse if inside any widget rect (already filtered as non-organic).
+    for w in aois['widget']:
+        if w['y_top'] <= click_y <= w['y_bottom']:
+            return None
+
+    # Snap to nearest organic edge if within tolerance.
+    best_pos = None
+    best_dist = float('inf')
+    for o in organics:
+        d = min(abs(click_y - o['y_top']), abs(click_y - o['y_bottom']))
+        if d < best_dist:
+            best_dist = d
+            best_pos = o['position']
+
+    if best_dist <= tolerance_px:
+        return best_pos
+    return None
 
 
 # ── Legacy aliases (retained for backward compatibility) ──────────────────

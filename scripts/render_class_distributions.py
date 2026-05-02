@@ -25,6 +25,7 @@ Output:
 
 from __future__ import annotations
 
+import argparse
 import datetime
 import json
 import sys
@@ -38,10 +39,32 @@ import numpy as np
 ROOT = Path("/Users/andyed/Documents/dev/attentional-foraging")
 sys.path.insert(0, str(ROOT / "notebooks-v2"))
 
-FEATURES_JSON = ROOT / "AdSERP/data/cursor-approach-features.json"
-REG_CACHE = ROOT / "scripts/output/approach_threshold_sensitivity/regression_labels_cache.json"
 OUT_DIR = ROOT / "scripts/output/figures"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def resolve_inputs(attribution: str) -> tuple[Path, Path, str]:
+    """Return (features_path, reg_cache_path, output_suffix) for the chosen attribution.
+
+    organic (default, post-2026-05-01 cascade) reads bbox-attributed inputs and
+    writes to canonical filenames so paper drafts keep working.
+
+    absolute writes to ``*_absolute.{png,pdf,_summary.json}`` so the legacy
+    comparison can sit next to canonical without overwriting.
+    """
+    if attribution == "organic":
+        return (
+            ROOT / "AdSERP/data/cursor-approach-features-organic.json",
+            ROOT / "scripts/output/approach_threshold_sensitivity/regression_labels_cache_organic.json",
+            "",
+        )
+    if attribution == "absolute":
+        return (
+            ROOT / "AdSERP/data/cursor-approach-features.json",
+            ROOT / "scripts/output/approach_threshold_sensitivity/regression_labels_cache.json",
+            "_absolute",
+        )
+    raise ValueError(f"unknown attribution: {attribution!r}")
 
 INK = "#1a1a2e"
 MUTED = "#5a5a6a"
@@ -96,9 +119,17 @@ def classify_records(raw, regression_labels):
 
 
 def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--attribution", choices=["organic", "absolute"], default="organic",
+                    help="organic (default; bbox-attributed) or absolute (legacy h3+ads pooled)")
+    args = ap.parse_args()
+    features_path, reg_cache_path, suffix = resolve_inputs(args.attribution)
+    print(f"attribution: {args.attribution}")
+    print(f"  features: {features_path.name}")
+    print(f"  reg cache: {reg_cache_path.name}")
     print("loading features + regression labels...")
-    raw = json.load(open(FEATURES_JSON))
-    regression_labels = np.array(json.load(open(REG_CACHE)), dtype=bool)
+    raw = json.load(open(features_path))
+    regression_labels = np.array(json.load(open(reg_cache_path)), dtype=bool)
     labels = classify_records(raw, regression_labels)
 
     # Per-trial aggregation — episodes grouped by trial_id
@@ -245,8 +276,10 @@ def main():
     ax_c.legend(loc="upper right", frameon=True, framealpha=0.95,
                 edgecolor="#cccccc", facecolor="white")
 
-    # ── (d) Co-occurrence matrix: 8 presence patterns (2^3) ──
-    # Each trial is a 3-bit key: (has_clicked, has_deferred, has_eval_rej)
+    # ── (d) Inclusive co-occurrence: 7 bars (3 marginals + 3 pairs + triple) ──
+    # A trial counts toward "click + defer" iff it has ≥1 click AND ≥1 defer
+    # (regardless of whether it also has ≥1 eval-rej). Bars overlap; the
+    # complementary "exclusive 8-bucket" view is in the summary JSON.
     pattern_counts = defaultdict(int)
     for tid in trial_ids:
         c = by_trial[tid]
@@ -257,77 +290,51 @@ def main():
         )
         pattern_counts[key] += 1
 
-    # Order: from "none" to "all three," keep it intuitive
-    patterns = [
-        (False, False, False),
-        (True, False, False),
-        (False, True, False),
-        (False, False, True),
-        (True, True, False),
-        (True, False, True),
-        (False, True, True),
-        (True, True, True),
+    # Inclusive (marginal / pairwise / triple) counts
+    inclusive_buckets = [
+        ("click",                  lambda p: p[0]),
+        ("defer",                  lambda p: p[1]),
+        ("eval-rej",               lambda p: p[2]),
+        ("click ∩ defer",          lambda p: p[0] and p[1]),
+        ("click ∩ eval-rej",       lambda p: p[0] and p[2]),
+        ("defer ∩ eval-rej",       lambda p: p[1] and p[2]),
+        ("click ∩ defer ∩ eval-rej", lambda p: p[0] and p[1] and p[2]),
     ]
-    pattern_labels = []
-    pattern_fracs = []
-    pattern_colors_bar = []
-    for pat in patterns:
-        frac = pattern_counts.get(pat, 0) / n_trials
-        if frac == 0:
-            continue
-        lbl_parts = []
-        if pat[0]:
-            lbl_parts.append("click")
-        if pat[1]:
-            lbl_parts.append("defer")
-        if pat[2]:
-            lbl_parts.append("eval-rej")
-        lbl = " + ".join(lbl_parts) if lbl_parts else "none"
-        pattern_labels.append(lbl)
-        pattern_fracs.append(frac)
+    bucket_colors = [
+        CLASS_COLORS["clicked"], CLASS_COLORS["deferred"], CLASS_COLORS["evaluated-rejected"],
+    ]
+    for pred_idxs in [(0, 1), (0, 2), (1, 2), (0, 1, 2)]:
+        comps = [list(CLASS_COLORS.values())[i] for i in pred_idxs]
+        rgbs = np.array([[int(c[1:3], 16), int(c[3:5], 16), int(c[5:7], 16)] for c in comps])
+        avg = rgbs.mean(axis=0).astype(int)
+        bucket_colors.append(f"#{avg[0]:02x}{avg[1]:02x}{avg[2]:02x}")
 
-        # Color: mix of present-class colors, or gray for "none"
-        if not any(pat):
-            bar_color = "#b0b0b0"
-        else:
-            comps = []
-            if pat[0]:
-                comps.append(CLASS_COLORS["clicked"])
-            if pat[1]:
-                comps.append(CLASS_COLORS["deferred"])
-            if pat[2]:
-                comps.append(CLASS_COLORS["evaluated-rejected"])
-            # Average RGB
-            rgbs = np.array([
-                [int(c[1:3], 16), int(c[3:5], 16), int(c[5:7], 16)]
-                for c in comps
-            ])
-            avg = rgbs.mean(axis=0).astype(int)
-            bar_color = f"#{avg[0]:02x}{avg[1]:02x}{avg[2]:02x}"
-        pattern_colors_bar.append(bar_color)
+    bucket_fracs = []
+    for label, predicate in inclusive_buckets:
+        n_match = sum(pattern_counts[p] for p in pattern_counts if predicate(p))
+        bucket_fracs.append(n_match / n_trials)
 
-    y_pos = np.arange(len(pattern_labels))[::-1]
+    y_pos = np.arange(len(inclusive_buckets))[::-1]
     ax_d.barh(
-        y_pos, pattern_fracs, color=pattern_colors_bar,
+        y_pos, bucket_fracs, color=bucket_colors,
         edgecolor=INK, linewidth=0.5,
     )
     ax_d.set_yticks(y_pos)
-    ax_d.set_yticklabels(pattern_labels)
-    ax_d.set_xlabel("Fraction of trials", fontweight="semibold")
+    ax_d.set_yticklabels([b[0] for b in inclusive_buckets])
+    ax_d.set_xlabel("Fraction of trials (inclusive — bars overlap)", fontweight="semibold")
     ax_d.set_title(
-        "(d)  Class co-occurrence within trial — homogeneous or mixed?",
+        "(d)  Class co-occurrence within trial (inclusive)",
         fontweight="semibold", loc="left",
     )
     ax_d.grid(True, axis="x", color="#ececec", linewidth=0.5)
     ax_d.set_axisbelow(True)
-    # Annotate bars with trial count
-    for i, (frac, pat) in enumerate(zip(pattern_fracs, pattern_labels)):
+    for i, frac in enumerate(bucket_fracs):
         n_pat = int(round(frac * n_trials))
         ax_d.text(
             frac + 0.005, y_pos[i], f"{n_pat:,} ({frac * 100:.1f}%)",
             va="center", fontsize=9, color=MUTED,
         )
-    ax_d.set_xlim(0, max(pattern_fracs) * 1.28)
+    ax_d.set_xlim(0, max(bucket_fracs) * 1.28)
 
     # Suptitle + methodology note
     fig.suptitle(
@@ -342,8 +349,8 @@ def main():
         ha="center", fontsize=9.5, color=MUTED, style="italic",
     )
 
-    out_png = OUT_DIR / "class_distributions.png"
-    out_pdf = OUT_DIR / "class_distributions.pdf"
+    out_png = OUT_DIR / f"class_distributions{suffix}.png"
+    out_pdf = OUT_DIR / f"class_distributions{suffix}.pdf"
     fig.savefig(out_png, dpi=200, facecolor="white")
     fig.savefig(out_pdf, facecolor="white")
     plt.close(fig)
@@ -352,10 +359,13 @@ def main():
 
     # ── Summary JSON ──
     summary = {
-        "figure": "class_distributions.png",
+        "figure": out_png.name,
         "script": "scripts/render_class_distributions.py",
         "generated": datetime.datetime.now(datetime.UTC).isoformat(),
         "regime": "LAB",
+        "attribution": args.attribution,
+        "features_input": str(features_path.relative_to(ROOT)),
+        "regression_labels_input": str(reg_cache_path.relative_to(ROOT)),
         "classification_rule": (
             "NB22 four-class taxonomy. clicked from click event; "
             "deferred = approached AND NOT clicked AND gaze_regression_label; "
@@ -404,8 +414,15 @@ def main():
                 },
             },
             "d_cooccurrence": {
-                "description": "Per-trial presence patterns (click/defer/eval-rej) and their frequencies.",
-                "patterns": {
+                "description": "Per-trial co-occurrence: inclusive bucket fractions (panel d bars) plus exclusive 3-bit pattern counts for full provenance.",
+                "inclusive_buckets": {
+                    label: {
+                        "n_trials": int(round(frac * n_trials)),
+                        "fraction": float(frac),
+                    }
+                    for (label, _), frac in zip(inclusive_buckets, bucket_fracs)
+                },
+                "exclusive_patterns": {
                     f"{int(p[0])}{int(p[1])}{int(p[2])}": {
                         "has_clicked": bool(p[0]),
                         "has_deferred": bool(p[1]),
@@ -413,12 +430,17 @@ def main():
                         "n_trials": int(pattern_counts.get(p, 0)),
                         "fraction": float(pattern_counts.get(p, 0) / n_trials),
                     }
-                    for p in patterns
+                    for p in [
+                        (False, False, False), (True, False, False),
+                        (False, True, False), (False, False, True),
+                        (True, True, False), (True, False, True),
+                        (False, True, True), (True, True, True),
+                    ]
                 },
             },
         },
     }
-    out_json = OUT_DIR / "class_distributions_summary.json"
+    out_json = OUT_DIR / f"class_distributions{suffix}_summary.json"
     json.dump(summary, open(out_json, "w"), indent=2)
     print(f"wrote {out_json}")
 

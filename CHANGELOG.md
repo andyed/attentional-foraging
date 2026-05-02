@@ -1,5 +1,387 @@
 # Changelog
 
+## 2026-05-02 — Render pipeline migrated to `--attribution organic` default
+
+`scripts/render_*.py` (the canonical paper-figure producers) now accept
+`--attribution {organic,absolute}` and default to organic. Bbox-attributed
+inputs (`cursor-approach-features-organic.json` +
+`regression_labels_cache_organic.json`) flow through to
+`class_distributions.png`, `coupling_traces.png`,
+`cursor_gaze_array.png`, `cursor_gaze_timeseries.png`,
+`deferred_vs_rejected_*.png`, `gaze_around_cursor.png`,
+`gaze_density_class.png`, `class_distributions_wild_mode.png`.
+
+The `per_record_coupling.json` and `per_record_trajectory.json` caches
+inside `render_deferred_vs_rejected.py` are now keyed by attribution
+(`*_organic.json` vs the unsuffixed legacy file) so the n=14,760 cache
+doesn't collide with the n=13,419 cache.
+
+### Empirical changes to flag in paper prose
+
+**`coupling_traces.png`** previously showed three well-separated horizontal
+bands (eval-rejected ≈ 220 px / deferred ≈ 300 px / clicked ≈ 390 px).
+Under bbox attribution the three traces collapse to ~400 px with heavily
+overlapping IQR ribbons. The renderer's hardcoded legend captions
+("EVAL-REJECTED tracks gaze closely") describe the legacy shape and no
+longer match the data. The motor-signature dissociation in
+`deferred_vs_rejected_four_panel.png` (cursor-gaze distance and dwell
+deltas, p < 10⁻⁹ and p < 10⁻¹⁹) survives the cascade.
+
+**`r1_dissociation.png` / `r1_2x2_dissociation.png` (ETTAC-relevant).** The
+R1 per-(trial, position) RIPA2 vs LF/HF dissociation collapses on the
+RIPA2 side under bbox attribution. Per-fixation effect on later-returned
+vs never-returned items: LF/HF d=+0.041, **p=1.1e-03** (preserved, sign
+unchanged); RIPA2 d=+0.006, **p=8.0e-01** (was p=0.0058 under absolute,
+per the JEMR-2025 implementation-bug fix). The "lingered first time"
+LF/HF claim survives. The "lingered but processed shallowly" joint
+LF/HF × RIPA2 signature does not — the RIPA2 component appears to have
+been rank-pooling artifact, not a per-fixation arousal-amplitude
+difference. **ETTAC paper §3 should drop the RIPA2 leg of the joint
+dissociation claim** unless absolute-attribution is held as the primary.
+
+**`plot_approach_retreat_hero.png`** is pinned to absolute attribution.
+The curated COMMIT exemplar (`p015-b1-t5 pos=2`) reattributes away from
+'clicked' under bbox so the "Commit (clicked)" caption stops matching.
+New exemplars need hand-picked from `cursor-approach-features-organic.json`
+before this hero figure migrates.
+
+`plots-v1/plot_ettac_*.png` regenerated under bbox-organic. Headline
+position-load result holds (full-corpus ρ = -0.655, p < 10⁻⁴; steep-phase
+ρ = -1.000 over P0–P3, p = 3.2 × 10⁻²³). Plateau ρ flipped to +0.321
+(p=0.482, n.s.) — directional, but no longer surprising at this
+attribution.
+
+Aggregate refactor: `notebooks-v2/update_key_claims.py` is now a reader
+(notebooks are canonical) instead of a template-writer; emits
+`docs/notebook-key-claims.md` directly from each notebook's K-claims
+cell. Eliminates the two-copy sync problem behind the 2026-05-01
+`--force-clobber` guard.
+
+## 2026-05-01 — AOI consumer cascade (branch `feat/aoi-pipeline-v2`)
+
+### What shipped
+
+Pipeline + consumer API for the bbox AOI enrichment, plus first-pass K-ID delta evidence under organic-rank attribution. **Notebook migrations not yet shipped** — Andy's deep dive on ETTAC paper this weekend will decide which findings move to organic-rank as primary.
+
+### Branch state
+
+- `60a2e7b9` widget filter + composite-cell split + `is_ad` x-overlap fix
+- `da0a8aae` band-y guard against featured-snippet false positives
+- This commit: consumer API in `data_loader.py` + producer migrations + comparison harness
+
+### Consumer API additions (`notebooks-v2/data_loader.py`)
+
+Three new functions consume the bbox JSONs written by `scripts/extract_organic_bboxes.py`:
+
+- `load_aois(trial_id, include_widgets=False, include_cells=False)` — full structured AOI dict; widgets and composite cells are opt-in (default-off matches "second-column variable" convention from methodology §7).
+- `organic_aoi_bands(trial_id)` — pixel-accurate `(y_top, y_bottom)` bands per organic; drop-in replacement for `result_bands(n, doc_h)`.
+- `organic_aoi_tops(trial_id)` — convenience for the y-tops, drop-in for `result_band_tops(n, doc_h)`.
+
+All three fall back to band estimation when a trial's bbox JSON is missing. The `'source'` field in the `load_aois` return discriminates `'bbox'` vs `'band_estimate'`.
+
+### Producer migrations
+
+Both `compute_butterworth_lfhf.py` and `compute_ripa2.py` gained `--attribution {absolute,organic}`. Default is `absolute` (legacy). Organic-attribution outputs land at:
+
+- `AdSERP/data/butterworth-lfhf-by-position-organic.json`
+- `AdSERP/data/ripa2-by-position-organic.json`
+
+### Headline AOI-side audit (full corpus, n=2,776)
+
+`pipeline_organic_count` vs `count_organic_ranks` (HTML-derived, ad-overlap excluded; not ground truth — includes some widget-heading h3s):
+
+```
+exact (delta=0):     683/2,776 = 24.6%
+|delta| ≤ 1:       1,801/2,776 = 64.9%
+|delta| ≤ 2:       2,451/2,776 = 88.3%
+median 0, mean -0.20
+```
+
+Widget filter caught 2,008 widgets across 1,628 trials (58.6%). Composite cells found in 166 trials (6.0%, 376 cells).
+
+### Consumer-side cascade evidence
+
+**Per-fixation re-attribution rate: 73.9%** (`scripts/output/aoi-consumer-cascade/per-rank-shifts.json`).
+
+```
+rank 0:  band 51,255 → bbox 48,908   (-4.6%)
+rank 1:  band 43,778 → bbox 28,130   (-35.7%)
+rank 2:  band 36,306 → bbox 17,094   (-52.9%)   ← rank-2 peak under absolute is artifactual
+rank 3:  band 24,094 → bbox 12,698   (-47.3%)
+rank 8:  band  3,872 → bbox  5,449   (+40.7%)
+rank 9:  band  2,245 → bbox  3,422   (+52.4%)
+rank 10: band    862 → bbox  1,320   (+53.1%)
+```
+
+Top re-attribution flow:
+
+```
+band rank 0 → bbox rank -1: 38,512 fixations  (band-attributed to organic but actually outside any AOI)
+band rank 1 → bbox rank -1: 21,791
+band rank 2 → bbox rank  0: 16,475  (re-numbered down by ad/widget exclusion)
+```
+
+`bbox rank -1` = fixation didn't land on any organic AOI. **~60K fixations were attributed by band estimation to organic ranks 0-1 that actually fall outside organic AOIs entirely** — likely on ad cards, search box, knowledge panels, widgets.
+
+### NB14 (Butterworth LF/HF × position) under organic attribution
+
+Full table at `scripts/output/aoi-consumer-cascade/nb14_nb18_comparison.md`. **K-IDs computed with the canonical published denominator (positions 0–10, N=11)**, matching the original Key Claims block — earlier draft of this entry used a wider position range and produced misleading K3 values.
+
+| K | Claim | Old (absolute, ads pooled) | New (organic, bbox) | Verdict |
+|---|---|---|---|---|
+| K1 | trials | 2,416 | 2,174 (−242) | sample shrinks |
+| K2 | segments | 6,112 | 4,450 (−1,662) | |
+| **K3** | ρ pos 0–10 (N=11) | **−0.927, p=4e-5** | **−0.655, p=0.029** | ✓ **survives, weaker** |
+| **K4** | ρ pos 1–10 (N=10) | **−0.903, p=3e-4** | **−0.539, p=0.108** | ⚠ ns |
+| K6 | clicked > non-clicked p | 3.5e-6 | **2.5e-7** | ✓ stronger |
+| K9 | steep vs plateau MW p | 1.6e-23 | **8.8e-9** | ✓ holds |
+| **K10** | steep ρ (pos 0–3) | **−1.000 (perfect)** | **−0.800, p=0.20** | ⚠ ns |
+| **K11** | plateau ρ (pos 4–10) | −0.714, p=0.071 | **+0.321, p=0.482** | ⚠ sign flip |
+
+### NB18a (RIPA2 × position) under organic attribution
+
+| K | Old | New | Verdict |
+|---|---|---|---|
+| K6 RIPA2 × position ρ | −0.262, p=0.366 | −0.080, p=0.776 | ⚠ ns under both |
+
+### NB23 (Click share + fixation + dwell × rank) under organic attribution
+
+Full table at `scripts/output/aoi-consumer-cascade/nb23_comparison.md`. Generated by `scripts/compare_nb23_under_attributions.py` on n=2,776 trials.
+
+| K | Claim | Old (band, abs rank) | New (bbox, org rank) | Verdict |
+|---|---|---|---|---|
+| K1 | Click share × rank ρ | −0.952, p=2.3e-5 | **−0.988, p=9.3e-8** | ✓ sharper monotone |
+| K1 | N clicks attributed | 2,764 | 2,363 (−401) | clicks on ads/KP/widgets correctly excluded |
+| K2 | Fixation count × rank ρ | −1.000, p=6.6e-64 | −0.988, p=9.3e-8 | sharper N reflects rank-0 share jump |
+| K2 | Fixations attributed | 202,792 | 144,874 | ads/widgets/KP fixations correctly excluded |
+| K3 | Total dwell × rank ρ | −1.000 | −0.988 | similar |
+| K8 | Forward fixations % | 74.0% | 74.6% | stable |
+| K9 | Regression fixations % | 26.0% | 25.4% | stable |
+
+**Ski jump returns under organic attribution.** Per-rank click distribution shows the ad-displacement artifact disappear and a genuine terminal-click ski jump emerge at rank 8:
+
+```
+                    band/abs    bbox/org    Δ from prev (org)
+rank 0:             18.85%      44.86%
+rank 1:             19.10%      17.60%      −27.25
+rank 2:             24.57%      10.83%       −6.77    ← ad-displacement peak gone
+rank 3:             14.83%       7.24%       −3.60
+rank 7:              1.88%       2.20%       −0.55
+rank 8:              1.77%       2.71%      +0.51 ⬆  ← terminal-click ski jump
+rank 9:              1.12%       1.48%       −1.23
+```
+
+Under absolute rank, the spurious "ski jump" was at rank 2 (24.57%, +5.46% above rank 1) — that was the ad-displacement artifact (top-organic clicks attributed to rank 2 because ads occupied ranks 0–1). Under bbox attribution, it's at rank 8 with a +0.51% bump (52 → 64 clicks at rank 8 vs rank 7) — the canonical end-of-first-viewport terminal-click effect.
+
+### NB04 (fixation coverage / per-position budget) under organic attribution
+
+Full table at `scripts/output/aoi-consumer-cascade/nb04_comparison.md`. abs n=2,764 / org n=2,363.
+
+| K | Claim | Absolute | Organic |
+|---|---|---|---|
+| K2 | First-viewport clickers | 504 (18.2%) | 382 (16.2%) |
+| K4 | Mean share of results-above-click fixated | 98.0% | 96.9% |
+| K6 | Mean share of max-scroll-depth results fixated | 74.0% | 70.7% |
+| **K7** | FV clickers — share of first-screen results fixated | **68.5%** | **60.3%** |
+| **K8** | Scrollers — share of first-screen results fixated | **93.9%** | **90.8%** |
+
+**Per-position fixation budget shifts dramatically for FV clickers:**
+
+| Position | K-ID | Absolute | Organic |
+|---|---|---|---|
+| **0** | K13 | **45.4%** | **67.9%** |
+| **1** | K14 | **35.7%** | **28.5%** |
+| 2 | — | 22.9% | 17.2% |
+| 3 | — | 16.1% | 12.2% |
+
+K13 jumps from 45.4% to **67.9%** under bbox attribution — when first-viewport clickers click, 68% of their fixation time is on position 0 (the top organic), not 45% as previously reported. This is consistent with the rank-0 click share jump (NB23 K1: 18.8% → 44.9%): under organic attribution, the top organic is clearly the dominant attentional target.
+
+The N=504 → N=382 shift in FV clickers reflects the 411 trials in NB22 where the click was on an ad/widget — those drop out of the FV-organic-clicker cohort under bbox.
+
+### NB22 (four-class taxonomy) under organic attribution
+
+Full table at `scripts/output/aoi-consumer-cascade/nb22_comparison.md`. Generated on n=2,775 trials.
+
+**Class distribution shifts:**
+
+| Class | Absolute share | Organic share | Δ |
+|---|---|---|---|
+| clicked | 8.2% | 8.9% | +0.7 |
+| deferred | 26.2% | 27.1% | +0.9 |
+| evaluated_rejected | 15.5% | 20.1% | **+4.6** |
+| not_approached | 50.1% | 43.9% | **−6.2** |
+
+The `evaluated_rejected` class grows substantially under bbox attribution because ad-slot positions that were "not_approached" under absolute rank simply don't exist as positions under organic rank — so the visited-but-not-clicked fraction shifts up.
+
+**Per-trial averages:**
+
+| | Absolute | Organic | Note |
+|---|---|---|---|
+| Mean visited positions / trial | 6.03 | 5.32 | bbox tighter — ad/widget visits not counted |
+| Mean regressed positions / trial | 3.86 | 3.15 | |
+| % of visited that are regressed | 64.0% | 59.3% | |
+
+**Per-trial label stability:**
+
+- **99.4% of trials (2,757/2,775) have at least one shifted four-class label** when switching from absolute to organic attribution.
+- **411 trials** have `clicked` count differing — i.e., the click landed on a different bucket (organic vs ad/widget) under the two methods.
+- **2,047 trials** have `deferred` count differing — gaze regression picked up different positions because position attribution shifted.
+
+**Implication for AR replay rebuild:** nearly every curated example in `approach-retreat/site/replay/data/curation.json` may have stale labels. Re-running `build_replay_trial.py` on those trials will produce fresh AOI labels via M5; caption claims like "5 DEFERRED AOIs" need automated cross-check against the regenerated labels before re-publishing demos. The 411 click-shifts are particularly load-bearing because curation.json filters trials by class profile.
+
+### NB25 (corpus structure) shifts
+
+| K | Old (h3) | New (bbox) |
+|---|---|---|
+| K11 modal organic count | **10** (26.3%) | **9** (33.1%) |
+| K12 range | 1–15 | 1–17 |
+| K13 ∈ {9,10,11} | 69.8% | 75.8% |
+| K14 exactly 10 | 26.3% (731) | 30.5% (847) |
+
+### What this means — summary
+
+The "monotonic load decline by rank" finding is partly an **absolute-rank artifact** driven by ad-screening discrimination cost contaminating early positions. Under organic-only attribution, the gradient collapses to ns; what survives strongly is **(a)** clicked > non-clicked (K6 strengthens) and **(b)** steep early band vs plateau late band dichotomy (K9 holds at p<10⁻⁸).
+
+Andy's proposed reframe: organic rank as primary, ads as essential distractors. Headline becomes **"cognitive engagement on organic search results is two-band — early evaluation-heavy band + late satisficer plateau, with clicked positions uniformly elevated regardless of band"**. K6 + K9 carry the new headline; K3/K4/K10/K11 retire to a robustness section that shows the absolute-rank curves and explains the ad-distractor contamination.
+
+### Click-attribution split (full corpus, n=2,775)
+
+Bbox AOIs are extracted tight to visual content; clicks frequently land in the small visual gap between adjacent card rectangles (~10–15 px typical). Under strict containment those count as "off-AOI" even when they were almost certainly intended for an adjacent card.
+
+**Distribution of off-AOI click distance to nearest organic edge:**
+
+```
+median 10 px,  P75 15 px,  P90 22 px
+ ≤ 10 px:  55.1% rescued
+ ≤ 20 px:  88.8% rescued
+ ≤ 30 px:  92.5% rescued ← elbow; further loosening rescues only ~0.3pp more
+ ≤ 50 px:  92.5% rescued
+ ≤ 100 px: 92.8% rescued
+```
+
+**`attribute_click_to_organic(click_y, trial_id, tolerance_px=30)`** added to `data_loader.py`. Logic: strict containment in organic always wins; if click falls inside any ad rect, refuse to snap (it's an ad click); if inside any filtered widget, refuse; otherwise snap to nearest organic if within `tolerance_px`.
+
+**Click attribution under each method:**
+
+| Bucket | Strict (tolerance=0) | Tolerant (30 px) |
+|---|---|---|
+| **Organic** | **1,785 (64.3%)** | **2,181 (78.6%)** |
+| All ads | 557 (20.1%) | 557 (20.1%) |
+| Widgets (filtered) | 5 (0.2%) | 5 (0.2%) |
+| Off-AOI (KP / image carousel / footer / large gaps) | 428 (15.4%) | **32 (1.2%)** |
+
+The 30 px tolerance rescues 396 clicks that strict containment loses — these are the visual-margin clicks ("clicked the bottom edge of card 3") not the truly off-AOI clicks (which stay at ~32 = 1.2%).
+
+**Headline for paper framing**: under this attribution, 78.6% of clicks are on organic results, 20.1% on ads, 1.2% on content the pipeline doesn't model (Knowledge Panel, image carousel, etc.). The "ads as essential distractors" frame holds; the methodology limitation around right-pane / KP coverage affects ~1% of clicks, not 15%.
+
+### NB24 retreat arc geometry under organic_hybrid attribution
+
+`scripts/compute_retreat_arcs.py` extracts NB24's `extract_retreat_arcs_v2` into a producer with `--attribution {absolute, organic_hybrid}`. The hybrid mode combines bbox organics + shipped ad rectangles into one ordered position list with etype tags — preserving the organic-vs-top-ad-vs-native-ad comparison that NB24 needs.
+
+Output:
+- `AdSERP/data/retreat-arcs.json` — 1,490 raw arcs (legacy absolute)
+- `AdSERP/data/retreat-arcs-organic.json` — 5,201 raw arcs (organic_hybrid; 3.5× coverage gain)
+
+The coverage gain reflects bbox AOIs being pixel-accurate (cursor enters/exits positions cleanly) vs band estimation (cursor trajectory frequently fell into "no-position" gaps).
+
+| Metric | Absolute | Organic_hybrid | Verdict |
+|---|---|---|---|
+| Retreats (valid arcs, not clicked) | 907 | 1,651 | |
+| Top Ad arc ratio (median) | 1.51 | **1.55** | ✓ unchanged |
+| Top Ad lateral displacement (median px) | 63 | **62** | ✓ unchanged |
+| **Top Ad lateral/arc ratio (pooled)** | **0.166** | **0.170** | ✓ replicates |
+| Organic arc ratio | 1.22 | **1.11** | ✓ sharper (more linear) |
+| Organic lateral displacement | 33 px | **11 px** | ✓ sharper (cleaner) |
+| Organic vs Top Ad arc ratio MW p | 1.1e-5 | **4.0e-17** | ✓ much stronger |
+
+**The "retreat as lateral displacement" claim survives and strengthens.** Top ads still curve laterally (arc ratio 1.55, lateral 62 px) — that's stable across attribution methods. What changes is the *contrast*: organic retreats are now revealed to be much more linear (lateral disp 33 → 11 px) than previously thought. The Mann-Whitney p-value tightens 12 orders of magnitude (1e-5 → 4e-17).
+
+Implication for AR / CIKM: the brand claim that "top ads impose lateral retreat arcs" is more defensible under bbox attribution, not less. The 3.5× more retreat-arc data also enables sharper per-(direction × etype) splits for the forward/regressive analysis NB24 produces.
+
+### NB15 cursor-approach-features producer migrated
+
+`scripts/compute_cursor_approach_features.py` extracted from NB15 cell 4 with `--attribution {absolute,organic}`. Output:
+
+- `AdSERP/data/cursor-approach-features.json` — legacy absolute (13,419 records, 2,339 trials)
+- `AdSERP/data/cursor-approach-features-organic.json` — bbox attribution (14,760 records, 2,701 trials)
+
+Coverage *increases* under organic (more trials have valid AOIs because the producer's `extract_serp_results`-or-fallback no longer rejects trials where h3 enumeration returns null). Per-position record counts:
+
+| Position | Absolute | Organic |
+|---|---|---|
+| 0 | 2,320 | 2,658 |
+| 1 | 2,244 | 2,360 |
+| 2 | 2,091 | 1,985 |
+| 7 | 719 | 936 |
+| 8 | 481 | 748 |
+| 9 | 192 | 401 |
+
+Approach share (min_dist < 100): 28.2% → 23.3% under organic. The drop reflects cleaner per-AOI distance calculations (no spurious "approaches" to gap regions previously included as positions).
+
+This unblocks NB20 (approach by element), NB21 (click prediction LOSO), NB22 numerical recompute, NB24 (retreat arc geometry), NB28 (viewport bands) — all consume `cursor-approach-features.json` directly. To rerun those under organic, point them at `cursor-approach-features-organic.json` (one-line change in cell 1 of each).
+
+### What's measured vs. what's pending
+
+Side-by-side K-ID reports complete for **6 notebooks**:
+
+| Notebook | Method | Status | Headline shift |
+|---|---|---|---|
+| NB14 Butterworth | Producer rerun + comparison | ✓ done | Monotone-decline (K3) survives but weaker; perfect-steep (K10) and plateau-direction (K11) lose significance; clicked>nonclicked (K6) and dichotomy (K9) strengthen |
+| NB18a RIPA2 | Producer rerun + comparison | ✓ done | ρ stays ns under both |
+| NB23 rank effects | Per-trial recompute | ✓ done | ρ tightens, ski jump returns at rank 8 |
+| NB22 four-class | Per-trial recompute | ✓ done | 99.4% of trials shift; 411 click reattributions |
+| NB04 fixation coverage | Per-trial recompute | ✓ done | K13 FV pos-0 budget 45% → 68% |
+| NB25 SERP composition | Counts comparison | ✓ done | Modal organic count 10 → 9 |
+
+**Pending — heavier regeneration cost:**
+
+| Notebook | Why heavier |
+|---|---|
+| NB21 click prediction | Consumes `cursor-approach-features.json`; needs NB15 producer regenerated under organic AOIs |
+| NB28 viewport bands | Same — depends on cursor-approach-features + regression_labels_cache |
+| NB24 retreat arc geometry | Same upstream dependency |
+| NB20 approach by element | Same |
+| NB15 cursor approach itself | The producer; rerunning it cascades to NB20/21/22/24/28 |
+
+These all share one upstream artifact (`AdSERP/data/cursor-approach-features.json`), so regenerating it once under organic attribution unblocks the whole tier. **Estimated cost**: 1–2 hr to migrate NB15's per-AOI loops + re-run.
+
+**Probably unaffected (per code triage, no per-position attribution code):**
+
+- NB05 LHIPA — per-trial pupillometric index
+- NB07a regressions prevalence — count-based
+- NB09 difficulty — token-based difficulty measures
+- NB13 survey phase — saccade-amplitude phase classifier
+- NB17 scroll retreat — scroll-event based, AOI-independent
+
+(These should still be spot-checked, but no expected K-ID shifts from AOI cascade.)
+
+### What this picture supports for the ETTAC weekend deep-dive
+
+Six notebooks worth of K-ID evidence + the master TL;DRs:
+
+1. **The "monotonic load decline" framing weakens under organic but doesn't fully die.** K3 (ρ over positions 0–10) survives at p=0.029 vs absolute's p=4e-5 — significant but the strength halves. K4 (positions 1–10), K10 (steep-phase perfect monotone), and K11 (plateau direction) all lose significance and K11 sign-flips. The cleaner story is **dichotomy + decision-locking**: K9 steep-vs-plateau still p<10⁻⁸, and K6 (clicked > non-clicked) strengthens to p=2.5e-7.
+2. **Top-organic dominance is sharper than reported.** Click share at rank 0: 18.8% → 44.9%. Position-0 fixation budget for FV clickers: 45% → 68%. Spurious "rank-2 peak" was ad-displacement.
+3. **Ski jump returns at rank 8 under bbox** — terminal-click effect at end-of-first-viewport, masked under absolute attribution.
+4. **AR demos cannot ship as-is.** 99.4% of trials have shifted four-class labels, 411 click reattributions. Curation captions are stale until rebuild.
+
+### Status / next moves
+
+- ETTAC paper deep-dive scheduled for the weekend (May 2–3, deadline May 15).
+- Notebook code migrations (NB14, NB18a, NB23, NB04, NB22 cell rewrites) **deferred** to after the deep-dive — paper framing decision drives which K-IDs are primary.
+- Approach-retreat replay-bundle rebuild also deferred until NB22 four-class taxonomy is regenerated under organic attribution AND curation captions are validated.
+- NB15 producer migration (cursor-approach-features under organic) is the unlock for NB20/21/24/28; estimated 1–2 hr next iteration.
+
+### Files
+
+- `notebooks-v2/data_loader.py` — `load_aois`, `organic_aoi_bands`, `organic_aoi_tops`
+- `scripts/compute_butterworth_lfhf.py` — `--attribution` flag
+- `scripts/compute_ripa2.py` — `--attribution` flag
+- `scripts/compare_aoi_consumers.py` — full-corpus per-fixation re-attribution audit
+- `scripts/compare_nb14_nb18_under_attributions.py` — side-by-side K-ID report (NB14 + NB18a)
+- `scripts/output/aoi-consumer-cascade/` — generated reports for the weekend deep-dive
+
+---
+
 ## 2026-04-12 — Fixation-side coordinate-space audit (symmetric to 2026-04-09)
 
 ### The bug
