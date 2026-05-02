@@ -62,10 +62,53 @@ between the groups (medians differ by 1.2%).
 the bulk of the RIPA2 differential — e.g., trials where every visited
 position was an ad, which happen on commercially-loaded SERPs that
 also produce stronger arousal differentials — the collapse could be
-selection rather than dilution. **Test:** rerun the R1 split on the
-intersection-of-trials set (trials present in both attributions) under
-both methods; if RIPA2 p stays ≈ 0.005 under absolute on the smaller
-trial set but flat under bbox, dilution; if both flatten, selection.
+selection rather than dilution.
+
+### Sensitivity test result (2026-05-02): DILUTION confirmed
+
+`scripts/r1_intersection_sensitivity.py`. Trial sets:
+- absolute: 2,719 trials
+- organic: 2,650 trials (fully contained in the absolute set)
+- intersection: 2,650; absolute-only-dropped: 69
+
+| Test | n records | RIPA2 d | RIPA2 p (two-sided) |
+|---|---|---|---|
+| Absolute (full universe) | 6,112 | −0.055 | **1.16 × 10⁻²** |
+| Absolute (intersection only) | 6,042 | −0.055 | **1.29 × 10⁻²** |
+| Organic (intersection = full) | 4,134 | +0.006 | **8.03 × 10⁻¹** |
+| Absolute (dropped trials only, n=69) | 70 | −0.043 | 5.23 × 10⁻¹ |
+
+**On the same 2,650 trials, absolute attribution still produces RIPA2
+p = 1.29 × 10⁻²; organic attribution on those same trials produces
+p = 0.80.** The dropped 69 trials show RIPA2 p = 0.52 — they are NOT
+where the per-fixation signal lives.
+
+The collapse is caused by the attribution change itself, not by
+trial selection.
+
+**Mechanism, now resolvable:** under absolute, "rank N" pools
+organic-rank-N records (predominantly will-regress in this analysis)
+with ad-rank-N records (predominantly no-regress, since users rarely
+return to ads). Top-of-page ads have slightly higher RIPA2 (more
+arousal-inducing surfaces); pooling them into the no-regress group
+inflates that group's median RIPA2, which makes the will-regress
+group appear lower-RIPA2 — the legacy "shallow processing" reading.
+When bbox attribution restricts to organic-only, this ad-driven
+inflation in the no-regress group disappears and the per-fixation
+RIPA2 differential goes to zero.
+
+This is a clean methodological finding: **the per-fixation RIPA2
+will-regress differential on AdSERP under absolute attribution was a
+rank-pooling artifact driven by ad-RIPA2 inflating the no-regress
+comparator group**. It is not a per-fixation arousal-amplitude
+differential between will-regress and no-regress organic items.
+
+Note that **the per-(trial, position) RIPA2 × LF/HF click-rate
+quadrant strengthens under bbox** (high-LF/HF × high-RIPA2 click rate
+27.9% → 33.9%; low-LF/HF × low-RIPA2 click rate 21.5% → 19.7%; lift
++14.2 pp under bbox vs +5.9 pp under absolute) — RIPA2 still carries
+information at the trial-position aggregate level, just not in the
+per-fixation will-regress contrast.
 
 ## Implication for paper strands
 
