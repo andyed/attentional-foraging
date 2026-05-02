@@ -1,0 +1,57 @@
+{
+  "model": "LogisticRegression(class_weight='balanced', C=1.0) + StandardScaler",
+  "trained_on": "all 47 participants, no holdout (full-data refit)",
+  "n_episodes": 2070,
+  "n_deferred": 1557,
+  "n_eval_rej": 513,
+  "operating_threshold": 0.48909031389042334,
+  "operating_threshold_method": "Youden-J on LOSO out-of-fold predictions",
+  "loso_auc": 0.768562024486035,
+  "features": [
+    "min_dist",
+    "mean_dist",
+    "final_dist",
+    "retreat_dist",
+    "dwell_in_proximity_ms",
+    "mean_approach_velocity",
+    "max_approach_velocity",
+    "direction_changes",
+    "frac_decreasing"
+  ],
+  "scaler_mean": [
+    61.12684420315875,
+    257.0220759204487,
+    271.35513246829385,
+    210.2282882651354,
+    1488.0420289855072,
+    13.485915676810913,
+    100.37230279504894,
+    1.318840579710145,
+    0.5084672525185755
+  ],
+  "scaler_scale": [
+    25.089932720535558,
+    117.83718920263763,
+    199.95376962265678,
+    200.63931678505682,
+    1748.4985621684305,
+    97.09746270939176,
+    183.30962051903916,
+    2.1697931976294145,
+    0.1642267696456502
+  ],
+  "coefficients_raw": [
+    -0.0052725807305736795,
+    0.6342785037972011,
+    0.25675683584731235,
+    0.2565388814346426,
+    0.4703707459874658,
+    0.0820609939572807,
+    -0.0146313580559958,
+    0.32040064557591585,
+    0.08523803161392289
+  ],
+  "intercept": 0.32132550105333685,
+  "apply": "score = sigmoid(sum_i(coef_i * (feat_i - scaler_mean_i) / scaler_scale_i) + intercept); pred_deferred = score >= operating_threshold",
+  "regime_for_inference": "WILD-compatible (cursor features only); supervision was [LAB, NB22 gaze-derived]"
+}

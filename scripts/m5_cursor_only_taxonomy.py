@@ -26,6 +26,7 @@ Output:
 
 from __future__ import annotations
 
+import argparse
 import datetime
 import json
 import sys
@@ -44,10 +45,18 @@ from sklearn.preprocessing import StandardScaler
 ROOT = Path("/Users/andyed/Documents/dev/attentional-foraging")
 sys.path.insert(0, str(ROOT / "notebooks-v2"))
 
-FEATURES_JSON = ROOT / "AdSERP/data/cursor-approach-features.json"
-REG_CACHE = ROOT / "scripts/output/approach_threshold_sensitivity/regression_labels_cache.json"
-OUT_DIR = ROOT / "scripts/output/m5_cursor_only_taxonomy"
-OUT_DIR.mkdir(parents=True, exist_ok=True)
+FEATURES_JSON_BY_ATTRIBUTION = {
+    "absolute": ROOT / "AdSERP/data/cursor-approach-features.json",
+    "organic": ROOT / "AdSERP/data/cursor-approach-features-organic.json",
+}
+REG_CACHE_BY_ATTRIBUTION = {
+    "absolute": ROOT / "scripts/output/approach_threshold_sensitivity/regression_labels_cache.json",
+    "organic": ROOT / "scripts/output/approach_threshold_sensitivity/regression_labels_cache_organic.json",
+}
+OUT_DIR_BY_ATTRIBUTION = {
+    "absolute": ROOT / "scripts/output/m5_cursor_only_taxonomy",
+    "organic": ROOT / "scripts/output/m5_cursor_only_taxonomy_organic",
+}
 
 # M4 feature set — cursor features minus position and total_dwell_ms.
 # This matches the paper's canonical M4 definition: 9 cursor-derived
@@ -68,16 +77,27 @@ M4_FEATURES = [
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--attribution", choices=["absolute", "organic"], default="absolute",
+                        help="AOI attribution mode. 'absolute' = legacy band/h3 (default); "
+                             "'organic' = bbox-extracted organic AOIs (2026-05-01 cascade).")
+    args = parser.parse_args()
+
+    features_json = FEATURES_JSON_BY_ATTRIBUTION[args.attribution]
+    reg_cache = REG_CACHE_BY_ATTRIBUTION[args.attribution]
+    out_dir = OUT_DIR_BY_ATTRIBUTION[args.attribution]
+    out_dir.mkdir(parents=True, exist_ok=True)
+
     print("=" * 70)
-    print("M5 — Cursor-only classifier trained on NB22 gaze-regression labels")
+    print(f"M5 — Cursor-only classifier ({args.attribution} attribution)")
     print("=" * 70)
 
-    print(f"\nloading {FEATURES_JSON}")
-    raw = json.load(open(FEATURES_JSON))
+    print(f"\nloading {features_json}")
+    raw = json.load(open(features_json))
     n = len(raw)
     print(f"  total records: {n}")
 
-    regression_labels = np.array(json.load(open(REG_CACHE)), dtype=bool)
+    regression_labels = np.array(json.load(open(reg_cache)), dtype=bool)
     assert len(regression_labels) == n
     print(f"  gaze_regression_label (cached from NB22): "
           f"{regression_labels.sum():,} True ({regression_labels.mean() * 100:.1f}%)")
@@ -214,7 +234,7 @@ def main():
     )
 
     # ── Save the full-data model so it can be applied at inference time ──
-    model_json = OUT_DIR / "m5_final_model.json"
+    model_json = out_dir / "m5_final_model.json"
     json.dump({
         "model": "LogisticRegression(class_weight='balanced', C=1.0) + StandardScaler",
         "trained_on": "all 47 participants, no holdout (full-data refit)",
@@ -303,12 +323,12 @@ def main():
         },
     }
 
-    out_json = OUT_DIR / "summary.json"
+    out_json = out_dir / "summary.json"
     json.dump(summary, open(out_json, "w"), indent=2)
     print(f"\nwrote {out_json}")
 
     # Also dump a text log
-    out_txt = OUT_DIR / "results.txt"
+    out_txt = out_dir / "results.txt"
     with open(out_txt, "w") as f:
         f.write(f"M5 — cursor-only classifier trained on NB22 labels\n")
         f.write(f"Generated: {summary['generated']}\n\n")
