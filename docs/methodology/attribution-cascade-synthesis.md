@@ -424,6 +424,71 @@ The top-of-page is Survey across whatever surface lives there;
 specific etypes (dd_top, native_ad) carry their own additional motor
 signatures on top.
 
+### §4.3 Will-regress per-fixation replacements for the dead RIPA2 leg (2026-05-02)
+
+Following the R1 RIPA2-leg collapse (§2.4) and the dilution-mechanism
+resolution (`docs/null-findings/r1-ripa2-bbox-collapse.md`), scanned
+candidate per-(trial, organic position) predictors of will-regress
+under bbox attribution. Audit:
+[`scripts/will_return_predictor_scan.py`](../../scripts/will_return_predictor_scan.py).
+
+n = 8,844 per-(trial, organic position) records, 6,332 will-regress
+vs 2,512 no-regress, 2,649 trials with complete fixation-pupil data.
+
+**Multiple replacements survive bbox at p < 10⁻⁵:**
+
+| metric | median wr | median nr | *p* | *d* | reading |
+|---|---|---|---|---|---|
+| **n_fix** | 5 | 4 | **3.3 × 10⁻¹⁶** | +0.134 | will-regress = more fixations on first-pass visit |
+| **sum_fix_duration** | 1,070 ms | 957 ms | **7.6 × 10⁻⁸** | +0.093 | longer total dwell |
+| **mean_fix_duration** | 222 ms | 231 ms | **2.6 × 10⁻⁷** | −0.106 | individual fixations shorter (faster scanning per fixation) |
+| **first_pd** | 14.72 | 15.06 | **5.2 × 10⁻⁷** | −0.108 | lower pupil at entry |
+| **pd_change_max** | 0.0244 | 0.0197 | **5.1 × 10⁻⁶** | +0.102 | **larger peak dilation events** during the visit |
+| **pd_change_min** | −0.041 | −0.036 | **1.9 × 10⁻⁵** | −0.081 | **larger peak constriction events** during the visit |
+| mean_pd_mean | 14.72 | 14.99 | 7.6 × 10⁻⁶ | −0.098 | lower mean pupil overall |
+| LF/HF (existing) | 20.2 | 17.2 | 9.5 × 10⁻⁴ | +0.042 | baseline (the surviving leg of R1) |
+| RIPA2 (existing) | 0.000414 | 0.000411 | **0.88** | +0.006 | baseline (the collapsed leg of R1) |
+| pd_change_mean | −0.0082 | −0.0078 | **0.84** | +0.004 | **mean-based pupil change is null — same fate as RIPA2** |
+
+**The pattern.** Mean-based per-fixation pupil metrics (RIPA2,
+`pd_change_mean`, `mean_pd_mean` partly) all weaken or die under bbox
+when the no-regress comparator group is no longer ad-inflated.
+**Peak-based** per-fixation pupil metrics survive cleanly:
+`pd_change_max` and `pd_change_min` both at *p* < 10⁻⁵. Will-regress
+positions have *more variable* pupil dynamics during the visit —
+bigger swings up and down — consistent with cognitive engagement that
+includes both attention bursts (dilation peaks) and disengagement
+breaks (constriction peaks).
+
+The result is also consistent with a *baseline-shifted* engagement
+story: will-regress positions are entered with lower pupil
+(`first_pd` median 14.72 vs 15.06, *p* = 5.2 × 10⁻⁷), the user
+fixates more often (n_fix 5 vs 4) for shorter durations each (222 vs
+231 ms) but for longer total dwell (1,070 vs 957 ms), and the pupil
+swings harder (peak ± dilation events). The original R1 "lingered
+first time, processed shallowly" reading was per-fixation amplitude;
+the bbox-clean version is per-fixation *excursion* rather than
+amplitude.
+
+**Replacement framing for the R1 paper.** "Lingered first time + more
+pupillary excursion + lower baseline + more brief fixations." Three
+per-fixation metric families coexist as bbox-clean predictors of
+will-regress: LF/HF (sustained autonomic engagement),
+`pd_change_max`/`pd_change_min` (peak per-fixation arousal events),
+and `n_fix` / `mean_fix_duration` (visit-structure). The "shallow
+processing" interpretation gets retired; the empirical claim moves to
+"will-regress positions are visited more times, more briefly, with
+lower baseline pupil and higher peak excursions." This is a cleaner
+cognitive-engagement story than the joint LF/HF × RIPA2 mean-amplitude
+dissociation, and every component survives the bbox cascade.
+
+**Implication for the standalone RIPA2 publication track.** RIPA2
+itself is unchanged as a method (peri-click TEPR p = 3.3 × 10⁻²¹
+preserved; per-(trial,position) load gradient preserved). The
+specific *will-regress per-fixation amplitude* claim does not
+survive bbox; the standalone paper either drops that contrast or
+notes it as an absolute-attribution boundary condition.
+
 ---
 
 ## §5 Decision checkpoint

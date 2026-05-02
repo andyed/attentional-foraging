@@ -140,10 +140,46 @@ per-fixation will-regress contrast.
 ## Resolution path (recommended)
 
 1. Run the intersection-of-trials sensitivity check described above
-   to discriminate dilution from selection.
+   to discriminate dilution from selection. *(Done 2026-05-02 —
+   confirmed dilution; see §"Sensitivity test result" above.)*
 2. Discuss with Gwizdka before locking R1 paper framing.
 3. Notify Gavindya/team before standalone RIPA2 publication land if
    their draft includes the AdSERP per-fixation claim.
 
+## Replacement findings (2026-05-02)
+
+A scan of candidate per-(trial, organic position) predictors of
+will-regress under bbox identifies several bbox-clean replacements
+for the dead RIPA2 leg, surfacing a cleaner cognitive-engagement
+story. Audit:
+[`scripts/will_return_predictor_scan.py`](../../scripts/will_return_predictor_scan.py).
+Full table at
+[`docs/methodology/attribution-cascade-synthesis.md` §4.3](../methodology/attribution-cascade-synthesis.md).
+
+Headline: **mean-based** per-fixation pupil metrics (RIPA2,
+`pd_change_mean`) all collapse under bbox; **peak-based** metrics
+survive.
+
+| metric | *p* (bbox) | reading |
+|---|---|---|
+| `n_fix` | 3.3 × 10⁻¹⁶ | will-regress = more fixations on first-pass visit |
+| `pd_change_max` | 5.1 × 10⁻⁶ | larger peak dilation events |
+| `pd_change_min` | 1.9 × 10⁻⁵ | larger peak constriction events |
+| `first_pd` | 5.2 × 10⁻⁷ | lower baseline pupil at visit entry |
+| `mean_fix_duration` | 2.6 × 10⁻⁷ | shorter individual fixations (more scanning) |
+| LF/HF | 9.5 × 10⁻⁴ | the surviving R1 leg |
+| RIPA2 | 0.88 | the collapsed R1 leg |
+| `pd_change_mean` | 0.84 | mean-based pupil change — same fate as RIPA2 |
+
+**Replacement R1 framing:** "lingered first time + more pupillary
+excursion + lower baseline + more brief fixations" (multi-metric)
+replaces "lingered first time + processed shallowly" (joint LF/HF ×
+RIPA2 mean amplitude). Every component is bbox-clean. The
+cognitive-engagement story is cleaner: will-regress positions are
+revisited more, more briefly each time, entered with lower pupil
+baseline, and accompanied by larger peak ± arousal events.
+
 This null lives in the file drawer with provenance until the paper
-strands resolve — per the project's null-findings policy.
+strands resolve — per the project's null-findings policy. The
+replacement findings can be moved into a positive results section
+once the R1 paper framing is locked.
