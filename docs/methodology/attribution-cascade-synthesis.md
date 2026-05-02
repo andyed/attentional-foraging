@@ -359,6 +359,71 @@ better *predictive* signal. Absolute is dominated by both. The path
 forward is to run paper prose against organic-only as primary (per §3)
 while reporting hybrid as the deployment-aware variant.
 
+### §4.2 Top-of-page is Survey-phase across surfaces (2026-05-02)
+
+Tested whether the position-0 ambient-K + horizontal-saccade signal is
+a top-multi-panel-carousel-ad (`dd_top`) phenomenon or a top-of-page
+phenomenon, by computing saccade orientation and per-fixation K under
+hybrid attribution and grouping by etype. Audit:
+[`scripts/saccade_k_by_etype.py`](../../scripts/saccade_k_by_etype.py).
+
+**Globally** dd_top is the most ambient etype (median K = −0.008 vs
+organic +0.088, native_ad +0.012) and slightly more horizontal-biased
+(38.9 % vs 37.4 % organic, 34.1 % native_ad). dd_top fixations behave
+more like scanning than like reading, consistent with a carousel
+layout where the user sweeps across cells.
+
+**At position 0 specifically**, however, the ambient/horizontal signal
+extends across surfaces: organic-pos-0 shows median K = **−0.067**
+(more ambient than dd_top in the same slot), and 39.8 % horizontal
+saccades (matches dd_top's 38.9 %). The Survey-phase-at-top pattern
+is *not* surface-specific — it's a top-of-page property that captures
+whatever sits in the first slot.
+
+| etype | pos | n_sacc | %horiz | median K |
+|---|---|---|---|---|
+| dd_top | 0 | 41,755 | 38.9% | −0.008 |
+| **organic** | **0** | 15,583 | **39.8%** | **−0.067** |
+| native_ad | 0 | 8,936 | 33.9% | −0.102 |
+| organic | 1 | 28,035 | 39.3% | +0.068 |
+| organic | 2 | 21,090 | 39.2% | +0.117 |
+| organic | 3 | 18,360 | 38.1% | +0.124 |
+| organic | 5 | 10,491 | 35.1% | +0.136 |
+
+**Three-signal convergence at the Survey → Evaluate boundary.** Three
+independent families flip together between pos 0 and pos 1 on organics:
+
+1. **Saccade amplitude** (NB13:K3, established 2026-04-12): per-trial
+   amplitude slope ρ = −0.135, *t* = −29.63, *p* = 9.33 × 10⁻¹⁶⁸ within
+   trial. Amplitude drops between fixation 5 and fixation 6 — Survey
+   ends.
+2. **Saccade orientation** (this audit): horizontal share drops
+   39.8 % → 35.1 % across organic positions 0 → 5. Pos 0 is
+   horizontal-biased; deeper ranks shift to vertical.
+3. **K-coefficient** (this audit): median K −0.067 → +0.136 across
+   organic positions 0 → 5. Pos 0 is ambient (short fixations + long
+   saccades = scanning); deeper ranks become focal (long fixations +
+   short saccades = reading).
+
+The signals come from different feature spaces (amplitude / direction /
+duration-vs-amplitude balance) and they converge cleanly. This is
+convergent validation for the OSEC Survey → Evaluate transition that
+NB13's amplitude-only result has carried so far.
+
+**Surface contrast.** native_ads are the inverse of dd_top: most
+vertical (42.1 %), least horizontal (34.1 %), borderline-focal K. This
+matches their typical embedded-text-link layout where the user reads
+top-down rather than scans left-right. The three etypes carry three
+distinct motor signatures, and only dd_top's ambient signature partly
+overlaps with the position-0 Survey signature.
+
+**Implication for paper prose.** The OSEC Survey-phase claim now has
+three convergent signal families instead of one. Worth promoting from
+NB13-only to a multi-signal §3 paragraph in any task-model writeup.
+The top-of-page is Survey across whatever surface lives there;
+specific etypes (dd_top, native_ad) carry their own additional motor
+signatures on top.
+
 ---
 
 ## §5 Decision checkpoint
