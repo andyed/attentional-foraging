@@ -458,7 +458,9 @@ The signal is deployable from standard mouse telemetry: `min_cursor_distance_to_
 
 Cursor approach-retreat goes beyond proximity. During evaluation, the mouse makes partial approach movements toward results that are ultimately rejected. This is a covert evaluation signal with a distinctive motor signature:
 
-Four-class taxonomy (NB22, regression-based split, post coordinate-space audit 2026-04-12):
+Four-class taxonomy (NB22, regression-based split). The legacy table below is `[absolute legacy]` — post-2026-05-01 cascade replacement values are tagged `[bbox-organic]` in the synthesis at [`docs/methodology/attribution-cascade-synthesis.md` §2.4](methodology/attribution-cascade-synthesis.md). The motor-signature dissociation survives the cascade in cleaner form via the bbox-era render `deferred_vs_rejected_four_panel.png` (cursor-gaze distance *p* < 10⁻⁹, dwell *p* < 10⁻¹⁹ on n=4,275 episodes — `[LAB, AdSERP, organic]`); the K5–K7 cell re-execution in NB22 itself is pending.
+
+`[absolute legacy, NB22:K5–K7, post coordinate-space audit 2026-04-12]`:
 
 | Category | N | % | Post-closest drift (px)¹ | Gaze Dwell (ms) | Dwell in Proximity (ms) |
 |----------|---|---|---|---|---|
@@ -479,9 +481,9 @@ Motor signature separation: deferred vs rejected shows **2.6× post-closest drif
 
 **Scroll doesn't carry this signal on desktop.** Scroll dwell and deceleration during regression are identical for clicked vs non-clicked results (all p > 0.3, notebook 17). The scroll is ballistic transportation; the cursor is the evaluation probe. On mobile, where scroll is the only motor channel, this may differ.
 
-**Element-type cost surprise.** Top ads show the highest pupil dilation during evaluation (+0.41%), contradicting the prediction that ads are cheaper to evaluate. Users may work harder to discriminate ads from organic results (notebook 16).
+**Element-type cost surprise** `[absolute legacy, NB16; bbox re-derivation pending]`. Top ads show the highest pupil dilation during evaluation (+0.41%), contradicting the prediction that ads are cheaper to evaluate. Users may work harder to discriminate ads from organic results (notebook 16). Post-cascade hybrid attribution surfaces a complementary finding directly from click rates: dd_top click rate is **17.1 %** (highest of any SERP surface) vs organic 14.6 % vs native_ad 5.2 % `[LAB, AdSERP, organic_hybrid, NB21:K-bbox-* etype breakdown]` — directionally consistent with discrimination cost outweighing reading cost.
 
-**Element-type approach signatures confirm this from motor data (notebook 20).** Top ads have 2× the approach rate (42.9% vs 21.0% organic), 50 px more retreat (279 vs 228 px, p = 7×10⁻⁸), 2.3× longer dwell in proximity (4,586 vs 2,023 ms for clicked results, p = 3×10⁻¹³), and 1.7× more direction changes (2.7 vs 1.6). All effects survive position controls. Azzopardi's C/W/L cost framework (SIGIR 2018) is overturned for top ads — discrimination cost outweighs reading cost. Native ads show avoidance: lowest approach rate (17.5%), largest cursor distance, lowest click rate (8.0%).
+**Element-type approach signatures from motor data** `[absolute legacy, NB20; bbox re-derivation pending]`. Top ads have 2× the approach rate (42.9% vs 21.0% organic), 50 px more retreat (279 vs 228 px, p = 7×10⁻⁸), 2.3× longer dwell in proximity (4,586 vs 2,023 ms for clicked results, p = 3×10⁻¹³), and 1.7× more direction changes (2.7 vs 1.6). All effects survive position controls. Azzopardi's C/W/L cost framework (SIGIR 2018) is overturned for top ads — discrimination cost outweighs reading cost. Native ads show avoidance: lowest approach rate (17.5%), largest cursor distance, lowest click rate (8.0%). NB20 has not been re-derived under bbox attribution yet; the qualitative direction is corroborated by the hybrid click-rate finding above.
 
 **Notebooks:** [cursor_approach.ipynb](../notebooks-v2/15_cursor_approach.ipynb), [element_type.ipynb](../notebooks-v2/16_element_type.ipynb), [scroll_retreat.ipynb](../notebooks-v2/17_scroll_retreat.ipynb), [approach_by_element.ipynb](../notebooks-v2/20_approach_by_element.ipynb). Detailed findings: [findings-approach-retreat.md](findings-approach-retreat.md).
 

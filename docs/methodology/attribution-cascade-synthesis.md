@@ -30,7 +30,24 @@ implications below.**
 
 ---
 
-## §1 Why bbox-organic is the right primary
+## §1 Three rank-type flavors — canonical definitions
+
+The cascade introduces three rank-attribution flavors. Every quantitative claim derived from AdSERP must be tagged with one of these. **This document and [`aoi-coverage-contribution.md` §4](./aoi-coverage-contribution.md) are the canonical definition sites; downstream docs cite them rather than redefining the flavors.**
+
+| Flavor | Definition | Producer flag | Output suffix |
+|---|---|---|---|
+| **`absolute`** | Legacy h3 + ads pooled, band-estimated AOIs (pre-2026-05-01). | `--attribution absolute` | `*.json` (legacy filenames) |
+| **`organic`** | CV-extracted bbox organics only, ads excluded. **Post-cascade primary.** | `--attribution organic` | `*-organic.json` |
+| **`organic_hybrid`** | bbox organics + dd_top + native_ad in display order, etype-tagged per-record (dd_right excluded). Deployment-aware variant. | `--attribution organic_hybrid` | `*-organic-hybrid.json` |
+
+Three carve-outs for tagging:
+- **`rank-type-N/A`** — pure cursor-only metrics on a single-AOI WILD surface (e.g., `[WILD, attcur]`); JS↔Python parity tests; time-series with no AOI-rank structure.
+- **`absolute legacy`** — pre-cascade values retained for historical comparison. Tag with the cascade date so a reader can find the post-cascade replacement.
+- **`<flavor>, pending`** — cascade-affected K-IDs not yet re-derived. Link to the gate (multi-hour bootstrap, producer migration, figure regen). Never silently rolled forward.
+
+A K-ID that reports a numerical value without specifying rank-type (where one applies) is a citation bug — treat it as confabulated until verified against the producer flag and the script output.
+
+## §1.1 Why `organic` is the post-cascade primary
 
 Three reasons documented in [`organic-result-aoi-extraction.md`](./organic-result-aoi-extraction.md):
 
