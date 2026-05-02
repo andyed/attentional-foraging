@@ -20,6 +20,28 @@ Every quantitative claim in the CIKM paper, and every figure/table in `scripts/o
 
 The point of the convention is that a reader should never be uncertain which regime a number came from. The "three coupling scalars" confusion (306 vs 338 vs 381) was entirely within LAB; a WILD version of that statistic is either computable on ACD or isn't, and that binary is the axis the reader holds.
 
+## Rank-type disclosure rule (project convention, post-2026-05-01 cascade)
+
+**Every quantitative claim derived from AdSERP must carry a rank-type tag** identifying the AOI-attribution flavor under which it was computed. Three flavors are canonical, defined in [`docs/methodology/attribution-cascade-synthesis.md` §1](docs/methodology/attribution-cascade-synthesis.md) and tabulated in [`docs/methodology/aoi-coverage-contribution.md` §4](docs/methodology/aoi-coverage-contribution.md):
+
+- **`absolute`** — legacy h3 + ads pooled, band-estimated AOIs (pre-2026-05-01).
+- **`organic`** — CV-extracted bbox organics, ads excluded; the post-cascade primary.
+- **`organic_hybrid`** — bbox organics + dd_top + native_ad in display order, etype-tagged; deployment-aware variant.
+
+Every K-ID receives one rank-type tag, written next to the regime tag: e.g. `[LAB, AdSERP, organic, NB21:K-bbox-3]`.
+
+**Three carve-outs** for tagging:
+
+1. **Rank-type-independent claims** — pure cursor-only metrics computed on a single-AOI surface (e.g. `[WILD, attcur]`), library JS↔Python parity tests, time-series with no AOI-rank structure — are tagged `rank-type-N/A` with a one-line justification at first occurrence, never silently.
+2. **Pre-cascade legacy values** retained for historical comparison are tagged `[absolute, legacy pre-2026-05-01]` with the cascade date explicit, so a reader sees the retirement date and can find the post-cascade replacement.
+3. **Multi-flavor comparisons** are presented as a three-row table with `absolute / organic / organic_hybrid` as the row keys (the canonical example is `aoi-coverage-contribution.md` §4); narrative prose names the flavor that anchors the headline and treats the other two as robustness rows.
+
+Cascade-affected K-IDs that have not yet been re-derived are tagged `[<flavor>, pending]` with a link to the gate (the multi-hour bootstrap, the producer migration, the figure regen) — never silently rolled forward.
+
+**The methodology spec is the canonical definition site; downstream docs cite it, do not redefine it.** A K-ID without a rank-type tag (where one applies), or a numeric value quoted from before a cascade without explicit retirement notice, is a citation bug — treat it as confabulated until verified against the producer flag and the script output.
+
+K-IDs are never renumbered; cascade-superseded rows get a new `K-bbox-#` row alongside the legacy K-#, and the legacy row keeps its number with a `(retired YYYY-MM-DD: replaced by K-bbox-#)` annotation.
+
 ## Two-pass citation workflow (pre-emptive discipline for research prose)
 
 **When editing any file under `docs/drafts/cikm-*/`, `docs/drafts/task-model-paper*`, or `docs/arxiv/`, use the two-pass workflow below.** This is a pre-emptive rule against citation confabulation under reframe pressure, not a post-hoc check.
