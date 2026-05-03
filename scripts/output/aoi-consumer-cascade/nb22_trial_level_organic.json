@@ -1,0 +1,43 @@
+{
+  "attribution": "organic",
+  "population_n": 2070,
+  "n_trials": 2701,
+  "youden_j_threshold": 0.5358932246017505,
+  "nb21": {
+    "deferred": 1124,
+    "deferred_pct": 54.29951690821256,
+    "eval_rejected": 946,
+    "eval_rejected_pct": 45.70048309178744,
+    "trials_with_deferred": 820,
+    "trials_with_deferred_pct": 30.35912624953721,
+    "trials_with_eval_rejected": 616,
+    "trials_with_eval_rejected_pct": 22.806368011847464
+  },
+  "nb22": {
+    "deferred": 1557,
+    "deferred_pct": 75.21739130434783,
+    "eval_rejected": 513,
+    "eval_rejected_pct": 24.782608695652176,
+    "trials_with_deferred": 973,
+    "trials_with_deferred_pct": 36.02369492780452,
+    "trials_with_eval_rejected": 413,
+    "trials_with_eval_rejected_pct": 15.290633098852277
+  },
+  "eval_rejected_jaccard": {
+    "nb21_n": 946,
+    "nb22_n": 513,
+    "intersection": 302,
+    "union": 1157,
+    "jaccard": 0.2610198789974071
+  },
+  "disagreement": {
+    "n_disagree": 855,
+    "pct": 41.30434782608695,
+    "confusion": {
+      "D_D": 913,
+      "D_R": 211,
+      "R_D": 644,
+      "R_R": 302
+    }
+  }
+}
