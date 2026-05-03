@@ -22,38 +22,40 @@
     "vt_center_ms",
     "avg_viewport_y",
     "max_overlap_frac",
+    "position",
     "is_dd_top",
     "is_native_ad",
     "dd_top:max_overlap_frac",
     "native_ad:max_overlap_frac"
   ],
-  "lopo_auc": 0.599784821310783,
+  "lopo_auc": 0.6873475448085693,
   "coefficients_standardized": {
-    "vt_any": -0.08698263174875788,
-    "vt_center_ms": 0.13298388910714504,
-    "avg_viewport_y": -0.10870140533946446,
-    "max_overlap_frac": -0.32643312872983404,
-    "is_dd_top": -0.05352688631882068,
-    "is_native_ad": -0.23794847332419586,
-    "dd_top:max_overlap_frac": -0.05352688631882068,
-    "native_ad:max_overlap_frac": -0.23794847332419586
+    "vt_any": -0.1453172976583741,
+    "vt_center_ms": 0.07806316484157501,
+    "avg_viewport_y": 0.28674136785130583,
+    "max_overlap_frac": -0.27846193182178614,
+    "position": -0.7956693421925727,
+    "is_dd_top": -0.10821616904675699,
+    "is_native_ad": -0.2361672267422175,
+    "dd_top:max_overlap_frac": -0.10821616904675699,
+    "native_ad:max_overlap_frac": -0.2361672267422175
   },
-  "intercept_standardized": -0.031874204428521624,
+  "intercept_standardized": -0.10494525105868117,
   "per_etype_max_overlap_frac_slope": {
-    "organic": -0.32643312872983404,
-    "dd_top": -0.37996001504865473,
-    "native_ad": -0.5643816020540299
+    "organic": -0.27846193182178614,
+    "dd_top": -0.38667810086854315,
+    "native_ad": -0.5146291585640036
   },
   "interaction_bootstrap_ci": {
     "dd_top:max_overlap_frac": {
-      "point": -0.05352688631882068,
-      "ci_lo": -0.08982760387802415,
-      "ci_hi": -0.01592344664754266
+      "point": -0.10821616904675699,
+      "ci_lo": -0.14587645987877926,
+      "ci_hi": -0.06881176591389931
     },
     "native_ad:max_overlap_frac": {
-      "point": -0.23794847332419586,
-      "ci_lo": -0.2786343340067033,
-      "ci_hi": -0.20062206895653836
+      "point": -0.2361672267422175,
+      "ci_lo": -0.27935473727322757,
+      "ci_hi": -0.1954006056290854
     }
   },
   "n_bootstrap": 1000

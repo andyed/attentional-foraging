@@ -183,10 +183,11 @@ def main():
 
     # Build feature matrix:
     #   B continuous: vt_any, vt_center_ms, avg_viewport_y, max_overlap_frac (4)
+    #   position (rank control — max_overlap_frac is mechanically tied to rank) (1)
     #   etype dummies: is_dd_top, is_native_ad (organic = ref, 2)
     #   etype × max_overlap_frac interactions: 2
-    # Total: 8 features
-    B = ["vt_any", "vt_center_ms", "avg_viewport_y", "max_overlap_frac"]
+    # Total: 9 features
+    B = ["vt_any", "vt_center_ms", "avg_viewport_y", "max_overlap_frac", "position"]
 
     def feat_row(r):
         is_dd = 1.0 if r["etype"] == "dd_top" else 0.0
@@ -194,6 +195,7 @@ def main():
         mof = r["max_overlap_frac"]
         return [
             r["vt_any"], r["vt_center_ms"], r["avg_viewport_y"], r["max_overlap_frac"],
+            float(r["position"]),
             is_dd, is_na,
             is_dd * mof, is_na * mof,
         ]
