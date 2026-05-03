@@ -27,6 +27,17 @@ The bbox-organic AOI cascade landed across both `attentional-foraging` and `appr
 - [ ] **AR README: promote NB28 placeholders to actual numbers.** Now that the calibration retrain is done, `docs/methodology/attribution-cascade-synthesis.md §4.3` has the numbers ready to drop into AR's README §11 viewport-bands paragraph.
 - [ ] **Place the Dumais, Buscher & Cutrell (IIiX 2010) citation** (see "Citations to place" below; lit-note stub exists, bib entry pending).
 
+## AI authorship disclosure plan (cross-paper)
+
+- [ ] **Have the disclosure discussion + draft a paragraph to circulate.** Triggered 2026-05-02. Scope to settle:
+    - **Tools used.** Claude (analysis, prose drafting, code review, synthesis-doc authoring, figure scripts), GitHub Copilot if any, embedding model (mxbai-embed-large for content features). Each plays a different role; venues may want separately-categorized disclosure.
+    - **Role taxonomy.** ACM and IR/HCI venues now distinguish: (i) idea generation, (ii) literature review, (iii) analysis / statistics, (iv) code authoring, (v) prose drafting / editing, (vi) figure generation, (vii) review / sanity-check. Decide which categories applied for which artifacts.
+    - **Venue-specific rules.** ACM 2024 policy: "Authors are required to disclose any use of generative AI tools, the specific tools, and how they were used." CIKM / SIGIR / CHIIR are ACM. Workshops (ETTAC at ICPR Lyon) may have separate rules — verify before submission.
+    - **Disclosure placement.** Acknowledgements section vs. dedicated declaration vs. methods-section paragraph. Some venues mandate a specific sentence format.
+    - **Reproducibility commitment.** This project's GitHub history records every AI-assisted commit via `Co-Authored-By: Claude Opus 4.7 (1M context)` trailers, which is more granular than most venues require — a footnote pointing reviewers to the commit history can strengthen the disclosure.
+    - **Two-tier disclosure draft** to circulate to co-authors: a short acknowledgements-section sentence and a longer methods-section paragraph for venues that want the detail.
+    - **Co-author thread.** Peter + Leif on CIKM; Jacek + Gavindya + Yasith on RIPA2/ETTAC tracks; Duchowski on the LF/HF method paper. Each track may want distinct phrasing depending on their own AI-usage decisions.
+
 ## Publication
 
 - [ ] **Single arXiv paper → CHI/CHIIR submission, if findings warrant.** Core contribution: decomposing "attention" on SERPs into four measurable constructs (overt fixation, viewport exposure, interaction latency, processing speed) where the field uses one undifferentiated term (Zhang et al. CHIIR '26). Novel findings: (1) lexical priming does NOT predict first-pass evaluation — forward-only gaze dwell ratio reverses (ρ = +0.82); aggregate correlation was position confound + regression artifact; regression-trial signal is triply confounded (position, repetition/recognition, scroll kinematics), (2) TTI-to-first-scroll calibrates individual processing speed at r=0.77 (zero-training-data signal, complementary to AdSight's Transformer approach), (3) satisfice/optimize is a continuous user trait visible from scroll regressions. Frame relative to AdSight (same data, prediction focus) and Zhang et al. (same lab, definitional focus). Venue candidates: CHI, CHIIR, CIKM, SIGIR resource track.
