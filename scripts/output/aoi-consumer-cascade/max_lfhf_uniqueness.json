@@ -1,0 +1,117 @@
+{
+  "attribution": "organic",
+  "n_trials_with_lfhf": 2174,
+  "click_uniqueness": {
+    "n_max_lfhf_positions": 2174,
+    "n_max_clicks": 760,
+    "p_click_max_pp": 34.95860165593376,
+    "n_other_positions": 10234,
+    "n_other_clicks": 1048,
+    "p_click_other_pp": 10.240375219855384,
+    "delta_pp": 24.71822643607838,
+    "z": 29.666651455837854,
+    "p_value": 0.0
+  },
+  "regress_uniqueness": {
+    "n_max_lfhf_positions": 2174,
+    "n_max_regress": 1152,
+    "p_regress_max_pp": 52.989880404783804,
+    "n_other_positions": 10234,
+    "n_other_regress": 6292,
+    "p_regress_other_pp": 61.4813367207348,
+    "delta_pp": -8.491456315950996,
+    "z": -7.339500082274686,
+    "p_value": 2.1449508835758024e-13
+  },
+  "within_trial_rank_decay": [
+    {
+      "rank": 1,
+      "n": 2174,
+      "click_rate_pp": 34.95860165593376,
+      "regress_rate_pp": 52.98988040478381
+    },
+    {
+      "rank": 2,
+      "n": 1241,
+      "click_rate_pp": 20.54794520547945,
+      "regress_rate_pp": 58.340048348106365
+    },
+    {
+      "rank": 3,
+      "n": 621,
+      "click_rate_pp": 15.458937198067632,
+      "regress_rate_pp": 62.15780998389694
+    },
+    {
+      "rank": 4,
+      "n": 261,
+      "click_rate_pp": 16.091954022988507,
+      "regress_rate_pp": 70.49808429118774
+    },
+    {
+      "rank": 5,
+      "n": 99,
+      "click_rate_pp": 10.1010101010101,
+      "regress_rate_pp": 67.67676767676768
+    },
+    {
+      "rank": 6,
+      "n": 39,
+      "click_rate_pp": 5.128205128205129,
+      "regress_rate_pp": 51.282051282051285
+    },
+    {
+      "rank": 7,
+      "n": 11,
+      "click_rate_pp": 0.0,
+      "regress_rate_pp": 45.45454545454545
+    },
+    {
+      "rank": 8,
+      "n": 3,
+      "click_rate_pp": 0.0,
+      "regress_rate_pp": 66.66666666666667
+    }
+  ],
+  "per_trial_lfhf_range": {
+    "n_trials": 621,
+    "mean": 60.32442447504025,
+    "median": 38.16334500000001,
+    "p25": 19.375835,
+    "p75": 70.70637099999999
+  },
+  "content_uniqueness": {
+    "n_records": 13118,
+    "n_trials": 2771,
+    "rho_uniqueness_click": -0.04081791570565045,
+    "p_uniqueness_click": 2.917615494423311e-06,
+    "rho_uniqueness_regress": 6.164588345918588e-06,
+    "p_uniqueness_regress": 0.9994367041749884,
+    "quartile_bins": [
+      {
+        "label": "Q1 (least unique)",
+        "n": 3280,
+        "click_rate_pp": 17.53048780487805,
+        "regress_rate_pp": 63.506097560975604
+      },
+      {
+        "label": "Q2",
+        "n": 3279,
+        "click_rate_pp": 16.773406526379993,
+        "regress_rate_pp": 63.616956389143034
+      },
+      {
+        "label": "Q3",
+        "n": 3279,
+        "click_rate_pp": 15.767002134797195,
+        "regress_rate_pp": 62.641049100335465
+      },
+      {
+        "label": "Q4 (most unique)",
+        "n": 3280,
+        "click_rate_pp": 13.689024390243903,
+        "regress_rate_pp": 63.90243902439025
+      }
+    ]
+  }
+}
