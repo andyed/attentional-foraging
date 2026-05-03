@@ -1,0 +1,38 @@
+{
+  "attribution": "organic",
+  "extractor": "LAB gaze-gated (fixation-timed cursor interpolation)",
+  "n_records": 14760,
+  "M1_auc": 0.7265130026522756,
+  "M2_auc": 0.7841124268637496,
+  "M3_auc": 0.8633580499769269,
+  "M4_auc": 0.8621969366533286,
+  "M3_per_part_mean": 0.8643893055452179,
+  "M3_per_part_sd": 0.044337771571556515,
+  "M3_per_part_median": 0.869250645994832,
+  "M3_features": [
+    "position",
+    "total_dwell_ms",
+    "min_dist",
+    "mean_dist",
+    "final_dist",
+    "retreat_dist",
+    "dwell_in_proximity_ms",
+    "mean_approach_velocity",
+    "max_approach_velocity",
+    "direction_changes",
+    "frac_decreasing"
+  ],
+  "M3_coefs": [
+    -0.2589017266222148,
+    0.025459346816540433,
+    -0.7589002904870765,
+    0.5172564196417304,
+    -0.8217595948657804,
+    -0.18653758685873542,
+    0.7449583770727012,
+    0.15659202083719023,
+    0.07951031761540767,
+    0.12277574319287743,
+    0.03244955767229685
+  ]
+}
