@@ -1,0 +1,144 @@
+{
+  "attribution": "organic",
+  "definitions": {
+    "N": "Number of organic positions per trial with valid first-pass LF/HF",
+    "spread_normed": "(max LF/HF - min LF/HF) / median LF/HF within trial",
+    "is_peak": "position == argmax LF/HF within trial"
+  },
+  "tercile_cuts": {
+    "q33_spread": 0.9146425323260827,
+    "q67_spread": 1.6951870066018504
+  },
+  "A_set_size": [
+    {
+      "stratum": "N=2",
+      "n_trials": 620,
+      "n_records": 1240,
+      "n_peak_records": 620,
+      "n_nonpeak_records": 620,
+      "peak_click_rate_pct": 32.903225806451616,
+      "nonpeak_click_rate_pct": 22.419354838709676,
+      "lift_pp": 10.48387096774194,
+      "lift_ci95_pp": [
+        4.35483870967742,
+        16.129032258064516
+      ]
+    },
+    {
+      "stratum": "N=3",
+      "n_trials": 360,
+      "n_records": 1080,
+      "n_peak_records": 360,
+      "n_nonpeak_records": 720,
+      "peak_click_rate_pct": 20.0,
+      "nonpeak_click_rate_pct": 17.77777777777778,
+      "lift_pp": 2.2222222222222214,
+      "lift_ci95_pp": [
+        -3.1944444444444446,
+        7.777777777777779
+      ]
+    },
+    {
+      "stratum": "N=4+",
+      "n_trials": 261,
+      "n_records": 1197,
+      "n_peak_records": 261,
+      "n_nonpeak_records": 936,
+      "peak_click_rate_pct": 14.17624521072797,
+      "nonpeak_click_rate_pct": 14.743589743589743,
+      "lift_pp": -0.5673445328617728,
+      "lift_ci95_pp": [
+        -5.459042436596524,
+        4.870348201908613
+      ]
+    }
+  ],
+  "B_dispersion_tercile": [
+    {
+      "stratum": "spread low",
+      "n_trials": 414,
+      "n_records": 961,
+      "n_peak_records": 414,
+      "n_nonpeak_records": 547,
+      "peak_click_rate_pct": 27.77777777777778,
+      "nonpeak_click_rate_pct": 21.02376599634369,
+      "lift_pp": 6.754011781434087,
+      "lift_ci95_pp": [
+        0.7603296475788514,
+        12.99966304435689
+      ]
+    },
+    {
+      "stratum": "spread mid",
+      "n_trials": 413,
+      "n_records": 1096,
+      "n_peak_records": 413,
+      "n_nonpeak_records": 683,
+      "peak_click_rate_pct": 25.423728813559322,
+      "nonpeak_click_rate_pct": 18.740849194729137,
+      "lift_pp": 6.682879618830185,
+      "lift_ci95_pp": [
+        0.9990650772035998,
+        12.408980881981703
+      ]
+    },
+    {
+      "stratum": "spread high",
+      "n_trials": 414,
+      "n_records": 1460,
+      "n_peak_records": 414,
+      "n_nonpeak_records": 1046,
+      "peak_click_rate_pct": 22.463768115942027,
+      "nonpeak_click_rate_pct": 15.48757170172084,
+      "lift_pp": 6.976196414221187,
+      "lift_ci95_pp": [
+        2.264729569581808,
+        11.993608870527028
+      ]
+    }
+  ],
+  "AB_dispersion_within_N_geq_4": [
+    {
+      "stratum": "spread low | N>=4+",
+      "n_trials": 11,
+      "n_records": 48,
+      "n_peak_records": 11,
+      "n_nonpeak_records": 37,
+      "peak_click_rate_pct": 9.090909090909092,
+      "nonpeak_click_rate_pct": 16.216216216216218,
+      "lift_pp": -7.125307125307126,
+      "lift_ci95_pp": [
+        -23.68421052631579,
+        18.455500381970936
+      ]
+    },
+    {
+      "stratum": "spread mid | N>=4+",
+      "n_trials": 72,
+      "n_records": 315,
+      "n_peak_records": 72,
+      "n_nonpeak_records": 243,
+      "peak_click_rate_pct": 9.722222222222221,
+      "nonpeak_click_rate_pct": 17.28395061728395,
+      "lift_pp": -7.561728395061728,
+      "lift_ci95_pp": [
+        -15.918175752814408,
+        1.5863835222147438
+      ]
+    },
+    {
+      "stratum": "spread high | N>=4+",
+      "n_trials": 178,
+      "n_records": 834,
+      "n_peak_records": 178,
+      "n_nonpeak_records": 656,
+      "peak_click_rate_pct": 16.292134831460675,
+      "nonpeak_click_rate_pct": 13.71951219512195,
+      "lift_pp": 2.572622636338725,
+      "lift_ci95_pp": [
+        -3.8083417011478318,
+        9.411098163966962
+      ]
+    }
+  ]
+}

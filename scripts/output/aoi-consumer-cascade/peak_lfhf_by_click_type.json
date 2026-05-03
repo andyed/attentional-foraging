@@ -1,0 +1,86 @@
+{
+  "attribution": "organic",
+  "definitions": {
+    "forward_click": "clicked AND will_regress == False",
+    "regressive_click": "clicked AND will_regress == True",
+    "peak_position": "within-trial argmax of median LF/HF on first-pass segments"
+  },
+  "cells_by_peak_x_click_type": {
+    "peak | forward (will_regress=F)": {
+      "n_records": 1022,
+      "n_clicks": 335,
+      "click_rate_pct": 32.77886497064579
+    },
+    "peak | regressive (will_regress=T)": {
+      "n_records": 1152,
+      "n_clicks": 425,
+      "click_rate_pct": 36.892361111111114
+    },
+    "non-peak | forward (will_regress=F)": {
+      "n_records": 887,
+      "n_clicks": 103,
+      "click_rate_pct": 11.61217587373168
+    },
+    "non-peak | regressive (will_regress=T)": {
+      "n_records": 1389,
+      "n_clicks": 302,
+      "click_rate_pct": 21.742260619150468
+    }
+  },
+  "click_composition": {
+    "peak | forward": {
+      "n_clicks": 335,
+      "pct_of_clicks": 28.755364806866954
+    },
+    "peak | regressive": {
+      "n_clicks": 425,
+      "pct_of_clicks": 36.48068669527897
+    },
+    "non-peak | forward": {
+      "n_clicks": 103,
+      "pct_of_clicks": 8.841201716738198
+    },
+    "non-peak | regressive": {
+      "n_clicks": 302,
+      "pct_of_clicks": 25.92274678111588
+    }
+  },
+  "peak_lift_stratified": {
+    "all positions": {
+      "n_records": 4450,
+      "n_peak_records": 2174,
+      "n_nonpeak_records": 2276,
+      "peak_click_rate_pct": 34.95860165593376,
+      "nonpeak_click_rate_pct": 17.794376098418276,
+      "lift_pp": 17.164225557515486,
+      "lift_ci95_pp": [
+        14.55737355131557,
+        19.804913875042903
+      ]
+    },
+    "forward-eligible (~regress)": {
+      "n_records": 1909,
+      "n_peak_records": 1022,
+      "n_nonpeak_records": 887,
+      "peak_click_rate_pct": 32.77886497064579,
+      "nonpeak_click_rate_pct": 11.61217587373168,
+      "lift_pp": 21.166689096914112,
+      "lift_ci95_pp": [
+        17.61439797872704,
+        24.9439389523071
+      ]
+    },
+    "regressive-eligible (regress=T)": {
+      "n_records": 2541,
+      "n_peak_records": 1152,
+      "n_nonpeak_records": 1389,
+      "peak_click_rate_pct": 36.892361111111114,
+      "nonpeak_click_rate_pct": 21.742260619150468,
+      "lift_pp": 15.150100491960647,
+      "lift_ci95_pp": [
+        11.417438252577941,
+        18.82644565125049
+      ]
+    }
+  }
+}

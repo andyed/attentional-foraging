@@ -1,0 +1,166 @@
+{
+  "attribution": "organic",
+  "description": "Peak-LF/HF click-share by trial, vs chance prior 1/N. Trials retained: clicked position has valid first-pass LF/HF AND N >= 2.",
+  "all_clicks_by_N": [
+    {
+      "stratum": "N=2",
+      "n_trials": 343,
+      "n_click_at_peak": 204,
+      "observed_share": 0.5947521865889213,
+      "chance_prior": 0.5,
+      "lift_pp_over_chance": 9.475218658892127,
+      "fold_over_chance": 1.1895043731778425,
+      "observed_share_ci95": [
+        0.5451895043731778,
+        0.6472303206997084
+      ]
+    },
+    {
+      "stratum": "N=3",
+      "n_trials": 200,
+      "n_click_at_peak": 72,
+      "observed_share": 0.36,
+      "chance_prior": 0.3333333333333333,
+      "lift_pp_over_chance": 2.666666666666667,
+      "fold_over_chance": 1.08,
+      "observed_share_ci95": [
+        0.295,
+        0.43
+      ]
+    },
+    {
+      "stratum": "N=4",
+      "n_trials": 100,
+      "n_click_at_peak": 28,
+      "observed_share": 0.28,
+      "chance_prior": 0.25,
+      "lift_pp_over_chance": 3.0000000000000027,
+      "fold_over_chance": 1.12,
+      "observed_share_ci95": [
+        0.2,
+        0.37
+      ]
+    },
+    {
+      "stratum": "N>=5",
+      "n_trials": 75,
+      "n_click_at_peak": 9,
+      "observed_share": 0.12,
+      "chance_prior": 0.18291005291005288,
+      "lift_pp_over_chance": -6.2910052910052885,
+      "fold_over_chance": 0.656060167775528,
+      "observed_share_ci95": [
+        0.05333333333333334,
+        0.2
+      ]
+    }
+  ],
+  "regressive_clicks_by_N": [
+    {
+      "stratum": "N=2 (regressive)",
+      "n_trials": 230,
+      "n_click_at_peak": 136,
+      "observed_share": 0.591304347826087,
+      "chance_prior": 0.5,
+      "lift_pp_over_chance": 9.130434782608699,
+      "fold_over_chance": 1.182608695652174,
+      "observed_share_ci95": [
+        0.5304347826086957,
+        0.6521739130434783
+      ]
+    },
+    {
+      "stratum": "N=3 (regressive)",
+      "n_trials": 152,
+      "n_click_at_peak": 52,
+      "observed_share": 0.34210526315789475,
+      "chance_prior": 0.3333333333333333,
+      "lift_pp_over_chance": 0.8771929824561431,
+      "fold_over_chance": 1.0263157894736843,
+      "observed_share_ci95": [
+        0.26973684210526316,
+        0.42105263157894735
+      ]
+    },
+    {
+      "stratum": "N=4 (regressive)",
+      "n_trials": 84,
+      "n_click_at_peak": 23,
+      "observed_share": 0.27380952380952384,
+      "chance_prior": 0.25,
+      "lift_pp_over_chance": 2.3809523809523836,
+      "fold_over_chance": 1.0952380952380953,
+      "observed_share_ci95": [
+        0.19047619047619047,
+        0.36904761904761907
+      ]
+    },
+    {
+      "stratum": "N>=5 (regressive)",
+      "n_trials": 55,
+      "n_click_at_peak": 8,
+      "observed_share": 0.14545454545454545,
+      "chance_prior": 0.1843795093795093,
+      "lift_pp_over_chance": -3.892496392496386,
+      "fold_over_chance": 0.7888867149285856,
+      "observed_share_ci95": [
+        0.0722727272727273,
+        0.23636363636363636
+      ]
+    }
+  ],
+  "forward_clicks_by_N": [
+    {
+      "stratum": "N=2 (forward)",
+      "n_trials": 113,
+      "n_click_at_peak": 68,
+      "observed_share": 0.6017699115044248,
+      "chance_prior": 0.5,
+      "lift_pp_over_chance": 10.176991150442483,
+      "fold_over_chance": 1.2035398230088497,
+      "observed_share_ci95": [
+        0.5132743362831859,
+        0.6902654867256637
+      ]
+    },
+    {
+      "stratum": "N=3 (forward)",
+      "n_trials": 48,
+      "n_click_at_peak": 20,
+      "observed_share": 0.4166666666666667,
+      "chance_prior": 0.3333333333333333,
+      "lift_pp_over_chance": 8.333333333333337,
+      "fold_over_chance": 1.2500000000000002,
+      "observed_share_ci95": [
+        0.2916666666666667,
+        0.5416666666666666
+      ]
+    },
+    {
+      "stratum": "N=4 (forward)",
+      "n_trials": 16,
+      "n_click_at_peak": 5,
+      "observed_share": 0.3125,
+      "chance_prior": 0.25,
+      "lift_pp_over_chance": 6.25,
+      "fold_over_chance": 1.25,
+      "observed_share_ci95": [
+        0.0625,
+        0.5625
+      ]
+    },
+    {
+      "stratum": "N>=5 (forward)",
+      "n_trials": 20,
+      "n_click_at_peak": 1,
+      "observed_share": 0.05,
+      "chance_prior": 0.17886904761904762,
+      "lift_pp_over_chance": -12.886904761904761,
+      "fold_over_chance": 0.27953410981697174,
+      "observed_share_ci95": [
+        0.0,
+        0.15
+      ]
+    }
+  ]
+}

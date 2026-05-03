@@ -1,7 +1,7 @@
 # Forward / Regressive Episode Split
 
 **Stable ID:** M:forward-regressive-split
-**Status:** current as of 2026-04-30; canonical implementation: `notebooks-v2/episode_classifier.py`
+**Status:** current as of 2026-05-03; canonical implementation: `notebooks-v2/episode_classifier.py`. 2026-05-03 update adds regression-episode geometry (§5.3), scroll-velocity asymmetry (§5.4), and trial-level n_epochs (§5.5) as derived constructs built on the same HWM substrate.
 
 ---
 
@@ -65,7 +65,77 @@ The HWM lookup uses last-known-value scroll sampling — no linear interpolation
 
 **Caveat: rank-space HWM ≠ scroll-space HWM.** This validation tests definitions in **rank space** (`pos ≥ running-max-rank`). The canonical episode classifier in §3 tests in **scroll space** (`entry_scroll ≥ hwm_at_entry − tol_px`). Position rank is monotonic with scroll Y in steady state, so the two rules are tightly coupled, but they can diverge when the participant scrolls past results without fixating, or when rapid scroll changes outpace fixation events. A direct rank-space-vs-scroll-space agreement check on the same trials has not yet been run — flagged in §6.
 
-### 5.2 Built-in invariants
+### 5.2 Regression-episode geometry (2026-05-03)
+
+The per-episode forward/regressive classifier (§3) labels *each* episode entry. Aggregating one level up: a **regression episode** is a contiguous run of regressive AOI-fixations that ends when HWM advances or the trial ends. Per regression episode, four observables:
+
+| Field | Definition |
+|---|---|
+| `hwm_onset` | the HWM at the moment the regression began |
+| `dip_floor` | the minimum AOI rank reached during the episode |
+| `tension` | `hwm_onset − dip_floor` (depth of the regression in ranks) |
+| `n_fixations` | number of fixations in the regressive run |
+
+Walking 2,681 trials under bbox-organic attribution yields 9,359 regression episodes. Tension is small for shallow HWM-onset and grows sharply past HWM ≈ 7. The high mean-to-SD ratio at deep HWM (mean ≈ SD) signals a bimodal mix of local re-evaluations + full anchor-returns, not a single Gaussian retreat distribution:
+
+| HWM | n eps | tension mean ± sd | tension p25 / p50 / p75 / p95 | n_fix p50 / p95 | dip p50 | % to pos 0 |
+|---:|---:|---|---|---|---:|---:|
+| 1 | 2,154 | 1.00 ± 0.00 | 1 / 1 / 1 / 1 | 2 / 13 | 0 | 100% |
+| 2 | 1,542 | 1.46 ± 0.50 | 1 / 1 / 2 / 2 | 3 / 21 | 1 | 46% |
+| 3 | 1,209 | 1.82 ± 0.91 | 1 / 1 / 3 / 3 | 3 / 25 | 2 | 34% |
+| 4 | 996 | 2.23 ± 1.32 | 1 / 2 / 4 / 4 | 3 / 28 | 2 | 30% |
+| 5 | 728 | 2.44 ± 1.68 | 1 / 2 / 4 / 5 | 3 / 32 | 3 | 24% |
+| 6 | 615 | 2.86 ± 2.13 | 1 / 2 / 5 / 6 | 3 / 41 | 4 | 24% |
+| 7 | 607 | 3.75 ± 2.66 | 1 / 3 / 7 / 7 | 4 / 52 | 4 | 33% |
+| **8** | 774 | **4.80 ± 3.08** | **1 / 5 / 8 / 8** | **7 / 52** | 3 | **40%** |
+| **9** | 512 | **5.58 ± 3.51** | **1 / 7 / 9 / 9** | **9 / 56** | 2 | **44%** |
+| **10** | 155 | **6.52 ± 3.95** | **2 / 9 / 10 / 10** | **11 / 50** | 1 | **50%** |
+| 11 | 53 | 5.70 ± 4.50 | 1 / 4 / 11 / 11 | 4 / 42 | 7 | 36% |
+
+**Reading the distribution stats.** At HWM ≤ 6, tension SD < 2 ranks — regressions are tightly clustered around their median. At HWM ≥ 8, tension SD ≈ 3–4 ranks with the IQR spanning 1 → 8/9/10 — i.e. trials in the deep stratum bifurcate into "short adjacent regression" (p25 = 1) and "full anchor return" (p75–p95 = 8–10). The "rubber-band" framing is a shorthand for this bimodality, not a single elastic retreat.
+
+Under hybrid attribution (more positions per trial), the same phase transition appears at HWM ≈ 11 with deeper tail (15 ranks tension at HWM 15). The shape is attribution-independent; only the rank-axis location of the transition shifts.
+
+**Two-mode structure.** Below the transition, regressions are local re-evaluation (median tension 1–3 ranks, ~3 fixations). Past it, regressions become long anchor-returns (40–50% land at position 0, 7+ fixations median, 50+ fixations p95). The "rubber band" snaps to a fixed anchor at the top of page rather than scaling proportionally with depth.
+
+Source: `scripts/render_regression_tension.py` → `scripts/output/figures/regression_tension_{organic,hybrid}.png`. The arc-graph variant (`scripts/render_regressive_arcs.py`) gives the source-HWM × target-position joint distribution.
+
+### 5.3 Scroll-velocity asymmetry — independent confirmation (2026-05-03)
+
+The per-fixation rule above operates on *gaze-derived* HWM. The mouse-events stream provides an independent measurement channel: for every consecutive scroll-pair `(t1, y1) → (t2, y2)`, compute `Δy` and `|Δy|/Δt`, label the direction by sign of Δy.
+
+| depth bin (frac of doc) | direction | n events | median speed (px/s) | median \|Δy\| (px) |
+|---|---|---:|---:|---:|
+| top (<20%) | forward | 115,803 | 740 | 12 |
+| top (<20%) | regressive | 46,218 | 830 | 13 |
+| mid (20–50%) | forward | 70,788 | 780 | 12 |
+| **mid (20–50%)** | **regressive** | 35,475 | **970** | **16** |
+| deep (50%+) | forward | 10,543 | 740 | 12 |
+| **deep (50%+)** | **regressive** | 6,890 | **930** | **16** |
+
+**Key observations.** Forward scroll velocity is near-constant across depth (740–780 px/s). Only regressive scroll accelerates (830 → 970 px/s) and uses larger per-event strides (16 vs 12 px). The gaze-side acceleration with depth (§5.3) is not an eye-tracking artifact; it lives in the scroll-velocity stream too. **This signal is rank-type-independent** (mouse-events stream; depth bins are fractions of doc-height).
+
+Source: `scripts/render_scroll_velocity.py` → `scripts/output/figures/scroll_velocity.png`.
+
+### 5.4 Trial-level n_epochs and multi-cycle prevalence (2026-05-03)
+
+A second derived construct on the HWM substrate: an **epoch** is a contiguous forward push of the HWM. Epoch 1 begins at the first HWM advance. A new epoch begins when, after a regression below HWM, the user advances HWM beyond its prior max — i.e., resumes scanning into territory not yet visited.
+
+Per trial, `n_epochs`:
+- `n_epochs = 1` → pure forward (any regressions did not later push the HWM further).
+- `n_epochs = 2` → one regress-scan-regress cycle.
+- `n_epochs ≥ 3` → multiple regress-scan-regress cycles.
+
+| Attribution | n_epochs = 1 | ≥ 2 | ≥ 3 |
+|---|---:|---:|---:|
+| bbox-organic | 38% | **62%** | 37% |
+| organic_hybrid | 22% | **79%** | 54% |
+
+**Modal trial structure.** Multi-cycle scanning (`n_epochs ≥ 2`) is the modal pattern under both attributions. The "F-pattern / forward sweep" framing — even with the hedge that regressions exist — under-counts how much of typical SERP scanning is back-and-forth. Per-participant median fraction of trials that are multi-cycle is 0.64 organic / 0.83 hybrid (47/47 participants show ≥1 multi-cycle trial; 95–100% show ≥5).
+
+Sources: `scripts/scan_epochs_per_trial.py` (counts), `scripts/render_scan_epoch_staircase.py` (population staircase + small multiples by `n_epochs`), `scripts/render_staircase_by_strategy.py` (tercile split by per-participant regression rate).
+
+### 5.5 Built-in invariants
 
 - **Mass balance** (`forward_count + regressive_count == total_episodes`) is asserted at every call to `classify_trial_episodes`. No NaN direction is possible.
 - **Confidence ramp** flags episodes within ±`tol_px` of the boundary. These should be inspected before any per-cell claim that depends on small forward/regressive deltas.

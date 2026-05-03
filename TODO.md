@@ -1,5 +1,57 @@
 # TODO
 
+## Findings.md — ballistic-hotspots subsection (2026-05-03)
+
+Today's analyses (saccade-metrics + regression-tension + scroll-velocity) take the existing "regressive scroll is ballistic (ρ = 0.867)" claim from descriptive to characterized. New subsection candidate under §8 (scroll kinematics) titled something like "Regressive scroll is faster *and* qualitatively different." Five claim rows to document:
+
+- [ ] **Magnitude.** Regressive scroll is ~30% faster than forward across all depth bins (median 0.83–0.97 vs 0.74 px/ms = 830–970 vs 740 px/s). Per-event Δy is also larger (16 vs 12 px median). Forward velocity is **near-constant** across depth (0.74–0.78); only regressive accelerates with depth. Source: `scripts/render_scroll_velocity.py` → `scripts/output/figures/scroll_velocity.png`.
+- [ ] **Phase transition at HWM ≈ 8.** Regression-episode tension stays small (1–3 ranks) for HWM 1–7, then jumps to 5/7/9 for HWM 8/9/10. Episode length doubles from ~3 fixations to 7–11. The regression mechanism appears to switch from local re-evaluation to anchor-return at this boundary. Source: `scripts/render_regression_tension.py` → `scripts/output/figures/regression_tension_organic.png`.
+- [ ] **Anchor-return dominance at depth.** 40–50% of regression episodes from HWM ≥ 8 land all the way at position 0. The "rubber band" snaps to a fixed anchor, not a proportional offset. Suggests a memory-anchored re-evaluation mechanism rather than smooth elastic retreat.
+- [ ] **Modality (broader claim).** Regress-scan-regress is the **modal trial structure**, not a special subset: 62% of trials (organic) / 79% (hybrid) have ≥1 cycle; 37% / 54% have multiple cycles. The "F-pattern / forward sweep" framing under-counts how much of typical SERP scanning is back-and-forth. Source: `scripts/scan_epochs_per_trial.py` → `scripts/output/figures/scan_epochs_summary.json`.
+- [ ] **Two-signal confirmation.** The depth-dependent acceleration appears in *both* the gaze-fixation cadence (saccade metrics) AND the mouse scroll-velocity stream — independent measurement channels, same pattern. Argues against an eye-tracking artifact reading.
+
+Visualization assets ready (use as figures or supplementary):
+- `scripts/output/figures/scroll_velocity.png` — direction × depth violins + pooled CDF
+- `scripts/output/figures/regression_tension_organic.png` — dip-floor by HWM-onset (rubber-band shape)
+- `scripts/output/figures/regressive_arcs_organic.png` and `_hybrid.png` — source→target jump distribution
+- `scripts/output/figures/scan_epoch_staircase_organic.png` — population-level staircase + small-multiples by n_epochs
+- `scripts/output/figures/staircase_by_strategy_organic.png` — three-tercile satisficer/optimizer split
+- `scripts/output/figures/saccade_participation_hybrid.png` — etype participation by direction × bin (ad/algo external validation: dd_top is drive-by, native_ad behaves like organics)
+
+Note: `scripts/output/figures/saccade_metrics_by_bin_organic.png` and `saccade_diff_plot_organic.png` were superseded by the regression-episode-tension and scroll-velocity charts; the saccade-metrics framing was definitionally muddled (treated multi-fixation scroll-back as "saccades" in the eye-tracker sense). Hold for reference but don't cite as primary.
+
+Optional refinement before findings update: re-render scroll_velocity.png with px/s units instead of px/ms for legibility (one-line change).
+
+## ETTAC stat-traceability gaps (2026-05-03)
+
+ETTAC AdSERP-section verification (read-only) on 2026-05-03 found three categories of numeric claims **not currently traceable** to canonical pipeline output. Numbers are not necessarily wrong — likely from earlier `validate_adserp.py` runs or one-off scripts whose outputs aren't in current cache. Need to either re-derive or surface the original computation before the next pre-Jacek pass. Verification status documented in chat 2026-05-03 audit run.
+
+- [ ] **2,719 trials retained (1-second LF/HF window)** — both `ettac-paper/sections/adserp.tex` (public) and `pupil-lfhf/ettac/adserp.tex` (local). Methodology-specific filter; doesn't match NB14:K1 (which is 2,416 absolute / 2,174 organic). Re-derive from `validate_adserp.py` or document the filter difference.
+- [ ] **Bootstrap 95% CI [−0.893, +0.143] on plateau Spearman** — public `adserp.tex` only. Bootstrap value, source not located. NB14:K11 has ρ = −0.714, p = 0.071 absolute; CI not in any output JSON or Key Claims row.
+- [ ] **Capped plateau ρ = −0.786, p = 0.036** (participant-concentration audit, cap at 10 segments per participant per position) — both `.tex` files. Audit value, not in canonical Key Claims; likely a one-off computation from when the audit was run.
+- [ ] **§Predicting return: p = 0.0055, 63% of participants direction, 95% CI [+0.94, +3.85] on Δ(returned − not-returned), 6,112 records, 46 ppts** — public `adserp.tex` only. The 6,112 = NB14:K2 absolute ✓. The participant-level Wilcoxon signed-rank computation and the cluster-bootstrap CI on Δ are not in current `scripts/output/` or `pupil-lfhf/validation/`. Highest priority of the four — it's the load-bearing claim of §Predicting return and currently has no canonical replication path.
+
+What verifies cleanly (for reference):
+- All NB14-derived position-gradient claims (K3 / K9 / K10 / K11 / K12 / K5 / K13 / K14 / K15 / K7) under absolute attribution against canonical Key Claims ✓
+- LOCAL §Within-trial peak-load all values exact match against `max_lfhf_uniqueness.json` (organic) ✓
+
+## Ordinal reframe + LambdaMART (2026-05-02 PM)
+
+The 2x2 NB21×NB22 confusion under bbox-organic (Jaccard 0.26, 41% disagreement) collapses to **two cuts on a within-trial gaze-dwell ordinal**: `total_dwell_ms` rank predicts NB21 at AUC 0.738 and NB22 at AUC 0.725; `n_fixations` predicts NB21 at 0.722 and NB22 at 0.759. ~73% of the binary deferred/eval-rejected structure is recoverable from a single ordinal. The asymmetric off-diagonal (644 NB21-R/NB22-D vs 211 the other way) is the threshold-difference signature, not a substantive disagreement. The taxonomy's central object should shift from "four-class" to "estimable within-trial consideration ordinal of which the click is mostly-but-not-always rank-1" (60% by gaze-dwell, 69% by p_click LR).
+
+LambdaMART experiments (M3 features, LOSO by participant, n=2,020 eval trials):
+- **Pointwise LR baseline:** NDCG@5 = 0.8221, MRR = 0.7872
+- **LambdaMART binary-gain (flavor-1):** NDCG@5 = 0.8376, MRR = 0.8029 (+0.016)
+- **LambdaMART 32-grade p_click gain (flavor-2):** NDCG@5 = 0.8234, MRR = 0.7880 *(collapses to LR baseline — same-feature distillation carries no information)*
+
+**Read.** Listwise loss alone is a small lever (~10× smaller than NB26's 3-grade→10-grade jump). Soft-label distillation only helps if the teacher has access to features the student lacks.
+
+### Next
+- [ ] **Run option 1: gaze-derived label → cursor-only LambdaMART student.** Teacher = gaze-dwell rank within trial (or PCA-1 over `n_fix`, `total_dwell`, `n_returns`); student = M3 cursor-only LambdaMART. The true distillation: gaze-richness → cursor-only ranking. If MRR lifts meaningfully above 0.8029, the LAB→WILD gaze-distillation story is real and central to the §5 cursor-only validation argument.
+- [ ] **Decide ordinal target (with Peter).** Single-axis (`total_dwell_ms`) vs composite (`dwell × log(1 + n_returns)`, or PCA-1 over multiple gaze signals). The choice determines what option-1 looks like and what STUB-C-3 retarget against ordinal regression looks like.
+- [ ] **Reframe paper-v4 §4.2 + §4.5 around ordinal collapse.** Currently the 2x2 disagreement is presented as Venn-diagram complementarity; the ordinal reframe makes it "two cuts on a shared distribution." STUB-A NB22 trial-level retains as the cut-point demonstration; STUB-C-3 forward-selection retargets from binary will_regress to ordinal regression. Decide: do this for v4, or hold for v5.
+- [ ] **Code pointers.** `scripts/ordinality_tau_test.py` → `scripts/output/aoi-consumer-cascade/ordinality_tau_test.json`; `scripts/lambdamart_baseline_organic.py` → `lambdamart_baseline_organic.json`; `scripts/lambdamart_continuous_gain_organic.py` → `lambdamart_continuous_gain_organic.json`. Memos in `docs/drafts/peter-ordinal-reframe-2026-05-02.md` and `docs/drafts/peter-lambdamart-followup-2026-05-02.md`.
+
 ## AOI cascade (2026-05-01 → 2026-05-02)
 
 The bbox-organic AOI cascade landed across both `attentional-foraging` and `approach-retreat` and merged to main on both repos. Synthesis: [`docs/methodology/attribution-cascade-synthesis.md`](docs/methodology/attribution-cascade-synthesis.md). Per-finding category audit and replacement-predictor scan complete; AR replay re-deployed under bbox AOIs.
