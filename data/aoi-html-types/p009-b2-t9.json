@@ -61,5 +61,14 @@
     "heading_text": "Steiff Dormili Rabbit, Brown, Sitting EAN 076633",
     "container": "rso",
     "container_index": "6"
+  },
+  {
+    "order": 7,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

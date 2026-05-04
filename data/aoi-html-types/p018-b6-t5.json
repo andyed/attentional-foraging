@@ -52,5 +52,14 @@
     "heading_text": "Images for buy avon avon wild country talc powder",
     "container": "rso",
     "container_index": "5"
+  },
+  {
+    "order": 6,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

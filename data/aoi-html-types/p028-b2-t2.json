@@ -88,5 +88,14 @@
     "heading_text": "Shapton Glass Stone HR 66.82 Micron #220 Grit - Zanvak",
     "container": "rso",
     "container_index": "9"
+  },
+  {
+    "order": 10,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

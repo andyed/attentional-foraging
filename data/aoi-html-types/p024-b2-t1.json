@@ -61,5 +61,14 @@
     "heading_text": "English Food in the Usa - Home | Facebook",
     "container": "rso",
     "container_index": "6"
+  },
+  {
+    "order": 7,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

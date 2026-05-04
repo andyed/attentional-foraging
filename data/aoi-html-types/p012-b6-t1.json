@@ -88,5 +88,14 @@
     "heading_text": "Related searches",
     "container": "botstuff",
     "container_index": 0
+  },
+  {
+    "order": 10,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

@@ -284,15 +284,11 @@ def parse_serp(html: str):
                 'container_index': handle_idx,
             })
 
-    # ── #botstuff: bottom-of-page widgets (Related searches lives here) ──
+    # ── #botstuff: bottom-of-page widgets (Related searches + pagination) ──
     botstuff = soup.select_one('#botstuff')
     if botstuff is not None:
-        # Walk recursively to find every substantive container, but type each
-        # only once at its outermost matching wrapper. Approach: find every
-        # ULSxyf wrapper inside botstuff (which holds Related searches +
-        # potentially other bottom widgets) and type each top-level one.
+        # Related searches and similar bottom widgets are wrapped in ULSxyf
         for i, ulsxyf in enumerate(botstuff.select('div.ULSxyf')):
-            # Skip ULSxyf wrappers that are nested inside another ULSxyf
             ancestor_uls = ulsxyf.find_parent('div', class_='ULSxyf')
             if ancestor_uls is not None:
                 continue
@@ -305,6 +301,27 @@ def parse_serp(html: str):
                 'html_handle': f'botstuff.ULSxyf[{i}]',
                 'html_signature': signature,
                 'heading_text': _heading_text(ulsxyf)[:120],
+                'container': 'botstuff',
+                'container_index': i,
+            })
+
+        # Pagination lives in a <div role="navigation"> inside #botstuff
+        # (separate from ULSxyf). Type it as `pagination`.
+        for i, nav in enumerate(botstuff.find_all(attrs={'role': 'navigation'})):
+            # Skip empty navs
+            text = nav.get_text(separator='|', strip=True)
+            if not text:
+                continue
+            # Skip if this nav is contained inside an already-typed ULSxyf
+            ancestor_uls = nav.find_parent('div', class_='ULSxyf')
+            if ancestor_uls is not None:
+                continue
+            cards.append({
+                'order': len(cards),
+                'type': 'pagination',
+                'html_handle': f'botstuff.nav[{i}]',
+                'html_signature': f'div[role=navigation] in botstuff',
+                'heading_text': text[:120],
                 'container': 'botstuff',
                 'container_index': i,
             })

@@ -118,5 +118,17 @@
     "heading_text": "Single in the City - Feb 2004 - Page 79 - Google Books Result",
     "source": "html_rso+cv_bbox",
     "position": 9
+  },
+  {
+    "type": "pagination",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|Next",
+    "source": "html_botstuff",
+    "position": -1
   }
 ]

@@ -88,5 +88,14 @@
     "heading_text": "Images for buy monroe monroe 71353 reflex strut",
     "container": "rso",
     "container_index": "9"
+  },
+  {
+    "order": 10,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|6|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

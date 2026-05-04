@@ -79,5 +79,14 @@
     "heading_text": "SACHS Clutch Flywheel 027105271P NFW7201 - alleuro.com",
     "container": "rso",
     "container_index": "8"
+  },
+  {
+    "order": 9,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|6|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

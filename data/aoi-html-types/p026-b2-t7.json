@@ -100,6 +100,15 @@
   },
   {
     "order": 11,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|Next",
+    "container": "botstuff",
+    "container_index": 0
+  },
+  {
+    "order": 12,
     "type": "knowledge_panel",
     "html_handle": "#rhs",
     "html_signature": "rhs.kp[data-attrid=kc:/collection/knowledge_panel]",

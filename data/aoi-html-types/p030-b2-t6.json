@@ -97,5 +97,14 @@
     "heading_text": "Lexmark C920 C9202KH Black Genuine Toner Cartridge 15,000 Yield",
     "container": "rso",
     "container_index": "10"
+  },
+  {
+    "order": 11,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

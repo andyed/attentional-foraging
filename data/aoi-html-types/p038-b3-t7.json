@@ -97,5 +97,14 @@
     "heading_text": "Mushroom Science - Mother's Market & Kitchen",
     "container": "rso",
     "container_index": "10"
+  },
+  {
+    "order": 11,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

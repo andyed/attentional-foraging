@@ -88,5 +88,14 @@
     "heading_text": "SEIKO WATCH | Always one step ahead of the rest.",
     "container": "rso",
     "container_index": "9"
+  },
+  {
+    "order": 10,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

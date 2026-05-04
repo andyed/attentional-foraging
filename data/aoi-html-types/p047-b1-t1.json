@@ -97,5 +97,14 @@
     "heading_text": "FELCO 13/3 Replacement Blade for ... - Kogan.com",
     "container": "rso",
     "container_index": "10"
+  },
+  {
+    "order": 11,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|6|7|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

@@ -88,5 +88,14 @@
     "heading_text": "PANACEA MOISTURE METER 6002CS | R\u00e9no-D\u00e9p\u00f4t",
     "container": "rso",
     "container_index": "9"
+  },
+  {
+    "order": 10,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

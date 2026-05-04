@@ -88,5 +88,14 @@
     "heading_text": "PiranhaMAX 165, 175, 176i, 195c, & 196ci Installation and ...",
     "container": "rso",
     "container_index": "9"
+  },
+  {
+    "order": 10,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|6|7|8|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

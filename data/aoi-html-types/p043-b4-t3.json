@@ -52,5 +52,14 @@
     "heading_text": "Forum Novelties, 25104, Forum Novelties Adult Baby Diaper ...",
     "container": "rso",
     "container_index": "5"
+  },
+  {
+    "order": 6,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

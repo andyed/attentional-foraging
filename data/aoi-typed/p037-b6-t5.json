@@ -130,5 +130,17 @@
     "heading_text": "Buy Skywatch wind meters online at Kitemana",
     "source": "html_rso+cv_bbox",
     "position": 10
+  },
+  {
+    "type": "pagination",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|Next",
+    "source": "html_botstuff",
+    "position": -1
   }
 ]

@@ -79,5 +79,14 @@
     "heading_text": "Navitas Organics, Organic Lucuma Powder, 8 oz (227 g) - Expressbuy",
     "container": "rso",
     "container_index": "8"
+  },
+  {
+    "order": 9,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|6|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

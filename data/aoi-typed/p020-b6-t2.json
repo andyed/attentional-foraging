@@ -130,5 +130,17 @@
     "heading_text": "Fendi F622140 - Reloj de cuarzo para mujer (cer\u00e1mica), color ...",
     "source": "html_rso+cv_bbox",
     "position": 10
+  },
+  {
+    "type": "pagination",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|Next",
+    "source": "html_botstuff",
+    "position": -1
   }
 ]

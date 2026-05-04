@@ -52,5 +52,14 @@
     "heading_text": "LOT OF 6 Avon Advance Techniques Keep Clear Anti Dandruff 2 In ...",
     "container": "rso",
     "container_index": "5"
+  },
+  {
+    "order": 6,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

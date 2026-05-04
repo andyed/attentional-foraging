@@ -106,5 +106,14 @@
     "heading_text": "Images for buy aqua sphere aqua sphere ergo board",
     "container": "rso",
     "container_index": "11"
+  },
+  {
+    "order": 12,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|10|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

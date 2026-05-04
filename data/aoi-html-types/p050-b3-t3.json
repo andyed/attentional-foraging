@@ -79,5 +79,14 @@
     "heading_text": "Rosle Julienne Peeler - Didriks",
     "container": "rso",
     "container_index": "8"
+  },
+  {
+    "order": 9,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

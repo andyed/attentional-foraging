@@ -79,5 +79,14 @@
     "heading_text": "Pantalla LCD de 16.4\" para port\u00e1til LQ164D1LD4A Sharp ...",
     "container": "rso",
     "container_index": "8"
+  },
+  {
+    "order": 9,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|6|7|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

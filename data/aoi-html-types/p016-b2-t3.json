@@ -70,5 +70,14 @@
     "heading_text": "Buy Biotivia Pteromax \u2013 Pterostilbene, Trans-Resveratrol, ...",
     "container": "rso",
     "container_index": "7"
+  },
+  {
+    "order": 8,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

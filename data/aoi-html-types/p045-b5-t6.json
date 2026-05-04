@@ -70,5 +70,14 @@
     "heading_text": "Deals on Copco 1-1 2-QUART Enamel On Steel Camden Tea Kettle ...",
     "container": "rso",
     "container_index": "7"
+  },
+  {
+    "order": 8,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

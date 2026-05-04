@@ -190,5 +190,17 @@
     "heading_text": "Hyundai Airtex E8198 Electric Fuel Pump",
     "source": "html_only",
     "position": -1
+  },
+  {
+    "type": "pagination",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|Next",
+    "source": "html_botstuff",
+    "position": -1
   }
 ]

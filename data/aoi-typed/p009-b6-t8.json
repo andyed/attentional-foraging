@@ -94,5 +94,17 @@
     "heading_text": "Hitachi SLIDE COMPOUND SAW C8FB2 Spare Parts",
     "source": "html_rso+cv_bbox",
     "position": 7
+  },
+  {
+    "type": "pagination",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|Next",
+    "source": "html_botstuff",
+    "position": -1
   }
 ]

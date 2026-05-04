@@ -88,5 +88,14 @@
     "heading_text": "ACI\u00ae 174161 - Front Windshield Washer Pump - CARiD.com",
     "container": "rso",
     "container_index": "9"
+  },
+  {
+    "order": 10,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

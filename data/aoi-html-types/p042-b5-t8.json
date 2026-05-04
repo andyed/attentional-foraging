@@ -97,5 +97,14 @@
     "heading_text": "Bosch AL8703N 100% New Alternator for Select Buick: 1997 ...",
     "container": "rso",
     "container_index": "10"
+  },
+  {
+    "order": 11,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

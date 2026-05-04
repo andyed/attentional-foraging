@@ -79,5 +79,14 @@
     "heading_text": "60-DAY NOTICE OF VIOLATION - California Department of ...",
     "container": "rso",
     "container_index": "8"
+  },
+  {
+    "order": 9,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

@@ -130,5 +130,17 @@
     "heading_text": "",
     "source": "cv_bbox_only",
     "position": 10
+  },
+  {
+    "type": "pagination",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|Next",
+    "source": "html_botstuff",
+    "position": -1
   }
 ]

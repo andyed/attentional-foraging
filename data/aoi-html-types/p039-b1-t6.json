@@ -70,5 +70,14 @@
     "heading_text": "SEACHOICE Deluxe MASTHEAD LIGHT VERT 12-5/8 Sports ...",
     "container": "rso",
     "container_index": "7"
+  },
+  {
+    "order": 8,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|6|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]

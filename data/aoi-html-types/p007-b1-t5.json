@@ -97,5 +97,14 @@
     "heading_text": "+_+ Price George Foreman Lean Mean Fat Reducing Grilling Machine",
     "container": "rso",
     "container_index": "10"
+  },
+  {
+    "order": 11,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|Next",
+    "container": "botstuff",
+    "container_index": 0
   }
 ]
