@@ -89,6 +89,30 @@ The bbox-organic AOI cascade landed across both `attentional-foraging` and `appr
     - **Reproducibility commitment.** This project's GitHub history records every AI-assisted commit via `Co-Authored-By: Claude Opus 4.7 (1M context)` trailers, which is more granular than most venues require — a footnote pointing reviewers to the commit history can strengthen the disclosure.
     - **Two-tier disclosure draft** to circulate to co-authors: a short acknowledgements-section sentence and a longer methods-section paragraph for venues that want the detail.
     - **Co-author thread.** Peter + Leif on CIKM; Jacek + Gavindya + Yasith on RIPA2/ETTAC tracks; Duchowski on the LF/HF method paper. Each track may want distinct phrasing depending on their own AI-usage decisions.
+## AOI cascade (2026-05-01 → 2026-05-02)
+
+The bbox-organic AOI cascade landed across both `attentional-foraging` and `approach-retreat` and merged to main on both repos. Synthesis: [`docs/methodology/attribution-cascade-synthesis.md`](docs/methodology/attribution-cascade-synthesis.md). Per-finding category audit and replacement-predictor scan complete; AR replay re-deployed under bbox AOIs.
+
+### Done
+- [x] **AOI-filtered analysis (was line 67):** AdSERP v1's ad-only bboxes augmented with pixel-accurate organic + native_ad + dd_top per-cell + widget filtering. CV row-projection on screenshots; 88.3% within ±2 of HTML count; 78.6/20.1/0.2/1.2 click attribution. Spec at `docs/methodology/organic-result-aoi-extraction.md`. Three rank-attribution flavors (`absolute` / `organic` / `organic_hybrid`) supported across producer chain.
+- [x] **Notebook K-claims migrated to bbox-organic (NB04, NB14, NB15, NB18, NB21, NB22, NB23, NB24, NB25, NB28).** `update_key_claims.py` refactored to read notebooks (notebooks canonical).
+- [x] **Producer chain accepts `--attribution organic` (and `organic_hybrid` where applicable).** `compute_cursor_approach_features.py`, `compute_butterworth_lfhf.py`, `compute_ripa2.py`, `compute_regression_labels.py`, `compute_retreat_arcs.py`, `compute_k_coefficient.py`, `compute_saccade_orientation.py`, `m5_cursor_only_taxonomy.py`, `forward_classifier_robustness.py`, `viewport_bands_bootstrap.py`. Render scripts default-organic.
+- [x] **NB28 viewport-band calibration retrained under bbox-organic.** Pooled retreat+bands AUC 0.811 [0.788, 0.833]; per-position vt_top P0–P3 positive, attenuating to 0 at P5, P6+ null — NB28:K38 pattern preserved.
+- [x] **NB21 LOSO retrained under all three attributions.** Hybrid M3 = M4 = 0.870 (best); organic M3 = 0.865; absolute 0.859. Position coefficient cleanest under organic (−0.248).
+- [x] **Hybrid attribution surfaces dd_top click-rate finding.** dd_top (top-of-page ads) click rate 17.1% — highest of any SERP surface; was structurally invisible under absolute (pooled into "organic position 1").
+- [x] **R1 RIPA2 leg collapse mechanism resolved.** Intersection-of-trials sensitivity test confirms dilution, not selection (`scripts/r1_intersection_sensitivity.py`). Replacement predictors found in will-return scan (`scripts/will_return_predictor_scan.py`): peak-pupil metrics survive (`pd_change_max` p=5.1e-6, `pd_change_min` p=1.9e-5), mean-based metrics all die. `n_fix` = strongest single predictor (p=3.3e-16, median 4 vs 5 fixations).
+- [x] **Saccade orientation + K-coefficient by etype** confirms top-of-page Survey-phase across surfaces — 3-signal convergence with NB13:K3 amplitude transition (`scripts/saccade_k_by_etype.py`).
+- [x] **AR replay deploy refreshed.** 80 trial bundles regenerated under bbox AOIs; M5 model swapped to bbox-organic-trained (LOSO AUC 0.769); 28 curated captions audited (1 corrected).
+
+### Next (post-merge)
+- [ ] **Promote bbox K-bbox-* values into the CIKM paper draft.** `docs/drafts/cikm-2026/paper-v3.md` still cites legacy absolute-attribution K-IDs in places. Replace with K-bbox-* tier; the brand claim ("9 task-model-derived cursor features reach AUC ≈ 0.86 in LOSO") tightens to 0.865 / 0.870. The dd_top 17.1% click-rate finding deserves a paragraph.
+- [ ] **CIKM paper headline: 4-fixation visual budget.** Internal anchor at `docs/findings.md` §10c (committed `60c2cc7a`). Hold for arxiv preprint anchor before any LinkedIn / public posting; bad mojo to publish a key finding casually pre-preprint per 2026-05-02 thread with Andy.
+- [ ] **ETTAC §3 prose reframe.** NB14 numbers update (steep ρ = −1.000 holds; full corpus −0.655; plateau ρ flips n.s.). Drop the joint LF/HF × RIPA2 dissociation claim or hold absolute as primary with the bbox shift as a sensitivity finding. Peter has the lead.
+- [ ] **R1 / RIPA2-paper coordination with Gwizdka.** R1 per-fixation amplitude differential dies under bbox (rank-pooling artifact); replacement framing in `docs/null-findings/r1-ripa2-bbox-collapse.md` and synthesis §4.3. Discuss before paper framing locks. Standalone RIPA2 publication (Gavindya/team) — flag if their draft includes the AdSERP per-fixation will-regress claim.
+- [ ] **Refresh `scripts/output/figures/INDEX.md` for cascade.** Several render outputs got new captions/findings under bbox; the index is still pre-cascade. Coupling-traces caption needs rewrite (legacy three-band pattern collapses; motor-signature dissociation lives at different metrics).
+- [ ] **`plot_approach_retreat_hero.py` exemplar trials hand-pick.** Currently pinned to absolute because the curated COMMIT exemplar (p015-b1-t5 pos=2) reattributes away from 'clicked' under bbox. Pick new exemplars from `cursor-approach-features-organic.json`.
+- [ ] **AR README: promote NB28 placeholders to actual numbers.** Now that the calibration retrain is done, `docs/methodology/attribution-cascade-synthesis.md §4.3` has the numbers ready to drop into AR's README §11 viewport-bands paragraph.
+- [ ] **Place the Dumais, Buscher & Cutrell (IIiX 2010) citation** (see "Citations to place" below; lit-note stub exists, bib entry pending).
 
 ## Publication
 
