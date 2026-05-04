@@ -39,7 +39,8 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / 'notebooks-v2'))
 sys.path.insert(0, str(ROOT.parent / 'pupil-lfhf' / 'validation'))
 
-from data_loader import load_fixations, get_trial_ids, organic_aoi_tops  # noqa: E402
+from data_loader import load_fixations, get_trial_ids, organic_aoi_tops, typed_aoi_tops  # noqa: E402
+from compute_regression_labels import _hybrid_aoi_tops  # noqa: E402
 # pupil-lfhf provides the canonical position assignment matching NB14/NB18
 from adserp_loader import (  # type: ignore # noqa: E402
     get_trial_meta as pl_get_trial_meta,
@@ -61,6 +62,20 @@ def resolve_paths(attribution: str) -> tuple[Path, Path, Path, str]:
             ROOT / 'AdSERP/data/saccade-orientation-by-position-organic.json',
             ROOT / 'AdSERP/data/saccade-orientation-by-trial-organic.json',
             '_organic',
+        )
+    if attribution == 'organic_hybrid':
+        return (
+            ROOT / 'AdSERP/data/ripa2-by-position-organic.json',
+            ROOT / 'AdSERP/data/saccade-orientation-by-position-organic-hybrid.json',
+            ROOT / 'AdSERP/data/saccade-orientation-by-trial-organic-hybrid.json',
+            '_organic_hybrid',
+        )
+    if attribution == 'typed':
+        return (
+            ROOT / 'AdSERP/data/ripa2-by-position-typed.json',
+            ROOT / 'AdSERP/data/saccade-orientation-by-position-typed.json',
+            ROOT / 'AdSERP/data/saccade-orientation-by-trial-typed.json',
+            '_typed',
         )
     return (
         ROOT / 'AdSERP/data/ripa2-by-position.json',
@@ -126,7 +141,7 @@ def features_from_classes(classes: list[str]) -> dict:
 def main() -> None:
     import argparse
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--attribution', choices=['absolute', 'organic'], default='organic',
+    ap.add_argument('--attribution', choices=['absolute', 'organic', 'organic_hybrid', 'typed'], default='organic',
                     help='organic (default; bbox-attributed) or absolute (legacy)')
     args = ap.parse_args()
     global RIPA2_PATH, OUT_BY_POS, OUT_BY_TRIAL, _OUT_SUFFIX
@@ -154,6 +169,10 @@ def main() -> None:
         # Position assignment context
         if args.attribution == 'organic':
             tops = organic_aoi_tops(tid)
+        elif args.attribution == 'organic_hybrid':
+            tops = _hybrid_aoi_tops(tid)
+        elif args.attribution == 'typed':
+            tops = typed_aoi_tops(tid)
             n_results = len(tops) if tops else 0
             if n_results == 0:
                 tops = None

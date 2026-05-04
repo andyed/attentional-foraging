@@ -101,7 +101,7 @@ def cosine(a: np.ndarray, b: np.ndarray) -> float:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--attribution', choices=['absolute', 'organic'], default='organic',
+    ap.add_argument('--attribution', choices=['absolute', 'organic', 'organic_hybrid', 'typed'], default='organic',
                     help='absolute = h3-enumerated positions (legacy); organic = bbox-organic positions '
                          '(post-2026-05-01 cascade; maps via data_loader.absolute_to_organic_rank).')
     args = ap.parse_args()

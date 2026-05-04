@@ -123,6 +123,35 @@ def build_positions(trial_id, attribution, doc_h, ad_regions):
         heights = [r[3] for r in items]
         return tops, bottoms, etypes, heights
 
+    if attribution == "typed":
+        # HTML+vision typed AOI map. Loads the per-trial typed JSON and
+        # filters to main-axis cards (position >= 0). Etype taxonomy includes
+        # organic, dd_top, native_ad, top_places, knowledge_panel, paa,
+        # image_pack, other_widget, unknown_widget.
+        from data_loader import load_typed_aois
+        cards = load_typed_aois(trial_id)
+        main = [c for c in cards if c.get('position', -1) >= 0
+                and c.get('y') is not None and c.get('height') is not None]
+        if not main:
+            return [], [], [], []
+        main.sort(key=lambda c: c['position'])
+        tops = [float(c['y']) for c in main]
+        heights = [float(c['height']) for c in main]
+        bottoms = [t + h for t, h in zip(tops, heights)]
+        etypes = [c['type'] for c in main]
+        return tops, bottoms, etypes, heights
+
+    if attribution == "organic":
+        # Bbox-organic only (ads excluded).
+        bands = organic_aoi_bands(trial_id)
+        if not bands:
+            return [], [], [], []
+        tops = [t for t, b in bands]
+        bottoms = [b for t, b in bands]
+        etypes = ['organic'] * len(tops)
+        heights = [b - t for t, b in zip(tops, bottoms)]
+        return tops, bottoms, etypes, heights
+
     # absolute (legacy)
     serp = extract_serp_results(trial_id)
     n_results = len(serp) if serp else 10
@@ -303,7 +332,7 @@ def extract_retreat_arcs(trial_id, attribution,
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--attribution", choices=["absolute", "organic_hybrid"], default="organic_hybrid")
+    parser.add_argument("--attribution", choices=["absolute", "organic", "organic_hybrid", "typed"], default="organic_hybrid")
     parser.add_argument("--output", "-o", help="Output path")
     args = parser.parse_args()
 
@@ -311,6 +340,10 @@ def main():
         out_path = Path(args.output)
     elif args.attribution == "organic_hybrid":
         out_path = DATA_DIR / "retreat-arcs-organic.json"
+    elif args.attribution == "organic":
+        out_path = DATA_DIR / "retreat-arcs-organic.json"
+    elif args.attribution == "typed":
+        out_path = DATA_DIR / "retreat-arcs-typed.json"
     else:
         out_path = DATA_DIR / "retreat-arcs.json"
 
