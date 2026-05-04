@@ -1,0 +1,122 @@
+[
+  {
+    "type": "image_pack",
+    "x": 162.0,
+    "y": 133.0,
+    "width": 586.0,
+    "height": 330.0,
+    "html_handle": "rso[0]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy puma puma faas 200 gents watch",
+    "source": "html_rso+cv_bbox",
+    "position": 0
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 498.0,
+    "width": 586.0,
+    "height": 245.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Puma PU910931007 Faas 200 Purple Blue Watch",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 782.0,
+    "width": 586.0,
+    "height": 105.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.g",
+    "heading_text": "Puma Faas 200 Digital Dial Black Silicone Unisex Watch ...",
+    "source": "html_rso+cv_bbox",
+    "position": 2
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 922.0,
+    "width": 586.0,
+    "height": 150.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Puma Faas 200 Digital Dial Black Silicone Unisex Watch",
+    "source": "html_rso+cv_bbox",
+    "position": 3
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1103.0,
+    "width": 586.0,
+    "height": 188.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Puma Faas 200 Digital Dial Black Silicone Unisex Watch ...",
+    "source": "html_rso+cv_bbox",
+    "position": 4
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1321.0,
+    "width": 586.0,
+    "height": 208.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Puma Mens Bolt Faas 200 185679 03 Gray Ivory ... - eBay",
+    "source": "html_rso+cv_bbox",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1563.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Buy Puma Watches Products Online in India - desertcart",
+    "source": "html_rso+cv_bbox",
+    "position": 6
+  },
+  {
+    "type": "unknown_widget",
+    "x": 162.0,
+    "y": 1679.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
+    "position": 7
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1791.0,
+    "width": 540.0,
+    "height": 69.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 8
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1887.0,
+    "width": 540.0,
+    "height": 69.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 9
+  }
+]

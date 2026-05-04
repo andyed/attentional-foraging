@@ -1,0 +1,122 @@
+[
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 234.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[0]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Customer reviews: FAU CROW CALL - Amazon.com",
+    "source": "html_rso+cv_bbox",
+    "position": 0
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 350.0,
+    "width": 586.0,
+    "height": 203.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Faulks Game Calls | Steve Weiss Music",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 588.0,
+    "width": 586.0,
+    "height": 101.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Faulks Hunting Game Calls for sale - eBay",
+    "source": "html_rso+cv_bbox",
+    "position": 2
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 720.0,
+    "width": 586.0,
+    "height": 125.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Faulks Game Calls Crow Call C50 - AllPredatorCalls.com",
+    "source": "html_rso+cv_bbox",
+    "position": 3
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 879.0,
+    "width": 586.0,
+    "height": 82.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Faulks Predator P-60a Adjustable Game Call - Futurama",
+    "source": "html_rso+cv_bbox",
+    "position": 4
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 995.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Faulks Dove Call on PopScreen",
+    "source": "html_rso+cv_bbox",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1111.0,
+    "width": 586.0,
+    "height": 101.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Game Calls Manufacturer | Faulk's Game Call Co, INC | United ...",
+    "source": "html_rso+cv_bbox",
+    "position": 6
+  },
+  {
+    "type": "image_pack",
+    "x": 162.0,
+    "y": 1257.0,
+    "width": 586.0,
+    "height": 202.0,
+    "html_handle": "rso[7]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy faulks game call fau crow call",
+    "source": "html_rso+cv_bbox",
+    "position": 7
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1503.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "FAULKS GAME CALL PREDATOR ADJUST (P-60A)",
+    "source": "html_rso+cv_bbox",
+    "position": 8
+  },
+  {
+    "type": "dd_right",
+    "x": 802.0,
+    "y": 158.0,
+    "width": 332.0,
+    "height": 305.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_ad_rhs",
+    "position": -1
+  }
+]

@@ -1,0 +1,119 @@
+[
+  {
+    "order": 0,
+    "type": "other_widget",
+    "html_handle": "rso[0]",
+    "html_signature": "ULSxyf div.ULSxyf",
+    "heading_text": "Reiki_Music/Listen",
+    "container": "rso",
+    "container_index": "0"
+  },
+  {
+    "order": 1,
+    "type": "knowledge_panel",
+    "html_handle": "rso[1]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "container": "rso",
+    "container_index": "1"
+  },
+  {
+    "order": 2,
+    "type": "organic",
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Reiki Music - Amazon.co.uk",
+    "container": "rso",
+    "container_index": "2"
+  },
+  {
+    "order": 3,
+    "type": "organic",
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Reiki Music - Amazon.com",
+    "container": "rso",
+    "container_index": "3"
+  },
+  {
+    "order": 4,
+    "type": "organic",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Healing & Reiki Music CDs - Holistic Shop",
+    "container": "rso",
+    "container_index": "4"
+  },
+  {
+    "order": 5,
+    "type": "organic",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "New Age, Massage, Relaxation music - Buy Reiki Meditations",
+    "container": "rso",
+    "container_index": "5"
+  },
+  {
+    "order": 6,
+    "type": "organic",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Music for Reiki and Meditation by Shajan - Sequoia Records",
+    "container": "rso",
+    "container_index": "6"
+  },
+  {
+    "order": 7,
+    "type": "organic",
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "MBSCD924 Reiki Healing Touch - New World Music",
+    "container": "rso",
+    "container_index": "7"
+  },
+  {
+    "order": 8,
+    "type": "organic",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Reiki Healing Music | Download 1 hour of Music Free",
+    "container": "rso",
+    "container_index": "8"
+  },
+  {
+    "order": 9,
+    "type": "organic",
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Reiki Healing Therapy Music 4+ - App Store",
+    "container": "rso",
+    "container_index": "9"
+  },
+  {
+    "order": 10,
+    "type": "organic",
+    "html_handle": "rso[10]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Reiki Music Vol. 4 (Music and Angels for Reiki, Meditation and ...",
+    "container": "rso",
+    "container_index": "10"
+  },
+  {
+    "order": 11,
+    "type": "organic",
+    "html_handle": "rso[11]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Reiki: Music for Healing & Relaxation [CD] - Best Buy",
+    "container": "rso",
+    "container_index": "11"
+  },
+  {
+    "order": 12,
+    "type": "knowledge_panel",
+    "html_handle": "#rhs",
+    "html_signature": "rhs.kp[data-attrid=kc:/music/artist:genre]",
+    "heading_text": "Complementary results",
+    "container": "rhs",
+    "rhs_only": true
+  }
+]

@@ -78,6 +78,10 @@ def regressed_positions(trial_id, attribution):
     elif attribution == "organic_hybrid":
         tops = _hybrid_aoi_tops(trial_id)
         n_res = len(tops)
+    elif attribution == "typed":
+        from data_loader import typed_aoi_tops
+        tops = typed_aoi_tops(trial_id)
+        n_res = len(tops)
     else:
         serp = extract_serp_results(trial_id)
         n_res = len(serp) if serp else 10
@@ -105,7 +109,7 @@ def regressed_positions(trial_id, attribution):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--attribution", choices=["absolute", "organic", "organic_hybrid"], default="organic")
+    parser.add_argument("--attribution", choices=["absolute", "organic", "organic_hybrid", "typed"], default="organic")
     parser.add_argument("--features",
                         help="Path to cursor-approach-features JSON (default depends on attribution)")
     parser.add_argument("--output", "-o")
@@ -113,6 +117,8 @@ def main():
 
     if args.features:
         feat_path = Path(args.features)
+    elif args.attribution == "typed":
+        feat_path = ROOT / "AdSERP/data/cursor-approach-features-typed.json"
     elif args.attribution == "organic_hybrid":
         feat_path = ROOT / "AdSERP/data/cursor-approach-features-organic-hybrid.json"
     elif args.attribution == "organic":
@@ -125,7 +131,9 @@ def main():
     else:
         out_dir = ROOT / "scripts/output/approach_threshold_sensitivity"
         out_dir.mkdir(parents=True, exist_ok=True)
-        if args.attribution == "organic_hybrid":
+        if args.attribution == "typed":
+            suffix = "_typed"
+        elif args.attribution == "organic_hybrid":
             suffix = "_organic_hybrid"
         elif args.attribution == "organic":
             suffix = "_organic"

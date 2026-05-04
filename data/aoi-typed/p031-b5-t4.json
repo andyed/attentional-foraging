@@ -1,0 +1,62 @@
+[
+  {
+    "type": "dd_top",
+    "x": 162.0,
+    "y": 158.0,
+    "width": 586.0,
+    "height": 351.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 0
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 529.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[0]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "2Pk For Lexmark 150Xl 150 Xl High Yield Black Ink Cartridge ...",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 640.0,
+    "width": 540.0,
+    "height": 69.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 2
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 736.0,
+    "width": 540.0,
+    "height": 69.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 3
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 832.0,
+    "width": 540.0,
+    "height": 108.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 4
+  }
+]

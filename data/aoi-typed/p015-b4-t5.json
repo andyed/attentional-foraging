@@ -1,0 +1,122 @@
+[
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 133.0,
+    "width": 586.0,
+    "height": 258.0,
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "April in Paris [VHS] - Amazon.com",
+    "source": "html_rso+cv_bbox",
+    "position": 0
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 422.0,
+    "width": 586.0,
+    "height": 208.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "April in Paris (VHS, 1992) for sale online - eBay",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 664.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "9780790741215: April in Paris [VHS] - AbeBooks: 0790741210",
+    "source": "html_rso+cv_bbox",
+    "position": 2
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 776.0,
+    "width": 586.0,
+    "height": 188.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.(no class)",
+    "heading_text": "April in Paris VHS Video Doris Day Ray Bolger, Tested",
+    "source": "html_rso+cv_bbox",
+    "position": 3
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 998.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "April in Paris VHS \u30aa\u30da\u30e9\u3001\u58f0\u697d - onomade.net",
+    "source": "html_rso+cv_bbox",
+    "position": 4
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1114.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "April in Paris (1952) - Available on VHS, DVD - Alibris",
+    "source": "html_rso+cv_bbox",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1231.0,
+    "width": 586.0,
+    "height": 98.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Lee's Last Retreat: The Flight to Appomattox",
+    "source": "html_rso+cv_bbox",
+    "position": 6
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1361.0,
+    "width": 540.0,
+    "height": 108.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 7
+  },
+  {
+    "type": "unknown_widget",
+    "x": 162.0,
+    "y": 1515.0,
+    "width": 586.0,
+    "height": 80.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
+    "position": 8
+  },
+  {
+    "type": "related_searches",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "botstuff.ULSxyf[0]",
+    "html_signature": "h=\"rs\" div.ULSxyf",
+    "heading_text": "Related searches",
+    "source": "html_botstuff",
+    "position": -1
+  }
+]

@@ -1,0 +1,85 @@
+{
+  "attribution": "typed",
+  "predictor": "argmax(first-pass LF/HF) over visited positions",
+  "n_trials_eligible": 2449,
+  "n_trials_skipped": 325,
+  "hit_rate": 0.31931400571661905,
+  "mean_chance_baseline": 0.5341339663920308,
+  "lift_pp": -21.481996067541175,
+  "lift_fold": 0.5978163266296692,
+  "p_binom_vs_chance": 1.0,
+  "by_consideration_set_size": {
+    "1": {
+      "n_trials": 657,
+      "hit_rate": 0.4779299847792998,
+      "chance": 1.0,
+      "lift_pp": -52.207001522070016,
+      "lift_fold": 0.4779299847792998,
+      "p_greater_chance": 1.0
+    },
+    "2": {
+      "n_trials": 716,
+      "hit_rate": 0.3226256983240223,
+      "chance": 0.5,
+      "lift_pp": -17.73743016759777,
+      "lift_fold": 0.6452513966480447,
+      "p_greater_chance": 1.0
+    },
+    "3": {
+      "n_trials": 511,
+      "hit_rate": 0.2583170254403131,
+      "chance": 0.3333333333333333,
+      "lift_pp": -7.5016307893020215,
+      "lift_fold": 0.7749510763209393,
+      "p_greater_chance": 0.9999003863871424
+    },
+    "4": {
+      "n_trials": 301,
+      "hit_rate": 0.21262458471760798,
+      "chance": 0.25,
+      "lift_pp": -3.737541528239202,
+      "lift_fold": 0.8504983388704319,
+      "p_greater_chance": 0.9431584413920437
+    },
+    "5": {
+      "n_trials": 151,
+      "hit_rate": 0.1456953642384106,
+      "chance": 0.19999999999999996,
+      "lift_pp": -5.430463576158936,
+      "lift_fold": 0.7284768211920531,
+      "p_greater_chance": 0.9657561069588707
+    },
+    "6": {
+      "n_trials": 66,
+      "hit_rate": 0.18181818181818182,
+      "chance": 0.16666666666666663,
+      "lift_pp": 1.5151515151515194,
+      "lift_fold": 1.0909090909090913,
+      "p_greater_chance": 0.42040232016204865
+    },
+    "7": {
+      "n_trials": 33,
+      "hit_rate": 0.12121212121212122,
+      "chance": 0.14285714285714285,
+      "lift_pp": -2.1645021645021636,
+      "lift_fold": 0.8484848484848485,
+      "p_greater_chance": 0.7132413571481453
+    },
+    "8": {
+      "n_trials": 6,
+      "hit_rate": 0.3333333333333333,
+      "chance": 0.125,
+      "lift_pp": 20.833333333333332,
+      "lift_fold": 2.6666666666666665,
+      "p_greater_chance": 0.16652297973632812
+    },
+    "9": {
+      "n_trials": 5,
+      "hit_rate": 0.2,
+      "chance": 0.11111111111111112,
+      "lift_pp": 8.88888888888889,
+      "lift_fold": 1.8,
+      "p_greater_chance": 0.4450710426933564
+    }
+  }
+}

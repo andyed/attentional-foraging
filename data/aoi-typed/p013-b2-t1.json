@@ -1,0 +1,122 @@
+[
+  {
+    "type": "dd_top",
+    "x": 162.0,
+    "y": 158.0,
+    "width": 587.0,
+    "height": 351.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 0
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 525.0,
+    "width": 586.0,
+    "height": 105.0,
+    "html_handle": "rso[0]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Die Sch\u00f6ne M\u00fcllerin, Winterreise, Schwanengesang: Ian ...",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 661.0,
+    "width": 586.0,
+    "height": 105.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Schubert: Die Schone Mullerin - Amazon.com Music",
+    "source": "html_rso+cv_bbox",
+    "position": 2
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 800.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Schubert: Die sch\u00f6ne M\u00fcllerin, D795 (page 1 of 15) - Presto ...",
+    "source": "html_rso+cv_bbox",
+    "position": 3
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 916.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "La bella molinera - Wikipedia, la enciclopedia libre",
+    "source": "html_rso+cv_bbox",
+    "position": 4
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1032.0,
+    "width": 586.0,
+    "height": 101.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Die sch\u00f6ne M\u00fcllerin, D.795 (Schubert, Franz) - IMSLP",
+    "source": "html_rso+cv_bbox",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1166.0,
+    "width": 586.0,
+    "height": 105.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g",
+    "heading_text": "Franz Schubert \u2013 Die Sch\u00f6ne M\u00fcllerin (CD) - Discogs",
+    "source": "html_rso+cv_bbox",
+    "position": 6
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1309.0,
+    "width": 586.0,
+    "height": 102.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Die sch\u00f6ne M\u00fcllerin from Franz Schubert - Stretta Music",
+    "source": "html_rso+cv_bbox",
+    "position": 7
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1444.0,
+    "width": 586.0,
+    "height": 85.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Schubert, Franz / Die sch\u00f6ne M\u00fcllerin op. 25 D 795 ...",
+    "source": "html_rso+cv_bbox",
+    "position": 8
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1560.0,
+    "width": 586.0,
+    "height": 188.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Schubert: Die sch\u00f6ne M\u00fcllerin [CD] - Best Buy",
+    "source": "html_rso+cv_bbox",
+    "position": 9
+  }
+]

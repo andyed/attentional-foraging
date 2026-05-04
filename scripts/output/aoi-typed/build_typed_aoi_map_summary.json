@@ -1,0 +1,33 @@
+{
+  "n_trials": 2776,
+  "n_errors": 0,
+  "type_distribution_total": {
+    "organic": 22530,
+    "native_ad": 9217,
+    "chrome": 2255,
+    "related_searches": 1811,
+    "image_pack": 1600,
+    "dd_top": 1582,
+    "dd_right": 861,
+    "knowledge_panel": 826,
+    "paa": 769,
+    "unknown_widget": 756,
+    "top_places": 86,
+    "other_widget": 51
+  },
+  "matching_summary": {
+    "matched_total": 25587,
+    "unmatched_bbox_total": 3011,
+    "unmatched_html_total": 193
+  },
+  "mismatch_distribution": {
+    "-1": 919,
+    "0": 816,
+    "-2": 564,
+    "-3": 193,
+    "1": 193,
+    "-4": 73,
+    "-5": 15,
+    "-6": 3
+  }
+}

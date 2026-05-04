@@ -738,6 +738,119 @@ def attribute_click_to_organic(click_y, trial_id, tolerance_px=30):
     return None
 
 
+# ── Typed AOI helpers (Phase-3 cascade: HTML+vision typed attribution) ───
+#
+# The typed-AOI pipeline (Phase 1 + 2 of feat/aoi-pipeline-v3-typed) writes
+# per-trial typed JSONs at `data/aoi-typed/<trial_id>.json` with an entry
+# per detected SERP card and a `position` field. position >= 0 = on the
+# main scroll axis; position == -1 = off-axis (chrome, dd_right, #botstuff
+# Related Searches, #rhs Knowledge Panel).
+#
+# Card types:
+#   organic | dd_top | native_ad | dd_right | top_places | knowledge_panel
+#   | paa | related_searches | image_pack | other_widget | unknown_widget
+#   | chrome
+#
+# Helpers below mirror the organic_aoi_* / _hybrid_aoi_tops conventions.
+
+_TYPED_AOI_DIR = (DATA_DIR.parent / 'data/aoi-typed') if DATA_DIR.name == 'data' else (DATA_DIR.parent.parent / 'data/aoi-typed')
+
+
+def _typed_aoi_path(trial_id):
+    """Return the path to the typed AOI map for a trial."""
+    # Resolve relative to the project root, not relative to AdSERP/data/
+    project_root = DATA_DIR.parent.parent if DATA_DIR.name == 'data' else DATA_DIR.parent
+    return project_root / 'data' / 'aoi-typed' / f'{trial_id}.json'
+
+
+def load_typed_aois(trial_id):
+    """Load the full typed AOI list for a trial. Returns list of dicts as
+    produced by `scripts/build_typed_aoi_map.py`. Empty list if missing."""
+    p = _typed_aoi_path(trial_id)
+    if not p.exists():
+        return []
+    return json.load(open(p))
+
+
+def typed_aoi_bands(trial_id):
+    """Return list of (y_top, y_bottom, type) tuples for cards on the main
+    scroll axis (position >= 0), sorted by display position.
+
+    Drop-in replacement for `organic_aoi_bands(trial_id)` callers that need
+    typed labels. Same y-coordinate convention (page-space pixels).
+    """
+    cards = load_typed_aois(trial_id)
+    main = [c for c in cards if c.get('position', -1) >= 0
+            and c.get('y') is not None and c.get('height') is not None]
+    main.sort(key=lambda c: c['position'])
+    return [(int(c['y']), int(c['y']) + int(c['height']), c['type']) for c in main]
+
+
+def typed_aoi_tops(trial_id):
+    """Convenience: just the y-tops of `typed_aoi_bands(trial_id)`.
+
+    Mirrors `organic_aoi_tops` and `_hybrid_aoi_tops`. Use with
+    `assign_fixation_to_position(page_y, tops, len(tops))` to attribute a
+    fixation to its typed-display-order slot.
+    """
+    return [b[0] for b in typed_aoi_bands(trial_id)]
+
+
+def typed_aoi_etypes(trial_id):
+    """Parallel to `typed_aoi_tops`: list of etype strings in display order.
+
+    Useful when the caller needs both position-by-y AND etype labels.
+    """
+    return [b[2] for b in typed_aoi_bands(trial_id)]
+
+
+def attribute_click_to_typed(click_y, trial_id, tolerance_px=30):
+    """Attribute a click y-coordinate to a typed AOI position with tolerance.
+
+    Mirrors `attribute_click_to_organic` but uses the typed AOI map. Returns
+    a (position, etype) tuple, or None if the click is genuinely off-AOI
+    (further than tolerance_px from any main-axis AOI edge).
+
+    Snap policy: tolerant 30 px, matching the existing organic click-snap
+    rule. Off-axis cards (chrome, dd_right, #botstuff, #rhs) are NOT
+    candidates for snap — they have position = -1.
+
+    Args:
+        click_y: page-space click y-coordinate (already includes scroll).
+        trial_id: e.g. 'p004-b1-t1'.
+        tolerance_px: snap distance threshold. Default 30.
+
+    Returns:
+        (int position, str etype) or None.
+    """
+    cards = load_typed_aois(trial_id)
+    main = [c for c in cards if c.get('position', -1) >= 0
+            and c.get('y') is not None and c.get('height') is not None]
+    if not main:
+        return None
+
+    # Strict containment first
+    for c in main:
+        y_top = c['y']
+        y_bot = c['y'] + c['height']
+        if y_top <= click_y <= y_bot:
+            return (c['position'], c['type'])
+
+    # Snap to nearest edge if within tolerance
+    best = None
+    best_dist = float('inf')
+    for c in main:
+        y_top = c['y']
+        y_bot = c['y'] + c['height']
+        d = min(abs(click_y - y_top), abs(click_y - y_bot))
+        if d < best_dist:
+            best_dist = d
+            best = (c['position'], c['type'])
+    if best_dist <= tolerance_px:
+        return best
+    return None
+
+
 # ── Legacy aliases (retained for backward compatibility) ──────────────────
 #
 # These names were written before the absolute-vs-organic distinction was

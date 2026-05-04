@@ -1,0 +1,122 @@
+[
+  {
+    "type": "image_pack",
+    "x": 162.0,
+    "y": 133.0,
+    "width": 586.0,
+    "height": 276.0,
+    "html_handle": "rso[0]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy orrefors orrefors dizzy diamond stemware goblet",
+    "source": "html_rso+cv_bbox",
+    "position": 0
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 453.0,
+    "width": 586.0,
+    "height": 184.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Orrefors Dizzy Diamond Goblet. Included for sale online - eBay",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 667.0,
+    "width": 586.0,
+    "height": 187.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.(no class)",
+    "heading_text": "ORREFORS DIZZY DIAMOND Stemware Wine $81.99",
+    "source": "html_rso+cv_bbox",
+    "position": 2
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 889.0,
+    "width": 586.0,
+    "height": 150.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.g",
+    "heading_text": "Orrefors Dizzy Diamond Stemware Iced Beverage - Amazon ...",
+    "source": "html_rso+cv_bbox",
+    "position": 3
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1074.0,
+    "width": 586.0,
+    "height": 79.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Dizzy Diamond Wine Glass by Orrefors Engravable - HomeBello",
+    "source": "html_rso+cv_bbox",
+    "position": 4
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1186.0,
+    "width": 586.0,
+    "height": 188.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Orrefors Crystal, Dizzy Diamond Crystal Goblet ... - Pinterest",
+    "source": "html_rso+cv_bbox",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1408.0,
+    "width": 586.0,
+    "height": 99.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Orrefors Dizzy Diamond Crystal 12 Ounce Wine Glass - Target",
+    "source": "html_rso+cv_bbox",
+    "position": 6
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1540.0,
+    "width": 540.0,
+    "height": 69.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 7
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1636.0,
+    "width": 540.0,
+    "height": 69.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 8
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1731.0,
+    "width": 540.0,
+    "height": 108.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 9
+  }
+]

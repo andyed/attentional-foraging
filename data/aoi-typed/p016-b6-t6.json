@@ -1,0 +1,110 @@
+[
+  {
+    "type": "dd_top",
+    "x": 162.0,
+    "y": 158.0,
+    "width": 586.0,
+    "height": 351.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 0
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 529.0,
+    "width": 586.0,
+    "height": 203.0,
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "KWS M3 Fruit Picker Basket Lot of 2 - Amazon.com",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 764.0,
+    "width": 586.0,
+    "height": 186.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "KWS M3 FRUIT PICKER BASKET 9326707525 | eBay",
+    "source": "html_rso+cv_bbox",
+    "position": 2
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 985.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "KWS M3 Fruit Picker Basket \u2013 Persik brand",
+    "source": "html_rso+cv_bbox",
+    "position": 3
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1101.0,
+    "width": 586.0,
+    "height": 147.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.g",
+    "heading_text": "Kw&#39;s M3 Fruit Picker Basket - Bahrain",
+    "source": "html_rso+cv_bbox",
+    "position": 4
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1286.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Aeropost.com British Virgin Islands - Kws M3 Fruit Picker Basket",
+    "source": "html_rso+cv_bbox",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1402.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Kw&#39;s M3 Fruit Picker Basket - Japan",
+    "source": "html_rso+cv_bbox",
+    "position": 6
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1518.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Kw&#39;s M3 Fruit Picker Basket - Australia",
+    "source": "html_rso+cv_bbox",
+    "position": 7
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1629.0,
+    "width": 586.0,
+    "height": 103.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Fruit Picker Head Basket - NextGenGardening\u2122",
+    "source": "html_rso+cv_bbox",
+    "position": 8
+  }
+]

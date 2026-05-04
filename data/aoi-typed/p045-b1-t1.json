@@ -1,0 +1,122 @@
+[
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 133.0,
+    "width": 586.0,
+    "height": 136.0,
+    "html_handle": "rso[0]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Cando Theraputty 6 oz Blue-Firm : Health & Household - Amazon.com",
+    "source": "html_rso+cv_bbox",
+    "position": 0
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 303.0,
+    "width": 586.0,
+    "height": 105.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "CanDo Theraputty Standard Exercise Putty Blue Firm 6 Oz",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 442.0,
+    "width": 586.0,
+    "height": 184.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.(no class)",
+    "heading_text": "CanDo\u00ae Theraputty\u00ae Exercise Material - 6 oz - Blue - Firm",
+    "source": "html_rso+cv_bbox",
+    "position": 2
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 661.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "CanDo Theraputty, Firm, 6 Ounce, Blue - School Specialty",
+    "source": "html_rso+cv_bbox",
+    "position": 3
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 777.0,
+    "width": 586.0,
+    "height": 230.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Cando Theraputty Exercise Material (6 Oz, Blue, Firm) | StomaBags ...",
+    "source": "html_rso+cv_bbox",
+    "position": 4
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1042.0,
+    "width": 586.0,
+    "height": 149.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g",
+    "heading_text": "CanDo TheraPutty Standard Hand Exercise Putty ... - Walmart",
+    "source": "html_rso+cv_bbox",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1226.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Fabrication Enterprises 10-0913 Cando Theraputty Exercise ...",
+    "source": "html_rso+cv_bbox",
+    "position": 6
+  },
+  {
+    "type": "image_pack",
+    "x": 162.0,
+    "y": 1352.0,
+    "width": 586.0,
+    "height": 244.0,
+    "html_handle": "rso[7]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy cando theraputty blue firm 6oz",
+    "source": "html_rso+cv_bbox",
+    "position": 7
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1637.0,
+    "width": 540.0,
+    "height": 89.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 8
+  },
+  {
+    "type": "dd_right",
+    "x": 802.0,
+    "y": 158.0,
+    "width": 221.0,
+    "height": 503.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_ad_rhs",
+    "position": -1
+  }
+]
