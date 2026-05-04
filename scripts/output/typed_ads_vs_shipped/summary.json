@@ -1,0 +1,71 @@
+{
+  "date": "2026-05-04",
+  "attribution": "typed",
+  "n_trials_audited": 2776,
+  "n_trials_skipped": 0,
+  "match_iou_threshold": 0.3,
+  "phase_a_consistency": {
+    "n_organic_bboxes_total": 26590,
+    "n_organic_bboxes_overlapping_shipped_ad": 0,
+    "collision_rate": 0.0,
+    "n_trials_with_any_collision": 0,
+    "note": "zero collisions means Phase A is_ad subtraction never leaks ads into organic_result; non-zero indicates ads that Phase A missed and Phase C had to reclassify"
+  },
+  "overall": {
+    "shipped_n": 11660,
+    "typed_n": 11660,
+    "shipped_recalled": 11660,
+    "typed_precision_match": 11660,
+    "typed_precision_any_ad": 11660,
+    "recall": 1.0,
+    "precision_same_type": 1.0,
+    "precision_any_ad": 1.0,
+    "f1_same_type": 1.0
+  },
+  "by_etype": {
+    "native_ad": {
+      "shipped_n": 9217,
+      "shipped_recalled": 9217,
+      "recall": 1.0,
+      "typed_n": 9217,
+      "typed_precision_match": 9217,
+      "precision": 1.0,
+      "precision_any_ad": 1.0,
+      "mean_iou_same_type_match": 1.0,
+      "median_iou_same_type_match": 1.0
+    },
+    "dd_top": {
+      "shipped_n": 1582,
+      "shipped_recalled": 1582,
+      "recall": 1.0,
+      "typed_n": 1582,
+      "typed_precision_match": 1582,
+      "precision": 1.0,
+      "precision_any_ad": 1.0,
+      "mean_iou_same_type_match": 1.0,
+      "median_iou_same_type_match": 1.0
+    },
+    "dd_right": {
+      "shipped_n": 861,
+      "shipped_recalled": 861,
+      "recall": 1.0,
+      "typed_n": 861,
+      "typed_precision_match": 861,
+      "precision": 1.0,
+      "precision_any_ad": 1.0,
+      "mean_iou_same_type_match": 1.0,
+      "median_iou_same_type_match": 1.0
+    }
+  },
+  "by_typed_source": {
+    "ad_only": {
+      "n": 10799,
+      "precision_match": 10799
+    },
+    "cv_ad_rhs": {
+      "n": 861,
+      "precision_match": 861
+    }
+  },
+  "cross_type_swaps": {}
+}

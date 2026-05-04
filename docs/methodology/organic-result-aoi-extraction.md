@@ -350,7 +350,23 @@ total cells emitted:                          376
 
 Composite organics (local 3-packs, multi-row PAA expansions, image carousels) are real but uncommon in the AdSERP corpus, which is dominated by transactional product queries.
 
-### 5.6 Click-attribution audit (Phase-A bbox + 30 px tolerance, full corpus, n=2,775)
+### 5.6 Ad/non-ad partition validation against shipped gold (full corpus, n=2,776)
+
+AdSERP v1 ships per-trial advertisement bounding boxes (`native_ad`, `dd_top`, `dd_right`) as part of the corpus distribution. These are the **only labeled ad/non-ad partition** in the dataset and serve as a usable gold standard for the ad classification question. Two independent stages of the pipeline are validated against this gold:
+
+| Stage | Quantity | Result |
+|---|---|---|
+| **Phase A consistency** | `organic_result` bboxes overlapping any shipped ad (IoU ≥ 0.30 or ≥ 50% containment) | **0 / 26,590** (0 trials affected) |
+| **Phase C propagation** | shipped ad bboxes recovered as same-etype typed entries | **11,660 / 11,660** (1.000 recall) |
+| **Phase C precision** | typed `native_ad` / `dd_top` / `dd_right` entries matching a same-type shipped ad | **11,660 / 11,660** (1.000 precision) |
+
+F1 (same-type) = 1.000, mean IoU = 1.000, no cross-type misclassifications (no `native_ad` typed where shipped says `dd_top`, etc.). For the **ad / non-ad partition specifically**, this is a 0-disagreement validation against shipped gold across 38,250 classifications (11,660 shipped ads + 26,590 Phase A organics) on 2,776 trials. Implication: Phase C's Step-1 ad-overlap arbitration (`cv_bbox+ad_overlap` source) never fires in the corpus — Phase A's CV `is_ad` subtraction is doing all the work, and Step-1 is a defensive correction for future captures where Phase A might miss an ad.
+
+Spec: [`validation-typed-vs-shipped-ads.md`](./validation-typed-vs-shipped-ads.md). Reproducibility: `scripts/validate_typed_ads_vs_shipped.py` → `scripts/output/typed_ads_vs_shipped/`.
+
+This validation does NOT cover the deeper `organic vs widget vs paa vs image_pack` partition, which has no labeled gold and remains validated against HTML structure plus visual spot-check via the AR replay viewer.
+
+### 5.7 Click-attribution audit (Phase-A bbox + 30 px tolerance, full corpus, n=2,775)
 
 `data_loader.attribute_click_to_organic(click_y, trial_id, tolerance_px=30)` snaps clicks within 30 px of an organic edge to that organic, rejecting clicks inside any ad / widget rectangle first. The 30 px elbow was chosen empirically: 92.5% of off-AOI clicks are within 30 px of the nearest organic edge; further loosening rescues only ~0.3 percentage points more.
 
@@ -365,7 +381,7 @@ For comparison, strict containment (`tolerance_px=0`) attributes only 64.3% of c
 
 The headline: **78.6% of clicks on organic, 20.1% on ads, 1.2% on content the pipeline doesn't model**. Under typed (Phase B+C) the 1.2% residual is reduced because Knowledge Panel, image carousels, and top_places — the three biggest contributors to v2's residual — are now first-class etyped surfaces.
 
-### 5.7 Click-prediction LOSO retrain (NB21, all four flavors)
+### 5.8 Click-prediction LOSO retrain (NB21, all four flavors)
 
 | Model | absolute | organic | hybrid | typed |
 |---|---|---|---|---|
@@ -376,7 +392,7 @@ The headline: **78.6% of clicks on organic, 20.1% on ads, 1.2% on content the pi
 
 The signal is in the cursor approach geometry, not in the AOI taxonomy: M3/M4 hold at 0.871 within ±0.005 of `organic_hybrid` and ±0.012 of legacy `absolute`. M1 is sensitive to flavor — pooling ads with organics under `absolute` deflates the position-only coefficient and underestimates position's standalone predictive lift.
 
-### 5.8 Replication of cascade-era findings under typed
+### 5.9 Replication of cascade-era findings under typed
 
 Every 2026-05-03 stress-test finding under `organic_hybrid` reproduces under `typed` within ±0.05 in correlation strength:
 
@@ -390,7 +406,7 @@ Every 2026-05-03 stress-test finding under `organic_hybrid` reproduces under `ty
 
 The cognitive findings are properties of the trial-level operations, not of widget-vs-organic mis-attribution.
 
-### 5.9 Built-in invariants
+### 5.10 Built-in invariants
 
 - **Reproducibility metadata.** `_meta.params` (Phase A) records every threshold per trial. Any extracted JSON is self-describing and reproducible by re-running with the recorded parameters. Phase B / C parameters are in source code under tagged commits.
 - **Schema parity with AdSERP v1.** Top-level keys for shipped ad data (`native_ad`, `dd_top`, `dd_right`) pass through unchanged. New keys (Phase A: `organic_result`, `widget`, `organic_cell`, `dd_top_cell`, `dd_right_cell`; Phase C: `data/aoi-typed/<tid>.json` with etype + geometry + source + html_handle) are additive.
@@ -402,7 +418,7 @@ The cognitive findings are properties of the trial-level operations, not of widg
 
 Ordered by likelihood of changing a downstream result.
 
-1. **Inter-rater agreement on hand-labeled organics.** No human-labeled gold standard exists for any subset of trials. Without it, "pipeline vs h3" disagreement is bidirectional and we can't report precision/recall.
+1. **Inter-rater agreement on hand-labeled non-ad cards.** AdSERP v1 ships labeled ad bboxes (validated against the typed pipeline at 0 disagreements / 38,250 classifications, see §5.6) but no human-labeled gold for the `organic` vs `widget` vs `paa` vs `image_pack` partition. Without it, "pipeline vs HTML-organic-h3 count" disagreement is bidirectional and precision/recall on the per-etype non-ad partition isn't reportable.
 2. **HTML class drift (Phase B).** Tier 4–7 detectors rely on Google's compiled CSS class names (`tF2Cxc`, `hlcw0c`, `ULSxyf`, `TQc1id`, `MjjYud`). These drift between A/B-test buckets and capture vintage. The AdSERP corpus was captured 2024 ES; running Phase B against a different vintage will misclassify Tier-7 fallbacks. Mitigation: Tiers 1–3 (heading text, structural descendants, `data-attrid`) are stable across drift and carry the load on widgets; class-only matches degrade gracefully to `other_widget`.
 3. **Threshold sweep on `ROW_STD_THRESHOLD`, `GAP_MERGE`, `MIN_CARD_H`.** Each parameter has a defensible default but no formal robustness sweep. A `{2, 3, 5} × {16, 24, 32}` grid would establish the parameter envelope.
 4. **`AD_OVERLAP_THRESHOLD` sensitivity (Phase A and Phase C).** 0.5 (Phase A) and 0.30 (Phase C) are defensible boundaries but not tested at adjacent values.
@@ -432,7 +448,7 @@ Ordered by likelihood of changing a downstream result.
 
 ## 8. Limitations to disclose in papers
 
-- **No hand-labeled gold standard.** Per-rank claims that depend on bbox precision should note: "organic AOIs were extracted by row-projection CV (`scripts/extract_organic_bboxes.py`) with HTML widget typing on top (`scripts/extract_html_widget_types.py` + `scripts/build_typed_aoi_map.py`); validation is alignment with HTML organic-h3 count (within ±2 on 89.8% of trials under typed) plus visual spot-check, not against an inter-rater-agreed reference."
+- **Validation status.** The ad / non-ad partition is validated against AdSERP v1's shipped ad bboxes at 0 disagreements / 38,250 classifications (see §5.6 and [`validation-typed-vs-shipped-ads.md`](./validation-typed-vs-shipped-ads.md)). The deeper non-ad partition (`organic` vs `widget` vs `paa` vs `image_pack` etc.) has no labeled gold standard. Per-rank claims that depend on the non-ad partition should note: "organic AOIs were extracted by row-projection CV (`scripts/extract_organic_bboxes.py`) with HTML widget typing on top (`scripts/extract_html_widget_types.py` + `scripts/build_typed_aoi_map.py`); the ad/non-ad partition is validated against shipped gold (0 disagreements); within the non-ad partition, validation is alignment with HTML organic-h3 count (within ±2 on 89.8% of trials under typed) plus visual spot-check via the AR replay viewer, not against an inter-rater-agreed reference."
 - **Bidirectional disagreement.** `pipeline_count != html_count` does not imply the pipeline is wrong. The HTML enumeration includes widget-heading h3s as "organic" slots; the pipeline correctly excludes them via Phase B typing. Treat per-rank claims at high ranks (≥ 8) with extra caution.
 - **HTML class drift.** Phase B Tier 4–7 detectors are sensitive to Google's compiled class names. Re-running on a different vintage requires class-list verification.
 - **Right-pane content invisibility (geometry).** RHS knowledge panels and image carousels rendered to the right of the main column are typed by Phase B but get `position = −1` with no geometry. Per-fixation analyses on RHS content are not currently supported.
