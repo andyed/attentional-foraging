@@ -1,0 +1,122 @@
+[
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 133.0,
+    "width": 586.0,
+    "height": 184.0,
+    "html_handle": "rso[0]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Seiko Men's SKK281 Watch - Amazon.com",
+    "source": "html_rso+cv_bbox",
+    "position": 0
+  },
+  {
+    "type": "image_pack",
+    "x": 162.0,
+    "y": 342.0,
+    "width": 586.0,
+    "height": 78.0,
+    "html_handle": "rso[1]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy seiko seiko men s skk281 watch",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 464.0,
+    "width": 586.0,
+    "height": 244.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "SEIKO WATCH | Always one step ahead of the rest.",
+    "source": "html_rso+cv_bbox",
+    "position": 2
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 752.0,
+    "width": 586.0,
+    "height": 101.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Seiko Men's SKK281 Watch - myWatchMart",
+    "source": "html_rso+cv_bbox",
+    "position": 3
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 888.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Seiko SKK281 Mens Watch Stainless Steel Dress ... - Bluedial",
+    "source": "html_rso+cv_bbox",
+    "position": 4
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1004.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "\u901a\u8ca9 - \u3010\u516c\u5f0f\u3011 \u8155\u6642\u8a08 \u30bb\u30a4\u30b3\u30fc \u30e1\u30f3\u30ba SKK281 Seiko Men's ...",
+    "source": "html_rso+cv_bbox",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1120.0,
+    "width": 586.0,
+    "height": 80.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Store - AIR Watches",
+    "source": "html_rso+cv_bbox",
+    "position": 6
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1236.0,
+    "width": 586.0,
+    "height": 183.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Seiko Watches for Men & Women - Online Shop - Creation ...",
+    "source": "html_rso+cv_bbox",
+    "position": 7
+  },
+  {
+    "type": "unknown_widget",
+    "x": 162.0,
+    "y": 1450.0,
+    "width": 586.0,
+    "height": 85.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
+    "position": 8
+  },
+  {
+    "type": "pagination",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|Next",
+    "source": "html_botstuff",
+    "position": -1
+  }
+]

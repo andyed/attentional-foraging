@@ -1,0 +1,92 @@
+[
+  {
+    "order": 0,
+    "type": "organic",
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Airtex E3240 Electric Fuel Pump - Amazon.com",
+    "container": "rso",
+    "container_index": "0"
+  },
+  {
+    "order": 1,
+    "type": "organic",
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Electric Fuel Pump Airtex E3240 for sale online - eBay",
+    "container": "rso",
+    "container_index": "1"
+  },
+  {
+    "order": 2,
+    "type": "knowledge_panel",
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "container": "rso",
+    "container_index": "2"
+  },
+  {
+    "order": 3,
+    "type": "organic",
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Airtex E3240 Airtex Electric In-Tank Fuel Pumps - Summit ...",
+    "container": "rso",
+    "container_index": "3"
+  },
+  {
+    "order": 4,
+    "type": "organic",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "AIRTEX E3240 Fuel Pump \u2014 Discounts today - Best Part Store",
+    "container": "rso",
+    "container_index": "4"
+  },
+  {
+    "order": 5,
+    "type": "organic",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Airtex\u00ae E3240 Electric Fuel Pump Without Fuel Sending Unit",
+    "container": "rso",
+    "container_index": "5"
+  },
+  {
+    "order": 6,
+    "type": "organic",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "AIRTEX Fuel Pump E3240 - Fuel pump for your car cheap online",
+    "container": "rso",
+    "container_index": "6"
+  },
+  {
+    "order": 7,
+    "type": "organic",
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Airtex E3240 Electric Fuel Pump - PartsHawk",
+    "container": "rso",
+    "container_index": "7"
+  },
+  {
+    "order": 8,
+    "type": "organic",
+    "html_handle": "rso[8]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "AIRTEX E3240 Fuel Pump Electric buy cheap online",
+    "container": "rso",
+    "container_index": "8"
+  },
+  {
+    "order": 9,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|6|Next",
+    "container": "botstuff",
+    "container_index": 0
+  }
+]

@@ -1,0 +1,101 @@
+[
+  {
+    "order": 0,
+    "type": "organic",
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Koolatron Thermoelectric Iceless 12 Volt Cooler Warmer ...",
+    "container": "rso",
+    "container_index": "0"
+  },
+  {
+    "order": 1,
+    "type": "organic",
+    "html_handle": "rso[1]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "52 Quart Portable Iceless 12 Volt Cooler Warmer (49 Liter)",
+    "container": "rso",
+    "container_index": "1"
+  },
+  {
+    "order": 2,
+    "type": "paa",
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"paa\" div.ULSxyf",
+    "heading_text": "People also ask",
+    "container": "rso",
+    "container_index": "2"
+  },
+  {
+    "order": 3,
+    "type": "organic",
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "52 Qt. (49 l) Thermoelectric Cooler - The Home Depot",
+    "container": "rso",
+    "container_index": "3"
+  },
+  {
+    "order": 4,
+    "type": "organic",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g",
+    "heading_text": "Koolatron P85 12V Krusader Electric Cooler and Warmer ...",
+    "container": "rso",
+    "container_index": "4"
+  },
+  {
+    "order": 5,
+    "type": "organic",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g",
+    "heading_text": "Koolatron 12 Volt Krusader Ultra Large 52 Quart Cooler",
+    "container": "rso",
+    "container_index": "5"
+  },
+  {
+    "order": 6,
+    "type": "organic",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Krusader P85 Thermoelectric Iceless 12V Cooler Warmer, 49L ...",
+    "container": "rso",
+    "container_index": "6"
+  },
+  {
+    "order": 7,
+    "type": "organic",
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "P-85 Koolatron Crusader 52 Quart 12 Volt Cooler/Warmer P85",
+    "container": "rso",
+    "container_index": "7"
+  },
+  {
+    "order": 8,
+    "type": "organic",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Koolatron Krusader 52 Quart 12V Cooler/Warmer P85 - Rural ...",
+    "container": "rso",
+    "container_index": "8"
+  },
+  {
+    "order": 9,
+    "type": "organic",
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Koolatron P-85 Krusader 52 Quart Cooler/Warmer - Hebron ...",
+    "container": "rso",
+    "container_index": "9"
+  },
+  {
+    "order": 10,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|Next",
+    "container": "botstuff",
+    "container_index": 0
+  }
+]

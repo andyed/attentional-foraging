@@ -1,0 +1,92 @@
+[
+  {
+    "order": 0,
+    "type": "organic",
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Fuel Tank Cap-Regular Locking Fuel Cap Stant 10565",
+    "container": "rso",
+    "container_index": "0"
+  },
+  {
+    "order": 1,
+    "type": "organic",
+    "html_handle": "rso[1]",
+    "html_signature": "div.g",
+    "heading_text": "MotoRad/Stant 10565 Stant Locking Fuel Caps - Summit Racing",
+    "container": "rso",
+    "container_index": "1"
+  },
+  {
+    "order": 2,
+    "type": "organic",
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "10565 by STANT - Regular Locking Fuel Cap - FinditParts",
+    "container": "rso",
+    "container_index": "2"
+  },
+  {
+    "order": 3,
+    "type": "organic",
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Stant Manufacturing 10565 Stant 10565 Locking Fuel Cap",
+    "container": "rso",
+    "container_index": "3"
+  },
+  {
+    "order": 4,
+    "type": "organic",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Stant 10565 Fuel Tank Cap - PartsHawk",
+    "container": "rso",
+    "container_index": "4"
+  },
+  {
+    "order": 5,
+    "type": "organic",
+    "html_handle": "rso[5]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Fuel Tank Cap - Stant\u00ae 10565 - CARiD.com",
+    "container": "rso",
+    "container_index": "5"
+  },
+  {
+    "order": 6,
+    "type": "image_pack",
+    "html_handle": "rso[6]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy stant stant 10565 locking fuel cap",
+    "container": "rso",
+    "container_index": "6"
+  },
+  {
+    "order": 7,
+    "type": "organic",
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Stant 10565 Fuel/Gas Cap; Regular Locking Fuel Cap - Ford",
+    "container": "rso",
+    "container_index": "7"
+  },
+  {
+    "order": 8,
+    "type": "organic",
+    "html_handle": "rso[8]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Stant 10565 Locking Fuel Cap - Walmart.com",
+    "container": "rso",
+    "container_index": "8"
+  },
+  {
+    "order": 9,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|6|Next",
+    "container": "botstuff",
+    "container_index": 0
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "order": 0,
+    "type": "organic",
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "ACDelco GM Original Equipment 214-1680 Vapor ...",
+    "container": "rso",
+    "container_index": "0"
+  },
+  {
+    "order": 1,
+    "type": "organic",
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "ACDelco 214-1680 GM Original Equipment Vapor ... - eBay",
+    "container": "rso",
+    "container_index": "1"
+  },
+  {
+    "order": 2,
+    "type": "organic",
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "ACDelco Canister Purge Valve 214-1680 - AutoZone",
+    "container": "rso",
+    "container_index": "2"
+  },
+  {
+    "order": 3,
+    "type": "organic",
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Vapor Canister Purge Valve 214-1680 - Advance Auto Parts",
+    "container": "rso",
+    "container_index": "3"
+  },
+  {
+    "order": 4,
+    "type": "organic",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "ACDelco\u00ae 214-1680 - GM Original Equipment\u2122 Vapor ...",
+    "container": "rso",
+    "container_index": "4"
+  },
+  {
+    "order": 5,
+    "type": "organic",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "ACDelco 2 Terminal Vapor Canister Purge Valve 214-1680",
+    "container": "rso",
+    "container_index": "5"
+  },
+  {
+    "order": 6,
+    "type": "organic",
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "ACDelco GM Original Equipment 214-1680 Vapor Canister ...",
+    "container": "rso",
+    "container_index": "6"
+  },
+  {
+    "order": 7,
+    "type": "image_pack",
+    "html_handle": "rso[7]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy acdelco acdelco 214 1680 valve assembly",
+    "container": "rso",
+    "container_index": "7"
+  },
+  {
+    "order": 8,
+    "type": "related_searches",
+    "html_handle": "botstuff.ULSxyf[0]",
+    "html_signature": "h=\"rs\" div.ULSxyf",
+    "heading_text": "Related searches",
+    "container": "botstuff",
+    "container_index": 0
+  },
+  {
+    "order": 9,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|Next",
+    "container": "botstuff",
+    "container_index": 0
+  }
+]

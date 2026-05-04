@@ -1,0 +1,101 @@
+[
+  {
+    "order": 0,
+    "type": "organic",
+    "html_handle": "rso[0]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Dayco 95172FN Timing Belt - Amazon.com",
+    "container": "rso",
+    "container_index": "0"
+  },
+  {
+    "order": 1,
+    "type": "organic",
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Engine Timing Belt Dayco 95172 - eBay",
+    "container": "rso",
+    "container_index": "1"
+  },
+  {
+    "order": 2,
+    "type": "knowledge_panel",
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "container": "rso",
+    "container_index": "2"
+  },
+  {
+    "order": 3,
+    "type": "organic",
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "95172FN,DAYCO 95172FN; Timing Belt - yoyopart.com",
+    "container": "rso",
+    "container_index": "3"
+  },
+  {
+    "order": 4,
+    "type": "organic",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Dayco timing belts, dayco v-belts, dayco automotive belts",
+    "container": "rso",
+    "container_index": "4"
+  },
+  {
+    "order": 5,
+    "type": "organic",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Dayco Timing Belts are always ahead of the competition",
+    "container": "rso",
+    "container_index": "5"
+  },
+  {
+    "order": 6,
+    "type": "organic",
+    "html_handle": "rso[6]",
+    "html_signature": "div.(no class)",
+    "heading_text": "DAYCO 941128 Timing Belt Teeth Quant.: 118 - AUTODOC",
+    "container": "rso",
+    "container_index": "6"
+  },
+  {
+    "order": 7,
+    "type": "organic",
+    "html_handle": "rso[7]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Timing Belts - Dayco",
+    "container": "rso",
+    "container_index": "7"
+  },
+  {
+    "order": 8,
+    "type": "image_pack",
+    "html_handle": "rso[8]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy dayco dayco 95172fn timing belt",
+    "container": "rso",
+    "container_index": "8"
+  },
+  {
+    "order": 9,
+    "type": "related_searches",
+    "html_handle": "botstuff.ULSxyf[0]",
+    "html_signature": "h=\"rs\" div.ULSxyf",
+    "heading_text": "Related searches",
+    "container": "botstuff",
+    "container_index": 0
+  },
+  {
+    "order": 10,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|Next",
+    "container": "botstuff",
+    "container_index": 0
+  }
+]

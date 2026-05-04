@@ -1,0 +1,110 @@
+[
+  {
+    "order": 0,
+    "type": "image_pack",
+    "html_handle": "rso[0]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy sci plum pitter by westmark",
+    "container": "rso",
+    "container_index": "0"
+  },
+  {
+    "order": 1,
+    "type": "organic",
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Westmark Alemania 2 en 1 Cherry Plum Pitter Stoner",
+    "container": "rso",
+    "container_index": "1"
+  },
+  {
+    "order": 2,
+    "type": "organic",
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Plum Pitter by Westmark - Walmart.com",
+    "container": "rso",
+    "container_index": "2"
+  },
+  {
+    "order": 3,
+    "type": "organic",
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Plum Pitter by Westmark by SCI - Shop Online for Kitchen in Australia",
+    "container": "rso",
+    "container_index": "3"
+  },
+  {
+    "order": 4,
+    "type": "organic",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Plum Pitter by Westmark: Buy Online in Antigua and Barbuda ...",
+    "container": "rso",
+    "container_index": "4"
+  },
+  {
+    "order": 5,
+    "type": "organic",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Plum Pitter by Westmark by SCI - Shop Online for Kitchen in Indonesia",
+    "container": "rso",
+    "container_index": "5"
+  },
+  {
+    "order": 6,
+    "type": "knowledge_panel",
+    "html_handle": "rso[6]",
+    "html_signature": "h=\"comp\" div.TQc1id",
+    "heading_text": "Complementary results",
+    "container": "rso",
+    "container_index": "6"
+  },
+  {
+    "order": 7,
+    "type": "organic",
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Westmark Cherry & Plum Stoner \u00bbSteinex-Combi - loewen ...",
+    "container": "rso",
+    "container_index": "7"
+  },
+  {
+    "order": 8,
+    "type": "organic",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Vintage westmark kitchen tools Plum Pitter 6.5\" | eBay",
+    "container": "rso",
+    "container_index": "8"
+  },
+  {
+    "order": 9,
+    "type": "organic",
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Stoners 80s | Etsy UK",
+    "container": "rso",
+    "container_index": "9"
+  },
+  {
+    "order": 10,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|Next",
+    "container": "botstuff",
+    "container_index": 0
+  },
+  {
+    "order": 11,
+    "type": "knowledge_panel",
+    "html_handle": "#rhs",
+    "html_signature": "rhs.kp[data-attrid=kc:/collection/knowledge_panel]",
+    "heading_text": "Complementary results",
+    "container": "rhs",
+    "rhs_only": true
+  }
+]

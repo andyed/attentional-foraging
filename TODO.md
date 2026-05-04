@@ -1,5 +1,94 @@
 # TODO
 
+## Findings.md — ballistic-hotspots subsection (2026-05-03)
+
+Today's analyses (saccade-metrics + regression-tension + scroll-velocity) take the existing "regressive scroll is ballistic (ρ = 0.867)" claim from descriptive to characterized. New subsection candidate under §8 (scroll kinematics) titled something like "Regressive scroll is faster *and* qualitatively different." Five claim rows to document:
+
+- [ ] **Magnitude.** Regressive scroll is ~30% faster than forward across all depth bins (median 0.83–0.97 vs 0.74 px/ms = 830–970 vs 740 px/s). Per-event Δy is also larger (16 vs 12 px median). Forward velocity is **near-constant** across depth (0.74–0.78); only regressive accelerates with depth. Source: `scripts/render_scroll_velocity.py` → `scripts/output/figures/scroll_velocity.png`.
+- [ ] **Phase transition at HWM ≈ 8.** Regression-episode tension stays small (1–3 ranks) for HWM 1–7, then jumps to 5/7/9 for HWM 8/9/10. Episode length doubles from ~3 fixations to 7–11. The regression mechanism appears to switch from local re-evaluation to anchor-return at this boundary. Source: `scripts/render_regression_tension.py` → `scripts/output/figures/regression_tension_organic.png`.
+- [ ] **Anchor-return dominance at depth.** 40–50% of regression episodes from HWM ≥ 8 land all the way at position 0. The "rubber band" snaps to a fixed anchor, not a proportional offset. Suggests a memory-anchored re-evaluation mechanism rather than smooth elastic retreat.
+- [ ] **Modality (broader claim).** Regress-scan-regress is the **modal trial structure**, not a special subset: 62% of trials (organic) / 79% (hybrid) have ≥1 cycle; 37% / 54% have multiple cycles. The "F-pattern / forward sweep" framing under-counts how much of typical SERP scanning is back-and-forth. Source: `scripts/scan_epochs_per_trial.py` → `scripts/output/figures/scan_epochs_summary.json`.
+- [ ] **Two-signal confirmation.** The depth-dependent acceleration appears in *both* the gaze-fixation cadence (saccade metrics) AND the mouse scroll-velocity stream — independent measurement channels, same pattern. Argues against an eye-tracking artifact reading.
+
+Visualization assets ready (use as figures or supplementary):
+- `scripts/output/figures/scroll_velocity.png` — direction × depth violins + pooled CDF
+- `scripts/output/figures/regression_tension_organic.png` — dip-floor by HWM-onset (rubber-band shape)
+- `scripts/output/figures/regressive_arcs_organic.png` and `_hybrid.png` — source→target jump distribution
+- `scripts/output/figures/scan_epoch_staircase_organic.png` — population-level staircase + small-multiples by n_epochs
+- `scripts/output/figures/staircase_by_strategy_organic.png` — three-tercile satisficer/optimizer split
+- `scripts/output/figures/saccade_participation_hybrid.png` — etype participation by direction × bin (ad/algo external validation: dd_top is drive-by, native_ad behaves like organics)
+
+Note: `scripts/output/figures/saccade_metrics_by_bin_organic.png` and `saccade_diff_plot_organic.png` were superseded by the regression-episode-tension and scroll-velocity charts; the saccade-metrics framing was definitionally muddled (treated multi-fixation scroll-back as "saccades" in the eye-tracker sense). Hold for reference but don't cite as primary.
+
+Optional refinement before findings update: re-render scroll_velocity.png with px/s units instead of px/ms for legibility (one-line change).
+
+## ETTAC stat-traceability gaps (2026-05-03)
+
+ETTAC AdSERP-section verification (read-only) on 2026-05-03 found three categories of numeric claims **not currently traceable** to canonical pipeline output. Numbers are not necessarily wrong — likely from earlier `validate_adserp.py` runs or one-off scripts whose outputs aren't in current cache. Need to either re-derive or surface the original computation before the next pre-Jacek pass. Verification status documented in chat 2026-05-03 audit run.
+
+- [ ] **2,719 trials retained (1-second LF/HF window)** — both `ettac-paper/sections/adserp.tex` (public) and `pupil-lfhf/ettac/adserp.tex` (local). Methodology-specific filter; doesn't match NB14:K1 (which is 2,416 absolute / 2,174 organic). Re-derive from `validate_adserp.py` or document the filter difference.
+- [ ] **Bootstrap 95% CI [−0.893, +0.143] on plateau Spearman** — public `adserp.tex` only. Bootstrap value, source not located. NB14:K11 has ρ = −0.714, p = 0.071 absolute; CI not in any output JSON or Key Claims row.
+- [ ] **Capped plateau ρ = −0.786, p = 0.036** (participant-concentration audit, cap at 10 segments per participant per position) — both `.tex` files. Audit value, not in canonical Key Claims; likely a one-off computation from when the audit was run.
+- [ ] **§Predicting return: p = 0.0055, 63% of participants direction, 95% CI [+0.94, +3.85] on Δ(returned − not-returned), 6,112 records, 46 ppts** — public `adserp.tex` only. The 6,112 = NB14:K2 absolute ✓. The participant-level Wilcoxon signed-rank computation and the cluster-bootstrap CI on Δ are not in current `scripts/output/` or `pupil-lfhf/validation/`. Highest priority of the four — it's the load-bearing claim of §Predicting return and currently has no canonical replication path.
+
+What verifies cleanly (for reference):
+- All NB14-derived position-gradient claims (K3 / K9 / K10 / K11 / K12 / K5 / K13 / K14 / K15 / K7) under absolute attribution against canonical Key Claims ✓
+- LOCAL §Within-trial peak-load all values exact match against `max_lfhf_uniqueness.json` (organic) ✓
+
+## Ordinal reframe + LambdaMART (2026-05-02 PM)
+
+The 2x2 NB21×NB22 confusion under bbox-organic (Jaccard 0.26, 41% disagreement) collapses to **two cuts on a within-trial gaze-dwell ordinal**: `total_dwell_ms` rank predicts NB21 at AUC 0.738 and NB22 at AUC 0.725; `n_fixations` predicts NB21 at 0.722 and NB22 at 0.759. ~73% of the binary deferred/eval-rejected structure is recoverable from a single ordinal. The asymmetric off-diagonal (644 NB21-R/NB22-D vs 211 the other way) is the threshold-difference signature, not a substantive disagreement. The taxonomy's central object should shift from "four-class" to "estimable within-trial consideration ordinal of which the click is mostly-but-not-always rank-1" (60% by gaze-dwell, 69% by p_click LR).
+
+LambdaMART experiments (M3 features, LOSO by participant, n=2,020 eval trials):
+- **Pointwise LR baseline:** NDCG@5 = 0.8221, MRR = 0.7872
+- **LambdaMART binary-gain (flavor-1):** NDCG@5 = 0.8376, MRR = 0.8029 (+0.016)
+- **LambdaMART 32-grade p_click gain (flavor-2):** NDCG@5 = 0.8234, MRR = 0.7880 *(collapses to LR baseline — same-feature distillation carries no information)*
+
+**Read.** Listwise loss alone is a small lever (~10× smaller than NB26's 3-grade→10-grade jump). Soft-label distillation only helps if the teacher has access to features the student lacks.
+
+### Next
+- [ ] **Run option 1: gaze-derived label → cursor-only LambdaMART student.** Teacher = gaze-dwell rank within trial (or PCA-1 over `n_fix`, `total_dwell`, `n_returns`); student = M3 cursor-only LambdaMART. The true distillation: gaze-richness → cursor-only ranking. If MRR lifts meaningfully above 0.8029, the LAB→WILD gaze-distillation story is real and central to the §5 cursor-only validation argument.
+- [ ] **Decide ordinal target (with Peter).** Single-axis (`total_dwell_ms`) vs composite (`dwell × log(1 + n_returns)`, or PCA-1 over multiple gaze signals). The choice determines what option-1 looks like and what STUB-C-3 retarget against ordinal regression looks like.
+- [ ] **Reframe paper-v4 §4.2 + §4.5 around ordinal collapse.** Currently the 2x2 disagreement is presented as Venn-diagram complementarity; the ordinal reframe makes it "two cuts on a shared distribution." STUB-A NB22 trial-level retains as the cut-point demonstration; STUB-C-3 forward-selection retargets from binary will_regress to ordinal regression. Decide: do this for v4, or hold for v5.
+- [ ] **Code pointers.** `scripts/ordinality_tau_test.py` → `scripts/output/aoi-consumer-cascade/ordinality_tau_test.json`; `scripts/lambdamart_baseline_organic.py` → `lambdamart_baseline_organic.json`; `scripts/lambdamart_continuous_gain_organic.py` → `lambdamart_continuous_gain_organic.json`. Memos in `docs/drafts/peter-ordinal-reframe-2026-05-02.md` and `docs/drafts/peter-lambdamart-followup-2026-05-02.md`.
+
+## AOI cascade (2026-05-01 → 2026-05-02)
+
+The bbox-organic AOI cascade landed across both `attentional-foraging` and `approach-retreat` and merged to main on both repos. Synthesis: [`docs/methodology/attribution-cascade-synthesis.md`](docs/methodology/attribution-cascade-synthesis.md). Per-finding category audit and replacement-predictor scan complete; AR replay re-deployed under bbox AOIs.
+
+### Done
+- [x] **AOI-filtered analysis (was line 67):** AdSERP v1's ad-only bboxes augmented with pixel-accurate organic + native_ad + dd_top per-cell + widget filtering. CV row-projection on screenshots; 88.3% within ±2 of HTML count; 78.6/20.1/0.2/1.2 click attribution. Spec at `docs/methodology/organic-result-aoi-extraction.md`. Three rank-attribution flavors (`absolute` / `organic` / `organic_hybrid`) supported across producer chain.
+- [x] **Notebook K-claims migrated to bbox-organic (NB04, NB14, NB15, NB18, NB21, NB22, NB23, NB24, NB25, NB28).** `update_key_claims.py` refactored to read notebooks (notebooks canonical).
+- [x] **Producer chain accepts `--attribution organic` (and `organic_hybrid` where applicable).** `compute_cursor_approach_features.py`, `compute_butterworth_lfhf.py`, `compute_ripa2.py`, `compute_regression_labels.py`, `compute_retreat_arcs.py`, `compute_k_coefficient.py`, `compute_saccade_orientation.py`, `m5_cursor_only_taxonomy.py`, `forward_classifier_robustness.py`, `viewport_bands_bootstrap.py`. Render scripts default-organic.
+- [x] **NB28 viewport-band calibration retrained under bbox-organic.** Pooled retreat+bands AUC 0.811 [0.788, 0.833]; per-position vt_top P0–P3 positive, attenuating to 0 at P5, P6+ null — NB28:K38 pattern preserved.
+- [x] **NB21 LOSO retrained under all three attributions.** Hybrid M3 = M4 = 0.870 (best); organic M3 = 0.865; absolute 0.859. Position coefficient cleanest under organic (−0.248).
+- [x] **Hybrid attribution surfaces dd_top click-rate finding.** dd_top (top-of-page ads) click rate 17.1% — highest of any SERP surface; was structurally invisible under absolute (pooled into "organic position 1").
+- [x] **R1 RIPA2 leg collapse mechanism resolved.** Intersection-of-trials sensitivity test confirms dilution, not selection (`scripts/r1_intersection_sensitivity.py`). Replacement predictors found in will-return scan (`scripts/will_return_predictor_scan.py`): peak-pupil metrics survive (`pd_change_max` p=5.1e-6, `pd_change_min` p=1.9e-5), mean-based metrics all die. `n_fix` = strongest single predictor (p=3.3e-16, median 4 vs 5 fixations).
+- [x] **Saccade orientation + K-coefficient by etype** confirms top-of-page Survey-phase across surfaces — 3-signal convergence with NB13:K3 amplitude transition (`scripts/saccade_k_by_etype.py`).
+- [x] **AR replay deploy refreshed.** 80 trial bundles regenerated under bbox AOIs; M5 model swapped to bbox-organic-trained (LOSO AUC 0.769); 28 curated captions audited (1 corrected).
+
+### Next (post-merge)
+- [ ] **Ad text + embeddings (cascade follow-up).** `serp-embeddings.json` covers organic h3 content only — ad text and embeddings are absent. The `find_all('h3')` extractor in `embed_serp_results.py` doesn't surface dd_top or native_ad copy. To enable per-etype content analyses under `[organic_hybrid]` (e.g., LF/HF × content × etype, query-cosine for ad copy, ad-vs-organic TTR distribution), need: (a) an ad-text extractor that pulls title + snippet + display URL from the SERP HTML for `dd_top` / `native_ad` regions (or OCR fallback on the screenshot if the HTML isn't reliable); (b) embed via mxbai-embed-large at port 8890 (same model as organics for parity); (c) emit `AdSERP/data/serp-ad-embeddings.json` parallel to the organic file; (d) extend `compute_content_features.py` with `--attribution organic_hybrid` to read both. Volume estimate: 1,581 dd_top + 3,670 native_ad ≈ 5,251 positions to embed; potentially more if dd_top carousels subdivide into per-cell text. Effort: 4–6 hours depending on HTML parseability. Cascade context: 2026-05-02 thread; current organic content-features producer (`compute_content_features.py --attribution organic`) is shipped, this follow-up extends to hybrid.
+- [ ] **Promote bbox K-bbox-* values into the CIKM paper draft.** `docs/drafts/cikm-2026/paper-v3.md` still cites legacy absolute-attribution K-IDs in places. Replace with K-bbox-* tier; the brand claim ("9 task-model-derived cursor features reach AUC ≈ 0.86 in LOSO") tightens to 0.865 / 0.870. The dd_top 17.1% click-rate finding deserves a paragraph.
+- [ ] **CIKM paper headline: 4-fixation visual budget.** Internal anchor at `docs/findings.md` §10c (committed `60c2cc7a`). Hold for arxiv preprint anchor before any LinkedIn / public posting; bad mojo to publish a key finding casually pre-preprint per 2026-05-02 thread with Andy.
+- [ ] **ETTAC §3 prose reframe.** NB14 numbers update (steep ρ = −1.000 holds; full corpus −0.655; plateau ρ flips n.s.). Drop the joint LF/HF × RIPA2 dissociation claim or hold absolute as primary with the bbox shift as a sensitivity finding. Peter has the lead.
+- [ ] **ETTAC: port the within-trial peak-load paragraph to Overleaf.** Local edit landed at `/Users/andyed/Documents/dev/pupil-lfhf/ettac/adserp.tex` after the existing within-trial Spearman paragraph (line ~99, before the LHIPA convergent-validity paragraph). New paragraph: "Within-trial peak-load position predicts the click." Headline: peak-LF/HF position has 35.0% click rate vs 10.2% on other positions in the same trial (N=2,174 trials / 10,234 comparison records, 3.4× lift, z=+29.7, p<10⁻¹⁰⁰); click rate decays monotonically in within-trial LF/HF rank; peak position also regresses LESS than other positions (53.0% vs 61.5%, p=2.1e-13) — mechanistically clean (commit at peak load → no need to revisit). Sharpens the population-level NB14:K3 gradient into a within-subject commit-prediction result; LF/HF *locates* the click within the trial, not only the distribution-of-clicks across rank. Source: `scripts/max_lfhf_uniqueness.py` + `scripts/output/aoi-consumer-cascade/max_lfhf_uniqueness.json`. Also relevant for CIKM (replaces or sharpens STUB-H).
+- [ ] **R1 / RIPA2-paper coordination with Gwizdka.** R1 per-fixation amplitude differential dies under bbox (rank-pooling artifact); replacement framing in `docs/null-findings/r1-ripa2-bbox-collapse.md` and synthesis §4.3. Discuss before paper framing locks. Standalone RIPA2 publication (Gavindya/team) — flag if their draft includes the AdSERP per-fixation will-regress claim.
+- [ ] **Refresh `scripts/output/figures/INDEX.md` for cascade.** Several render outputs got new captions/findings under bbox; the index is still pre-cascade. Coupling-traces caption needs rewrite (legacy three-band pattern collapses; motor-signature dissociation lives at different metrics).
+- [ ] **`plot_approach_retreat_hero.py` exemplar trials hand-pick.** Currently pinned to absolute because the curated COMMIT exemplar (p015-b1-t5 pos=2) reattributes away from 'clicked' under bbox. Pick new exemplars from `cursor-approach-features-organic.json`.
+- [ ] **AR README: promote NB28 placeholders to actual numbers.** Now that the calibration retrain is done, `docs/methodology/attribution-cascade-synthesis.md §4.3` has the numbers ready to drop into AR's README §11 viewport-bands paragraph.
+- [ ] **Place the Dumais, Buscher & Cutrell (IIiX 2010) citation** (see "Citations to place" below; lit-note stub exists, bib entry pending).
+
+## AI authorship disclosure plan (cross-paper)
+
+- [ ] **Have the disclosure discussion + draft a paragraph to circulate.** Triggered 2026-05-02. Scope to settle:
+    - **Tools used.** Claude (analysis, prose drafting, code review, synthesis-doc authoring, figure scripts), GitHub Copilot if any, embedding model (mxbai-embed-large for content features). Each plays a different role; venues may want separately-categorized disclosure.
+    - **Role taxonomy.** ACM and IR/HCI venues now distinguish: (i) idea generation, (ii) literature review, (iii) analysis / statistics, (iv) code authoring, (v) prose drafting / editing, (vi) figure generation, (vii) review / sanity-check. Decide which categories applied for which artifacts.
+    - **Venue-specific rules.** ACM 2024 policy: "Authors are required to disclose any use of generative AI tools, the specific tools, and how they were used." CIKM / SIGIR / CHIIR are ACM. Workshops (ETTAC at ICPR Lyon) may have separate rules — verify before submission.
+    - **Disclosure placement.** Acknowledgements section vs. dedicated declaration vs. methods-section paragraph. Some venues mandate a specific sentence format.
+    - **Reproducibility commitment.** This project's GitHub history records every AI-assisted commit via `Co-Authored-By: Claude Opus 4.7 (1M context)` trailers, which is more granular than most venues require — a footnote pointing reviewers to the commit history can strengthen the disclosure.
+    - **Two-tier disclosure draft** to circulate to co-authors: a short acknowledgements-section sentence and a longer methods-section paragraph for venues that want the detail.
+    - **Co-author thread.** Peter + Leif on CIKM; Jacek + Gavindya + Yasith on RIPA2/ETTAC tracks; Duchowski on the LF/HF method paper. Each track may want distinct phrasing depending on their own AI-usage decisions.
 ## AOI cascade (2026-05-01 → 2026-05-02)
 
 The bbox-organic AOI cascade landed across both `attentional-foraging` and `approach-retreat` and merged to main on both repos. Synthesis: [`docs/methodology/attribution-cascade-synthesis.md`](docs/methodology/attribution-cascade-synthesis.md). Per-finding category audit and replacement-predictor scan complete; AR replay re-deployed under bbox AOIs.

@@ -1,0 +1,119 @@
+[
+  {
+    "order": 0,
+    "type": "image_pack",
+    "html_handle": "rso[0]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy bosch bosch 98101 new water pump",
+    "container": "rso",
+    "container_index": "0"
+  },
+  {
+    "order": 1,
+    "type": "organic",
+    "html_handle": "rso[1]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Bosch 98101 New Water Pump - Buy Online - desertcart",
+    "container": "rso",
+    "container_index": "1"
+  },
+  {
+    "order": 2,
+    "type": "organic",
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Seattle Appliance Repair | Dishwasher Repair",
+    "container": "rso",
+    "container_index": "2"
+  },
+  {
+    "order": 3,
+    "type": "organic",
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "volkswagen Atlas Engine Water Pump Insulator - 5Q0121653B ...",
+    "container": "rso",
+    "container_index": "3"
+  },
+  {
+    "order": 4,
+    "type": "organic",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "audi 90 Engine Cooling Fan Blade - 4A0959465A | Audi Seattle ...",
+    "container": "rso",
+    "container_index": "4"
+  },
+  {
+    "order": 5,
+    "type": "organic",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "New Listings for Sale in Seattle - Redfin",
+    "container": "rso",
+    "container_index": "5"
+  },
+  {
+    "order": 6,
+    "type": "organic",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Escala Apartment Rentals - Seattle, WA - Zillow",
+    "container": "rso",
+    "container_index": "6"
+  },
+  {
+    "order": 7,
+    "type": "knowledge_panel",
+    "html_handle": "rso[7]",
+    "html_signature": "h=\"comp\" div.TQc1id",
+    "heading_text": "Complementary results",
+    "container": "rso",
+    "container_index": "7"
+  },
+  {
+    "order": 8,
+    "type": "organic",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "New Account Request - BoschProHVAC",
+    "container": "rso",
+    "container_index": "8"
+  },
+  {
+    "order": 9,
+    "type": "organic",
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Should I Buy New Appliances Before Selling the House?",
+    "container": "rso",
+    "container_index": "9"
+  },
+  {
+    "order": 10,
+    "type": "organic",
+    "html_handle": "rso[10]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "GRAF PA449 Water Pump for v-ribbed belt use, with seal buy cheap ...",
+    "container": "rso",
+    "container_index": "10"
+  },
+  {
+    "order": 11,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|Next",
+    "container": "botstuff",
+    "container_index": 0
+  },
+  {
+    "order": 12,
+    "type": "knowledge_panel",
+    "html_handle": "#rhs",
+    "html_signature": "rhs.kp[data-attrid=kc:/collection/knowledge_panel]",
+    "heading_text": "Complementary results",
+    "container": "rhs",
+    "rhs_only": true
+  }
+]

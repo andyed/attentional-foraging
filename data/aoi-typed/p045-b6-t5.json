@@ -1,0 +1,62 @@
+[
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 133.0,
+    "width": 586.0,
+    "height": 116.0,
+    "html_handle": "rso[0]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Customer reviews: BERKLY Mitchell 300XE SPN 8BB CP",
+    "source": "html_rso+cv_bbox",
+    "position": 0
+  },
+  {
+    "type": "image_pack",
+    "x": 162.0,
+    "y": 293.0,
+    "width": 586.0,
+    "height": 203.0,
+    "html_handle": "rso[1]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy berkly mitchell 300xe spn 8bb cp",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 537.0,
+    "width": 540.0,
+    "height": 108.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 2
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 672.0,
+    "width": 540.0,
+    "height": 69.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 3
+  },
+  {
+    "type": "dd_right",
+    "x": 802.0,
+    "y": 158.0,
+    "width": 332.0,
+    "height": 330.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_ad_rhs",
+    "position": -1
+  }
+]

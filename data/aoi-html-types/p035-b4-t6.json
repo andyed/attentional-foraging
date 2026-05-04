@@ -1,0 +1,110 @@
+[
+  {
+    "order": 0,
+    "type": "organic",
+    "html_handle": "rso[0]",
+    "html_signature": "div.g",
+    "heading_text": "Heye Stingray 1000 Piece David Doublet Panoramic Jigsaw ...",
+    "container": "rso",
+    "container_index": "0"
+  },
+  {
+    "order": 1,
+    "type": "organic",
+    "html_handle": "rso[1]",
+    "html_signature": "div.g",
+    "heading_text": "Heye Panorama Stingray Edition Humboldt Puzzles (1000 ...",
+    "container": "rso",
+    "container_index": "1"
+  },
+  {
+    "order": 2,
+    "type": "organic",
+    "html_handle": "rso[2]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Heye Panoramic Puzzle - Stingray, 1000 Pieces - Playpolis",
+    "container": "rso",
+    "container_index": "2"
+  },
+  {
+    "order": 3,
+    "type": "image_pack",
+    "html_handle": "rso[3]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy heye heye stingray puzzle",
+    "container": "rso",
+    "container_index": "3"
+  },
+  {
+    "order": 4,
+    "type": "organic",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Heye Stingray 1000 Piece David Doublet ... - Walmart",
+    "container": "rso",
+    "container_index": "4"
+  },
+  {
+    "order": 5,
+    "type": "organic",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Heye Stingray 1000 Piece David Doublet Panoramic Jigsaw Puzzle ...",
+    "container": "rso",
+    "container_index": "5"
+  },
+  {
+    "order": 6,
+    "type": "organic",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Heye-29470 - Classic Jigsaw Puzzle - Stingray - 1000 Pieces",
+    "container": "rso",
+    "container_index": "6"
+  },
+  {
+    "order": 7,
+    "type": "knowledge_panel",
+    "html_handle": "rso[7]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "container": "rso",
+    "container_index": "7"
+  },
+  {
+    "order": 8,
+    "type": "organic",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Las mejores ofertas en 17 A\u00f1os en adelante Puzzles Heye",
+    "container": "rso",
+    "container_index": "8"
+  },
+  {
+    "order": 9,
+    "type": "organic",
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Buy HEYE Stingray (1000 Piece Jigsaw Puzzle) and other ...",
+    "container": "rso",
+    "container_index": "9"
+  },
+  {
+    "order": 10,
+    "type": "organic",
+    "html_handle": "rso[10]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Jigsaw Puzzle - 1000 Pieces - Panoramic - Alexander Von ...",
+    "container": "rso",
+    "container_index": "10"
+  },
+  {
+    "order": 11,
+    "type": "pagination",
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|6|7|Next",
+    "container": "botstuff",
+    "container_index": 0
+  }
+]

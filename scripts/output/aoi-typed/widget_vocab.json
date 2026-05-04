@@ -1,0 +1,93 @@
+{
+  "n_trials_scanned": 2776,
+  "text_markers": {
+    "Related searches": 1813,
+    "People also ask": 769,
+    "Local results": 85,
+    "Sponsored": 17,
+    "Featured snippet": 2
+  },
+  "class_markers": {
+    "kp-wholepage": 2776,
+    "ULSxyf": 2776,
+    "g-section-with-header": 1609,
+    "related-question-pair": 904,
+    "wWOJcd": 769
+  },
+  "data_attr_keys": {
+    "data-async-context": 2776,
+    "data-hveid": 2776,
+    "data-ved": 2776,
+    "data-attrid": 2047,
+    "data-feature-id": 74
+  },
+  "top_data_attrid_values": {
+    "images universal": 15615,
+    "title": 147,
+    "kc:/local:one line summary": 74,
+    "kc:/location/location:address": 74,
+    "kc:/collection/knowledge_panels/has_phone:phone": 74,
+    "kc:/local:pending edits": 74,
+    "kc:/local:edit info": 74,
+    "kc:/local:place qa": 74,
+    "kc:/collection/knowledge_panels/local_reviewable:review_summary": 74,
+    "kc:/local:sideways refinements": 74,
+    "kc:/collection/knowledge_panels/local_reviewable:star_score": 73,
+    "kc:/location/location:hours": 72,
+    "kc:/location/location:province": 67,
+    "kc:/local:business_availability_modes": 61,
+    "kc:/local:busyness": 49,
+    "kc:/local:merchant_description": 37,
+    "kc:/local:any posts": 33,
+    "kc:/common/topic:social media presence": 33,
+    "list": 24,
+    "kc:/local:scalable_attributes_group": 17,
+    "kc:/local:located in": 16,
+    "kc:/local:products_overview_for_desktop": 14,
+    "kc:/local:scalable attributes": 14,
+    "subtitle": 8,
+    "action:listen_album": 7,
+    "kc:/music/album:songs": 7,
+    "kc:/ugc:top_thumbs_up": 7,
+    "kc:/music/album:artist": 7,
+    "kc:/music/album:release date": 7,
+    "kc:/music/album:label": 7,
+    "kc:/local:posts": 7,
+    "kc:/local:appointment": 7,
+    "kc:/local:locationhints": 6,
+    "image": 6,
+    "kc:/music/album:skos genre": 5,
+    "kc:/ugc:user_reviews": 5,
+    "kc:/local:departments": 2,
+    "wa:/description": 1,
+    "description": 1,
+    "hw:/collection/musical_albums:genre": 1,
+    "kc:/local:shop_online": 1,
+    "action:listen_artist": 1,
+    "kc:/music/artist:genre": 1,
+    "kc:/music/artist:albums": 1,
+    "kc:/music/artist:record label": 1,
+    "kc:/music/artist:songs": 1,
+    "kc:/local:imprecise location": 1
+  },
+  "card_count_summary": {
+    "legacy_g_div_counts": {
+      "9": 1064,
+      "8": 833,
+      "10": 362,
+      "7": 352,
+      "6": 83,
+      "11": 45,
+      "5": 16,
+      "4": 5,
+      "3": 4,
+      "2": 4,
+      "1": 4,
+      "12": 3,
+      "13": 1
+    },
+    "modern_MjjYud_div_counts": {
+      "0": 2776
+    }
+  }
+}

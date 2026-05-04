@@ -1,0 +1,74 @@
+[
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 133.0,
+    "width": 586.0,
+    "height": 238.0,
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Vivitar Replacement Battery for Panasonic DMW-BLH7 ... - eBay",
+    "source": "html_rso+cv_bbox",
+    "position": 0
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 403.0,
+    "width": 586.0,
+    "height": 104.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Vivitar Replacement Battery Pack for Panasonic DMW ...",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 537.0,
+    "width": 540.0,
+    "height": 69.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 2
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 633.0,
+    "width": 540.0,
+    "height": 108.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 3
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 768.0,
+    "width": 540.0,
+    "height": 89.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 4
+  },
+  {
+    "type": "dd_right",
+    "x": 802.0,
+    "y": 158.0,
+    "width": 221.0,
+    "height": 1028.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_ad_rhs",
+    "position": -1
+  }
+]

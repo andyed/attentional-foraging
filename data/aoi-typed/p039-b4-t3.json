@@ -1,0 +1,122 @@
+[
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 163.0,
+    "width": 540.0,
+    "height": 370.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 0
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 565.0,
+    "width": 586.0,
+    "height": 104.0,
+    "html_handle": "rso[0]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Customer reviews: Nutricology Parathyroid Capsules ... - Amazon.com",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 704.0,
+    "width": 586.0,
+    "height": 104.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "NutriCology Parathyroid Capsules (100 ct) Delivery or Pickup Near ...",
+    "source": "html_rso+cv_bbox",
+    "position": 2
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 844.0,
+    "width": 586.0,
+    "height": 121.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Nutricology, Essential Thyroid Nutrition with Iodoral, 60 ...",
+    "source": "html_rso+cv_bbox",
+    "position": 3
+  },
+  {
+    "type": "image_pack",
+    "x": 162.0,
+    "y": 1009.0,
+    "width": 586.0,
+    "height": 203.0,
+    "html_handle": "rso[3]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy nutricology nutricology parathyroid capsules 100 count",
+    "source": "html_rso+cv_bbox",
+    "position": 4
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1255.0,
+    "width": 586.0,
+    "height": 104.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Parathyroid Complex, 60 Caps Spleen Glandulars With Synergistic ...",
+    "source": "html_rso+cv_bbox",
+    "position": 5
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1391.0,
+    "width": 540.0,
+    "height": 69.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 6
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1486.0,
+    "width": 540.0,
+    "height": 89.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 7
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1602.0,
+    "width": 540.0,
+    "height": 69.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 8
+  },
+  {
+    "type": "dd_right",
+    "x": 802.0,
+    "y": 158.0,
+    "width": 221.0,
+    "height": 1276.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_ad_rhs",
+    "position": -1
+  }
+]

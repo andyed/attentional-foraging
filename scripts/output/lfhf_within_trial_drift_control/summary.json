@@ -1,0 +1,71 @@
+{
+  "attribution": "absolute",
+  "n_trials": 1241,
+  "trial_level": {
+    "mean_delta": -3.9771352546333607,
+    "median_delta": -1.9686129999999995,
+    "pct_negative": 54.23045930701047,
+    "p_two_sided": 0.0005136170618430178,
+    "p_less_than_zero": 0.0002568085309215089,
+    "p_greater_than_zero": 0.9997431914690785
+  },
+  "participant_level": {
+    "n_participants": 46,
+    "mean_of_means": -3.4335218872995497,
+    "median_of_means": -2.1525951944444444,
+    "pct_negative": 56.52173913043478,
+    "p_two_sided": 0.09265860975818896,
+    "p_less_than_zero": 0.04632930487909448
+  },
+  "per_rank_span": {
+    "1": {
+      "n": 258,
+      "median_delta": -4.5013315,
+      "mean_delta": -4.455884158914729,
+      "pct_negative": 57.36434108527132,
+      "p_less_than_zero": 0.011082905992398615
+    },
+    "2": {
+      "n": 176,
+      "median_delta": 0.6528435000000004,
+      "mean_delta": 7.087651062500002,
+      "pct_negative": 48.86363636363637,
+      "p_less_than_zero": 0.8370533727690601
+    },
+    "3": {
+      "n": 132,
+      "median_delta": 0.43782900000000025,
+      "mean_delta": 0.564867318181818,
+      "pct_negative": 47.72727272727273,
+      "p_less_than_zero": 0.6021536214887133
+    },
+    "4": {
+      "n": 119,
+      "median_delta": -3.75987,
+      "mean_delta": -12.796384277310922,
+      "pct_negative": 57.14285714285714,
+      "p_less_than_zero": 0.005090728769955928
+    },
+    "5": {
+      "n": 102,
+      "median_delta": -3.3837874999999995,
+      "mean_delta": -7.158050352941176,
+      "pct_negative": 58.82352941176471,
+      "p_less_than_zero": 0.07346792753058519
+    },
+    "6": {
+      "n": 90,
+      "median_delta": -5.7652445,
+      "mean_delta": -7.575349933333335,
+      "pct_negative": 58.88888888888889,
+      "p_less_than_zero": 0.019597180630898364
+    },
+    "7": {
+      "n": 364,
+      "median_delta": -1.0772045000000006,
+      "mean_delta": -5.970668824175824,
+      "pct_negative": 53.57142857142857,
+      "p_less_than_zero": 0.02431966606466074
+    }
+  }
+}

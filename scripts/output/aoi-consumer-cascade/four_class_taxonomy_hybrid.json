@@ -1,0 +1,312 @@
+{
+  "attribution": "organic_hybrid",
+  "n_records": 19908,
+  "approach_threshold_px": 100.0,
+  "distribution_by_etype": {
+    "organic": {
+      "n": 14657,
+      "clicked": 2134,
+      "clicked_pct": 14.55959609742785,
+      "deferred": 1596,
+      "deferred_pct": 10.888995019444634,
+      "eval_rejected": 438,
+      "eval_rejected_pct": 2.9883332196220236,
+      "not_approached": 10489,
+      "not_approached_pct": 71.56307566350549
+    },
+    "dd_top": {
+      "n": 1581,
+      "clicked": 271,
+      "clicked_pct": 17.141049968374446,
+      "deferred": 450,
+      "deferred_pct": 28.462998102466795,
+      "eval_rejected": 42,
+      "eval_rejected_pct": 2.6565464895635675,
+      "not_approached": 818,
+      "not_approached_pct": 51.739405439595195
+    },
+    "native_ad": {
+      "n": 3670,
+      "clicked": 190,
+      "clicked_pct": 5.177111716621253,
+      "deferred": 524,
+      "deferred_pct": 14.277929155313352,
+      "eval_rejected": 93,
+      "eval_rejected_pct": 2.534059945504087,
+      "not_approached": 2863,
+      "not_approached_pct": 78.0108991825613
+    }
+  },
+  "dissociation_by_etype": {
+    "organic": {
+      "n_def": 1596,
+      "n_rej": 438,
+      "rows": [
+        {
+          "metric": "retreat_dist",
+          "label": "post-closest drift (px)",
+          "n_def": 1429,
+          "n_rej": 287,
+          "med_def": 219.49478143507878,
+          "med_rej": 100.3863261057693,
+          "mean_def": 266.75976357336293,
+          "mean_rej": 146.0057410331094,
+          "mw_p": 1.82183804118989e-26,
+          "d": 0.7128560241952566
+        },
+        {
+          "metric": "dwell_in_proximity_ms",
+          "label": "dwell in proximity (ms)",
+          "n_def": 1509,
+          "n_rej": 390,
+          "med_def": 1166.0,
+          "med_rej": 704.5,
+          "mean_def": 1744.6646785950961,
+          "mean_rej": 1039.2692307692307,
+          "mw_p": 1.623065542621706e-17,
+          "d": 0.45780377527202537
+        },
+        {
+          "metric": "total_dwell_ms",
+          "label": "total dwell (ms)",
+          "n_def": 1596,
+          "n_rej": 438,
+          "med_def": 2922.5,
+          "med_rej": 1178.5,
+          "mean_def": 3833.597744360902,
+          "mean_rej": 1819.37899543379,
+          "mw_p": 2.3138269381947492e-63,
+          "d": 0.7601133031854307
+        },
+        {
+          "metric": "mean_dist",
+          "label": "mean cursor-AOI distance (px)",
+          "n_def": 1596,
+          "n_rej": 438,
+          "med_def": 261.4444811278493,
+          "med_rej": 153.56523147937372,
+          "mean_def": 277.371929664707,
+          "mean_rej": 178.3578159229298,
+          "mw_p": 3.950395707913385e-66,
+          "d": 0.9054467154081048
+        },
+        {
+          "metric": "final_dist",
+          "label": "final cursor-AOI distance (px)",
+          "n_def": 1596,
+          "n_rej": 438,
+          "med_def": 246.98145410144173,
+          "med_rej": 110.59606042979749,
+          "mean_def": 299.567217188338,
+          "mean_rej": 160.28146950925347,
+          "mw_p": 2.523796885707676e-48,
+          "d": 0.8163614286425256
+        },
+        {
+          "metric": "direction_changes",
+          "label": "direction changes",
+          "n_def": 850,
+          "n_rej": 126,
+          "med_def": 2.0,
+          "med_rej": 2.0,
+          "mean_def": 2.8211764705882354,
+          "mean_rej": 2.2301587301587302,
+          "mw_p": 0.013598189296319172,
+          "d": 0.2722869573158739
+        },
+        {
+          "metric": "frac_decreasing",
+          "label": "frac decreasing",
+          "n_def": 1563,
+          "n_rej": 414,
+          "med_def": 0.5,
+          "med_rej": 0.5,
+          "mean_def": 0.5200062968576613,
+          "mean_rej": 0.5383964671996156,
+          "mw_p": 0.25902653894966,
+          "d": -0.12346623214556222
+        }
+      ]
+    },
+    "dd_top": {
+      "n_def": 450,
+      "n_rej": 42,
+      "rows": [
+        {
+          "metric": "retreat_dist",
+          "label": "post-closest drift (px)",
+          "n_def": 445,
+          "n_rej": 39,
+          "med_def": 387.81932267816944,
+          "med_rej": 230.8273718022978,
+          "mean_def": 398.02455200871657,
+          "mean_rej": 238.80184733528813,
+          "mw_p": 1.2834532330021991e-05,
+          "d": 0.802733283350894
+        },
+        {
+          "metric": "dwell_in_proximity_ms",
+          "label": "dwell in proximity (ms)",
+          "n_def": 402,
+          "n_rej": 37,
+          "med_def": 2058.5,
+          "med_rej": 1667.0,
+          "mean_def": 3369.0248756218907,
+          "mean_rej": 2211.6216216216217,
+          "mw_p": 0.1612689266004531,
+          "d": 0.4095285894495181
+        },
+        {
+          "metric": "total_dwell_ms",
+          "label": "total dwell (ms)",
+          "n_def": 450,
+          "n_rej": 42,
+          "med_def": 5523.5,
+          "med_rej": 2725.0,
+          "mean_def": 6761.453333333333,
+          "mean_rej": 3677.8571428571427,
+          "mw_p": 1.2216310701726587e-05,
+          "d": 0.756235213547218
+        },
+        {
+          "metric": "mean_dist",
+          "label": "mean cursor-AOI distance (px)",
+          "n_def": 450,
+          "n_rej": 42,
+          "med_def": 284.2658504833201,
+          "med_rej": 234.8032352114698,
+          "mean_def": 298.43993856071376,
+          "mean_rej": 237.48625847964155,
+          "mw_p": 1.602468476422133e-05,
+          "d": 0.7261155053483944
+        },
+        {
+          "metric": "final_dist",
+          "label": "final cursor-AOI distance (px)",
+          "n_def": 450,
+          "n_rej": 42,
+          "med_def": 438.9469910382883,
+          "med_rej": 254.57787859927805,
+          "mean_def": 447.28875738177,
+          "mean_rej": 282.41391126131606,
+          "mw_p": 3.6637786725635053e-06,
+          "d": 0.8278341122793714
+        },
+        {
+          "metric": "direction_changes",
+          "label": "direction changes",
+          "n_def": 310,
+          "n_rej": 27,
+          "med_def": 3.0,
+          "med_rej": 2.0,
+          "mean_def": 3.832258064516129,
+          "mean_rej": 3.185185185185185,
+          "mw_p": 0.29504643914787254,
+          "d": 0.2577265622524892
+        },
+        {
+          "metric": "frac_decreasing",
+          "label": "frac decreasing",
+          "n_def": 443,
+          "n_rej": 39,
+          "med_def": 0.47058823529411764,
+          "med_rej": 0.5,
+          "mean_def": 0.46528127315399587,
+          "mean_rej": 0.4905673880045855,
+          "mw_p": 0.24284143300900707,
+          "d": -0.26830622266071813
+        }
+      ]
+    },
+    "native_ad": {
+      "n_def": 524,
+      "n_rej": 93,
+      "rows": [
+        {
+          "metric": "retreat_dist",
+          "label": "post-closest drift (px)",
+          "n_def": 486,
+          "n_rej": 60,
+          "med_def": 275.1109730627381,
+          "med_rej": 151.59309938029924,
+          "mean_def": 312.67293827855656,
+          "mean_rej": 192.80575700204645,
+          "mw_p": 3.1764872023949977e-06,
+          "d": 0.5873109566109438
+        },
+        {
+          "metric": "dwell_in_proximity_ms",
+          "label": "dwell in proximity (ms)",
+          "n_def": 486,
+          "n_rej": 75,
+          "med_def": 1256.0,
+          "med_rej": 635.0,
+          "mean_def": 1841.8559670781892,
+          "mean_rej": 963.6,
+          "mw_p": 5.123551236700315e-07,
+          "d": 0.6023671199369446
+        },
+        {
+          "metric": "total_dwell_ms",
+          "label": "total dwell (ms)",
+          "n_def": 524,
+          "n_rej": 93,
+          "med_def": 2795.5,
+          "med_rej": 890.0,
+          "mean_def": 3562.7385496183206,
+          "mean_rej": 1522.752688172043,
+          "mw_p": 6.3474624538122766e-18,
+          "d": 0.8734693167610359
+        },
+        {
+          "metric": "mean_dist",
+          "label": "mean cursor-AOI distance (px)",
+          "n_def": 524,
+          "n_rej": 93,
+          "med_def": 273.04117712035713,
+          "med_rej": 160.14041397020225,
+          "mean_def": 284.893579693435,
+          "mean_rej": 177.77315654785653,
+          "mw_p": 8.687413444961211e-18,
+          "d": 0.9675359471008388
+        },
+        {
+          "metric": "final_dist",
+          "label": "final cursor-AOI distance (px)",
+          "n_def": 524,
+          "n_rej": 93,
+          "med_def": 305.96806217068024,
+          "med_rej": 106.5667844224625,
+          "mean_def": 347.40987329624505,
+          "mean_rej": 186.70299885501026,
+          "mw_p": 3.026127739748089e-14,
+          "d": 0.7929247229089319
+        },
+        {
+          "metric": "direction_changes",
+          "label": "direction changes",
+          "n_def": 281,
+          "n_rej": 21,
+          "med_def": 2.0,
+          "med_rej": 2.0,
+          "mean_def": 2.5338078291814945,
+          "mean_rej": 2.380952380952381,
+          "mw_p": 0.9333676564107517,
+          "d": 0.08304457446242422
+        },
+        {
+          "metric": "frac_decreasing",
+          "label": "frac decreasing",
+          "n_def": 515,
+          "n_rej": 90,
+          "med_def": 0.5,
+          "med_rej": 0.5,
+          "mean_def": 0.4991056221156367,
+          "mean_rej": 0.542951164666851,
+          "mw_p": 0.04888904477516158,
+          "d": -0.3068833294734605
+        }
+      ]
+    }
+  }
+}

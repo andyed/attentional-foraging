@@ -47,7 +47,7 @@ warnings.filterwarnings("ignore", category=UserWarning)
 ROOT = Path("/Users/andyed/Documents/dev/attentional-foraging")
 sys.path.insert(0, str(ROOT / "notebooks-v2"))
 sys.path.insert(0, str(ROOT / "scripts"))
-from data_loader import get_trial_meta, load_mouse_events, result_bands
+from data_loader import get_trial_meta, load_mouse_events, result_bands, organic_aoi_bands
 
 FEATURES_JSON = ROOT / "AdSERP/data/cursor-approach-features.json"
 REG_CACHE = ROOT / "scripts/output/approach_threshold_sensitivity/regression_labels_cache.json"
@@ -58,11 +58,15 @@ PAUSE_VEL_THRESHOLD = 5.0  # px/s; under this counts as "pause"
 CENTER_TOL = 100.0  # px around viewport center for "near center"
 
 
-def compute_features_for_trial(trial_id, n_positions=10, max_t=None, min_t=None):
+def compute_features_for_trial(trial_id, n_positions=10, max_t=None, min_t=None,
+                                attribution='absolute'):
     """Returns per-position dict with A (bands), B (continuous viewport), C (trajectory).
     None if data missing. If max_t is provided, the timeline is truncated at max_t
     (leakage check; K15 uses max_t = click_t). If min_t is provided, the timeline
-    starts at min_t (windowing; Exp 6 uses min_t = click_t - 5000)."""
+    starts at min_t (windowing; Exp 6 uses min_t = click_t - 5000).
+
+    attribution='organic' uses bbox-organic AOI bands (post-2026-05-01 cascade);
+    attribution='absolute' (default) uses legacy band estimation on n_positions."""
     try:
         doc_h, scr_h, _ = get_trial_meta(trial_id)
     except Exception:
@@ -79,7 +83,14 @@ def compute_features_for_trial(trial_id, n_positions=10, max_t=None, min_t=None)
     if t_end <= t_start:
         return None
 
-    bands = result_bands(n_positions, doc_h)
+    if attribution == 'organic':
+        org_bands = organic_aoi_bands(trial_id)
+        if not org_bands:
+            return None
+        bands = org_bands
+        n_positions = len(bands)
+    else:
+        bands = result_bands(n_positions, doc_h)
     third = scr_h / 3.0
     center_y_viewport = scr_h / 2.0
 

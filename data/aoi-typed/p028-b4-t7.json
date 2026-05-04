@@ -1,0 +1,122 @@
+[
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 163.0,
+    "width": 540.0,
+    "height": 128.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 0
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 319.0,
+    "width": 586.0,
+    "height": 85.0,
+    "html_handle": "rso[0]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Where to Buy VT85LP Projector Lamps Bulbs",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 439.0,
+    "width": 586.0,
+    "height": 203.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Vt85lp Projector Bulb - AliExpress",
+    "source": "html_rso+cv_bbox",
+    "position": 2
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 673.0,
+    "width": 586.0,
+    "height": 227.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.(no class)",
+    "heading_text": "NEC VT85LP Replacement Lamp for Projector",
+    "source": "html_rso+cv_bbox",
+    "position": 3
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 932.0,
+    "width": 586.0,
+    "height": 186.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Original Ushio Projector Lamp Replacement for NEC ...",
+    "source": "html_rso+cv_bbox",
+    "position": 4
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1152.0,
+    "width": 586.0,
+    "height": 82.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "NEC VT85LP Projector lamp",
+    "source": "html_rso+cv_bbox",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1265.0,
+    "width": 586.0,
+    "height": 145.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "NEC VT85LP Projector Lamp - B&H Photo",
+    "source": "html_rso+cv_bbox",
+    "position": 6
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1441.0,
+    "width": 586.0,
+    "height": 102.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "NEC VT85LP projector lamp | tradekorea",
+    "source": "html_rso+cv_bbox",
+    "position": 7
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1575.0,
+    "width": 540.0,
+    "height": 69.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 8
+  },
+  {
+    "type": "pagination",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|10|Next",
+    "source": "html_botstuff",
+    "position": -1
+  }
+]

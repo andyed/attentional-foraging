@@ -1,0 +1,86 @@
+[
+  {
+    "type": "dd_top",
+    "x": 162.0,
+    "y": 158.0,
+    "width": 587.0,
+    "height": 351.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 0
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 525.0,
+    "width": 586.0,
+    "height": 208.0,
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Borg Warner CSS53 Crankshaft Sensor - Amazon.com",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 767.0,
+    "width": 586.0,
+    "height": 101.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "CSS1053,BORG WARNER CSS1053; Crankshaft Position Sensor",
+    "source": "html_rso+cv_bbox",
+    "position": 2
+  },
+  {
+    "type": "image_pack",
+    "x": 162.0,
+    "y": 912.0,
+    "width": 586.0,
+    "height": 203.0,
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy borgwarner borg warner css53 crankshaft sensor",
+    "source": "html_rso+cv_bbox",
+    "position": 3
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1155.0,
+    "width": 540.0,
+    "height": 149.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 4
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1331.0,
+    "width": 540.0,
+    "height": 169.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 5
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1527.0,
+    "width": 540.0,
+    "height": 149.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 6
+  }
+]

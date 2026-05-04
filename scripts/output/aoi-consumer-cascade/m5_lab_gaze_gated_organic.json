@@ -1,0 +1,17 @@
+{
+  "extractor": "LAB gaze-gated (fixation-timed cursor interpolation)",
+  "attribution": "organic",
+  "population_n": 2070,
+  "n_deferred": 1557,
+  "n_eval_rejected": 513,
+  "loso_auc": 0.7952728105856592,
+  "youden_j_threshold": 0.4710234615541139,
+  "precision": 0.889739663093415,
+  "recall": 0.7463070006422607,
+  "f1": 0.8117359413202934,
+  "disagreement_pct": 26.03864734299517,
+  "TP": 1162,
+  "FN": 395,
+  "FP": 144,
+  "TN": 369
+}

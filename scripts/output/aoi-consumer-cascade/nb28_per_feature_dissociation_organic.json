@@ -1,0 +1,81 @@
+{
+  "attribution": "organic",
+  "population": "approached non-click (min_dist < 100 px), under bbox-organic",
+  "n_records": 2070,
+  "n_deferred": 1557,
+  "n_eval_rejected": 513,
+  "rows": [
+    {
+      "feature": "n_reversals",
+      "label": "n_reversals (EWM reload)",
+      "n_def": 1557,
+      "n_rej": 513,
+      "median_def": 1.0,
+      "median_rej": 1.0,
+      "mean_def": 1.972382787411689,
+      "mean_rej": 1.1949317738791423,
+      "cohens_d": 0.4320169082626484,
+      "mw_p": 2.5400112385588493e-18
+    },
+    {
+      "feature": "min_abs_velocity",
+      "label": "min_abs_velocity_px_per_s (EWM stabilize)",
+      "n_def": 1557,
+      "n_rej": 513,
+      "median_def": 0.0,
+      "median_rej": 0.0,
+      "mean_def": 0.05798969099619511,
+      "mean_rej": 0.25033111295854327,
+      "cohens_d": -0.619278344346683,
+      "mw_p": 2.3898659425217603e-45
+    },
+    {
+      "feature": "vt_any_ms",
+      "label": "vt_any_ms (EWM residence)",
+      "n_def": 1557,
+      "n_rej": 513,
+      "median_def": 21300.0,
+      "median_rej": 11561.0,
+      "mean_def": 23154.005138086064,
+      "mean_rej": 14191.263157894737,
+      "cohens_d": 0.8234147386650196,
+      "mw_p": 2.5676458727179166e-57
+    },
+    {
+      "feature": "vt_center_ms",
+      "label": "vt_center_ms (foveal zone)",
+      "n_def": 1557,
+      "n_rej": 513,
+      "median_def": 2663.0,
+      "median_rej": 1381.0,
+      "mean_def": 5418.293513166345,
+      "mean_rej": 2737.187134502924,
+      "cohens_d": 0.4579468972141809,
+      "mw_p": 5.104076350312976e-10
+    },
+    {
+      "feature": "avg_viewport_y",
+      "label": "avg_viewport_y_px (buffer position)",
+      "n_def": 1557,
+      "n_rej": 513,
+      "median_def": 509.5820698355662,
+      "median_rej": 633.1376489722127,
+      "mean_def": 498.1965307456647,
+      "mean_rej": 628.9352330292198,
+      "cohens_d": -0.7501875616862934,
+      "mw_p": 1.2764934468367694e-41
+    },
+    {
+      "feature": "max_overlap_frac",
+      "label": "max_overlap_frac",
+      "n_def": 1557,
+      "n_rej": 513,
+      "median_def": 1.0,
+      "median_rej": 1.0,
+      "mean_def": 1.0,
+      "mean_rej": 0.9999088422529515,
+      "cohens_d": 0.06243905410548066,
+      "mw_p": 0.08167807466723773
+    }
+  ]
+}

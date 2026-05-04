@@ -1,7 +1,7 @@
 # Organic-Result AOI Extraction
 
 **Stable ID:** M:organic-result-aoi-extraction
-**Status:** current as of 2026-05-01; canonical implementation: `scripts/extract_organic_bboxes.py`. Applied to the full corpus (2,776 trials) via the volume-mounted Zenodo screenshots. Commit `60a2e7b9` on `feat/aoi-pipeline-v2` is the reference state for the schema and audit numbers below.
+**Status:** v2 reference; CV bboxes here remain the geometry source of truth. The v3 typed cascade (2026-05-04, [`typed-aoi-pipeline.md`](./typed-aoi-pipeline.md)) builds on these bboxes by adding an HTML widget-typing pass and is now the post-cascade primary attribution. Canonical implementation for v2: `scripts/extract_organic_bboxes.py`. Applied to the full corpus (2,776 trials) via the volume-mounted Zenodo screenshots. Commit `60a2e7b9` on `feat/aoi-pipeline-v2` is the v2 reference state for the schema and audit numbers below.
 
 This is a **core contribution** of the project to the AdSERP corpus. AdSERP v1 ships ad bounding boxes (`native_ad`, `dd_top`, `dd_right`) and full-page screenshots, but **no organic-result bounding boxes**, no per-product subdivision of the ad rails, and no separation of refinement widgets from organic results. The pipeline below recovers all four in pixel coordinates that mirror the v1 ad-boundary schema for drop-in compatibility.
 
@@ -236,7 +236,9 @@ Ordered by likelihood of changing a downstream result.
 
 ## 10. Status
 
-**Status:** current as of 2026-05-01; canonical implementation: `scripts/extract_organic_bboxes.py`. Applied to the full corpus (2,776 trials). Notebook + producer cascade complete on branch `feat/aoi-pipeline-v2` (origin head `411851fa`).
+**Status:** v2 reference; superseded as primary attribution by v3 typed cascade (2026-05-04). The CV bboxes produced by this pipeline are unchanged and remain the geometric source of truth for v3. Canonical v2 implementation: `scripts/extract_organic_bboxes.py`. Applied to the full corpus (2,776 trials). Notebook + producer cascade complete on branch `feat/aoi-pipeline-v2` (origin head `411851fa`).
+
+**Successor:** [`typed-aoi-pipeline.md`](./typed-aoi-pipeline.md) (v3 HTML+vision joint widget typing). v3 reuses every bbox this pipeline produces and adds a per-card etype label via a Phase-1 HTML pass + Phase-2 spatial join. No geometric change. Read v3 for the post-2026-05-04 primary attribution; read this doc for the underlying CV mechanics.
 
 History:
 
@@ -251,6 +253,7 @@ History:
 - 2026-05-01 — Notebook K-claims migrations: NB14 + NB18a (`16830c62`), NB25 (`352084f7`), NB23 K-bbox-* tier (`452554ca`), NB04 + NB22 + NB24 + NB15 (`b5fb9f48`). All cite this methodology doc as the source for attribution shift.
 - 2026-05-01 — `update_key_claims.py` guarded with `--force-clobber` flag (`411851fa`) to prevent accidental regression of cascade-aware K-claims by the script's pre-cascade hardcoded values.
 - 2026-05-01 — Approach-retreat parallel rebuild on `feat/aoi-rebuild-2026-05-01`: 80 curated replay bundles regenerated; 13 stale captions fixed; 1 trial swapped (p020-b1-t7 → p012-b4-t7) because its EVAL-REJ profile vanished under bbox attribution.
+- 2026-05-04 — v3 typed cascade landed on `feat/aoi-pipeline-v3-typed`. v2 bboxes unchanged; v3 adds Phase-1 HTML widget extraction (`scripts/extract_html_widget_types.py`) and Phase-2 spatial join (`scripts/build_typed_aoi_map.py`) to attach a 9-etype taxonomy on top of v2 geometry. Tier-A notebook re-execution + producer migration + Jacek-facing cross-lab export at `scripts/output/adserp_aois_by_trial_id_typed.{csv,jsonl}` (37,142 rows × 9 etypes). Spec: [`typed-aoi-pipeline.md`](./typed-aoi-pipeline.md).
 
 **Pending downstream work** (deferred to ETTAC weekend / next iteration):
 - ETTAC paper draft revisions to incorporate the bbox-attribution shift (NB14:K3 weakens; NB14:K6, K9 strengthen; reframe to two-band engagement).

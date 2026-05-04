@@ -1,0 +1,122 @@
+[
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 133.0,
+    "width": 586.0,
+    "height": 184.0,
+    "html_handle": "rso[0]",
+    "html_signature": "div.g",
+    "heading_text": "ZACK 20146 CONTAS Serviette Holder - Amazon.in",
+    "source": "html_rso+cv_bbox",
+    "position": 0
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 350.0,
+    "width": 586.0,
+    "height": 152.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.g",
+    "heading_text": "Zack 20146 Contas Serviette Holder - Amazon.ca",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 536.0,
+    "width": 586.0,
+    "height": 80.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "[\u5ec3\u756a] ZACK 20146 CONTAS serviette holder \u30ca\u30d7\u30ad\u30f3 ...",
+    "source": "html_rso+cv_bbox",
+    "position": 2
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 649.0,
+    "width": 586.0,
+    "height": 83.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "ZACK Contas Serviette Holder 20146 on PopScreen",
+    "source": "html_rso+cv_bbox",
+    "position": 3
+  },
+  {
+    "type": "image_pack",
+    "x": 162.0,
+    "y": 778.0,
+    "width": 586.0,
+    "height": 203.0,
+    "html_handle": "rso[4]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy zack zack 20146 contas serviette holder",
+    "source": "html_rso+cv_bbox",
+    "position": 4
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1021.0,
+    "width": 540.0,
+    "height": 89.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 5
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1137.0,
+    "width": 540.0,
+    "height": 69.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 6
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1233.0,
+    "width": 540.0,
+    "height": 108.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 7
+  },
+  {
+    "type": "unknown_widget",
+    "x": 162.0,
+    "y": 1383.0,
+    "width": 586.0,
+    "height": 76.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
+    "position": 8
+  },
+  {
+    "type": "dd_right",
+    "x": 802.0,
+    "y": 158.0,
+    "width": 221.0,
+    "height": 503.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_ad_rhs",
+    "position": -1
+  }
+]

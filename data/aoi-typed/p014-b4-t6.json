@@ -1,0 +1,98 @@
+[
+  {
+    "type": "image_pack",
+    "x": 162.0,
+    "y": 133.0,
+    "width": 586.0,
+    "height": 235.0,
+    "html_handle": "rso[0]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy vittelex fabrics mirror organza turquoise fabric",
+    "source": "html_rso+cv_bbox",
+    "position": 0
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 412.0,
+    "width": 586.0,
+    "height": 203.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Fabricent @ Amazon.com:",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 646.0,
+    "width": 586.0,
+    "height": 125.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Gold mirror Organza sheer fabric polyester 58 wide - Etsy",
+    "source": "html_rso+cv_bbox",
+    "position": 2
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 805.0,
+    "width": 586.0,
+    "height": 121.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Mirror Organza Ivory Fabric - Arts & Crafts - Fishpond.com",
+    "source": "html_rso+cv_bbox",
+    "position": 3
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 957.0,
+    "width": 540.0,
+    "height": 89.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 4
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1073.0,
+    "width": 540.0,
+    "height": 69.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 5
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1169.0,
+    "width": 540.0,
+    "height": 89.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 6
+  },
+  {
+    "type": "dd_right",
+    "x": 802.0,
+    "y": 158.0,
+    "width": 221.0,
+    "height": 733.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_ad_rhs",
+    "position": -1
+  }
+]

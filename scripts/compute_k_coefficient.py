@@ -50,7 +50,8 @@ from adserp_loader import (  # type: ignore # noqa: E402
 )
 # organic_aoi_tops lives in notebooks-v2/data_loader (post-2026-05-01 cascade);
 # pupil-lfhf's loader is the legacy absolute-attribution path.
-from data_loader import organic_aoi_tops  # noqa: E402
+from data_loader import organic_aoi_tops, typed_aoi_tops  # noqa: E402
+from compute_regression_labels import _hybrid_aoi_tops  # noqa: E402
 
 
 def resolve_paths(attribution: str) -> tuple[Path, Path, Path, str]:
@@ -61,6 +62,20 @@ def resolve_paths(attribution: str) -> tuple[Path, Path, Path, str]:
             ROOT / 'AdSERP/data/ripa2-by-position-organic.json',
             ROOT / 'AdSERP/data/k-coefficient-by-position-organic.json',
             '_organic',
+        )
+    if attribution == 'organic_hybrid':
+        return (
+            ROOT / 'AdSERP/data/butterworth-lfhf-by-position-organic.json',
+            ROOT / 'AdSERP/data/ripa2-by-position-organic.json',
+            ROOT / 'AdSERP/data/k-coefficient-by-position-organic-hybrid.json',
+            '_organic_hybrid',
+        )
+    if attribution == 'typed':
+        return (
+            ROOT / 'AdSERP/data/butterworth-lfhf-by-position-typed.json',
+            ROOT / 'AdSERP/data/ripa2-by-position-typed.json',
+            ROOT / 'AdSERP/data/k-coefficient-by-position-typed.json',
+            '_typed',
         )
     return (
         ROOT / 'AdSERP/data/butterworth-lfhf-by-position.json',
@@ -113,7 +128,7 @@ def forward_pass_indices(fixations: list[dict], tops, n_results: int
 def main() -> None:
     import argparse
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--attribution', choices=['absolute', 'organic'], default='organic',
+    ap.add_argument('--attribution', choices=['absolute', 'organic', 'organic_hybrid', 'typed'], default='organic',
                     help='organic (default; bbox-attributed) or absolute (legacy h3+ads pooled)')
     args = ap.parse_args()
     global LFHF, RIPA2, OUT_BY_POS, _OUT_SUFFIX
@@ -142,6 +157,10 @@ def main() -> None:
             continue
         if args.attribution == 'organic':
             tops = organic_aoi_tops(tid)
+        elif args.attribution == 'organic_hybrid':
+            tops = _hybrid_aoi_tops(tid)
+        elif args.attribution == 'typed':
+            tops = typed_aoi_tops(tid)
             n_results = len(tops)
             if n_results == 0:
                 n_skipped += 1

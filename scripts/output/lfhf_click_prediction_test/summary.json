@@ -1,0 +1,39 @@
+{
+  "attribution": "organic_hybrid",
+  "n_records": 6327,
+  "n_clicked": 1446,
+  "n_unclicked": 4881,
+  "feature_aucs": {
+    "lfhf_first": {
+      "n": 6327,
+      "auc": 0.5655579273571301
+    },
+    "lfhf_return": {
+      "n": 2646,
+      "auc": 0.519312588138254
+    },
+    "lfhf_max": {
+      "n": 6327,
+      "auc": 0.5869871687518401
+    },
+    "lfhf_delta": {
+      "n": 2646,
+      "auc": 0.48669345182662377
+    }
+  },
+  "loso_lfhf_only": {
+    "auc_mean": 0.6359073998911356,
+    "auc_std": 0.08919963684939135,
+    "n_folds": 46
+  },
+  "loso_dwell_only_baseline": {
+    "auc_mean": 0.7179476489414702,
+    "auc_std": 0.09827170252744458,
+    "n_folds": 46
+  },
+  "loso_combined": {
+    "auc_mean": 0.7147471218594257,
+    "auc_std": 0.10024846775205587,
+    "n_folds": 46
+  }
+}

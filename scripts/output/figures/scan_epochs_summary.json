@@ -1,0 +1,76 @@
+{
+  "organic": {
+    "label": "organic",
+    "n_trials": 2701,
+    "n_participants": 47,
+    "distribution_n_epochs": {
+      "1": 1015,
+      "2": 687,
+      "3": 465,
+      "4": 287,
+      "5": 142,
+      "6": 73,
+      "7": 23,
+      "8": 8,
+      "9": 1
+    },
+    "cumulative": {
+      "ge_1": 2701,
+      "ge_2": 1686,
+      "ge_3": 999,
+      "ge_4": 534
+    },
+    "cumulative_pct": {
+      "ge_1": 100.0,
+      "ge_2": 62.421325435024066,
+      "ge_3": 36.986301369863014,
+      "ge_4": 19.770455386893744
+    },
+    "per_participant_multi_cycle_frac": {
+      "mean": 0.6173584678331989,
+      "median": 0.6379310344827587,
+      "p25": 0.469141604010025,
+      "p75": 0.7777615429573349
+    },
+    "n_pids_with_any_multi_cycle": 47,
+    "n_pids_with_5plus_multi_cycle": 45
+  },
+  "hybrid": {
+    "label": "hybrid",
+    "n_trials": 2774,
+    "n_participants": 47,
+    "distribution_n_epochs": {
+      "1": 597,
+      "2": 670,
+      "3": 590,
+      "4": 383,
+      "5": 241,
+      "6": 162,
+      "7": 72,
+      "8": 39,
+      "9": 12,
+      "10": 6,
+      "12": 2
+    },
+    "cumulative": {
+      "ge_1": 2774,
+      "ge_2": 2177,
+      "ge_3": 1507,
+      "ge_4": 917
+    },
+    "cumulative_pct": {
+      "ge_1": 100.0,
+      "ge_2": 78.47873107426099,
+      "ge_3": 54.325883201153566,
+      "ge_4": 33.056957462148524
+    },
+    "per_participant_multi_cycle_frac": {
+      "mean": 0.7853070488977043,
+      "median": 0.8333333333333334,
+      "p25": 0.6833333333333333,
+      "p75": 0.9412429378531073
+    },
+    "n_pids_with_any_multi_cycle": 47,
+    "n_pids_with_5plus_multi_cycle": 47
+  }
+}

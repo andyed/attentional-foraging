@@ -1,0 +1,62 @@
+{
+  "experiment": "NB30 hybrid \u2014 etype \u00d7 continuous-viewport on click outcome",
+  "regime": "LAB",
+  "rank_type": "organic_hybrid",
+  "population": {
+    "description": "approached (min_dist < 100) AOIs \u2014 any etype",
+    "n_total": 4865,
+    "n_clicks": 1722,
+    "etype_counts": {
+      "organic": 3383,
+      "dd_top": 747,
+      "native_ad": 735
+    },
+    "etype_click_counts": {
+      "organic": 1349,
+      "dd_top": 255,
+      "native_ad": 118
+    }
+  },
+  "features": [
+    "vt_any",
+    "vt_center_ms",
+    "avg_viewport_y",
+    "max_overlap_frac",
+    "position",
+    "is_dd_top",
+    "is_native_ad",
+    "dd_top:max_overlap_frac",
+    "native_ad:max_overlap_frac"
+  ],
+  "lopo_auc": 0.6873475448085693,
+  "coefficients_standardized": {
+    "vt_any": -0.1453172976583741,
+    "vt_center_ms": 0.07806316484157501,
+    "avg_viewport_y": 0.28674136785130583,
+    "max_overlap_frac": -0.27846193182178614,
+    "position": -0.7956693421925727,
+    "is_dd_top": -0.10821616904675699,
+    "is_native_ad": -0.2361672267422175,
+    "dd_top:max_overlap_frac": -0.10821616904675699,
+    "native_ad:max_overlap_frac": -0.2361672267422175
+  },
+  "intercept_standardized": -0.10494525105868117,
+  "per_etype_max_overlap_frac_slope": {
+    "organic": -0.27846193182178614,
+    "dd_top": -0.38667810086854315,
+    "native_ad": -0.5146291585640036
+  },
+  "interaction_bootstrap_ci": {
+    "dd_top:max_overlap_frac": {
+      "point": -0.10821616904675699,
+      "ci_lo": -0.14587645987877926,
+      "ci_hi": -0.06881176591389931
+    },
+    "native_ad:max_overlap_frac": {
+      "point": -0.2361672267422175,
+      "ci_lo": -0.27935473727322757,
+      "ci_hi": -0.1954006056290854
+    }
+  },
+  "n_bootstrap": 1000
+}

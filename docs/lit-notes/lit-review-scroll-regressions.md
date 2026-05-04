@@ -50,6 +50,17 @@ Huang, J., White, R. W., & Buscher, G. (2012). User see, user point: gaze and cu
 
 **Why it matters:** Characterizes gaze-cursor divergence during search. Their mean distance (~200px when reading, ~400px when scanning) is consistent with your 200-500px range. They found cursor position correlates with gaze but lags temporally — the cursor follows the eyes, not the reverse. Your mouse-gaze convergence curve extending their analysis with scroll correction.
 
+### 6b. Dumais, Buscher & Cutrell — Individual Differences in Gaze Patterns for Web Search (IIiX 2010)
+
+Dumais, S. T., Buscher, G., & Cutrell, E. (2010). Individual differences in gaze patterns for web search. IIiX 2010, pp. 185–194. DOI: 10.1145/1840784.1840812.
+
+**Why it matters (added 2026-04-30):**
+1. **Strategy clusters parallel satisficer/optimizer.** Their k-means clustering on gaze patterns yields three groups: *Exhaustive* (≈ optimizer — scans all 10 organic results, longer per-result dwell), *Economic-Results* (≈ satisficer focused on top organic), and *Economic-Ads* (satisficer disproportionately attending to ads — 1,625 ms on main ads vs 1,169 ms on results 4–6). Direct methodological precedent for OSEC's four-class taxonomy and the satisficer/optimizer dimension. Their split is *depth × surface-attended-to* (a 2D taxonomy), parallel to AdSERP's *regressed × clicked*.
+2. **ScanUp/ScanDown method.** §3.4.3.4 introduces discrete counts of scan-direction changes as a feature: a downward scan is two consecutive forward transitions OR a skip of ≥1 result; upward scan is the analog. This is the *count* version of what AdSERP measures continuously via cursor + scroll. Worth citing as the discrete antecedent of the regression-frequency analysis.
+3. **Bubble-scanpath visualisation (their Figure 3).** Time-on-x, position-on-y, bubble diameter = fixation duration, triangles = clicks, miniature SERP thumbnail along the left edge as a coordinate anchor. Cleanest single-trial scanpath format I've seen for SERPs. **TODO**: adopt the format for AdSERP individual-trial replays in a future paper figure or the explainer site (superseding the current top-down replay grids).
+
+**Gap your work fills:** Their clustering is descriptive (k=3) and offline; AdSERP gives you per-(trial, position) labels and the raw fixation stream so the strategy distinction can be operationalised at the *trial* level rather than per-participant. The Economic-Ads cluster anticipates the ad-focused / ad-ignorer distinction in your AdSERP analysis but doesn't model regression at all.
+
 ### 7. eyeScrollR — Mapping Eye Tracking on Scrollable Pages (BRM 2024)
 
 eyeScrollR: A software method for reproducible mapping of eye-tracking data from scrollable web pages. Behavior Research Methods (2024).
@@ -169,7 +180,7 @@ For the full attentional-foraging findings paper (if written):
 
 ### Framing for the paper
 
-The existing literature models SERP examination as a **single forward pass** with a **stopping decision**. Our contribution: examination is a **multi-pass process** with distinct cognitive phases (orientation → evaluation → working memory accumulation → regression/commitment), and the regression decision is where the interesting cognitive work happens — not at the stopping point, but at the *re-evaluation* point.
+The existing literature models SERP examination as a **single forward pass** with a **stopping decision**. Our contribution: examination is a **multi-pass process** with distinct cognitive phases (orientation → survey → evaluation → regression/commitment), and the regression decision is where the interesting cognitive work happens — not at the stopping point, but at the *re-evaluation* point.
 
 ---
 

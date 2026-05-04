@@ -128,7 +128,7 @@ def compute_approach_features(trial_id, attribution="absolute"):
     if not fixations or not all_events or not doc_h:
         return None
 
-    etypes = None  # set only under organic_hybrid; tagged into output records.
+    etypes = None  # set only under organic_hybrid / typed; tagged into output records.
     if attribution == "organic":
         tops = organic_aoi_tops(trial_id)
         n_results = len(tops)
@@ -141,6 +141,15 @@ def compute_approach_features(trial_id, attribution="absolute"):
             return None
         tops = tops_list
         etypes = etypes_list
+    elif attribution == "typed":
+        # HTML+vision typed AOI map (Phase 1+2 of feat/aoi-pipeline-v3-typed)
+        from data_loader import typed_aoi_tops, typed_aoi_etypes
+        tops_list = typed_aoi_tops(trial_id)
+        if not tops_list:
+            return None
+        tops = tops_list
+        n_results = len(tops_list)
+        etypes = typed_aoi_etypes(trial_id)
     else:
         serp = extract_serp_results(trial_id)
         n_results = len(serp) if serp else 10
@@ -281,13 +290,15 @@ def compute_approach_features(trial_id, attribution="absolute"):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--attribution", choices=["absolute", "organic", "organic_hybrid"], default="organic")
+    parser.add_argument("--attribution", choices=["absolute", "organic", "organic_hybrid", "typed"], default="organic")
     parser.add_argument("--output", "-o", help="Output JSON path (default depends on attribution)")
     parser.add_argument("--trial", help="Single trial only (for testing)")
     args = parser.parse_args()
 
     if args.output:
         out_path = Path(args.output)
+    elif args.attribution == "typed":
+        out_path = DATA_DIR / "cursor-approach-features-typed.json"
     elif args.attribution == "organic_hybrid":
         out_path = DATA_DIR / "cursor-approach-features-organic-hybrid.json"
     elif args.attribution == "organic":

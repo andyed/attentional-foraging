@@ -1,0 +1,98 @@
+[
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 133.0,
+    "width": 586.0,
+    "height": 258.0,
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "The Boatniks [VHS] - Amazon.com",
+    "source": "html_rso+cv_bbox",
+    "position": 0
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 422.0,
+    "width": 586.0,
+    "height": 275.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "The Boatniks (VHS, 1997) for sale online - eBay",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 732.0,
+    "width": 586.0,
+    "height": 85.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "The Boatniks (1970) - Available on VHS, DVD - Alibris",
+    "source": "html_rso+cv_bbox",
+    "position": 2
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 848.0,
+    "width": 586.0,
+    "height": 188.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.(no class)",
+    "heading_text": "THE BOATNIKS WALT Disney Robert Morse Stefanie ...",
+    "source": "html_rso+cv_bbox",
+    "position": 3
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1070.0,
+    "width": 586.0,
+    "height": 104.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "THE BOATNIKS (VHS) Robert Morse, Stefanie Powers Rare Walt ...",
+    "source": "html_rso+cv_bbox",
+    "position": 4
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1209.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "The Boatniks | Walt Disney Videos (UK) Wiki - Fandom",
+    "source": "html_rso+cv_bbox",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1325.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Reviews: The Boatniks - IMDb",
+    "source": "html_rso+cv_bbox",
+    "position": 6
+  },
+  {
+    "type": "pagination",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|Next",
+    "source": "html_botstuff",
+    "position": -1
+  }
+]

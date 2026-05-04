@@ -1,0 +1,21 @@
+{
+  "n_trials": 2776,
+  "n_cards_total": 27673,
+  "cards_per_trial": {
+    "mean": 9.968659942363113,
+    "min": 1,
+    "max": 15
+  },
+  "type_distribution": {
+    "organic": 22530,
+    "related_searches": 1811,
+    "image_pack": 1600,
+    "knowledge_panel": 826,
+    "paa": 769,
+    "top_places": 86,
+    "other_widget": 51
+  },
+  "unmatched_other_widget_signatures": {
+    "ULSxyf div.ULSxyf": 51
+  }
+}

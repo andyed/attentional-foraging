@@ -23,6 +23,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "notebooks-v2"))
 
 from data_loader import (  # noqa: E402
+    DATA_DIR,
     load_fixations,
     load_mouse_events,
     get_trial_meta,
@@ -30,8 +31,39 @@ from data_loader import (  # noqa: E402
     interpolate_scroll,
     result_band_tops,
     organic_aoi_tops,
+    organic_aoi_bands,
     assign_fixation_to_position,
 )
+
+
+_AD_DIR = DATA_DIR / "ad-boundary-data"
+_RESULT_COL_X_MIN = 50
+_RESULT_COL_X_MAX = 750
+
+
+def _hybrid_aoi_tops(trial_id):
+    """Mirror compute_cursor_approach_features.build_hybrid_aois — return
+    sorted-display-order tops list (organic + dd_top + native_ad in result
+    column; dd_right excluded)."""
+    bands = organic_aoi_bands(trial_id) or []
+    items = [(t, b, "organic") for t, b in bands]
+    ad_path = _AD_DIR / f"{trial_id}.json"
+    if ad_path.exists():
+        ad_data = json.load(open(ad_path))
+        for etype, elements in ad_data.items():
+            if etype == "dd_right":
+                continue
+            for el in elements:
+                loc = el.get("location", {}); size = el.get("size", {})
+                rx = loc.get("x", 0); ry = loc.get("y", 0)
+                rw = size.get("width", 0); rh = size.get("height", 0)
+                if not (rx < _RESULT_COL_X_MAX and (rx + rw) > _RESULT_COL_X_MIN):
+                    continue
+                items.append((ry, ry + rh, etype))
+    if not items:
+        return []
+    items.sort(key=lambda r: r[0])
+    return [r[0] for r in items]
 
 
 def regressed_positions(trial_id, attribution):
@@ -42,6 +74,13 @@ def regressed_positions(trial_id, attribution):
     doc_h = meta[0]
     if attribution == "organic":
         tops = organic_aoi_tops(trial_id)
+        n_res = len(tops)
+    elif attribution == "organic_hybrid":
+        tops = _hybrid_aoi_tops(trial_id)
+        n_res = len(tops)
+    elif attribution == "typed":
+        from data_loader import typed_aoi_tops
+        tops = typed_aoi_tops(trial_id)
         n_res = len(tops)
     else:
         serp = extract_serp_results(trial_id)
@@ -70,7 +109,7 @@ def regressed_positions(trial_id, attribution):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--attribution", choices=["absolute", "organic"], default="organic")
+    parser.add_argument("--attribution", choices=["absolute", "organic", "organic_hybrid", "typed"], default="organic")
     parser.add_argument("--features",
                         help="Path to cursor-approach-features JSON (default depends on attribution)")
     parser.add_argument("--output", "-o")
@@ -78,6 +117,10 @@ def main():
 
     if args.features:
         feat_path = Path(args.features)
+    elif args.attribution == "typed":
+        feat_path = ROOT / "AdSERP/data/cursor-approach-features-typed.json"
+    elif args.attribution == "organic_hybrid":
+        feat_path = ROOT / "AdSERP/data/cursor-approach-features-organic-hybrid.json"
     elif args.attribution == "organic":
         feat_path = ROOT / "AdSERP/data/cursor-approach-features-organic.json"
     else:
@@ -88,7 +131,14 @@ def main():
     else:
         out_dir = ROOT / "scripts/output/approach_threshold_sensitivity"
         out_dir.mkdir(parents=True, exist_ok=True)
-        suffix = "_organic" if args.attribution == "organic" else ""
+        if args.attribution == "typed":
+            suffix = "_typed"
+        elif args.attribution == "organic_hybrid":
+            suffix = "_organic_hybrid"
+        elif args.attribution == "organic":
+            suffix = "_organic"
+        else:
+            suffix = ""
         out_path = out_dir / f"regression_labels_cache{suffix}.json"
 
     print(f"Loading features from {feat_path}", file=sys.stderr)

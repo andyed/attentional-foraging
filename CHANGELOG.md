@@ -1,5 +1,270 @@
 # Changelog
 
+## 2026-05-04 — Typed AOI cascade (HTML+vision joint typing)
+
+Branch: `feat/aoi-pipeline-v3-typed`. Extends the prior cascade
+(`feat/aoi-pipeline-v2`, organic + organic_hybrid) with a fourth attribution
+flavor — `typed` — in which every SERP card is labelled by joint HTML +
+vision typing. The taxonomy:
+
+  organic | dd_top | native_ad | dd_right | top_places | knowledge_panel
+  | paa | image_pack | related_searches | other_widget | unknown_widget
+  | chrome
+
+Pipeline:
+  1. **Phase 1**: `scripts/extract_html_widget_types.py` parses
+     `AdSERP/data/serps/<tid>.html` for all 2,776 trials, identifies
+     card-level DOM units in `#rso` (descending into "Main results"
+     wrappers when present) and `#botstuff` (Related Searches), and types
+     each card by heading text → structural markers → data-attrid → class
+     → fallback. Outputs `data/aoi-html-types/<tid>.json`. Type
+     distribution: organic 22,530 (81.4 %), related_searches 1,811
+     (6.5 %), image_pack 1,600 (5.8 %), knowledge_panel 826 (3.0 %),
+     paa 769 (2.8 %), top_places 86 (0.3 %), other_widget 51 (0.2 %).
+  2. **Phase 2**: `scripts/build_typed_aoi_map.py` joins HTML types to
+     existing CV bbox coordinates from `organic-boundary-data` + ad
+     bboxes from `ad-boundary-data`. Walks bboxes in y-order, matches
+     each to ad-overlap (≥30 %) → ad type, otherwise to HTML #rso card
+     in DOM order. Bottom-of-page CV-detected cells with deep position
+     (≥10) and small height (<200 px) are swept to `chrome` (off-axis,
+     position = -1). Outputs `data/aoi-typed/<tid>.json` with
+     `[{position, type, x, y, width, height, html_handle, ...}, ...]`.
+     Match quality: 90 % of trials have |Δ| ≤ 2 between HTML and bbox
+     card counts; 1.8 % residual `unknown_widget` after chrome sweep
+     (down from 7.1 % pre-sweep).
+
+Per-corpus typed AOI distribution (entries with position ≥ 0): organic
+22,530 (53.0 %), native_ad 9,217 (21.8 %), related_searches 1,811 (4.3 %),
+image_pack 1,600 (3.8 %), dd_top 1,582 (3.7 %), knowledge_panel 826
+(1.9 %), paa 769 (1.8 %), unknown_widget 756 (1.8 %), top_places 86
+(0.2 %), other_widget 51 (0.1 %). Off-axis (position = -1): chrome 2,255,
+dd_right 861, plus the #botstuff `related_searches` and #rhs `knowledge_panel`
+counts above.
+
+### Findings replicate under typed
+
+All 2026-05-03 stress-test findings reproduce nearly identically under
+typed. Hybrid values are preserved at `scripts/output/<name>_HYBRID_BACKUP/`
+for direct comparison.
+
+| Finding | organic_hybrid | typed | verdict |
+|---|---|---|---|
+| Within-item paired LF/HF Δ (return − first), median | +6.31 | **+6.44** | ✓ replicates |
+| Same — Wilcoxon two-sided *p* | 5.7×10⁻²³ | **2.5×10⁻²³** | ✓ |
+| Participant-level mean-of-means Δ | +10.73 | **+10.90** | ✓ |
+| Pre-scroll cross-position Spearman ρ (P0–P6) | −0.857 | **−0.857** | ✓ identical |
+| Pooled steep-vs-plateau MW *p* | 2.6×10⁻²⁵ | **2.3×10⁻²⁵** | ✓ |
+| Within-trial Spearman ρ (≥3 segs), median | −0.400 | **−0.400** | ✓ identical |
+| Within-trial Spearman, % negative | 62.0 % | **61.8 %** | ✓ |
+| Cap-10 audit Spearman ρ | −0.689 | **−0.733** | ✓ stronger |
+| RIPA2 paired Δ, median | +8.05×10⁻⁶ | **+8.19×10⁻⁶** | ✓ both null |
+| RIPA2 paired *p* (two-sided) | 0.17 | **0.16** | ✓ |
+| Argmax LF/HF → click hit rate | 0.320 | **0.319** | ✓ identical |
+| Argmax — chance baseline (1/N) | 0.535 | **0.534** | ✓ |
+| First-scroll-vs-gaze: median above-fold coverage | 0.500 | **0.500** | ✓ identical |
+| First-scroll-vs-gaze: % reaching last-visible | 10.3 % | **10.3 %** | ✓ |
+| Knee × mean click position (per-ppt Spearman) | +0.460 | **+0.471** | ✓ |
+| Knee × P0-fraction of clicks | −0.408 | **−0.408** | ✓ identical |
+| Knee × click entropy | +0.447 | **+0.465** | ✓ |
+| Knee × regression rate (NS) | −0.021 | **−0.021** | ✓ identical |
+| satisficer trial median knee | P2 | **P2** | ✓ |
+| optimizer trial median knee | P1 | **P1** | ✓ |
+| satopt × knee MW two-sided *p* | 0.022 | **0.022** | ✓ identical |
+
+The 5,148 widgets that were previously pooled with organics or filtered out
+under hybrid are now correctly typed, but the **cognitive findings do not
+shift**. This is itself a strong robustness story: the within-item paired
+return finding, the pre-emptive-scroll behaviour, the rank-value-prior
+reframe, and the satopt × knee dissociation are all properties of the
+trial-level cognitive operations, not of widget-vs-organic mis-attribution.
+
+### Producer scripts updated
+
+- `scripts/compute_cursor_approach_features.py --attribution typed` → emits
+  `AdSERP/data/cursor-approach-features-typed.json` (19,774 records, 2,774
+  trials, 9 etypes).
+- `scripts/compute_regression_labels.py --attribution typed` → emits
+  `scripts/output/approach_threshold_sensitivity/regression_labels_cache_typed.json`
+  (12,600 regressed / 7,174 not_regressed = 63.7 % regression rate; matches
+  hybrid's 63.x %).
+- `notebooks-v2/data_loader.py` extended with `typed_aoi_bands`,
+  `typed_aoi_tops`, `typed_aoi_etypes`, `attribute_click_to_typed` mirroring
+  `organic_aoi_*` and `_hybrid_aoi_tops` conventions.
+
+### Stress-test scripts swapped to typed (hybrid backups in `*_HYBRID_BACKUP`)
+
+`lfhf_first_vs_return_paired.py` (multi-attribution: typed added),
+`lfhf_pre_vs_post_scroll.py`, `ripa2_first_vs_return_paired.py`,
+`lfhf_argmax_predicts_click.py`, `first_scroll_vs_gaze.py`,
+`knee_vs_click_distribution.py`, `knee_by_satopt.py` (hard-swapped),
+`knee_by_rank_variant.py` (multi-attribution: typed column added),
+`lfhf_rank_gradient_typed.py` (forked from `_hybrid.py`).
+
+### Not yet ported
+
+- pupil-lfhf sibling repo's `compute_butterworth_lfhf.py` and
+  `compute_ripa2.py` are NOT yet typed-aware. The stress tests bypass these
+  by computing LF/HF / RIPA2 from raw pupil on the fly using
+  `typed_aoi_tops` for window assignment, so the headline ETTAC findings do
+  not depend on pre-computed `*-by-position-typed.json` JSONs. Notebook
+  re-execution under typed (NB14, NB18, NB22, NB28, etc.) requires the
+  pre-computed JSONs and is **deferred** to a future cascade pass.
+- `compute_lab_gaze_gated_features.py` not yet ported to typed; ETTAC does
+  not depend on it.
+
+### Empirical changes to flag in paper prose
+
+- **ETTAC §3.3** (`ettac-paper/sections/adserp.tex`): updated draft is
+  `docs/drafts/ettac-adserp-2026-05-04-v2.4.md`. Numbers shift by < 0.05
+  in correlation strength relative to v2.3 hybrid version; no
+  qualitative changes. The paper does not use the word "typed" or
+  contrast attribution flavors in prose (per "avoid alternate-rank
+  framing" instruction). The Stimuli paragraph mentions display-order
+  ranks across organic, ad, and widget surfaces inline.
+- **Internal OSEC memo** (`docs/drafts/rank-value-prior-osec-2026-05-03.md`):
+  rank-value-prior axis × verification-appetite axis remain robust under
+  typed.
+
+## 2026-05-03 — Pre-vs-post-scroll dissociation, knee distribution, and rank-value prior reframe
+
+Stress tests on AdSERP under organic_hybrid attribution, motivated by the
+ETTAC §3.3 rewrite, surface several findings that update OSEC framing and
+sharpen the cognitive interpretation of the LF/HF rank gradient.
+
+### Pre-emptive scroll (operational marker for Survey-active → Survey-external transition)
+
+The median user issues their first significant scroll after fixating only
+~50 % of the visible above-fold candidate set; only 10.3 % of trials reach
+the last visible position before scrolling. The modal deepest pre-scroll
+fixated position (the per-trial **knee**) is P1 (34.7 % of trials), with
+P0 14.3 %, P2 24.3 %, P3 14.4 %, P4 8.9 %, P5+ 3 %. Per-position fraction
+fixated before first scroll: P0 98.3 %, P1 81.1 %, P2 47.7 %, P3 29.3 %,
+P4 19.6 %. Active criterion compilation is *not* an exhaustive pass
+through the viewport. Source: `scripts/output/first_scroll_vs_gaze/`.
+
+### Pre-vs-post-scroll LF/HF dissociation (Survey-active vs Survey-external sub-modes)
+
+Pre-scroll first-visit LF/HF is sharply rank-correlated (Spearman
+ρ = −0.857, *p* = 1.4 × 10⁻², *N* = 7 positions P0–P6); post-scroll
+first-visit LF/HF is essentially flat (ρ = −0.482, *p* = 0.13, *N* = 11
+positions P0–P10). At P0 specifically, pre-scroll first-visit median
+LF/HF is 27.99 (*N* = 1,465); the rare post-scroll first-visit at P0 is
+14.52 (*N* = 92), Δ = −13.47, MW *p* = 3.6 × 10⁻⁶. The same instrument
+reads two different cognitive modes: **Survey-active** (criterion
+compilation in working memory, pre-scroll, sharp gradient) and
+**Survey-external** (the SERP as external memory for confirmation under
+a now-stable criterion, post-scroll, flat). Source:
+`scripts/output/lfhf_pre_vs_post_scroll/`.
+
+### Within-item paired return-vs-first LF/HF (Evaluate signature)
+
+Across 2,646 paired (trial, position) records under organic_hybrid,
+return-visit LF/HF is significantly higher than first-visit LF/HF on
+the same item by the same user (median Δ = +6.31, mean Δ = +12.55,
+Wilcoxon two-sided *p* = 5.7 × 10⁻²³; 60 % Δ > 0). Participant-level
+80 % Δ > 0, *p* = 3.1 × 10⁻⁴. Per-rank, the elevation is significant
+P1–P5. **Drift-control rules out within-trial baseline shift**:
+forward-only within-trial Δ between the latest and earliest visited
+positions is −1.97 (*p* = 2.6 × 10⁻⁴), opposite direction to the paired
+return Δ. **Metric-specificity control rules out generalised pupil
+amplitude**: RIPA2 paired Δ on the same records is at the noise floor
+(median +8 × 10⁻⁶, two-sided *p* = 0.17). The return-elevation lives in
+the autonomic spectral ratio, not in per-fixation amplitude. Source:
+`scripts/output/lfhf_first_vs_return_paired/`,
+`scripts/output/ripa2_first_vs_return_paired/`,
+`scripts/output/lfhf_within_trial_drift_control/`.
+
+### LF/HF as click-prediction feature: null
+
+First-pass LF/HF argmax over visited positions hit-rate vs click_pos
+under hybrid attribution: 0.32 against a 1/N consideration-set chance
+baseline of 0.54 (lift = −22 pp, under-performs chance, *N* = 2,446).
+LF/HF features alone in LOSO logistic: AUC = 0.636 ± 0.089. Trivial
+gaze-dwell baseline (`n_fixations`, `total_dwell_ms`): AUC = 0.718 ±
+0.098. Combined: AUC = 0.715 ± 0.100 — no lift over dwell. **LF/HF is a
+measurement instrument for cognitive state, not a click-prediction
+feature.** Source: `scripts/output/lfhf_predicts_return_stress/`,
+`scripts/output/lfhf_argmax_predicts_click/`,
+`scripts/output/lfhf_click_prediction_test/`.
+
+### §Predicting return claim from current ETTAC draft does not reproduce
+
+The current `ettac-paper/sections/adserp.tex` claim that per-participant
+Wilcoxon on per-(trial, position) median LF/HF gives *p* = 0.0055 with a
+participant-cluster bootstrap CI of [+0.94, +3.85] does not reproduce
+under any of three attribution flavors. Under absolute attribution
+(matching the paper's stated methodology), participant-Wilcoxon mean-Δ
+*p* = 0.57; cluster bootstrap CI [−1.72, +5.68] straddles zero.
+Median-of-medians-Δ variant gives *p* = 0.017 (still 3× weaker than the
+paper). Under organic_hybrid the signal weakens further; under organic
+(bbox) it goes negative. The wr/nr stratification is rank-confounded:
+returned items concentrate at top ranks, where LF/HF is higher; once
+rank is partialled out (per-rank Cohen's *d*), the effect is null or
+slightly negative in every cell. **The §Predicting return paragraph
+should be removed and replaced** with the within-item paired return
+finding (which is rank-controlled by construction). Source:
+`scripts/output/lfhf_predicts_return_stress/report.md` (12-angle stress
+test).
+
+### Rank-value prior as the cognitive primitive (replaces satopt-as-primitive)
+
+Per-participant correlations (n = 45, all under organic_hybrid):
+
+| Correlation | Spearman ρ | *p* |
+|---|---|---|
+| mean knee × mean click position | +0.460 | 1.5 × 10⁻³ |
+| mean knee × P0-fraction of clicks | −0.408 | 5.5 × 10⁻³ |
+| mean knee × P0-or-P1 fraction | −0.363 | 1.4 × 10⁻² |
+| mean knee × P3-or-deeper fraction | +0.337 | 2.4 × 10⁻² |
+| mean knee × click entropy | +0.447 | 2.1 × 10⁻³ |
+| **mean knee × regression rate** | **−0.021** | **0.89 (NS)** |
+| regression rate × mean click position | +0.045 | 0.77 (NS) |
+| regression rate × P0-fraction | +0.101 | 0.51 (NS) |
+
+The participant-level rank-value-prior axis (top-heavy ↔ flat) predicts
+both knee depth and click distribution shape with consistent signs.
+Regression rate predicts neither at participant level. The trial-level
+satopt × knee effect (median split *p* = 5.9 × 10⁻⁵, optimizer-trial
+median P1 vs satisficer-trial P2) is real but is dominated by trial-count
+imbalance — optimizer participants generate more trials with knee data.
+
+**Implication**: the OSEC-relevant individual-difference space is at
+least two-dimensional — *rank-value prior strength* (controls knee
+depth, click distribution shape, Survey-active investment) and
+*verification appetite* (controls return rate, Survey-external duration).
+Satisficer/optimizer is a one-dimensional projection; the two axes are
+nearly orthogonal in this dataset.
+
+Source: `scripts/output/knee_vs_click_distribution/`,
+`scripts/output/knee_by_satopt/`,
+`scripts/output/knee_by_rank_variant/`. Working memo:
+`docs/drafts/rank-value-prior-osec-2026-05-03.md`.
+
+### Top-of-fold ad effect on knee (modulator of Survey-active depth)
+
+When the display-order top position (P0 under hybrid) is a top-of-page
+ad (`dd_top`, n = 1,306 trials, 59 % of cohort), median knee = P1; under
+organic-only attribution 25.8 % of the full cohort never fixates an
+organic before the first scroll. Native-ad P0 trials (n = 452): hybrid
+knee P3 — native ads enter active criterion compilation as if they were
+candidates. Organic-top trials (n = 459): knee P2. Top-of-page display
+ads consume one slot of the active-compilation budget without
+contributing to organic-result criterion compilation. Source:
+`scripts/output/knee_by_rank_variant/`.
+
+### Empirical changes to flag in paper prose
+
+- **ETTAC §3.3** (`ettac-paper/sections/adserp.tex`): drop the §Predicting
+  return paragraph (lines 164–183 of current draft); replace with within-
+  item paired return finding. Plateau slope is non-significant under
+  hybrid (was marginal under absolute) — the steep-vs-plateau separation
+  now rests on the pooled MW (still very strong, *p* = 2.6 × 10⁻²⁵), not
+  on the plateau slope itself. See `docs/drafts/ettac-adserp-2026-05-03-v2.md`.
+- **Task-model paper / CIKM**: the satopt → knee interpretation needs
+  splitting into two axes; the four-class consideration-set taxonomy sits
+  inside Survey-external + Evaluate, not across all of Survey; Survey-active
+  is typically just ~2 positions per trial (median knee P1).
+
 ## 2026-05-02 — Render pipeline migrated to `--attribution organic` default
 
 `scripts/render_*.py` (the canonical paper-figure producers) now accept

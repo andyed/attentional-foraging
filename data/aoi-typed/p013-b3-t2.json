@@ -1,0 +1,122 @@
+[
+  {
+    "type": "dd_top",
+    "x": 162.0,
+    "y": 158.0,
+    "width": 586.0,
+    "height": 382.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 0
+  },
+  {
+    "type": "image_pack",
+    "x": 162.0,
+    "y": 592.0,
+    "width": 586.0,
+    "height": 244.0,
+    "html_handle": "rso[0]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy maybelline maybelline forever lipcolor mauve 100",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 876.0,
+    "width": 586.0,
+    "height": 188.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Maybelline Forever Lipcolor Lipstick Mauve 100 - eBay",
+    "source": "html_rso+cv_bbox",
+    "position": 2
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1094.0,
+    "width": 586.0,
+    "height": 227.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Maybelline Forever Lipcolor Longlasting Lipstick ...",
+    "source": "html_rso+cv_bbox",
+    "position": 3
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1352.0,
+    "width": 586.0,
+    "height": 85.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Maybelline Forever Metallics Lites Lip Color: Mauve Star 100",
+    "source": "html_rso+cv_bbox",
+    "position": 4
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1468.0,
+    "width": 586.0,
+    "height": 227.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.(no class)",
+    "heading_text": "2 Pack - Maybelline ColorSensational Lip Color, On The ...",
+    "source": "html_rso+cv_bbox",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1726.0,
+    "width": 586.0,
+    "height": 85.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Buy Mauve Lipstick Online at Best Prices in India - Purplle",
+    "source": "html_rso+cv_bbox",
+    "position": 6
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1846.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "SuperStay 24 Color Lipcolor - Maquillaje de labios - Maybelline",
+    "source": "html_rso+cv_bbox",
+    "position": 7
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1958.0,
+    "width": 540.0,
+    "height": 89.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 8
+  },
+  {
+    "type": "pagination",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|6|Next",
+    "source": "html_botstuff",
+    "position": -1
+  }
+]

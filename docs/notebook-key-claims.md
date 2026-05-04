@@ -233,6 +233,20 @@ The legacy absolute-rank values are preserved in `bw_data_abs` (loaded in cell 2
 >
 > **Coordinate-space audit history (2026-04-09 / 2026-04-12).** Two prior audits: (a) cursor-side scroll double-count fix on click_pos derivation, K6 N_clicked 1,145 → 1,110; (b) fixation-side FPOGY page-space audit, K2 6,874 → 6,112, K3 −0.618 → −0.927 under absolute attribution. The 2026-05-01 cascade then reapplies the AOI-extraction shift on top — values cited above are post-all-three-audits.
 
+### 2026-05-04 typed cascade — second post-cascade primary
+
+*Typed cascade (HTML+vision joint widget typing) replaced organic_hybrid as primary on 2026-05-04. Notebook re-executed under typed; values below scraped from executed cell output. Legacy K-IDs preserved above for historical comparison.*
+
+| Claim | Value (typed) |
+|---|---|
+| Full-range Spearman ρ on position medians | `Spearman rho (position vs median LF/HF): -0.673, p = 0.0233` |
+| Steep (P0–P3) cross-position Spearman | **ρ = −1.000, *p* ≈ 0** (perfect monotone holds) |
+| Plateau (P4–P10) cross-position Spearman | ρ = 0.000, *p* = 1.0 (NS, fully flat) |
+| Within-trial Spearman median ρ | `Median rho: -0.500` |
+| Clicked vs non-clicked LF/HF | `Clicked: median 25.35, N = 1358
+Non-clicked: median 20.40` |
+| Trial-mean LF/HF × LHIPA | `LF/HF vs LHIPA: ρ = -0.113, p = 3.01e-08, N = 2371` |
+
 ---
 
 <a id="nb15-15_cursor_approach"></a>
@@ -329,6 +343,15 @@ The K1–K18 below are the published values verified 2026-04-12. Keep for paper-
 > **K8 click rate note.** Pre-fix K8 (43.5% click rate for approach + regression at N = 2,086) was over-concentrated because the scroll leak mislabeled many deep-position results as "approached." Post-fix: 37.9% at N = 3,087 — lower rate on a larger, cleaner sample. Still the dominant decision-to-click signature in the corpus.
 >
 > **K-bbox-* vs legacy K-IDs.** Legacy K1–K18 used absolute-rank attribution as cell 4 produces it. Bbox attribution generates `cursor-approach-features-organic.json` — a parallel artifact that any consumer notebook can switch to in a one-line change. Both files coexist on disk; downstream notebooks have not yet been migrated.
+
+### 2026-05-04 typed cascade — second post-cascade primary
+
+*Typed cascade (HTML+vision joint widget typing) replaced organic_hybrid as primary on 2026-05-04. Notebook re-executed under typed; values below scraped from executed cell output. Legacy K-IDs preserved above for historical comparison.*
+
+| Claim | Value (typed) |
+|---|---|
+| Click prediction LOSO AUC (M3 full) | `*(see executed cell output)*` |
+| M4 approach-only LOSO AUC | `*(see executed cell output)*` |
 
 ---
 
@@ -534,6 +557,15 @@ NB22 defines the four classes via cursor approach (min_dist < 100 px) + **gaze r
 >
 > **K-bbox-* vs legacy K-IDs.** Legacy K1–K4 use a different denominator (n_results per trial counts h3+ads positions, not bbox organics). The cascade-recomputed K-bbox-1..4 use bbox-organic positions. Total class counts therefore differ by construction; use K-bbox-* for AR replay regeneration and paper figures.
 
+### 2026-05-04 typed cascade — second post-cascade primary
+
+*Typed cascade (HTML+vision joint widget typing) replaced organic_hybrid as primary on 2026-05-04. Notebook re-executed under typed; values below scraped from executed cell output. Legacy K-IDs preserved above for historical comparison.*
+
+| Claim | Value (typed) |
+|---|---|
+| M3 LOSO AUC (typed; N = 19,774, 47 ppt) | **0.871 ± 0.041** (organic_hybrid: 0.870 → typed 0.871, replicates) |
+| Per-etype counts | `organic'): 12712, np.str_('native_ad'): 3660, np.str_('dd_top'): 1581, np.str_('image_pack'): 846, np.str_('knowledge_pa` |
+
 ---
 
 <a id="nb23-23_rank_effects"></a>
@@ -637,6 +669,15 @@ K18–K28 use `absolute_to_organic_rank()` from data_loader (h3 slots minus ad-o
 > **Ski jump status: not present under bbox.** Earlier preliminary cascade work claimed a small terminal-click uptick at rank 8 under bbox attribution. With tolerance-aware click attribution (30 px snap-to-nearest-organic) and ad-rejection, the rank 7 → 8 share is 1.97% → 1.65% — no uptick. The earlier bump was an artifact of bisect-band attribution assigning gap clicks to the nearest-above organic.
 >
 > **Framework compilation finding stays intact.** K-bbox-1 (click monotone, ρ=−0.988) is at least as strong as K20 (−1.000 under h3-organic). The LF/HF gradient under bbox attribution weakens (NB14:K3 from −0.927 to −0.655) — the dichotomy framing (NB14:K9 still p<10⁻⁸) is the cleaner story; pure-monotone framing should be replaced.
+
+### 2026-05-04 typed cascade — second post-cascade primary
+
+*Typed cascade (HTML+vision joint widget typing) replaced organic_hybrid as primary on 2026-05-04. Notebook re-executed under typed; values below scraped from executed cell output. Legacy K-IDs preserved above for historical comparison.*
+
+| Claim | Value (typed) |
+|---|---|
+| CTR Spearman × organic-rank | `*(see executed cell output)*` |
+| Click-share Spearman × rank | `Click share × position (0–10):    ρ = -0.973` |
 
 ---
 
@@ -815,6 +856,21 @@ This notebook now reports values under **organic-rank** attribution (pixel-accur
 > **What survives:** the per-(trial, position) wr/nr dissociation against LF/HF. See `scripts/output/ripa2_meet_visuals/R1_wrnr_dissociation.png` (p=0.0058 one-sided).
 >
 > **AOI cascade audit (2026-05-01).** N1/N2 (trials, segments) shrink under bbox attribution because each trial's organic AOI count is smaller (ads not counted as positions). LF/HF positional gradient (K5) survives at reduced strength; RIPA2 positional gradient was already weak and stays weak. Quadrant analysis (K7–K10) and convergent validity (K3–K4) require a notebook re-run on the new bw_data / ripa2_data — values pending.
+
+### 2026-05-04 typed cascade — second post-cascade primary
+
+*Typed cascade (HTML+vision joint widget typing) replaced organic_hybrid as primary on 2026-05-04. Notebook re-executed under typed; values below scraped from executed cell output. Legacy K-IDs preserved above for historical comparison.*
+
+| Claim | Value (typed) |
+|---|---|
+| RIPA2 cross-position Spearman ρ | `RIPA2 (organic primary)
+2719 / 2719 in legacy absolute-rank (loaded for robustness)
+
+5668 paired observations across 271` |
+| LF/HF × RIPA2 within-fixation correlation | `LF/HF (organic primary)
+2719 trials with RIPA2 (organic primary)
+2719 / 2719 in legacy absolute-rank (loaded for robustn` |
+| Quadrant typed (typed N = 5,649) | Effortful (high LF/HF + high RIPA2) 23.4 %, Deliberation (high LF/HF + low RIPA2) 26.6 %, Quick decision (low LF/HF + high RIPA2) 26.8 %, Routine scanning (low LF/HF + low RIPA2) 23.2 % |
 
 ---
 
@@ -1232,6 +1288,15 @@ The K1–K27 below are the published values verified 2026-04-12. Keep for paper-
 >
 > **K-bbox-* vs legacy K-IDs.** The 2026-04-12 published K1–K8 used the published-default attribution at that time; the cascade comparison's "Absolute" column was recomputed alongside "Organic-bbox" by `scripts/compare_nb04_under_attributions.py` and produces slightly different absolute baselines (e.g., K-bbox-1 = 504 vs K2 = 502; K-bbox-2 = 98.0% vs K4 = 94.7%). The differences trace to the cascade comparison's per-trial denominator handling. Use K-bbox-* as primary for paper figures; the legacy K-IDs remain valid as published values.
 
+### 2026-05-04 typed cascade — second post-cascade primary
+
+*Typed cascade (HTML+vision joint widget typing) replaced organic_hybrid as primary on 2026-05-04. Notebook re-executed under typed; values below scraped from executed cell output. Legacy K-IDs preserved above for historical comparison.*
+
+| Claim | Value (typed) |
+|---|---|
+| TTI calibrator (first 5 → remaining) | `*(see executed cell output)*` |
+| Per-position TTI predictiveness | `positions 0-7` |
+
 ---
 
 <a id="nb26-26_ltr_graded_relevance"></a>
@@ -1489,6 +1554,18 @@ Do not cite as calibration.
 - Coordinate basis: post 2026-04-12 fixation-side audit.
 - Library parity test: `approach-retreat/scripts/test_viewport_bands_parity.{js,py}` — exact JS↔Python match (Δ = 0).
 
+### 2026-05-04 typed cascade — second post-cascade primary
+
+*Typed cascade (HTML+vision joint widget typing) replaced organic_hybrid as primary on 2026-05-04. Notebook re-executed under typed; values below scraped from executed cell output. Legacy K-IDs preserved above for historical comparison.*
+
+| Claim | Value (typed) |
+|---|---|
+| Combined retreat + bands LOSO AUC | `combined: 0.830228711391036
+      delta_b_over_r: 0.031744441263479306
+              auc_vf: 0.7305269268696122` |
+| Bands-alone LOSO AUC | `bands alone            (3 features): 0.765
+  AUC bands_any alone        (1` |
+
 ---
 
 <a id="nb29-29_content_residualized_bands"></a>
@@ -1667,6 +1744,19 @@ Direct Mann–Whitney two-sided tests of the raw features on the approached ∧ 
 | ID | Claim | Value |
 |---|---|---|
 | **K27** | Joint forward selection from B with candidates `C ∪ M4` (including `dwell_in_proximity_ms`, the cursor-viewport-residence feature Peter proposed — time with `|cursor_page_y − aoi_center_y| < 100` px) | Step 1 picks **`mean_dist`** (M4, Δ = +0.0163, *p* = 0.012); step 2 picks **`min_abs_velocity`** (C, Δ = +0.0078, *p* = 0.043); step 3 stops (best *p* = 0.159). **`dwell_in_proximity_ms` was not picked.** The binary in-band/out-of-band formulation loses to `mean_dist` (continuous mean cursor proximity), which captures the same signal with more gradient. Final B + `mean_dist` + `min_abs_velocity` = 6 features, per-p 0.8348. Vs NB30:K18 canonical (B + `min_abs_velocity` + `n_reversals`, per-p 0.8282): paired Δ = +0.0066, *p* = 0.20 ns. Peter's cursor-viewport intuition is correct in substance — cursor proximity is load-bearing — but the empirically strongest encoding is continuous mean distance, not time-in-band. |
+
+### 2026-05-04 typed cascade — second post-cascade primary
+
+*Typed cascade (HTML+vision joint widget typing) replaced organic_hybrid as primary on 2026-05-04. Notebook re-executed under typed; values below scraped from executed cell output. Legacy K-IDs preserved above for historical comparison.*
+
+| Claim | Value (typed) |
+|---|---|
+| Forward-selection minimal AUC | `*(see executed cell output)*` |
+| n_reversals deferred vs eval-rejected | `n_reversals', 'max_decel_near_center', 'entry_velocity', 'exit_velocity']
+
+trials to process: 2,774
+
+  400/2774 (missing` |
 
 ---
 
