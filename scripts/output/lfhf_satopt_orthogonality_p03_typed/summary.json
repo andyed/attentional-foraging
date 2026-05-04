@@ -1,0 +1,33 @@
+{
+  "date": "2026-05-04",
+  "attribution": "typed",
+  "positions": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "n_participants": 46,
+  "auc_loo_lr": 0.2859848484848485,
+  "majority_baseline": 0.5217391304347826,
+  "spearman_slope_vs_rate": {
+    "rho": 0.013385853294386789,
+    "p": 0.9296440853770261
+  },
+  "per_feature_cohens_d": {
+    "mean_p0": -0.14387944067586472,
+    "mean_p1": -0.23335816196201506,
+    "mean_p2": 0.13381346151364643,
+    "mean_p3": -0.16949803743718767,
+    "slope_rho": 0.13237106623508443,
+    "mean_overall": -0.19873925175254106
+  },
+  "historical_bbox_organic": {
+    "auc_loo_lr": 0.523,
+    "majority_baseline": 0.522,
+    "spearman_slope_vs_rate": {
+      "rho": -0.02,
+      "p": 0.9
+    }
+  }
+}

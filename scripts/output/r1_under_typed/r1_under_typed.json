@@ -1,0 +1,46 @@
+{
+  "date": "2026-05-04",
+  "attribution": "typed",
+  "historical_baselines": {
+    "absolute_legacy": {
+      "lfhf": {
+        "d": 0.041,
+        "p": 0.011
+      },
+      "ripa2": {
+        "d": 0.006,
+        "p": 0.0058
+      },
+      "note": "Pre-cascade (legacy absolute attribution)."
+    },
+    "organic_bbox": {
+      "lfhf": {
+        "d": "+0.069 (computed)",
+        "p": 0.0011
+      },
+      "ripa2": {
+        "d": "~0",
+        "p": 0.8
+      },
+      "note": "bbox-organic post-cascade (2026-05-02)."
+    }
+  },
+  "typed_result": {
+    "label": "TYPED (full)",
+    "n_records": 4776,
+    "n_wr": 3439,
+    "n_nr": 1337,
+    "lfhf": {
+      "d": 0.028770912947163253,
+      "p": 4.583205161949716e-06,
+      "median_wr": 23.261789,
+      "median_nr": 18.555745
+    },
+    "ripa2": {
+      "d": 0.020679363110403887,
+      "p": 0.13630235470768243,
+      "median_wr": 0.000427,
+      "median_nr": 0.00042
+    }
+  }
+}
