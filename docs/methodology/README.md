@@ -1,6 +1,6 @@
 # Methodology
 
-Audit-grade specs for every method this project uses. A methodologist (Duchowski-class peer reviewer, Gwizdka-class collaborator, future Andy) should be able to land on a single file, read the rule, find the exact code that implements it, and reproduce or challenge any number that depends on it.
+Audit-grade specs for every method this project uses. A peer-reviewer-class methodologist (or future Andy) should be able to land on a single file, read the rule, find the exact code that implements it, and reproduce or challenge any number that depends on it.
 
 This is not a glossary, not a findings file, not a threats-to-validity register. It is the contract between prose, code, and the auditor.
 

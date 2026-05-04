@@ -32,7 +32,7 @@ implications below.**
 
 ## §1 Four rank-type flavors — canonical definitions
 
-The cascade now spans four rank-attribution flavors. Every quantitative claim derived from AdSERP must be tagged with one of these. **This document and [`aoi-coverage-contribution.md` §4](./aoi-coverage-contribution.md) are the canonical definition sites; downstream docs cite them rather than redefining the flavors.**
+The cascade now spans four rank-attribution flavors. Every quantitative claim derived from AdSERP must be tagged with one of these. **This document and [`organic-result-aoi-extraction.md` §5.7](./organic-result-aoi-extraction.md) are the canonical definition sites; downstream docs cite them rather than redefining the flavors.**
 
 | Flavor | Definition | Producer flag | Output suffix |
 |---|---|---|---|
@@ -210,7 +210,7 @@ not "steep then re-rises."
 3. Acknowledge attribution choice in methods — bbox is primary; legacy
    absolute results available in supplementary.
 
-### R1 / RIPA2 standalone (Gwizdka collaboration) — **REFRAME**
+### R1 / RIPA2 standalone — **REFRAME**
 
 **The joint LF/HF × RIPA2 dissociation does not survive bbox.** Per
 §2.4, RIPA2 leg p drops from 0.0058 → 0.80; LF/HF leg holds at p =
@@ -222,10 +222,10 @@ artifact at the per-fixation level. The story splits into two:
   publishable as a methodology validation of Butterworth IIR per-fixation
   windowing on AdSERP.
 - **RIPA2 per-fixation arousal-amplitude differential:** does not survive
-  bbox attribution. Gavindya/team's separate RIPA2 publication track
-  needs to know before it leans on the AdSERP per-fixation result.
+  bbox attribution. Any separate RIPA2 publication track that leans on
+  the AdSERP per-fixation result needs to know before submission.
 
-**Recommended action (to discuss with Gwizdka):** treat this as a
+**Recommended action:** treat this as a
 positive scientific result — the bbox cascade is a stronger validation
 test than the legacy attribution allowed, and the LF/HF leg passing
 while the RIPA2 leg fails is informative about the two metrics'
@@ -540,8 +540,9 @@ plateau ρ = small-N effect under bbox).
    strengthens the methodology comparison.)
 4. **NB28 calibration retrain** — multi-hour bootstrap, deferred until
    scheduling allows. (Gates CIKM §5 viewport-bands.)
-5. **R1 paper reframe with Gwizdka** — the RIPA2 collapse is a real
-   empirical finding worth a careful conversation, not a footnote.
+5. **R1 / RIPA2 paper reframe** — the RIPA2 collapse is a real
+   empirical finding worth a careful coauthor conversation, not a
+   footnote.
 
 The AR-strand answer to the validation question is yes. **Full steam
 ahead, with three specific carve-outs above.**
