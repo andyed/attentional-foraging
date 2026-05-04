@@ -30,15 +30,16 @@ implications below.**
 
 ---
 
-## §1 Three rank-type flavors — canonical definitions
+## §1 Four rank-type flavors — canonical definitions
 
-The cascade introduces three rank-attribution flavors. Every quantitative claim derived from AdSERP must be tagged with one of these. **This document and [`aoi-coverage-contribution.md` §4](./aoi-coverage-contribution.md) are the canonical definition sites; downstream docs cite them rather than redefining the flavors.**
+The cascade now spans four rank-attribution flavors. Every quantitative claim derived from AdSERP must be tagged with one of these. **This document and [`aoi-coverage-contribution.md` §4](./aoi-coverage-contribution.md) are the canonical definition sites; downstream docs cite them rather than redefining the flavors.**
 
 | Flavor | Definition | Producer flag | Output suffix |
 |---|---|---|---|
 | **`absolute`** | Legacy h3 + ads pooled, band-estimated AOIs (pre-2026-05-01). | `--attribution absolute` | `*.json` (legacy filenames) |
-| **`organic`** | CV-extracted bbox organics only, ads excluded. **Post-cascade primary.** | `--attribution organic` | `*-organic.json` |
-| **`organic_hybrid`** | bbox organics + dd_top + native_ad in display order, etype-tagged per-record (dd_right excluded). Deployment-aware variant. | `--attribution organic_hybrid` | `*-organic-hybrid.json` |
+| **`organic`** | CV-extracted bbox organics only, ads excluded. | `--attribution organic` | `*-organic.json` |
+| **`organic_hybrid`** | bbox organics + dd_top + native_ad in display order, etype-tagged per-record (dd_right excluded). Deployment-aware variant; **prior post-cascade primary**. | `--attribution organic_hybrid` | `*-organic-hybrid.json` |
+| **`typed`** *(2026-05-04)* | HTML+vision joint widget typing across all SERP cards in display order. Etype taxonomy: organic, dd_top, native_ad, dd_right (off-axis), top_places, knowledge_panel, paa, image_pack, related_searches (off-axis), other_widget, unknown_widget, chrome (off-axis). **Current post-cascade primary.** | `--attribution typed` | `*-typed.json` |
 
 Three carve-outs for tagging:
 - **`rank-type-N/A`** — pure cursor-only metrics on a single-AOI WILD surface (e.g., `[WILD, attcur]`); JS↔Python parity tests; time-series with no AOI-rank structure.
@@ -47,7 +48,19 @@ Three carve-outs for tagging:
 
 A K-ID that reports a numerical value without specifying rank-type (where one applies) is a citation bug — treat it as confabulated until verified against the producer flag and the script output.
 
-## §1.1 Why `organic` is the post-cascade primary
+## §1.05 Why `typed` is the current post-cascade primary (2026-05-04 cascade)
+
+The `feat/aoi-pipeline-v3-typed` branch introduced a fourth flavor that supersedes `organic_hybrid` as the recommended primary for new analysis under three considerations:
+
+1. **Widget visibility.** Under `organic_hybrid`, 5,148 SERP surfaces (1,811 related_searches, 1,601 image packs, 826 knowledge panels, 769 People Also Ask, 86 top_places, 55 other widgets) were either filtered out or pooled with organics. Under `typed` they receive their own etype labels via HTML+vision joint typing — the HTML structure (parsed from `AdSERP/data/serps/<tid>.html`) labels each card; the existing CV bbox extractor provides pixel-accurate coordinates; a spatial join in y-order matches the two.
+
+2. **Robust headline replication.** Every 2026-05-03 stress-test finding under `organic_hybrid` reproduces under `typed` within ±0.02 in correlation strength. Within-item paired return Δ +6.31 → +6.44; pre-scroll cross-position Spearman ρ identical at −0.857; pooled steep-vs-plateau MW *p* = 2.6×10⁻²⁵ → 2.3×10⁻²⁵; satopt × knee MW *p* = 0.022 (identical). The cognitive findings are properties of the trial-level operations, not of widget-vs-organic mis-attribution. Full audit: [CHANGELOG 2026-05-04](../../CHANGELOG.md).
+
+3. **Cross-lab transfer.** Widgets like Top Places (74 trials) consume substantial pre-scroll budget but were invisible to the prior `organic_hybrid` mapping. The typed AOI export at `scripts/output/adserp_aois_by_trial_id_typed.{csv,jsonl}` (37,142 rows × 2,776 trials, 9 etypes) replaces the prior `*_organic_hybrid.{csv,jsonl}` for cross-lab sharing — the CSV / JSONL schemas remain compatible (one row per main-axis card; etype field carries the new taxonomy).
+
+**`organic` and `organic_hybrid` remain canonical for cited claims** generated under those flavors; the four flavors coexist. New work should default to `typed`.
+
+## §1.1 Why `organic` was the prior post-cascade primary (pre-typed cascade)
 
 Three reasons documented in [`organic-result-aoi-extraction.md`](./organic-result-aoi-extraction.md):
 

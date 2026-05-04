@@ -76,24 +76,29 @@ The 1.2% is the actual methodology-limitation residual — content the pipeline 
 
 ## §4 What this unlocks
 
-Three rank-attribution flavors now coexist on the same corpus:
+**Four rank-attribution flavors** now coexist on the same corpus (post-2026-05-04 typed cascade):
 
-| Flavor | Definition | Records (NB21 LOSO) | Trials | Click rate |
+| Flavor | Definition | Records (NB21 LOSO) | Trials | Click rate | Etype taxonomy |
+|---|---|---|---|---|---|
+| **absolute** | Legacy h3 + ads pooled, band-estimated | 13,419 | 2,339 | 16.6% | 2 (organic / ad) |
+| **organic** | Bbox organics only, ads excluded | 14,760 | 2,701 | 14.9% | 1 (organic) |
+| **organic_hybrid** | Bbox organics + dd_top + native_ad in display order, dd_right excluded | 19,908 | 2,774 | 13.0% | 3 (organic / dd_top / native_ad) |
+| **typed** *(2026-05-04)* | HTML+vision joint widget typing across all SERP cards (organic + ads + non-ad widgets), display order | 19,774 | 2,774 | 13.0% | 9 (organic / dd_top / native_ad / top_places / knowledge_panel / paa / image_pack / unknown_widget / other_widget) |
+
+Per-flavor headlines from the click-prediction LOSO retrain (NB21:K-bbox-* series; typed values pending NB21 retrain — see Phase-4 recompute plan):
+
+| Model | absolute | organic | hybrid | typed |
 |---|---|---|---|---|
-| **absolute** | Legacy h3 + ads pooled, band-estimated | 13,419 | 2,339 | 16.6% |
-| **organic** | Bbox organics only, ads excluded | 14,760 | 2,701 | 14.9% |
-| **organic_hybrid** | Bbox organics + dd_top + native_ad in display order, dd_right excluded | 19,908 | 2,774 | 13.0% |
-
-Per-flavor headlines from the click-prediction LOSO retrain (NB21:K-bbox-* series, post-2026-05-01 cascade):
-
-| Model | absolute | organic | hybrid |
-|---|---|---|---|
-| M3 LOSO AUC (full nine-feature) | 0.859 | **0.865** | **0.870** |
-| M4 LOSO AUC (approach-only) | 0.861 | **0.864** | **0.870** |
-| M1 LOSO AUC (position-only) | 0.613 | **0.727** | 0.667 |
-| Position standardized coefficient | −0.130 | **−0.248** | −0.112 |
+| M3 LOSO AUC (full nine-feature) | 0.859 | **0.865** | **0.870** | *[pending]* |
+| M4 LOSO AUC (approach-only) | 0.861 | **0.864** | **0.870** | *[pending]* |
+| M1 LOSO AUC (position-only) | 0.613 | **0.727** | 0.667 | *[pending]* |
+| Position standardized coefficient | −0.130 | **−0.248** | −0.112 | *[pending]* |
 
 Hybrid attribution surfaces an empirical finding that absolute structurally hid: **dd_top (top-of-page ads) clicks at 17.1%, the highest rate of any SERP surface** — vs organic 14.6%, native_ad 5.2%. The previous absolute-attribution analysis pooled dd_top fixations into "organic position 1," masking this.
+
+**Typed attribution adds non-ad widgets** to the rank ordering: image packs (1,600 trial-instances), knowledge panels (826), People Also Ask (769), top places / local pack (86), and assorted long-tail widgets (51 other_widget + 756 unknown_widget after a chrome heuristic sweeps bottom-of-page furniture off the scroll axis). 5,148 widget surfaces that were previously pooled with organics or filtered out are now correctly typed. Click coverage holds at ~98% (matches hybrid) since typed retains all ad surfaces; the difference is that widget surfaces gain their own etype labels rather than being mis-counted.
+
+**Typed cascade replication** (full per-finding audit in [CHANGELOG 2026-05-04](../../CHANGELOG.md)): every 2026-05-03 stress-test finding reproduces under typed within ±0.02 in correlation strength. Headline numbers shift by < 0.05 — within-item paired Δ +6.31 → +6.44; pre-scroll Spearman ρ identical at −0.857; pooled steep-vs-plateau MW p = 2.6×10⁻²⁵ → 2.3×10⁻²⁵; satopt × knee MW p = 0.022 (identical). The cognitive findings are properties of the trial-level operations, not of widget-vs-organic mis-attribution.
 
 Other downstream cascade impacts (full audit at [`attribution-cascade-synthesis.md`](./attribution-cascade-synthesis.md)):
 
@@ -103,10 +108,11 @@ Other downstream cascade impacts (full audit at [`attribution-cascade-synthesis.
 
 ## §5 Limitations to disclose
 
-- The 1.2% truly-off-AOI residual is content the pipeline doesn't currently model (Knowledge Panel, image carousels, footer). Tractable to add but not yet shipped.
+- Under **organic** and **organic_hybrid**, the 1.2% truly-off-AOI residual is content the pipeline doesn't model (Knowledge Panel, image carousels, footer). **Resolved under typed** (2026-05-04): non-ad widgets (image packs, KP, PAA, top_places, related_searches) are now first-class etype labels via HTML+vision joint typing.
+- Under **typed**, a 1.8% residual `unknown_widget` rate persists for cells the CV bbox extractor finds that HTML doesn't structure as named widgets. These cluster at deep position (median y = 2,371 px, p25 position = P11) and short height (median 102 px) — primarily bottom-of-page furniture. A chrome heuristic (cv-only entries at position ≥ 10 with height < 200 px) sweeps 5.3% of cells off the scroll axis to keep the analysis surface clean.
 - Carousel cell sub-segmentation works on tall organics (`≥320 px`) — a few smaller composites slip through. Built-in `SUSPICIOUS_H = 350 px` flag catches the dual case of false composites.
 - The ROW_STD_THRESHOLD is global, not per-trial-tuned. Trials with unusual contrast can drift; the visual audit pass catches them.
-- Coverage above 88.3% within ±2 of HTML organic count is principled, but the long thin left tail (pipeline finds *fewer* organics than HTML) is dominated by widget-heading h3s the HTML count includes — not pipeline misses. Right tail (pipeline finds *more*) is dominated by composite-cell sub-segmentation.
+- Coverage above 88.3% within ±2 of HTML organic count is principled (organic flavor); under typed, 90% of trials have |Δ| ≤ 2 between HTML card count and CV bbox count, with the residual driven by composite-cell splits and "Main results" wrappers (Phase 1 descends into ULSxyf wrappers when they contain >2 organic-class descendants).
 
 ## §6 Reproducibility
 

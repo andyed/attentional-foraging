@@ -162,6 +162,55 @@ def rows_organic_hybrid(trial_id, doc_h, scr_h, uid, batch, trial):
     return rows
 
 
+def rows_typed(trial_id, doc_h, scr_h, uid, batch, trial):
+    """HTML+vision typed AOI map (Phase 1+2 of feat/aoi-pipeline-v3-typed).
+
+    Emits one row per main-axis card (position >= 0). Off-axis cards
+    (chrome, dd_right, #botstuff, #rhs) are NOT emitted — they have no
+    scroll-axis position. Etype taxonomy: organic, dd_top, native_ad,
+    top_places, knowledge_panel, paa, image_pack, related_searches,
+    other_widget, unknown_widget.
+    """
+    from data_loader import load_typed_aois
+    cards = load_typed_aois(trial_id)
+    if not cards:
+        return []
+    main = sorted([c for c in cards if c.get('position', -1) >= 0
+                    and c.get('y') is not None and c.get('height') is not None],
+                   key=lambda c: c['position'])
+    n = len(main)
+    n_org = sum(1 for c in main if c['type'] == 'organic')
+    rows = []
+    org_idx = 0
+    for r, c in enumerate(main):
+        et = c['type']
+        org_rank = None
+        if et == 'organic':
+            org_rank = org_idx
+            org_idx += 1
+        top_y = float(c['y'])
+        bot_y = top_y + float(c['height'])
+        rows.append({
+            'trial_id': trial_id,
+            'uid': uid, 'batch': batch, 'trial': trial,
+            'rank': r,
+            'etype': et,
+            'organic_rank': org_rank,
+            'top_y': round(top_y, 2),
+            'bottom_y': round(bot_y, 2),
+            'center_y': round((top_y + bot_y) / 2, 2),
+            'left_x': float(c.get('x', RESULT_COL_X_MIN)),
+            'right_x': float(c.get('x', RESULT_COL_X_MIN) + c.get('width', RESULT_COL_X_MAX - RESULT_COL_X_MIN)),
+            'n_total': n,
+            'n_organic': n_org,
+            'doc_height': doc_h,
+            'screen_height': scr_h,
+            'html_handle': c.get('html_handle'),
+            'html_signature': c.get('html_signature', ''),
+        })
+    return rows
+
+
 def rows_for_trial(trial_id: str, attribution: str) -> list[dict]:
     uid, batch, trial = parse_trial_id(trial_id)
     meta = get_trial_meta(trial_id)
@@ -176,12 +225,14 @@ def rows_for_trial(trial_id: str, attribution: str) -> list[dict]:
         return rows_organic(trial_id, doc_h, scr_h, uid, batch, trial)
     if attribution == "organic_hybrid":
         return rows_organic_hybrid(trial_id, doc_h, scr_h, uid, batch, trial)
+    if attribution == "typed":
+        return rows_typed(trial_id, doc_h, scr_h, uid, batch, trial)
     raise ValueError(f"unknown attribution: {attribution!r}")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--attribution", choices=["absolute", "organic", "organic_hybrid"],
+    parser.add_argument("--attribution", choices=["absolute", "organic", "organic_hybrid", "typed"],
                         default="organic_hybrid",
                         help="AOI attribution flavor (default: organic_hybrid).")
     args = parser.parse_args()
