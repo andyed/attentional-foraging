@@ -1,0 +1,127 @@
+{
+  "date": "2026-05-04",
+  "attribution": "typed",
+  "n_participants_joined": 47,
+  "distributions": {
+    "p_ad_click": {
+      "median": 0.1320754716981132,
+      "mean": 0.17569644066115772,
+      "p25": 0.0632209405501331,
+      "p75": 0.24537037037037035,
+      "min": 0.0,
+      "max": 0.5272727272727272,
+      "n_zero": 2,
+      "n_high_20pct": 16
+    },
+    "p_dd_top_click": {
+      "median": 0.06521739130434782,
+      "mean": 0.10390374200699526,
+      "max": 0.39655172413793105
+    },
+    "p_native_ad_click": {
+      "median": 0.05454545454545454,
+      "mean": 0.07179269865416246,
+      "max": 0.36363636363636365
+    },
+    "p_ad_survey": {
+      "median": 0.7277777777777777,
+      "mean": 0.7238366043142183,
+      "p25": 0.6397058823529411,
+      "p75": 0.818918918918919,
+      "min": 0.45806451612903226,
+      "max": 0.9347826086956522
+    }
+  },
+  "tests": [
+    {
+      "x": "p_ad_survey",
+      "y": "p_ad_click",
+      "label": "ad-attention prior \u2192 ad-click rate",
+      "n": 47,
+      "spearman_rho": 0.24939999682345215,
+      "spearman_p": 0.09091507681133766,
+      "pearson_r": 0.24223993011777287
+    },
+    {
+      "x": "p_ad_survey",
+      "y": "p_dd_top_click",
+      "label": "ad-attention prior \u2192 dd_top-click rate",
+      "n": 47,
+      "spearman_rho": 0.29690308454649966,
+      "spearman_p": 0.04270266347667374,
+      "pearson_r": 0.2309872415348981
+    },
+    {
+      "x": "p_ad_survey",
+      "y": "p_native_ad_click",
+      "label": "ad-attention prior \u2192 native_ad-click rate",
+      "n": 47,
+      "spearman_rho": 0.10823291857337908,
+      "spearman_p": 0.468968470849388,
+      "pearson_r": 0.14488334408162534
+    },
+    {
+      "x": "ad_over_index",
+      "y": "p_ad_click",
+      "label": "ad over-index (calibrated by area) \u2192 ad-click rate",
+      "n": 47,
+      "spearman_rho": 0.23241290052453972,
+      "spearman_p": 0.11593895947082472,
+      "pearson_r": 0.20916617537417273
+    },
+    {
+      "x": "ad_over_index",
+      "y": "p_dd_top_click",
+      "label": "ad over-index \u2192 dd_top-click rate",
+      "n": 47,
+      "spearman_rho": 0.26672072786729706,
+      "spearman_p": 0.06994079592514235,
+      "pearson_r": 0.20491232586810793
+    },
+    {
+      "x": "p_ad_survey",
+      "y": "mean_click_pos",
+      "label": "ad-attention prior \u2192 mean click position",
+      "n": 47,
+      "spearman_rho": 0.019775073008351147,
+      "spearman_p": 0.8950370677822778,
+      "pearson_r": -0.02616324513116152
+    },
+    {
+      "x": "p_ad_survey",
+      "y": "regression_rate",
+      "label": "ad-attention prior \u2192 regression rate (sat-opt)",
+      "n": 47,
+      "spearman_rho": 0.023826046886174564,
+      "spearman_p": 0.8736947328951532,
+      "pearson_r": -0.03758760137393309
+    },
+    {
+      "x": "p_ad_survey",
+      "y": "mean_lhipa",
+      "label": "ad-attention prior \u2192 trial-mean LHIPA (cognitive load)",
+      "n": 47,
+      "spearman_rho": 0.13448973714299567,
+      "spearman_p": 0.36743326933207626,
+      "pearson_r": 0.1087872999736747
+    },
+    {
+      "x": "p_ad_click",
+      "y": "regression_rate",
+      "label": "ad-click rate \u2192 regression rate",
+      "n": 47,
+      "spearman_rho": 0.05271985889592846,
+      "spearman_p": 0.7248820439220612,
+      "pearson_r": 0.008210167006302421
+    },
+    {
+      "x": "p_dd_top_click",
+      "y": "regression_rate",
+      "label": "dd_top-click rate \u2192 regression rate",
+      "n": 47,
+      "spearman_rho": 0.061125627237958544,
+      "spearman_p": 0.6831605883500974,
+      "pearson_r": 0.02521084543527994
+    }
+  ]
+}

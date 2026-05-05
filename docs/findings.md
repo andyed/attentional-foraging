@@ -509,6 +509,20 @@ The gaze-cursor lag replicates Huang, White & Buscher (2012) in direction and ma
 
 **Notebooks:** [individual_differences.ipynb](../notebooks/individual_differences.ipynb), [gaze_cursor_lag.ipynb](../notebooks/gaze_cursor_lag.ipynb)
 
+## 12. Ad-utility prior — a third orthogonal individual-difference axis
+
+Per-participant ad-attention rate (the prior, observable from gaze in survey phase) and per-participant ad-click rate (the behavior, the click outcome) are **heterogeneous and independent of the existing two axes** [F:ad-utility-prior].
+
+- **Heterogeneity.** Across 47 participants, fraction of clicks landing on ad surfaces ranges from 0% to 52.7% (median 13.2%, IQR [6.3%, 24.5%]). 16/47 (34%) participants click ads on ≥ 20% of trials.
+- **Prior predicts behavior.** Spearman ρ(`p_ad_survey`, `p_dd_top_click`) = +0.297, p = 0.043, n = 47 — pre-decision ad-attention rate predicts dd_top click rate.
+- **Orthogonality.** The ad-utility prior is uncorrelated with regression rate (sat-opt: ρ = +0.024, p = 0.87), trial-mean LHIPA (cognitive load: ρ = +0.134, p = 0.37), and mean click position (depth: ρ = +0.020, p = 0.90). It is a separate axis from §11's deliberation-style and motor-coupling dimensions.
+
+This converges with the existing LF/HF × sat-opt orthogonality (load trajectory orthogonal to evaluation strategy) and gives the project **three independent individual-difference axes** on AdSERP: (1) sat-opt / deliberation style, (2) motor coupling / gaze-cursor lag, (3) ad-utility prior. A four-construct user model decomposes the AdSERP per-participant variance more cleanly than a one-axis "engagement" continuum.
+
+**Significance.** The ad-utility axis is the first observable, behaviorally-grounded substrate for the rank-value-prior framing the task-model paper uses to interpret pupillary load (Anderson rational-analysis tradition). For the CIKM 2026 paper, it is a candidate premise: per-participant ad-utility prior should map onto consideration-set composition (clicked / deferred / evaluated-rejected / not-approached) in interpretable ways.
+
+Full writeup: [`docs/ad-utility-prior.md`](./ad-utility-prior.md). Source: `scripts/ad_utility_prior_analysis.py` → `scripts/output/ad_utility_prior/`.
+
 ---
 
 ## v4 corrections
