@@ -10,7 +10,7 @@
 
 ## TL;DR
 
-There is a measurable per-participant axis on **ad utility** — operationalized as the fraction of survey-phase fixations that landed on ads (the prior) and the fraction of clicks that landed on ad surfaces (the behavior) — that is independent of the satisficer / optimizer axis. Across 47 participants, ad-click rate ranges from 0% to 52.7% (median 13.2%, IQR [6.3%, 24.5%]); 16/47 participants (34%) click ads on ≥ 20% of trials. The pre-decision ad-attention rate predicts the ad-click rate (Spearman ρ = +0.30 on dd_top, *p* = 0.043) but is uncorrelated with regression rate (sat-opt: ρ = +0.02, *p* = 0.87) and trial-mean LHIPA (cognitive load: ρ = +0.13, *p* = 0.37). Ad-utility is a separate axis from sat-opt and from cognitive load — a third individual-difference dimension that the task-model paper's rank-value-prior framing has been pointing at.
+There is a candidate per-participant axis on **ad utility** — operationalized as the fraction of survey-phase fixations that landed on ads (the prior) and the fraction of clicks that landed on ad surfaces (the behavior) — that appears independent of the satisficer / optimizer axis. Across 47 participants, ad-click rate ranges from 0% to 52.7% (median 13.2%, IQR [6.3%, 24.5%]); 16/47 participants (34%) click ads on ≥ 20% of trials. The pre-decision ad-attention rate is correlated with the ad-click rate (Spearman ρ = +0.297 on dd_top, 95% CI [+0.011, +0.538], *p* = 0.043) and uncorrelated with regression rate (sat-opt: ρ = +0.024, *p* = 0.87) and trial-mean LHIPA (cognitive load: ρ = +0.134, *p* = 0.37). **The headline correlation is borderline** — p = 0.043 does not survive Bonferroni correction across the 10 tests reported below (corrected α = 0.005), and the lower bound of its 95% CI is +0.011. Treat this as a candidate axis pending replication on a second cohort, not as an established finding.
 
 ---
 
@@ -43,31 +43,33 @@ Two participants click on ads in over 40% of their trials; two never do. The 16/
 
 ## §3 Prior predicts behavior
 
-Ad-attention rate during survey predicts ad-click rate at the participant level:
+Ad-attention rate during survey is correlated with ad-click rate at the participant level:
 
-| Prior × Behavior | n | Spearman ρ | p | Pearson r |
-|---|---|---|---|---|
-| `p_ad_survey` × `p_ad_click` | 47 | **+0.249** | 0.091 | +0.242 |
-| **`p_ad_survey` × `p_dd_top_click`** | 47 | **+0.297** | **0.043** | +0.231 |
-| `p_ad_survey` × `p_native_ad_click` | 47 | +0.108 | 0.469 | +0.145 |
-| `ad_over_index` × `p_ad_click` | 47 | +0.232 | 0.116 | +0.209 |
-| `ad_over_index` × `p_dd_top_click` | 47 | +0.267 | 0.070 | +0.205 |
+| Prior × Behavior | n | Spearman ρ | 95% CI (Fisher z) | p | Pearson r |
+|---|---|---|---|---|---|
+| `p_ad_survey` × `p_ad_click` | 47 | +0.249 | [−0.041, +0.500] | 0.091 | +0.242 |
+| **`p_ad_survey` × `p_dd_top_click`** | 47 | **+0.297** | **[+0.011, +0.538]** | **0.043** | +0.231 |
+| `p_ad_survey` × `p_native_ad_click` | 47 | +0.108 | [−0.185, +0.383] | 0.469 | +0.145 |
+| `ad_over_index` × `p_ad_click` | 47 | +0.232 | [−0.059, +0.487] | 0.116 | +0.209 |
+| `ad_over_index` × `p_dd_top_click` | 47 | +0.267 | [−0.022, +0.515] | 0.070 | +0.205 |
 
-Effect sizes are small to moderate (ρ ≈ +0.25–0.30) — consistent with a prior that informs but does not determine click choice. The headline is the dd_top channel: the prior's predictive lift is on the highest-CTR ad surface, not on `native_ad` (which is more interleaved with organic and harder to spot pre-click).
+Effect sizes are small to moderate (ρ ≈ +0.25–0.30). The headline channel is dd_top — the highest-CTR ad surface, not `native_ad` (which is interleaved with organic and harder to spot pre-click).
+
+**Multiple-comparisons disclosure.** Five prior×behavior tests are reported above and five independence tests in §4, ten total. Bonferroni correction at family-wise α = 0.05 gives a per-test threshold of α′ = 0.005; the headline p = 0.043 does not clear it. The p-value tells us the single-test signal is real-looking; the corrected threshold tells us it is not yet a confirmed-against-multiplicity finding. Replication on a second cohort (or a pre-registered single-test analysis) is the next bar to clear.
 
 ## §4 Independence from sat-opt and cognitive load
 
-The ad-utility axis is **orthogonal** to the sat-opt segmentation and to LHIPA cognitive load:
+The ad-utility axis appears independent of the sat-opt segmentation and of LHIPA cognitive load:
 
-| Independence test | n | Spearman ρ | p |
-|---|---|---|---|
-| `p_ad_survey` × regression rate (sat-opt) | 47 | +0.024 | 0.874 |
-| `p_ad_click` × regression rate | 47 | +0.053 | 0.725 |
-| `p_dd_top_click` × regression rate | 47 | +0.061 | 0.683 |
-| `p_ad_survey` × trial-mean LHIPA | 47 | +0.134 | 0.367 |
-| `p_ad_survey` × mean click position | 47 | +0.020 | 0.895 |
+| Independence test | n | Spearman ρ | 95% CI (Fisher z) | p |
+|---|---|---|---|---|
+| `p_ad_survey` × regression rate (sat-opt) | 47 | +0.024 | [−0.265, +0.309] | 0.874 |
+| `p_ad_click` × regression rate | 47 | +0.053 | [−0.238, +0.335] | 0.725 |
+| `p_dd_top_click` × regression rate | 47 | +0.061 | [−0.230, +0.342] | 0.683 |
+| `p_ad_survey` × trial-mean LHIPA | 47 | +0.134 | [−0.159, +0.406] | 0.367 |
+| `p_ad_survey` × mean click position | 47 | +0.020 | [−0.269, +0.305] | 0.895 |
 
-Sat-opt, cognitive load, click depth — none correlate with the ad-utility prior. This matters: it means a user's tendency to click ads is *not* explained by their breadth of evaluation (sat-opt), their cognitive effort (LHIPA), or their willingness to scroll deeper (mean click position). It's a separate axis.
+Five non-significant tests with CIs that comfortably straddle zero. **Caveat per the detection-limits rule:** at n = 47, the CI half-widths are wide (≈ ±0.3), so these nulls are "not detected at this granularity," not "no relationship exists." A correlation of |ρ| ≈ 0.3 would survive these CIs; the data is consistent both with true independence and with a moderate effect we cannot resolve. The orthogonality claim should be read as "no signal at the n = 47 detection limit," not as a positive demonstration of independence.
 
 This converges with the existing LF/HF × sat-opt orthogonality finding (load trajectory orthogonal to evaluation strategy at LOO AUC 0.286, ρ = +0.013, n = 46 — see [`docs/null-findings/2026-05-04-typed-cascade-null-revisit.md` §2](../null-findings/2026-05-04-typed-cascade-null-revisit.md)). We now have **three orthogonal individual-difference axes** on AdSERP:
 
@@ -87,7 +89,7 @@ For the **CIKM paper**: this is a candidate premise for the four-class taxonomy.
 
 ## §6 Limitations
 
-- **n = 47.** All correlations are at participant level on the AdSERP forced-choice task. ρ ≈ +0.30 with n = 47 puts *p* near 0.04, which is real but not bullet-proof under multiple testing. The orthogonality nulls (regression rate, LHIPA) are at *p* > 0.3, comfortably null.
+- **n = 47, multiple testing.** All correlations are at participant level on the AdSERP forced-choice task. The headline ρ = +0.297 (p = 0.043) does not survive Bonferroni correction across the 10 tests reported (corrected α = 0.005); 95% CI lower bound is +0.011. Treat as a candidate axis pending replication on a second cohort, not as a confirmed finding. The orthogonality nulls (regression rate, LHIPA) have CIs that straddle zero with half-widths ≈ ±0.3 — consistent with true independence *or* with a moderate effect below the n = 47 detection limit.
 - **Ad-utility is bundled with native_ad / dd_top / dd_right etypes.** A finer decomposition (per-etype ad-click prior) would distinguish "I look at top-page ads" from "I scan native ads" — currently averaged.
 - **Forced-choice task.** Participants knew they had to click *something*. Ad-clicks here aren't accidental; they're real choices. But abandonment is not in the design space.
 - **Prior measure depends on the survey-phase definition** — see `scripts/output/survey_bimodality/` for the operationalization. The prior is the fraction of survey fixations on ads, where survey is the early ballistic-scan portion of the trial.
