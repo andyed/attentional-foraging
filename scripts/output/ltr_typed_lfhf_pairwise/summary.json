@@ -1,0 +1,68 @@
+{
+  "experiment": "K29: LF/HF as label generator (pure rank, hybrid composite)",
+  "design": {
+    "K29a": "pure LF/HF rank-within-trial (\u22653 non-null per trial)",
+    "K29b": "hybrid 4-class \u00d7 LF/HF composite (NotApprBelow excluded, null lfhf to bottom of bucket)"
+  },
+  "features": [
+    "total_dwell_ms",
+    "min_dist",
+    "mean_dist",
+    "final_dist",
+    "retreat_dist",
+    "dwell_in_proximity_ms",
+    "mean_approach_velocity",
+    "max_approach_velocity",
+    "direction_changes",
+    "frac_decreasing"
+  ],
+  "metrics": {
+    "K27.3 4-class graded (reference)": {
+      "full_pool": {
+        "ndcg10": 0.8183019163055069,
+        "mrr10": 0.7713226881088291,
+        "n_trials": 2539
+      },
+      "lfhf_subset": {
+        "ndcg10": 0.8172383750563892,
+        "mrr10": 0.7705051856808297,
+        "n_trials": 2160
+      },
+      "kept_rows": 11101
+    },
+    "K29a pure LF/HF rank": {
+      "full_pool": {
+        "ndcg10": 0.5262930713315509,
+        "mrr10": 0.4174487626442701,
+        "n_trials": 2539
+      },
+      "lfhf_subset": {
+        "ndcg10": 0.5247894188979367,
+        "mrr10": 0.41525333985011403,
+        "n_trials": 2160
+      },
+      "kept_rows": 1808
+    },
+    "K29b hybrid 4-class \u00d7 LF/HF": {
+      "full_pool": {
+        "ndcg10": 0.8295275268299748,
+        "mrr10": 0.7853559901212109,
+        "n_trials": 2539
+      },
+      "lfhf_subset": {
+        "ndcg10": 0.8255161645389293,
+        "mrr10": 0.7808894016408061,
+        "n_trials": 2160
+      },
+      "kept_rows": 11101
+    }
+  },
+  "headlines": {
+    "k29a_minus_k27_full_mrr10": -0.353873925464559,
+    "k29b_minus_k27_full_mrr10": 0.014033302012381843,
+    "k29a_minus_k27_full_ndcg10": -0.29200884497395596,
+    "k29b_minus_k27_full_ndcg10": 0.01122561052446791,
+    "k29a_minus_k27_lfhf_mrr10": -0.3552518458307157,
+    "k29b_minus_k27_lfhf_mrr10": 0.010384215959976406
+  }
+}

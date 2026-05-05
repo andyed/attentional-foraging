@@ -1,0 +1,80 @@
+{
+  "experiment": "K28: LF/HF as feature on top of M3-no-position 4-class graded LambdaMART",
+  "lfhf_coverage_pct_records": 0.2866390209365834,
+  "class_distribution": {
+    "NotApprAbove": 5368,
+    "CLICKED": 2594,
+    "EVAL_REJECTED": 572,
+    "DEFERRED": 2567,
+    "NotApprBelow_EXCLUDED": 8673
+  },
+  "features": {
+    "M3-no-position": [
+      "total_dwell_ms",
+      "min_dist",
+      "mean_dist",
+      "final_dist",
+      "retreat_dist",
+      "dwell_in_proximity_ms",
+      "mean_approach_velocity",
+      "max_approach_velocity",
+      "direction_changes",
+      "frac_decreasing"
+    ],
+    "M3-no-position + lfhf": [
+      "total_dwell_ms",
+      "min_dist",
+      "mean_dist",
+      "final_dist",
+      "retreat_dist",
+      "dwell_in_proximity_ms",
+      "mean_approach_velocity",
+      "max_approach_velocity",
+      "direction_changes",
+      "frac_decreasing",
+      "lfhf",
+      "lfhf_n_samples"
+    ]
+  },
+  "metrics": {
+    "M3-no-position": {
+      "LR (pointwise, binary click)": {
+        "ndcg10": 0.8175917861287928,
+        "mrr10": 0.7668631882194233,
+        "n_trials": 2539
+      },
+      "LambdaMART (binary click)": {
+        "ndcg10": 0.7939881692667708,
+        "mrr10": 0.7409361723681628,
+        "n_trials": 2539
+      },
+      "LambdaMART (4-class graded)": {
+        "ndcg10": 0.8183019163055069,
+        "mrr10": 0.7713226881088291,
+        "n_trials": 2539
+      }
+    },
+    "M3-no-position + lfhf": {
+      "LR (pointwise, binary click)": {
+        "ndcg10": 0.8164088033124322,
+        "mrr10": 0.7649040309520658,
+        "n_trials": 2539
+      },
+      "LambdaMART (binary click)": {
+        "ndcg10": 0.7825292311143313,
+        "mrr10": 0.7242816037437552,
+        "n_trials": 2539
+      },
+      "LambdaMART (4-class graded)": {
+        "ndcg10": 0.8187224366450679,
+        "mrr10": 0.7698999419587655,
+        "n_trials": 2539
+      }
+    }
+  },
+  "headlines": {
+    "delta_mrr10_lfhf_4class_minus_baseline_4class": -0.0014227461500635474,
+    "delta_ndcg10_lfhf_4class_minus_baseline_4class": 0.00042052033956108126,
+    "delta_mrr10_lfhf_binary_minus_baseline_binary": -0.016654568624407617
+  }
+}

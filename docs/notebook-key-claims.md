@@ -1422,6 +1422,109 @@ The Rung 4 extension closes NB26's modeling thread at K24/K25 as the canonical L
 
 Residual headroom (MRR 0.82 → theoretical 1.00) is feature-limited, not label-limited. Further LTR gains on this dataset require either (a) resolving the feature-side M4 leakage with true pre-click trajectory recomputation, or (b) adding pupillometric features (NB05 LHIPA, NB14 LF/HF) as per-(trial, pos) rankers. Both are scope for a successor notebook, not NB26.
 
+
+### 2026-05-05 extension — Typed cascade migration + Peter's no-position four-class spec
+
+*Values for K27 come from executed script output: `scripts/output/ltr_typed_four_class/summary.json` (2026-05-05). Producer: `scripts/ltr_typed_four_class.py`. Companion baseline: `scripts/output/aoi-consumer-cascade/lambdamart_baseline_typed.json` (`scripts/lambdamart_baseline_organic.py`, dual with-position / no-position conditions). Companion null: `scripts/output/aoi-consumer-cascade/lambdamart_continuous_gain_typed.json` (32-grade p\_click distillation does not beat binary).*
+
+**Regime:** `[LAB, AdSERP, typed]`. 47-fold LOSO. Trial pool: **2,539 trials** with ≥2 positions and ≥1 click on the typed-cascade dataset (`cursor-approach-features-typed.json`, all 9 etypes, 19,774 records). NotApprBelow excluded from training (5,489 records, 27.8 %); inference scores all positions per trial.
+
+**Feature set (M3-no-position):** `total_dwell_ms` + 9 M4 cursor features. **No text features, no viewport features, no position.** This is the strictest Peter-spec feature set and is *not* directly comparable to K17–K26 (which used 2,115-trial pool + text + M4 + VP). The point of K27 is to isolate the **label-encoding gain** under the typed cascade with cursor-only features.
+
+**Spec source:** Peter Dixon-Moses 2026-05-04 (LightGBM LambdaRank, NDCG@10 optimize, MRR@10 evaluate, no position feature, four-class label generator from the AOI taxonomy with NotApprBelow exclusion).
+
+| ID | Claim | Value |
+|---|---|---|
+| **K27.0** | Original SERP position (no ML, typed pool 2,539) | NDCG@10 = **0.5774**, MRR@10 = **0.4589** |
+| **K27.1** | LR pointwise on binary click (M3-no-position, typed) | NDCG@10 = **0.8176**, MRR@10 = **0.7669** |
+| **K27.2** | LambdaMART on binary click (M3-no-position, typed, NotApprBelow excluded) | NDCG@10 = **0.7940**, MRR@10 = **0.7409** |
+| **K27.3** | **LambdaMART on 4-class graded** (M3-no-position, typed, NotApprBelow excluded) | NDCG@10 = **0.8183**, MRR@10 = **0.7713** |
+| **K27.4** | ΔMRR@10 (4-class − binary LambdaMART, same training set) | **+0.0304** |
+| **K27.5** | ΔMRR@10 (4-class − Original SERP position) | **+0.3124** |
+
+**What K27 shows:**
+
+- **The four-class graded label encoding adds signal over binary click on the same NotApprBelow-excluded training set (K27.4: ΔMRR@10 = +0.030).** Same features, same folds, same training rows — only the label differs. This is the cleanest version of the graded-vs-binary contrast in the notebook so far.
+- **NotApprBelow exclusion costs binary LambdaMART ≈0.058 MRR** on M3-no-position features (the K27.2 binary 0.741 vs the dual-condition baseline's 0.799 with full data — `lambdamart_baseline_typed.json`). The four-class label recovers ≈0.030 of that cost.
+- **NDCG@10 favors 4-class more than MRR@10 does** (ΔNDCG = +0.024 vs ΔMRR = +0.030). NDCG rewards graded ordering of non-clicks; MRR rewards only the clicked item's rank. The 4-class label encodes the deferred/eval-rejected gradient that NDCG can use and binary cannot.
+- **Pure motor-only LTR is competitive without text or viewport.** K27.3 MRR@10 = 0.771 with M3-no-position cursor features alone is within 0.054 of K24's 10-grade hybrid result on the richer text + M4 + VP feature set. Cursor signal carries most of the relevance information.
+
+**Companion null — continuous p_click distillation does not beat binary on typed (`lambdamart_continuous_gain_typed.json`):**
+
+- Pointwise LR (M3-no-position): MRR = 0.776
+- LambdaMART (binary click, full-data): MRR = 0.799
+- LambdaMART (32-grade p_click discretization, full-data): MRR = 0.777
+
+The teacher-LR continuous-gain story (flavor-2 of the original click-probability-as-label proposal) is now confirmed dead under the typed cascade. The label gradation has to come from a **behavioral source** (the four-class taxonomy), not from a probability-distillation derivative.
+
+**Caveats on K27:**
+
+- **Pool change (2,115 → 2,539 trials)**: K17–K26 require viewport-trajectory feature presence; K27 only requires typed-cascade record presence. K27's pool is therefore larger but covers a slightly different trial subset. Not directly comparable to K17–K26.
+- **Feature set is M3-no-position only.** K27 deliberately excludes text features and viewport features to isolate the cursor-motor signal. A `K28` extension comparing 4-class graded across {M3-no-pos, +text, +VP, +pupillometric} feature stacks is the natural successor (see "Modeling close" section below for the open question on pupillometric LF/HF as a graded-relevance feature).
+- **NotApprBelow exclusion is a training-side constraint, not an inference-side one.** Held-out scoring covers all positions per trial; only the training rows are restricted. This means the headline MRR/NDCG values are full-SERP eval, not labeled-subset eval.
+- **No ad/non-ad cohort split yet.** The typed cascade carries `etype` per record; per-etype K27 metrics are the natural follow-up (would test whether the four-class signal is etype-invariant or organic-specific, paralleling `four_class_taxonomy_hybrid.py`'s motor-signature dissociation).
+
+**Migration footnote:** the original `scripts/ltr_graded_vs_click.py` (Apr 15) is retired with a deprecation banner. It used pre-typed-cascade input (`cursor-approach-features.json`, Apr 12, also pre-prefix-bug-fix), sklearn pointwise GBR (not LightGBM LambdaRank), and treated NotApprAbove and NotApprBelow identically. K27 supersedes it.
+
+
+### 2026-05-05 extension — K28/K29: pupillary LF/HF as feature and as pairwise-preference label
+
+*Values from executed script output: `scripts/output/ltr_typed_lfhf_feature/summary.json` (K28) and `scripts/output/ltr_typed_lfhf_pairwise/summary.json` (K29). Producers: `scripts/ltr_typed_lfhf_feature.py`, `scripts/ltr_typed_lfhf_pairwise.py`. LF/HF source: `AdSERP/data/butterworth-lfhf-by-position-typed.json` (per-(trial, pos) LF/HF computed by `scripts/compute_butterworth_lfhf.py`, 28.7 % non-null coverage on the typed-cascade record set).*
+
+**Regime:** `[LAB, AdSERP, typed]`. 47-fold LOSO. Same 2,539-trial typed pool as K27. Same M3-no-position feature set. Only the label / feature changes from K27.3.
+
+**Two questions:**
+- **K28** — does adding `lfhf` (and `lfhf_n_samples`) as features improve the K27.3 4-class graded LambdaMART?
+- **K29** — does using LF/HF as a *label generator* (rank-within-trial — Andy's "pairwise preferences" framing) improve over the 4-class behavioral label?
+
+| ID | Claim | Value |
+|---|---|---|
+| **K28.1** | LambdaMART 4-class graded on M3-no-position + lfhf, vs K27.3 (M3-no-position only) | NDCG@10 = **0.8187** (Δ **+0.0004**), MRR@10 = **0.7699** (Δ **−0.0014**) |
+| **K28.2** | LambdaMART binary click on M3-no-position + lfhf, vs M3-no-position-only baseline | MRR@10 = **0.7243** (Δ **−0.0167**) |
+
+**K28 verdict (label-side null):** LF/HF as a per-(trial, pos) feature **does not help LTR** when M3 cursor features are already in the model. Binary LambdaMART actively gets worse (Δ −0.017). Mechanism: cursor `total_dwell_ms` and `dwell_in_proximity_ms` already encode the engagement-correlated signal that LF/HF captures, and LF/HF adds variance from its 71 % missing-value mass.
+
+| ID | Claim | Value |
+|---|---|---|
+| **K29a** | LambdaMART on **pure LF/HF rank-within-trial** label (10-grade, ≥3 non-null lfhf per trial — 514 trials trained, 2,539 evaluated) | NDCG@10 = **0.5263** (Δ **−0.2920**), MRR@10 = **0.4174** (Δ **−0.3539**) |
+| **K29b** | LambdaMART on **hybrid 4-class × LF/HF composite** label (NotApprBelow excluded, LF/HF as within-bucket tiebreaker, null lfhf → bucket-bottom — 11,101 rows / 2,416 trials trained) | NDCG@10 = **0.8295** (Δ **+0.0112**), MRR@10 = **0.7854** (Δ **+0.0140**) |
+
+**K29 verdict — pairwise-preferences vision validated for the hybrid design:**
+
+- **K29a fails clearly.** Pupil alone does not order positions well enough to recover clicks (ΔMRR@10 = −0.354 vs the 4-class baseline). Only 514 trials have enough non-null LF/HF positions for a within-trial ranking, and within those LF/HF does not co-vary tightly enough with the click. LF/HF as a sole relevance proxy is rejected.
+- **K29b succeeds.** Using LF/HF as a within-bucket tiebreaker on top of the 4-class outer label adds **+0.014 MRR@10 / +0.011 NDCG@10**. The 4-class hard label preserves the click ground truth; LF/HF densifies the within-bucket pairwise gradient (Deferred items with high LF/HF outrank Deferred items with low LF/HF; same for EvalRej / NotApprAbove). This is the "set of pairwise preferences" framing operationalized.
+
+**Cumulative label-encoding trajectory on M3-no-position cursor features (typed cascade, 2,539 trials):**
+
+| Step | Label | LambdaMART MRR@10 | Cumulative Δ over binary |
+|---|---|---|---|
+| K27.2 | binary click (NotApprBelow excluded) | 0.7409 | — |
+| K27.3 | 4-class graded (NotApprBelow excluded) | 0.7713 | +0.0304 |
+| **K29b** | **4-class × LF/HF composite** | **0.7854** | **+0.0445** |
+
+Each refinement adds signal: the four-class behavioral structure recovers +0.030 MRR over binary, and pupillary LF/HF densifies the within-bucket order for another +0.014 on top of that. **Total label-encoding gain = +0.044 MRR@10 / +0.036 NDCG@10** over binary-click LambdaMART, holding features and folds constant.
+
+**What this resolves about LF/HF as a relevance signal:**
+
+- LF/HF is **not a stand-alone relevance ordering** (K29a, ΔMRR = −0.354) — it correlates with cognitive engagement, but engagement does not equal preference.
+- LF/HF is **not a useful additional feature** at the per-(trial, pos) level (K28.1, ΔMRR = −0.001) — its information is largely redundant with cursor dwell.
+- LF/HF **is** a useful within-bucket tiebreaker for LTR labels (K29b, ΔMRR = +0.014) — given the 4-class outer hard label, LF/HF adds finer gradient that the pairwise-loss LambdaMART can exploit.
+
+This is consistent with the broader LF/HF story in the project memory: LF/HF is a trial-level / per-participant cognitive-load trait (load-decreases-with-position gradient, sat/opt orthogonality), not a within-trial preference discriminator. Used as a graded-label *refiner* (within-bucket order), it contributes; used as a primary feature or label, it does not.
+
+**Caveats on K28/K29:**
+
+- **LF/HF coverage is 28.7 %** (5,668 of 19,774 records). K29b handles this cleanly by treating null LF/HF as bucket-bottom; K29a is forced to subset to 514 trials with ≥3 non-null positions, which severely undertrains.
+- **Same trial-pool as K27** (2,539 trials), apples-to-apples with K27.3.
+- **No cross-trial pupil normalization yet.** LF/HF values are absolute (Butterworth IIR magnitudes) and not z-scored within participant. A normalized variant might improve K29b further; not run here.
+- **K29b's pairwise-preference structure is implicit** — LightGBM's lambdarank objective converts the 10-grade composite label into pairwise preferences internally. An explicit pairwise-preference dataset (one row per (trial, i, j) pair with the relative judgment) would give the same gradient signal but is not necessary to validate the design.
+
+**What's open after K29:**
+
+- **Per-participant LF/HF normalization** — z-score within participant before assigning the within-bucket tiebreaker. Would test whether K29b's gain comes from absolute LF/HF magnitudes (partially redundant with M4 dwell) or from within-participant rank order (a cleaner pairwise signal).
+- **Per-etype K29b decomposition** — does the LF/HF tiebreaker contribute differently for organic, dd_top, native_ad? Parallels `four_class_taxonomy_hybrid.py` for the four-class motor signature.
+- **Combined LF/HF + RIPA2 tiebreaker** — RIPA2 is a per-fixation arousal metric (memory: "RIPA2 unique story"). A composite tiebreaker (high LF/HF AND high RIPA2 → strongest within-bucket preference) might add further gradient.
+
 ---
 
 <a id="nb28-28_viewport_bands"></a>

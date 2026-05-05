@@ -1,0 +1,65 @@
+{
+  "attribution": "typed",
+  "feature_sets": {
+    "with_position": [
+      "position",
+      "total_dwell_ms",
+      "min_dist",
+      "mean_dist",
+      "final_dist",
+      "retreat_dist",
+      "dwell_in_proximity_ms",
+      "mean_approach_velocity",
+      "max_approach_velocity",
+      "direction_changes",
+      "frac_decreasing"
+    ],
+    "no_position": [
+      "total_dwell_ms",
+      "min_dist",
+      "mean_dist",
+      "final_dist",
+      "retreat_dist",
+      "dwell_in_proximity_ms",
+      "mean_approach_velocity",
+      "max_approach_velocity",
+      "direction_changes",
+      "frac_decreasing"
+    ]
+  },
+  "note": "flavor-1 binary-click gain, listwise NDCG; typed cascade migration 2026-05-05.",
+  "metrics": {
+    "with_position": {
+      "LR (pointwise)": {
+        "ndcg5": 0.8119022200083739,
+        "ndcg10": 0.8274216126164332,
+        "ndcg_all": 0.829450936941005,
+        "mrr": 0.7740271096021392,
+        "n_trials": 2539
+      },
+      "LambdaMART (listwise)": {
+        "ndcg5": 0.8411882160100808,
+        "ndcg10": 0.8525329650844414,
+        "ndcg_all": 0.8548950188862723,
+        "mrr": 0.807729998110069,
+        "n_trials": 2539
+      }
+    },
+    "no_position": {
+      "LR (pointwise)": {
+        "ndcg5": 0.8144097906843037,
+        "ndcg10": 0.8292774069661467,
+        "ndcg_all": 0.8313101597236543,
+        "mrr": 0.7764323014519943,
+        "n_trials": 2539
+      },
+      "LambdaMART (listwise)": {
+        "ndcg5": 0.8326734129393754,
+        "ndcg10": 0.8449967633842498,
+        "ndcg_all": 0.8479639966696897,
+        "mrr": 0.7987942487253239,
+        "n_trials": 2539
+      }
+    }
+  }
+}

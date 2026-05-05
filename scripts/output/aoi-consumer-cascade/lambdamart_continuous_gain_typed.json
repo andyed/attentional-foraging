@@ -1,0 +1,37 @@
+{
+  "attribution": "typed",
+  "feature_set": "M3-no-position",
+  "flavor_2_setup": {
+    "teacher": "LOSO LR (M3) -> OOF p_click",
+    "discretization": "round(p_click * 31) -> 32 grades",
+    "label_gain": "2^k - 1 capped at 2^31-1",
+    "student": "LightGBM LGBMRanker, lambdarank objective"
+  },
+  "metrics": {
+    "LR (pointwise, M3)": {
+      "ndcg5": 0.8144097906843037,
+      "ndcg_all": 0.8313101597236543,
+      "mrr": 0.7764323014519943,
+      "n_trials": 2539
+    },
+    "LambdaMART (binary gain, flavor-1)": {
+      "ndcg5": 0.8326734129393754,
+      "ndcg_all": 0.8479639966696897,
+      "mrr": 0.7987942487253239,
+      "n_trials": 2539
+    },
+    "LambdaMART (32-grade p_click, flavor-2)": {
+      "ndcg5": 0.8145888291057135,
+      "ndcg_all": 0.8316866073352128,
+      "mrr": 0.7769533505748552,
+      "n_trials": 2539
+    }
+  },
+  "p_click_summary": {
+    "min": 5.52163163319145e-06,
+    "median": 0.2740182264467043,
+    "max": 0.9999999626245398,
+    "click_grade_median": 24,
+    "click_grade_mean": 21.856977640709328
+  }
+}

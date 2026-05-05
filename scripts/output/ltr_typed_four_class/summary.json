@@ -1,0 +1,57 @@
+{
+  "experiment": "LTR four-class graded labels (Peter's spec) on typed cascade",
+  "spec_source": "Peter Dixon-Moses 2026-05-04",
+  "dataset": {
+    "records_total": 19774,
+    "records_kept": 11101,
+    "records_dropped_NotApprBelow": 8673,
+    "trials": 2774,
+    "participants": 47,
+    "class_distribution": {
+      "NotApprAbove": 5368,
+      "CLICKED": 2594,
+      "EVAL_REJECTED": 572,
+      "DEFERRED": 2567,
+      "NotApprBelow_EXCLUDED": 8673
+    }
+  },
+  "features": [
+    "total_dwell_ms",
+    "min_dist",
+    "mean_dist",
+    "final_dist",
+    "retreat_dist",
+    "dwell_in_proximity_ms",
+    "mean_approach_velocity",
+    "max_approach_velocity",
+    "direction_changes",
+    "frac_decreasing"
+  ],
+  "note": "no position feature; LOSO by participant; train on kept rows, predict on all.",
+  "metrics": {
+    "Original SERP position (no ML)": {
+      "ndcg10": 0.577378550670709,
+      "mrr10": 0.4589468557376002,
+      "n_trials": 2539
+    },
+    "LR pointwise (binary click)": {
+      "ndcg10": 0.8175917861287928,
+      "mrr10": 0.7668631882194233,
+      "n_trials": 2539
+    },
+    "LambdaMART (binary click, flavor-1)": {
+      "ndcg10": 0.7939881692667708,
+      "mrr10": 0.7409361723681628,
+      "n_trials": 2539
+    },
+    "LambdaMART (4-class graded, Peter's)": {
+      "ndcg10": 0.8183019163055069,
+      "mrr10": 0.7713226881088291,
+      "n_trials": 2539
+    }
+  },
+  "headlines": {
+    "delta_mrr10_4class_vs_binary_lambdamart": 0.03038651574066631,
+    "delta_mrr10_4class_vs_serp_position": 0.3123758323712289
+  }
+}

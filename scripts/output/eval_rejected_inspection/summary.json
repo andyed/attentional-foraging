@@ -1,0 +1,134 @@
+{
+  "attribution": "typed",
+  "n_records": 19774,
+  "approach_threshold_px": 100.0,
+  "distribution_by_etype": {
+    "organic": {
+      "n": 12712,
+      "CLICKED": 2021,
+      "DEFERRED": 1395,
+      "EVAL_REJECTED": 386,
+      "NOT_APPROACHED": 8910,
+      "pct": {
+        "CLICKED": 15.898363750786658,
+        "DEFERRED": 10.973882945248585,
+        "EVAL_REJECTED": 3.036500943989931,
+        "NOT_APPROACHED": 70.09125235997483
+      }
+    },
+    "native_ad": {
+      "n": 3660,
+      "CLICKED": 186,
+      "DEFERRED": 525,
+      "EVAL_REJECTED": 90,
+      "NOT_APPROACHED": 2859,
+      "pct": {
+        "CLICKED": 5.081967213114754,
+        "DEFERRED": 14.344262295081966,
+        "EVAL_REJECTED": 2.459016393442623,
+        "NOT_APPROACHED": 78.11475409836065
+      }
+    },
+    "dd_top": {
+      "n": 1581,
+      "CLICKED": 271,
+      "DEFERRED": 450,
+      "EVAL_REJECTED": 42,
+      "NOT_APPROACHED": 818,
+      "pct": {
+        "CLICKED": 17.141049968374446,
+        "DEFERRED": 28.462998102466795,
+        "EVAL_REJECTED": 2.6565464895635675,
+        "NOT_APPROACHED": 51.739405439595195
+      }
+    },
+    "image_pack": {
+      "n": 846,
+      "CLICKED": 56,
+      "DEFERRED": 122,
+      "EVAL_REJECTED": 28,
+      "NOT_APPROACHED": 640,
+      "pct": {
+        "CLICKED": 6.619385342789598,
+        "DEFERRED": 14.42080378250591,
+        "EVAL_REJECTED": 3.309692671394799,
+        "NOT_APPROACHED": 75.65011820330969
+      }
+    },
+    "knowledge_panel": {
+      "n": 398,
+      "CLICKED": 23,
+      "DEFERRED": 34,
+      "EVAL_REJECTED": 10,
+      "NOT_APPROACHED": 331,
+      "pct": {
+        "CLICKED": 5.778894472361809,
+        "DEFERRED": 8.542713567839195,
+        "EVAL_REJECTED": 2.512562814070352,
+        "NOT_APPROACHED": 83.16582914572864
+      }
+    },
+    "paa": {
+      "n": 357,
+      "CLICKED": 27,
+      "DEFERRED": 23,
+      "EVAL_REJECTED": 10,
+      "NOT_APPROACHED": 297,
+      "pct": {
+        "CLICKED": 7.563025210084033,
+        "DEFERRED": 6.442577030812325,
+        "EVAL_REJECTED": 2.8011204481792715,
+        "NOT_APPROACHED": 83.19327731092437
+      }
+    },
+    "unknown_widget": {
+      "n": 141,
+      "CLICKED": 7,
+      "DEFERRED": 10,
+      "EVAL_REJECTED": 6,
+      "NOT_APPROACHED": 118,
+      "pct": {
+        "CLICKED": 4.964539007092198,
+        "DEFERRED": 7.092198581560283,
+        "EVAL_REJECTED": 4.25531914893617,
+        "NOT_APPROACHED": 83.68794326241135
+      }
+    },
+    "top_places": {
+      "n": 48,
+      "CLICKED": 2,
+      "DEFERRED": 4,
+      "EVAL_REJECTED": 0,
+      "NOT_APPROACHED": 42,
+      "pct": {
+        "CLICKED": 4.166666666666667,
+        "DEFERRED": 8.333333333333334,
+        "EVAL_REJECTED": 0.0,
+        "NOT_APPROACHED": 87.5
+      }
+    },
+    "other_widget": {
+      "n": 31,
+      "CLICKED": 1,
+      "DEFERRED": 4,
+      "EVAL_REJECTED": 0,
+      "NOT_APPROACHED": 26,
+      "pct": {
+        "CLICKED": 3.225806451612903,
+        "DEFERRED": 12.903225806451612,
+        "EVAL_REJECTED": 0.0,
+        "NOT_APPROACHED": 83.87096774193549
+      }
+    }
+  },
+  "eval_rejected_total": 572,
+  "eval_rejected_pct": 2.8926873672499243,
+  "eval_rejected_joined": 521,
+  "eval_rejected_organic_joined": 378,
+  "sample_size": 173,
+  "skipped": {
+    "no_query": 0,
+    "no_serp": 0,
+    "no_serp_match_at_position": 51
+  }
+}
