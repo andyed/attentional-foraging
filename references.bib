@@ -211,6 +211,55 @@
   publisher = {Lawrence Erlbaum},
   address   = {Hillsdale, NJ},
   year      = {1990},
+  note      = {Foundational rational-analysis text. Frames cognition as cost-optimized adaptation to the structure of the environment, including memory retrieval as relevance estimation. Theoretical root of information foraging (\citealp{pirolli1999foraging}) --- the rational-analysis lineage OSEC inherits from. The economic-IR cost-modeling tradition (\citealp{stigler1961economics, varian1999economics, azzopardi2011economics, zhang2016rethinking}) does not cite Anderson and is treated as a parallel strand with convergent results, not a downstream extension.},
+}
+
+@article{anderson1991reflections,
+  author    = {Anderson, John R. and Schooler, Lael J.},
+  title     = {Reflections of the Environment in Memory},
+  journal   = {Psychological Science},
+  volume    = {2},
+  number    = {6},
+  pages     = {396--408},
+  year      = {1991},
+  doi       = {10.1111/j.1467-9280.1991.tb00174.x},
+  note      = {Empirical instantiation of \citet{anderson1990adaptive}'s rational analysis: memory retrieval probability tracks the environmental statistics of need probability. The formal Bayesian-cost piece of the rational-analysis program that Pirolli \& Card later operationalized for information search.},
+}
+
+@article{rayner1998eyemovements,
+  author    = {Rayner, Keith},
+  title     = {Eye Movements in Reading and Information Processing: 20 Years of Research},
+  journal   = {Psychological Bulletin},
+  volume    = {124},
+  number    = {3},
+  pages     = {372--422},
+  year      = {1998},
+  doi       = {10.1037/0033-2909.124.3.372},
+  note      = {Canonical review of eye-movement research in reading. Establishes that 10--15\% of fixations during text reading are saccadic regressions used to recover comprehension. The within-SERP analog of these regressions is what OSEC's forward/regressive split formalizes at the task level.},
+}
+
+@article{stigler1961economics,
+  author    = {Stigler, George J.},
+  title     = {The Economics of Information},
+  journal   = {Journal of Political Economy},
+  volume    = {69},
+  number    = {3},
+  pages     = {213--225},
+  year      = {1961},
+  doi       = {10.1086/258464},
+  note      = {Foundational paper for the economic-IR cost-modeling tradition. Cited by Z\&G 2016 as the lineage starting point on the economics side of search-cost modeling. OSEC does not inherit from this strand directly --- it appears here as the parent of the convergent decomposition Z\&G 2016 recovered.},
+}
+
+@article{varian1999economics,
+  author    = {Varian, Hal R.},
+  title     = {Economics and Search},
+  journal   = {SIGIR Forum},
+  volume    = {33},
+  number    = {1},
+  pages     = {1--5},
+  year      = {1999},
+  doi       = {10.1145/331403.331404},
+  note      = {SIGIR 1999 keynote. Connected economic-cost-of-information theory to IR retrieval evaluation. Cited by Z\&G 2016 as the second pillar (after Stigler 1961) of the economic-IR cost-modeling lineage.},
 }
 
 @article{gray2000milliseconds,
@@ -244,7 +293,7 @@
   pages     = {281--282},
   year      = {2001},
   doi       = {10.1145/634067.634234},
-  note      = {Anderson is the same John R. Anderson of \emph{The Adaptive Character of Thought} (1990) and ACT-R --- the rational-analysis program that grounds the bounded-rationality framing in this paper.},
+  note      = {Early evidence of strong eye-hand coordination in web browsing. Anderson is the same John R. Anderson of \emph{The Adaptive Character of Thought} (1990) and ACT-R --- the rational-analysis program that grounds the bounded-rationality framing in this paper.},
 }
 
 @article{stone2023unconscious,
@@ -276,6 +325,7 @@
   pages     = {3--12},
   year      = {2014},
   doi       = {10.1145/2600428.2609574},
+  note      = {Applies microeconomic cost-benefit analysis to search interaction. Foundation for IFT-based stopping models.},
 }
 
 @inproceedings{azzopardi2019cwl,
@@ -293,6 +343,7 @@
   booktitle = {Extended Abstracts of the 2019 CHI Conference on Human Factors in Computing Systems (CHI EA '19)},
   year      = {2019},
   doi       = {10.1145/3290607.3299022},
+  note      = {Tutorial extending economic search models to HCI. C/W/L framework for evaluation.},
 }
 
 @inproceedings{abualsaud2019patterns,
@@ -302,7 +353,7 @@
   pages     = {1833--1842},
   year      = {2019},
   doi       = {10.1145/3357384.3358046},
-  note      = {Eye-tracking study of SERP examination from query to first action (click or reformulation). Two devices (desktop + mobile). Replaces a prior miscitation to ``Zhang, Abualsaud \& Smucker CHIIR 2018'' that did not exist in the form referenced.},
+  note      = {Eye-tracking study of SERP examination from query to first action (click or reformulation). Two devices (desktop + mobile).},
 }
 
 % ═══════════════════════════════════════════════════════════════════════════
@@ -514,9 +565,21 @@
   pages     = {181--190},
   publisher = {ACM},
   address   = {New Brunswick, NJ, USA},
-  pages     = {181--190},
   doi       = {10.1145/3176349.3176400},
-  note      = {Documents a result inspection phase: users evaluate top 2-3 results to decide whether the SERP is worth continued evaluation or immediate requery. Prior observation of what we call the Survey phase, in the context of the stay/reformulate decision that AdSERP's forced-choice task eliminates.},
+  note      = {Hypothesizes a result inspection phase: users assess the top 2--3 results as a rapid initial impression that gates the stay-or-reformulate decision before any detailed snippet reading. Mechanism precedent for the Survey phase in OSEC (paired with Zhang \& Gwizdka 2016 as the structural/factor-analytic precedent). AdSERP's forced-choice task eliminates the requery exit, so the same phase shows up as a gate on evaluation depth instead. Note: this is Haotian Zhang (Waterloo/Smucker group), not Yinglong Zhang of zhang2016rethinking.},
+}
+
+@inproceedings{zhang2016rethinking,
+  author    = {Zhang, Yinglong and Gwizdka, Jacek},
+  title     = {Rethinking the Cost of Information Search Behavior},
+  booktitle = {Proceedings of the 39th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  series    = {SIGIR '16},
+  year      = {2016},
+  pages     = {969--972},
+  publisher = {ACM},
+  address   = {Pisa, Italy},
+  doi       = {10.1145/2911451.2914742},
+  note      = {Verified via PDF 2026-04-26 (\url{~/Downloads/2911451.2914742.pdf}). PCA on six SERP/document/task-description cost variables (KMO 0.64, Bartlett $p<.001$) recovers two well-separated factors with cross-loadings near zero: \emph{exploratory process} (T\_notUseful .98, W\_notUseful .94, F\_SERP .75) and \emph{validation process} (F\_taskDescription .98, T\_taskDescription .94, D\_notUseful .70). Mapped explicitly to Kuhlthau Initiation/Selection/Exploration vs Formulation/Collection and to Marchionini Define/Select/Formulate/Execute vs Examine Results. Structural (factor-analytic) precedent for OSEC's Survey/Evaluate decomposition; pairs with zhang2018requery (mechanism precedent). Note: Yinglong Zhang (UNC/UT-Austin), not Haotian Zhang of zhang2018requery.},
 }
 
 @inproceedings{azzopardi2018utility,
@@ -626,18 +689,6 @@
   publisher = {ACM},
   doi       = {10.1145/2207676.2208591},
   note      = {Gaze-cursor alignment varies by mouse behavior type (reading, hesitating, scrolling, clicking).},
-}
-
-@inproceedings{chen2001mousecursor,
-  author    = {Chen, Mon-Chu and Anderson, John R. and Sohn, Myeong-Ho},
-  title     = {What Can a Mouse Cursor Tell Us More? {Correlation} of Eye/Mouse Movements on Web Browsing},
-  booktitle = {CHI '01 Extended Abstracts on Human Factors in Computing Systems},
-  series    = {CHI EA '01},
-  year      = {2001},
-  pages     = {281--282},
-  publisher = {ACM},
-  doi       = {10.1145/634067.634234},
-  note      = {Early evidence of strong eye-hand coordination in web browsing.},
 }
 
 @article{boi2016attention,
@@ -760,29 +811,6 @@
 % ECONOMIC MODELS OF SEARCH / STOPPING
 % ═══════════════════════════════════════════════════════════════════════════
 
-@inproceedings{azzopardi2014economic,
-  author    = {Azzopardi, Leif},
-  title     = {Modelling Interaction with Economic Models of Search},
-  booktitle = {Proceedings of the 37th International ACM SIGIR Conference on Research and Development in Information Retrieval},
-  series    = {SIGIR '14},
-  year      = {2014},
-  pages     = {3--12},
-  publisher = {ACM},
-  doi       = {10.1145/2600428.2609574},
-  note      = {Applies microeconomic cost-benefit analysis to search interaction. Foundation for IFT-based stopping models.},
-}
-
-@inproceedings{azzopardi2019economichci,
-  author    = {Azzopardi, Leif and Zuccon, Guido},
-  title     = {Building Economic Models of Human Computer Interaction},
-  booktitle = {Extended Abstracts of the 2019 CHI Conference on Human Factors in Computing Systems},
-  series    = {CHI EA '19},
-  year      = {2019},
-  publisher = {ACM},
-  doi       = {10.1145/3290607.3299052},
-  note      = {Tutorial extending economic search models to HCI. C/W/L framework for evaluation.},
-}
-
 @inproceedings{maxwell2018scent,
   author    = {Maxwell, David and Azzopardi, Leif},
   title     = {Information Scent, Searching and Stopping},
@@ -848,6 +876,41 @@
   year      = {2015},
   doi       = {10.2200/S00654ED1V01Y201507ICR043},
   note      = {Comprehensive survey. Most models assume monotonic top-to-bottom examination; our regression data breaks this assumption.},
+}
+
+% ─── Non-sequential / direction-aware click models (closest IR-side prior art for OSEC's forward/regressive split) ───
+
+@inproceedings{wang2015pscm,
+  author    = {Wang, Chao and Liu, Yiqun and Wang, Meng and Zhou, Ke and Nie, Jian-Yun and Ma, Shaoping},
+  title     = {Incorporating Non-sequential Behavior into Click Models},
+  booktitle = {Proceedings of the 38th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  series    = {SIGIR '15},
+  year      = {2015},
+  pages     = {283--292},
+  publisher = {ACM},
+  doi       = {10.1145/2766462.2767712},
+  note      = {Partially Sequential Click Model (PSCM). Eye-tracking-grounded. Two assumptions: (1) examination between adjacent clicks is locally unidirectional but users may skip results and examine at distance; (2) direction is consistent with click direction. THUIR group (Yiqun Liu, Tsinghua), same group as liu2014skimming. Code: github.com/THUIR/PSCMModel. Closest IR-side prior art for OSEC's forward/regressive decomposition; treats direction as a click-model feature, not as a task state. Cite in OSEC \S2.7 and CIKM related-work to acknowledge the click-model lane on this problem.},
+}
+
+@inproceedings{zhang2021cbcm,
+  author    = {Zhang, Jingtao and Liu, Yiqun and Mao, Jiaxin and Zhang, Min and Ma, Shaoping},
+  title     = {Constructing a Comparison-based Click Model for Web Search},
+  booktitle = {Proceedings of the Web Conference 2021},
+  series    = {WWW '21},
+  year      = {2021},
+  publisher = {ACM},
+  note      = {Comparison-Based Click Model (CBCM). Explicit revisit and compare primitives in the click likelihood. Same THUIR group as wang2015pscm; six years downstream. Treats revisit/comparison as click-model features. Cite alongside wang2015pscm as IR-side prior art for forward/regressive decomposition; OSEC's task-state framing (separate motor, pupillometric, geometric signatures) is the differentiator.},
+}
+
+@inproceedings{borisov2018clicksequence,
+  author    = {Borisov, Alexey and Wardenaar, Martijn and Markov, Ilya and de Rijke, Maarten},
+  title     = {A Click Sequence Model for Web Search},
+  booktitle = {Proceedings of the 41st International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  series    = {SIGIR '18},
+  year      = {2018},
+  publisher = {ACM},
+  doi       = {10.1145/3209978.3210004},
+  note      = {Neural seq2seq model of click sequences. Learns non-sequential patterns end-to-end without explicit direction modeling. Bag-of-features successor to PSCM/CBCM at the click level. Cite as the neural-modeling contemporary that absorbs direction implicitly.},
 }
 
 % ═══════════════════════════════════════════════════════════════════════════
@@ -921,6 +984,18 @@
   publisher = {ACM},
   doi       = {10.1145/1835449.1835459},
   note      = {Ad quality affects gaze patterns. Users develop different examination strategies for ads vs organic. Supports our ad\_focused/ad\_ignorer split.},
+}
+
+@inproceedings{dumais2010individual,
+  author    = {Dumais, Susan T. and Buscher, Georg and Cutrell, Edward},
+  title     = {Individual Differences in Gaze Patterns for Web Search},
+  booktitle = {Proceedings of the Third Symposium on Information Interaction in Context},
+  series    = {IIiX '10},
+  year      = {2010},
+  pages     = {185--194},
+  publisher = {ACM},
+  doi       = {10.1145/1840784.1840812},
+  note      = {k=3 clustering on gaze patterns: Exhaustive (optimizer-like, scans all 10 organic results), Economic-Results (satisficer focused on top organic), Economic-Ads (satisficer disproportionately attending to ads). Methodological precedent for the satisficer/optimizer dimension and the depth $\times$ surface-attended-to taxonomy.},
 }
 
 % ═══════════════════════════════════════════════════════════════════════════

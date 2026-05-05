@@ -1,17 +1,5 @@
 # TODO
 
-## Findings.md — ballistic-hotspots subsection (2026-05-03)
-
-Five claim rows ready under §8 (scroll kinematics) titled "Regressive scroll is faster *and* qualitatively different." Visualization assets generated; need writing pass.
-
-- [ ] **Magnitude.** Regressive scroll is ~30% faster than forward across all depth bins (median 0.83–0.97 vs 0.74 px/ms). Per-event Δy larger (16 vs 12 px median). Forward velocity near-constant across depth (0.74–0.78); only regressive accelerates with depth. Source: `scripts/render_scroll_velocity.py` → `scripts/output/figures/scroll_velocity.png`.
-- [ ] **Phase transition at HWM ≈ 8.** Regression-episode tension stays small (1–3 ranks) for HWM 1–7, then jumps to 5/7/9 for HWM 8/9/10. Episode length doubles from ~3 fixations to 7–11. Source: `scripts/render_regression_tension.py`.
-- [ ] **Anchor-return dominance at depth.** 40–50% of regression episodes from HWM ≥ 8 land at position 0. Suggests memory-anchored re-evaluation, not smooth elastic retreat.
-- [ ] **Modality (broader claim).** Regress-scan-regress is the *modal* trial structure: 62% of trials (organic) / 79% (hybrid) have ≥1 cycle; 37% / 54% have multiple cycles. Source: `scripts/scan_epochs_per_trial.py`.
-- [ ] **Two-signal confirmation.** Depth-dependent acceleration appears in *both* gaze-fixation cadence AND mouse scroll-velocity stream — argues against eye-tracking artifact.
-
-Visualization assets ready: scroll_velocity.png, regression_tension_organic.png, regressive_arcs_organic.png, scan_epoch_staircase_organic.png, staircase_by_strategy_organic.png, saccade_participation_hybrid.png. One-line refinement: re-render scroll_velocity.png in px/s for legibility.
-
 ## ETTAC stat-traceability gaps (2026-05-03)
 
 Three numeric claims in `ettac-paper/sections/adserp.tex` need re-derivation or original-computation surfacing before next external pass. Verification status documented in 2026-05-03 audit run.

@@ -12,6 +12,8 @@ AdSERP v1 ships shipped ad bboxes (`native_ad`, `dd_top`, `dd_right`) and full-p
 
 Output is per-trial JSON at `data/aoi-typed/<tid>.json` (45,041 entries across 2,776 trials), schema additive to v1's ad-boundary JSON. Four rank-attribution flavors (`absolute`, `organic`, `organic_hybrid`, `typed`) coexist; the canonical post-2026-05-04 primary is **`typed`**.
 
+**Validated against shipped gold.** AdSERP v1's shipped ad bboxes (`native_ad`, `dd_top`, `dd_right`) provide a labeled gold standard for the ad/non-ad partition. The pipeline matches it with **0 disagreements across 38,250 classifications** on 2,776 trials: 0/26,590 Phase A `organic_result` bboxes overlap any shipped ad (Phase A ad-subtraction is clean); F1 = 1.000 on Phase C ad propagation across all three ad etypes; mean IoU = 1.000; no cross-type misclassifications. The deeper non-ad partition (`organic` vs `widget` vs `paa` vs `image_pack`) lacks an external gold and is validated against HTML structure plus visual spot-check. See §5.6 + [`validation-typed-vs-shipped-ads.md`](./validation-typed-vs-shipped-ads.md).
+
 **Visible proof.** The AR replay viewer renders typed AOIs as colored overlay rectangles on the source SERP screenshots: <https://andyed.github.io/approach-retreat/replay/>. Browse the trial index for representative cases of organic, dd_top, native_ad, paa, image_pack, knowledge_panel, top_places, related_searches, and pagination AOIs as they were attributed; e.g., <https://andyed.github.io/approach-retreat/replay/trials/p007-b5-t6.html> (typed widgets) or <https://andyed.github.io/approach-retreat/replay/trials/p047-b1-t3.html> (CLK + DEF + REJ in one SERP).
 
 ---

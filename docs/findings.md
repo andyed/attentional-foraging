@@ -402,6 +402,56 @@ This confirms that the lower dwell ratios at positions 6-8 when regressions are 
 
 **Notebook:** [scroll_kinematics.ipynb](../notebooks/scroll_kinematics.ipynb)
 
+## 8a. Regressive scroll is faster *and* qualitatively different — five-claim characterization
+
+The 2026-05-03 saccade-metrics + regression-tension + scroll-velocity analyses take the descriptive "regressive scroll is ballistic" claim from §8 and characterize the structure beneath it. Five sub-claims, each grounded in a separate canonical figure under the typed/organic cascade [F:ballistic-hotspots].
+
+**Magnitude — regressive scroll is ~25% faster than forward at depth, and the asymmetry grows with depth.** Per-event scroll-pair velocities across 285,717 events on 2,267 trials, stratified by trial-depth bin (`scripts/output/figures/scroll_velocity.png`):
+
+| Depth bin | Forward median (px/s) | Regressive median (px/s) | Δ | Forward |dy| | Regressive |dy| |
+|---|---|---|---|---|---|
+| Top (< 20%) | 741 | 833 | +12% | 12 px | 13 px |
+| Mid (20–50%) | 784 | 972 | +24% | 12 px | 16 px |
+| Deep (≥ 50%) | 741 | 926 | +25% | 12 px | 16 px |
+
+Forward velocity is **near-constant across depth** (741–784); only regressive scrolling accelerates as the user travels deeper. Per-event Δy is also larger on regressive (16 vs 12 px median in mid/deep). The acceleration is direction-specific.
+
+**Phase transition at HWM ≈ 8.** Per-trial regression episode geometry (`scripts/render_regression_tension.py` → `scripts/output/figures/regression_tension_organic.png`), where HWM = high-water-mark of the deepest position fixated when regression began, tension = ranks regressed, n_fix = fixations within the episode:
+
+| HWM | n episodes | Median tension | Median n_fix | Frac landing at P0 |
+|---|---|---|---|---|
+| 1 | 2,154 | 1 | 2 | 100% |
+| 2 | 1,542 | 1 | 3 | 45.7% |
+| 3 | 1,209 | 1 | 3 | 33.7% |
+| 4 | 996 | 2 | 3 | 30.2% |
+| 5 | 728 | 2 | 3 | 24.0% |
+| 6 | 615 | 2 | 3 | 24.1% |
+| 7 | 607 | 3 | 4 | 33.4% |
+| **8** | **774** | **5** | **7** | **40.1%** |
+| **9** | **512** | **7** | **9** | **44.1%** |
+| **10** | **155** | **9** | **11** | **49.7%** |
+
+For HWM 1–7 the regression episode is small (1–3 ranks regressed, ~3 fixations of work). At HWM 8–10, both tension and episode length jump sharply: tension 5/7/9, episode length 7/9/11. **The mechanism appears to switch from local re-evaluation to anchor-return at the HWM-8 boundary** — episode length more than doubles, and the modal target shifts from "one rank back" to "all the way to P0."
+
+**Anchor-return dominance at depth.** From the same regression-tension table: 40–50% of regression episodes from HWM ≥ 8 land at P0 (the very first result), regardless of how far back that is. The "rubber band" snaps to a fixed anchor at depth, not a proportional retreat. Cross-confirmed by the regressive-arc summary: of all 73,165 regression jumps in 2,382 trials, **55% target P0 and 96% target P0–P4** (`scripts/output/figures/regressive_arcs_organic_summary.json` → `regressive_arcs_organic.png`). The deepest 40-50% of regressions act as a memory-anchored reset, not a smooth elastic retreat.
+
+**Modality — regress-scan-regress is the modal trial structure.** Counting scan epochs per trial (forward sweep + regression cycle = one epoch; new forward sweep = new epoch) under both organic and hybrid AOI flavors (`scripts/scan_epochs_per_trial.py` → `scan_epochs_summary.json`):
+
+| Cycles | Organic (n=2,701) | Hybrid (n=2,774) |
+|---|---|---|
+| ≥ 1 epoch (any forward sweep) | 100% | 100% |
+| ≥ 2 epochs (multi-cycle) | **62.4%** | **78.5%** |
+| ≥ 3 epochs | 37.0% | 54.3% |
+| ≥ 4 epochs | 19.8% | 33.1% |
+
+Multi-cycle is the modal pattern: 62% of organic trials and 79% of hybrid trials show at least one full regress-then-resume cycle. The "F-pattern / forward sweep" framing under-counts how much of typical SERP scanning is back-and-forth (`scripts/output/figures/scan_epoch_staircase_organic.png`).
+
+**Two-signal confirmation.** The depth-dependent acceleration appears in *both* independent measurement channels — gaze fixation cadence (the regression-tension `n_fix` doubling at HWM ≥ 8) and mouse scroll-velocity stream (the 25% velocity jump in mid/deep regressive scrolls). Different sensors, same boundary. Argues against an eye-tracking artifact reading: if this were a Gazepoint sampling issue, it wouldn't show up in raw mouse-event streams.
+
+**Implications.** The §8 ballistic-mechanics confound (lower dwell ratios at P6–P8 are viewport mechanics, not content re-evaluation) generalizes: the *mechanism* shifts at depth too, not just the velocity. Per-position metrics that pool across HWM lose this; per-HWM stratification recovers it. For the task model, this means the regression mechanism the rational-analysis framing models is *two* mechanisms — a local-comparison regression (HWM 1–7) and an anchor-return regression (HWM ≥ 8) — that share velocity geometry but differ qualitatively in episode length, tension, and target.
+
+Source figures (`scripts/output/figures/`): `scroll_velocity.png` (direction × depth violins + pooled CDF), `regression_tension_organic.png` (dip-floor by HWM-onset), `regressive_arcs_organic.png` (source→target jump distribution), `scan_epoch_staircase_organic.png` (population-level staircase + small-multiples by n_epochs), `staircase_by_strategy_organic.png` (three-tercile satisficer/optimizer split), `saccade_participation_hybrid.png` (etype participation by direction × bin).
+
 ## 9. Where does relaxing the serial evaluation assumption help?
 
 Click models (Chuklin et al. 2015), cascade models (Craswell et al. 2008), and the two-stage examination model (Liu et al. CIKM 2014) assume monotonic top-to-bottom examination. This has been a useful simplification — it makes position bias estimable and evaluation metrics tractable (Azzopardi SIGIR 2014, C/W/L framework). The question isn't whether serial evaluation is "wrong" but where allowing for complexity buys you something.
