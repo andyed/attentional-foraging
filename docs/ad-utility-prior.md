@@ -4,6 +4,7 @@
 **Stable ID:** F:ad-utility-prior
 **Source:** `scripts/ad_utility_prior_analysis.py` → `scripts/output/ad_utility_prior/{summary.json, per_participant.csv}`
 **Anchor for:** task-model paper (rank-value-prior framing, central premise); CIKM 2026 paper (worth premise candidate)
+**Method spec:** [`methodology/gaze-prior-elicitation.md`](./methodology/gaze-prior-elicitation.md) frames this finding as the demonstration of a non-disruptive prior-elicitation protocol — three-layer leak structure (orient / survey / per-participant variance), McFadden floor + agent-specific overlay made directly observable.
 
 ---
 

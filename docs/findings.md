@@ -521,7 +521,7 @@ This converges with the existing LF/HF × sat-opt orthogonality (load trajectory
 
 **Significance.** The ad-utility axis is the first observable, behaviorally-grounded substrate for the rank-value-prior framing the task-model paper uses to interpret pupillary load (Anderson rational-analysis tradition). For the CIKM 2026 paper, it is a candidate premise: per-participant ad-utility prior should map onto consideration-set composition (clicked / deferred / evaluated-rejected / not-approached) in interpretable ways.
 
-Full writeup: [`docs/ad-utility-prior.md`](./ad-utility-prior.md). Source: `scripts/ad_utility_prior_analysis.py` → `scripts/output/ad_utility_prior/`.
+Full writeup: [`docs/ad-utility-prior.md`](./ad-utility-prior.md). Source: `scripts/ad_utility_prior_analysis.py` → `scripts/output/ad_utility_prior/`. The protocol-level methodology spec — non-disruptive prior elicitation as a generalizable method, with three-layer leak structure and McFadden floor-vs-overlay framing — lives at [`docs/methodology/gaze-prior-elicitation.md`](./methodology/gaze-prior-elicitation.md).
 
 ---
 
