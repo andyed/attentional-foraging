@@ -1,0 +1,87 @@
+{
+  "experiment": "5-class confidence-gated LTR labels on typed cascade",
+  "spec_source": "extends Peter's 4-class with hi/lo confidence sub-buckets per missions-flow logic",
+  "date": "2026-05-05",
+  "dataset": {
+    "records_total": 19774,
+    "records_training": 11101,
+    "records_eval": 11101,
+    "trials": 2774,
+    "participants": 47,
+    "tier_counts": {
+      "T0_NotApprAbove": 5368,
+      "T4_CLICKED": 2594,
+      "T0_EVAL_REJ_LO": 302,
+      "T2_DEFERRED_LO": 1283,
+      "NotApprBelow_EXCLUDED": 8673,
+      "T3_DEFERRED_HI": 1284,
+      "T1_EVAL_REJ_HI": 270
+    },
+    "thresholds": {
+      "median_deferred_dwell_ms": 3246.0,
+      "median_eval_rej_retreat_dist_px": 56.27364158285308,
+      "eval_rej_dwell_min_ms": 500.0
+    }
+  },
+  "features": [
+    "total_dwell_ms",
+    "min_dist",
+    "mean_dist",
+    "final_dist",
+    "retreat_dist",
+    "dwell_in_proximity_ms",
+    "mean_approach_velocity",
+    "max_approach_velocity",
+    "direction_changes",
+    "frac_decreasing"
+  ],
+  "method": {
+    "flavor_A_flat": "tier \u2208 {1,2,3,4}; tier 0 dropped from training",
+    "flavor_B_hybrid": "tier subdivides by within-tier median(withstood_pre_click); labels \u2208 {2,3,4,5,6,7,8} + click at 8",
+    "eval_protocol": "LOSO by participant, train on motivated subset, predict on full dataset, MRR@10 / NDCG@10 against binary-click gold"
+  },
+  "metrics": {
+    "Original SERP position (no ML)": {
+      "ndcg10": 0.577378550670709,
+      "mrr10": 0.4589468557376002,
+      "n_trials": 2539
+    },
+    "LR pointwise (binary click)": {
+      "ndcg10": 0.8175917861287928,
+      "mrr10": 0.7668631882194233,
+      "n_trials": 2539
+    },
+    "LambdaMART (binary click)": {
+      "ndcg10": 0.7939881692667708,
+      "mrr10": 0.7409361723681628,
+      "n_trials": 2539
+    },
+    "LambdaMART (4-class graded, conf-gated train set)": {
+      "ndcg10": 0.8183019163055069,
+      "mrr10": 0.7713226881088291,
+      "n_trials": 2539
+    },
+    "LambdaMART (5-class flat, flavor A)": {
+      "ndcg10": 0.8227835393366347,
+      "mrr10": 0.7751799593711358,
+      "n_trials": 2539
+    },
+    "LambdaMART (5-class hybrid, flavor B)": {
+      "ndcg10": 0.8220650177429035,
+      "mrr10": 0.7751065461984317,
+      "n_trials": 2539
+    }
+  },
+  "headlines": {
+    "delta_mrr10_5flat_vs_4c": 0.0038572712623067273,
+    "delta_mrr10_5hybrid_vs_4c": 0.0037838580896025764,
+    "delta_mrr10_5hybrid_vs_5flat": -7.341317270415093e-05,
+    "delta_mrr10_5hybrid_vs_binary_lambdamart": 0.034170373830268885,
+    "delta_mrr10_5hybrid_vs_serp_position": 0.3161596904608315
+  },
+  "invariants": [
+    "NotApprBelow excluded outright (Peter K27 rule)",
+    "tier 0 (eval-rej-lo + NotApprAbove) excluded from training, scored at eval",
+    "M3-no-position cursor features only (apples-to-apples with K27)"
+  ]
+}

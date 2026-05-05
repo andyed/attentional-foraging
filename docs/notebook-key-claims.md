@@ -1527,53 +1527,55 @@ This is consistent with the broader LF/HF story in the project memory: LF/HF is 
 
 ---
 
-### K30 — 5-class confidence-gated graded labels *(pending — script ready, not yet run)*
+### K30 — 5-class confidence-gated graded labels
 
-*Producer: [`scripts/ltr_typed_5class_confidence.py`](../scripts/ltr_typed_5class_confidence.py).
-Output target: `scripts/output/ltr_typed_5class_confidence/summary.json`.
-Drafted 2026-05-05; **values below pending first run**.*
+*Values from executed script output: `scripts/output/ltr_typed_5class_confidence/summary.json` (2026-05-05). Producer: [`scripts/ltr_typed_5class_confidence.py`](../scripts/ltr_typed_5class_confidence.py).*
 
 Generalizes Peter's K27 4-class spec by splitting the deferred and evaluated-rejected classes into hi/lo confidence sub-buckets, gated on AR signal strength. Mirrors the missions-flow calibration logic where "Not for me" only emits when `outcome == evaluated_rejected ∧ reapproach_count == 0 ∧ total_dwell_ms ≥ 500ms`.
 
 **Tier definitions:**
 
-| Tier | Class | Gate |
-|---|---|---|
-| **4** | CLICKED | `was_clicked == True` |
-| **3** | DEFERRED-HI | approached + gaze-regressed; `total_dwell_ms ≥ median(deferred dwell)` |
-| **2** | DEFERRED-LO | approached + gaze-regressed; below the median |
-| **1** | EVAL-REJECTED-HI | approached, no regression, no click; `total_dwell_ms ≥ 500ms` AND `retreat_dist ≥ median(eval-rej retreat)` — confident negative |
-| **0** | DROP | rest of approached-no-click + NotApprAbove — unmotivated middle, excluded from training, scored at eval |
-|  | EXCLUDE | NotApprBelow (Peter's invariant — never seen, no behavioral signal) |
+| Tier | Class | Gate | n |
+|---|---|---|---|
+| **4** | CLICKED | `was_clicked == True` | 2,594 (13.1 %) |
+| **3** | DEFERRED-HI | approached + gaze-regressed; `total_dwell_ms ≥ 3,246 ms` (median deferred dwell) | 1,284 (6.5 %) |
+| **2** | DEFERRED-LO | approached + gaze-regressed; below the median | 1,283 (6.5 %) |
+| **1** | EVAL-REJECTED-HI | approached, no regression, no click; `total_dwell_ms ≥ 500 ms` AND `retreat_dist ≥ 56.3 px` (median eval-rej retreat) — confident negative | 270 (1.4 %) |
+| **0** | UNMOTIVATED FLOOR | rest of approached-no-click (eval-rej-lo, n=302) + NotApprAbove (n=5,368) — kept in training as silent negatives | 5,670 (28.7 %) |
+|  | EXCLUDE | NotApprBelow (Peter's K27 invariant — never seen, no behavioral signal) | 8,673 (43.9 %) |
 
 **Two flavors:**
 
-- **K30a — flavor A, flat 5-tier.** Labels ∈ {1, 2, 3, 4} on motivated rows. Tests whether confidence gating alone (no secondary order) lifts MRR over Peter's 4-class.
-- **K30b — flavor B, hybrid.** Each tier subdivides by within-tier median split on `withstood_pre_click`, expanding to {2, 3, 4, 5, 6, 7, 8} (click pinned at 8). Mirrors R4f's hybrid-click-pinned trick (preserve ground truth at top, use proxy to refine within tier) at coarser confidence-gated granularity. ~28 informative pairs per trial vs ~10 for flat 5-tier vs ~3 for 4-class.
+- **K30a — flavor A, flat 5-tier.** Labels ∈ {0, 1, 2, 3, 4}. ~10 informative pairs per trial vs ~3 for 4-class.
+- **K30b — flavor B, hybrid.** Tier 0 stays at 0; tiers 1/2/3 subdivide by within-tier median split on `withstood_pre_click`; tier 4 single-bucket pinned at top. Labels ∈ {0, 1, 2, 3, 4, 5, 6, 7}. Mirrors R4f's hybrid-click-pinned trick. ~28 informative pairs per trial.
 
-| ID | Claim | Value (pending) | vs K27.3 (4-class, MRR 0.7713) |
+| ID | Claim | Value | vs K27.3 (4-class, MRR 0.7713) |
 |---|---|---|---|
-| **K30.0** | Confident-negative tier-1 gate yields N records | *pending* | — |
-| **K30.1** | LambdaMART (5-class flat, flavor A), MRR@10 / NDCG@10 | *pending* / *pending* | *pending* |
-| **K30.2** | LambdaMART (5-class hybrid, flavor B), MRR@10 / NDCG@10 | *pending* / *pending* | *pending* |
-| **K30.3** | Δ(K30.2 hybrid − K30.1 flat) — within-tier-secondary-order contribution | *pending* | — |
-| **K30.4** | Δ(K30.2 hybrid − K27.3 4-class) — full confidence-gating contribution | *pending* | — |
+| **K30.0** | Confident-negative tier-1 gate yields | **270 records** (1.4 % of 19,774) | — |
+| **K30.1** | LambdaMART (5-class flat, flavor A), MRR@10 / NDCG@10 | **0.7752 / 0.8228** | **+0.0039 MRR / +0.0045 NDCG** |
+| **K30.2** | LambdaMART (5-class hybrid, flavor B), MRR@10 / NDCG@10 | **0.7751 / 0.8221** | +0.0038 MRR / +0.0038 NDCG |
+| **K30.3** | Δ(K30.2 hybrid − K30.1 flat) — within-tier-secondary-order contribution | **−0.0001** | flat ≅ hybrid |
+| **K30.4** | Δ(K30.1 flat − K27.4 binary LambdaMART) — full label-encoding gain | **+0.0343 MRR** | (K27.4 = 0.7409) |
 
-**Predicted outcomes (gut estimates, not measurements):**
-- K30.1 lands **between K27.3 (0.7713) and K24 (10-grade hybrid, 0.8248)** if confidence gating helps over 4-class but loses some pairwise-gradient density.
-- K30.2 lands **close to or above K24** if the hybrid trick recovers the density on top of the cleaner gating.
-- If K30.1 ≤ K27.3, the hi/lo split on deferred / eval_rejected does *not* carry monotonic relevance signal at this n — the confidence-tier hypothesis is falsified, and the 4-class spec is the right operationalization.
+**Sanity check.** The script rebuilds Peter's K27 4-class label on the same training set and reproduces K27.3's MRR exactly: 0.7713 (vs K27.3 published 0.7713) and NDCG 0.8183 (vs 0.8183). Binary LambdaMART reproduces K27.2 exactly: 0.7409 / 0.7940. The K30 deltas are therefore measured against an exactly-replicated K27 baseline, not a fork.
 
-**Spec invariants (held across A and B):**
+**What this tells us.**
+
+- **Confidence gating gives a small positive lift over 4-class** (K30.1 +0.0039 MRR, +0.0045 NDCG). The hi/lo split on deferred and eval_rejected *does* carry monotonic relevance signal — the falsification criterion (K30.1 ≤ K27.3) was not met. But the gain is small, on the order of one per-participant fold-SD (≈ 0.04), so a paired Wilcoxon across 47 participants is the next bar to clear before this is a load-bearing finding.
+- **The hybrid trick adds nothing on top of confidence gating** (K30.3 = −0.0001). `withstood_pre_click` within-tier ordering is redundant once the tier-level AR-confidence buckets are in: the proxy and the gate are encoding overlapping signal. This is a methodological finding — R4f's hybrid trick was load-bearing for 10-grade *naive* labels (which had click-at-grade-0 noise), but for confidence-gated 5-tier labels the click is already pinned at the top tier and the within-tier signal is too coarse / too redundant to refine further.
+- **Confident-negative tier 1 is small** (n=270, 1.4 %). The dwell≥500ms AND retreat≥median double-gate is restrictive — most evaluated_rejected events don't clear it. This is by design (the gate is a *confident* negative, not a permissive one) but it limits the per-trial gradient contribution.
+
+**Spec invariants:**
 - M3-no-position cursor features only (apples-to-apples with K27)
 - LOSO by participant; LightGBM LambdaRank, exp gain, NDCG@10 optimize
-- Train on motivated subset (tier ≥ 1), predict on full dataset, evaluate against binary-click gold
-- NotApprBelow excluded outright per Peter K27; tier 0 excluded from training, scored at eval
+- Train on tier ≥ 0 (NotApprBelow excluded), predict on full dataset, evaluate against binary-click gold
+- **Tier 0 (unmotivated floor) is kept in training** — first-pass dropped it and binary-click MRR collapsed from 0.741 to 0.318 because LambdaMART lost negative-class grounding. The label-gating intuition from the missions UX ("only when motivated") is correct for human-readable summaries but wrong for LTR training, where the silent-negative middle is the dominant gradient signal. Documented in script.
 
-**Open questions if K30 wins:**
-- **Threshold sweep:** K30 uses median splits (within-class) for the hi/lo gates. A held-out tertile sweep would test whether 50/50 is the right split or whether 33/67 / 25/75 carries more signal.
-- **Per-etype K30 decomposition:** does confidence gating contribute differently for organic vs dd_top? Parallels K29b decomposition and `four_class_taxonomy_hybrid.py` motor signature.
-- **K30 + K29b composition:** combine confidence-tiered hard labels with LF/HF within-bucket tiebreaker. Cumulative gain over binary click would be `K30b + K29b`.
+**Open questions:**
+- **Paired-Wilcoxon significance.** Per-participant ΔMRR distribution across 47 LOSO folds. K30.1 vs K27.3 mean Δ = +0.0039; sign and *p* not yet computed. Would slot in as K30.5.
+- **Threshold sweep.** Median splits (50/50) on dwell and retreat are arbitrary. A held-out tertile or quartile sweep would test whether 33/67 / 25/75 splits carry more signal. The hi/lo gate parameter is in `assign_5class_confidence`.
+- **Per-etype K30 decomposition.** Does confidence gating help organic, dd_top, native_ad differently? The 4-class motor signature is etype-stable per `four_class_taxonomy_hybrid.py`; K30's gating may concentrate signal in dd_top (where dwell variance is largest).
+- **K30 × K29b composition.** Confidence-tiered hard labels + LF/HF within-bucket tiebreaker. Cumulative gain over binary would be ≈ +0.034 (K30) + +0.014 (K29b) = +0.048 MRR if additive. Almost certainly less than additive given K30.3's redundancy result, but worth measuring.
 
 ---
 

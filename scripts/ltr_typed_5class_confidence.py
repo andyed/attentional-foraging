@@ -17,30 +17,37 @@ reapproach_count == 0 ∧ total_dwell_ms ≥ 500ms`.
                                    total_dwell_ms ≥ 500ms AND
                                    retreat_dist ≥ median(eval_rej retreat_dist)
                                    ── confident negative
-    Tier 0 (DROP)                 the rest of approached-no-regression-no-click
-                                   plus NotApprAbove ── unmotivated middle,
-                                   excluded from training (still scored at eval)
+    Tier 0 (UNMOTIVATED)          the rest of approached-no-regression-no-click
+                                   plus NotApprAbove ── unmotivated middle.
+                                   **Kept in training as the silent-negative
+                                   floor** (label 0 in the ordinal). Without
+                                   this, LambdaMART loses gradient grounding —
+                                   the binary-click MRR collapses from 0.741
+                                   (K27.2) to 0.318 (first run, dropped).
 
     NotApprBelow                  EXCLUDED outright (Peter's invariant —
                                    never seen, no behavioral signal)
 
 Two flavors:
 
-  Flavor A — flat 5-tier integer labels {1, 2, 3, 4} on motivated rows,
-             tier 0 dropped. Tests whether confidence gating alone (no
-             secondary order) lifts MRR over Peter's 4-class.
+  Flavor A — flat 5-tier integer labels {0, 1, 2, 3, 4}. Tests whether
+             confidence gating alone (no secondary order) lifts MRR
+             over Peter's 4-class. ~10 informative pairs per trial
+             (5 choose 2), vs ~3 for 4-class.
 
-  Flavor B — hybrid: each tier subdivides by within-tier median split
-             on `withstood_pre_click`, expanding to {1..7} + click at 8:
+  Flavor B — hybrid: tier 0 stays at 0; tiers 1/2/3 each subdivide by
+             within-tier median split on `withstood_pre_click`; tier 4
+             (clicks) stays as a single bucket pinned at the top.
+             Labels ∈ {0, 1, 2, 3, 4, 5, 6, 7}:
 
-                   Tier 4 (CLICKED)             label 8
-                   Tier 3 (DEFERRED-HI):  upper  label 7
-                                          lower  label 6
-                   Tier 2 (DEFERRED-LO):  upper  label 5
-                                          lower  label 4
-                   Tier 1 (EVAL-REJ-HI):  upper  label 3
-                                          lower  label 2
-                   Tier 0                       (DROP)
+                   Tier 4 (CLICKED)             label 7
+                   Tier 3 (DEFERRED-HI):  upper  label 6
+                                          lower  label 5
+                   Tier 2 (DEFERRED-LO):  upper  label 4
+                                          lower  label 3
+                   Tier 1 (EVAL-REJ-HI):  upper  label 2
+                                          lower  label 1
+                   Tier 0 (unmotivated)         label 0
 
              Mirrors R4f's hybrid-click-pinned trick (preserves ground
              truth at top, uses relevance proxy to refine within tier)
@@ -138,9 +145,15 @@ def assign_5class_confidence(records, regression_labels):
 
     Returns:
         tier  ─ int8 array, values in {0, 1, 2, 3, 4} or -1 for excluded
-                (NotApprBelow). Tier 0 = drop-from-training but kept for eval.
-        include_in_training ─ bool array, True iff tier >= 1.
-        include_in_eval ─ bool array, True iff tier != -1 (i.e. not NotApprBelow).
+                (NotApprBelow).
+        include_in_training ─ bool array, True iff tier >= 0 (everything
+                except NotApprBelow). Tier 0 stays in training as the
+                silent-negative floor — without it, LambdaMART loses
+                gradient grounding (verified empirically: dropping tier 0
+                collapsed binary-click MRR from K27.2's 0.741 to 0.318).
+        include_in_eval ─ bool array, identical to include_in_training
+                under this regime (NotApprBelow excluded; everything else
+                scored at eval against binary-click gold).
         cls_counts ─ dict for diagnostics output.
     """
     n = len(records)
@@ -217,8 +230,8 @@ def assign_5class_confidence(records, regression_labels):
             tier[i] = 0
             cls_counts['T0_NotApprAbove'] += 1
 
-    include_in_training = tier >= 1
-    include_in_eval = tier != -1
+    include_in_training = tier >= 0  # exclude NotApprBelow only
+    include_in_eval = tier >= 0       # same — NotApprBelow excluded outright
 
     # Stash thresholds in cls_counts for output
     cls_counts['_threshold_median_deferred_dwell_ms'] = median_deferred_dwell
@@ -230,14 +243,15 @@ def assign_5class_confidence(records, regression_labels):
 
 def expand_to_hybrid_labels(tier, records, withstood_index):
     """Flavor B: subdivide each tier by within-tier median split on
-    withstood_pre_click. Returns labels in {2, 3, 4, 5, 6, 7, 8} for tier ≥ 1
-    (tier 0 untouched, tier -1 untouched).
+    withstood_pre_click. Tier 0 stays at 0 (silent-negative floor).
 
     Mapping:
-      Tier 4 (clicked)         → 8 (single bucket; ground truth)
-      Tier 3 (deferred-hi)     → upper 7, lower 6
-      Tier 2 (deferred-lo)     → upper 5, lower 4
-      Tier 1 (eval-rej-hi)     → upper 3, lower 2
+      Tier 4 (clicked)         → 7 (single bucket; ground truth)
+      Tier 3 (deferred-hi)     → upper 6, lower 5
+      Tier 2 (deferred-lo)     → upper 4, lower 3
+      Tier 1 (eval-rej-hi)     → upper 2, lower 1
+      Tier 0 (unmotivated)     → 0 (single bucket — no within-tier signal)
+      Tier -1 (NotApprBelow)   → -1 (excluded outright)
     """
     n = len(records)
     labels = tier.astype(np.int16).copy()  # widen for label range
@@ -246,15 +260,16 @@ def expand_to_hybrid_labels(tier, records, withstood_index):
         withstood_index.get((r['trial_id'], int(r['position'])), 0.0)
         for r in records
     ])
-    # Tier 4 → 8
-    labels[tier == 4] = 8
-    # For tiers 3, 2, 1 — within-tier median split on withstood
-    for t, hi_label, lo_label in [(3, 7, 6), (2, 5, 4), (1, 3, 2)]:
+    # Tier 4 → 7
+    labels[tier == 4] = 7
+    # Tiers 3, 2, 1 — within-tier median split on withstood
+    for t, hi_label, lo_label in [(3, 6, 5), (2, 4, 3), (1, 2, 1)]:
         mask = (tier == t)
         if not mask.any(): continue
         med = float(np.median(wstd[mask]))
         labels[mask & (wstd >= med)] = hi_label
         labels[mask & (wstd <  med)] = lo_label
+    # Tier 0 stays at 0 (no change needed)
     return labels
 
 
@@ -314,17 +329,19 @@ def main():
     hybrid_labels = expand_to_hybrid_labels(tier, records, withstood_index)
     hybrid_train = hybrid_labels[include_train]
 
-    # 4-class reference labels (Peter's spec, NotApprAbove → 0)
-    # Mapping: clicked=2, deferred=1, everything-else-motivated=0,
-    # NotApprBelow excluded (already excluded above as -1).
-    # We rebuild the 4-class label here for an apples-to-apples comparison
-    # using the same training set as 5-class flavor A.
-    # NOTE: this differs slightly from `ltr_typed_four_class.py`'s training
-    # set (which keeps NotApprAbove → 0). Document in summary.
+    # 4-class reference labels (Peter's K27 spec) — rebuilt on the same
+    # training set as 5-class flavor A so this is a true apples-to-apples
+    # comparison. Mapping:
+    #   tier 4 (CLICKED)            → 2
+    #   tier 3 (DEFERRED-HI)        → 1
+    #   tier 2 (DEFERRED-LO)        → 1   (collapses to single deferred class)
+    #   tier 1 (EVAL-REJ-HI)        → 0
+    #   tier 0 (NotApprAbove + LO)  → 0
+    #   tier -1 (NotApprBelow)      EXCLUDED above
+    # Should reproduce K27.3 (MRR 0.7713) within fold-noise.
     fourclass_train = np.zeros(len(tier_train), dtype=int)
     fourclass_train[tier_train == 4] = 2
     fourclass_train[(tier_train == 3) | (tier_train == 2)] = 1
-    # tier 1 (eval-rej-hi) → 0; this is the only diff vs Peter's original.
 
     print(f'\n[shape] X_full {X_full.shape}, X_train {X_train.shape}',
           file=sys.stderr)
