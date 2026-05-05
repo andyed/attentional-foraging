@@ -1527,6 +1527,56 @@ This is consistent with the broader LF/HF story in the project memory: LF/HF is 
 
 ---
 
+### K30 — 5-class confidence-gated graded labels *(pending — script ready, not yet run)*
+
+*Producer: [`scripts/ltr_typed_5class_confidence.py`](../scripts/ltr_typed_5class_confidence.py).
+Output target: `scripts/output/ltr_typed_5class_confidence/summary.json`.
+Drafted 2026-05-05; **values below pending first run**.*
+
+Generalizes Peter's K27 4-class spec by splitting the deferred and evaluated-rejected classes into hi/lo confidence sub-buckets, gated on AR signal strength. Mirrors the missions-flow calibration logic where "Not for me" only emits when `outcome == evaluated_rejected ∧ reapproach_count == 0 ∧ total_dwell_ms ≥ 500ms`.
+
+**Tier definitions:**
+
+| Tier | Class | Gate |
+|---|---|---|
+| **4** | CLICKED | `was_clicked == True` |
+| **3** | DEFERRED-HI | approached + gaze-regressed; `total_dwell_ms ≥ median(deferred dwell)` |
+| **2** | DEFERRED-LO | approached + gaze-regressed; below the median |
+| **1** | EVAL-REJECTED-HI | approached, no regression, no click; `total_dwell_ms ≥ 500ms` AND `retreat_dist ≥ median(eval-rej retreat)` — confident negative |
+| **0** | DROP | rest of approached-no-click + NotApprAbove — unmotivated middle, excluded from training, scored at eval |
+|  | EXCLUDE | NotApprBelow (Peter's invariant — never seen, no behavioral signal) |
+
+**Two flavors:**
+
+- **K30a — flavor A, flat 5-tier.** Labels ∈ {1, 2, 3, 4} on motivated rows. Tests whether confidence gating alone (no secondary order) lifts MRR over Peter's 4-class.
+- **K30b — flavor B, hybrid.** Each tier subdivides by within-tier median split on `withstood_pre_click`, expanding to {2, 3, 4, 5, 6, 7, 8} (click pinned at 8). Mirrors R4f's hybrid-click-pinned trick (preserve ground truth at top, use proxy to refine within tier) at coarser confidence-gated granularity. ~28 informative pairs per trial vs ~10 for flat 5-tier vs ~3 for 4-class.
+
+| ID | Claim | Value (pending) | vs K27.3 (4-class, MRR 0.7713) |
+|---|---|---|---|
+| **K30.0** | Confident-negative tier-1 gate yields N records | *pending* | — |
+| **K30.1** | LambdaMART (5-class flat, flavor A), MRR@10 / NDCG@10 | *pending* / *pending* | *pending* |
+| **K30.2** | LambdaMART (5-class hybrid, flavor B), MRR@10 / NDCG@10 | *pending* / *pending* | *pending* |
+| **K30.3** | Δ(K30.2 hybrid − K30.1 flat) — within-tier-secondary-order contribution | *pending* | — |
+| **K30.4** | Δ(K30.2 hybrid − K27.3 4-class) — full confidence-gating contribution | *pending* | — |
+
+**Predicted outcomes (gut estimates, not measurements):**
+- K30.1 lands **between K27.3 (0.7713) and K24 (10-grade hybrid, 0.8248)** if confidence gating helps over 4-class but loses some pairwise-gradient density.
+- K30.2 lands **close to or above K24** if the hybrid trick recovers the density on top of the cleaner gating.
+- If K30.1 ≤ K27.3, the hi/lo split on deferred / eval_rejected does *not* carry monotonic relevance signal at this n — the confidence-tier hypothesis is falsified, and the 4-class spec is the right operationalization.
+
+**Spec invariants (held across A and B):**
+- M3-no-position cursor features only (apples-to-apples with K27)
+- LOSO by participant; LightGBM LambdaRank, exp gain, NDCG@10 optimize
+- Train on motivated subset (tier ≥ 1), predict on full dataset, evaluate against binary-click gold
+- NotApprBelow excluded outright per Peter K27; tier 0 excluded from training, scored at eval
+
+**Open questions if K30 wins:**
+- **Threshold sweep:** K30 uses median splits (within-class) for the hi/lo gates. A held-out tertile sweep would test whether 50/50 is the right split or whether 33/67 / 25/75 carries more signal.
+- **Per-etype K30 decomposition:** does confidence gating contribute differently for organic vs dd_top? Parallels K29b decomposition and `four_class_taxonomy_hybrid.py` motor signature.
+- **K30 + K29b composition:** combine confidence-tiered hard labels with LF/HF within-bucket tiebreaker. Cumulative gain over binary click would be `K30b + K29b`.
+
+---
+
 <a id="nb28-28_viewport_bands"></a>
 
 ## NB28: `28_viewport_bands` — viewport-band dwell calibration — bands-alone AUC 0.799, retreat+bands 0.837, rank-dependent vt_top, 97% per-participant consistency
