@@ -45,13 +45,18 @@ M4_FEATURES = [
 ]
 
 
-def viewport_ms_for_trial(trial_id, n_positions=10):
+def viewport_ms_for_trial(trial_id, n_positions=10, bands=None):
     """Return per-position viewport visibility broken into viewport-y bands.
 
     For each position: (ms_any, ms_top, ms_mid, ms_bot) — ms_any is total
     time any part of the AOI intersected the viewport; the three thirds use
     the AOI *center* viewport-y (aoi_center - scrollY) to bucket into
     top/middle/bottom third of the scr_h-tall viewport.
+
+    If `bands` is provided (list of (y_top, y_bottom) tuples), it overrides
+    the default absolute-rank `result_bands(n_positions, doc_h)`. This lets
+    callers pass `typed_gapfill_aoi_bands(trial_id)` to compute viewport ms
+    against the typed_gapfill AOI geometry instead of equal-interval bands.
     """
     try:
         doc_h, scr_h, _ = get_trial_meta(trial_id)
@@ -65,7 +70,9 @@ def viewport_ms_for_trial(trial_id, n_positions=10):
     if t_end <= t_start:
         return None
 
-    bands = result_bands(n_positions, doc_h)
+    if bands is None:
+        bands = result_bands(n_positions, doc_h)
+    n_positions = len(bands)
     third = scr_h / 3.0
 
     timeline = [(t_start, 0.0)]

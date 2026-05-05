@@ -1,0 +1,98 @@
+[
+  {
+    "type": "dd_top",
+    "x": 162.0,
+    "y": 158.0,
+    "width": 587.0,
+    "height": 334.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 0
+  },
+  {
+    "type": "image_pack",
+    "x": 162.0,
+    "y": 544.0,
+    "width": 586.0,
+    "height": 222.0,
+    "html_handle": "rso[0]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy batteryship dewalt 9071 yellow black 12v",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 768.0,
+    "width": 586.0,
+    "height": 144.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "2Pack 12V 3.6Ah DW9071 Battery Replacement for ...",
+    "source": "html_rso+cv_bbox",
+    "position": 2
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 943.0,
+    "width": 540.0,
+    "height": 69.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 3
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1038.0,
+    "width": 540.0,
+    "height": 69.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 4
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1134.0,
+    "width": 540.0,
+    "height": 149.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 5
+  },
+  {
+    "type": "unknown_widget",
+    "x": 162.0,
+    "y": 1327.0,
+    "width": 586.0,
+    "height": 80.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
+    "position": 6
+  },
+  {
+    "type": "related_searches",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "botstuff.ULSxyf[0]",
+    "html_signature": "h=\"rs\" div.ULSxyf",
+    "heading_text": "Related searches",
+    "source": "html_botstuff",
+    "position": -1
+  }
+]

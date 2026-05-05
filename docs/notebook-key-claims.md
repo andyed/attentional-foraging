@@ -401,6 +401,114 @@ The LOSO classifier was retrained on `cursor-approach-features-organic.json` (14
 >
 > **Four-class taxonomy under bbox attribution** is reported in NB22's K-bbox-* tier (label distribution shifts: 99.4% of trials see at least one shifted four-class label; 411 trials have shifted CLICKED count due to click reattribution). NB21's M3 classifier was retrained on the new features but uses the same architecture; its taxonomy outputs (deferred candidate / evaluated rejected) need a separate threshold pass for the new score distribution. Threshold values K10/K11 below are pre-cascade and need re-derivation.
 
+### Typed-gapfill K-IDs (post-2026-05-05 cascade; recommended for new analyses)
+
+Re-run on `cursor-approach-features-typed-gapfill.json` (n=18,218 records, 47 participants, 13.0% click rate). The typed_gapfill flavor adds X+Y bbox-aware click attribution and the `is_main_axis_click()` trial filter (231 hard-error trials excluded — 158 dd_right + right_chrome + ~73 no-click). See [`../null-findings/2026-05-05-bbox-y-coverage.md`](../null-findings/2026-05-05-bbox-y-coverage.md). Producer: `scripts/nb21_loso_retrain_typed_gapfill.py`.
+
+| ID | Claim | Value (typed_gapfill) | typed (legacy) | Δ |
+|---|---|---|---|---|
+| **K-bbox-y-1** | Records / participants / click rate | **18,218 / 47 / 13.0%** (2,375 clicks) | 19,774 / 47 / 13.1% | −1,556 records, −0.1 pp |
+| **K-bbox-y-3** | **M3 LOSO AUC** (position + dwell + approach) | **0.856 (per-part std 0.045)** | 0.871 ± 0.041 | **−0.015** |
+| **K-bbox-y-4** | M4 LOSO AUC (approach only) | **0.856** | 0.871 | −0.015 |
+| **K-bbox-y-5** | M2 LOSO AUC (position + dwell) | **0.744** | 0.761 | −0.017 |
+| **K-bbox-y-6** | M1 LOSO AUC (position only) | **0.660** | 0.665 | −0.005 |
+| **K-bbox-y-7** | M3 LOSO AP | **0.533** | 0.549 | −0.016 |
+| **K-bbox-y-8** | Leakage Δ (Random KFold − LOSO) | **+0.001 / +0.001 / +0.001** for M2/M3/M4 | +0.001 / +0.000 / +0.000 | invariant |
+| **K-bbox-y-9** | Per-participant LOSO M3 AUC | **median 0.855, IQR [0.821, 0.895], range [0.745, 0.949]** | median ~0.87 | ~−0.015 |
+| **K-bbox-y-12** | Brier score (M3 OOF) | **0.1487** | 0.1420 | +0.007 |
+
+| **K-bbox-3** annotation | (superseded 2026-05-05: see K-bbox-y-3; bbox Y-pixel coverage fix removes 22.7% silent contamination of approached & clicked records under typed legacy) |
+
+> **Why the AUC dropped 0.015.** The legacy typed `was_clicked` labels included ~22.7% silent mis-attribution (`scripts/audit_cascade_contamination.py`): off-axis clicks (right-rail dd_right, page chrome, far-off-target) were rolled into main-axis AOIs by the Y-band-only attribution rule. Those mis-tagged records aligned with cursor-trajectory geometry (off-axis clicks naturally end at Y inside organic Y-bands, where cursor approach is trivially high) and were therefore *easier* to predict than honest clicks. Removing the contamination via X+Y bbox-aware attribution moves the AUC closer to the honest difficulty. The drop is consistent across M1–M4 (−0.005 to −0.017), confirming the contamination was not concentrated in any one feature subset.
+
+> **Per-etype AUC under typed_gapfill (M3 LOSO):** dd_top 0.913, organic 0.852, native_ad 0.833, paa 0.819, image_pack 0.800, knowledge_panel 0.667, unknown_widget 0.579. KP and unknown_widget are weaker (small N, diverse cursor patterns).
+
+### Typed-gapfill — NB22 four-class population shifts
+
+Producer: `scripts/nb22_four_class_typed_gapfill_delta.py`.
+
+| metric | typed (legacy) | typed_gapfill | Δ |
+|---|---:|---:|---:|
+| total records | 19,774 | 18,218 | −1,556 |
+| `was_clicked=True` | 2,594 | 2,375 | −219 |
+| approached (`min_dist<100`) | 4,862 | 4,511 | −351 |
+| approached & clicked | 1,723 | 1,562 | **−161** |
+| approached non-click | 3,139 | 2,949 | −190 |
+| not-approached | 14,912 | 13,707 | −1,205 |
+| click rate among approached | 35.4 % | 34.6 % | −0.8 pp |
+
+Per-etype `was_clicked=True` shifts: organic −135, native_ad −49, dd_top −26, paa **+4** (genuinely recovered, gap-tight bboxes were missing paa clicks), KP −1, image_pack −7. Pattern is consistent with the cascade thesis: legacy Y-band attribution over-counted main-axis click outcomes; typed_gapfill produces honest counts with a small genuine recovery on tight-bbox widgets.
+
+The full four-class split (deferred / eval-rejected) is now derived under typed_gapfill — gaze-regression labels were re-computed via `scripts/compute_regression_labels.py --attribution typed_gapfill` (output: `scripts/output/approach_threshold_sensitivity/regression_labels_cache_typed_gapfill.json`).
+
+### Typed-gapfill — NB22 four-class taxonomy (full breakdown)
+
+Producer: `scripts/nb22_four_class_typed_gapfill.py`. Class proportions are remarkably stable across the cascade:
+
+| class | typed (legacy) | typed_gapfill | Δ count | typed % | gapfill % |
+|---|---:|---:|---:|---:|---:|
+| **clicked** (was_clicked = True) | 2,594 | 2,375 | −219 | 13.1 % | 13.0 % |
+| **deferred** (approached, non-click, gaze-regressed) | 2,567 | 2,419 | −148 | 13.0 % | 13.3 % |
+| **eval-rejected** (approached, non-click, no regression) | 572 | 530 | −42 | 2.9 % | 2.9 % |
+| **not-approached** (`min_dist >= 100`) | 14,041 | 12,894 | −1,147 | 71.0 % | 70.8 % |
+| total | 19,774 | 18,218 | −1,556 | — | — |
+
+> **Class proportions are invariant under the cascade.** All four classes preserve their share within ±0.3 pp; total population shifts only because of the 158 hard-error trials excluded by `is_main_axis_click()`. The four-class taxonomy is a robustness story under typed_gapfill — the *behavior* the classes capture is preserved, with cleaner click-attribution boundaries.
+
+**Per-etype × class breakdown under typed_gapfill:**
+
+| etype | clicked | deferred | eval-rejected | not-approached |
+|---|---:|---:|---:|---:|
+| organic | 1,886 | 1,341 | 362 | 8,261 |
+| native_ad | 137 | 451 | 79 | 2,561 |
+| dd_top | 245 | 443 | 41 | 793 |
+| image_pack | 49 | 111 | 27 | 580 |
+| paa | 31 | 21 | 7 | 264 |
+| knowledge_panel | 22 | 33 | 8 | 260 |
+| unknown_widget | 3 | 11 | 6 | 116 |
+| top_places | 1 | 4 | 0 | 38 |
+| other_widget | 1 | 4 | 0 | 21 |
+
+Notable: dd_top has nearly twice as many `deferred` as `clicked` (443 / 245 = 1.8×); native_ad has 3.3× more deferred than clicked. The "ad attention without commitment" pattern from the original AdSERP analysis is sharpened under typed_gapfill — **deferred ad records are no longer contaminated by Y-band-misattributed off-axis clicks**.
+
+### Typed-gapfill — NB30 etype × continuous-viewport
+
+Producer: `scripts/nb30_typed_gapfill.py`. Population: approached (`min_dist < 100`) AOIs of etype ∈ {organic, dd_top, native_ad}, n = 4,229 (typed_gapfill bands; gap-fill applied to organics, ads pass through unchanged).
+
+| ID | Claim | typed_gapfill | legacy organic_hybrid | Δ |
+|---|---|---|---|---|
+| **K-bbox-y-NB30-1** | population (3-etype, approached) | 4,229 (organic 2,895; dd_top 715; native_ad 619) | 4,865 (organic 3,383; dd_top 747; native_ad 735) | −636 |
+| **K-bbox-y-NB30-2** | LOPO AUC (click outcome, B + etype + interactions) | **0.7014** | 0.6873 | **+0.014** |
+| **K-bbox-y-NB30-3** | per-etype `max_overlap_frac` slope, organic baseline | **−0.0719** | −0.2785 | **+0.207** |
+| **K-bbox-y-NB30-4** | dd_top × `max_overlap_frac` total slope | **−0.2347** (Δ = −0.1628 from organic) | −0.3867 (Δ = −0.1082) | rel. dissociation strengthens (Δ widens 50 %) |
+| **K-bbox-y-NB30-5** | native_ad × `max_overlap_frac` total slope | **−0.3600** (Δ = −0.2881 from organic) | −0.5146 (Δ = −0.2362) | rel. dissociation strengthens (Δ widens 22 %) |
+
+> **Interpretation.** Under typed_gapfill, the per-etype dissociation in viewport-overlap → click sensitivity strengthens (organic vs ad-etype interaction Δ widens), but the organic *baseline* slope weakens substantially (−0.28 → −0.07). The likely mechanism: gap-fill makes organic bboxes taller, so `max_overlap_frac` (max ratio of bbox visible at any moment) is mechanically smaller and less variable across the organic population — the within-organic signal is compressed even as the cross-etype contrast tightens. **The qualitative finding survives** (organic less viewport-overlap-dependent than ads when clicked) but absolute magnitudes need re-citation under the new flavor for any paper claim.
+
+### Typed-gapfill — NB28 viewport bands × deferred-vs-eval-rejected
+
+Producer: `scripts/nb28_typed_gapfill.py`. Population: approached non-clicked (`min_dist < 100, was_clicked=False`), n = 2,949 (deferred 2,419, eval-rejected 530).
+
+| ID | Claim | typed_gapfill | legacy (absolute) | Δ |
+|---|---|---|---|---|
+| **K-bbox-y-NB28-1** | population (approached ∧ ¬clicked) | 2,949 (def 2,419, rej 530) | (similar shape) | small shifts from gap-fill |
+| **K-bbox-y-NB28-2** | LOSO LR AUC, M4 retreat features only | 0.7908 | 0.796 (M4 alone) | ≈ invariant |
+| **K-bbox-y-NB28-3** | LOSO LR AUC, vt_top/mid/bot bands only | 0.8052 | 0.800 (bands alone) | ≈ invariant |
+| **K-bbox-y-NB28-4** | LOSO LR AUC, vt_any only | 0.7123 | — | new under cascade |
+| **K-bbox-y-NB28-5** | **LOSO LR AUC, M4 + vt_bands (combined)** | **0.8423** | **0.842 ± [0.818, 0.864]** | **≈ invariant** |
+| **K-bbox-y-NB28-6** | LOSO LR AUC, M4 + vt_any | 0.8158 | — | new under cascade |
+
+> **NB28 is invariant under the cascade.** The headline calibration claim — combined M4 retreat + viewport-band features achieve LOSO AUC 0.842 in deferred-vs-eval-rejected discrimination — replicates to **three decimal places** under typed_gapfill (0.8423 vs 0.842 legacy absolute). The signal is local per-AOI behavioral, not bbox-attribution-dependent. This is a robustness story: gap-fill changes which Y pixels belong to which AOI but does not change the underlying viewport-time × cursor-retreat relationship that discriminates deferred from evaluated-rejected.
+
+**Band-time descriptive (deferred-vs-eval-rejected subset):**
+
+| band | median | mean | p10 | p90 |
+|---|---:|---:|---:|---:|
+| any | 18,824 ms | 20,526 | 7,155 | 36,669 |
+| top | 4,132 | 7,054 | 0 | 18,680 |
+| mid | 4,433 | 7,157 | 0 | 19,241 |
+| bot | 183 | 4,773 | 0 | 15,758 |
+
 ---
 
 ### Legacy K-IDs (preserved for cross-reference)

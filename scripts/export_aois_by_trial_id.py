@@ -162,7 +162,8 @@ def rows_organic_hybrid(trial_id, doc_h, scr_h, uid, batch, trial):
     return rows
 
 
-def rows_typed(trial_id, doc_h, scr_h, uid, batch, trial):
+def rows_typed(trial_id, doc_h, scr_h, uid, batch, trial,
+                gapfill: bool = False):
     """HTML+vision typed AOI map (Phase 1+2 of feat/aoi-pipeline-v3-typed).
 
     Emits one row per main-axis card (position >= 0). Off-axis cards
@@ -170,8 +171,16 @@ def rows_typed(trial_id, doc_h, scr_h, uid, batch, trial):
     scroll-axis position. Etype taxonomy: organic, dd_top, native_ad,
     top_places, knowledge_panel, paa, image_pack, related_searches,
     other_widget, unknown_widget.
+
+    When gapfill=True, reads from data/aoi-typed-gapfill/ instead of
+    data/aoi-typed/. The midpoint-split fills inter-result Y gaps so
+    fixations and clicks landing between adjacent results are now
+    attributable. See docs/null-findings/2026-05-05-bbox-y-coverage.md.
     """
-    from data_loader import load_typed_aois
+    if gapfill:
+        from data_loader import load_typed_gapfill_aois as load_typed_aois
+    else:
+        from data_loader import load_typed_aois
     cards = load_typed_aois(trial_id)
     if not cards:
         return []
@@ -227,12 +236,16 @@ def rows_for_trial(trial_id: str, attribution: str) -> list[dict]:
         return rows_organic_hybrid(trial_id, doc_h, scr_h, uid, batch, trial)
     if attribution == "typed":
         return rows_typed(trial_id, doc_h, scr_h, uid, batch, trial)
+    if attribution == "typed_gapfill":
+        return rows_typed(trial_id, doc_h, scr_h, uid, batch, trial,
+                           gapfill=True)
     raise ValueError(f"unknown attribution: {attribution!r}")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--attribution", choices=["absolute", "organic", "organic_hybrid", "typed"],
+    parser.add_argument("--attribution",
+                        choices=["absolute", "organic", "organic_hybrid", "typed", "typed_gapfill"],
                         default="organic_hybrid",
                         help="AOI attribution flavor (default: organic_hybrid).")
     args = parser.parse_args()

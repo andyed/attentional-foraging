@@ -1,26 +1,39 @@
-# AOI Extraction Pipeline (CV bboxes + HTML widget typing)
+# AOI Extraction Pipeline (CV bboxes + HTML widget typing + midpoint-split)
 
 **Stable ID:** M:organic-result-aoi-extraction
-**Status:** current as of 2026-05-04; canonical implementations: `scripts/extract_organic_bboxes.py` (Phase A), `scripts/extract_html_widget_types.py` (Phase B), `scripts/build_typed_aoi_map.py` (Phase C). Applied to the full corpus (2,776 trials, 0 errors).
-**Companion to:** [`attribution-cascade-synthesis.md`](./attribution-cascade-synthesis.md) (downstream impact across K-IDs under all four rank-attribution flavors)
+**Status:** current as of 2026-05-05; canonical public entry point: `scripts/build_aois.py`. Underlying scripts: `extract_organic_bboxes.py` (Phase A), `extract_html_widget_types.py` (Phase B), `build_typed_aoi_map.py` (Phase C), `apply_gapfill_to_existing.py` (Phase D). Applied to the full corpus (2,776 trials).
+**Companion to:** [`attribution-cascade-synthesis.md`](./attribution-cascade-synthesis.md) (rank-attribution flavors and downstream cascade impact) and [`../null-findings/2026-05-05-bbox-y-coverage.md`](../null-findings/2026-05-05-bbox-y-coverage.md) (the audit cascade that produced the midpoint-split mitigation).
+
+---
+
+## Reading guide
+
+This is a long doc. For publication-facing methodology, **read sections TL;DR through §3** — they describe the pipeline end-to-end with citations. Sections **§4 (parameters)** and **§5 (sensitivity tested)** are implementation reference / supplementary detail. The public API is documented in §3.5.
 
 ---
 
 ## TL;DR
 
-AdSERP v1 ships shipped ad bboxes (`native_ad`, `dd_top`, `dd_right`) and full-page screenshots, but no organic-result bboxes, no per-cell carousel subdivision, no widget separation, and no semantic typing of the cards. The pipeline below recovers all four through three phases: **(A)** CV row-projection on the screenshots reconstructs pixel-accurate bboxes; **(B)** BeautifulSoup over the SERP HTML labels each card with one of 13 etypes (organic, dd_top, native_ad, paa, image_pack, knowledge_panel, top_places, related_searches, pagination, dd_right, other_widget, unknown_widget, chrome); **(C)** a spatial join attaches the labels to the bboxes by document order with ad-overlap arbitration and a chrome heuristic.
+AdSERP v1 ships ad bounding boxes (`native_ad`, `dd_top`, `dd_right`) and full-page screenshots, but no organic-result bboxes, no per-cell carousel subdivision, no widget separation, and no semantic typing of the cards. The pipeline below recovers all four through four phases:
 
-Output is per-trial JSON at `data/aoi-typed/<tid>.json` (45,041 entries across 2,776 trials), schema additive to v1's ad-boundary JSON. Four rank-attribution flavors (`absolute`, `organic`, `organic_hybrid`, `typed`) coexist; the canonical post-2026-05-04 primary is **`typed`**.
+- **Phase A — CV row-projection** on the screenshots reconstructs pixel-accurate bboxes for organic results, dropping ad-overlapping cards and bottom-of-page widgets via shipped ad rects + an HTML/gap-anomaly heuristic.
+- **Phase B — HTML widget typing** parses the SERP HTML and labels each card with one of 13 etypes (organic, dd_top, native_ad, paa, image_pack, knowledge_panel, top_places, related_searches, pagination, dd_right, other_widget, unknown_widget, chrome).
+- **Phase C — Spatial join** attaches the labels to the bboxes by document order with ad-overlap arbitration and a chrome heuristic.
+- **Phase D — Midpoint-split gap-fill** (added 2026-05-05) extends adjacent organic bboxes to fill inter-result Y gaps so fixations and clicks landing in those gaps are attributable. **Pragmatic, not principled** — see §3.4.
 
-**Validated against shipped gold.** AdSERP v1's shipped ad bboxes (`native_ad`, `dd_top`, `dd_right`) provide a labeled gold standard for the ad/non-ad partition. The pipeline matches it with **0 disagreements across 38,250 classifications** on 2,776 trials: 0/26,590 Phase A `organic_result` bboxes overlap any shipped ad (Phase A ad-subtraction is clean); F1 = 1.000 on Phase C ad propagation across all three ad etypes; mean IoU = 1.000; no cross-type misclassifications. The deeper non-ad partition (`organic` vs `widget` vs `paa` vs `image_pack`) lacks an external gold and is validated against HTML structure plus visual spot-check. See §5.6 + [`validation-typed-vs-shipped-ads.md`](./validation-typed-vs-shipped-ads.md).
+The canonical public output is per-trial JSON at `data/aoi-typed-gapfill/<tid>.json` and a corpus CSV at `scripts/output/adserp_aois_by_trial_id_typed_gapfill.csv` (37,142 rows × 2,776 trials). The rank-attribution flavor is **`typed_gapfill`**; the legacy flavors (`absolute`, `organic`, `organic_hybrid`, `typed`) remain queryable for cascade audits but are not the public API.
 
-**Visible proof.** The AR replay viewer renders typed AOIs as colored overlay rectangles on the source SERP screenshots: <https://andyed.github.io/approach-retreat/replay/>. Browse the trial index for representative cases of organic, dd_top, native_ad, paa, image_pack, knowledge_panel, top_places, related_searches, and pagination AOIs as they were attributed; e.g., <https://andyed.github.io/approach-retreat/replay/trials/p007-b5-t6.html> (typed widgets) or <https://andyed.github.io/approach-retreat/replay/trials/p047-b1-t3.html> (CLK + DEF + REJ in one SERP).
+**Why screenshot-anchored, not DOM-anchored.** The fixation and cursor streams in AdSERP were recorded against the original screenshots in pixel coordinates. Re-rendering the saved HTML in a 2026 browser drifts 13–45 px from the original layout (Chrome version differences, missing external assets, font drift) — measured empirically on the gh-pages demo (`docs/plan-demo-fix.md`). Therefore **the screenshots are the truth source for geometry**, and the pipeline anchors to them via CV. HTML is used only for structural labels (Phase B) and for the spatial join (Phase C), never for geometry.
+
+**Validated against shipped gold.** AdSERP v1's shipped ad bboxes provide a labeled gold standard for the ad/non-ad partition. The pipeline matches it with **0 disagreements across 38,250 classifications** on 2,776 trials: 0/26,590 Phase A `organic_result` bboxes overlap any shipped ad; F1 = 1.000 on Phase C ad propagation; mean IoU = 1.000. The deeper non-ad partition lacks an external gold and is validated against HTML structure plus visual spot-check. See §5.6 + [`validation-typed-vs-shipped-ads.md`](./validation-typed-vs-shipped-ads.md). An additional alignment audit (`scripts/audit_screenshot_alignment.py`, 2026-05-05) confirms that the gaze and cursor streams are themselves screenshot-aligned: 442 final clicks fall inside shipped ad rects with median signed Y to nearest edge of −84 px (deep inside), near-edge ratio 4:1 inside vs outside.
+
+**Visible proof.** The AR replay viewer renders typed AOIs as colored overlay rectangles on the source SERP screenshots: <https://andyed.github.io/approach-retreat/replay/>. e.g., <https://andyed.github.io/approach-retreat/replay/trials/p007-b5-t6.html> (typed widgets) or <https://andyed.github.io/approach-retreat/replay/trials/p047-b1-t3.html> (clicked + deferred + evaluated-rejected in one SERP).
 
 ---
 
 ## 1. The rule, in one line
 
-For each trial, **(A)** detect content-bearing card runs in the SERP main column by row-projection on the grayscale screenshot (`std(screenshot[y, COL_X:COL_RIGHT]) >= ROW_STD_THRESHOLD`), drop runs that overlap shipped ad rectangles, drop runs at or below the trial's widget y-floor; **(B)** parse the SERP HTML and type each card via an 8-tier priority chain (heading text → structural descendants → `data-attrid` → class → fallback); **(C)** join the typed list onto the bbox geometry by kth-bbox-↔-kth-HTML-card document order with ≥30% asymmetric ad-overlap arbitration; sweep deep short cv-only entries to `chrome` (off-axis); assign positions 0..N by y. Off-axis cards (right-rail, bottom-of-page widgets, dd_right, chrome) get `position = −1`.
+For each trial: **(A)** detect content-bearing card runs in the SERP main column by row-projection on the grayscale screenshot (`std(screenshot[y, COL_X:COL_RIGHT]) >= ROW_STD_THRESHOLD`), drop runs that overlap shipped ad rectangles, drop runs at or below the trial's widget y-floor; **(B)** parse the SERP HTML and type each card via an 8-tier priority chain (heading text → structural descendants → `data-attrid` → class → fallback); **(C)** join the typed list onto the bbox geometry by kth-bbox-↔-kth-HTML-card document order with ≥30 % asymmetric ad-overlap arbitration; sweep deep short cv-only entries to `chrome` (off-axis); assign positions 0..N by y; **(D)** extend each adjacent organic-bbox pair so the upper extends down to the inter-result midpoint and the lower extends up to the same midpoint, never crossing an ad/widget rectangle. Off-axis cards (right-rail, bottom-of-page widgets, dd_right, chrome) get `position = −1` and are not part of the rank axis.
 
 ## 2. Why this rule
 
@@ -34,8 +47,9 @@ Phase A (row-projection on rendered pixels) gets pixel-accurate geometry without
 
 Earlier-cascade alternatives the pipeline replaced:
 
-- The v2 `widget` filter is a **bottom-of-page-only** signal (h3 heading regex + y-gap heuristic). It correctly excludes `related_searches` from the organic-rank denominator but pools all widget types under one bucket and lets inline / mid-page widgets (image packs, knowledge panels, top_places, PAA) pass through as `organic_result` entries with rank numbers — mis-attributing their ~7% click rate as if it were organic-result behavior. Phase B's per-card typing fixes this.
+- The v2 `widget` filter is a **bottom-of-page-only** signal (h3 heading regex + y-gap heuristic). It correctly excludes `related_searches` from the organic-rank denominator but pools all widget types under one bucket and lets inline / mid-page widgets (image packs, knowledge panels, top_places, PAA) pass through as `organic_result` entries with rank numbers — mis-attributing their ~7 % click rate as if it were organic-result behavior. Phase B's per-card typing fixes this.
 - A spatial-only HTML↔bbox match (nearest-y, IoU) requires both to live in the same coordinate space, which they don't. Document order is the only stable axis.
+- Tight Phase A bboxes (without Phase D gap-fill) leave a Y-pixel gap between adjacent organic results — typically 5–60 px of inter-result whitespace where users' fixations and clicks frequently land (link-padding, near-but-not-on-result clicks). Without midpoint-split, those signals are silently dropped from per-AOI attribution. Phase D recovers them; the audit cascade that motivated it is documented in [`../null-findings/2026-05-05-bbox-y-coverage.md`](../null-findings/2026-05-05-bbox-y-coverage.md).
 
 ## 3. Where this lives in code
 
@@ -225,7 +239,56 @@ Phase C output schema (per-trial JSON at `data/aoi-typed/<tid>.json`):
 | `html_only` | 0.4% | HTML had a card CV didn't bbox; no geometry, position=-1. |
 | `html_rhs` | 0.2% | Right-rail KP from `#rhs`; off-axis. |
 
+### Phase D — Midpoint-split gap-fill
+
+| Function | File | Role |
+|---|---|---|
+| `apply_midpoint_split(organics, obstacles)` | `scripts/extract_organic_bboxes.py` (after `extract_trial`) | Pure function: takes a list of organic bboxes and obstacle rects (widgets, ads), returns a new list with adjacent organics extended to meet at midpoint. |
+| `assert_no_y_overlap(organics)` | same | Sanity check: no two organic bboxes overlap in Y after the split. |
+
+For a sorted list of organic bboxes, each adjacent pair's inter-result gap is divided at its midpoint (`(upper.bottom_y + lower.top_y) // 2`); the upper bbox's `bottom_y` extends to (midpoint − 1) and the lower's `top_y` extends up to (midpoint + 1). When an obstacle rect (widget, dd_top, native_ad, dd_right) sits inside the gap, the split is clamped to the obstacle's boundary so organics never cross an ad/widget. The first organic's top and the last organic's bottom are not extended (would otherwise consume page chrome / pagination).
+
+Run via `scripts/apply_gapfill_to_existing.py` for the no-screenshot path (operates on Phase A JSON), or via `extract_organic_bboxes.py --flavor organic_gapfill` for the integrated path. Output goes to `AdSERP/data/organic-boundary-data-gapfill/`.
+
+**Pragmatic, not principled.** The midpoint heuristic is **not** the right way to identify the boundary between two adjacent results — that's a DOM/CSS question we have not solved. The midpoint is a defensible, reproducible choice that recovers signal previously dropped from per-AOI attribution. The principled alternative (DOM-anchored bbox extraction) is named as future work but blocked by the empirical lossiness ceiling: re-rendering 2022 SERP HTML in 2026 produces 13–45 px layout drift (`docs/plan-demo-fix.md`), comparable to the gap sizes the midpoint-split is filling.
+
+### 3.4 Click attribution under typed_gapfill
+
+Click attribution under the public flavor is `data_loader.attribute_click_to_typed_gapfill(click_x, click_y, trial_id, x_tol=5, y_tol=10)`. The rule:
+
+1. **Pass 1 — strict containment.** If any main-axis AOI bbox strictly contains `(click_x, click_y)`, return that AOI (smallest-area on overlap).
+2. **Pass 2 — tolerance fallback.** Inflate each main-axis AOI by `±x_tol` X / `±y_tol` Y; pick the smallest-area AOI whose inflated bbox contains the click.
+
+Default tolerance is ±5 X / ±10 Y to capture clicks landing on link-padding just outside the row-projection-tight bbox edges. Most inter-result gaps are absorbed by Phase D itself, so the tolerance is small.
+
+The trial-level filter `data_loader.is_main_axis_click(trial_id)` returns `True` iff the trial's final click attributes to a main-axis AOI under the rule above. Producers that compute click-outcome features drop trials where this returns `False` (n = 231 in the AdSERP corpus: 158 hard-error trials with off-axis clicks — dd_right, page chrome, far-off-target — plus ~73 with no clicks recorded or pathological click coordinates).
+
+The legacy click-attribution helpers (`click_to_position`, `attribute_click_to_organic`, `attribute_click_to_typed`) are deprecated as of 2026-05-05 and remain callable only for cascade audits against pre-existing K-claims. They use Y-band-only assignment with no X check and silently mis-attributed off-axis clicks to main-axis AOIs (`scripts/audit_cascade_contamination.py`: 22.7 % contamination of `approached & clicked` records under the typed flavor before this fix).
+
+### 3.5 Public API
+
+For external users and reproducibility, the canonical public entry point is `scripts/build_aois.py`:
+
+```bash
+# Full corpus, default flavor (typed_gapfill):
+.venv/bin/python scripts/build_aois.py --all
+
+# Single trial:
+.venv/bin/python scripts/build_aois.py --trial p005-b2-t2
+
+# Skip CV bbox extraction (use cached organic-boundary-data/):
+.venv/bin/python scripts/build_aois.py --all --skip-extract
+```
+
+This wraps the four phases (A → B → C → D) and the CSV export into one call. The legacy flavors (`organic`, `organic_hybrid`, `typed`, `absolute`) remain accessible via the underlying scripts directly but are not exposed by the public entry point — they are documented for cascade audits in [`attribution-cascade-synthesis.md §1`](./attribution-cascade-synthesis.md).
+
+---
+
 ## 4. Parameters
+
+> **The remainder of this document is implementation reference / supplementary detail.** Publication-facing readers can stop here; the pipeline is fully described in §1–§3 above. The sections below document parameter choices, sensitivity tests, and validation results for reproducibility.
+
+
 
 All Phase A parameters are written to `_meta.params` per trial so a downstream consumer can verify the configuration that produced any given output.
 

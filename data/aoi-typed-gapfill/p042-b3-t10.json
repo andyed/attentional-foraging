@@ -1,0 +1,122 @@
+[
+  {
+    "type": "dd_top",
+    "x": 162.0,
+    "y": 158.0,
+    "width": 586.0,
+    "height": 351.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 0
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 525.0,
+    "width": 586.0,
+    "height": 243.0,
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "SZYMANOWSKI,KAROL - Complete Piano Music",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 770.0,
+    "width": 586.0,
+    "height": 114.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Karol Szymanowski: Complete Piano Music - Nimbus: NI1750",
+    "source": "html_rso+cv_bbox",
+    "position": 2
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 886.0,
+    "width": 586.0,
+    "height": 354.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Karol Szymanowski, Martin Jones \u2013 Complete Piano Music ...",
+    "source": "html_rso+cv_bbox",
+    "position": 3
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1242.0,
+    "width": 586.0,
+    "height": 114.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "List of works by Karol Szymanowski - IMSLP",
+    "source": "html_rso+cv_bbox",
+    "position": 4
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1358.0,
+    "width": 586.0,
+    "height": 113.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Szymanowski: Complete Music for Violin and Piano - Brilliant ...",
+    "source": "html_rso+cv_bbox",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1473.0,
+    "width": 586.0,
+    "height": 114.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Szymanowski The Complete Piano Music - Nimbus Records",
+    "source": "html_rso+cv_bbox",
+    "position": 6
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1589.0,
+    "width": 586.0,
+    "height": 92.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Szymanowski, K.: Piano Music (Complete) - Chandos Records",
+    "source": "html_rso+cv_bbox",
+    "position": 7
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1683.0,
+    "width": 586.0,
+    "height": 118.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Karol Szymanowski - the complete piano music (CD)",
+    "source": "html_rso+cv_bbox",
+    "position": 8
+  },
+  {
+    "type": "pagination",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|6|7|8|Next",
+    "source": "html_botstuff",
+    "position": -1
+  }
+]

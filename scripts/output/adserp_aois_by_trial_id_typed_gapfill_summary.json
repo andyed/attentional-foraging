@@ -1,0 +1,25 @@
+{
+  "attribution": "typed_gapfill",
+  "n_trials": 2776,
+  "n_aoi_rows": 37174,
+  "n_by_etype": {
+    "dd_top": 1582,
+    "image_pack": 1584,
+    "knowledge_panel": 746,
+    "native_ad": 9217,
+    "organic": 22354,
+    "other_widget": 50,
+    "paa": 769,
+    "top_places": 84,
+    "unknown_widget": 788
+  },
+  "trial_id_format": "p{PPP}-b{B}-t{T} (zero-padded uid, 1-indexed batch/trial)",
+  "id_regex": "^p(\\d{3})-b(\\d+)-t(\\d+)$",
+  "coordinate_system": "page-space pixels (document coordinates, not viewport)",
+  "result_column_x_range": [
+    162,
+    702
+  ],
+  "n_skipped_trials": 0,
+  "schema_note": "rank is display-order within the chosen attribution; etype is the AOI kind (organic / dd_top / native_ad / ad); organic_rank is the within-organic position number (null for non-organics)."
+}

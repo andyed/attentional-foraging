@@ -657,7 +657,16 @@ def organic_aoi_tops(trial_id):
 
 
 def attribute_click_to_organic(click_y, trial_id, tolerance_px=30):
-    """Attribute a click y-coordinate to an organic AOI position with tolerance.
+    """[DEPRECATED 2026-05-05] Legacy organic-only Y-snap click attribution.
+
+    Use `attribute_click_to_typed_gapfill` instead. This helper is Y-only
+    (no X check), which silently mis-attributes off-axis clicks. Retained
+    for cascade audits against pre-2026-05-05 K-claims; not the public
+    API. See docs/null-findings/2026-05-05-bbox-y-coverage.md.
+
+    --- legacy docstring follows ---
+
+    Attribute a click y-coordinate to an organic AOI position with tolerance.
 
     Bbox AOIs are extracted tight to visual content. Clicks frequently land
     in the small visual gap between adjacent card rectangles (~10–15 px
@@ -805,7 +814,18 @@ def typed_aoi_etypes(trial_id):
 
 
 def attribute_click_to_typed(click_y, trial_id, tolerance_px=30):
-    """Attribute a click y-coordinate to a typed AOI position with tolerance.
+    """[DEPRECATED 2026-05-05] Legacy Y-only typed click attribution.
+
+    Use `attribute_click_to_typed_gapfill` instead. This helper is Y-only
+    (no X check), which silently mis-attributes off-axis clicks (right-rail
+    dd_right, page chrome). The 22.7 % `approached & clicked` contamination
+    finding (`scripts/audit_cascade_contamination.py`) was driven by this
+    helper. Retained for cascade audits against pre-2026-05-05 K-claims;
+    not the public API. See docs/null-findings/2026-05-05-bbox-y-coverage.md.
+
+    --- legacy docstring follows ---
+
+    Attribute a click y-coordinate to a typed AOI position with tolerance.
 
     Mirrors `attribute_click_to_organic` but uses the typed AOI map. Returns
     a (position, etype) tuple, or None if the click is genuinely off-AOI
@@ -849,6 +869,138 @@ def attribute_click_to_typed(click_y, trial_id, tolerance_px=30):
     if best_dist <= tolerance_px:
         return best
     return None
+
+
+# ── Typed AOI gapfill helpers (post-2026-05-05 cascade) ──────────────────
+#
+# The `typed_gapfill` flavor mirrors `typed` but reads bboxes from
+# `data/aoi-typed-gapfill/` where organic bboxes have been midpoint-split
+# to fill inter-result Y gaps. See
+# docs/null-findings/2026-05-05-bbox-y-coverage.md for context.
+#
+# Pragmatic, not principled: the midpoint heuristic recovers signal that
+# was being silently dropped under tight `typed` bboxes; it does not claim
+# to identify the "true" boundary between adjacent results (a DOM/CSS
+# question). Both flavors stay queryable side-by-side.
+
+
+def _typed_gapfill_aoi_path(trial_id):
+    project_root = DATA_DIR.parent.parent if DATA_DIR.name == 'data' else DATA_DIR.parent
+    return project_root / 'data' / 'aoi-typed-gapfill' / f'{trial_id}.json'
+
+
+def load_typed_gapfill_aois(trial_id):
+    """Load the typed_gapfill AOI list for a trial. Returns [] if missing."""
+    p = _typed_gapfill_aoi_path(trial_id)
+    if not p.exists():
+        return []
+    return json.load(open(p))
+
+
+def typed_gapfill_aoi_bands(trial_id):
+    """Return list of (y_top, y_bottom, type) tuples for cards on the main
+    scroll axis (position >= 0), sorted by display position. Mirror of
+    `typed_aoi_bands` over the gapfilled AOI map."""
+    cards = load_typed_gapfill_aois(trial_id)
+    main = [c for c in cards if c.get('position', -1) >= 0
+            and c.get('y') is not None and c.get('height') is not None]
+    main.sort(key=lambda c: c['position'])
+    return [(int(c['y']), int(c['y']) + int(c['height']), c['type']) for c in main]
+
+
+def typed_gapfill_aoi_tops(trial_id):
+    """Mirror of `typed_aoi_tops` over gapfilled AOIs."""
+    return [b[0] for b in typed_gapfill_aoi_bands(trial_id)]
+
+
+def typed_gapfill_aoi_etypes(trial_id):
+    """Mirror of `typed_aoi_etypes` over gapfilled AOIs."""
+    return [b[2] for b in typed_gapfill_aoi_bands(trial_id)]
+
+
+def attribute_click_to_typed_gapfill(
+    click_x, click_y, trial_id, x_tol=5, y_tol=10
+):
+    """X+Y bbox-aware click attribution under typed_gapfill.
+
+    Unlike `attribute_click_to_typed`, this enforces an X check (clicks
+    outside the result column don't snap to in-column AOIs). The existing
+    Y-only attribution silently rolled right-rail and chrome clicks into
+    organic; this fix is the core motivation of the gapfill cascade.
+
+    Strict containment with tolerance: an AOI's bbox is inflated by
+    (x_tol, y_tol) symmetrically; on overlap, prefer the smaller-area AOI.
+
+    Args:
+        click_x: page-space click x-coordinate.
+        click_y: page-space click y-coordinate.
+        trial_id: e.g. 'p004-b1-t1'.
+        x_tol: X tolerance for link-padding clicks. Default 5 px.
+        y_tol: Y tolerance for link-padding clicks. Default 10 px.
+            (Most inter-result gaps are absorbed by the gapfill itself.)
+
+    Returns:
+        (int position, str etype) or None.
+    """
+    cards = load_typed_gapfill_aois(trial_id)
+    main = [c for c in cards if c.get('position', -1) >= 0
+            and c.get('y') is not None and c.get('height') is not None
+            and c.get('x') is not None and c.get('width') is not None]
+    if not main:
+        return None
+
+    # Pass 1: strict containment (zero tolerance). If any AOI strictly
+    # contains the click, prefer the smallest-area one (mostly relevant on
+    # the rare case of widget-within-organic overlap).
+    best_strict = None
+    best_strict_area = float('inf')
+    for c in main:
+        x, y, w, h = c['x'], c['y'], c['width'], c['height']
+        if x <= click_x <= x + w and y <= click_y <= y + h:
+            area = max(1.0, w * h)
+            if area < best_strict_area:
+                best_strict_area = area
+                best_strict = (c['position'], c['type'])
+    if best_strict is not None:
+        return best_strict
+
+    # Pass 2: tolerance fallback. Pick the AOI whose inflated bbox contains
+    # the click; on overlap prefer the smallest-area AOI.
+    best = None
+    best_area = float('inf')
+    for c in main:
+        x, y, w, h = c['x'], c['y'], c['width'], c['height']
+        in_x = (x - x_tol) <= click_x <= (x + w + x_tol)
+        in_y = (y - y_tol) <= click_y <= (y + h + y_tol)
+        if in_x and in_y:
+            area = max(1.0, w * h)
+            if area < best_area:
+                best_area = area
+                best = (c['position'], c['type'])
+    return best
+
+
+def is_main_axis_click(trial_id):
+    """True iff the trial's final click attributes to a main-axis AOI under
+    typed_gapfill (with default tolerance). False for the 158 hard-error
+    trials (dd_right, right_chrome, off-target where click is in no
+    main-axis bbox).
+
+    Use as a trial-level filter for any click-outcome analysis under
+    typed_gapfill: contaminated trials have no defensible main-axis click
+    target and should be dropped from `was_clicked` populations.
+    """
+    try:
+        _, _, clicks = load_mouse_events(trial_id)
+    except Exception:
+        return False
+    if not clicks:
+        return False
+    final = clicks[-1]
+    if len(final) < 3:
+        return False
+    cx, cy = float(final[1]), float(final[2])
+    return attribute_click_to_typed_gapfill(cx, cy, trial_id) is not None
 
 
 # ── Legacy aliases (retained for backward compatibility) ──────────────────
@@ -922,7 +1074,22 @@ def get_click_page_xy(clicks):
 
 
 def click_to_position(clicks, tops, n_results):
-    """Map the last click to a result position via its page-space Y.
+    """[DEPRECATED 2026-05-05] Legacy Y-band-only click attribution.
+
+    Use `attribute_click_to_typed_gapfill(click_x, click_y, trial_id)`
+    instead. This helper does Y-bisect against AOI tops with NO X CHECK
+    and assigns clicks anywhere in the document to whatever AOI shares
+    their Y. It silently mis-attributes off-axis clicks (right-rail
+    dd_right ads, page chrome, far-off-target) to main-axis AOIs and is
+    the root cause of the 22.7 % contamination found by
+    `scripts/audit_cascade_contamination.py`. Retained for cascade audits
+    against pre-2026-05-05 K-claims; not the public API.
+
+    See docs/null-findings/2026-05-05-bbox-y-coverage.md.
+
+    --- legacy docstring follows ---
+
+    Map the last click to a result position via its page-space Y.
 
     The coordinate-safe replacement for `assign_fixation_to_position(
     clicks[-1][2], click_scroll, tops, n_results)` — which is WRONG because

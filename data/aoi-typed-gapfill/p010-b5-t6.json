@@ -1,0 +1,110 @@
+[
+  {
+    "type": "dd_top",
+    "x": 162.0,
+    "y": 158.0,
+    "width": 587.0,
+    "height": 351.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 0
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 525.0,
+    "width": 586.0,
+    "height": 101.0,
+    "html_handle": "rso[0]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "The Isphere Handheld Massager - Amazon UK",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 628.0,
+    "width": 586.0,
+    "height": 119.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "The Isphere Handheld Massager - Amazon.ae",
+    "source": "html_rso+cv_bbox",
+    "position": 2
+  },
+  {
+    "type": "image_pack",
+    "x": 162.0,
+    "y": 749.0,
+    "width": 586.0,
+    "height": 245.0,
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy massera the isphere handheld massager",
+    "source": "html_rso+cv_bbox",
+    "position": 3
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 996.0,
+    "width": 586.0,
+    "height": 137.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "The Isphere Handheld Massager by Massera - Health",
+    "source": "html_rso+cv_bbox",
+    "position": 4
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1135.0,
+    "width": 586.0,
+    "height": 99.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "The Isphere Handheld Massager - Oman | desertcart",
+    "source": "html_rso+cv_bbox",
+    "position": 5
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1265.0,
+    "width": 540.0,
+    "height": 69.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 6
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1360.0,
+    "width": 540.0,
+    "height": 89.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 7
+  },
+  {
+    "type": "native_ad",
+    "x": 162.0,
+    "y": 1476.0,
+    "width": 540.0,
+    "height": 128.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "ad_only",
+    "position": 8
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 133.0,
+    "width": 586.0,
+    "height": 200.0,
+    "html_handle": "rso[0]",
+    "html_signature": "div.g",
+    "heading_text": "Amazon.com | GAMAGO 45 Record Coasters - Amazon.com",
+    "source": "html_rso+cv_bbox",
+    "position": 0
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 335.0,
+    "width": 586.0,
+    "height": 99.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Compra 45 Record Coasters (By GAMAGO) by ... - Amazon.es",
+    "source": "html_rso+cv_bbox",
+    "position": 1
+  },
+  {
+    "type": "image_pack",
+    "x": 162.0,
+    "y": 436.0,
+    "width": 586.0,
+    "height": 286.0,
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy gamago 45 record coasters",
+    "source": "html_rso+cv_bbox",
+    "position": 2
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 724.0,
+    "width": 586.0,
+    "height": 293.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.(no class)",
+    "heading_text": "45 Record Coasters By GAMAGO for sale online - eBay",
+    "source": "html_rso+cv_bbox",
+    "position": 3
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1019.0,
+    "width": 586.0,
+    "height": 138.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "45 Record Coasters (By GAMAGO) - Gadget Flow",
+    "source": "html_rso+cv_bbox",
+    "position": 4
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1159.0,
+    "width": 586.0,
+    "height": 134.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "GAMAGO 45 Record Coasters (4-Pack) | Music & Arts",
+    "source": "html_rso+cv_bbox",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1295.0,
+    "width": 586.0,
+    "height": 115.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "GAMAGO 45 RECORD Coasters - Funny Coasters - Fun for ...",
+    "source": "html_rso+cv_bbox",
+    "position": 6
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1412.0,
+    "width": 586.0,
+    "height": 114.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "45 Record Coasters - NMR Brands",
+    "source": "html_rso+cv_bbox",
+    "position": 7
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1528.0,
+    "width": 586.0,
+    "height": 98.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "45 Record Coasters GAMAGO http://www.amazon.com/dp ...",
+    "source": "html_rso+cv_bbox",
+    "position": 8
+  },
+  {
+    "type": "pagination",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "botstuff.nav[0]",
+    "html_signature": "div[role=navigation] in botstuff",
+    "heading_text": "Page navigation|1|2|3|4|5|6|Next",
+    "source": "html_botstuff",
+    "position": -1
+  }
+]

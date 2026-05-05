@@ -150,6 +150,25 @@ def compute_approach_features(trial_id, attribution="absolute"):
         tops = tops_list
         n_results = len(tops_list)
         etypes = typed_aoi_etypes(trial_id)
+    elif attribution == "typed_gapfill":
+        # Midpoint-split typed AOI map. See
+        # docs/null-findings/2026-05-05-bbox-y-coverage.md.
+        from data_loader import (
+            typed_gapfill_aoi_tops, typed_gapfill_aoi_etypes,
+            is_main_axis_click,
+        )
+        # Trial-level filter: drop the 158 hard-error trials where the
+        # final click is not on a main-axis AOI under typed_gapfill
+        # (dd_right, right_chrome, off-target). Returning None here causes
+        # the trial to be skipped from the output entirely.
+        if not is_main_axis_click(trial_id):
+            return None
+        tops_list = typed_gapfill_aoi_tops(trial_id)
+        if not tops_list:
+            return None
+        tops = tops_list
+        n_results = len(tops_list)
+        etypes = typed_gapfill_aoi_etypes(trial_id)
     else:
         serp = extract_serp_results(trial_id)
         n_results = len(serp) if serp else 10
@@ -170,7 +189,25 @@ def compute_approach_features(trial_id, attribution="absolute"):
     mouse_xs = np.array([m[1] for m in mouse_timeline], dtype=float)
     mouse_ys = np.array([m[2] for m in mouse_timeline], dtype=float)
 
-    click_pos = click_to_position(clicks, tops, n_results)
+    if attribution == "typed_gapfill":
+        # X+Y bbox-aware click attribution — the core fix for the 22.7%
+        # contamination by Y-band-only attribution. Falls back to Y-band
+        # via click_to_position only when the bbox-aware attribution
+        # returns None (which shouldn't happen for is_main_axis_click==True
+        # trials, but we keep the fallback to avoid silent skips).
+        from data_loader import attribute_click_to_typed_gapfill
+        if clicks:
+            final = clicks[-1]
+            if len(final) >= 3:
+                cx, cy = float(final[1]), float(final[2])
+                attrib = attribute_click_to_typed_gapfill(cx, cy, trial_id)
+                click_pos = attrib[0] if attrib is not None else None
+            else:
+                click_pos = None
+        else:
+            click_pos = None
+    else:
+        click_pos = click_to_position(clicks, tops, n_results)
 
     fix_by_pos = defaultdict(list)
     for fix in fixations:
@@ -290,13 +327,19 @@ def compute_approach_features(trial_id, attribution="absolute"):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--attribution", choices=["absolute", "organic", "organic_hybrid", "typed"], default="organic")
+    parser.add_argument(
+        "--attribution",
+        choices=["absolute", "organic", "organic_hybrid", "typed", "typed_gapfill"],
+        default="organic",
+    )
     parser.add_argument("--output", "-o", help="Output JSON path (default depends on attribution)")
     parser.add_argument("--trial", help="Single trial only (for testing)")
     args = parser.parse_args()
 
     if args.output:
         out_path = Path(args.output)
+    elif args.attribution == "typed_gapfill":
+        out_path = DATA_DIR / "cursor-approach-features-typed-gapfill.json"
     elif args.attribution == "typed":
         out_path = DATA_DIR / "cursor-approach-features-typed.json"
     elif args.attribution == "organic_hybrid":

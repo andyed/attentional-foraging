@@ -39,7 +39,8 @@ The cascade now spans four rank-attribution flavors. Every quantitative claim de
 | **`absolute`** | Legacy h3 + ads pooled, band-estimated AOIs (pre-2026-05-01). | `--attribution absolute` | `*.json` (legacy filenames) |
 | **`organic`** | CV-extracted bbox organics only, ads excluded. | `--attribution organic` | `*-organic.json` |
 | **`organic_hybrid`** | bbox organics + dd_top + native_ad in display order, etype-tagged per-record (dd_right excluded). Deployment-aware variant; **prior post-cascade primary**. | `--attribution organic_hybrid` | `*-organic-hybrid.json` |
-| **`typed`** *(2026-05-04)* | HTML+vision joint widget typing across all SERP cards in display order. Etype taxonomy: organic, dd_top, native_ad, dd_right (off-axis), top_places, knowledge_panel, paa, image_pack, related_searches (off-axis), other_widget, unknown_widget, chrome (off-axis). **Current post-cascade primary.** | `--attribution typed` | `*-typed.json` |
+| **`typed`** *(2026-05-04)* | HTML+vision joint widget typing across all SERP cards in display order. Etype taxonomy: organic, dd_top, native_ad, dd_right (off-axis), top_places, knowledge_panel, paa, image_pack, related_searches (off-axis), other_widget, unknown_widget, chrome (off-axis). | `--attribution typed` | `*-typed.json` |
+| **`typed_gapfill`** *(2026-05-05)* | `typed` + midpoint-split applied to organic bboxes to fill inter-result Y gaps, plus X+Y bbox-aware click attribution and an `is_main_axis_click()` trial-level filter. **Current post-cascade primary** for click-outcome analysis. | `--attribution typed_gapfill` | `*-typed-gapfill.json` |
 
 Three carve-outs for tagging:
 - **`rank-type-N/A`** — pure cursor-only metrics on a single-AOI WILD surface (e.g., `[WILD, attcur]`); JS↔Python parity tests; time-series with no AOI-rank structure.
@@ -58,7 +59,41 @@ The `feat/aoi-pipeline-v3-typed` branch introduced a fourth flavor that supersed
 
 3. **Cross-lab transfer.** Widgets like Top Places (74 trials) consume substantial pre-scroll budget but were invisible to the prior `organic_hybrid` mapping. The typed AOI export at `scripts/output/adserp_aois_by_trial_id_typed.{csv,jsonl}` (37,142 rows × 2,776 trials, 9 etypes) replaces the prior `*_organic_hybrid.{csv,jsonl}` for cross-lab sharing — the CSV / JSONL schemas remain compatible (one row per main-axis card; etype field carries the new taxonomy).
 
-**`organic` and `organic_hybrid` remain canonical for cited claims** generated under those flavors; the four flavors coexist. New work should default to `typed`.
+**`organic` and `organic_hybrid` remain canonical for cited claims** generated under those flavors; the four flavors coexist. New work should default to `typed_gapfill` (see §1.06 below for the 2026-05-05 cascade); `typed` remains queryable side-by-side.
+
+## §1.06 Why `typed_gapfill` is the current post-cascade primary (2026-05-05 cascade)
+
+The `bbox-y-coverage-fix` branch introduced a fifth flavor that supersedes `typed` as the recommended primary for click-outcome analysis. This is a **pragmatic post-processing modifier on `organic` / `typed`, not an independent attribution scheme.** The motivation, audit trail, and limitations are documented in [`docs/null-findings/2026-05-05-bbox-y-coverage.md`](../null-findings/2026-05-05-bbox-y-coverage.md).
+
+**What `typed_gapfill` changes vs `typed`:**
+
+1. **Midpoint-split on organic bboxes.** Each inter-result Y gap is divided at its midpoint; the upper organic's `bottom_y` extends to (midpoint − 1) and the lower organic's `top_y` extends up to (midpoint + 1). Every Y pixel between the first organic's top and the last organic's bottom belongs to exactly one bbox. Splits are clamped where ad/widget rectangles sit in the gap. dd_top, native_ad, dd_right, paa, knowledge_panel, image_pack, top_places, and other widget rectangles pass through unchanged.
+
+2. **X+Y bbox-aware click attribution.** The legacy `data_loader.click_to_position` used Y-band-only assignment (no X check), silently rolling right-rail dd_right ads, page chrome, and far-off-target clicks into whatever organic shared their Y. Under `typed_gapfill`, click attribution requires X *and* Y containment in a main-axis AOI bbox (with ±5 px X / ±10 px Y tolerance for link-padding). The new helper is `data_loader.attribute_click_to_typed_gapfill`.
+
+3. **Hard-error trial filter.** The 158 dd_right + right_chrome + far-off-target trials whose final click is genuinely off-axis are filtered at the consumer via `data_loader.is_main_axis_click(trial_id)`. Producers that compute click-outcome features (`compute_cursor_approach_features.py --attribution typed_gapfill`) drop these trials entirely. In practice 231 trials are excluded (158 hard-error + ~73 no-click / pathological).
+
+**Headline empirical shifts (typed → typed_gapfill):**
+
+- AllSERP descriptives (`scripts/output/allserp_descriptives_gapfill/`): +155 clicks attributed (78 % → 89 % of trial-clicks); organic fixated 52.7 → 55.6 %; paa fixated 32.8 → 40.6 %.
+- Cursor-approach features (`AdSERP/data/cursor-approach-features-typed-gapfill.json`): `was_clicked=True` shifts −219 (organic −135, native_ad −49, dd_top −26, paa **+4**); 22.7 % of `approached & clicked` records under `typed` came from contaminated trials.
+
+**Pragmatic, not principled.** The midpoint-split heuristic recovers signal previously dropped, but it is **not** the right way to identify the boundary between two adjacent results. The principled alternative — DOM-anchored bbox extraction using the link-element rendered geometry from `AdSERP/data/serps/<tid>.html` — is named as future work and not implemented in this cascade. The legacy `typed` flavor stays queryable and canonical for any K-claim generated under it.
+
+**Audit trail (cite-ready for AllSERP resource paper):**
+
+- `scripts/audit_unattributed_clicks.py` — 690 / 2,774 final clicks unattributed under tight bboxes (75.1 %), 80 % within ±10 px Y of an organic edge.
+- `scripts/audit_dd_right.py` — 67 final clicks (2.41 %) on right-rail dd_right; 861 dd_right rectangles in corpus.
+- `scripts/audit_cascade_contamination.py` — 22.7 % of `approached & clicked` records contaminated; 99.6 % of unattributed clicks silently mis-attributed by Y-band rule; cross-references AR replay set.
+- `scripts/audit_calibration_bias.py` — refutes the calibration-bias hypothesis (clicks downward, fixations upward, opposite directions).
+
+**Cascade-affected K-claims are landed.** K-bbox-y-# rows shipped for NB21 (LOSO click prediction), NB22 (four-class taxonomy + full per-etype breakdown), NB28 (viewport bands × deferred-vs-eval-rejected), and NB30 (etype × viewport dissociation). Legacy K-bbox-# rows get annotated `(superseded 2026-05-05: see K-bbox-y-#; bbox Y-pixel coverage fix)` per the cascade rule. **K-IDs are never renumbered**; the legacy and gapfill rows coexist. The gaze-regression-label cache was re-derived under typed_gapfill (`regression_labels_cache_typed_gapfill.json`); regressed-vs-not proportions match legacy within 0.4 pp, confirming the four-class taxonomy is a robustness story under the cascade.
+
+**Headline shifts (typed → typed_gapfill):**
+- NB21 M3 LOSO AUC: 0.871 → 0.856 (Δ = −0.015) — drop reflects removal of 22.7 % silent contamination from Y-band attribution.
+- NB22 approached & clicked: 1,723 → 1,562 (−161); but legacy population had ~391 contaminated — net honest records gained ≈ +230.
+- NB30 LOPO AUC: 0.687 → 0.701 (Δ = +0.014) — modest improvement on a smaller, cleaner population. Per-etype dissociation tightens (interaction Δ widens 22–50 %); organic baseline slope weakens mechanically (taller bboxes compress max_overlap_frac variance within the organic population).
+- NB28 calibration AUC (M4 + vt_bands): **0.842 → 0.842** (invariant). The viewport-band × cursor-retreat discriminator for deferred-vs-eval-rejected is robust to bbox-attribution flavor — a three-decimal replication.
 
 ## §1.1 Why `organic` was the prior post-cascade primary (pre-typed cascade)
 

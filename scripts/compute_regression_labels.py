@@ -82,6 +82,10 @@ def regressed_positions(trial_id, attribution):
         from data_loader import typed_aoi_tops
         tops = typed_aoi_tops(trial_id)
         n_res = len(tops)
+    elif attribution == "typed_gapfill":
+        from data_loader import typed_gapfill_aoi_tops
+        tops = typed_gapfill_aoi_tops(trial_id)
+        n_res = len(tops)
     else:
         serp = extract_serp_results(trial_id)
         n_res = len(serp) if serp else 10
@@ -109,7 +113,9 @@ def regressed_positions(trial_id, attribution):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--attribution", choices=["absolute", "organic", "organic_hybrid", "typed"], default="organic")
+    parser.add_argument("--attribution",
+                        choices=["absolute", "organic", "organic_hybrid", "typed", "typed_gapfill"],
+                        default="organic")
     parser.add_argument("--features",
                         help="Path to cursor-approach-features JSON (default depends on attribution)")
     parser.add_argument("--output", "-o")
@@ -117,6 +123,8 @@ def main():
 
     if args.features:
         feat_path = Path(args.features)
+    elif args.attribution == "typed_gapfill":
+        feat_path = ROOT / "AdSERP/data/cursor-approach-features-typed-gapfill.json"
     elif args.attribution == "typed":
         feat_path = ROOT / "AdSERP/data/cursor-approach-features-typed.json"
     elif args.attribution == "organic_hybrid":
@@ -131,7 +139,9 @@ def main():
     else:
         out_dir = ROOT / "scripts/output/approach_threshold_sensitivity"
         out_dir.mkdir(parents=True, exist_ok=True)
-        if args.attribution == "typed":
+        if args.attribution == "typed_gapfill":
+            suffix = "_typed_gapfill"
+        elif args.attribution == "typed":
             suffix = "_typed"
         elif args.attribution == "organic_hybrid":
             suffix = "_organic_hybrid"

@@ -15,9 +15,17 @@ Outputs JSON per trial matching the AdSERP ad-boundary schema, with an added
       "_meta": {"flags": ["card_3_suspiciously_tall"], ...}
     }
 
+Flavors:
+    --flavor organic         (default) — tight row-projection bboxes
+    --flavor organic_gapfill — apply midpoint-split to fill inter-result Y
+                               gaps. See `apply_midpoint_split` and
+                               docs/null-findings/2026-05-05-bbox-y-coverage.md.
+                               Output dir: organic-boundary-data-gapfill/
+
 Run:
     uv run python scripts/extract_organic_bboxes.py p007-b6-t8 p013-b2-t3 ...
     uv run python scripts/extract_organic_bboxes.py --all-cached
+    uv run python scripts/extract_organic_bboxes.py --all-cached --flavor organic_gapfill
 """
 from __future__ import annotations
 
@@ -33,7 +41,10 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parent.parent
 PNG_DIR = ROOT / "AdSERP" / "data" / "full-page-screenshots"
 AD_DIR = ROOT / "AdSERP" / "data" / "ad-boundary-data"
-OUT_DIR = ROOT / "AdSERP" / "data" / "organic-boundary-data"
+OUT_DIR_BY_FLAVOR = {
+    "organic": ROOT / "AdSERP" / "data" / "organic-boundary-data",
+    "organic_gapfill": ROOT / "AdSERP" / "data" / "organic-boundary-data-gapfill",
+}
 
 # Widget heading patterns. Bottom-of-page refinement widgets ("Related
 # searches", "People also search for") emerge from detect_cards as
@@ -308,6 +319,100 @@ def _widget_floor_from_gap(organic_spans) -> int | None:
     return None
 
 
+def apply_midpoint_split(
+    organics: list[dict],
+    obstacles: list[tuple[int, int]] | None = None,
+) -> list[dict]:
+    """Extend each organic's Y extent to fill inter-result gaps via midpoint
+    split. Pragmatic post-processing for the `organic_gapfill` flavor.
+
+    For each adjacent pair of organics (sorted by Y), divide the inter-result
+    gap at its center: the upper bbox's bottom extends down to (midpoint - 1)
+    and the lower bbox's top extends up to (midpoint + 1). Every Y pixel
+    between the first organic's top and the last organic's bottom belongs to
+    exactly one bbox.
+
+    Skip / clamp the split where an obstacle (widget, dd_top, native_ad,
+    dd_right) sits in the gap — never extend an organic across an ad/widget
+    rectangle.
+
+    Don't extend the first organic's top (would expand into chrome/header) or
+    the last organic's bottom (would expand into pagination / refinement).
+
+    Returns a NEW list of dicts; does not mutate input.
+
+    See: docs/null-findings/2026-05-05-bbox-y-coverage.md (#4 midpoint-split
+    decision)
+    """
+    if len(organics) < 2:
+        return [
+            {**o, "location": dict(o["location"]), "size": dict(o["size"])}
+            for o in organics
+        ]
+
+    obstacles = obstacles or []
+
+    # Deep-copy so we don't mutate caller's data
+    sorted_organics = sorted(
+        ({**o, "location": dict(o["location"]), "size": dict(o["size"])}
+         for o in organics),
+        key=lambda o: o["location"]["y"],
+    )
+
+    for i in range(len(sorted_organics) - 1):
+        upper = sorted_organics[i]
+        lower = sorted_organics[i + 1]
+        u_top = upper["location"]["y"]
+        u_bot = u_top + upper["size"]["height"]
+        l_top = lower["location"]["y"]
+        l_bot = l_top + lower["size"]["height"]
+
+        gap = l_top - u_bot
+        if gap <= 0:
+            continue  # no gap or already touching
+
+        midpoint = u_bot + gap // 2
+
+        # If an obstacle sits in the gap, clamp the split to its boundaries
+        # (the upper bbox stops at obstacle.top - 1; the lower bbox starts
+        # at obstacle.bottom + 1).
+        upper_cap = midpoint - 1
+        lower_floor = midpoint + 1
+        for o_top, o_bot in obstacles:
+            if u_bot < o_bot and o_top < l_top:
+                # Obstacle overlaps the gap.
+                if o_top - 1 < upper_cap:
+                    upper_cap = o_top - 1
+                if o_bot + 1 > lower_floor:
+                    lower_floor = o_bot + 1
+
+        # Only extend (never shrink) — guard against pathological cases.
+        if upper_cap > u_bot:
+            upper["size"]["height"] = upper_cap - u_top
+        if lower_floor < l_top:
+            lower["location"]["y"] = lower_floor
+            lower["size"]["height"] = l_bot - lower_floor
+
+    # Restore original position ordering
+    sorted_organics.sort(key=lambda o: o["position"])
+    return sorted_organics
+
+
+def assert_no_y_overlap(organics: list[dict]) -> None:
+    """Sanity check: no two organics overlap in Y after midpoint-split."""
+    if len(organics) < 2:
+        return
+    sorted_o = sorted(organics, key=lambda o: o["location"]["y"])
+    for i in range(len(sorted_o) - 1):
+        a_bot = sorted_o[i]["location"]["y"] + sorted_o[i]["size"]["height"]
+        b_top = sorted_o[i + 1]["location"]["y"]
+        if a_bot >= b_top:
+            raise AssertionError(
+                f"Y-overlap after gapfill: organic at y={sorted_o[i]['location']['y']} "
+                f"extends to y={a_bot}, but next organic starts at y={b_top}"
+            )
+
+
 def extract_trial(trial_id: str) -> dict | None:
     png = PNG_DIR / f"{trial_id}.png"
     ad_json = AD_DIR / f"{trial_id}.json"
@@ -443,9 +548,15 @@ def main() -> int:
     parser.add_argument("trials", nargs="*", help="trial IDs e.g. p007-b6-t8")
     parser.add_argument("--all-cached", action="store_true",
                         help="process every trial with a local PNG")
+    parser.add_argument(
+        "--flavor", choices=list(OUT_DIR_BY_FLAVOR.keys()),
+        default="organic",
+        help="organic = tight bboxes (legacy); organic_gapfill = midpoint-split applied",
+    )
     args = parser.parse_args()
 
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    out_dir = OUT_DIR_BY_FLAVOR[args.flavor]
+    out_dir.mkdir(parents=True, exist_ok=True)
 
     trial_ids: list[str] = list(args.trials)
     if args.all_cached:
@@ -454,20 +565,44 @@ def main() -> int:
     if not trial_ids:
         parser.error("provide trial IDs or --all-cached")
 
-    print(f"Processing {len(trial_ids)} trials...")
+    print(f"Processing {len(trial_ids)} trials, flavor={args.flavor}...")
     n_ok = 0
+    n_gapfilled = 0
     for tid in trial_ids:
         result = extract_trial(tid)
         if result is None:
             continue
-        out = OUT_DIR / f"{tid}.json"
+
+        if args.flavor == "organic_gapfill":
+            # Build obstacle list from non-organic rectangles in the trial:
+            # widgets, dd_top, native_ad, dd_right. Any of these sitting in
+            # the inter-organic gap clamps the midpoint-split.
+            obstacles: list[tuple[int, int]] = []
+            for kind in ("widget", "dd_top", "native_ad", "dd_right"):
+                for r in result.get(kind, []):
+                    oy = r["location"]["y"]
+                    oh = r["size"]["height"]
+                    obstacles.append((oy, oy + oh))
+
+            tight = result["organic_result"]
+            gapfilled = apply_midpoint_split(tight, obstacles)
+            assert_no_y_overlap(gapfilled)
+            result["organic_result"] = gapfilled
+            result["_meta"]["gapfill_applied"] = True
+            n_gapfilled += 1
+        else:
+            result["_meta"]["gapfill_applied"] = False
+
+        out = out_dir / f"{tid}.json"
         out.write_text(json.dumps(result, indent=2))
         meta = result["_meta"]
         flag_str = f" FLAGS: {meta['flags']}" if meta["flags"] else ""
         print(f"  {tid}: {meta['organic_count']} organic, {meta['card_count']} total cards{flag_str}")
         n_ok += 1
 
-    print(f"\nWrote {n_ok}/{len(trial_ids)} → {OUT_DIR}")
+    print(f"\nWrote {n_ok}/{len(trial_ids)} → {out_dir}")
+    if args.flavor == "organic_gapfill":
+        print(f"  ({n_gapfilled} trials had midpoint-split applied)")
     return 0
 
 

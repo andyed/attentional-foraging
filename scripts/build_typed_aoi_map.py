@@ -2,12 +2,12 @@
 
 Combines:
   - data/aoi-html-types/<tid>.json (Phase 1 output: ordered typed cards)
-  - AdSERP/data/organic-boundary-data/<tid>.json (CV-extracted bboxes:
-    organic_result + widget slots)
+  - AdSERP/data/organic-boundary-data{,-gapfill}/<tid>.json (CV-extracted
+    bboxes: organic_result + widget slots)
   - AdSERP/data/ad-boundary-data/<tid>.json (dd_top, native_ad, dd_right)
 
 Outputs per-trial:
-  data/aoi-typed/<tid>.json
+  data/aoi-typed{,-gapfill}/<tid>.json
   [
     {"position": 0, "type": "organic", "x": 162, "y": 133, "width": 586,
      "height": 508, "html_handle": "rso[7]", "html_signature": "..."},
@@ -24,9 +24,16 @@ position=-1.
 
 Run:
   .venv/bin/python scripts/build_typed_aoi_map.py
+  .venv/bin/python scripts/build_typed_aoi_map.py --source organic_gapfill
+
+Source flavors:
+  organic         (default) — tight CV-extracted bboxes (legacy)
+  organic_gapfill           — midpoint-split bboxes; see
+                              docs/null-findings/2026-05-05-bbox-y-coverage.md
 """
 from __future__ import annotations
 
+import argparse
 import json
 import sys
 from collections import Counter
@@ -34,10 +41,30 @@ from pathlib import Path
 
 ROOT = Path('/Users/andyed/Documents/dev/attentional-foraging')
 HTML_TYPES = ROOT / 'data/aoi-html-types'
-ORGANIC_BBOX = ROOT / 'AdSERP/data/organic-boundary-data'
 AD_BBOX = ROOT / 'AdSERP/data/ad-boundary-data'
-OUT_DIR = ROOT / 'data/aoi-typed'
+
+ORGANIC_BBOX_BY_SOURCE = {
+    'organic': ROOT / 'AdSERP/data/organic-boundary-data',
+    'organic_gapfill': ROOT / 'AdSERP/data/organic-boundary-data-gapfill',
+}
+OUT_DIR_BY_SOURCE = {
+    'organic': ROOT / 'data/aoi-typed',
+    'organic_gapfill': ROOT / 'data/aoi-typed-gapfill',
+}
+
+# These globals are set by main() based on --source. Module-level functions
+# read them via the configure() helper so existing imports keep working.
+ORGANIC_BBOX = ORGANIC_BBOX_BY_SOURCE['organic']
+OUT_DIR = OUT_DIR_BY_SOURCE['organic']
 OUT_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def configure(source: str) -> None:
+    """Switch the producer to read/write the given flavor."""
+    global ORGANIC_BBOX, OUT_DIR
+    ORGANIC_BBOX = ORGANIC_BBOX_BY_SOURCE[source]
+    OUT_DIR = OUT_DIR_BY_SOURCE[source]
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def _bbox_from(entry, kind):
@@ -308,8 +335,20 @@ def join_one_trial(tid):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__.split('\n\n')[0])
+    parser.add_argument(
+        '--source',
+        choices=list(ORGANIC_BBOX_BY_SOURCE.keys()),
+        default='organic',
+        help='Source flavor for organic bboxes (organic = legacy tight; '
+             'organic_gapfill = midpoint-split applied)',
+    )
+    args = parser.parse_args()
+    configure(args.source)
+
     files = sorted(HTML_TYPES.glob('*.json'))
-    print(f'[join] {len(files):,} HTML-typed files', file=sys.stderr)
+    print(f'[join] {len(files):,} HTML-typed files (source={args.source})',
+          file=sys.stderr)
 
     type_counter = Counter()
     n_matched_total = 0
@@ -344,6 +383,9 @@ def main():
         out_path.write_text(json.dumps(result, indent=2))
 
     summary = {
+        'source_flavor': args.source,
+        'organic_bbox_dir': str(ORGANIC_BBOX),
+        'out_dir': str(OUT_DIR),
         'n_trials': len(files),
         'n_errors': errors,
         'type_distribution_total': dict(type_counter.most_common()),
@@ -359,12 +401,13 @@ def main():
         },
     }
 
-    summary_path = ROOT / 'scripts/output/aoi-typed/build_typed_aoi_map_summary.json'
+    out_subdir = 'aoi-typed-gapfill' if args.source == 'organic_gapfill' else 'aoi-typed'
+    summary_path = ROOT / f'scripts/output/{out_subdir}/build_typed_aoi_map_summary.json'
     summary_path.parent.mkdir(parents=True, exist_ok=True)
     summary_path.write_text(json.dumps(summary, indent=2))
 
     # Per-trial audits (long; dump as JSONL)
-    audits_path = ROOT / 'scripts/output/aoi-typed/build_typed_aoi_map_audits.jsonl'
+    audits_path = ROOT / f'scripts/output/{out_subdir}/build_typed_aoi_map_audits.jsonl'
     with audits_path.open('w') as f:
         for a in audits:
             f.write(json.dumps(a) + '\n')

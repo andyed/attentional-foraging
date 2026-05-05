@@ -1,5 +1,60 @@
 # Changelog
 
+## 2026-05-05 — Y-pixel coverage fix (`typed_gapfill` flavor)
+
+Branch: `bbox-y-coverage-fix`. Adds a fifth AOI attribution flavor — `typed_gapfill` — as a pragmatic post-processing modifier on the `typed` cascade.
+
+### Why
+
+A 2026-05-05 audit during AllSERP descriptive work surfaced a 22.7 % silent contamination of `approached & clicked` records (391 / 1,723) under `typed`. The legacy `data_loader.click_to_position` does Y-band-only assignment with no X check, rolling right-rail dd_right ad clicks (67), page chrome clicks, and inter-result-gap clicks into adjacent organics. The hypothesis that bboxes had a Y-pixel calibration drift was tested and refuted (clicks bias downward, fixations bias upward — opposite directions). The fix is a midpoint-split gap-fill on organic bboxes plus X+Y bbox-aware click attribution and an `is_main_axis_click()` trial-level filter.
+
+Pragmatic, not principled — DOM-anchored bbox extraction is the principled alternative, deferred as future work. Both `typed` and `typed_gapfill` flavors stay queryable side-by-side per the cascade rule (`CLAUDE.md`).
+
+### What landed
+
+- **Producer:** `scripts/extract_organic_bboxes.py` adds `--flavor organic_gapfill` (midpoint-split semantics, organic-only; ads pass through unchanged). New helpers `apply_midpoint_split` and `assert_no_y_overlap`. `scripts/apply_gapfill_to_existing.py` provides a no-screenshot path for environments where the AdSERP screenshot volume isn't mounted.
+- **Typed map + CSV export:** `build_typed_aoi_map.py --source organic_gapfill`; `export_aois_by_trial_id.py --attribution typed_gapfill`. New outputs at `data/aoi-typed-gapfill/` and `scripts/output/adserp_aois_by_trial_id_typed_gapfill.csv`.
+- **`data_loader.py` helpers (notebooks-v2):** `load_typed_gapfill_aois`, `typed_gapfill_aoi_bands`, `typed_gapfill_aoi_tops`, `typed_gapfill_aoi_etypes`, `attribute_click_to_typed_gapfill`, `is_main_axis_click`. X+Y bbox-aware attribution prefers strict containment over tolerance, smallest-area on overlap.
+- **Cursor-approach features:** `compute_cursor_approach_features.py --attribution typed_gapfill` writes `AdSERP/data/cursor-approach-features-typed-gapfill.json` (18,218 records vs legacy 19,774; 231 hard-error trials filtered).
+- **AllSERP descriptives:** `scripts/allserp_descriptives.py --flavor typed_gapfill` writes `scripts/output/allserp_descriptives_gapfill/`.
+- **Audit scripts (cite-ready for AllSERP resource paper):** `scripts/audit_unattributed_clicks.py`, `audit_dd_right.py`, `audit_cascade_contamination.py`, `audit_calibration_bias.py`. Each carries regime tag and headline number in the docstring.
+
+### Headline shifts (typed → typed_gapfill)
+
+| | legacy | gapfill | Δ |
+|---|---:|---:|---:|
+| AllSERP descriptives total clicks attributed | 2,479 | 2,634 | +155 |
+| organic fixated % | 52.7 | 55.6 | +2.9 pp |
+| paa fixated % | 32.8 | 40.6 | +7.8 pp |
+| `was_clicked=True` records | 2,594 | 2,375 | −219 |
+| approached & clicked | 1,723 | 1,562 | −161 |
+| organic clicked records | 2,021 | 1,886 | −135 |
+| native_ad clicked records | 186 | 137 | −49 |
+| paa clicked records | 27 | 31 | **+4** |
+
+### Cascade landed
+
+- **NB21 LOSO click prediction:** M3 AUC 0.871 → 0.856 (Δ = −0.015); position coefficient strengthens; per-etype AUC ordering preserved (dd_top 0.913, organic 0.852, native_ad 0.833). K-bbox-y-1..12 rows in `docs/notebook-key-claims.md`.
+- **NB22 four-class taxonomy:** full per-etype breakdown under typed_gapfill via `compute_regression_labels.py --attribution typed_gapfill`. Class proportions invariant within ±0.3 pp (clicked 13.0 % preserved; deferred 13.0 → 13.3; eval-rejected 2.9 % preserved; not-approached 71.0 → 70.8 %). Honest population shed 219 contaminated `was_clicked=True` records and gained 4 paa records (genuine recovery).
+- **NB30 etype × viewport:** LOPO AUC 0.687 → 0.701; per-etype `max_overlap_frac` interaction Δ widens (dd_top −0.108 → −0.163; native_ad −0.236 → −0.288). The "ads need higher viewport overlap to convert to clicks" dissociation strengthens under the cleaner population.
+- **AR replay rebuild:** `build_replay_trial.py --flavor typed_gapfill` shipped with screenshot fallback. 4 of 6 confirmed-issue trials rebuilt from local cache; remaining 2 + full 147-trial set auto-complete on volume mount.
+
+### NB28 also landed (2026-05-05 PM)
+
+- **NB28 calibration:** M4 + vt_bands LOSO AUC = **0.8423 (typed_gapfill)** vs 0.842 (legacy absolute). Three-decimal replication — the viewport-band × cursor-retreat discriminator is bbox-attribution-invariant. `viewport_time_calibration.viewport_ms_for_trial` extended with optional `bands=` parameter; `scripts/nb28_typed_gapfill.py` shipped. K-bbox-y-NB28-* rows in `docs/notebook-key-claims.md`.
+
+### What's still pending
+
+- **DOM-anchored bbox extraction** (the principled alternative) is named as future work and not started — refuted as a wholesale replacement (re-rendering 2022 SERP HTML in 2026 produces 13–45 px layout drift, `docs/plan-demo-fix.md`); kept as a future direction for individual element-level geometry rather than full layout.
+
+### Pointers
+
+- [`docs/null-findings/2026-05-05-bbox-y-coverage.md`](docs/null-findings/2026-05-05-bbox-y-coverage.md) — full writeup with the four-audit synthesis.
+- [`docs/methodology/attribution-cascade-synthesis.md §1.06`](docs/methodology/attribution-cascade-synthesis.md) — flavor definition.
+- [`docs/drafts/allserp-data-tables.md`](docs/drafts/allserp-data-tables.md) — resource paper draft updated with audit citations.
+
+---
+
 ## 2026-05-04 — Typed AOI cascade (HTML+vision joint typing)
 
 Branch: `feat/aoi-pipeline-v3-typed`. Extends the prior cascade
