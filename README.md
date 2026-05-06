@@ -4,6 +4,14 @@
 
 ---
 
+> ## 📄 Enroute to arXiv: AllSERP
+>
+> **AllSERP: Exhaustive Per-Element Enrichment of the Versatile AdSERP Dataset** is under technical and moderation review at arXiv (submission `submit/7558357`, 2026-05-06). Announcement expected within a few business days; the public arXiv ID and DOI will be added here when it lands.
+>
+> The accepted-format PDF is committed to this repo for early sharing: [`allserp-paper.pdf`](./allserp-paper.pdf). The paper documents the typed AOI extraction pipeline, the per-element behavioral inventory, and the public release that the rest of this repository implements.
+
+---
+
 ## The puzzle
 
 People scan a page of search results in a recognizable shape — the **F-pattern** in heatmaps, with a steep click decay from top to bottom and odd boundary effects at the last visible result. Twenty years of web search literature has explained this as "position bias" — a *label* for the shape, not a *mechanism* for it. This project asks the mechanism question: what cognitive operations are actually running while a user evaluates a search results page, and which of the patterns we see are the operations vs. which are statistical artifacts of how the data was aggregated?

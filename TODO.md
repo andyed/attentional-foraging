@@ -1,5 +1,22 @@
 # TODO
 
+## Ski-jump null-finding update (2026-05-06, prompted by AllSERP flavor comparison)
+
+The 2026-04-12 audit (`docs/null-findings/2026-04-12-ski-jump-audit-collapse.md`) said the full-corpus uptick at organic-rank tail collapsed after the coord-space fix; only the cohort-A narrow result (n=131 plain-top SERPs, +33 %) survives. **AllSERP's flavor-comparison rank-effect chart contradicts that read on the surface:** under `organic-only` flavor, click rate at rank 7 is 4.1 %, jumping to 7.6 % at rank 8 and 8.2 % at rank 9 — a +85 % uptick larger than the documented cohort-A result. Under `organic-hybrid` flavor, the uptick disappears (4.4 % at both 8 and 9). Numbers computed directly from `AdSERP/data/cursor-approach-features-organic.json` and `cursor-approach-features-organic-hybrid.json`.
+
+Three plausible reasons for the discrepancy with the post-audit story:
+
+1. **Sample thinning under organic-only.** N drops sharply: pos 0 has 2,658 records, pos 9 has 401. The organic-only file enumerates only trials where ≥ N organics are present; the surviving cohort at deep ranks is self-selected.
+2. **Cohort-A leakage.** ~40 % of trials are plain-top SERPs with ≥ 10 organics. The cohort-A narrow finding (n=131) may be present in the full-corpus organic-only aggregate diluted across the rest.
+3. **Stale or unaudited file.** Verify whether `cursor-approach-features-organic.json` was regenerated post-2026-04-12 audit.
+
+**Action items:**
+
+- [ ] Confirm whether `cursor-approach-features-organic.json` was regenerated post-coord-fix or carries pre-fix labels. If pre-fix, regenerate.
+- [ ] Re-run the ski-jump null finding's full-corpus check using the AllSERP-style per-record-at-position click rate (not NB15's denominator). Document the discrepancy with the existing post-audit numbers.
+- [ ] Add a cross-reference from `2026-04-12-ski-jump-audit-collapse.md` to AllSERP's §4.2 flavor comparison so consumers reading either artifact see the other read of the data.
+- [ ] Decide whether the +85 % organic-only uptick is real (cohort-A leakage in the aggregate; sample thinning amplifies it) or measurement-driven (file regen needed). If real, update the audit doc; if measurement, add a regeneration entry to the cascade log.
+
 ## ETTAC stat-traceability gaps (2026-05-03)
 
 Three numeric claims in `ettac-paper/sections/adserp.tex` need re-derivation or original-computation surfacing before next external pass. Verification status documented in 2026-05-03 audit run.
