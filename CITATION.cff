@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software or the AllSERP enrichment, please cite the arXiv paper below."
+type: software
+title: "Attentional Foraging on Search Results Pages"
+authors:
+  - family-names: Edmonds
+    given-names: Andy
+repository-code: "https://github.com/andyed/attentional-foraging"
+abstract: >-
+  Task-model analysis of SERP evaluation built on the AdSERP eye+cursor
+  dataset. Implements the typed AOI extraction, per-element behavioral
+  inventory, and Key Claims pipeline described in the AllSERP paper.
+preferred-citation:
+  type: article
+  title: "AllSERP: Exhaustive Per-Element Enrichment of the Versatile AdSERP Dataset"
+  authors:
+    - family-names: Edmonds
+      given-names: Andy
+  year: 2026
+  identifiers:
+    - type: other
+      value: "arXiv:2605.04949"
+      description: "arXiv preprint"
+  url: "https://arxiv.org/abs/2605.04949"

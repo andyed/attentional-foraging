@@ -4,11 +4,7 @@
 
 ---
 
-> ## 📄 Enroute to arXiv: AllSERP
->
-> **AllSERP: Exhaustive Per-Element Enrichment of the Versatile AdSERP Dataset** is under technical and moderation review at arXiv (submission `submit/7558357`, 2026-05-06). Announcement expected within a few business days; the public arXiv ID and DOI will be added here when it lands.
->
-> The accepted-format PDF is committed to this repo for early sharing: [`allserp-paper.pdf`](./allserp-paper.pdf). The paper documents the typed AOI extraction pipeline, the per-element behavioral inventory, and the public release that the rest of this repository implements.
+> 📄 **Paper:** [AllSERP: Exhaustive Per-Element Enrichment of the Versatile AdSERP Dataset](https://arxiv.org/abs/2605.04949) (arXiv:2605.04949) — see [`CITATION.cff`](./CITATION.cff) or the "Cite this repository" sidebar. Local PDF: [`allserp-paper.pdf`](./allserp-paper.pdf).
 
 ---
 
