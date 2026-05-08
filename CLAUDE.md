@@ -66,6 +66,35 @@ Instead use explicit placeholders:
 
 **Rule of thumb.** If a citation token or a "X showed Y" paraphrase appears in the prose without first passing through the verification pass, it is presumptively confabulated. Treat it as a bug until verified.
 
+## Pencil — sentence-level voice locking (paper drafts)
+
+**When editing any file under `docs/drafts/cikm-*/`, `docs/drafts/task-model-paper*`, or `docs/arxiv/` that has a `<file>.pencil.json` sidecar, honor the locks.**
+
+`pencil` is at `~/Documents/dev/pencil/pencil.py`. Run `python3 ~/Documents/dev/pencil/pencil.py <cmd> <file>`.
+
+**Before any edit** to a paper file with a sidecar:
+
+```bash
+python3 ~/Documents/dev/pencil/pencil.py check docs/drafts/cikm-2026/paper-v4.md
+```
+
+If `check` exits 0, proceed. If it exits 1, the document already has drift from the previous pencil scan — surface that to Andy first; do not edit on top of it. Walking new drift into existing drift compounds the problem.
+
+**Edits must not modify locked sentences.** A sentence is locked if its entry in the sidecar has `"status": "locked"`. The sentence text in the sidecar is canonical. Insertions adjacent to locked sentences are fine; rewording inside a locked sentence is not. If a locked sentence is wrong and needs to change, ask Andy first — the lock signals "Andy wrote this, leave it alone."
+
+**After any edit:**
+
+```bash
+python3 ~/Documents/dev/pencil/pencil.py scan docs/drafts/cikm-2026/paper-v4.md
+python3 ~/Documents/dev/pencil/pencil.py check docs/drafts/cikm-2026/paper-v4.md
+```
+
+`scan` re-walks the file and refreshes sidecar entries. New sentences land as `unmarked` (AI-drafted, eligible for further AI editing). `check` verifies no locked sentence drifted; if it fails, the edit broke a lock — revert and reconsider.
+
+**Boundary cases.** If an edit splits one locked sentence into two, or merges two adjacent sentences, hashes invalidate and `check` will report drift. Treat this as a hard stop — split/merge of locked text is a content change. Either undo, or ask Andy to unlock first.
+
+**Regex sweeps must use the pencil-aware sweeper.** When applying mechanical find-and-replace across paper drafts (e.g., AI-tell removal sweeps), use `pencil.sweep.sweep_files()` from `~/Documents/dev/pencil/sweep.py`. It loads the sidecar, skips substitutions that fall inside locked spans, and returns `protected_skip` counts so you can see what wasn't touched. A naive `re.sub` on the file text WILL clobber locked content if the pattern hits inside a lock — this happened on 2026-05-07 with sentence #42 of paper-v4.md and was only caught by the post-sweep `pencil check`.
+
 ## Null findings
 
 **Principle (2026-04-15).** Null and near-null findings get written up in `docs/null-findings/` as markdown even when they don't make it into the published paper. See `docs/null-findings/README.md` for the principle statement, format conventions, and current index. This is a research-integrity commitment, not a bureaucratic one — the file-drawer cost of not documenting nulls on a single-lab project is re-walking the same paths months later.

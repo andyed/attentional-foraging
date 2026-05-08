@@ -31,7 +31,7 @@ The eval-rejected class **grows in absolute count** under bbox even though the c
 
 Modest performance drop. The Youden-J operating point shifts toward higher thresholds (the model is more confident before flagging deferred under bbox), giving up TPR for lower FPR. F1 falls primarily on recall.
 
-## Hard-negative purity (load-bearing CIKM number)
+## Hard-negative purity (key CIKM number)
 
 | Pool | Absolute | Organic | Δ |
 |---|---|---|---|
@@ -69,7 +69,7 @@ Still trustworthy as a "semantically-considered-but-declined" pool. The 2.4 pp d
 | mean_approach_velocity | −0.051 | +0.082 | sign flip, near-zero magnitude |
 | min_dist | −0.139 | −0.005 | toward zero |
 
-**Notable.** `direction_changes` (+0.567 → +0.320) loses substantial weight under bbox. Under absolute attribution, more direction changes meant more "deferred" — cursor wandering as the user fixated other candidates. Under bbox the signal is still positive but ~half as load-bearing. **Hypothesis:** under absolute, gap-region cursor drift was registering as "approaches with high direction-change counts" and pulling the deferred class toward those records. Under bbox the gap drift no longer registers as approach, so direction_changes loses some of its proxy power.
+**Notable.** `direction_changes` (+0.567 → +0.320) loses substantial weight under bbox. Under absolute attribution, more direction changes meant more "deferred" — cursor wandering as the user fixated other candidates. Under bbox the signal is still positive but ~half as important. **Hypothesis:** under absolute, gap-region cursor drift was registering as "approaches with high direction-change counts" and pulling the deferred class toward those records. Under bbox the gap drift no longer registers as approach, so direction_changes loses some of its proxy power.
 
 `mean_dist` remains the dominant feature in both regimes.
 

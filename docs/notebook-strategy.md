@@ -2,13 +2,13 @@
 
 How notebooks, precomputed data, Key Claims, and papers stay consistent in this repo.
 
-The pipeline that produces every number in our papers flows through one canonical path. When it drifts, papers cite stale values. The coordinate-space audit of 2026-04-09 is the cautionary tale: a single scroll double-counting bug in one helper invocation silently corrupted nine notebooks, two scripts, and three downstream precomputed JSONs for months. What saved us was (a) that only five notebooks ship load-bearing numbers, (b) the Key Claims contract locking those five to a machine-regeneratable canonical source, and (c) a regression test forcing the coordinate convention. This document describes the strategy so the next audit is shorter.
+The pipeline that produces every number in our papers flows through one canonical path. When it drifts, papers cite stale values. The coordinate-space audit of 2026-04-09 is the cautionary tale: a single scroll double-counting bug in one helper invocation silently corrupted nine notebooks, two scripts, and three downstream precomputed JSONs for months. What saved us was (a) that only five notebooks ship key numbers, (b) the Key Claims contract locking those five to a machine-regeneratable canonical source, and (c) a regression test forcing the coordinate convention. This document describes the strategy so the next audit is shorter.
 
 ## The tiers
 
 Every notebook belongs to exactly one of three tiers. Tier determines the discipline it must follow.
 
-### Tier A — load-bearing
+### Tier A — central
 
 **Ships numbers directly to external papers or public writeups.**
 
@@ -54,16 +54,16 @@ Everything else. NB01, 03, 04, 05 (despite feeding LHIPA computation), 06, 07a/b
 **Required of Tier C:**
 
 1. `import` from `data_loader` rather than cargo-culting a mini-loader. This is aspirational today — ten Tier C notebooks still have their own `load_mouse_events`-equivalent functions. See "Phase 3 structural migration" below.
-2. No prose in `docs/` may cite a Tier C notebook's numbers directly. If a Tier C notebook's finding is load-bearing enough to cite, promote it to Tier A by adding a Key Claims block.
+2. No prose in `docs/` may cite a Tier C notebook's numbers directly. If a Tier C notebook's finding is central enough to cite, promote it to Tier A by adding a Key Claims block.
 
 ## Coordinate conventions — non-negotiable
 
 AdSERP combines two streams with different coordinate spaces. Mixing them silently produces scroll-proportional errors on 82% of trials.
 
-- **Gaze** (Gazepoint FPOGX/FPOGY): **screen-space** (viewport pixels). `load_fixations` clamps to `scr_h` to drop noise. To compare against page-space bands, ADD `scroll_at_t`.
-- **Cursor** (evtrack `xpos`/`ypos`): **page-space** (pageY, includes scroll). Verified empirically on `p004-b2-t3` (cursor Y up to 1,902 px, window is 1,137 px). To compare against screen-space gaze, SUBTRACT `scroll_at_t`.
-- **Clicks** (from `load_mouse_events` `clicks[]`): same convention as cursor — already page-space. Never add scroll.
-- **Result band tops** (`result_band_tops(n, doc_h)`): page-space measured from doc top.
+- **Gaze** (Gazepoint FPOGX/FPOGY): screen-space (viewport pixels). `load_fixations` clamps to `scr_h` to drop noise. To compare against page-space bands, ADD `scroll_at_t`.
+- Cursor (evtrack `xpos`/`ypos`): page-space (pageY, includes scroll). Verified empirically on `p004-b2-t3` (cursor Y up to 1,902 px, window is 1,137 px). To compare against screen-space gaze, SUBTRACT `scroll_at_t`.
+- Clicks (from `load_mouse_events` `clicks[]`): same convention as cursor — already page-space. Never add scroll.
+- Result band tops (`result_band_tops(n, doc_h)`): page-space measured from doc top.
 
 **Never hand-write `+ scroll_y` on a mouse or click coordinate.** Use the canonical helpers in `data_loader`:
 
@@ -117,22 +117,22 @@ Do this as a separate, isolated PR from any behavioral fix. Mixing structural mi
 The canonical flow — this is the discipline the coordinate-space audit exposed and hardened:
 
 1. **Verify the new number.** Either re-execute the notebook cell that produces it, or write a focused diff script that reads the relevant precomputed JSON and recomputes. Save the diff script as `_verify_nbXX_key_claims.py` (underscore prefix = not in notebook list, don't ship).
-2. **Update `notebooks-v2/update_key_claims.py`** — edit the relevant per-notebook body constant. Do NOT edit the notebook directly; the script is canonical.
-3. **Bump `VERIFIED = date(Y, M, D).isoformat()`** near the top of the script.
-4. **Run it:** `/Users/andyed/Documents/dev/attentional-foraging/.venv/bin/python update_key_claims.py`. This rewrites every Tier A notebook's Key Claims cell and regenerates `docs/notebook-key-claims.md`.
-5. **Grep `docs/` for the old value:**
+2. Update `notebooks-v2/update_key_claims.py` — edit the relevant per-notebook body constant. Do NOT edit the notebook directly; the script is canonical.
+3. Bump `VERIFIED = date(Y, M, D).isoformat()` near the top of the script.
+4. Run it: `/Users/andyed/Documents/dev/attentional-foraging/.venv/bin/python update_key_claims.py`. This rewrites every Tier A notebook's Key Claims cell and regenerates `docs/notebook-key-claims.md`.
+5. Grep `docs/` for the old value:
    ```bash
    cd /Users/andyed/Documents/dev/attentional-foraging
    grep -rn "0.827" docs/  # or whatever the old value was
    ```
    Skip `.claude/worktrees/` — ephemeral sandboxes.
-6. **Append to `CHANGELOG.md`** — at minimum: what changed, before/after values for the affected rows, which consumers were re-run.
-7. **If a Tier B producer changed, list every Tier A consumer you re-ran** in the same CHANGELOG entry. If you did not re-run a consumer, note the dependency so the next session picks it up.
+6. Append to `CHANGELOG.md` — at minimum: what changed, before/after values for the affected rows, which consumers were re-run.
+7. If a Tier B producer changed, list every Tier A consumer you re-ran in the same CHANGELOG entry. If you did not re-run a consumer, note the dependency so the next session picks it up.
 
 ## Why this exists (2026-04-09 retrospective)
 
 Before the audit: five Tier A notebooks had Key Claims, but three of them cited numbers that were wrong (NB14:K6, NB21:K1–K27 except K2, NB11.5:K9–K16). The numbers were written by hand, back when they were computed correctly, and then the underlying data drifted silently as bugs accumulated in the feeders.
 
-The fix structure — canonical script, Key Claims blocks, regression test, CHANGELOG discipline — is what lets us detect and repair this class of drift mechanically. Without it, each affected paper would have shipped with fragile or wrong numbers.
+The fix structure (canonical script, Key Claims blocks, regression test, CHANGELOG discipline) is what lets us detect and repair this class of drift mechanically. Without it, each affected paper would have shipped with fragile or wrong numbers.
 
 **The rule to remember:** if a number appears in a paper draft, it must match a row in `docs/notebook-key-claims.md`. If it does not, either (a) update the draft to match, (b) promote the source notebook to Tier A, or (c) remove the citation.

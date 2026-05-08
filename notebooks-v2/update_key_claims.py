@@ -122,7 +122,7 @@ def emit_aggregate_doc() -> None:
     lines.append("## What this document is for")
     lines.append("")
     lines.append(
-        "Every notebook in this project that ships load-bearing numbers to "
+        "Every notebook in this project that ships key numbers to "
         "papers or external readers has a **Key Claims** block at its top, "
         "containing a table of canonical values with stable row IDs. This "
         "document aggregates all blocks into one scannable file so paper "

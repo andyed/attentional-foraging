@@ -1,16 +1,16 @@
 # Attribution Cascade Synthesis
 
 **Stable ID:** `M:attribution-cascade-synthesis`
-**Last verified against executed notebook output:** 2026-05-02
-**Companion to:** [`organic-result-aoi-extraction.md`](./organic-result-aoi-extraction.md) (the pipeline spec)
+Last verified against executed notebook output: 2026-05-02
+Companion to: [`organic-result-aoi-extraction.md`](./organic-result-aoi-extraction.md) (the pipeline spec)
 
 ---
 
 ## What this document is for
 
 Between 2026-05-01 and 2026-05-02 we migrated the AdSERP analysis stack from
-**absolute-rank attribution** (h3 + ads pooled, band-estimated AOIs) to
-**bbox-organic attribution** (CV-extracted organic-result bounding boxes,
+absolute-rank attribution (h3 + ads pooled, band-estimated AOIs) to
+bbox-organic attribution (CV-extracted organic-result bounding boxes,
 ads excluded by construction). This document is the synthesis: which
 findings hold under the new attribution, which weaken, which collapse,
 which flip — and what that means for each paper strand.
@@ -32,7 +32,7 @@ implications below.**
 
 ## §1 Four rank-type flavors — canonical definitions
 
-The cascade now spans four rank-attribution flavors. Every quantitative claim derived from AdSERP must be tagged with one of these. **This document and [`organic-result-aoi-extraction.md` §5.7](./organic-result-aoi-extraction.md) are the canonical definition sites; downstream docs cite them rather than redefining the flavors.**
+The cascade now spans four rank-attribution flavors. Every quantitative claim derived from AdSERP must be tagged with one of these. This document and [`organic-result-aoi-extraction.md` §5.7](./organic-result-aoi-extraction.md) are the canonical definition sites; downstream docs cite them rather than redefining the flavors.
 
 | Flavor | Definition | Producer flag | Output suffix |
 |---|---|---|---|
@@ -43,9 +43,9 @@ The cascade now spans four rank-attribution flavors. Every quantitative claim de
 | **`typed_gapfill`** *(2026-05-05)* | `typed` + midpoint-split applied to organic bboxes to fill inter-result Y gaps, plus X+Y bbox-aware click attribution and an `is_main_axis_click()` trial-level filter. **Current post-cascade primary** for click-outcome analysis. | `--attribution typed_gapfill` | `*-typed-gapfill.json` |
 
 Three carve-outs for tagging:
-- **`rank-type-N/A`** — pure cursor-only metrics on a single-AOI WILD surface (e.g., `[WILD, attcur]`); JS↔Python parity tests; time-series with no AOI-rank structure.
-- **`absolute legacy`** — pre-cascade values retained for historical comparison. Tag with the cascade date so a reader can find the post-cascade replacement.
-- **`<flavor>, pending`** — cascade-affected K-IDs not yet re-derived. Link to the gate (multi-hour bootstrap, producer migration, figure regen). Never silently rolled forward.
+- `rank-type-N/A` — pure cursor-only metrics on a single-AOI WILD surface (e.g., `[WILD, attcur]`); JS↔Python parity tests; time-series with no AOI-rank structure.
+- `absolute legacy` — pre-cascade values retained for historical comparison. Tag with the cascade date so a reader can find the post-cascade replacement.
+- `<flavor>, pending` — cascade-affected K-IDs not yet re-derived. Link to the gate (multi-hour bootstrap, producer migration, figure regen). Never silently rolled forward.
 
 A K-ID that reports a numerical value without specifying rank-type (where one applies) is a citation bug — treat it as confabulated until verified against the producer flag and the script output.
 
@@ -63,7 +63,7 @@ The `feat/aoi-pipeline-v3-typed` branch introduced a fourth flavor that supersed
 
 ## §1.06 Why `typed_gapfill` is the current post-cascade primary (2026-05-05 cascade)
 
-The `bbox-y-coverage-fix` branch introduced a fifth flavor that supersedes `typed` as the recommended primary for click-outcome analysis. This is a **pragmatic post-processing modifier on `organic` / `typed`, not an independent attribution scheme.** The motivation, audit trail, and limitations are documented in [`docs/null-findings/2026-05-05-bbox-y-coverage.md`](../null-findings/2026-05-05-bbox-y-coverage.md).
+The `bbox-y-coverage-fix` branch introduced a fifth flavor that supersedes `typed` as the recommended primary for click-outcome analysis. This is a pragmatic post-processing modifier on `organic` / `typed`, not an independent attribution scheme. The motivation, audit trail, and limitations are documented in [`docs/null-findings/2026-05-05-bbox-y-coverage.md`](../null-findings/2026-05-05-bbox-y-coverage.md).
 
 **What `typed_gapfill` changes vs `typed`:**
 
@@ -76,9 +76,9 @@ The `bbox-y-coverage-fix` branch introduced a fifth flavor that supersedes `type
 **Headline empirical shifts (typed → typed_gapfill):**
 
 - AllSERP descriptives (`scripts/output/allserp_descriptives_gapfill/`): +155 clicks attributed (78 % → 89 % of trial-clicks); organic fixated 52.7 → 55.6 %; paa fixated 32.8 → 40.6 %.
-- Cursor-approach features (`AdSERP/data/cursor-approach-features-typed-gapfill.json`): `was_clicked=True` shifts −219 (organic −135, native_ad −49, dd_top −26, paa **+4**); 22.7 % of `approached & clicked` records under `typed` came from contaminated trials.
+- Cursor-approach features (`AdSERP/data/cursor-approach-features-typed-gapfill.json`): `was_clicked=True` shifts −219 (organic −135, native_ad −49, dd_top −26, paa +4); 22.7 % of `approached & clicked` records under `typed` came from contaminated trials.
 
-**Pragmatic, not principled.** The midpoint-split heuristic recovers signal previously dropped, but it is **not** the right way to identify the boundary between two adjacent results. The principled alternative — DOM-anchored bbox extraction using the link-element rendered geometry from `AdSERP/data/serps/<tid>.html` — is named as future work and not implemented in this cascade. The legacy `typed` flavor stays queryable and canonical for any K-claim generated under it.
+**Pragmatic, not principled.** The midpoint-split heuristic recovers signal previously dropped, but it is not the right way to identify the boundary between two adjacent results. The principled alternative (DOM-anchored bbox extraction using the link-element rendered geometry from `AdSERP/data/serps/<tid>.html`) is named as future work and not implemented in this cascade. The legacy `typed` flavor stays queryable and canonical for any K-claim generated under it.
 
 **Audit trail (cite-ready for AllSERP resource paper):**
 
@@ -87,13 +87,13 @@ The `bbox-y-coverage-fix` branch introduced a fifth flavor that supersedes `type
 - `scripts/audit_cascade_contamination.py` — 22.7 % of `approached & clicked` records contaminated; 99.6 % of unattributed clicks silently mis-attributed by Y-band rule; cross-references AR replay set.
 - `scripts/audit_calibration_bias.py` — refutes the calibration-bias hypothesis (clicks downward, fixations upward, opposite directions).
 
-**Cascade-affected K-claims are landed.** K-bbox-y-# rows shipped for NB21 (LOSO click prediction), NB22 (four-class taxonomy + full per-etype breakdown), NB28 (viewport bands × deferred-vs-eval-rejected), and NB30 (etype × viewport dissociation). Legacy K-bbox-# rows get annotated `(superseded 2026-05-05: see K-bbox-y-#; bbox Y-pixel coverage fix)` per the cascade rule. **K-IDs are never renumbered**; the legacy and gapfill rows coexist. The gaze-regression-label cache was re-derived under typed_gapfill (`regression_labels_cache_typed_gapfill.json`); regressed-vs-not proportions match legacy within 0.4 pp, confirming the four-class taxonomy is a robustness story under the cascade.
+**Cascade-affected K-claims are landed.** K-bbox-y-# rows shipped for NB21 (LOSO click prediction), NB22 (four-class taxonomy + full per-etype breakdown), NB28 (viewport bands × deferred-vs-eval-rejected), and NB30 (etype × viewport dissociation). Legacy K-bbox-# rows get annotated `(superseded 2026-05-05: see K-bbox-y-#; bbox Y-pixel coverage fix)` per the cascade rule. K-IDs are never renumbered; the legacy and gapfill rows coexist. The gaze-regression-label cache was re-derived under typed_gapfill (`regression_labels_cache_typed_gapfill.json`); regressed-vs-not proportions match legacy within 0.4 pp, confirming the four-class taxonomy is a robustness story under the cascade.
 
 **Headline shifts (typed → typed_gapfill):**
 - NB21 M3 LOSO AUC: 0.871 → 0.856 (Δ = −0.015) — drop reflects removal of 22.7 % silent contamination from Y-band attribution.
 - NB22 approached & clicked: 1,723 → 1,562 (−161); but legacy population had ~391 contaminated — net honest records gained ≈ +230.
 - NB30 LOPO AUC: 0.687 → 0.701 (Δ = +0.014) — modest improvement on a smaller, cleaner population. Per-etype dissociation tightens (interaction Δ widens 22–50 %); organic baseline slope weakens mechanically (taller bboxes compress max_overlap_frac variance within the organic population).
-- NB28 calibration AUC (M4 + vt_bands): **0.842 → 0.842** (invariant). The viewport-band × cursor-retreat discriminator for deferred-vs-eval-rejected is robust to bbox-attribution flavor — a three-decimal replication.
+- NB28 calibration AUC (M4 + vt_bands): 0.842 → 0.842 (invariant). The viewport-band × cursor-retreat discriminator for deferred-vs-eval-rejected is robust to bbox-attribution flavor — a three-decimal replication.
 
 ## §1.1 Why `organic` was the prior post-cascade primary (pre-typed cascade)
 
@@ -105,10 +105,10 @@ Three reasons documented in [`organic-result-aoi-extraction.md`](./organic-resul
    attentional targets — the cursor/gaze geometry that matters for the
    task model is *what the user did with the organic ranking*, with ads
    as dynamic noise.
-2. **Pixel accuracy.** Band estimation assumes uniform result heights;
+2. Pixel accuracy. Band estimation assumes uniform result heights;
    organic results are 80–320 px tall in practice. Bbox AOIs are within
    ±2 px of the rendered HTML.
-3. **Click attribution audit.** Tolerance-aware bbox attribution
+3. Click attribution audit. Tolerance-aware bbox attribution
    (rejecting clicks that fall in ad rects before snapping to the
    nearest organic) reassigns 411 of 2,762 prior "clicks" — most of
    which were ad-clicks pooled into organic-3 by the absolute scheme.
@@ -131,7 +131,7 @@ Source-of-truth: [`docs/notebook-key-claims.md`](../notebook-key-claims.md)
 | K-ID / Figure | Absolute | Bbox-organic | Reading |
 |---|---|---|---|
 | **NB21:K-bbox-3** M3 LOSO AUC (position+dwell+approach) | 0.859 ± 0.044 | **0.865 ± 0.044** | AR brand claim ("9 cursor features → AUC ≈ 0.86 LOSO") tightens |
-| **NB21:K-bbox-4** M4 LOSO AUC (approach-only) | 0.861 | **0.864** | Approach features still load-bearing without rank |
+| **NB21:K-bbox-4** M4 LOSO AUC (approach-only) | 0.861 | **0.864** | Approach features still central without rank |
 | **NB21:K-bbox-8** Leakage Δ (KFold − LOSO) | +0.002 / −0.000 / −0.002 | **+0.001 / +0.000 / +0.000** | Subject-shuffle invariance preserved |
 | **NB21:K-bbox-9** Per-participant LOSO M3 AUC median | 0.860 | **0.872** | Tighter at the per-subject level |
 | **NB21:K-bbox-10** Brier score (M3 OOF) | 0.1526 | **0.1437** | Calibration improves |
@@ -214,7 +214,7 @@ reversal among 30+ headline numbers.
 
 ### CIKM 2026 (algorithmic, four-class taxonomy primary) — **GO**
 
-Every load-bearing claim in the algorithmic submission survives the
+Every central claim in the algorithmic submission survives the
 cascade with sign + significance preserved or strengthened (§2.1, §2.3).
 The brand statement ("9 task-model-derived cursor features reach AUC ≈
 0.86 in LOSO") tightens. The four-class taxonomy structure is intact;
@@ -256,7 +256,7 @@ artifact at the per-fixation level. The story splits into two:
 - **LF/HF-only "lingered first time" claim:** survives, smaller story,
   publishable as a methodology validation of Butterworth IIR per-fixation
   windowing on AdSERP.
-- **RIPA2 per-fixation arousal-amplitude differential:** does not survive
+- RIPA2 per-fixation arousal-amplitude differential: does not survive
   bbox attribution. Any separate RIPA2 publication track that leans on
   the AdSERP per-fixation result needs to know before submission.
 
@@ -295,12 +295,12 @@ but to bring it under the same pixel-accurate AOI regime as organics.
 - **Per-trial ad bbox files** at `AdSERP/data/ads/{trial_id}.json`. Each
   contains `dd_top` (top-of-page ads), `native_ad`, `dd_right`
   (right-rail), already used by `scripts/compute_retreat_arcs.py`.
-- **`compute_retreat_arcs.py --attribution organic_hybrid`** combines
+- `compute_retreat_arcs.py --attribution organic_hybrid` combines
   bbox organics with shipped ad rectangles in the result column
   (excludes `dd_right`). 5,201 raw arcs vs 1,490 absolute-only; top-ad
   lateral/arc replicates (0.166 → 0.170). This is a working hybrid
   pattern.
-- **`extract_organic_bboxes.py`** has an `is_ad` x-overlap check that
+- `extract_organic_bboxes.py` has an `is_ad` x-overlap check that
   correctly excludes ad-overlapping organics. The pipeline knows about
   ads; it just doesn't currently surface them as first-class AOIs in
   the consumer JSONs.
@@ -330,14 +330,14 @@ fourth-class branch), not pooled with organic clicks.
    organic-only (0.865) and absolute (0.859) — should be near absolute
    since the pool resembles it. If hybrid AUC < absolute, ads are
    noisier than the legacy attribution assumed.
-2. **Re-derive position coefficient under hybrid.** Expectation: between
+2. Re-derive position coefficient under hybrid. Expectation: between
    −0.130 (absolute) and −0.248 (organic). The size of the ad-pooling
    dilution effect.
-3. **Four-class taxonomy under hybrid + ad-click branch.** Expectation:
+3. Four-class taxonomy under hybrid + ad-click branch. Expectation:
    the "evaluated-rejected" class composition shifts (some prior
    eval-rejected at top-of-page were ads being scanned, not organics
    being rejected).
-4. **Coupling-traces under hybrid.** Expectation: partial recovery of
+4. Coupling-traces under hybrid. Expectation: partial recovery of
    the three-band shape — wider AOIs allow more separation between
    classes than tight organic-only bboxes do, but less than absolute's
    pool-everything approach.
@@ -349,7 +349,7 @@ work + 1 LOSO retrain + figure regen.
 
 Producer migration shipped: `compute_cursor_approach_features.py
 --attribution organic_hybrid` writes `cursor-approach-features-organic-hybrid.json`
-with **19,908 records / 2,774 trials / 13.0% click rate** (vs absolute's
+with 19,908 records / 2,774 trials / 13.0% click rate (vs absolute's
 13,419 / 2,339 / 16.6% and organic's 14,760 / 2,701 / 14.9%). Each record
 carries an `etype` field: `organic`, `dd_top`, or `native_ad`. Hybrid
 expands corpus coverage by another ~+15 % over organic-only because top-
@@ -439,7 +439,7 @@ more like scanning than like reading, consistent with a carousel
 layout where the user sweeps across cells.
 
 **At position 0 specifically**, however, the ambient/horizontal signal
-extends across surfaces: organic-pos-0 shows median K = **−0.067**
+extends across surfaces: organic-pos-0 shows median K = −0.067
 (more ambient than dd_top in the same slot), and 39.8 % horizontal
 saccades (matches dd_top's 38.9 %). The Survey-phase-at-top pattern
 is *not* surface-specific — it's a top-of-page property that captures
@@ -462,10 +462,10 @@ independent families flip together between pos 0 and pos 1 on organics:
    amplitude slope ρ = −0.135, *t* = −29.63, *p* = 9.33 × 10⁻¹⁶⁸ within
    trial. Amplitude drops between fixation 5 and fixation 6 — Survey
    ends.
-2. **Saccade orientation** (this audit): horizontal share drops
+2. Saccade orientation (this audit): horizontal share drops
    39.8 % → 35.1 % across organic positions 0 → 5. Pos 0 is
    horizontal-biased; deeper ranks shift to vertical.
-3. **K-coefficient** (this audit): median K −0.067 → +0.136 across
+3. K-coefficient (this audit): median K −0.067 → +0.136 across
    organic positions 0 → 5. Pos 0 is ambient (short fixations + long
    saccades = scanning); deeper ranks become focal (long fixations +
    short saccades = reading).
@@ -518,7 +518,7 @@ vs 2,512 no-regress, 2,649 trials with complete fixation-pupil data.
 **The pattern.** Mean-based per-fixation pupil metrics (RIPA2,
 `pd_change_mean`, `mean_pd_mean` partly) all weaken or die under bbox
 when the no-regress comparator group is no longer ad-inflated.
-**Peak-based** per-fixation pupil metrics survive cleanly:
+Peak-based per-fixation pupil metrics survive cleanly:
 `pd_change_max` and `pd_change_min` both at *p* < 10⁻⁵. Will-regress
 positions have *more variable* pupil dynamics during the visit —
 bigger swings up and down — consistent with cognitive engagement that
@@ -558,7 +558,7 @@ notes it as an absolute-attribution boundary condition.
 
 ## §5 Decision checkpoint
 
-The validation in §2.1 + §2.3 says **AR-strand survives bbox**. The
+The validation in §2.1 + §2.3 says AR-strand survives bbox. The
 empirical collapses in §2.4 are mechanistically interpretable
 (R1 RIPA2 = pooled-rank artifact; coupling-traces = AOI-size confound;
 plateau ρ = small-N effect under bbox).
@@ -568,14 +568,14 @@ plateau ρ = small-N effect under bbox).
 1. **CIKM algorithmic prose pass** — propagate K-bbox-* values through
    `docs/findings.md` and `docs/drafts/cikm-2026/paper.md`. (Highest
    immediate value; deadline pressure.)
-2. **ETTAC §3 prose update** — NB14 numbers + plateau reframe + drop
+2. ETTAC §3 prose update — NB14 numbers + plateau reframe + drop
    joint LF/HF×RIPA2 dissociation claim. (May 15 deadline.)
-3. **`compute_cursor_approach_features.py --attribution organic_hybrid`**
+3. `compute_cursor_approach_features.py --attribution organic_hybrid`
    — implement, run, validate per §4. (Unlocks ad-class extension and
    strengthens the methodology comparison.)
-4. **NB28 calibration retrain** — multi-hour bootstrap, deferred until
+4. NB28 calibration retrain — multi-hour bootstrap, deferred until
    scheduling allows. (Gates CIKM §5 viewport-bands.)
-5. **R1 / RIPA2 paper reframe** — the RIPA2 collapse is a real
+5. R1 / RIPA2 paper reframe — the RIPA2 collapse is a real
    empirical finding worth a careful coauthor conversation, not a
    footnote.
 

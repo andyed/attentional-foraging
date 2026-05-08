@@ -2,7 +2,7 @@
 
 ## 2026-05-05 — Y-pixel coverage fix (`typed_gapfill` flavor)
 
-Branch: `bbox-y-coverage-fix`. Adds a fifth AOI attribution flavor — `typed_gapfill` — as a pragmatic post-processing modifier on the `typed` cascade.
+Branch: `bbox-y-coverage-fix`. Adds a fifth AOI attribution flavor (`typed_gapfill`) as a pragmatic post-processing modifier on the `typed` cascade.
 
 ### Why
 
@@ -13,11 +13,11 @@ Pragmatic, not principled — DOM-anchored bbox extraction is the principled alt
 ### What landed
 
 - **Producer:** `scripts/extract_organic_bboxes.py` adds `--flavor organic_gapfill` (midpoint-split semantics, organic-only; ads pass through unchanged). New helpers `apply_midpoint_split` and `assert_no_y_overlap`. `scripts/apply_gapfill_to_existing.py` provides a no-screenshot path for environments where the AdSERP screenshot volume isn't mounted.
-- **Typed map + CSV export:** `build_typed_aoi_map.py --source organic_gapfill`; `export_aois_by_trial_id.py --attribution typed_gapfill`. New outputs at `data/aoi-typed-gapfill/` and `scripts/output/adserp_aois_by_trial_id_typed_gapfill.csv`.
-- **`data_loader.py` helpers (notebooks-v2):** `load_typed_gapfill_aois`, `typed_gapfill_aoi_bands`, `typed_gapfill_aoi_tops`, `typed_gapfill_aoi_etypes`, `attribute_click_to_typed_gapfill`, `is_main_axis_click`. X+Y bbox-aware attribution prefers strict containment over tolerance, smallest-area on overlap.
-- **Cursor-approach features:** `compute_cursor_approach_features.py --attribution typed_gapfill` writes `AdSERP/data/cursor-approach-features-typed-gapfill.json` (18,218 records vs legacy 19,774; 231 hard-error trials filtered).
-- **AllSERP descriptives:** `scripts/allserp_descriptives.py --flavor typed_gapfill` writes `scripts/output/allserp_descriptives_gapfill/`.
-- **Audit scripts (cite-ready for AllSERP resource paper):** `scripts/audit_unattributed_clicks.py`, `audit_dd_right.py`, `audit_cascade_contamination.py`, `audit_calibration_bias.py`. Each carries regime tag and headline number in the docstring.
+- Typed map + CSV export: `build_typed_aoi_map.py --source organic_gapfill`; `export_aois_by_trial_id.py --attribution typed_gapfill`. New outputs at `data/aoi-typed-gapfill/` and `scripts/output/adserp_aois_by_trial_id_typed_gapfill.csv`.
+- `data_loader.py` helpers (notebooks-v2): `load_typed_gapfill_aois`, `typed_gapfill_aoi_bands`, `typed_gapfill_aoi_tops`, `typed_gapfill_aoi_etypes`, `attribute_click_to_typed_gapfill`, `is_main_axis_click`. X+Y bbox-aware attribution prefers strict containment over tolerance, smallest-area on overlap.
+- Cursor-approach features: `compute_cursor_approach_features.py --attribution typed_gapfill` writes `AdSERP/data/cursor-approach-features-typed-gapfill.json` (18,218 records vs legacy 19,774; 231 hard-error trials filtered).
+- AllSERP descriptives: `scripts/allserp_descriptives.py --flavor typed_gapfill` writes `scripts/output/allserp_descriptives_gapfill/`.
+- Audit scripts (cite-ready for AllSERP resource paper): `scripts/audit_unattributed_clicks.py`, `audit_dd_right.py`, `audit_cascade_contamination.py`, `audit_calibration_bias.py`. Each carries regime tag and headline number in the docstring.
 
 ### Headline shifts (typed → typed_gapfill)
 
@@ -35,13 +35,13 @@ Pragmatic, not principled — DOM-anchored bbox extraction is the principled alt
 ### Cascade landed
 
 - **NB21 LOSO click prediction:** M3 AUC 0.871 → 0.856 (Δ = −0.015); position coefficient strengthens; per-etype AUC ordering preserved (dd_top 0.913, organic 0.852, native_ad 0.833). K-bbox-y-1..12 rows in `docs/notebook-key-claims.md`.
-- **NB22 four-class taxonomy:** full per-etype breakdown under typed_gapfill via `compute_regression_labels.py --attribution typed_gapfill`. Class proportions invariant within ±0.3 pp (clicked 13.0 % preserved; deferred 13.0 → 13.3; eval-rejected 2.9 % preserved; not-approached 71.0 → 70.8 %). Honest population shed 219 contaminated `was_clicked=True` records and gained 4 paa records (genuine recovery).
-- **NB30 etype × viewport:** LOPO AUC 0.687 → 0.701; per-etype `max_overlap_frac` interaction Δ widens (dd_top −0.108 → −0.163; native_ad −0.236 → −0.288). The "ads need higher viewport overlap to convert to clicks" dissociation strengthens under the cleaner population.
-- **AR replay rebuild:** `build_replay_trial.py --flavor typed_gapfill` shipped with screenshot fallback. 4 of 6 confirmed-issue trials rebuilt from local cache; remaining 2 + full 147-trial set auto-complete on volume mount.
+- NB22 four-class taxonomy: full per-etype breakdown under typed_gapfill via `compute_regression_labels.py --attribution typed_gapfill`. Class proportions invariant within ±0.3 pp (clicked 13.0 % preserved; deferred 13.0 → 13.3; eval-rejected 2.9 % preserved; not-approached 71.0 → 70.8 %). Honest population shed 219 contaminated `was_clicked=True` records and gained 4 paa records (genuine recovery).
+- NB30 etype × viewport: LOPO AUC 0.687 → 0.701; per-etype `max_overlap_frac` interaction Δ widens (dd_top −0.108 → −0.163; native_ad −0.236 → −0.288). The "ads need higher viewport overlap to convert to clicks" dissociation strengthens under the cleaner population.
+- AR replay rebuild: `build_replay_trial.py --flavor typed_gapfill` shipped with screenshot fallback. 4 of 6 confirmed-issue trials rebuilt from local cache; remaining 2 + full 147-trial set auto-complete on volume mount.
 
 ### NB28 also landed (2026-05-05 PM)
 
-- **NB28 calibration:** M4 + vt_bands LOSO AUC = **0.8423 (typed_gapfill)** vs 0.842 (legacy absolute). Three-decimal replication — the viewport-band × cursor-retreat discriminator is bbox-attribution-invariant. `viewport_time_calibration.viewport_ms_for_trial` extended with optional `bands=` parameter; `scripts/nb28_typed_gapfill.py` shipped. K-bbox-y-NB28-* rows in `docs/notebook-key-claims.md`.
+- **NB28 calibration:** M4 + vt_bands LOSO AUC = 0.8423 (typed_gapfill) vs 0.842 (legacy absolute). Three-decimal replication — the viewport-band × cursor-retreat discriminator is bbox-attribution-invariant. `viewport_time_calibration.viewport_ms_for_trial` extended with optional `bands=` parameter; `scripts/nb28_typed_gapfill.py` shipped. K-bbox-y-NB28-* rows in `docs/notebook-key-claims.md`.
 
 ### What's still pending
 
@@ -59,7 +59,7 @@ Pragmatic, not principled — DOM-anchored bbox extraction is the principled alt
 
 Branch: `feat/aoi-pipeline-v3-typed`. Extends the prior cascade
 (`feat/aoi-pipeline-v2`, organic + organic_hybrid) with a fourth attribution
-flavor — `typed` — in which every SERP card is labelled by joint HTML +
+flavor (`typed`) in which every SERP card is labelled by joint HTML +
 vision typing. The taxonomy:
 
   organic | dd_top | native_ad | dd_right | top_places | knowledge_panel
@@ -67,7 +67,7 @@ vision typing. The taxonomy:
   | chrome
 
 Pipeline:
-  1. **Phase 1**: `scripts/extract_html_widget_types.py` parses
+  1. Phase 1: `scripts/extract_html_widget_types.py` parses
      `AdSERP/data/serps/<tid>.html` for all 2,776 trials, identifies
      card-level DOM units in `#rso` (descending into "Main results"
      wrappers when present) and `#botstuff` (Related Searches), and types
@@ -76,7 +76,7 @@ Pipeline:
      distribution: organic 22,530 (81.4 %), related_searches 1,811
      (6.5 %), image_pack 1,600 (5.8 %), knowledge_panel 826 (3.0 %),
      paa 769 (2.8 %), top_places 86 (0.3 %), other_widget 51 (0.2 %).
-  2. **Phase 2**: `scripts/build_typed_aoi_map.py` joins HTML types to
+  2. Phase 2: `scripts/build_typed_aoi_map.py` joins HTML types to
      existing CV bbox coordinates from `organic-boundary-data` + ad
      bboxes from `ad-boundary-data`. Walks bboxes in y-order, matches
      each to ad-overlap (≥30 %) → ad type, otherwise to HTML #rso card
@@ -163,7 +163,7 @@ trial-level cognitive operations, not of widget-vs-organic mis-attribution.
   `typed_aoi_tops` for window assignment, so the headline ETTAC findings do
   not depend on pre-computed `*-by-position-typed.json` JSONs. Notebook
   re-execution under typed (NB14, NB18, NB22, NB28, etc.) requires the
-  pre-computed JSONs and is **deferred** to a future cascade pass.
+  pre-computed JSONs and is deferred to a future cascade pass.
 - `compute_lab_gaze_gated_features.py` not yet ported to typed; ETTAC does
   not depend on it.
 
@@ -176,7 +176,7 @@ trial-level cognitive operations, not of widget-vs-organic mis-attribution.
   contrast attribution flavors in prose (per "avoid alternate-rank
   framing" instruction). The Stimuli paragraph mentions display-order
   ranks across organic, ad, and widget surfaces inline.
-- **Internal OSEC memo** (`docs/drafts/rank-value-prior-osec-2026-05-03.md`):
+- Internal OSEC memo (`docs/drafts/rank-value-prior-osec-2026-05-03.md`):
   rank-value-prior axis × verification-appetite axis remain robust under
   typed.
 
@@ -191,7 +191,7 @@ sharpen the cognitive interpretation of the LF/HF rank gradient.
 The median user issues their first significant scroll after fixating only
 ~50 % of the visible above-fold candidate set; only 10.3 % of trials reach
 the last visible position before scrolling. The modal deepest pre-scroll
-fixated position (the per-trial **knee**) is P1 (34.7 % of trials), with
+fixated position (the per-trial knee) is P1 (34.7 % of trials), with
 P0 14.3 %, P2 24.3 %, P3 14.4 %, P4 8.9 %, P5+ 3 %. Per-position fraction
 fixated before first scroll: P0 98.3 %, P1 81.1 %, P2 47.7 %, P3 29.3 %,
 P4 19.6 %. Active criterion compilation is *not* an exhaustive pass
@@ -205,9 +205,9 @@ first-visit LF/HF is essentially flat (ρ = −0.482, *p* = 0.13, *N* = 11
 positions P0–P10). At P0 specifically, pre-scroll first-visit median
 LF/HF is 27.99 (*N* = 1,465); the rare post-scroll first-visit at P0 is
 14.52 (*N* = 92), Δ = −13.47, MW *p* = 3.6 × 10⁻⁶. The same instrument
-reads two different cognitive modes: **Survey-active** (criterion
+reads two different cognitive modes: Survey-active (criterion
 compilation in working memory, pre-scroll, sharp gradient) and
-**Survey-external** (the SERP as external memory for confirmation under
+Survey-external (the SERP as external memory for confirmation under
 a now-stable criterion, post-scroll, flat). Source:
 `scripts/output/lfhf_pre_vs_post_scroll/`.
 
@@ -218,7 +218,7 @@ return-visit LF/HF is significantly higher than first-visit LF/HF on
 the same item by the same user (median Δ = +6.31, mean Δ = +12.55,
 Wilcoxon two-sided *p* = 5.7 × 10⁻²³; 60 % Δ > 0). Participant-level
 80 % Δ > 0, *p* = 3.1 × 10⁻⁴. Per-rank, the elevation is significant
-P1–P5. **Drift-control rules out within-trial baseline shift**:
+P1–P5. Drift-control rules out within-trial baseline shift:
 forward-only within-trial Δ between the latest and earliest visited
 positions is −1.97 (*p* = 2.6 × 10⁻⁴), opposite direction to the paired
 return Δ. **Metric-specificity control rules out generalised pupil
@@ -315,7 +315,7 @@ contributing to organic-result criterion compilation. Source:
   hybrid (was marginal under absolute) — the steep-vs-plateau separation
   now rests on the pooled MW (still very strong, *p* = 2.6 × 10⁻²⁵), not
   on the plateau slope itself. See `docs/drafts/ettac-adserp-2026-05-03-v2.md`.
-- **Task-model paper / CIKM**: the satopt → knee interpretation needs
+- Task-model paper / CIKM: the satopt → knee interpretation needs
   splitting into two axes; the four-class consideration-set taxonomy sits
   inside Survey-external + Evaluate, not across all of Survey; Survey-active
   is typically just ~2 positions per trial (median knee P1).
@@ -350,8 +350,8 @@ deltas, p < 10⁻⁹ and p < 10⁻¹⁹) survives the cascade.
 **`r1_dissociation.png` / `r1_2x2_dissociation.png` (ETTAC-relevant).** The
 R1 per-(trial, position) RIPA2 vs LF/HF dissociation collapses on the
 RIPA2 side under bbox attribution. Per-fixation effect on later-returned
-vs never-returned items: LF/HF d=+0.041, **p=1.1e-03** (preserved, sign
-unchanged); RIPA2 d=+0.006, **p=8.0e-01** (was p=0.0058 under absolute,
+vs never-returned items: LF/HF d=+0.041, p=1.1e-03 (preserved, sign
+unchanged); RIPA2 d=+0.006, p=8.0e-01 (was p=0.0058 under absolute,
 per the JEMR-2025 implementation-bug fix). The "lingered first time"
 LF/HF claim survives. The "lingered but processed shallowly" joint
 LF/HF × RIPA2 signature does not — the RIPA2 component appears to have
@@ -381,7 +381,7 @@ cell. Eliminates the two-copy sync problem behind the 2026-05-01
 
 ### What shipped
 
-Pipeline + consumer API for the bbox AOI enrichment, plus first-pass K-ID delta evidence under organic-rank attribution. **Notebook migrations not yet shipped** — Andy's deep dive on ETTAC paper this weekend will decide which findings move to organic-rank as primary.
+Pipeline + consumer API for the bbox AOI enrichment, plus first-pass K-ID delta evidence under organic-rank attribution. Notebook migrations not yet shipped — Andy's deep dive on ETTAC paper this weekend will decide which findings move to organic-rank as primary.
 
 ### Branch state
 
@@ -441,11 +441,11 @@ band rank 1 → bbox rank -1: 21,791
 band rank 2 → bbox rank  0: 16,475  (re-numbered down by ad/widget exclusion)
 ```
 
-`bbox rank -1` = fixation didn't land on any organic AOI. **~60K fixations were attributed by band estimation to organic ranks 0-1 that actually fall outside organic AOIs entirely** — likely on ad cards, search box, knowledge panels, widgets.
+`bbox rank -1` = fixation didn't land on any organic AOI. ~60K fixations were attributed by band estimation to organic ranks 0-1 that actually fall outside organic AOIs entirely — likely on ad cards, search box, knowledge panels, widgets.
 
 ### NB14 (Butterworth LF/HF × position) under organic attribution
 
-Full table at `scripts/output/aoi-consumer-cascade/nb14_nb18_comparison.md`. **K-IDs computed with the canonical published denominator (positions 0–10, N=11)**, matching the original Key Claims block — earlier draft of this entry used a wider position range and produced misleading K3 values.
+Full table at `scripts/output/aoi-consumer-cascade/nb14_nb18_comparison.md`. K-IDs computed with the canonical published denominator (positions 0–10, N=11), matching the original Key Claims block — earlier draft of this entry used a wider position range and produced misleading K3 values.
 
 | K | Claim | Old (absolute, ads pooled) | New (organic, bbox) | Verdict |
 |---|---|---|---|---|
@@ -514,7 +514,7 @@ Full table at `scripts/output/aoi-consumer-cascade/nb04_comparison.md`. abs n=2,
 | 2 | — | 22.9% | 17.2% |
 | 3 | — | 16.1% | 12.2% |
 
-K13 jumps from 45.4% to **67.9%** under bbox attribution — when first-viewport clickers click, 68% of their fixation time is on position 0 (the top organic), not 45% as previously reported. This is consistent with the rank-0 click share jump (NB23 K1: 18.8% → 44.9%): under organic attribution, the top organic is clearly the dominant attentional target.
+K13 jumps from 45.4% to 67.9% under bbox attribution — when first-viewport clickers click, 68% of their fixation time is on position 0 (the top organic), not 45% as previously reported. This is consistent with the rank-0 click share jump (NB23 K1: 18.8% → 44.9%): under organic attribution, the top organic is clearly the dominant attentional target.
 
 The N=504 → N=382 shift in FV clickers reflects the 411 trials in NB22 where the click was on an ad/widget — those drop out of the FV-organic-clicker cohort under bbox.
 
@@ -544,10 +544,10 @@ The `evaluated_rejected` class grows substantially under bbox attribution becaus
 **Per-trial label stability:**
 
 - **99.4% of trials (2,757/2,775) have at least one shifted four-class label** when switching from absolute to organic attribution.
-- **411 trials** have `clicked` count differing — i.e., the click landed on a different bucket (organic vs ad/widget) under the two methods.
-- **2,047 trials** have `deferred` count differing — gaze regression picked up different positions because position attribution shifted.
+- 411 trials have `clicked` count differing — i.e., the click landed on a different bucket (organic vs ad/widget) under the two methods.
+- 2,047 trials have `deferred` count differing — gaze regression picked up different positions because position attribution shifted.
 
-**Implication for AR replay rebuild:** nearly every curated example in `approach-retreat/site/replay/data/curation.json` may have stale labels. Re-running `build_replay_trial.py` on those trials will produce fresh AOI labels via M5; caption claims like "5 DEFERRED AOIs" need automated cross-check against the regenerated labels before re-publishing demos. The 411 click-shifts are particularly load-bearing because curation.json filters trials by class profile.
+**Implication for AR replay rebuild:** nearly every curated example in `approach-retreat/site/replay/data/curation.json` may have stale labels. Re-running `build_replay_trial.py` on those trials will produce fresh AOI labels via M5; caption claims like "5 DEFERRED AOIs" need automated cross-check against the regenerated labels before re-publishing demos. The 411 click-shifts are particularly important because curation.json filters trials by class profile.
 
 ### NB25 (corpus structure) shifts
 
@@ -560,9 +560,9 @@ The `evaluated_rejected` class grows substantially under bbox attribution becaus
 
 ### What this means — summary
 
-The "monotonic load decline by rank" finding is partly an **absolute-rank artifact** driven by ad-screening discrimination cost contaminating early positions. Under organic-only attribution, the gradient collapses to ns; what survives strongly is **(a)** clicked > non-clicked (K6 strengthens) and **(b)** steep early band vs plateau late band dichotomy (K9 holds at p<10⁻⁸).
+The "monotonic load decline by rank" finding is partly an absolute-rank artifact driven by ad-screening discrimination cost contaminating early positions. Under organic-only attribution, the gradient collapses to ns; what survives strongly is (a) clicked > non-clicked (K6 strengthens) and (b) steep early band vs plateau late band dichotomy (K9 holds at p<10⁻⁸).
 
-Andy's proposed reframe: organic rank as primary, ads as essential distractors. Headline becomes **"cognitive engagement on organic search results is two-band — early evaluation-heavy band + late satisficer plateau, with clicked positions uniformly elevated regardless of band"**. K6 + K9 carry the new headline; K3/K4/K10/K11 retire to a robustness section that shows the absolute-rank curves and explains the ad-distractor contamination.
+Andy's proposed reframe: organic rank as primary, ads as essential distractors. Headline becomes "cognitive engagement on organic search results is two-band — early evaluation-heavy band + late satisficer plateau, with clicked positions uniformly elevated regardless of band". K6 + K9 carry the new headline; K3/K4/K10/K11 retire to a robustness section that shows the absolute-rank curves and explains the ad-distractor contamination.
 
 ### Click-attribution split (full corpus, n=2,775)
 
@@ -642,7 +642,7 @@ This unblocks NB20 (approach by element), NB21 (click prediction LOSO), NB22 num
 
 ### What's measured vs. what's pending
 
-Side-by-side K-ID reports complete for **6 notebooks**:
+Side-by-side K-ID reports complete for 6 notebooks:
 
 | Notebook | Method | Status | Headline shift |
 |---|---|---|---|
@@ -663,7 +663,7 @@ Side-by-side K-ID reports complete for **6 notebooks**:
 | NB20 approach by element | Same |
 | NB15 cursor approach itself | The producer; rerunning it cascades to NB20/21/22/24/28 |
 
-These all share one upstream artifact (`AdSERP/data/cursor-approach-features.json`), so regenerating it once under organic attribution unblocks the whole tier. **Estimated cost**: 1–2 hr to migrate NB15's per-AOI loops + re-run.
+These all share one upstream artifact (`AdSERP/data/cursor-approach-features.json`), so regenerating it once under organic attribution unblocks the whole tier. Estimated cost: 1–2 hr to migrate NB15's per-AOI loops + re-run.
 
 **Probably unaffected (per code triage, no per-position attribution code):**
 
@@ -679,15 +679,15 @@ These all share one upstream artifact (`AdSERP/data/cursor-approach-features.jso
 
 Six notebooks worth of K-ID evidence + the master TL;DRs:
 
-1. **The "monotonic load decline" framing weakens under organic but doesn't fully die.** K3 (ρ over positions 0–10) survives at p=0.029 vs absolute's p=4e-5 — significant but the strength halves. K4 (positions 1–10), K10 (steep-phase perfect monotone), and K11 (plateau direction) all lose significance and K11 sign-flips. The cleaner story is **dichotomy + decision-locking**: K9 steep-vs-plateau still p<10⁻⁸, and K6 (clicked > non-clicked) strengthens to p=2.5e-7.
-2. **Top-organic dominance is sharper than reported.** Click share at rank 0: 18.8% → 44.9%. Position-0 fixation budget for FV clickers: 45% → 68%. Spurious "rank-2 peak" was ad-displacement.
-3. **Ski jump returns at rank 8 under bbox** — terminal-click effect at end-of-first-viewport, masked under absolute attribution.
-4. **AR demos cannot ship as-is.** 99.4% of trials have shifted four-class labels, 411 click reattributions. Curation captions are stale until rebuild.
+1. **The "monotonic load decline" framing weakens under organic but doesn't fully die.** K3 (ρ over positions 0–10) survives at p=0.029 vs absolute's p=4e-5 — significant but the strength halves. K4 (positions 1–10), K10 (steep-phase perfect monotone), and K11 (plateau direction) all lose significance and K11 sign-flips. The cleaner story is dichotomy + decision-locking: K9 steep-vs-plateau still p<10⁻⁸, and K6 (clicked > non-clicked) strengthens to p=2.5e-7.
+2. Top-organic dominance is sharper than reported. Click share at rank 0: 18.8% → 44.9%. Position-0 fixation budget for FV clickers: 45% → 68%. Spurious "rank-2 peak" was ad-displacement.
+3. Ski jump returns at rank 8 under bbox — terminal-click effect at end-of-first-viewport, masked under absolute attribution.
+4. AR demos cannot ship as-is. 99.4% of trials have shifted four-class labels, 411 click reattributions. Curation captions are stale until rebuild.
 
 ### Status / next moves
 
 - ETTAC paper deep-dive scheduled for the weekend (May 2–3, deadline May 15).
-- Notebook code migrations (NB14, NB18a, NB23, NB04, NB22 cell rewrites) **deferred** to after the deep-dive — paper framing decision drives which K-IDs are primary.
+- Notebook code migrations (NB14, NB18a, NB23, NB04, NB22 cell rewrites) deferred to after the deep-dive — paper framing decision drives which K-IDs are primary.
 - Approach-retreat replay-bundle rebuild also deferred until NB22 four-class taxonomy is regenerated under organic attribution AND curation captions are validated.
 - NB15 producer migration (cursor-approach-features under organic) is the unlock for NB20/21/24/28; estimated 1–2 hr next iteration.
 
@@ -706,11 +706,11 @@ Six notebooks worth of K-ID evidence + the master TL;DRs:
 
 ### The bug
 
-`notebooks-v2/data_loader.py` documented Gazepoint FPOGY as **screen-space** (viewport pixels, 0..scr_h) and provided helpers (`assign_fixation_to_position`, `gaze_cursor_distance`) that added scroll offset internally. Per the AdSERP README (https://github.com/kayhan-latifzadeh/AdSERP), FPOGY is actually **page-space** — "relative to the top-left corner of the screenshot in pixels." The JS `adserp-importer.js` in Scrutinizer had the correct interpretation all along. The Python loader was wrong.
+`notebooks-v2/data_loader.py` documented Gazepoint FPOGY as screen-space (viewport pixels, 0..scr_h) and provided helpers (`assign_fixation_to_position`, `gaze_cursor_distance`) that added scroll offset internally. Per the AdSERP README (https://github.com/kayhan-latifzadeh/AdSERP), FPOGY is actually page-space — "relative to the top-left corner of the screenshot in pixels." The JS `adserp-importer.js` in Scrutinizer had the correct interpretation all along. The Python loader was wrong.
 
 Empirical verification on 20 scrolled trials: Pearson *r*(FPOGY, scrollY) ≈ 0.95; (FPOGY − scrollY) falls inside the viewport [0, scr_h] for 98%+ of fixations; max FPOGY exceeds scr_h on scrolled trials (e.g. 2,143 on a 1,024-tall screen). This is definitionally impossible under the screen-space interpretation.
 
-The result: every `fix.y + scroll_y` in Python code was **double-counting scroll**. This is the symmetric bug to the 2026-04-09 cursor-side audit (which fixed the opposite sign error: adding scroll to values that were already page-space). Both bugs originated from the same miscommunication about coordinate conventions across the two language pipelines.
+The result: every `fix.y + scroll_y` in Python code was double-counting scroll. This is the symmetric bug to the 2026-04-09 cursor-side audit (which fixed the opposite sign error: adding scroll to values that were already page-space). Both bugs originated from the same miscommunication about coordinate conventions across the two language pipelines.
 
 ### Discovery
 
@@ -720,10 +720,10 @@ Found while validating the 31 canonical gazeplot trials against the authors' own
 
 - `notebooks-v2/data_loader.py` — module docstring rewritten (FPOGY is page-space, full audit history); `load_fixations` drops `clamp_y`; `assign_fixation_to_position(page_y, tops, n_results)` new 3-arg signature; `gaze_cursor_distance` scroll-free (both inputs page-space); `screen_y_to_page_y` / `page_y_to_screen_y` renamed to `viewport_y_to_page_y` / `page_y_to_viewport_y`; `classify_fixations` no longer clamps or adds scroll.
 - `notebooks-v2/test_coordinate_invariants.py` — rewritten. New invariants enforce the correct page-space contract and fail loudly on any regression. Corpus-wide check: 234,333 / 234,339 fixations (100.00%) land within page bounds; 2,889 / 2,889 clicks (100.00%); 842 / 2,776 trials would have overflowed `doc_h` under the old `fix.y + scroll` formula.
-- **Notebook callers fixed:** NB07c, NB12, NB15, NB18_learning_curve, NB19, NB22 — removed `+ scroll` patterns and updated `assign_fixation_to_position` calls to the new signature. 17 substitutions across 5 notebooks plus the NB07c / NB12 structural rewrites.
-- **Script callers fixed:** `compute_butterworth_lfhf.py`, `compute_ripa2.py`, `compute_encoding_vs_retrieval.py`, `generate_explainer_heatmaps.py`.
-- **Downstream propagation:** `pupil-lfhf/validation/adserp_loader.py` forked loader patched in-place on `main` (not `feat/ripa2-comparison`, which Duchowski requested be kept isolated). `compute_butterworth_lfhf.py` and `compute_ripa2.py` in pupil-lfhf updated and re-run. `validation/README.md` and `CLAUDE.md` noted.
-- **approach-retreat:** README.md, docs/one-pager.md, docs/references/arapakis-leiva-2016.md, CLAUDE.md, and the 2026-04-10 historical memo (appended with a 2026-04-12 update section) — updated to post-fix values.
+- Notebook callers fixed: NB07c, NB12, NB15, NB18_learning_curve, NB19, NB22 — removed `+ scroll` patterns and updated `assign_fixation_to_position` calls to the new signature. 17 substitutions across 5 notebooks plus the NB07c / NB12 structural rewrites.
+- Script callers fixed: `compute_butterworth_lfhf.py`, `compute_ripa2.py`, `compute_encoding_vs_retrieval.py`, `generate_explainer_heatmaps.py`.
+- Downstream propagation: `pupil-lfhf/validation/adserp_loader.py` forked loader patched in-place on `main` (not `feat/ripa2-comparison`, which Duchowski requested be kept isolated). `compute_butterworth_lfhf.py` and `compute_ripa2.py` in pupil-lfhf updated and re-run. `validation/README.md` and `CLAUDE.md` noted.
+- approach-retreat: README.md, docs/one-pager.md, docs/references/arapakis-leiva-2016.md, CLAUDE.md, and the 2026-04-10 historical memo (appended with a 2026-04-12 update section) — updated to post-fix values.
 
 ### NB14 — the headline moved dramatically
 
@@ -777,9 +777,9 @@ Found while validating the 31 canonical gazeplot trials against the authors' own
 
 ### Headline interpretation
 
-**No sign flips. No direction changes. Every effect got *stronger*.** The pre-fix scroll double-count was injecting noise in the position direction, masking the true signal. The framework-compilation story (steep decline early, plateau later) is preserved and sharpened. The deferred-vs-rejected motor signature dissociation — the CIKM 2026 paper's central empirical claim — is now on dramatically firmer statistical ground (retreat-distance *p* went from 10⁻¹¹ to 10⁻³⁸; gaze-dwell *p* from 10⁻²⁶ to 10⁻⁷⁰).
+**No sign flips. No direction changes. Every effect got *stronger*.** The pre-fix scroll double-count was injecting noise in the position direction, masking the true signal. The framework-compilation story (steep decline early, plateau later) is preserved and sharpened. The deferred-vs-rejected motor signature dissociation (the CIKM 2026 paper's central empirical claim) is now on dramatically firmer statistical ground (retreat-distance *p* went from 10⁻¹¹ to 10⁻³⁸; gaze-dwell *p* from 10⁻²⁶ to 10⁻⁷⁰).
 
-K3 moving from ρ = −0.618, *p* = 0.0426 (borderline at α = 0.05) to **ρ = −0.927, *p* < 0.0001** is the biggest single win. K4 (positions 1–10 only) flipping from non-significant (ρ = −0.491, *p* = 0.150) to highly significant (ρ = −0.903, *p* = 0.0003) is the second biggest — pre-fix the 1–10 subset could not be cited; post-fix it's a robust effect.
+K3 moving from ρ = −0.618, *p* = 0.0426 (borderline at α = 0.05) to ρ = −0.927, *p* < 0.0001 is the biggest single win. K4 (positions 1–10 only) flipping from non-significant (ρ = −0.491, *p* = 0.150) to highly significant (ρ = −0.903, *p* = 0.0003) is the second biggest — pre-fix the 1–10 subset could not be cited; post-fix it's a robust effect.
 
 ### Propagation
 
@@ -802,19 +802,19 @@ Historical audit memos that describe the 2026-04-09 state (`attentional-foraging
 ### ETTAC infrastructure
 
 - **Key Claims expanded to 11 notebooks** (~145 canonical rows). New: NB05 (LHIPA, K1–K15), NB12 (regression precision null, K1–K14), NB18 (RIPA2 vs LF/HF, K1–K17).
-- **NB14 piecewise gradient analysis** (K9–K15). Resolves K3's borderline p = 0.043:
+- NB14 piecewise gradient analysis (K9–K15). Resolves K3's borderline p = 0.043:
   - Steep phase (pos 0–3): Mann–Whitney p = 4.1 × 10⁻²², medians 30.0 → 16.0
   - Plateau phase (pos 4–10): Spearman ns — flat, as predicted by framework compilation
   - Within-trial gradient strengthens with evaluation depth: 79.1% negative at ≥7 positions (K15)
-- **findings.md v11**: corrected 8 stale values (NB13, NB11, NB14), added Key Claims `[NB__:K__]` references throughout.
-- **NB14:K5 inclusion criterion documented**: ≥3 valid LF/HF segments at positions 0–10 (Spearman with N=2 is degenerate).
-- **pupil-lfhf validation pipeline**: self-contained AdSERP analysis (`adserp_loader.py`, `validate_adserp.py`) with coordinate-audited click_pos. All values match Key Claims exactly.
+- findings.md v11: corrected 8 stale values (NB13, NB11, NB14), added Key Claims `[NB__:K__]` references throughout.
+- NB14:K5 inclusion criterion documented: ≥3 valid LF/HF segments at positions 0–10 (Spearman with N=2 is degenerate).
+- pupil-lfhf validation pipeline: self-contained AdSERP analysis (`adserp_loader.py`, `validate_adserp.py`) with coordinate-audited click_pos. All values match Key Claims exactly.
 
 ## 2026-04-09
 
 ### Coordinate-space audit: scroll double-counting bug in click position
 
-**The bug.** `scripts/compute_butterworth_lfhf.py:147` and `scripts/compute_ripa2.py:193` derived each trial's `click_pos` by calling `assign_fixation_to_position(last_click[2], click_scroll, …)`. That function is designed for **gaze** — it adds `scroll_y` to convert screen-space FPOGY into page-space. But `clicks[-1][2]` comes from evtrack `ypos`, which is **already page-space** (verified empirically: `p004-b2-t3` has cursor Y up to 1,902 px while the browser window is only 1,137 px tall). Adding scroll double-counted it, pushing clicks on scrolled trials to deeper bands than the user actually clicked.
+**The bug.** `scripts/compute_butterworth_lfhf.py:147` and `scripts/compute_ripa2.py:193` derived each trial's `click_pos` by calling `assign_fixation_to_position(last_click[2], click_scroll, …)`. That function is designed for gaze — it adds `scroll_y` to convert screen-space FPOGY into page-space. But `clicks[-1][2]` comes from evtrack `ypos`, which is already page-space (verified empirically: `p004-b2-t3` has cursor Y up to 1,902 px while the browser window is only 1,137 px tall). Adding scroll double-counted it, pushing clicks on scrolled trials to deeper bands than the user actually clicked.
 
 The same pattern was cargo-culted into nine other notebooks (NB01, NB03, NB05, NB06, NB07b, NB10, NB12, NB15, NB18-learning_curve, NB23, NB24) and one additional script (`forward_regressive_tolerance_sweep.py`). The root cause is that half the notebooks reimplement their own mini-loader in cell 2 instead of importing `data_loader.py`, each with its own implicit coordinate-space assumption.
 
@@ -826,7 +826,7 @@ The same pattern was cargo-culted into nine other notebooks (NB01, NB03, NB05, N
 | Mis-placed clicks on scrolled trials | 0 | **1,590 / 2,266** |
 | No-scroll trials (sanity bar) | — | **0 disagreements** |
 
-The buggy formula also produced physically impossible `click_pos` values (up to 15, for 10-result SERPs) in **239 trials** of the old `butterworth-lfhf-by-position.json`.
+The buggy formula also produced physically impossible `click_pos` values (up to 15, for 10-result SERPs) in 239 trials of the old `butterworth-lfhf-by-position.json`.
 
 **NB14 Key Claims — before / after the fix:**
 
@@ -841,7 +841,7 @@ The buggy formula also produced physically impossible `click_pos` values (up to 
 | K7 (LF/HF × LHIPA) | ρ = −0.122, *p* = 9.29 × 10⁻¹⁰, N = 2,492 | unchanged | — |
 | K8 (position medians) | pos 0: 29.98 → pos 1: 21.20 → … | unchanged (uses fixation position, not click_pos) | — |
 
-**The ETTAC 2026 load-bearing claim (K3) is unaffected.** The position-level correlation, within-trial decomposition, and LHIPA cross-index validation all use fixation position (gaze → page-space, which is the coordinate-correct direction). Only `click_pos`-dependent rows moved.
+**The ETTAC 2026 central claim (K3) is unaffected.** The position-level correlation, within-trial decomposition, and LHIPA cross-index validation all use fixation position (gaze → page-space, which is the coordinate-correct direction). Only `click_pos`-dependent rows moved.
 
 **The fix.**
 1. `notebooks-v2/data_loader.py` — documented coordinate-space conventions in the module docstring, tightened `assign_fixation_to_position` to name its parameter `screen_fix_y` and warn that cursor/click Ys must not be passed. Added canonical helpers: `get_click_page_xy`, `click_to_position`, `cursor_to_position`, `screen_y_to_page_y`, `page_y_to_screen_y`, `gaze_cursor_distance`, `interpolate_cursor_at`.
@@ -899,15 +899,15 @@ The "robust across chattiness terciles" framing holds at the *significance* leve
 
 NB01, 03 (×2 sites), 05, 06, 07b, 10, 12, 18-learning_curve, 24 — batch-patched via `notebooks-v2/_apply_coord_fixes.py`. None of these have Key Claims blocks yet, so re-execution has not been triggered; they will pick up the fix on next run. `scripts/compute_ripa2.py` and `scripts/forward_regressive_tolerance_sweep.py` also patched; their JSON outputs will be refreshed the next time they run.
 
-NB23 (rank_effects) is a **separate case**: its local `click_positions` derivation (used for panel 1, click share by position) has been patched in place, but the notebook has not been re-executed. Panels 4–5 (butterworth LF/HF + LHIPA by click position) already consume the fixed `butterworth-lfhf-by-position.json`, so they reflect the post-fix click_pos from that feeder. NB23 does not yet have a Key Claims block even though it's the rank-effects hero chart cited in README and CHANGELOG v9 — promoting it to Tier A is tracked separately.
+NB23 (rank_effects) is a separate case: its local `click_positions` derivation (used for panel 1, click share by position) has been patched in place, but the notebook has not been re-executed. Panels 4–5 (butterworth LF/HF + LHIPA by click position) already consume the fixed `butterworth-lfhf-by-position.json`, so they reflect the post-fix click_pos from that feeder. NB23 does not yet have a Key Claims block even though it's the rank-effects hero chart cited in README and CHANGELOG v9 — promoting it to Tier A is tracked separately.
 
 **Still pending:**
-- ~~Regenerate `ripa2` output~~ **Done** (2026-04-11): `compute_ripa2.py -o AdSERP/data/ripa2-by-position.json` — 2,719 trials, ρ = −0.827 positional gradient confirmed. (NB18 re-execution deferred — it reads this JSON, will pick up new values on next run.)
-- ~~Re-execute NB23~~ **Done** (2026-04-09): NB23 uses `click_to_position()` from `data_loader` (coordinate-safe); all 9 code cells executed with correct output. K1 = ρ = −0.973 on 2,764 trials.
-- ~~Phase 3 structural migration~~ **Done** (2026-04-11): All dangerous coordinate patterns eliminated. NB00, NB04, NB19 were the last three with inline `assign_fixation_to_position(click_y, scroll_y, ...)` or `click_page_y = cy + interpolate_scroll(...)`. Replaced with `click_to_position(clicks, tops, n_res)`. Zero dangerous patterns remain across all 30 notebooks (verified via regex scan).
-- ~~`docs/findings.md`~~ **Already current** (v11, 2026-04-10): §10 and §10b updated with post-fix values (14.4% click rate, N = 344, correct NB22 four-class Ns, [NB##:K##] refs throughout). `docs/findings-approach-retreat.md` intentionally frozen with SUPERSEDED banner — it's a journey doc, not canonical.
-- ~~`docs/drafts/` grep pass~~ **Done** (2026-04-11): `model-analysis.html` given SUPERSEDED banner with before/after table. `model-analysis.md` line 270 fixed (0.821→0.792). `task-model-paper.md` line 179 fixed (994→344). `paper.md` references to 0.821 are all Bruckner ACD (correct, different dataset). Remaining stale values in `.html` left under the SUPERSEDED banner rather than surgically edited.
-- ~~Approach-retreat repo~~ **Done** (2026-04-11): README fixed (NB24 arc ratios, 17× typo, discrimination cost values). CLAUDE.md added documenting upstream dependency. See approach-retreat commit `63d861a` and `257cd79`.
+- ~~Regenerate `ripa2` output~~ Done (2026-04-11): `compute_ripa2.py -o AdSERP/data/ripa2-by-position.json` (2,719 trials, ρ = −0.827 positional gradient confirmed. (NB18 re-execution deferred) it reads this JSON, will pick up new values on next run.)
+- ~~Re-execute NB23~~ Done (2026-04-09): NB23 uses `click_to_position()` from `data_loader` (coordinate-safe); all 9 code cells executed with correct output. K1 = ρ = −0.973 on 2,764 trials.
+- ~~Phase 3 structural migration~~ Done (2026-04-11): All dangerous coordinate patterns eliminated. NB00, NB04, NB19 were the last three with inline `assign_fixation_to_position(click_y, scroll_y, ...)` or `click_page_y = cy + interpolate_scroll(...)`. Replaced with `click_to_position(clicks, tops, n_res)`. Zero dangerous patterns remain across all 30 notebooks (verified via regex scan).
+- ~~`docs/findings.md`~~ Already current (v11, 2026-04-10): §10 and §10b updated with post-fix values (14.4% click rate, N = 344, correct NB22 four-class Ns, [NB##:K##] refs throughout). `docs/findings-approach-retreat.md` intentionally frozen with SUPERSEDED banner — it's a journey doc, not canonical.
+- ~~`docs/drafts/` grep pass~~ Done (2026-04-11): `model-analysis.html` given SUPERSEDED banner with before/after table. `model-analysis.md` line 270 fixed (0.821→0.792). `task-model-paper.md` line 179 fixed (994→344). `paper.md` references to 0.821 are all Bruckner ACD (correct, different dataset). Remaining stale values in `.html` left under the SUPERSEDED banner rather than surgically edited.
+- ~~Approach-retreat repo~~ Done (2026-04-11): README fixed (NB24 arc ratios, 17× typo, discrimination cost values). CLAUDE.md added documenting upstream dependency. See approach-retreat commit `63d861a` and `257cd79`.
 
 **Reference data:** pre-fix JSONs preserved for reproducibility:
 - `AdSERP/data/butterworth-lfhf-by-position.prefix-bug.json`
@@ -920,9 +920,9 @@ NB23 (rank_effects) is a **separate case**: its local `click_positions` derivati
 
 ### LHIPA reinterpretation: boundary step, not position gradient
 
-Trial-level LHIPA by click position is **flat across positions 0–8** (range: 0.0385–0.0392, delta = 0.0008), then steps down at positions 9–10 (0.0376–0.0380). The previously reported ρ = −0.87 is driven almost entirely by the boundary step, not a gradual decline. Excluding positions 9–10: ρ = −0.78 but delta is within noise.
+Trial-level LHIPA by click position is flat across positions 0–8 (range: 0.0385–0.0392, delta = 0.0008), then steps down at positions 9–10 (0.0376–0.0380). The previously reported ρ = −0.87 is driven almost entirely by the boundary step, not a gradual decline. Excluding positions 9–10: ρ = −0.78 but delta is within noise.
 
-**Correction:** Prior claims that "LHIPA decreases monotonically with foraging depth" (README §Behavioral signals, findings.md, lit-review-scroll-regressions.md) overstated the position effect. LHIPA tracks the **boundary decision cost** — the same phenomenon as the ski-jump click distribution uptick — not a per-position scanning cost. Butterworth LF/HF (NB 14) remains the valid per-position cognitive load measure, and it shows framework compilation (steep drop 0–3, plateau after).
+**Correction:** Prior claims that "LHIPA decreases monotonically with foraging depth" (README §Behavioral signals, findings.md, lit-review-scroll-regressions.md) overstated the position effect. LHIPA tracks the boundary decision cost (the same phenomenon as the ski-jump click distribution uptick) not a per-position scanning cost. Butterworth LF/HF (NB 14) remains the valid per-position cognitive load measure, and it shows framework compilation (steep drop 0–3, plateau after).
 
 ### Unified rank effects notebook (NB 23)
 
@@ -940,7 +940,7 @@ New notebook `23_rank_effects.ipynb` consolidates all by-position effects:
 
 Three systemic issues affecting how results were reported throughout the project:
 
-**1. Position-aggregate correlations reported as if trial-level.** The three headline rhos — LHIPA ρ = −0.903, Butterworth ρ = −0.618, forward dwell ratio ρ = +0.82 — are all computed on N = 9–11 position-level aggregates (means or medians), not individual trials. Citing "N = 2,719 trials" alongside a correlation computed on 11 points creates a false impression of statistical power. Trial-level correlations are much weaker (e.g., LHIPA ρ = −0.088). Every position-aggregate statistic now states the actual N of the aggregation.
+**1. Position-aggregate correlations reported as if trial-level.** The three headline rhos (LHIPA ρ = −0.903, Butterworth ρ = −0.618, forward dwell ratio ρ = +0.82) are all computed on N = 9–11 position-level aggregates (means or medians), not individual trials. Citing "N = 2,719 trials" alongside a correlation computed on 11 points creates a false impression of statistical power. Trial-level correlations are much weaker (e.g., LHIPA ρ = −0.088). Every position-aggregate statistic now states the actual N of the aggregation.
 
 **2. Survivor bias in per-position analyses.** Not all trials reach every position (pos 0: 2,742; pos 9: 640). Position means at later positions come from self-selected thorough scanners who scrolled the full page. This inflates apparent dwell at later positions and may bias Butterworth LF/HF medians. Added to methodological-threats.md. This also connects to the F-pattern: Nielsen's aggregate heatmap conflates compiled criteria (real), survey-phase concentration at top (real), and survivor selection (artifact).
 
@@ -1021,8 +1021,8 @@ Positions 6-8 are ballistic transit zones (high velocity, short viewport, suppre
 Corrected language in README.md, TODO.md, findings.md, and adserp-key-claims.md that framed the regression-trial overlap correlation (r = -0.033) as evidence that "priming operates in re-evaluation." The signal is triply confounded:
 
 1. **Position-overlap covariation** — within-position controls null (v3)
-2. **Repetition/recognition** — revisiting already-read content produces shorter dwell (v4)
-3. **Ballistic scroll kinematics** — high-velocity transit biases viewport time and fixation count (v5)
+2. Repetition/recognition — revisiting already-read content produces shorter dwell (v4)
+3. Ballistic scroll kinematics — high-velocity transit biases viewport time and fixation count (v5)
 
 ---
 
