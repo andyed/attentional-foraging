@@ -43,10 +43,21 @@ from sklearn.preprocessing import StandardScaler
 ROOT = Path("/Users/andyed/Documents/dev/attentional-foraging")
 sys.path.insert(0, str(ROOT / "notebooks-v2"))
 from data_loader import (  # noqa: E402
-    get_trial_meta, load_fixations, result_band_tops,
+    get_trial_meta, load_fixations, result_band_tops, organic_aoi_tops,
 )
 
-FEATURES_JSON = ROOT / "AdSERP/data/cursor-approach-features.json"
+import argparse as _argparse
+_ap = _argparse.ArgumentParser()
+_ap.add_argument('--attribution', choices=['absolute', 'organic'], default='organic',
+                 help='organic (default; bbox-attributed) or absolute (legacy h3+ads pooled)')
+_ARGS = _ap.parse_args()
+_OUT_SUFFIX = '_organic' if _ARGS.attribution == 'organic' else ''
+print(f'[attribution] {_ARGS.attribution}', file=sys.stderr)
+
+if _ARGS.attribution == 'organic':
+    FEATURES_JSON = ROOT / "AdSERP/data/cursor-approach-features-organic.json"
+else:
+    FEATURES_JSON = ROOT / "AdSERP/data/cursor-approach-features.json"
 MOUSE_DIR = ROOT / "AdSERP/data/mouse-movement-data"
 OUT_DIR = ROOT / "scripts/output/phase_restricted_ablation"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -142,7 +153,13 @@ def compute_features_with_time_window(trial_id, window, n_results=N_RESULTS_DEFA
         return None
     doc_h, _, _ = meta
     try:
-        tops = result_band_tops(n_results, doc_h)
+        if _ARGS.attribution == 'organic':
+            tops = organic_aoi_tops(trial_id)
+            n_results = len(tops)
+            if n_results == 0:
+                return None
+        else:
+            tops = result_band_tops(n_results, doc_h)
     except Exception:
         return None
     linear_centers = {}
@@ -323,8 +340,10 @@ def main():
         "survey_end_fixation_index": SURVEY_END,
         "results": results,
     }
-    (OUT_DIR / "summary.json").write_text(json.dumps(summary, indent=2))
-    print(f"\nwrote {OUT_DIR / 'summary.json'}")
+    summary['attribution'] = _ARGS.attribution
+    out_path = OUT_DIR / f"summary{_OUT_SUFFIX}.json"
+    out_path.write_text(json.dumps(summary, indent=2))
+    print(f"\nwrote {out_path}")
 
 
 if __name__ == "__main__":

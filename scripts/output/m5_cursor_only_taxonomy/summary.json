@@ -1,7 +1,7 @@
 {
   "experiment": "M5 \u2014 cursor-only classifier for NB22 taxonomy bootstrap",
   "script": "scripts/m5_cursor_only_taxonomy.py",
-  "generated": "2026-04-15T01:48:28.567173+00:00",
+  "generated": "2026-04-18T03:35:19.277129+00:00",
   "regime": "LAB",
   "inference_wild_compatible": true,
   "training_features": [

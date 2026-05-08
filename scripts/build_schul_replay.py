@@ -49,6 +49,12 @@ def block_suffix_from_q(q: str) -> str:
     return f"{dev}{block}"
 
 
+def _last_aoi(hits: dict) -> str | None:
+    """Return the last AOI the participant dwelled on (for sanity checks)."""
+    visits = hits.get("summary", {}).get("visit_log", [])
+    return visits[-1]["aoi_id"] if visits else None
+
+
 def lookup_click(clicks_dir: str, external_code: str, q_label: str) -> str | None:
     """Find the click AOI for (external_code × q_label) in the Clicks CSVs.
 
@@ -309,7 +315,12 @@ def main():
         json.dump(aois, f, indent=2)
     print(f"  AOIs: {len(aois)}")
 
-    # 5) Click resolution (optional, needs xlsx + clicks-dir)
+    # 5) Reported-choice resolution (optional, needs xlsx + clicks-dir)
+    #
+    # NB: Clicks.zip is most likely POST-SESSION reported preference rather than
+    # an in-session tap — verified against 5 pilot trials where the "clicked"
+    # AOI was not in the final viewport for 3 of them. Treat this as the
+    # participant's recorded choice for the task, not as an eye/finger landing.
     click_info = None
     if args.xlsx and args.clicks_dir:
         import schul_code_mapping
@@ -317,20 +328,23 @@ def main():
         mr = mapping_results.get(int(args.participant))
         if mr and mr.external_code:
             margin_s = (mr.second_best_gap_ms - mr.total_abs_gap_ms) / 1000
-            clicked_aoi = lookup_click(args.clicks_dir, mr.external_code, args.q)
+            reported_aoi = lookup_click(args.clicks_dir, mr.external_code, args.q)
             click_info = {
                 "external_code": mr.external_code,
-                "clicked_aoi": clicked_aoi,
+                "reported_aoi": reported_aoi,
+                # kept for back-compat; same value as reported_aoi
+                "clicked_aoi": reported_aoi,
+                "semantics": "post_session_reported_choice",
                 "mapping_total_abs_gap_ms": mr.total_abs_gap_ms,
                 "mapping_margin_ms": mr.second_best_gap_ms - mr.total_abs_gap_ms,
                 "mapping_confidence": "high" if margin_s >= 2 else ("medium" if margin_s >= 0.5 else "low"),
                 "mapping_shared_qs": mr.shared_q_count,
             }
-            print(f"\nclick mapping: iMotions {args.participant} → external {mr.external_code} "
+            print(f"\nchoice mapping: iMotions {args.participant} → external {mr.external_code} "
                   f"(margin {margin_s:.1f}s, conf={click_info['mapping_confidence']}) · "
-                  f"clicked AOI on {args.q} = {clicked_aoi!r}")
+                  f"reported AOI on {args.q} = {reported_aoi!r}")
         else:
-            print("\nclick mapping: no valid external-code match found for this participant")
+            print("\nchoice mapping: no valid external-code match found for this participant")
 
     # 6a) Scroll recovery (on the sliced/full trial MP4)
     print("\nrunning scroll recovery …")
@@ -400,6 +414,56 @@ def main():
     for aid, e in top:
         print(f"    {aid:>6}  dwell {e['dwell_ms']:>4}ms  visits {e['visits']}")
 
+    # Diagnostics: reported-choice vs final scroll sanity
+    warnings = []
+    if click_info and click_info.get("reported_aoi"):
+        reported_id = click_info["reported_aoi"]
+        aoi = next((a for a in aois if a["id"] == reported_id), None)
+        if aoi and scroll_samples:
+            final = scroll_samples[-1]
+            vp_y0 = final["y_offset_px"]
+            vp_h = int((scroll_meta["crop_bounds"][3] - scroll_meta["crop_bounds"][1])
+                       * scroll_meta["scale_crop_to_ref"])
+            vp_y1 = vp_y0 + vp_h
+            reported_visible = aoi["y1"] < vp_y1 and aoi["y2"] > vp_y0
+            click_info["reported_aoi_visible_at_end"] = reported_visible
+            if not reported_visible:
+                warnings.append(
+                    f"reported AOI {reported_id} (page y=[{aoi['y1']},{aoi['y2']}]) "
+                    f"is NOT in the final viewport (y=[{vp_y0},{vp_y1}]). "
+                    "Consistent with post-session reported-choice semantics; not a pipeline bug."
+                )
+        click_info["session_ended_on_same_aoi"] = (
+            aoi_hits_last_aoi == click_info["reported_aoi"]
+            if (aoi_hits_last_aoi := _last_aoi(hits)) else False
+        )
+
+    # Diagnostics: scroll confidence summary
+    lc = sum(1 for s in scroll_samples if s["confidence"] == "low")
+    mc = sum(1 for s in scroll_samples if s["confidence"] == "medium")
+    hc = sum(1 for s in scroll_samples if s["confidence"] == "high")
+    total = len(scroll_samples) or 1
+    scroll_conf_summary = {
+        "high_frac": round(hc / total, 3),
+        "medium_frac": round(mc / total, 3),
+        "low_frac": round(lc / total, 3),
+    }
+    if scroll_conf_summary["low_frac"] > 0.4:
+        warnings.append(
+            f"{scroll_conf_summary['low_frac']*100:.0f}% of frames are low-confidence scroll "
+            f"(match score < 0.15). DP path likely unreliable in those regions."
+        )
+    if warnings:
+        print("\n⚠ warnings:")
+        for w in warnings:
+            print(f"  - {w}")
+
+    meta["warnings"] = warnings
+    meta["scroll_confidence_summary"] = scroll_conf_summary
+    # Re-write meta with diagnostics
+    with open(os.path.join(out_dir, "meta.json"), "w") as f:
+        json.dump(meta, f, indent=2)
+
     # Register in trials.json if --name given
     if args.name:
         trials_root = os.path.join(repo_root, "docs", "schul-replay", "trials")
@@ -415,11 +479,14 @@ def main():
             "duration_ms": duration_ms,
             "gaze_valid": len(valid),
             "gaze_total": len(samples),
-            "click_aoi": click_info["clicked_aoi"] if click_info else None,
+            "reported_aoi": click_info["reported_aoi"] if click_info else None,
+            "reported_aoi_visible_at_end": click_info.get("reported_aoi_visible_at_end") if click_info else None,
             "external_code": click_info["external_code"] if click_info else None,
             "total_in_aoi_ms": hm["total_in_aoi_ms"],
             "n_visits": hm["n_visits"],
             "top_aoi": top[0][0] if top else None,
+            "scroll_low_conf_frac": scroll_conf_summary["low_frac"],
+            "n_warnings": len(warnings),
         })
         entries.sort(key=lambda e: (e["participant"], e["q_label"]))
         with open(manifest, "w") as f:

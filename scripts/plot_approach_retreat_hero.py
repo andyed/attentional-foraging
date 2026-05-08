@@ -3,12 +3,19 @@
 Two-panel figure: real cursor trajectories for one commit (clicked) episode
 and one retreat (rejected) episode. Both drawn in page-space against result
 band outlines estimated from the trial metadata. Uses only post-fix data —
-everything comes from cursor-approach-features.json (re-run 2026-04-12) and
-the raw mouse-movement CSVs, which are coordinate-safe in their own right.
+everything comes from cursor-approach-features-organic.json (bbox-organic
+attribution, post-2026-05-01 cascade) and the raw mouse-movement CSVs,
+which are coordinate-safe in their own right.
 
-Exemplars:
-    Commit:  p015-b1-t5  pos=2  min_dist=13 px  retreat_dist=20 px
-    Retreat: p014-b5-t2  pos=0  min_dist=18 px  retreat_dist=1,002 px
+Exemplars (re-picked 2026-05-02 from cursor-approach-features-organic.json):
+    Commit:  p014-b4-t2  pos=0  min_dist=6 px   retreat_dist=26 px
+    Retreat: p015-b4-t4  pos=0  min_dist=12 px  retreat_dist=1,077 px
+
+The legacy absolute-attribution exemplars (p015-b1-t5 pos=2 commit /
+p014-b5-t2 pos=0 retreat) reattribute under bbox-organic — p015-b1-t5
+no longer carries was_clicked=True at organic position 2, breaking the
+"Commit (clicked)" caption. The new pair is the closest equivalent
+under bbox-organic by (min_dist, retreat_dist) geometry.
 
 Outputs:
     docs/drafts/cikm-2026/figures/approach-retreat-hero.png
@@ -34,16 +41,12 @@ from data_loader import (  # noqa: E402
 OUT_CIKM = ROOT / 'docs/drafts/cikm-2026/figures/approach-retreat-hero.png'
 OUT_MAIN = ROOT / 'docs/drafts/figures/approach-retreat-hero.png'
 
-# NOTE: pinned to absolute attribution as of 2026-05-02. Under bbox-organic,
-# the curated COMMIT exemplar (p015-b1-t5 pos=2) reattributes away from
-# 'clicked' so the figure's "Commit (clicked)" caption no longer matches.
-# New exemplars need to be hand-picked from cursor-approach-features-organic.json
-# before this script can default to organic.
-FEATURES_JSON = ROOT / 'AdSERP/data/cursor-approach-features.json'
+FEATURES_JSON = ROOT / 'AdSERP/data/cursor-approach-features-organic.json'
 
-# Exemplar trials — picked from cursor-approach-features.json (2026-04-12 run)
-COMMIT = dict(trial_id='p015-b1-t5', position=2)
-RETREAT = dict(trial_id='p014-b5-t2', position=0)
+# Exemplar trials — re-picked 2026-05-02 from cursor-approach-features-organic.json
+# under bbox-organic AOI attribution. See module docstring for legacy retirement note.
+COMMIT = dict(trial_id='p014-b4-t2', position=0)
+RETREAT = dict(trial_id='p015-b4-t4', position=0)
 
 # ── Style ──────────────────────────────────────────────────────────────────
 BG = '#ffffff'

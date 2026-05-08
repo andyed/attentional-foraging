@@ -322,27 +322,50 @@ def click_quadrant_cis():
         lf_med = np.median(lf)
         rp_med = np.median(rp)
         hh_mask = (lf >= lf_med) & (rp >= rp_med)
+        hl_mask = (lf >= lf_med) & (rp <  rp_med)  # high LF/HF, low RIPA2
+        lh_mask = (lf <  lf_med) & (rp >= rp_med)  # low  LF/HF, high RIPA2
         ll_mask = (lf <  lf_med) & (rp <  rp_med)
         rate_hh = float(clk[hh_mask].mean()) * 100
+        rate_hl = float(clk[hl_mask].mean()) * 100
+        rate_lh = float(clk[lh_mask].mean()) * 100
         rate_ll = float(clk[ll_mask].mean()) * 100
         lift_pp = rate_hh - rate_ll
-        # Bootstrap CI on lift
+        # Bootstrap CIs on all four cell rates and on lift
         n_rec = len(records)
         idx = np.arange(n_rec)
         lifts = np.empty(n_boot)
+        rates_hh = np.empty(n_boot); rates_hl = np.empty(n_boot)
+        rates_lh = np.empty(n_boot); rates_ll = np.empty(n_boot)
         for b in range(n_boot):
             sample = RNG.choice(idx, size=n_rec, replace=True)
             lf_s = lf[sample]; rp_s = rp[sample]; clk_s = clk[sample]
             lf_ms = np.median(lf_s); rp_ms = np.median(rp_s)
             hh = (lf_s >= lf_ms) & (rp_s >= rp_ms)
+            hl = (lf_s >= lf_ms) & (rp_s <  rp_ms)
+            lh = (lf_s <  lf_ms) & (rp_s >= rp_ms)
             ll = (lf_s <  lf_ms) & (rp_s <  rp_ms)
-            lifts[b] = (clk_s[hh].mean() - clk_s[ll].mean()) * 100
+            rates_hh[b] = clk_s[hh].mean() * 100 if hh.any() else np.nan
+            rates_hl[b] = clk_s[hl].mean() * 100 if hl.any() else np.nan
+            rates_lh[b] = clk_s[lh].mean() * 100 if lh.any() else np.nan
+            rates_ll[b] = clk_s[ll].mean() * 100 if ll.any() else np.nan
+            lifts[b] = rates_hh[b] - rates_ll[b]
         lo, hi = np.percentile(lifts, [2.5, 97.5])
+        def ci(arr): return [float(np.nanpercentile(arr, 2.5)), float(np.nanpercentile(arr, 97.5))]
         return {
             'label': label,
             'n_records': n_rec,
+            'n_HH': int(hh_mask.sum()),
+            'n_HL': int(hl_mask.sum()),
+            'n_LH': int(lh_mask.sum()),
+            'n_LL': int(ll_mask.sum()),
             'rate_HH_pp': rate_hh,
+            'rate_HL_pp': rate_hl,
+            'rate_LH_pp': rate_lh,
             'rate_LL_pp': rate_ll,
+            'rate_HH_ci95_pp': ci(rates_hh),
+            'rate_HL_ci95_pp': ci(rates_hl),
+            'rate_LH_ci95_pp': ci(rates_lh),
+            'rate_LL_ci95_pp': ci(rates_ll),
             'lift_pp': float(lift_pp),
             'lift_ci95_pp': [float(lo), float(hi)],
         }
@@ -438,8 +461,10 @@ def main():
     print()
     for r in cq:
         if r is None: continue
-        print(f"  {r['label']:24s}  HH={r['rate_HH_pp']:>5.1f}%  LL={r['rate_LL_pp']:>5.1f}%  "
-              f"Δ={r['lift_pp']:>+5.1f} pp  95% CI [{r['lift_ci95_pp'][0]:+.1f}, {r['lift_ci95_pp'][1]:+.1f}]")
+        print(f"  {r['label']:24s}  HH={r['rate_HH_pp']:>5.1f}%  HL={r['rate_HL_pp']:>5.1f}%  "
+              f"LH={r['rate_LH_pp']:>5.1f}%  LL={r['rate_LL_pp']:>5.1f}%  "
+              f"Δ(HH-LL)={r['lift_pp']:>+5.1f} pp  95% CI [{r['lift_ci95_pp'][0]:+.1f}, {r['lift_ci95_pp'][1]:+.1f}]")
+        print(f"  {'':24s}  n_cells: HH={r['n_HH']:,} HL={r['n_HL']:,} LH={r['n_LH']:,} LL={r['n_LL']:,}")
 
     print('\n[5] NB21 LOSO AUC + per-participant SD across attributions', file=sys.stderr)
     loso = loso_auc_with_sd()

@@ -1,5 +1,5 @@
 M5 — cursor-only classifier trained on NB22 labels
-Generated: 2026-04-15T01:48:28.567173+00:00
+Generated: 2026-04-18T03:35:19.277129+00:00
 
 Population: 2,355 approached non-click episodes
   deferred:   1,916

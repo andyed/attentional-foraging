@@ -40,6 +40,15 @@ class ScrollSample:
     y_offset_px: int      # best-matching page y-offset (in reference-PNG coords)
     match_score: float    # normalized cross-correlation peak value [0..1]
     scale: float          # scale factor applied (crop_w → ref_w)
+    confidence: str       # "high" | "medium" | "low"
+
+
+# Confidence thresholds chosen from empirical match-score distribution across 5
+# pilot trials. Absolute NCC is intrinsically low here (live SERP vs static PNG);
+# the tiers are relative to what "stable, trustworthy matches" look like in this
+# dataset, not absolute NCC conventions.
+CONF_HIGH = 0.20
+CONF_MED  = 0.15
 
 
 def detect_screen_bounds(frame_bgr: np.ndarray, threshold: int = 60) -> tuple[int, int, int, int]:
@@ -138,6 +147,7 @@ def best_path(per_frame_candidates: list[list[tuple[int, float]]],
 
 def recover(video_path: str, refpng_path: str,
             chrome_top: int = 50, chrome_bottom: int = 50,
+            chrome_left: int = 4, chrome_right: int = 22,
             smooth_window: int = 5) -> tuple[list[dict], dict]:
     ref = cv2.imread(refpng_path)
     if ref is None:
@@ -159,8 +169,10 @@ def recover(video_path: str, refpng_path: str,
     if not ok:
         raise SystemExit("cannot read mid frame")
     sx, sy, sw, sh = detect_screen_bounds(mid)
-    x0, y0 = sx + 4, sy + chrome_top
-    x1, y1 = sx + sw - 4, sy + sh - chrome_bottom
+    # chrome_right strips the browser scrollbar on the right edge (~18 px in the
+    # mobile-layout capture); leaving it in adds noise to NCC and biases peaks.
+    x0, y0 = sx + chrome_left, sy + chrome_top
+    x1, y1 = sx + sw - chrome_right, sy + sh - chrome_bottom
     crop_w, crop_h = x1 - x0, y1 - y0
     scale = ref_w / crop_w
     scaled_h = int(crop_h * scale)
@@ -200,12 +212,18 @@ def recover(video_path: str, refpng_path: str,
 
     # Match scores kept from argmax (not the DP-selected peak score — DP can pick
     # a sub-argmax with lower absolute score but better global continuity)
+    def confidence_of(s: float) -> str:
+        if s >= CONF_HIGH: return "high"
+        if s >= CONF_MED:  return "medium"
+        return "low"
+
     samples = [
         asdict(ScrollSample(
             t_ms=round(t, 1),
             y_offset_px=int(y),
             match_score=round(s, 4),
             scale=round(scale, 4),
+            confidence=confidence_of(s),
         ))
         for t, y, s in zip(timestamps, ys_smooth, raw_score)
     ]
@@ -248,9 +266,13 @@ def main() -> None:
     ap.add_argument("--refpng", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--smooth-window", type=int, default=5)
+    ap.add_argument("--chrome-right", type=int, default=22,
+                    help="px to strip from right edge (scrollbar); default 22")
     args = ap.parse_args()
 
-    samples, meta = recover(args.video, args.refpng, smooth_window=args.smooth_window)
+    samples, meta = recover(args.video, args.refpng,
+                            smooth_window=args.smooth_window,
+                            chrome_right=args.chrome_right)
     out = {"meta": meta, "samples": samples}
     with open(args.out, "w") as f:
         json.dump(out, f)

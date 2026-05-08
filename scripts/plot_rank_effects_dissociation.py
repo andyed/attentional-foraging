@@ -178,10 +178,15 @@ def main():
              fontsize=11, color=TEXT_SOFT, fontweight='semibold',
              ha='left', va='bottom')
     fig.text(0.07, 0.878,
-             'AdSERP, N = 13,419 trials, post-2026-04-12 coordinate-space audit. '
-             'Latifzadeh, Gwizdka & Leiva (SIGIR 2025).',
+             'AdSERP, N = 13,419 episode records, 2,340 trials. '
+             'Latifzadeh, Gwizdka & Leiva (SIGIR 2025). Post-2026-04-12 coordinate-space audit.',
              fontsize=10, color=TEXT_SOFT, fontweight='semibold',
              ha='left', va='bottom')
+    fig.text(0.07, 0.860,
+             'Data filter: forward-only fixations, all SERP types (ads and organic pooled). '
+             'Position index is raw h3 slot, not organic rank.',
+             fontsize=9, color=TEXT_SOFT, fontweight='semibold',
+             ha='left', va='bottom', style='italic')
 
     # -------------------------------------------------------------------------
     # Panel 1: Click rate by position (percent)
