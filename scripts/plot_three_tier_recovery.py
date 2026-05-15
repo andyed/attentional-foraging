@@ -28,6 +28,8 @@ from sklearn.preprocessing import StandardScaler
 
 ROOT = Path("/Users/andyed/Documents/dev/attentional-foraging")
 sys.path.insert(0, str(ROOT / "scripts"))
+sys.path.insert(0, "/Users/andyed/.claude/skills/muriel")
+from muriel.provenance import stamp_savefig  # noqa: E402
 from cursor_arc_prevalence import visit_counts_for_trial  # noqa: E402
 from nb22_revisit_count import count_revisits_per_trial  # noqa: E402
 
@@ -260,25 +262,34 @@ def main():
 
     x = np.arange(3)
     w = 0.36
-    barsA = axA.bar(x - w/2, trial_pct, w, label="trials",
-                    color="#4477aa", edgecolor="black", linewidth=0.6)
-    barsB = axA.bar(x + w/2, pid_pct, w, label="participants",
-                    color="#ee6677", edgecolor="black", linewidth=0.6)
+    # Wong colorblind-safe palette, sky blue + vermillion. Distinct from the
+    # bluish-green/orange/blue trio in Figure 1 so no semantic carryover.
+    # Hatch as second channel so trials vs participants survives b&w print.
+    barsA = axA.bar(x - w/2, trial_pct, w, label=f"trials (n={coverage['n_trials']:,})",
+                    color="#56B4E9", edgecolor="black", linewidth=0.6)
+    barsB = axA.bar(x + w/2, pid_pct, w, label=f"participants (n={coverage['n_participants']})",
+                    color="#D55E00", edgecolor="black", linewidth=0.6, hatch="////")
 
-    for bar, val in zip(barsA, trial_pct):
+    pid_counts = [coverage["T1_pids"], coverage["T2_pids"], coverage["T3_pids"]]
+    trial_counts = [coverage["T1_trials"], coverage["T2_trials"], coverage["T3_trials"]]
+    for bar, val, n in zip(barsA, trial_pct, trial_counts):
         axA.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 1.5,
-                 f"{val:.1f}%", ha="center", fontsize=9)
-    for bar, val in zip(barsB, pid_pct):
+                 f"{val:.1f}%\n({n:,}/{coverage['n_trials']:,})",
+                 ha="center", fontsize=8, color="#222")
+    for bar, val, n in zip(barsB, pid_pct, pid_counts):
         axA.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 1.5,
-                 f"{val:.1f}%", ha="center", fontsize=9)
+                 f"{val:.1f}%\n({n}/{coverage['n_participants']})",
+                 ha="center", fontsize=8, color="#222")
 
     axA.set_xticks(x)
     axA.set_xticklabels(tiers, fontsize=9)
     axA.set_ylabel("coverage (%)", fontsize=10)
-    axA.set_ylim(0, 110)
-    axA.set_title(f"(a) Three-tier coverage  (n={coverage['n_trials']:,} trials, "
-                  f"{coverage['n_participants']} participants)", fontsize=10)
-    axA.legend(loc="upper left", fontsize=9, frameon=False)
+    axA.set_ylim(0, 118)
+    axA.set_title(f"(a) Three-tier coverage", fontsize=10)
+    # Legend outside the axes so it doesn't overlap the tall participant
+    # bars (T2 / T3 = 100% by construction at n=47).
+    axA.legend(loc="lower center", bbox_to_anchor=(0.5, -0.42),
+               ncol=2, fontsize=9, frameon=False, handlelength=1.6)
     axA.spines["top"].set_visible(False)
     axA.spines["right"].set_visible(False)
     axA.axhline(100, color="grey", linewidth=0.5, linestyle=":")
@@ -295,26 +306,35 @@ def main():
         patch_artist=True, showfliers=False,
         medianprops=dict(color="black", linewidth=1.4),
     )
-    box_colors = ["#bbddee", "#ffccbb"]
-    for patch, c in zip(bp["boxes"], box_colors):
+    # Lightened Wong sky blue + vermillion for box fills; matches Panel A.
+    # Hatch the minimal-4 box so the comparison survives in b&w print —
+    # the two distributions are nearly co-located so hue alone collapses.
+    box_colors = ["#BFDFEF", "#F4C39D"]
+    box_hatches = ["", "////"]
+    for patch, c, h in zip(bp["boxes"], box_colors, box_hatches):
         patch.set_facecolor(c)
         patch.set_edgecolor("black")
         patch.set_linewidth(0.6)
+        patch.set_hatch(h)
 
     rng = np.random.default_rng(0)
-    for p, aucs, c in zip(pos, [full_aucs, min_aucs], ["#225588", "#cc4422"]):
+    # Distinct markers per condition (○ vs △) — second channel beyond hue
+    # so per-fold scatter remains comparable in greyscale.
+    markers = ["o", "^"]
+    for p, aucs, c, m in zip(pos, [full_aucs, min_aucs],
+                             ["#56B4E9", "#D55E00"], markers):
         jitter = rng.normal(0, 0.05, len(aucs))
         axB.scatter(np.full(len(aucs), p) + jitter, aucs,
-                    s=14, alpha=0.6, color=c, edgecolor="white",
-                    linewidth=0.4, zorder=3)
+                    s=20, alpha=0.7, color=c, edgecolor="black",
+                    linewidth=0.5, marker=m, zorder=3)
 
-    axB.axhline(0.5, color="grey", linewidth=0.6, linestyle="--")
-    axB.text(2.55, 0.50, "chance", fontsize=8, color="grey", va="center")
+    axB.axhline(0.5, color="#222", linewidth=0.6, linestyle="--")
+    axB.text(2.55, 0.50, "chance", fontsize=9, color="#222", va="center")
 
     axB.set_xticks(pos)
     axB.set_xticklabels(
-        [f"M4 full\n(9 features)\n{full_aucs.mean():.3f} ± {full_aucs.std():.3f}",
-         f"minimal-4\n{min_aucs.mean():.3f} ± {min_aucs.std():.3f}"],
+        [f"M4 full\n(9 features) ●",
+         f"minimal-4\n(4 features) ▲"],
         fontsize=9,
     )
     axB.set_ylabel("LOPO AUC per participant", fontsize=10)
@@ -328,8 +348,21 @@ def main():
     plt.tight_layout()
     out_pdf = OUT_DIR / "three_tier_recovery.pdf"
     out_png = OUT_DIR / "three_tier_recovery.png"
-    plt.savefig(out_pdf, bbox_inches="tight")
-    plt.savefig(out_png, dpi=180, bbox_inches="tight")
+    fig = plt.gcf()
+    prov_kwargs = dict(
+        script=__file__,
+        dataset="AdSERP/data/cursor-approach-features-typed-gapfill.json",
+        h_ids=[],
+        nb_k_ids=["NB21:K-bbox-3"],
+        figure_version="three-tier-LOPO",
+        notes=(
+            "Three-tier recovery of gaze-deliberation labels [LAB]. "
+            f"Tier-2 LR over 4 features, n_cursor_blind={len(y)}, "
+            f"M4-full mean AUC={full_aucs.mean():.3f}, minimal-4 mean AUC={min_aucs.mean():.3f}."
+        ),
+    )
+    stamp_savefig(fig, out_pdf, bbox_inches="tight", **prov_kwargs)
+    stamp_savefig(fig, out_png, dpi=180, bbox_inches="tight", **prov_kwargs)
     print(f"\nWrote {out_pdf}")
     print(f"Wrote {out_png}")
 

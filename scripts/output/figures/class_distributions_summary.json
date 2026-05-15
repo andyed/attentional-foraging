@@ -1,7 +1,7 @@
 {
-  "figure": "class_distributions.png",
+  "figure": "class_distributions_1col.png",
   "script": "scripts/render_class_distributions.py",
-  "generated": "2026-05-02T14:00:35.654025+00:00",
+  "generated": "2026-05-10T14:52:38.497465+00:00",
   "regime": "LAB",
   "attribution": "organic",
   "features_input": "AdSERP/data/cursor-approach-features-organic.json",
@@ -14,43 +14,6 @@
     "clicked": 2205
   },
   "panels": {
-    "a_per_trial_histogram": {
-      "description": "Fraction of trials with N episodes of each class (N \u2208 0..5+).",
-      "bins": [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5+"
-      ],
-      "per_class": {
-        "evaluated-rejected": [
-          0.8282029950083195,
-          0.14392678868552414,
-          0.019966722129783693,
-          0.0037437603993344427,
-          0.0024958402662229617,
-          0.0016638935108153079
-        ],
-        "deferred": [
-          0.5952579034941764,
-          0.24916805324459235,
-          0.10024958402662229,
-          0.03369384359400998,
-          0.013311148086522463,
-          0.008319467554076539
-        ],
-        "clicked": [
-          0.08277870216306156,
-          0.9172212978369384,
-          0.0,
-          0.0,
-          0.0,
-          0.0
-        ]
-      }
-    },
     "b_rank_distribution": {
       "description": "P(class | position) for positions 1..10.",
       "per_position_total": [
@@ -147,97 +110,6 @@
           0.0018140589569160999,
           0.0013605442176870747
         ]
-      }
-    },
-    "d_cooccurrence": {
-      "description": "Per-trial co-occurrence: inclusive bucket fractions (panel d bars) plus exclusive 3-bit pattern counts for full provenance.",
-      "inclusive_buckets": {
-        "click": {
-          "n_trials": 2205,
-          "fraction": 0.9172212978369384
-        },
-        "defer": {
-          "n_trials": 973,
-          "fraction": 0.4047420965058236
-        },
-        "eval-rej": {
-          "n_trials": 413,
-          "fraction": 0.17179700499168052
-        },
-        "click \u2229 defer": {
-          "n_trials": 834,
-          "fraction": 0.3469217970049917
-        },
-        "click \u2229 eval-rej": {
-          "n_trials": 307,
-          "fraction": 0.12770382695507487
-        },
-        "defer \u2229 eval-rej": {
-          "n_trials": 230,
-          "fraction": 0.0956738768718802
-        },
-        "click \u2229 defer \u2229 eval-rej": {
-          "n_trials": 184,
-          "fraction": 0.07653910149750416
-        }
-      },
-      "exclusive_patterns": {
-        "000": {
-          "has_clicked": false,
-          "has_deferred": false,
-          "has_eval_rejected": false,
-          "n_trials": 0,
-          "fraction": 0.0
-        },
-        "100": {
-          "has_clicked": true,
-          "has_deferred": false,
-          "has_eval_rejected": false,
-          "n_trials": 1248,
-          "fraction": 0.519134775374376
-        },
-        "010": {
-          "has_clicked": false,
-          "has_deferred": true,
-          "has_eval_rejected": false,
-          "n_trials": 93,
-          "fraction": 0.03868552412645591
-        },
-        "001": {
-          "has_clicked": false,
-          "has_deferred": false,
-          "has_eval_rejected": true,
-          "n_trials": 60,
-          "fraction": 0.024958402662229616
-        },
-        "110": {
-          "has_clicked": true,
-          "has_deferred": true,
-          "has_eval_rejected": false,
-          "n_trials": 650,
-          "fraction": 0.2703826955074875
-        },
-        "101": {
-          "has_clicked": true,
-          "has_deferred": false,
-          "has_eval_rejected": true,
-          "n_trials": 123,
-          "fraction": 0.05116472545757072
-        },
-        "011": {
-          "has_clicked": false,
-          "has_deferred": true,
-          "has_eval_rejected": true,
-          "n_trials": 46,
-          "fraction": 0.01913477537437604
-        },
-        "111": {
-          "has_clicked": true,
-          "has_deferred": true,
-          "has_eval_rejected": true,
-          "n_trials": 184,
-          "fraction": 0.07653910149750416
-        }
       }
     }
   }

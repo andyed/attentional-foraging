@@ -17,9 +17,8 @@ no longer carries was_clicked=True at organic position 2, breaking the
 "Commit (clicked)" caption. The new pair is the closest equivalent
 under bbox-organic by (min_dist, retreat_dist) geometry.
 
-Outputs:
+Output:
     docs/drafts/cikm-2026/figures/approach-retreat-hero.png
-    docs/drafts/figures/approach-retreat-hero.png
 """
 from __future__ import annotations
 
@@ -39,7 +38,6 @@ from data_loader import (  # noqa: E402
 )
 
 OUT_CIKM = ROOT / 'docs/drafts/cikm-2026/figures/approach-retreat-hero.png'
-OUT_MAIN = ROOT / 'docs/drafts/figures/approach-retreat-hero.png'
 
 FEATURES_JSON = ROOT / 'AdSERP/data/cursor-approach-features-organic.json'
 
@@ -298,10 +296,9 @@ def main() -> None:
     )
     fig.tight_layout()
 
-    for out in (OUT_CIKM, OUT_MAIN):
-        out.parent.mkdir(parents=True, exist_ok=True)
-        fig.savefig(out, dpi=160, bbox_inches='tight')
-        print(f'wrote {out}')
+    OUT_CIKM.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(OUT_CIKM, dpi=160, bbox_inches='tight')
+    print(f'wrote {OUT_CIKM}')
     plt.close(fig)
 
     print()

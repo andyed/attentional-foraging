@@ -6,10 +6,8 @@ spread, distinctive density) crossed with five foraging behavior DVs
 regression count, click Y). Each cell reports a Spearman ρ and its
 significance star.
 
-Outputs:
-    docs/drafts/figures/difficulty-measures.png
-    docs/drafts/cikm-2026/figures/difficulty-measures.png (mirror, written
-        only if the directory already exists).
+Output:
+    docs/drafts/cikm-2026/figures/difficulty-measures.png
 """
 from __future__ import annotations
 
@@ -30,7 +28,6 @@ from data_loader import (  # noqa: E402
     result_bands,
 )
 
-OUT_MAIN = ROOT / 'docs/drafts/figures/difficulty-measures.png'
 OUT_CIKM = ROOT / 'docs/drafts/cikm-2026/figures/difficulty-measures.png'
 DIFFICULTY_JSON = ROOT / 'AdSERP/data/serp-difficulty-measures.json'
 
@@ -270,12 +267,9 @@ def plot(rows: list[dict]) -> None:
     )
     fig.tight_layout()
 
-    OUT_MAIN.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(OUT_MAIN, dpi=150, bbox_inches='tight')
-    print(f'\nwrote {OUT_MAIN}')
-    if OUT_CIKM.parent.exists():
-        fig.savefig(OUT_CIKM, dpi=150, bbox_inches='tight')
-        print(f'wrote {OUT_CIKM}')
+    OUT_CIKM.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(OUT_CIKM, dpi=150, bbox_inches='tight')
+    print(f'\nwrote {OUT_CIKM}')
     plt.close(fig)
 
 

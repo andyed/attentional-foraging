@@ -38,6 +38,8 @@ import numpy as np
 
 ROOT = Path("/Users/andyed/Documents/dev/attentional-foraging")
 sys.path.insert(0, str(ROOT / "notebooks-v2"))
+sys.path.insert(0, "/Users/andyed/.claude/skills/muriel")
+from muriel.provenance import stamp_savefig, stamp_existing  # noqa: E402
 
 OUT_DIR = ROOT / "scripts/output/figures"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -69,9 +71,23 @@ def resolve_inputs(attribution: str) -> tuple[Path, Path, str]:
 INK = "#1a1a2e"
 MUTED = "#5a5a6a"
 CLASS_COLORS = {
-    "clicked": "#2ca25f",
-    "deferred": "#e08214",
-    "evaluated-rejected": "#b2182b",
+    # Wong (Nature Methods 2011) colorblind-safe palette — deuteranope/
+    # protanope/tritanope safe; no red/green collision. Semantic ordering
+    # (clicked = bluish-green commit; deferred = orange held-but-not-
+    # committed; eval-rejected = blue declined) preserves the original
+    # warmth gradient without baking in red-as-bad.
+    "clicked":            "#009E73",
+    "deferred":           "#E69F00",
+    "evaluated-rejected": "#0072B2",
+}
+# Redundant encoding for greyscale print: hue + hatch. Reviewers print
+# camera-ready in b&w; orange + green collapse to near-identical mid-grey
+# under desaturation. Three distinct hatches (none / dense diagonals /
+# crosshatch) keep the three classes legible without color.
+CLASS_HATCH = {
+    "clicked":            "",
+    "deferred":           "////",
+    "evaluated-rejected": "xxxx",
 }
 CLASS_ORDER = ["evaluated-rejected", "deferred", "clicked"]
 CLASS_HUMAN = {
@@ -122,7 +138,16 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--attribution", choices=["organic", "absolute"], default="organic",
                     help="organic (default; bbox-attributed) or absolute (legacy h3+ads pooled)")
+    ap.add_argument("--two-panel", action="store_true",
+                    help="Emit only panels (b) prevalence-by-rank and (c) episode-order; "
+                         "writes to class_distributions_2panel{suffix}.{png,pdf}.")
+    ap.add_argument("--single-column", action="store_true",
+                    help="Stack the two panels vertically at single-column "
+                         "ACM-sigconf width (~3.33in). Implies --two-panel; "
+                         "writes to class_distributions_1col{suffix}.{png,pdf}.")
     args = ap.parse_args()
+    if args.single_column:
+        args.two_panel = True
     features_path, reg_cache_path, suffix = resolve_inputs(args.attribution)
     print(f"attribution: {args.attribution}")
     print(f"  features: {features_path.name}")
@@ -149,48 +174,79 @@ def main():
         print(f"  {cls}: {class_n[cls]:,} episodes")
 
     # ──────────────────────────────────────────────────────────
-    # Build the 4-panel figure
-    fig = plt.figure(figsize=(14, 10))
-    gs = fig.add_gridspec(
-        2, 2,
-        width_ratios=[1.0, 1.0],
-        height_ratios=[1.0, 1.0],
-        hspace=0.36, wspace=0.26,
-        left=0.07, right=0.97, top=0.90, bottom=0.07,
-    )
-    ax_a = fig.add_subplot(gs[0, 0])
-    ax_b = fig.add_subplot(gs[0, 1])
-    ax_c = fig.add_subplot(gs[1, 0])
-    ax_d = fig.add_subplot(gs[1, 1])
-
-    # ── (a) Per-trial histogram: count distribution for each class ──
-    max_count = 5  # collapse >5 into one bin
-    bin_edges = np.arange(max_count + 2) - 0.5  # [-0.5, 0.5, 1.5, ... 5.5]
-    for cls in CLASS_ORDER:
-        counts = np.array([min(by_trial[t][cls], max_count) for t in trial_ids])
-        hist, _ = np.histogram(counts, bins=bin_edges)
-        frac = hist / n_trials
-        color = CLASS_COLORS[cls]
-        offset = {"evaluated-rejected": -0.25, "deferred": 0.0, "clicked": 0.25}[cls]
-        xs = np.arange(max_count + 1) + offset
-        ax_a.bar(
-            xs, frac, width=0.24, color=color, alpha=0.92,
-            edgecolor=INK, linewidth=0.4,
-            label=f"{CLASS_HUMAN[cls]} (n = {class_n[cls]:,})",
+    # Build the figure (4-panel default; 2-panel = (b)+(c) only when --two-panel)
+    if args.single_column:
+        # Vertical stack at ACM-sigconf single-column width (~3.33 in).
+        # Tall-and-narrow flows alongside §4.1/§4.2 prose without
+        # claiming page-wide real estate.
+        fig = plt.figure(figsize=(3.4, 5.6))
+        gs = fig.add_gridspec(
+            2, 1,
+            height_ratios=[1.0, 1.0],
+            hspace=0.55,
+            left=0.18, right=0.97, top=0.85, bottom=0.10,
         )
+        ax_a = None
+        ax_b = fig.add_subplot(gs[0, 0])
+        ax_c = fig.add_subplot(gs[1, 0])
+        ax_d = None
+    elif args.two_panel:
+        # Wide-and-flat side-by-side. Two-column figure (figure*); the
+        # short height keeps it from dominating the page.
+        fig = plt.figure(figsize=(13.0, 3.6))
+        gs = fig.add_gridspec(
+            1, 2,
+            width_ratios=[1.0, 1.0],
+            wspace=0.20,
+            left=0.05, right=0.985, top=0.74, bottom=0.18,
+        )
+        ax_a = None
+        ax_b = fig.add_subplot(gs[0, 0])
+        ax_c = fig.add_subplot(gs[0, 1])
+        ax_d = None
+    else:
+        fig = plt.figure(figsize=(14, 10))
+        gs = fig.add_gridspec(
+            2, 2,
+            width_ratios=[1.0, 1.0],
+            height_ratios=[1.0, 1.0],
+            hspace=0.36, wspace=0.26,
+            left=0.07, right=0.97, top=0.90, bottom=0.07,
+        )
+        ax_a = fig.add_subplot(gs[0, 0])
+        ax_b = fig.add_subplot(gs[0, 1])
+        ax_c = fig.add_subplot(gs[1, 0])
+        ax_d = fig.add_subplot(gs[1, 1])
 
-    ax_a.set_xticks(np.arange(max_count + 1))
-    ax_a.set_xticklabels(["0", "1", "2", "3", "4", "5+"])
-    ax_a.set_xlabel("Episodes of this class per trial", fontweight="semibold")
-    ax_a.set_ylabel("Fraction of trials", fontweight="semibold")
-    ax_a.set_title(
-        "(a)  Per-trial episode counts — how thick is each class per session?",
-        fontweight="semibold", loc="left",
-    )
-    ax_a.grid(True, axis="y", color="#ececec", linewidth=0.5)
-    ax_a.set_axisbelow(True)
-    ax_a.legend(loc="upper right", frameon=True, framealpha=0.95,
-                edgecolor="#cccccc", facecolor="white")
+    max_count = 5  # collapse >5 into one bin (panel a + summary block)
+    if ax_a is not None:
+        # ── (a) Per-trial histogram: count distribution for each class ──
+        bin_edges = np.arange(max_count + 2) - 0.5  # [-0.5, 0.5, 1.5, ... 5.5]
+        for cls in CLASS_ORDER:
+            counts = np.array([min(by_trial[t][cls], max_count) for t in trial_ids])
+            hist, _ = np.histogram(counts, bins=bin_edges)
+            frac = hist / n_trials
+            color = CLASS_COLORS[cls]
+            offset = {"evaluated-rejected": -0.25, "deferred": 0.0, "clicked": 0.25}[cls]
+            xs = np.arange(max_count + 1) + offset
+            ax_a.bar(
+                xs, frac, width=0.24, color=color, alpha=0.92,
+                edgecolor=INK, linewidth=0.4, hatch=CLASS_HATCH[cls],
+                label=f"{CLASS_HUMAN[cls]} (n = {class_n[cls]:,})",
+            )
+
+        ax_a.set_xticks(np.arange(max_count + 1))
+        ax_a.set_xticklabels(["0", "1", "2", "3", "4", "5+"])
+        ax_a.set_xlabel("Episodes of this class per trial", fontweight="semibold")
+        ax_a.set_ylabel("Fraction of trials", fontweight="semibold")
+        ax_a.set_title(
+            "(a)  Per-trial episode counts — how thick is each class per session?",
+            fontweight="semibold", loc="left",
+        )
+        ax_a.grid(True, axis="y", color="#ececec", linewidth=0.5)
+        ax_a.set_axisbelow(True)
+        ax_a.legend(loc="upper right", frameon=True, framealpha=0.95,
+                    edgecolor="#cccccc", facecolor="white")
 
     # ── (b) Rank distribution: P(class | position) across the 10 ranks ──
     positions = np.arange(10)
@@ -210,21 +266,28 @@ def main():
         frac = class_by_pos[cls] / np.maximum(total_by_pos, 1)
         ax_b.bar(
             positions + offset, frac, width=width, color=CLASS_COLORS[cls],
-            alpha=0.92, edgecolor=INK, linewidth=0.4,
+            alpha=0.92, edgecolor=INK, linewidth=0.4, hatch=CLASS_HATCH[cls],
             label=CLASS_HUMAN[cls],
         )
     ax_b.set_xticks(positions)
     ax_b.set_xticklabels([str(p + 1) for p in positions])
-    ax_b.set_xlabel("Result position (1 = top of SERP)", fontweight="semibold")
-    ax_b.set_ylabel("P(class | position)", fontweight="semibold")
+    label_fs = 9 if args.single_column else 11
+    ax_b.set_xlabel("Result position (1 = top of SERP)",
+                    fontweight="semibold", fontsize=label_fs)
+    ax_b.set_ylabel("P(class | position)",
+                    fontweight="semibold", fontsize=label_fs)
+    title_fs = 9 if args.single_column else 12.5
     ax_b.set_title(
-        "(b)  Class prevalence by rank — where does each class live on the page?",
-        fontweight="semibold", loc="left",
+        "(a)  Class prevalence by rank"
+        if args.two_panel else
+        "(b)  Class prevalence by rank",
+        fontweight="semibold", loc="left", fontsize=title_fs,
     )
     ax_b.grid(True, axis="y", color="#ececec", linewidth=0.5)
     ax_b.set_axisbelow(True)
-    ax_b.legend(loc="upper right", frameon=True, framealpha=0.95,
-                edgecolor="#cccccc", facecolor="white")
+    if not args.two_panel:
+        ax_b.legend(loc="upper right", frameon=True, framealpha=0.95,
+                    edgecolor="#cccccc", facecolor="white")
 
     # ── (c) Within-trial episode ORDER: 1st, 2nd, 3rd, ... episode of trial ──
     # For each episode, compute its rank in the trial's entry_t-sorted order.
@@ -259,100 +322,163 @@ def main():
             offset = (ci - 1) * width_c
             ax_c.bar(
                 order_xs + offset, frac, width=width_c, color=CLASS_COLORS[cls],
-                alpha=0.92, edgecolor=INK, linewidth=0.4, label=CLASS_HUMAN[cls],
+                alpha=0.92, edgecolor=INK, linewidth=0.4, hatch=CLASS_HATCH[cls],
+                label=CLASS_HUMAN[cls],
             )
 
     ax_c.set_xticks(order_xs)
     ax_c.set_xticklabels(["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th+"])
-    ax_c.set_xlabel("Episode order within trial (sorted by entry time)",
-                    fontweight="semibold")
-    ax_c.set_ylabel("Fraction of class episodes", fontweight="semibold")
+    if args.single_column:
+        ax_c.set_xlabel("Episode order within trial",
+                        fontweight="semibold", fontsize=label_fs)
+    else:
+        ax_c.set_xlabel("Episode order within trial (sorted by entry time)",
+                        fontweight="semibold", fontsize=label_fs)
+    ax_c.set_ylabel("Fraction of class episodes",
+                    fontweight="semibold", fontsize=label_fs)
     ax_c.set_title(
-        "(c)  Episode position within trial — early, middle, or late in the sequence?",
-        fontweight="semibold", loc="left",
+        "(b)  Episode order within trial"
+        if args.two_panel else
+        "(c)  Episode order within trial",
+        fontweight="semibold", loc="left", fontsize=title_fs,
     )
     ax_c.grid(True, axis="y", color="#ececec", linewidth=0.5)
     ax_c.set_axisbelow(True)
-    ax_c.legend(loc="upper right", frameon=True, framealpha=0.95,
-                edgecolor="#cccccc", facecolor="white")
+    if not args.two_panel:
+        ax_c.legend(loc="upper right", frameon=True, framealpha=0.95,
+                    edgecolor="#cccccc", facecolor="white")
 
-    # ── (d) Inclusive co-occurrence: 7 bars (3 marginals + 3 pairs + triple) ──
-    # A trial counts toward "click + defer" iff it has ≥1 click AND ≥1 defer
-    # (regardless of whether it also has ≥1 eval-rej). Bars overlap; the
-    # complementary "exclusive 8-bucket" view is in the summary JSON.
-    pattern_counts = defaultdict(int)
-    for tid in trial_ids:
-        c = by_trial[tid]
-        key = (
-            c["clicked"] > 0,
-            c["deferred"] > 0,
-            c["evaluated-rejected"] > 0,
+    if ax_d is not None:
+        # ── (d) Inclusive co-occurrence: 7 bars (3 marginals + 3 pairs + triple) ──
+        # A trial counts toward "click + defer" iff it has ≥1 click AND ≥1 defer
+        # (regardless of whether it also has ≥1 eval-rej). Bars overlap; the
+        # complementary "exclusive 8-bucket" view is in the summary JSON.
+        pattern_counts = defaultdict(int)
+        for tid in trial_ids:
+            c = by_trial[tid]
+            key = (
+                c["clicked"] > 0,
+                c["deferred"] > 0,
+                c["evaluated-rejected"] > 0,
+            )
+            pattern_counts[key] += 1
+
+        # Inclusive (marginal / pairwise / triple) counts
+        inclusive_buckets = [
+            ("click",                  lambda p: p[0]),
+            ("defer",                  lambda p: p[1]),
+            ("eval-rej",               lambda p: p[2]),
+            ("click ∩ defer",          lambda p: p[0] and p[1]),
+            ("click ∩ eval-rej",       lambda p: p[0] and p[2]),
+            ("defer ∩ eval-rej",       lambda p: p[1] and p[2]),
+            ("click ∩ defer ∩ eval-rej", lambda p: p[0] and p[1] and p[2]),
+        ]
+        bucket_colors = [
+            CLASS_COLORS["clicked"], CLASS_COLORS["deferred"], CLASS_COLORS["evaluated-rejected"],
+        ]
+        for pred_idxs in [(0, 1), (0, 2), (1, 2), (0, 1, 2)]:
+            comps = [list(CLASS_COLORS.values())[i] for i in pred_idxs]
+            rgbs = np.array([[int(c[1:3], 16), int(c[3:5], 16), int(c[5:7], 16)] for c in comps])
+            avg = rgbs.mean(axis=0).astype(int)
+            bucket_colors.append(f"#{avg[0]:02x}{avg[1]:02x}{avg[2]:02x}")
+
+        bucket_fracs = []
+        for label, predicate in inclusive_buckets:
+            n_match = sum(pattern_counts[p] for p in pattern_counts if predicate(p))
+            bucket_fracs.append(n_match / n_trials)
+
+        y_pos = np.arange(len(inclusive_buckets))[::-1]
+        ax_d.barh(
+            y_pos, bucket_fracs, color=bucket_colors,
+            edgecolor=INK, linewidth=0.5,
         )
-        pattern_counts[key] += 1
-
-    # Inclusive (marginal / pairwise / triple) counts
-    inclusive_buckets = [
-        ("click",                  lambda p: p[0]),
-        ("defer",                  lambda p: p[1]),
-        ("eval-rej",               lambda p: p[2]),
-        ("click ∩ defer",          lambda p: p[0] and p[1]),
-        ("click ∩ eval-rej",       lambda p: p[0] and p[2]),
-        ("defer ∩ eval-rej",       lambda p: p[1] and p[2]),
-        ("click ∩ defer ∩ eval-rej", lambda p: p[0] and p[1] and p[2]),
-    ]
-    bucket_colors = [
-        CLASS_COLORS["clicked"], CLASS_COLORS["deferred"], CLASS_COLORS["evaluated-rejected"],
-    ]
-    for pred_idxs in [(0, 1), (0, 2), (1, 2), (0, 1, 2)]:
-        comps = [list(CLASS_COLORS.values())[i] for i in pred_idxs]
-        rgbs = np.array([[int(c[1:3], 16), int(c[3:5], 16), int(c[5:7], 16)] for c in comps])
-        avg = rgbs.mean(axis=0).astype(int)
-        bucket_colors.append(f"#{avg[0]:02x}{avg[1]:02x}{avg[2]:02x}")
-
-    bucket_fracs = []
-    for label, predicate in inclusive_buckets:
-        n_match = sum(pattern_counts[p] for p in pattern_counts if predicate(p))
-        bucket_fracs.append(n_match / n_trials)
-
-    y_pos = np.arange(len(inclusive_buckets))[::-1]
-    ax_d.barh(
-        y_pos, bucket_fracs, color=bucket_colors,
-        edgecolor=INK, linewidth=0.5,
-    )
-    ax_d.set_yticks(y_pos)
-    ax_d.set_yticklabels([b[0] for b in inclusive_buckets])
-    ax_d.set_xlabel("Fraction of trials (inclusive — bars overlap)", fontweight="semibold")
-    ax_d.set_title(
-        "(d)  Class co-occurrence within trial (inclusive)",
-        fontweight="semibold", loc="left",
-    )
-    ax_d.grid(True, axis="x", color="#ececec", linewidth=0.5)
-    ax_d.set_axisbelow(True)
-    for i, frac in enumerate(bucket_fracs):
-        n_pat = int(round(frac * n_trials))
-        ax_d.text(
-            frac + 0.005, y_pos[i], f"{n_pat:,} ({frac * 100:.1f}%)",
-            va="center", fontsize=9, color=MUTED,
+        ax_d.set_yticks(y_pos)
+        ax_d.set_yticklabels([b[0] for b in inclusive_buckets])
+        ax_d.set_xlabel("Fraction of trials (inclusive — bars overlap)", fontweight="semibold")
+        ax_d.set_title(
+            "(d)  Class co-occurrence within trial (inclusive)",
+            fontweight="semibold", loc="left",
         )
-    ax_d.set_xlim(0, max(bucket_fracs) * 1.28)
+        ax_d.grid(True, axis="x", color="#ececec", linewidth=0.5)
+        ax_d.set_axisbelow(True)
+        for i, frac in enumerate(bucket_fracs):
+            n_pat = int(round(frac * n_trials))
+            ax_d.text(
+                frac + 0.005, y_pos[i], f"{n_pat:,} ({frac * 100:.1f}%)",
+                va="center", fontsize=9, color=MUTED,
+            )
+        ax_d.set_xlim(0, max(bucket_fracs) * 1.28)
 
-    # Suptitle + methodology note
-    fig.suptitle(
-        "Four-class episode distributions across AdSERP   [LAB]\n"
-        "clicked · deferred · evaluated-rejected — per-trial, per-rank, within-trial, and co-occurrence",
-        fontsize=14, fontweight="semibold", y=0.978,
-    )
-    fig.text(
-        0.5, 0.006,
-        "Classes via NB22 regression rule: approached AND NOT clicked AND gaze_regression_label (eye-tracked; scroll telemetry not used for labels).   "
-        f"N = {n_trials:,} trials, {sum(class_n.values()):,} episodes.",
-        ha="center", fontsize=9.5, color=MUTED, style="italic",
-    )
+    # Suptitle + methodology note. In two-panel mode the suptitle drops the
+    # "four-class" framing (only three of four classes are plotted; the
+    # fourth — not-approached — lives in supplementary) and the bottom
+    # methodology note moves into the figure caption.
+    if args.two_panel:
+        if args.single_column:
+            fig.suptitle(
+                "Four-class taxonomy   [LAB]",
+                fontsize=10, fontweight="semibold", y=0.985,
+            )
+        else:
+            fig.suptitle(
+                "Three-class subset of the four-class taxonomy across AdSERP   [LAB]",
+                fontsize=13, fontweight="semibold", y=0.985,
+            )
+        # Shared legend strip below the suptitle, above the axes — keeps the
+        # plot area clean (no legend-on-data collision) and lets one key
+        # serve both panels.
+        legend_handles = [
+            mpl.patches.Patch(
+                facecolor=CLASS_COLORS[cls], edgecolor=INK, linewidth=0.6,
+                hatch=CLASS_HATCH[cls], label=CLASS_HUMAN[cls],
+            )
+            for cls in CLASS_ORDER
+        ]
+        legend_anchor_y = 0.945 if args.single_column else 0.94
+        legend_fs = 8 if args.single_column else 10
+        fig.legend(
+            handles=legend_handles,
+            loc="upper center", bbox_to_anchor=(0.5, legend_anchor_y),
+            ncol=3, frameon=False, fontsize=legend_fs,
+            handlelength=2.0, handleheight=1.4, columnspacing=1.4,
+        )
+    else:
+        fig.suptitle(
+            "Four-class episode distributions across AdSERP   [LAB]\n"
+            "clicked · deferred · evaluated-rejected — per-trial, per-rank, within-trial, and co-occurrence",
+            fontsize=14, fontweight="semibold", y=0.978,
+        )
+        fig.text(
+            0.5, 0.006,
+            "Classes via NB22 regression rule: approached AND NOT clicked AND gaze_regression_label (eye-tracked; scroll telemetry not used for labels).   "
+            f"N = {n_trials:,} trials, {sum(class_n.values()):,} episodes.",
+            ha="center", fontsize=9.5, color=MUTED, style="italic",
+        )
 
-    out_png = OUT_DIR / f"class_distributions{suffix}.png"
-    out_pdf = OUT_DIR / f"class_distributions{suffix}.pdf"
-    fig.savefig(out_png, dpi=200, facecolor="white")
-    fig.savefig(out_pdf, facecolor="white")
+    if args.single_column:
+        panel_tag = "_1col"
+        version_tag = "1col"
+    elif args.two_panel:
+        panel_tag = "_2panel"
+        version_tag = "2panel"
+    else:
+        panel_tag = ""
+        version_tag = "4panel"
+    out_png = OUT_DIR / f"class_distributions{panel_tag}{suffix}.png"
+    out_pdf = OUT_DIR / f"class_distributions{panel_tag}{suffix}.pdf"
+    prov_kwargs = dict(
+        script=__file__,
+        dataset=str(features_path.relative_to(ROOT)),
+        h_ids=[],
+        nb_k_ids=["NB22:K-bbox-1", "NB22:K-bbox-2"],
+        figure_version=f"{args.attribution}-{version_tag}",
+        notes=(
+            f"Four-class taxonomy [LAB]. "
+            f"attribution={args.attribution}, layout={version_tag}, n_trials={n_trials:,}."
+        ),
+    )
+    stamp_savefig(fig, out_png, dpi=200, facecolor="white", **prov_kwargs)
+    stamp_savefig(fig, out_pdf, facecolor="white", **prov_kwargs)
     plt.close(fig)
     print(f"\nwrote {out_png}")
     print(f"wrote {out_pdf}")
@@ -380,66 +506,69 @@ def main():
         ),
         "n_trials": int(n_trials),
         "class_counts": class_n,
-        "panels": {
-            "a_per_trial_histogram": {
-                "description": "Fraction of trials with N episodes of each class (N ∈ 0..5+).",
-                "bins": ["0", "1", "2", "3", "4", "5+"],
-                "per_class": {
-                    cls: [
-                        float(
-                            sum(1 for t in trial_ids if min(by_trial[t][cls], max_count) == k)
-                            / n_trials
-                        )
-                        for k in range(max_count + 1)
-                    ]
-                    for cls in CLASS_ORDER
-                },
+    }
+    panels_summary = {
+        "b_rank_distribution": {
+            "description": "P(class | position) for positions 1..10.",
+            "per_position_total": total_by_pos.tolist(),
+            "per_class": {
+                cls: (class_by_pos[cls] / np.maximum(total_by_pos, 1)).tolist()
+                for cls in CLASS_ORDER
             },
-            "b_rank_distribution": {
-                "description": "P(class | position) for positions 1..10.",
-                "per_position_total": total_by_pos.tolist(),
-                "per_class": {
-                    cls: (class_by_pos[cls] / np.maximum(total_by_pos, 1)).tolist()
-                    for cls in CLASS_ORDER
-                },
-            },
-            "c_episode_order_within_trial": {
-                "description": "Fraction of each class's episodes at each within-trial episode rank (1st, 2nd, ..., 8th+).",
-                "order_bins": list(range(1, max_order + 1)),
-                "per_class": {
-                    cls: (
-                        hist_by_class[cls] / max(hist_by_class[cls].sum(), 1)
-                    ).tolist()
-                    for cls in CLASS_ORDER
-                },
-            },
-            "d_cooccurrence": {
-                "description": "Per-trial co-occurrence: inclusive bucket fractions (panel d bars) plus exclusive 3-bit pattern counts for full provenance.",
-                "inclusive_buckets": {
-                    label: {
-                        "n_trials": int(round(frac * n_trials)),
-                        "fraction": float(frac),
-                    }
-                    for (label, _), frac in zip(inclusive_buckets, bucket_fracs)
-                },
-                "exclusive_patterns": {
-                    f"{int(p[0])}{int(p[1])}{int(p[2])}": {
-                        "has_clicked": bool(p[0]),
-                        "has_deferred": bool(p[1]),
-                        "has_eval_rejected": bool(p[2]),
-                        "n_trials": int(pattern_counts.get(p, 0)),
-                        "fraction": float(pattern_counts.get(p, 0) / n_trials),
-                    }
-                    for p in [
-                        (False, False, False), (True, False, False),
-                        (False, True, False), (False, False, True),
-                        (True, True, False), (True, False, True),
-                        (False, True, True), (True, True, True),
-                    ]
-                },
+        },
+        "c_episode_order_within_trial": {
+            "description": "Fraction of each class's episodes at each within-trial episode rank (1st, 2nd, ..., 8th+).",
+            "order_bins": list(range(1, max_order + 1)),
+            "per_class": {
+                cls: (
+                    hist_by_class[cls] / max(hist_by_class[cls].sum(), 1)
+                ).tolist()
+                for cls in CLASS_ORDER
             },
         },
     }
+    if ax_a is not None:
+        panels_summary["a_per_trial_histogram"] = {
+            "description": "Fraction of trials with N episodes of each class (N ∈ 0..5+).",
+            "bins": ["0", "1", "2", "3", "4", "5+"],
+            "per_class": {
+                cls: [
+                    float(
+                        sum(1 for t in trial_ids if min(by_trial[t][cls], max_count) == k)
+                        / n_trials
+                    )
+                    for k in range(max_count + 1)
+                ]
+                for cls in CLASS_ORDER
+            },
+        }
+    if ax_d is not None:
+        panels_summary["d_cooccurrence"] = {
+            "description": "Per-trial co-occurrence: inclusive bucket fractions (panel d bars) plus exclusive 3-bit pattern counts for full provenance.",
+            "inclusive_buckets": {
+                label: {
+                    "n_trials": int(round(frac * n_trials)),
+                    "fraction": float(frac),
+                }
+                for (label, _), frac in zip(inclusive_buckets, bucket_fracs)
+            },
+            "exclusive_patterns": {
+                f"{int(p[0])}{int(p[1])}{int(p[2])}": {
+                    "has_clicked": bool(p[0]),
+                    "has_deferred": bool(p[1]),
+                    "has_eval_rejected": bool(p[2]),
+                    "n_trials": int(pattern_counts.get(p, 0)),
+                    "fraction": float(pattern_counts.get(p, 0) / n_trials),
+                }
+                for p in [
+                    (False, False, False), (True, False, False),
+                    (False, True, False), (False, False, True),
+                    (True, True, False), (True, False, True),
+                    (False, True, True), (True, True, True),
+                ]
+            },
+        }
+    summary["panels"] = panels_summary
     out_json = OUT_DIR / f"class_distributions{suffix}_summary.json"
     json.dump(summary, open(out_json, "w"), indent=2)
     print(f"wrote {out_json}")

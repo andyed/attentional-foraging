@@ -9,10 +9,8 @@ Post-fix re-computation — numbers may differ from the paper's cached 69% /
 coordinate fix applied 2026-04-12. Returns summary to stdout so the paper
 caption can be reconciled.
 
-Outputs:
+Output:
     docs/drafts/cikm-2026/figures/regression-bimodal.png
-    docs/drafts/figures/regression-bimodal.png (mirror — not currently present;
-        written if the directory exists)
 """
 from __future__ import annotations
 
@@ -31,7 +29,6 @@ from data_loader import (  # noqa: E402
 )
 
 OUT_CIKM = ROOT / 'docs/drafts/cikm-2026/figures/regression-bimodal.png'
-OUT_MAIN = ROOT / 'docs/drafts/figures/regression-bimodal.png'
 
 # ── Style ──────────────────────────────────────────────────────────────────
 BG = '#ffffff'
@@ -253,10 +250,9 @@ def plot(reg_counts: list[int], reg_fracs: list[float]) -> None:
     )
     fig.tight_layout()
 
-    for out in (OUT_CIKM, OUT_MAIN):
-        out.parent.mkdir(parents=True, exist_ok=True)
-        fig.savefig(out, dpi=160, bbox_inches='tight')
-        print(f'wrote {out}')
+    OUT_CIKM.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(OUT_CIKM, dpi=160, bbox_inches='tight')
+    print(f'wrote {OUT_CIKM}')
     plt.close(fig)
 
 

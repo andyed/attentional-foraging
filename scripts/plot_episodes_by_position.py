@@ -12,9 +12,8 @@ Uses post-fix coordinate conventions from data_loader — FPOGY is page-space,
 so fixation-to-position mapping uses page_y vs result_bands tops directly
 (no `+ scroll`).
 
-Outputs:
-    docs/drafts/figures/episodes-by-position.png
-    docs/drafts/cikm-2026/figures/episodes-by-position.png (mirror if dir)
+Output:
+    docs/drafts/cikm-2026/figures/episodes-by-position.png
 """
 from __future__ import annotations
 
@@ -34,7 +33,6 @@ from data_loader import (  # noqa: E402
     classify_fixations,
 )
 
-OUT_MAIN = ROOT / 'docs/drafts/figures/episodes-by-position.png'
 OUT_CIKM = ROOT / 'docs/drafts/cikm-2026/figures/episodes-by-position.png'
 DIFFICULTY_JSON = ROOT / 'AdSERP/data/serp-difficulty-measures.json'
 
@@ -313,12 +311,9 @@ def plot(pos_data: dict, trial_counts: dict, total_episodes: int) -> None:
     )
     fig.tight_layout()
 
-    OUT_MAIN.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(OUT_MAIN, dpi=160, bbox_inches='tight')
-    print(f'\nwrote {OUT_MAIN}')
-    if OUT_CIKM.parent.exists():
-        fig.savefig(OUT_CIKM, dpi=160, bbox_inches='tight')
-        print(f'wrote {OUT_CIKM}')
+    OUT_CIKM.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(OUT_CIKM, dpi=160, bbox_inches='tight')
+    print(f'\nwrote {OUT_CIKM}')
     plt.close(fig)
 
 
