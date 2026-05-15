@@ -51,9 +51,14 @@ OUT.mkdir(parents=True, exist_ok=True)
 
 APPROACH_THRESHOLD_PX = 100.0  # NB22 convention
 
-M4 = ['min_dist', 'mean_dist', 'final_dist', 'retreat_dist',
-      'dwell_in_proximity_ms', 'mean_approach_velocity', 'max_approach_velocity',
-      'direction_changes', 'frac_decreasing']
+# Canonical M4 = leakage-validated seven-feature vector (paper §3.4).
+# Legacy M4 = nine-feature variant retained only for direct comparison.
+M4_CANONICAL = ['min_dist', 'mean_dist',
+                'dwell_in_proximity_ms', 'mean_approach_velocity', 'max_approach_velocity',
+                'direction_changes', 'frac_decreasing']
+M4_LEGACY = M4_CANONICAL + ['final_dist', 'retreat_dist']
+# Default exposed at module level for callers that import M3_NO_POS.
+M4 = M4_CANONICAL
 M3_NO_POS = ['total_dwell_ms'] + M4
 
 
@@ -173,11 +178,45 @@ def baseline_serp_scores(records):
 
 
 def main():
-    print('[load] cursor-approach-features-typed.json', file=sys.stderr)
-    records_raw = json.load(open(FEAT))
-    regression_labels_raw = json.load(open(REG_CACHE))
-    assert len(records_raw) == len(regression_labels_raw), \
-        f'len mismatch: {len(records_raw)} vs {len(regression_labels_raw)}'
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--feature-set', choices=['canonical', 'legacy'], default='canonical',
+                    help='canonical = 7 leakage-validated features (paper §3.4); '
+                         'legacy = 9-feature variant including final_dist + retreat_dist.')
+    ap.add_argument('--click-buffer-ms', type=int, default=0,
+                    help='Use buffered features file at the given Δ. 0 = canonical (no truncation).')
+    ap.add_argument('--output-suffix', default=None,
+                    help='Override output dir suffix (defaults to f-{set}-buf{ms}).')
+    args = ap.parse_args()
+
+    feature_set = M4_CANONICAL if args.feature_set == 'canonical' else M4_LEGACY
+    m3_no_pos = ['total_dwell_ms'] + feature_set
+
+    suffix = args.output_suffix or f'-{args.feature_set}-buf{args.click_buffer_ms}'
+    out_dir = OUT.parent / f'{OUT.name}{suffix}'
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    feat_path = FEAT if args.click_buffer_ms == 0 else FEAT.with_name(
+        f'{FEAT.stem}-buf{args.click_buffer_ms}.json')
+    print(f'[load] {feat_path.name}', file=sys.stderr)
+    records_raw = json.load(open(feat_path))
+    canonical_raw = json.load(open(FEAT))  # holds the regression-label key alignment
+    regression_labels_canonical = json.load(open(REG_CACHE))
+    assert len(canonical_raw) == len(regression_labels_canonical), \
+        f'cache len mismatch: {len(canonical_raw)} vs {len(regression_labels_canonical)}'
+
+    # When click_buffer_ms > 0, records_raw may be a subset of canonical_raw
+    # (records with no fixations after truncation are dropped). Re-key the
+    # regression-label cache by (trial_id, position) so we look up the
+    # right gaze-derived label for each surviving record.
+    label_by_key = {
+        (r['trial_id'], r['position']): bool(regression_labels_canonical[i])
+        for i, r in enumerate(canonical_raw)
+    }
+    regression_labels_raw = [
+        label_by_key.get((r['trial_id'], r['position']), False) for r in records_raw
+    ]
+    assert len(records_raw) == len(regression_labels_raw)
 
     # Sort by tid so groups are contiguous.
     order = np.argsort(np.array([r['trial_id'] for r in records_raw]), kind='stable')
@@ -211,7 +250,7 @@ def main():
     # at evaluation time. We achieve this by training only on kept rows but
     # predicting on all rows.
 
-    X_full = np.array([[float(r.get(f, 0.0) or 0.0) for f in M3_NO_POS] for r in records])
+    X_full = np.array([[float(r.get(f, 0.0) or 0.0) for f in m3_no_pos] for r in records])
     X_kept = X_full[include_all]
     tid_kept = tid_all[include_all]
     pid_kept = pid_all[include_all]
@@ -310,7 +349,9 @@ def main():
             'participants': int(len(np.unique(pid_all))),
             'class_distribution': cls_counts,
         },
-        'features': M3_NO_POS,
+        'features': m3_no_pos,
+        'feature_set': args.feature_set,
+        'click_buffer_ms': int(args.click_buffer_ms),
         'note': "no position feature; LOSO by participant; train on kept rows, predict on all.",
         'metrics': rows,
         'headlines': {
@@ -318,8 +359,8 @@ def main():
             'delta_mrr10_4class_vs_serp_position':     delta_4c_vs_pos,
         },
     }
-    (OUT / 'summary.json').write_text(json.dumps(summary, indent=2))
-    print(f'\nwrote {(OUT / "summary.json").relative_to(ROOT)}')
+    (out_dir / 'summary.json').write_text(json.dumps(summary, indent=2))
+    print(f'\nwrote {(out_dir / "summary.json").relative_to(ROOT)}')
 
 
 if __name__ == '__main__':

@@ -92,9 +92,11 @@ OUT.mkdir(parents=True, exist_ok=True)
 APPROACH_THRESHOLD_PX = 100.0  # NB22 convention
 EVAL_REJ_DWELL_MIN_MS = 500.0  # mirrors missions-flow confident-negative gate
 
-M4 = ['min_dist', 'mean_dist', 'final_dist', 'retreat_dist',
-      'dwell_in_proximity_ms', 'mean_approach_velocity', 'max_approach_velocity',
-      'direction_changes', 'frac_decreasing']
+M4_CANONICAL = ['min_dist', 'mean_dist',
+                'dwell_in_proximity_ms', 'mean_approach_velocity', 'max_approach_velocity',
+                'direction_changes', 'frac_decreasing']
+M4_LEGACY = M4_CANONICAL + ['final_dist', 'retreat_dist']
+M4 = M4_CANONICAL
 M3_NO_POS = ['total_dwell_ms'] + M4
 
 
@@ -274,9 +276,30 @@ def expand_to_hybrid_labels(tier, records, withstood_index):
 
 
 def main():
-    print('[load] cursor-approach-features-typed.json', file=sys.stderr)
-    records_raw = json.load(open(FEAT))
-    regression_labels_raw = json.load(open(REG_CACHE))
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--feature-set', choices=['canonical', 'legacy'], default='canonical')
+    ap.add_argument('--click-buffer-ms', type=int, default=0)
+    ap.add_argument('--output-suffix', default=None)
+    args = ap.parse_args()
+
+    feature_set = M4_CANONICAL if args.feature_set == 'canonical' else M4_LEGACY
+    m3_no_pos = ['total_dwell_ms'] + feature_set
+    suffix = args.output_suffix or f'-{args.feature_set}-buf{args.click_buffer_ms}'
+    out_dir = OUT.parent / f'{OUT.name}{suffix}'
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    feat_path = FEAT if args.click_buffer_ms == 0 else FEAT.with_name(
+        f'{FEAT.stem}-buf{args.click_buffer_ms}.json')
+    print(f'[load] {feat_path.name}', file=sys.stderr)
+    records_raw = json.load(open(feat_path))
+    canonical_raw = json.load(open(FEAT))
+    cache_canonical = json.load(open(REG_CACHE))
+    assert len(canonical_raw) == len(cache_canonical)
+    label_by_key = {(r['trial_id'], r['position']): bool(cache_canonical[i])
+                    for i, r in enumerate(canonical_raw)}
+    regression_labels_raw = [label_by_key.get((r['trial_id'], r['position']), False)
+                             for r in records_raw]
     assert len(records_raw) == len(regression_labels_raw)
 
     print('[load] withstood-evaluation-score.json', file=sys.stderr)
@@ -317,7 +340,7 @@ def main():
           file=sys.stderr)
 
     # ── Build feature matrices ──
-    X_full = np.array([[float(r.get(f, 0.0) or 0.0) for f in M3_NO_POS]
+    X_full = np.array([[float(r.get(f, 0.0) or 0.0) for f in m3_no_pos]
                        for r in records])
     X_train = X_full[include_train]
     tid_train = tid_all[include_train]
@@ -464,7 +487,9 @@ def main():
                 'eval_rej_dwell_min_ms': EVAL_REJ_DWELL_MIN_MS,
             },
         },
-        'features': M3_NO_POS,
+        'features': m3_no_pos,
+        'feature_set': args.feature_set,
+        'click_buffer_ms': int(args.click_buffer_ms),
         'method': {
             'flavor_A_flat': 'tier ∈ {1,2,3,4}; tier 0 dropped from training',
             'flavor_B_hybrid': 'tier subdivides by within-tier median(withstood_pre_click); labels ∈ {2,3,4,5,6,7,8} + click at 8',
@@ -478,8 +503,8 @@ def main():
             'M3-no-position cursor features only (apples-to-apples with K27)',
         ],
     }
-    (OUT / 'summary.json').write_text(json.dumps(summary, indent=2))
-    print(f'\nwrote {(OUT / "summary.json").relative_to(ROOT)}')
+    (out_dir / 'summary.json').write_text(json.dumps(summary, indent=2))
+    print(f'\nwrote {(out_dir / "summary.json").relative_to(ROOT)}')
 
 
 if __name__ == '__main__':

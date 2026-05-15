@@ -1,14 +1,12 @@
 {
   "experiment": "M5 \u2014 cursor-only classifier for NB22 taxonomy bootstrap",
   "script": "scripts/m5_cursor_only_taxonomy.py",
-  "generated": "2026-05-02T18:41:22.784269+00:00",
+  "generated": "2026-05-09T14:54:29.424184+00:00",
   "regime": "LAB",
   "inference_wild_compatible": true,
   "training_features": [
     "min_dist",
     "mean_dist",
-    "final_dist",
-    "retreat_dist",
     "dwell_in_proximity_ms",
     "mean_approach_velocity",
     "max_approach_velocity",
@@ -21,9 +19,9 @@
   "population": {
     "description": "approached non-click episodes from AdSERP",
     "approached_threshold_px": 100,
-    "n_total": 2070,
+    "n_total": 2067,
     "n_deferred_nb22": 1557,
-    "n_eval_rej_nb22": 513
+    "n_eval_rej_nb22": 510
   },
   "protocol": {
     "model": "LogisticRegression(class_weight='balanced', C=1.0) + StandardScaler",
@@ -31,51 +29,49 @@
     "metric_reporting": "AUC on out-of-fold predict_proba; Youden-J for operating threshold"
   },
   "results": {
-    "loso_auc": 0.768562024486035,
+    "loso_auc": 0.7524638885740551,
     "per_participant_auc": {
-      "median": 0.7768874643874644,
-      "p25": 0.7044501133786848,
-      "p75": 0.8596955128205128,
-      "min": 0.09090909090909091,
+      "median": 0.7516061980347695,
+      "p25": 0.6927796022623609,
+      "p75": 0.8127020561231088,
+      "min": 0.0,
       "n_users_with_both_classes": 46
     },
-    "youden_j_threshold": 0.48909031389042334,
+    "youden_j_threshold": 0.4491674378084887,
     "confusion_matrix_at_youden_j": {
-      "tp_deferred_correct": 1115,
-      "fn_deferred_missed": 442,
-      "fp_eval_rej_flagged_as_deferred": 155,
-      "tn_eval_rej_correct": 358
+      "tp_deferred_correct": 1200,
+      "fn_deferred_missed": 357,
+      "fp_eval_rej_flagged_as_deferred": 184,
+      "tn_eval_rej_correct": 326
     },
-    "precision_deferred": 0.8779527559055118,
-    "recall_deferred": 0.7161207450224791,
-    "f1_deferred": 0.7888220728687655
+    "precision_deferred": 0.8670520231213873,
+    "recall_deferred": 0.7707129094412332,
+    "f1_deferred": 0.8160489629377763
   },
   "hard_negative_purity": {
     "question": "If we use M5's predicted 'eval-rejected' pool as the hard-negative training source, what fraction are actually NB22-deferred?",
-    "pool_size": 800,
-    "true_deferred_contamination_count": 442,
-    "m5_fn_rate": 0.5525,
+    "pool_size": 683,
+    "true_deferred_contamination_count": 357,
+    "m5_fn_rate": 0.5226939970717424,
     "comparison": {
       "nb21_classifier_threshold_fn_rate": 0.068,
       "nb22_gaze_regression_fn_rate": 0.0,
-      "m5_cursor_only_fn_rate": 0.5525
+      "m5_cursor_only_fn_rate": 0.5226939970717424
     }
   },
   "deferred_pool_purity": {
     "question": "If we use M5's predicted 'deferred' pool as a semantically-considered-but-declined pool, what fraction are actually NB22-deferred?",
-    "pool_size": 1270,
-    "true_deferred_count": 1115,
-    "m5_deferred_precision": 0.8779527559055118
+    "pool_size": 1384,
+    "true_deferred_count": 1200,
+    "m5_deferred_precision": 0.8670520231213873
   },
   "coefficients_standardized": {
-    "min_dist": -0.0052725807305736795,
-    "mean_dist": 0.6342785037972011,
-    "final_dist": 0.25675683584731235,
-    "retreat_dist": 0.2565388814346426,
-    "dwell_in_proximity_ms": 0.4703707459874658,
-    "mean_approach_velocity": 0.0820609939572807,
-    "max_approach_velocity": -0.0146313580559958,
-    "direction_changes": 0.32040064557591585,
-    "frac_decreasing": 0.08523803161392289
+    "min_dist": -0.04207702127814425,
+    "mean_dist": 0.8211646237495305,
+    "dwell_in_proximity_ms": 0.4689636791260947,
+    "mean_approach_velocity": 0.06262028006625446,
+    "max_approach_velocity": 0.005215028198975134,
+    "direction_changes": 0.32815934358034643,
+    "frac_decreasing": -0.0369319495523912
   }
 }

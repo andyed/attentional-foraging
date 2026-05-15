@@ -1,17 +1,15 @@
 {
   "model": "LogisticRegression(class_weight='balanced', C=1.0) + StandardScaler",
   "trained_on": "all 47 participants, no holdout (full-data refit)",
-  "n_episodes": 2070,
+  "n_episodes": 2067,
   "n_deferred": 1557,
-  "n_eval_rej": 513,
-  "operating_threshold": 0.48909031389042334,
+  "n_eval_rej": 510,
+  "operating_threshold": 0.4491674378084887,
   "operating_threshold_method": "Youden-J on LOSO out-of-fold predictions",
-  "loso_auc": 0.768562024486035,
+  "loso_auc": 0.7524638885740551,
   "features": [
     "min_dist",
     "mean_dist",
-    "final_dist",
-    "retreat_dist",
     "dwell_in_proximity_ms",
     "mean_approach_velocity",
     "max_approach_velocity",
@@ -19,39 +17,33 @@
     "frac_decreasing"
   ],
   "scaler_mean": [
-    61.12684420315875,
-    257.0220759204487,
-    271.35513246829385,
-    210.2282882651354,
-    1488.0420289855072,
-    13.485915676810913,
-    100.37230279504894,
-    1.318840579710145,
-    0.5084672525185755
+    61.15203703244107,
+    254.99455303634477,
+    1488.0106434446056,
+    13.45337611858234,
+    100.41852630337912,
+    1.320754716981132,
+    0.5097266258872039
   ],
   "scaler_scale": [
-    25.089932720535558,
-    117.83718920263763,
-    199.95376962265678,
-    200.63931678505682,
-    1748.4985621684305,
-    97.09746270939176,
-    183.30962051903916,
-    2.1697931976294145,
-    0.1642267696456502
+    25.111678501043755,
+    117.12087257233622,
+    1748.630172256418,
+    97.14488082772615,
+    183.40142424767905,
+    2.170784998507303,
+    0.16377982364025373
   ],
   "coefficients_raw": [
-    -0.0052725807305736795,
-    0.6342785037972011,
-    0.25675683584731235,
-    0.2565388814346426,
-    0.4703707459874658,
-    0.0820609939572807,
-    -0.0146313580559958,
-    0.32040064557591585,
-    0.08523803161392289
+    -0.04207702127814425,
+    0.8211646237495305,
+    0.4689636791260947,
+    0.06262028006625446,
+    0.005215028198975134,
+    0.32815934358034643,
+    -0.0369319495523912
   ],
-  "intercept": 0.32132550105333685,
+  "intercept": 0.27054380126368965,
   "apply": "score = sigmoid(sum_i(coef_i * (feat_i - scaler_mean_i) / scaler_scale_i) + intercept); pred_deferred = score >= operating_threshold",
   "regime_for_inference": "WILD-compatible (cursor features only); supervision was [LAB, NB22 gaze-derived]"
 }

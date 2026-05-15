@@ -49,6 +49,13 @@ FEATURES_JSON_BY_ATTRIBUTION = {
     "absolute": ROOT / "AdSERP/data/cursor-approach-features.json",
     "organic": ROOT / "AdSERP/data/cursor-approach-features-organic.json",
 }
+
+
+def features_path_for(attribution: str, click_buffer_ms: int) -> Path:
+    base = FEATURES_JSON_BY_ATTRIBUTION[attribution]
+    if click_buffer_ms == 0:
+        return base
+    return base.with_name(f"{base.stem}-buf{click_buffer_ms}.json")
 REG_CACHE_BY_ATTRIBUTION = {
     "absolute": ROOT / "scripts/output/approach_threshold_sensitivity/regression_labels_cache.json",
     "organic": ROOT / "scripts/output/approach_threshold_sensitivity/regression_labels_cache_organic.json",
@@ -58,22 +65,21 @@ OUT_DIR_BY_ATTRIBUTION = {
     "organic": ROOT / "scripts/output/m5_cursor_only_taxonomy_organic",
 }
 
-# M4 feature set — cursor features minus position and total_dwell_ms.
-# This matches the paper's canonical M4 definition: 9 cursor-derived
-# features, excluding rank position and total dwell time. Distance
-# statistics (min_dist, mean_dist, final_dist) are kept because they
-# describe approach geometry, not rank.
-M4_FEATURES = [
+# Canonical M4 feature set — cursor features minus position, total_dwell_ms,
+# and the two structurally-leakage-prone distance terms (final_dist,
+# retreat_dist) screened out by the click-buffer protocol of §3.4.
+M4_CANONICAL_FEATURES = [
     "min_dist",
     "mean_dist",
-    "final_dist",
-    "retreat_dist",
     "dwell_in_proximity_ms",
     "mean_approach_velocity",
     "max_approach_velocity",
     "direction_changes",
     "frac_decreasing",
 ]
+# Legacy nine-feature variant retained for direct comparison only; the
+# canonical M4 vector above is the leakage-validated set used in §4.1.
+M4_LEGACY_FEATURES = M4_CANONICAL_FEATURES + ["final_dist", "retreat_dist"]
 
 
 def main():
@@ -81,9 +87,15 @@ def main():
     parser.add_argument("--attribution", choices=["absolute", "organic"], default="absolute",
                         help="AOI attribution mode. 'absolute' = legacy band/h3 (default); "
                              "'organic' = bbox-extracted organic AOIs (2026-05-01 cascade).")
+    parser.add_argument("--click-buffer-ms", type=int, default=0,
+                        help="Click-buffer Δ used for the underlying feature file.")
+    parser.add_argument("--feature-set", choices=["canonical", "legacy"], default="canonical",
+                        help="canonical = 7 leakage-validated features (paper headline); "
+                             "legacy = 9-feature variant including final_dist, retreat_dist.")
     args = parser.parse_args()
 
-    features_json = FEATURES_JSON_BY_ATTRIBUTION[args.attribution]
+    feature_list = M4_CANONICAL_FEATURES if args.feature_set == "canonical" else M4_LEGACY_FEATURES
+    features_json = features_path_for(args.attribution, args.click_buffer_ms)
     reg_cache = REG_CACHE_BY_ATTRIBUTION[args.attribution]
     out_dir = OUT_DIR_BY_ATTRIBUTION[args.attribution]
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -95,10 +107,26 @@ def main():
     print(f"\nloading {features_json}")
     raw = json.load(open(features_json))
     n = len(raw)
-    print(f"  total records: {n}")
+    print(f"  total records: {n}  (click_buffer_ms={args.click_buffer_ms}, "
+          f"feature_set={args.feature_set})")
 
-    regression_labels = np.array(json.load(open(reg_cache)), dtype=bool)
-    assert len(regression_labels) == n
+    # Regression labels are derived from gaze events in NB22 and are
+    # independent of the click-buffer. The cache is positional w.r.t. the
+    # canonical (buf=0) features file; for buffered files, look up by
+    # (trial_id, position) instead since record ordering can shift when
+    # trials lose all fixations to truncation.
+    canonical_features_json = FEATURES_JSON_BY_ATTRIBUTION[args.attribution]
+    canonical_raw = json.load(open(canonical_features_json))
+    cache_array = np.array(json.load(open(reg_cache)), dtype=bool)
+    assert len(cache_array) == len(canonical_raw)
+    label_by_key = {
+        (r["trial_id"], r["position"]): bool(cache_array[i])
+        for i, r in enumerate(canonical_raw)
+    }
+    regression_labels = np.array(
+        [label_by_key.get((r["trial_id"], r["position"]), False) for r in raw],
+        dtype=bool,
+    )
     print(f"  gaze_regression_label (cached from NB22): "
           f"{regression_labels.sum():,} True ({regression_labels.mean() * 100:.1f}%)")
 
@@ -119,7 +147,7 @@ def main():
     X_rows = []
     for r in raw:
         row = []
-        for f in M4_FEATURES:
+        for f in feature_list:
             v = r.get(f, 0.0)
             if v is None:
                 v = 0.0
@@ -132,7 +160,7 @@ def main():
     y = regression_labels[subset_mask].astype(int)  # 1 = deferred, 0 = eval-rej
     groups = np.array([r["trial_id"].split("-")[0] for r in raw])[subset_mask]
 
-    print(f"\nfeature matrix: {X.shape}  (features = {M4_FEATURES})")
+    print(f"\nfeature matrix: {X.shape}  (features = {feature_list})")
     print(f"participants (LOSO groups): {len(set(groups))}")
 
     # ── LOSO logistic regression ──
@@ -229,7 +257,7 @@ def main():
     scaler_mean = scaler.mean_.tolist()
     scaler_scale = scaler.scale_.tolist()
     coef_pairs = sorted(
-        zip(M4_FEATURES, coefs),
+        zip(feature_list, coefs),
         key=lambda p: abs(p[1]), reverse=True,
     )
 
@@ -244,7 +272,7 @@ def main():
         "operating_threshold": float(j_threshold),
         "operating_threshold_method": "Youden-J on LOSO out-of-fold predictions",
         "loso_auc": float(auc),
-        "features": list(M4_FEATURES),
+        "features": list(feature_list),
         "scaler_mean": scaler_mean,
         "scaler_scale": scaler_scale,
         "coefficients_raw": [float(c) for c in coefs],
@@ -265,7 +293,7 @@ def main():
         "generated": datetime.datetime.now(datetime.UTC).isoformat(),
         "regime": "LAB",  # model trained on [LAB] labels; inference is WILD-compatible
         "inference_wild_compatible": True,
-        "training_features": M4_FEATURES,
+        "training_features": feature_list,
         "training_features_note": "M4 approach-only feature set — no position, no total_dwell, no gaze, no scroll. WILD-compatible at inference time.",
         "target_label": "NB22 gaze_regression_label (1 = deferred, 0 = eval-rejected)",
         "target_label_note": "Labels are [LAB]-only (require eye tracker). The classifier learns to approximate them from cursor-only features.",
@@ -319,7 +347,7 @@ def main():
             "m5_deferred_precision": float(m5_deferred_purity),
         },
         "coefficients_standardized": {
-            name: float(c) for name, c in zip(M4_FEATURES, coefs)
+            name: float(c) for name, c in zip(feature_list, coefs)
         },
     }
 
