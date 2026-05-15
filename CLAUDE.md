@@ -2,6 +2,31 @@
 
 SERP evaluation task model (OSEC) built on AdSERP eye+cursor dataset. 11 Tier-A analysis notebooks, 4 producer scripts, comprehensive Key Claims system.
 
+## Feature extractor provenance — read this first
+
+**Two parallel cursor-feature pipelines**, different questions. Neither supersedes the other; mistaking them for each other has bit us before. Full map in [`docs/methodology/feature-extractor-lineage.md`](docs/methodology/feature-extractor-lineage.md); `scripts/CANONICAL.md` is the table.
+
+- **Paper §4.1 / §4.3 / §4.6 headline (cursor-only, deployable):** `approach-retreat` library (JS, `ResultFeatureTracker` v0.3.0) ↔ `scripts/m4_nb21_hybrid_rerun.py` (AdSERP Python), **parity-verified at 1e-6** via `scripts/test_feature_tracker_parity.{js,py}`. Produces M1 = 0.668 / M4 = 0.847 under `organic_hybrid`.
+- **LAB analysis substrate (gaze-gated, active):** `scripts/compute_cursor_approach_features.py` → `cursor-approach-features-organic.json`. Feeds LFHF, four-class taxonomy (NB22), viewport bands (NB28), plot rendering. *Not* the source of the paper's §4.1 headline numbers.
+
+**The one landmine:** `scripts/nb21_loso_retrain_organic.py` runs the §4.1 LOSO protocol on the LAB analysis substrate and produces M1 = 0.727 / M4 = 0.864 — *not* the paper's headline. Emits `DeprecationWarning` at import. The 2026-04-14 retrospective `docs/drafts/cikm-2026/process-trace-gaze-sync-missed.md` documents the failure pattern.
+
+## CIKM 2026 paper location (READ THIS FIRST)
+
+The CIKM 2026 paper draft **has moved out of this repo**. As of 2026-05-15:
+
+- **Canonical source:** `~/Documents/dev/cikm-leakycursor/source/paper.md`
+- **LaTeX:** `~/Documents/dev/cikm-leakycursor/paper.tex`
+- **Build:** `~/Documents/dev/cikm-leakycursor/build.sh`
+- **Replicate pipeline (AdSERP):** `~/Documents/dev/cikm-leakycursor-replicate/`
+- **WILD validation (ACD):** `~/Documents/dev/approach-retreat/analysis/attcur-validation/`
+
+The `docs/drafts/cikm-2026/` directory in this repo is **frozen historical context** — pre-split drafts, the 2026-05-07 editorial critique, and early acmart build scripts. It is `.gitignore`'d and never tracked. Treat it as read-only archive; for any CIKM paper editing, work in `cikm-leakycursor/`.
+
+References below to `docs/drafts/cikm-*/` describe the *historical* workflow when the draft lived here. The pencil-lock + two-pass citation discipline now lives in `cikm-leakycursor/CLAUDE.md`.
+
+This repo (`attentional-foraging`) remains the canonical location for the **LAB analysis substrate** that feeds CIKM §4 — the AdSERP notebooks, the gaze-gated feature extractors (§4.3 diagnostic ceiling), the four-class taxonomy producer, and figure render scripts. CIKM prose moved; the analysis pipeline didn't.
+
 ## LAB / WILD Convention (CIKM paper organizational axis)
 
 Every quantitative claim in the CIKM paper, and every figure/table in `scripts/output/`, must be tagged with its regime. Two labels, no middle:
