@@ -2,6 +2,8 @@
 
 **Paper:** Villaizán-Vallelado, Salvatori, Latifzadeh, Penta, Leiva & Arapakis (SIGIR '25)
 **DOI:** [10.1145/3726302.3729891](https://doi.org/10.1145/3726302.3729891)
+**arxiv:** 2505.01451v2
+**Local PDF:** `docs/lit-notes/adsight-2505.01451v2.pdf` (alongside this file). Also at `~/Documents/dev/clicksense/docs/2505.01451v2.pdf` and `~/Downloads/2505.01451v2.pdf`.
 **Relationship:** Uses the same 2,776-trial / 47-participant dataset as AdSERP. Companion paper — AdSERP describes the dataset, AdSight builds a model on it.
 
 ## Core Claims

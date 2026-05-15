@@ -4,7 +4,7 @@
 
 ## What this document is for
 
-Every notebook in this project that ships load-bearing numbers to papers or external readers has a **Key Claims** block at its top, containing a table of canonical values with stable row IDs. This document aggregates all blocks into one scannable file so paper writers don't have to open each notebook to look up a value.
+Every notebook in this project that ships key numbers to papers or external readers has a **Key Claims** block at its top, containing a table of canonical values with stable row IDs. This document aggregates all blocks into one scannable file so paper writers don't have to open each notebook to look up a value.
 
 ### The contract
 
@@ -65,7 +65,7 @@ Only notebooks that ship numbers directly to external papers or public writeups 
 | **K7** | Survey / Evaluate amplitude ratio | 1.55× |
 | **K8** | Mann–Whitney U, survey > evaluate | *p* ≈ 0 (underflow; reported value 1.59 × 10⁻²¹⁹ on the re-windowed subset N = 9,550 / 45,262) |
 
-### Other load-bearing rows
+### Other key rows
 
 | ID | Claim | Value |
 |---|---|---|
@@ -401,114 +401,6 @@ The LOSO classifier was retrained on `cursor-approach-features-organic.json` (14
 >
 > **Four-class taxonomy under bbox attribution** is reported in NB22's K-bbox-* tier (label distribution shifts: 99.4% of trials see at least one shifted four-class label; 411 trials have shifted CLICKED count due to click reattribution). NB21's M3 classifier was retrained on the new features but uses the same architecture; its taxonomy outputs (deferred candidate / evaluated rejected) need a separate threshold pass for the new score distribution. Threshold values K10/K11 below are pre-cascade and need re-derivation.
 
-### Typed-gapfill K-IDs (post-2026-05-05 cascade; recommended for new analyses)
-
-Re-run on `cursor-approach-features-typed-gapfill.json` (n=18,218 records, 47 participants, 13.0% click rate). The typed_gapfill flavor adds X+Y bbox-aware click attribution and the `is_main_axis_click()` trial filter (231 hard-error trials excluded — 158 dd_right + right_chrome + ~73 no-click). See [`../null-findings/2026-05-05-bbox-y-coverage.md`](../null-findings/2026-05-05-bbox-y-coverage.md). Producer: `scripts/nb21_loso_retrain_typed_gapfill.py`.
-
-| ID | Claim | Value (typed_gapfill) | typed (legacy) | Δ |
-|---|---|---|---|---|
-| **K-bbox-y-1** | Records / participants / click rate | **18,218 / 47 / 13.0%** (2,375 clicks) | 19,774 / 47 / 13.1% | −1,556 records, −0.1 pp |
-| **K-bbox-y-3** | **M3 LOSO AUC** (position + dwell + approach) | **0.856 (per-part std 0.045)** | 0.871 ± 0.041 | **−0.015** |
-| **K-bbox-y-4** | M4 LOSO AUC (approach only) | **0.856** | 0.871 | −0.015 |
-| **K-bbox-y-5** | M2 LOSO AUC (position + dwell) | **0.744** | 0.761 | −0.017 |
-| **K-bbox-y-6** | M1 LOSO AUC (position only) | **0.660** | 0.665 | −0.005 |
-| **K-bbox-y-7** | M3 LOSO AP | **0.533** | 0.549 | −0.016 |
-| **K-bbox-y-8** | Leakage Δ (Random KFold − LOSO) | **+0.001 / +0.001 / +0.001** for M2/M3/M4 | +0.001 / +0.000 / +0.000 | invariant |
-| **K-bbox-y-9** | Per-participant LOSO M3 AUC | **median 0.855, IQR [0.821, 0.895], range [0.745, 0.949]** | median ~0.87 | ~−0.015 |
-| **K-bbox-y-12** | Brier score (M3 OOF) | **0.1487** | 0.1420 | +0.007 |
-
-| **K-bbox-3** annotation | (superseded 2026-05-05: see K-bbox-y-3; bbox Y-pixel coverage fix removes 22.7% silent contamination of approached & clicked records under typed legacy) |
-
-> **Why the AUC dropped 0.015.** The legacy typed `was_clicked` labels included ~22.7% silent mis-attribution (`scripts/audit_cascade_contamination.py`): off-axis clicks (right-rail dd_right, page chrome, far-off-target) were rolled into main-axis AOIs by the Y-band-only attribution rule. Those mis-tagged records aligned with cursor-trajectory geometry (off-axis clicks naturally end at Y inside organic Y-bands, where cursor approach is trivially high) and were therefore *easier* to predict than honest clicks. Removing the contamination via X+Y bbox-aware attribution moves the AUC closer to the honest difficulty. The drop is consistent across M1–M4 (−0.005 to −0.017), confirming the contamination was not concentrated in any one feature subset.
-
-> **Per-etype AUC under typed_gapfill (M3 LOSO):** dd_top 0.913, organic 0.852, native_ad 0.833, paa 0.819, image_pack 0.800, knowledge_panel 0.667, unknown_widget 0.579. KP and unknown_widget are weaker (small N, diverse cursor patterns).
-
-### Typed-gapfill — NB22 four-class population shifts
-
-Producer: `scripts/nb22_four_class_typed_gapfill_delta.py`.
-
-| metric | typed (legacy) | typed_gapfill | Δ |
-|---|---:|---:|---:|
-| total records | 19,774 | 18,218 | −1,556 |
-| `was_clicked=True` | 2,594 | 2,375 | −219 |
-| approached (`min_dist<100`) | 4,862 | 4,511 | −351 |
-| approached & clicked | 1,723 | 1,562 | **−161** |
-| approached non-click | 3,139 | 2,949 | −190 |
-| not-approached | 14,912 | 13,707 | −1,205 |
-| click rate among approached | 35.4 % | 34.6 % | −0.8 pp |
-
-Per-etype `was_clicked=True` shifts: organic −135, native_ad −49, dd_top −26, paa **+4** (genuinely recovered, gap-tight bboxes were missing paa clicks), KP −1, image_pack −7. Pattern is consistent with the cascade thesis: legacy Y-band attribution over-counted main-axis click outcomes; typed_gapfill produces honest counts with a small genuine recovery on tight-bbox widgets.
-
-The full four-class split (deferred / eval-rejected) is now derived under typed_gapfill — gaze-regression labels were re-computed via `scripts/compute_regression_labels.py --attribution typed_gapfill` (output: `scripts/output/approach_threshold_sensitivity/regression_labels_cache_typed_gapfill.json`).
-
-### Typed-gapfill — NB22 four-class taxonomy (full breakdown)
-
-Producer: `scripts/nb22_four_class_typed_gapfill.py`. Class proportions are remarkably stable across the cascade:
-
-| class | typed (legacy) | typed_gapfill | Δ count | typed % | gapfill % |
-|---|---:|---:|---:|---:|---:|
-| **clicked** (was_clicked = True) | 2,594 | 2,375 | −219 | 13.1 % | 13.0 % |
-| **deferred** (approached, non-click, gaze-regressed) | 2,567 | 2,419 | −148 | 13.0 % | 13.3 % |
-| **eval-rejected** (approached, non-click, no regression) | 572 | 530 | −42 | 2.9 % | 2.9 % |
-| **not-approached** (`min_dist >= 100`) | 14,041 | 12,894 | −1,147 | 71.0 % | 70.8 % |
-| total | 19,774 | 18,218 | −1,556 | — | — |
-
-> **Class proportions are invariant under the cascade.** All four classes preserve their share within ±0.3 pp; total population shifts only because of the 158 hard-error trials excluded by `is_main_axis_click()`. The four-class taxonomy is a robustness story under typed_gapfill — the *behavior* the classes capture is preserved, with cleaner click-attribution boundaries.
-
-**Per-etype × class breakdown under typed_gapfill:**
-
-| etype | clicked | deferred | eval-rejected | not-approached |
-|---|---:|---:|---:|---:|
-| organic | 1,886 | 1,341 | 362 | 8,261 |
-| native_ad | 137 | 451 | 79 | 2,561 |
-| dd_top | 245 | 443 | 41 | 793 |
-| image_pack | 49 | 111 | 27 | 580 |
-| paa | 31 | 21 | 7 | 264 |
-| knowledge_panel | 22 | 33 | 8 | 260 |
-| unknown_widget | 3 | 11 | 6 | 116 |
-| top_places | 1 | 4 | 0 | 38 |
-| other_widget | 1 | 4 | 0 | 21 |
-
-Notable: dd_top has nearly twice as many `deferred` as `clicked` (443 / 245 = 1.8×); native_ad has 3.3× more deferred than clicked. The "ad attention without commitment" pattern from the original AdSERP analysis is sharpened under typed_gapfill — **deferred ad records are no longer contaminated by Y-band-misattributed off-axis clicks**.
-
-### Typed-gapfill — NB30 etype × continuous-viewport
-
-Producer: `scripts/nb30_typed_gapfill.py`. Population: approached (`min_dist < 100`) AOIs of etype ∈ {organic, dd_top, native_ad}, n = 4,229 (typed_gapfill bands; gap-fill applied to organics, ads pass through unchanged).
-
-| ID | Claim | typed_gapfill | legacy organic_hybrid | Δ |
-|---|---|---|---|---|
-| **K-bbox-y-NB30-1** | population (3-etype, approached) | 4,229 (organic 2,895; dd_top 715; native_ad 619) | 4,865 (organic 3,383; dd_top 747; native_ad 735) | −636 |
-| **K-bbox-y-NB30-2** | LOPO AUC (click outcome, B + etype + interactions) | **0.7014** | 0.6873 | **+0.014** |
-| **K-bbox-y-NB30-3** | per-etype `max_overlap_frac` slope, organic baseline | **−0.0719** | −0.2785 | **+0.207** |
-| **K-bbox-y-NB30-4** | dd_top × `max_overlap_frac` total slope | **−0.2347** (Δ = −0.1628 from organic) | −0.3867 (Δ = −0.1082) | rel. dissociation strengthens (Δ widens 50 %) |
-| **K-bbox-y-NB30-5** | native_ad × `max_overlap_frac` total slope | **−0.3600** (Δ = −0.2881 from organic) | −0.5146 (Δ = −0.2362) | rel. dissociation strengthens (Δ widens 22 %) |
-
-> **Interpretation.** Under typed_gapfill, the per-etype dissociation in viewport-overlap → click sensitivity strengthens (organic vs ad-etype interaction Δ widens), but the organic *baseline* slope weakens substantially (−0.28 → −0.07). The likely mechanism: gap-fill makes organic bboxes taller, so `max_overlap_frac` (max ratio of bbox visible at any moment) is mechanically smaller and less variable across the organic population — the within-organic signal is compressed even as the cross-etype contrast tightens. **The qualitative finding survives** (organic less viewport-overlap-dependent than ads when clicked) but absolute magnitudes need re-citation under the new flavor for any paper claim.
-
-### Typed-gapfill — NB28 viewport bands × deferred-vs-eval-rejected
-
-Producer: `scripts/nb28_typed_gapfill.py`. Population: approached non-clicked (`min_dist < 100, was_clicked=False`), n = 2,949 (deferred 2,419, eval-rejected 530).
-
-| ID | Claim | typed_gapfill | legacy (absolute) | Δ |
-|---|---|---|---|---|
-| **K-bbox-y-NB28-1** | population (approached ∧ ¬clicked) | 2,949 (def 2,419, rej 530) | (similar shape) | small shifts from gap-fill |
-| **K-bbox-y-NB28-2** | LOSO LR AUC, M4 retreat features only | 0.7908 | 0.796 (M4 alone) | ≈ invariant |
-| **K-bbox-y-NB28-3** | LOSO LR AUC, vt_top/mid/bot bands only | 0.8052 | 0.800 (bands alone) | ≈ invariant |
-| **K-bbox-y-NB28-4** | LOSO LR AUC, vt_any only | 0.7123 | — | new under cascade |
-| **K-bbox-y-NB28-5** | **LOSO LR AUC, M4 + vt_bands (combined)** | **0.8423** | **0.842 ± [0.818, 0.864]** | **≈ invariant** |
-| **K-bbox-y-NB28-6** | LOSO LR AUC, M4 + vt_any | 0.8158 | — | new under cascade |
-
-> **NB28 is invariant under the cascade.** The headline calibration claim — combined M4 retreat + viewport-band features achieve LOSO AUC 0.842 in deferred-vs-eval-rejected discrimination — replicates to **three decimal places** under typed_gapfill (0.8423 vs 0.842 legacy absolute). The signal is local per-AOI behavioral, not bbox-attribution-dependent. This is a robustness story: gap-fill changes which Y pixels belong to which AOI but does not change the underlying viewport-time × cursor-retreat relationship that discriminates deferred from evaluated-rejected.
-
-**Band-time descriptive (deferred-vs-eval-rejected subset):**
-
-| band | median | mean | p10 | p90 |
-|---|---:|---:|---:|---:|
-| any | 18,824 ms | 20,526 | 7,155 | 36,669 |
-| top | 4,132 | 7,054 | 0 | 18,680 |
-| mid | 4,433 | 7,157 | 0 | 19,241 |
-| bot | 183 | 4,773 | 0 | 15,758 |
-
 ---
 
 ### Legacy K-IDs (preserved for cross-reference)
@@ -568,7 +460,48 @@ Producer: `scripts/nb28_typed_gapfill.py`. Population: approached non-clicked (`
 ## NB22: `22_four_class_taxonomy` — regression-based four-class taxonomy and element-type interactions
 
 *Source: [`notebooks-v2/22_four_class_taxonomy.ipynb`](../notebooks-v2/22_four_class_taxonomy.ipynb)*
-*Last verified against executed notebook output: 2026-04-12 (legacy K1–K12); bbox cascade values 2026-05-01.*
+
+### 2026-05-07 — Looking into the corners (cursor-blind regaze inference)
+
+*Added 2026-05-07. Verified against script outputs in `scripts/output/regaze_no_rehover/{summary.json, minimal_4_summary.json, three_tier_recovery.json}`. These claims anchor the CIKM 2026 paper's §4.3 Figure 3 and §5 "Looking into the corners" framing.*
+
+The cursor-blind subset (clicked + approached + cursor visit_count == 1) is the **junction the task model predicts is non-empty even when the visit-count detector returns null** — the four-class taxonomy's "approached but no obvious cursor reapproach" corner. The K-leak-* IDs below quantify what's recoverable there.
+
+**Producer scripts** (canonical sources for these values):
+- `scripts/cursor_arc_prevalence.py` — cursor visit detection, AR-library port (40 px margin, 100 ms min dwell, 5 s reapproach window)
+- `scripts/cursor_arc_thresholds.py` — threshold sweep on visit_count
+- `scripts/gaze_arc_thresholds.py` — distinct-returns sweep using `nb22_revisit_count.count_revisits_per_trial`
+- `scripts/regaze_no_rehover_inference.py` — full M4 LR; saves coefficients
+- `scripts/regaze_minimal_model.py` — paired full vs minimal-4 LOPO comparison
+- `scripts/plot_three_tier_recovery.py` — Figure 3 + tier coverage JSON
+
+| ID | Claim | Value |
+|---|---|---|
+| **K-leak-1** | Cursor revisit coverage at clicked AOI (visit_count ≥ 2; canonical typed_gapfill `was_clicked` attribution) | **517 / 2,545 trials = 20.3 %**; **43 / 47 participants = 91.5 %** |
+| **K-leak-2** | Approach-retreat-reclick universality at participant level (≥ 3 distinct gaze returns to a clicked result) within the AdSERP sample | **47 / 47 = 100 %** participants; **24.05 %** of trials |
+| **K-leak-2b** | Universality robustness under stricter K | K = 4: 95.7 % participants; K = 5: 89.4 % participants |
+| **K-leak-3** | Cursor-blind subset size (clicked + approached + cursor visit_count == 1) | **n = 845 records, 47 participants** |
+| **K-leak-3b** | Regaze prevalence within cursor-blind subset (≥ 1 distinct gaze return) | **452 / 845 = 53.5 %** records |
+| **K-leak-4** | LOPO AUC, full M4 nine-feature vector predicting gaze-regressed-without-cursor-revisit on cursor-blind subset | **0.699 ± 0.135** (median 0.720, 46 folds); **Wilcoxon vs 0.5 *p* = 1.9 × 10⁻⁸** (one-sided greater); **3 / 46 folds at or below 0.5; 7 / 46 folds below 0.6** |
+| **K-leak-5** | LOPO AUC, minimal-4 kit (`mean_dist`, `dwell_in_proximity_ms`, `min_dist`, `direction_changes`) on the same target | **0.699 ± 0.121** (median 0.714); **Wilcoxon vs 0.5 *p* = 8.3 × 10⁻⁹** |
+| **K-leak-6** | Paired-fold full M4 vs minimal-4 (Wilcoxon signed-rank) | **Δ = −0.0002, *p* = 0.52** — statistically indistinguishable |
+| **K-leak-7a** | Standardized LR coefficients in the four-feature minimal kit (mean over 46 LOPO folds) | `mean_dist` **+0.571**, `dwell_in_proximity_ms` **+0.445**, `min_dist` **−0.314**, `direction_changes` **+0.238** |
+| **K-leak-7b** | Coefficients of the five M4 features dropped from the minimal kit (full M4 fit) | `mean_approach_velocity` −0.197, `frac_decreasing` −0.055, `final_dist` −0.045, `retreat_dist` +0.029, `max_approach_velocity` +0.007 |
+| **K-leak-8** | Three-tier coverage (Figure 3a). **T1**: cursor revisit. **T2**: cursor-dynamics LR on cursor-blind subset, predicted-positive threshold 0.5. **T3**: T1 ∪ T2. | T1: 517 trials / 43 pids; T2: 461 trials / 47 pids; **T3: 978 trials = 38.4 % / 47 pids = 100 %** |
+
+> **Interpretation.** The cursor-blind subset is non-empty under canonical click attribution (n = 845, 47 participants), and a four-feature LR conditioned on cursor-trajectory dynamics within that subset recovers gaze regression at AUC 0.699 — non-trivial in aggregate (Wilcoxon *p* < 10⁻⁸) but uneven across participants (3/46 folds fail at or below chance). The minimal kit reaches the same AUC as the full M4 nine-feature vector at *p* = 0.52 paired-fold. **`mean_dist`, `dwell_in_proximity_ms`, `min_dist`, and `direction_changes` are the deployable four-feature kit** for cursor-only LAB→WILD recovery on records where the cursor-revisit detector goes silent.
+>
+> **Why this lives in NB22.** The cursor-blind regaze inference depends on this notebook's `gaze_regression_label` as ground truth and the four-class taxonomy as the population definition. The producer scripts above are downstream of NB22's gaze-regression detection logic; the K-leak-* claims are NB22-derived findings even though they were computed from external scripts rather than this notebook's own cells. Re-running the scripts after any change to NB22's regression-label producer must update the K-leak-* values here.
+>
+> **CIKM 2026 paper anchors.** Abstract reports K-leak-1, K-leak-2, K-leak-4 (and the universality scoping). §4.3 reports K-leak-3, K-leak-3b, K-leak-4, K-leak-5, K-leak-6, K-leak-7a. Figure 3 plots K-leak-8 (panel a) and per-fold AUCs from K-leak-4 / K-leak-5 (panel b). §4.6 references K-leak-1 and K-leak-8. §5 ("Looking into the corners") frames the methodology.
+
+---
+
+
+*Last verified against executed notebook output: 2026-04-12 (legacy K1–K12); bbox cascade values 2026-05-01; K-leak-* values 2026-05-07.*
+*Notebook: `22_four_class_taxonomy.ipynb`.*
+
+If prose in a paper draft cites a value that disagrees with a row below, the paper is wrong — not the notebook. If re-running this notebook produces different values, update this block immediately and `grep` for the old value across `docs/`.
 
 ### 2026-05-01 attribution shift — bbox primary for AR replay rebuild
 
@@ -606,7 +539,7 @@ The `evaluated_rejected` class grows substantially under bbox because ad-slot po
 | **K-bbox-9** | Trials where `clicked` count differs (click hit ad/widget under absolute, organic under bbox, or vice versa) | **411** |
 | **K-bbox-10** | Trials where `deferred` count differs (regression detection picked up different positions) | **2,047** |
 
-> **AOI cascade affects nearly every trial's class distribution.** AR replay rebuild + curation caption edits are gated on this: nearly every curated example in `approach-retreat/site/replay/data/curation.json` may have stale labels, and the 411 click-shift trials are particularly load-bearing because curation.json filters trials by class profile. Re-running `build_replay_trial.py` on those trials will produce fresh AOI labels via M5; caption claims like "5 DEFERRED AOIs" need automated cross-check before re-publishing demos.
+> **AOI cascade affects nearly every trial's class distribution.** AR replay rebuild + curation caption edits are gated on this: nearly every curated example in `approach-retreat/site/replay/data/curation.json` may have stale labels, and the 411 click-shift trials are particularly important because curation.json filters trials by class profile. Re-running `build_replay_trial.py` on those trials will produce fresh AOI labels via M5; caption claims like "5 DEFERRED AOIs" need automated cross-check before re-publishing demos.
 >
 > **M5 classifier not retrained.** The shift is in *labels*, not *predictions*. Retraining M5 on bbox AOIs is the next iteration.
 
@@ -905,7 +838,7 @@ K18–K28 use `absolute_to_organic_rank()` from data_loader (h3 slots minus ad-o
 ## NB18: `18_ripa2_vs_lfhf` — RIPA2 vs Butterworth LF/HF comparison
 
 *Source: [`notebooks-v2/18_ripa2_vs_lfhf.ipynb`](../notebooks-v2/18_ripa2_vs_lfhf.ipynb)*
-*Last verified against executed notebook output: 2026-05-01.*
+*Last verified against executed notebook output: 2026-05-01. Quadrant K-bbox-y tier added 2026-05-11 from `scripts/output/aoi-consumer-cascade/rigor_corrections.json` plus inline typed/typed_gapfill re-run (`scripts/cascade_rigor_corrections.py` logic).*
 
 ### 2026-05-01 attribution shift
 
@@ -938,10 +871,26 @@ This notebook now reports values under **organic-rank** attribution (pixel-accur
 
 | ID | Quadrant | Click rate (organic) | Robustness (absolute) |
 |---|---|---|---|
-| **K7** | Effortful (high LF/HF + high RIPA2) | *(pending re-run)* | 26.3% |
-| **K8** | Deliberation (high LF/HF + low RIPA2) | *(pending re-run)* | 25.2% |
-| **K9** | Quick decision (low LF/HF + high RIPA2) | *(pending re-run)* | 23.9% |
-| **K10** | Routine scanning (low LF/HF + low RIPA2) | *(pending re-run)* | 20.4% |
+| **K7** | Effortful (high LF/HF + high RIPA2) | **33.9%** [31.1, 36.8] | 27.9% |
+| **K8** | Deliberation (high LF/HF + low RIPA2) | **25.6%** [23.2, 28.1] | 26.2% |
+| **K9** | Quick decision (low LF/HF + high RIPA2) | **25.6%** [23.1, 28.1] | 22.9% |
+| **K10** | Routine scanning (low LF/HF + low RIPA2) | **19.7%** [17.2, 22.4] | 21.5% |
+
+### Click-quadrant under typed cascade (2026-05-11) --- K-bbox-y tier
+
+Per CLAUDE.md rank-type rule, K-IDs are never renumbered; K7--K10 above are the `organic` (bbox v2) re-derivation. The `typed` (2026-05-04) and `typed_gapfill` (2026-05-05, current post-cascade primary) re-derivations land here as new K-IDs computed via the same cascade_rigor_corrections.py logic against the typed pupil + click-attribution data. 2,000-resample bootstrap CIs, seed 42.
+
+| ID | Quadrant | `organic` (n=4,450) | `typed` (n=5,668) | `typed_gapfill` (n=5,185) |
+|---|---|---|---|---|
+| **K-bbox-y-7** | Effortful (HH = high LF/HF, high RIPA2) | 33.9% | 28.5% | **27.4%** |
+| **K-bbox-y-8** | Deliberation (HL = high LF/HF, low RIPA2) | 25.6% | 26.0% | 25.3% |
+| **K-bbox-y-9** | Quick decision (LH = low LF/HF, high RIPA2) | 25.6% | 23.8% | 22.9% |
+| **K-bbox-y-10** | Routine scanning (LL = low LF/HF, low RIPA2) | 19.7% | 18.7% | 19.1% |
+| **K-bbox-y-quad-lift** | Joint lift HH−LL (95% CI) | +14.2 pp [10.3, 17.9] | +9.8 pp [6.5, 13.0] | **+8.3 pp [4.8, 11.6]** |
+| **K-bbox-y-quad-ripa2** | RIPA2 marginal at high LF/HF (HH−HL) | +8.3 pp | +2.5 pp | **+2.1 pp** |
+| **K-bbox-y-quad-lfhf** | LF/HF marginal at high RIPA2 (HH−LH) | +8.3 pp | +4.7 pp | **+4.5 pp** |
+
+> **Headline (typed_gapfill, current post-cascade primary).** HH > HL ≈ LH > LL ordering holds across all three organic flavors; joint 95% CI clears zero everywhere. The `organic` +14.2 pp lift carried Y-band-attribution contamination (22.7% of `approached & clicked` records silently mis-attributed; null-finding 2026-05-05). Cleanest attribution: +8.3 pp joint, +4.5 pp LF/HF marginal, +2.1 pp RIPA2 marginal — **LF/HF carries ~2× more click-rate lift than RIPA2** at the high-other-channel slice.
 
 ### RIPA2 at regression onset (underpowered — demo trials only; unaffected by AOI cascade)
 
@@ -1635,58 +1584,6 @@ This is consistent with the broader LF/HF story in the project memory: LF/HF is 
 
 ---
 
-### K30 — 5-class confidence-gated graded labels
-
-*Values from executed script output: `scripts/output/ltr_typed_5class_confidence/summary.json` (2026-05-05). Producer: [`scripts/ltr_typed_5class_confidence.py`](../scripts/ltr_typed_5class_confidence.py).*
-
-Generalizes Peter's K27 4-class spec by splitting the deferred and evaluated-rejected classes into hi/lo confidence sub-buckets, gated on AR signal strength. Mirrors the missions-flow calibration logic where "Not for me" only emits when `outcome == evaluated_rejected ∧ reapproach_count == 0 ∧ total_dwell_ms ≥ 500ms`.
-
-**Tier definitions:**
-
-| Tier | Class | Gate | n |
-|---|---|---|---|
-| **4** | CLICKED | `was_clicked == True` | 2,594 (13.1 %) |
-| **3** | DEFERRED-HI | approached + gaze-regressed; `total_dwell_ms ≥ 3,246 ms` (median deferred dwell) | 1,284 (6.5 %) |
-| **2** | DEFERRED-LO | approached + gaze-regressed; below the median | 1,283 (6.5 %) |
-| **1** | EVAL-REJECTED-HI | approached, no regression, no click; `total_dwell_ms ≥ 500 ms` AND `retreat_dist ≥ 56.3 px` (median eval-rej retreat) — confident negative | 270 (1.4 %) |
-| **0** | UNMOTIVATED FLOOR | rest of approached-no-click (eval-rej-lo, n=302) + NotApprAbove (n=5,368) — kept in training as silent negatives | 5,670 (28.7 %) |
-|  | EXCLUDE | NotApprBelow (Peter's K27 invariant — never seen, no behavioral signal) | 8,673 (43.9 %) |
-
-**Two flavors:**
-
-- **K30a — flavor A, flat 5-tier.** Labels ∈ {0, 1, 2, 3, 4}. ~10 informative pairs per trial vs ~3 for 4-class.
-- **K30b — flavor B, hybrid.** Tier 0 stays at 0; tiers 1/2/3 subdivide by within-tier median split on `withstood_pre_click`; tier 4 single-bucket pinned at top. Labels ∈ {0, 1, 2, 3, 4, 5, 6, 7}. Mirrors R4f's hybrid-click-pinned trick. ~28 informative pairs per trial.
-
-| ID | Claim | Value | vs K27.3 (4-class, MRR 0.7713) |
-|---|---|---|---|
-| **K30.0** | Confident-negative tier-1 gate yields | **270 records** (1.4 % of 19,774) | — |
-| **K30.1** | LambdaMART (5-class flat, flavor A), MRR@10 / NDCG@10 | **0.7752 / 0.8228** | **+0.0039 MRR / +0.0045 NDCG** |
-| **K30.2** | LambdaMART (5-class hybrid, flavor B), MRR@10 / NDCG@10 | **0.7751 / 0.8221** | +0.0038 MRR / +0.0038 NDCG |
-| **K30.3** | Δ(K30.2 hybrid − K30.1 flat) — within-tier-secondary-order contribution | **−0.0001** | flat ≅ hybrid |
-| **K30.4** | Δ(K30.1 flat − K27.4 binary LambdaMART) — full label-encoding gain | **+0.0343 MRR** | (K27.4 = 0.7409) |
-
-**Sanity check.** The script rebuilds Peter's K27 4-class label on the same training set and reproduces K27.3's MRR exactly: 0.7713 (vs K27.3 published 0.7713) and NDCG 0.8183 (vs 0.8183). Binary LambdaMART reproduces K27.2 exactly: 0.7409 / 0.7940. The K30 deltas are therefore measured against an exactly-replicated K27 baseline, not a fork.
-
-**What this tells us.**
-
-- **Confidence gating gives a small positive lift over 4-class** (K30.1 +0.0039 MRR, +0.0045 NDCG). The hi/lo split on deferred and eval_rejected *does* carry monotonic relevance signal — the falsification criterion (K30.1 ≤ K27.3) was not met. But the gain is small, on the order of one per-participant fold-SD (≈ 0.04), so a paired Wilcoxon across 47 participants is the next bar to clear before this is a load-bearing finding.
-- **The hybrid trick adds nothing on top of confidence gating** (K30.3 = −0.0001). `withstood_pre_click` within-tier ordering is redundant once the tier-level AR-confidence buckets are in: the proxy and the gate are encoding overlapping signal. This is a methodological finding — R4f's hybrid trick was load-bearing for 10-grade *naive* labels (which had click-at-grade-0 noise), but for confidence-gated 5-tier labels the click is already pinned at the top tier and the within-tier signal is too coarse / too redundant to refine further.
-- **Confident-negative tier 1 is small** (n=270, 1.4 %). The dwell≥500ms AND retreat≥median double-gate is restrictive — most evaluated_rejected events don't clear it. This is by design (the gate is a *confident* negative, not a permissive one) but it limits the per-trial gradient contribution.
-
-**Spec invariants:**
-- M3-no-position cursor features only (apples-to-apples with K27)
-- LOSO by participant; LightGBM LambdaRank, exp gain, NDCG@10 optimize
-- Train on tier ≥ 0 (NotApprBelow excluded), predict on full dataset, evaluate against binary-click gold
-- **Tier 0 (unmotivated floor) is kept in training** — first-pass dropped it and binary-click MRR collapsed from 0.741 to 0.318 because LambdaMART lost negative-class grounding. The label-gating intuition from the missions UX ("only when motivated") is correct for human-readable summaries but wrong for LTR training, where the silent-negative middle is the dominant gradient signal. Documented in script.
-
-**Open questions:**
-- **Paired-Wilcoxon significance.** Per-participant ΔMRR distribution across 47 LOSO folds. K30.1 vs K27.3 mean Δ = +0.0039; sign and *p* not yet computed. Would slot in as K30.5.
-- **Threshold sweep.** Median splits (50/50) on dwell and retreat are arbitrary. A held-out tertile or quartile sweep would test whether 33/67 / 25/75 splits carry more signal. The hi/lo gate parameter is in `assign_5class_confidence`.
-- **Per-etype K30 decomposition.** Does confidence gating help organic, dd_top, native_ad differently? The 4-class motor signature is etype-stable per `four_class_taxonomy_hybrid.py`; K30's gating may concentrate signal in dd_top (where dwell variance is largest).
-- **K30 × K29b composition.** Confidence-tiered hard labels + LF/HF within-bucket tiebreaker. Cumulative gain over binary would be ≈ +0.034 (K30) + +0.014 (K29b) = +0.048 MRR if additive. Almost certainly less than additive given K30.3's redundancy result, but worth measuring.
-
----
-
 <a id="nb28-28_viewport_bands"></a>
 
 ## NB28: `28_viewport_bands` — viewport-band dwell calibration — bands-alone AUC 0.799, retreat+bands 0.837, rank-dependent vt_top, 97% per-participant consistency
@@ -1904,41 +1801,41 @@ Do not cite as calibration.
 
 ### Dataset and population
 
-**Regime:** `[LAB]`. Target label (NB22 gaze-regression) is LAB-only; the features (scroll trajectory + viewport analytics) are cursor-free and `[BOTH]`-eligible in principle. 47-fold leave-one-participant-out LR.
+Regime: `[LAB]`. Target label (NB22 gaze-regression) is LAB-only; the features (scroll trajectory + viewport analytics) are cursor-free and `[BOTH]`-eligible in principle. 47-fold leave-one-participant-out LR.
 
 | ID | Claim | Value |
 |---|---|---|
-| **K1** | Rows (approached ∧ ¬clicked) used for the deferred-vs-rejected test | **2,351** |
-| **K2** | Deferred (NB22 gaze-regression = 1) | 1,916 |
-| **K3** | Eval-rejected (NB22 gaze-regression = 0) | 435 |
+| K1 | Rows (approached ∧ ¬clicked) used for the deferred-vs-rejected test | 2,351 |
+| K2 | Deferred (NB22 gaze-regression = 1) | 1,916 |
+| K3 | Eval-rejected (NB22 gaze-regression = 0) | 435 |
 
 ### Feature sets
 
-- **A** — Viewport bands (NB28): `vt_any, vt_top, vt_mid, vt_bot` (4 features)
-- **B** — Continuous viewport analytics (the baseline): `vt_any, vt_center_ms, avg_viewport_y, max_overlap_frac` (4 features)
-- **C** — Scroll trajectory: `max_abs_velocity, min_abs_velocity, pause_ms, n_reversals, max_decel_near_center, entry_velocity, exit_velocity` (7 features)
+- A — Viewport bands (NB28): `vt_any, vt_top, vt_mid, vt_bot` (4 features)
+- B — Continuous viewport analytics (the baseline): `vt_any, vt_center_ms, avg_viewport_y, max_overlap_frac` (4 features)
+- C — Scroll trajectory: `max_abs_velocity, min_abs_velocity, pause_ms, n_reversals, max_decel_near_center, entry_velocity, exit_velocity` (7 features)
 
 ### Pooled LOPO AUC (deferred-vs-rejected)
 
 | ID | Scorer | Pooled AUC | Per-participant mean ± SD |
 |---|---|---:|---:|
-| **K4** | A bands (NB28) | **0.7990** | 0.8051 ± 0.1272 |
-| **K5** | B continuous viewport | **0.7978** | 0.8107 ± 0.1204 |
-| **K6** | C trajectory alone | 0.7496 | 0.7559 ± 0.1252 |
-| **K7** | A ∪ C | 0.8104 | 0.8179 ± 0.1138 |
-| **K8** | B ∪ C | **0.8168** | 0.8293 ± 0.1122 |
-| **K9** | A ∪ B ∪ C | 0.8200 | 0.8326 ± 0.1090 |
+| K4 | A bands (NB28) | 0.7990 | 0.8051 ± 0.1272 |
+| K5 | B continuous viewport | 0.7978 | 0.8107 ± 0.1204 |
+| K6 | C trajectory alone | 0.7496 | 0.7559 ± 0.1252 |
+| K7 | A ∪ C | 0.8104 | 0.8179 ± 0.1138 |
+| K8 | B ∪ C | 0.8168 | 0.8293 ± 0.1122 |
+| K9 | A ∪ B ∪ C | 0.8200 | 0.8326 ± 0.1090 |
 
 ### Paired per-participant Wilcoxon signed-rank (one-sided, 47 participants)
 
 | ID | Comparison | Δ ± SD | Consistency | p |
 |---|---|---:|---:|---:|
-| **K10** | C > A (trajectory alone beats bands?) | −0.0492 ± 0.1024 | 14 / 47 | 0.9993 (ns) |
-| **K11** | C > B (trajectory alone beats continuous viewport?) | −0.0548 ± 0.1127 | 12 / 47 | 0.9997 (ns) |
-| **K12** | A ∪ C > A (trajectory added to bands) | **+0.0128 ± 0.0417** | 29 / 47 | **0.0368** |
-| **K13** | **B ∪ C > B (trajectory added to continuous viewport) — headline** | **+0.0185 ± 0.0456** | **36 / 47** | **0.0031** |
-| **K14** | A ∪ B ∪ C > B ∪ C (bands add on top of B + C?) | +0.0033 ± 0.0232 | 29 / 47 | 0.2178 (ns) |
-| **K15** | B ∪ C > B with trajectory re-computed on **click-time-truncated** scroll timeline (leakage check) | **+0.0200 ± 0.0493** | 34 / 47 | **0.0038** |
+| K10 | C > A (trajectory alone beats bands?) | −0.0492 ± 0.1024 | 14 / 47 | 0.9993 (ns) |
+| K11 | C > B (trajectory alone beats continuous viewport?) | −0.0548 ± 0.1127 | 12 / 47 | 0.9997 (ns) |
+| K12 | A ∪ C > A (trajectory added to bands) | +0.0128 ± 0.0417 | 29 / 47 | 0.0368 |
+| K13 | B ∪ C > B (trajectory added to continuous viewport) — headline | +0.0185 ± 0.0456 | 36 / 47 | 0.0031 |
+| K14 | A ∪ B ∪ C > B ∪ C (bands add on top of B + C?) | +0.0033 ± 0.0232 | 29 / 47 | 0.2178 (ns) |
+| K15 | B ∪ C > B with trajectory re-computed on click-time-truncated scroll timeline (leakage check) | +0.0200 ± 0.0493 | 34 / 47 | 0.0038 |
 
 ### Pre-implementation ablations (2026-04-19)
 
@@ -1946,16 +1843,16 @@ Run before freezing the feature set the approach-retreat JS library will emit. P
 
 | ID | Claim | Value |
 |---|---|---|
-| **K16** | LOFO on C under Holm–Bonferroni (α = 0.05, 7 tests): features whose removal significantly hurts per-p AUC | **1 of 7**: `min_abs_velocity` (Δ = +0.0174 on drop, Holm p = 0.012). The other 6 are **drop-candidates** under LOFO (Holm p ≥ 0.12 each) — LOFO is conservative when features carry substitutable signal. |
-| **K17** | Redundancy: Spearman pairs with \|r\| ≥ 0.85 on the 2,351-row sample | **1 pair**: `pause_ms` ↔ `vt_any` **r = +0.995**. VIF confirms: `vt_any` VIF = 237, `pause_ms` VIF = 226. Must drop one of the two before emitting. |
-| **K18** | Greedy forward-selection from B: features added until the next-best candidate fails paired one-sided Wilcoxon at p < 0.10 | **`min_abs_velocity`** (step 1, Δ = +0.0077, p = 0.039) then **`n_reversals`** (step 2, Δ = +0.0097, p = 0.038). Step 3's best candidate `entry_velocity` does not clear (p = 0.28). |
-| **K19** | Minimal B ∪ C' (6 features) vs full B ∪ C (11 features) | pooled AUC 0.8143 vs 0.8168 (Δ_pooled = −0.0025); paired per-p Δ = +0.0011, **p = 0.356 (ns)**. **The other 5 trajectory features add no detectable AUC once `min_abs_velocity` and `n_reversals` are present.** |
-| **K20** | Event-rate sensitivity: paired Δ(B ∪ C − B) per-p as scroll events are decimated | native +0.0185 (p = 0.003); 30 Hz +0.0113 (p = 0.037); 10 Hz +0.0045 (p = 0.059 ns); 5 Hz +0.0079 (p = 0.013); 2 Hz +0.0101 (p = 0.020). Signal **persists at 2 Hz** — degrades but does not disappear. The 10 Hz non-significance is within paired-Wilcoxon noise (adjacent rates are significant). |
-| **K21** | LGBM vs LR on full B ∪ C | LGBM pooled AUC 0.8107 vs LR 0.8168; paired per-p Δ(LGBM − LR) = **−0.0135, p = 0.90 (ns, LR wins)**. The 11-feature set is **LR-complete** — trees do not surface useful interactions to add as emitted features. |
+| K16 | LOFO on C under Holm–Bonferroni (α = 0.05, 7 tests): features whose removal significantly hurts per-p AUC | 1 of 7: `min_abs_velocity` (Δ = +0.0174 on drop, Holm p = 0.012). The other 6 are drop-candidates under LOFO (Holm p ≥ 0.12 each) — LOFO is conservative when features carry substitutable signal. |
+| K17 | Redundancy: Spearman pairs with \|r\| ≥ 0.85 on the 2,351-row sample | 1 pair: `pause_ms` ↔ `vt_any` r = +0.995. VIF confirms: `vt_any` VIF = 237, `pause_ms` VIF = 226. Must drop one of the two before emitting. |
+| K18 | Greedy forward-selection from B: features added until the next-best candidate fails paired one-sided Wilcoxon at p < 0.10 | `min_abs_velocity` (step 1, Δ = +0.0077, p = 0.039) then `n_reversals` (step 2, Δ = +0.0097, p = 0.038). Step 3's best candidate `entry_velocity` does not clear (p = 0.28). |
+| K19 | Minimal B ∪ C' (6 features) vs full B ∪ C (11 features) | pooled AUC 0.8143 vs 0.8168 (Δ_pooled = −0.0025); paired per-p Δ = +0.0011, p = 0.356 (ns). The other 5 trajectory features add no detectable AUC once `min_abs_velocity` and `n_reversals` are present. |
+| K20 | Event-rate sensitivity: paired Δ(B ∪ C − B) per-p as scroll events are decimated | native +0.0185 (p = 0.003); 30 Hz +0.0113 (p = 0.037); 10 Hz +0.0045 (p = 0.059 ns); 5 Hz +0.0079 (p = 0.013); 2 Hz +0.0101 (p = 0.020). Signal persists at 2 Hz — degrades but does not disappear. The 10 Hz non-significance is within paired-Wilcoxon noise (adjacent rates are significant). |
+| K21 | LGBM vs LR on full B ∪ C | LGBM pooled AUC 0.8107 vs LR 0.8168; paired per-p Δ(LGBM − LR) = −0.0135, p = 0.90 (ns, LR wins). The 11-feature set is LR-complete — trees do not surface useful interactions to add as emitted features. |
 
 ### Recommended emission for the approach-retreat library
 
-Based on K16–K21, the minimal, non-redundant, LR-complete emission beyond the existing M4 cursor features is **4 B (continuous viewport) + 2 C (trajectory) = 6 features**:
+Based on K16–K21, the minimal, non-redundant, LR-complete emission beyond the existing M4 cursor features is 4 B (continuous viewport) + 2 C (trajectory) = 6 features:
 
 1. `vt_any` — time AOI overlapped the viewport (ms)
 2. `vt_center_ms` — time AOI center was within ±100 px of viewport center (ms)
@@ -1969,23 +1866,23 @@ The banded decomposition (A: `vt_top`, `vt_mid`, `vt_bot`) can stay behind an op
 
 ### What the extension shows
 
-- **K13 is the headline.** Trajectory features add a paired Δ of +0.0185 AUC (p = 0.003, 36/47 participants) on top of the continuous-viewport analytics baseline (B). Scroll kinematics are not redundant with where-the-AOI-sat-in-the-viewport: they carry an additional cursor-free signal for the deferred-vs-rejected split.
-- **Trajectory alone is insufficient.** K10 and K11 show that trajectory features without a visibility baseline perform worse than either viewport scorer. The useful signal is *incremental given a visibility baseline*; it is not self-standing.
-- **At n=47 the banded decomposition provides no detectable additional AUC beyond B∪C (K14).** A∪B∪C vs B∪C paired Δ = +0.003 (p = 0.22, ns) — directionally positive but below detection threshold at this sample size. We cannot rule in or out a small effect with n=47; we *can* say the banded split is not load-bearing for the classifier at the sample sizes the paper is reported at. **Classifier parsimony is not dashboard parsimony, however.** The banded decomposition remains the natural visualization surface for a commercial viewport-analytics tool — per-result band-time heatmaps, top/mid/bot residency strips, and deferred-vs-rejected prototype comparisons are human-readable where a continuous `avg_viewport_y_px` scalar is not. The `approach-retreat` library emits both: bands default-on behind `trackViewportBands`, continuous analytics via `getViewportAnalytics()`. Ranker consumes the six-feature set; analyst dashboard consumes bands.
-- **Leakage check (K15) — no detectable click-settle contamination.** Re-computing the trajectory features on a scroll timeline truncated at the click timestamp (so post-click settle-scroll cannot contribute to features like `exit_velocity` for non-clicked AOIs in the trial) reproduces the headline paired Δ within 0.0014 AUC (+0.0200 truncated vs +0.0185 full, both p < 0.005). The K13 lift is not an artifact of using the full-trial scroll timeline.
-- **NB17 vs K13 — complementary, not a refutation.** NB17 tested univariate scroll dwell/velocity/pause between clicked vs not-clicked and found non-significant differences (all p > 0.3). NB30 tests a different target (deferred vs eval-rejected on approached∧¬clicked records) with a joint-model incremental-AUC test. Three axes differ (target, feature set, test statistic); NB30 is a new finding at a different site, not an overturning of NB17's null.
+- K13 is the headline. Trajectory features add a paired Δ of +0.0185 AUC (p = 0.003, 36/47 participants) on top of the continuous-viewport analytics baseline (B). Scroll kinematics are not redundant with where-the-AOI-sat-in-the-viewport: they carry an additional cursor-free signal for the deferred-vs-rejected split.
+- Trajectory alone is insufficient. K10 and K11 show that trajectory features without a visibility baseline perform worse than either viewport scorer. The useful signal is *incremental given a visibility baseline*; it is not self-standing.
+- At n=47 the banded decomposition provides no detectable additional AUC beyond B∪C (K14). A∪B∪C vs B∪C paired Δ = +0.003 (p = 0.22, ns) — directionally positive but below detection threshold at this sample size. We cannot rule in or out a small effect with n=47; we *can* say the banded split is not essential for the classifier at the sample sizes the paper is reported at. Classifier parsimony is not dashboard parsimony, however. The banded decomposition remains the natural visualization surface for a commercial viewport-analytics tool — per-result band-time heatmaps, top/mid/bot residency strips, and deferred-vs-rejected prototype comparisons are human-readable where a continuous `avg_viewport_y_px` scalar is not. The `approach-retreat` library emits both: bands default-on behind `trackViewportBands`, continuous analytics via `getViewportAnalytics()`. Ranker consumes the six-feature set; analyst dashboard consumes bands.
+- Leakage check (K15) — no detectable click-settle contamination. Re-computing the trajectory features on a scroll timeline truncated at the click timestamp (so post-click settle-scroll cannot contribute to features like `exit_velocity` for non-clicked AOIs in the trial) reproduces the headline paired Δ within 0.0014 AUC (+0.0200 truncated vs +0.0185 full, both p < 0.005). The K13 lift is not an artifact of using the full-trial scroll timeline.
+- NB17 vs K13 — complementary, not a refutation. NB17 tested univariate scroll dwell/velocity/pause between clicked vs not-clicked and found non-significant differences (all p > 0.3). NB30 tests a different target (deferred vs eval-rejected on approached∧¬clicked records) with a joint-model incremental-AUC test. Three axes differ (target, feature set, test statistic); NB30 is a new finding at a different site, not an overturning of NB17's null.
 
 ### CENTER_TOL sensitivity (2026-04-19)
 
 | ID | Claim | Value |
 |---|---|---|
-| **K22** | CENTER_TOL sensitivity sweep on the minimal 6-feature set: pooled AUC at {25, 50, 100, 200, 400} px | {0.8142, 0.8140, 0.8143, 0.8140, 0.8151} — **flat across 16× range** (spread 0.001). Canonical 100 px is fine to freeze. |
+| K22 | CENTER_TOL sensitivity sweep on the minimal 6-feature set: pooled AUC at {25, 50, 100, 200, 400} px | {0.8142, 0.8140, 0.8143, 0.8140, 0.8151} — flat across 16× range (spread 0.001). Canonical 100 px is fine to freeze. |
 
 ### Windowing — cumulative vs rolling (2026-04-19)
 
 | ID | Claim | Value |
 |---|---|---|
-| **K23** | Windowing — rolling 5-second window ending at click_t vs cumulative-since-AOI-first-seen | Cumulative B pooled 0.798 → rolling 0.704; cumulative B∪C pooled 0.817 → rolling 0.698. Paired Δ(cumulative − rolling) = **+0.1194 per-p** (43/47, **p < 0.0001**). Within the rolling window, B∪C > B is null (Δ = −0.005, p = 0.86). **The deferred-vs-rejected signal requires cumulative accumulation**; a 5-second window drops the features to near-chance. |
+| K23 | Windowing — rolling 5-second window ending at click_t vs cumulative-since-AOI-first-seen | Cumulative B pooled 0.798 → rolling 0.704; cumulative B∪C pooled 0.817 → rolling 0.698. Paired Δ(cumulative − rolling) = +0.1194 per-p (43/47, p < 0.0001). Within the rolling window, B∪C > B is null (Δ = −0.005, p = 0.86). The deferred-vs-rejected signal requires cumulative accumulation; a 5-second window drops the features to near-chance. |
 
 ### EWM empirical signatures (2026-04-19) — feeds §4.5 of the CIKM draft
 
@@ -1993,20 +1890,20 @@ Direct Mann–Whitney two-sided tests of the raw features on the approached ∧ 
 
 | ID | Claim | Value |
 |---|---|---|
-| **K24** | `n_reversals` deferred vs eval-rejected (EWM-reload-consistent) | Deferred mean = 1.97, eval-rejected = 1.12; **Δ = +0.86, p = 8.5 × 10⁻²³**. Deferred items accumulate ~1 additional scroll direction reversal during AOI visibility. |
-| **K25** | `min_abs_velocity` deferred vs eval-rejected (viewport stabilization) | Deferred mean = 0.07 px/s, eval-rejected = 0.31 px/s; deferred median = 0 (user at a full stop), eval-rejected median = 0.10 px/s. **Δ = −0.24 px/s, p = 2.0 × 10⁻⁴⁷**. |
-| **K26** | `avg_viewport_y` deferred vs eval-rejected (position in viewport) | Deferred mean = 453 px, eval-rejected = 622 px. **Δ = −169 px, p = 1.5 × 10⁻⁴²**. Deferred items spend more time near viewport *top* (where they reappear after a scroll-back); eval-rejected items near viewport bottom. |
+| K24 | `n_reversals` deferred vs eval-rejected (EWM-reload-consistent) | Deferred mean = 1.97, eval-rejected = 1.12; Δ = +0.86, p = 8.5 × 10⁻²³. Deferred items accumulate ~1 additional scroll direction reversal during AOI visibility. |
+| K25 | `min_abs_velocity` deferred vs eval-rejected (viewport stabilization) | Deferred mean = 0.07 px/s, eval-rejected = 0.31 px/s; deferred median = 0 (user at a full stop), eval-rejected median = 0.10 px/s. Δ = −0.24 px/s, p = 2.0 × 10⁻⁴⁷. |
+| K26 | `avg_viewport_y` deferred vs eval-rejected (position in viewport) | Deferred mean = 453 px, eval-rejected = 622 px. Δ = −169 px, p = 1.5 × 10⁻⁴². Deferred items spend more time near viewport *top* (where they reappear after a scroll-back); eval-rejected items near viewport bottom. |
 
 ### Deployability
 
 - Features transfer to mobile and to feed-style layouts in principle — scroll events + DOM bboxes are available in both. Validation on ACD (no per-AOI SERP structure) or a mobile feed dataset is future work.
-- For deployment, the **minimal 6-feature set** (NB30:K18 forward-selection: 4 continuous viewport + `min_abs_velocity` + `n_reversals`) recovers the full 11-feature B∪C lift within +0.001 AUC (K19). The `approach-retreat` JS library emits these 6 features per AOI at session granularity; see its `getViewportAnalytics()` API.
+- For deployment, the minimal 6-feature set (NB30:K18 forward-selection: 4 continuous viewport + `min_abs_velocity` + `n_reversals`) recovers the full 11-feature B∪C lift within +0.001 AUC (K19). The `approach-retreat` JS library emits these 6 features per AOI at session granularity; see its `getViewportAnalytics()` API.
 
 ### Peter Dixon-Moses cursor-as-fourth-viewport extension (2026-04-19)
 
 | ID | Claim | Value |
 |---|---|---|
-| **K27** | Joint forward selection from B with candidates `C ∪ M4` (including `dwell_in_proximity_ms`, the cursor-viewport-residence feature Peter proposed — time with `|cursor_page_y − aoi_center_y| < 100` px) | Step 1 picks **`mean_dist`** (M4, Δ = +0.0163, *p* = 0.012); step 2 picks **`min_abs_velocity`** (C, Δ = +0.0078, *p* = 0.043); step 3 stops (best *p* = 0.159). **`dwell_in_proximity_ms` was not picked.** The binary in-band/out-of-band formulation loses to `mean_dist` (continuous mean cursor proximity), which captures the same signal with more gradient. Final B + `mean_dist` + `min_abs_velocity` = 6 features, per-p 0.8348. Vs NB30:K18 canonical (B + `min_abs_velocity` + `n_reversals`, per-p 0.8282): paired Δ = +0.0066, *p* = 0.20 ns. Peter's cursor-viewport intuition is correct in substance — cursor proximity is load-bearing — but the empirically strongest encoding is continuous mean distance, not time-in-band. |
+| K27 | Joint forward selection from B with candidates `C ∪ M4` (including `dwell_in_proximity_ms`, the cursor-viewport-residence feature Peter proposed — time with `|cursor_page_y − aoi_center_y| < 100` px) | Step 1 picks `mean_dist` (M4, Δ = +0.0163, *p* = 0.012); step 2 picks `min_abs_velocity` (C, Δ = +0.0078, *p* = 0.043); step 3 stops (best *p* = 0.159). `dwell_in_proximity_ms` was not picked. The binary in-band/out-of-band formulation loses to `mean_dist` (continuous mean cursor proximity), which captures the same signal with more gradient. Final B + `mean_dist` + `min_abs_velocity` = 6 features, per-p 0.8348. Vs NB30:K18 canonical (B + `min_abs_velocity` + `n_reversals`, per-p 0.8282): paired Δ = +0.0066, *p* = 0.20 ns. Peter's cursor-viewport intuition is correct in substance — cursor proximity is central — but the empirically strongest encoding is continuous mean distance, not time-in-band. |
 
 ### 2026-05-04 typed cascade — second post-cascade primary
 
