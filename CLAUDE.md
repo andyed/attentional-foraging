@@ -11,21 +11,9 @@ SERP evaluation task model (OSEC) built on AdSERP eye+cursor dataset. 11 Tier-A 
 
 **The one landmine:** `scripts/nb21_loso_retrain_organic.py` runs the §4.1 LOSO protocol on the LAB analysis substrate and produces M1 = 0.727 / M4 = 0.864 — *not* the paper's headline. Emits `DeprecationWarning` at import. The 2026-04-14 retrospective `docs/drafts/cikm-2026/process-trace-gaze-sync-missed.md` documents the failure pattern.
 
-## CIKM 2026 paper location (READ THIS FIRST)
+## CIKM 2026 paper
 
-The CIKM 2026 paper draft **has moved out of this repo**. As of 2026-05-15:
-
-- **Canonical source:** `~/Documents/dev/cikm-leakycursor/source/paper.md`
-- **LaTeX:** `~/Documents/dev/cikm-leakycursor/paper.tex`
-- **Build:** `~/Documents/dev/cikm-leakycursor/build.sh`
-- **Replicate pipeline (AdSERP):** `~/Documents/dev/cikm-leakycursor-replicate/`
-- **WILD validation (ACD):** `~/Documents/dev/approach-retreat/analysis/attcur-validation/`
-
-The `docs/drafts/cikm-2026/` directory in this repo is **frozen historical context** — pre-split drafts, the 2026-05-07 editorial critique, and early acmart build scripts. It is `.gitignore`'d and never tracked. Treat it as read-only archive; for any CIKM paper editing, work in `cikm-leakycursor/`.
-
-References below to `docs/drafts/cikm-*/` describe the *historical* workflow when the draft lived here. The pencil-lock + two-pass citation discipline now lives in `cikm-leakycursor/CLAUDE.md`.
-
-This repo (`attentional-foraging`) remains the canonical location for the **LAB analysis substrate** that feeds CIKM §4 — the AdSERP notebooks, the gaze-gated feature extractors (§4.3 diagnostic ceiling), the four-class taxonomy producer, and figure render scripts. CIKM prose moved; the analysis pipeline didn't.
+Edit in `~/Documents/dev/cikm-leakycursor/` — `source/paper.md` (markdown), `paper.tex` (LaTeX), `build.sh` (xelatex). Replicate pipeline: `~/Documents/dev/cikm-leakycursor-replicate/`. ACD validation: `~/Documents/dev/approach-retreat/analysis/attcur-validation/`. This repo (`attentional-foraging`) hosts the LAB analysis substrate feeding §4 — notebooks, gaze-gated extractors, taxonomy producer, figure renderers.
 
 ## LAB / WILD Convention (CIKM paper organizational axis)
 
