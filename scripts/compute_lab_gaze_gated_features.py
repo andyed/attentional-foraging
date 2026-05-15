@@ -83,7 +83,7 @@ def gaze_gated_cursor_stream(fixations, mouse_events):
     return fix_ts, interp_xs, interp_ys
 
 
-def compute_features(trial_id, attribution='organic'):
+def compute_features(trial_id, attribution='organic', click_buffer_ms=0):
     fixations = load_fixations(trial_id)
     mouse_data = load_mouse_events(trial_id)
     meta = get_trial_meta(trial_id)
@@ -104,12 +104,25 @@ def compute_features(trial_id, attribution='organic'):
         n_results = len(serp) if serp else 10
         tops = result_band_tops(n_results, doc_h)
 
+    click_pos = click_to_position(clicks, tops, n_results)
+
+    # Click-buffer truncation: clip both fixations and the underlying
+    # mousemove stream at click_t − Δ, mirroring the protocol in
+    # compute_cursor_approach_features.py. Click attribution above
+    # uses the raw click record; only the inputs to fixation-timed
+    # cursor sampling are truncated.
+    if click_buffer_ms > 0 and clicks:
+        click_t = float(clicks[-1][0])
+        cutoff = click_t - float(click_buffer_ms)
+        fixations = [f for f in fixations if f['t'] < cutoff]
+        all_events = [e for e in all_events if e[0] < cutoff]
+        if not fixations or not all_events:
+            return None
+
     sampled = gaze_gated_cursor_stream(fixations, all_events)
     if sampled is None:
         return None
     cur_ts, cur_xs, cur_ys = sampled
-
-    click_pos = click_to_position(clicks, tops, n_results)
 
     # Group fixations by organic position
     fix_by_pos = defaultdict(list)
@@ -217,6 +230,9 @@ def compute_features(trial_id, attribution='organic'):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--attribution', choices=['absolute', 'organic'], default='organic')
+    ap.add_argument('--click-buffer-ms', type=int, default=0,
+                    help='Truncate fixations + mouse events at click_t − Δ ms before '
+                         'gaze-gated sampling. Default 0 (no truncation).')
     ap.add_argument('--output', '-o',
                     help='Output JSON path (default depends on attribution)')
     args = ap.parse_args()
@@ -224,8 +240,9 @@ def main():
     if args.output:
         out_path = Path(args.output)
     else:
-        suffix = '-organic' if args.attribution == 'organic' else ''
-        out_path = DATA_DIR / f'cursor-approach-features-lab-gaze-gated{suffix}.json'
+        attr_suffix = '-organic' if args.attribution == 'organic' else ''
+        buf_suffix = f'-buf{args.click_buffer_ms}' if args.click_buffer_ms > 0 else ''
+        out_path = DATA_DIR / f'cursor-approach-features-lab-gaze-gated{attr_suffix}{buf_suffix}.json'
 
     trial_ids = get_trial_ids()
     all_records = []
@@ -234,7 +251,8 @@ def main():
         if (i + 1) % 200 == 0:
             print(f'  {i+1}/{len(trial_ids)}...', file=sys.stderr)
         try:
-            recs = compute_features(tid, attribution=args.attribution)
+            recs = compute_features(tid, attribution=args.attribution,
+                                     click_buffer_ms=args.click_buffer_ms)
             if recs:
                 all_records.extend(recs)
                 n_ok += 1

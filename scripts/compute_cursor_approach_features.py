@@ -1,4 +1,20 @@
-"""Compute per-result cursor approach features for every trial.
+"""SUPERSEDED — do not use for paper claims. See
+   docs/methodology/feature-extractor-lineage.md.
+
+This script is gaze-gated: it iterates fixations and computes
+gaze_cursor_distance at fixation timestamps. Its outputs
+(cursor-approach-features*.json) produce M1=0.727 / M4=0.864 via
+nb21_loso_retrain_organic.py — NOT the paper's headline 0.668 / 0.847.
+
+The canonical extractor is `scripts/m4_nb21_hybrid_rerun.py`,
+parity-verified to 1e-6 against the `approach-retreat` JS library (the
+production cursor-only extractor). This file is kept for historical
+comparison and as the artifact `process-trace-gaze-sync-missed.md`
+references.
+
+---
+
+Compute per-result cursor approach features for every trial.
 
 Extracts the `compute_approach_features` function from NB15 into a
 standalone producer with `--attribution {absolute, organic, organic_hybrid}`.
@@ -109,13 +125,19 @@ def build_hybrid_aois(trial_id):
     return tops, bottoms, etypes
 
 
-def compute_approach_features(trial_id, attribution="absolute"):
+def compute_approach_features(trial_id, attribution="absolute", click_buffer_ms=0):
     """Compute per-result cursor approach features for a trial.
 
     attribution: 'absolute' uses count_results_html + result_band_tops;
                  'organic'  uses load_aois -> organic_aoi_tops;
                  'organic_hybrid' combines bbox organics + ad rectangles
                                    (dd_top / native_ad) in display order.
+
+    click_buffer_ms: if > 0 and the trial has a click, all per-position
+        features are computed only over fixations and mouse samples with
+        t < click_t - click_buffer_ms. Click-position attribution still uses
+        the full click record (we keep the label, only truncate the inputs
+        that build the features). This is the leakage control for §4.4.
     """
     fixations = load_fixations(trial_id)
     mouse_data = load_mouse_events(trial_id)
@@ -208,6 +230,21 @@ def compute_approach_features(trial_id, attribution="absolute"):
             click_pos = None
     else:
         click_pos = click_to_position(clicks, tops, n_results)
+
+    # Click-buffer truncation: clip fixations + mouse samples at click_t - Δ
+    # so per-position features cannot capture the click event itself or the
+    # final approach lock-on. Click attribution above still uses the raw
+    # click record — we keep the label, only truncate the feature inputs.
+    if click_buffer_ms > 0 and clicks:
+        click_t = float(clicks[-1][0])
+        cutoff = click_t - float(click_buffer_ms)
+        fixations = [f for f in fixations if f["t"] < cutoff]
+        mask = mouse_ts < cutoff
+        if mask.sum() < 2 or len(fixations) == 0:
+            return None
+        mouse_ts = mouse_ts[mask]
+        mouse_xs = mouse_xs[mask]
+        mouse_ys = mouse_ys[mask]
 
     fix_by_pos = defaultdict(list)
     for fix in fixations:
@@ -334,23 +371,35 @@ def main():
     )
     parser.add_argument("--output", "-o", help="Output JSON path (default depends on attribution)")
     parser.add_argument("--trial", help="Single trial only (for testing)")
+    parser.add_argument(
+        "--click-buffer-ms",
+        type=int,
+        default=0,
+        help="Truncate features at click_t - Δ ms. Default 0 (no truncation). "
+             "Adds -buf{ms} suffix to default output path.",
+    )
     args = parser.parse_args()
 
+    suffix = f"-buf{args.click_buffer_ms}" if args.click_buffer_ms > 0 else ""
     if args.output:
         out_path = Path(args.output)
     elif args.attribution == "typed_gapfill":
-        out_path = DATA_DIR / "cursor-approach-features-typed-gapfill.json"
+        out_path = DATA_DIR / f"cursor-approach-features-typed-gapfill{suffix}.json"
     elif args.attribution == "typed":
-        out_path = DATA_DIR / "cursor-approach-features-typed.json"
+        out_path = DATA_DIR / f"cursor-approach-features-typed{suffix}.json"
     elif args.attribution == "organic_hybrid":
-        out_path = DATA_DIR / "cursor-approach-features-organic-hybrid.json"
+        out_path = DATA_DIR / f"cursor-approach-features-organic-hybrid{suffix}.json"
     elif args.attribution == "organic":
-        out_path = DATA_DIR / "cursor-approach-features-organic.json"
+        out_path = DATA_DIR / f"cursor-approach-features-organic{suffix}.json"
     else:
-        out_path = DATA_DIR / "cursor-approach-features.json"
+        out_path = DATA_DIR / f"cursor-approach-features{suffix}.json"
 
     if args.trial:
-        recs = compute_approach_features(args.trial, attribution=args.attribution)
+        recs = compute_approach_features(
+            args.trial,
+            attribution=args.attribution,
+            click_buffer_ms=args.click_buffer_ms,
+        )
         if recs is None:
             print(f"{args.trial}: unusable", file=sys.stderr)
             return 1
@@ -364,7 +413,11 @@ def main():
         if (i + 1) % 200 == 0:
             print(f"  {i+1}/{len(trial_ids)}...", file=sys.stderr)
         try:
-            recs = compute_approach_features(tid, attribution=args.attribution)
+            recs = compute_approach_features(
+                tid,
+                attribution=args.attribution,
+                click_buffer_ms=args.click_buffer_ms,
+            )
             if recs:
                 all_records.extend(recs)
                 n_ok += 1
