@@ -1,0 +1,75 @@
+{
+  "experiment": "Cursor ablation: scroll + viewport residual signal for mobile transfer",
+  "generated": "2026-05-15T01:11:38.201255+00:00",
+  "feature_set": "canonical",
+  "m4_features": [
+    "min_dist",
+    "mean_dist",
+    "dwell_in_proximity_ms",
+    "mean_approach_velocity",
+    "max_approach_velocity",
+    "direction_changes",
+    "frac_decreasing"
+  ],
+  "n_records": 13390,
+  "results": {
+    "M1": {
+      "concat": 0.6375255258206463,
+      "per_fold_mean": 0.6118134317318215,
+      "per_fold_sd": 0.09036386074898788,
+      "features": [
+        "position"
+      ]
+    },
+    "M2": {
+      "concat": 0.7932918802798801,
+      "per_fold_mean": 0.7916354482356466,
+      "per_fold_sd": 0.0681766301193595,
+      "features": [
+        "position",
+        "dwell_in_proximity_ms"
+      ]
+    },
+    "M_mobile": {
+      "concat": 0.802417361160928,
+      "per_fold_mean": 0.7973799008287661,
+      "per_fold_sd": 0.061129672282032047,
+      "features": [
+        "position",
+        "dwell_in_proximity_ms",
+        "scroll_regression_count",
+        "time_in_viewport"
+      ]
+    },
+    "M_mobile_no_cursor": {
+      "concat": 0.6713095204394752,
+      "per_fold_mean": 0.6440052159382635,
+      "per_fold_sd": 0.08731192107865048,
+      "features": [
+        "position",
+        "scroll_regression_count",
+        "time_in_viewport"
+      ]
+    },
+    "M4": {
+      "concat": 0.8325800106606894,
+      "per_fold_mean": 0.8383403748993401,
+      "per_fold_sd": 0.05660530397190476,
+      "features": [
+        "min_dist",
+        "mean_dist",
+        "dwell_in_proximity_ms",
+        "mean_approach_velocity",
+        "max_approach_velocity",
+        "direction_changes",
+        "frac_decreasing"
+      ]
+    }
+  },
+  "interpretation": {
+    "M1_to_M4_gap": 0.19505448484004317,
+    "M2_to_M4_gap": 0.03928813038080936,
+    "M_mobile_no_cursor_fraction_of_gap_recovered": 0.1732028599421026,
+    "M_mobile_fraction_of_gap_recovered": 0.8453629532051176
+  }
+}

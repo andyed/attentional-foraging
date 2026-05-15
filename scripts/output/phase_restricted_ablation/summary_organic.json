@@ -1,0 +1,36 @@
+{
+  "experiment": "Phase-restricted feature-extraction ablation",
+  "generated": "2026-05-15T01:11:28.310227+00:00",
+  "survey_end_fixation_index": 5,
+  "results": {
+    "whole": {
+      "n_records": 14760,
+      "coverage": 1.0,
+      "click_rate": 0.14939024390243902,
+      "m4_auc": 0.8803193025517655
+    },
+    "post_survey": {
+      "n_records": 14748,
+      "coverage": 0.9991869918699187,
+      "click_rate": 0.1492405749932194,
+      "m4_auc": 0.8835811967628705
+    },
+    "survey": {
+      "n_records": 8663,
+      "coverage": 0.5869241192411924,
+      "click_rate": 0.1536419254299896,
+      "m4_auc": 0.6938316358045564
+    }
+  },
+  "attribution": "organic",
+  "feature_set": "canonical",
+  "m4_features": [
+    "min_dist",
+    "mean_dist",
+    "dwell_in_proximity_ms",
+    "mean_approach_velocity",
+    "max_approach_velocity",
+    "direction_changes",
+    "frac_decreasing"
+  ]
+}

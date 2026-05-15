@@ -1,8 +1,10 @@
 {
-  "feature_set": "canonical",
+  "feature_set": "legacy",
   "m4_features": [
     "min_dist",
     "mean_dist",
+    "final_dist",
+    "retreat_dist",
     "dwell_in_proximity_ms",
     "mean_approach_velocity",
     "max_approach_velocity",

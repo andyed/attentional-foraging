@@ -1,8 +1,11 @@
 """Peter's cursor-as-fourth-viewport extension of NB30 forward selection.
 
 Starting baseline: B (4 continuous viewport features).
-Candidate pool: C (7 trajectory) ∪ M4 (9 cursor-approach features, including
-`dwell_in_proximity_ms` which IS time-in-cursor-viewport at 100px).
+Candidate pool: C (7 trajectory) ∪ M4. The canonical M4 vector is the
+leakage-validated seven-feature set (paper §3.4: final_dist + retreat_dist
+are screened out by the click-buffer protocol). `dwell_in_proximity_ms` —
+time-in-cursor-viewport at 100px — stays in. Pass --feature-set legacy to
+reproduce the pre-§3.4 nine-feature run for direct comparison.
 
 Stopping rule: paired one-sided Wilcoxon p < 0.10 vs. current best.
 Report which candidates land, at which step, and what the final minimal set
@@ -10,6 +13,7 @@ looks like relative to the published NB30:K18 (B + min_abs_velocity + n_reversal
 """
 from __future__ import annotations
 
+import argparse
 import json
 import sys
 import warnings
@@ -35,15 +39,22 @@ REG_CACHE = ROOT / "scripts/output/approach_threshold_sensitivity/regression_lab
 OUT = ROOT / "scripts/output/nb30_ablations"
 OUT.mkdir(parents=True, exist_ok=True)
 
-# M4 cursor-approach features (per attentional-foraging/CLAUDE.md).
+# Canonical M4 = leakage-validated seven-feature vector (paper §3.4).
 # dwell_in_proximity_ms is the cursor-viewport-residence feature Peter
 # proposed: time during which |cursor_page_y − aoi_center_y| < 100 px.
-M4_FEATURES = [
-    "min_dist", "mean_dist", "final_dist", "retreat_dist",
+# Legacy M4 = nine-feature variant (adds final_dist, retreat_dist); the
+# click-buffer protocol screens those two out as structurally leaky, so
+# legacy is retained for direct comparison only.
+M4_CANONICAL = [
+    "min_dist", "mean_dist",
     "dwell_in_proximity_ms",
     "mean_approach_velocity", "max_approach_velocity",
     "direction_changes", "frac_decreasing",
 ]
+M4_LEGACY = ["min_dist", "mean_dist", "final_dist", "retreat_dist",
+             "dwell_in_proximity_ms",
+             "mean_approach_velocity", "max_approach_velocity",
+             "direction_changes", "frac_decreasing"]
 
 
 def lopo(X, y, groups):
@@ -62,7 +73,9 @@ def lopo(X, y, groups):
     return np.array(per_p)
 
 
-def main():
+def main(feature_set="canonical"):
+    m4_list = M4_CANONICAL if feature_set == "canonical" else M4_LEGACY
+    print(f"M4 feature set: {feature_set} ({len(m4_list)} features)")
     raw = json.load(open(FEATURES_JSON))
     labels = np.array(json.load(open(REG_CACHE)), dtype=bool)
 
@@ -82,7 +95,7 @@ def main():
         nb30 = per_trial[r["trial_id"]][r["position"]]
         merged = dict(nb30)
         # Pull M4 features straight from the raw record
-        for f in M4_FEATURES:
+        for f in m4_list:
             merged[f] = float(r.get(f) or 0.0)
         feat_rows.append(merged)
         keep.append(i)
@@ -104,7 +117,7 @@ def main():
     print()
 
     selected = []
-    remaining = list(FEATURES_C) + list(M4_FEATURES)
+    remaining = list(FEATURES_C) + list(m4_list)
     history = []
     step = 0
 
@@ -132,7 +145,7 @@ def main():
         # Print the top-5 at each step for transparency
         print(f"── Step {step}: top-5 candidates (Δ per-p vs current best) ──")
         for c in candidates[:5]:
-            flag = "[M4]" if c["feature"] in M4_FEATURES else "[C ]"
+            flag = "[M4]" if c["feature"] in m4_list else "[C ]"
             print(f"  {flag} {c['feature']:28s}  Δ = {c['delta_per_p']:+.4f}  p = {c['wilcoxon_p']:.4f}  per-p = {c['pooled_like_mean']:.4f}")
 
         top = candidates[0]
@@ -143,7 +156,7 @@ def main():
             history.append({
                 "step": step,
                 "picked": top["feature"],
-                "family": "M4" if top["feature"] in M4_FEATURES else "C",
+                "family": "M4" if top["feature"] in m4_list else "C",
                 "delta_per_p": top["delta_per_p"],
                 "wilcoxon_p": top["wilcoxon_p"],
                 "per_p_mean": top["pooled_like_mean"],
@@ -177,6 +190,8 @@ def main():
     print(f"  → {'YES — at step ' + str([h['step'] for h in history if h['picked']=='dwell_in_proximity_ms'][0]) if any(h['picked']=='dwell_in_proximity_ms' for h in history) else 'NO — not in the final selected set'}")
 
     summary = {
+        "feature_set": feature_set,
+        "m4_features": m4_list,
         "baseline_B_per_p_mean": float(lopo(X_for(FEATURES_B), y, parts).mean()),
         "history": history,
         "final_set": FEATURES_B + selected,
@@ -186,9 +201,17 @@ def main():
         "p_vs_k18": p_val,
         "dwell_in_proximity_picked": any(h["picked"] == "dwell_in_proximity_ms" for h in history),
     }
-    (OUT / "forward_selection_with_m4.json").write_text(json.dumps(summary, indent=2))
-    print(f"\nwrote {OUT / 'forward_selection_with_m4.json'}")
+    out_name = ("forward_selection_with_m4.json" if feature_set == "canonical"
+                else "forward_selection_with_m4_legacy.json")
+    (OUT / out_name).write_text(json.dumps(summary, indent=2))
+    print(f"\nwrote {OUT / out_name}")
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--feature-set", choices=["canonical", "legacy"], default="canonical",
+        help="canonical = 7 leakage-validated M4 features (paper §3.4 headline); "
+             "legacy = 9-feature variant including final_dist + retreat_dist.")
+    args = parser.parse_args()
+    main(feature_set=args.feature_set)

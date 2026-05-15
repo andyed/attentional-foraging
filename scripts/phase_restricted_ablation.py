@@ -16,9 +16,10 @@ phase-restriction check §3.2 implicitly claims:
 SURVEY_END = 5 is lifted from notebooks-v2/13_survey_phase.ipynb's OSEC
 operationalization: "saccades 1-5 are survey".
 
-For each trial we compute the nine M4 features against per-result centers
+For each trial we compute the M4 features against per-result centers
 under each of the three time-window restrictions, then run LOSO M4 click
-prediction on each.
+prediction on each. M4 defaults to the canonical seven-feature vector
+(paper §3.4); pass --feature-set legacy for the pre-§3.4 nine-feature run.
 
 Output: scripts/output/phase_restricted_ablation/summary.json
 """
@@ -50,9 +51,13 @@ import argparse as _argparse
 _ap = _argparse.ArgumentParser()
 _ap.add_argument('--attribution', choices=['absolute', 'organic'], default='organic',
                  help='organic (default; bbox-attributed) or absolute (legacy h3+ads pooled)')
+_ap.add_argument('--feature-set', choices=['canonical', 'legacy'], default='canonical',
+                 help='canonical = 7 leakage-validated M4 features (paper §3.4 headline); '
+                      'legacy = 9-feature variant including final_dist + retreat_dist.')
 _ARGS = _ap.parse_args()
-_OUT_SUFFIX = '_organic' if _ARGS.attribution == 'organic' else ''
-print(f'[attribution] {_ARGS.attribution}', file=sys.stderr)
+_OUT_SUFFIX = ('_organic' if _ARGS.attribution == 'organic' else '') + \
+              ('_legacy' if _ARGS.feature_set == 'legacy' else '')
+print(f'[attribution] {_ARGS.attribution}  [feature-set] {_ARGS.feature_set}', file=sys.stderr)
 
 if _ARGS.attribution == 'organic':
     FEATURES_JSON = ROOT / "AdSERP/data/cursor-approach-features-organic.json"
@@ -64,12 +69,22 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 RESULT_XPATH_RE = re.compile(r"^//\*\[@id='rso'\]/div\[(\d+)\]")
 
-M4_FEATURES = [
-    "min_dist", "mean_dist", "final_dist", "retreat_dist",
+# Canonical M4 = leakage-validated seven-feature vector (paper §3.4):
+# final_dist + retreat_dist are screened out by the click-buffer protocol.
+# Legacy M4 = nine-feature variant retained for direct comparison only.
+# Features are computed inline below regardless; M4_FEATURES selects which
+# columns land in the design matrix.
+M4_CANONICAL = [
+    "min_dist", "mean_dist",
     "dwell_in_proximity_ms",
     "mean_approach_velocity", "max_approach_velocity",
     "direction_changes", "frac_decreasing",
 ]
+M4_LEGACY = ["min_dist", "mean_dist", "final_dist", "retreat_dist",
+             "dwell_in_proximity_ms",
+             "mean_approach_velocity", "max_approach_velocity",
+             "direction_changes", "frac_decreasing"]
+M4_FEATURES = M4_CANONICAL if _ARGS.feature_set == 'canonical' else M4_LEGACY
 
 SURVEY_END = 5  # NB13: saccades 1-5 are Survey phase
 PROX_THRESHOLD = 100
@@ -341,6 +356,8 @@ def main():
         "results": results,
     }
     summary['attribution'] = _ARGS.attribution
+    summary['feature_set'] = _ARGS.feature_set
+    summary['m4_features'] = M4_FEATURES
     out_path = OUT_DIR / f"summary{_OUT_SUFFIX}.json"
     out_path.write_text(json.dumps(summary, indent=2))
     print(f"\nwrote {out_path}")

@@ -11,11 +11,15 @@ compares LOSO AUC:
   M1          : position only                                       (baseline)
   M2          : position + cursor dwell_in_proximity_ms              (§4.1 baseline)
   M_mobile    : M2 + scroll_regression_count + time_in_viewport      (no cursor approach)
-  M4          : 9 cursor approach features                           (§4.1 canonical)
+  M4          : cursor approach features                            (§4.1 canonical)
 
 The comparison measures the residual click-prediction signal available
 *without* cursor approach features, using only signals a mobile telemetry
 pipeline could capture (scroll kinematics + viewport dwell).
+
+M4 defaults to the canonical seven-feature vector (paper §3.4 — final_dist
+and retreat_dist screened out as structurally leaky); pass --feature-set
+legacy for the pre-§3.4 nine-feature run.
 
 Output: scripts/output/cursor_ablation_mobile_residual/summary.json
 """
@@ -47,12 +51,19 @@ MOUSE_DIR = ROOT / "AdSERP/data/mouse-movement-data"
 OUT_DIR = ROOT / "scripts/output/cursor_ablation_mobile_residual"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-M4_FEATURES = [
-    "min_dist", "mean_dist", "final_dist", "retreat_dist",
+# Canonical M4 = leakage-validated seven-feature vector (paper §3.4):
+# final_dist + retreat_dist are screened out by the click-buffer protocol.
+# Legacy M4 = nine-feature variant retained for direct comparison only.
+M4_CANONICAL = [
+    "min_dist", "mean_dist",
     "dwell_in_proximity_ms",
     "mean_approach_velocity", "max_approach_velocity",
     "direction_changes", "frac_decreasing",
 ]
+M4_LEGACY = ["min_dist", "mean_dist", "final_dist", "retreat_dist",
+             "dwell_in_proximity_ms",
+             "mean_approach_velocity", "max_approach_velocity",
+             "direction_changes", "frac_decreasing"]
 
 N_RESULTS = 10
 
@@ -188,9 +199,11 @@ def loso_auc(X, y, groups, label):
     return concat_auc, fold_mean, fold_sd, per_fold_arr
 
 
-def main():
+def main(feature_set="canonical"):
+    m4_list = M4_CANONICAL if feature_set == "canonical" else M4_LEGACY
     print("=" * 70)
     print("Cursor ablation: does scroll + viewport carry residual signal?")
+    print(f"M4 feature set: {feature_set} ({len(m4_list)} features)")
     print("=" * 70)
 
     print(f"\nloading LAB records from {FEATURES_JSON}")
@@ -235,8 +248,8 @@ def main():
     print(f"\n  valid records: {int(valid.sum()):,}/{n:,}")
 
     # Build M4 feature matrix from lab_records
-    X_m4 = np.zeros((n, len(M4_FEATURES)), dtype=float)
-    for j, feat in enumerate(M4_FEATURES):
+    X_m4 = np.zeros((n, len(m4_list)), dtype=float)
+    for j, feat in enumerate(m4_list):
         X_m4[:, j] = np.array([r.get(feat) or 0 for r in lab_records], dtype=float)
 
     X_m4_v = X_m4[valid]
@@ -279,10 +292,11 @@ def main():
         "features": ["position", "scroll_regression_count", "time_in_viewport"],
     }
 
-    # M4: 9 approach features
-    auc, mean, sd, _ = loso_auc(X_m4_v, y_v, g_v, "M4 (9 cursor approach features)")
+    # M4: cursor approach features
+    auc, mean, sd, _ = loso_auc(X_m4_v, y_v, g_v,
+                                 f"M4 ({len(m4_list)} cursor approach features)")
     results["M4"] = {"concat": auc, "per_fold_mean": mean, "per_fold_sd": sd,
-                     "features": list(M4_FEATURES)}
+                     "features": list(m4_list)}
 
     print("\n" + "=" * 70)
     print("SUMMARY")
@@ -297,7 +311,7 @@ def main():
     print(fmt("M_mobile_no_cursor",
               "M_mobile_no_cursor: position + scroll_reg + time_in_viewport"))
     print(fmt("M_mobile", "M_mobile: M2 + scroll_reg + time_in_viewport"))
-    print(fmt("M4", "M4: 9 cursor approach features (§4.1 canonical)"))
+    print(fmt("M4", f"M4: {len(m4_list)} cursor approach features (§4.1 {feature_set})"))
 
     # Residual signal interpretation
     gap_m1_m4 = results["M4"]["concat"] - results["M1"]["concat"]
@@ -316,6 +330,8 @@ def main():
     summary = {
         "experiment": "Cursor ablation: scroll + viewport residual signal for mobile transfer",
         "generated": datetime.datetime.now(datetime.UTC).isoformat(),
+        "feature_set": feature_set,
+        "m4_features": list(m4_list),
         "n_records": int(valid.sum()),
         "results": results,
         "interpretation": {
@@ -326,9 +342,18 @@ def main():
             "M_mobile_fraction_of_gap_recovered": recovered_by_mobile / gap_m1_m4,
         },
     }
-    (OUT_DIR / "summary.json").write_text(json.dumps(summary, indent=2))
-    print(f"\nwrote {OUT_DIR / 'summary.json'}")
+    out_name = ("summary.json" if feature_set == "canonical"
+                else "summary_legacy.json")
+    (OUT_DIR / out_name).write_text(json.dumps(summary, indent=2))
+    print(f"\nwrote {OUT_DIR / out_name}")
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--feature-set", choices=["canonical", "legacy"], default="canonical",
+        help="canonical = 7 leakage-validated M4 features (paper §3.4 headline); "
+             "legacy = 9-feature variant including final_dist + retreat_dist.")
+    args = parser.parse_args()
+    main(feature_set=args.feature_set)
