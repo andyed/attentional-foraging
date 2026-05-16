@@ -3,20 +3,23 @@
 
 Reads ``assets/task-model-*.mmd`` (Mermaid source), renders each via
 :mod:`muriel.diagrams` (beautiful-mermaid Node bridge), and writes the
-matched ``.svg`` next to the source. Idempotent and cached — repeat
-runs are O(stat) after the first render.
+matched ``.svg`` and a 2x-DPI ``.png`` next to the source. Idempotent
+and cached — repeat runs are O(stat) after the first render.
 
 Usage::
 
     .venv/bin/python scripts/render_task_models.py
 
-Requires muriel >= 0.7.1 and ``cd ~/Documents/dev/muriel/muriel/diagrams && npm install``
-to have been run once.
+Requires muriel >= 0.7.1, ``cd ~/Documents/dev/muriel/muriel/diagrams && npm install``,
+and ``rsvg-convert`` on PATH (``brew install librsvg``) for the PNG pass.
+The PNG pass is skipped with a warning if rsvg-convert is missing.
 """
 
 from __future__ import annotations
 
 import os
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -49,6 +52,32 @@ DIAGRAMS = [
 ]
 
 
+def _rasterize(svg_path: Path, width_px: int) -> bool:
+    """Run rsvg-convert to produce ``svg_path.with_suffix('.png')``.
+
+    Returns True on success. Skips (with a warning) if rsvg-convert
+    isn't on PATH — the SVG remains the source of truth.
+    """
+    binary = shutil.which("rsvg-convert")
+    if binary is None:
+        print(
+            "WARN  rsvg-convert not found; skipping PNG. "
+            "Install with: brew install librsvg",
+            file=sys.stderr,
+        )
+        return False
+    png_path = svg_path.with_suffix(".png")
+    proc = subprocess.run(
+        [binary, "-w", str(width_px), str(svg_path), "-o", str(png_path)],
+        capture_output=True,
+        text=True,
+    )
+    if proc.returncode != 0:
+        print(f"FAIL  rsvg-convert {svg_path.name}: {proc.stderr.strip()}", file=sys.stderr)
+        return False
+    return True
+
+
 def main() -> int:
     failures = 0
     for src_path in DIAGRAMS:
@@ -63,9 +92,15 @@ def main() -> int:
             print(f"FAIL  {src_path.name}: {e}", file=sys.stderr)
             failures += 1
             continue
-        out_path = src_path.with_suffix(".svg")
-        out_path.write_text(d.svg)
-        print(f"OK    {src_path.name} → {out_path.name} ({d.width:.0f}×{d.height:.0f})")
+        svg_path = src_path.with_suffix(".svg")
+        svg_path.write_text(d.svg)
+        # 2x retina PNG so figure exports stay crisp without bloating files.
+        png_ok = _rasterize(svg_path, width_px=int(d.width * 2))
+        png_note = " + .png" if png_ok else ""
+        print(
+            f"OK    {src_path.name} → {svg_path.name}{png_note} "
+            f"({d.width:.0f}×{d.height:.0f})"
+        )
     return 1 if failures else 0
 
 
