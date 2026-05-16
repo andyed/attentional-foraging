@@ -1,0 +1,32 @@
+%% SERP interaction flow after Marchionini (1995), Gwizdka (2010).
+%% Background literature figure for §2 (related work) — porting the older
+%% hand-coded serp-task-model.svg into a regenerable source.
+%% Rendered via muriel.diagrams (beautiful-mermaid). Source of truth — edit here,
+%% then re-run scripts/render_task_models.py.
+
+flowchart TD
+    classDef deliberate fill:#fff3e0,stroke:#e65100,color:#bf360c
+    classDef terminal fill:#d4edda,stroke:#155724
+
+    Start([Page Loads]) --> Find[Find Results]
+    Find --> Util[Evaluate Utility]
+    Util --> EorR{Engage or<br/>Refine?}
+    EorR -->|refine query| Find
+    EorR -->|engage| Locate
+
+    subgraph Engage
+        direction TB
+        Locate[Locate Next Result] --> EvalR[Evaluate Result]
+        EvalR --> Click{Click?}
+        Click -->|no| EoP{End of<br/>page?}
+        EoP -->|more results| Locate
+        EoP -->|yes| Deliberate{Deliberate}
+        Deliberate -->|regress<br/>scroll back| Locate
+    end
+
+    Click -->|yes| Done([Done])
+    Deliberate -->|choose visible| Done
+    Deliberate -->|next page| Next([Next Page])
+
+    class Deliberate deliberate
+    class Done,Next terminal

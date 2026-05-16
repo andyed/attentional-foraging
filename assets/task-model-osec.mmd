@@ -1,0 +1,23 @@
+%% Cognitive task model for SERP evaluation — general model.
+%% Phases: Orient → Survey → Evaluate → Commit.
+%% Evaluate has forward / regressive sub-states; Commit has four typed exits.
+%% Rendered via muriel.diagrams (beautiful-mermaid). Source of truth — edit here,
+%% then re-run scripts/render_task_models.py.
+
+flowchart LR
+    O[Orient<br/>learned prior] -->|~0 ms| S[Survey<br/>~1 s gist sampling]
+    S -->|difficulty<br/>impression| Ev
+
+    subgraph Ev [Evaluate]
+        direction TB
+        F[Forward<br/>read-down]
+        R[Regressive<br/>re-examine]
+        F -->|regress| R
+        R -->|resume| F
+    end
+
+    Ev --> C[Commit]
+    C --> CC([commit-to-click])
+    C --> CD([commit-to-deepen])
+    C --> CQ([commit-to-requery])
+    C --> CA([commit-to-abandon])

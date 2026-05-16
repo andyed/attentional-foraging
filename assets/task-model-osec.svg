@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1097.8180000000002 363.90000000000003" width="1097.8180000000002" height="363.90000000000003">
+
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="5" refX="7" refY="2.5" orient="auto">
+    <polygon points="0 0, 8 2.5, 0 5" fill="#47474a" stroke="#47474a" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+  <marker id="arrowhead-start" markerWidth="8" markerHeight="5" refX="1" refY="2.5" orient="auto-start-reverse">
+    <polygon points="8 0, 0 2.5, 8 5" fill="#47474a" stroke="#47474a" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+</defs>
+<g class="subgraph" data-id="Ev" data-label="Evaluate">
+  <rect x="589.0780000000001" y="40" width="143.60399999999998" height="283.90000000000003" rx="0" ry="0" fill="#FFFFFF" stroke="#d4d4d4" stroke-width="1" />
+  <rect x="589.0780000000001" y="40" width="143.60399999999998" height="28" rx="0" ry="0" fill="#f4f4f4" stroke="#d4d4d4" stroke-width="1" />
+  <text x="601.0780000000001" y="54" font-size="12" font-weight="600" fill="#7d7d7f" dy="4.199999999999999">Evaluate</text>
+</g>
+<polyline class="edge" data-from="O" data-to="S" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="~0 ms" points="159.755,181.95000000000002 292.135,181.95000000000002" fill="none" stroke="#939394" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="S" data-to="Ev" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="difficulty
+impression" points="431.156,181.95000000000002 589.0780000000001,181.95000000000002" fill="none" stroke="#939394" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="Ev" data-to="C" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="732.682,181.95000000000002 780.6820000000001,181.95000000000005" fill="none" stroke="#939394" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="C" data-to="CC" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="862.6460000000002,181.95000000000005 880.6460000000002,181.95000000000005 880.6460000000002,84.60000000000004 898.6460000000001,84.60000000000004" fill="none" stroke="#939394" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="C" data-to="CD" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="862.6460000000002,181.95000000000005 880.6460000000002,181.95000000000005 880.6460000000002,149.5 898.6460000000001,149.5" fill="none" stroke="#939394" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="C" data-to="CQ" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="862.6460000000002,181.95000000000005 880.6460000000002,181.95000000000005 880.6460000000002,214.40000000000003 898.6460000000001,214.40000000000003" fill="none" stroke="#939394" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="C" data-to="CA" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="862.6460000000002,181.95000000000005 880.6460000000002,181.95000000000005 880.6460000000002,279.3 898.6460000000001,279.3" fill="none" stroke="#939394" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="F" data-to="R" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="regress" points="678.3691666666667,254.10000000000002 678.3691666666667,218.10000000000002 690.2750000000001,218.10000000000002 690.2750000000001,149.8 679.4806666666668,149.8 679.4806666666668,137.8" fill="none" stroke="#939394" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="R" data-to="F" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="resume" points="642.2793333333334,137.8 642.2793333333334,149.8 631.4850000000001,149.8 631.4850000000001,218.10000000000002 643.3908333333334,218.10000000000002 643.3908333333334,254.10000000000002" fill="none" stroke="#939394" stroke-width="1" marker-end="url(#arrowhead)" />
+<g class="edge-label" data-from="O" data-to="S" data-label="~0 ms">
+  <rect x="203.755" y="165.95000000000005" width="44.379999999999995" height="30.3" rx="2" ry="2" fill="#FFFFFF" stroke="#e5e5e5" stroke-width="1" />
+  <text x="225.945" y="181.10000000000005" text-anchor="middle" font-size="11" font-weight="400" fill="#7d7d7f" dy="3.8499999999999996">~0 ms</text>
+</g>
+<g class="edge-label" data-from="S" data-to="Ev" data-label="difficulty
+impression">
+  <rect x="475.156" y="158.95000000000005" width="69.92200000000001" height="44.6" rx="2" ry="2" fill="#FFFFFF" stroke="#e5e5e5" stroke-width="1" />
+  <text x="510.117" y="181.25000000000006" text-anchor="middle" font-size="11" font-weight="400" fill="#7d7d7f"><tspan x="510.117" dy="-3.3000000000000007">difficulty</tspan><tspan x="510.117" dy="14.3">impression</tspan></text>
+</g>
+<g class="edge-label" data-from="F" data-to="R" data-label="regress">
+  <rect x="661.7750000000001" y="180.8" width="56.854" height="30.3" rx="2" ry="2" fill="#FFFFFF" stroke="#e5e5e5" stroke-width="1" />
+  <text x="690.2020000000001" y="195.95000000000002" text-anchor="middle" font-size="11" font-weight="400" fill="#7d7d7f" dy="3.8499999999999996">regress</text>
+</g>
+<g class="edge-label" data-from="R" data-to="F" data-label="resume">
+  <rect x="604.4850000000001" y="180.8" width="53.29" height="30.3" rx="2" ry="2" fill="#FFFFFF" stroke="#e5e5e5" stroke-width="1" />
+  <text x="631.1300000000001" y="195.95000000000002" text-anchor="middle" font-size="11" font-weight="400" fill="#7d7d7f" dy="3.8499999999999996">resume</text>
+</g>
+<g class="node" data-id="O" data-label="Orient
+learned prior" data-shape="rectangle">
+  <rect x="40" y="155.05" width="119.75500000000001" height="53.800000000000004" rx="0" ry="0" fill="#f9f9f9" stroke="#d4d4d4" stroke-width="0.75" />
+  <text x="99.8775" y="181.95000000000002" text-anchor="middle" font-size="13" font-weight="500" fill="#27272A"><tspan x="99.8775" dy="-3.9000000000000012">Orient</tspan><tspan x="99.8775" dy="16.900000000000002">learned prior</tspan></text>
+</g>
+<g class="node" data-id="S" data-label="Survey
+~1 s gist sampling" data-shape="rectangle">
+  <rect x="292.135" y="155.05" width="139.02100000000002" height="53.800000000000004" rx="0" ry="0" fill="#f9f9f9" stroke="#d4d4d4" stroke-width="0.75" />
+  <text x="361.64549999999997" y="181.95000000000002" text-anchor="middle" font-size="13" font-weight="500" fill="#27272A"><tspan x="361.64549999999997" dy="-3.9000000000000012">Survey</tspan><tspan x="361.64549999999997" dy="16.900000000000002">~1 s gist sampling</tspan></text>
+</g>
+<g class="node" data-id="C" data-label="Commit" data-shape="rectangle">
+  <rect x="780.6820000000001" y="163.50000000000003" width="81.964" height="36.900000000000006" rx="0" ry="0" fill="#f9f9f9" stroke="#d4d4d4" stroke-width="0.75" />
+  <text x="821.6640000000001" y="181.95000000000005" text-anchor="middle" font-size="13" font-weight="500" fill="#27272A" dy="4.55">Commit</text>
+</g>
+<g class="node" data-id="CC" data-label="commit-to-click" data-shape="stadium">
+  <rect x="898.6460000000001" y="66.15000000000003" width="126.424" height="36.900000000000006" rx="18.450000000000003" ry="18.450000000000003" fill="#f9f9f9" stroke="#d4d4d4" stroke-width="0.75" />
+  <text x="961.8580000000001" y="84.60000000000004" text-anchor="middle" font-size="13" font-weight="500" fill="#27272A" dy="4.55">commit-to-click</text>
+</g>
+<g class="node" data-id="CD" data-label="commit-to-deepen" data-shape="stadium">
+  <rect x="898.6460000000001" y="131.05" width="142.726" height="36.900000000000006" rx="18.450000000000003" ry="18.450000000000003" fill="#f9f9f9" stroke="#d4d4d4" stroke-width="0.75" />
+  <text x="970.009" y="149.5" text-anchor="middle" font-size="13" font-weight="500" fill="#27272A" dy="4.55">commit-to-deepen</text>
+</g>
+<g class="node" data-id="CQ" data-label="commit-to-requery" data-shape="stadium">
+  <rect x="898.6460000000001" y="195.95000000000002" width="147.17200000000003" height="36.900000000000006" rx="18.450000000000003" ry="18.450000000000003" fill="#f9f9f9" stroke="#d4d4d4" stroke-width="0.75" />
+  <text x="972.2320000000001" y="214.40000000000003" text-anchor="middle" font-size="13" font-weight="500" fill="#27272A" dy="4.55">commit-to-requery</text>
+</g>
+<g class="node" data-id="CA" data-label="commit-to-abandon" data-shape="stadium">
+  <rect x="898.6460000000001" y="260.85" width="150.136" height="36.900000000000006" rx="18.450000000000003" ry="18.450000000000003" fill="#f9f9f9" stroke="#d4d4d4" stroke-width="0.75" />
+  <text x="973.714" y="279.3" text-anchor="middle" font-size="13" font-weight="500" fill="#27272A" dy="4.55">commit-to-abandon</text>
+</g>
+<g class="node" data-id="F" data-label="Forward
+read-down" data-shape="rectangle">
+  <rect x="608.4125000000001" y="254.10000000000002" width="104.93499999999999" height="53.800000000000004" rx="0" ry="0" fill="#f9f9f9" stroke="#d4d4d4" stroke-width="0.75" />
+  <text x="660.8800000000001" y="281" text-anchor="middle" font-size="13" font-weight="500" fill="#27272A"><tspan x="660.8800000000001" dy="-3.9000000000000012">Forward</tspan><tspan x="660.8800000000001" dy="16.900000000000002">read-down</tspan></text>
+</g>
+<g class="node" data-id="R" data-label="Regressive
+re-examine" data-shape="rectangle">
+  <rect x="605.0780000000001" y="84" width="111.604" height="53.800000000000004" rx="0" ry="0" fill="#f9f9f9" stroke="#d4d4d4" stroke-width="0.75" />
+  <text x="660.8800000000001" y="110.9" text-anchor="middle" font-size="13" font-weight="500" fill="#27272A"><tspan x="660.8800000000001" dy="-3.9000000000000012">Regressive</tspan><tspan x="660.8800000000001" dy="16.900000000000002">re-examine</tspan></text>
+</g>
+</svg>
