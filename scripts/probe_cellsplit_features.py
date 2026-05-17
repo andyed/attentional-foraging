@@ -37,37 +37,107 @@ CASCADE_DIR = ROOT / "scripts/output/cascade-baseline/aoi-snapshot-v1"
 PROX_THRESHOLD = 100  # px — matches m4_nb21_hybrid_rerun.py
 
 
-def load_aois(trial_id: str) -> list[dict]:
+def _midpoint_split_cells(cells: list[dict], parent: dict | None) -> list[dict]:
+    """Expand cell X-ranges to cover the gap between neighbors, and the
+    edges to the parent's X-range. Same precedent as AllSERP §2.2's
+    Y-midpoint split for adjacent organic pairs — applied here on X for
+    horizontal carousels so a click in a card-gap region attributes to
+    the nearest cell rather than being lost.
+
+    For abutting cells (most dd_top carousels), the in-between boundary
+    is already at the midpoint, so only the leftmost cell's left edge
+    and rightmost cell's right edge need expanding to the parent edge.
+    """
+    if not cells:
+        return cells
+    if parent is None:
+        # No parent to expand into — return cells unchanged
+        return cells
+    # Sort by x
+    cells = sorted(cells, key=lambda c: c["x"])
+    parent_x_left = parent["x"]
+    parent_x_right = parent["x"] + parent["w"]
+    new = []
+    for i, c in enumerate(cells):
+        x_left = c["x"]
+        x_right = c["x"] + c["w"]
+        # Left edge: midpoint with previous cell's right, or parent edge
+        if i == 0:
+            x_left = parent_x_left
+        else:
+            prev_right = cells[i - 1]["x"] + cells[i - 1]["w"]
+            x_left = min(x_left, (prev_right + c["x"]) / 2)
+        # Right edge: midpoint with next cell's left, or parent edge
+        if i == len(cells) - 1:
+            x_right = parent_x_right
+        else:
+            next_left = cells[i + 1]["x"]
+            x_right = max(x_right, (x_right + next_left) / 2)
+        new_c = dict(c)
+        new_c["x"] = x_left
+        new_c["w"] = x_right - x_left
+        new_c["x_orig"] = c["x"]
+        new_c["w_orig"] = c["w"]
+        new.append(new_c)
+    return new
+
+
+def load_aois(trial_id: str, midpoint_split: bool = True) -> list[dict]:
     """Return parent + cell AOIs from cascade-baseline snapshot.
 
     Each AOI dict: {kind, bbox_index, x, y, w, h, role}
     role = "parent" | "cell"  (parent records preserve backward compat;
                                 cells carry per-card features.)
+
+    midpoint_split: when True (default), cell X-ranges are expanded to
+    cover card-gap regions inside the parent, so clicks at card margins
+    attribute to the nearest cell. Mirrors AllSERP §2.2's Y-midpoint
+    split for organic pairs.
     """
     path = CASCADE_DIR / f"{trial_id}.json"
     if not path.exists():
         raise FileNotFoundError(f"cascade-baseline snapshot missing: {path}")
     snap = json.load(open(path))
     out = []
-    # Parents — emit alongside cells so analyses can pick either view
+    # Index parents by kind+bbox_index for cell-expansion lookup
+    parents_by_kind = {}
     for kind in ("dd_top", "dd_right"):
         for i, b in enumerate(snap.get(kind, [])):
             loc, sz = b["location"], b["size"]
-            out.append({
+            parent_rec = {
                 "kind": kind, "role": "parent", "bbox_index": i,
                 "x": loc["x"], "y": loc["y"], "w": sz["width"], "h": sz["height"],
-            })
-    # Cells — narrower X-extent than parent in the horizontal case
-    for cell_kind, parent_kind in (("dd_top_cell", "dd_top"),
-                                    ("dd_right_cell", "dd_right"),
-                                    ("organic_cell", "organic_result")):
+            }
+            parents_by_kind[(kind, i)] = parent_rec
+            out.append(parent_rec)
+    # Cells — group by parent_kind so we can expand within each parent
+    cells_by_parent_kind = {"dd_top_cell": [], "dd_right_cell": [], "organic_cell": []}
+    for cell_kind in cells_by_parent_kind:
         for i, c in enumerate(snap.get(cell_kind, [])):
             loc, sz = c["location"], c["size"]
-            out.append({
-                "kind": cell_kind, "role": "cell", "parent_kind": parent_kind,
+            cells_by_parent_kind[cell_kind].append({
+                "kind": cell_kind, "role": "cell",
+                "parent_kind": {"dd_top_cell": "dd_top",
+                                 "dd_right_cell": "dd_right",
+                                 "organic_cell": "organic_result"}[cell_kind],
                 "bbox_index": i, "position": c.get("position"),
                 "x": loc["x"], "y": loc["y"], "w": sz["width"], "h": sz["height"],
             })
+    # Apply midpoint-split within each parent kind (using the first parent
+    # of that kind — typical AdSERP trial has one dd_top, one or zero dd_right)
+    if midpoint_split:
+        if cells_by_parent_kind["dd_top_cell"]:
+            p = parents_by_kind.get(("dd_top", 0))
+            cells_by_parent_kind["dd_top_cell"] = _midpoint_split_cells(
+                cells_by_parent_kind["dd_top_cell"], p)
+        if cells_by_parent_kind["dd_right_cell"]:
+            p = parents_by_kind.get(("dd_right", 0))
+            cells_by_parent_kind["dd_right_cell"] = _midpoint_split_cells(
+                cells_by_parent_kind["dd_right_cell"], p)
+        # organic_cell expansion would need parent_organic_result bbox lookup —
+        # rare (~7%), defer to future commit.
+    for cell_list in cells_by_parent_kind.values():
+        out.extend(cell_list)
     return out
 
 
