@@ -1,0 +1,30 @@
+{
+  "canonical": {
+    "view": "canonical",
+    "n_records": 19848,
+    "baseline_position_mrr": 0.463759109165864,
+    "pointwise_lr_mrr": 0.7415379321718895,
+    "lambdamart_binary_mrr": 0.7616182150708284,
+    "lambdamart_3class_mrr": 0.7600379324505689,
+    "delta_3class_over_binary": -0.0015802826202594433,
+    "label_dist": {
+      "0": 14119,
+      "1": 3140,
+      "2": 2589
+    }
+  },
+  "cell_aware": {
+    "view": "cell_aware",
+    "n_records": 24826,
+    "baseline_position_mrr": 0.4714292536229884,
+    "pointwise_lr_mrr": 0.732278251211715,
+    "lambdamart_binary_mrr": 0.7477511393802979,
+    "lambdamart_3class_mrr": 0.7405899070999221,
+    "delta_3class_over_binary": -0.0071612322803757955,
+    "label_dist": {
+      "0": 17584,
+      "1": 4678,
+      "2": 2564
+    }
+  }
+}

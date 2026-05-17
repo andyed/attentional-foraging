@@ -1,0 +1,34 @@
+{
+  "canonical": {
+    "view": "canonical",
+    "n_records": 19715,
+    "n_kept": 11084,
+    "class_counts": {
+      "NotApprAbove": 5360,
+      "CLICKED": 2588,
+      "EVAL_REJECTED": 569,
+      "DEFERRED": 2567,
+      "NotApprBelow_EXCLUDED": 8631
+    },
+    "mrr_binary_lambdamart": 0.6922846031746032,
+    "mrr_4class_lambdamart": 0.7400283763412255,
+    "delta_4class_over_binary": 0.04774377316662237,
+    "n_ranked_trials": 2500
+  },
+  "cell_aware": {
+    "view": "cell_aware",
+    "n_records": 24509,
+    "n_kept": 15878,
+    "class_counts": {
+      "NotApprAbove": 8678,
+      "CLICKED": 2556,
+      "EVAL_REJECTED": 748,
+      "DEFERRED": 3896,
+      "NotApprBelow_EXCLUDED": 8631
+    },
+    "mrr_binary_lambdamart": 0.6919481451576728,
+    "mrr_4class_lambdamart": 0.7347870327906444,
+    "delta_4class_over_binary": 0.04283888763297161,
+    "n_ranked_trials": 2477
+  }
+}
