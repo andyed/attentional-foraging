@@ -1,0 +1,80 @@
+{
+  "canonical_full_auc": 0.8671027510772363,
+  "cell_aware_full_auc": 0.8804341759062511,
+  "canonical_lofo": {
+    "min_dist": {
+      "auc_minus": 0.8671048323800408,
+      "delta": 2.0813028044353032e-06
+    },
+    "mean_dist": {
+      "auc_minus": 0.8654306145006245,
+      "delta": -0.0016721365766118046
+    },
+    "final_dist": {
+      "auc_minus": 0.8671039371960388,
+      "delta": 1.1861188025097391e-06
+    },
+    "retreat_dist": {
+      "auc_minus": 0.867095164392821,
+      "delta": -7.586684415361589e-06
+    },
+    "dwell_in_proximity_ms": {
+      "auc_minus": 0.8485781266578388,
+      "delta": -0.018524624419397506
+    },
+    "mean_approach_velocity": {
+      "auc_minus": 0.8670690026403676,
+      "delta": -3.37484368687635e-05
+    },
+    "max_approach_velocity": {
+      "auc_minus": 0.8663341460932682,
+      "delta": -0.0007686049839681353
+    },
+    "direction_changes": {
+      "auc_minus": 0.8673177518948751,
+      "delta": 0.00021500081763881074
+    },
+    "frac_decreasing": {
+      "auc_minus": 0.8670669213375634,
+      "delta": -3.582973967297676e-05
+    }
+  },
+  "cell_aware_lofo": {
+    "min_dist": {
+      "auc_minus": 0.8804433034836441,
+      "delta": 9.127577393019948e-06
+    },
+    "mean_dist": {
+      "auc_minus": 0.8783744268196745,
+      "delta": -0.002059749086576579
+    },
+    "final_dist": {
+      "auc_minus": 0.8804444597602429,
+      "delta": 1.0283853991821523e-05
+    },
+    "retreat_dist": {
+      "auc_minus": 0.8804388185319884,
+      "delta": 4.642625737294459e-06
+    },
+    "dwell_in_proximity_ms": {
+      "auc_minus": 0.8535687811485148,
+      "delta": -0.026865394757736305
+    },
+    "mean_approach_velocity": {
+      "auc_minus": 0.8780424177617542,
+      "delta": -0.0023917581444968805
+    },
+    "max_approach_velocity": {
+      "auc_minus": 0.8803647817909842,
+      "delta": -6.939411526685202e-05
+    },
+    "direction_changes": {
+      "auc_minus": 0.8800269913500699,
+      "delta": -0.00040718455618116156
+    },
+    "frac_decreasing": {
+      "auc_minus": 0.8801669008185177,
+      "delta": -0.0002672750877333874
+    }
+  }
+}

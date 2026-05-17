@@ -1,0 +1,57 @@
+{
+  "canonical": {
+    "n": 19848,
+    "overall": {
+      "NOT_APPROACHED": 8153,
+      "APPROACHED_NOT_CLICKED": 9106,
+      "CLICKED": 2589
+    },
+    "by_etype": {
+      "organic": {
+        "NOT_APPROACHED": 6069,
+        "APPROACHED_NOT_CLICKED": 6412,
+        "CLICKED": 2129
+      },
+      "native_ad": {
+        "APPROACHED_NOT_CLICKED": 1752,
+        "NOT_APPROACHED": 1718,
+        "CLICKED": 189
+      },
+      "dd_top": {
+        "APPROACHED_NOT_CLICKED": 942,
+        "NOT_APPROACHED": 366,
+        "CLICKED": 271
+      }
+    }
+  },
+  "cell_aware": {
+    "n": 24826,
+    "overall": {
+      "NOT_APPROACHED": 12071,
+      "APPROACHED_NOT_CLICKED": 10191,
+      "CLICKED": 2564
+    },
+    "by_etype": {
+      "organic": {
+        "NOT_APPROACHED": 6069,
+        "APPROACHED_NOT_CLICKED": 6412,
+        "CLICKED": 2129
+      },
+      "native_ad": {
+        "APPROACHED_NOT_CLICKED": 1752,
+        "NOT_APPROACHED": 1718,
+        "CLICKED": 189
+      },
+      "dd_top": {
+        "NOT_APPROACHED": 4136,
+        "APPROACHED_NOT_CLICKED": 1998,
+        "CLICKED": 239
+      },
+      "dd_right": {
+        "NOT_APPROACHED": 148,
+        "APPROACHED_NOT_CLICKED": 29,
+        "CLICKED": 7
+      }
+    }
+  }
+}
