@@ -1,0 +1,14 @@
+{
+  "dataset_path": "AdSERP/data/{fixations,mouse-movement-data}",
+  "dataset_sha256": "",
+  "figure_version": "allserp-validity",
+  "h_ids": [],
+  "muriel_version": "0.6.0",
+  "nb_k_ids": [],
+  "notes": "Gaze-cursor spatial coupling validity at click moment. Window \u00b11000 ms, pathological > 250 px.",
+  "run_utc": "2026-05-10T13:55:07+00:00",
+  "schema_version": 1,
+  "script_dirty": true,
+  "script_path": "/Users/andyed/Documents/dev/attentional-foraging/scripts/audit_gaze_cursor_coverage.py",
+  "script_sha": "8e9a578c"
+}

@@ -141,6 +141,38 @@ AdSERP v1 ships ad bounding boxes but not organic-result bounding boxes, so per-
 - **Organic-result bounding boxes** in pixel-accurate screenshot coordinates, plus per-cell subdivisions of the dd_top carousel and dd_right product stack. Output JSON shape mirrors the v1 ad-boundary schema for drop-in compatibility. Pipeline: `scripts/extract_organic_bboxes.py` (CV row-projection + ad-rectangle subtraction). Methodology: [docs/methodology/organic-result-aoi-extraction.md](docs/methodology/organic-result-aoi-extraction.md). Status: pipeline applied to all 2,776 trials (2026-05-01); full cascade synthesis at [docs/methodology/attribution-cascade-synthesis.md](docs/methodology/attribution-cascade-synthesis.md).
 - **Reading episodes**, **cursor approach/retreat episodes**, **Butterworth LF/HF cognitive-load windows**, and **LHIPA** are documented under [Reusable components](#reusable-components).
 
+### Quick start — AllSERP data files
+
+The AllSERP release ships as one corpus CSV (per-AOI geometry, etype, and organic_rank) plus per-trial JSONs. Existing AdSERP signal files join on `trial_id` and pick up a per-AOI `etype` column without re-collecting data. Minimal worked example with Polars:
+
+```python
+import json, polars as pl
+
+# Per-AOI geometry + etype + organic_rank.
+aois = pl.read_csv("adserp_aois_by_trial_id_typed_gapfill.csv")
+above_fold = aois.filter(
+    (pl.col("etype") == "organic")
+    & (pl.col("top_y") < pl.col("screen_height")))
+print(above_fold.height, "above-fold organics")
+
+# Cursor-approach features carry was_clicked + etype.
+caf = pl.read_json("cursor-approach-features-typed-gapfill.json")
+clicks = (caf.filter(pl.col("etype") == "organic")
+            .group_by("position")
+            .agg(pl.col("was_clicked").mean().alias("rate"),
+                 pl.len().alias("n"))
+            .sort("position"))
+print(clicks)  # rank -> click rate, n
+
+# Per-trial JSON: typed AOIs with position + bbox.
+trial = json.load(open("data/aoi-typed-gapfill/p010-b2-t6.json"))
+print([(et, a["position"], a["location"], a["size"])
+       for et, items in trial.items() for a in items
+       if a.get("position", -1) >= 0])
+```
+
+`scripts/build_aois.py --trial p010-b2-t6` regenerates a per-trial JSON from the AdSERP screenshot and HTML; `--all` runs the full corpus.
+
 ## Figure gallery
 
 Canonical visualizations with source scripts, timestamps, and stats dumps live in [`scripts/output/figures/INDEX.md`](./scripts/output/figures/INDEX.md). Each canonical figure has a companion `*_summary.json` next to it for downstream citation.
