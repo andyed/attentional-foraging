@@ -1,0 +1,75 @@
+{
+  "trials": 2776,
+  "trials_with_nonorganic_element": 2776,
+  "frac_with_nonorganic_element": 1.0,
+  "organic_per_serp": {
+    "median": 8,
+    "mean": 8.12,
+    "min": 1,
+    "max": 10
+  },
+  "total_aois_per_serp": {
+    "median": 16,
+    "mean": 16.23
+  },
+  "distinct_types_per_serp": {
+    "median": 6,
+    "mean": 6.38,
+    "min": 2,
+    "max": 12
+  },
+  "per_type_trial_presence": {
+    "organic": {
+      "trials": 2776,
+      "frac": 1.0
+    },
+    "pagination": {
+      "trials": 2697,
+      "frac": 0.9715
+    },
+    "native_ad": {
+      "trials": 2647,
+      "frac": 0.9535
+    },
+    "related_searches": {
+      "trials": 1811,
+      "frac": 0.6524
+    },
+    "dd_top": {
+      "trials": 1582,
+      "frac": 0.5699
+    },
+    "image_pack": {
+      "trials": 1580,
+      "frac": 0.5692
+    },
+    "chrome": {
+      "trials": 1412,
+      "frac": 0.5086
+    },
+    "dd_right": {
+      "trials": 861,
+      "frac": 0.3102
+    },
+    "paa": {
+      "trials": 769,
+      "frac": 0.277
+    },
+    "knowledge_panel": {
+      "trials": 767,
+      "frac": 0.2763
+    },
+    "unknown_widget": {
+      "trials": 666,
+      "frac": 0.2399
+    },
+    "top_places": {
+      "trials": 86,
+      "frac": 0.031
+    },
+    "other_widget": {
+      "trials": 51,
+      "frac": 0.0184
+    }
+  }
+}
