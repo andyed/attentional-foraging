@@ -1,0 +1,60 @@
+{
+  "trials_used": 2776,
+  "trials_skipped": 0,
+  "cv_absolute_slot_count": {
+    "median": 14,
+    "mean": 14.19,
+    "frac_eq_10": 0.0245,
+    "min": 2,
+    "max": 23
+  },
+  "cv_organic_count_median": 9,
+  "vertical_center_error_px": {
+    "absolute_nearest_band": {
+      "n": 39397,
+      "median": 60.2,
+      "iqr": [
+        27.8,
+        96.4
+      ],
+      "p90": 122.0,
+      "mean": 64.1,
+      "frac_within_100px": 0.7726
+    },
+    "absolute_rank_aligned": {
+      "n": 27672,
+      "median": 365.7,
+      "iqr": [
+        118.4,
+        698.7
+      ],
+      "p90": 1019.6,
+      "mean": 455.7,
+      "frac_within_100px": 0.2196
+    },
+    "organic_nearest_band": {
+      "n": 26590,
+      "median": 64.8,
+      "iqr": [
+        32.8,
+        98.2
+      ],
+      "p90": 122.6,
+      "mean": 67.2,
+      "frac_within_100px": 0.7618
+    }
+  },
+  "functional_clicked_records": {
+    "xpath": {
+      "n_clicked": 1185,
+      "min_dist_median": 0.0,
+      "frac_within_100px": 0.9806
+    },
+    "linear": {
+      "n_clicked": 1043,
+      "min_dist_median": 6.3,
+      "frac_within_100px": 0.8821
+    },
+    "overall_clicked_within_prox": 0.9345
+  }
+}
