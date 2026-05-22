@@ -1,0 +1,156 @@
+{
+  "experiment": "\u00a75.1 cursor sampling-rate ablation (15 Hz floor validation)",
+  "config": {
+    "attribution": "organic_hybrid",
+    "click_buffer_ms": 500,
+    "feature_vector": "M4-7 (APPROACH_7)",
+    "features": [
+      "min_dist",
+      "mean_dist",
+      "dwell_in_proximity_ms",
+      "mean_approach_velocity",
+      "max_approach_velocity",
+      "direction_changes",
+      "frac_decreasing"
+    ],
+    "loso": "47-fold LeaveOneGroupOut LR, balanced, StandardScaler, C=1.0",
+    "downsampling": "greedy mousemove thinning, clicks never thinned"
+  },
+  "canonical_m4_auc": 0.847,
+  "anchor_tolerance": 0.005,
+  "anchor_delta": -0.00020120820299185382,
+  "native_cursor_rate": {
+    "_method": "median per-trial inter-mousemove-event interval -- the rate the --downsample-hz flag thins against. (An earlier value computed events/wall-clock, which is idle-deflated and not the sampling rate; corrected.)",
+    "n_trials": 2776,
+    "median_hz": 58.8,
+    "mean_hz": 58.7,
+    "p10_hz": 58.8,
+    "p90_hz": 58.8,
+    "frac_trials_below_15hz": 0.0,
+    "frac_trials_below_30hz": 0.002
+  },
+  "rates_hz": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    10,
+    15,
+    20,
+    30,
+    60
+  ],
+  "results": {
+    "native": {
+      "m4_auc": 0.8467987917970081,
+      "m4_mrr10": 0.7413769948730612,
+      "m4_ndcg1": 0.5925067593665508,
+      "n_records": 19848,
+      "n_clicks": 2589,
+      "n_participants": 47,
+      "n_ranked_trials": 2589,
+      "downsample_hz": null
+    },
+    "1hz": {
+      "m4_auc": 0.8480020981322635,
+      "m4_mrr10": 0.7432788235709502,
+      "m4_ndcg1": 0.5948242564696794,
+      "n_records": 19848,
+      "n_clicks": 2589,
+      "n_participants": 47,
+      "n_ranked_trials": 2589,
+      "downsample_hz": 1
+    },
+    "2hz": {
+      "m4_auc": 0.8481234850829112,
+      "m4_mrr10": 0.7425368538544729,
+      "m4_ndcg1": 0.5928930088837389,
+      "n_records": 19848,
+      "n_clicks": 2589,
+      "n_participants": 47,
+      "n_ranked_trials": 2589,
+      "downsample_hz": 2
+    },
+    "3hz": {
+      "m4_auc": 0.8478354372507234,
+      "m4_mrr10": 0.741155106122783,
+      "m4_ndcg1": 0.5913480108149864,
+      "n_records": 19848,
+      "n_clicks": 2589,
+      "n_participants": 47,
+      "n_ranked_trials": 2589,
+      "downsample_hz": 3
+    },
+    "4hz": {
+      "m4_auc": 0.8481273791333191,
+      "m4_mrr10": 0.7421611802169221,
+      "m4_ndcg1": 0.5928930088837389,
+      "n_records": 19848,
+      "n_clicks": 2589,
+      "n_participants": 47,
+      "n_ranked_trials": 2589,
+      "downsample_hz": 4
+    },
+    "5hz": {
+      "m4_auc": 0.8473933058722213,
+      "m4_mrr10": 0.7406344217087036,
+      "m4_ndcg1": 0.5901892622634222,
+      "n_records": 19848,
+      "n_clicks": 2589,
+      "n_participants": 47,
+      "n_ranked_trials": 2589,
+      "downsample_hz": 5
+    },
+    "10hz": {
+      "m4_auc": 0.8473509412893347,
+      "m4_mrr10": 0.7418607264112539,
+      "m4_ndcg1": 0.5936655079181151,
+      "n_records": 19848,
+      "n_clicks": 2589,
+      "n_participants": 47,
+      "n_ranked_trials": 2589,
+      "downsample_hz": 10
+    },
+    "15hz": {
+      "m4_auc": 0.8471223784340685,
+      "m4_mrr10": 0.7430594933110637,
+      "m4_ndcg1": 0.5955967555040557,
+      "n_records": 19848,
+      "n_clicks": 2589,
+      "n_participants": 47,
+      "n_ranked_trials": 2589,
+      "downsample_hz": 15
+    },
+    "20hz": {
+      "m4_auc": 0.8470612149871437,
+      "m4_mrr10": 0.7423000225342117,
+      "m4_ndcg1": 0.593279258400927,
+      "n_records": 19848,
+      "n_clicks": 2589,
+      "n_participants": 47,
+      "n_ranked_trials": 2589,
+      "downsample_hz": 20
+    },
+    "30hz": {
+      "m4_auc": 0.8469648708089472,
+      "m4_mrr10": 0.7410192542488085,
+      "m4_ndcg1": 0.5913480108149864,
+      "n_records": 19848,
+      "n_clicks": 2589,
+      "n_participants": 47,
+      "n_ranked_trials": 2589,
+      "downsample_hz": 30
+    },
+    "60hz": {
+      "m4_auc": 0.8467399334488882,
+      "m4_mrr10": 0.7418553618346263,
+      "m4_ndcg1": 0.593279258400927,
+      "n_records": 19848,
+      "n_clicks": 2589,
+      "n_participants": 47,
+      "n_ranked_trials": 2589,
+      "downsample_hz": 60
+    }
+  }
+}

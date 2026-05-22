@@ -1,20 +1,19 @@
-"""SUPERSEDED — do not use for paper claims. See
-   docs/methodology/feature-extractor-lineage.md.
+"""Compute per-result cursor approach features for every trial.
 
-This script is gaze-gated: it iterates fixations and computes
-gaze_cursor_distance at fixation timestamps. Its outputs
-(cursor-approach-features*.json) produce M1=0.727 / M4=0.864 via
-nb21_loso_retrain_organic.py — NOT the paper's headline 0.668 / 0.847.
+LAB-side gaze-gated producer (samples cursor at fixation timestamps).
+Its output is the canonical feature substrate for downstream LAB-side
+analyses (LFHF, four-class taxonomy, viewport bands, plot rendering,
+etc.). Active — NOT deprecated.
 
-The canonical extractor is `scripts/m4_nb21_hybrid_rerun.py`,
-parity-verified to 1e-6 against the `approach-retreat` JS library (the
-production cursor-only extractor). This file is kept for historical
-comparison and as the artifact `process-trace-gaze-sync-missed.md`
-references.
-
----
-
-Compute per-result cursor approach features for every trial.
+Note: this is *not* the source of the paper's §4.1 headline numbers.
+Those (M1 = 0.668, M4 = 0.847; organic_hybrid) come from
+`scripts/m4_nb21_hybrid_rerun.py`, which is parity-verified at 1e-6
+against the `approach-retreat` JS library (the production cursor-only
+extractor). Running this producer's output through
+`nb21_loso_retrain_organic.py` yields M1 = 0.727 / M4 = 0.864 — a
+*different* experiment with different attribution and different
+sampling, NOT the paper's headline. See
+`docs/methodology/feature-extractor-lineage.md`.
 
 Extracts the `compute_approach_features` function from NB15 into a
 standalone producer with `--attribution {absolute, organic, organic_hybrid}`.
@@ -99,6 +98,38 @@ def _rect_in_result_column(rx, rw):
     return rx < RESULT_COL_X_MAX and (rx + rw) > RESULT_COL_X_MIN
 
 
+def downsample_mouse_events(all_events, hz):
+    """Greedy timestamp thinning of the mousemove stream to simulate an
+    N Hz cursor sample rate.
+
+    Keeps a `mousemove` event only if it is >= 1000/hz ms after the last
+    kept `mousemove`. ALL non-mousemove events (click, scroll, mouseover,
+    mousedown/up, mouseout, load, ...) pass through untouched: the click
+    label and click position must survive intact, and scroll events feed
+    the scroll timeline.
+
+    `all_events` is a list of (t, event_type, x, y) tuples sorted by t.
+    Returns a new list with the same shape, mousemove-thinned.
+
+    hz <= 0 is a no-op (native baseline).
+    """
+    if not hz or hz <= 0:
+        return all_events
+    min_gap_ms = 1000.0 / float(hz)
+    kept = []
+    last_kept_t = None
+    for ev in all_events:
+        t, evt = ev[0], ev[1]
+        if evt == "mousemove":
+            if last_kept_t is None or (t - last_kept_t) >= min_gap_ms:
+                kept.append(ev)
+                last_kept_t = t
+            # else: drop this mousemove
+        else:
+            kept.append(ev)
+    return kept
+
+
 def build_hybrid_aois(trial_id):
     """Return parallel (tops, bottoms, etypes) lists in display order.
 
@@ -125,7 +156,8 @@ def build_hybrid_aois(trial_id):
     return tops, bottoms, etypes
 
 
-def compute_approach_features(trial_id, attribution="absolute", click_buffer_ms=0):
+def compute_approach_features(trial_id, attribution="absolute", click_buffer_ms=0,
+                              downsample_hz=0):
     """Compute per-result cursor approach features for a trial.
 
     attribution: 'absolute' uses count_results_html + result_band_tops;
@@ -138,6 +170,12 @@ def compute_approach_features(trial_id, attribution="absolute", click_buffer_ms=
         t < click_t - click_buffer_ms. Click-position attribution still uses
         the full click record (we keep the label, only truncate the inputs
         that build the features). This is the leakage control for §4.4.
+
+    downsample_hz: if > 0, the trial's `mousemove` event stream is greedily
+        thinned to simulate an N Hz cursor sample rate BEFORE any feature
+        aggregation (see downsample_mouse_events). `click` events are never
+        thinned, so the click label/position is unaffected. This is the
+        sampling-rate ablation. 0 = native (no thinning).
     """
     fixations = load_fixations(trial_id)
     mouse_data = load_mouse_events(trial_id)
@@ -146,6 +184,12 @@ def compute_approach_features(trial_id, attribution="absolute", click_buffer_ms=
         return None
 
     all_events, scrolls, clicks = mouse_data
+
+    # Sampling-rate ablation: thin the mousemove stream before feature
+    # aggregation. clicks/scrolls are extracted separately above and are
+    # passed through untouched, so the click label/position survives.
+    if downsample_hz and downsample_hz > 0:
+        all_events = downsample_mouse_events(all_events, downsample_hz)
     doc_h, scr_h, _ = meta
     if not fixations or not all_events or not doc_h:
         return None
@@ -378,9 +422,20 @@ def main():
         help="Truncate features at click_t - Δ ms. Default 0 (no truncation). "
              "Adds -buf{ms} suffix to default output path.",
     )
+    parser.add_argument(
+        "--downsample-hz",
+        type=int,
+        default=0,
+        help="Thin the mousemove stream to simulate an N Hz cursor sample "
+             "rate before feature aggregation. clicks are never thinned. "
+             "Default 0 (native, no thinning). Adds -hz{N} suffix to the "
+             "default output path.",
+    )
     args = parser.parse_args()
 
     suffix = f"-buf{args.click_buffer_ms}" if args.click_buffer_ms > 0 else ""
+    if args.downsample_hz and args.downsample_hz > 0:
+        suffix += f"-hz{args.downsample_hz}"
     if args.output:
         out_path = Path(args.output)
     elif args.attribution == "typed_gapfill":
@@ -399,6 +454,7 @@ def main():
             args.trial,
             attribution=args.attribution,
             click_buffer_ms=args.click_buffer_ms,
+            downsample_hz=args.downsample_hz,
         )
         if recs is None:
             print(f"{args.trial}: unusable", file=sys.stderr)
@@ -417,6 +473,7 @@ def main():
                 tid,
                 attribution=args.attribution,
                 click_buffer_ms=args.click_buffer_ms,
+                downsample_hz=args.downsample_hz,
             )
             if recs:
                 all_records.extend(recs)
