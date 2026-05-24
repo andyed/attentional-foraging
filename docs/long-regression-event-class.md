@@ -86,7 +86,12 @@ The natural read is that long regressions are **task-state events** (something a
 
 This generalizes the chattiness/regression-distribution pattern: **rate is per-participant; event signature is per-event.** Useful for the task model — long regressions can be modeled as a within-trial state without needing a participant-level latent.
 
-**Mechanism note (added 2026-05-24): not dwell-anchored.** A follow-up test ([`null-findings/2026-05-24-long-regression-rate-not-trait.md` addendum](./null-findings/2026-05-24-long-regression-rate-not-trait.md#addendum-2026-05-24-forward-dwell-does-not-predict-regression-distance)) shows that the destination's prior forward-scan dwell does **not** predict regression distance (ρ = +0.004, n = 5,738). Combined with the near-pure-vertical saccade signature here, long regressions are **position-as-landmark** events (eyes navigate to a remembered page location), not **dwell-as-anchor** events (returning to a deliberated candidate). The destination is "back up there somewhere," not "back to that specific candidate I was considering."
+**Mechanism note (added 2026-05-24, refined later same day).** Two follow-up tests on the same substrate sharpen the mechanism:
+
+- **Not dwell-anchored.** Destination's prior forward-scan dwell does NOT predict regression distance (ρ = +0.004, n = 5,738). Rules out "I'm returning to the candidate I previously deliberated on." See [null-finding addendum 1](./null-findings/2026-05-24-long-regression-rate-not-trait.md#addendum-2026-05-24-forward-dwell-does-not-predict-regression-distance).
+- **Mostly relative, with an absolute pull near top.** Slope of `dest_pos` on `source_pos` is +0.98 for short regressions (pure relative back-by-1) but +0.63 for long regressions, with 73% of long-regression destinations landing in positions 1–3. The model that fits is *distance-controlled stride (~4 back) with a soft absolute attractor at the top of the organic stream* — neither pure absolute landmark nor pure relative distance. See [null-finding addendum 2](./null-findings/2026-05-24-long-regression-rate-not-trait.md#addendum-2-2026-05-24-regressions-are-mostly-relative-distance-long-ones-have-an-absolute-top-of-stream-pull).
+
+Together with the near-pure-vertical saccade signature here, long regressions are **distance-controlled vertical re-saccades biased toward the top of the organic stream**, not landmark-targeted item retrievals. For the task model: parameterize as a relative stride (~4–5 positions back) plus a top-attractor soft constraint, sampled per long-regression event.
 
 ---
 

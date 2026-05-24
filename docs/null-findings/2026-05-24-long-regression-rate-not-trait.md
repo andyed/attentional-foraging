@@ -107,23 +107,53 @@ skipped positions, indistinguishable in size from true returns.
 are near-pure vertical saccades (90% vertical share) with the cursor
 lagging ~100 px further behind than for short regressions. Now this
 addendum says the destination's prior dwell history is irrelevant to
-how far back the user jumps. Together these support a **position-as-
-landmark** interpretation: long regressions are spatial recall events
-where eyes navigate to a *page location* (vertical pixel coordinate),
-not to a *result selected by deliberation history*. The destination is
-"back up there somewhere," not "back to that specific candidate I was
-considering."
+how far back the user jumps. Together these rule out a
+**dwell-as-anchor** model — long regressions are not "I'm returning
+to the result I previously deliberated on."
 
-This rules out the dwell-as-anchor model and constrains the task
-model: the long-regression event-class is about position memory, not
-item evaluation.
+That originally pointed toward a pure "position-as-landmark" model,
+but the next mechanism test refines it: long regressions are
+mostly *distance-based* with a smaller *absolute attractor* toward
+the top of the organic stream. See Addendum 2.
+
+## Addendum 2 (2026-05-24): regressions are mostly relative-distance; long ones have an absolute top-of-stream pull
+
+Pure absolute landmark ("always go to result 2") would predict slope ≈ 0
+when regressing `dest_pos` on `source_pos`. Pure relative distance ("always
+back by N") would predict slope ≈ +1. The data fits neither extreme and
+splits cleanly by regression size:
+
+| Subset | n | slope (dest_pos ~ source_pos) | r | σ²(dest_pos) / σ²(size) | dest_pos ≤ 3 share |
+|---|---:|---:|---:|---:|---:|
+| short (size 1–2) | 5,159 | **+0.984** | +0.99 | 49.7 (distance highly anchored) | 58.9% |
+| mid (size 3) | 274 | +1.000 | +1.00 | ∞ (size constant by definition) | 66.4% |
+| long (size ≥ 4) | 305 | **+0.634** | +0.75 | 1.6 (distance and dest roughly equally variable) | **72.8%** |
+
+**Short regressions are pure relative.** Slope ≈ +1, distance has 50× lower variance than destination position. Every short regression is essentially "decrement by 1" — destination = source − 1 (sometimes −2).
+
+**Long regressions are mixed.** Slope = +0.63 (relative pull, but attenuated). Destination concentrates at positions 1–3 (73% of all long regressions land there). Modal destinations by source position:
+
+```
+source=5 → dest=1 (39/39, all back-by-4)       source=9  → dest=4 (back 5)
+source=6 → dest=2 (75% modal, back 4)          source=10 → dest=5 (back 5–6)
+source=7 → dest=3 (54% modal, back 4)          source=11 → dest=5 (back 6)
+source=8 → split dest 3–4 (back 4–5)
+```
+
+There's a clean back-by-4-to-5 stride that holds up to source ≈ 8. Beyond that, the absolute attractor toward the top wins: deeper sources don't extend back proportionally; they cap around dest = 5 with sizes growing to 6.
+
+**Refined mechanism.** Long regressions are *distance-controlled saccades with an absolute soft-cap near the top of the organic stream*. The relative stride (~4 positions back) does most of the work; the absolute attractor pulls deep-source events toward positions 1–3 when a pure-relative jump would overshoot the top. Not pure relative; not pure absolute; a relative-with-boundary model.
+
+For the task model: the long-regression transition class has a parameterizable stride (mean ~4–5 positions) with a top-of-stream attractor as a soft constraint, not a hard landing target. Implementation: sample stride from a distribution, then clip to position ≥ 1 — or model as a mixture of "relative stride" and "return-to-top" components.
 
 ## Files
 
 - `scripts/dd_top_regression_traits.py` — per-participant trait analysis (§1-§4)
 - `scripts/output/dd_top_regression_traits/{summary.json, per_participant.csv}` — n=47 × 8 metrics
-- `scripts/dd_top_regression_dwell_vs_size.py` — dwell-vs-size mechanism test (addendum)
+- `scripts/dd_top_regression_dwell_vs_size.py` — dwell-vs-size mechanism test (addendum 1)
 - `scripts/output/dd_top_regression_dwell_vs_size/summary.json` — 5,738-event correlations
+- `scripts/dd_top_regression_absolute_vs_relative.py` — absolute vs relative model test (addendum 2)
+- `scripts/output/dd_top_regression_absolute_vs_relative/summary.json` — slope decomposition + destination histogram
 
 ## Reading order
 
