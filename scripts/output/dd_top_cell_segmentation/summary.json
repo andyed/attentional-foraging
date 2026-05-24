@@ -1,0 +1,209 @@
+{
+  "n_trial_ids_total": 2776,
+  "n_trials_with_dd_top_cells_and_cursor": 1550,
+  "n_participants_any_dd_top": 47,
+  "n_participants_eligible_for_stats": 47,
+  "n_overlap_with_prior_cohort": 47,
+  "dwell_threshold_ms": 100,
+  "metrics_definitions": {
+    "any_cell_engagement_rate": "fraction of dd_top trials with >=1 cell touched (cursor episode dwell >= 100ms)",
+    "cell_promiscuity_rate": "fraction with >=2 cells touched",
+    "mean_n_touched_when_engaged": "mean n_touched conditional on n_touched >= 1",
+    "p_carousel_click": "fraction with >=1 cell click",
+    "mean_touched_fraction": "mean (n_touched / n_cells) across dd_top trials"
+  },
+  "reliability": {
+    "any_cell_engagement_rate": {
+      "r_split_half": 0.8171,
+      "r_spearman_brown": 0.8993,
+      "p": 0.0,
+      "n_participants": 47
+    },
+    "cell_promiscuity_rate": {
+      "r_split_half": 0.8261,
+      "r_spearman_brown": 0.9048,
+      "p": 0.0,
+      "n_participants": 47
+    },
+    "mean_n_touched_when_engaged": {
+      "r_split_half": 0.6369,
+      "r_spearman_brown": 0.7782,
+      "p": 0.0,
+      "n_participants": 47
+    },
+    "p_carousel_click": {
+      "r_split_half": 0.6931,
+      "r_spearman_brown": 0.8187,
+      "p": 0.0,
+      "n_participants": 47
+    },
+    "mean_touched_fraction": {
+      "r_split_half": 0.8827,
+      "r_spearman_brown": 0.9377,
+      "p": 0.0,
+      "n_participants": 47
+    }
+  },
+  "correlations": {
+    "any_cell_engagement_rate": {
+      "p_ad_survey": {
+        "spearman_r": 0.0431,
+        "p": 0.7734,
+        "n": 47
+      },
+      "p_dd_top_click": {
+        "spearman_r": 0.2773,
+        "p": 0.0965,
+        "n": 37
+      },
+      "p_ad_click": {
+        "spearman_r": 0.3164,
+        "p": 0.0342,
+        "n": 45
+      },
+      "regression_rate": {
+        "spearman_r": 0.2677,
+        "p": 0.0721,
+        "n": 46
+      },
+      "mean_lhipa": {
+        "spearman_r": -0.108,
+        "p": 0.4701,
+        "n": 47
+      },
+      "ad_over_index": {
+        "spearman_r": 0.0252,
+        "p": 0.8664,
+        "n": 47
+      }
+    },
+    "cell_promiscuity_rate": {
+      "p_ad_survey": {
+        "spearman_r": -0.0636,
+        "p": 0.6709,
+        "n": 47
+      },
+      "p_dd_top_click": {
+        "spearman_r": 0.3113,
+        "p": 0.0608,
+        "n": 37
+      },
+      "p_ad_click": {
+        "spearman_r": 0.3337,
+        "p": 0.0251,
+        "n": 45
+      },
+      "regression_rate": {
+        "spearman_r": 0.3295,
+        "p": 0.0254,
+        "n": 46
+      },
+      "mean_lhipa": {
+        "spearman_r": -0.1136,
+        "p": 0.4472,
+        "n": 47
+      },
+      "ad_over_index": {
+        "spearman_r": -0.0508,
+        "p": 0.7344,
+        "n": 47
+      }
+    },
+    "mean_n_touched_when_engaged": {
+      "p_ad_survey": {
+        "spearman_r": 0.0123,
+        "p": 0.9348,
+        "n": 47
+      },
+      "p_dd_top_click": {
+        "spearman_r": 0.278,
+        "p": 0.0957,
+        "n": 37
+      },
+      "p_ad_click": {
+        "spearman_r": 0.3067,
+        "p": 0.0405,
+        "n": 45
+      },
+      "regression_rate": {
+        "spearman_r": 0.3717,
+        "p": 0.011,
+        "n": 46
+      },
+      "mean_lhipa": {
+        "spearman_r": -0.1407,
+        "p": 0.3454,
+        "n": 47
+      },
+      "ad_over_index": {
+        "spearman_r": 0.0331,
+        "p": 0.8253,
+        "n": 47
+      }
+    },
+    "p_carousel_click": {
+      "p_ad_survey": {
+        "spearman_r": 0.2426,
+        "p": 0.1004,
+        "n": 47
+      },
+      "p_dd_top_click": {
+        "spearman_r": 0.974,
+        "p": 0.0,
+        "n": 37
+      },
+      "p_ad_click": {
+        "spearman_r": 0.7995,
+        "p": 0.0,
+        "n": 45
+      },
+      "regression_rate": {
+        "spearman_r": 0.0881,
+        "p": 0.5604,
+        "n": 46
+      },
+      "mean_lhipa": {
+        "spearman_r": 0.0293,
+        "p": 0.8452,
+        "n": 47
+      },
+      "ad_over_index": {
+        "spearman_r": 0.2179,
+        "p": 0.1412,
+        "n": 47
+      }
+    },
+    "mean_touched_fraction": {
+      "p_ad_survey": {
+        "spearman_r": -0.0162,
+        "p": 0.914,
+        "n": 47
+      },
+      "p_dd_top_click": {
+        "spearman_r": 0.3071,
+        "p": 0.0645,
+        "n": 37
+      },
+      "p_ad_click": {
+        "spearman_r": 0.3327,
+        "p": 0.0255,
+        "n": 45
+      },
+      "regression_rate": {
+        "spearman_r": 0.3262,
+        "p": 0.0269,
+        "n": 46
+      },
+      "mean_lhipa": {
+        "spearman_r": -0.1405,
+        "p": 0.3462,
+        "n": 47
+      },
+      "ad_over_index": {
+        "spearman_r": -0.004,
+        "p": 0.9785,
+        "n": 47
+      }
+    }
+  }
+}
