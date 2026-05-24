@@ -49,3 +49,6 @@ docs/schul-replay/data/
 
 # Per-record figure caches — large (10-15 MB), reproducible from source scripts
 scripts/output/figures/per_record_*.json
+
+# Thursday RIPA2 meeting prep — internal-only, not paper artifacts
+scripts/output/ripa2_meet_visuals/

@@ -116,11 +116,13 @@ def fit_eval(X, y, groups, records):
     ap = average_precision_score(y, proba)
     brier = brier_score_loss(y, proba)
     per_part = []
+    per_part_pids = []
     for pid in sorted(set(groups)):
         m = groups == pid
         if m.sum() < 10 or len(set(y[m])) < 2:
             continue
         per_part.append(roc_auc_score(y[m], proba[m]))
+        per_part_pids.append(str(pid))
     mrr, ndcg1, n_trials = per_trial_ranking_metrics(records, proba)
     return {
         "auc": auc, "ap": ap, "brier": brier,
@@ -128,6 +130,12 @@ def fit_eval(X, y, groups, records):
         "per_part_auc_median": float(np.median(per_part)),
         "per_part_auc_iqr": [float(np.percentile(per_part, 25)),
                              float(np.percentile(per_part, 75))],
+        # Per-fold AUCs (one per participant, ordered by sorted pid) -
+        # enables paired stat tests (Wilcoxon signed-rank, paired t-test)
+        # across model variants in the same buffer cell, and across
+        # buffer levels for the same variant.
+        "per_part_aucs": [float(a) for a in per_part],
+        "per_part_pids": per_part_pids,
         "n_records": int(len(records)),
     }
 
