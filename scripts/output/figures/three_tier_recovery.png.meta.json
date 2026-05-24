@@ -1,0 +1,16 @@
+{
+  "dataset_path": "AdSERP/data/cursor-approach-features-typed-gapfill.json",
+  "dataset_sha256": "a6c368838afae94042371fb286dea06eb69793f70a69363e0b5dffecc4e9b17f",
+  "figure_version": "three-tier-LOPO",
+  "h_ids": [],
+  "muriel_version": "0.6.0",
+  "nb_k_ids": [
+    "NB21:K-bbox-3"
+  ],
+  "notes": "Three-tier recovery of gaze-deliberation labels [LAB]. Tier-2 LR over 4 features, n_cursor_blind=845, M4-full mean AUC=0.699, minimal-4 mean AUC=0.699.",
+  "run_utc": "2026-05-10T06:42:20+00:00",
+  "schema_version": 1,
+  "script_dirty": true,
+  "script_path": "/Users/andyed/Documents/dev/attentional-foraging/scripts/plot_three_tier_recovery.py",
+  "script_sha": "8e9a578c"
+}

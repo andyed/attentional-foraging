@@ -1,0 +1,17 @@
+{
+  "dataset_path": "AdSERP/data/cursor-approach-features-organic.json",
+  "dataset_sha256": "13a04ba1f0cc09f89a0b4f789f8ecdb00993bd6b78326bd94ab638987bd8cd7c",
+  "figure_version": "organic-2panel",
+  "h_ids": [],
+  "muriel_version": "0.6.0",
+  "nb_k_ids": [
+    "NB22:K-bbox-1",
+    "NB22:K-bbox-2"
+  ],
+  "notes": "Four-class taxonomy [LAB]. attribution=organic, two_panel=True, n_trials=2,404.",
+  "run_utc": "2026-05-10T06:38:43+00:00",
+  "schema_version": 1,
+  "script_dirty": true,
+  "script_path": "/Users/andyed/Documents/dev/attentional-foraging/scripts/render_class_distributions.py",
+  "script_sha": "8e9a578c"
+}

@@ -1445,3 +1445,30 @@
   doi     = {10.1038/nrn1201},
   note    = {Multi-component WM model retrospective; cited alongside cowan2001magical as the internal-WM-bound license for EWM offloading. VERIFY before submission.},
 }
+
+@misc{edmonds2026nb115,
+  author       = {Edmonds, Andy},
+  title        = {{NB11.5}: Cursor chattiness as a stable individual-differences trait},
+  year         = {2026},
+  howpublished = {Jupyter notebook, attentional-foraging repository},
+  url          = {https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/11_5_chattiness_traits.ipynb},
+  note         = {LOSO M3 AUC stratified by per-participant cursor activity. K1-K4: split-half reliability $r > 0.96$ across four chattiness measures. K8: median \texttt{active\_fraction} = 0.287 (range 0.132-0.794). K9-K11: per-tercile LOSO M3 AUC 0.869 / 0.855 / 0.855; per-participant chattiness $\times$ AUC Spearman ns across all four measures (no exposure-volume artifact). Verified 2026-04-12.},
+}
+
+@misc{edmonds2026nb26,
+  author       = {Edmonds, Andy},
+  title        = {{NB26}: {LTR} graded-relevance validation on {AdSERP}},
+  year         = {2026},
+  howpublished = {Jupyter notebook, attentional-foraging repository},
+  url          = {https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/26_ltr_graded_relevance.ipynb},
+  note         = {LambdaMART rankers trained on four-class graded labels vs binary click labels on identical M3-no-position cursor feature set, 47-fold LOPO. Headline: graded $\Delta$MRR@10 = +0.030 over binary; 5-class confidence-gated hybrid extends to +0.034. Companion null finding documents the labeled-subset training-exclusion artifact that motivated the full-SERP reanalysis (\cite{edmonds2026nb26null}).},
+}
+
+@misc{edmonds2026nb26null,
+  author       = {Edmonds, Andy},
+  title        = {Null finding: {LTR} with graded vs binary labels on full-{SERP} {MRR}},
+  year         = {2026},
+  howpublished = {attentional-foraging null-findings},
+  url          = {https://github.com/andyed/attentional-foraging/blob/main/docs/null-findings/nb26-ltr-graded-vs-binary.md},
+  note         = {The original NB26 LTR headline (graded $\Delta$ = +0.21 MRR over Google baseline on labeled subset) was a labeled-subset training-exclusion artifact. On the full 10-result SERP neither graded nor binary ranker beats Google's original ordering. The surviving result (\cite{edmonds2026nb26}) is the +0.030 graded-over-binary lift on the M3-feature ranker. Worked example of the project's null-findings discipline.},
+}
