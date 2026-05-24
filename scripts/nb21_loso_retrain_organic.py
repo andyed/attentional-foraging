@@ -1,4 +1,15 @@
-"""Re-train NB21's M1/M2/M3/M4 LOSO classifiers on cursor-approach-features-organic.
+"""SUPERSEDED — do not use for paper claims.
+   See docs/methodology/feature-extractor-lineage.md.
+
+This script reads the gaze-gated features in
+cursor-approach-features-organic.json and produces M1 = 0.727 / M4 = 0.864 —
+NOT the paper's headline 0.668 / 0.847. The canonical extractor is
+scripts/m4_nb21_hybrid_rerun.py (parity-verified 1e-6 against the
+`approach-retreat` JS library).
+
+---
+
+Re-train NB21's M1/M2/M3/M4 LOSO classifiers on cursor-approach-features-organic.
 
 Mirrors NB21 cells 14-20 for the click-prediction LOSO task. Reports
 new K3/K4/K5/K6/K9/K10/K11/K12 values for the bbox-attribution era.
@@ -10,6 +21,7 @@ from __future__ import annotations
 
 import json
 import sys
+import warnings
 from pathlib import Path
 
 import numpy as np
@@ -21,6 +33,15 @@ from sklearn.metrics import (
 from sklearn.model_selection import LeaveOneGroupOut, KFold, cross_val_predict
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
+
+warnings.warn(
+    "nb21_loso_retrain_organic.py is SUPERSEDED — reads gaze-gated features; "
+    "produces M1 = 0.727 / M4 = 0.864 (NOT the paper's 0.668 / 0.847). "
+    "Canonical: scripts/m4_nb21_hybrid_rerun.py. See "
+    "docs/methodology/feature-extractor-lineage.md.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 

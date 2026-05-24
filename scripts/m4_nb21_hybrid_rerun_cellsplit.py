@@ -44,10 +44,21 @@ from sklearn.preprocessing import StandardScaler
 ROOT = Path("/Users/andyed/Documents/dev/attentional-foraging")
 sys.path.insert(0, str(ROOT))
 from scripts.m4_nb21_hybrid_rerun import (  # noqa: E402
-    compute_hybrid_features, M4_FEATURES, PROX_THRESHOLD,
+    compute_hybrid_features, PROX_THRESHOLD,
     MOUSE_DIR, FEATURES_JSON,
 )
 from scripts.probe_cellsplit_features import load_aois  # noqa: E402
+
+# Paper §4.1 canonical M4 = 7 features (drops final_dist + retreat_dist
+# per the §3.4 leakage screen — both are pinned by terminal cursor lock-on).
+# The script's own M4_FEATURES has 9; the paper uses 7. We use 7 here to
+# match the paper's headline AUC 0.847.
+M4_FEATURES = [
+    "min_dist", "mean_dist",
+    "dwell_in_proximity_ms",
+    "mean_approach_velocity", "max_approach_velocity",
+    "direction_changes", "frac_decreasing",
+]
 
 OUT_DIR = ROOT / "scripts/output/m4_nb21_hybrid_rerun_cellsplit"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
