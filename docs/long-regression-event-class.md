@@ -86,6 +86,8 @@ The natural read is that long regressions are **task-state events** (something a
 
 This generalizes the chattiness/regression-distribution pattern: **rate is per-participant; event signature is per-event.** Useful for the task model — long regressions can be modeled as a within-trial state without needing a participant-level latent.
 
+**Mechanism note (added 2026-05-24): not dwell-anchored.** A follow-up test ([`null-findings/2026-05-24-long-regression-rate-not-trait.md` addendum](./null-findings/2026-05-24-long-regression-rate-not-trait.md#addendum-2026-05-24-forward-dwell-does-not-predict-regression-distance)) shows that the destination's prior forward-scan dwell does **not** predict regression distance (ρ = +0.004, n = 5,738). Combined with the near-pure-vertical saccade signature here, long regressions are **position-as-landmark** events (eyes navigate to a remembered page location), not **dwell-as-anchor** events (returning to a deliberated candidate). The destination is "back up there somewhere," not "back to that specific candidate I was considering."
+
 ---
 
 ## §7 Implications

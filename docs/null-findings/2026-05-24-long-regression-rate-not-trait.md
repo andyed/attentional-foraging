@@ -69,13 +69,66 @@ Organic regression (within the organic stream) and within-ad-carousel cell sampl
 
 `regression_per_trial` correlates with `mean_lhipa` at ρ = −0.695 (p < 10⁻⁷) in this stratum. This matches the strength of the previously-noted ρ = −0.593 in the full corpus, which the **2026-04-16 satopt-LHIPA duration confound** ([`2026-04-16-satopt-lhipa-duration-confound.md`](2026-04-16-satopt-lhipa-duration-confound.md)) reframed: the raw correlation reproduces but collapses to ρ = +0.135 once trial duration is partialed out. The mechanism is duration → mean LHIPA (longer trials accumulate more low-LHIPA samples), not regression → load. The fixation-grain replication here inherits the same confound and the same reframe. Recorded for completeness; not a new finding.
 
+## Addendum (2026-05-24): forward dwell does not predict regression distance
+
+A second mechanism test in the same substrate, prompted by the
+event-class finding ([`../long-regression-event-class.md`](../long-regression-event-class.md))
+that long regressions are near-pure vertical saccades. Natural follow-up:
+does the time spent at organic_K during forward scan predict the
+distance from which the user regresses back to K? (The "anchor
+hypothesis" — long jumps go to results the user deliberated on.)
+
+**Null.** Across all 5,738 regression events:
+
+| Test | Spearman ρ | p | n |
+|---|---:|---:|---:|
+| `dwell_at_destination_before` × `size` | **+0.004** | 0.75 | 5,738 |
+| `dwell_at_source_before` × `size` | −0.023 | 0.08 | 5,738 |
+| `total_forward_dwell_before` × `size` | +0.093 | <0.001 | 5,738 |
+
+Restricting to revisits only (n = 5,189, where the destination *was*
+previously fixated) tightens nothing: ρ = −0.007 (p = 0.61), and the
+median regression size is identically 1 across all four prior-dwell
+quartiles (means 1.39 / 1.45 / 1.43 / 1.40 from q1 to q4).
+
+The +0.09 total-forward-dwell correlation is real but mechanistic-trivial:
+trials that have run longer have visited more positions, so larger jumps
+become *possible*. Coverage effect, not a deliberation effect.
+
+**Side observation: 90.4% / 9.6% revisit / first-visit split.** When
+users regress, 90% of the time the destination position had already
+been fixated; 10% are first-visit landings where the user skipped past
+that position during forward scan. Both subsets show the same size
+distribution (~80% size 1). First-visit regressions aren't a special
+"jumping into uncharted territory" event — they're back-fills of
+skipped positions, indistinguishable in size from true returns.
+
+**Reading-together with the event-class finding.** Long regressions
+are near-pure vertical saccades (90% vertical share) with the cursor
+lagging ~100 px further behind than for short regressions. Now this
+addendum says the destination's prior dwell history is irrelevant to
+how far back the user jumps. Together these support a **position-as-
+landmark** interpretation: long regressions are spatial recall events
+where eyes navigate to a *page location* (vertical pixel coordinate),
+not to a *result selected by deliberation history*. The destination is
+"back up there somewhere," not "back to that specific candidate I was
+considering."
+
+This rules out the dwell-as-anchor model and constrains the task
+model: the long-regression event-class is about position memory, not
+item evaluation.
+
 ## Files
 
-- `scripts/dd_top_regression_traits.py` — analysis driver
+- `scripts/dd_top_regression_traits.py` — per-participant trait analysis (§1-§4)
 - `scripts/output/dd_top_regression_traits/{summary.json, per_participant.csv}` — n=47 × 8 metrics
+- `scripts/dd_top_regression_dwell_vs_size.py` — dwell-vs-size mechanism test (addendum)
+- `scripts/output/dd_top_regression_dwell_vs_size/summary.json` — 5,738-event correlations
 
 ## Reading order
 
 1. [`docs/dd-top-cell-promiscuity.md`](../dd-top-cell-promiscuity.md) — the *positive* trait finding that motivated this analysis
-2. This doc — the *negative* trait finding on the regression-size mix
-3. [`docs/null-findings/2026-04-16-satopt-lhipa-duration-confound.md`](2026-04-16-satopt-lhipa-duration-confound.md) — the LHIPA-confound reframe that this doc inherits
+2. This doc (§1-§4) — the *negative* trait finding on the regression-size mix
+3. [`docs/long-regression-event-class.md`](../long-regression-event-class.md) — long regressions ARE event-distinct (saccade geometry + cursor-eye sync)
+4. This doc (addendum) — but their distance isn't dwell-anchored (position-as-landmark, not item-anchored)
+5. [`docs/null-findings/2026-04-16-satopt-lhipa-duration-confound.md`](2026-04-16-satopt-lhipa-duration-confound.md) — the LHIPA-confound reframe that this doc inherits

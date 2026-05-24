@@ -1,0 +1,94 @@
+{
+  "n_regression_events": 5738,
+  "n_destination_previously_visited": 5189,
+  "n_destination_first_visit": 549,
+  "frac_destination_revisit": 0.9043,
+  "correlations_against_size": {
+    "dwell_at_dest_before": {
+      "spearman_r": 0.00424,
+      "spearman_p": 0.74795,
+      "pearson_r": 0.0027,
+      "pearson_p": 0.83815,
+      "n": 5738
+    },
+    "dwell_at_source_before": {
+      "spearman_r": -0.023,
+      "spearman_p": 0.08147,
+      "pearson_r": -0.05086,
+      "pearson_p": 0.00012,
+      "n": 5738
+    },
+    "total_forward_dwell_before": {
+      "spearman_r": 0.09294,
+      "spearman_p": 0.0,
+      "pearson_r": 0.06362,
+      "pearson_p": 0.0,
+      "n": 5738
+    }
+  },
+  "prior_dwell_quartiles_revisits_only": [
+    {
+      "quartile": 1,
+      "dwell_range_ms": [
+        18,
+        641
+      ],
+      "n_events": 1291,
+      "median_regression_size": 1,
+      "mean_regression_size": 1.387
+    },
+    {
+      "quartile": 2,
+      "dwell_range_ms": [
+        642,
+        1376
+      ],
+      "n_events": 1303,
+      "median_regression_size": 1,
+      "mean_regression_size": 1.446
+    },
+    {
+      "quartile": 3,
+      "dwell_range_ms": [
+        1379,
+        2675
+      ],
+      "n_events": 1296,
+      "median_regression_size": 1,
+      "mean_regression_size": 1.431
+    },
+    {
+      "quartile": 4,
+      "dwell_range_ms": [
+        2676,
+        15453
+      ],
+      "n_events": 1299,
+      "median_regression_size": 1,
+      "mean_regression_size": 1.398
+    }
+  ],
+  "size_distribution_by_visit_status": {
+    "revisits": {
+      "n": 5189,
+      "median": 1,
+      "mean": 1.415,
+      "size_share": {
+        "short(1-2)": 0.8967,
+        "mid(3)": 0.0486,
+        "long(>=4)": 0.0547
+      }
+    },
+    "first_visits": {
+      "n": 549,
+      "median": 1,
+      "mean": 1.335,
+      "size_share": {
+        "short(1-2)": 0.9217,
+        "mid(3)": 0.0401,
+        "long(>=4)": 0.0383
+      }
+    }
+  },
+  "interpretation": "The anchor hypothesis \u2014 long regressions go to results that were previously dwelt on longer \u2014 is null. Across all 5,738 regression events the dwell-at-destination \u00d7 size Spearman is +0.004 (p=0.75); restricted to revisits only it is -0.007 (p=0.61). Median regression size is identically 1 across all four prior-dwell quartiles. The +0.093 correlation between total cumulative forward dwell and regression size is small and likely a coverage effect (longer trials have visited more positions, so longer regressions become possible)."
+}
