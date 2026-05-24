@@ -1,0 +1,274 @@
+{
+  "long_regression_threshold": 4,
+  "n_participants_total": 47,
+  "n_participants_eligible": 47,
+  "reliability": {
+    "regression_per_trial": {
+      "r_split_half": 0.8115,
+      "r_spearman_brown": 0.8959,
+      "p": 0.0,
+      "n_participants": 47
+    },
+    "long_regression_per_trial": {
+      "r_split_half": 0.5752,
+      "r_spearman_brown": 0.7303,
+      "p": 0.0,
+      "n_participants": 47
+    },
+    "long_regression_rate": {
+      "r_split_half": 0.2566,
+      "r_spearman_brown": 0.4084,
+      "p": 0.0817,
+      "n_participants": 47
+    },
+    "any_long_reg_trial_rate": {
+      "r_split_half": 0.5789,
+      "r_spearman_brown": 0.7333,
+      "p": 0.0,
+      "n_participants": 47
+    },
+    "mean_regression_size": {
+      "r_split_half": 0.4176,
+      "r_spearman_brown": 0.5892,
+      "p": 0.0035,
+      "n_participants": 47
+    }
+  },
+  "correlations": {
+    "regression_per_trial": {
+      "p_ad_survey": {
+        "spearman_r": -0.0678,
+        "p": 0.6508,
+        "n": 47
+      },
+      "p_ad_click": {
+        "spearman_r": -0.1955,
+        "p": 0.1879,
+        "n": 47
+      },
+      "p_dd_top_click": {
+        "spearman_r": -0.3617,
+        "p": 0.0125,
+        "n": 47
+      },
+      "regression_rate": {
+        "spearman_r": 0.6929,
+        "p": 0.0,
+        "n": 47
+      },
+      "mean_lhipa": {
+        "spearman_r": -0.6947,
+        "p": 0.0,
+        "n": 47
+      },
+      "ad_over_index": {
+        "spearman_r": 0.0623,
+        "p": 0.6775,
+        "n": 47
+      },
+      "cell_promiscuity_rate": {
+        "spearman_r": 0.0173,
+        "p": 0.9079,
+        "n": 47
+      },
+      "mean_touched_fraction": {
+        "spearman_r": 0.0486,
+        "p": 0.7458,
+        "n": 47
+      },
+      "any_cell_engagement_rate": {
+        "spearman_r": 0.0251,
+        "p": 0.867,
+        "n": 47
+      }
+    },
+    "long_regression_per_trial": {
+      "p_ad_survey": {
+        "spearman_r": -0.0283,
+        "p": 0.8502,
+        "n": 47
+      },
+      "p_ad_click": {
+        "spearman_r": -0.1818,
+        "p": 0.2213,
+        "n": 47
+      },
+      "p_dd_top_click": {
+        "spearman_r": -0.191,
+        "p": 0.1984,
+        "n": 47
+      },
+      "regression_rate": {
+        "spearman_r": 0.6992,
+        "p": 0.0,
+        "n": 47
+      },
+      "mean_lhipa": {
+        "spearman_r": -0.6073,
+        "p": 0.0,
+        "n": 47
+      },
+      "ad_over_index": {
+        "spearman_r": 0.1045,
+        "p": 0.4847,
+        "n": 47
+      },
+      "cell_promiscuity_rate": {
+        "spearman_r": 0.1321,
+        "p": 0.3762,
+        "n": 47
+      },
+      "mean_touched_fraction": {
+        "spearman_r": 0.153,
+        "p": 0.3044,
+        "n": 47
+      },
+      "any_cell_engagement_rate": {
+        "spearman_r": 0.0865,
+        "p": 0.5632,
+        "n": 47
+      }
+    },
+    "long_regression_rate": {
+      "p_ad_survey": {
+        "spearman_r": -0.0755,
+        "p": 0.6141,
+        "n": 47
+      },
+      "p_ad_click": {
+        "spearman_r": -0.0543,
+        "p": 0.717,
+        "n": 47
+      },
+      "p_dd_top_click": {
+        "spearman_r": 0.0883,
+        "p": 0.5549,
+        "n": 47
+      },
+      "regression_rate": {
+        "spearman_r": 0.36,
+        "p": 0.0129,
+        "n": 47
+      },
+      "mean_lhipa": {
+        "spearman_r": -0.1718,
+        "p": 0.2481,
+        "n": 47
+      },
+      "ad_over_index": {
+        "spearman_r": -0.0076,
+        "p": 0.9597,
+        "n": 47
+      },
+      "cell_promiscuity_rate": {
+        "spearman_r": 0.1586,
+        "p": 0.2868,
+        "n": 47
+      },
+      "mean_touched_fraction": {
+        "spearman_r": 0.1667,
+        "p": 0.2628,
+        "n": 47
+      },
+      "any_cell_engagement_rate": {
+        "spearman_r": 0.0637,
+        "p": 0.6703,
+        "n": 47
+      }
+    },
+    "any_long_reg_trial_rate": {
+      "p_ad_survey": {
+        "spearman_r": 0.0127,
+        "p": 0.9324,
+        "n": 47
+      },
+      "p_ad_click": {
+        "spearman_r": -0.1582,
+        "p": 0.2881,
+        "n": 47
+      },
+      "p_dd_top_click": {
+        "spearman_r": -0.1487,
+        "p": 0.3185,
+        "n": 47
+      },
+      "regression_rate": {
+        "spearman_r": 0.7162,
+        "p": 0.0,
+        "n": 47
+      },
+      "mean_lhipa": {
+        "spearman_r": -0.5708,
+        "p": 0.0,
+        "n": 47
+      },
+      "ad_over_index": {
+        "spearman_r": 0.1453,
+        "p": 0.3297,
+        "n": 47
+      },
+      "cell_promiscuity_rate": {
+        "spearman_r": 0.137,
+        "p": 0.3586,
+        "n": 47
+      },
+      "mean_touched_fraction": {
+        "spearman_r": 0.159,
+        "p": 0.2856,
+        "n": 47
+      },
+      "any_cell_engagement_rate": {
+        "spearman_r": 0.0924,
+        "p": 0.5368,
+        "n": 47
+      }
+    },
+    "mean_regression_size": {
+      "p_ad_survey": {
+        "spearman_r": -0.0186,
+        "p": 0.901,
+        "n": 47
+      },
+      "p_ad_click": {
+        "spearman_r": -0.0222,
+        "p": 0.8822,
+        "n": 47
+      },
+      "p_dd_top_click": {
+        "spearman_r": 0.0836,
+        "p": 0.5766,
+        "n": 47
+      },
+      "regression_rate": {
+        "spearman_r": 0.2739,
+        "p": 0.0625,
+        "n": 47
+      },
+      "mean_lhipa": {
+        "spearman_r": 0.0036,
+        "p": 0.9806,
+        "n": 47
+      },
+      "ad_over_index": {
+        "spearman_r": 0.0571,
+        "p": 0.7032,
+        "n": 47
+      },
+      "cell_promiscuity_rate": {
+        "spearman_r": 0.0449,
+        "p": 0.7646,
+        "n": 47
+      },
+      "mean_touched_fraction": {
+        "spearman_r": 0.0369,
+        "p": 0.8052,
+        "n": 47
+      },
+      "any_cell_engagement_rate": {
+        "spearman_r": -0.0664,
+        "p": 0.6576,
+        "n": 47
+      }
+    }
+  }
+}
