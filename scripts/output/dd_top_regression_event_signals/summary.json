@@ -1,0 +1,435 @@
+{
+  "n_trials_processed": 1581,
+  "n_regression_events": 5738,
+  "size_groups": {
+    "short(1-2)": [
+      1,
+      2
+    ],
+    "mid(3)": [
+      3
+    ],
+    "long(>=4)": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  "per_metric_summary": {
+    "saccade_mag": {
+      "short(1-2)": {
+        "n": 5159,
+        "median": 115.261,
+        "iqr": [
+          66.287,
+          205.201
+        ],
+        "mean": 151.38,
+        "sd": 116.949
+      },
+      "mid(3)": {
+        "n": 274,
+        "median": 443.623,
+        "iqr": [
+          373.206,
+          523.336
+        ],
+        "mean": 456.614,
+        "sd": 116.286
+      },
+      "long(>=4)": {
+        "n": 305,
+        "median": 674.372,
+        "iqr": [
+          553.001,
+          848.953
+        ],
+        "mean": 724.218,
+        "sd": 213.188
+      }
+    },
+    "saccade_dx_abs": {
+      "short(1-2)": {
+        "n": 5159,
+        "median": 35.0,
+        "iqr": [
+          14.0,
+          81.5
+        ],
+        "mean": 72.035,
+        "sd": 97.027
+      },
+      "mid(3)": {
+        "n": 274,
+        "median": 63.0,
+        "iqr": [
+          19.0,
+          160.25
+        ],
+        "mean": 111.274,
+        "sd": 118.773
+      },
+      "long(>=4)": {
+        "n": 305,
+        "median": 75.0,
+        "iqr": [
+          26.0,
+          179.0
+        ],
+        "mean": 122.656,
+        "sd": 127.555
+      }
+    },
+    "saccade_dy_abs": {
+      "short(1-2)": {
+        "n": 5159,
+        "median": 88.0,
+        "iqr": [
+          44.0,
+          156.0
+        ],
+        "mean": 114.158,
+        "sd": 94.649
+      },
+      "mid(3)": {
+        "n": 274,
+        "median": 410.0,
+        "iqr": [
+          355.25,
+          480.25
+        ],
+        "mean": 429.234,
+        "sd": 106.45
+      },
+      "long(>=4)": {
+        "n": 305,
+        "median": 659.0,
+        "iqr": [
+          535.0,
+          830.0
+        ],
+        "mean": 702.951,
+        "sd": 211.036
+      }
+    },
+    "saccade_horiz_frac": {
+      "short(1-2)": {
+        "n": 5159,
+        "median": 0.296,
+        "iqr": [
+          0.131,
+          0.535
+        ],
+        "mean": 0.35,
+        "sd": 0.256
+      },
+      "mid(3)": {
+        "n": 274,
+        "median": 0.127,
+        "iqr": [
+          0.044,
+          0.295
+        ],
+        "mean": 0.177,
+        "sd": 0.152
+      },
+      "long(>=4)": {
+        "n": 305,
+        "median": 0.103,
+        "iqr": [
+          0.036,
+          0.203
+        ],
+        "mean": 0.135,
+        "sd": 0.118
+      }
+    },
+    "cursor_eye_offset": {
+      "short(1-2)": {
+        "n": 5159,
+        "median": 380.434,
+        "iqr": [
+          230.944,
+          593.11
+        ],
+        "mean": 432.016,
+        "sd": 261.853
+      },
+      "mid(3)": {
+        "n": 274,
+        "median": 487.083,
+        "iqr": [
+          307.437,
+          675.565
+        ],
+        "mean": 495.58,
+        "sd": 270.519
+      },
+      "long(>=4)": {
+        "n": 305,
+        "median": 483.244,
+        "iqr": [
+          290.689,
+          735.853
+        ],
+        "mean": 529.125,
+        "sd": 311.876
+      }
+    },
+    "lfhf_src": {
+      "short(1-2)": {
+        "n": 2055,
+        "median": 19.454,
+        "iqr": [
+          8.695,
+          37.66
+        ],
+        "mean": 31.868,
+        "sd": 41.357
+      },
+      "mid(3)": {
+        "n": 66,
+        "median": 16.65,
+        "iqr": [
+          7.567,
+          35.441
+        ],
+        "mean": 26.534,
+        "sd": 26.561
+      },
+      "long(>=4)": {
+        "n": 43,
+        "median": 12.623,
+        "iqr": [
+          6.875,
+          31.242
+        ],
+        "mean": 27.537,
+        "sd": 34.086
+      }
+    },
+    "lfhf_dst": {
+      "short(1-2)": {
+        "n": 2333,
+        "median": 19.289,
+        "iqr": [
+          8.648,
+          39.418
+        ],
+        "mean": 32.332,
+        "sd": 46.625
+      },
+      "mid(3)": {
+        "n": 92,
+        "median": 19.077,
+        "iqr": [
+          11.509,
+          40.255
+        ],
+        "mean": 33.862,
+        "sd": 43.818
+      },
+      "long(>=4)": {
+        "n": 113,
+        "median": 21.885,
+        "iqr": [
+          11.124,
+          38.515
+        ],
+        "mean": 40.456,
+        "sd": 59.781
+      }
+    },
+    "lfhf_delta": {
+      "short(1-2)": {
+        "n": 1156,
+        "median": 0.625,
+        "iqr": [
+          -17.574,
+          19.398
+        ],
+        "mean": 1.754,
+        "sd": 58.302
+      },
+      "mid(3)": {
+        "n": 36,
+        "median": -3.626,
+        "iqr": [
+          -23.442,
+          17.686
+        ],
+        "mean": -5.212,
+        "sd": 41.137
+      },
+      "long(>=4)": {
+        "n": 20,
+        "median": 15.841,
+        "iqr": [
+          -7.488,
+          32.405
+        ],
+        "mean": 10.216,
+        "sd": 44.584
+      }
+    },
+    "dest_fix_duration_ms": {
+      "short(1-2)": {
+        "n": 5159,
+        "median": 174.0,
+        "iqr": [
+          119.0,
+          248.0
+        ],
+        "mean": 202.237,
+        "sd": 121.143
+      },
+      "mid(3)": {
+        "n": 274,
+        "median": 181.0,
+        "iqr": [
+          120.0,
+          241.0
+        ],
+        "mean": 196.478,
+        "sd": 102.922
+      },
+      "long(>=4)": {
+        "n": 305,
+        "median": 167.0,
+        "iqr": [
+          113.0,
+          247.0
+        ],
+        "mean": 188.603,
+        "sd": 108.935
+      }
+    }
+  },
+  "short_vs_long_tests": {
+    "saccade_mag": {
+      "n_a": 5159,
+      "n_b": 305,
+      "median_a": 115.2606,
+      "median_b": 674.3723,
+      "observed_diff_b_minus_a": 559.1117,
+      "bootstrap_95ci": [
+        536.2218,
+        595.7958
+      ],
+      "permutation_p_two_sided": 0.0,
+      "n_permutations": 10000
+    },
+    "saccade_dx_abs": {
+      "n_a": 5159,
+      "n_b": 305,
+      "median_a": 35.0,
+      "median_b": 75.0,
+      "observed_diff_b_minus_a": 40.0,
+      "bootstrap_95ci": [
+        23.0,
+        56.0
+      ],
+      "permutation_p_two_sided": 0.0,
+      "n_permutations": 10000
+    },
+    "saccade_dy_abs": {
+      "n_a": 5159,
+      "n_b": 305,
+      "median_a": 88.0,
+      "median_b": 659.0,
+      "observed_diff_b_minus_a": 571.0,
+      "bootstrap_95ci": [
+        542.0,
+        591.0
+      ],
+      "permutation_p_two_sided": 0.0,
+      "n_permutations": 10000
+    },
+    "saccade_horiz_frac": {
+      "n_a": 5159,
+      "n_b": 305,
+      "median_a": 0.296,
+      "median_b": 0.1026,
+      "observed_diff_b_minus_a": -0.1934,
+      "bootstrap_95ci": [
+        -0.2185,
+        -0.169
+      ],
+      "permutation_p_two_sided": 0.0,
+      "n_permutations": 10000
+    },
+    "cursor_eye_offset": {
+      "n_a": 5159,
+      "n_b": 305,
+      "median_a": 380.434,
+      "median_b": 483.2442,
+      "observed_diff_b_minus_a": 102.8103,
+      "bootstrap_95ci": [
+        61.8691,
+        149.2263
+      ],
+      "permutation_p_two_sided": 0.0,
+      "n_permutations": 10000
+    },
+    "lfhf_src": {
+      "n_a": 2055,
+      "n_b": 43,
+      "median_a": 19.4545,
+      "median_b": 12.6226,
+      "observed_diff_b_minus_a": -6.8319,
+      "bootstrap_95ci": [
+        -8.7148,
+        2.7195
+      ],
+      "permutation_p_two_sided": 0.0884,
+      "n_permutations": 10000
+    },
+    "lfhf_dst": {
+      "n_a": 2333,
+      "n_b": 113,
+      "median_a": 19.289,
+      "median_b": 21.8848,
+      "observed_diff_b_minus_a": 2.5958,
+      "bootstrap_95ci": [
+        -2.5771,
+        10.1637
+      ],
+      "permutation_p_two_sided": 0.2851,
+      "n_permutations": 10000
+    },
+    "lfhf_delta": {
+      "n_a": 1156,
+      "n_b": 20,
+      "median_a": 0.6249,
+      "median_b": 15.8414,
+      "observed_diff_b_minus_a": 15.2164,
+      "bootstrap_95ci": [
+        -5.7663,
+        26.8817
+      ],
+      "permutation_p_two_sided": 0.0374,
+      "n_permutations": 10000
+    },
+    "dest_fix_duration_ms": {
+      "n_a": 5159,
+      "n_b": 305,
+      "median_a": 174.0,
+      "median_b": 167.0,
+      "observed_diff_b_minus_a": -7.0,
+      "bootstrap_95ci": [
+        -20.0,
+        13.0
+      ],
+      "permutation_p_two_sided": 0.4338,
+      "n_permutations": 10000
+    }
+  },
+  "notes": {
+    "lfhf_coverage": "per-position LF/HF is null when the source or destination organic position had < 80 pupil samples (Welch window threshold). Events with null lfhf_src or lfhf_dst are excluded from lfhf_delta but counted for single-end metrics.",
+    "saccade_geometry": "page-space pixels. organic_K is at increasing y as K increases, so regressive saccades have negative dy (we abs-value here).",
+    "cursor_eye_offset": "Euclidean distance at the destination fixation's start timestamp, cursor side from nearest mousemove event in time."
+  }
+}
