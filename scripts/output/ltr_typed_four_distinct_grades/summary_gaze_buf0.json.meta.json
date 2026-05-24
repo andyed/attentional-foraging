@@ -1,0 +1,14 @@
+{
+  "dataset_path": "AdSERP/data/cursor-approach-features-typed.json",
+  "dataset_sha256": "f1fe402fccfa426b0d06aa6dcddf235eb6d41c1c5a5958297f825dd5ba5936fa",
+  "figure_version": "four-grade-distinct-gaze-labels",
+  "h_ids": [],
+  "muriel_version": "0.6.0",
+  "nb_k_ids": [],
+  "notes": "4-grade vs 3-grade LTR comparison; label-source=gaze (gaze regression ground truth (LAB))",
+  "run_utc": "2026-05-23T20:27:11+00:00",
+  "schema_version": 1,
+  "script_dirty": true,
+  "script_path": "/Users/andyed/Documents/dev/attentional-foraging/scripts/ltr_typed_four_distinct_grades.py",
+  "script_sha": "7be3d345"
+}

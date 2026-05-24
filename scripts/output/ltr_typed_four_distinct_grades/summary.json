@@ -1,0 +1,76 @@
+{
+  "_provenance": {
+    "dataset_path": "AdSERP/data/cursor-approach-features-typed.json",
+    "dataset_sha256": "f1fe402fccfa426b0d06aa6dcddf235eb6d41c1c5a5958297f825dd5ba5936fa",
+    "figure_version": "four-grade-distinct-vs-three-grade-collapse",
+    "h_ids": [],
+    "muriel_version": "0.6.0",
+    "nb_k_ids": [],
+    "notes": "Direct test: does the 4th class earn its grade for ranking?",
+    "run_utc": "2026-05-11T00:48:44+00:00",
+    "schema_version": 1,
+    "script_dirty": true,
+    "script_path": "/Users/andyed/Documents/dev/attentional-foraging/scripts/ltr_typed_four_distinct_grades.py",
+    "script_sha": "8e9a578c"
+  },
+  "dataset": {
+    "class_distribution": {
+      "CLICKED": 2588,
+      "DEFERRED": 2567,
+      "EVAL_REJECTED": 569,
+      "NotApprAbove": 5340,
+      "NotApprBelow_EXCLUDED": 8651
+    },
+    "participants": 47,
+    "records_dropped_NotApprBelow": 8651,
+    "records_kept": 11064,
+    "records_total": 19715,
+    "trials": 2774
+  },
+  "experiment": "LTR four-class taxonomy: 4 distinct grades (3/2/1/0) vs 3-grade collapse (2/1/0/0)",
+  "features": [
+    "total_dwell_ms",
+    "min_dist",
+    "mean_dist",
+    "dwell_in_proximity_ms",
+    "mean_approach_velocity",
+    "max_approach_velocity",
+    "direction_changes",
+    "frac_decreasing"
+  ],
+  "headlines": {
+    "delta_mrr10_3grade_minus_binary": 0.051164224019145,
+    "delta_mrr10_4grade_minus_3grade": 0.005811916361442182,
+    "delta_mrr10_4grade_minus_binary": 0.05697614038058718,
+    "delta_ndcg10_4grade_minus_3grade": 0.0019049399270194556
+  },
+  "metrics": {
+    "LR pointwise (binary click)": {
+      "mrr10": 0.7337157660991857,
+      "n_trials": 2532,
+      "ndcg10": 0.7921274335150862
+    },
+    "LambdaMART (3-grade collapse, 2/1/0/0)": {
+      "mrr10": 0.7364237709940057,
+      "n_trials": 2532,
+      "ndcg10": 0.7947742606342092
+    },
+    "LambdaMART (4 distinct grades, 3/2/1/0)": {
+      "mrr10": 0.7422356873554479,
+      "n_trials": 2532,
+      "ndcg10": 0.7966792005612287
+    },
+    "LambdaMART (binary click)": {
+      "mrr10": 0.6852595469748607,
+      "n_trials": 2532,
+      "ndcg10": 0.7525230037453992
+    },
+    "Original SERP position (no ML)": {
+      "mrr10": 0.46018454462764397,
+      "n_trials": 2532,
+      "ndcg10": 0.578324869532282
+    }
+  },
+  "note": "no position feature; LOSO by participant; train on kept rows, predict on all.",
+  "question": "Does promoting eval-rejected to a grade above not-approached lift MRR?"
+}
