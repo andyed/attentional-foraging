@@ -1,6 +1,6 @@
 # Prior Art: AOI-Keyed Interaction Logging
 
-Compiled 2026-05-17 for the attentional-foraging research program. Covers the competitive landscape of systems that log user interaction relative to Areas of Interest (AOIs) or semantically-typed content blocks. Supports CIKM 2026 related-work positioning, the AllSERP companion paper, and any future grant/positioning work on the typed-AOI representational claim.
+Compiled 2026-05-17 for the attentional-foraging research program. Covers the competitive landscape of systems that log user interaction relative to Areas of Interest (AOIs) or semantically-typed content blocks. Supports the paper related-work positioning, the AllSERP companion paper, and any future grant/positioning work on the typed-AOI representational claim.
 
 ---
 
@@ -115,4 +115,4 @@ This is the resilience argument that the four-bucket table makes concrete: every
 
 ---
 
-*Source: this document captures an observation that came up in CIKM 2026 paper drafting on 2026-05-17. Saved here because the observation is research-program-level (applies to AllSERP, future grants, OSEC task-model paper) rather than CIKM-paper-specific.*
+*Source: this document captures an observation that came up in methods paper drafting on 2026-05-17. Saved here because the observation is research-program-level (applies to AllSERP, future grants, OSEC task-model paper) rather than methods-paper-specific.*

@@ -118,7 +118,7 @@ whether content alone explains any dwell variance *above rank*, then
 residualize and re-test. Prediction: that version will also null (because
 content R² is 1.9 % / 2.5 % without FE in the model too), but the test
 would separate "content is irrelevant" from "FE consumed the signal."
-Filed as follow-up; not blocking for the CIKM paper because the *direction*
+Filed as follow-up; not blocking for the methods paper because the *direction*
 of the Δ is robust — the residualization does not help, regardless of FE.
 
 ## What was learned anyway

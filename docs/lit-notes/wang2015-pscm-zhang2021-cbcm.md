@@ -84,7 +84,7 @@ Then §2.7 narrative becomes:
 
 > Within-SERP forward and regressive evaluation has been decomposed at *click-model* granularity by Wang et al. [PSCM, SIGIR '15] and Zhang et al. [CBCM, WWW '21], but not at task-model granularity by either tradition this paper draws on. PSCM/CBCM treat direction as a feature in the click likelihood; OSEC reframes forward and regressive as task states with separable motor signatures (§5.7), separable pupillometric profiles, and separable kinematic geometry (§3.5).
 
-### CIKM 2026 paper
+### methods paper
 
 The §1 cascade/DBN/UBM/sequence-model paragraph needs to add PSCM/CBCM. Sample insertion after the existing "Cascade [Craswell et al., WSDM 2008], DBN [Chapelle & Zhang, WWW 2009], and UBM [Dupret & Piwowarski, SIGIR 2008]" line:
 

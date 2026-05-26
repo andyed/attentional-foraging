@@ -258,7 +258,7 @@ Highlights from the full [TODO.md](./TODO.md):
 
 2. **Deeper connection to prior work on cursor signals.** Reference docs trace the lineage through Huang/White/Buscher (gaze-cursor alignment, CHI '12), Guo & Agichtein (cursor for relevance, WWW '12 and earlier), Arapakis & Leiva (engagement from 638 cursor features, SIGIR '16), and the Attentive Cursor Dataset (2,737 users, Frontiers '20). The contribution of this project — the OSEC task model — is what that 15-year feature-engineering tradition was missing.
 
-A CIKM 2026 paper draft is in progress; the library is the deployable form for production search UIs.
+A methods paper draft is in progress; the library is the deployable form for production search UIs.
 
 ## Citation
 

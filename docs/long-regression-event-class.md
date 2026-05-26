@@ -99,7 +99,7 @@ Together with the near-pure-vertical saccade signature here, long regressions ar
 
 - **For the task model**: long regression as a discrete within-trial transition with characteristic kinematics (near-vertical saccade + transient cursor desync) is a clean predicted event-class for a state-based model. It doesn't need a "long-jumper" participant cluster.
 - **For prior elicitation**: the gaze-saccade signature differs from the click signature. A user can be a low-ad-clicker but a high-vertical-leaper; these are different observation windows on the same cursor-gaze stream.
-- **For the AllSERP arxiv update**: this complements the cell-promiscuity finding. CIKM headline = per-AOI labels at result level. arxiv += two within-event characterizations (cell sub-bbox engagement; long-regression saccade geometry) that the v1.0.0 substrate doesn't expose.
+- **For the AllSERP arxiv update**: this complements the cell-promiscuity finding. Paper headline = per-AOI labels at result level. arxiv += two within-event characterizations (cell sub-bbox engagement; long-regression saccade geometry) that the v1.0.0 substrate doesn't expose.
 
 ---
 

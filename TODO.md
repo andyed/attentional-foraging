@@ -2,8 +2,8 @@
 
 Organized by paper track, then by infrastructure / open research.
 
-CIKM 2026 paper shipped at `v1.0.0` (2026-05-24). Items that were
-CIKM-anchored or covered by 2026-05-24 findings are archived at the
+methods paper shipped at `v1.0.0` (2026-05-24). Items that were
+paper-anchored or covered by 2026-05-24 findings are archived at the
 bottom of this file.
 
 ---
@@ -17,9 +17,9 @@ aware extensions that the v1.0.0 substrate physically cannot resolve.
 
 - [ ] **Validate 1D-analysis reproducibility against v1.0.0 anchor.**
   Re-run the §5 driver scripts (the five drivers in
-  [`cikm-leakycursor/reproducibility-map.tex`](../cikm-leakycursor/reproducibility-map.tex))
+  [`paper repo/reproducibility-map.tex`](../paper repo/reproducibility-map.tex))
   against `v1.0.0`-tagged code; confirm numbers in summary sidecars
-  reproduce. The v1.0.0 tag freezes the CIKM-cited state for the
+  reproduce. The v1.0.0 tag freezes the paper-cited state for the
   arxiv update to anchor against.
 - [ ] **Promote `F:ad-utility-prior` into AllSERP §X.** Per-participant
   ad-utility axis (gaze-derived prior × click behavior). Source:
@@ -45,7 +45,7 @@ aware extensions that the v1.0.0 substrate physically cannot resolve.
   structure with weighted transition entropy 2.17 bits (vs 4.91-bit
   ceiling). Substrate for any future semi-Markov / matrix-cluster
   segmentation work. Source: [`scripts/output/dd_top_markov/`](scripts/output/dd_top_markov/).
-- [ ] **CIKM headline: 4-fixation visual budget.** Internal anchor at
+- [ ] **Paper headline: 4-fixation visual budget.** Internal anchor at
   [`docs/findings.md`](docs/findings.md) §10c (committed `60c2cc7a`).
   Held for arxiv preprint anchor; now land in the AllSERP update
   rather than as a separate post.
@@ -360,22 +360,22 @@ mechanism. Not active.
 
 ## Archive (closed 2026-05-24)
 
-### CIKM 2026 paper shipped at `v1.0.0`
+### methods paper shipped at `v1.0.0`
 
-The CIKM 2026 paper is frozen at the `v1.0.0` tag (attentional-foraging
+The methods paper is frozen at the `v1.0.0` tag (attentional-foraging
 `3fd6765a`, approach-retreat `4b1a010`). Items below were either landed
 in the camera-ready or are now moot because the paper has shipped.
 Subsequent extensions land in the AllSERP arxiv update (see top of file).
 
-- Promote bbox `K-bbox-*` values into CIKM paper draft — done in
+- Promote bbox `K-bbox-*` values into methods paper draft — done in
   camera-ready; paper frozen.
 - Ordinal reframe + LambdaMART for paper-v4 §4.2/§4.5 — paper shipped
   at v1.0.0; ordinal/LambdaMART now part of the AllSERP update.
-- Cross-paper drift on `> 15 s time-to-click` boundary — CIKM frozen;
+- Cross-paper drift on `> 15 s time-to-click` boundary — paper frozen;
   task-model paper aligns against v1.0.0 reference.
-- Ski-jump table units cross-paper drift — same; CIKM frozen.
+- Ski-jump table units cross-paper drift — same; paper frozen.
 - Four-class taxonomy cross-ref in task-model paper — points to
-  CIKM v1.0.0 anchor.
+  paper v1.0.0 anchor.
 
 ### Individual differences items (covered by 2026-05-24 findings)
 
@@ -386,7 +386,7 @@ Subsequent extensions land in the AllSERP arxiv update (see top of file).
   [`docs/dd-top-cell-promiscuity.md`](docs/dd-top-cell-promiscuity.md).
 - **Connect to Dumais et al. (IIiX 2010)** — lit-note shipped at
   `approach-retreat/docs/references/dumais-2010-individual.md` and
-  cited in the §4 companion-notebooks scaffold of CIKM v1.0.0.
+  cited in the §4 companion-notebooks scaffold of paper v1.0.0.
 - **Connect to Buscher/Huang et al. (WSDM 2012)** — covered in the
   cell-promiscuity finding's prior-art positioning; full citation
   treatment slots into AllSERP update.

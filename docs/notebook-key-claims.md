@@ -290,7 +290,7 @@ This unblocks NB20, NB21, NB22, NB24, NB28 — all consume `cursor-approach-feat
 >
 > **Approach share drops because gap regions (between cards) no longer count as approach failures.** Under absolute, cursor trajectories that drifted into the inter-card gap registered as "approached position N" with high min_dist; under bbox those gaps are not assigned to any AOI, so they no longer pollute the approach denominator. The 28.2% → 23.3% shift reflects cleaner per-AOI distance calculations.
 >
-> **Approach + rejected = the consideration-set core.** That's the primary CIKM target population: positions the cursor approached but the user didn't click. Under bbox: 14.0% of all (trial, position) records (vs 17.5% under absolute). The number drops because gap-region "approaches" are correctly removed from the numerator.
+> **Approach + rejected = the consideration-set core.** That's the primary target population: positions the cursor approached but the user didn't click. Under bbox: 14.0% of all (trial, position) records (vs 17.5% under absolute). The number drops because gap-region "approaches" are correctly removed from the numerator.
 
 ---
 
@@ -463,7 +463,7 @@ The LOSO classifier was retrained on `cursor-approach-features-organic.json` (14
 
 ### 2026-05-07 — Looking into the corners (cursor-blind regaze inference)
 
-*Added 2026-05-07. Verified against script outputs in `scripts/output/regaze_no_rehover/{summary.json, minimal_4_summary.json, three_tier_recovery.json}`. These claims anchor the CIKM 2026 paper's §4.3 Figure 3 and §5 "Looking into the corners" framing.*
+*Added 2026-05-07. Verified against script outputs in `scripts/output/regaze_no_rehover/{summary.json, minimal_4_summary.json, three_tier_recovery.json}`. These claims anchor the methods paper's §4.3 Figure 3 and §5 "Looking into the corners" framing.*
 
 The cursor-blind subset (clicked + approached + cursor visit_count == 1) is the **junction the task model predicts is non-empty even when the visit-count detector returns null** — the four-class taxonomy's "approached but no obvious cursor reapproach" corner. The K-leak-* IDs below quantify what's recoverable there.
 
@@ -493,7 +493,7 @@ The cursor-blind subset (clicked + approached + cursor visit_count == 1) is the 
 >
 > **Why this lives in NB22.** The cursor-blind regaze inference depends on this notebook's `gaze_regression_label` as ground truth and the four-class taxonomy as the population definition. The producer scripts above are downstream of NB22's gaze-regression detection logic; the K-leak-* claims are NB22-derived findings even though they were computed from external scripts rather than this notebook's own cells. Re-running the scripts after any change to NB22's regression-label producer must update the K-leak-* values here.
 >
-> **CIKM 2026 paper anchors.** Abstract reports K-leak-1, K-leak-2, K-leak-4 (and the universality scoping). §4.3 reports K-leak-3, K-leak-3b, K-leak-4, K-leak-5, K-leak-6, K-leak-7a. Figure 3 plots K-leak-8 (panel a) and per-fold AUCs from K-leak-4 / K-leak-5 (panel b). §4.6 references K-leak-1 and K-leak-8. §5 ("Looking into the corners") frames the methodology.
+> **methods paper anchors.** Abstract reports K-leak-1, K-leak-2, K-leak-4 (and the universality scoping). §4.3 reports K-leak-3, K-leak-3b, K-leak-4, K-leak-5, K-leak-6, K-leak-7a. Figure 3 plots K-leak-8 (panel a) and per-fold AUCs from K-leak-4 / K-leak-5 (panel b). §4.6 references K-leak-1 and K-leak-8. §5 ("Looking into the corners") frames the methodology.
 
 ---
 
@@ -594,7 +594,7 @@ NB22 defines the four classes via cursor approach (min_dist < 100 px) + **gaze r
 > - K7 proximity-dwell gap: p 5.0 × 10⁻⁹ → **1.36 × 10⁻¹⁶**
 > - K11 M3 LOSO AUC: 0.792 → **0.859** (+0.067, a large effect in prediction space)
 >
-> Direction and significance of every headline result preserved; magnitudes all strengthened. The deferred vs rejected motor-signature dissociation — the CIKM 2026 paper's central empirical claim — is now on dramatically firmer statistical ground. See `docs/drafts/coord_fix_snapshot_20260412/`.
+> Direction and significance of every headline result preserved; magnitudes all strengthened. The deferred vs rejected motor-signature dissociation — the methods paper's central empirical claim — is now on dramatically firmer statistical ground. See `docs/drafts/coord_fix_snapshot_20260412/`.
 >
 > **K-bbox-* vs legacy K-IDs.** Legacy K1–K4 use a different denominator (n_results per trial counts h3+ads positions, not bbox organics). The cascade-recomputed K-bbox-1..4 use bbox-organic positions. Total class counts therefore differ by construction; use K-bbox-* for AR replay regeneration and paper figures.
 
@@ -1598,7 +1598,7 @@ The 2026-05-01 AOI-pipeline cascade shifted both inputs that NB28's calibration 
 1. **`cursor-approach-features-organic.json`** (14,760 records / 2,701 trials, +10% records / +15% trials) — produced by `scripts/compute_cursor_approach_features.py --attribution organic` (commit `8bb800fd`).
 2. **`regression_labels_cache_organic.json`** (8,747 deferred / 6,013 not-deferred, 59.3% deferred rate vs the legacy 64.7%) — produced by `scripts/compute_regression_labels.py --attribution organic` (committed in this batch).
 
-**The K-claims block below (K1–K14, K10.0–K10.5) reflects pre-cascade absolute-rank attribution** and is preserved here as the legacy baseline. The calibration retrain on the new bbox-attributed inputs has NOT yet run — that's a multi-hour bootstrap (1,000 seeds × 47-fold StratifiedGroupKFold) and gates the CIKM paper §5 viewport-bands result. Inputs are ready; producer pipeline is `notebooks-v2/28_viewport_bands.ipynb` re-execution against the `-organic.json` siblings.
+**The K-claims block below (K1–K14, K10.0–K10.5) reflects pre-cascade absolute-rank attribution** and is preserved here as the legacy baseline. The calibration retrain on the new bbox-attributed inputs has NOT yet run — that's a multi-hour bootstrap (1,000 seeds × 47-fold StratifiedGroupKFold) and gates the methods paper §5 viewport-bands result. Inputs are ready; producer pipeline is `notebooks-v2/28_viewport_bands.ipynb` re-execution against the `-organic.json` siblings.
 
 **Expected directional shift** based on adjacent notebooks:
 - bands-alone AUC may strengthen modestly (similar to NB21:K-bbox-3 nudging 0.859 → 0.865)
@@ -1884,7 +1884,7 @@ The banded decomposition (A: `vt_top`, `vt_mid`, `vt_bot`) can stay behind an op
 |---|---|---|
 | K23 | Windowing — rolling 5-second window ending at click_t vs cumulative-since-AOI-first-seen | Cumulative B pooled 0.798 → rolling 0.704; cumulative B∪C pooled 0.817 → rolling 0.698. Paired Δ(cumulative − rolling) = +0.1194 per-p (43/47, p < 0.0001). Within the rolling window, B∪C > B is null (Δ = −0.005, p = 0.86). The deferred-vs-rejected signal requires cumulative accumulation; a 5-second window drops the features to near-chance. |
 
-### EWM empirical signatures (2026-04-19) — feeds §4.5 of the CIKM draft
+### EWM empirical signatures (2026-04-19) — feeds §4.5 of the paper draft
 
 Direct Mann–Whitney two-sided tests of the raw features on the approached ∧ ¬clicked subset. Predictions from Gray & Fu 2004 / SCH framing (viewport as the external working memory buffer, trajectory features as EWM management actions).
 

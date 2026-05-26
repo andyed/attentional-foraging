@@ -188,7 +188,7 @@ Ordered by likelihood of changing a downstream result.
 - **`docs/ad-utility-prior.md`** — the AdSERP demonstration writeup as a finding.
 - **`docs/findings.md` §12** — short summary in the findings index, cross-link to the deep doc.
 - **Task-model paper** — empirical anchor for the rank-value-prior framing in §11 (or successor section). The rational-analysis interpretation now has a measured prior, not just a framing hypothesis.
-- **CIKM 2026 paper** — candidate premise for the four-class taxonomy: consideration-set composition (clicked / deferred / evaluated-rejected / not-approached) should be conditional on prior.
+- **methods paper** — candidate premise for the four-class taxonomy: consideration-set composition (clicked / deferred / evaluated-rejected / not-approached) should be conditional on prior.
 - **Standalone methods paper (candidate)** — a methods-track venue (CHI methods, IUI, HFES, JEMR) is the right home for the protocol contribution. The ad-utility result is the demonstration; the contribution is the protocol itself.
 
 ## 10. Status

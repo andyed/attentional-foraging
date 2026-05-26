@@ -16,11 +16,11 @@ Current Tier A notebooks:
 
 | Notebook | Cites into |
 |---|---|
-| NB11 `individual_differences` | CIKM 2026, CHI 2027, ETTAC |
-| NB11.5 `chattiness_traits` | CIKM 2026 §4.3 robustness |
+| NB11 `individual_differences` | the paper, CHI 2027, ETTAC |
+| NB11.5 `chattiness_traits` | the paper §4.3 robustness |
 | NB13 `survey_phase` | arXiv task-model paper §3, CHI 2027 |
 | NB14 `butterworth_cognitive_load` | **ETTAC 2026 (headline)**, CHI 2027 |
-| NB21 `click_prediction` | CIKM 2026 §4, CHI 2027 |
+| NB21 `click_prediction` | the paper §4, CHI 2027 |
 
 **Required of a Tier A notebook:**
 

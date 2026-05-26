@@ -156,9 +156,9 @@ Their RQ2 finding (CL highest at begin, decreases over time, "cognitive adaptati
 - Don't position AdSERP as her standalone-RIPA pub; she's already published the empirical RIPA2 paper.
 - Position AdSERP as a **next corpus** her published method extends to: n=47 (vs her 30), 2,719 trials, naturalistic SERP with click-outcome ground truth and AOI structure — features her n=30 controlled study lacks. Useful for replication / external-validity claims.
 
-### CIKM 2026 (Andy + Jacek)
+### the paper (Andy + Jacek)
 
-Saccade-orientation lane is independent of pupillometry → no overlap with this paper. The CIKM submission's pupil components (if any) need positioning that doesn't compete with Jayawardena 2026's claim ground.
+Saccade-orientation lane is independent of pupillometry → no overlap with this paper. The methods paper's pupil components (if any) need positioning that doesn't compete with Jayawardena 2026's claim ground.
 
 ### CHI 2027 task-model paper
 

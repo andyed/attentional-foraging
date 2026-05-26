@@ -3,7 +3,7 @@
 **Date:** 2026-05-04
 **Stable ID:** F:ad-utility-prior
 **Source:** `scripts/ad_utility_prior_analysis.py` → `scripts/output/ad_utility_prior/{summary.json, per_participant.csv}`
-**Anchor for:** task-model paper (rank-value-prior framing, central premise); CIKM 2026 paper (worth premise candidate)
+**Anchor for:** task-model paper (rank-value-prior framing, central premise); methods paper (worth premise candidate)
 **Method spec:** [`methodology/gaze-prior-elicitation.md`](./methodology/gaze-prior-elicitation.md) frames this finding as the demonstration of a non-disruptive prior-elicitation protocol — three-layer leak structure (orient / survey / per-participant variance), McFadden floor + agent-specific overlay made directly observable.
 
 ---
@@ -85,7 +85,7 @@ The task-model paper's closing interpretation references "the agent's beliefs ab
 
 For the **task-model paper**: this is the empirical anchor for the rank-value-prior axis. The framework is no longer hypothetical — there's a measured prior, a measured behavioral consequence, and an orthogonality to existing axes that makes it a third dimension rather than a re-projection.
 
-For the **CIKM paper**: this is a candidate premise for the four-class taxonomy. If users have heterogeneous priors over rank-value (specifically ad-utility), the consideration set composition (clicked / deferred / evaluated-rejected / not-approached) per trial should differ in interpretable ways across the prior dimension. A participant with a high ad-utility prior is structurally more likely to commit to ad surfaces and structurally less likely to defer organics with similar dwell — testable.
+For the **methods paper**: this is a candidate premise for the four-class taxonomy. If users have heterogeneous priors over rank-value (specifically ad-utility), the consideration set composition (clicked / deferred / evaluated-rejected / not-approached) per trial should differ in interpretable ways across the prior dimension. A participant with a high ad-utility prior is structurally more likely to commit to ad surfaces and structurally less likely to defer organics with similar dwell — testable.
 
 ## §6 Limitations
 

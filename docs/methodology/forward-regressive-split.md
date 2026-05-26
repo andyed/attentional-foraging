@@ -174,7 +174,7 @@ Ordered by likelihood of changing a downstream result.
 - **NB17 scroll retreats** — sanity-checks classifier agreement with the scroll-only retreat detector.
 - **NB01 convergence** — direction split on mouse-gaze distance.
 - **NB05 LHIPA** — direction split on aggregate plot only (per-position split under-powered).
-- **CIKM 2026 paper-v3, §4 (geometry) and §5 (deferred / eval-rejected split)** — pooled retreat geometry needs forward-only re-statement before numbers freeze.
+- **methods paper-v3, §4 (geometry) and §5 (deferred / eval-rejected split)** — pooled retreat geometry needs forward-only re-statement before numbers freeze.
 - **`approach-retreat` library** — `direction` exposed as a first-class field on every retreat / approach object.
 
 ## 10. Status

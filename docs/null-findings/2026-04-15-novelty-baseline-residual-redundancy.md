@@ -3,7 +3,7 @@
 **Date:** 2026-04-15
 **Notebooks:** [`25_lexical_novelty_dwell.ipynb`](../../notebooks-v2/25_lexical_novelty_dwell.ipynb), [`27_mobile_portable_ablation.ipynb`](../../notebooks-v2/27_mobile_portable_ablation.ipynb)
 **Regime:** `[LAB]` — both analyses use AdSERP gaze fixation data and scroll-derived viewport dwell.
-**Outcome:** **Kept out of the CIKM paper.** Documented here because the pattern appeared twice and is worth flagging as a project-level methodological constraint, not just an accident of one run.
+**Outcome:** **Kept out of the methods paper.** Documented here because the pattern appeared twice and is worth flagging as a project-level methodological constraint, not just an accident of one run.
 
 ## TL;DR
 

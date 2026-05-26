@@ -142,7 +142,7 @@ Classic approach-retreat around the eventual winner: early alternation with ad s
 
 ### Open
 
-- Aggregate AR analysis across all subjects × all stimuli (the CIKM-relevant step).
+- Aggregate AR analysis across all subjects × all stimuli (the paper-relevant step).
 - AR directionality metric: transitions to lower-rank vs higher-rank AOIs at fixation-to-fixation cadence.
 - Mobile-layout vs desktop-layout within-subject comparison (run the full pipeline on D1/D2 arms too — only Phase 2 desktop scout is downloaded so far; full D1/D2 zips are ~3 GB additional).
 - Interpolate scroll at fixation boundaries rather than raw 60 Hz samples (reduces scroll-mid-saccade aliasing).
@@ -171,7 +171,7 @@ Use cases where `[LAB-SCHUL]` adds genuine leverage:
 - **Sub-element AOIs** (`o02a-g`, `tt01a-d`, shopping `s01-03`) — finer than AdSERP's ad/organic bboxes.
 - **Scroll as explicit input** — `MouseClicks` + `KeyStroke` in Data.xml *are* the scroll sequence, so scroll can be analyzed as a discrete action stream rather than a continuous signal.
 
-## What this dataset can support in the CIKM 2026 paper
+## What this dataset can support in the methods paper
 
 - Generalization of AR from AdSERP (desktop, mouse) → Schul (desktop, mouse, mobile-layout).
 - Bands vs continuous viewport analytics: mobile layout has longer pages (up to 7076 px = ~10 viewports) — much more AR runway than AdSERP.

@@ -3,11 +3,11 @@
 **Date:** 2026-04-15
 **Notebook:** [`notebooks-v2/26_ltr_graded_relevance.ipynb`](../../notebooks-v2/26_ltr_graded_relevance.ipynb)
 **Regime:** `[LAB]` four-cell labels (requires NB22 gaze-regression)
-**Outcome:** **Not in the CIKM paper.** Kept as a null finding and a methodological note.
+**Outcome:** **Not in the methods paper.** Kept as a null finding and a methodological note.
 
 ## TL;DR
 
-A direct empirical validation of the CIKM graded-relevance reframe: train an LTR-style ranker on the 3-cell graded labels (clicked=2, deferred=1, eval-rejected + not-approached-above-click=0) vs. on binary click/no-click-above labels, on a 5-feature set (no position), with 47-fold leave-one-participant-out CV. The headline test: does the graded-trained ranker produce a higher MRR@10 than the binary-trained ranker?
+A direct empirical validation of the graded-relevance reframe: train an LTR-style ranker on the 3-cell graded labels (clicked=2, deferred=1, eval-rejected + not-approached-above-click=0) vs. on binary click/no-click-above labels, on a 5-feature set (no position), with 47-fold leave-one-participant-out CV. The headline test: does the graded-trained ranker produce a higher MRR@10 than the binary-trained ranker?
 
 On the **labeled subset** (the training-side exclusion drops not-approached-below-click records, leaving ~3.7 records per trial), the graded ranker beats binary with a directionally small but statistically detectable paired Wilcoxon signed-rank p = 0.025 — graded ≥ binary in 31 of 47 participants.
 
@@ -87,23 +87,23 @@ Leave-one-participant-out, 47 folds (matches §4.1 M4 LOSO). Binary ranker: `skl
 
 ## What was learned anyway
 
-1. **Training-label format has a directional effect on ranker quality** in the matched-feature, matched-protocol contrast we ran. Graded ≥ binary in 27 / 47 participants on the full SERP and 31 / 47 on the labeled subset — both above chance by ~15 pp. The effect is small but consistent across partitions. This is a narrow but real finding that supports the CIKM graded-relevance reframe's theoretical claim (the three-class label structure contains information binary click labels don't) without requiring the ranker to beat Google.
+1. **Training-label format has a directional effect on ranker quality** in the matched-feature, matched-protocol contrast we ran. Graded ≥ binary in 27 / 47 participants on the full SERP and 31 / 47 on the labeled subset — both above chance by ~15 pp. The effect is small but consistent across partitions. This is a narrow but real finding that supports the graded-relevance reframe's theoretical claim (the three-class label structure contains information binary click labels don't) without requiring the ranker to beat Google.
 
 2. **The training-side exclusion is load-bearing for training but hazardous for evaluation.** Any future full-SERP evaluation should include all 10 records at score time even if the ranker was trained on a filtered subset. This also documents the methodological trap cleanly: the labeled-subset MRR looks ~1.5× better than the full-SERP MRR (0.61 vs 0.46), which is the kind of artifact that walks into a paper if unchecked.
 
-3. **For a stronger empirical validation of the graded-relevance reframe**, we would need (i) a stronger ranker family (LambdaMART instead of LR/Ridge), (ii) more features (add M4 cursor features to the 5 text features — making the ranker LAB-deployable but more powerful), (iii) more training data (production-scale with tens of thousands of participants) — any of which could lift the paired Δ past the noise floor. None of these is in scope for the CIKM window.
+3. **For a stronger empirical validation of the graded-relevance reframe**, we would need (i) a stronger ranker family (LambdaMART instead of LR/Ridge), (ii) more features (add M4 cursor features to the 5 text features — making the ranker LAB-deployable but more powerful), (iii) more training data (production-scale with tens of thousands of participants) — any of which could lift the paired Δ past the noise floor. None of these is in scope for the submission window.
 
 ## Pointers
 
 - Notebook: [`notebooks-v2/26_ltr_graded_relevance.ipynb`](../../notebooks-v2/26_ltr_graded_relevance.ipynb)
 - Split embeddings: [`scripts/embed_serp_results_split.py`](../../scripts/embed_serp_results_split.py) → `AdSERP/data/serp-embeddings-split.json` (1.2 GB, gitignored)
 - Upstream design discussion: 2026-04-15
-- Related published finding: the CIKM paper's §4.3 graded-relevance reframe (theoretical motivation — not claimed to be validated by this notebook)
+- Related published finding: the methods paper's §4.3 graded-relevance reframe (theoretical motivation — not claimed to be validated by this notebook)
 - Related prior null: [`priming-null-result.md`](priming-null-result.md) — four methodologies invalidating priming at the result-summary level; same genre of honest-negative reporting
 
 ## Status (as of 2026-04-15)
 
-**Kept out of the CIKM paper.** The narrow contrast result does not justify a §4.3 paragraph because the full-SERP MRR is a null against Google. The CIKM paper's graded-relevance framing stands on its theoretical argument (the "relevant-but-not-chosen" mapping to LTR graded relevance, §4.3 existing prose); it does not need and should not claim an empirical MRR validation. A stronger production-scale replication is a legitimate follow-up experiment for another venue.
+**Kept out of the methods paper.** The narrow contrast result does not justify a §4.3 paragraph because the full-SERP MRR is a null against Google. The methods paper's graded-relevance framing stands on its theoretical argument (the "relevant-but-not-chosen" mapping to LTR graded relevance, §4.3 existing prose); it does not need and should not claim an empirical MRR validation. A stronger production-scale replication is a legitimate follow-up experiment for another venue.
 
 ---
 
@@ -166,7 +166,7 @@ A pre-click-truncated version of M4 (features computed strictly from pre-click t
 
 2. **Feature addition breaks the null on the graded-vs-binary axis — with a reportable leakage caveat.** Adding M4 cursor features produces a paired Δ of +0.0591 between graded-trained and binary-trained LambdaMART at Rung 2 (p < 0.0001, 39/47 participants, paired per-participant Wilcoxon signed-rank on per-participant means). This is the empirical validation the 2026-04-15 null couldn't produce, *with the qualification that K14 isolates label encoding plus any loss-structure interaction with leaky features, not label encoding alone*. A pre-click-truncated M4 variant would attribute the +0.0591 cleanly to labels; that variant does not exist today.
 
-3. **Consider whether to cite this in the CIKM paper.** Given the leakage and loss-geometry caveats above, the Rung 2 contrast is strong enough to *support* a paper-side citation only if the caveats are reported alongside. The cleanest paper-ready framing: *"On matched features (5 text + 9 M4 cursor-approach aggregates computed post-hoc over the full cursor trajectory), a matched LambdaMART ranker, and matched 47-participant LOPO splits, training on graded labels produces a paired per-participant MRR gain of +0.0591 over training on binary click labels (paired one-sided Wilcoxon signed-rank on per-participant means, 39 of 47 participants with graded ≥ binary, p < 0.0001). The M4 features partially encode whether a click occurred on the result, so this validates that the graded label encoding earns measurable MRR gain under features that are themselves click-indicative — it does not establish that the gain would persist under pre-click-truncated features. Neither the graded nor binary ranker at this rung significantly beats Google's original ordering on paired per-participant full-SERP MRR."* Decision on whether to include: defer to the collaborator review loop.
+3. **Consider whether to cite this in the methods paper.** Given the leakage and loss-geometry caveats above, the Rung 2 contrast is strong enough to *support* a paper-side citation only if the caveats are reported alongside. The cleanest paper-ready framing: *"On matched features (5 text + 9 M4 cursor-approach aggregates computed post-hoc over the full cursor trajectory), a matched LambdaMART ranker, and matched 47-participant LOPO splits, training on graded labels produces a paired per-participant MRR gain of +0.0591 over training on binary click labels (paired one-sided Wilcoxon signed-rank on per-participant means, 39 of 47 participants with graded ≥ binary, p < 0.0001). The M4 features partially encode whether a click occurred on the result, so this validates that the graded label encoding earns measurable MRR gain under features that are themselves click-indicative — it does not establish that the gain would persist under pre-click-truncated features. Neither the graded nor binary ranker at this rung significantly beats Google's original ordering on paired per-participant full-SERP MRR."* Decision on whether to include: defer to the collaborator review loop.
 
 ### Deployability and WILD gate
 
@@ -174,7 +174,7 @@ A pre-click-truncated version of M4 (features computed strictly from pre-click t
 
 ### Promotion decision
 
-The CIKM paper's §4.3 theoretical argument does not *require* this empirical validation, but the Rung 2 graded-vs-binary contrast is strong enough to support a careful one-paragraph addition — if and only if the M4 leakage caveat is reported alongside. Defer the paper-side promotion decision to the collaborator review loop; the narrative is ready to propose but should not be merged without sign-off given the caveat.
+The methods paper's §4.3 theoretical argument does not *require* this empirical validation, but the Rung 2 graded-vs-binary contrast is strong enough to support a careful one-paragraph addition — if and only if the M4 leakage caveat is reported alongside. Defer the paper-side promotion decision to the collaborator review loop; the narrative is ready to propose but should not be merged without sign-off given the caveat.
 
 ### Status (2026-04-19)
 

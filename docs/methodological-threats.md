@@ -151,6 +151,6 @@ Threats to validity that pervade the analysis. Each entry names the threat, stat
 - **AOI-geometry sensitivity.** This sweep varies the threshold but not the reference geometry. The result-band centers used by NB15 to compute `min_dist` are h3-bbox-derived; no padding sensitivity has been tested.
 - **The 100 px choice is justified for cross-dataset consistency** with the attcur/Bruckner validation, which uses EvTrack's `inTarget` flag computed from the ad-element bounding box (also a single fixed AOI per session). Cross-dataset apples-to-apples requires a shared threshold rule, even if either dataset alone would tolerate a wider range.
 
-**Mitigation in paper drafts:** any citation of K5/K6/K7 in the CIKM 2026 paper should be accompanied by a one-sentence robustness statement: "the dissociation holds at *p* < 10⁻¹² across approach thresholds from 50 to 200 px (`scripts/approach_threshold_sensitivity.py`)." That defuses the threshold-choice concern in advance.
+**Mitigation in paper drafts:** any citation of K5/K6/K7 in the methods paper should be accompanied by a one-sentence robustness statement: "the dissociation holds at *p* < 10⁻¹² across approach thresholds from 50 to 200 px (`scripts/approach_threshold_sensitivity.py`)." That defuses the threshold-choice concern in advance.
 
 **Output:** `scripts/output/approach_threshold_sensitivity/sweep_results.csv` and `scripts/output/approach_threshold_sensitivity/summary.md`. Regression-label cache at `regression_labels_cache.json` (avoids the ~2 min recomputation on re-run).

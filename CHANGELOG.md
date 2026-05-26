@@ -315,7 +315,7 @@ contributing to organic-result criterion compilation. Source:
   hybrid (was marginal under absolute) — the steep-vs-plateau separation
   now rests on the pooled MW (still very strong, *p* = 2.6 × 10⁻²⁵), not
   on the plateau slope itself. See `docs/drafts/ettac-adserp-2026-05-03-v2.md`.
-- Task-model paper / CIKM: the satopt → knee interpretation needs
+- Task-model paper / methods paper: the satopt → knee interpretation needs
   splitting into two axes; the four-class consideration-set taxonomy sits
   inside Survey-external + Evaluate, not across all of Survey; Survey-active
   is typically just ~2 positions per trial (median knee P1).
@@ -616,7 +616,7 @@ The coverage gain reflects bbox AOIs being pixel-accurate (cursor enters/exits p
 
 **The "retreat as lateral displacement" claim survives and strengthens.** Top ads still curve laterally (arc ratio 1.55, lateral 62 px) — that's stable across attribution methods. What changes is the *contrast*: organic retreats are now revealed to be much more linear (lateral disp 33 → 11 px) than previously thought. The Mann-Whitney p-value tightens 12 orders of magnitude (1e-5 → 4e-17).
 
-Implication for AR / CIKM: the brand claim that "top ads impose lateral retreat arcs" is more defensible under bbox attribution, not less. The 3.5× more retreat-arc data also enables sharper per-(direction × etype) splits for the forward/regressive analysis NB24 produces.
+Implication for AR / methods paper: the brand claim that "top ads impose lateral retreat arcs" is more defensible under bbox attribution, not less. The 3.5× more retreat-arc data also enables sharper per-(direction × etype) splits for the forward/regressive analysis NB24 produces.
 
 ### NB15 cursor-approach-features producer migrated
 
@@ -777,13 +777,13 @@ Found while validating the 31 canonical gazeplot trials against the authors' own
 
 ### Headline interpretation
 
-**No sign flips. No direction changes. Every effect got *stronger*.** The pre-fix scroll double-count was injecting noise in the position direction, masking the true signal. The framework-compilation story (steep decline early, plateau later) is preserved and sharpened. The deferred-vs-rejected motor signature dissociation (the CIKM 2026 paper's central empirical claim) is now on dramatically firmer statistical ground (retreat-distance *p* went from 10⁻¹¹ to 10⁻³⁸; gaze-dwell *p* from 10⁻²⁶ to 10⁻⁷⁰).
+**No sign flips. No direction changes. Every effect got *stronger*.** The pre-fix scroll double-count was injecting noise in the position direction, masking the true signal. The framework-compilation story (steep decline early, plateau later) is preserved and sharpened. The deferred-vs-rejected motor signature dissociation (the methods paper's central empirical claim) is now on dramatically firmer statistical ground (retreat-distance *p* went from 10⁻¹¹ to 10⁻³⁸; gaze-dwell *p* from 10⁻²⁶ to 10⁻⁷⁰).
 
 K3 moving from ρ = −0.618, *p* = 0.0426 (borderline at α = 0.05) to ρ = −0.927, *p* < 0.0001 is the biggest single win. K4 (positions 1–10 only) flipping from non-significant (ρ = −0.491, *p* = 0.150) to highly significant (ρ = −0.903, *p* = 0.0003) is the second biggest — pre-fix the 1–10 subset could not be cited; post-fix it's a robust effect.
 
 ### Propagation
 
-All Key Claims blocks regenerated via `notebooks-v2/update_key_claims.py` (VERIFIED date bumped to 2026-04-12). `docs/findings.md` and `docs/findings-approach-retreat.md` refreshed. CIKM paper draft (`docs/drafts/paper-output/paper.md`) and model-analysis sidecar refreshed. Task-model paper, OSEC explainer, Duchowski correspondence drafts, publication roadmap, ETTAC brief, priming null result doc, Shi 2025 lit note — all substantive stale values replaced. Cross-repo: attentional-foraging / pupil-lfhf / approach-retreat are consistent. `science-agent notebook-audit` across all three repos returns zero substantive hits (remaining warnings are false positives on AttCur-dataset tables and historical audit memos).
+All Key Claims blocks regenerated via `notebooks-v2/update_key_claims.py` (VERIFIED date bumped to 2026-04-12). `docs/findings.md` and `docs/findings-approach-retreat.md` refreshed. methods paper draft (`docs/drafts/paper-output/paper.md`) and model-analysis sidecar refreshed. Task-model paper, OSEC explainer, Duchowski correspondence drafts, publication roadmap, ETTAC brief, priming null result doc, Shi 2025 lit note — all substantive stale values replaced. Cross-repo: attentional-foraging / pupil-lfhf / approach-retreat are consistent. `science-agent notebook-audit` across all three repos returns zero substantive hits (remaining warnings are false positives on AttCur-dataset tables and historical audit memos).
 
 ### Where the pre-fix state is preserved
 

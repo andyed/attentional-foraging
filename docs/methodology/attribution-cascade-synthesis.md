@@ -169,7 +169,7 @@ trials (K10 p-value), not to a structural breakdown.
 | **NB14** per-participant `vt_top` median direction | positive at P0, attenuating to 0 at P5 | **same shape, sharper** | Calibration target preserved (NB28 retrain pending). |
 
 **Read:** these are the *new* findings that the cascade unlocked. They
-deserve prose attention in the CIKM paper §5 viewport-bands result and
+deserve prose attention in the methods paper §5 viewport-bands result and
 in the click-prediction §4 results. Position is a paper-relevant
 predictor — not a control variable to absorb away.
 
@@ -203,7 +203,7 @@ reversal among 30+ headline numbers.
 
 | K-ID / Figure | Status | Blocker |
 |---|---|---|
-| **NB28** viewport-band calibration retrain | Inputs ready (`cursor-approach-features-organic.json` + `regression_labels_cache_organic.json`); calibration not rerun | Multi-hour bootstrap (1,000 seeds × 47-fold StratifiedGroupKFold). Gates the CIKM §5 viewport-bands result. |
+| **NB28** viewport-band calibration retrain | Inputs ready (`cursor-approach-features-organic.json` + `regression_labels_cache_organic.json`); calibration not rerun | Multi-hour bootstrap (1,000 seeds × 47-fold StratifiedGroupKFold). Gates the §5 viewport-bands result. |
 | **NB21** four-class taxonomy thresholds (K10/K11) | Stale under bbox | M3 score distribution shifts; threshold re-derivation pending |
 | **NB22:K-bbox-5..8** four-class taxonomy fold-by-fold validation | Pending | Same regression-label producer migrated; full taxonomy re-validation requires re-running NB22 cells 6+ |
 | **`plot_approach_retreat_hero.png`** exemplar trials | Pinned to absolute | Curated COMMIT trial reattributes away from 'clicked' under bbox; new exemplars need hand-picking |
@@ -212,7 +212,7 @@ reversal among 30+ headline numbers.
 
 ## §3 Paper-strand implications
 
-### CIKM 2026 (algorithmic, four-class taxonomy primary) — **GO**
+### the paper (algorithmic, four-class taxonomy primary) — **GO**
 
 Every central claim in the algorithmic submission survives the
 cascade with sign + significance preserved or strengthened (§2.1, §2.3).
@@ -271,7 +271,7 @@ as a sensitivity finding.
 Cross-link: this collapse is documented in
 [`docs/null-findings/r1-ripa2-bbox-collapse.md`](../null-findings/r1-ripa2-bbox-collapse.md).
 
-### Approach-retreat library + replay (CIKM data-curation submission) — **GO**
+### Approach-retreat library + replay (data-curation submission) — **GO**
 
 NB22 four-class taxonomy preserved; NB24 retreat-arc geometry
 *improved* (3.5× coverage under organic_hybrid). The 80 curated AR-replay
@@ -565,7 +565,7 @@ plateau ρ = small-N effect under bbox).
 
 **Recommended next moves**, ordered by paper-strand priority:
 
-1. **CIKM algorithmic prose pass** — propagate K-bbox-* values through
+1. **Paper algorithmic prose pass** — propagate K-bbox-* values through
    `docs/findings.md` and `docs/drafts/paper-output/paper.md`. (Highest
    immediate value; deadline pressure.)
 2. ETTAC §3 prose update — NB14 numbers + plateau reframe + drop
@@ -574,7 +574,7 @@ plateau ρ = small-N effect under bbox).
    — implement, run, validate per §4. (Unlocks ad-class extension and
    strengthens the methodology comparison.)
 4. NB28 calibration retrain — multi-hour bootstrap, deferred until
-   scheduling allows. (Gates CIKM §5 viewport-bands.)
+   scheduling allows. (Gates §5 viewport-bands.)
 5. R1 / RIPA2 paper reframe — the RIPA2 collapse is a real
    empirical finding worth a careful coauthor conversation, not a
    footnote.
