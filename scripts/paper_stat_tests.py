@@ -1,7 +1,7 @@
 """Paired statistical tests for the CIKM 2026 §5.1/§5.2 tables.
 
 Reads per-fold (per-participant) AUCs from
-scripts/output/cikm-2026/click_buffer_ablation.json
+scripts/output/paper-output/click_buffer_ablation.json
 (produced by scripts/click_buffer_ablation.py).
 
 Runs:
@@ -21,7 +21,7 @@ Tests applied for each pair:
   - Bootstrap 95% CI on ΔAUC (paired-by-participant resampling)
 
 Output:
-  - scripts/output/cikm-2026/paper_stat_tests.json
+  - scripts/output/paper-output/paper_stat_tests.json
   - stdout: human-readable per-pair stats for paper integration
 
 Run:
@@ -38,8 +38,8 @@ import numpy as np
 from scipy import stats
 
 ROOT = Path(__file__).resolve().parent.parent
-SRC = ROOT / "scripts/output/cikm-2026/click_buffer_ablation.json"
-OUT = ROOT / "scripts/output/cikm-2026/paper_stat_tests.json"
+SRC = ROOT / "scripts/output/paper-output/click_buffer_ablation.json"
+OUT = ROOT / "scripts/output/paper-output/paper_stat_tests.json"
 
 ATTRIBUTION = "organic_hybrid"
 CANONICAL_BUFFER = 500

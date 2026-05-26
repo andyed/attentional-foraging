@@ -783,7 +783,7 @@ K3 moving from ρ = −0.618, *p* = 0.0426 (borderline at α = 0.05) to ρ = −
 
 ### Propagation
 
-All Key Claims blocks regenerated via `notebooks-v2/update_key_claims.py` (VERIFIED date bumped to 2026-04-12). `docs/findings.md` and `docs/findings-approach-retreat.md` refreshed. CIKM paper draft (`docs/drafts/cikm-2026/paper.md`) and model-analysis sidecar refreshed. Task-model paper, OSEC explainer, Duchowski correspondence drafts, publication roadmap, ETTAC brief, priming null result doc, Shi 2025 lit note — all substantive stale values replaced. Cross-repo: attentional-foraging / pupil-lfhf / approach-retreat are consistent. `science-agent notebook-audit` across all three repos returns zero substantive hits (remaining warnings are false positives on AttCur-dataset tables and historical audit memos).
+All Key Claims blocks regenerated via `notebooks-v2/update_key_claims.py` (VERIFIED date bumped to 2026-04-12). `docs/findings.md` and `docs/findings-approach-retreat.md` refreshed. CIKM paper draft (`docs/drafts/paper-output/paper.md`) and model-analysis sidecar refreshed. Task-model paper, OSEC explainer, Duchowski correspondence drafts, publication roadmap, ETTAC brief, priming null result doc, Shi 2025 lit note — all substantive stale values replaced. Cross-repo: attentional-foraging / pupil-lfhf / approach-retreat are consistent. `science-agent notebook-audit` across all three repos returns zero substantive hits (remaining warnings are false positives on AttCur-dataset tables and historical audit memos).
 
 ### Where the pre-fix state is preserved
 

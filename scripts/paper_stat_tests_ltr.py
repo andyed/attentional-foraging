@@ -18,7 +18,7 @@ Tests applied for each pair (separately on MRR@10 and NDCG@10):
   - Bootstrap 95% CI on the mean delta
 
 Output:
-  - scripts/output/cikm-2026/paper_stat_tests_ltr.json
+  - scripts/output/paper-output/paper_stat_tests_ltr.json
   - stdout: human-readable per-pair stats for §5.3.3 prose integration
 
 Run:
@@ -37,7 +37,7 @@ from scipy import stats
 ROOT = Path(__file__).resolve().parent.parent
 SRC_GAZE = ROOT / "scripts/output/ltr_typed_four_distinct_grades/summary_gaze_buf500.json"
 SRC_CURSOR = ROOT / "scripts/output/ltr_typed_four_distinct_grades/summary_cursor_buf500.json"
-OUT = ROOT / "scripts/output/cikm-2026/paper_stat_tests_ltr.json"
+OUT = ROOT / "scripts/output/paper-output/paper_stat_tests_ltr.json"
 
 N_BOOT = 5000
 RNG = np.random.default_rng(20260523)

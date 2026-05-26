@@ -13,7 +13,7 @@ so fixation-to-position mapping uses page_y vs result_bands tops directly
 (no `+ scroll`).
 
 Output:
-    docs/drafts/cikm-2026/figures/episodes-by-position.png
+    docs/drafts/paper-output/figures/episodes-by-position.png
 """
 from __future__ import annotations
 
@@ -33,7 +33,7 @@ from data_loader import (  # noqa: E402
     classify_fixations,
 )
 
-OUT_CIKM = ROOT / 'docs/drafts/cikm-2026/figures/episodes-by-position.png'
+OUT_CIKM = ROOT / 'docs/drafts/paper-output/figures/episodes-by-position.png'
 DIFFICULTY_JSON = ROOT / 'AdSERP/data/serp-difficulty-measures.json'
 
 MAX_POS = 10

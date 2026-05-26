@@ -24,7 +24,7 @@ canonical §5.1 headline of 0.847 (within ~+/-0.005). If it does not, the
 script aborts before emitting any downsampled numbers.
 
 Output:
-  scripts/output/cikm-2026/sampling_rate_ablation.json
+  scripts/output/paper-output/sampling_rate_ablation.json
 
 Run:
     .venv/bin/python scripts/sampling_rate_ablation.py
@@ -69,7 +69,7 @@ RATES_HZ = [1, 2, 3, 4, 5, 10, 15, 20, 30, 60]
 CANONICAL_M4_AUC = 0.847
 ANCHOR_TOL = 0.005
 
-OUT_PATH = ROOT / "scripts/output/cikm-2026/sampling_rate_ablation.json"
+OUT_PATH = ROOT / "scripts/output/paper-output/sampling_rate_ablation.json"
 
 
 def extract_features(downsample_hz: int) -> list[dict]:

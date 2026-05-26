@@ -14,10 +14,10 @@ Reports for each cell:
   - Average Precision, Brier score
 
 Output:
-  - scripts/output/cikm-2026/click_buffer_ablation.json (full grid)
+  - scripts/output/paper-output/click_buffer_ablation.json (full grid)
   - stdout: human-readable table for paper §4.1
 
-Companion to docs/drafts/cikm-2026/REVISION-PLAN.md Steps 3 + 6.
+Companion to docs/drafts/paper-output/REVISION-PLAN.md Steps 3 + 6.
 
 Run:
     .venv/bin/python scripts/click_buffer_ablation.py
@@ -200,7 +200,7 @@ def main():
                   f"{r['ndcg_at_1']:.3f}    {r['ap']:.3f}   {r['brier']:.4f}",
                   file=sys.stderr)
 
-    out_path = ROOT / "scripts/output/cikm-2026/click_buffer_ablation.json"
+    out_path = ROOT / "scripts/output/paper-output/click_buffer_ablation.json"
     out_path.parent.mkdir(parents=True, exist_ok=True)
     payload = {
         "buffers_ms": BUFFERS,

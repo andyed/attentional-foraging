@@ -5,8 +5,8 @@ trial, captures the SERP container (1280×3435 image stack with gazeplot
 overlay) twice — once with the default `sequence` color mode, once with
 `lfhf` color mode — and composites a 2-row × N-column grid.
 
-Output: `scripts/output/cikm-2026/figure_replay_lfhf.png` plus
-`scripts/output/cikm-2026/figure_replay_lfhf_<trial>_<mode>.png`
+Output: `scripts/output/paper-output/figure_replay_lfhf.png` plus
+`scripts/output/paper-output/figure_replay_lfhf_<trial>_<mode>.png`
 per-trial intermediates.
 
 Usage:
@@ -24,7 +24,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SITE_DIR = REPO_ROOT / "site"
-OUT_DIR = REPO_ROOT / "scripts" / "output" / "cikm-2026"
+OUT_DIR = REPO_ROOT / "scripts" / "output" / "paper-output"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 DEFAULT_TRIALS = ["p035-b4-t2", "p016-b3-t1", "p045-b2-t6"]

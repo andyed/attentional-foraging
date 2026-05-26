@@ -7,7 +7,7 @@ regression count, click Y). Each cell reports a Spearman ρ and its
 significance star.
 
 Output:
-    docs/drafts/cikm-2026/figures/difficulty-measures.png
+    docs/drafts/paper-output/figures/difficulty-measures.png
 """
 from __future__ import annotations
 
@@ -28,7 +28,7 @@ from data_loader import (  # noqa: E402
     result_bands,
 )
 
-OUT_CIKM = ROOT / 'docs/drafts/cikm-2026/figures/difficulty-measures.png'
+OUT_CIKM = ROOT / 'docs/drafts/paper-output/figures/difficulty-measures.png'
 DIFFICULTY_JSON = ROOT / 'AdSERP/data/serp-difficulty-measures.json'
 
 

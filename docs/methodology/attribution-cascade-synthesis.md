@@ -566,7 +566,7 @@ plateau ρ = small-N effect under bbox).
 **Recommended next moves**, ordered by paper-strand priority:
 
 1. **CIKM algorithmic prose pass** — propagate K-bbox-* values through
-   `docs/findings.md` and `docs/drafts/cikm-2026/paper.md`. (Highest
+   `docs/findings.md` and `docs/drafts/paper-output/paper.md`. (Highest
    immediate value; deadline pressure.)
 2. ETTAC §3 prose update — NB14 numbers + plateau reframe + drop
    joint LF/HF×RIPA2 dissociation claim. (May 15 deadline.)

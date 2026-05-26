@@ -447,7 +447,7 @@ The LOSO classifier was retrained on `cursor-approach-features-organic.json` (14
 | **K26** | `total_dwell_ms` | **−0.040** | → skip |
 | **K27** | `direction_changes` | **+0.061** | → click |
 
-> **Robustness to individual cursor activity lives in NB11.5.** The chattiness-stratified AUC figure (§4.3 robustness paragraph of `docs/drafts/cikm-2026/paper.md`) uses [NB11_5:K9–K16], not NB21 directly.
+> **Robustness to individual cursor activity lives in NB11.5.** The chattiness-stratified AUC figure (§4.3 robustness paragraph of `docs/drafts/paper-output/paper.md`) uses [NB11_5:K9–K16], not NB21 directly.
 >
 > **Coordinate-space audit history (2026-04-09 / 2026-04-12).** Two prior audits: cursor-side scroll fix moved M3 AUC 0.827 → 0.792, then fixation-side FPOGY page-space audit moved M3 AUC 0.792 → 0.859 (records 15,397 → 13,419, click rate 14.4% → 16.6%). The 2026-05-01 AOI cascade then shifts to bbox attribution: records 13,419 → 14,760 (back up 10%), click rate 16.6% → 14.9%, M3 AUC 0.859 → 0.865. Direction of every headline preserved across all three audits.
 >

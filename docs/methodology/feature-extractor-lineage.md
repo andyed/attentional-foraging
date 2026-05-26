@@ -23,7 +23,7 @@ absolute diff < 1e-6).
 **Produces** the paper's headline §4.1 numbers — M1 = 0.668, M4 = 0.847 —
 under `organic_hybrid` attribution at Δ = 500 ms click-buffer. Per-feature
 alone-AUCs in
-[`scripts/output/cikm-2026/alone_auc_table.md`](../../scripts/output/cikm-2026/alone_auc_table.md).
+[`scripts/output/paper-output/alone_auc_table.md`](../../scripts/output/paper-output/alone_auc_table.md).
 
 ## Pipeline B — LAB analysis substrate (gaze-gated, not deployable)
 
@@ -67,7 +67,7 @@ re-runs the §4.1 LOSO protocol on Pipeline B's
 ## Historical context
 
 The 2026-04-14 retrospective
-[`docs/drafts/cikm-2026/process-trace-gaze-sync-missed.md`](../drafts/cikm-2026/process-trace-gaze-sync-missed.md)
+[`docs/drafts/paper-output/process-trace-gaze-sync-missed.md`](../drafts/paper-output/process-trace-gaze-sync-missed.md)
 documents how an earlier framing claimed Pipeline B's features were
 "WILD-compatible" — a claim Pipeline A's existence + parity test corrected. The
 producer in Pipeline B was never the problem; the *claim about its features

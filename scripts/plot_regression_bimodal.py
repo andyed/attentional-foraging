@@ -10,7 +10,7 @@ coordinate fix applied 2026-04-12. Returns summary to stdout so the paper
 caption can be reconciled.
 
 Output:
-    docs/drafts/cikm-2026/figures/regression-bimodal.png
+    docs/drafts/paper-output/figures/regression-bimodal.png
 """
 from __future__ import annotations
 
@@ -28,7 +28,7 @@ from data_loader import (  # noqa: E402
     classify_fixations,
 )
 
-OUT_CIKM = ROOT / 'docs/drafts/cikm-2026/figures/regression-bimodal.png'
+OUT_CIKM = ROOT / 'docs/drafts/paper-output/figures/regression-bimodal.png'
 
 # ── Style ──────────────────────────────────────────────────────────────────
 BG = '#ffffff'

@@ -7,7 +7,7 @@ click-buffer the deployable classifier uses, and that the deployable
 cursor classifier (0.753) lands within 0.028 AUC of this diagnostic upper
 bound on identical features and protocol.
 
-Per scripts/output/cikm-2026/diagnostic_claims.json the four headline
+Per scripts/output/paper-output/diagnostic_claims.json the four headline
 numbers (0.781 / 0.795 / 0.753 / 0.028 gap) had been computed inline as
 a one-off bash invocation. This script regenerates them from committed
 inputs so a reviewer can reproduce them with one command.
@@ -34,7 +34,7 @@ Cells evaluated
 
 Matched-protocol gap = (c).auc − (a).auc → target 0.028.
 
-Output: scripts/output/cikm-2026/diagnostic_ceiling.json
+Output: scripts/output/paper-output/diagnostic_ceiling.json
 
 Usage:
     python -m scripts.compute_diagnostic_ceiling
@@ -57,7 +57,7 @@ from scipy.stats import wilcoxon
 ROOT = Path("/Users/andyed/Documents/dev/attentional-foraging")
 DATA = ROOT / "AdSERP/data"
 REG_CACHE = ROOT / "scripts/output/approach_threshold_sensitivity/regression_labels_cache_organic.json"
-OUT_PATH = ROOT / "scripts/output/cikm-2026/diagnostic_ceiling.json"
+OUT_PATH = ROOT / "scripts/output/paper-output/diagnostic_ceiling.json"
 APPROACH_THRESHOLD_PX = 100
 CLICK_BUFFER_MS = 500
 ATTRIBUTION = "organic"

@@ -18,7 +18,7 @@ no longer carries was_clicked=True at organic position 2, breaking the
 under bbox-organic by (min_dist, retreat_dist) geometry.
 
 Output:
-    docs/drafts/cikm-2026/figures/approach-retreat-hero.png
+    docs/drafts/paper-output/figures/approach-retreat-hero.png
 """
 from __future__ import annotations
 
@@ -37,7 +37,7 @@ from data_loader import (  # noqa: E402
     result_bands,
 )
 
-OUT_CIKM = ROOT / 'docs/drafts/cikm-2026/figures/approach-retreat-hero.png'
+OUT_CIKM = ROOT / 'docs/drafts/paper-output/figures/approach-retreat-hero.png'
 
 FEATURES_JSON = ROOT / 'AdSERP/data/cursor-approach-features-organic.json'
 
