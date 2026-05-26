@@ -3,7 +3,7 @@
 Verifies whether the saccade-amplitude phase-signature numbers the task-model
 paper draft cites (Survey 107.8 px / Evaluate 69.4 px / 1.55× / per-trial
 slope ρ = -0.135, p = 9.33 × 10⁻¹⁶⁸ / Mann–Whitney p ≈ 0) survive the
-y-offset and gaze-cursor coupling fixes that landed in CIKM but may not have
+y-offset and gaze-cursor coupling fixes that landed in the paper but may not have
 propagated to NB13's last execution.
 
 Output: scripts/output/verify_nb13_post_bugfix/summary.json + console diff

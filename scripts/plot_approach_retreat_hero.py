@@ -1,4 +1,4 @@
-"""Regenerate approach-retreat-hero.png (CIKM 2026 Figure 1).
+"""Regenerate approach-retreat-hero.png (the paper Figure 1).
 
 Two-panel figure: real cursor trajectories for one commit (clicked) episode
 and one retreat (rejected) episode. Both drawn in page-space against result

@@ -1,4 +1,4 @@
-"""Regenerate regression-bimodal.png (CIKM 2026 Figure 2) from post-fix data.
+"""Regenerate regression-bimodal.png (the paper Figure 2) from post-fix data.
 
 Two-panel histogram:
   (a) scroll regressions per trial (any descending scroll offset >= 30 px)

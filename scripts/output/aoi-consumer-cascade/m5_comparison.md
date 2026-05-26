@@ -31,20 +31,20 @@ The eval-rejected class **grows in absolute count** under bbox even though the c
 
 Modest performance drop. The Youden-J operating point shifts toward higher thresholds (the model is more confident before flagging deferred under bbox), giving up TPR for lower FPR. F1 falls primarily on recall.
 
-## Hard-negative purity (key CIKM number)
+## Hard-negative purity (key paper number)
 
 | Pool | Absolute | Organic | Δ |
 |---|---|---|---|
 | Predicted eval-rej pool size | 584 | 800 | +216 |
 | **M5 FN rate (NB22-deferred contamination)** | **54.5%** | **55.3%** | **+0.8 pp** |
 
-This is the [LAB]→[WILD] bootstrap number from `docs/findings.md` and CIKM §5. Reference baselines for context:
+This is the [LAB]→[WILD] bootstrap number from `docs/findings.md` and §5. Reference baselines for context:
 
 - NB22 gaze-regression rule (LAB-only ground truth): 0.0% FN by construction
 - NB21 classifier-threshold (Peter FN question): 6.8% FN
 - M5 cursor-only: ~55% FN under both attributions
 
-**Verdict: stable across the cascade.** The CIKM framing — "M5 hard-negative pool is too contaminated to use as label-transfer source; M5 is for *prediction*, not *label transfer*" — does not change.
+**Verdict: stable across the cascade.** The methods paper framing — "M5 hard-negative pool is too contaminated to use as label-transfer source; M5 is for *prediction*, not *label transfer*" — does not change.
 
 ## Deferred-pool precision (the "considered" semantic claim)
 
@@ -78,7 +78,7 @@ Still trustworthy as a "semantically-considered-but-declined" pool. The 2.4 pp d
 1. **Use `m5_final_model_organic.json`** for any rebuild that consumes bbox AOIs. Path: `scripts/output/m5_cursor_only_taxonomy_organic/m5_final_model.json`.
 2. **Operating threshold shifts.** If `approach-retreat/scripts/build_replay_trial.py` hardcodes the legacy threshold (0.395), update to 0.489. Better: pull from `m5_final_model.json["youden_j"]`.
 3. **Curation captions referencing "5 DEFERRED AOIs" etc. need automated diff.** The class predictions on the curated trials may shift between models even before you account for the underlying NB22 K-bbox-9 (411 click reattributions). Rebuild + diff before re-publishing.
-4. **CIKM §5 hard-negative purity claim stands** — 55% FN, no rewrite needed.
+4. **§5 hard-negative purity claim stands** — 55% FN, no rewrite needed.
 
 ## Outputs
 

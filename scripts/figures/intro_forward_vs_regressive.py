@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Figure 1 for CIKM 2026 paper-v5: forward vs regressive cursor-swarm pair.
+Figure 1 for methods paper-v5: forward vs regressive cursor-swarm pair.
 
 Renders two AdSERP exemplar trials side by side. Each panel shows:
 - Stacked AOI rectangles (organic boundary bboxes, page-space)

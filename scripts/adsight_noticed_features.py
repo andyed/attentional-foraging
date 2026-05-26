@@ -1,5 +1,5 @@
 """Per-AOI 'noticed' features for the AdSight noticed-classifier replication
-(NB31 / CIKM 2026 path-1 experiment).
+(NB31 / the paper path-1 experiment).
 
 Emits one row per (trial, AOI) for every AOI in the typed_gapfill inventory —
 including non-fixated AOIs. The existing

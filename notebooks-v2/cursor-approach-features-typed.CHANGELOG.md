@@ -11,7 +11,7 @@
 
 1. **Added `entry_t` and `exit_t` columns** on every record (first and last fixation timestamp at that position). Required by the forward/regressive classifier in `episode_classifier.py`. All other numeric fields are byte-identical to the prior base file — diff-verified at zero mismatches across 15,397 records.
 
-2. **11.3% of records received a different `etype` label** (1,741 of 15,397). The prior `-typed.json` was produced by an **untracked** classifier that is no longer reproducible in this repo; the new typing rule mirrors `NB24 classify_position` (position-band center inside ad-rect, excluding `dd_right`). This is the canonical rule for the retreat-arc analysis in notebook 24 and the CIKM draft.
+2. **11.3% of records received a different `etype` label** (1,741 of 15,397). The prior `-typed.json` was produced by an **untracked** classifier that is no longer reproducible in this repo; the new typing rule mirrors `NB24 classify_position` (position-band center inside ad-rect, excluding `dd_right`). This is the canonical rule for the retreat-arc analysis in notebook 24 and the paper draft.
 
 **Transition counts (old → new):**
 
@@ -24,7 +24,7 @@
 
 This is a **correction, not a regression**: prior to this regeneration, NB20 and NB24 disagreed on element typing for ~11% of records, which is worse than either rule alone. The new pipeline unifies them.
 
-**Impact:** Any NB20 / NB22 pooled numbers that shipped from the prior file will shift slightly under re-run. CIKM §4.6 (element-type cost) is affected; §4.1 and §4.7 numbers are not because they don't depend on etype.
+**Impact:** Any NB20 / NB22 pooled numbers that shipped from the prior file will shift slightly under re-run. §4.6 (element-type cost) is affected; §4.1 and §4.7 numbers are not because they don't depend on etype.
 
 ### Provenance
 

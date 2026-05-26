@@ -1,4 +1,4 @@
-"""Paired statistical tests for the CIKM 2026 §5.3 Table 6 (tab:ltr).
+"""Paired statistical tests for the the paper §5.3 Table 6 (tab:ltr).
 
 Reads per-trial MRR / NDCG arrays from
 scripts/output/ltr_typed_four_distinct_grades/summary_gaze_buf500.json

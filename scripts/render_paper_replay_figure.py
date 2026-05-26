@@ -1,4 +1,4 @@
-"""Render the CIKM paper hero figure: same gaze sequence under two color codings.
+"""Render the methods paper hero figure: same gaze sequence under two color codings.
 
 Drives the existing AF site (`site/<trial>.html`) via Playwright. For each
 trial, captures the SERP container (1280×3435 image stack with gazeplot

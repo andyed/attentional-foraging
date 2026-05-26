@@ -1,6 +1,6 @@
 """Per-session and per-position distributions of the four-class taxonomy.
 
-Central figure for the CIKM paper: four panels answering four related
+Central figure for the methods paper: four panels answering four related
 questions about how the classes (clicked / deferred / evaluated-rejected)
 are distributed across the corpus.
 

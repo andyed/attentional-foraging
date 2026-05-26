@@ -1,5 +1,5 @@
 """Canonical figures contrasting deferred vs evaluated-rejected classes
-for the CIKM paper §4.1.2, the approach-retreat README, and the Peter/
+for the methods paper §4.1.2, the approach-retreat README, and the Peter/
 Leif email.
 
 Figure 1 — Four-panel metric dissociation. Small-multiples violin plots

@@ -2,7 +2,7 @@
 SIGIR '25) replication at 9-etype granularity using LightGBM + LOSO 47-fold CV
 on the AllSERP typed_gapfill substrate.
 
-Per CIKM 2026 path-1 plan: AdSight pooled the SERP into 4 buckets (direct-top,
+Per the paper path-1 plan: AdSight pooled the SERP into 4 buckets (direct-top,
 direct-right, organic-top, organic-bottom) and ran one binary classifier per
 bucket from cursor trajectories. typed_gapfill exposes 9+ element types
 (organic, dd_top, native_ad, image_pack, paa, knowledge_panel, top_places,

@@ -21,7 +21,7 @@ comparison **within each tertile** for both RIPA2 and LF/HF.
 Predictions:
   - High-scent tertile, will-regress > no-regress on RIPA2 → Pirolli rescued
   - Low-scent tertile, will-regress < no-regress on RIPA2 → encoding-completion preserved
-  - Both → dissociation (publishable as CIKM main figure)
+  - Both → dissociation (publishable as paper main figure)
   - Neither → confound-controlled rejection (NB18 conclusion strengthened)
 
 Inputs:

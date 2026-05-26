@@ -17,7 +17,7 @@ def code(src):
 # ── 0. Header ────────────────────────────────────────────────────────────
 md("""# NB11.5 — Cursor chattiness as a per-participant trait
 
-**Question.** Our CIKM click model (NB21, M3) runs at LOSO AUC 0.792. The feature set is *episode-level* — every feature describes the geometry of one cursor approach to one result. The per-participant individual-differences panel (NB11) measures gaze–cursor *lag* but not cursor *activity volume*. These are orthogonal motor traits — a user can have tight gaze–cursor coupling and still park the cursor; a user can chatter constantly with a loose cursor-to-gaze relationship.
+**Question.** Our click model (NB21, M3) runs at LOSO AUC 0.792. The feature set is *episode-level* — every feature describes the geometry of one cursor approach to one result. The per-participant individual-differences panel (NB11) measures gaze–cursor *lag* but not cursor *activity volume*. These are orthogonal motor traits — a user can have tight gaze–cursor coupling and still park the cursor; a user can chatter constantly with a loose cursor-to-gaze relationship.
 
 This notebook operationalizes **chattiness** — how much a user moves the cursor overall — and asks three things:
 
@@ -357,7 +357,7 @@ for m in MEASURES:
 
 md("""**Reading the result.** If AUC tracked chattiness, we would see a monotonic rise across the three square markers in each panel. Instead the tercile means sit within ~0.02 of the pooled LOSO AUC (gray dotted line). Spearman ρ between per-participant chattiness and per-participant AUC is weak (all p > 0.3) on every measure. The M3 approach features are **shape-invariant to cursor sampling density** — even for the cursor-parker tercile (median ≈ 9 events/s, some as low as 5/s), the model recovers the same click-prediction skill as for the chatterer tercile (median ≈ 32 events/s).
 
-This is a robustness result worth owning in §4.3 of the CIKM paper. Reviewers will ask "but doesn't this only work for active mousers?" and now we have a figure that says no.""")
+This is a robustness result worth owning in §4.3 of the methods paper. Reviewers will ask "but doesn't this only work for active mousers?" and now we have a figure that says no.""")
 
 # ── 7. Exposure bias check ───────────────────────────────────────────────
 md("""## 7. Exposure bias — do chatterers generate more episode records?
@@ -413,8 +413,8 @@ print("Saved: chattiness_per_participant.json")
 print(f"  {len(participant_dvs)} participants × 4 chattiness measures")
 print(f"  {len(pid_auc)} participants × LOSO M3 AUC")''')
 
-# ── 9. Summary for CIKM ──────────────────────────────────────────────────
-md("""## 9. What to add to the CIKM paper
+# ── 9. Summary for the paper ──────────────────────────────────────────────────
+md("""## 9. What to add to the methods paper
 
 Three one-sentence additions and one figure.
 

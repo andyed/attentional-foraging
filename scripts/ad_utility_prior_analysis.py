@@ -4,7 +4,7 @@ Builds two per-participant measures and tests whether the *prior*
 (ad-attention rate during forward survey) predicts the *behavior*
 (ad click rate, click position, sat/opt class) — the empirical
 substrate for the rank-value-prior framing in the task-model paper
-and a candidate premise for CIKM.
+and a candidate premise for the paper.
 
 Per-participant prior measures (from existing per_participant_with_traits.csv):
   - p_ad_survey       : fraction of survey-phase fixations that landed on ads

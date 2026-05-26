@@ -1,4 +1,4 @@
-"""Paired statistical tests for the CIKM 2026 §5.1/§5.2 tables.
+"""Paired statistical tests for the the paper §5.1/§5.2 tables.
 
 Reads per-fold (per-participant) AUCs from
 scripts/output/paper-output/click_buffer_ablation.json
