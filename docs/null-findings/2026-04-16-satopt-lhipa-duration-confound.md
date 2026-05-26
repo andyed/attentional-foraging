@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-16
 **Type:** Framing reframe, not a pure null. The originally reported correlation reproduces; its mechanistic interpretation does not.
-**Status:** Affects how ETTAC introduces individual-difference findings. Not yet propagated into briefing docs or paper drafts.
+**Status:** Affects how pupil paper introduces individual-difference findings. Not yet propagated into briefing docs or paper drafts.
 
 ## TL;DR
 
@@ -78,9 +78,9 @@ The companion LF/HF × position curves corroborate this. If optimizers truly car
 ## What was learned anyway
 
 1. **Satopt and speed are not orthogonal axes**, despite the team's working assumption. They are substantially redundant (Cramér's V = 0.50, raw ρ = +0.71). Treating them as separate moderators in the same paper would be misleading; cite one and note the other is collinear.
-2. **The framework-compilation gradient is task-structural.** It does not depend on deliberation style or trial speed. This is the cleanest possible ETTAC headline: load decreases with position because of how SERP evaluation is structured, not because some participants are doing it differently.
+2. **The framework-compilation gradient is task-structural.** It does not depend on deliberation style or trial speed. This is the cleanest possible pupil paper headline: load decreases with position because of how SERP evaluation is structured, not because some participants are doing it differently.
 3. **NB11:K12 should be reframed in `findings.md`** to attribute the effect to trial duration, not to deliberation style. The Spearman number itself stays in the Key Claims table; only the prose interpretation changes.
-4. **For ETTAC paper:** instead of "the gradient is robust to deliberation style as a moderator" (which would be a Prediction-A confirmation framing), the line should be "the gradient is invariant across both deliberation-style and trial-speed terciles, and the apparent participant-level load difference between deliberation styles is mediated entirely by trial duration." Stronger and cleaner.
+4. **For pupil paper:** instead of "the gradient is robust to deliberation style as a moderator" (which would be a Prediction-A confirmation framing), the line should be "the gradient is invariant across both deliberation-style and trial-speed terciles, and the apparent participant-level load difference between deliberation styles is mediated entirely by trial duration." Stronger and cleaner.
 5. **Modest intercept × duration finding (ρ = +0.37, p = 0.012)** — early-scan LF/HF is slightly elevated for participants with longer median trials. Suggestive but small; would not be a load-bearing finding on its own.
 
 ## Pointers
@@ -96,5 +96,5 @@ The companion LF/HF × position curves corroborate this. If optimizers truly car
 
 - [ ] Update NB11:K12 Key Claim row to note the duration confound, with a `(reframed YYYY-MM-DD)` annotation per the project convention
 - [ ] Replace any prose in `docs/findings.md` (or downstream briefings) that attributes the LHIPA difference to deliberation-style cognitive effort
-- [ ] Decide whether to add a paragraph to the ETTAC paper or just update the briefing doc to the team
+- [ ] Decide whether to add a paragraph to the pupil paper or just update the briefing doc to the team
 - [ ] Consider whether the `mean_lhipa` column in `per_participant_with_traits.csv` should be supplemented with a duration-residualized version for downstream individual-difference analyses

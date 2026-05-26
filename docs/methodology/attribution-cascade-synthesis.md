@@ -138,7 +138,7 @@ Source-of-truth: [`docs/notebook-key-claims.md`](../notebook-key-claims.md)
 | **NB22** four-class motor-signature dissociation (`deferred_vs_rejected_four_panel.png`) | p < 10⁻⁹ / p < 10⁻¹⁹ | **p < 10⁻⁹ / p < 10⁻¹⁹** | Cursor-gaze distance and dwell deltas survive cleanly |
 | **NB23** rank-effects framework-compilation pattern | sign preserved | **sign preserved** | Unified rank effects (load decreases with position) holds |
 | **NB24** retreat-arc geometry coverage | 1,490 raw arcs (absolute-only) | **5,201 raw arcs (organic_hybrid 3.5× coverage)** | Hybrid attribution dominates; top-ad lateral/arc 0.166 → 0.170 (replicates) |
-| **NB14:K6** steep-phase position-load slope (P0–P3) | ρ = −1.000 | **ρ = −1.000, p = 3.2 × 10⁻²³** | ETTAC headline holds tightly |
+| **NB14:K6** steep-phase position-load slope (P0–P3) | ρ = −1.000 | **ρ = −1.000, p = 3.2 × 10⁻²³** | pupil paper headline holds tightly |
 | **NB18:R1** LF/HF leg of will-regress vs no-regress | d=+0.041, p=0.011 | **d=+0.041, p=1.1e-03** | "Lingered first time" survives |
 
 **Read:** the approach-retreat strand and the four-class taxonomy
@@ -231,7 +231,7 @@ the deferred / evaluated-rejected motor-signature dissociation
    the four-panel motor dissociation in `deferred_vs_rejected_four_panel.png`
    (which carries different and stronger evidence for the same dissociation).
 
-### ETTAC 2026 (pupil-LF/HF, May 15 deadline) — **GO with one cut**
+### pupil paper (May 15 deadline) — **GO with one cut**
 
 NB14 steep-phase result (ρ = −1.000 over P0–P3, p = 3.2 × 10⁻²³) holds
 tightly. Full-corpus result (ρ = −0.655) holds with weaker effect size.
@@ -568,7 +568,7 @@ plateau ρ = small-N effect under bbox).
 1. **Paper algorithmic prose pass** — propagate K-bbox-* values through
    `docs/findings.md` and `docs/drafts/paper-output/paper.md`. (Highest
    immediate value; deadline pressure.)
-2. ETTAC §3 prose update — NB14 numbers + plateau reframe + drop
+2. §3 prose update — NB14 numbers + plateau reframe + drop
    joint LF/HF×RIPA2 dissociation claim. (May 15 deadline.)
 3. `compute_cursor_approach_features.py --attribution organic_hybrid`
    — implement, run, validate per §4. (Unlocks ad-class extension and

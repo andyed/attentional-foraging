@@ -123,7 +123,7 @@ per-fixation will-regress contrast.
   claim should not appear in the standalone paper. Per-fixation RIPA2
   may still hold for other contrasts (e.g., peri-click TEPR; per-trial
   cognitive load gradient).
-- **ETTAC paper:** unaffected — the LF/HF leg is the ETTAC story, and
+- **pupil paper:** unaffected — the LF/HF leg is the pupil paper story, and
   it survives.
 
 ## What this is NOT

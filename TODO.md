@@ -62,7 +62,7 @@ aware extensions that the v1.0.0 substrate physically cannot resolve.
   GitHub history records every AI-assisted commit via `Co-Authored-By`
   trailers — footnote pointer strengthens the disclosure.
 
-## ETTAC pupil-LFHF paper (Duchowski; deadline 2026-05-15 passed)
+## pupil-LFHF paper (Duchowski; deadline 2026-05-15 passed)
 
 Status: held until next-pass review. The stat-traceability gaps below
 need re-derivation or original-computation surfacing before any
@@ -253,7 +253,7 @@ rather than editing both.
   87 users, 3,477 interactions on horizontal carousel interfaces. Test:
   does survey phase (wide saccade → narrow) appear in horizontal lists?
   Swipe-back = scroll regression. GitHub: santideleon/RecGaze_Dataset.
-- [ ] **COLET dataset for ETTAC LF/HF validation.** Cognitive workLoad
+- [ ] **COLET dataset for the pupil paper LF/HF validation.** Cognitive workLoad
   Estimation from Eye-Tracking (ScienceDirect 2022). Validates LHIPA
   vs Butterworth on independent data.
 - [ ] **Explicit attention definitions per notebook.** Zhang et al.

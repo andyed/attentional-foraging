@@ -76,7 +76,7 @@ If WM drives strategy (Jayawardena 2026's documented direction), then the only c
 
 A clean test would need a corpus with both pupil signals AND a WM assessment. AdSERP has no N-back / complex-span measure.
 
-**Useful for ETTAC discussion:** "Jayawardena 2026 documents WM-trait → exploration-strategy. We show strategy is orthogonal to load trajectory. Together, the WM-via-strategy path to load is zero; direct WM → load paths (emotional regulation, capacity-modulated arousal) remain to be tested."
+**Useful for the pupil paper discussion:** "Jayawardena 2026 documents WM-trait → exploration-strategy. We show strategy is orthogonal to load trajectory. Together, the WM-via-strategy path to load is zero; direct WM → load paths (emotional regulation, capacity-modulated arousal) remain to be tested."
 
 **WM ≠ optimizer/satisficer (constructs differ even if the hypothesis links them).** WM is a cognitive *capacity* (items you can hold + manipulate, measured by N-back / complex span); optimizer/satisficer is a decision *strategy* (exhaustive vs. good-enough, measured by Schwartz MS-13 or behavioral proxies). The hypothesis Jayawardena 2026 supports is that high WM *enables* optimizer-shaped behavior because capacity is a precondition for exhaustive comparison. The two constructs are not identical (a high-WM person can choose to satisfice; a low-WM person can want to optimize but be capacity-constrained), but under the hypothesis they map onto each other behaviorally.
 
@@ -129,13 +129,13 @@ DM remains slightly elevated after mid: mid *p_holm* = .062 (approaches signific
 
 ## What this means for our portfolio
 
-### ETTAC paper (Andy + Duchowski) — repositioning required
+### pupil paper (Andy + Duchowski) — repositioning required
 
 Their RQ2 finding (CL highest at begin, decreases over time, "cognitive adaptation") is the **same temporal shape** as our NB14:K3 framework-compilation gradient (ρ = −0.927 for SERP-position-level CL on AdSERP).
 
 **They have primacy on the temporal-decrease claim.** Differentiation must come from *unit*, *resolution*, *measurement pipeline*, and *mechanistic framing*:
 
-| Dimension | Jayawardena 2026 (CHIIR) | Our §3.3 (ETTAC submission) |
+| Dimension | Jayawardena 2026 (CHIIR) | Our §3.3 (pupil paper submission) |
 |---|---|---|
 | Unit | Task-phase (begin / mid / end of a 50–540 s trial) | SERP rank position (P0–P10) within a trial |
 | Resolution | Coarse: 3 phases per trial | Fine: per-rank-segment (1 s window) |

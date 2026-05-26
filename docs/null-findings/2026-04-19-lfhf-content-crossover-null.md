@@ -1,4 +1,4 @@
-# LF/HF × content features — clean null (ETTAC gap audit)
+# LF/HF × content features — clean null (pupil paper gap audit)
 
 **Date:** 2026-04-19
 **Script:** `scripts/lfhf_content_crossover.py`
@@ -90,10 +90,10 @@ length / lexical diversity. This is directly consistent with:
 Three independent nulls at the content side of the house, all pointing
 the same direction: AdSERP LF/HF indexes *where you are on the
 evaluation surface*, not *what you are looking at* or *how you're
-strategizing*. That is exactly what the ETTAC framing asks of a
+strategizing*. That is exactly what the pupil paper framing asks of a
 real-time cognitive-load measure.
 
-## Implication for ETTAC
+## Implication for the pupil paper
 
 This null is **good news for the brief's K10 + K9 framing**. It rules
 out the most obvious alternative interpretation — that the steep-phase
@@ -124,4 +124,4 @@ After the initial 5-feature crossover landed null, three follow-up analyses were
 
 ## Filing
 
-Clean null. Filed alongside the two other 2026-04-19 ETTAC audits.
+Clean null. Filed alongside the two other 2026-04-19 pupil paper audits.

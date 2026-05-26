@@ -7,7 +7,7 @@
 
 ## Why this was run
 
-The 2026-04-19 ETTAC brief leads with **position** as the organizing axis of
+The 2026-04-19 pupil paper brief leads with **position** as the organizing axis of
 the LF/HF gradient (framework compilation by rank). Peter Dixon-Moses's
 viewport feedback (2026-04-19) proposed that much of what we attribute to
 rank may actually stratify by viewport position (visible vs scrolled-past).
@@ -31,7 +31,7 @@ viewport feature table joined to NB14's per-(trial, position) LF/HF.
 
 ## Headline results
 
-### Steep phase P0–P3 (ETTAC-critical; N = 4,229)
+### Steep phase P0–P3 (pupil-paper-critical; N = 4,229)
 
 | Measure | Pooled ρ (p) | Partial ρ \| position (p) | Partial ρ \| avg_viewport_y (p) |
 |---|---:|---:|---:|
@@ -89,7 +89,7 @@ the effect is not a hidden viewport gradient.
 
 ## Verdict
 
-> **POSITION WINS — ETTAC brief stands.**
+> **POSITION WINS — pupil paper brief stands.**
 > The LF/HF-by-rank story is not viewport-mediated in the steep phase. The
 > partial-on-viewport correlation attenuates the rank effect by ≈ 32 %
 > (ρ_pool = −0.144 → ρ_partial = −0.098), but the residual is
@@ -106,7 +106,7 @@ indexes higher cognitive load, independent of rank. Consistent with the
 framework-compilation reading: once the framework is compiled at a given
 rank, additional fixated viewport time pushes load back up.
 
-## Implication for ETTAC brief
+## Implication for pupil paper brief
 
 1. Brief language on framework compilation by rank **stays**.
 2. Add one sentence on viewport disambiguation as a robustness check.
@@ -121,4 +121,4 @@ rank, additional fixated viewport time pushes load back up.
 
 Clean positive result on the primary disambiguation; no brief rewrite
 needed. Supplementary `vt_any | position` finding is a candidate addition.
-Filed alongside the 2026-04-19 ETTAC audit family.
+Filed alongside the 2026-04-19 pupil paper audit family.

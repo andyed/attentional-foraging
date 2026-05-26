@@ -160,16 +160,16 @@ trial-level cognitive operations, not of widget-vs-organic mis-attribution.
 - pupil-lfhf sibling repo's `compute_butterworth_lfhf.py` and
   `compute_ripa2.py` are NOT yet typed-aware. The stress tests bypass these
   by computing LF/HF / RIPA2 from raw pupil on the fly using
-  `typed_aoi_tops` for window assignment, so the headline ETTAC findings do
+  `typed_aoi_tops` for window assignment, so the headline pupil paper findings do
   not depend on pre-computed `*-by-position-typed.json` JSONs. Notebook
   re-execution under typed (NB14, NB18, NB22, NB28, etc.) requires the
   pre-computed JSONs and is deferred to a future cascade pass.
-- `compute_lab_gaze_gated_features.py` not yet ported to typed; ETTAC does
+- `compute_lab_gaze_gated_features.py` not yet ported to typed; pupil paper does
   not depend on it.
 
 ### Empirical changes to flag in paper prose
 
-- **ETTAC §3.3** (`ettac-paper/sections/adserp.tex`): updated draft is
+- **§3.3** (`ettac-paper/sections/adserp.tex`): updated draft is
   `docs/drafts/ettac-adserp-2026-05-04-v2.4.md`. Numbers shift by < 0.05
   in correlation strength relative to v2.3 hybrid version; no
   qualitative changes. The paper does not use the word "typed" or
@@ -183,7 +183,7 @@ trial-level cognitive operations, not of widget-vs-organic mis-attribution.
 ## 2026-05-03 — Pre-vs-post-scroll dissociation, knee distribution, and rank-value prior reframe
 
 Stress tests on AdSERP under organic_hybrid attribution, motivated by the
-ETTAC §3.3 rewrite, surface several findings that update OSEC framing and
+§3.3 rewrite, surface several findings that update OSEC framing and
 sharpen the cognitive interpretation of the LF/HF rank gradient.
 
 ### Pre-emptive scroll (operational marker for Survey-active → Survey-external transition)
@@ -242,7 +242,7 @@ feature.** Source: `scripts/output/lfhf_predicts_return_stress/`,
 `scripts/output/lfhf_argmax_predicts_click/`,
 `scripts/output/lfhf_click_prediction_test/`.
 
-### §Predicting return claim from current ETTAC draft does not reproduce
+### §Predicting return claim from current pupil paper draft does not reproduce
 
 The current `ettac-paper/sections/adserp.tex` claim that per-participant
 Wilcoxon on per-(trial, position) median LF/HF gives *p* = 0.0055 with a
@@ -309,7 +309,7 @@ contributing to organic-result criterion compilation. Source:
 
 ### Empirical changes to flag in paper prose
 
-- **ETTAC §3.3** (`ettac-paper/sections/adserp.tex`): drop the §Predicting
+- **§3.3** (`ettac-paper/sections/adserp.tex`): drop the §Predicting
   return paragraph (lines 164–183 of current draft); replace with within-
   item paired return finding. Plateau slope is non-significant under
   hybrid (was marginal under absolute) — the steep-vs-plateau separation
@@ -347,7 +347,7 @@ longer match the data. The motor-signature dissociation in
 `deferred_vs_rejected_four_panel.png` (cursor-gaze distance and dwell
 deltas, p < 10⁻⁹ and p < 10⁻¹⁹) survives the cascade.
 
-**`r1_dissociation.png` / `r1_2x2_dissociation.png` (ETTAC-relevant).** The
+**`r1_dissociation.png` / `r1_2x2_dissociation.png` (pupil-paper-relevant).** The
 R1 per-(trial, position) RIPA2 vs LF/HF dissociation collapses on the
 RIPA2 side under bbox attribution. Per-fixation effect on later-returned
 vs never-returned items: LF/HF d=+0.041, p=1.1e-03 (preserved, sign
@@ -356,7 +356,7 @@ per the JEMR-2025 implementation-bug fix). The "lingered first time"
 LF/HF claim survives. The "lingered but processed shallowly" joint
 LF/HF × RIPA2 signature does not — the RIPA2 component appears to have
 been rank-pooling artifact, not a per-fixation arousal-amplitude
-difference. **ETTAC paper §3 should drop the RIPA2 leg of the joint
+difference. **pupil paper §3 should drop the RIPA2 leg of the joint
 dissociation claim** unless absolute-attribution is held as the primary.
 
 **`plot_approach_retreat_hero.png`** is pinned to absolute attribution.
@@ -381,7 +381,7 @@ cell. Eliminates the two-copy sync problem behind the 2026-05-01
 
 ### What shipped
 
-Pipeline + consumer API for the bbox AOI enrichment, plus first-pass K-ID delta evidence under organic-rank attribution. Notebook migrations not yet shipped — Andy's deep dive on ETTAC paper this weekend will decide which findings move to organic-rank as primary.
+Pipeline + consumer API for the bbox AOI enrichment, plus first-pass K-ID delta evidence under organic-rank attribution. Notebook migrations not yet shipped — Andy's deep dive on pupil paper this weekend will decide which findings move to organic-rank as primary.
 
 ### Branch state
 
@@ -675,7 +675,7 @@ These all share one upstream artifact (`AdSERP/data/cursor-approach-features.jso
 
 (These should still be spot-checked, but no expected K-ID shifts from AOI cascade.)
 
-### What this picture supports for the ETTAC weekend deep-dive
+### What this picture supports for the pupil paper weekend deep-dive
 
 Six notebooks worth of K-ID evidence + the master TL;DRs:
 
@@ -686,7 +686,7 @@ Six notebooks worth of K-ID evidence + the master TL;DRs:
 
 ### Status / next moves
 
-- ETTAC paper deep-dive scheduled for the weekend (May 2–3, deadline May 15).
+- pupil paper deep-dive scheduled for the weekend (May 2–3, deadline May 15).
 - Notebook code migrations (NB14, NB18a, NB23, NB04, NB22 cell rewrites) deferred to after the deep-dive — paper framing decision drives which K-IDs are primary.
 - Approach-retreat replay-bundle rebuild also deferred until NB22 four-class taxonomy is regenerated under organic attribution AND curation captions are validated.
 - NB15 producer migration (cursor-approach-features under organic) is the unlock for NB20/21/24/28; estimated 1–2 hr next iteration.
@@ -783,7 +783,7 @@ K3 moving from ρ = −0.618, *p* = 0.0426 (borderline at α = 0.05) to ρ = −
 
 ### Propagation
 
-All Key Claims blocks regenerated via `notebooks-v2/update_key_claims.py` (VERIFIED date bumped to 2026-04-12). `docs/findings.md` and `docs/findings-approach-retreat.md` refreshed. methods paper draft (`docs/drafts/paper-output/paper.md`) and model-analysis sidecar refreshed. Task-model paper, OSEC explainer, Duchowski correspondence drafts, publication roadmap, ETTAC brief, priming null result doc, Shi 2025 lit note — all substantive stale values replaced. Cross-repo: attentional-foraging / pupil-lfhf / approach-retreat are consistent. `science-agent notebook-audit` across all three repos returns zero substantive hits (remaining warnings are false positives on AttCur-dataset tables and historical audit memos).
+All Key Claims blocks regenerated via `notebooks-v2/update_key_claims.py` (VERIFIED date bumped to 2026-04-12). `docs/findings.md` and `docs/findings-approach-retreat.md` refreshed. methods paper draft (`docs/drafts/paper-output/paper.md`) and model-analysis sidecar refreshed. Task-model paper, OSEC explainer, Duchowski correspondence drafts, publication roadmap, pupil paper brief, priming null result doc, Shi 2025 lit note — all substantive stale values replaced. Cross-repo: attentional-foraging / pupil-lfhf / approach-retreat are consistent. `science-agent notebook-audit` across all three repos returns zero substantive hits (remaining warnings are false positives on AttCur-dataset tables and historical audit memos).
 
 ### Where the pre-fix state is preserved
 
@@ -799,7 +799,7 @@ Historical audit memos that describe the 2026-04-09 state (`attentional-foraging
 
 ## Unreleased — 2026-04-10
 
-### ETTAC infrastructure
+### pupil paper infrastructure
 
 - **Key Claims expanded to 11 notebooks** (~145 canonical rows). New: NB05 (LHIPA, K1–K15), NB12 (regression precision null, K1–K14), NB18 (RIPA2 vs LF/HF, K1–K17).
 - NB14 piecewise gradient analysis (K9–K15). Resolves K3's borderline p = 0.043:
@@ -841,7 +841,7 @@ The buggy formula also produced physically impossible `click_pos` values (up to 
 | K7 (LF/HF × LHIPA) | ρ = −0.122, *p* = 9.29 × 10⁻¹⁰, N = 2,492 | unchanged | — |
 | K8 (position medians) | pos 0: 29.98 → pos 1: 21.20 → … | unchanged (uses fixation position, not click_pos) | — |
 
-**The ETTAC 2026 central claim (K3) is unaffected.** The position-level correlation, within-trial decomposition, and LHIPA cross-index validation all use fixation position (gaze → page-space, which is the coordinate-correct direction). Only `click_pos`-dependent rows moved.
+**The pupil paper central claim (K3) is unaffected.** The position-level correlation, within-trial decomposition, and LHIPA cross-index validation all use fixation position (gaze → page-space, which is the coordinate-correct direction). Only `click_pos`-dependent rows moved.
 
 **The fix.**
 1. `notebooks-v2/data_loader.py` — documented coordinate-space conventions in the module docstring, tightened `assign_fixation_to_position` to name its parameter `screen_fix_y` and warn that cursor/click Ys must not be passed. Added canonical helpers: `get_click_page_xy`, `click_to_position`, `cursor_to_position`, `screen_y_to_page_y`, `page_y_to_screen_y`, `gaze_cursor_distance`, `interpolate_cursor_at`.

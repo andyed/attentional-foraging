@@ -1,4 +1,4 @@
-# LF/HF × Satisficer/Optimizer Orthogonality — P0–P3 Robustness (ETTAC queue item 3)
+# LF/HF × Satisficer/Optimizer Orthogonality — P0–P3 Robustness (pupil paper queue item 3)
 
 **Date:** 2026-04-19
 **Script:** `scripts/lfhf_satopt_orthogonality_p03.py`
@@ -12,7 +12,7 @@ The original orthogonality finding (memory: `project_lfhf_orthogonality.md`):
 > classification on AdSERP. Full P0–P9: χ² = 0.52, p = 0.77; LOO-LR AUC = 0.43;
 > Spearman(slope, regression_rate) = −0.226, p = 0.13.
 
-Framed as a **dissociation** for ETTAC — load trajectory is an independent
+Framed as a **dissociation** for the pupil paper — load trajectory is an independent
 individual-difference axis from behavioral strategy.
 
 Worry: satopt terciles are partly self-selected at depth (who scrolls to
@@ -82,7 +82,7 @@ precisely because of deep-position missingness. The load-trajectory axis
 is genuinely orthogonal to the regression-rate / satopt axis on the
 range where the gradient claim lives.
 
-## Implication for ETTAC
+## Implication for the pupil paper
 
 - Cite orthogonality at the steep phase (P0–P3) where the gradient claim
   (K10) also lives — the dissociation is tighter and the N is full-cohort.

@@ -1,4 +1,4 @@
-# NB14 Plateau Concentration Audit (ETTAC queue item 1)
+# NB14 Plateau Concentration Audit (pupil paper queue item 1)
 
 **Date:** 2026-04-19
 **Notebook:** NB14 `14_butterworth_cognitive_load`
@@ -10,7 +10,7 @@
 NB14:K11 reports plateau (P4–P10) Spearman ρ = −0.714, *p* = 0.071 — marginal.
 If a handful of participants contributed the bulk of segments at deep positions,
 the plateau claim would be small-*n* rather than a population-level shape, and
-the ETTAC brief should not lean on it quantitatively. Parallels the NB28 P6+
+the pupil paper brief should not lean on it quantitatively. Parallels the NB28 P6+
 viewport-bands audit pattern.
 
 ## Concentration stats (per-position)
@@ -80,7 +80,7 @@ tight around ρ ≈ −1.
 even uncapped. The marginal *p* = 0.071 is driven by only 7 position medians,
 not by participant concentration.
 
-## Verdict for ETTAC
+## Verdict for the pupil paper
 
 1. **K3 (full range) is robust** — cite quantitatively. Cap-10 actually
    strengthens it (ρ = −0.945). Bootstrap CI [−0.964, −0.573] uncapped.
