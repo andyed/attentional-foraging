@@ -1,0 +1,37 @@
+{
+  "K-cellsplit-1-ctr": 0.0433,
+  "K-cellsplit-1-fix-mean": 7.367,
+  "K-cellsplit-1-dwell-mean-ms": 1621.7,
+  "K-cellsplit-2-ctr": 0.0374,
+  "K-cellsplit-2-fix-mean": 5.978,
+  "K-cellsplit-2-dwell-mean-ms": 1282.5,
+  "K-cellsplit-3-ctr": 0.0362,
+  "K-cellsplit-3-fix-mean": 5.278,
+  "K-cellsplit-3-dwell-mean-ms": 1128.5,
+  "K-cellsplit-4-ctr": 0.0318,
+  "K-cellsplit-4-fix-mean": 5.67,
+  "K-cellsplit-4-dwell-mean-ms": 1239.9,
+  "K-cellsplit-5-ctr": 0.0203,
+  "K-cellsplit-5-fix-mean": 3.802,
+  "K-cellsplit-5-dwell-mean-ms": 855.4,
+  "K-cellsplit-6-ctr": 0.0,
+  "K-cellsplit-6-fix-mean": 2.0,
+  "K-cellsplit-6-dwell-mean-ms": 318.0,
+  "K-cellsplit-spearman-ctr": {
+    "rho": -1.0,
+    "p": 0.0
+  },
+  "K-cellsplit-spearman-fix": {
+    "rho": -0.942857142857143,
+    "p": 0.004804664723032055
+  },
+  "K-cellsplit-spearman-dwell": {
+    "rho": -0.942857142857143,
+    "p": 0.004804664723032055
+  },
+  "K-cellsplit-population": {
+    "n_trials": 1581,
+    "n_with_cells": 1549,
+    "modal_n_cells": 4
+  }
+}
