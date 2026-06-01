@@ -1,0 +1,22 @@
+{
+  "K-cellsplit-comp-1-modal-n-cells": 4,
+  "K-cellsplit-comp-2-n-trials-with-carousel": 1550,
+  "K-cellsplit-comp-3-cells-per-carousel-dist": {
+    "4": 959,
+    "5": 390,
+    "2": 31,
+    "3": 165,
+    "6": 5
+  },
+  "K-cellsplit-comp-4-n-clicks-on-carousel-cellsplit": 266,
+  "K-cellsplit-comp-5-abs-standard-peak": {
+    "rank": 0,
+    "count": 617,
+    "pct": 22.41
+  },
+  "K-cellsplit-comp-6-abs-cellsplit-peak": {
+    "rank": 0,
+    "count": 458,
+    "pct": 16.67
+  }
+}
