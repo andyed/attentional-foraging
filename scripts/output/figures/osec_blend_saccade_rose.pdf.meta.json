@@ -1,0 +1,14 @@
+{
+  "dataset_path": "",
+  "dataset_sha256": "",
+  "figure_version": "",
+  "h_ids": [],
+  "muriel_version": "0.6.0",
+  "nb_k_ids": [],
+  "notes": "",
+  "run_utc": "2026-06-01T01:31:34+00:00",
+  "schema_version": 1,
+  "script_dirty": true,
+  "script_path": "/Users/andyed/Documents/dev/attentional-foraging/scripts/render_osec_blend_figures.py",
+  "script_sha": "a0db7498"
+}
