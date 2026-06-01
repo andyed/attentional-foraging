@@ -1,0 +1,91 @@
+{
+  "per_row": {
+    "dd_top_cell_1": {
+      "kl_symmetric": 0.04230941274317536,
+      "n_survey": 1337,
+      "n_evaluate": 10059
+    },
+    "dd_top_cell_2": {
+      "kl_symmetric": 0.15257290890288086,
+      "n_survey": 1190,
+      "n_evaluate": 8041
+    },
+    "dd_top_cell_3": {
+      "kl_symmetric": 0.19327153548340953,
+      "n_survey": 1526,
+      "n_evaluate": 6420
+    },
+    "dd_top_cell_4": {
+      "kl_symmetric": 0.24815531741623165,
+      "n_survey": 1121,
+      "n_evaluate": 6341
+    },
+    "dd_top_cell_5": {
+      "kl_symmetric": 0.4374875152661303,
+      "n_survey": 154,
+      "n_evaluate": 1267
+    },
+    "dd_top_other": {
+      "kl_symmetric": 0.07341357032889535,
+      "n_survey": 105,
+      "n_evaluate": 782
+    },
+    "image_pack": {
+      "kl_symmetric": 1.0206027118331629,
+      "n_survey": 40,
+      "n_evaluate": 2873
+    },
+    "native_ad": {
+      "kl_symmetric": 0.26901223213000075,
+      "n_survey": 159,
+      "n_evaluate": 7533
+    },
+    "off": {
+      "kl_symmetric": 0.49904475795989756,
+      "n_survey": 1834,
+      "n_evaluate": 18740
+    },
+    "organic_1": {
+      "kl_symmetric": 0.09336108362336039,
+      "n_survey": 268,
+      "n_evaluate": 13634
+    },
+    "organic_2": {
+      "kl_symmetric": 0.2682772908276921,
+      "n_survey": 77,
+      "n_evaluate": 12074
+    },
+    "organic_3": {
+      "kl_symmetric": 0.5118315344035812,
+      "n_survey": 49,
+      "n_evaluate": 9951
+    },
+    "organic_4": {
+      "kl_symmetric": 0.6945529075122833,
+      "n_survey": 14,
+      "n_evaluate": 7446
+    },
+    "organic_5": {
+      "kl_symmetric": 5.122219423103531,
+      "n_survey": 6,
+      "n_evaluate": 5009
+    },
+    "organic_7": {
+      "kl_symmetric": 2.957181556650936,
+      "n_survey": 5,
+      "n_evaluate": 2737
+    },
+    "other_widget": {
+      "kl_symmetric": 1.6415399329086844,
+      "n_survey": 6,
+      "n_evaluate": 75
+    },
+    "paa": {
+      "kl_symmetric": 5.447348753863316,
+      "n_survey": 5,
+      "n_evaluate": 1089
+    }
+  },
+  "weighted_mean_kl": 0.6232893414663019,
+  "n_rows_compared": 17
+}
