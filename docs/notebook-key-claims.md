@@ -45,36 +45,66 @@ Only notebooks that ship numbers directly to external papers or public writeups 
 ## NB13: `13_survey_phase` — saccade amplitude phase distinction
 
 *Source: [`notebooks-v2/13_survey_phase.ipynb`](../notebooks-v2/13_survey_phase.ipynb)*
-*Last verified against executed notebook output: 2026-04-12.*
+*Last verified against executed notebook output: 2026-06-03 (scroll-aware saccade refresh).*
+
+> **Scroll-aware saccades (2026-06-03).** Saccade amplitude/direction are computed **scroll-aware**: a saccade whose time window contains a scroll event measures *page* motion, not *eye* motion (~9% of evaluate-phase saccades) and is excluded. This supersedes the pre-2026-06-03 clamped values. It does NOT affect fixation→AOI attribution. It matters most for saccade DIRECTION (K13–K19): the prior "survey is more vertical" result was a coordinate artifact and is **retracted**. Amplitude/compression (K1–K8) is robust — values barely move. Spec: `docs/methodology/scroll-aware-saccades.md`.
 
 ### Per-trial saccade amplitude slope (the main anchor result)
 
 | ID | Claim | Value |
 |---|---|---|
-| **K1** | N trials with ≥ 10 saccades (unit of analysis for the slope test) | **2,754** |
-| **K2** | Mean per-trial amplitude slope over first 20 saccades (negative = compression) | **ρ = −0.135** (mean of per-trial Spearmans) |
-| **K3** | One-sample *t*-test vs ρ = 0 | *t* = −29.63, ***p* = 9.33 × 10⁻¹⁶⁸**, *df* = 2,753 |
-| **K4** | Fraction of trials with ρ < 0 | 71.8% |
+| **K1** | N trials with ≥ 10 saccades (unit of analysis for the slope test) | **2,748** |
+| **K2** | Mean per-trial amplitude slope over first 20 saccades (negative = compression) | **ρ = −0.133** (mean of per-trial Spearmans) |
+| **K3** | One-sample *t*-test vs ρ = 0 | *t* = −29.41, ***p* = 1.50 × 10⁻¹⁶⁵**, *df* = 2,747 |
+| **K4** | Fraction of trials with ρ < 0 | 72.0% |
 
-### Phase-level saccade amplitude medians (the phase distinction)
+### Within-participant validation of the slope (added 2026-06-03)
+
+The compression is not a pooled-trial artifact carried by a subset of people — it holds within individuals.
 
 | ID | Claim | Value |
 |---|---|---|
-| **K5** | Survey-phase median saccade amplitude (fixations 1–5) | **107.8 px** (N = 13,840 saccades) |
-| **K6** | Evaluate-phase median saccade amplitude (fixations 6+) | **69.4 px** (N = 65,764 saccades) |
-| **K7** | Survey / Evaluate amplitude ratio | 1.55× |
-| **K8** | Mann–Whitney U, survey > evaluate | *p* ≈ 0 (underflow; reported value 1.59 × 10⁻²¹⁹ on the re-windowed subset N = 9,550 / 45,262) |
+| **K20** | Participants whose median per-trial ρ < 0 (compression holds within person) | **46 / 47** |
+| **K21** | Across-participant tests on the per-participant median ρ | sign test *p* = 3.41 × 10⁻¹³; Wilcoxon signed-rank *W* = 1.0, *p* = 1.28 × 10⁻⁹ |
+| **K22** | Median of per-participant median ρ (range) | **−0.131** (range −0.269 to +0.002) |
+
+### Phase-level saccade amplitude medians (the phase distinction)
+
+Source for K5–K8: Section 1 cell with `MAX_SAC = 30` (per-trial cap). Survey is always saccades 1–5. **The no-cap evaluate median is 68.9 px** (Section 3 / Cell 11, N = 197,764) — cite K6 for cap-consistent comparisons with the per-position curve, and the no-cap value for §4-style aggregates. Under scroll-aware the cap/no-cap gap is small (69.9 vs 68.9).
+
+| ID | Claim | Value |
+|---|---|---|
+| **K5** | Survey-phase median saccade amplitude (saccades 1–5; first-30-saccade-per-trial cohort) | **107.4 px** (N = 13,671 saccades) |
+| **K6** | Evaluate-phase median saccade amplitude (saccades 6–30; first-30-saccade cap) | **69.9 px** (N = 61,001 saccades; cf. K14's no-cap N = 197,764 ⇒ median 68.9 px) |
+| **K7** | Survey / Evaluate amplitude ratio (K5 / K6, both under first-30 cap) | 1.54× |
+| **K8** | Mann–Whitney U, survey > evaluate | Full cohort: scipy returns *p* = 0.00e+00 (IEEE-754 underflow). Reportable non-degenerate value from the no-right-panel SERPs subset (Cell 23, saccades 1–5 vs 6+): ***p* = 6.34 × 10⁻²⁰⁶** on N = 9,419 / 41,748 saccades. |
 
 ### Other key rows
 
 | ID | Claim | Value |
 |---|---|---|
 | **K9** | Click rate given surveyed vs not-surveyed | 16.9% (N = 700) vs 11.9% (N = 10,368) |
-| **K10** | Pre-scroll saccade amplitude median | 74.9 px (N = 59,343) |
-| **K11** | Post-scroll saccade amplitude median | 67.2 px (N = 38,622) |
-| **K12** | Pre-scroll > post-scroll (Mann–Whitney) | *p* = 9.94 × 10⁻⁶⁶ |
+| **K10** | Pre-scroll saccade amplitude median | 75.0 px (N = 59,324) |
+| **K11** | Post-scroll saccade amplitude median | 67.7 px (N = 31,070) |
+| **K12** | Pre-scroll > post-scroll (Mann–Whitney) | *p* = 1.08 × 10⁻⁴⁶ |
 
-> **Watch out:** stale drafts have cited N = 991, ρ = −0.128, *p* = 1.5 × 10⁻⁶¹ for K1/K2/K3. Those numbers are wrong by roughly 3× on N and by ~100 orders of magnitude on p. Use the values above. The 117 / 76 px pair some drafts cite for K5/K6 is also stale — current values are 107.8 / 69.4 px.
+### Survey vs evaluate axis decomposition — F-PATTERN VERTICALITY RETRACTED (2026-06-03)
+
+Source: Section 3 "Survey Phase Characterization" executed output, scroll-aware. Evaluate-phase saccades (no cap), classified per-saccade by `primarily_vertical` (|dy| > |dx|).
+
+| ID | Claim | Value |
+|---|---|---|
+| **K13** | Survey-phase % saccades primarily vertical (sac 1–5, N = 13,671) | **44.7%** |
+| **K14** | Evaluate-phase % saccades primarily vertical (sac 6+, N = 197,764) | **48.7%** |
+| **K15** | Survey vs evaluate axis-orientation difference, Mann–Whitney U | *p* = 2.10 × 10⁻¹⁹ |
+| **K16** | Survey-phase mean horiz / vert displacement (px) | 99.7 / 82.6 |
+| **K17** | Evaluate-phase mean horiz / vert displacement (px) | 71.1 / 71.9 |
+| **K18** | Survey-phase major-saccade rate (amp > 100 px) | 53.0% |
+| **K19** | Evaluate-phase major-saccade rate (amp > 100 px) | 34.8% |
+
+**Interpretation (revised 2026-06-03 — F-pattern verticality retracted).** The **amplitude compression is the real survey-phase signature**: survey saccades are wider (1.54×, K7) and more often "major" (53.0% vs 34.8% > 100 px, K18/K19), and the compression holds within 46/47 participants (K20–K22). The two phases are **roughly balanced in vertical/horizontal orientation** (survey 44.7% vs evaluate 48.7% primarily-vertical, K13/K14); if anything evaluate is marginally *more* vertical. The earlier claim that survey is the "F-pattern vertical descender" and evaluate the "horizontal reading cap" was a **coordinate artifact**: under pre-2026-06-03 clamped coordinates, below-fold evaluate fixations were squashed to the screen bottom, artificially flattening evaluate saccades to 39.2%. Scroll-aware computation removes the artifact. This matches the `f_scan_farce` result (SERP scanning is multi-cycle back-and-forth, not a clean F-sweep). **Do not map survey/evaluate onto F-pattern strokes.**
+
+> **Watch out:** the survey-phase signature is **amplitude compression** (K5–K8) + within-participant robustness (K20–K22), NOT verticality. Stale values to retire: survey 44.7% > evaluate 39.2% (the old "F-pattern" direction); pre-scroll-aware ρ = −0.135, evaluate 64.0 / 69.4 px under clamp; and the older 117 / 76 px K5/K6 pair. Use the scroll-aware values above.
 
 ---
 
@@ -227,7 +257,7 @@ The legacy absolute-rank values are preserved in `bw_data_abs` (loaded in cell 2
 | **K14** | ≥ 5 positions | 212 | −0.179 | 67.0% |
 | **K15** | ≥ 7 positions | 32 | −0.207 | 71.9% |
 
-> **Reframe under organic attribution.** The "monotone-decline" headline (K3, K4, K10, K11) attenuates substantially under organic-rank attribution — K3 ρ halves from −0.927 to −0.655, K4 / K10 / K11 lose significance, K11 sign-flips. What strengthens is the **two-band engagement** finding: K9 steep-vs-plateau dichotomy still p<10⁻⁸, and K6 (clicked > non-clicked) tightens to p=2.5e-7. The pupil paper headline shifts from "load declines monotonically with rank" to **"cognitive engagement is two-band — early evaluation-heavy phase + late satisficer plateau, with clicked positions uniformly elevated regardless of band."**
+> **Reframe under organic attribution.** The "monotone-decline" headline (K3, K4, K10, K11) attenuates substantially under organic-rank attribution — K3 ρ halves from −0.927 to −0.655, K4 / K10 / K11 lose significance, K11 sign-flips. What strengthens is the **two-band engagement** finding: K9 steep-vs-plateau dichotomy still p<10⁻⁸, and K6 (clicked > non-clicked) tightens to p=2.5e-7. The ETTAC paper headline shifts from "load declines monotonically with rank" to **"cognitive engagement is two-band — early evaluation-heavy phase + late satisficer plateau, with clicked positions uniformly elevated regardless of band."**
 >
 > **AOI cascade audit (2026-05-01).** Pipeline pivoted from h3-band estimation to bbox AOIs. Producer `compute_butterworth_lfhf.py --attribution organic` writes `butterworth-lfhf-by-position-organic.json`; this notebook now consumes that file as primary. K1 (2,719 → 2,174 trials, −10%) and K2 (6,112 → 4,450 segments, −27%) reflect tighter per-trial AOI coverage (organic-only, ad-segment fixations excluded). The 2,719 → 2,174 trial loss represents trials where every visited position fell on an ad rather than an organic. Direction-of-effect on K6 / K9 strengthens; K3 / K4 / K10 / K11 weaken or flip. Documented in CHANGELOG 2026-05-01 with full side-by-side table.
 >
@@ -290,7 +320,7 @@ This unblocks NB20, NB21, NB22, NB24, NB28 — all consume `cursor-approach-feat
 >
 > **Approach share drops because gap regions (between cards) no longer count as approach failures.** Under absolute, cursor trajectories that drifted into the inter-card gap registered as "approached position N" with high min_dist; under bbox those gaps are not assigned to any AOI, so they no longer pollute the approach denominator. The 28.2% → 23.3% shift reflects cleaner per-AOI distance calculations.
 >
-> **Approach + rejected = the consideration-set core.** That's the primary target population: positions the cursor approached but the user didn't click. Under bbox: 14.0% of all (trial, position) records (vs 17.5% under absolute). The number drops because gap-region "approaches" are correctly removed from the numerator.
+> **Approach + rejected = the consideration-set core.** That's the primary CIKM target population: positions the cursor approached but the user didn't click. Under bbox: 14.0% of all (trial, position) records (vs 17.5% under absolute). The number drops because gap-region "approaches" are correctly removed from the numerator.
 
 ---
 
@@ -447,7 +477,7 @@ The LOSO classifier was retrained on `cursor-approach-features-organic.json` (14
 | **K26** | `total_dwell_ms` | **−0.040** | → skip |
 | **K27** | `direction_changes` | **+0.061** | → click |
 
-> **Robustness to individual cursor activity lives in NB11.5.** The chattiness-stratified AUC figure (§4.3 robustness paragraph of `docs/drafts/paper-output/paper.md`) uses [NB11_5:K9–K16], not NB21 directly.
+> **Robustness to individual cursor activity lives in NB11.5.** The chattiness-stratified AUC figure (§4.3 robustness paragraph of `docs/drafts/cikm-2026/paper.md`) uses [NB11_5:K9–K16], not NB21 directly.
 >
 > **Coordinate-space audit history (2026-04-09 / 2026-04-12).** Two prior audits: cursor-side scroll fix moved M3 AUC 0.827 → 0.792, then fixation-side FPOGY page-space audit moved M3 AUC 0.792 → 0.859 (records 15,397 → 13,419, click rate 14.4% → 16.6%). The 2026-05-01 AOI cascade then shifts to bbox attribution: records 13,419 → 14,760 (back up 10%), click rate 16.6% → 14.9%, M3 AUC 0.859 → 0.865. Direction of every headline preserved across all three audits.
 >
@@ -463,7 +493,7 @@ The LOSO classifier was retrained on `cursor-approach-features-organic.json` (14
 
 ### 2026-05-07 — Looking into the corners (cursor-blind regaze inference)
 
-*Added 2026-05-07. Verified against script outputs in `scripts/output/regaze_no_rehover/{summary.json, minimal_4_summary.json, three_tier_recovery.json}`. These claims anchor the methods paper's §4.3 Figure 3 and §5 "Looking into the corners" framing.*
+*Added 2026-05-07. Verified against script outputs in `scripts/output/regaze_no_rehover/{summary.json, minimal_4_summary.json, three_tier_recovery.json}`. These claims anchor the CIKM 2026 paper's §4.3 Figure 3 and §5 "Looking into the corners" framing.*
 
 The cursor-blind subset (clicked + approached + cursor visit_count == 1) is the **junction the task model predicts is non-empty even when the visit-count detector returns null** — the four-class taxonomy's "approached but no obvious cursor reapproach" corner. The K-leak-* IDs below quantify what's recoverable there.
 
@@ -493,7 +523,7 @@ The cursor-blind subset (clicked + approached + cursor visit_count == 1) is the 
 >
 > **Why this lives in NB22.** The cursor-blind regaze inference depends on this notebook's `gaze_regression_label` as ground truth and the four-class taxonomy as the population definition. The producer scripts above are downstream of NB22's gaze-regression detection logic; the K-leak-* claims are NB22-derived findings even though they were computed from external scripts rather than this notebook's own cells. Re-running the scripts after any change to NB22's regression-label producer must update the K-leak-* values here.
 >
-> **methods paper anchors.** Abstract reports K-leak-1, K-leak-2, K-leak-4 (and the universality scoping). §4.3 reports K-leak-3, K-leak-3b, K-leak-4, K-leak-5, K-leak-6, K-leak-7a. Figure 3 plots K-leak-8 (panel a) and per-fold AUCs from K-leak-4 / K-leak-5 (panel b). §4.6 references K-leak-1 and K-leak-8. §5 ("Looking into the corners") frames the methodology.
+> **CIKM 2026 paper anchors.** Abstract reports K-leak-1, K-leak-2, K-leak-4 (and the universality scoping). §4.3 reports K-leak-3, K-leak-3b, K-leak-4, K-leak-5, K-leak-6, K-leak-7a. Figure 3 plots K-leak-8 (panel a) and per-fold AUCs from K-leak-4 / K-leak-5 (panel b). §4.6 references K-leak-1 and K-leak-8. §5 ("Looking into the corners") frames the methodology.
 
 ---
 
@@ -594,7 +624,7 @@ NB22 defines the four classes via cursor approach (min_dist < 100 px) + **gaze r
 > - K7 proximity-dwell gap: p 5.0 × 10⁻⁹ → **1.36 × 10⁻¹⁶**
 > - K11 M3 LOSO AUC: 0.792 → **0.859** (+0.067, a large effect in prediction space)
 >
-> Direction and significance of every headline result preserved; magnitudes all strengthened. The deferred vs rejected motor-signature dissociation — the methods paper's central empirical claim — is now on dramatically firmer statistical ground. See `docs/drafts/coord_fix_snapshot_20260412/`.
+> Direction and significance of every headline result preserved; magnitudes all strengthened. The deferred vs rejected motor-signature dissociation — the CIKM 2026 paper's central empirical claim — is now on dramatically firmer statistical ground. See `docs/drafts/coord_fix_snapshot_20260412/`.
 >
 > **K-bbox-* vs legacy K-IDs.** Legacy K1–K4 use a different denominator (n_results per trial counts h3+ads positions, not bbox organics). The cascade-recomputed K-bbox-1..4 use bbox-organic positions. Total class counts therefore differ by construction; use K-bbox-* for AR replay regeneration and paper figures.
 
@@ -655,6 +685,38 @@ Click and fixation distributions now reported under **bbox attribution** with to
 
 ---
 
+
+### Cellsplit-attribution K-IDs (within-carousel rank, dd_top stratum)
+
+*Population: 1549 / 1581 dd_top-topped trials with cell-aware AOI snapshots (modal carousel size = 4 cells). Source: `scripts/output/nb23_cellsplit_rank/summary.json` (generated by `compute_nb23_cellsplit_rank.py`).*
+
+Cellsplit rank decomposes the dd_top widget — which collapses to rank-0 under all three other flavors — into K per-cell rank positions. The same monotone-with-rank story replicates *within the carousel*, mirroring the organic-rank gradient.
+
+| ID | Measure | Value |
+|---|---|---|
+| **K-cellsplit-1** | CTR by cell position ρ (cells 1–6) | **-1.000**, p = < 10⁻⁶ |
+| **K-cellsplit-2** | Mean fixation count by cell position ρ | **-0.943**, p = 0.0048 |
+| **K-cellsplit-3** | Mean dwell time by cell position ρ | **-0.943**, p = 0.0048 |
+| **K-cellsplit-4** | Carousel CTR (cell 1) | **4.33%** (67 / 1,549) |
+| **K-cellsplit-5** | Carousel CTR drop, cell 1 → cell 4 | **4.33% → 3.18%** (-26.5% relative) |
+| **K-cellsplit-6** | Trials with any carousel click | **231** (14.9% of dd_top trials) |
+
+**Per-cell rank table** (cells 1 = leftmost, K = rightmost):
+
+| cell | n_trials | n_clicks | CTR | mean fix count | mean dwell (ms) |
+|---|---|---|---|---|---|
+| 1 | 1,549 | 67 | 4.33% | 7.37 | 1622 |
+| 2 | 1,549 | 58 | 3.74% | 5.98 | 1283 |
+| 3 | 1,518 | 55 | 3.62% | 5.28 | 1128 |
+| 4 | 1,353 | 43 | 3.18% | 5.67 | 1240 |
+| 5 | 394 | 8 | 2.03% | 3.80 | 855 |
+| 6 | 5 | 0 | 0.00% | 2.00 | 318 |
+
+> **Within-carousel rank effect is real and monotone.** The same *declining attention with rank* gradient that defines the organic-rank story (K18–K28, K-bbox-*) holds *inside* the dd_top carousel. The cell-1-vs-cell-4 CTR drop (4.33% → 3.18%) is directionally consistent with rank-1-vs-rank-4 CTR among organic results — and falsifies the implicit assumption that dd_top is a single attentional unit.
+>
+> **Caveat — LF/HF not yet computed at cellsplit grain.** The existing butterworth-lfhf-by-position.json is keyed by absolute rank. Re-derivation for cellsplit is deferred to a v2 pass.
+
+---
 ### Legacy K-IDs (preserved for cross-reference)
 
 The K1–K28 below were the published values pre-2026-05-01 cascade. Keep for paper-draft cross-references; new figures should cite K-bbox-* above.
@@ -825,7 +887,7 @@ K18–K28 use `absolute_to_organic_rank()` from data_loader (h3 slots minus ad-o
 
 > **Comprehensive null, preserved post-fix.** Neither coarse-grain load (trial-level LHIPA, K8) nor fine-grain load (encoding-fixation pupil diameter, K9; encoding pupil variability, K10) predicts regression landing precision. Partial correlations controlling for regression distance and encoding–regression time gap are also null. The per-participant analysis (K14) confirms this is not a within-person effect masked by between-person variance.
 >
-> **Interpretation.** Spatial memory for SERP result positions is robust to normal cognitive load variation during browsing. The motor system may rely on non-pupillometric cues (proprioceptive scroll memory, visual landmarks) rather than purely spatial memory. This is relevant for the pupil paper because it bounds where Butterworth LF/HF *cannot* predict behavior — regression precision is not one of its targets.
+> **Interpretation.** Spatial memory for SERP result positions is robust to normal cognitive load variation during browsing. The motor system may rely on non-pupillometric cues (proprioceptive scroll memory, visual landmarks) rather than purely spatial memory. This is relevant for ETTAC because it bounds where Butterworth LF/HF *cannot* predict behavior — regression precision is not one of its targets.
 >
 > **Gazepoint caveat.** Pupil diameter values from the GP3 HD are in arbitrary units, not calibrated mm. Cross-participant comparisons of absolute PD are invalid. The within-participant correlations (K8–K10) are unaffected.
 >
@@ -987,6 +1049,45 @@ K2 (click coverage) now reports **tolerance-aware** attribution (30 px snap-to-n
 | **K22** | Mean total ads per trial (dd_top + native) | 3.89 |
 | **K23** | Participant-level ad exposure mean range | **3.28 – 4.33** (±13 % flat across 47 pids) |
 | **K24** | Block-level ad exposure | flat across blocks 1–6 (no block effect) |
+
+
+
+### Cellsplit-aware composition (K-cellsplit-comp-*)
+
+*Population: full corpus N = 2,776, of which 1,550 (55.8%) carry a dd_top carousel. Modal carousel size: 4 cells. Source: `scripts/output/nb25_cellsplit_composition/summary.json` (`compute_nb25_cellsplit_composition.py`).*
+
+Cellsplit decomposes the dd_top carousel — collapsed to a single abs-rank-0 unit under K1–K24 — into its K constituent cells. The §3 "rank 2 displacement peak" story refines under cellsplit: the click distribution shows **two peaks** instead of one (carousel cell 1 at rank 0, first organic at rank ≈ K).
+
+| ID | Measure | Value |
+|---|---|---|
+| **K-cellsplit-comp-1** | Modal carousel size | **4 cells** (0 / 1,550 = 0.0% of dd_top trials) |
+| **K-cellsplit-comp-2** | Trials with dd_top carousel | **1,550** (55.8% of corpus) |
+| **K-cellsplit-comp-3** | Carousel size distribution | 2-cell **31** (2.0%) · 3-cell **165** (10.6%) · 4-cell **959** (61.9%) · 5-cell **390** (25.2%) · 6-cell **5** (0.3%) |
+| **K-cellsplit-comp-4** | First clicks landing in any carousel cell | **266** (17.2% of dd_top trials) |
+| **K-cellsplit-comp-5** | abs-standard click peak | rank **0** = **22.41%** (617 clicks) |
+| **K-cellsplit-comp-6** | abs-cellsplit click peak | rank **0** = **16.67%** (458 clicks) |
+
+**Click distribution by rank — bbox-attributed, two coordinate schemes:**
+
+| rank | abs-standard | abs-cellsplit |
+|---|---|---|
+| 0 | 617 (22.41%) | 458 (16.67%) |
+| 1 | 595 (21.61%) | 221 (8.05%) |
+| 2 | 365 (13.26%) | 231 (8.41%) |
+| 3 | 292 (10.61%) | 188 (6.84%) |
+| 4 | 245 (8.90%) | 389 (14.16%) |
+| 5 | 213 (7.74%) | 355 (12.92%) |
+| 6 | 126 (4.58%) | 266 (9.68%) |
+| 7 | 100 (3.63%) | 221 (8.05%) |
+| 8 | 54 (1.96%) | 118 (4.30%) |
+| 9 | 47 (1.71%) | 93 (3.39%) |
+| 10 | 30 (1.09%) | 74 (2.69%) |
+
+> **The displacement story decomposes under cellsplit.** Under abs-standard attribution (dd_top = 1 slot), the click distribution concentrates at rank 0–1 with no clean per-cell resolution. Under abs-cellsplit, the *same clicks* spread across carousel cells (ranks 0–K−1) and then peak again at rank K (first organic). The cell-1-vs-rank-K bimodality is the substrate behind §3's "displacement" language — clicks below the carousel concentrate at the first organic regardless of how many carousel cells precede it.
+>
+> **Methodology note.** These click counts use bbox y-band attribution (cell bboxes from cascade-baseline snapshots), not the equal-band approximation used by K1–K24. The two methods differ by a few percentage points per rank; abs-standard here is *not* directly comparable to the older absolute-rank numbers in §3's `clicks_by_abs_rank.csv`. Numbers within this section are internally consistent.
+
+---
 
 ### Click distribution — bbox vs h3-rank vs absolute
 
@@ -1598,7 +1699,7 @@ The 2026-05-01 AOI-pipeline cascade shifted both inputs that NB28's calibration 
 1. **`cursor-approach-features-organic.json`** (14,760 records / 2,701 trials, +10% records / +15% trials) — produced by `scripts/compute_cursor_approach_features.py --attribution organic` (commit `8bb800fd`).
 2. **`regression_labels_cache_organic.json`** (8,747 deferred / 6,013 not-deferred, 59.3% deferred rate vs the legacy 64.7%) — produced by `scripts/compute_regression_labels.py --attribution organic` (committed in this batch).
 
-**The K-claims block below (K1–K14, K10.0–K10.5) reflects pre-cascade absolute-rank attribution** and is preserved here as the legacy baseline. The calibration retrain on the new bbox-attributed inputs has NOT yet run — that's a multi-hour bootstrap (1,000 seeds × 47-fold StratifiedGroupKFold) and gates the methods paper §5 viewport-bands result. Inputs are ready; producer pipeline is `notebooks-v2/28_viewport_bands.ipynb` re-execution against the `-organic.json` siblings.
+**The K-claims block below (K1–K14, K10.0–K10.5) reflects pre-cascade absolute-rank attribution** and is preserved here as the legacy baseline. The calibration retrain on the new bbox-attributed inputs has NOT yet run — that's a multi-hour bootstrap (1,000 seeds × 47-fold StratifiedGroupKFold) and gates the CIKM paper §5 viewport-bands result. Inputs are ready; producer pipeline is `notebooks-v2/28_viewport_bands.ipynb` re-execution against the `-organic.json` siblings.
 
 **Expected directional shift** based on adjacent notebooks:
 - bands-alone AUC may strengthen modestly (similar to NB21:K-bbox-3 nudging 0.859 → 0.865)
@@ -1884,7 +1985,7 @@ The banded decomposition (A: `vt_top`, `vt_mid`, `vt_bot`) can stay behind an op
 |---|---|---|
 | K23 | Windowing — rolling 5-second window ending at click_t vs cumulative-since-AOI-first-seen | Cumulative B pooled 0.798 → rolling 0.704; cumulative B∪C pooled 0.817 → rolling 0.698. Paired Δ(cumulative − rolling) = +0.1194 per-p (43/47, p < 0.0001). Within the rolling window, B∪C > B is null (Δ = −0.005, p = 0.86). The deferred-vs-rejected signal requires cumulative accumulation; a 5-second window drops the features to near-chance. |
 
-### EWM empirical signatures (2026-04-19) — feeds §4.5 of the paper draft
+### EWM empirical signatures (2026-04-19) — feeds §4.5 of the CIKM draft
 
 Direct Mann–Whitney two-sided tests of the raw features on the approached ∧ ¬clicked subset. Predictions from Gray & Fu 2004 / SCH framing (viewport as the external working memory buffer, trajectory features as EWM management actions).
 
