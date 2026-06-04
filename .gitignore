@@ -52,3 +52,10 @@ scripts/output/figures/per_record_*.json
 
 # Thursday RIPA2 meeting prep — internal-only, not paper artifacts
 scripts/output/ripa2_meet_visuals/
+
+# Incoming collaborator material — others' UNPUBLISHED data/notebooks, not ours to
+# open-source (this repo is public). e.g. allawati-ai-overviews/ = Sara Allawati's
+# AI-Overviews dataset + her ports of our v2 notebooks, plus the comparison/draft that
+# quote her pre-publication numbers. Whitelist a specific shareable file with
+# `!collab/<path>` only once permission is explicitly granted.
+collab/
