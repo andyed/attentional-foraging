@@ -1,0 +1,39 @@
+{
+  "flavor": "typed_gapfill_cellsplit",
+  "source_csv": "scripts/output/adserp_aois_by_trial_id_typed_gapfill_cellsplit.csv",
+  "n_trials": 2776,
+  "n_rows": 44766,
+  "superset_invariant": {
+    "parent_main_axis_rows": 37174,
+    "note": "filter role=='parent' and main_axis to recover typed_gapfill main-axis exactly"
+  },
+  "tier1_dd_top": {
+    "parent_blocks": 1582,
+    "blocks_split_ge2_cells": 1550,
+    "total_cells": 6373,
+    "cells_per_carousel": {
+      "mean": 4.11,
+      "min": 2,
+      "max": 6,
+      "median": 4
+    },
+    "backbone_alignment_pct": 100.0,
+    "pct_trials_with_carousel": 57.0
+  },
+  "tier2_organic_cell": {
+    "cells_emitted_aligned": 174,
+    "trials": 75,
+    "cascade_candidates": 380,
+    "backbone_alignment_pct": 45.8,
+    "note": "preliminary; cascade organic sub-segmentation X-split deferred; only backbone-aligned cells emitted"
+  },
+  "tier3_dd_right_covariate": {
+    "off_axis": true,
+    "main_axis": false,
+    "parent_blocks": 861,
+    "pct_trials_with_right_rail": 31.0,
+    "cells": 184,
+    "cell_trials": 92,
+    "intended_use": "condition on right-rail exposure to reduce variance; not a modeling target"
+  }
+}

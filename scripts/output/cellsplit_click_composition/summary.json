@@ -1,0 +1,24 @@
+{
+  "flavor": "typed_gapfill_cellsplit",
+  "n_carousels": 1550,
+  "n_carousels_with_click": 1549,
+  "n_clicks_on_carousel": 237,
+  "carousel_click_rate": 0.153,
+  "modal4": {
+    "n_clicks": 142,
+    "by_cell_index_pct": {
+      "0": 31.7,
+      "1": 21.1,
+      "2": 23.2,
+      "3": 23.9
+    },
+    "by_cell_index_count": {
+      "0": 45,
+      "1": 30,
+      "2": 33,
+      "3": 34
+    }
+  },
+  "leftmost_share_modal4": 31.7,
+  "note": "clicks restricted to those landing inside a dd_top cell bbox; modal panel fixes 4-cell carousels (61.9% of carousels) to remove the variable-length confound"
+}

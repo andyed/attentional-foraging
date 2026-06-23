@@ -47,6 +47,7 @@ from data_loader import (  # noqa: E402
     organic_aoi_bands,  # bbox organics
 )
 from compute_cursor_approach_features import build_hybrid_aois  # noqa: E402
+from probe_cellsplit_features import load_aois as load_cell_aois  # noqa: E402
 
 # Result column x-range is shared across all trials (data_loader.py:370-371).
 RESULT_COL_X_MIN = 162
@@ -220,6 +221,135 @@ def rows_typed(trial_id, doc_h, scr_h, uid, batch, trial,
     return rows
 
 
+CELL_ETYPE = {"dd_top": "dd_top_cell", "organic_result": "organic_cell",
+              "dd_right": "dd_right_cell"}
+
+
+def _cellsplit_extra_keys(row: dict, role: str, cell_index, n_cells: int,
+                           parent_rank: int, parent_etype: str, main_axis: bool):
+    """Stamp the six cell-aware columns onto a base-schema row in place."""
+    row.update(role=role, cell_index=cell_index, n_cells=n_cells,
+               parent_rank=parent_rank, parent_etype=parent_etype,
+               main_axis=main_axis)
+    return row
+
+
+def _cell_row(c, trial_id, uid, batch, trial, doc_h, scr_h,
+               parent_row, cell_index, n_cells, main_axis, rank):
+    """One role='cell' row from a cascade-snapshot cell dict (x,y,w,h)."""
+    top_y = float(c["y"])
+    bot_y = top_y + float(c["h"])
+    return {
+        "trial_id": trial_id, "uid": uid, "batch": batch, "trial": trial,
+        "rank": rank,
+        "etype": CELL_ETYPE[c["parent_kind"]],
+        "organic_rank": None,
+        "top_y": round(top_y, 2), "bottom_y": round(bot_y, 2),
+        "center_y": round((top_y + bot_y) / 2, 2),
+        "left_x": round(float(c["x"]), 2),
+        "right_x": round(float(c["x"]) + float(c["w"]), 2),
+        "n_total": parent_row["n_total"] if parent_row else None,
+        "n_organic": parent_row["n_organic"] if parent_row else None,
+        "doc_height": doc_h, "screen_height": scr_h,
+        "html_handle": None, "html_signature": "",
+        "role": "cell", "cell_index": cell_index, "n_cells": n_cells,
+        "parent_rank": parent_row["rank"] if parent_row else -1,
+        "parent_etype": parent_row["parent_etype"] if parent_row else CELL_ETYPE[c["parent_kind"]].rsplit("_cell", 1)[0],
+        "main_axis": main_axis,
+    }
+
+
+def rows_typed_cellsplit(trial_id, doc_h, scr_h, uid, batch, trial):
+    """Cell-aware superset of typed_gapfill.
+
+    Every typed_gapfill main-axis card is emitted unchanged as a role='parent'
+    row (filter ``role == 'parent' and main_axis`` to recover typed_gapfill
+    exactly). Cards the cascade snapshot resolves into sub-cells gain extra
+    role='cell' rows, in three honest tiers:
+
+      dd_top_cell   horizontal top-ads carousel cards. The headline split:
+                    midpoint-split X-ranges, ~4 cells/carousel, ~56% of trials.
+      organic_cell  organic sub-elements (sitelinks etc.). Sparse (~6%); the
+                    X midpoint-split is deferred, so cell X is as-detected.
+      dd_right_cell right-rail cards. OFF-AXIS (main_axis=False). Right-rail
+                    blocks are also emitted at parent grain for every trial
+                    that has one, so consumers can condition on right-rail
+                    exposure to reduce variance in main-axis models. dd_right
+                    is a control covariate, not a modeling target.
+
+    Adds six columns to the typed schema: role ('parent'|'cell'), cell_index,
+    n_cells (cells in this parent; 0 = not subdivided), parent_rank,
+    parent_etype, main_axis (bool).
+    """
+    base = rows_typed(trial_id, doc_h, scr_h, uid, batch, trial, gapfill=True)
+    for r in base:
+        _cellsplit_extra_keys(r, "parent", None, 0, r["rank"], r["etype"], True)
+
+    try:
+        aois = load_cell_aois(trial_id, midpoint_split=True)
+    except FileNotFoundError:
+        return base
+    cells = [a for a in aois if a["role"] == "cell"]
+    dd_right_parents = [a for a in aois
+                        if a["role"] == "parent" and a["kind"] == "dd_right"]
+
+    extra: list[dict] = []
+
+    # Main-axis subdivisions (dd_top, organic): attach each cell to the
+    # backbone parent whose Y-range contains the cell center.
+    for parent_kind, target_etype in (("dd_top", "dd_top"),
+                                       ("organic_result", "organic")):
+        kin = [c for c in cells if c["parent_kind"] == parent_kind]
+        if not kin:
+            continue
+        parents = [r for r in base
+                   if r["etype"] == target_etype and r["main_axis"]]
+        buckets: dict = {}
+        for c in kin:
+            cy = float(c["y"]) + float(c["h"]) / 2
+            match = next((r for r in parents
+                          if r["top_y"] <= cy <= r["bottom_y"]), None)
+            key = match["rank"] if match else None
+            buckets.setdefault(key, (match, []))[1].append(c)
+        for key, (parent_row, clist) in buckets.items():
+            if parent_row is None:
+                continue  # cell with no main-axis parent (rare) — drop
+            clist = sorted(clist, key=lambda c: (c["x"], c["y"]))
+            parent_row["n_cells"] = len(clist)
+            for i, c in enumerate(clist):
+                extra.append(_cell_row(c, trial_id, uid, batch, trial, doc_h,
+                                       scr_h, parent_row, i, len(clist),
+                                       True, parent_row["rank"]))
+
+    # Off-axis dd_right covariate: a parent row for every right-rail block
+    # plus its cells, all main_axis=False (filtered from main-axis analyses).
+    dr_cells = sorted([c for c in cells if c["parent_kind"] == "dd_right"],
+                      key=lambda c: (c["y"], c["x"]))
+    for j, p in enumerate(dd_right_parents):
+        top_y = float(p["y"])
+        bot_y = top_y + float(p["h"])
+        mine = dr_cells if j == 0 else []  # cells attach to first block (1 typical)
+        pr = {
+            "trial_id": trial_id, "uid": uid, "batch": batch, "trial": trial,
+            "rank": -1, "etype": "dd_right", "organic_rank": None,
+            "top_y": round(top_y, 2), "bottom_y": round(bot_y, 2),
+            "center_y": round((top_y + bot_y) / 2, 2),
+            "left_x": round(float(p["x"]), 2),
+            "right_x": round(float(p["x"]) + float(p["w"]), 2),
+            "n_total": None, "n_organic": None,
+            "doc_height": doc_h, "screen_height": scr_h,
+            "html_handle": None, "html_signature": "",
+            "role": "parent", "cell_index": None, "n_cells": len(mine),
+            "parent_rank": -1, "parent_etype": "dd_right", "main_axis": False,
+        }
+        extra.append(pr)
+        for i, c in enumerate(mine):
+            extra.append(_cell_row(c, trial_id, uid, batch, trial, doc_h,
+                                   scr_h, pr, i, len(mine), False, -1))
+
+    return base + extra
+
+
 def rows_for_trial(trial_id: str, attribution: str) -> list[dict]:
     uid, batch, trial = parse_trial_id(trial_id)
     meta = get_trial_meta(trial_id)
@@ -239,13 +369,16 @@ def rows_for_trial(trial_id: str, attribution: str) -> list[dict]:
     if attribution == "typed_gapfill":
         return rows_typed(trial_id, doc_h, scr_h, uid, batch, trial,
                            gapfill=True)
+    if attribution == "typed_gapfill_cellsplit":
+        return rows_typed_cellsplit(trial_id, doc_h, scr_h, uid, batch, trial)
     raise ValueError(f"unknown attribution: {attribution!r}")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--attribution",
-                        choices=["absolute", "organic", "organic_hybrid", "typed", "typed_gapfill"],
+                        choices=["absolute", "organic", "organic_hybrid", "typed",
+                                 "typed_gapfill", "typed_gapfill_cellsplit"],
                         default="organic_hybrid",
                         help="AOI attribution flavor (default: organic_hybrid).")
     args = parser.parse_args()

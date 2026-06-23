@@ -76,11 +76,14 @@ def main() -> int:
                         help="Full corpus (every trial with a local PNG)")
     parser.add_argument(
         "--flavor", default="typed_gapfill",
-        choices=["typed_gapfill", "typed"],
-        help="Public flavor (default typed_gapfill). 'typed' kept for "
-             "backward compat; legacy flavors organic/organic_hybrid/"
-             "absolute are not exposed by this entry point — use the "
-             "underlying scripts directly if you need them.",
+        choices=["typed_gapfill", "typed", "typed_gapfill_cellsplit"],
+        help="Public flavor (default typed_gapfill). 'typed_gapfill_cellsplit' "
+             "is the cell-aware superset (dd_top carousel cards split per "
+             "column, organic sub-cells, off-axis dd_right covariate); it "
+             "reuses the gapfill backbone and adds cells from the "
+             "cascade-baseline snapshot. 'typed' kept for backward compat; "
+             "legacy flavors organic/organic_hybrid/absolute are not exposed "
+             "by this entry point — use the underlying scripts directly.",
     )
     parser.add_argument(
         "--skip-extract", action="store_true",
@@ -103,12 +106,13 @@ def main() -> int:
             step="extract organic bboxes (CV)")
 
     # Step 2: midpoint-split gap-fill (organic_gapfill flavor)
-    if args.flavor == "typed_gapfill":
+    gapfill_flavors = ("typed_gapfill", "typed_gapfill_cellsplit")
+    if args.flavor in gapfill_flavors:
         run([py, str(SCRIPTS / "apply_gapfill_to_existing.py")],
             step="apply midpoint-split gap-fill")
 
     # Step 3: HTML widget typing + spatial join → typed AOI map
-    source = "organic_gapfill" if args.flavor == "typed_gapfill" else "organic"
+    source = "organic_gapfill" if args.flavor in gapfill_flavors else "organic"
     run([py, str(SCRIPTS / "build_typed_aoi_map.py"), "--source", source],
         step=f"build typed AOI map (--source {source})")
 
@@ -120,14 +124,13 @@ def main() -> int:
 
     print(f"\n✓ build_aois complete. Flavor: {args.flavor}.")
     print(f"  Outputs:")
-    if args.flavor == "typed_gapfill":
+    if args.flavor in gapfill_flavors:
         print(f"    AdSERP/data/organic-boundary-data-gapfill/")
         print(f"    data/aoi-typed-gapfill/")
-        print(f"    scripts/output/adserp_aois_by_trial_id_typed_gapfill.csv")
     else:
         print(f"    AdSERP/data/organic-boundary-data/")
         print(f"    data/aoi-typed/")
-        print(f"    scripts/output/adserp_aois_by_trial_id_typed.csv")
+    print(f"    scripts/output/adserp_aois_by_trial_id_{args.flavor}.csv")
     return 0
 
 
