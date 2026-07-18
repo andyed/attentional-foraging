@@ -4,9 +4,9 @@ Three working notebooks applying gaze-regression and Peripheral Attention Index
 (PAI) analysis to a public SERP eye-tracking corpus. Posted for anyone in the
 ETTAC 2026 session to look over ahead of Lyon.
 
-- [`33_intra_patch_reading.ipynb`](../notebooks-v2/33_intra_patch_reading.ipynb) — within-element (intra-patch) reading-direction census
-- [`34_regression_load_coupling.ipynb`](../notebooks-v2/34_regression_load_coupling.ipynb) — regression × pupil-load coupling test
-- [`35_pai_census.ipynb`](../notebooks-v2/35_pai_census.ipynb) — PAI census and orphan-fixation recovery
+- [`33_intra_patch_reading.ipynb`](https://github.com/andyed/attentional-foraging/blob/feat/dd-top-cellsplit/notebooks-v2/33_intra_patch_reading.ipynb) — within-element (intra-patch) reading-direction census
+- [`34_regression_load_coupling.ipynb`](https://github.com/andyed/attentional-foraging/blob/feat/dd-top-cellsplit/notebooks-v2/34_regression_load_coupling.ipynb) — regression × pupil-load coupling test
+- [`35_pai_census.ipynb`](https://github.com/andyed/attentional-foraging/blob/feat/dd-top-cellsplit/notebooks-v2/35_pai_census.ipynb) — PAI census and orphan-fixation recovery
 
 **Sources:**
 - PAI method: Duchowski, Gehrer & Svaldi, *Peripheral Attention Index (PAI):
