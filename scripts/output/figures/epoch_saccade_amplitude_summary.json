@@ -1,0 +1,29 @@
+{
+  "hybrid": {
+    "n_trials": 2760,
+    "n_trials_multi_epoch": 2177,
+    "median_opening_by_epoch": {
+      "1": 108.18964830333815,
+      "2": 76.04274935710926,
+      "3": 70.8590149522275
+    },
+    "n_opening_by_epoch": {
+      "1": 13694,
+      "2": 10250,
+      "3": 16098
+    },
+    "median_body_by_epoch": {
+      "1": 67.53517601961218,
+      "2": 68.60029154456998,
+      "3": 69.1158447825099
+    },
+    "n_body_by_epoch": {
+      "1": 74994,
+      "2": 35022,
+      "3": 60120
+    },
+    "median_post_landing_opening": 70.83784299369935,
+    "n_post_landing_opening": 568406,
+    "n_paired_trials": 1970
+  }
+}

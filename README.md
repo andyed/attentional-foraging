@@ -70,12 +70,12 @@ When you search for something, your eyes don't just read top to bottom. The proc
 
 ```
 Orient → Survey → Evaluate ─┬─→ Click (commit to a result)
-                  ↑          ├─→ Next page / Reformulate (the page wasn't good enough)
-                  └──────────┘   └─→ Abandon (the task wasn't worth it)
-                  (regression)
+                   ↑     │  ├─→ Next page / Reformulate (the page wasn't good enough)
+                   └─────┘  └─→ Abandon (the task wasn't worth it)
+                (regression)
 ```
 
-**Orient** — your eyes land on the page and find where the results start. **Survey** — a quick sweep of the result set, wide eye jumps, getting the gist. **Evaluate** — committed reading of individual results, narrow eye movements. Then you exit: click something, try a different query, or give up. *Regressions* — scrolling back up to re-examine earlier results — loop from evaluate back to survey.
+**Orient** — your eyes land on the page and find where the results start. **Survey** — a quick sweep of the result set, wide eye jumps, getting the gist. **Evaluate** — committed reading of individual results, narrow eye movements. Then you exit: click something, try a different query, or give up. *Regressions* — jumping back up to a specific earlier result — loop within evaluate, not back to survey. They are ballistic and target-directed: 90% move one or two ranks, and the long ones snap to a remembered anchor near the top rather than re-scanning what they pass.
 
 The decision between those exits (stay, refine, or quit) is the core foraging decision, borrowed from behavioral ecology: just as an animal decides whether to keep foraging in a patch or move on, a searcher decides whether the current results page is worth continued investment.
 
