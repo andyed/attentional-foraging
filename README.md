@@ -4,7 +4,7 @@
 
 ---
 
-> 📄 **Paper:** [AllSERP: Exhaustive Per-Element Enrichment of the Versatile AdSERP Dataset](https://arxiv.org/abs/2605.04949) (arXiv:2605.04949) — see [`CITATION.cff`](./CITATION.cff) or the "Cite this repository" sidebar. Local PDF: [`allserp-paper.pdf`](./allserp-paper.pdf).
+> 📄 **Paper:** [AllSERP: Exhaustive Per-Element Enrichment of the Versatile AdSERP Dataset](https://arxiv.org/abs/2605.04949) (arXiv:2605.04949) · **Source & artifacts:** [andyed/allserp-paper](https://github.com/andyed/allserp-paper) — see [`CITATION.cff`](./CITATION.cff) or the "Cite this repository" sidebar. Local PDF: [`allserp-paper.pdf`](./allserp-paper.pdf).
 
 ---
 
