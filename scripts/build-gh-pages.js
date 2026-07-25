@@ -678,8 +678,16 @@ if(i>0){const p=F[i-1];const l=se('line',{x1:p.x,y1:p.y,x2:f.x,y2:f.y,stroke:c,'
 const hr=se('circle',{cx:f.x,cy:f.y,r:r+6,fill:'none',stroke:'#fff','stroke-width':6,'stroke-opacity':0});svg.appendChild(hr);hE.push(hr);
 const cr=se('circle',{cx:f.x,cy:f.y,r,fill:c,'fill-opacity':.25,stroke:c,'stroke-width':2,'stroke-opacity':.8});svg.appendChild(cr);cE.push(cr);
 const fs=Math.max(9,Math.min(14,r));const tx=se('text',{x:f.x,y:f.y,'text-anchor':'middle','dominant-baseline':'central','font-family':'monospace','font-weight':'bold','font-size':fs,fill:'white',stroke:'rgba(0,0,0,.6)','stroke-width':2,'paint-order':'stroke'});tx.textContent=i+1;svg.appendChild(tx);tE.push(tx)}
-if(CK){const s=se('polygon',{points:[0,-16,6,-4,16,-4,8,4,12,16,0,8,-12,16,-8,4,-16,-4,-6,-4].reduce((a,v,i)=>{a.push(i%2===0?CK.x+v:CK.y+v);return a},[]).join(','),fill:'#f00','fill-opacity':.5,stroke:'#f00','stroke-width':2});svg.appendChild(s);
-const l=se('text',{x:CK.x+18,y:CK.y+4,'font-family':'monospace','font-weight':'bold','font-size':11,fill:'#f00',stroke:'white','stroke-width':2,'paint-order':'stroke'});l.textContent='CLICK';svg.appendChild(l)}
+if(CK){
+// Cursor-icon click marker (was a red star prior to 2026-05-09). Path matches
+// the live #mouse-cursor div (M0,0 hotspot at upper-left tip), scaled 2.5×
+// for paper / replay visibility, red fill + black stroke = clicked-state.
+// String concatenation (not template literal) because the surrounding HTML
+// is itself a template-literal'd build-script string.
+const SC=2.5,cx=CK.x,cy=CK.y;
+const d='M'+cx+','+cy+' L'+cx+','+(cy+22*SC)+' L'+(cx+5.5*SC)+','+(cy+17*SC)+' L'+(cx+10*SC)+','+(cy+28*SC)+' L'+(cx+14*SC)+','+(cy+26*SC)+' L'+(cx+9*SC)+','+(cy+16*SC)+' L'+(cx+16*SC)+','+(cy+16*SC)+' Z';
+const cur=se('path',{d:d,fill:'#ff3333',stroke:'#000','stroke-width':2,'stroke-linejoin':'round'});svg.appendChild(cur);
+const l=se('text',{x:CK.x+16*SC+10,y:CK.y+18*SC+6,'font-family':'monospace','font-weight':'bold','font-size':14,fill:'#ff3333',stroke:'white','stroke-width':3,'paint-order':'stroke'});l.textContent='click';svg.appendChild(l)}
 function uv(){const wn=parseInt(ws.value);
 wl.textContent=wn>=N?'All':wn;
 const lo=Math.max(0,ci-wn+1);

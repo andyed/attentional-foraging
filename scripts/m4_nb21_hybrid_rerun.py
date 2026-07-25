@@ -65,6 +65,18 @@ M4_FEATURES = [
 PROX_THRESHOLD = 100
 N_RESULTS_DEFAULT = 10
 
+# Velocity sanitization bounds. dt is integer ms, so a genuine 1 ms gap at a
+# high mousemove sample rate divides a few px of motion into physically
+# impossible speeds (>9000 px/s observed in a live harvest, max 11,249.99 —
+# clustering at round magnitudes 9375/9954/10000/11250, the dt->0 signature).
+# Flooring only dt==0 to 1.0 (the prior guard) did not catch this. We floor dt
+# and clamp the per-sample velocity to keep max/mean plausible. Mirrors the JS
+# ResultFeatureTracker (src/approach-retreat.js): MIN_VEL_DT_MS=8,
+# MAX_PLAUSIBLE_VEL=5000. Per the §5.1 LOFO ablation, velocity terms add ~0 to
+# M4 click-prediction AUC, so this is a data-quality fix, not an accuracy one.
+MIN_VEL_DT_MS = 8.0  # ~125 Hz ceiling; floors dt for the velocity divide only
+MAX_PLAUSIBLE_VEL = 5000.0  # px/s; symmetric clamp (preserves directed sign)
+
 
 def extract_result_idx(xpath):
     if not xpath:
@@ -184,8 +196,13 @@ def compute_hybrid_features(trial_id, n_results=N_RESULTS_DEFAULT):
 
         if len(ts_all) >= 2:
             dts = np.diff(ts_all).astype(float)
-            dts[dts == 0] = 1.0
+            # Floor dt (not just the dt==0 case) so a tiny gap cannot
+            # manufacture an impossible speed, then clamp symmetrically. The
+            # clamp preserves sign, so direction_changes / frac_decreasing and
+            # the by-design negative mean are unaffected. See JS parity note.
+            dts = np.maximum(dts, MIN_VEL_DT_MS)
             vels = -np.diff(dist) / dts * 1000.0
+            vels = np.clip(vels, -MAX_PLAUSIBLE_VEL, MAX_PLAUSIBLE_VEL)
             mean_vel = float(vels.mean())
             max_vel = float(vels.max())
             direction_changes = int(np.sum(np.diff(np.sign(vels)) != 0))

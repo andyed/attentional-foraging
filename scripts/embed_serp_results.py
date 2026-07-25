@@ -69,11 +69,13 @@ def extract_serp_results(html_path):
                     if container.get('class') and any('g' in c for c in container.get('class', [])):
                         break
 
-            # Snippet: all text in the container minus the title
+            # Snippet: all text in the container minus the title.
+            # Stored UNTRUNCATED — downstream length/diversity features
+            # (snippet_chars, snippet_tokens, snippet_ttr) need the full
+            # range; the pre-2026-07 [:500]/[:200] caps range-restricted
+            # them (corpus mean 198, sd 11 → false nulls, NB33 Gate B).
             all_text = container.get_text(' ', strip=True) if container else ''
             snippet = all_text.replace(title, '', 1).strip()
-            # Truncate long snippets
-            snippet = snippet[:500] if len(snippet) > 500 else snippet
 
             results.append({
                 'position': i,
@@ -128,11 +130,14 @@ def main():
         trial_results = []
         for r in results[:10]:  # Cap at 10 results
             text = f"{r['title']}. {r['snippet']}"
+            # Embedding input is capped for the server's 512-token context
+            # window; the stored 'snippet' field is NOT — it feeds length/
+            # diversity features and must keep its full range.
             trial_results.append({
                 'position': r['position'],
                 'title': r['title'],
-                'snippet': r['snippet'][:200],
-                'text': text[:400],  # Truncate for embedding context window
+                'snippet': r['snippet'],
+                'text': text[:400],  # exact embedding input, kept for provenance
             })
             texts_to_embed.append(text[:400])
             text_keys.append((trial_id, r['position']))

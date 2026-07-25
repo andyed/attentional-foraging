@@ -147,8 +147,12 @@ def compute_cell_features(trial_id: str, parent_records: list[dict]) -> list[dic
                 if 0 < dt < 2000:
                     dwell_ms += dt
         dts = np.diff(ts_g).astype(float)
-        dts[dts == 0] = 1.0
+        # Floor dt + clamp velocity so a tiny gap can't manufacture an
+        # impossible speed (rationale in m4_nb21_hybrid_rerun.py). Clamp is
+        # symmetric → sign-based features and the negative mean unaffected.
+        dts = np.maximum(dts, 8.0)  # MIN_VEL_DT_MS
         vels = -np.diff(dist) / dts * 1000.0
+        vels = np.clip(vels, -5000.0, 5000.0)  # MAX_PLAUSIBLE_VEL px/s
 
         was_clicked = False
         if click_xy[0] is not None:

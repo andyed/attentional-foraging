@@ -41,8 +41,9 @@ def extract_serp_results(html_path):
                 if container.get("class") and any("g" in c for c in container.get("class", [])):
                     break
         all_text = container.get_text(" ", strip=True) if container else ""
+        # Stored untruncated; only the embedding input is capped (below).
+        # The old [:500] cap here range-restricted downstream length features.
         snippet = all_text.replace(title, "", 1).strip()
-        snippet = snippet[:500]
         results.append({"position": i, "title": title, "snippet": snippet})
     return results
 

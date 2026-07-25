@@ -176,8 +176,12 @@ def compute_xpath_features(trial_id):
 
         if len(ts_all) >= 2:
             dts = np.diff(ts_all).astype(float)
-            dts[dts == 0] = 1.0
+            # Floor dt + clamp velocity so a tiny gap can't manufacture an
+            # impossible speed (rationale in m4_nb21_hybrid_rerun.py). Clamp is
+            # symmetric → sign-based features and the negative mean unaffected.
+            dts = np.maximum(dts, 8.0)  # MIN_VEL_DT_MS
             vels = -np.diff(dist) / dts * 1000.0
+            vels = np.clip(vels, -5000.0, 5000.0)  # MAX_PLAUSIBLE_VEL px/s
             mean_vel = float(vels.mean())
             max_vel = float(vels.max())
             direction_changes = int(np.sum(np.diff(np.sign(vels)) != 0))

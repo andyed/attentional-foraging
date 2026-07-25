@@ -36,6 +36,14 @@ SCREEN_W, SCREEN_H = 1280, 1024
 # Heatmap panel size — each individual panel
 PANEL_W, PANEL_H = 400, 800
 
+# AI Lab palette — matches site/explainer/index-ailab.html
+# All title/subtitle colors verified ≥ 8:1 against BG_AILAB.
+BG_AILAB = (252, 250, 243)              # #fcfaf3 page bg
+TEXT = (26, 22, 18)                     # #1a1612 — 17.22:1
+TEXT_DIM = (74, 68, 58)                 # #4a443a — 9.23:1
+STAGE_SURVEY = (133, 40, 24)            # #852818 — 8.69:1
+STAGE_EVALUATE = (26, 74, 106)          # #1a4a6a — 9.01:1
+
 
 def load_all_fixations():
     """Load all fixations across all trials with per-fixation index."""
@@ -103,31 +111,28 @@ def add_labels(canvas, panels_info, total_w, total_h):
 
     for info in panels_info:
         x_center = info['x'] + PANEL_W // 2
-        # Title
-        color = info.get('color', (100, 100, 100))
-        # Verify contrast against white bg
-        ratio, _, _ = check_contrast(color, (255, 255, 255))
+        # Title — verify contrast against AI Lab cream bg
+        color = info.get('color', TEXT_DIM)
+        ratio, _, _ = check_contrast(color, BG_AILAB)
         if ratio < 8.0:
-            # Darken to meet 8:1
             factor = 0.5
             color = tuple(max(0, int(c * factor)) for c in color)
-            ratio, _, _ = check_contrast(color, (255, 255, 255))
+            ratio, _, _ = check_contrast(color, BG_AILAB)
             if ratio < 8.0:
-                color = (0, 0, 0)
+                color = TEXT
 
         bbox = draw.textbbox((0, 0), info['title'], font=title_font)
         tw = bbox[2] - bbox[0]
         draw.text((x_center - tw // 2, 15), info['title'], fill=color, font=title_font)
 
-        # Subtitle
+        # Subtitle — text-dim role, 9.23:1 on cream
         if info.get('subtitle'):
             bbox = draw.textbbox((0, 0), info['subtitle'], font=sub_font)
             tw = bbox[2] - bbox[0]
-            # Subtitle needs 8:1 too
-            sub_color = (80, 80, 80)
-            ratio, _, _ = check_contrast(sub_color, (255, 255, 255))
+            sub_color = TEXT_DIM
+            ratio, _, _ = check_contrast(sub_color, BG_AILAB)
             if ratio < 8.0:
-                sub_color = (50, 50, 50)
+                sub_color = TEXT
             draw.text((x_center - tw // 2, total_h - 35), info['subtitle'],
                       fill=sub_color, font=sub_font)
 
@@ -136,7 +141,7 @@ def add_labels(canvas, panels_info, total_w, total_h):
 
 def add_connector(draw, x, y, text, font):
     """Draw a connector symbol between panels."""
-    color = (50, 50, 50)  # 8:1+ on white
+    color = TEXT_DIM  # 9.23:1 on cream
     bbox = draw.textbbox((0, 0), text, font=font)
     tw = bbox[2] - bbox[0]
     draw.text((x - tw // 2, y), text, fill=color, font=font)
@@ -172,7 +177,7 @@ def generate_decomposition(all_fix):
     gap = 60
     total_w = PANEL_W * 3 + gap * 2
     total_h = PANEL_H + 80  # room for labels
-    canvas = Image.new('RGB', (total_w, total_h), (255, 255, 255))
+    canvas = Image.new('RGB', (total_w, total_h), BG_AILAB)
 
     y_offset = 50
     canvas.paste(panel_combined.convert('RGB'), (0, y_offset))
@@ -182,11 +187,11 @@ def generate_decomposition(all_fix):
     # Labels
     panels_info = [
         {'x': 0, 'title': 'COMBINED F-SHAPE', 'subtitle': 'what the heatmap shows',
-         'color': (60, 60, 60)},
+         'color': TEXT},
         {'x': PANEL_W + gap, 'title': 'SURVEY PHASE', 'subtitle': 'fixations 1–5',
-         'color': (180, 40, 40)},
+         'color': STAGE_SURVEY},
         {'x': PANEL_W * 2 + gap * 2, 'title': 'EVALUATE PHASE', 'subtitle': 'fixations 6–20',
-         'color': (30, 80, 180)},
+         'color': STAGE_EVALUATE},
     ]
     canvas = add_labels(canvas, panels_info, total_w, total_h)
 
@@ -272,7 +277,7 @@ def generate_dissection(all_fix):
     gap = 50
     total_w = PANEL_W * 5 + gap * 4
     total_h = PANEL_H + 80
-    canvas = Image.new('RGB', (total_w, total_h), (255, 255, 255))
+    canvas = Image.new('RGB', (total_w, total_h), BG_AILAB)
 
     y_offset = 50
     for i, panel in enumerate(panels):
@@ -281,19 +286,19 @@ def generate_dissection(all_fix):
     panels_info = [
         {'x': 0, 'title': 'ALL FIXATIONS',
          'subtitle': f'the F-pattern as published\nN = {len(all_first20):,}',
-         'color': (140, 30, 30)},
+         'color': STAGE_SURVEY},
         {'x': PANEL_W + gap, 'title': 'SUBTRACT SURVEY',
          'subtitle': f'evaluate fixations only\nN = {len(evaluate_only):,}',
-         'color': (60, 60, 60)},
+         'color': TEXT},
         {'x': (PANEL_W + gap) * 2, 'title': 'SUBTRACT REGRESSIONS',
          'subtitle': f'forward-only saccades\nN = {len(no_regression):,}',
-         'color': (60, 60, 60)},
+         'color': TEXT},
         {'x': (PANEL_W + gap) * 3, 'title': 'SUBTRACT QUICK CLICKERS',
          'subtitle': f'deep evaluators only\nN = {len(deep):,}',
-         'color': (60, 60, 60)},
+         'color': TEXT},
         {'x': (PANEL_W + gap) * 4, 'title': 'SUBTRACT SURVIVOR BIAS',
          'subtitle': f'equal mass per fix index\nN = {len(normalized):,}',
-         'color': (60, 60, 60)},
+         'color': TEXT},
     ]
     canvas = add_labels(canvas, panels_info, total_w, total_h)
 
