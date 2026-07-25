@@ -42,42 +42,42 @@ impression">
 </g>
 <g class="node" data-id="O" data-label="Orient
 learned prior" data-shape="rectangle">
-  <rect x="40" y="155.05" width="119.75500000000001" height="53.800000000000004" rx="0" ry="0" fill="#f9f9f9" stroke="#d4d4d4" stroke-width="0.75" />
-  <text x="99.8775" y="181.95000000000002" text-anchor="middle" font-size="13" font-weight="500" fill="#27272A"><tspan x="99.8775" dy="-3.9000000000000012">Orient</tspan><tspan x="99.8775" dy="16.900000000000002">learned prior</tspan></text>
+  <rect x="40" y="155.05" width="119.75500000000001" height="53.800000000000004" rx="0" ry="0" fill="#fcfaf3" stroke="#6a4010" stroke-width="2px" />
+  <text x="99.8775" y="181.95000000000002" text-anchor="middle" font-size="13" font-weight="500" fill="#6a4010"><tspan x="99.8775" dy="-3.9000000000000012">Orient</tspan><tspan x="99.8775" dy="16.900000000000002">learned prior</tspan></text>
 </g>
 <g class="node" data-id="S" data-label="Survey
 ~1 s gist sampling" data-shape="rectangle">
-  <rect x="292.135" y="155.05" width="139.02100000000002" height="53.800000000000004" rx="0" ry="0" fill="#f9f9f9" stroke="#d4d4d4" stroke-width="0.75" />
-  <text x="361.64549999999997" y="181.95000000000002" text-anchor="middle" font-size="13" font-weight="500" fill="#27272A"><tspan x="361.64549999999997" dy="-3.9000000000000012">Survey</tspan><tspan x="361.64549999999997" dy="16.900000000000002">~1 s gist sampling</tspan></text>
+  <rect x="292.135" y="155.05" width="139.02100000000002" height="53.800000000000004" rx="0" ry="0" fill="#fcfaf3" stroke="#852818" stroke-width="2px" />
+  <text x="361.64549999999997" y="181.95000000000002" text-anchor="middle" font-size="13" font-weight="500" fill="#852818"><tspan x="361.64549999999997" dy="-3.9000000000000012">Survey</tspan><tspan x="361.64549999999997" dy="16.900000000000002">~1 s gist sampling</tspan></text>
 </g>
 <g class="node" data-id="C" data-label="Commit" data-shape="rectangle">
-  <rect x="780.6820000000001" y="163.50000000000003" width="81.964" height="36.900000000000006" rx="0" ry="0" fill="#f9f9f9" stroke="#d4d4d4" stroke-width="0.75" />
-  <text x="821.6640000000001" y="181.95000000000005" text-anchor="middle" font-size="13" font-weight="500" fill="#27272A" dy="4.55">Commit</text>
+  <rect x="780.6820000000001" y="163.50000000000003" width="81.964" height="36.900000000000006" rx="0" ry="0" fill="#fcfaf3" stroke="#1e4a2c" stroke-width="2px" />
+  <text x="821.6640000000001" y="181.95000000000005" text-anchor="middle" font-size="13" font-weight="500" fill="#1e4a2c" dy="4.55">Commit</text>
 </g>
 <g class="node" data-id="CC" data-label="commit-to-click" data-shape="stadium">
-  <rect x="898.6460000000001" y="66.15000000000003" width="126.424" height="36.900000000000006" rx="18.450000000000003" ry="18.450000000000003" fill="#f9f9f9" stroke="#d4d4d4" stroke-width="0.75" />
-  <text x="961.8580000000001" y="84.60000000000004" text-anchor="middle" font-size="13" font-weight="500" fill="#27272A" dy="4.55">commit-to-click</text>
+  <rect x="898.6460000000001" y="66.15000000000003" width="126.424" height="36.900000000000006" rx="18.450000000000003" ry="18.450000000000003" fill="#fcfaf3" stroke="#1e4a2c" stroke-width="1.5px" />
+  <text x="961.8580000000001" y="84.60000000000004" text-anchor="middle" font-size="13" font-weight="500" fill="#1e4a2c" dy="4.55">commit-to-click</text>
 </g>
 <g class="node" data-id="CD" data-label="commit-to-deepen" data-shape="stadium">
-  <rect x="898.6460000000001" y="131.05" width="142.726" height="36.900000000000006" rx="18.450000000000003" ry="18.450000000000003" fill="#f9f9f9" stroke="#d4d4d4" stroke-width="0.75" />
-  <text x="970.009" y="149.5" text-anchor="middle" font-size="13" font-weight="500" fill="#27272A" dy="4.55">commit-to-deepen</text>
+  <rect x="898.6460000000001" y="131.05" width="142.726" height="36.900000000000006" rx="18.450000000000003" ry="18.450000000000003" fill="#fcfaf3" stroke="#1e4a2c" stroke-width="1.5px" />
+  <text x="970.009" y="149.5" text-anchor="middle" font-size="13" font-weight="500" fill="#1e4a2c" dy="4.55">commit-to-deepen</text>
 </g>
 <g class="node" data-id="CQ" data-label="commit-to-requery" data-shape="stadium">
-  <rect x="898.6460000000001" y="195.95000000000002" width="147.17200000000003" height="36.900000000000006" rx="18.450000000000003" ry="18.450000000000003" fill="#f9f9f9" stroke="#d4d4d4" stroke-width="0.75" />
-  <text x="972.2320000000001" y="214.40000000000003" text-anchor="middle" font-size="13" font-weight="500" fill="#27272A" dy="4.55">commit-to-requery</text>
+  <rect x="898.6460000000001" y="195.95000000000002" width="147.17200000000003" height="36.900000000000006" rx="18.450000000000003" ry="18.450000000000003" fill="#fcfaf3" stroke="#1e4a2c" stroke-width="1.5px" />
+  <text x="972.2320000000001" y="214.40000000000003" text-anchor="middle" font-size="13" font-weight="500" fill="#1e4a2c" dy="4.55">commit-to-requery</text>
 </g>
 <g class="node" data-id="CA" data-label="commit-to-abandon" data-shape="stadium">
-  <rect x="898.6460000000001" y="260.85" width="150.136" height="36.900000000000006" rx="18.450000000000003" ry="18.450000000000003" fill="#f9f9f9" stroke="#d4d4d4" stroke-width="0.75" />
-  <text x="973.714" y="279.3" text-anchor="middle" font-size="13" font-weight="500" fill="#27272A" dy="4.55">commit-to-abandon</text>
+  <rect x="898.6460000000001" y="260.85" width="150.136" height="36.900000000000006" rx="18.450000000000003" ry="18.450000000000003" fill="#fcfaf3" stroke="#1e4a2c" stroke-width="1.5px" />
+  <text x="973.714" y="279.3" text-anchor="middle" font-size="13" font-weight="500" fill="#1e4a2c" dy="4.55">commit-to-abandon</text>
 </g>
 <g class="node" data-id="F" data-label="Forward
 read-down" data-shape="rectangle">
-  <rect x="608.4125000000001" y="254.10000000000002" width="104.93499999999999" height="53.800000000000004" rx="0" ry="0" fill="#f9f9f9" stroke="#d4d4d4" stroke-width="0.75" />
-  <text x="660.8800000000001" y="281" text-anchor="middle" font-size="13" font-weight="500" fill="#27272A"><tspan x="660.8800000000001" dy="-3.9000000000000012">Forward</tspan><tspan x="660.8800000000001" dy="16.900000000000002">read-down</tspan></text>
+  <rect x="608.4125000000001" y="254.10000000000002" width="104.93499999999999" height="53.800000000000004" rx="0" ry="0" fill="#f3f1e7" stroke="#4a443a" stroke-width="1px" />
+  <text x="660.8800000000001" y="281" text-anchor="middle" font-size="13" font-weight="500" fill="#1a1612"><tspan x="660.8800000000001" dy="-3.9000000000000012">Forward</tspan><tspan x="660.8800000000001" dy="16.900000000000002">read-down</tspan></text>
 </g>
 <g class="node" data-id="R" data-label="Regressive
 re-examine" data-shape="rectangle">
-  <rect x="605.0780000000001" y="84" width="111.604" height="53.800000000000004" rx="0" ry="0" fill="#f9f9f9" stroke="#d4d4d4" stroke-width="0.75" />
-  <text x="660.8800000000001" y="110.9" text-anchor="middle" font-size="13" font-weight="500" fill="#27272A"><tspan x="660.8800000000001" dy="-3.9000000000000012">Regressive</tspan><tspan x="660.8800000000001" dy="16.900000000000002">re-examine</tspan></text>
+  <rect x="605.0780000000001" y="84" width="111.604" height="53.800000000000004" rx="0" ry="0" fill="#f3f1e7" stroke="#4a443a" stroke-width="1px" />
+  <text x="660.8800000000001" y="110.9" text-anchor="middle" font-size="13" font-weight="500" fill="#1a1612"><tspan x="660.8800000000001" dy="-3.9000000000000012">Regressive</tspan><tspan x="660.8800000000001" dy="16.900000000000002">re-examine</tspan></text>
 </g>
 </svg>

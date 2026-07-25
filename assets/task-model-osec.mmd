@@ -1,8 +1,12 @@
+%%{init: {'theme': 'base', 'themeVariables': {'background': '#fcfaf3', 'primaryColor': '#fcfaf3', 'primaryTextColor': '#1a1612', 'primaryBorderColor': '#4a443a', 'lineColor': '#4a443a', 'secondaryColor': '#f3f1e7', 'tertiaryColor': '#fcfaf3', 'edgeLabelBackground': '#fcfaf3', 'fontFamily': 'Inter, -apple-system, system-ui, sans-serif', 'fontSize': '15px'}}}%%
 %% Cognitive task model for SERP evaluation — general model.
 %% Phases: Orient → Survey → Evaluate → Commit.
 %% Evaluate has forward / regressive sub-states; Commit has four typed exits.
 %% Rendered via muriel.diagrams (beautiful-mermaid). Source of truth — edit here,
 %% then re-run scripts/render_task_models.py.
+%%
+%% Palette matches site/explainer/index-ailab.html (AI Lab variant). All node
+%% text clears 8:1 against the page bg #fcfaf3.
 
 flowchart LR
     O[Orient<br/>learned prior] -->|~0 ms| S[Survey<br/>~1 s gist sampling]
@@ -21,3 +25,20 @@ flowchart LR
     C --> CD([commit-to-deepen])
     C --> CQ([commit-to-requery])
     C --> CA([commit-to-abandon])
+
+    %% Stage-colored borders + matching text on cream fill.
+    %% Each color verified ≥ 8.5:1 against #fcfaf3.
+    classDef stageOrient   fill:#fcfaf3,stroke:#6a4010,stroke-width:2px,color:#6a4010,font-weight:600
+    classDef stageSurvey   fill:#fcfaf3,stroke:#852818,stroke-width:2px,color:#852818,font-weight:600
+    classDef stageCommit   fill:#fcfaf3,stroke:#1e4a2c,stroke-width:2px,color:#1e4a2c,font-weight:600
+    classDef subState      fill:#f3f1e7,stroke:#4a443a,stroke-width:1px,color:#1a1612
+    classDef typedExit     fill:#fcfaf3,stroke:#1e4a2c,stroke-width:1.5px,color:#1e4a2c
+
+    class O stageOrient
+    class S stageSurvey
+    class C stageCommit
+    class F,R subState
+    class CC,CD,CQ,CA typedExit
+
+    %% Subgraph (Evaluate) styling — handled via inline class on the subgraph id.
+    style Ev fill:#fcfaf3,stroke:#1a4a6a,stroke-width:2px,color:#1a4a6a
