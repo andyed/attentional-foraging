@@ -53,6 +53,11 @@ scripts/output/figures/per_record_*.json
 # Thursday RIPA2 meeting prep — internal-only, not paper artifacts
 scripts/output/ripa2_meet_visuals/
 
+# RIPA2 analysis source — Gavindya/team paper track, still unpublished. The pupil
+# paper's acceptance (2026-07-25) unblocked LF/HF and LHIPA on this public repo but
+# NOT RIPA2. Promote with `git add -f` once that track publishes.
+scripts/explore_cursor_ripa2_coupling.py
+
 # Full schul-replay corpus — 917 MB / 1,640 files, 238 of them per-trial screen
 # recordings (trial.mp4, up to 27 MB each) derived from AdSERP, which is itself
 # gitignored above as not-ours-to-redistribute. The repo ships a 5-trial demo set
