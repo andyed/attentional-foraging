@@ -53,6 +53,21 @@ scripts/output/figures/per_record_*.json
 # Thursday RIPA2 meeting prep — internal-only, not paper artifacts
 scripts/output/ripa2_meet_visuals/
 
+# Full schul-replay corpus — 917 MB / 1,640 files, 238 of them per-trial screen
+# recordings (trial.mp4, up to 27 MB each) derived from AdSERP, which is itself
+# gitignored above as not-ours-to-redistribute. The repo ships a 5-trial demo set
+# (1017_Q05, 1021_Q07, 1042_Q05/06/10) which stays tracked — gitignore does not
+# untrack. Add a new demo trial deliberately with `git add -f`.
+docs/schul-replay/trials/
+
+# Regenerable analysis output. ~2,900 untracked JSONs / 100 MB accumulate here from
+# exploratory runs; the ~358 tracked files are the curated ones that back a figure,
+# a Key Claim, or a paper table. Default is ignore — promote deliberately with
+# `git add -f` when an output becomes a cited artifact.
+scripts/output/
+# Scratch from the organic→hybrid attribution migration; superseded, not artifacts.
+scripts/output/*_HYBRID_BACKUP/
+
 # Incoming collaborator material — others' UNPUBLISHED data/notebooks, not ours to
 # open-source (this repo is public). e.g. allawati-ai-overviews/ = Sara Allawati's
 # AI-Overviews dataset + her ports of our v2 notebooks, plus the comparison/draft that
