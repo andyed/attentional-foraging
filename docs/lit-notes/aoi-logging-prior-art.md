@@ -115,4 +115,4 @@ This is the resilience argument that the four-bucket table makes concrete: every
 
 ---
 
-*Source: this document captures an observation that came up in methods paper drafting on 2026-05-17. Saved here because the observation is research-program-level (applies to AllSERP, future grants, OSEC task-model paper) rather than methods-paper-specific.*
+*Source: this document captures an observation that came up in methods paper drafting on 2026-05-17. Saved here because the observation is research-program-level (applies to AllSERP, future grants, OSEC task-model work) rather than methods-paper-specific.*

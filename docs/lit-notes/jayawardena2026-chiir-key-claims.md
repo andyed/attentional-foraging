@@ -160,7 +160,7 @@ Their RQ2 finding (CL highest at begin, decreases over time, "cognitive adaptati
 
 Saccade-orientation lane is independent of pupillometry → no overlap with this paper. The methods paper's pupil components (if any) need positioning that doesn't compete with Jayawardena 2026's claim ground.
 
-### CHI 2027 task-model paper
+### OSEC task-model decomposition (sibling track)
 
 No direct overlap. Their task-phase decomposition (begin/mid/end of a single trial) is operationally different from our OSEC orient/survey/evaluate/commit task-model decomposition. Mention as related work.
 

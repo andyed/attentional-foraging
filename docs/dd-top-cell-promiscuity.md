@@ -3,7 +3,7 @@
 **Date:** 2026-05-24
 **Stable ID:** F:dd-top-cell-promiscuity
 **Source:** `scripts/dd_top_cell_segmentation.py` → `scripts/output/dd_top_cell_segmentation/{summary.json, per_participant.csv}`
-**Anchor for:** AllSERP arxiv update (within-surface deliberation as a complement to the ad-utility prior); task-model paper (sub-trial deliberation depth).
+**Anchor for:** AllSERP arxiv update (within-surface deliberation as a complement to the ad-utility prior); downstream cognitive modeling (sub-trial deliberation depth).
 **Companion to:** [`ad-utility-prior.md`](./ad-utility-prior.md) (the *between-surface* gaze prior); [`methodology/gaze-prior-elicitation.md`](./methodology/gaze-prior-elicitation.md). Cell substrate from AF cellsplit cascade (commit `16cd63a6 bulk: cell-aware features for all 2,776 trials`).
 
 ---
@@ -110,7 +110,7 @@ The cleanest read: cell promiscuity sits **between** sat-opt (organic-side delib
 
 Both signals come from the same cursor stream; the resolution comes from the cell-aware cascade (post-2D-merge state). The paper-frozen v1.0.0 substrate has parent only.
 
-**For the task model**: within-surface deliberation depth is a candidate cognitive primitive distinct from between-surface allocation. A user who reaches dd_top and samples 4 cells before committing is in a different cognitive mode than one who clicks the first cell on contact. The task model currently has phase boundaries (Orient / Survey / Evaluate) but no within-AOI sampling depth term. This measure is the empirical handle for it.
+**For downstream cognitive modeling**: within-surface deliberation depth is a candidate cognitive primitive distinct from between-surface allocation. A user who reaches dd_top and samples 4 cells before committing is in a different cognitive mode than one who clicks the first cell on contact. The task model currently has phase boundaries (Orient / Survey / Evaluate) but no within-AOI sampling depth term. This measure is the empirical handle for it.
 
 **For the AllSERP arxiv update**: the v1.0.0-anchored methods paper reports per-AOI labels at the result level. The arxiv update can use the cell-aware cascade (now on AR main + the live `site/replay/` demo) to introduce within-AOI sampling as a graded-relevance refinement, with this finding as the construct-validation companion.
 

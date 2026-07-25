@@ -3,7 +3,7 @@
 **Date:** 2026-05-04
 **Stable ID:** F:ad-utility-prior
 **Source:** `scripts/ad_utility_prior_analysis.py` → `scripts/output/ad_utility_prior/{summary.json, per_participant.csv}`
-**Anchor for:** task-model paper (rank-value-prior framing, central premise); methods paper (worth premise candidate)
+**Anchor for:** the rank-value-prior framing (central premise); methods paper (worth premise candidate)
 **Method spec:** [`methodology/gaze-prior-elicitation.md`](./methodology/gaze-prior-elicitation.md) frames this finding as the demonstration of a non-disruptive prior-elicitation protocol — three-layer leak structure (orient / survey / per-participant variance), McFadden floor + agent-specific overlay made directly observable.
 
 ---
@@ -81,9 +81,9 @@ A four-construct user model decomposes more cleanly than a one-axis "engagement"
 
 ## §5 Interpretation for the rank-value-prior framing
 
-The task-model paper's closing interpretation references "the agent's beliefs about SERP rank-value distributions" (Anderson rational-analysis framing). Ad-utility prior is the **first observable, behaviorally-grounded substrate** for that belief space. A participant who allocates 73% of survey fixations to ads is operationally placing higher rank-value mass on ad surfaces than one who allocates 46%, and that prior translates (modestly) into click behavior. The prior is observable from gaze in the first ~1 second of a trial — before any click event — and predicts the eventual ad-click outcome at ρ = +0.30.
+The rank-value-prior interpretation references "the agent's beliefs about SERP rank-value distributions" (Anderson rational-analysis framing). Ad-utility prior is the **first observable, behaviorally-grounded substrate** for that belief space. A participant who allocates 73% of survey fixations to ads is operationally placing higher rank-value mass on ad surfaces than one who allocates 46%, and that prior translates (modestly) into click behavior. The prior is observable from gaze in the first ~1 second of a trial — before any click event — and predicts the eventual ad-click outcome at ρ = +0.30.
 
-For the **task-model paper**: this is the empirical anchor for the rank-value-prior axis. The framework is no longer hypothetical — there's a measured prior, a measured behavioral consequence, and an orthogonality to existing axes that makes it a third dimension rather than a re-projection.
+For **downstream cognitive modeling**: this is the empirical anchor for the rank-value-prior axis. The framework is no longer hypothetical — there's a measured prior, a measured behavioral consequence, and an orthogonality to existing axes that makes it a third dimension rather than a re-projection.
 
 For the **methods paper**: this is a candidate premise for the four-class taxonomy. If users have heterogeneous priors over rank-value (specifically ad-utility), the consideration set composition (clicked / deferred / evaluated-rejected / not-approached) per trial should differ in interpretable ways across the prior dimension. A participant with a high ad-utility prior is structurally more likely to commit to ad surfaces and structurally less likely to defer organics with similar dwell — testable.
 

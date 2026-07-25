@@ -219,6 +219,23 @@ rather than editing both.
 
 ## Open research / next pass
 
+- [ ] **Cursor → cognitive-load coupling: per-fixation RIPA2 test (2026-06-14, exploratory).**
+  First cut (4 untracked scripts `scripts/explore_cursor_{lhipa_coupling,lhipa_confound,lfhf_coupling,ripa2_coupling}.py`)
+  found cursor→load is temporal-resolution-dependent: null in LHIPA/LF-HF (mostly
+  time-on-task; LHIPA pause −0.27 does NOT replicate in LF/HF), real only at event
+  scope (RIPA2) where mouse-cursor couples with arousal ~2× more in the top viewport
+  than below the fold (survives N-matching; `retreat_dist`→RIPA2 +0.048 duration-
+  controlled). Memory: `cursor-load-coupling-temporal-resolution`.
+  - [ ] **Airtight test (build, not join):** per-fixation RIPA2 × per-fixation cursor
+    state, N-matched across bands, with a within-person model to turn |rho|
+    "entanglement" into signed prediction. Needs per-fixation RIPA2 across all
+    trials + cursor velocity/pause aligned per fixation window. RIPA2 = Gavindya track.
+  - [ ] **Writeup decision:** null-finding (LHIPA↔LF/HF non-replication) in
+    `docs/null-findings/` vs positive finding (top-viewport RIPA2 coupling). Keep
+    track separation — LF/HF = Duchowski-sensitive, RIPA2 = Gavindya track.
+  - [ ] **Draft Peter reply** — corrected framing: tonic load from cursor = no
+    (time-on-task); phasic arousal in top viewport = yes (event-scope only).
+  - [ ] **Decide fate of the 4 untracked `scripts/explore_cursor_*` scripts** (promote vs toss).
 - [ ] **Ski-jump null-finding update (2026-05-06).** AllSERP's flavor-
   comparison rank-effect chart shows organic-only click rate at rank 7
   = 4.1 %, jumping to 7.6 % at rank 8 and 8.2 % at rank 9 — a +85 %
@@ -372,9 +389,9 @@ Subsequent extensions land in the AllSERP arxiv update (see top of file).
 - Ordinal reframe + LambdaMART for paper-v4 §4.2/§4.5 — paper shipped
   at v1.0.0; ordinal/LambdaMART now part of the AllSERP update.
 - Cross-paper drift on `> 15 s time-to-click` boundary — paper frozen;
-  task-model paper aligns against v1.0.0 reference.
+  the task-model track aligns against v1.0.0 reference.
 - Ski-jump table units cross-paper drift — same; paper frozen.
-- Four-class taxonomy cross-ref in task-model paper — points to
+- Four-class taxonomy cross-ref in the task-model track — points to
   paper v1.0.0 anchor.
 
 ### Individual differences items (covered by 2026-05-24 findings)
