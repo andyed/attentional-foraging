@@ -75,28 +75,32 @@
   ],
   "click": {
     "external_code": "P22",
+    "reported_aoi": "o06",
     "clicked_aoi": "o06",
+    "semantics": "post_session_reported_choice",
     "mapping_total_abs_gap_ms": 29192,
     "mapping_margin_ms": 31162,
     "mapping_confidence": "high",
-    "mapping_shared_qs": 9
+    "mapping_shared_qs": 9,
+    "reported_aoi_visible_at_end": false,
+    "session_ended_on_same_aoi": false
   },
   "scroll_recovery": {
     "phone_crop_bounds": [
       482,
       133,
-      937,
+      919,
       753
     ],
-    "scale_crop_to_ref": 1.5824175824175823,
+    "scale_crop_to_ref": 1.6475972540045767,
     "reference_size_px": [
       720,
       6680
     ],
     "n_samples": 371,
     "match_score_range": [
-      0.1452,
-      0.3237
+      0.1291,
+      0.41
     ]
   },
   "gaze_samples_total": 496,
@@ -114,5 +118,13 @@
   "notes": "Stimulus segment resolved from Data.xml <SceneFragment>. Gaze and video are sliced to the fragment window by default (pass --no-slice to build_schul_replay.py for the whole session). Gaze is in WMV screen coords. AOI polygons are in page coords of reference.png; scroll-offset recovery still required to project gaze onto the reference image.",
   "source_zip": "M1_Students.zip",
   "source_wmv_entry": "ProgramData\\iMotions\\Lab64\\Data\\Schulthei\u00df_MA_M1\\Capture\\sc_r001021__s001000.wmv",
-  "source_gaze_entry": "ProgramData\\iMotions\\Lab64\\Data\\Schulthei\u00df_MA_M1\\AutomatedAOI\\Q07_M\\Gaze\\RawGaze.1021.csv"
+  "source_gaze_entry": "ProgramData\\iMotions\\Lab64\\Data\\Schulthei\u00df_MA_M1\\AutomatedAOI\\Q07_M\\Gaze\\RawGaze.1021.csv",
+  "warnings": [
+    "reported AOI o06 (page y=[3364,3492]) is NOT in the final viewport (y=[2028,3049]). Consistent with post-session reported-choice semantics; not a pipeline bug."
+  ],
+  "scroll_confidence_summary": {
+    "high_frac": 0.951,
+    "medium_frac": 0.013,
+    "low_frac": 0.035
+  }
 }

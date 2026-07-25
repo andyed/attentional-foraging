@@ -43,16 +43,29 @@
   const grid = document.getElementById("grid");
   trials.forEach(t => {
     const dwellPct = t.duration_ms ? (t.total_in_aoi_ms / t.duration_ms * 100) : 0;
+    const lowConfPct = Math.round((t.scroll_low_conf_frac || 0) * 100);
+    const choice = t.reported_aoi;
+    const visSymbol = t.reported_aoi_visible_at_end === true
+      ? `<span style="color:#66cc88" title="reported choice was in viewport at end of gaze data">visible</span>`
+      : t.reported_aoi_visible_at_end === false
+      ? `<span style="color:#ff9933" title="reported choice NOT in final viewport — expected: post-session preference">off-screen</span>`
+      : `<span style="color:#9aa4b2">—</span>`;
+    const warnBadge = t.n_warnings > 0
+      ? `<span style="background:#3a2f18; color:#ffd84d; padding:2px 6px; border-radius:3px; font-size:11px; margin-left:6px">⚠ ${t.n_warnings}</span>`
+      : "";
+    const lowConfColor = lowConfPct > 40 ? "#ff9933" : lowConfPct > 20 ? "#ffd84d" : "#66cc88";
     grid.insertAdjacentHTML("beforeend", `
       <a class="card" href="index.html?trial=${encodeURIComponent(t.name)}">
-        <h2><span class="code">${t.name}</span></h2>
+        <h2><span class="code">${t.name}</span>${warnBadge}</h2>
         <div class="meta">
           <div class="row"><span>participant</span><span><b>${t.participant}</b>${t.external_code ? " · " + t.external_code : ""}</span></div>
           <div class="row"><span>stimulus</span><span><b>${t.q_label}</b></span></div>
           <div class="row"><span>duration</span><span><b>${(t.duration_ms/1000).toFixed(1)}s</b></span></div>
           <div class="row"><span>gaze valid</span><span><b>${t.gaze_valid}/${t.gaze_total}</b> (${(100*t.gaze_valid/t.gaze_total).toFixed(0)}%)</span></div>
           <div class="row"><span>time in AOIs</span><span><b>${t.total_in_aoi_ms}ms</b> · ${t.n_visits} visits</span></div>
-          <div class="row"><span>top AOI / click</span><span>${t.top_aoi || "—"} ${t.click_aoi ? `→ <span class="clicked">clicked ${t.click_aoi}</span>` : ""}</span></div>
+          <div class="row"><span>top AOI (dwell)</span><span>${t.top_aoi || "—"}</span></div>
+          <div class="row"><span>reported choice</span><span>${choice ? `<span class="clicked">${choice}</span> · ${visSymbol}` : "—"}</span></div>
+          <div class="row"><span>scroll low-conf</span><span style="color:${lowConfColor}"><b>${lowConfPct}%</b> of frames</span></div>
           <div class="bar"><div class="fill" style="width:${dwellPct.toFixed(0)}%"></div></div>
           <div style="text-align:right; font-size:11px; margin-top:2px">${dwellPct.toFixed(0)}% gaze time on AOIs</div>
         </div>

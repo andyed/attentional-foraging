@@ -127,6 +127,18 @@
     return;
   }
 
+  // Warnings banner
+  if (meta.warnings && meta.warnings.length) {
+    const w = document.createElement("div");
+    w.className = "error";
+    w.style.background = "#2a2418";
+    w.style.borderColor = "#5a4a2a";
+    w.style.color = "#ffd84d";
+    w.style.marginBottom = "12px";
+    w.innerHTML = `<b>warnings:</b><ul style="margin:6px 0 0 0">${meta.warnings.map(x => `<li>${x}</li>`).join("")}</ul>`;
+    document.body.insertBefore(w, document.getElementById("panels"));
+  }
+
   // Meta header
   const m = meta;
   const sliceStr = m.sliced
@@ -288,9 +300,11 @@
       return colors._;
     }
 
-    const clickAoi = (meta.click && meta.click.clicked_aoi) || null;
+    const reportedAoi = (meta.click && (meta.click.reported_aoi || meta.click.clicked_aoi)) || null;
+    // Back-compat alias used later in the file
+    const clickAoi = reportedAoi;
     aois.forEach(a => {
-      const isClicked = clickAoi && a.id === clickAoi;
+      const isClicked = reportedAoi && a.id === reportedAoi;
       const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
       rect.setAttribute("x", a.x1);
       rect.setAttribute("y", a.y1);
@@ -307,16 +321,19 @@
       txt.setAttribute("font-size", "16");
       txt.setAttribute("font-family", "monospace");
       txt.setAttribute("font-weight", isClicked ? "700" : "400");
-      txt.textContent = isClicked ? `${a.id} ← CLICKED` : a.id;
+      txt.textContent = isClicked ? `${a.id} ← REPORTED CHOICE` : a.id;
       svg.appendChild(txt);
     });
-    if (clickAoi) {
+    if (reportedAoi) {
       const legend = document.querySelector(".panel:nth-of-type(2) .legend");
       const mc = meta.click;
+      const visibleTag = mc.reported_aoi_visible_at_end === false
+        ? ` <span style="color:#ff9933">(not in final viewport — consistent with post-session reported-choice semantics)</span>`
+        : (mc.reported_aoi_visible_at_end === true ? ` <span style="color:#9aa4b2">(visible in final viewport)</span>` : "");
       legend.insertAdjacentHTML("afterbegin",
         `<div style="margin-bottom:6px">participant <b>${meta.participant}</b> = external <b>${mc.external_code}</b> ` +
         `(${mc.mapping_confidence}-confidence dwell-sum match, margin ${(mc.mapping_margin_ms/1000).toFixed(1)}s) · ` +
-        `clicked <b style="color:#ff9933">${clickAoi}</b> on ${meta.q_label}</div>`);
+        `<b style="color:#ff9933">reported choice: ${reportedAoi}</b> on ${meta.q_label}${visibleTag}</div>`);
     }
 
     // --- Viewport rect + page-space gaze on the reference SERP ---
@@ -361,7 +378,29 @@
         const t_ms = v.currentTime * 1000;
         const sr_sample = scrollAt(t_ms);
         const yOff = sr_sample.y_offset_px;
+        const conf = sr_sample.confidence || "high";
         vpRect.setAttribute("y", yOff);
+
+        // Dim the viewport rect when scroll recovery is uncertain
+        if (conf === "low") {
+          vpRect.setAttribute("stroke", "#ffd84d");
+          vpRect.setAttribute("stroke-width", 3);
+          vpRect.setAttribute("stroke-dasharray", "4,8");
+          vpRect.setAttribute("fill", "rgba(255,216,77,0.04)");
+          vpRect.setAttribute("opacity", 0.5);
+        } else if (conf === "medium") {
+          vpRect.setAttribute("stroke", "#59d1ff");
+          vpRect.setAttribute("stroke-width", 3);
+          vpRect.setAttribute("stroke-dasharray", "6,8");
+          vpRect.setAttribute("fill", "rgba(89,209,255,0.05)");
+          vpRect.setAttribute("opacity", 0.7);
+        } else {
+          vpRect.setAttribute("stroke", "#59d1ff");
+          vpRect.setAttribute("stroke-width", 4);
+          vpRect.setAttribute("stroke-dasharray", "12,8");
+          vpRect.setAttribute("fill", "rgba(89,209,255,0.08)");
+          vpRect.setAttribute("opacity", 1);
+        }
 
         const g = sampleAt(t_ms);
         if (g && g[1] !== -1 && g[2] !== -1) {
@@ -372,6 +411,9 @@
             const pageY = yOff + inCropY * scale;
             gazeDot.setAttribute("cx", pageX);
             gazeDot.setAttribute("cy", pageY);
+            // Dim the gaze dot too when scroll is low-confidence (its page-space
+            // position inherits that uncertainty)
+            gazeDot.setAttribute("opacity", conf === "low" ? 0.35 : (conf === "medium" ? 0.7 : 1));
             gazeDot.style.display = "block";
           } else {
             gazeDot.style.display = "none";
