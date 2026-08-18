@@ -125,6 +125,68 @@ assigned to exactly one AOI by point-in-band bisection?
 - `[LAB]`-only; click prediction is within-SERP. No WILD analog exists
   (peripheral gaze requires an eye tracker by definition).
 
+## Addendum 2026-08-18 — the simple illustration: pre-foveation probes
+
+**Producer:** `scripts/pai_preentry_probe.py` → `scripts/output/ablations/pai_preentry_probe.json`
+
+Looking for a one-figure illustration simpler than the click-model
+ladder. Three probes, one lesson learned, one clean result.
+
+**Probe A (naive pre-entry accumulation) — DO NOT USE.** Comparing
+peripheral mass accumulated in each AOI's own pre-first-fixation window
+[start, entry_t) inherits the window-duration confound wholesale
+(clicked results are foveated ~1.4 s sooner, p = 3.4e-36; cf.
+`docs/null-findings/lfhf-window-duration-confound.md`): raw paired
+medians go *negative*, the two α forms disagree on the direction of the
+pooled AUC (exact 0.551, NB35 0.435 — fat skirts just integrate window
+length), and rate-normalization doesn't rescue it. Kept in the JSON as
+the cautionary row.
+
+**Probe B (shared cutoff) — the clean design.** Freeze the clock at
+t\* = the first foveation of the to-be-clicked result; candidates = all
+AOI slots still unfixated at t\*. Identical window for every candidate,
+and binary point-in-AOI dwell is exactly zero for every candidate — the
+traditional metric's discriminative floor is 0.5 *by construction*.
+Score = fraction of unfixated peers the clicked result beats on
+peripheral PAI mass (ties = 0.5):
+
+| Form | clicked beats peers | 95% CI | d_z | n trials |
+|---|---|---|---|---|
+| exact demo α | **92.7%** vs 50% chance | [92.0, 93.4] | +2.55 | 2,221 |
+| NB35 α | **95.9%** vs 50% chance | [95.4, 96.4] | +3.64 | 2,221 |
+
+(median 10 unfixated peers per trial; 299 trials excluded with zero
+fixations before t\*, 13 with no unfixated peers.)
+
+**Probe C (specificity control) — how much is just foveation
+anticipation?** Gaze moves incrementally, so *any* about-to-be-foveated
+result carries peripheral mass. Same score computed for a non-clicked
+fixated result at *its own* first-foveation moment (control pick:
+entry_t nearest the trial median):
+
+| Form | next-foveated non-clicked | to-be-clicked | click-specific Δ | p |
+|---|---|---|---|---|
+| exact | 86.3% | 92.7% | **+6.4 pts** [+5.3, +7.5] | 1.4e-36 |
+| NB35 | 92.6% | 95.8% | **+3.2 pts** [+2.5, +4.0] | 1.6e-28 |
+
+**Reading.** The two-sentence version for the paper: *peripheral PAI
+mass anticipates upcoming foveation targets (86–96% vs 50% chance) in a
+regime where point-in-AOI metrics are identically zero for every
+candidate — and the to-be-clicked result carries reliably more of it
+than matched next-foveated non-clicked results (+3 to +6 points,
+p < 1e-27).* Both α forms agree on both claims. This is the
+poster-friendly figure: one bar triple (chance 50 / next-foveated ~86 /
+to-be-clicked ~93).
+
+**Probe caveats.** The control's t\* is later on average than the
+clicked result's (clicked results are foveated early), and clicked
+results skew to early positions near the F-pattern's fixation mass, so
+part of the click-specific Δ may be positional; a position-matched
+control is the natural hardening if this becomes a headline claim.
+Probe A's failure is itself a finding worth a sentence in any methods
+discussion: accumulation-style PAI features across unequal windows
+reproduce the LF/HF record-length trap.
+
 ## Verdict
 
 **Supported.** PAI provides statistically reliable additional
