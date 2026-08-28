@@ -89,6 +89,33 @@ For the **methods paper**: this is a candidate premise for the four-class taxono
 
 ## §6 Limitations
 
+### 2026-08-22 click-press follow-up
+
+The first-forward versus regressive-return press-duration analysis adds a
+surface-specific result but does **not** yet confirm the participant segment as
+its moderator. After participant and categorical display-rank control,
+regressive `dd_top` clicks have 7.1% shorter holds (95% CI [−14.3%, −1.7%])
+and the pass × `dd_top` contrast relative to organic is −9.8% (95% CI
+[−17.2%, −2.3%], cluster-bootstrap *p* = .009). This survives six target-
+recency/maximum-hold sensitivities and is absent for `native_ad`.
+
+The corresponding pass × `p_ad_survey` interaction on paid clicks is +5.35%
+per +0.10 prior, but its CI [−2.52%, +10.10%] crosses zero (*p* = .140).
+High-prior tercile descriptives reverse the low/mid pattern, making this a
+theoretically coherent replication target, not a confirmed extension of the
+ad-utility axis. Full analysis:
+[`click-press-ad-moderation.md`](click-press-ad-moderation.md).
+
+A temporally separated follow-up estimates the prior from blocks 1–3 and the
+click-press outcome from blocks 4–6. Early and late `p_ad_survey` are strongly
+correlated (Spearman ρ = .745, 95% bootstrap CI [.550, .861]), supporting
+within-session stability of the segmentation. But the rank-controlled
+`pass × dd_top × early-prior` interaction is +8.80% per +0.10 prior with a
+wide CI [−3.74%, +23.81%] (*p* = .142), and early prior does not significantly
+predict late `dd_top` click share (ρ = .211, *p* = .155). Thus the prior looks
+trait-like within the session, while its proposed click-motor consequence
+remains unconfirmed in this cohort.
+
 - **n = 47, multiple testing.** All correlations are at participant level on the AdSERP forced-choice task. The headline ρ = +0.297 (p = 0.043) does not survive Bonferroni correction across the 10 tests reported (corrected α = 0.005); 95% CI lower bound is +0.011. Treat as a candidate axis pending replication on a second cohort, not as a confirmed finding. The orthogonality nulls (regression rate, LHIPA) have CIs that straddle zero with half-widths ≈ ±0.3 — consistent with true independence *or* with a moderate effect below the n = 47 detection limit.
 - **Ad-utility is bundled with native_ad / dd_top / dd_right etypes.** A finer decomposition (per-etype ad-click prior) would distinguish "I look at top-page ads" from "I scan native ads" — currently averaged.
 - **Forced-choice task.** Participants knew they had to click *something*. Ad-clicks here aren't accidental; they're real choices. But abandonment is not in the design space.
@@ -99,6 +126,10 @@ For the **methods paper**: this is a candidate premise for the four-class taxono
 
 - Analysis script: `scripts/ad_utility_prior_analysis.py`.
 - Output: `scripts/output/ad_utility_prior/summary.json` + `per_participant.csv`.
+- Click-press follow-up: `scripts/click_press_ad_segmentation.py` +
+  [`click-press-ad-moderation.md`](click-press-ad-moderation.md).
+- Temporal click-press test: `scripts/click_press_prior_temporal_test.py` →
+  `scripts/output/click_press_prior_temporal_test/{summary.json,report.md}`.
 - Per-ppt traits source: `scripts/output/survey_bimodality/per_participant_with_traits.csv`.
 - Behavior source: `AdSERP/data/cursor-approach-features-typed.json` (Phase C typed, 19,774 records).
 - Population-level dd_top click rate (17.1%): cascade synthesis [`docs/methodology/attribution-cascade-synthesis.md`](../methodology/attribution-cascade-synthesis.md).
