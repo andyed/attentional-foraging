@@ -4,34 +4,45 @@
   "out_dir": "/Users/andyed/Documents/dev/attentional-foraging/data/aoi-typed-gapfill",
   "n_trials": 2776,
   "n_errors": 0,
+  "alignment": {
+    "mode_distribution": {
+      "y_dp": 2774,
+      "index_fallback": 2
+    },
+    "segments_merged_total": 1181,
+    "cards_no_geometry_total": 57,
+    "n_alignment_suspect": 22,
+    "mean_residual_px": 4.70620043258832,
+    "p90_residual_px": 9.2
+  },
   "type_distribution_total": {
     "organic": 22530,
     "native_ad": 9217,
     "pagination": 2697,
-    "chrome": 2223,
     "related_searches": 1811,
+    "chrome": 1656,
     "image_pack": 1600,
     "dd_top": 1582,
+    "unknown_widget": 1010,
     "dd_right": 861,
     "knowledge_panel": 826,
-    "unknown_widget": 788,
     "paa": 769,
-    "top_places": 86,
+    "top_places": 354,
     "other_widget": 51
   },
   "matching_summary": {
-    "matched_total": 25587,
-    "unmatched_bbox_total": 3011,
-    "unmatched_html_total": 193
+    "matched_total": 24711,
+    "unmatched_bbox_total": 2666,
+    "unmatched_html_total": 1297
   },
   "mismatch_distribution": {
-    "-1": 919,
-    "0": 816,
-    "-2": 564,
-    "-3": 193,
-    "1": 193,
-    "-4": 73,
-    "-5": 15,
-    "-6": 3
+    "-1": 950,
+    "0": 867,
+    "-2": 541,
+    "1": 200,
+    "-3": 166,
+    "-4": 41,
+    "-5": 10,
+    "-6": 1
   }
 }

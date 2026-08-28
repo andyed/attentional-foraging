@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "RX-921V Men's Road/MTB Comfort w/ Anti-Microbial ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -20,7 +20,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Serfas RX Men's Bicycle Saddle - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Serfas RX-921L Road/MTB Comfort RX Saddle - Men's",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Serfas RX Lycra Saddle - Men's | REI Co-op",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -52,24 +52,12 @@
     "x": 162.0,
     "y": 709.0,
     "width": 586.0,
-    "height": 127.0,
+    "height": 248.0,
     "html_handle": "rso[4]",
     "html_signature": "div.(no class)",
     "heading_text": "Serfas MH-RX Performance RX Men's Saddle Microfiber ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 4
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 861.0,
-    "width": 586.0,
-    "height": 96.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "SERFAS RX MENS Comfort Saddle With Anti-Microbial ...",
-    "source": "html_rso+cv_bbox",
-    "position": 5
   },
   {
     "type": "organic",
@@ -77,23 +65,23 @@
     "y": 959.0,
     "width": 586.0,
     "height": 112.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g",
-    "heading_text": "Serfas Men's Comfort Saddle with Anti-Microbial Microfiber ...",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "SERFAS RX MENS Comfort Saddle With Anti-Microbial ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1073.0,
     "width": 586.0,
     "height": 156.0,
-    "html_handle": "rso[7]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[6]",
+    "html_signature": "div.g",
+    "heading_text": "Serfas Men's Comfort Saddle with Anti-Microbial Microfiber ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -104,8 +92,8 @@
     "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Serfas RX-RR Road/MTB Race Ready RX Saddle - Men's",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -116,8 +104,8 @@
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Serfas Rx Mens Bicycle Saddle - Walmart.com",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "unknown_widget",
@@ -141,7 +129,19 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 11
+    "position": 10
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
   },
   {
     "type": "related_searches",

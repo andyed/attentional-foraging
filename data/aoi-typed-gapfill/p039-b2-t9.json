@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "MOOG K6345 Ball Joint : Automotive - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,19 +68,19 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "moog-k6345 | Front Lower Ball Joint | 1984-1996 ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1082.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[2]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Suspension Ball Joint Front Lower Moog K6345 fits 84-96 ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1200.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Suspension Ball Joint Front Lower Moog K6345 fits 84-96 ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Moog Chassis Parts K6345 - Ball Joints - Summit Racing",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1336.0,
     "width": 586.0,
     "height": 61.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Moog Chassis Parts K6345 - Ball Joints - Summit Racing",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "MOOG K6345 Ball Joint - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 1428.0,
     "width": 586.0,
     "height": 99.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "MOOG K6345 Ball Joint - Walmart.com",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Lower Ball Joint - K6345 by MOOG on PartsAvatar.ca",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,10 +125,10 @@
     "y": 1529.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Lower Ball Joint - K6345 by MOOG on PartsAvatar.ca",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "MOOG K6345 Ball Joint; Front Lower - AutohausAZ",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -137,10 +137,10 @@
     "y": 1646.0,
     "width": 586.0,
     "height": 139.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "MOOG K6345 Ball Joint; Front Lower - AutohausAZ",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g",
+    "heading_text": "Moog K6345: Front Lower Ball Joint 1984-1996 Chevy Corvette",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -149,10 +149,10 @@
     "y": 1787.0,
     "width": 586.0,
     "height": 97.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g",
-    "heading_text": "Moog K6345: Front Lower Ball Joint 1984-1996 Chevy Corvette",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Moog\u00ae K6345 Ball Joint - Front, Driver or Passenger Side ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 12
   },
   {
@@ -192,16 +192,16 @@
     "position": 15
   },
   {
-    "type": "organic",
-    "x": 162.0,
-    "y": 2440.0,
-    "width": 586.0,
-    "height": 79.0,
-    "html_handle": "rso[9]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Moog\u00ae K6345 Ball Joint - Front, Driver or Passenger Side ...",
-    "source": "html_rso+cv_bbox",
-    "position": 16
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -237,6 +237,18 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 2440.0,
+    "width": 586.0,
+    "height": 79.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

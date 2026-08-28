@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ACDelco Professional TCK282 Timing Belt Kit with ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -20,7 +20,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ACDelco TCK282 Professional Timing Belt Kit with Tensioner ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -28,24 +28,12 @@
     "x": 162.0,
     "y": 439.0,
     "width": 586.0,
-    "height": 104.0,
+    "height": 207.0,
     "html_handle": "rso[2]",
     "html_signature": "div.(no class)",
     "heading_text": "ACDelco TCK282 Engine Timing Belt Kit, with Tensioner and Idler ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 2
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 568.0,
-    "width": 586.0,
-    "height": 78.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "ACDelco Professional TCK282 Timing Belt Kit ... - Walmart.com",
-    "source": "html_rso+cv_bbox",
-    "position": 3
   },
   {
     "type": "organic",
@@ -53,11 +41,11 @@
     "y": 681.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Professional\u2122 Timing Belt Kit - ACDelco\u00ae TCK282 - CARiD ...",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "heading_text": "ACDelco Professional TCK282 Timing Belt Kit ... - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -65,11 +53,11 @@
     "y": 797.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "TCK282 by ACDELCO - Engine Timing Belt Kit - FinditParts",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "heading_text": "Professional\u2122 Timing Belt Kit - ACDelco\u00ae TCK282 - CARiD ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -77,23 +65,23 @@
     "y": 913.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "ACDelco Professional TCK282 Timing Belt Kit with Tensioner and ...",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "heading_text": "TCK282 by ACDELCO - Engine Timing Belt Kit - FinditParts",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1028.0,
     "width": 586.0,
     "height": 104.0,
-    "html_handle": "rso[7]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "ACDelco Professional TCK282 Timing Belt Kit with Tensioner and ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -104,8 +92,8 @@
     "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "AC Delco\u00ae TCK282 Timing Belt Kit - Water Pump Not Included",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -116,8 +104,8 @@
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Gates TCK282 Engine Timing Belt Component Kit - PartsHawk",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,19 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
   },
   {
     "type": "related_searches",

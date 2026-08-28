@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Sharp CS2850A Printing Calculator for sale online - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Sharp Two-Color Printing Calculator, Black/Red Print, 4.8 ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g",
     "heading_text": "Sharp CS2850A Commercial Printing Calculator",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Sharp Calculators CS2850A Commercial Printing Calculator",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -64,48 +64,36 @@
     "x": 162.0,
     "y": 855.0,
     "width": 586.0,
-    "height": 99.0,
+    "height": 203.0,
     "html_handle": "rso[4]",
     "html_signature": "div.(no class)",
     "heading_text": "Sharp CS-2850A Two-Color Printing Calculator, Black/Red ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 980.0,
+    "y": 1093.0,
     "width": 586.0,
-    "height": 78.0,
+    "height": 81.0,
     "html_handle": "rso[5]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Sharp CS-2850 - Printing calculator - VFD (CS2850A)",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1093.0,
-    "width": 586.0,
-    "height": 81.0,
-    "html_handle": "rso[6]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy sharp cs2850a commercial printing calculator",
-    "source": "html_rso+cv_bbox",
-    "position": 7
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
     "y": 1197.0,
     "width": 586.0,
     "height": 287.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "princepalace.co.th Sharp CS2850A Commercial Printing Calculator ...",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[6]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy sharp cs2850a commercial printing calculator",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,10 +101,22 @@
     "y": 1486.0,
     "width": 586.0,
     "height": 141.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "princepalace.co.th Sharp CS2850A Commercial Printing Calculator ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1629.0,
+    "width": 586.0,
+    "height": 115.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Sharp CS2850A Commercial Printing Calculator - Bahrain",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -189,18 +189,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1629.0,
-    "width": 586.0,
-    "height": 115.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

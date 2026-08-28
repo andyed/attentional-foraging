@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "Sachs SH6010 Slave Cylinder : Automotive - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -64,24 +64,12 @@
     "x": 162.0,
     "y": 838.0,
     "width": 586.0,
-    "height": 107.0,
+    "height": 216.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "SACHS Sachs SH6010 Slave Cylinder | eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 947.0,
-    "width": 586.0,
-    "height": 107.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Sachs Clutch Slave Cylinder P/N:SH6010 - Kmart",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1056.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Sachs SH6010 Clutch Slave Cylinder - PartsHawk",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "heading_text": "Sachs Clutch Slave Cylinder P/N:SH6010 - Kmart",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1172.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Clutch Slave Cylinder - Sachs\u00ae SH6010 - CARiD.com",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "Sachs SH6010 Clutch Slave Cylinder - PartsHawk",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1288.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Sachs SH6010 Clutch Slave Cylinder - THMotorsports",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "Clutch Slave Cylinder - Sachs\u00ae SH6010 - CARiD.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,11 +113,11 @@
     "y": 1404.0,
     "width": 586.0,
     "height": 153.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Best Performance Clutch Slave Cylinders - FindThisBest",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "heading_text": "Sachs SH6010 Clutch Slave Cylinder - THMotorsports",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,11 +125,11 @@
     "y": 1559.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "SACHS NORTH AMERICA SH6010 - Clutch Slave Cylinder",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "heading_text": "Best Performance Clutch Slave Cylinders - FindThisBest",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "organic",
@@ -149,10 +137,22 @@
     "y": 1695.0,
     "width": 586.0,
     "height": 114.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "SACHS NORTH AMERICA SH6010 - Clutch Slave Cylinder",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1811.0,
+    "width": 586.0,
+    "height": 98.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Clutch Slave Cylinder, SH6010 - Zoro Tools",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 12
   },
   {
@@ -213,18 +213,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1811.0,
-    "width": 586.0,
-    "height": 98.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "Xerox WorkCentre 3550 Black High Capacity Toner ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -64,36 +64,24 @@
     "x": 162.0,
     "y": 754.0,
     "width": 586.0,
-    "height": 106.0,
+    "height": 230.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "High Capacity Print Cartridge, Wc3550 106R01530 ... - Xerox",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
   },
   {
-    "type": "knowledge_panel",
-    "x": 162.0,
-    "y": 888.0,
-    "width": 586.0,
-    "height": 96.0,
-    "html_handle": "rso[2]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 6
-  },
-  {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1020.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Xerox Wc3550 High Capacity Print Cartridge - B&H",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
+    "position": 6
   },
   {
     "type": "organic",
@@ -104,8 +92,8 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Xerox WorkCentre 3550 High Capacity Print Cartridge ...",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -116,8 +104,8 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g",
     "heading_text": "High Capacity Print Cartridge, Wc3550 106R01530 Genuine ...",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -128,8 +116,8 @@
     "html_handle": "rso[6]",
     "html_signature": "div.hlcw0c",
     "heading_text": "HIGH CAPACITY PRINT CARTRIDGE, WC3550 - 106R01530 ...",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "image_pack",
@@ -140,8 +128,8 @@
     "html_handle": "rso[7]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy xerox high capacity print cartridge wc3550",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "organic",
@@ -152,8 +140,8 @@
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Xerox WorkCentre 3550 High Capacity Print Cartridge, Wc3550",
-    "source": "html_rso+cv_bbox",
-    "position": 12
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
   },
   {
     "type": "native_ad",
@@ -165,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -177,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 14
+    "position": 13
   },
   {
     "type": "native_ad",
@@ -189,7 +177,32 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 15
+    "position": 14
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Xerox Wc3550 High Capacity Print Cartridge - B&H",
+    "source": "html_only",
+    "y_render": 1262,
+    "position": -1
   },
   {
     "type": "pagination",

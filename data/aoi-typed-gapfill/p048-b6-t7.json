@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Carrera CARRERA 58/S Sunglasses | FREE Shipping - SOLD OUT",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Carrera 58/S Sunglasses,One Size,Dark Ruthenium ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -40,48 +40,24 @@
     "x": 162.0,
     "y": 744.0,
     "width": 586.0,
-    "height": 127.0,
+    "height": 254.0,
     "html_handle": "rso[2]",
     "html_signature": "div.(no class)",
     "heading_text": "Carrera CARRERA 278/S 086-9O 58 - Optica Bassol",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 3
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 873.0,
-    "width": 586.0,
-    "height": 125.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Carrera sunglasses - Online store - Optical H",
-    "source": "html_rso+cv_bbox",
-    "position": 4
   },
   {
     "type": "organic",
     "x": 162.0,
     "y": 1000.0,
     "width": 586.0,
-    "height": 109.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Sunglasses Carrera CARRERA 256/S 85K (9O)",
-    "source": "html_rso+cv_bbox",
-    "position": 5
-  },
-  {
-    "type": "image_pack",
-    "x": 162.0,
-    "y": 1111.0,
-    "width": 586.0,
-    "height": 125.0,
-    "html_handle": "rso[5]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy carrera carrera 58 s sunglasses",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "height": 236.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Carrera sunglasses - Online store - Optical H",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 4
   },
   {
     "type": "organic",
@@ -89,35 +65,47 @@
     "y": 1238.0,
     "width": 586.0,
     "height": 121.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Sunglasses Carrera CARRERA 256/S 85K (9O)",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
+  },
+  {
+    "type": "image_pack",
+    "x": 162.0,
+    "y": 1361.0,
+    "width": 586.0,
+    "height": 284.0,
+    "html_handle": "rso[5]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy carrera carrera 58 s sunglasses",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1647.0,
+    "width": 586.0,
+    "height": 120.0,
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Buy Carrera sunglasses online at low prices - Edel-Optics",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1361.0,
+    "y": 1769.0,
     "width": 586.0,
-    "height": 284.0,
+    "height": 164.0,
     "html_handle": "rso[7]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Carrera Sunglasses 212 S 003 IR 58 - The Optic Shop",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
-  },
-  {
-    "type": "unknown_widget",
-    "x": 162.0,
-    "y": 1647.0,
-    "width": 586.0,
-    "height": 120.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 9
   },
   {
     "type": "native_ad",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
   },
   {
     "type": "related_searches",
@@ -177,18 +165,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1769.0,
-    "width": 586.0,
-    "height": 164.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

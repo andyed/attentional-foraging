@@ -1,14 +1,14 @@
 [
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 133.0,
     "width": 586.0,
     "height": 505.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Schleich - Figura Jaguar (14359) : Amazon.es",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Toy Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -17,47 +17,35 @@
     "y": 675.0,
     "width": 586.0,
     "height": 253.0,
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Schleich - Figura Jaguar (14359) : Amazon.es",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 1
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 962.0,
+    "width": 586.0,
+    "height": 201.0,
     "html_handle": "rso[1]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Jaguar 14769 WILD LIFE | Schleich GmbH",
-    "source": "html_rso+cv_bbox",
-    "position": 1
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 2
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 962.0,
-    "width": 586.0,
-    "height": 79.0,
-    "html_handle": "rso[2]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy schleich schleich jaguar",
-    "source": "html_rso+cv_bbox",
-    "position": 2
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1068.0,
-    "width": 586.0,
-    "height": 95.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "jaguar, Schleich 14769, animals, jungle, - hisop.cat",
-    "source": "html_rso+cv_bbox",
-    "position": 3
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
     "y": 1211.0,
     "width": 586.0,
     "height": 244.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Schleich jaguar en 14769 - spielzeug-guenstig.de",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy schleich schleich jaguar",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -65,11 +53,11 @@
     "y": 1498.0,
     "width": 586.0,
     "height": 99.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Schleich Jaguar 14769 (8 stores) \u2022 See at PriceRunner \u00bb",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "heading_text": "jaguar, Schleich 14769, animals, jungle, - hisop.cat",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -77,35 +65,35 @@
     "y": 1631.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Schleich Jaguar by Schleich 14769 - Happy Hen Toys",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Schleich jaguar en 14769 - spielzeug-guenstig.de",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1799.0,
     "width": 586.0,
     "height": 98.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 7
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Schleich Jaguar 14769 (8 stores) \u2022 See at PriceRunner \u00bb",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1935.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 8
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Schleich Jaguar by Schleich 14769 - Happy Hen Toys",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "native_ad",
@@ -117,6 +105,18 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
+    "position": 8
+  },
+  {
+    "type": "unknown_widget",
+    "x": 162.0,
+    "y": 2201.0,
+    "width": 586.0,
+    "height": 79.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 9
   },
   {
@@ -141,18 +141,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|10|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2201.0,
-    "width": 586.0,
-    "height": 79.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

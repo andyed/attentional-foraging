@@ -12,15 +12,15 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 574.0,
     "width": 586.0,
     "height": 454.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g",
-    "heading_text": "Dermalogica Barrier Repair (1 Fl Oz) Face Moisturizer For ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Cosmetics Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -29,10 +29,10 @@
     "y": 1030.0,
     "width": 586.0,
     "height": 182.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dermalogica Dermalogica UltraCalming Barrier Repair ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.g",
+    "heading_text": "Dermalogica Barrier Repair (1 Fl Oz) Face Moisturizer For ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1214.0,
     "width": 586.0,
     "height": 116.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Barrier Repair, Moisturizer For Sensitive Skin - Dermalogica",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Dermalogica Dermalogica UltraCalming Barrier Repair ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1332.0,
     "width": 586.0,
     "height": 131.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dermalogica UltraCalming Barrier Repair 30ml",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Barrier Repair, Moisturizer For Sensitive Skin - Dermalogica",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1465.0,
     "width": 586.0,
     "height": 135.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dermalogica Barrier Repair 1oz - SkinStore",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Dermalogica UltraCalming Barrier Repair 30ml",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1602.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dermalogica Barrier Repair, 1 oz - Walmart.com",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Dermalogica Barrier Repair 1oz - SkinStore",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1738.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dermalogica Barrier Repair | Last Looks FX - SFX Makeup",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Dermalogica Barrier Repair, 1 oz - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1855.0,
     "width": 586.0,
     "height": 131.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dermalogica Barrier Repair 1 oz New - Chad",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Dermalogica Barrier Repair | Last Looks FX - SFX Makeup",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,11 +113,23 @@
     "y": 1988.0,
     "width": 586.0,
     "height": 135.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Dermalogica Barrier Repair 1 oz New - Chad",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2125.0,
+    "width": 586.0,
+    "height": 139.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Dermalogica UltraCalming Barrier Repair (1 fl. oz.)",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -129,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 11
   },
   {
     "type": "related_searches",
@@ -153,18 +165,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|10|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2125.0,
-    "width": 586.0,
-    "height": 139.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

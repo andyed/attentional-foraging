@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "Delphi FG0105 Fuel Pump Module - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Fuel Pump Module Assembly Delphi FG0105 for sale online",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Fuel Pump Module Assembly FG0105 - Advance Auto Parts",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.hlcw0c",
     "heading_text": "FG0105 by DELPHI - Fuel Pump Module Assembly",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -64,24 +64,12 @@
     "x": 162.0,
     "y": 1210.0,
     "width": 586.0,
-    "height": 55.0,
+    "height": 132.0,
     "html_handle": "rso[4]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1290.0,
-    "width": 586.0,
-    "height": 52.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g",
-    "heading_text": "Delphi FG0105-11B1 Delphi Fuel Pump Module Assemblies",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1449.0,
     "width": 586.0,
     "height": 150.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g",
-    "heading_text": "Delphi FG0105 Fuel Pump Module Assembly - PartsHawk",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "heading_text": "Delphi FG0105-11B1 Delphi Fuel Pump Module Assemblies",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1633.0,
     "width": 586.0,
     "height": 146.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Delphi Fuel Pump Module FG0105-E3509M For Chevrolet ...",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[6]",
+    "html_signature": "div.g",
+    "heading_text": "Delphi FG0105 Fuel Pump Module Assembly - PartsHawk",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1818.0,
     "width": 586.0,
     "height": 76.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "DELPHI FG0105 Fuel Pump Module - Newegg.com",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "Delphi Fuel Pump Module FG0105-E3509M For Chevrolet ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,10 +113,22 @@
     "y": 1925.0,
     "width": 586.0,
     "height": 84.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "DELPHI FG0105 Fuel Pump Module - Newegg.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2044.0,
+    "width": 586.0,
+    "height": 81.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Delphi Fuel Pump Module Assembly FG0105 - The Home Depot",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -177,18 +177,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2044.0,
-    "width": 586.0,
-    "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

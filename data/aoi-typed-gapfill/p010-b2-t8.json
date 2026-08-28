@@ -12,27 +12,27 @@
     "position": 0
   },
   {
-    "type": "image_pack",
+    "type": "top_places",
     "x": 162.0,
     "y": 574.0,
     "width": 586.0,
     "height": 470.0,
-    "html_handle": "rso[0]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy lacoste lacoste seate mens watch 2010637",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Clothing Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
-    "type": "organic",
+    "type": "image_pack",
     "x": 162.0,
     "y": 1046.0,
     "width": 586.0,
     "height": 297.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Lacoste Seate Men's Watch 2010637 - Jomashop",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy lacoste lacoste seate mens watch 2010637",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1345.0,
     "width": 586.0,
     "height": 118.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Lacoste Men's Analogue Quartz Bracelet Watch 2010637",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Lacoste Seate Men's Watch 2010637 - Jomashop",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1465.0,
     "width": 586.0,
     "height": 135.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g",
-    "heading_text": "Lacoste Men's 2010637 Seattle Silver/Orange Stainless ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Lacoste Men's Analogue Quartz Bracelet Watch 2010637",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1602.0,
     "width": 586.0,
     "height": 183.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Men's Lacoste Seattle Watch 2010637 | Offer Finder",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[3]",
+    "html_signature": "div.g",
+    "heading_text": "Lacoste Men's 2010637 Seattle Silver/Orange Stainless ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1787.0,
     "width": 586.0,
     "height": 112.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Men's Lacoste Seattle Steel Red Dial Watch 2010637",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Men's Lacoste Seattle Watch 2010637 | Offer Finder",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1901.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Lacoste 2010637 watch - Seattle - Pinterest",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Men's Lacoste Seattle Steel Red Dial Watch 2010637",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 2017.0,
     "width": 586.0,
     "height": 116.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Lacoste Watch, Men's Green Rubber Strap 2010412 & Reviews",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Lacoste 2010637 watch - Seattle - Pinterest",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,11 +113,23 @@
     "y": 2135.0,
     "width": 586.0,
     "height": 113.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Lacoste Watch, Men's Green Rubber Strap 2010412 & Reviews",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2250.0,
+    "width": 586.0,
+    "height": 98.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Reloj Lacoste para hombre 2010637 - Simaro.co",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "pagination",
@@ -129,18 +141,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2250.0,
-    "width": 586.0,
-    "height": 98.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

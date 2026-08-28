@@ -44,7 +44,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "Gates 22637 Lower Radiator Hose - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -52,24 +52,12 @@
     "x": 162.0,
     "y": 851.0,
     "width": 586.0,
-    "height": 155.0,
+    "height": 264.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Lower Radiator Hose Gates 22637 - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 4
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1008.0,
-    "width": 586.0,
-    "height": 107.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "GATES 22637 Coolant Hose - Newegg.com",
-    "source": "html_rso+cv_bbox",
-    "position": 5
   },
   {
     "type": "organic",
@@ -77,11 +65,11 @@
     "y": 1117.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "GATES 22637 Radiator Hose EPDM (ethylene propylene ...",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "heading_text": "GATES 22637 Coolant Hose - Newegg.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1233.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Radiator Hose GATES 22637 - Trodo.com",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "heading_text": "GATES 22637 Radiator Hose EPDM (ethylene propylene ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1369.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Gates 22637 Lower Radiator Coolant Hose For BMW",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "Radiator Hose GATES 22637 - Trodo.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1485.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "BMW Radiator Coolant Hose \u2013 Lower \u2013 Gates 22637",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "Gates 22637 Lower Radiator Coolant Hose For BMW",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,11 +113,11 @@
     "y": 1601.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "GATES CORPORATION RADIATOR COOLANT HOSE 22637 - Sears",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "heading_text": "BMW Radiator Coolant Hose \u2013 Lower \u2013 Gates 22637",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,10 +125,22 @@
     "y": 1717.0,
     "width": 586.0,
     "height": 137.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "GATES CORPORATION RADIATOR COOLANT HOSE 22637 - Sears",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1856.0,
+    "width": 586.0,
+    "height": 98.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Gates Radiator Coolant Hose 22637 - The Home Depot",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -189,18 +189,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1856.0,
-    "width": 586.0,
-    "height": 98.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

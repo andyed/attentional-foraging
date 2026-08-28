@@ -44,7 +44,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Dayco 5060875 Serpentine Belt , Black - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Serpentine Belt-GAS Dayco 5060875 for sale online | eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -64,24 +64,12 @@
     "x": 162.0,
     "y": 1213.0,
     "width": 586.0,
-    "height": 89.0,
+    "height": 208.0,
     "html_handle": "rso[2]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1304.0,
-    "width": 586.0,
-    "height": 117.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g",
-    "heading_text": "Dayco 5060875 Dayco Poly Rib Serpentine Belts - Summit ...",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1423.0,
     "width": 586.0,
     "height": 197.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dayco 5060875 Serpentine Belt - Sixity Auto Parts",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[3]",
+    "html_signature": "div.g",
+    "heading_text": "Dayco 5060875 Dayco Poly Rib Serpentine Belts - Summit ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1622.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dayco\u00ae 5060875 Drive Belt - Serpentine belt - CarParts.com",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "Dayco 5060875 Serpentine Belt - Sixity Auto Parts",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1739.0,
     "width": 586.0,
     "height": 133.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dayco\u00ae 5060875 - Poly Rib\u2122 Serpentine Belt - CARiD.com",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "Dayco\u00ae 5060875 Drive Belt - Serpentine belt - CarParts.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,11 +113,11 @@
     "y": 1874.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "5060875 by DAYCO - Poly Rib Belt - FinditParts",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "heading_text": "Dayco\u00ae 5060875 - Poly Rib\u2122 Serpentine Belt - CARiD.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,10 +125,22 @@
     "y": 2010.0,
     "width": 586.0,
     "height": 115.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "5060875 by DAYCO - Poly Rib Belt - FinditParts",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2127.0,
+    "width": 586.0,
+    "height": 167.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Dayco 5060875 | Serpentine Belt Industry Number 6kk2225",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -177,18 +177,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2127.0,
-    "width": 586.0,
-    "height": 167.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

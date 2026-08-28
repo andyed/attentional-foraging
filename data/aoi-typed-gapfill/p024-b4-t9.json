@@ -32,7 +32,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Resmed Swift LT Headgear by Ineardi - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Swift LT Nasal Pillow Mask by ResMed - CPAP Supplies",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ResMed Swift LT Headgear Assembly with Buckles",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,19 +68,19 @@
     "html_handle": "rso[3]",
     "html_signature": "div.(no class)",
     "heading_text": "Swift\u2122\ufe0f LT and Swift\u2122\ufe0f LT for Her nasal pillows masks",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1409.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[4]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "ResMed Swift LT Nasal Pillow CPAP Mask - Respshop",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1545.0,
     "width": 586.0,
     "height": 257.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "ResMed Swift LT Nasal Pillow CPAP Mask - Respshop",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[6]",
+    "html_signature": "div.(no class)",
+    "heading_text": "ResMed Swift \u2122 LT Replacement Headgear",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1804.0,
     "width": 586.0,
     "height": 118.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.(no class)",
-    "heading_text": "ResMed Swift \u2122 LT Replacement Headgear",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[7]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "ResMed Headgear for Swift\u2122 LT - CPAP.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -144,16 +144,16 @@
     "position": 11
   },
   {
-    "type": "organic",
-    "x": 162.0,
-    "y": 2728.0,
-    "width": 586.0,
-    "height": 195.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "ResMed Headgear for Swift\u2122 LT - CPAP.com",
-    "source": "html_rso+cv_bbox",
-    "position": 12
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[4]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -189,6 +189,18 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 2728.0,
+    "width": 586.0,
+    "height": 195.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

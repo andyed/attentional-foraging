@@ -32,7 +32,7 @@
     "html_handle": "rso[0]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy gant gant grandle eyeglasses",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -40,24 +40,12 @@
     "x": 162.0,
     "y": 970.0,
     "width": 586.0,
-    "height": 55.0,
+    "height": 193.0,
     "html_handle": "rso[1]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 3
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1089.0,
-    "width": 586.0,
-    "height": 74.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Gant G RANDLE Eyeglasses | FREE Shipping - Go-Optic.com",
-    "source": "html_rso+cv_bbox",
-    "position": 4
   },
   {
     "type": "organic",
@@ -65,11 +53,11 @@
     "y": 1210.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Gant prescription glasses and sunglasses - Specsavers Spain",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "heading_text": "Gant G RANDLE Eyeglasses | FREE Shipping - Go-Optic.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -77,35 +65,23 @@
     "y": 1326.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Gant USA Gant Randle Rectangular Eyeglass Frames 55mm",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Gant prescription glasses and sunglasses - Specsavers Spain",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
     "x": 162.0,
     "y": 1462.0,
     "width": 586.0,
-    "height": 99.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Buy Gant Prescription Glasses | SmartBuyGlasses",
-    "source": "html_rso+cv_bbox",
-    "position": 7
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1587.0,
-    "width": 586.0,
-    "height": 76.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "GANT hombre Negro Marcos de Anteojos - eBay",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "height": 201.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Gant USA Gant Randle Rectangular Eyeglass Frames 55mm",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 6
   },
   {
     "type": "organic",
@@ -113,11 +89,11 @@
     "y": 1700.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Gant USA Gant Randle Rectangular Eyeglass Frames 55mm",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "Buy Gant Prescription Glasses | SmartBuyGlasses",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -125,11 +101,11 @@
     "y": 1835.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g",
-    "heading_text": "Oeuvres de Victor Hugo - Volume 2 - Page 667 - Google Books Result",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "GANT hombre Negro Marcos de Anteojos - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -137,10 +113,34 @@
     "y": 1971.0,
     "width": 586.0,
     "height": 81.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Gant USA Gant Randle Rectangular Eyeglass Frames 55mm",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2088.0,
+    "width": 586.0,
+    "height": 123.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g",
+    "heading_text": "Oeuvres de Victor Hugo - Volume 2 - Page 667 - Google Books Result",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2247.0,
+    "width": 586.0,
+    "height": 100.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Galignani's Messenger: The Spirit of the English Journals. ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -201,30 +201,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2088.0,
-    "width": 586.0,
-    "height": 123.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2247.0,
-    "width": 586.0,
-    "height": 100.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

@@ -12,27 +12,27 @@
     "position": 0
   },
   {
-    "type": "paa",
+    "type": "top_places",
     "x": 162.0,
     "y": 574.0,
     "width": 586.0,
     "height": 436.0,
-    "html_handle": "rso[0]",
-    "html_signature": "h=\"paa\" div.ULSxyf",
-    "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Perfume Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
-    "type": "organic",
+    "type": "paa",
     "x": 162.0,
     "y": 1084.0,
     "width": 586.0,
     "height": 93.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Sebamed Clear Face Care Gel 50ml - (Pack of 2)",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "h=\"paa\" div.ULSxyf",
+    "heading_text": "People also ask",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1323.0,
     "width": 586.0,
     "height": 252.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Clear Face Care Gel 50ml - Sebamed UK",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Sebamed Clear Face Care Gel 50ml - (Pack of 2)",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1606.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Clear Face Care Gel for Oily & Acne-prone Skin - Sebamed",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Clear Face Care Gel 50ml - Sebamed UK",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1743.0,
     "width": 586.0,
     "height": 104.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Sebamed Clear Face Care Gel 50ml - Feelunique",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Clear Face Care Gel for Oily & Acne-prone Skin - Sebamed",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1882.0,
     "width": 586.0,
     "height": 98.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g",
-    "heading_text": "Sebamed Clear Face Care Gel Review - Skincare Villa",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Sebamed Clear Face Care Gel 50ml - Feelunique",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 2015.0,
     "width": 586.0,
     "height": 120.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "SEBAMED CLEAR FACE CARE Gel 50ml - Netmeds.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g",
+    "heading_text": "Sebamed Clear Face Care Gel Review - Skincare Villa",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 2172.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "SEBAMED CLEAR FACE CARE GEL - Health Online",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "SEBAMED CLEAR FACE CARE Gel 50ml - Netmeds.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,11 +113,23 @@
     "y": 2289.0,
     "width": 586.0,
     "height": 101.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "SEBAMED CLEAR FACE CARE GEL - Health Online",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2424.0,
+    "width": 586.0,
+    "height": 130.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Buy Sebamed Clear Face Care Gel online at Flipkart.com",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -129,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 11
   },
   {
     "type": "unknown_widget",
@@ -141,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 11
+    "position": 12
   },
   {
     "type": "related_searches",
@@ -165,18 +177,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|10|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2424.0,
-    "width": 586.0,
-    "height": 130.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

@@ -6,7 +6,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Celtic Crosses",
     "container": "rso",
-    "container_index": "0"
+    "container_index": "0",
+    "css_path": "#rso > div:nth-of-type(1)",
+    "css_class": "g tF2Cxc",
+    "text_len": 294
   },
   {
     "order": 1,
@@ -15,7 +18,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Buy Irish Celtic Cross Jewellery - Brian de Staic",
     "container": "rso",
-    "container_index": "1"
+    "container_index": "1",
+    "css_path": "#rso > div:nth-of-type(2)",
+    "css_class": "g tF2Cxc",
+    "text_len": 311
   },
   {
     "order": 2,
@@ -24,7 +30,10 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "celtic cross - Amazon.es",
     "container": "rso",
-    "container_index": "2"
+    "container_index": "2",
+    "css_path": "#rso > div:nth-of-type(3)",
+    "css_class": "hlcw0c",
+    "text_len": 276
   },
   {
     "order": 3,
@@ -33,6 +42,9 @@
     "html_signature": "h=\"rs\" div.ULSxyf",
     "heading_text": "Related searches",
     "container": "botstuff",
-    "container_index": 0
+    "container_index": 0,
+    "css_path": "#bres > div:nth-of-type(1)",
+    "css_class": "ULSxyf",
+    "text_len": 102
   }
 ]

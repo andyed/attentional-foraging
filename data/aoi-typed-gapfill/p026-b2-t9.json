@@ -4,24 +4,12 @@
     "x": 162.0,
     "y": 133.0,
     "width": 586.0,
-    "height": 182.0,
+    "height": 354.0,
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Coronado Personal Solar Telescope (P.S.T.)",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 0
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 341.0,
-    "width": 586.0,
-    "height": 146.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Meade Coronado Personal Solar Telescope",
-    "source": "html_rso+cv_bbox",
-    "position": 1
   },
   {
     "type": "organic",
@@ -29,11 +17,11 @@
     "y": 523.0,
     "width": 586.0,
     "height": 203.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Meade Instruments Cornado PST Personal Solar Telescope",
-    "source": "html_rso+cv_bbox",
-    "position": 2
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Meade Coronado Personal Solar Telescope",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 1
   },
   {
     "type": "organic",
@@ -41,11 +29,11 @@
     "y": 761.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Coronado Solar telescopes @ Meade Instruments UK",
-    "source": "html_rso+cv_bbox",
-    "position": 3
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Meade Instruments Cornado PST Personal Solar Telescope",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 2
   },
   {
     "type": "organic",
@@ -53,23 +41,23 @@
     "y": 897.0,
     "width": 586.0,
     "height": 199.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Coronado ST 40/400 PST Personal Solar Telescope <0.5 ...",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "html_handle": "rso[3]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Coronado Solar telescopes @ Meade Instruments UK",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1098.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[5]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Coronado ST 40/400 PST Personal Solar Telescope <0.5 ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -80,8 +68,8 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Personal Solar Telescope (PST) - Coronado - Cloud Break ...",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -92,8 +80,8 @@
     "html_handle": "rso[7]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Meade / Coronado 40mm f/10 PST H-Alpha Personal Solar ...",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "native_ad",
@@ -105,7 +93,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 8
+    "position": 7
   },
   {
     "type": "native_ad",
@@ -117,7 +105,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 9
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,19 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[5]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
   },
   {
     "type": "related_searches",

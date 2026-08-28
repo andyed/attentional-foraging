@@ -1,92 +1,134 @@
 [
   {
     "order": 0,
+    "type": "top_places",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Cosmetics Stores",
+    "container": "rso",
+    "container_index": "local_pack",
+    "css_path": "#Odp5De",
+    "css_class": "",
+    "text_len": 608
+  },
+  {
+    "order": 1,
     "type": "knowledge_panel",
     "html_handle": "rso[0]",
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "container": "rso",
-    "container_index": "0"
+    "container_index": "0",
+    "css_path": "#rhs",
+    "css_class": "TQc1id hSOk2e rhstc4",
+    "text_len": 2316
   },
   {
-    "order": 1,
+    "order": 2,
     "type": "organic",
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "NARS Skin Smoothing Face Prep 8G - Space NK",
     "container": "rso",
-    "container_index": "1"
+    "container_index": "1",
+    "css_path": "#rso > div:nth-of-type(2)",
+    "css_class": "g tF2Cxc",
+    "text_len": 272
   },
   {
-    "order": 2,
+    "order": 3,
     "type": "organic",
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "NARS Skin Smoothing Face Prep Foundation Primer",
     "container": "rso",
-    "container_index": "2"
+    "container_index": "2",
+    "css_path": "#rso > div:nth-of-type(3)",
+    "css_class": "g tF2Cxc",
+    "text_len": 265
   },
   {
-    "order": 3,
+    "order": 4,
     "type": "organic",
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "NARS Skin Smoothing Face Prep - Amazon.in",
     "container": "rso",
-    "container_index": "3"
+    "container_index": "3",
+    "css_path": "#rso > div:nth-of-type(4)",
+    "css_class": "g tF2Cxc",
+    "text_len": 281
   },
   {
-    "order": 4,
+    "order": 5,
     "type": "organic",
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Customer reviews: NARS Skin Smoothing Face Prep - Amazon.com",
     "container": "rso",
-    "container_index": "4"
+    "container_index": "4",
+    "css_path": "#rso > div:nth-of-type(5)",
+    "css_class": "g tF2Cxc",
+    "text_len": 259
   },
   {
-    "order": 5,
+    "order": 6,
     "type": "organic",
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Skin Smoothing Face Prep - NARS Cosmetics - MakeupAlley",
     "container": "rso",
-    "container_index": "5"
+    "container_index": "5",
+    "css_path": "#rso > div:nth-of-type(6)",
+    "css_class": "g tF2Cxc",
+    "text_len": 247
   },
   {
-    "order": 6,
+    "order": 7,
     "type": "organic",
     "html_handle": "rso[6]",
     "html_signature": "div.(no class)",
     "heading_text": "Pro Prime Skin Smoothing Face Prep - Temptalia",
     "container": "rso",
-    "container_index": "6"
+    "container_index": "6",
+    "css_path": "#rso > div:nth-of-type(7)",
+    "css_class": "",
+    "text_len": 534
   },
   {
-    "order": 7,
+    "order": 8,
     "type": "organic",
     "html_handle": "rso[7]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Smooth & Protect Minimizing Pore Primer SPF 50 - NARS ...",
     "container": "rso",
-    "container_index": "7"
+    "container_index": "7",
+    "css_path": "#rso > div:nth-of-type(8)",
+    "css_class": "hlcw0c",
+    "text_len": 267
   },
   {
-    "order": 8,
+    "order": 9,
     "type": "image_pack",
     "html_handle": "rso[8]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy nars nars skin smoothing face prep",
     "container": "rso",
-    "container_index": "8"
+    "container_index": "8",
+    "css_path": "#rso > div:nth-of-type(9)",
+    "css_class": "ULSxyf",
+    "text_len": 195
   },
   {
-    "order": 9,
+    "order": 10,
     "type": "pagination",
     "html_handle": "botstuff.nav[0]",
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|10|Next",
     "container": "botstuff",
-    "container_index": 0
+    "container_index": 0,
+    "css_path": "#botstuff > div:nth-of-type(1) > div:nth-of-type(3)",
+    "css_class": "",
+    "text_len": 29
   }
 ]

@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy maisto 1 18 jeep rescue concept",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -20,7 +20,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Maisto 1/18 Scale Model Car 36699 - Jeep Rescue Concept",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Maisto 1/18 Scale Model Car 36699 - Jeep Rescue Concept",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.(no class)",
     "heading_text": "Maisto 1:18 JEEP RESCUE CONCEPT SUV Car Diecast ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Jeep Rescue Concept Tactical en Escala 1/18 (36211) : ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,19 +68,19 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Maisto 1:18 Scale Jeep Rescue Concept Diecast Vehicle: Buy ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1243.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[6]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1355.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "2010 Jeep Grand Cherokee Rescue Concept Naranja 1:18 ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "JEEP Rescue Concept - orangemetallic - Maisto 1:18",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1474.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "JEEP Rescue Concept - orangemetallic - Maisto 1:18",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Maisto 1:18 Jeep Rescue Concept: Tactical Diecast Vehicle",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -144,15 +144,28 @@
     "position": 11
   },
   {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
     "type": "organic",
     "x": null,
     "y": null,
     "width": null,
     "height": null,
-    "html_handle": "rso[9]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Maisto 1:18 Jeep Rescue Concept: Tactical Diecast Vehicle",
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "2010 Jeep Grand Cherokee Rescue Concept Naranja 1:18 ...",
     "source": "html_only",
+    "y_render": 1509,
     "position": -1
   },
   {

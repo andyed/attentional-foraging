@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Berkley Trilene Big Game Monofilament Fishing Line",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -28,24 +28,12 @@
     "x": 162.0,
     "y": 843.0,
     "width": 586.0,
-    "height": 94.0,
+    "height": 193.0,
     "html_handle": "rso[1]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 2
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 962.0,
-    "width": 586.0,
-    "height": 74.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Trilene\u00ae Big Game\u2122 \u2013 Berkley\u00ae Fishing",
-    "source": "html_rso+cv_bbox",
-    "position": 3
   },
   {
     "type": "organic",
@@ -53,11 +41,11 @@
     "y": 1080.0,
     "width": 586.0,
     "height": 104.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Berkley Big Game - \u00a38.99 - Tackleuk",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "heading_text": "Trilene\u00ae Big Game\u2122 \u2013 Berkley\u00ae Fishing",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -65,11 +53,11 @@
     "y": 1215.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Berkley Trilene Big Game Fishing Line",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "heading_text": "Berkley Big Game - \u00a38.99 - Tackleuk",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -77,35 +65,35 @@
     "y": 1351.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Berkley Trilene Big Game Monofilament Fishing Line - ...",
-    "source": "html_rso+cv_bbox",
-    "position": 6
-  },
-  {
-    "type": "knowledge_panel",
-    "x": 162.0,
-    "y": 1489.0,
-    "width": 586.0,
-    "height": 184.0,
-    "html_handle": "rso[6]",
-    "html_signature": "h=\"comp\" div.TQc1id",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Berkley Trilene Big Game Fishing Line",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
     "x": 162.0,
+    "y": 1489.0,
+    "width": 586.0,
+    "height": 184.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Berkley Trilene Big Game Monofilament Fishing Line - ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
+  },
+  {
+    "type": "unknown_widget",
+    "x": 162.0,
     "y": 1705.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Berkley Trilene Big Game 1000m Line Red | Waveinn",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
+    "position": 7
   },
   {
     "type": "organic",
@@ -116,8 +104,8 @@
     "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Berkley Trilene Big Game Fishing Line 25lb 595 Yd Green",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -128,8 +116,8 @@
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Berkley Trilene Big Game Line Green - Tackle Warehouse",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
   },
   {
     "type": "native_ad",
@@ -165,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 12
   },
   {
     "type": "unknown_widget",
@@ -177,7 +165,32 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 14
+    "position": 13
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "h=\"comp\" div.TQc1id",
+    "heading_text": "Complementary results",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Berkley Trilene Big Game 1000m Line Red | Waveinn",
+    "source": "html_only",
+    "y_render": 2050,
+    "position": -1
   },
   {
     "type": "related_searches",

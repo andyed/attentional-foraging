@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "Airtex E3270 Electric Fuel Pump : Automotive - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -20,7 +20,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Electric Fuel Pump Airtex E3270 for sale online - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Airtex E3270 Airtex Electric In-Tank Fuel Pumps - Summit ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g",
     "heading_text": "Airtex E3270 Electric Fuel Pump - Ubuy India",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Electric Fuel Pump IN-TANK E3270 - All American Auto Parts",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Airtex Automotive Division E3270 Fuel Pump Electric OE ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,19 +80,19 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "In-Tank Electric Fuel Pump - Airtex\u00ae E3270 - CARiD.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1237.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[7]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "E3270 by AIRTEX - Fuel Pump - FinditParts",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1350.0,
     "width": 586.0,
     "height": 84.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "E3270 by AIRTEX - Fuel Pump - FinditParts",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Electric Fuel Pump - E3270 by AIRTEX on PartsAvatar.ca",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -144,15 +144,15 @@
     "position": 11
   },
   {
-    "type": "organic",
+    "type": "knowledge_panel",
     "x": null,
     "y": null,
     "width": null,
     "height": null,
-    "html_handle": "rso[9]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Electric Fuel Pump - E3270 by AIRTEX on PartsAvatar.ca",
-    "source": "html_only",
+    "html_handle": "rso[7]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
     "position": -1
   },
   {

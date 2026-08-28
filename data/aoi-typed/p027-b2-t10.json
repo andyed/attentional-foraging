@@ -12,15 +12,15 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 542.0,
     "width": 586.0,
     "height": 480.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Beurer AS 87 activity sensor",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -28,24 +28,12 @@
     "x": 162.0,
     "y": 1058.0,
     "width": 586.0,
-    "height": 127.0,
-    "html_handle": "rso[1]",
+    "height": 361.0,
+    "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
-    "heading_text": "Beurer AS 80 Activity Tracker - Amazon UK",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Beurer AS 87 activity sensor",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 2
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1213.0,
-    "width": 586.0,
-    "height": 206.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Beurer Activity Sensor Fitness Tracker, AS81",
-    "source": "html_rso+cv_bbox",
-    "position": 3
   },
   {
     "type": "organic",
@@ -53,11 +41,11 @@
     "y": 1454.0,
     "width": 586.0,
     "height": 276.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Beurer Fitness Activity Trackers for sale - eBay",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Beurer AS 80 Activity Tracker - Amazon UK",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -65,11 +53,11 @@
     "y": 1763.0,
     "width": 586.0,
     "height": 103.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "BEURER AS80 ACTIVITY SENSOR black - Tecnaura",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "heading_text": "Beurer Activity Sensor Fitness Tracker, AS81",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -77,35 +65,35 @@
     "y": 1897.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Beurer Bluetooth Smart Activity Sensor Fitness Tracker ...",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Beurer Fitness Activity Trackers for sale - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 2016.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 7
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "BEURER AS80 ACTIVITY SENSOR black - Tecnaura",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 2129.0,
     "width": 586.0,
     "height": 103.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 8
+    "html_handle": "rso[5]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Beurer Bluetooth Smart Activity Sensor Fitness Tracker ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "unknown_widget",
@@ -117,7 +105,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 9
+    "position": 8
   },
   {
     "type": "related_searches",

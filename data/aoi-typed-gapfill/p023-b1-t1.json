@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Mirrycle Original Bicycle Mirror - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Mirrycle Bicycle Mirror for sale - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Mirrycle Mirror for drop bars - SJS Cycles",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Mirrycle Mirror - Nelo's Cycles",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Mirrycle Mirrycle Bike Mirror | REI Co-op",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Mirrycle Original Mirrycle Mirror - Bike Depot",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -92,19 +92,19 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Mirrycle Original Mirrycle Mirror - Cap's Bicycles Langley BC",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1470.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[7]",
-    "html_signature": "h=\"comp\" div.TQc1id",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Mirrycle Original Mirrycle Mirror - Ascent Cycle | Lethbridge",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 1586.0,
     "width": 586.0,
     "height": 98.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Mirrycle Original Mirrycle Mirror - Ascent Cycle | Lethbridge",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "MIRRYCLE ORIGINAL MIRROR - VINTAGE ROAD - Ride On ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -156,16 +156,16 @@
     "position": 12
   },
   {
-    "type": "organic",
-    "x": 162.0,
-    "y": 2079.0,
-    "width": 586.0,
-    "height": 80.0,
-    "html_handle": "rso[9]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "MIRRYCLE ORIGINAL MIRROR - VINTAGE ROAD - Ride On ...",
-    "source": "html_rso+cv_bbox",
-    "position": 13
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "h=\"comp\" div.TQc1id",
+    "heading_text": "Complementary results",
+    "source": "html_only+no_geometry",
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -201,6 +201,18 @@
     "html_signature": "rhs.kp[data-attrid=kc:/collection/knowledge_panel]",
     "heading_text": "Complementary results",
     "source": "html_rhs",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 2079.0,
+    "width": 586.0,
+    "height": 80.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

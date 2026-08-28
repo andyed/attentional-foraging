@@ -12,15 +12,15 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 526.0,
     "width": 586.0,
     "height": 454.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Shock Absorber : Industrial & Scientific - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Ford Dealers",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -29,10 +29,10 @@
     "y": 982.0,
     "width": 586.0,
     "height": 154.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Shock Absorber-New Rear MOTORCRAFT ASH-245 | eBay",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Shock Absorber : Industrial & Scientific - Amazon.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1138.0,
     "width": 586.0,
     "height": 236.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Motorcraft Shock Absorber - New ASH-245 - The Home Depot",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Shock Absorber-New Rear MOTORCRAFT ASH-245 | eBay",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1376.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Motorcraft Shock Absorber ASH-245 - Walmart.com",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Motorcraft Shock Absorber - New ASH-245 - The Home Depot",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1493.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Motorcraft\u00ae ASH245 - Rear Driver or Passenger Side ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Motorcraft Shock Absorber ASH-245 - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1629.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Motorcraft Shock Absorber ASH245 | O'Reilly Auto Parts",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Motorcraft\u00ae ASH245 - Rear Driver or Passenger Side ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1744.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Motorcraft\u00ae ASH-245 Rear, Driver or Passenger Side Shock ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Motorcraft Shock Absorber ASH245 | O'Reilly Auto Parts",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,22 +101,22 @@
     "y": 1861.0,
     "width": 586.0,
     "height": 132.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Ford Escape Rear Shocks & Struts - PartsAvatar",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Motorcraft\u00ae ASH-245 Rear, Driver or Passenger Side Shock ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1995.0,
     "width": 586.0,
     "height": 99.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[7]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Ford Escape Rear Shocks & Struts - PartsAvatar",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {

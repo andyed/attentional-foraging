@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "Delphi FG0376 Fuel Pump Module - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Fuel Pump Module Assembly Delphi FG0376 - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Delphi FG0376 Fuel Pump Module Assembly - Walmart.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Delphi Fuel Pump Module Assembly FG0376 - The Home Depot",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -64,24 +64,12 @@
     "x": 162.0,
     "y": 1181.0,
     "width": 586.0,
-    "height": 55.0,
+    "height": 132.0,
     "html_handle": "rso[4]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1261.0,
-    "width": 586.0,
-    "height": 52.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "DELPHI FG0376 Fuel Pump Module - Newegg.com",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1421.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Delphi FG0376 Fuel Pump Module Assembly - AutohausAZ",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "heading_text": "DELPHI FG0376 Fuel Pump Module - Newegg.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,34 +89,46 @@
     "y": 1535.0,
     "width": 586.0,
     "height": 82.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Delphi FG0376 Fuel Pump Module Assembly - AutohausAZ",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1648.0,
+    "width": 586.0,
+    "height": 85.0,
     "html_handle": "rso[7]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Delphi FG0376-11B1 Delphi Fuel Pump Module Assemblies",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1648.0,
+    "y": 1778.0,
     "width": 586.0,
-    "height": 85.0,
+    "height": 244.0,
     "html_handle": "rso[8]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy delphi delphi fg0376 fuel pump module",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1778.0,
+    "y": 2066.0,
     "width": 586.0,
-    "height": 244.0,
+    "height": 105.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Delphi FG0376: Fuel Pump Module Assembly - JEGS",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -177,18 +177,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2066.0,
-    "width": 586.0,
-    "height": 105.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

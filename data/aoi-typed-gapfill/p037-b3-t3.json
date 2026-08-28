@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Starry Night by Vincent Van Gogh Poster Print - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -64,24 +64,12 @@
     "x": 162.0,
     "y": 993.0,
     "width": 586.0,
-    "height": 55.0,
+    "height": 132.0,
     "html_handle": "rso[1]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1073.0,
-    "width": 586.0,
-    "height": 52.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Starry Night Van Gogh reproduction for sale",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
@@ -89,59 +77,35 @@
     "y": 1233.0,
     "width": 586.0,
     "height": 101.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Starry Night Van Gogh reproduction for sale",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1368.0,
+    "width": 586.0,
+    "height": 317.0,
     "html_handle": "rso[3]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Starry Night Painting - Etsy",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
     "type": "top_places",
     "x": 162.0,
-    "y": 1368.0,
+    "y": 1687.0,
     "width": 586.0,
-    "height": 317.0,
+    "height": 597.0,
     "html_handle": "rso[4]",
     "html_signature": "h=\"local\" div.ULSxyf",
     "heading_text": "Local results",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 8
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1687.0,
-    "width": 586.0,
-    "height": 295.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Van Gogh: The Starry Night | Prints & Artists - MoMA Design ...",
-    "source": "html_rso+cv_bbox",
-    "position": 9
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1984.0,
-    "width": 586.0,
-    "height": 122.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Vincent van Gogh: Starry Night over the Rh\u00f4ne | Custom prints",
-    "source": "html_rso+cv_bbox",
-    "position": 10
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 2108.0,
-    "width": 586.0,
-    "height": 176.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Starry Night - Van Gogh - Oil Painting - Save & Buy Online Now!",
-    "source": "html_rso+cv_bbox",
-    "position": 11
   },
   {
     "type": "organic",
@@ -149,11 +113,11 @@
     "y": 2286.0,
     "width": 586.0,
     "height": 138.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Van Gogh Starry Night Canvas | Wayfair",
-    "source": "html_rso+cv_bbox",
-    "position": 12
+    "heading_text": "Van Gogh: The Starry Night | Prints & Artists - MoMA Design ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -161,35 +125,35 @@
     "y": 2426.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[9]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "The Starry Night - Art By Vincent Van Gogh - The Tallenge Store",
-    "source": "html_rso+cv_bbox",
-    "position": 13
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Vincent van Gogh: Starry Night over the Rh\u00f4ne | Custom prints",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 2542.0,
     "width": 586.0,
     "height": 248.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 14
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Starry Night - Van Gogh - Oil Painting - Save & Buy Online Now!",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 2792.0,
     "width": 586.0,
     "height": 277.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 15
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Van Gogh Starry Night Canvas | Wayfair",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 12
   },
   {
     "type": "unknown_widget",
@@ -201,7 +165,20 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 16
+    "position": 13
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "The Starry Night - Art By Vincent Van Gogh - The Tallenge Store",
+    "source": "html_only",
+    "y_render": 3246,
+    "position": -1
   },
   {
     "type": "related_searches",

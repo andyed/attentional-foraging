@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Denso 210-0181 Remanufactured Alternator - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -20,7 +20,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Remanufactured Alternator DENSO 210-0181 - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Denso 210-0181 Remanufactured Alternator - Taiwan",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[3]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Buy Denso 210-0181 Remanufactured Alternator Online in Jordan ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,19 +68,19 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Denso 210-0181 Remanufactured Alternator \u2013 PartLimit",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1129.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[6]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 6
   },
   {
@@ -92,7 +92,7 @@
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Denso\u00ae 210-0181 - Remanufactured Alternator - CARiD.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1404.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[9]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Denso 210-0181 Remanufactured Alternator: Buy Online in UAE at ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Denso 210-0181 Remanufactured Alternator - DensoProducts ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 1519.0,
     "width": 586.0,
     "height": 79.0,
-    "html_handle": "rso[9]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Denso 210-0181 Remanufactured Alternator - DensoProducts ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[10]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Denso 210-0181 Remanufactured Alternator - PriceCheck",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -156,16 +156,29 @@
     "position": 12
   },
   {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
     "type": "organic",
-    "x": 162.0,
-    "y": 2154.0,
-    "width": 586.0,
-    "height": 130.0,
-    "html_handle": "rso[10]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Denso 210-0181 Remanufactured Alternator - PriceCheck",
-    "source": "html_rso+cv_bbox",
-    "position": 13
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Denso 210-0181 Remanufactured Alternator: Buy Online in UAE at ...",
+    "source": "html_only",
+    "y_render": 1576,
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -201,6 +214,18 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 2154.0,
+    "width": 586.0,
+    "height": 130.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Victorinox Checked Luggage ++ explore online ++",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Victorinox 26\" - 28\" Size Travel Luggage for sale - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Victorinox Luggage - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy victorinox victorinox luggage 28 inch suitcase",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Victorinox Luggage - Bed Bath & Beyond",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "victorinox luggage 28 - Nordstrom",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -92,7 +92,7 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Victorinox Suitcases - Best Buy",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -100,24 +100,12 @@
     "x": 162.0,
     "y": 1623.0,
     "width": 586.0,
-    "height": 107.0,
+    "height": 200.0,
     "html_handle": "rso[7]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Victorinox Luggage & Bags for Travel - Macy's",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 8
-  },
-  {
-    "type": "unknown_widget",
-    "x": 162.0,
-    "y": 1732.0,
-    "width": 586.0,
-    "height": 91.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 9
   },
   {
     "type": "native_ad",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
   },
   {
     "type": "related_searches",

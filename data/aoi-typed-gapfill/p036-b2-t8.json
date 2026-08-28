@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.hlcw0c",
     "heading_text": "ISM Touring Saddle - Black - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Touring | ISM Seat",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ISM - Bicycle saddles for painless cycling - Bike24",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ISM Touring Bike Saddle - Wiggle",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ISM Touring Saddle - Winstanleys Bikes",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -92,7 +92,7 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ISM Touring Saddle Black | Alltricks.es",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -104,7 +104,7 @@
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ISM Touring Saddle Black 175mm X 195mm - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -116,7 +116,7 @@
     "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ISM Touring City Saddle, Black | Bikeinn - Tradeinn",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -124,11 +124,11 @@
     "x": 162.0,
     "y": 1868.0,
     "width": 586.0,
-    "height": 157.0,
+    "height": 250.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "ISM Touring Saddle",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 10
   },
   {
@@ -189,18 +189,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2027.0,
-    "width": 586.0,
-    "height": 91.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

@@ -44,7 +44,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "Braun Series 3 320s-4 Electric Shaver - Amazon.co.uk",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "braun 320s-4 - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Braun Series 3 320s-4 Cord/Cordless Rechargeable ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[3]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -92,7 +92,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g",
     "heading_text": "360s-4 330s-4 320r-4 320s-4 - Braun",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -104,7 +104,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Braun Shaver Series 3 - Lazada Philippines",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -116,7 +116,7 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Braun 3 Series 320S-4 Shaver Reviews 2022 - Influenster",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -128,7 +128,7 @@
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "BRAUN Series 3-320s-4 - Razor - Alzashop.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -140,7 +140,7 @@
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Braun 340 s-4 Series 3 Wet & Dry Men's Electric Shaver",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -148,11 +148,11 @@
     "x": 162.0,
     "y": 2187.0,
     "width": 586.0,
-    "height": 129.0,
+    "height": 266.0,
     "html_handle": "rso[9]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy braun braun 3series 320s 4 shaver",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 12
   },
   {
@@ -177,18 +177,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2318.0,
-    "width": 586.0,
-    "height": 135.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

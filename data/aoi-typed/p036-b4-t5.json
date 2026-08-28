@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "Bosal 294-725 Exhaust Silencer : Automotive - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Bosal 294-725 Exhaust Muffler Assembly-Direct ... - ShowMeTheParts",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g",
     "heading_text": "1995-1998 Toyota T100 Muffler - Bosal 294-725",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Bosal 294-725 Muffler For Toyota T100, Natural ... - Walmart",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "BRExhaust\u00ae 294-725 - Rear Exhaust Muffler - CARiD.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g",
     "heading_text": "Bosal 294-725 Bosal Rear Silencers - Summit Racing",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -92,7 +92,7 @@
     "html_handle": "rso[6]",
     "html_signature": "div.hlcw0c",
     "heading_text": "294-725,BOSAL 294-725; Exhaust Muffler - yoyopart.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -100,24 +100,12 @@
     "x": 162.0,
     "y": 1539.0,
     "width": 586.0,
-    "height": 69.0,
+    "height": 244.0,
     "html_handle": "rso[7]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy bosal bosal 294 725 muffler",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 8
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1643.0,
-    "width": 586.0,
-    "height": 140.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g",
-    "heading_text": "Bosal 294-725 Exhaust Muffler Assembly - Thewrenchmonkey ...",
-    "source": "html_rso+cv_bbox",
-    "position": 9
   },
   {
     "type": "organic",
@@ -125,10 +113,22 @@
     "y": 1827.0,
     "width": 586.0,
     "height": 106.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g",
+    "heading_text": "Bosal 294-725 Exhaust Muffler Assembly - Thewrenchmonkey ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1968.0,
+    "width": 586.0,
+    "height": 61.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Rear Exhaust Muffler Assembly for 1995-1998 Toyota T100",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -189,18 +189,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1968.0,
-    "width": 586.0,
-    "height": 61.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

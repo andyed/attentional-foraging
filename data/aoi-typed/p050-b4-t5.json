@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ACDelco Gold 18A1424 Black Hat Front Disc Brake Rotor",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,19 +68,19 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Disc Brake Rotor Front ACDelco 18A1424 for sale online",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1045.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[2]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "ACDelco 18A1424 Disc Brake Rotor - Autocado",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1160.0,
     "width": 586.0,
     "height": 128.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "ACDelco 18A1424 Disc Brake Rotor - Autocado",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g",
+    "heading_text": "ACDelco Gold 18A1424 Black Hat Front Disc Brake Rotor",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1325.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g",
-    "heading_text": "ACDelco Gold 18A1424 Black Hat Front Disc Brake Rotor",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Acdelco 18A1424 $56.10 Disc Brake Rotor, 18A1424 | Zoro.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 1441.0,
     "width": 586.0,
     "height": 125.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Acdelco 18A1424 $56.10 Disc Brake Rotor, 18A1424 | Zoro.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g",
+    "heading_text": "ACDelco Brake Rotor 18A1424 | O'Reilly Auto Parts",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,10 +125,10 @@
     "y": 1601.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g",
-    "heading_text": "ACDelco Brake Rotor 18A1424 | O'Reilly Auto Parts",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "ACDelco 18A1424 - Summit Racing",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -137,10 +137,10 @@
     "y": 1717.0,
     "width": 586.0,
     "height": 104.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "ACDelco 18A1424 - Summit Racing",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "ACDelco 18A1424 Professional Front Disc Brake Rotor Motorcycle ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -149,10 +149,10 @@
     "y": 1856.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "ACDelco 18A1424 Professional Front Disc Brake Rotor Motorcycle ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "18A1424 Disc Brake Rotor By ACDELCO ... - Partsmonkey",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 12
   },
   {
@@ -192,15 +192,15 @@
     "position": 15
   },
   {
-    "type": "organic",
+    "type": "knowledge_panel",
     "x": null,
     "y": null,
     "width": null,
     "height": null,
-    "html_handle": "rso[9]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "18A1424 Disc Brake Rotor By ACDELCO ... - Partsmonkey",
-    "source": "html_only",
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
     "position": -1
   },
   {

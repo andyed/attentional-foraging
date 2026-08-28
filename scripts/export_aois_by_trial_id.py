@@ -35,6 +35,11 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+
+# AllSERP enrichment release. Bump when the typed AOI maps change in a way
+# that moves downstream values (see CHANGELOG.md). Stamped into every export
+# summary so a consumer can identify which enrichment a CSV came from.
+ALLSERP_RELEASE = "1.1.0"
 sys.path.insert(0, str(ROOT / "notebooks-v2"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
@@ -433,7 +438,19 @@ def main() -> None:
     except ImportError:
         print("(pyarrow not installed — skipping .parquet)", file=sys.stderr)
 
+    # Release provenance so a consumer can tell WHICH enrichment they hold.
+    # The typed maps are rebuilt in place (docs/local-pack-aoi-shift.md), so a
+    # bare CSV is otherwise indistinguishable from an older one.
+    excl_path = ROOT / "data" / "aoi-typed" / "alignment-exclusions.json"
+    excl = json.loads(excl_path.read_text()) if excl_path.exists() else {}
     summary = {
+        "allserp_release": ALLSERP_RELEASE,
+        "alignment_exclusions": {
+            "n": len(excl.get("tids", [])),
+            "date": excl.get("date"),
+            "rule": excl.get("rule"),
+            "tids": excl.get("tids", []),
+        },
         "attribution": args.attribution,
         "n_trials": len({r["trial_id"] for r in all_rows}),
         "n_aoi_rows": len(all_rows),

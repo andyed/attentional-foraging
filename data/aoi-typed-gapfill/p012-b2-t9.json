@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "\"hayes prime pinch clamp and bleed fitting kit\" - Modern Bike",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Bleed Kit for Hayes Brakes & 100ml Fluid - \u00a318.99",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.(no class)",
     "heading_text": "Hayes Bleed fitting adapter, HFX-Mag* MC/lever",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -52,24 +52,12 @@
     "x": 162.0,
     "y": 1002.0,
     "width": 586.0,
-    "height": 107.0,
+    "height": 216.0,
     "html_handle": "rso[3]",
     "html_signature": "div.(no class)",
     "heading_text": "Hayes Prime Pinch Clamp and Bleed Fitting Kit - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 4
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1111.0,
-    "width": 586.0,
-    "height": 107.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "bleeding kit, I don't need no stinking Hayes bleeding kit",
-    "source": "html_rso+cv_bbox",
-    "position": 5
   },
   {
     "type": "organic",
@@ -77,47 +65,47 @@
     "y": 1220.0,
     "width": 586.0,
     "height": 112.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "bleeding kit, I don't need no stinking Hayes bleeding kit",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1334.0,
+    "width": 586.0,
+    "height": 141.0,
     "html_handle": "rso[5]",
     "html_signature": "div.hlcw0c",
     "heading_text": "HAYES Pro Bleed Kit, 54,50 \u20ac - r2-bike.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1334.0,
+    "y": 1477.0,
     "width": 586.0,
-    "height": 141.0,
+    "height": 286.0,
     "html_handle": "rso[6]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy hayes hayes prime bleed fitting kit",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1477.0,
-    "width": 586.0,
-    "height": 286.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Hayes Bike Brakes & Parts - Performance Bicycle",
-    "source": "html_rso+cv_bbox",
-    "position": 8
-  },
-  {
-    "type": "unknown_widget",
-    "x": 162.0,
     "y": 1765.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 9
+    "html_handle": "rso[7]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Hayes Bike Brakes & Parts - Performance Bicycle",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
   },
   {
     "type": "pagination",

@@ -12,15 +12,15 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 542.0,
     "width": 586.0,
     "height": 496.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Randolph Aviator Sunglasses | Visiofactory",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Sunglasses Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -29,10 +29,10 @@
     "y": 1040.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": "rso[1]",
+    "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Men's Aviator Sunglasses | Randolph USA",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Randolph Aviator Sunglasses | Visiofactory",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1157.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "RANDOLPH AVIATOR GLASSES MADE IN USA",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Men's Aviator Sunglasses | Randolph USA",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1273.0,
     "width": 586.0,
     "height": 135.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Randolph Sunglasses | Flightstore UK",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "RANDOLPH AVIATOR GLASSES MADE IN USA",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1410.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Randolph sunglasses",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Randolph Sunglasses | Flightstore UK",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1526.0,
     "width": 586.0,
     "height": 112.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Randolph Aviator Sunglasses AF116 - novahora",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Randolph sunglasses",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1640.0,
     "width": 586.0,
     "height": 218.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Randolph Sunglasses",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[5]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Randolph Aviator Sunglasses AF116 - novahora",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,22 +101,22 @@
     "y": 1860.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Randolph USA | 23k White Gold Classic Aviator ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Randolph Sunglasses",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1976.0,
     "width": 586.0,
     "height": 118.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[7]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Randolph USA | 23k White Gold Classic Aviator ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {

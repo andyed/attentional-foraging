@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Sony LMP-C190 Lamp : Office Products - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "SONY LMP-C190 lamp/bulb - Beamer-Parts.eu",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "SONY LMP C190 LAMP PROJECTOR | eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "GENUINE OEM SONY LMP-C190 Projector Lamp - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,19 +68,19 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Where to Buy LMP-C190 Projector Lamps Bulbs",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1206.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[5]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Sony LMP-C190 Projector Replacement Lamp ... - B&H",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,34 +89,34 @@
     "y": 1322.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Sony LMP-C190 Projector Replacement Lamp ... - B&H",
-    "source": "html_rso+cv_bbox",
-    "position": 7
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1426.0,
-    "width": 586.0,
-    "height": 286.0,
     "html_handle": "rso[7]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Sony LMP-C190 Projector Lamp with Module",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1714.0,
+    "y": 1426.0,
     "width": 586.0,
-    "height": 103.0,
+    "height": 286.0,
     "html_handle": "rso[8]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy sony sony lmp c190 lamp",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1714.0,
+    "width": 586.0,
+    "height": 103.0,
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Sony Projector Lamp - LMP-C190 Bulbs - Pureland Supply",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -156,15 +156,15 @@
     "position": 12
   },
   {
-    "type": "organic",
+    "type": "knowledge_panel",
     "x": null,
     "y": null,
     "width": null,
     "height": null,
-    "html_handle": "rso[9]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Sony Projector Lamp - LMP-C190 Bulbs - Pureland Supply",
-    "source": "html_only",
+    "html_handle": "rso[5]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
     "position": -1
   },
   {

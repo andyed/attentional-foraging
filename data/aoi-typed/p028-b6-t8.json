@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Acer GARDA31 battery - Laptop Battery Express",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Fancy Buying Battery for Acer Aspire 5520 5720 5920 ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -40,24 +40,12 @@
     "x": 162.0,
     "y": 956.0,
     "width": 586.0,
-    "height": 94.0,
+    "height": 193.0,
     "html_handle": "rso[2]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 3
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1075.0,
-    "width": 586.0,
-    "height": 74.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Replacement 6600 mAh Acer GARDA31 Battery",
-    "source": "html_rso+cv_bbox",
-    "position": 4
   },
   {
     "type": "organic",
@@ -65,35 +53,35 @@
     "y": 1196.0,
     "width": 586.0,
     "height": 101.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Replacement 6600 mAh Acer GARDA31 Battery",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1332.0,
+    "width": 586.0,
+    "height": 203.0,
     "html_handle": "rso[4]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Rega IT Acer BTP-ASJ1 BTP-B2J1 GARDA31 6 Cell Laptop ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1332.0,
-    "width": 586.0,
-    "height": 203.0,
-    "html_handle": "rso[5]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy batterynerds compatible acer garda31 battery",
-    "source": "html_rso+cv_bbox",
-    "position": 6
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
     "y": 1580.0,
     "width": 586.0,
     "height": 202.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Acer Laptop Battery Discount, 60% OFF - Ingenio Virtual",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[5]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy batterynerds compatible acer garda31 battery",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,23 +89,23 @@
     "y": 1822.0,
     "width": 586.0,
     "height": 125.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Acer laptop battery price in hyderabad",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Acer Laptop Battery Discount, 60% OFF - Ingenio Virtual",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1981.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 9
+    "html_handle": "rso[7]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Acer laptop battery price in hyderabad",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
   },
   {
     "type": "unknown_widget",
@@ -165,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 13
+    "position": 12
   },
   {
     "type": "related_searches",

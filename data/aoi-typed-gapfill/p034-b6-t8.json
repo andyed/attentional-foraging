@@ -12,15 +12,15 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 542.0,
     "width": 586.0,
     "height": 320.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Performance Visor - 2XU",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 2 uMdZh",
+    "heading_text": "Runnings Store",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -29,10 +29,10 @@
     "y": 864.0,
     "width": 586.0,
     "height": 137.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.(no class)",
-    "heading_text": "2XU Performance Visor White | Runnerinn - Tradeinn",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Performance Visor - 2XU",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1003.0,
     "width": 586.0,
     "height": 256.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "2XU Performance Visor - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "2XU Performance Visor White | Runnerinn - Tradeinn",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1261.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Visera 2XU Performance Visor blanco - Deporvillage",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "2XU Performance Visor - Amazon.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1397.0,
     "width": 586.0,
     "height": 256.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "2XU Performance Visor - SS22 - One : Amazon.co.uk",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[3]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Visera 2XU Performance Visor blanco - Deporvillage",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1655.0,
     "width": 586.0,
     "height": 132.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "2xu Performance Visor unisex - Sports-Block.com",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "2XU Performance Visor - SS22 - One : Amazon.co.uk",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,22 +89,22 @@
     "y": 1789.0,
     "width": 586.0,
     "height": 133.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "2XU Performance Visor - black/black 2 | BIKE24",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "2xu Performance Visor unisex - Sports-Block.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1924.0,
     "width": 586.0,
     "height": 117.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "2XU Performance Visor - black/black 2 | BIKE24",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {

@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ACDelco Gold 18A1687 Black Hat Front Disc Brake Rotor",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -28,24 +28,12 @@
     "x": 162.0,
     "y": 630.0,
     "width": 586.0,
-    "height": 156.0,
+    "height": 266.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Disc Brake Rotor-Black Hat Front ACDelco 18A1687 | eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 2
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 788.0,
-    "width": 586.0,
-    "height": 108.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "ACDelco 18A1687 Disc Brake Rotor - Walmart.com",
-    "source": "html_rso+cv_bbox",
-    "position": 3
   },
   {
     "type": "organic",
@@ -53,11 +41,11 @@
     "y": 898.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Disc Brake Rotor, 18A1687 - Zoro Tools",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "heading_text": "ACDelco 18A1687 Disc Brake Rotor - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -65,11 +53,11 @@
     "y": 1014.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "ACDelco 18A1687 Disc Brake Rotor - StockWise Auto",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "heading_text": "Disc Brake Rotor, 18A1687 - Zoro Tools",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -77,35 +65,35 @@
     "y": 1130.0,
     "width": 586.0,
     "height": 134.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "ACDelco 18A1687 Disc Brake Rotor - StockWise Auto",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1266.0,
+    "width": 586.0,
+    "height": 121.0,
     "html_handle": "rso[5]",
     "html_signature": "div.hlcw0c",
     "heading_text": "ACDelco 18A1687 Disc Brake Rotor - Autocado",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
     "type": "paa",
     "x": 162.0,
-    "y": 1266.0,
-    "width": 586.0,
-    "height": 121.0,
-    "html_handle": "rso[6]",
-    "html_signature": "h=\"paa\" div.ULSxyf",
-    "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
-    "position": 7
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
     "y": 1389.0,
     "width": 586.0,
     "height": 168.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "ACDelco\u00ae 18A1687 - Gold\u2122 Vented Front Brake Rotor",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[6]",
+    "html_signature": "h=\"paa\" div.ULSxyf",
+    "heading_text": "People also ask",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1559.0,
     "width": 586.0,
     "height": 236.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "ACDELCO 18A1687 - Front Disc Brake Rotor Assembly",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "ACDelco\u00ae 18A1687 - Gold\u2122 Vented Front Brake Rotor",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,10 +113,22 @@
     "y": 1797.0,
     "width": 586.0,
     "height": 117.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "ACDELCO 18A1687 - Front Disc Brake Rotor Assembly",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1916.0,
+    "width": 586.0,
+    "height": 117.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Disc Brake Rotor - ACDelco 18A1687 - AutoAnything",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -189,18 +189,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1916.0,
-    "width": 586.0,
-    "height": 117.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

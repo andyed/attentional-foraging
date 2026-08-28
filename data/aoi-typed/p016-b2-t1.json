@@ -36,15 +36,15 @@
     "position": 2
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 721.0,
     "width": 586.0,
     "height": 436.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g",
-    "heading_text": "Elemis Pro-Collagen Marine Cream - Idealo",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Cosmetics Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,34 +53,34 @@
     "y": 1195.0,
     "width": 586.0,
     "height": 107.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Pro-Collagen Marine Cream | ELEMIS ES",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.g",
+    "heading_text": "Elemis Pro-Collagen Marine Cream - Idealo",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
-  },
-  {
-    "type": "paa",
-    "x": 162.0,
-    "y": 1339.0,
-    "width": 586.0,
-    "height": 102.0,
-    "html_handle": "rso[2]",
-    "html_signature": "h=\"paa\" div.ULSxyf",
-    "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
-    "position": 5
   },
   {
     "type": "organic",
     "x": 162.0,
+    "y": 1339.0,
+    "width": 586.0,
+    "height": 102.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Pro-Collagen Marine Cream | ELEMIS ES",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
+  },
+  {
+    "type": "paa",
+    "x": 162.0,
     "y": 1490.0,
     "width": 586.0,
     "height": 93.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Elemis Pro-Collagen Marine Cream - Lookfantastic",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"paa\" div.ULSxyf",
+    "heading_text": "People also ask",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1725.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g",
-    "heading_text": "ELEMIS Crema Pro-Collagen Marine, crema de d\u00eda ... - Amazon",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Elemis Pro-Collagen Marine Cream - Lookfantastic",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1865.0,
     "width": 586.0,
     "height": 110.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "ELEMIS Pro-Collagen Marine Cream 30ml - Feelunique",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g",
+    "heading_text": "ELEMIS Crema Pro-Collagen Marine, crema de d\u00eda ... - Amazon",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 2009.0,
     "width": 586.0,
     "height": 99.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Elemis Pro-Collagen Marine Cream ... - Look Fantastic",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "ELEMIS Pro-Collagen Marine Cream 30ml - Feelunique",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,10 +125,10 @@
     "y": 2144.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g",
-    "heading_text": "Elemis Pro-Collagen Marine Cream 50ml - PriceSpy UK",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Elemis Pro-Collagen Marine Cream ... - Look Fantastic",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -137,10 +137,10 @@
     "y": 2280.0,
     "width": 586.0,
     "height": 148.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Crema Rica Antiarrugas de diario Pro-Collagen Marine ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[7]",
+    "html_signature": "div.g",
+    "heading_text": "Elemis Pro-Collagen Marine Cream 50ml - PriceSpy UK",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -149,11 +149,23 @@
     "y": 2465.0,
     "width": 586.0,
     "height": 99.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Crema Rica Antiarrugas de diario Pro-Collagen Marine ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 12
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2600.0,
+    "width": 586.0,
+    "height": 102.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Elemis Pro-Collagen Marine Cream, 50ml",
-    "source": "html_rso+cv_bbox",
-    "position": 12
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 13
   },
   {
     "type": "native_ad",
@@ -165,7 +177,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 14
   },
   {
     "type": "native_ad",
@@ -177,7 +189,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 14
+    "position": 15
   },
   {
     "type": "unknown_widget",
@@ -189,7 +201,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 15
+    "position": 16
   },
   {
     "type": "related_searches",
@@ -213,18 +225,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|10|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2600.0,
-    "width": 586.0,
-    "height": 102.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

@@ -32,7 +32,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Plasitcase INC. Nanuk Case - Amazon",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "NANUK 935 - Waterproof & Indestructible Hard Case",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Nanuk 935 Case For 3 Wine Bottles | The Case Shop",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,19 +68,19 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Nanuk Case 935 a \u20ac 281,80 (oggi) - Idealo",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1345.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[4]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1460.0,
     "width": 586.0,
     "height": 99.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Buy Nanuk Products Online in Zambia at Best Prices",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "NANUK 935 Case | Rugged Waterproof Cases",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1596.0,
     "width": 586.0,
     "height": 122.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "NANUK 935 Case | Rugged Waterproof Cases",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Nanuk 935 Hard-Wheeled Utility Case without Insert (Black)",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 1752.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Nanuk 935 Hard-Wheeled Utility Case without Insert (Black)",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "\u671f\u9593\u9650\u5b9a\u30b9\u30da\u30b7\u30e3\u30eb \u7279\u5225\u4fa1\u683cplasitcase Inc\u3002Nanuk Case with ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,10 +125,10 @@
     "y": 1867.0,
     "width": 586.0,
     "height": 100.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "\u671f\u9593\u9650\u5b9a\u30b9\u30da\u30b7\u30e3\u30eb \u7279\u5225\u4fa1\u683cplasitcase Inc\u3002Nanuk Case with ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Nanuk 935 Wheeled Hard Case",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -144,15 +144,28 @@
     "position": 11
   },
   {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[4]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
     "type": "organic",
     "x": null,
     "y": null,
     "width": null,
     "height": null,
-    "html_handle": "rso[9]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Nanuk 935 Wheeled Hard Case",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Buy Nanuk Products Online in Zambia at Best Prices",
     "source": "html_only",
+    "y_render": 1657,
     "position": -1
   },
   {

@@ -4,24 +4,12 @@
     "x": 162.0,
     "y": 133.0,
     "width": 586.0,
-    "height": 153.0,
+    "height": 262.0,
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Litex UT56TBC3M Utility Collection 56-Inch Ceiling Fan ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 0
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 288.0,
-    "width": 586.0,
-    "height": 107.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Litex - UT56TBC3M - Braswell - 56 Inch Ceiling Fan",
-    "source": "html_rso+cv_bbox",
-    "position": 1
   },
   {
     "type": "organic",
@@ -29,11 +17,11 @@
     "y": 397.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Litex - UT56TBC3M - Braswell - 56 Inch Ceiling Fan - Louie Lighting",
-    "source": "html_rso+cv_bbox",
-    "position": 2
+    "heading_text": "Litex - UT56TBC3M - Braswell - 56 Inch Ceiling Fan",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 1
   },
   {
     "type": "organic",
@@ -41,11 +29,11 @@
     "y": 514.0,
     "width": 586.0,
     "height": 137.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Litex UT56TBC3M Utility Ceiling Fan - Modern Ceiling Fan ...",
-    "source": "html_rso+cv_bbox",
-    "position": 3
+    "heading_text": "Litex - UT56TBC3M - Braswell - 56 Inch Ceiling Fan - Louie Lighting",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 2
   },
   {
     "type": "organic",
@@ -53,11 +41,11 @@
     "y": 653.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Litex UT56TBC3M Utility Collection 56-Inch Ceiling Fan with Wall ...",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "heading_text": "Litex UT56TBC3M Utility Ceiling Fan - Modern Ceiling Fan ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -65,11 +53,11 @@
     "y": 769.0,
     "width": 586.0,
     "height": 94.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Qqazwc - Litex UT56TBC3M Utility Ceiling Fan Online... | Facebook",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "heading_text": "Litex UT56TBC3M Utility Collection 56-Inch Ceiling Fan with Wall ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -77,47 +65,47 @@
     "y": 865.0,
     "width": 586.0,
     "height": 114.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Qqazwc - Litex UT56TBC3M Utility Ceiling Fan Online... | Facebook",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 981.0,
+    "width": 586.0,
+    "height": 142.0,
     "html_handle": "rso[6]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Craftmade UT56TBC3M Utility 56\" Ceiling Fan with Wall Control, 3 ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 981.0,
+    "y": 1125.0,
     "width": 586.0,
-    "height": 142.0,
+    "height": 285.0,
     "html_handle": "rso[7]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy litex litex ut56tbc3m utility ceiling fan",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1125.0,
-    "width": 586.0,
-    "height": 285.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Craftmade UT56TBC3M Utility 56 in. Indoor Ceiling Fan",
-    "source": "html_rso+cv_bbox",
-    "position": 8
-  },
-  {
-    "type": "unknown_widget",
-    "x": 162.0,
     "y": 1412.0,
     "width": 586.0,
     "height": 124.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 9
+    "html_handle": "rso[8]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Craftmade UT56TBC3M Utility 56 in. Indoor Ceiling Fan",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
   },
   {
     "type": "pagination",

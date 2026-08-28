@@ -32,7 +32,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "06F121111F 2.0T thermostat : Automotive - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Volkswagen of America 06F121111F - Engine Coolant ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "06F 121 111 F - Thermostat - AUTODOC",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -64,48 +64,36 @@
     "x": 162.0,
     "y": 1159.0,
     "width": 586.0,
-    "height": 100.0,
+    "height": 201.0,
     "html_handle": "rso[3]",
     "html_signature": "div.(no class)",
     "heading_text": "2.0T FSI Thermostat for with Housing 06F121111F",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1284.0,
+    "y": 1398.0,
     "width": 586.0,
-    "height": 76.0,
+    "height": 101.0,
     "html_handle": "rso[4]",
     "html_signature": "div.hlcw0c",
     "heading_text": "volkswagen Jetta GLI Engine Coolant Thermostat Kit",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
     "type": "paa",
     "x": 162.0,
-    "y": 1398.0,
-    "width": 586.0,
-    "height": 101.0,
-    "html_handle": "rso[5]",
-    "html_signature": "h=\"paa\" div.ULSxyf",
-    "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
-    "position": 7
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
     "y": 1548.0,
     "width": 586.0,
     "height": 90.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "volkswagen Passat Engine Coolant Thermostat Kit",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[5]",
+    "html_signature": "h=\"paa\" div.ULSxyf",
+    "heading_text": "People also ask",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1787.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "VW Thermostat Assembly - Genuine Audi VW 06F121111F",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "volkswagen Passat Engine Coolant Thermostat Kit",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,10 +113,22 @@
     "y": 1900.0,
     "width": 586.0,
     "height": 102.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "VW Thermostat Assembly - Genuine Audi VW 06F121111F",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2038.0,
+    "width": 586.0,
+    "height": 102.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "06F121111F Car Engine Coolant Thermostat Housing ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -165,18 +165,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2038.0,
-    "width": 586.0,
-    "height": 102.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

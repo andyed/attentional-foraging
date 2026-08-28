@@ -12,15 +12,15 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 487.0,
     "width": 586.0,
     "height": 454.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Rugged Twill Original Briefcase - Filson",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Clothing Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -29,10 +29,10 @@
     "y": 943.0,
     "width": 586.0,
     "height": 256.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Filson Men's Briefcase/Attache Bags for sale - eBay",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Rugged Twill Original Briefcase - Filson",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1201.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Filson Men's Original Briefcase, Navy, Blue, One Size",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Filson Men's Briefcase/Attache Bags for sale - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1318.0,
     "width": 586.0,
     "height": 333.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.(no class)",
-    "heading_text": "Filson Original Briefcase 11070256, the bestselling bag by ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Filson Men's Original Briefcase, Navy, Blue, One Size",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1653.0,
     "width": 586.0,
     "height": 238.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Filson Briefcases and laptop bags for Men - Up to 40% off",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[3]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Filson Original Briefcase 11070256, the bestselling bag by ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,22 +77,22 @@
     "y": 1893.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Filson Original Briefcase | Nordstrom",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Filson Briefcases and laptop bags for Men - Up to 40% off",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 2009.0,
     "width": 586.0,
     "height": 118.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[5]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Filson Original Briefcase | Nordstrom",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {

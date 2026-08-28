@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Radiator Coolant Hose-Molded Lower ACDelco 22424M | eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -20,7 +20,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ACDelco Professional 22224M Molded Lower Radiator ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -28,24 +28,12 @@
     "x": 162.0,
     "y": 485.0,
     "width": 586.0,
-    "height": 128.0,
+    "height": 255.0,
     "html_handle": "rso[2]",
     "html_signature": "div.(no class)",
     "heading_text": "ACDelco Professional 22424M Molded Lower Radiator ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 2
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 615.0,
-    "width": 586.0,
-    "height": 125.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "22424M by ACDELCO - Lower Molded Coolant Hose - FinditParts",
-    "source": "html_rso+cv_bbox",
-    "position": 3
   },
   {
     "type": "organic",
@@ -53,11 +41,11 @@
     "y": 742.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "1997 Oldsmobile Cutlass Radiator Coolant Hose - ACDelco ...",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "heading_text": "22424M by ACDELCO - Lower Molded Coolant Hose - FinditParts",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -65,23 +53,23 @@
     "y": 859.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Professional\u2122 Molded Engine Coolant Radiator Hose",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "heading_text": "1997 Oldsmobile Cutlass Radiator Coolant Hose - ACDelco ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 995.0,
     "width": 586.0,
     "height": 112.0,
-    "html_handle": "rso[6]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Professional\u2122 Molded Engine Coolant Radiator Hose",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -92,8 +80,8 @@
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ACDelco Molded Radiator Coolant Hose, BCVC-DCC- ...",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -104,8 +92,8 @@
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "ACDELCO GOLD/PROFESSIONAL 22424M HOSE,ENG ...",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "native_ad",
@@ -117,7 +105,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 9
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,19 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
   },
   {
     "type": "pagination",

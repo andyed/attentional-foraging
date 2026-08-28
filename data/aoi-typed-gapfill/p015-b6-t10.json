@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "BMW 17-11-1-437-362 E46 325i 330i Coolant Expansion ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ZUK Coolant Thermostat OEM:17111437362 For BMW ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,19 +80,19 @@
     "html_handle": "rso[2]",
     "html_signature": "div.(no class)",
     "heading_text": "BMW Oil Cooler Radiator Expansion Tank Thermostat ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1179.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[3]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "OE Number 17111437362: Engine thermostat",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1295.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "OE Number 17111437362: Engine thermostat",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "BMW Auto Trans Oil Cooler Thermostat - FCP Euro",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,23 +113,11 @@
     "y": 1429.0,
     "width": 586.0,
     "height": 166.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "BMW Auto Trans Oil Cooler Thermostat - FCP Euro",
-    "source": "html_rso+cv_bbox",
-    "position": 9
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1597.0,
-    "width": 586.0,
-    "height": 155.0,
     "html_handle": "rso[6]",
     "html_signature": "div.g",
     "heading_text": "Youparts Oem 17111437362 Car Engine Cooling System ...",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,11 +125,11 @@
     "y": 1754.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "17111437362 Genuine BMW Oil Cooler Thermostat",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "heading_text": "17 11 1 437 362 Engine thermostat, Thermostat, Oil ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "organic",
@@ -149,11 +137,11 @@
     "y": 1871.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "17 11 1 437 362 Engine thermostat, Thermostat, Oil ...",
-    "source": "html_rso+cv_bbox",
-    "position": 12
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Thermostat, coolant 17111437362 17 11 1 437 362 ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
   },
   {
     "type": "native_ad",
@@ -165,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -177,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 14
+    "position": 13
   },
   {
     "type": "native_ad",
@@ -189,19 +177,32 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 15
+    "position": 14
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[3]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
   },
   {
     "type": "organic",
-    "x": 162.0,
-    "y": 2424.0,
-    "width": 586.0,
-    "height": 130.0,
-    "html_handle": "rso[9]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Thermostat, coolant 17111437362 17 11 1 437 362 ...",
-    "source": "html_rso+cv_bbox",
-    "position": 16
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "17111437362 Genuine BMW Oil Cooler Thermostat",
+    "source": "html_only",
+    "y_render": 1966,
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -237,6 +238,30 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 1597.0,
+    "width": 586.0,
+    "height": 155.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 2424.0,
+    "width": 586.0,
+    "height": 130.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

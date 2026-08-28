@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "Okuma Epixor XT Lightweight Graphite Frame 8 Ball ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Epixor XT Spinning Reel | OKUMA Fishing Rods and Reels",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Okuma Epixor XT Spinning Reel Black | Waveinn - Tradeinn",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -52,36 +52,24 @@
     "x": 162.0,
     "y": 949.0,
     "width": 586.0,
-    "height": 154.0,
+    "height": 291.0,
     "html_handle": "rso[3]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Okuma Epixor XT 40 Lightweight Spinning Reel (EPXT-40)",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 4
   },
   {
     "type": "paa",
     "x": 162.0,
-    "y": 1105.0,
-    "width": 586.0,
-    "height": 135.0,
-    "html_handle": "rso[4]",
-    "html_signature": "h=\"paa\" div.ULSxyf",
-    "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
-    "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
     "y": 1242.0,
     "width": 586.0,
     "height": 170.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Okuma Epixor XT Spinning Reels - Tackle Warehouse",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "html_handle": "rso[4]",
+    "html_signature": "h=\"paa\" div.ULSxyf",
+    "heading_text": "People also ask",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1414.0,
     "width": 586.0,
     "height": 188.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Okuma Epixor XT Spinning Reels - TackleDirect",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "heading_text": "Okuma Epixor XT Spinning Reels - Tackle Warehouse",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1604.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "OKUMA EPIXOR - Ganis Angling",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "Okuma Epixor XT Spinning Reels - TackleDirect",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1740.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Okuma Epixor XT Fishing Reel - Spin Reel with 8 Ball Bearings",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "OKUMA EPIXOR - Ganis Angling",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,10 +113,22 @@
     "y": 1856.0,
     "width": 586.0,
     "height": 134.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Okuma Epixor XT Fishing Reel - Spin Reel with 8 Ball Bearings",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1992.0,
+    "width": 586.0,
+    "height": 116.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Okuma Epixor XT 30 Spinning Reel - BCF",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -189,18 +189,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1992.0,
-    "width": 586.0,
-    "height": 116.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

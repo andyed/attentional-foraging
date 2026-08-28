@@ -12,15 +12,15 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 574.0,
     "width": 586.0,
     "height": 485.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Novex brazilian keratin deep conditioning hair Mask 400g",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Beauty Supply Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -29,10 +29,10 @@
     "y": 1093.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Novex Brazilian Keratin Deep Conditioning Mask, 35.3 oz ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Novex brazilian keratin deep conditioning hair Mask 400g",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1231.0,
     "width": 586.0,
     "height": 254.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g",
-    "heading_text": "Mask Novex Keratin Brazilian 1Kg - BrasilyBelleza",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Novex Brazilian Keratin Deep Conditioning Mask, 35.3 oz ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1520.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Novex Brazilian Keratin M\u00e1scara de pelo profundo 400g",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[2]",
+    "html_signature": "div.g",
+    "heading_text": "Mask Novex Keratin Brazilian 1Kg - BrasilyBelleza",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,22 +65,22 @@
     "y": 1660.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Brazilian Keratin Recharge Tube Leave In (80g)",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Novex Brazilian Keratin M\u00e1scara de pelo profundo 400g",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1795.0,
     "width": 586.0,
     "height": 448.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[4]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Brazilian Keratin Recharge Tube Leave In (80g)",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {

@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "DENSO SC20HR11 Spark Plug - Amazon",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Denso SC20HR11 Spark Plug - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -40,24 +40,12 @@
     "x": 162.0,
     "y": 791.0,
     "width": 586.0,
-    "height": 109.0,
+    "height": 236.0,
     "html_handle": "rso[2]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 3
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 902.0,
-    "width": 586.0,
-    "height": 125.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "1x DENSO IRIDIUM SC20HR11 - JAPANSPARKPLUGS",
-    "source": "html_rso+cv_bbox",
-    "position": 4
   },
   {
     "type": "organic",
@@ -65,35 +53,23 @@
     "y": 1029.0,
     "width": 586.0,
     "height": 120.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.(no class)",
-    "heading_text": "DENSO IRIDIUM LONG LIFE Spark Plugs SC20HR11 ...",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "1x DENSO IRIDIUM SC20HR11 - JAPANSPARKPLUGS",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
     "x": 162.0,
     "y": 1151.0,
     "width": 586.0,
-    "height": 157.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Denso SC20HR11 Spark Plug- Buy Online in Spain at Desertcart ...",
-    "source": "html_rso+cv_bbox",
-    "position": 6
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1310.0,
-    "width": 586.0,
-    "height": 152.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "DENSO Iridium SC20HR11 Spark Plug Spanner size: 14",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "height": 311.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.(no class)",
+    "heading_text": "DENSO IRIDIUM LONG LIFE Spark Plugs SC20HR11 ...",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 5
   },
   {
     "type": "organic",
@@ -101,11 +77,11 @@
     "y": 1464.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Rcr Iridium Spark Plug Plka7rb-11 Replaces 90919-01253 ...",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "Denso SC20HR11 Spark Plug- Buy Online in Spain at Desertcart ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -113,11 +89,11 @@
     "y": 1579.0,
     "width": 586.0,
     "height": 133.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "DENSO Iridium Platinum SC20hr11 spark plugs used for ...",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "DENSO Iridium SC20HR11 Spark Plug Spanner size: 14",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -125,10 +101,34 @@
     "y": 1714.0,
     "width": 586.0,
     "height": 133.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Rcr Iridium Spark Plug Plka7rb-11 Replaces 90919-01253 ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1849.0,
+    "width": 586.0,
+    "height": 132.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "DENSO Iridium Platinum SC20hr11 spark plugs used for ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1983.0,
+    "width": 586.0,
+    "height": 101.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "SPARK PLUG | Automotive Service Parts and Accessories",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -189,30 +189,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1849.0,
-    "width": 586.0,
-    "height": 132.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1983.0,
-    "width": 586.0,
-    "height": 101.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

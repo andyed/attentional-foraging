@@ -44,7 +44,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Schaeffler LuK RepSet 07-031 Clutch Kit, OEM ... - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Transmission Clutch Kit LuK 07-031 - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,31 +68,31 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g",
     "heading_text": "Luk Clutch 07-031 LuK Clutch Kits - Summit Racing",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
-  },
-  {
-    "type": "knowledge_panel",
-    "x": 162.0,
-    "y": 1240.0,
-    "width": 586.0,
-    "height": 80.0,
-    "html_handle": "rso[3]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1356.0,
+    "y": 1240.0,
     "width": 586.0,
-    "height": 97.0,
+    "height": 80.0,
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "LuK 07-031 Transmission Clutch Kit for Ford Bronco",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
+  },
+  {
+    "type": "unknown_widget",
+    "x": 162.0,
+    "y": 1356.0,
+    "width": 586.0,
+    "height": 97.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 7
   },
   {
@@ -104,7 +104,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "LuK\u00ae 07-031 - RepSet\u2122 Clutch Kit - CARiD.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+span_rescue",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 1571.0,
     "width": 586.0,
     "height": 133.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Luk\u00ae 07-031 Clutch Kit, Stock Replacement Disc - CarParts.com",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "LuK 07-031 Transmission Clutch Kit - Autocado",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,10 +125,10 @@
     "y": 1706.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "LuK 07-031 Transmission Clutch Kit - Autocado",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "LUK AUTOMOTIVE SYSTEMS 15-031 Clutch Set - Newegg.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -137,10 +137,10 @@
     "y": 1842.0,
     "width": 586.0,
     "height": 164.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "LUK AUTOMOTIVE SYSTEMS 15-031 Clutch Set - Newegg.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Buy LuK 15-031 Clutch Kit Online in Vietnam. B00EDFWOYS",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -180,16 +180,29 @@
     "position": 14
   },
   {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[3]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
     "type": "organic",
-    "x": 162.0,
-    "y": 2585.0,
-    "width": 586.0,
-    "height": 130.0,
-    "html_handle": "rso[9]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Buy LuK 15-031 Clutch Kit Online in Vietnam. B00EDFWOYS",
-    "source": "html_rso+cv_bbox",
-    "position": 15
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Luk\u00ae 07-031 Clutch Kit, Stock Replacement Disc - CarParts.com",
+    "source": "html_only",
+    "y_render": 1760,
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -225,6 +238,18 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 2585.0,
+    "width": 586.0,
+    "height": 130.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

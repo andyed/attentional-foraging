@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Siena One Burl Watchwinder by Orbita Model W13006",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Orbita Siena Single-Unit Watch Winder in Burlwood",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Single Watch Winder W13006 Orbita Siena Programmable ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Programmable Burl Single Automatic Watch Winder W13006 ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,19 +68,19 @@
     "html_handle": "rso[4]",
     "html_signature": "div.(no class)",
     "heading_text": "Siena - Orbita Watchwinders",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1222.0,
     "width": 586.0,
     "height": 83.0,
-    "html_handle": "rso[5]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1338.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Orbita Siena 1 - Chrono24",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Orbita Siena Burl Single Watch Winder",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1458.0,
     "width": 586.0,
     "height": 98.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Orbita Siena Burl Single Watch Winder",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Orbita Siena Single Watch Winder - Burl - The Classic Watch ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 1594.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Orbita Siena Single Watch Winder - Burl - The Classic Watch ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Orbita Siena 1 for $264 for sale from a Private Seller on ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -156,16 +156,41 @@
     "position": 12
   },
   {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 2090.0,
     "width": 586.0,
     "height": 231.0,
-    "html_handle": "rso[9]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Orbita Siena 1 for $264 for sale from a Private Seller on ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 13
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[5]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Orbita Siena 1 - Chrono24",
+    "source": "html_only",
+    "y_render": 1488,
+    "position": -1
   },
   {
     "type": "related_searches",

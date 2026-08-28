@@ -48,40 +48,28 @@
     "position": 3
   },
   {
-    "type": "paa",
+    "type": "top_places",
     "x": 162.0,
     "y": 685.0,
     "width": 586.0,
     "height": 482.0,
-    "html_handle": "rso[0]",
-    "html_signature": "h=\"paa\" div.ULSxyf",
-    "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Buy Singing Bowls",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
-    "type": "organic",
+    "type": "paa",
     "x": 162.0,
     "y": 1241.0,
     "width": 586.0,
-    "height": 55.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Tibetan Singing Bowl Set by Ohm Store \u2014 Meditation ...",
-    "source": "html_rso+cv_bbox",
+    "height": 132.0,
+    "html_handle": "rso[0]",
+    "html_signature": "h=\"paa\" div.ULSxyf",
+    "heading_text": "People also ask",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1321.0,
-    "width": 586.0,
-    "height": 52.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "1-48 de 829 resultados para \"Singing Bowl Nepal\" - Amazon",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1477.0,
     "width": 586.0,
     "height": 125.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Singing bowls \u2013 Thomann UK",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "heading_text": "Tibetan Singing Bowl Set by Ohm Store \u2014 Meditation ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1632.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "The 11 Best Singing Bowls of 2022 - Verywell Mind",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "1-48 de 829 resultados para \"Singing Bowl Nepal\" - Amazon",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1748.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Tibetan Singing Bowl | Etsy",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Singing bowls \u2013 Thomann UK",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,11 +113,11 @@
     "y": 1864.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Singing Bowls - DharmaShop",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "heading_text": "The 11 Best Singing Bowls of 2022 - Verywell Mind",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,11 +125,11 @@
     "y": 1982.0,
     "width": 586.0,
     "height": 261.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Compra de Singing bowls | Mejor precio garantizado - Bax ...",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "html_handle": "rso[5]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Tibetan Singing Bowl | Etsy",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "organic",
@@ -149,11 +137,35 @@
     "y": 2278.0,
     "width": 586.0,
     "height": 101.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Singing Bowls - DharmaShop",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2414.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Compra de Singing bowls | Mejor precio garantizado - Bax ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 12
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2530.0,
+    "width": 586.0,
+    "height": 81.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Bodhisattva Trading Company: Authentic Tibetan Singing ...",
-    "source": "html_rso+cv_bbox",
-    "position": 12
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 13
   },
   {
     "type": "native_ad",
@@ -165,7 +177,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 14
   },
   {
     "type": "native_ad",
@@ -177,7 +189,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 14
+    "position": 15
   },
   {
     "type": "native_ad",
@@ -189,7 +201,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 15
+    "position": 16
   },
   {
     "type": "related_searches",
@@ -225,30 +237,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2414.0,
-    "width": 586.0,
-    "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2530.0,
-    "width": 586.0,
-    "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

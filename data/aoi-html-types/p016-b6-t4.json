@@ -6,7 +6,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Meyle 1191210100 Hose for sale online | eBay",
     "container": "rso",
-    "container_index": "0"
+    "container_index": "0",
+    "css_path": "#rso > div:nth-of-type(1)",
+    "css_class": "g tF2Cxc",
+    "text_len": 213
   },
   {
     "order": 1,
@@ -15,7 +18,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "One MEYLE Engine Coolant Hose 1191210100 ... - eBay",
     "container": "rso",
-    "container_index": "1"
+    "container_index": "1",
+    "css_path": "#rso > div:nth-of-type(2)",
+    "css_class": "g tF2Cxc",
+    "text_len": 218
   },
   {
     "order": 2,
@@ -24,7 +30,10 @@
     "html_signature": "div.g",
     "heading_text": "MEYLE 119 121 0100 Radiator Hose ORIGINAL Quality ...",
     "container": "rso",
-    "container_index": "2"
+    "container_index": "2",
+    "css_path": "#rso > div:nth-of-type(3)",
+    "css_class": "g",
+    "text_len": 349
   },
   {
     "order": 3,
@@ -33,7 +42,10 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "container": "rso",
-    "container_index": "3"
+    "container_index": "3",
+    "css_path": "#rhs",
+    "css_class": "TQc1id hSOk2e rhstc4",
+    "text_len": 3722
   },
   {
     "order": 4,
@@ -42,7 +54,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "MEYLE 119 121 0100 Radiator Hose EPDM (ethylene ...",
     "container": "rso",
-    "container_index": "4"
+    "container_index": "4",
+    "css_path": "#rso > div:nth-of-type(5)",
+    "css_class": "g tF2Cxc",
+    "text_len": 272
   },
   {
     "order": 5,
@@ -51,7 +66,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "MEYLE Radiator Hose 119 121 0100 without clamps ...",
     "container": "rso",
-    "container_index": "5"
+    "container_index": "5",
+    "css_path": "#rso > div:nth-of-type(6)",
+    "css_class": "g tF2Cxc",
+    "text_len": 298
   },
   {
     "order": 6,
@@ -60,7 +78,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Meyle 1191210100 Engine Coolant Hose : Amazon.co.uk: Automotive",
     "container": "rso",
-    "container_index": "6"
+    "container_index": "6",
+    "css_path": "#rso > div:nth-of-type(7)",
+    "css_class": "g tF2Cxc",
+    "text_len": 231
   },
   {
     "order": 7,
@@ -69,7 +90,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "MEYLE Radiator Hose 119 121 0100 - spare parts",
     "container": "rso",
-    "container_index": "7"
+    "container_index": "7",
+    "css_path": "#rso > div:nth-of-type(8)",
+    "css_class": "g tF2Cxc",
+    "text_len": 251
   },
   {
     "order": 8,
@@ -78,7 +102,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Meyle\u00ae 1191210100 - Engine Coolant Hose - CARiD.com",
     "container": "rso",
-    "container_index": "8"
+    "container_index": "8",
+    "css_path": "#rso > div:nth-of-type(9)",
+    "css_class": "g tF2Cxc",
+    "text_len": 229
   },
   {
     "order": 9,
@@ -87,7 +114,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "MEYLE 119 121 0100 Radiator Hose EPDM (ethylene ...",
     "container": "rso",
-    "container_index": "9"
+    "container_index": "9",
+    "css_path": "#rso > div:nth-of-type(10)",
+    "css_class": "g tF2Cxc",
+    "text_len": 272
   },
   {
     "order": 10,
@@ -96,7 +126,10 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "Radiator Hose MEYLE 119 121 0100 ORIGINAL Quality ...",
     "container": "rso",
-    "container_index": "10"
+    "container_index": "10",
+    "css_path": "#rso > div:nth-of-type(11)",
+    "css_class": "hlcw0c",
+    "text_len": 282
   },
   {
     "order": 11,
@@ -105,6 +138,9 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|Next",
     "container": "botstuff",
-    "container_index": 0
+    "container_index": 0,
+    "css_path": "#botstuff > div:nth-of-type(1) > div:nth-of-type(2)",
+    "css_class": "",
+    "text_len": 21
   }
 ]

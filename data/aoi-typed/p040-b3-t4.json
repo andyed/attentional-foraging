@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy pelikan pelikan d200 pencil green marble",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g",
     "heading_text": "Pelikan Souver\u00e4n D200 Refillable Mechanical Pencil ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g",
     "heading_text": "Pelikan Classic D200 Green Marbled Mechanical Pencil",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.(no class)",
     "heading_text": "Pelikan Pencil D200 Top Part in Green Marble \"Old Style\"",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,19 +68,19 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Pelikan Traditional D200 Refill Pencil - Green Marbled",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1551.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[5]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 6
   },
   {
@@ -92,7 +92,7 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Pelikan Classic D200 Green Marbled ... - Zafpens.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1807.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Pelikan Classic D200 Mechanical Pencil - Green Marble",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Pelikan Classic D200 Green Marbled 0.7mm Pencil",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 1919.0,
     "width": 586.0,
     "height": 103.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Pelikan Classic D200 Green Marbled 0.7mm Pencil",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Pelikan Tradition Pencil - D200 Green - Pen Boutique Ltd",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -144,15 +144,28 @@
     "position": 11
   },
   {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[5]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
     "type": "organic",
     "x": null,
     "y": null,
     "width": null,
     "height": null,
-    "html_handle": "rso[9]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Pelikan Tradition Pencil - D200 Green - Pen Boutique Ltd",
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Pelikan Classic D200 Mechanical Pencil - Green Marble",
     "source": "html_only",
+    "y_render": 2011,
     "position": -1
   },
   {

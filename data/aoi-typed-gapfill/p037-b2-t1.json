@@ -1,14 +1,14 @@
 [
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 133.0,
     "width": 586.0,
     "height": 522.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g",
-    "heading_text": "Kreg KKS1020 Klamp Trak - Pocket Hole Jigs - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Home Goods Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -17,10 +17,10 @@
     "y": 674.0,
     "width": 586.0,
     "height": 132.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Kreg 33-3/4 in. Klamp Trak KKS1020 - The Home Depot",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.g",
+    "heading_text": "Kreg KKS1020 Klamp Trak - Pocket Hole Jigs - Amazon.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -29,22 +29,22 @@
     "y": 840.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Klamp Trak KKS1020 from KREG - Acme Tools",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Kreg 33-3/4 in. Klamp Trak KKS1020 - The Home Depot",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 977.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[3]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Klamp Trak KKS1020 from KREG - Acme Tools",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Kreg kks1020 Heavy Duty Aluminio Quick Klamp Trak | eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,19 +68,19 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g",
     "heading_text": "KKS1020, Kreg Klamp Trak | Quality Tools & Accessories",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1334.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Kreg Heavy Duty Aluminum Bench Clamp Trak KKS1020",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 6
   },
   {
@@ -92,7 +92,7 @@
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Clamp Trak\u2122 | Kreg Tool",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -104,7 +104,7 @@
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Kreg - Clamp Trak - Woodcraft Supply",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -112,11 +112,11 @@
     "x": 162.0,
     "y": 1729.0,
     "width": 586.0,
-    "height": 128.0,
+    "height": 265.0,
     "html_handle": "rso[9]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy kreg kreg kks1020 klamp trak",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 9
   },
   {
@@ -156,6 +156,31 @@
     "position": 12
   },
   {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[3]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Kreg Heavy Duty Aluminum Bench Clamp Trak KKS1020",
+    "source": "html_only",
+    "y_render": 1630,
+    "position": -1
+  },
+  {
     "type": "pagination",
     "x": null,
     "y": null,
@@ -177,18 +202,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1859.0,
-    "width": 586.0,
-    "height": 135.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

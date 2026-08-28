@@ -44,7 +44,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Enzymedica, GlutenEase Extra Strength, Digestive Aid for ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Enzymedica, GlutenEase, 60 Capsules - iHerb.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -64,24 +64,12 @@
     "x": 162.0,
     "y": 1247.0,
     "width": 586.0,
-    "height": 55.0,
+    "height": 215.0,
     "html_handle": "rso[2]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1366.0,
-    "width": 586.0,
-    "height": 96.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Enzymedica, GlutenEase, Digestive Aid for Gluten and Casein ...",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1464.0,
     "width": 586.0,
     "height": 262.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "GlutenEase\u2122 | Digestive Enzymes - Enzymedica",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[3]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Enzymedica, GlutenEase, Digestive Aid for Gluten and Casein ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1728.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g",
-    "heading_text": "Enzymedica GlutenEase, 60 capsules - VitalAbo",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "GlutenEase\u2122 | Digestive Enzymes - Enzymedica",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1844.0,
     "width": 586.0,
     "height": 182.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Enzymedica GlutenEase - 60 caps - Toddler Health",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "html_handle": "rso[5]",
+    "html_signature": "div.g",
+    "heading_text": "Enzymedica GlutenEase, 60 capsules - VitalAbo",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,10 +113,22 @@
     "y": 2028.0,
     "width": 586.0,
     "height": 114.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Enzymedica GlutenEase - 60 caps - Toddler Health",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2144.0,
+    "width": 586.0,
+    "height": 98.0,
     "html_handle": "rso[7]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Amazon.com: Enzymedica - GlutenEase 60 count - Pinterest",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -213,18 +213,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2144.0,
-    "width": 586.0,
-    "height": 98.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

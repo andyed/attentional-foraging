@@ -44,7 +44,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Buy ResMed Swift FX Replacement Headgear Online",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ResMed Swift Headgear Reemplazo para Swift FX Nasal ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Replacement Headgear for Swift FX or Nano - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,31 +80,31 @@
     "html_handle": "rso[3]",
     "html_signature": "div.(no class)",
     "heading_text": "ResMed Mirage Swift & Mirage Swift II Headgear - CPAP ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
-  },
-  {
-    "type": "knowledge_panel",
-    "x": 162.0,
-    "y": 1360.0,
-    "width": 586.0,
-    "height": 102.0,
-    "html_handle": "rso[4]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 7
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1497.0,
+    "y": 1360.0,
     "width": 586.0,
-    "height": 81.0,
+    "height": 102.0,
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Silicone Headgear Assembly for Swift\u2122 FX Nasal Pillow",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
+  },
+  {
+    "type": "unknown_widget",
+    "x": 162.0,
+    "y": 1497.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 1613.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Swift FX nasal pillows CPAP mask - ResMed",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "ResMed Swift\u2122 FX Silicone Frame & Headgear for Nano ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,10 +125,10 @@
     "y": 1729.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "ResMed Swift\u2122 FX Silicone Frame & Headgear for Nano ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "ResMed Swift\u2122FX Nasal Pillow CPAP Mask with Headgear",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -137,10 +137,10 @@
     "y": 1863.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "ResMed Swift\u2122FX Nasal Pillow CPAP Mask with Headgear",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "ResMed Swift for Her Replacement Headgear",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -180,16 +180,41 @@
     "position": 14
   },
   {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 2427.0,
     "width": 586.0,
     "height": 204.0,
-    "html_handle": "rso[9]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "ResMed Swift for Her Replacement Headgear",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 15
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[4]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Swift FX nasal pillows CPAP mask - ResMed",
+    "source": "html_only",
+    "y_render": 1789,
+    "position": -1
   },
   {
     "type": "related_searches",

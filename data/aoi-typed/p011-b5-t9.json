@@ -36,15 +36,15 @@
     "position": 2
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 718.0,
     "width": 586.0,
     "height": 481.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Zoggs Predator Swimming Goggles - Black/Lime/Clear",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Sporting Goods Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -52,24 +52,12 @@
     "x": 162.0,
     "y": 1236.0,
     "width": 586.0,
-    "height": 99.0,
-    "html_handle": "rso[1]",
+    "height": 204.0,
+    "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
-    "heading_text": "Zoggs Predator Swimming Goggles White | Swiminn - Tradeinn",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Zoggs Predator Swimming Goggles - Black/Lime/Clear",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 4
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1361.0,
-    "width": 586.0,
-    "height": 79.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Zoggs Predator Next Gen Swim Goggle - Amazon.com",
-    "source": "html_rso+cv_bbox",
-    "position": 5
   },
   {
     "type": "organic",
@@ -77,11 +65,11 @@
     "y": 1475.0,
     "width": 586.0,
     "height": 223.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Predator Swimming Goggle Range | Zoggs",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Zoggs Predator Swimming Goggles White | Swiminn - Tradeinn",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1729.0,
     "width": 586.0,
     "height": 276.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Zoggs Predator Swimming Goggles White Red - 365 Rider",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[2]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Zoggs Predator Next Gen Swim Goggle - Amazon.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,22 +89,34 @@
     "y": 2040.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Shop Predator Swimming Goggles now - ROSE Bikes",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Predator Swimming Goggle Range | Zoggs",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 2155.0,
     "width": 586.0,
     "height": 99.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Zoggs Predator Swimming Goggles White Red - 365 Rider",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2290.0,
+    "width": 586.0,
+    "height": 102.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Shop Predator Swimming Goggles now - ROSE Bikes",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -129,18 +129,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2290.0,
-    "width": 586.0,
-    "height": 102.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

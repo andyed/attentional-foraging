@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Graco NasalClear Nasal Aspirator, 1 Count - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -20,7 +20,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "NasalClear\u00ae Battery Operated Nasal Aspirator - Graco Baby",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Graco Nasalclear Nasal Aspirator - Target",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Graco Baby BebeSounds Nasal Clear Aspirator - Walmart",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[4]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy graco graco nasal clear nasal aspirator",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,19 +68,19 @@
     "html_handle": "rso[5]",
     "html_signature": "div.(no class)",
     "heading_text": "Graco NasalClear Battery Operated Nasal Aspirator Blue ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1210.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[6]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Graco NasalClear Nasal Aspirator price in UAE",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1326.0,
     "width": 586.0,
     "height": 93.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Graco NasalClear Nasal Aspirator price in UAE",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Amazon.com: Graco Nasal Clear Nasal Aspirator - Pinterest",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1421.0,
     "width": 586.0,
     "height": 118.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Amazon.com: Graco Nasal Clear Nasal Aspirator - Pinterest",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Graco Nasal Clear Aspirator | Baby & Toys - Exchange",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -132,16 +132,16 @@
     "position": 10
   },
   {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1820.0,
-    "width": 586.0,
-    "height": 129.0,
-    "html_handle": "rso[9]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Graco Nasal Clear Aspirator | Baby & Toys - Exchange",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -177,6 +177,18 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 1820.0,
+    "width": 586.0,
+    "height": 129.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

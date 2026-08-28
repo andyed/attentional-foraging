@@ -772,9 +772,33 @@ def _typed_aoi_path(trial_id):
     return project_root / 'data' / 'aoi-typed' / f'{trial_id}.json'
 
 
+_TYPED_EXCLUSIONS = None
+
+
+def typed_alignment_exclusions():
+    """Trial ids excluded from typed-flavor derivation (frozenset).
+
+    These are the alignment_suspect trials under the y-DP geometric
+    card<->bbox alignment — shift-periodic pages where a one-slot-wrong
+    lattice cannot be ruled out. Canonical list (with rule + provenance):
+    data/aoi-typed/alignment-exclusions.json. Applies to BOTH typed and
+    typed_gapfill (exclusion derives from render geometry, not flavor).
+    See docs/local-pack-aoi-shift.md (Quality gate).
+    """
+    global _TYPED_EXCLUSIONS
+    if _TYPED_EXCLUSIONS is None:
+        path = _typed_aoi_path('_').parent / 'alignment-exclusions.json'
+        _TYPED_EXCLUSIONS = frozenset(json.loads(path.read_text())['tids'])
+    return _TYPED_EXCLUSIONS
+
+
 def load_typed_aois(trial_id):
     """Load the full typed AOI list for a trial. Returns list of dicts as
-    produced by `scripts/build_typed_aoi_map.py`. Empty list if missing."""
+    produced by `scripts/build_typed_aoi_map.py`. Empty list if missing —
+    or if the trial is alignment-excluded (typed_alignment_exclusions()),
+    so every typed-flavor consumer drops those trials uniformly."""
+    if trial_id in typed_alignment_exclusions():
+        return []
     p = _typed_aoi_path(trial_id)
     if not p.exists():
         return []
@@ -890,7 +914,11 @@ def _typed_gapfill_aoi_path(trial_id):
 
 
 def load_typed_gapfill_aois(trial_id):
-    """Load the typed_gapfill AOI list for a trial. Returns [] if missing."""
+    """Load the typed_gapfill AOI list for a trial. Returns [] if missing
+    or alignment-excluded (same gate as `load_typed_aois` — the exclusion
+    derives from render geometry, not flavor)."""
+    if trial_id in typed_alignment_exclusions():
+        return []
     p = _typed_gapfill_aoi_path(trial_id)
     if not p.exists():
         return []

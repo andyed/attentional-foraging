@@ -36,15 +36,15 @@
     "position": 2
   },
   {
-    "type": "knowledge_panel",
+    "type": "top_places",
     "x": 162.0,
     "y": 693.0,
     "width": 586.0,
     "height": 304.0,
-    "html_handle": "rso[0]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 2 uMdZh",
+    "heading_text": "Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Oakley Gascan Replacement Lenses - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Oakley Gascan\u00ae Replacement Lenses - 16-467",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -76,24 +76,12 @@
     "x": 162.0,
     "y": 1383.0,
     "width": 586.0,
-    "height": 55.0,
+    "height": 193.0,
     "html_handle": "rso[3]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 6
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1502.0,
-    "width": 586.0,
-    "height": 74.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Oakley Gascan Replacement Lenses - Fuse Lenses",
-    "source": "html_rso+cv_bbox",
-    "position": 7
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1622.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g",
-    "heading_text": "Oakley Gascan Replacement Lenses by Revant Optics",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Oakley Gascan Replacement Lenses - Fuse Lenses",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,23 +101,23 @@
     "y": 1758.0,
     "width": 586.0,
     "height": 130.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Oakley Gascan Replacement Lenses by Sunglass Fix",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "html_handle": "rso[5]",
+    "html_signature": "div.g",
+    "heading_text": "Oakley Gascan Replacement Lenses by Revant Optics",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1922.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "OOWLIT Premium Polarized Replacement Lenses for ...",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,11 +125,11 @@
     "y": 2058.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Oakley Gascan\u00ae Replacement Lenses - 16-467",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "heading_text": "OOWLIT Premium Polarized Replacement Lenses for ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "organic",
@@ -149,10 +137,22 @@
     "y": 2194.0,
     "width": 586.0,
     "height": 82.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Oakley Gascan\u00ae Replacement Lenses - 16-467",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2310.0,
+    "width": 586.0,
+    "height": 82.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Revant Replacement Lenses for Oakley Gascan - Pinterest",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 12
   },
   {
@@ -178,6 +178,31 @@
     "heading_text": "",
     "source": "cv_bbox_only",
     "position": 14
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[0]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Oakley Gascan Replacement Lenses by Sunglass Fix",
+    "source": "html_only",
+    "y_render": 2284,
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -213,18 +238,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2310.0,
-    "width": 586.0,
-    "height": 82.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

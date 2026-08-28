@@ -138,6 +138,44 @@ def _detect_type(div):
     return None, None
 
 
+_ID_OK = re.compile(r'^[A-Za-z_][\w-]*$')
+
+
+def _css_path(el):
+    """Build a css selector path for el, anchored at the nearest ancestor
+    with a well-formed id. Used by measure_card_geometry.py to locate the
+    same element in a rendered (Chromium) DOM, so it must only use
+    positional selectors that survive the html.parser -> browser round trip.
+    """
+    parts = []
+    cur = el
+    while cur is not None and getattr(cur, 'name', None) not in (None, '[document]'):
+        cid = cur.get('id', '') if hasattr(cur, 'get') else ''
+        if cid and _ID_OK.match(cid):
+            parts.append(f'#{cid}')
+            break
+        parent = cur.parent
+        if parent is None or not getattr(parent, 'name', None):
+            parts.append(cur.name)
+            break
+        sibs = parent.find_all(cur.name, recursive=False)
+        idx = sibs.index(cur) + 1
+        parts.append(f'{cur.name}:nth-of-type({idx})')
+        cur = parent
+    return ' > '.join(reversed(parts))
+
+
+def _identity_fields(el):
+    """class tokens + whitespace-stripped text length, used by
+    measure_card_geometry.py to verify css_path resolved to the SAME
+    element in the Chromium DOM (html.parser and Chromium can parse the
+    tree differently, shifting nth-of-type indices — the p031-b3-t6
+    TQc1id re-parenting case)."""
+    cls = ' '.join((el.get('class') or [])) if hasattr(el, 'get') else ''
+    text_len = len(re.sub(r'\s+', '', el.get_text()))
+    return {'css_class': cls, 'text_len': text_len}
+
+
 def _is_substantive(div):
     """Filter out non-card elements: scripts, styles, empty spans, etc."""
     if div.name in SKIP_TAGS:
@@ -267,8 +305,61 @@ def parse_serp(html: str):
     soup = BeautifulSoup(html, 'html.parser')
     cards = []
 
-    # ── #rso: main result column ──
+    # ── Local pack OUTSIDE #rso (div#Odp5De under .M8OgIe) ──
+    # 2022-era Google renders the maps/local-results block as a sibling
+    # subtree of #rso — main column, above the first #rso card — so the
+    # #rso walk never sees it. Phase 2 matches the k-th non-ad bbox to the
+    # k-th main-column card; without this card every label below the pack
+    # shifts up one slot (audit_local_pack_aois.py: 268 trials, flagged by
+    # Sara 2026-08-28, e.g. p040-b4-t6 "Camera Stores"). Emit ONE
+    # top_places card, ordered by DOM position relative to #rso.
     rso = soup.select_one('#rso')
+    local_pack_entries = []
+    for el in soup.select('div.uMdZh'):
+        cur, inside_known = el, False
+        while cur is not None and getattr(cur, 'name', None):
+            if hasattr(cur, 'get') and cur.get('id', '') in ('rso', 'rhs', 'botstuff'):
+                inside_known = True
+                break
+            cur = cur.parent
+        if not inside_known:
+            local_pack_entries.append(el)
+
+    def _emit_out_of_rso_pack():
+        # Visible pack heading (e.g. "Camera Stores") is a div.YzSd.gsmt in
+        # the WVGKWb subtree; the M8OgIe h1 is the hidden a11y "Search
+        # Results" heading, so fall back to it only when .gsmt is absent.
+        m8 = soup.select_one('div.M8OgIe')
+        heading = ''
+        gsmt = (m8 or soup).select_one('div.WVGKWb div.gsmt, div.gsmt')
+        if gsmt is not None:
+            heading = gsmt.get_text(strip=True)
+        elif m8 is not None:
+            h1 = m8.find('h1')
+            heading = h1.get_text(strip=True) if h1 else _heading_text(m8)
+        cards.append({
+            'order': len(cards),
+            'type': 'top_places',
+            'html_handle': 'Odp5De[0]',
+            'html_signature': f'out-of-rso local pack, {len(local_pack_entries)} uMdZh',
+            'heading_text': heading[:120],
+            'container': 'rso',
+            'container_index': 'local_pack',
+            'css_path': _css_path(soup.select_one('#Odp5De')
+                                  or local_pack_entries[0]),
+            **_identity_fields(soup.select_one('#Odp5De')
+                               or local_pack_entries[0]),
+        })
+
+    pack_before_rso = True
+    if local_pack_entries and rso is not None:
+        pack_line = getattr(local_pack_entries[0], 'sourceline', 0) or 0
+        rso_line = getattr(rso, 'sourceline', 0) or 0
+        pack_before_rso = pack_line <= rso_line
+    if local_pack_entries and pack_before_rso:
+        _emit_out_of_rso_pack()
+
+    # ── #rso: main result column ──
     if rso is not None:
         for handle_idx, child in _walk_rso_cards(rso):
             type_label, signature = _detect_type(child)
@@ -282,7 +373,14 @@ def parse_serp(html: str):
                 'heading_text': _heading_text(child)[:120],
                 'container': 'rso',
                 'container_index': handle_idx,
+                'css_path': _css_path(child),
+                **_identity_fields(child),
             })
+
+    # Out-of-rso pack that sits AFTER #rso in DOM order (unobserved in the
+    # corpus so far, but keep y-order and card-order consistent if it occurs)
+    if local_pack_entries and not pack_before_rso:
+        _emit_out_of_rso_pack()
 
     # ── #botstuff: bottom-of-page widgets (Related searches + pagination) ──
     botstuff = soup.select_one('#botstuff')
@@ -303,6 +401,8 @@ def parse_serp(html: str):
                 'heading_text': _heading_text(ulsxyf)[:120],
                 'container': 'botstuff',
                 'container_index': i,
+                'css_path': _css_path(ulsxyf),
+                **_identity_fields(ulsxyf),
             })
 
         # Pagination lives in a <div role="navigation"> inside #botstuff
@@ -324,6 +424,8 @@ def parse_serp(html: str):
                 'heading_text': text[:120],
                 'container': 'botstuff',
                 'container_index': i,
+                'css_path': _css_path(nav),
+                **_identity_fields(nav),
             })
 
     # ── #rhs: right-rail (knowledge panel column) ──
@@ -341,6 +443,8 @@ def parse_serp(html: str):
                 'heading_text': _heading_text(rhs)[:120],
                 'container': 'rhs',
                 'rhs_only': True,
+                'css_path': _css_path(kp),
+                **_identity_fields(kp),
             })
 
     return cards

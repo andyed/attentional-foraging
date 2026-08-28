@@ -1,4 +1,8 @@
 cff-version: 1.2.0
+# AllSERP enrichment data release. Distinct from the paper anchor tag
+# v1.0.0 (CIKM reference state) — bump when typed AOI values change.
+# See CHANGELOG.md and docs/allserp-v1.1.0-uptake.md.
+allserp-enrichment-version: "1.1.0"
 message: "If you use this software or the AllSERP enrichment, please cite the arXiv paper below."
 type: software
 title: "Attentional Foraging on Search Results Pages"

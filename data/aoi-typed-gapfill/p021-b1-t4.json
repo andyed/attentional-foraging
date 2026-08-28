@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Mitsubishi HC4900 LCD Projector 1080p [Electronics]",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -20,7 +20,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Mitsubishi HC4900 3LCD Projector Specs",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Mitsubishi HC4900 LCD Projector for sale online - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -40,60 +40,48 @@
     "x": 162.0,
     "y": 662.0,
     "width": 586.0,
-    "height": 75.0,
+    "height": 185.0,
     "html_handle": "rso[3]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 3
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 739.0,
+    "y": 849.0,
     "width": 586.0,
-    "height": 108.0,
+    "height": 125.0,
     "html_handle": "rso[4]",
     "html_signature": "div.hlcw0c",
     "heading_text": "LCD projector - 1000 lumens - Full HD (1920 x 1080) - 16:9",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 849.0,
-    "width": 586.0,
-    "height": 125.0,
-    "html_handle": "rso[5]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy mitsubishi mitsubishi hc4900 lcd projector 1080p",
-    "source": "html_rso+cv_bbox",
-    "position": 5
-  },
-  {
-    "type": "knowledge_panel",
-    "x": 162.0,
     "y": 976.0,
     "width": 586.0,
     "height": 287.0,
-    "html_handle": "rso[6]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "html_handle": "rso[5]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy mitsubishi mitsubishi hc4900 lcd projector 1080p",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1265.0,
     "width": 586.0,
     "height": 118.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Mitsubishi HC4900 LCD Home Theater Projector - B&H",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
+    "position": 6
   },
   {
     "type": "organic",
@@ -104,8 +92,8 @@
     "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "MITSUBISHI HC4900 3-LCD 1080p Home Theater Projector",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -116,8 +104,8 @@
     "html_handle": "rso[9]",
     "html_signature": "div.g",
     "heading_text": "Mitsubishi HC4900 review - CNET",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -128,8 +116,8 @@
     "html_handle": "rso[10]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Mitsubishi HC4900 LCD Home Theater Projector Review",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,32 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Mitsubishi HC4900 LCD Home Theater Projector - B&H",
+    "source": "html_only",
+    "y_render": 1555,
+    "position": -1
   },
   {
     "type": "related_searches",

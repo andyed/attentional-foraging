@@ -6,7 +6,10 @@
     "html_signature": "div.g",
     "heading_text": "Heye Stingray 1000 Piece David Doublet Panoramic Jigsaw ...",
     "container": "rso",
-    "container_index": "0"
+    "container_index": "0",
+    "css_path": "#rso > div:nth-of-type(1)",
+    "css_class": "g",
+    "text_len": 376
   },
   {
     "order": 1,
@@ -15,7 +18,10 @@
     "html_signature": "div.g",
     "heading_text": "Heye Panorama Stingray Edition Humboldt Puzzles (1000 ...",
     "container": "rso",
-    "container_index": "1"
+    "container_index": "1",
+    "css_path": "#rso > div:nth-of-type(2)",
+    "css_class": "g",
+    "text_len": 380
   },
   {
     "order": 2,
@@ -24,7 +30,10 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "Heye Panoramic Puzzle - Stingray, 1000 Pieces - Playpolis",
     "container": "rso",
-    "container_index": "2"
+    "container_index": "2",
+    "css_path": "#rso > div:nth-of-type(3)",
+    "css_class": "hlcw0c",
+    "text_len": 272
   },
   {
     "order": 3,
@@ -33,7 +42,10 @@
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy heye heye stingray puzzle",
     "container": "rso",
-    "container_index": "3"
+    "container_index": "3",
+    "css_path": "#rso > div:nth-of-type(4)",
+    "css_class": "ULSxyf",
+    "text_len": 281
   },
   {
     "order": 4,
@@ -42,7 +54,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Heye Stingray 1000 Piece David Doublet ... - Walmart",
     "container": "rso",
-    "container_index": "4"
+    "container_index": "4",
+    "css_path": "#rso > div:nth-of-type(5)",
+    "css_class": "g tF2Cxc",
+    "text_len": 283
   },
   {
     "order": 5,
@@ -51,7 +66,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Heye Stingray 1000 Piece David Doublet Panoramic Jigsaw Puzzle ...",
     "container": "rso",
-    "container_index": "5"
+    "container_index": "5",
+    "css_path": "#rso > div:nth-of-type(6)",
+    "css_class": "g tF2Cxc",
+    "text_len": 275
   },
   {
     "order": 6,
@@ -60,7 +78,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Heye-29470 - Classic Jigsaw Puzzle - Stingray - 1000 Pieces",
     "container": "rso",
-    "container_index": "6"
+    "container_index": "6",
+    "css_path": "#rso > div:nth-of-type(7)",
+    "css_class": "g tF2Cxc",
+    "text_len": 266
   },
   {
     "order": 7,
@@ -69,7 +90,10 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "container": "rso",
-    "container_index": "7"
+    "container_index": "7",
+    "css_path": "#rhs",
+    "css_class": "TQc1id hSOk2e rhstc4",
+    "text_len": 232
   },
   {
     "order": 8,
@@ -78,7 +102,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Las mejores ofertas en 17 A\u00f1os en adelante Puzzles Heye",
     "container": "rso",
-    "container_index": "8"
+    "container_index": "8",
+    "css_path": "#rso > div:nth-of-type(9)",
+    "css_class": "g tF2Cxc",
+    "text_len": 192
   },
   {
     "order": 9,
@@ -87,7 +114,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Buy HEYE Stingray (1000 Piece Jigsaw Puzzle) and other ...",
     "container": "rso",
-    "container_index": "9"
+    "container_index": "9",
+    "css_path": "#rso > div:nth-of-type(10)",
+    "css_class": "g tF2Cxc",
+    "text_len": 277
   },
   {
     "order": 10,
@@ -96,7 +126,10 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "Jigsaw Puzzle - 1000 Pieces - Panoramic - Alexander Von ...",
     "container": "rso",
-    "container_index": "10"
+    "container_index": "10",
+    "css_path": "#rso > div:nth-of-type(11)",
+    "css_class": "hlcw0c",
+    "text_len": 321
   },
   {
     "order": 11,
@@ -105,6 +138,9 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|Next",
     "container": "botstuff",
-    "container_index": 0
+    "container_index": 0,
+    "css_path": "#botstuff > div:nth-of-type(1) > div:nth-of-type(3)",
+    "css_class": "",
+    "text_len": 25
   }
 ]

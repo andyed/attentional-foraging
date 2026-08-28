@@ -1,17 +1,38 @@
 {
+  "allserp_release": "1.1.0",
+  "alignment_exclusions": {
+    "n": 14,
+    "date": "2026-08-28",
+    "rule": "mean_residual > 30 OR (mean_h_mismatch > 60 AND mean_residual > 8)",
+    "tids": [
+      "p007-b1-t9",
+      "p010-b1-t4",
+      "p015-b3-t6",
+      "p021-b1-t3",
+      "p023-b3-t7",
+      "p023-b4-t8",
+      "p023-b5-t8",
+      "p034-b6-t5",
+      "p041-b1-t9",
+      "p044-b5-t9",
+      "p046-b6-t5",
+      "p047-b3-t7",
+      "p047-b5-t2",
+      "p049-b4-t3"
+    ]
+  },
   "attribution": "typed_gapfill",
-  "n_trials": 2776,
-  "n_aoi_rows": 37174,
+  "n_trials": 2762,
+  "n_aoi_rows": 36370,
   "n_by_etype": {
-    "dd_top": 1582,
-    "image_pack": 1584,
-    "knowledge_panel": 746,
-    "native_ad": 9217,
-    "organic": 22354,
-    "other_widget": 50,
-    "paa": 769,
-    "top_places": 84,
-    "unknown_widget": 788
+    "dd_top": 1575,
+    "image_pack": 1566,
+    "native_ad": 9184,
+    "organic": 21917,
+    "other_widget": 28,
+    "paa": 763,
+    "top_places": 338,
+    "unknown_widget": 999
   },
   "trial_id_format": "p{PPP}-b{B}-t{T} (zero-padded uid, 1-indexed batch/trial)",
   "id_regex": "^p(\\d{3})-b(\\d+)-t(\\d+)$",
@@ -20,6 +41,6 @@
     162,
     702
   ],
-  "n_skipped_trials": 0,
+  "n_skipped_trials": 14,
   "schema_note": "rank is display-order within the chosen attribution; etype is the AOI kind (organic / dd_top / native_ad / ad); organic_rank is the within-organic position number (null for non-organics)."
 }

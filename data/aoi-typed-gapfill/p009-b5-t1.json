@@ -24,15 +24,15 @@
     "position": 1
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 711.0,
     "width": 586.0,
     "height": 321.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g",
-    "heading_text": "Callaway Golf 2018 Mens Performance Cool Golf Towel",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 2 uMdZh",
+    "heading_text": "Sporting Goods Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1034.0,
     "width": 586.0,
     "height": 185.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Callaway Golf Cool Towel - Golfonline",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.g",
+    "heading_text": "Callaway Golf 2018 Mens Performance Cool Golf Towel",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1221.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Golf Towels | Callaway Golf Accessories | Official Site",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Callaway Golf Cool Towel - Golfonline",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1337.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Callaway Cool Personal Golf Towel - Clubhouse Golf",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Golf Towels | Callaway Golf Accessories | Official Site",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1453.0,
     "width": 586.0,
     "height": 132.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Callaway Golf Cool Towel Blue, One Size - Walmart.com",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Callaway Cool Personal Golf Towel - Clubhouse Golf",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,35 +89,47 @@
     "y": 1587.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Callaway Golf- Cool Towel C30446 for sale online - eBay",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Callaway Golf Cool Towel Blue, One Size - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
-  },
-  {
-    "type": "image_pack",
-    "x": 162.0,
-    "y": 1723.0,
-    "width": 586.0,
-    "height": 242.0,
-    "html_handle": "rso[6]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy callaway callaway golf cool towel",
-    "source": "html_rso+cv_bbox",
-    "position": 8
   },
   {
     "type": "organic",
     "x": 162.0,
+    "y": 1723.0,
+    "width": 586.0,
+    "height": 242.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Callaway Golf- Cool Towel C30446 for sale online - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
+  },
+  {
+    "type": "image_pack",
+    "x": 162.0,
     "y": 1967.0,
     "width": 586.0,
-    "height": 129.0,
+    "height": 287.0,
+    "html_handle": "rso[6]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy callaway callaway golf cool towel",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2256.0,
+    "width": 586.0,
+    "height": 102.0,
     "html_handle": "rso[7]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Towels - Golf Galaxy",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -129,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 11
   },
   {
     "type": "native_ad",
@@ -141,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -153,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 13
   },
   {
     "type": "related_searches",
@@ -177,30 +189,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2098.0,
-    "width": 586.0,
-    "height": 156.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2256.0,
-    "width": 586.0,
-    "height": 102.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

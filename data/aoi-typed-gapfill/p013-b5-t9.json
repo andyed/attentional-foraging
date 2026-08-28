@@ -44,7 +44,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Callaway X Hot Driver 10.5 Negro Controlador de Sonido",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -52,24 +52,12 @@
     "x": 162.0,
     "y": 835.0,
     "width": 586.0,
-    "height": 128.0,
+    "height": 237.0,
     "html_handle": "rso[1]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 4
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 965.0,
-    "width": 586.0,
-    "height": 107.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Callaway X Hot Driver - Golfbidder",
-    "source": "html_rso+cv_bbox",
-    "position": 5
   },
   {
     "type": "organic",
@@ -77,11 +65,11 @@
     "y": 1074.0,
     "width": 586.0,
     "height": 121.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Driver Callaway X Hot - Golfbidder",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "heading_text": "Callaway X Hot Driver - Golfbidder",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1197.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Callaway X Hot Driver - Golfriends Shop",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "heading_text": "Driver Callaway X Hot - Golfbidder",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1312.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Callaway X HOT Golf Driver - Clubhouse Golf",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "Callaway X Hot Driver - Golfriends Shop",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1427.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Callaway X HOT Drivers | Golf Club Drivers | Specs & Reviews",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "Callaway X HOT Golf Driver - Clubhouse Golf",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,11 +113,11 @@
     "y": 1563.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Callaway X-Hot Driver Golf Club for sale online - eBay",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Callaway X HOT Drivers | Golf Club Drivers | Specs & Reviews",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,11 +125,11 @@
     "y": 1678.0,
     "width": 586.0,
     "height": 258.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Callaway Golf X-Hot Driver | RockBottomGolf.com",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "html_handle": "rso[7]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Callaway X-Hot Driver Golf Club for sale online - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "organic",
@@ -149,10 +137,22 @@
     "y": 1938.0,
     "width": 586.0,
     "height": 134.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Callaway Golf X-Hot Driver | RockBottomGolf.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2074.0,
+    "width": 586.0,
+    "height": 116.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Callaway X2 Hot Driver | 2nd Swing Golf",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 12
   },
   {
@@ -213,18 +213,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|10|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2074.0,
-    "width": 586.0,
-    "height": 116.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

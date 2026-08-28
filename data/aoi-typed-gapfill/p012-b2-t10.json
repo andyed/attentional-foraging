@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Drum Brake Wheel Cylinder Front Right Bendix 33615",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -64,36 +64,24 @@
     "x": 162.0,
     "y": 892.0,
     "width": 586.0,
-    "height": 109.0,
+    "height": 222.0,
     "html_handle": "rso[1]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Bendix 33615 Wheel Cylinder - desertcart",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1003.0,
-    "width": 586.0,
-    "height": 111.0,
-    "html_handle": "rso[2]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy bendix bendix 33615 wheel cylinder",
-    "source": "html_rso+cv_bbox",
-    "position": 6
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
     "y": 1116.0,
     "width": 586.0,
     "height": 286.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Bendix 33615 Wheel Cylinder - Bahrain",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy bendix bendix 33615 wheel cylinder",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1404.0,
     "width": 586.0,
     "height": 166.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Casting 18293 Drum Brake Wheel Cylinder - yoyopart.com",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Bendix 33615 Wheel Cylinder - Bahrain",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1572.0,
     "width": 586.0,
     "height": 217.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Brakeware Wheel Cylinder 33615 - AutoZone",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "html_handle": "rso[4]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Casting 18293 Drum Brake Wheel Cylinder - yoyopart.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,10 +113,22 @@
     "y": 1791.0,
     "width": 586.0,
     "height": 155.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Brakeware Wheel Cylinder 33615 - AutoZone",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1948.0,
+    "width": 586.0,
+    "height": 117.0,
     "html_handle": "rso[6]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Scientific and Technical Aerospace Reports",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -189,18 +189,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1948.0,
-    "width": 586.0,
-    "height": 117.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

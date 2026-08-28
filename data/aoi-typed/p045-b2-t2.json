@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "SERENGETI MARTINO/7492 - Sunglasses - Lenshop.eu",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Serengeti Martino 7489 - Ropa - Amazon.es",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -40,24 +40,12 @@
     "x": 162.0,
     "y": 810.0,
     "width": 586.0,
-    "height": 55.0,
+    "height": 132.0,
     "html_handle": "rso[2]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 3
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 890.0,
-    "width": 586.0,
-    "height": 52.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g",
-    "heading_text": "Serengeti Martino 7492 Sunglasses Black - SmartBuyGlasses ...",
-    "source": "html_rso+cv_bbox",
-    "position": 4
   },
   {
     "type": "organic",
@@ -65,11 +53,11 @@
     "y": 1049.0,
     "width": 586.0,
     "height": 123.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Serengeti Martino 7493 Sunglasses in Yellow",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "html_handle": "rso[3]",
+    "html_signature": "div.g",
+    "heading_text": "Serengeti Martino 7492 Sunglasses Black - SmartBuyGlasses ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -77,23 +65,23 @@
     "y": 1209.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Serengeti Martino 7492 Sunglasses - Shade Station Ireland",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Serengeti Martino 7493 Sunglasses in Yellow",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1325.0,
     "width": 586.0,
     "height": 203.0,
-    "html_handle": "rso[6]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[5]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Serengeti Martino 7492 Sunglasses - Shade Station Ireland",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -104,8 +92,8 @@
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Serengeti Sunglasses Martino 8264 Satin Shiny Black ... - eBay",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -116,8 +104,8 @@
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Serengeti Martino Sunglasses - desertcart",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "image_pack",
@@ -128,8 +116,8 @@
     "html_handle": "rso[9]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy serengeti serengeti martino sunglasses",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -140,8 +128,8 @@
     "html_handle": "rso[10]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Serengeti Martino 7489 Sunglasses Black - Vision Direct",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
   },
   {
     "type": "native_ad",
@@ -165,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -177,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 14
+    "position": 13
   },
   {
     "type": "unknown_widget",
@@ -189,7 +177,19 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 15
+    "position": 14
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
   },
   {
     "type": "related_searches",

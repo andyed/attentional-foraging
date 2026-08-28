@@ -44,7 +44,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Bosch AL8703N 100% New Alternator for Select Buick ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Nuevo Alternador Bosch AL8703N | eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "New Alternator Bosch AL8703N - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,19 +80,19 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Bosch AL8703N New Alternator | THMotorsports",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
-    "type": "knowledge_panel",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1180.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[4]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 7
   },
   {
@@ -104,7 +104,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "AL8703N New Alternator - Autothreads",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -116,7 +116,7 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Bosch\u00ae AL8703N - Alternator - CARiD.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -128,7 +128,7 @@
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Premium 100% New Alternator AL8703N - Advance Auto Parts",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -137,10 +137,10 @@
     "y": 1626.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[9]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Bosch Bosch Premium 100% New Alternator - Auto Value",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "1997 Buick Century Alternator - Bosch AL8703N - StockWise Auto",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -149,10 +149,10 @@
     "y": 1742.0,
     "width": 586.0,
     "height": 118.0,
-    "html_handle": "rso[9]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "1997 Buick Century Alternator - Bosch AL8703N - StockWise Auto",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[10]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Bosch AL8703N 100% New Alternator for Select Buick: 1997 ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 12
   },
   {
@@ -192,15 +192,28 @@
     "position": 15
   },
   {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[4]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
     "type": "organic",
     "x": null,
     "y": null,
     "width": null,
     "height": null,
-    "html_handle": "rso[10]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Bosch AL8703N 100% New Alternator for Select Buick: 1997 ...",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Bosch Bosch Premium 100% New Alternator - Auto Value",
     "source": "html_only",
+    "y_render": 1821,
     "position": -1
   },
   {

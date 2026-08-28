@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Zyliss StrongBoy Jar Opener, Grey, 29.5 cm/11.5in, White",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "StrongBoy 2 Jar Opener - Zyliss UK",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.(no class)",
     "heading_text": "Zyliss Jar Openers Openers for sale - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Zyliss StrongBoy 2 Jar Opener | Harts of Stur",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Zyliss StrongBoy 2 Jar Opener - Housing Units",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Zyliss Strongboy 2 Jar Opener - Roys of Wroxham",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -92,7 +92,7 @@
     "html_handle": "rso[6]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy zyliss strongboy 2 jar opener",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -100,23 +100,23 @@
     "x": 162.0,
     "y": 1764.0,
     "width": 586.0,
-    "height": 274.0,
+    "height": 365.0,
     "html_handle": "rso[7]",
     "html_signature": "ULSxyf div.ULSxyf",
     "heading_text": "Videos",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 8
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 2064.0,
+    "y": 2168.0,
     "width": 586.0,
-    "height": 65.0,
+    "height": 102.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Zyliss Strongboy 2 Jar Opener | Kitchen Warehouse\u2122",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -177,18 +177,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|10|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2168.0,
-    "width": 586.0,
-    "height": 102.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

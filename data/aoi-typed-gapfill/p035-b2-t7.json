@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "OXO Good Grips Salt Grinder, Stainless Steel - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -16,36 +16,12 @@
     "x": 162.0,
     "y": 425.0,
     "width": 586.0,
-    "height": 100.0,
+    "height": 344.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Accent Mess-Free Pepper Grinder - OXO",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 1
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 551.0,
-    "width": 586.0,
-    "height": 96.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "OXO Good Grips Salt Grinder, Ready Filled - Lakeland",
-    "source": "html_rso+cv_bbox",
-    "position": 2
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 673.0,
-    "width": 586.0,
-    "height": 96.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "OXO Good Grips Salt and Pepper Mill Grinders, Set of 2",
-    "source": "html_rso+cv_bbox",
-    "position": 3
   },
   {
     "type": "organic",
@@ -53,11 +29,11 @@
     "y": 805.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "OXO Good Grips\u00ae Salt and Pepper Grinders, Color: Black",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "heading_text": "OXO Good Grips Salt Grinder, Ready Filled - Lakeland",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 2
   },
   {
     "type": "organic",
@@ -65,11 +41,11 @@
     "y": 938.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Good Grips Salt Mill | Oxo | M&S",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "heading_text": "OXO Good Grips Salt and Pepper Mill Grinders, Set of 2",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -77,35 +53,35 @@
     "y": 1078.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "OXO Good Grips Non-Slip Salt and Pepper Grinder Set - Don't ...",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "OXO Good Grips\u00ae Salt and Pepper Grinders, Color: Black",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1197.0,
     "width": 586.0,
     "height": 133.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 7
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Good Grips Salt Mill | Oxo | M&S",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1332.0,
     "width": 586.0,
     "height": 98.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 8
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "OXO Good Grips Non-Slip Salt and Pepper Grinder Set - Don't ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "native_ad",
@@ -117,7 +93,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 9
+    "position": 7
   },
   {
     "type": "native_ad",
@@ -129,7 +105,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -141,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 9
   },
   {
     "type": "related_searches",

@@ -44,7 +44,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ResMed Universal Headgear for Various Mask, Standard - ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ResMed Universal Headgear (Medium) - Amazon.in",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ResMed ResMed Mirage Series Headgear - Direct Home ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,19 +80,19 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Resmed Headgear for sale - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
-    "type": "knowledge_panel",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1196.0,
     "width": 586.0,
     "height": 104.0,
-    "html_handle": "rso[4]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 7
   },
   {
@@ -104,7 +104,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ResMed Universal Headgear - cpapdirect.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -116,7 +116,7 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "RESMED CORP Universal Headgear, Medium",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -128,7 +128,7 @@
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Universal Headgear By ResMed - CPAP Supplies",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -137,10 +137,10 @@
     "y": 1722.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[9]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Resmed Universal Headgear | Buy CPAP Supplies - MyCPAP",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "ResMed CPAP Masks & Headgear - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -149,23 +149,36 @@
     "y": 1838.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[9]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "ResMed CPAP Masks & Headgear - Walmart.com",
-    "source": "html_rso+cv_bbox",
-    "position": 12
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 2156.0,
-    "width": 586.0,
-    "height": 102.0,
     "html_handle": "rso[10]",
     "html_signature": "div.hlcw0c",
     "heading_text": "ResMed universal headgear - Sleep Right Australia",
-    "source": "html_rso+cv_bbox",
-    "position": 13
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 12
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[4]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Resmed Universal Headgear | Buy CPAP Supplies - MyCPAP",
+    "source": "html_only",
+    "y_render": 1910,
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -201,6 +214,18 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 2156.0,
+    "width": 586.0,
+    "height": 102.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

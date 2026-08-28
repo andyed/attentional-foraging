@@ -44,7 +44,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "LuK 16-113 Clutch Set : Automotive - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,31 +56,31 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "LuK 16-113 Clutch Kit - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
-  },
-  {
-    "type": "knowledge_panel",
-    "x": 162.0,
-    "y": 1183.0,
-    "width": 586.0,
-    "height": 125.0,
-    "html_handle": "rso[2]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 5
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1343.0,
+    "y": 1183.0,
     "width": 586.0,
-    "height": 81.0,
+    "height": 125.0,
     "html_handle": "rso[3]",
     "html_signature": "div.g",
     "heading_text": "Luk Clutch 16-113 LuK Clutch Kits - Summit Racing",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
+  },
+  {
+    "type": "unknown_widget",
+    "x": 162.0,
+    "y": 1343.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 6
   },
   {
@@ -92,7 +92,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "LUK AUTOMOTIVE SYSTEMS 16-113 Clutch Set - Newegg.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+span_rescue",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1558.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "New Clutch Set - 16-113 by LUK on PartsAvatar.ca",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "LuK 16-113 Clutch Kit - PartsHawk",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 1673.0,
     "width": 586.0,
     "height": 160.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "LuK 16-113 Clutch Kit - PartsHawk",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[7]",
+    "html_signature": "div.g",
+    "heading_text": "LuK 16-113/16113 Clutch Kit | CarPartsDiscount.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,10 +125,10 @@
     "y": 1835.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g",
-    "heading_text": "LuK 16-113/16113 Clutch Kit | CarPartsDiscount.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[8]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "LuK 16-113 Clutch Set - Ubuy",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -168,16 +168,29 @@
     "position": 13
   },
   {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
     "type": "organic",
-    "x": 162.0,
-    "y": 2472.0,
-    "width": 586.0,
-    "height": 130.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "LuK 16-113 Clutch Set - Ubuy",
-    "source": "html_rso+cv_bbox",
-    "position": 14
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "New Clutch Set - 16-113 by LUK on PartsAvatar.ca",
+    "source": "html_only",
+    "y_render": 1745,
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -213,6 +226,18 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 2472.0,
+    "width": 586.0,
+    "height": 130.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

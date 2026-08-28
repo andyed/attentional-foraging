@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "TYC 700235 Replacement Blower Assembly - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "TYC 700235 Replacement Blower Assembly - Amazon.ca",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -76,36 +76,24 @@
     "x": 162.0,
     "y": 959.0,
     "width": 586.0,
-    "height": 81.0,
+    "height": 186.0,
     "html_handle": "rso[2]",
     "html_signature": "div.(no class)",
     "heading_text": "TYC 700235 Replacement Blower Assembly - Sears",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 6
   },
   {
-    "type": "knowledge_panel",
-    "x": 162.0,
-    "y": 1066.0,
-    "width": 586.0,
-    "height": 79.0,
-    "html_handle": "rso[3]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 7
-  },
-  {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1176.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Motores soplador TYC para 2010 para Toyota Yaris - eBay",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1295.0,
     "width": 586.0,
     "height": 99.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "TYC 700235 Replacement Blower Assembly - Ubuy",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "Motores soplador TYC para 2010 para Toyota Yaris - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,11 +113,11 @@
     "y": 1432.0,
     "width": 586.0,
     "height": 79.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "TYC 700235 HVAC Blower Motor - PartsHawk",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "heading_text": "TYC 700235 Replacement Blower Assembly - Ubuy",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -140,8 +128,8 @@
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "TYC\u00ae 700235 - HVAC Blower Motor Assembly - CARiD.com",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "organic",
@@ -152,20 +140,20 @@
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "TYC | Walmart.ca",
-    "source": "html_rso+cv_bbox",
-    "position": 12
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
   },
   {
     "type": "image_pack",
     "x": 162.0,
     "y": 1809.0,
     "width": 586.0,
-    "height": 68.0,
+    "height": 244.0,
     "html_handle": "rso[9]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy tyc tyc 700235 replacement blower assembly",
-    "source": "html_rso+cv_bbox",
-    "position": 13
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -177,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 14
+    "position": 13
   },
   {
     "type": "native_ad",
@@ -189,7 +177,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 15
+    "position": 14
   },
   {
     "type": "native_ad",
@@ -201,7 +189,32 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 16
+    "position": 15
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[3]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "TYC 700235 HVAC Blower Motor - PartsHawk",
+    "source": "html_only",
+    "y_render": 1715,
+    "position": -1
   },
   {
     "type": "pagination",
@@ -225,18 +238,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1957.0,
-    "width": 586.0,
-    "height": 96.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

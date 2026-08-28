@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Avon Black Suede for Men Eau De Toilette Spray",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Black Suede by Avon Men's Fragrances for sale - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Avon Black Suede Eau de Toilette for Men, 3.4 fl. oz",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Avon Black Suede Sport Eau de Toilette Cologne Spray 3.4 oz",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Black Suede Dark Avon cologne - a new fragrance for men 2020",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,19 +80,19 @@
     "html_handle": "rso[5]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Avon Black Suede Cologne Spray Reviews - Viewpoints.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
-    "type": "image_pack",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1572.0,
     "width": 586.0,
     "height": 244.0,
-    "html_handle": "rso[6]",
-    "html_signature": "ULSxyf+img div.ULSxyf",
-    "heading_text": "Hours",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 7
   },
   {
@@ -104,7 +104,7 @@
     "html_handle": "rso[7]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Shop Avon Black Suede online | Lazada.com.ph",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -154,6 +154,18 @@
     "heading_text": "",
     "source": "cv_bbox_only",
     "position": 12
+  },
+  {
+    "type": "image_pack",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "ULSxyf+img div.ULSxyf",
+    "heading_text": "Hours",
+    "source": "html_only+no_geometry",
+    "position": -1
   },
   {
     "type": "related_searches",

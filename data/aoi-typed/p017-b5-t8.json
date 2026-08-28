@@ -12,15 +12,15 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 542.0,
     "width": 586.0,
     "height": 304.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Heinz Oxtail Soup 400G - Tesco Groceries",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 2 uMdZh",
+    "heading_text": "Grocery Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -29,10 +29,10 @@
     "y": 884.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[1]",
+    "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "HEINZ oxtail soup tin 400 g - El Corte Ingl\u00e9s",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Heinz Oxtail Soup 400G - Tesco Groceries",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,47 +41,35 @@
     "y": 1016.0,
     "width": 586.0,
     "height": 85.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "HEINZ oxtail soup tin 400 g - El Corte Ingl\u00e9s",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1133.0,
+    "width": 586.0,
+    "height": 132.0,
     "html_handle": "rso[2]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Heinz Heinz Classic Oxtail Soup, 400 g - Amazon.com",
-    "source": "html_rso+cv_bbox",
-    "position": 3
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "paa",
     "x": 162.0,
-    "y": 1133.0,
+    "y": 1314.0,
     "width": 586.0,
     "height": 132.0,
     "html_handle": "rso[3]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
-    "position": 4
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1314.0,
-    "width": 586.0,
-    "height": 55.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Heinz Oxtail Soup 400g - BRITISH FOOD IMPORTS",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1394.0,
-    "width": 586.0,
-    "height": 52.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Heinz Oxtail Soup 400g - Sainsbury's",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1553.0,
     "width": 586.0,
     "height": 77.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Heinz Heinz Oxtail Soup 400g - Russells British Store",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "heading_text": "Heinz Oxtail Soup 400g - BRITISH FOOD IMPORTS",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1663.0,
     "width": 586.0,
     "height": 98.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Heinz Oxtail Soup 400g -",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "Heinz Oxtail Soup 400g - Sainsbury's",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,22 +101,34 @@
     "y": 1799.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Heinz soup delivered straight to your door - Britsuperstore",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Heinz Heinz Oxtail Soup 400g - Russells British Store",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1915.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Heinz Oxtail Soup 400g -",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 2031.0,
     "width": 586.0,
     "height": 200.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[8]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Heinz soup delivered straight to your door - Britsuperstore",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -201,18 +201,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|10|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1915.0,
-    "width": 586.0,
-    "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

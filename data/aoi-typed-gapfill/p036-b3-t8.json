@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Haiku Shimmering Body Powder - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -20,7 +20,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Avon Fragrance Haiku Shimmering Body Powder 75g Net ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[2]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy avon haiku shimmering body powder",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Haiku Shimmering Body Powder | NinthAvenue - Europe",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,19 +56,19 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Avon Haiku Shimmering Body Powder by Avon - Shop Online for ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
-    "type": "knowledge_panel",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1225.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[5]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1341.0,
     "width": 586.0,
     "height": 112.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "AVON Haiku Shimmering Body Powder Talc 1.4 Oz 40g NEW",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Avon Haiku shimmering Body Powder Talc 1.4 Oz - Desertcart",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1455.0,
     "width": 586.0,
     "height": 98.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Avon Haiku shimmering Body Powder Talc 1.4 Oz - Desertcart",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[8]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Perfumed Shimmering Body Powders - Pinterest",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -132,15 +132,28 @@
     "position": 10
   },
   {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[5]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
     "type": "organic",
     "x": null,
     "y": null,
     "width": null,
     "height": null,
-    "html_handle": "rso[8]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Perfumed Shimmering Body Powders - Pinterest",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "AVON Haiku Shimmering Body Powder Talc 1.4 Oz 40g NEW",
     "source": "html_only",
+    "y_render": 1509,
     "position": -1
   },
   {

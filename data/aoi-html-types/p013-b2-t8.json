@@ -6,7 +6,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Healthy Origins Astaxanthin 12Mg Trpl Str 60 Sgel",
     "container": "rso",
-    "container_index": "0"
+    "container_index": "0",
+    "css_path": "#rso > div:nth-of-type(1)",
+    "css_class": "g tF2Cxc",
+    "text_len": 337
   },
   {
     "order": 1,
@@ -15,7 +18,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Healthy Origins Astaxanthin 12Mg Trpl Str 60 Sgel - NineLife EU",
     "container": "rso",
-    "container_index": "1"
+    "container_index": "1",
+    "css_path": "#rso > div:nth-of-type(2)",
+    "css_class": "g tF2Cxc",
+    "text_len": 257
   },
   {
     "order": 2,
@@ -24,7 +30,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Healthy Origins Astaxanthin 12Mg Trpl Str 60 Sgel - NineLife ...",
     "container": "rso",
-    "container_index": "2"
+    "container_index": "2",
+    "css_path": "#rso > div:nth-of-type(3)",
+    "css_class": "g tF2Cxc",
+    "text_len": 231
   },
   {
     "order": 3,
@@ -33,7 +42,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Healthy Origins Astaxanthin Triple Strength 12 mg",
     "container": "rso",
-    "container_index": "3"
+    "container_index": "3",
+    "css_path": "#rso > div:nth-of-type(4)",
+    "css_class": "g tF2Cxc",
+    "text_len": 262
   },
   {
     "order": 4,
@@ -42,7 +54,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Triple Strength Astaxanthin, Healthy Origins, 150 Gelcap",
     "container": "rso",
-    "container_index": "4"
+    "container_index": "4",
+    "css_path": "#rso > div:nth-of-type(5)",
+    "css_class": "g tF2Cxc",
+    "text_len": 229
   },
   {
     "order": 5,
@@ -51,7 +66,10 @@
     "html_signature": "h=\"comp\" div.TQc1id",
     "heading_text": "Complementary results",
     "container": "rso",
-    "container_index": "5"
+    "container_index": "5",
+    "css_path": "#rhs",
+    "css_class": "TQc1id",
+    "text_len": 1698
   },
   {
     "order": 6,
@@ -60,7 +78,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Astaxanthin 12 mg (Triple Strength) - 150 Softgels - Pure ...",
     "container": "rso",
-    "container_index": "6"
+    "container_index": "6",
+    "css_path": "#rso > div:nth-of-type(7)",
+    "css_class": "g tF2Cxc",
+    "text_len": 328
   },
   {
     "order": 7,
@@ -69,7 +90,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Astaxanthin 12Mg Trpl Str 1x60 Soft Gel Each by HEALTHY ORIGINS",
     "container": "rso",
-    "container_index": "7"
+    "container_index": "7",
+    "css_path": "#rso > div:nth-of-type(8)",
+    "css_class": "g tF2Cxc",
+    "text_len": 257
   },
   {
     "order": 8,
@@ -78,7 +102,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "[Healthy Origins] ASTAXANTHIN 12MG,TRPL STR - B2Bnatures",
     "container": "rso",
-    "container_index": "8"
+    "container_index": "8",
+    "css_path": "#rso > div:nth-of-type(9)",
+    "css_class": "g tF2Cxc",
+    "text_len": 332
   },
   {
     "order": 9,
@@ -87,7 +114,10 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "Healthy Origins Astaxanthin 12Mg Trpl Str 60 Sgel \u2013 LifeIRL",
     "container": "rso",
-    "container_index": "9"
+    "container_index": "9",
+    "css_path": "#rso > div:nth-of-type(10)",
+    "css_class": "hlcw0c",
+    "text_len": 255
   },
   {
     "order": 10,
@@ -96,7 +126,10 @@
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy healthy origins astaxanthin 12mg trpl str",
     "container": "rso",
-    "container_index": "10"
+    "container_index": "10",
+    "css_path": "#rso > div:nth-of-type(11)",
+    "css_class": "ULSxyf",
+    "text_len": 255
   },
   {
     "order": 11,
@@ -105,7 +138,10 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|Next",
     "container": "botstuff",
-    "container_index": 0
+    "container_index": 0,
+    "css_path": "#botstuff > div:nth-of-type(1) > div:nth-of-type(3)",
+    "css_class": "",
+    "text_len": 25
   },
   {
     "order": 12,
@@ -114,6 +150,9 @@
     "html_signature": "rhs.kp[data-attrid=kc:/collection/knowledge_panel]",
     "heading_text": "Complementary results",
     "container": "rhs",
-    "rhs_only": true
+    "rhs_only": true,
+    "css_path": "#_u6CgYtWiMv63uvQP28uboAM26 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)",
+    "css_class": "wDYxhc",
+    "text_len": 107
   }
 ]

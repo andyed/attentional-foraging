@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Bosal 163-229 Bosal Rear Silencers - Summit Racing",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Bosal 229-037 Exhaust Silencer : Automotive - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Bosal 163-229 Muffler For Honda Prelude, Natural OE ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -52,48 +52,24 @@
     "x": 162.0,
     "y": 1002.0,
     "width": 586.0,
-    "height": 105.0,
+    "height": 289.0,
     "html_handle": "rso[3]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy bosal bosal 163 229 muffler",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 4
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1109.0,
-    "width": 586.0,
-    "height": 182.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Exhaust Muffler Left Bosal 163-001 - eBay",
-    "source": "html_rso+cv_bbox",
-    "position": 5
   },
   {
     "type": "organic",
     "x": 162.0,
     "y": 1293.0,
     "width": 586.0,
-    "height": 111.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Bosal \u2013 Direct Fit Muffler - BSL-163-229 - ViNNiStore",
-    "source": "html_rso+cv_bbox",
-    "position": 6
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1406.0,
-    "width": 586.0,
-    "height": 107.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g",
-    "heading_text": "1997-2001 Honda Prelude Muffler - Bosal 163-229 - Parts Geek",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "height": 220.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Exhaust Muffler Left Bosal 163-001 - eBay",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 5
   },
   {
     "type": "organic",
@@ -101,23 +77,35 @@
     "y": 1515.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Honda Prelude Rear Exhaust Muffler Assembly - PartsHawk",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Bosal \u2013 Direct Fit Muffler - BSL-163-229 - ViNNiStore",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1631.0,
     "width": 586.0,
     "height": 158.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 9
+    "html_handle": "rso[6]",
+    "html_signature": "div.g",
+    "heading_text": "1997-2001 Honda Prelude Muffler - Bosal 163-229 - Parts Geek",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1791.0,
+    "width": 586.0,
+    "height": 115.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Honda Prelude Rear Exhaust Muffler Assembly - PartsHawk",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
   },
   {
     "type": "related_searches",
@@ -177,18 +165,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1791.0,
-    "width": 586.0,
-    "height": 115.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

@@ -44,7 +44,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Denso 234-4212 Oxygen Sensor : Automotive - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -52,36 +52,24 @@
     "x": 162.0,
     "y": 817.0,
     "width": 586.0,
-    "height": 128.0,
+    "height": 243.0,
     "html_handle": "rso[1]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Oxygen Sensor-GAS DENSO 234-4212 for sale online",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 4
   },
   {
     "type": "paa",
     "x": 162.0,
-    "y": 947.0,
-    "width": 586.0,
-    "height": 113.0,
-    "html_handle": "rso[2]",
-    "html_signature": "h=\"paa\" div.ULSxyf",
-    "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
-    "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
     "y": 1062.0,
     "width": 586.0,
     "height": 170.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Oxygen Sensor-Universal DENSO 234-4212 - Sears",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"paa\" div.ULSxyf",
+    "heading_text": "People also ask",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1234.0,
     "width": 586.0,
     "height": 169.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Denso 234-4212 Oxygen Sensor - PartLimit",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "heading_text": "Oxygen Sensor-Universal DENSO 234-4212 - Sears",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1405.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Denso 234-4212 Universal Oxygen Sensor - DensoProducts ...",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "Denso 234-4212 Oxygen Sensor - PartLimit",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1521.0,
     "width": 586.0,
     "height": 133.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Universal Fit Oxygen Sensor - Denso\u00ae 234-4212 - CARiD.com",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "Denso 234-4212 Universal Oxygen Sensor - DensoProducts ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,11 +113,11 @@
     "y": 1656.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Oxygen Sensor - 234-4212 by DENSO on PartsAvatar.ca",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "heading_text": "Universal Fit Oxygen Sensor - Denso\u00ae 234-4212 - CARiD.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,11 +125,11 @@
     "y": 1772.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Denso 234-4212 Oxygen Sensor - Sixity Auto Parts",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "heading_text": "Oxygen Sensor - 234-4212 by DENSO on PartsAvatar.ca",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "organic",
@@ -149,10 +137,22 @@
     "y": 1888.0,
     "width": 586.0,
     "height": 114.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Denso 234-4212 Oxygen Sensor - Sixity Auto Parts",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2004.0,
+    "width": 586.0,
+    "height": 98.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Denso 234-4212 Oxygen Sensor - Ecuador",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 12
   },
   {
@@ -213,18 +213,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2004.0,
-    "width": 586.0,
-    "height": 98.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

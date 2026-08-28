@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Alcatraz Prison Break Logic Game by SmartGames : Amazon.es ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -20,7 +20,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g",
     "heading_text": "Alcatraz Prison Break Logic Game - Amazon.in",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ALCATRAZ prison break logic game by Smart Games/Jumbo",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.(no class)",
     "heading_text": "Alcatraz - Prison Break Logic Board Game from Smart Games",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Smartgames alcatraz prison break logic game - AliExpress",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Alcatraz - SmartGames",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Alcatraz: Prison Break Logic Game - Uplay.it",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -88,36 +88,24 @@
     "x": 162.0,
     "y": 1168.0,
     "width": 586.0,
-    "height": 107.0,
+    "height": 215.0,
     "html_handle": "rso[7]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Smartgames Alcatraz Prison Break Logic Party & Fun ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 7
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1300.0,
-    "width": 586.0,
-    "height": 83.0,
-    "html_handle": "rso[8]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy smartgames alcatraz prison break logic game",
-    "source": "html_rso+cv_bbox",
-    "position": 8
-  },
-  {
-    "type": "unknown_widget",
-    "x": 162.0,
     "y": 1427.0,
     "width": 586.0,
     "height": 244.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 9
+    "html_handle": "rso[8]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy smartgames alcatraz prison break logic game",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "unknown_widget",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "related_searches",

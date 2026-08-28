@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "ZOYA Nail Polish, Neely, 0.5 fl. oz. - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -16,24 +16,12 @@
     "x": 162.0,
     "y": 315.0,
     "width": 586.0,
-    "height": 108.0,
+    "height": 217.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Zoya Nail Polish in Neely",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 1
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 425.0,
-    "width": 586.0,
-    "height": 107.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g",
-    "heading_text": "Zoya Nail Polish Neely ZP655 765011007102 | eBay",
-    "source": "html_rso+cv_bbox",
-    "position": 2
   },
   {
     "type": "organic",
@@ -41,11 +29,11 @@
     "y": 534.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Zoya Nail Polish in Neely - QTica Smart Spa",
-    "source": "html_rso+cv_bbox",
-    "position": 3
+    "html_handle": "rso[2]",
+    "html_signature": "div.g",
+    "heading_text": "Zoya Nail Polish Neely ZP655 765011007102 | eBay",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 2
   },
   {
     "type": "organic",
@@ -53,35 +41,35 @@
     "y": 651.0,
     "width": 586.0,
     "height": 115.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Zoya Nail Polish in Neely - QTica Smart Spa",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 768.0,
+    "width": 586.0,
+    "height": 121.0,
     "html_handle": "rso[4]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Zoya Natural Nail Polish, Neely, 0.5 Fl Oz - Walmart.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 768.0,
-    "width": 586.0,
-    "height": 121.0,
-    "html_handle": "rso[5]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy zoya zoya nail polish neely",
-    "source": "html_rso+cv_bbox",
-    "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
     "y": 891.0,
     "width": 586.0,
     "height": 286.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "NEELY - ZOYA NAIL POLISH | roxannacosmetics",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "html_handle": "rso[5]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy zoya zoya nail polish neely",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1179.0,
     "width": 586.0,
     "height": 137.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Zoya Nail Polish in Neely - Pinterest",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "heading_text": "NEELY - ZOYA NAIL POLISH | roxannacosmetics",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,23 +89,23 @@
     "y": 1318.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.hlcw0c",
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
     "heading_text": "Zoya Nail Polish in Neely - Pinterest",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1435.0,
     "width": 586.0,
     "height": 98.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 9
+    "html_handle": "rso[8]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Zoya Nail Polish in Neely - Pinterest",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
   },
   {
     "type": "related_searches",

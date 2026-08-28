@@ -1,14 +1,14 @@
 [
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 133.0,
     "width": 586.0,
     "height": 494.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Foretrex 301 - Garmin",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Electronics Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -17,22 +17,22 @@
     "y": 647.0,
     "width": 586.0,
     "height": 186.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.g",
-    "heading_text": "Garmin Foretrex 301 Waterproof Hiking GPS - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Foretrex 301 - Garmin",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 864.0,
     "width": 586.0,
     "height": 152.0,
-    "html_handle": "rso[2]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "div.g",
+    "heading_text": "Garmin Foretrex 301 Waterproof Hiking GPS - Amazon.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.(no class)",
     "heading_text": "Las mejores ofertas en Garmin Foretrex 301 | eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Garmin Foretrex 301 GPS 010-00776-00 B&H Photo Video",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.(no class)",
     "heading_text": "Garmin Foretrex 301 gps review - YouTube",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g",
     "heading_text": "Garmin Foretrex 301 GPS | REI Co-op",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -92,7 +92,7 @@
     "html_handle": "rso[7]",
     "html_signature": "div.hlcw0c",
     "heading_text": "foretrex\u00ae 301 y 401 - Xiruca.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -106,6 +106,18 @@
     "heading_text": "",
     "source": "cv_bbox_only",
     "position": 8
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
   },
   {
     "type": "related_searches",

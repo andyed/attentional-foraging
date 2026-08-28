@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Mahle LX407 Air Filter - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,19 +68,19 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "LX 407 MAHLE ORIGINAL Air Filter Filter Insert for PORSCHE ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1093.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[2]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 6
   },
   {
@@ -92,7 +92,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Mahle LX407 Air Filter : Automotive - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1353.0,
     "width": 586.0,
     "height": 97.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Air Filter MAHLE ORIGINAL LX 407 - Trodo.com",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Porsche Air Filter - Mahle LX407 - FCP Euro",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,23 +113,11 @@
     "y": 1452.0,
     "width": 586.0,
     "height": 161.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Porsche Air Filter - Mahle LX407 - FCP Euro",
-    "source": "html_rso+cv_bbox",
-    "position": 9
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1615.0,
-    "width": 586.0,
-    "height": 116.0,
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Porsche Engine Air Filter 94411016610 \u2013 Mahle LX407",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,11 +125,11 @@
     "y": 1733.0,
     "width": 586.0,
     "height": 121.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "MAHLE ORIGINAL LX 407 Air Filter \u2014 Discounts today",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "heading_text": "Air Filter - LX407 MAHLE - 94411016610, A27089, C47119",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "organic",
@@ -149,11 +137,11 @@
     "y": 1856.0,
     "width": 586.0,
     "height": 100.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Air Filter - LX407 MAHLE - 94411016610, A27089, C47119",
-    "source": "html_rso+cv_bbox",
-    "position": 12
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "MAHLE LX 407 Air Filter - ShowMeTheParts.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
   },
   {
     "type": "native_ad",
@@ -165,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -177,7 +165,19 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 14
+    "position": 13
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
   },
   {
     "type": "organic",
@@ -185,10 +185,24 @@
     "y": null,
     "width": null,
     "height": null,
-    "html_handle": "rso[9]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "MAHLE LX 407 Air Filter - ShowMeTheParts.com",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Air Filter MAHLE ORIGINAL LX 407 - Trodo.com",
     "source": "html_only",
+    "y_render": 1499,
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "MAHLE ORIGINAL LX 407 Air Filter \u2014 Discounts today",
+    "source": "html_only",
+    "y_render": 1940,
     "position": -1
   },
   {
@@ -213,6 +227,18 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 1615.0,
+    "width": 586.0,
+    "height": 116.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

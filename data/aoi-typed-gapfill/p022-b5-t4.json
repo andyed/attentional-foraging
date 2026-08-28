@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Denso 234-4609 Oxygen Sensor : Automotive - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Oxygen Sensor-GAS DENSO 234-4609 for sale online",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -76,24 +76,12 @@
     "x": 162.0,
     "y": 1213.0,
     "width": 586.0,
-    "height": 127.0,
+    "height": 238.0,
     "html_handle": "rso[2]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 6
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1342.0,
-    "width": 586.0,
-    "height": 109.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Denso 234-4609 Oxygen Sensor - Walmart.com",
-    "source": "html_rso+cv_bbox",
-    "position": 7
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1453.0,
     "width": 586.0,
     "height": 139.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Denso\u00ae 234-4609 - Oxygen Sensor - CARiD.com",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "Denso 234-4609 Oxygen Sensor - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1594.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Denso Heated Oxygen Sensor (234-4609) - MurCal",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "Denso\u00ae 234-4609 - Oxygen Sensor - CARiD.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,11 +113,11 @@
     "y": 1711.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g",
-    "heading_text": "Denso Exact Fit Oxygen Sensor 234-4609 - AutoZone",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Denso Heated Oxygen Sensor (234-4609) - MurCal",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,11 +125,11 @@
     "y": 1826.0,
     "width": 586.0,
     "height": 163.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "DENSO 234-4609 Oxygen Sensor - Newegg.com",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "html_handle": "rso[6]",
+    "html_signature": "div.g",
+    "heading_text": "Denso Exact Fit Oxygen Sensor 234-4609 - AutoZone",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "organic",
@@ -149,10 +137,22 @@
     "y": 1991.0,
     "width": 586.0,
     "height": 114.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "DENSO 234-4609 Oxygen Sensor - Newegg.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2107.0,
+    "width": 586.0,
+    "height": 115.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Denso 234-4609 Oxygen Sensor - Bahrain",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 12
   },
   {
@@ -213,18 +213,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2107.0,
-    "width": 586.0,
-    "height": 115.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

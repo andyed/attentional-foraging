@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "ResMed Mirage FX Mask Cushion Size Std by AMT",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,19 +68,19 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Mirage FX Cushion | ResMed Official Shop UK",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1133.0,
     "width": 586.0,
     "height": 128.0,
-    "html_handle": "rso[2]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[3]",
+    "html_signature": "div.g",
+    "heading_text": "ResMed Mirage FX Replacement Cushion - The CPAP Shop",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1293.0,
     "width": 586.0,
     "height": 99.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g",
-    "heading_text": "ResMed Mirage FX Replacement Cushion - The CPAP Shop",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Resmed Mirage FX CPAP Mask Cushion Replacement",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,22 +101,22 @@
     "y": 1394.0,
     "width": 586.0,
     "height": 311.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Resmed Mirage FX CPAP Mask Cushion Replacement",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[5]",
+    "html_signature": "div.(no class)",
+    "heading_text": "ResMed 62111 Mirage Cushion Standard FX Mask - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1707.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.(no class)",
-    "heading_text": "ResMed 62111 Mirage Cushion Standard FX Mask - eBay",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 9
   },
   {
@@ -125,10 +125,10 @@
     "y": 1822.0,
     "width": 586.0,
     "height": 132.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Resmed Mirage Fx Silicone Cushion - MyCPAP",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "RESMED CORP Mirage FX Nasal Mask Compl",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -137,10 +137,10 @@
     "y": 1956.0,
     "width": 586.0,
     "height": 120.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "RESMED CORP Mirage FX Nasal Mask Compl",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[8]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Mirage FX Cushion By ResMed - CPAP Supplies",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -180,16 +180,29 @@
     "position": 14
   },
   {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
     "type": "organic",
-    "x": 162.0,
-    "y": 2620.0,
-    "width": 586.0,
-    "height": 102.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Mirage FX Cushion By ResMed - CPAP Supplies",
-    "source": "html_rso+cv_bbox",
-    "position": 15
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Resmed Mirage Fx Silicone Cushion - MyCPAP",
+    "source": "html_only",
+    "y_render": 2043,
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -225,6 +238,18 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 2620.0,
+    "width": 586.0,
+    "height": 102.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

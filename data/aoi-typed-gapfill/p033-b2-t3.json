@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy guess guess women s rolene pump",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -16,24 +16,12 @@
     "x": 162.0,
     "y": 412.0,
     "width": 586.0,
-    "height": 79.0,
+    "height": 203.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Customer reviews: Guess Rolene 2 Womens Suede Pumps ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 1
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 517.0,
-    "width": 586.0,
-    "height": 98.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Rolene 3\" 29.99 | Heels, Mid heels pumps, Pumps - Pinterest",
-    "source": "html_rso+cv_bbox",
-    "position": 2
   },
   {
     "type": "organic",
@@ -41,11 +29,11 @@
     "y": 650.0,
     "width": 586.0,
     "height": 183.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "NWT Guess Rolene 2 Blue Suede Pump 9.5 - Shoes - Poshmark",
-    "source": "html_rso+cv_bbox",
-    "position": 3
+    "html_handle": "rso[2]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Rolene 3\" 29.99 | Heels, Mid heels pumps, Pumps - Pinterest",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 2
   },
   {
     "type": "organic",
@@ -53,23 +41,23 @@
     "y": 868.0,
     "width": 586.0,
     "height": 99.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "UPC 887046317497 - Guess Rolene 2 Womens Size 9 Blue Suede ...",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "heading_text": "NWT Guess Rolene 2 Blue Suede Pump 9.5 - Shoes - Poshmark",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1004.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[5]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "UPC 887046317497 - Guess Rolene 2 Womens Size 9 Blue Suede ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -80,8 +68,8 @@
     "html_handle": "rso[6]",
     "html_signature": "div.(no class)",
     "heading_text": "Guess Women Pumps Shoes - DAFNE9 - Beige - Italian ...",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -92,8 +80,8 @@
     "html_handle": "rso[7]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Buy GUESS Gold Womens Party Wear Slip On Pump Shoes",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "native_ad",
@@ -105,7 +93,19 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 8
+    "position": 7
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[5]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
   },
   {
     "type": "pagination",

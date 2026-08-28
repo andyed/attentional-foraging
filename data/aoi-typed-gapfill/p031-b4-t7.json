@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Amprobe AT-1000 Wire Tracer",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -20,7 +20,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Amprobe AT-1000 Advanced Wire Tracer - Instrumart",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Amprobe AT-1000 - WIRE-TRACERS",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Amprobe AT-1000 - Rastreador de cables - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Amprobe At-1000 Advanced Wire Tracer Never X1000 & ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Amprobe AT-1000 Advanced Wire Tracer - Global Test Supply",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Amprobe 2731097 AT-1000 Wire Tracer *DISCONTINUED",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -92,19 +92,19 @@
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Amprobe AT-1000 Advanced Tracer - TEquipment",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1138.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[8]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Amprobe\u00ae AT-1000 - Fromm Electric",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 1253.0,
     "width": 586.0,
     "height": 139.0,
-    "html_handle": "rso[9]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Amprobe\u00ae AT-1000 - Fromm Electric",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[10]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "AT-1000 - Amprobe - Wire Tracers | Galco Industrial Electronics",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -132,16 +132,16 @@
     "position": 10
   },
   {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1580.0,
-    "width": 586.0,
-    "height": 80.0,
-    "html_handle": "rso[10]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "AT-1000 - Amprobe - Wire Tracers | Galco Industrial Electronics",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[8]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -177,6 +177,18 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 1580.0,
+    "width": 586.0,
+    "height": 80.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

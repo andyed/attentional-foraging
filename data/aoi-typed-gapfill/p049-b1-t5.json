@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "solar pool ionizer - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "New Design Solar Ionizer Clear Water Healthy ... - Alibaba.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Results for solar pool ionizer - AliExpress",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Solar-Clear Ionizer System - My Pool, Inc",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "5 Best Solar Pool Ionizer Reviews in 2022",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -76,47 +76,47 @@
     "x": 162.0,
     "y": 1267.0,
     "width": 586.0,
-    "height": 107.0,
+    "height": 223.0,
     "html_handle": "rso[5]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Solar Ionizer Swimming Pool Reduces Chlorine Kill Algae ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 6
   },
   {
     "type": "paa",
     "x": 162.0,
-    "y": 1376.0,
+    "y": 1492.0,
     "width": 586.0,
-    "height": 114.0,
+    "height": 79.0,
     "html_handle": "rso[6]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1492.0,
+    "y": 1753.0,
     "width": 586.0,
-    "height": 79.0,
+    "height": 244.0,
     "html_handle": "rso[7]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy solar clear solar clear solar ionizer",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1753.0,
+    "y": 2040.0,
     "width": 586.0,
-    "height": 244.0,
+    "height": 82.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Solar Clear Solar Ionizer- Buy Online in Oman at Desertcart",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -177,18 +177,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2040.0,
-    "width": 586.0,
-    "height": 82.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

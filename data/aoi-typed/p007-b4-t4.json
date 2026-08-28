@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Portmeirion Botanic Garden Storage",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -16,24 +16,12 @@
     "x": 162.0,
     "y": 404.0,
     "width": 586.0,
-    "height": 107.0,
+    "height": 215.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Portmeirion Botanic Garden - Storage Jar 5.5 : Amazon.co.uk",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 1
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 536.0,
-    "width": 586.0,
-    "height": 83.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "STORAGE - HOUSE OF PORTMEIRION",
-    "source": "html_rso+cv_bbox",
-    "position": 2
   },
   {
     "type": "organic",
@@ -41,11 +29,11 @@
     "y": 649.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Portmeirion Botanic Garden Storage Jar 4 inch Cyclamen",
-    "source": "html_rso+cv_bbox",
-    "position": 3
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "STORAGE - HOUSE OF PORTMEIRION",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 2
   },
   {
     "type": "organic",
@@ -53,23 +41,23 @@
     "y": 766.0,
     "width": 586.0,
     "height": 226.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Portmeirion Botanic Garden Storage Jar 8 inch Azalea",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "html_handle": "rso[3]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Portmeirion Botanic Garden Storage Jar 4 inch Cyclamen",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1026.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[5]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Portmeirion Botanic Garden Storage Jar 8 inch Azalea",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -80,8 +68,8 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Portmeirion Botanic Garden Storage Jar | Etsy",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -92,8 +80,8 @@
     "html_handle": "rso[7]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Storage Jars - Portmeirion Asia",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "native_ad",
@@ -105,7 +93,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 8
+    "position": 7
   },
   {
     "type": "native_ad",
@@ -117,7 +105,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 9
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,19 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[5]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
   },
   {
     "type": "related_searches",

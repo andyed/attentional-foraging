@@ -12,15 +12,15 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 542.0,
     "width": 586.0,
     "height": 453.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Murad Blemish & Wrinkle Reducer",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Cosmetics Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -29,10 +29,10 @@
     "y": 997.0,
     "width": 586.0,
     "height": 137.0,
-    "html_handle": "rso[1]",
+    "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Murad Blemish & Wrinkle Reducer 2 FL Oz for sale online - eBay",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Murad Blemish & Wrinkle Reducer",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1136.0,
     "width": 586.0,
     "height": 133.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Murad Blemish & Wrinkle Reducer 2oz: Buy Online in OMAN at ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Murad Blemish & Wrinkle Reducer 2 FL Oz for sale online - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1271.0,
     "width": 586.0,
     "height": 216.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.(no class)",
-    "heading_text": "Murad: Beauty - Amazon.in",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Murad Blemish & Wrinkle Reducer 2oz: Buy Online in OMAN at ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -64,24 +64,12 @@
     "x": 162.0,
     "y": 1489.0,
     "width": 586.0,
-    "height": 108.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Murad Clarifying Cleanser 2 oz Skin Care 767332105208",
-    "source": "html_rso+cv_bbox",
+    "height": 215.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Murad: Beauty - Amazon.in",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1599.0,
-    "width": 586.0,
-    "height": 105.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Murad Advanced Blemish & Wrinkle Reducer Reviews 2022",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
@@ -89,35 +77,35 @@
     "y": 1706.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Murad Acne & Wrinkle Reducer 2 oz (60 ml) - Happy Skin",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Murad Clarifying Cleanser 2 oz Skin Care 767332105208",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1822.0,
     "width": 586.0,
     "height": 135.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 8
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Murad Advanced Blemish & Wrinkle Reducer Reviews 2022",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1959.0,
     "width": 586.0,
     "height": 98.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 9
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Murad Acne & Wrinkle Reducer 2 oz (60 ml) - Happy Skin",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
   },
   {
     "type": "pagination",

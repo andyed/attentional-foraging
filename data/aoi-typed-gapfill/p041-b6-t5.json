@@ -12,15 +12,15 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 542.0,
     "width": 586.0,
     "height": 454.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.(no class)",
-    "heading_text": "cargo Powder Blush Laguna .31 Oz. - Walmart.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Cosmetics Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -29,10 +29,10 @@
     "y": 998.0,
     "width": 586.0,
     "height": 256.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "NIB Cargo Cosmetics Pressed Powder Blush The Big ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "cargo Powder Blush Laguna .31 Oz. - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1256.0,
     "width": 586.0,
     "height": 116.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Cargo Blush Make-Up for sale - eBay",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "NIB Cargo Cosmetics Pressed Powder Blush The Big ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1374.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Powder Blush, Rome, 0.31 oz (8.9 g) - iHerb.com",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Cargo Blush Make-Up for sale - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1490.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "CARGO POWDER BLUSH Catalina .31 Oz. $13.99 - PicClick",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Powder Blush, Rome, 0.31 oz (8.9 g) - iHerb.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1605.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Cargo Powder Blush Rome 0.31 oz (8.9 g) - GoSupps.com",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "CARGO POWDER BLUSH Catalina .31 Oz. $13.99 - PicClick",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1720.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Try Pickup or Delivery and SAVE - Ralphs",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Cargo Powder Blush Rome 0.31 oz (8.9 g) - GoSupps.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,22 +101,22 @@
     "y": 1835.0,
     "width": 586.0,
     "height": 116.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Similar Products - humm group",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Try Pickup or Delivery and SAVE - Ralphs",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1953.0,
     "width": 586.0,
     "height": 98.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[7]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Similar Products - humm group",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {

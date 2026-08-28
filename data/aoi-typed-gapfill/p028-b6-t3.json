@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "iHome iDM8B Bluetooth Wireless Speaker \u203a Customer reviews",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -20,7 +20,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "iHome Rechargeable Portable Bluetooth Speaker (Black)",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "iHome iDM8 Rechargeable Portable Bluetooth Speaker",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -40,24 +40,12 @@
     "x": 162.0,
     "y": 535.0,
     "width": 586.0,
-    "height": 99.0,
+    "height": 219.0,
     "html_handle": "rso[3]",
     "html_signature": "div.(no class)",
     "heading_text": "iHome IDM8B Portable Bluetooth Speaker Dock ... - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 3
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 660.0,
-    "width": 586.0,
-    "height": 94.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.(no class)",
-    "heading_text": "iHome iDM8B Bluetooth Wireless Speaker - YouTube",
-    "source": "html_rso+cv_bbox",
-    "position": 4
   },
   {
     "type": "organic",
@@ -65,11 +53,11 @@
     "y": 756.0,
     "width": 586.0,
     "height": 214.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.(no class)",
-    "heading_text": "ihome idm8b bluetooth wireless speaker - Walmart.com",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "heading_text": "iHome iDM8B Bluetooth Wireless Speaker - YouTube",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -77,35 +65,35 @@
     "y": 972.0,
     "width": 586.0,
     "height": 239.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.(no class)",
+    "heading_text": "ihome idm8b bluetooth wireless speaker - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1213.0,
+    "width": 586.0,
+    "height": 119.0,
     "html_handle": "rso[6]",
     "html_signature": "div.hlcw0c",
     "heading_text": "iHome iDM8B Rechargeable Bluetooth Speaker (iDM8-Black)",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1213.0,
-    "width": 586.0,
-    "height": 119.0,
-    "html_handle": "rso[7]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy ihome ihome idm8b bluetooth wireless speaker",
-    "source": "html_rso+cv_bbox",
-    "position": 7
-  },
-  {
-    "type": "unknown_widget",
-    "x": 162.0,
     "y": 1334.0,
     "width": 586.0,
     "height": 266.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 8
+    "html_handle": "rso[7]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy ihome ihome idm8b bluetooth wireless speaker",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "unknown_widget",
@@ -117,7 +105,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 9
+    "position": 8
   },
   {
     "type": "related_searches",

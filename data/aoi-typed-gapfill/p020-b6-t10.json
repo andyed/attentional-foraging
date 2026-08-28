@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ACDelco Gold 18A753 Black Hat Rear Disc Brake Rotor",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -20,7 +20,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g",
     "heading_text": "Disc Brake Rotor-Black Hat Rear ACDelco 18A753 | eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ACDelco 18A753 Disc Brake Rotor - PartsHawk",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ACDelco\u00ae 18A753 - Gold\u2122 Solid Rear Brake Rotor - CARiD.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.hlcw0c",
     "heading_text": "ACDelco 18A753 Disc Brake Rotor - Autocado",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -64,24 +64,12 @@
     "x": 162.0,
     "y": 806.0,
     "width": 586.0,
-    "height": 128.0,
+    "height": 238.0,
     "html_handle": "rso[5]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 936.0,
-    "width": 586.0,
-    "height": 108.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "ACDelco 18A753 Professional Rear Disc Brake Rotor Assembly",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1046.0,
     "width": 586.0,
     "height": 140.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "ACDelco Brake Rotor 18A1705 | O'Reilly Auto Parts",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "heading_text": "ACDelco 18A753 Professional Rear Disc Brake Rotor Assembly",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1188.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "FEDERAL MOGUL-WAGNER BD125419 - Brake Rotor",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "ACDelco Brake Rotor 18A1705 | O'Reilly Auto Parts",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,23 +101,23 @@
     "y": 1324.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[9]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Auto Parts: Brake Pads, Rotors, Calipers, Drums and Shoes",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "FEDERAL MOGUL-WAGNER BD125419 - Brake Rotor",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1439.0,
     "width": 586.0,
     "height": 220.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 10
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Auto Parts: Brake Pads, Rotors, Calipers, Drums and Shoes",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
   },
   {
     "type": "native_ad",
@@ -165,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 12
   },
   {
     "type": "related_searches",

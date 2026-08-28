@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Hagerty 32 Oz. Chandelier Cleaner 91320 Hagerty ... - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -20,7 +20,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Hagerty 91320 Chandelier Cleaner, 32 Oz - Overstock.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -28,24 +28,12 @@
     "x": 162.0,
     "y": 515.0,
     "width": 586.0,
-    "height": 53.0,
+    "height": 193.0,
     "html_handle": "rso[2]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 2
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 634.0,
-    "width": 586.0,
-    "height": 74.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Hagerty 32 fl. oz. Chandelier Cleaner 91320",
-    "source": "html_rso+cv_bbox",
-    "position": 3
   },
   {
     "type": "organic",
@@ -53,47 +41,47 @@
     "y": 754.0,
     "width": 586.0,
     "height": 102.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Hagerty 32 fl. oz. Chandelier Cleaner 91320",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 891.0,
+    "width": 586.0,
+    "height": 81.0,
     "html_handle": "rso[4]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Hagerty 91320 Chandelier Cleaner, 32 Oz - ToolBox Supply",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 891.0,
-    "width": 586.0,
-    "height": 81.0,
-    "html_handle": "rso[5]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy hagerty hagerty 91320 chandelier cleaner",
-    "source": "html_rso+cv_bbox",
-    "position": 5
-  },
-  {
-    "type": "knowledge_panel",
-    "x": 162.0,
     "y": 1016.0,
     "width": 586.0,
     "height": 245.0,
-    "html_handle": "rso[6]",
-    "html_signature": "TQc1id div.TQc1id",
-    "heading_text": "Hours",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "html_handle": "rso[5]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy hagerty hagerty 91320 chandelier cleaner",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1304.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "WJ Hagerty Chandelier Cleaner - Amazon.ca",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1440.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Hagerty Chandelier Cleaner | makes crystal and glass fixtures ...",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "WJ Hagerty Chandelier Cleaner - Amazon.ca",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -116,8 +104,8 @@
     "html_handle": "rso[9]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Hagerty HP91320 Chandelier Cleaner, 32 oz, Liquid, Clear",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -128,8 +116,8 @@
     "html_handle": "rso[10]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Hagerty 32 Oz. Chandelier Cleaner | Do it Best Barbados",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
   },
   {
     "type": "native_ad",
@@ -165,7 +153,32 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 12
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "TQc1id div.TQc1id",
+    "heading_text": "Hours",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Hagerty Chandelier Cleaner | makes crystal and glass fixtures ...",
+    "source": "html_only",
+    "y_render": 1727,
+    "position": -1
   },
   {
     "type": "pagination",

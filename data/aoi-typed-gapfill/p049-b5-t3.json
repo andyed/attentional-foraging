@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Denso 3143 Spark Plug : Automotive - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Spark Plug DENSO 3143 - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.hlcw0c",
     "heading_text": "DENSO 3143 Spark Plug - Newegg.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -88,24 +88,12 @@
     "x": 162.0,
     "y": 1253.0,
     "width": 586.0,
-    "height": 128.0,
+    "height": 238.0,
     "html_handle": "rso[3]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 7
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1383.0,
-    "width": 586.0,
-    "height": 108.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Jaguar Land Rover Spark Plug \u2013 Denso 3143 Denso 3143",
-    "source": "html_rso+cv_bbox",
-    "position": 8
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1493.0,
     "width": 586.0,
     "height": 120.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Denso\u00ae 3143 - Original U-Groove Nickel Spark Plug",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "Jaguar Land Rover Spark Plug \u2013 Denso 3143 Denso 3143",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,11 +113,11 @@
     "y": 1615.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "3143 Denso K16PR-L11 Spark Plug - DensoProducts.com",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "heading_text": "Denso\u00ae 3143 - Original U-Groove Nickel Spark Plug",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,22 +125,34 @@
     "y": 1731.0,
     "width": 586.0,
     "height": 114.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "3143 Denso K16PR-L11 Spark Plug - DensoProducts.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1847.0,
+    "width": 586.0,
+    "height": 119.0,
     "html_handle": "rso[7]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Denso 3143 K16PR-L11 Nickel Spark Plug - SparkPlugs.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1847.0,
+    "y": 1968.0,
     "width": 586.0,
-    "height": 119.0,
+    "height": 265.0,
     "html_handle": "rso[8]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy denso denso 3143 spark plug",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 12
   },
   {
@@ -225,30 +225,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1968.0,
-    "width": 586.0,
-    "height": 128.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2098.0,
-    "width": 586.0,
-    "height": 135.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

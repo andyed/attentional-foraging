@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "Leatherman Sidekick Multi-Tool with Black Nylon Sheath",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -20,7 +20,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Sidekick Multi-Tool | Leatherman\u200b\u200b",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Leatherman Sidekick Multi-tool With Leather Sleeve 831428",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.hlcw0c",
     "heading_text": "LEATHERMAN 831428 Sidekick Multi-Tool w/ Sheath",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[4]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Sidekick\u00ae Multi-Tool with Standard Sheath 831428 from ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Leatherman Sidekick Multi-Tool (Clamshell Packaging) - B&H",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -92,19 +92,19 @@
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Leatherman Sidekick Multi-Tool with Black Nylon Sheath - 831428 ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
-    "type": "knowledge_panel",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1384.0,
     "width": 586.0,
     "height": 104.0,
-    "html_handle": "rso[8]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 1523.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[9]",
+    "html_handle": "rso[10]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Leatherman 831428 Sidekick Stainless Steel Multi-Tool | Highway ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Leatherman Sidekick Multi-Tool w/ Nylon Sheath - Dundalk",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,10 +125,10 @@
     "y": 1639.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[10]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Leatherman Sidekick Multi-Tool w/ Nylon Sheath - Dundalk",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[11]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Leatherman Sidekick Multi-Tool #831428 - Fishermans Marine",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -144,16 +144,29 @@
     "position": 11
   },
   {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[8]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
     "type": "organic",
-    "x": 162.0,
-    "y": 2255.0,
-    "width": 586.0,
-    "height": 195.0,
-    "html_handle": "rso[11]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Leatherman Sidekick Multi-Tool #831428 - Fishermans Marine",
-    "source": "html_rso+cv_bbox",
-    "position": 12
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Leatherman 831428 Sidekick Stainless Steel Multi-Tool | Highway ...",
+    "source": "html_only",
+    "y_render": 1691,
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -189,6 +202,18 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 2255.0,
+    "width": 586.0,
+    "height": 195.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

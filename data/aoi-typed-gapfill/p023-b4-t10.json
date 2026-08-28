@@ -32,7 +32,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Gates T286 Timing Belt : Automotive - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Gates T286 AUTOMOTIVE TIMING BELT - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g",
     "heading_text": "T286 GATES FleetRunner\u2122 Micro-V\u00ae Stretch Fit\u00ae Timing Belt ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,31 +68,31 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "GATES T286 Timing Belt \u2014 Discounts today - best part store",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
-  },
-  {
-    "type": "knowledge_panel",
-    "x": 162.0,
-    "y": 1360.0,
-    "width": 586.0,
-    "height": 101.0,
-    "html_handle": "rso[4]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1463.0,
+    "y": 1360.0,
     "width": 586.0,
-    "height": 161.0,
+    "height": 101.0,
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "GATES T286 Timing Belt - Newegg.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
+  },
+  {
+    "type": "unknown_widget",
+    "x": 162.0,
+    "y": 1463.0,
+    "width": 586.0,
+    "height": 161.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1626.0,
     "width": 586.0,
     "height": 140.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g",
-    "heading_text": "Timing Belt GATES T286 - Trodo.com",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Gates T286 Premium Automotive Timing Belt - Ubuy",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,22 +113,22 @@
     "y": 1768.0,
     "width": 586.0,
     "height": 162.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g",
-    "heading_text": "Gates T286 Premium Automotive Timing Belt - Ubuy",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[8]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "GATES FleetRunner\u2122 Micro-V\u00ae Stretch Fit\u00ae Timing Belt T286 ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
-    "type": "organic",
+    "type": "image_pack",
     "x": 162.0,
     "y": 1932.0,
     "width": 586.0,
     "height": 267.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "GATES FleetRunner\u2122 Micro-V\u00ae Stretch Fit\u00ae Timing Belt T286 ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[9]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy gates gates t286 timing belt",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -168,16 +168,29 @@
     "position": 13
   },
   {
-    "type": "image_pack",
-    "x": 162.0,
-    "y": 2764.0,
-    "width": 586.0,
-    "height": 79.0,
-    "html_handle": "rso[9]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy gates gates t286 timing belt",
-    "source": "html_rso+cv_bbox",
-    "position": 14
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[4]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g",
+    "heading_text": "Timing Belt GATES T286 - Trodo.com",
+    "source": "html_only",
+    "y_render": 1825,
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -213,6 +226,18 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 2764.0,
+    "width": 586.0,
+    "height": 79.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "MOOG K7450 Ball Joint : Automotive - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "MOOG K7450 Ball Joint - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.hlcw0c",
     "heading_text": "moog-k7450 | Rear Upper Ball Joint | 1999-2004 Jeep ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -88,24 +88,12 @@
     "x": 162.0,
     "y": 1218.0,
     "width": 586.0,
-    "height": 91.0,
+    "height": 209.0,
     "html_handle": "rso[3]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 7
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1311.0,
-    "width": 586.0,
-    "height": 116.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g",
-    "heading_text": "MOOG K7450 Ball Joint - Walmart.com",
-    "source": "html_rso+cv_bbox",
-    "position": 8
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1429.0,
     "width": 586.0,
     "height": 195.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Moog Rear Upper Ball Joint - K7450 - 4WD.com",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "html_handle": "rso[4]",
+    "html_signature": "div.g",
+    "heading_text": "MOOG K7450 Ball Joint - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,11 +113,11 @@
     "y": 1626.0,
     "width": 586.0,
     "height": 112.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Upper Ball Joint - K7450 by MOOG on PartsAvatar.ca",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "heading_text": "Moog Rear Upper Ball Joint - K7450 - 4WD.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,11 +125,11 @@
     "y": 1740.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Jeep Grand Cherokee Rear Upper Suspension Ball Joint",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "heading_text": "Upper Ball Joint - K7450 by MOOG on PartsAvatar.ca",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "organic",
@@ -149,11 +137,11 @@
     "y": 1856.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Moog - K7450 - Ball Joint - UpStart Auto Parts",
-    "source": "html_rso+cv_bbox",
-    "position": 12
+    "heading_text": "Jeep Grand Cherokee Rear Upper Suspension Ball Joint",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
   },
   {
     "type": "organic",
@@ -161,10 +149,22 @@
     "y": 1992.0,
     "width": 586.0,
     "height": 115.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Moog - K7450 - Ball Joint - UpStart Auto Parts",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 12
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2109.0,
+    "width": 586.0,
+    "height": 98.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Suspension Ball Joint Rear Upper fits 99-04 Jeep Grand ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 13
   },
   {
@@ -237,18 +237,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2109.0,
-    "width": 586.0,
-    "height": 98.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

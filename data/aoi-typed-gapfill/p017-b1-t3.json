@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "TYC 1-06481 Replacement Starter , Black - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -64,24 +64,12 @@
     "x": 162.0,
     "y": 810.0,
     "width": 586.0,
-    "height": 107.0,
+    "height": 216.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Starter Motor TYC 1-06481 - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 919.0,
-    "width": 586.0,
-    "height": 107.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "TYC\u00ae 1-06481 - Starter - CARiD.com",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1028.0,
     "width": 586.0,
     "height": 112.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "TYC 1-06481 Replacement Starter - Buy Online - Bermuda ...",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "heading_text": "TYC\u00ae 1-06481 - Starter - CARiD.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1142.0,
     "width": 586.0,
     "height": 116.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "TYC 1-06481 Starter Motor - Newegg.com",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "TYC 1-06481 Replacement Starter - Buy Online - Bermuda ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1260.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "New Starter - 1-06481 by TYC on PartsAvatar.ca",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "TYC 1-06481 Starter Motor - Newegg.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,11 +113,11 @@
     "y": 1375.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "TYC 1-06481 Starter Motor - PartsHawk",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "heading_text": "New Starter - 1-06481 by TYC on PartsAvatar.ca",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,11 +125,11 @@
     "y": 1490.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "TYC 1-06481 Starter Motor - Sixity Auto Parts",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "heading_text": "TYC 1-06481 Starter Motor - PartsHawk",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "organic",
@@ -149,10 +137,22 @@
     "y": 1606.0,
     "width": 586.0,
     "height": 114.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "TYC 1-06481 Starter Motor - Sixity Auto Parts",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1722.0,
+    "width": 586.0,
+    "height": 99.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Starter Motor, 1-06481 - Zoro Tools",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 12
   },
   {
@@ -165,18 +165,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1722.0,
-    "width": 586.0,
-    "height": 99.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

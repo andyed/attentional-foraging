@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Pedifix Gel Smart Visco-gel Toe Spreaders - 1126 ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Pedifix Gel Smart Visco-gel Toe Spreaders - 1126 - Ninth ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "PediFix Visco-Gel Toe Spacers Medium 2 Each - Walmart",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Visco-GEL\u00ae Toe Spacers - PediFix",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Buy Pedifix Gel Smart Visco-gel Toe Spreaders - 1126 - Medium (4 ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.hlcw0c",
     "heading_text": "PediFix Visco-GEL Toe Spacers, 4/pk - AliMed",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -88,24 +88,12 @@
     "x": 162.0,
     "y": 1467.0,
     "width": 586.0,
-    "height": 93.0,
+    "height": 192.0,
     "html_handle": "rso[6]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 7
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1585.0,
-    "width": 586.0,
-    "height": 74.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Pedifix Gel Smart Visco-gel Toe Spreaders - 1126 - Medium (4 Pack ...",
-    "source": "html_rso+cv_bbox",
-    "position": 8
   },
   {
     "type": "organic",
@@ -113,35 +101,35 @@
     "y": 1706.0,
     "width": 586.0,
     "height": 104.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Pedifix Gel Smart Visco-gel Toe Spreaders - 1126 - Medium (4 Pack ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1842.0,
+    "width": 586.0,
+    "height": 85.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Pedifix Visco Gel Toe Spacers (Toe Spreaders) as low as ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1842.0,
-    "width": 586.0,
-    "height": 85.0,
-    "html_handle": "rso[9]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy pedifix gel toe spreaders medium",
-    "source": "html_rso+cv_bbox",
-    "position": 10
-  },
-  {
-    "type": "unknown_widget",
-    "x": 162.0,
     "y": 1971.0,
     "width": 586.0,
     "height": 203.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 11
+    "html_handle": "rso[9]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy pedifix gel toe spreaders medium",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
   },
   {
     "type": "native_ad",
@@ -165,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -177,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 14
+    "position": 13
   },
   {
     "type": "related_searches",

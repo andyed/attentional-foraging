@@ -6,7 +6,10 @@
     "html_signature": "ULSxyf+img div.ULSxyf",
     "heading_text": "Find results on",
     "container": "rso",
-    "container_index": "0"
+    "container_index": "0",
+    "css_path": "#rso > div:nth-of-type(1)",
+    "css_class": "ULSxyf",
+    "text_len": 195
   },
   {
     "order": 1,
@@ -15,7 +18,10 @@
     "html_signature": "h=\"local\" div.ULSxyf",
     "heading_text": "Local results",
     "container": "rso",
-    "container_index": "1"
+    "container_index": "1",
+    "css_path": "#rso > div:nth-of-type(2)",
+    "css_class": "ULSxyf",
+    "text_len": 550
   },
   {
     "order": 2,
@@ -24,7 +30,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "LEGO Ninjago 30088 Rattla polybag - electricBricks",
     "container": "rso",
-    "container_index": "2"
+    "container_index": "2",
+    "css_path": "#rso > div:nth-of-type(3)",
+    "css_class": "g tF2Cxc",
+    "text_len": 226
   },
   {
     "order": 3,
@@ -33,7 +42,10 @@
     "html_signature": "div.g",
     "heading_text": "LEGO Ninjago: Rattla Set 30088 (Bagged) - Amazon UK",
     "container": "rso",
-    "container_index": "3"
+    "container_index": "3",
+    "css_path": "#rso > div:nth-of-type(4)",
+    "css_class": "g",
+    "text_len": 370
   },
   {
     "order": 4,
@@ -42,7 +54,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Lego NINJAGO 30088 Rattla Bagged New Sealed | eBay",
     "container": "rso",
-    "container_index": "4"
+    "container_index": "4",
+    "css_path": "#rso > div:nth-of-type(5)",
+    "css_class": "g tF2Cxc",
+    "text_len": 215
   },
   {
     "order": 5,
@@ -51,7 +66,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Buy 30088 Ninjago - Rattla LEGO\u00ae Toys on the Store",
     "container": "rso",
-    "container_index": "5"
+    "container_index": "5",
+    "css_path": "#rso > div:nth-of-type(6)",
+    "css_class": "g tF2Cxc",
+    "text_len": 258
   },
   {
     "order": 6,
@@ -60,7 +78,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "30088 LEGO Ninjago Rattla - BrickEconomy",
     "container": "rso",
-    "container_index": "6"
+    "container_index": "6",
+    "css_path": "#rso > div:nth-of-type(7)",
+    "css_class": "g tF2Cxc",
+    "text_len": 304
   },
   {
     "order": 7,
@@ -69,7 +90,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "LEGO 30088: Rattla - Sets - Brickset",
     "container": "rso",
-    "container_index": "7"
+    "container_index": "7",
+    "css_path": "#rso > div:nth-of-type(8)",
+    "css_class": "g tF2Cxc",
+    "text_len": 235
   },
   {
     "order": 8,
@@ -78,7 +102,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "LEGO Set 30088-1 Rattla (2012 Ninjago) - Rebrickable",
     "container": "rso",
-    "container_index": "8"
+    "container_index": "8",
+    "css_path": "#rso > div:nth-of-type(9)",
+    "css_class": "g tF2Cxc",
+    "text_len": 269
   },
   {
     "order": 9,
@@ -87,7 +114,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "LEGO Ninjago: Rattla Set 30088 (Bagged) - Oman | desertcart",
     "container": "rso",
-    "container_index": "9"
+    "container_index": "9",
+    "css_path": "#rso > div:nth-of-type(10)",
+    "css_class": "g tF2Cxc",
+    "text_len": 291
   },
   {
     "order": 10,
@@ -96,7 +126,10 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "LEGO Rattla Set 30088 | Brick Owl - LEGO Marketplace",
     "container": "rso",
-    "container_index": "10"
+    "container_index": "10",
+    "css_path": "#rso > div:nth-of-type(11)",
+    "css_class": "hlcw0c",
+    "text_len": 215
   },
   {
     "order": 11,
@@ -105,7 +138,10 @@
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy lego lego ninjago 30088 rattla",
     "container": "rso",
-    "container_index": "11"
+    "container_index": "11",
+    "css_path": "#rso > div:nth-of-type(12)",
+    "css_class": "ULSxyf",
+    "text_len": 191
   },
   {
     "order": 12,
@@ -114,6 +150,9 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|Next",
     "container": "botstuff",
-    "container_index": 0
+    "container_index": 0,
+    "css_path": "#botstuff > div:nth-of-type(1) > div:nth-of-type(3)",
+    "css_class": "",
+    "text_len": 22
   }
 ]

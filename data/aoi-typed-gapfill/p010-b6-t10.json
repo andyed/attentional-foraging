@@ -36,15 +36,15 @@
     "position": 2
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 719.0,
     "width": 586.0,
     "height": 497.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Joico JoiFULL Volumizing Shampoo 10.1 fl oz : Everything ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Beauty Supply Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1218.0,
     "width": 586.0,
     "height": 360.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Joico Joifull Volumizing Shampoo 300ml - Feelunique",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Joico JoiFULL Volumizing Shampoo 10.1 fl oz : Everything ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1580.0,
     "width": 586.0,
     "height": 132.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Joico JoiFULL Volumizing Shampoo | Ulta Beauty",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Joico Joifull Volumizing Shampoo 300ml - Feelunique",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1714.0,
     "width": 586.0,
     "height": 135.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "JoiFull Volumizing Shampoo - Joico",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Joico JoiFULL Volumizing Shampoo | Ulta Beauty",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1851.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Joico Joifull Volumizing Shampoo 1000ml - Allbeauty.com",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "JoiFull Volumizing Shampoo - Joico",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1966.0,
     "width": 586.0,
     "height": 135.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "JOICO JoiFULL Volumizing Shampoo 1000ml",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Joico Joifull Volumizing Shampoo 1000ml - Allbeauty.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,22 +113,22 @@
     "y": 2103.0,
     "width": 586.0,
     "height": 132.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Volumizing Shampoos Joico for sale - eBay",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "JOICO JoiFULL Volumizing Shampoo 1000ml",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 2237.0,
     "width": 586.0,
     "height": 201.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Volumizing Shampoos Joico for sale - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {

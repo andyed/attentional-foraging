@@ -12,15 +12,15 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 542.0,
     "width": 586.0,
     "height": 479.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "The Best of Naked Eyes - Amazon.com Music",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Buy Naked Eyes",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -29,10 +29,10 @@
     "y": 1056.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[1]",
+    "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Buy Online NAKED EYES clothes for the best price",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "The Best of Naked Eyes - Amazon.com Music",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1192.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Shop - naked eyes",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Buy Online NAKED EYES clothes for the best price",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1310.0,
     "width": 586.0,
     "height": 184.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Naked Eye In Vinyl Records for sale - eBay",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[2]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Shop - naked eyes",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1526.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Always Something There To Remind Me - Naked Eyes",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Naked Eye In Vinyl Records for sale - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1641.0,
     "width": 586.0,
     "height": 227.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g",
-    "heading_text": "\"Always Something There to Remind Me\" - Naked Eyes - Xbox",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[4]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Always Something There To Remind Me - Naked Eyes",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,22 +89,22 @@
     "y": 1903.0,
     "width": 586.0,
     "height": 106.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Naked Eye | Etsy",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g",
+    "heading_text": "\"Always Something There to Remind Me\" - Naked Eyes - Xbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 2040.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Naked Eye | Etsy",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {

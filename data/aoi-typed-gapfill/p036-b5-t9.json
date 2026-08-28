@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "MuscleMeds Carnivor Beef Aminos - Pack of 300 Tablets",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "MuscleMeds Carnivor Beef Aminos (300 Tablets)",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Carnivor Beef Aminos by MUSCLEMEDS (300 tablets)",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.hlcw0c",
     "heading_text": "MuscleMeds Carnivor Beef Aminos - 300 tablets",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[4]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "MuscleMeds Carnivor Beef Aminos 300 Tablets",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -92,7 +92,7 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Carnivor Beef Aminos 300 tabs by MuscleMeds",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -100,24 +100,12 @@
     "x": 162.0,
     "y": 1573.0,
     "width": 586.0,
-    "height": 156.0,
+    "height": 286.0,
     "html_handle": "rso[7]",
     "html_signature": "div.(no class)",
     "heading_text": "MuscleMeds Carnivor BEEF AMINOS 100% Pure ... - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 8
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1731.0,
-    "width": 586.0,
-    "height": 128.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Carnivor Beef Aminos - Tablets - MuscleMeds",
-    "source": "html_rso+cv_bbox",
-    "position": 9
   },
   {
     "type": "organic",
@@ -125,10 +113,22 @@
     "y": 1861.0,
     "width": 586.0,
     "height": 132.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Carnivor Beef Aminos - Tablets - MuscleMeds",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1995.0,
+    "width": 586.0,
+    "height": 116.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Musclemeds Carnivor Beef Aminos 300 Tablets - Super ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -177,18 +177,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|10|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1995.0,
-    "width": 586.0,
-    "height": 116.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

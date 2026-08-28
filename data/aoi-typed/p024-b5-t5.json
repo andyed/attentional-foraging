@@ -36,64 +36,52 @@
     "position": 2
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 718.0,
     "width": 586.0,
     "height": 482.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Mac Lipglass PRRR 3.1 ML / 0.10 US fl oz - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Cosmetics Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
-    "type": "image_pack",
+    "type": "organic",
     "x": 162.0,
     "y": 1237.0,
     "width": 586.0,
     "height": 303.0,
-    "html_handle": "rso[1]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy m a c mac lipglass prrr",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Mac Lipglass PRRR 3.1 ML / 0.10 US fl oz - Amazon.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
-    "type": "paa",
+    "type": "image_pack",
     "x": 162.0,
     "y": 1584.0,
     "width": 586.0,
     "height": 244.0,
-    "html_handle": "rso[2]",
-    "html_signature": "h=\"paa\" div.ULSxyf",
-    "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy m a c mac lipglass prrr",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "organic",
+    "type": "paa",
     "x": 162.0,
     "y": 1873.0,
     "width": 586.0,
-    "height": 55.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "MAC Lipglass - Prrr - ASOS",
-    "source": "html_rso+cv_bbox",
+    "height": 193.0,
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"paa\" div.ULSxyf",
+    "heading_text": "People also ask",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 6
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1992.0,
-    "width": 586.0,
-    "height": 74.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "MAC Lipglass - Lip Gloss | MAC Cosmetics - Official Site",
-    "source": "html_rso+cv_bbox",
-    "position": 7
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 2112.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g",
-    "heading_text": "MAC Prrr Lipglass Review & Swatches - Temptalia",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "MAC Lipglass - Prrr - ASOS",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 2248.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Little MAC Lipglass Prrr by M.A.C - Shop Online for Beauty in Spain",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "MAC Lipglass - Lip Gloss | MAC Cosmetics - Official Site",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,11 +113,11 @@
     "y": 2383.0,
     "width": 586.0,
     "height": 142.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "MAC Cosmetics Lipglass - Prrr - Reviews - MakeupAlley",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "html_handle": "rso[5]",
+    "html_signature": "div.g",
+    "heading_text": "MAC Prrr Lipglass Review & Swatches - Temptalia",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,11 +125,35 @@
     "y": 2560.0,
     "width": 586.0,
     "height": 104.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Little MAC Lipglass Prrr by M.A.C - Shop Online for Beauty in Spain",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2698.0,
+    "width": 586.0,
+    "height": 102.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "MAC Cosmetics Lipglass - Prrr - Reviews - MakeupAlley",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2834.0,
+    "width": 586.0,
+    "height": 106.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Mac Cosmetics Lipglass Prrr 0.10 Oz (3.1 Ml) - eBay",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -153,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 13
   },
   {
     "type": "related_searches",
@@ -177,30 +189,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2698.0,
-    "width": 586.0,
-    "height": 102.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2834.0,
-    "width": 586.0,
-    "height": 106.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

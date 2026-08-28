@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "MEDQUIP BP2200 Automatic Blood Pressure Wrist Monitor",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Medquip BP-2200 Wrist Blood Pressure Monitor BP Cuff ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Medquip Blood Pressure Monitors - Walmart",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Digital Wrist Blood Pressure Monitor by Medquip BP2200",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[4]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy medquip automatic wrist lcd bp monitor",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "MedQuip BP-2200 Wrist Blood Pressure Monitor",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -92,7 +92,7 @@
     "html_handle": "rso[6]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Drive Automatic Blood Pressure Monitor, Wrist Model - Tiger ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -104,7 +104,7 @@
     "html_handle": "rso[7]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -116,7 +116,7 @@
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Airial Wrist Digital Blood Pressure Monitor by Medquip",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -124,35 +124,35 @@
     "x": 162.0,
     "y": 1863.0,
     "width": 586.0,
-    "height": 346.0,
+    "height": 612.0,
     "html_handle": "rso[9]",
     "html_signature": "h=\"local\" div.ULSxyf",
     "heading_text": "Local results",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 10
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 2246.0,
+    "y": 2518.0,
     "width": 586.0,
-    "height": 71.0,
+    "height": 82.0,
     "html_handle": "rso[10]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Automatic blood pressure monitor / electronic / wrist ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 2352.0,
+    "y": 2635.0,
     "width": 586.0,
-    "height": 123.0,
+    "height": 81.0,
     "html_handle": "rso[11]",
     "html_signature": "div.hlcw0c",
     "heading_text": "leo blood pressure monitor - Gima",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 12
   },
   {
@@ -201,30 +201,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2518.0,
-    "width": 586.0,
-    "height": 82.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2635.0,
-    "width": 586.0,
-    "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

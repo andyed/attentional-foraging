@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "Alessi Pot Honey Jar: Home & Kitchen - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -28,24 +28,12 @@
     "x": 162.0,
     "y": 705.0,
     "width": 586.0,
-    "height": 102.0,
+    "height": 224.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Honey pot - Honey jar with dipper \u2013 Alessi Spa (EU)",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 2
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 833.0,
-    "width": 586.0,
-    "height": 96.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Alessi Honey Pot Honey Jar TW01 | Compra online en eBay",
-    "source": "html_rso+cv_bbox",
-    "position": 3
   },
   {
     "type": "organic",
@@ -53,11 +41,11 @@
     "y": 967.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Beautiful Design Honey Pot by Alessi TW01 Buy Online",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "heading_text": "Alessi Honey Pot Honey Jar TW01 | Compra online en eBay",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -65,11 +53,11 @@
     "y": 1079.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Alessi Honey pot honey jar - Newpop",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "heading_text": "Beautiful Design Honey Pot by Alessi TW01 Buy Online",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -77,35 +65,35 @@
     "y": 1217.0,
     "width": 586.0,
     "height": 99.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Alessi Honey pot honey jar - Newpop",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1352.0,
+    "width": 586.0,
+    "height": 83.0,
     "html_handle": "rso[5]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Alessi Honey Pot Honey Jar - Sears",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1352.0,
-    "width": 586.0,
-    "height": 83.0,
-    "html_handle": "rso[6]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy alessi alessi honey pot honey jar",
-    "source": "html_rso+cv_bbox",
-    "position": 7
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
     "y": 1480.0,
     "width": 586.0,
     "height": 202.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Honey Pot by Theo Williams, 1995 0.01 qt. Storage Jar",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[6]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy alessi alessi honey pot honey jar",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,10 +101,22 @@
     "y": 1725.0,
     "width": 586.0,
     "height": 102.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Honey Pot by Theo Williams, 1995 0.01 qt. Storage Jar",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1862.0,
+    "width": 586.0,
+    "height": 81.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Alessi Honey Pot Honey Jar greengarment Specialty Tools ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -165,18 +165,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1862.0,
-    "width": 586.0,
-    "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

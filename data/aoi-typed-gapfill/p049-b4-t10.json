@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "2 Boxes Gano Fresh Toothphaste with Ganoderma ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "1 Tube Gano Excel Gano Fresh Toothpaste Ganoderma ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.(no class)",
     "heading_text": "Shop Gano Fresh Toothpaste online | Lazada.com.ph",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Gano Fresh Toothpaste with Ganoderma Lucidum Extract",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.hlcw0c",
     "heading_text": "2 Boxes Gano Fresh Toothphaste with ... - NineLife - Lebanon",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -76,47 +76,47 @@
     "x": 162.0,
     "y": 1412.0,
     "width": 586.0,
-    "height": 403.0,
+    "height": 535.0,
     "html_handle": "rso[5]",
     "html_signature": "h=\"local\" div.ULSxyf",
     "heading_text": "Local results",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 6
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1817.0,
+    "y": 1949.0,
     "width": 586.0,
-    "height": 130.0,
+    "height": 147.0,
     "html_handle": "rso[6]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Gano Fresh Toothpaste with Ganoderma Lucidum Extract",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1949.0,
+    "y": 2098.0,
     "width": 586.0,
-    "height": 147.0,
+    "height": 285.0,
     "html_handle": "rso[7]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy gano gano fresh toothpaste",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 8
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 2098.0,
+    "y": 2385.0,
     "width": 586.0,
-    "height": 128.0,
+    "height": 103.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "3 Boxes Gano Fresh Toothphaste with Ganoderma ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -165,30 +165,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2228.0,
-    "width": 586.0,
-    "height": 155.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2385.0,
-    "width": 586.0,
-    "height": 103.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

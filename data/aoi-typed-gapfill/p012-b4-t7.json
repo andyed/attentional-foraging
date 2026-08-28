@@ -36,15 +36,15 @@
     "position": 2
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 698.0,
     "width": 586.0,
     "height": 497.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g",
-    "heading_text": "Horsemen's Jolly Ball - Juguete de caballo de 10.0 in",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Hypermarkets",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1197.0,
     "width": 586.0,
     "height": 165.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "1-48 of 176 results for \"jolly ball for dogs\" - Amazon UK",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.g",
+    "heading_text": "Horsemen's Jolly Ball - Juguete de caballo de 10.0 in",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1364.0,
     "width": 586.0,
     "height": 112.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Buy affordable Jolly Pets Dog Toys now | horze.eu",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "1-48 of 176 results for \"jolly ball for dogs\" - Amazon UK",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1478.0,
     "width": 586.0,
     "height": 116.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Signature Jolly Balls",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Buy affordable Jolly Pets Dog Toys now | horze.eu",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1596.0,
     "width": 586.0,
     "height": 216.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Jolly Pets Jolly Ball Tug-n-Toss Assorted Dog Toy - Canadian ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[3]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Signature Jolly Balls",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1814.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Buy discount Jolly Pets from Dick Smith",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Jolly Pets Jolly Ball Tug-n-Toss Assorted Dog Toy - Canadian ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 1929.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Jolly Ball Original - StateLineTack.com",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Buy discount Jolly Pets from Dick Smith",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,11 +125,23 @@
     "y": 2046.0,
     "width": 586.0,
     "height": 133.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Jolly Ball Original - StateLineTack.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2181.0,
+    "width": 586.0,
+    "height": 98.0,
     "html_handle": "rso[7]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Jolly Pets Ball Dog Toys for sale | Shop with Afterpay | eBay AU",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
   },
   {
     "type": "native_ad",
@@ -141,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 12
   },
   {
     "type": "related_searches",
@@ -165,18 +177,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2181.0,
-    "width": 586.0,
-    "height": 98.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

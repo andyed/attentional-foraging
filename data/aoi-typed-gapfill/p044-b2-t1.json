@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Gates 22150 Premium Molded Coolant Hose - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -28,24 +28,12 @@
     "x": 162.0,
     "y": 632.0,
     "width": 586.0,
-    "height": 135.0,
+    "height": 245.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Upper Radiator Hose Gates 22150 | eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 2
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 769.0,
-    "width": 586.0,
-    "height": 108.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "22150 by GATES CORPORATION - Radiator Coolant Hose",
-    "source": "html_rso+cv_bbox",
-    "position": 3
   },
   {
     "type": "organic",
@@ -53,11 +41,11 @@
     "y": 879.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Upper Radiator Or Coolant Hose by GATES - 22150",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "heading_text": "22150 by GATES CORPORATION - Radiator Coolant Hose",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -65,35 +53,35 @@
     "y": 995.0,
     "width": 586.0,
     "height": 112.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Upper Radiator Or Coolant Hose by GATES - 22150",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1109.0,
+    "width": 586.0,
+    "height": 120.0,
     "html_handle": "rso[4]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Ford Mustang Upper Radiator Coolant Hose | Gates 22150",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1109.0,
-    "width": 586.0,
-    "height": 120.0,
-    "html_handle": "rso[5]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy gates gates 22150 upper radiator hose",
-    "source": "html_rso+cv_bbox",
-    "position": 6
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
     "y": 1231.0,
     "width": 586.0,
     "height": 287.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "GATES 22150 Coolant Hose - Newegg.com",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[5]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy gates gates 22150 upper radiator hose",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1520.0,
     "width": 586.0,
     "height": 117.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Gates Molded Coolant Hose ID Guide",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "GATES 22150 Coolant Hose - Newegg.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,10 +101,22 @@
     "y": 1639.0,
     "width": 586.0,
     "height": 113.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Gates Molded Coolant Hose ID Guide",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1754.0,
+    "width": 586.0,
+    "height": 98.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "22150,GATES 22150; Radiator Coolant Hose - yoyopart.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -177,18 +177,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1754.0,
-    "width": 586.0,
-    "height": 98.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Delphi GN10114 Ignition Coil - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Ignition Coil Delphi GN10114 for sale online - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -76,24 +76,12 @@
     "x": 162.0,
     "y": 1200.0,
     "width": 586.0,
-    "height": 90.0,
+    "height": 209.0,
     "html_handle": "rso[2]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 6
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1292.0,
-    "width": 586.0,
-    "height": 117.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Saab Direct Ignition Coil - Delphi GN10114 - FCP Euro",
-    "source": "html_rso+cv_bbox",
-    "position": 7
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1411.0,
     "width": 586.0,
     "height": 148.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Delphi GN10114 Ignition Coil - Walmart.com",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "Saab Direct Ignition Coil - Delphi GN10114 - FCP Euro",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1561.0,
     "width": 586.0,
     "height": 132.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Delphi GN10114 Direct Ignition Coil - PartLimit",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "Delphi GN10114 Ignition Coil - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,11 +113,11 @@
     "y": 1695.0,
     "width": 586.0,
     "height": 117.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Delphi GN10114 Direct Ignition Coil - AutohausAZ",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "heading_text": "Delphi GN10114 Direct Ignition Coil - PartLimit",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,22 +125,34 @@
     "y": 1814.0,
     "width": 586.0,
     "height": 114.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Delphi GN10114 Direct Ignition Coil - AutohausAZ",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1930.0,
+    "width": 586.0,
+    "height": 139.0,
     "html_handle": "rso[7]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Delphi GN10114 Ignition Coil: Buy Online in UAE at desertcart",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1930.0,
+    "y": 2071.0,
     "width": 586.0,
-    "height": 139.0,
+    "height": 265.0,
     "html_handle": "rso[8]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy delphi delphi gn10114 direct ignition coil",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 12
   },
   {
@@ -213,30 +213,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2071.0,
-    "width": 586.0,
-    "height": 128.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2201.0,
-    "width": 586.0,
-    "height": 135.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

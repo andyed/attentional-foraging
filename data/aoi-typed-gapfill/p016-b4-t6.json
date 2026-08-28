@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "Denso 210-0640 Alternator : Automotive - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Reman -DENSO 210-0640- ALTERNATOR/GENERATOR | eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Denso 210-0640 Remanufactured Alternator",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -52,48 +52,24 @@
     "x": 162.0,
     "y": 995.0,
     "width": 586.0,
-    "height": 107.0,
+    "height": 221.0,
     "html_handle": "rso[3]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Denso Remanufactured DENSO First Time Fit ... - Walmart",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 4
   },
   {
     "type": "paa",
     "x": 162.0,
-    "y": 1104.0,
+    "y": 1218.0,
     "width": 586.0,
-    "height": 112.0,
+    "height": 240.0,
     "html_handle": "rso[4]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1218.0,
-    "width": 586.0,
-    "height": 129.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "DENSO Auto Parts 210-0640 - Buy Auto Parts",
-    "source": "html_rso+cv_bbox",
-    "position": 6
-  },
-  {
-    "type": "image_pack",
-    "x": 162.0,
-    "y": 1349.0,
-    "width": 586.0,
-    "height": 109.0,
-    "html_handle": "rso[6]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy denso denso 210 0640 alternator",
-    "source": "html_rso+cv_bbox",
-    "position": 7
   },
   {
     "type": "organic",
@@ -101,22 +77,46 @@
     "y": 1460.0,
     "width": 586.0,
     "height": 125.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "DENSO Auto Parts 210-0640 - Buy Auto Parts",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
+  },
+  {
+    "type": "image_pack",
+    "x": 162.0,
+    "y": 1587.0,
+    "width": 586.0,
+    "height": 287.0,
+    "html_handle": "rso[6]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy denso denso 210 0640 alternator",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1876.0,
+    "width": 586.0,
+    "height": 138.0,
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Denso 210-0640 Alternator - Buyr.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1587.0,
+    "y": 2016.0,
     "width": 586.0,
-    "height": 287.0,
+    "height": 97.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Denso 210-0640 Alternator for 104210-5100 11350 12819 27060 ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -177,30 +177,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1876.0,
-    "width": 586.0,
-    "height": 138.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2016.0,
-    "width": 586.0,
-    "height": 97.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

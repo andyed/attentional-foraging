@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "Festool 497709 Accessory Kit for Carvex Jigsaw",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -20,7 +20,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Festool Carvex Accessory Kit 497709 - M&M Tool Parts",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Festool 497709 Accessory Kit for CARVEX Jigsaw - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Festool Carvex Accessory Kit - Highland Woodworking",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Festool 497709 Jigsaw Systainer Accessory Set - Protrade",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Festool 497709 CARVEX Jigsaw Accessories SYSTAINER ZH ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Festool 497709 Jigsaw Accessory Set for all Carvex Jigsaws ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -92,19 +92,19 @@
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Festool 576790 Carvex Imperial Accessory Kit w/ Systainer3",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1205.0,
     "width": 586.0,
     "height": 135.0,
-    "html_handle": "rso[8]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Festool CARVEX Jigsaw Accessory Systainer Set (497709)",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 1342.0,
     "width": 586.0,
     "height": 122.0,
-    "html_handle": "rso[9]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Festool CARVEX Jigsaw Accessory Systainer Set (497709)",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[10]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Festool 497709 Accessory Kit For Carvex Jigsaw - Walmart",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -144,15 +144,15 @@
     "position": 11
   },
   {
-    "type": "organic",
+    "type": "knowledge_panel",
     "x": null,
     "y": null,
     "width": null,
     "height": null,
-    "html_handle": "rso[10]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Festool 497709 Accessory Kit For Carvex Jigsaw - Walmart",
-    "source": "html_only",
+    "html_handle": "rso[8]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
     "position": -1
   },
   {

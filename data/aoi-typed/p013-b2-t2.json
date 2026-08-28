@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Suite for Flute and Jazz Piano Trio: Score & Parts: Bolling ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Suite for Flute and Jazz Piano Trio - Claude Bolling",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Suite For Flute And Jazz Piano Trio from Claude Bolling",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g",
     "heading_text": "Suite For Flute And Jazz Piano Trio (1993, CD) - Discogs",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -64,24 +64,12 @@
     "x": 162.0,
     "y": 1277.0,
     "width": 586.0,
-    "height": 107.0,
+    "height": 262.0,
     "html_handle": "rso[4]",
     "html_signature": "div.(no class)",
     "heading_text": "Claude Bolling \u2013 Suite for Flute and Jazz Piano Trio - Hal ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1411.0,
-    "width": 586.0,
-    "height": 128.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "BOLLING: Suites for Flute and Jazz Piano Trio - 8.554848",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1574.0,
     "width": 586.0,
     "height": 83.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g",
-    "heading_text": "Suite for Flute and Jazz Piano Trio - Wikipedia",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "BOLLING: Suites for Flute and Jazz Piano Trio - 8.554848",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,23 +89,23 @@
     "y": 1692.0,
     "width": 586.0,
     "height": 104.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Suite No. 2 For Flute And Jazz Piano Trio - Flipkart",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[6]",
+    "html_signature": "div.g",
+    "heading_text": "Suite for Flute and Jazz Piano Trio - Wikipedia",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1839.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 9
+    "html_handle": "rso[7]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Suite No. 2 For Flute And Jazz Piano Trio - Flipkart",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "pagination",

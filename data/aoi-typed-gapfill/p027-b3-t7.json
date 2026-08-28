@@ -1,14 +1,14 @@
 [
   {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 141.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Beautyko Vibro Toning belt - Amazon.in",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 0
   },
   {
@@ -29,10 +29,10 @@
     "y": 608.0,
     "width": 586.0,
     "height": 333.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Beautyko Vibro Belt - Walmart.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Beautyko Vibro Toning belt - Amazon.in",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 943.0,
     "width": 586.0,
     "height": 137.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Vibro Belt: Buy Online in KSA at desertcart",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Beautyko Vibro Belt - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1082.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Beautyko USA Vibro Belt Pro with Bag, Black: Buy Online in OMAN ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Vibro Belt: Buy Online in KSA at desertcart",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1198.0,
     "width": 586.0,
     "height": 137.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Beautyko Vibro Toning belt - Top Healthy Store",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Beautyko USA Vibro Belt Pro with Bag, Black: Buy Online in OMAN ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1337.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Vibro Belt Toning System Black - Woot",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Beautyko Vibro Toning belt - Top Healthy Store",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1453.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Vibro Shape - Item That You Desired - AliExpress",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Vibro Belt Toning System Black - Woot",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1569.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "BEAUTYKO VIBRO TONING BELT - GTIN/EAN/UPC 753182314259 ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Vibro Shape - Item That You Desired - AliExpress",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,11 +113,23 @@
     "y": 1685.0,
     "width": 586.0,
     "height": 135.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "BEAUTYKO VIBRO TONING BELT - GTIN/EAN/UPC 753182314259 ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1822.0,
+    "width": 586.0,
+    "height": 100.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Vibro Belt Price - Made-in-China.com",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -129,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 11
   },
   {
     "type": "native_ad",
@@ -141,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -153,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 13
   },
   {
     "type": "pagination",
@@ -165,18 +177,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1822.0,
-    "width": 586.0,
-    "height": 100.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

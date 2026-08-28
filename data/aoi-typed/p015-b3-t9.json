@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "Schaeffler LuK RepSet 07-188 Clutch Kit, OEM ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g",
     "heading_text": "Luk Clutch 07-188 LuK Clutch Kits - Summit Racing",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,19 +80,19 @@
     "html_handle": "rso[2]",
     "html_signature": "div.(no class)",
     "heading_text": "LuK 07-188 Clutch Kit - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
-    "type": "knowledge_panel",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1297.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[3]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 7
   },
   {
@@ -104,7 +104,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "07-188 by LUK - Clutch Kit for FORD",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -116,7 +116,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "LuK\u00ae 07-188 - RepSet\u2122 Clutch Kit",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -128,7 +128,7 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "LuK 07-188 Clutch Kit \u2013 PartLimit",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -137,10 +137,10 @@
     "y": 1765.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Ford Mustang Transmission Clutch Kit | LuK 07-188 - PartsHawk",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Ford Mustang Clutch Sets - PartsAvatar",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -149,10 +149,10 @@
     "y": 1881.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Ford Mustang Clutch Sets - PartsAvatar",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Schaeffler LuK RepSet 07-188 Clutch Kit, OEM ... - desertcart",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 12
   },
   {
@@ -192,16 +192,29 @@
     "position": 15
   },
   {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[3]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
     "type": "organic",
-    "x": 162.0,
-    "y": 2578.0,
-    "width": 586.0,
-    "height": 180.0,
-    "html_handle": "rso[9]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Schaeffler LuK RepSet 07-188 Clutch Kit, OEM ... - desertcart",
-    "source": "html_rso+cv_bbox",
-    "position": 16
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Ford Mustang Transmission Clutch Kit | LuK 07-188 - PartsHawk",
+    "source": "html_only",
+    "y_render": 1960,
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -237,6 +250,18 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 2578.0,
+    "width": 586.0,
+    "height": 180.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

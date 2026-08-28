@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Amazon.com : Innovations 16g Proflate CO2",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "GENUINE INNOVATIONS Proflate Elite W/16g CO2",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "genuine innovations proflate elite 16g co2 inflator - Modern Bike",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "GENUINE INNOVATIONS 2015 CO2 Inflator Proflate Elite ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Genuine Innovations Proflate 16 Co2 Tire Inflator - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Genuine Innovations ProFlate Elite CO2 Tire Inflator",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -92,7 +92,7 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Hinchadores bicicleta genuine innovations cartuchos co2",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -104,19 +104,19 @@
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Genuine Innovations Premium CO2 Cartridges with Threads ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1499.0,
     "width": 586.0,
     "height": 132.0,
-    "html_handle": "rso[8]",
-    "html_signature": "h=\"comp\" div.TQc1id",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Review: Genuine Innovations Proflate 16 CO2 inflator | road.cc",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,10 +125,10 @@
     "y": 1633.0,
     "width": 586.0,
     "height": 119.0,
-    "html_handle": "rso[9]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Review: Genuine Innovations Proflate 16 CO2 inflator | road.cc",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[10]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Genuine Innovations Proflate Elite CO2 Inflator",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -168,15 +168,15 @@
     "position": 13
   },
   {
-    "type": "organic",
+    "type": "knowledge_panel",
     "x": null,
     "y": null,
     "width": null,
     "height": null,
-    "html_handle": "rso[10]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Genuine Innovations Proflate Elite CO2 Inflator",
-    "source": "html_only",
+    "html_handle": "rso[8]",
+    "html_signature": "h=\"comp\" div.TQc1id",
+    "heading_text": "Complementary results",
+    "source": "html_only+no_geometry",
     "position": -1
   },
   {

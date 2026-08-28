@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "Speedball Linoleum Block-5\"X7\" - Amazon.in",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Speedball Lino Block 5x7 - Art Materials",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Speedball Linoleum Block, 5\" x 7\" - Walmart.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy speedball speedball linoleum block 5 x7",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g",
     "heading_text": "Speedball 4309 Premium Mounted Linoleum Block",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -76,24 +76,12 @@
     "x": 162.0,
     "y": 1458.0,
     "width": 586.0,
-    "height": 107.0,
+    "height": 214.0,
     "html_handle": "rso[5]",
     "html_signature": "div.(no class)",
     "heading_text": "Speedball Linoleum Block - 5\"X7\" 651032043093 | eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 6
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1594.0,
-    "width": 586.0,
-    "height": 78.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Speedball Linoleum Block 5\"X7\" | JOANN Spain",
-    "source": "html_rso+cv_bbox",
-    "position": 7
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1703.0,
     "width": 586.0,
     "height": 103.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Speedball Linoleum Block 5x7 | plazaart.com",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "Speedball Linoleum Block 5\"X7\" | JOANN Spain",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,10 +101,22 @@
     "y": 1842.0,
     "width": 586.0,
     "height": 100.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Speedball Linoleum Block 5x7 | plazaart.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1977.0,
+    "width": 586.0,
+    "height": 151.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Speedball Mounted Linoleum Printing Block, 5\" x 7\"",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -165,18 +165,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1977.0,
-    "width": 586.0,
-    "height": 151.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

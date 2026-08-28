@@ -24,15 +24,15 @@
     "position": 1
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 583.0,
     "width": 586.0,
     "height": 452.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Amazon.com: Supreme Jeunesse Concentr\u00e9 Payot",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Cosmetics Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,71 +41,47 @@
     "y": 1037.0,
     "width": 586.0,
     "height": 258.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Payot Skin Care - Walmart.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Amazon.com: Supreme Jeunesse Concentr\u00e9 Payot",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
-    "type": "paa",
+    "type": "organic",
     "x": 162.0,
     "y": 1297.0,
     "width": 586.0,
     "height": 123.0,
-    "html_handle": "rso[2]",
-    "html_signature": "h=\"paa\" div.ULSxyf",
-    "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Payot Skin Care - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
-    "type": "organic",
+    "type": "paa",
     "x": 162.0,
     "y": 1422.0,
     "width": 586.0,
-    "height": 89.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Payot My Payot Nuit 50ml/1.6fl.oz. nuevo En Caja (env\u00edo ...",
-    "source": "html_rso+cv_bbox",
+    "height": 208.0,
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"paa\" div.ULSxyf",
+    "heading_text": "People also ask",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1513.0,
-    "width": 586.0,
-    "height": 117.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g",
-    "heading_text": "Payot Uni Skin Perfecting Pearls Serum, 1 Fl Oz - Ubuy",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
     "x": 162.0,
     "y": 1632.0,
     "width": 586.0,
-    "height": 163.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g",
-    "heading_text": "Payot My Payot Concentre Eclat - Healthy Glow Serum, 1 ...",
-    "source": "html_rso+cv_bbox",
-    "position": 7
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1797.0,
-    "width": 586.0,
-    "height": 107.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "payot - Healthy Glow Serum, 1 Fl Oz - NinthAvenue",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "height": 272.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Payot My Payot Nuit 50ml/1.6fl.oz. nuevo En Caja (env\u00edo ...",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 6
   },
   {
     "type": "organic",
@@ -113,11 +89,47 @@
     "y": 1906.0,
     "width": 586.0,
     "height": 181.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g",
+    "heading_text": "Payot Uni Skin Perfecting Pearls Serum, 1 Fl Oz - Ubuy",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2089.0,
+    "width": 586.0,
+    "height": 162.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g",
+    "heading_text": "Payot My Payot Concentre Eclat - Healthy Glow Serum, 1 ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2253.0,
+    "width": 586.0,
+    "height": 116.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "payot - Healthy Glow Serum, 1 Fl Oz - NinthAvenue",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2371.0,
+    "width": 586.0,
+    "height": 115.0,
     "html_handle": "rso[7]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Buy Payot 2021 @ ZALORA Malaysia",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -129,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 11
   },
   {
     "type": "native_ad",
@@ -141,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -153,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 13
   },
   {
     "type": "unknown_widget",
@@ -165,7 +177,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 13
+    "position": 14
   },
   {
     "type": "related_searches",
@@ -189,42 +201,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2089.0,
-    "width": 586.0,
-    "height": 162.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2253.0,
-    "width": 586.0,
-    "height": 116.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2371.0,
-    "width": 586.0,
-    "height": 115.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

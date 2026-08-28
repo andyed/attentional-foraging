@@ -36,15 +36,15 @@
     "position": 2
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 718.0,
     "width": 586.0,
     "height": 437.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Sunday Riley Bionic Anti-aging Cream Coq10 Full Size 50ml",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Cosmetics Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1189.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[1]",
+    "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Sunday Riley I Always Clean, Always Cruelty-Free ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Sunday Riley Bionic Anti-aging Cream Coq10 Full Size 50ml",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1329.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Sunday Riley Bionic Anti-Aging Cream - Influenster",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Sunday Riley I Always Clean, Always Cruelty-Free ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1443.0,
     "width": 586.0,
     "height": 103.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Sunday Riley Bionic Anti-Ageing Cream (50ml) - Cult Beauty",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Sunday Riley Bionic Anti-Aging Cream - Influenster",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1579.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Similarity review and dupes for Bionic Anti-Aging Cream ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Sunday Riley Bionic Anti-Ageing Cream (50ml) - Cult Beauty",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1715.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "sunday riley - Sephora",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Similarity review and dupes for Bionic Anti-Aging Cream ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 1831.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "SUNDAY RILEY | Sephora",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "sunday riley - Sephora",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,10 +125,10 @@
     "y": 1947.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Full Ingredients List Bionic Anti-Aging Cream Sunday Riley ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "SUNDAY RILEY | Sephora",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -137,11 +137,23 @@
     "y": 2064.0,
     "width": 586.0,
     "height": 81.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Full Ingredients List Bionic Anti-Aging Cream Sunday Riley ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2178.0,
+    "width": 586.0,
+    "height": 82.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "The Sunday Riley Bionic Lawsuit: Here's What You ... - Allure",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -153,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 13
   },
   {
     "type": "related_searches",
@@ -177,18 +189,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|10|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2178.0,
-    "width": 586.0,
-    "height": 82.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

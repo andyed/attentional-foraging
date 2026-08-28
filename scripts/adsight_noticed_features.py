@@ -186,6 +186,12 @@ def compute_records(trial_id: str):
 
 def main():
     trial_ids = get_trial_ids()
+    # alignment_suspect trials are excluded from typed-flavor derivation
+    # (data/aoi-typed/alignment-exclusions.json). This producer reads the
+    # AOI files directly, so the data_loader gate doesn't cover it.
+    from data_loader import typed_alignment_exclusions
+    excluded = typed_alignment_exclusions()
+    trial_ids = [t for t in trial_ids if t not in excluded]
     print(f'[load] {len(trial_ids):,} trial ids', file=sys.stderr)
     out = []
     skipped_main_axis = 0

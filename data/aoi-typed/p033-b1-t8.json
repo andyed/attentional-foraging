@@ -12,15 +12,15 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 574.0,
     "width": 586.0,
     "height": 436.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Mavala Treatment M\u00e1scara de pesta\u00f1as de color marr\u00f3n ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Perfume Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -29,10 +29,10 @@
     "y": 1045.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Mavala waterproof mascara black 10ml | PromoFarma",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Mavala Treatment M\u00e1scara de pesta\u00f1as de color marr\u00f3n ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -40,24 +40,12 @@
     "x": 162.0,
     "y": 1183.0,
     "width": 586.0,
-    "height": 99.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Mavala Treatment Waterproof Mascara Black Noir",
-    "source": "html_rso+cv_bbox",
+    "height": 221.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Mavala waterproof mascara black 10ml | PromoFarma",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 3
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1308.0,
-    "width": 586.0,
-    "height": 96.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Mavala Waterproof Mascaras for sale - eBay",
-    "source": "html_rso+cv_bbox",
-    "position": 4
   },
   {
     "type": "organic",
@@ -65,11 +53,11 @@
     "y": 1438.0,
     "width": 586.0,
     "height": 154.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Mavala Mascara Waterproof (10ml) ab 8,56 - Idealo",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "heading_text": "Mavala Treatment Waterproof Mascara Black Noir",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -77,11 +65,11 @@
     "y": 1623.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Mavala VL Volume & Length Waterproof Mascara 10ml",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "heading_text": "Mavala Waterproof Mascaras for sale - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1739.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Mavala Waterproof Mascara Treatment Night Blue 10ml",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "heading_text": "Mavala Mascara Waterproof (10ml) ab 8,56 - Idealo",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,22 +89,34 @@
     "y": 1878.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "VL MASCARA WATERPROOF | Mavala Switzerland",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Mavala VL Volume & Length Waterproof Mascara 10ml",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 2014.0,
     "width": 586.0,
     "height": 98.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Mavala Waterproof Mascara Treatment Night Blue 10ml",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2149.0,
+    "width": 586.0,
+    "height": 82.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "VL MASCARA WATERPROOF | Mavala Switzerland",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -165,18 +165,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2149.0,
-    "width": 586.0,
-    "height": 82.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

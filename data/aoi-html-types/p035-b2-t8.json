@@ -1,74 +1,110 @@
 [
   {
     "order": 0,
+    "type": "top_places",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Department Stores",
+    "container": "rso",
+    "container_index": "local_pack",
+    "css_path": "#Odp5De",
+    "css_class": "",
+    "text_len": 575
+  },
+  {
+    "order": 1,
     "type": "organic",
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Victorinox Toiletry Bag - Amazon.com",
     "container": "rso",
-    "container_index": "0"
+    "container_index": "0",
+    "css_path": "#rso > div:nth-of-type(1)",
+    "css_class": "g tF2Cxc",
+    "text_len": 269
   },
   {
-    "order": 1,
+    "order": 2,
     "type": "organic",
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Victorinox Hanging Toiletry Kit in black - 610609",
     "container": "rso",
-    "container_index": "1"
+    "container_index": "1",
+    "css_path": "#rso > div:nth-of-type(2)",
+    "css_class": "",
+    "text_len": 537
   },
   {
-    "order": 2,
+    "order": 3,
     "type": "organic",
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Victorinox TA 5.0 Hanging Toiletry Kit - The Luggage ...",
     "container": "rso",
-    "container_index": "2"
+    "container_index": "2",
+    "css_path": "#rso > div:nth-of-type(3)",
+    "css_class": "g tF2Cxc",
+    "text_len": 277
   },
   {
-    "order": 3,
+    "order": 4,
     "type": "organic",
     "html_handle": "rso[3]",
     "html_signature": "div.(no class)",
     "heading_text": "Victorinox Other Travel Accessories for sale - eBay",
     "container": "rso",
-    "container_index": "3"
+    "container_index": "3",
+    "css_path": "#rso > div:nth-of-type(4)",
+    "css_class": "",
+    "text_len": 526
   },
   {
-    "order": 4,
+    "order": 5,
     "type": "organic",
     "html_handle": "rso[4]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Victorinox HANGING COSMETIC CASE Travel Toiletry Kit",
     "container": "rso",
-    "container_index": "4"
+    "container_index": "4",
+    "css_path": "#rso > div:nth-of-type(5)",
+    "css_class": "hlcw0c",
+    "text_len": 589
   },
   {
-    "order": 5,
+    "order": 6,
     "type": "image_pack",
     "html_handle": "rso[5]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy victorinox victorinox luggage hanging cosmetic case",
     "container": "rso",
-    "container_index": "5"
+    "container_index": "5",
+    "css_path": "#rso > div:nth-of-type(6)",
+    "css_class": "ULSxyf",
+    "text_len": 197
   },
   {
-    "order": 6,
+    "order": 7,
     "type": "related_searches",
     "html_handle": "botstuff.ULSxyf[0]",
     "html_signature": "h=\"rs\" div.ULSxyf",
     "heading_text": "Related searches",
     "container": "botstuff",
-    "container_index": 0
+    "container_index": 0,
+    "css_path": "#bres > div:nth-of-type(1)",
+    "css_class": "ULSxyf",
+    "text_len": 253
   },
   {
-    "order": 7,
+    "order": 8,
     "type": "pagination",
     "html_handle": "botstuff.nav[0]",
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|Next",
     "container": "botstuff",
-    "container_index": 0
+    "container_index": 0,
+    "css_path": "#botstuff > div:nth-of-type(1) > div:nth-of-type(3)",
+    "css_class": "",
+    "text_len": 25
   }
 ]

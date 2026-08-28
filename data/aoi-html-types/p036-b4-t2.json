@@ -6,7 +6,10 @@
     "html_signature": "div.(no class)",
     "heading_text": "Nanogen Locking Mist spray - Amazon.com",
     "container": "rso",
-    "container_index": "0"
+    "container_index": "0",
+    "css_path": "#rso > div:nth-of-type(1)",
+    "css_class": "",
+    "text_len": 615
   },
   {
     "order": 1,
@@ -15,7 +18,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Nanogen Hair Fibre Locking Spray 100ml - Skin Fantastic",
     "container": "rso",
-    "container_index": "1"
+    "container_index": "1",
+    "css_path": "#rso > div:nth-of-type(2)",
+    "css_class": "g tF2Cxc",
+    "text_len": 297
   },
   {
     "order": 2,
@@ -24,7 +30,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Nanogen Hair Fibre Locking Spray 100ml",
     "container": "rso",
-    "container_index": "2"
+    "container_index": "2",
+    "css_path": "#rso > div:nth-of-type(3)",
+    "css_class": "g tF2Cxc",
+    "text_len": 225
   },
   {
     "order": 3,
@@ -33,7 +42,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "NANOGEN HAIR FIBRE LOCKING SPRAY",
     "container": "rso",
-    "container_index": "3"
+    "container_index": "3",
+    "css_path": "#rso > div:nth-of-type(4)",
+    "css_class": "g tF2Cxc",
+    "text_len": 280
   },
   {
     "order": 4,
@@ -42,7 +54,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Nanogen Fibre Locking Spray 100ml (2 months' supply) - Boots",
     "container": "rso",
-    "container_index": "4"
+    "container_index": "4",
+    "css_path": "#rso > div:nth-of-type(5)",
+    "css_class": "g tF2Cxc",
+    "text_len": 333
   },
   {
     "order": 5,
@@ -51,7 +66,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Nanogen Hair Fibre Locking Spray - The Derma Company",
     "container": "rso",
-    "container_index": "5"
+    "container_index": "5",
+    "css_path": "#rso > div:nth-of-type(6)",
+    "css_class": "g tF2Cxc",
+    "text_len": 258
   },
   {
     "order": 6,
@@ -60,7 +78,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Nanogen Hair Fibre Locking Spray 100ml",
     "container": "rso",
-    "container_index": "6"
+    "container_index": "6",
+    "css_path": "#rso > div:nth-of-type(7)",
+    "css_class": "g tF2Cxc",
+    "text_len": 302
   },
   {
     "order": 7,
@@ -69,7 +90,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Nanogen waterproof fibre locking spray 100ml - Lloyds ...",
     "container": "rso",
-    "container_index": "7"
+    "container_index": "7",
+    "css_path": "#rso > div:nth-of-type(8)",
+    "css_class": "g tF2Cxc",
+    "text_len": 315
   },
   {
     "order": 8,
@@ -78,7 +102,10 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "Nanogen Hair Fibre Locking Spray (100ml) - LOOKFANTASTIC",
     "container": "rso",
-    "container_index": "8"
+    "container_index": "8",
+    "css_path": "#rso > div:nth-of-type(9)",
+    "css_class": "hlcw0c",
+    "text_len": 324
   },
   {
     "order": 9,
@@ -87,6 +114,9 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|Next",
     "container": "botstuff",
-    "container_index": 0
+    "container_index": 0,
+    "css_path": "#botstuff > div:nth-of-type(1) > div:nth-of-type(3)",
+    "css_class": "",
+    "text_len": 27
   }
 ]

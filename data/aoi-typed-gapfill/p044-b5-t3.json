@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy roxy roxy juniors going coastal backpack",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Roxy Juniors Going Coastal Mochila - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Roxy Juniors Going Coastal Backpack - Amazon.in",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Roxy Girls' Going Coastal Backpack at SwimOutlet.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -64,24 +64,12 @@
     "x": 162.0,
     "y": 1190.0,
     "width": 586.0,
-    "height": 404.0,
+    "height": 536.0,
     "html_handle": "rso[4]",
     "html_signature": "h=\"local\" div.ULSxyf",
     "heading_text": "Local results",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1596.0,
-    "width": 586.0,
-    "height": 130.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Roxy Juniors Going Coastal Backpack- Buy Online in United Arab ...",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1728.0,
     "width": 586.0,
     "height": 144.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Roxy Sugar Baby Backpack Blue | Xtremeinn - Tradeinn",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Roxy Juniors Going Coastal Backpack- Buy Online in United Arab ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1874.0,
     "width": 586.0,
     "height": 256.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Roxy | Surf, Snowboard & Fitness Brand - Women's Lifestyle",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[6]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Roxy Sugar Baby Backpack Blue | Xtremeinn - Tradeinn",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 2132.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Bolsas de playa exterior de algod\u00f3n ROXY y bolsos para Mujer",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "Roxy | Surf, Snowboard & Fitness Brand - Women's Lifestyle",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,10 +113,22 @@
     "y": 2248.0,
     "width": 586.0,
     "height": 113.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Bolsas de playa exterior de algod\u00f3n ROXY y bolsos para Mujer",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2363.0,
+    "width": 586.0,
+    "height": 98.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Ron Jon Surf Shop | Online Store, Surf Site, Men's Surf ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -177,18 +177,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2363.0,
-    "width": 586.0,
-    "height": 98.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

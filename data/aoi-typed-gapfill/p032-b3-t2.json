@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Chauvet DJ Xpress 512 | MUSIC STORE professional",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Chauvet DJ Interfaz DMX Xpress-512S para control ... - Amazon",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Chauvet DJ XPRESS512 Xpress 512 DMX Lighting ... - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "CHAUVET DJ Xpress-512 DMX-512 Interfaz USB",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -64,24 +64,12 @@
     "x": 162.0,
     "y": 1053.0,
     "width": 586.0,
-    "height": 129.0,
+    "height": 238.0,
     "html_handle": "rso[4]",
     "html_signature": "div.(no class)",
     "heading_text": "Chauvet DJ Xpress 512 Plus - Recordcase.de",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1184.0,
-    "width": 586.0,
-    "height": 107.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g",
-    "heading_text": "Xpress 512 - Chauvet DJ",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1293.0,
     "width": 586.0,
     "height": 140.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Chauvet Xpress-512S DMX Controller - Silver for sale online",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[5]",
+    "html_signature": "div.g",
+    "heading_text": "Xpress 512 - Chauvet DJ",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1435.0,
     "width": 586.0,
     "height": 136.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Chauvet DJ Xpress 512 PLUS DMX interface for ShowXpress",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "Chauvet Xpress-512S DMX Controller - Silver for sale online",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,10 +101,22 @@
     "y": 1573.0,
     "width": 586.0,
     "height": 113.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Chauvet DJ Xpress 512 PLUS DMX interface for ShowXpress",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1688.0,
+    "width": 586.0,
+    "height": 100.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Chauvet DJ Xpress-512S DMX Lighting Interface for ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -177,18 +177,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1688.0,
-    "width": 586.0,
-    "height": 100.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

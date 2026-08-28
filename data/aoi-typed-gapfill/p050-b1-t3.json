@@ -4,48 +4,24 @@
     "x": 162.0,
     "y": 133.0,
     "width": 586.0,
-    "height": 195.0,
+    "height": 303.0,
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Chevrolet Corvette C4 Baseball Cap - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 0
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 330.0,
-    "width": 586.0,
-    "height": 106.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Chevrolet Corvette C4 Black Baseball Cap, Baseball Hat - eBay",
-    "source": "html_rso+cv_bbox",
-    "position": 1
   },
   {
     "type": "organic",
     "x": 162.0,
     "y": 438.0,
     "width": 586.0,
-    "height": 155.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Chevrolet Corvette C4 Baseball Cap - Car Beyond Store",
-    "source": "html_rso+cv_bbox",
-    "position": 2
-  },
-  {
-    "type": "paa",
-    "x": 162.0,
-    "y": 595.0,
-    "width": 586.0,
-    "height": 108.0,
-    "html_handle": "rso[3]",
-    "html_signature": "h=\"paa\" div.ULSxyf",
-    "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
-    "position": 3
+    "height": 265.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Chevrolet Corvette C4 Black Baseball Cap, Baseball Hat - eBay",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 1
   },
   {
     "type": "organic",
@@ -53,23 +29,23 @@
     "y": 705.0,
     "width": 586.0,
     "height": 121.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "C4 Corvette Chevy Chevrolet Logo Hat Cap Baseball Cap Black",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "html_handle": "rso[2]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Chevrolet Corvette C4 Baseball Cap - Car Beyond Store",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 2
   },
   {
-    "type": "organic",
+    "type": "paa",
     "x": 162.0,
     "y": 828.0,
     "width": 586.0,
     "height": 168.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Chevrolet Corvette C4 Baseball Cap - desertcart",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "html_handle": "rso[3]",
+    "html_signature": "h=\"paa\" div.ULSxyf",
+    "heading_text": "People also ask",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -77,11 +53,11 @@
     "y": 998.0,
     "width": 586.0,
     "height": 210.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "hats corvette - Buy hats corvette with free shipping on AliExpress",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "heading_text": "C4 Corvette Chevy Chevrolet Logo Hat Cap Baseball Cap Black",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -89,47 +65,47 @@
     "y": 1210.0,
     "width": 586.0,
     "height": 114.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Chevrolet Corvette C4 Baseball Cap - desertcart",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1326.0,
+    "width": 586.0,
+    "height": 111.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "hats corvette - Buy hats corvette with free shipping on AliExpress",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1439.0,
+    "width": 586.0,
+    "height": 121.0,
     "html_handle": "rso[7]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Corvette C4 Sports Car Adjustable Ball Cap Hat Chevy ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1326.0,
-    "width": 586.0,
-    "height": 111.0,
-    "html_handle": "rso[8]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy chevrolet chevrolet corvette c4 baseball cap",
-    "source": "html_rso+cv_bbox",
-    "position": 8
-  },
-  {
-    "type": "unknown_widget",
-    "x": 162.0,
-    "y": 1439.0,
-    "width": 586.0,
-    "height": 121.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 9
-  },
-  {
-    "type": "unknown_widget",
-    "x": 162.0,
     "y": 1562.0,
     "width": 586.0,
     "height": 266.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 10
+    "html_handle": "rso[8]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy chevrolet chevrolet corvette c4 baseball cap",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -141,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -153,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -165,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 11
   },
   {
     "type": "unknown_widget",
@@ -177,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 14
+    "position": 12
   },
   {
     "type": "related_searches",

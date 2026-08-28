@@ -12,15 +12,15 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 542.0,
     "width": 586.0,
     "height": 453.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Tifosi Tyrant Wrap Sunglasses - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -29,10 +29,10 @@
     "y": 997.0,
     "width": 586.0,
     "height": 258.0,
-    "html_handle": "rso[1]",
+    "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
-    "heading_text": "Tifosi Tyrant 2.0 Wrap Sunglasses Matte Black Smoke - eBay",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Tifosi Tyrant Wrap Sunglasses - Amazon.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1257.0,
     "width": 586.0,
     "height": 217.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Tifosi Tyrant 2.0 Polarized Fototec Sunglasses | REI Co-op",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Tifosi Tyrant 2.0 Wrap Sunglasses Matte Black Smoke - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1476.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g",
-    "heading_text": "Tifosi Tyrant 2.0 Sunglasses - A Sight for Sport Eyes",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Tifosi Tyrant 2.0 Polarized Fototec Sunglasses | REI Co-op",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1612.0,
     "width": 586.0,
     "height": 162.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g",
-    "heading_text": "Tifosi Tyrant 2.0 Cycling Sunglasses - Marvel Optics",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Tifosi Tyrant 2.0 Sunglasses - A Sight for Sport Eyes",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1776.0,
     "width": 586.0,
     "height": 158.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g",
-    "heading_text": "Tifosi Tyrant 2.0 Polarized Wrap Sunglasses, Carbon - Ubuy",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Tifosi Tyrant 2.0 Cycling Sunglasses - Marvel Optics",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,22 +89,22 @@
     "y": 1936.0,
     "width": 586.0,
     "height": 138.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Tifosi Optics Men's Sunglasses - Walmart.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g",
+    "heading_text": "Tifosi Tyrant 2.0 Polarized Wrap Sunglasses, Carbon - Ubuy",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 2076.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Tifosi Optics Men's Sunglasses - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {

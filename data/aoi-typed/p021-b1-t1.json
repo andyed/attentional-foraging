@@ -44,7 +44,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Schaeffler LuK RepSet 03-030 Clutch Kit, OEM ... - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -52,24 +52,12 @@
     "x": 162.0,
     "y": 841.0,
     "width": 586.0,
-    "height": 106.0,
+    "height": 232.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Clutch Set- New LuK 03-030 - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 4
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 975.0,
-    "width": 586.0,
-    "height": 98.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g",
-    "heading_text": "LuK 03-030 Transmission Clutch Kit - Autocado",
-    "source": "html_rso+cv_bbox",
-    "position": 5
   },
   {
     "type": "organic",
@@ -77,11 +65,11 @@
     "y": 1108.0,
     "width": 586.0,
     "height": 148.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "LuK 03-030 Transmission Clutch Kit for BMW 328i - PartsHawk",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "html_handle": "rso[2]",
+    "html_signature": "div.g",
+    "heading_text": "LuK 03-030 Transmission Clutch Kit - Autocado",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1293.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g",
-    "heading_text": "LuK 03-030 Clutch Set - Ubuy Qatar",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "LuK 03-030 Transmission Clutch Kit for BMW 328i - PartsHawk",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1407.0,
     "width": 586.0,
     "height": 149.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "BMW Clutch Kit (3 Piece) 21211223602 \u2013 Luk 6243655000",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[4]",
+    "html_signature": "div.g",
+    "heading_text": "LuK 03-030 Clutch Set - Ubuy Qatar",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1591.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "LUK AUTOMOTIVE SYSTEMS 03-030 Clutch Set - Newegg.com",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "BMW Clutch Kit (3 Piece) 21211223602 \u2013 Luk 6243655000",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,11 +113,11 @@
     "y": 1729.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "BMW Clutch Kit - LuK 21211223602 - FCP Euro",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "heading_text": "LUK AUTOMOTIVE SYSTEMS 03-030 Clutch Set - Newegg.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,10 +125,22 @@
     "y": 1845.0,
     "width": 586.0,
     "height": 101.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "BMW Clutch Kit - LuK 21211223602 - FCP Euro",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1981.0,
+    "width": 586.0,
+    "height": 81.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "LuK Clutch Kit 620 1943 00 - spare parts",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -201,18 +201,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1981.0,
-    "width": 586.0,
-    "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "Denso (3121) K20PR-U11 Traditional Spark Plug, Pack of 1",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "DENSO K20PR-U11 (K20PRU11) - JAPANSPARKPLUGS",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g",
     "heading_text": "Denso K20PR-U11 3121 Spark Plug Standard Replaces ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -92,7 +92,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.hlcw0c",
     "heading_text": "K20PR-U11, Spark plugs - DENSO",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -100,24 +100,12 @@
     "x": 162.0,
     "y": 1272.0,
     "width": 586.0,
-    "height": 109.0,
+    "height": 236.0,
     "html_handle": "rso[4]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 8
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1383.0,
-    "width": 586.0,
-    "height": 125.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Denso 3121 K20PR-U11 Nickel U-Groove Spark Plug",
-    "source": "html_rso+cv_bbox",
-    "position": 9
   },
   {
     "type": "organic",
@@ -125,11 +113,11 @@
     "y": 1510.0,
     "width": 586.0,
     "height": 116.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Denso (3121) K20PR-U11 U-Groove Spark Plug Set of 4",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Denso 3121 K20PR-U11 Nickel U-Groove Spark Plug",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,11 +125,11 @@
     "y": 1628.0,
     "width": 586.0,
     "height": 239.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "DENSO Spark Plug K20PR-U11 - Car-parts.ie",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "html_handle": "rso[6]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Denso (3121) K20PR-U11 U-Groove Spark Plug Set of 4",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "organic",
@@ -149,11 +137,11 @@
     "y": 1869.0,
     "width": 586.0,
     "height": 132.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g",
-    "heading_text": "Spark Plug DENSO K20PR-U11 - Trodo.com",
-    "source": "html_rso+cv_bbox",
-    "position": 12
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "DENSO Spark Plug K20PR-U11 - Car-parts.ie",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
   },
   {
     "type": "organic",
@@ -161,10 +149,22 @@
     "y": 2003.0,
     "width": 586.0,
     "height": 162.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g",
+    "heading_text": "Spark Plug DENSO K20PR-U11 - Trodo.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 12
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2167.0,
+    "width": 586.0,
+    "height": 101.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "DENSO Spark Plug K20PR-U11 - spare parts",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 13
   },
   {
@@ -213,18 +213,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2167.0,
-    "width": 586.0,
-    "height": 101.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

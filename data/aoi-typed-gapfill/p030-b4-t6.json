@@ -1,26 +1,26 @@
 [
   {
-    "type": "image_pack",
+    "type": "top_places",
     "x": 162.0,
     "y": 133.0,
     "width": 586.0,
     "height": 478.0,
-    "html_handle": "rso[0]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy schleich schleich hanoverian foal",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Video Game Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "image_pack",
     "x": 162.0,
     "y": 613.0,
     "width": 586.0,
     "height": 281.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.g",
-    "heading_text": "Schleich Horses: Hanoverian Foal - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy schleich schleich hanoverian foal",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -29,10 +29,10 @@
     "y": 896.0,
     "width": 586.0,
     "height": 168.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.g",
-    "heading_text": "SCHLEICH Hanoverian Foal - Amazon UK",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Schleich Horses: Hanoverian Foal - Amazon.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1066.0,
     "width": 586.0,
     "height": 180.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Hannoverian Foal, Red Dun 13929 HORSE CLUB - Schleich",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[2]",
+    "html_signature": "div.g",
+    "heading_text": "SCHLEICH Hanoverian Foal - Amazon UK",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1248.0,
     "width": 586.0,
     "height": 136.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Schleich Gmbh Hanoverian Foal - GO Outdoors",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Hannoverian Foal, Red Dun 13929 HORSE CLUB - Schleich",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1386.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Schleich 13929 - Hanoverian Foal, Dun - Modellpferdeversand",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Schleich Gmbh Hanoverian Foal - GO Outdoors",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1502.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Schleich Hanoverian foals 13818 - spielzeug-guenstig.de",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Schleich 13929 - Hanoverian Foal, Dun - Modellpferdeversand",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1638.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Horse Toys for Girls and Boys 5-12 years old, Hanoverian ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Schleich Hanoverian foals 13818 - spielzeug-guenstig.de",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,22 +101,22 @@
     "y": 1774.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Schleich Hanoverian Foal Animal Figure 13929 NEW IN STOCK",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Horse Toys for Girls and Boys 5-12 years old, Hanoverian ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1889.0,
     "width": 586.0,
     "height": 98.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[8]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Schleich Hanoverian Foal Animal Figure 13929 NEW IN STOCK",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {

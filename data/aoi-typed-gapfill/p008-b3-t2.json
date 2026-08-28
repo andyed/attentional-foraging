@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "3M Cuno CFS8112, Replacement Cartridges - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,19 +68,19 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "3M-Cuno CFS8112-S Replacement Filter - Simply Filters",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1161.0,
     "width": 586.0,
     "height": 205.0,
-    "html_handle": "rso[2]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[3]",
+    "html_signature": "div.(no class)",
+    "heading_text": "3M Cuno Replacement Water Filter Cartridge Cfs8112-s",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1403.0,
     "width": 586.0,
     "height": 116.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.(no class)",
-    "heading_text": "3M Cuno Replacement Water Filter Cartridge Cfs8112-s",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "3M\u2122 Water Filtration Replacement Filter Cartridge 8000 ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1521.0,
     "width": 586.0,
     "height": 162.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "3M\u2122 Water Filtration Replacement Filter Cartridge 8000 ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "3M Cuno CFS8112 Replacement Cartridge For ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 1685.0,
     "width": 586.0,
     "height": 202.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "3M Cuno CFS8112 Replacement Cartridge For ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "3M Cuno CFS8112-S Replacement Filter Cartridge 5581708",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -156,15 +156,15 @@
     "position": 12
   },
   {
-    "type": "organic",
+    "type": "knowledge_panel",
     "x": null,
     "y": null,
     "width": null,
     "height": null,
-    "html_handle": "rso[6]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "3M Cuno CFS8112-S Replacement Filter Cartridge 5581708",
-    "source": "html_only",
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
     "position": -1
   },
   {

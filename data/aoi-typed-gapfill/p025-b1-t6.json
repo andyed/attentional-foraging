@@ -4,24 +4,12 @@
     "x": 162.0,
     "y": 133.0,
     "width": 586.0,
-    "height": 70.0,
+    "height": 223.0,
     "html_handle": "rso[0]",
     "html_signature": "ULSxyf div.ULSxyf",
     "heading_text": "The Best of Annette/Listen",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 0
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 205.0,
-    "width": 586.0,
-    "height": 151.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.(no class)",
-    "heading_text": "The Best of Annette by Annette Funicello on Amazon Music",
-    "source": "html_rso+cv_bbox",
-    "position": 1
   },
   {
     "type": "organic",
@@ -29,23 +17,23 @@
     "y": 358.0,
     "width": 586.0,
     "height": 261.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
-    "heading_text": "The Best Of Annette (2001, CD) - Discogs",
-    "source": "html_rso+cv_bbox",
-    "position": 2
+    "heading_text": "The Best of Annette by Annette Funicello on Amazon Music",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 1
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 621.0,
     "width": 586.0,
     "height": 257.0,
-    "html_handle": "rso[3]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 3
+    "html_handle": "rso[2]",
+    "html_signature": "div.(no class)",
+    "heading_text": "The Best Of Annette (2001, CD) - Discogs",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 2
   },
   {
     "type": "organic",
@@ -56,8 +44,8 @@
     "html_handle": "rso[4]",
     "html_signature": "div.(no class)",
     "heading_text": "The Best of Annette [Buena Vista] by Annette Funicello ...",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -68,20 +56,20 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g",
     "heading_text": "Annette Funicello The Best Of Annette CD album (CDLP) ...",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1353.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Annette Funicello - The Best Of Annette (CD) - Amoeba Music",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
+    "position": 5
   },
   {
     "type": "organic",
@@ -92,8 +80,8 @@
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "The Best of Annette - Spotify - Web Player",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -104,8 +92,8 @@
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Annette Funicello Blu-ray Movies - Best Buy",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "native_ad",
@@ -117,7 +105,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 9
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,32 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[3]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Annette Funicello - The Best Of Annette (CD) - Amoeba Music",
+    "source": "html_only",
+    "y_render": 1652,
+    "position": -1
   },
   {
     "type": "pagination",

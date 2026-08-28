@@ -44,7 +44,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Lascar EL-USB-1-LCD Temperature Data Logger with LCD",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Digital Data Loggers - Lascar Electronics",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,44 +68,32 @@
     "html_handle": "rso[2]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1261.0,
     "width": 586.0,
-    "height": 98.0,
-    "html_handle": "rso[3]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 6
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1385.0,
-    "width": 586.0,
-    "height": 162.0,
+    "height": 286.0,
     "html_handle": "rso[4]",
     "html_signature": "div.(no class)",
     "heading_text": "Lascar Electronics EL-USB-1-LCD Temperature Data Logger",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 6
   },
   {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1549.0,
     "width": 586.0,
     "height": 154.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Industrial USB temperature data logger Lascar EasyLog",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1705.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Lascar Electronics EasyLog USB Temperature Data Logger",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "Industrial USB temperature data logger Lascar EasyLog",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -128,8 +116,8 @@
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Lascar Electronics El-usb-1-lcd USB Temperature Data ...",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -140,8 +128,8 @@
     "html_handle": "rso[8]",
     "html_signature": "div.g",
     "heading_text": "Lascar Electronics EL-USB-LITE Temperature Datalogger",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "organic",
@@ -152,8 +140,8 @@
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "USB Temperature Logger w/ LCD Display - MicroDAQ.com",
-    "source": "html_rso+cv_bbox",
-    "position": 12
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
   },
   {
     "type": "native_ad",
@@ -165,7 +153,32 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 12
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[3]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Lascar Electronics EasyLog USB Temperature Data Logger",
+    "source": "html_only",
+    "y_render": 2041,
+    "position": -1
   },
   {
     "type": "related_searches",

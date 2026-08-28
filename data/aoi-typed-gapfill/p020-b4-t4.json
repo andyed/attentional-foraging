@@ -32,7 +32,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "TOSHIBA P300 - Disco duro interno de 3 TB, 3,5 ... - Amazon",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -40,24 +40,12 @@
     "x": 162.0,
     "y": 934.0,
     "width": 586.0,
-    "height": 128.0,
+    "height": 237.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Discos duros (HDD, SSD y NAS) Toshiba 3,5 - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 3
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1064.0,
-    "width": 586.0,
-    "height": 107.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "HDD TOSHIBA 3TB 3,5\" HDWD130 PC P300 64MB 7200RPM",
-    "source": "html_rso+cv_bbox",
-    "position": 4
   },
   {
     "type": "organic",
@@ -65,11 +53,11 @@
     "y": 1173.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Buy Toshiba P300 3TB Desktop PC HDD (HDWD130UZSVA)",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "heading_text": "HDD TOSHIBA 3TB 3,5\" HDWD130 PC P300 64MB 7200RPM",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -77,11 +65,11 @@
     "y": 1288.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Unidad de disco duro interna TOSHIBA 3TB sapa3 6 Gb/s ...",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "heading_text": "Buy Toshiba P300 3TB Desktop PC HDD (HDWD130UZSVA)",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1403.0,
     "width": 586.0,
     "height": 116.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Toshiba DT01ACA300 3TB 3.5\u00b4\u00b4 Hard Disk Silver | Techinn",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Unidad de disco duro interna TOSHIBA 3TB sapa3 6 Gb/s ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,23 +89,23 @@
     "y": 1521.0,
     "width": 586.0,
     "height": 254.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Toshiba P300 3TB Bulk (HDWD130UZSVA) - Idealo",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[5]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Toshiba DT01ACA300 3TB 3.5\u00b4\u00b4 Hard Disk Silver | Techinn",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1777.0,
     "width": 586.0,
     "height": 141.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 9
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Toshiba P300 3TB Bulk (HDWD130UZSVA) - Idealo",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "unknown_widget",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "related_searches",

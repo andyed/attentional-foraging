@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "Garmin Z\u016bmo 660LM EU - Navegador GPS para ... - Amazon",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Garmin Zumo 660 Europa Motorcycle Navigation - FC-Moto",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -40,36 +40,12 @@
     "x": 162.0,
     "y": 832.0,
     "width": 586.0,
-    "height": 230.0,
+    "height": 480.0,
     "html_handle": "rso[2]",
     "html_signature": "div.(no class)",
     "heading_text": "z\u016bmo\u00ae 660 - Garmin",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 3
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1064.0,
-    "width": 586.0,
-    "height": 120.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Garmin zumo 660 Motorcycle Sat Nav Maps - ActiveGPS",
-    "source": "html_rso+cv_bbox",
-    "position": 4
-  },
-  {
-    "type": "image_pack",
-    "x": 162.0,
-    "y": 1186.0,
-    "width": 586.0,
-    "height": 126.0,
-    "html_handle": "rso[4]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy garmin zumo 660 europe",
-    "source": "html_rso+cv_bbox",
-    "position": 5
   },
   {
     "type": "organic",
@@ -77,47 +53,47 @@
     "y": 1314.0,
     "width": 586.0,
     "height": 120.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Garmin zumo 660 Motorcycle Sat Nav Maps - ActiveGPS",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
+  },
+  {
+    "type": "image_pack",
+    "x": 162.0,
+    "y": 1436.0,
+    "width": 586.0,
+    "height": 245.0,
+    "html_handle": "rso[4]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy garmin zumo 660 europe",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1683.0,
+    "width": 586.0,
+    "height": 116.0,
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Garmin Zumo 660LM | Motardinn - Tradeinn",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1436.0,
-    "width": 586.0,
-    "height": 245.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "GARMIN Zumo 660 (english) - TRAMsoft GmbH",
-    "source": "html_rso+cv_bbox",
-    "position": 7
-  },
-  {
-    "type": "unknown_widget",
-    "x": 162.0,
-    "y": 1683.0,
-    "width": 586.0,
-    "height": 116.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 8
-  },
-  {
-    "type": "unknown_widget",
-    "x": 162.0,
     "y": 1801.0,
     "width": 586.0,
     "height": 100.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 9
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "GARMIN Zumo 660 (english) - TRAMsoft GmbH",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "native_ad",
@@ -129,7 +105,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -141,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -153,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 10
   },
   {
     "type": "related_searches",

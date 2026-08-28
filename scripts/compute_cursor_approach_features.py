@@ -463,6 +463,16 @@ def main():
         return 0
 
     trial_ids = get_trial_ids()
+    if args.attribution in ("typed", "typed_gapfill"):
+        # alignment_suspect trials are excluded from typed-flavor
+        # derivation (data/aoi-typed/alignment-exclusions.json;
+        # docs/local-pack-aoi-shift.md Quality gate).
+        from data_loader import typed_alignment_exclusions
+        excluded = typed_alignment_exclusions()
+        n_before = len(trial_ids)
+        trial_ids = [t for t in trial_ids if t not in excluded]
+        print(f"[exclusions] {n_before - len(trial_ids)} alignment_suspect "
+              f"trials excluded from {args.attribution}", file=sys.stderr)
     all_records = []
     n_ok = n_fail = 0
     for i, tid in enumerate(trial_ids):

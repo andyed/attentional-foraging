@@ -44,7 +44,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Brother TN300HL Black Toner Cartridge - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "5x Brother TN300HL Black Toner Cartridge Tn-300hl ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,19 +68,19 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Brother TN300HL Black Compatible Toner Cartridge ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1185.0,
     "width": 586.0,
     "height": 107.0,
-    "html_handle": "rso[3]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g",
+    "heading_text": "Brother TN-300 (TN300HL) Black Toner Cartridge",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,22 +89,22 @@
     "y": 1331.0,
     "width": 586.0,
     "height": 183.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g",
-    "heading_text": "Brother TN-300 (TN300HL) Black Toner Cartridge",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[5]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Brother Compatible TN300HL Laser Toner Cartridge - LD ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1548.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Brother Compatible TN300HL Laser Toner Cartridge - LD ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 1664.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Brother TN300HL (Compatible) Black Laser Toner Cartridge",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Compatible Brother TN300HL Black Laser Toner Cartridge",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,10 +125,10 @@
     "y": 1780.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Compatible Brother TN300HL Black Laser Toner Cartridge",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[8]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Genuine Brother TN300HL Black Toner, 2200 Pages",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -168,15 +168,28 @@
     "position": 13
   },
   {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[3]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
     "type": "organic",
     "x": null,
     "y": null,
     "width": null,
     "height": null,
-    "html_handle": "rso[8]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Genuine Brother TN300HL Black Toner, 2200 Pages",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Brother TN300HL (Compatible) Black Laser Toner Cartridge",
     "source": "html_only",
+    "y_render": 1849,
     "position": -1
   },
   {

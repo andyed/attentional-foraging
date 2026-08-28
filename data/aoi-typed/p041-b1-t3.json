@@ -44,7 +44,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Bosch Automotive (6711) OE Fine Wire Platinum Spark Plug ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.hlcw0c",
     "heading_text": "BOSCH 6711 PLATINUM SPARK PLUGS - SET OF 4 | eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -64,24 +64,12 @@
     "x": 162.0,
     "y": 1236.0,
     "width": 586.0,
-    "height": 94.0,
+    "height": 193.0,
     "html_handle": "rso[2]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1355.0,
-    "width": 586.0,
-    "height": 74.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Bosch Platinum Spark Plug 6711 - AutoZone",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1473.0,
     "width": 586.0,
     "height": 104.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "HR9SPP300X Bosch 6711 0242225672 Spark Plug",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "heading_text": "Bosch Platinum Spark Plug 6711 - AutoZone",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1608.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Bosch 6711 Spark Plug - Autocado",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "HR9SPP300X Bosch 6711 0242225672 Spark Plug",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1728.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g",
-    "heading_text": "Bosch 6711 Bosch OE Fine Wire Platinum Spark Plug - Ubuy",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Bosch 6711 Spark Plug - Autocado",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,11 +113,11 @@
     "y": 1843.0,
     "width": 586.0,
     "height": 147.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g",
-    "heading_text": "Bosch Automotive 6711 Bosch OE Platinum Spark Plugs",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "heading_text": "Bosch 6711 Bosch OE Fine Wire Platinum Spark Plug - Ubuy",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,10 +125,22 @@
     "y": 2028.0,
     "width": 586.0,
     "height": 122.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g",
+    "heading_text": "Bosch Automotive 6711 Bosch OE Platinum Spark Plugs",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2187.0,
+    "width": 586.0,
+    "height": 82.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Bosch Platinum 6711 Spark Plug - Chrysler, Dodge, Jeep",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -213,18 +213,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2187.0,
-    "width": 586.0,
-    "height": 82.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

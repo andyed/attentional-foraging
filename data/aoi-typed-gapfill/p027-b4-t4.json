@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Strutz Sole Angel, 1 Pair - Amazon.in",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "STRUTZ Sole Angel - Soporte para arco acolchado ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Strutz Sole Angel, 1 Pair - Walmart.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.(no class)",
     "heading_text": "STRUTZ Pain relieving Arch Supports - LoveMyStrutz",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.hlcw0c",
     "heading_text": "DARKKITTU 1 Pair Foot Support Strutz Cushioned Arch ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,19 +80,19 @@
     "html_handle": "rso[5]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy strutz strutz sole angel 1 pair",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1469.0,
     "width": 586.0,
     "height": 118.0,
-    "html_handle": "rso[6]",
-    "html_signature": "h=\"comp\" div.TQc1id",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Strutz Arch Supports | Lower Extremity Review Magazine",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1589.0,
     "width": 586.0,
     "height": 133.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Strutz Arch Supports | Lower Extremity Review Magazine",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "new best prodect Strutz Cushioned Arch Supports, , 1 pair foot ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,23 +113,23 @@
     "y": 1724.0,
     "width": 586.0,
     "height": 122.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "new best prodect Strutz Cushioned Arch Supports, , 1 pair foot ...",
-    "source": "html_rso+cv_bbox",
-    "position": 9
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1848.0,
-    "width": 586.0,
-    "height": 153.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "1 Pair Strutz Cushioned Arch Foot Support Decrease Plantar ...",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "h=\"comp\" div.TQc1id",
+    "heading_text": "Complementary results",
+    "source": "html_only+no_geometry",
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -165,6 +165,18 @@
     "html_signature": "rhs.kp[data-attrid=kc:/collection/knowledge_panel]",
     "heading_text": "Complementary results",
     "source": "html_rhs",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 1848.0,
+    "width": 586.0,
+    "height": 153.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

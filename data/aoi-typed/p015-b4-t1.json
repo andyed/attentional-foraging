@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Reloj Swatch RUBINE REBEL SUOR704 - Joyeria S\u00e1nchez",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -28,36 +28,12 @@
     "x": 162.0,
     "y": 658.0,
     "width": 586.0,
-    "height": 100.0,
+    "height": 345.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "RUBINE REBEL - SUOR704 - Swatch\u00ae Official Store",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 2
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 785.0,
-    "width": 586.0,
-    "height": 96.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Swatch RUBINE REBEL SUOR704 - Relojeshermosos.es",
-    "source": "html_rso+cv_bbox",
-    "position": 3
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 908.0,
-    "width": 586.0,
-    "height": 95.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Reloj Swatch Rubine Rebel SUOR704 | Joyer\u00eda Roberto",
-    "source": "html_rso+cv_bbox",
-    "position": 4
   },
   {
     "type": "organic",
@@ -65,11 +41,11 @@
     "y": 1037.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "SWATCH NEW GENT RUBINE REBEL SUOR704 - Planeta ...",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "heading_text": "Swatch RUBINE REBEL SUOR704 - Relojeshermosos.es",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -77,11 +53,11 @@
     "y": 1155.0,
     "width": 586.0,
     "height": 119.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Swatch Rubine Rebel Watch (SUOR704)",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "heading_text": "Reloj Swatch Rubine Rebel SUOR704 | Joyer\u00eda Roberto",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -89,47 +65,47 @@
     "y": 1312.0,
     "width": 586.0,
     "height": 81.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "SWATCH NEW GENT RUBINE REBEL SUOR704 - Planeta ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1424.0,
+    "width": 586.0,
+    "height": 85.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Swatch Rubine Rebel Watch (SUOR704)",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1542.0,
+    "width": 586.0,
+    "height": 107.0,
     "html_handle": "rso[6]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Swatch Rubine Rebel Ladies Watch SUOR704 | eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1424.0,
-    "width": 586.0,
-    "height": 85.0,
-    "html_handle": "rso[7]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy swatch swatch rubine rebel suor704",
-    "source": "html_rso+cv_bbox",
-    "position": 8
-  },
-  {
-    "type": "unknown_widget",
-    "x": 162.0,
-    "y": 1542.0,
-    "width": 586.0,
-    "height": 107.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 9
-  },
-  {
-    "type": "unknown_widget",
-    "x": 162.0,
     "y": 1698.0,
     "width": 586.0,
     "height": 244.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 10
+    "html_handle": "rso[7]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy swatch swatch rubine rebel suor704",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -141,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 9
   },
   {
     "type": "related_searches",

@@ -12,15 +12,15 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 526.0,
     "width": 586.0,
     "height": 436.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Victorinox Toiletry Bag - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Department Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -29,10 +29,10 @@
     "y": 997.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Victorinox Hanging Toiletry Kit in black - 610609",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Victorinox Toiletry Bag - Amazon.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1135.0,
     "width": 586.0,
     "height": 204.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Victorinox TA 5.0 Hanging Toiletry Kit - The Luggage ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Victorinox Hanging Toiletry Kit in black - 610609",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1373.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Victorinox Other Travel Accessories for sale - eBay",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Victorinox TA 5.0 Hanging Toiletry Kit - The Luggage ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,47 +65,35 @@
     "y": 1486.0,
     "width": 586.0,
     "height": 188.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Victorinox HANGING COSMETIC CASE Travel Toiletry Kit",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[3]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Victorinox Other Travel Accessories for sale - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "image_pack",
+    "type": "organic",
     "x": 162.0,
     "y": 1704.0,
     "width": 586.0,
     "height": 187.0,
-    "html_handle": "rso[5]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy victorinox victorinox luggage hanging cosmetic case",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[4]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Victorinox HANGING COSMETIC CASE Travel Toiletry Kit",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "image_pack",
     "x": 162.0,
     "y": 1936.0,
     "width": 586.0,
-    "height": 69.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "height": 244.0,
+    "html_handle": "rso[5]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy victorinox victorinox luggage hanging cosmetic case",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 7
-  },
-  {
-    "type": "unknown_widget",
-    "x": 162.0,
-    "y": 2084.0,
-    "width": 586.0,
-    "height": 96.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 8
   },
   {
     "type": "native_ad",
@@ -117,7 +105,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 9
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
   },
   {
     "type": "related_searches",

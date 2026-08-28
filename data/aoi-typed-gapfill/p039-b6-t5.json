@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Plustek OpticFilm 8200I AI - Esc\u00e1ner (36,8 x 25,4 mm, ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g",
     "heading_text": "Plustek OpticFilm 8200i AI - 35mm Film & Slides Scanner. ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -40,24 +40,12 @@
     "x": 162.0,
     "y": 833.0,
     "width": 586.0,
-    "height": 210.0,
+    "height": 318.0,
     "html_handle": "rso[2]",
     "html_signature": "div.(no class)",
     "heading_text": "Plustek Scanner OpticFilm 8200i Ai",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 3
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1045.0,
-    "width": 586.0,
-    "height": 106.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Plustek OpticFilm 8200i Ai Film Scanner - B&H",
-    "source": "html_rso+cv_bbox",
-    "position": 4
   },
   {
     "type": "organic",
@@ -65,11 +53,11 @@
     "y": 1153.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Plustek OpticFilm 8200i Ai (19 stores) \u2022 PriceRunner \u00bb",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "heading_text": "Plustek OpticFilm 8200i Ai Film Scanner - B&H",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -77,11 +65,11 @@
     "y": 1289.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Plustek OpticFilm 8200i Ai Film Scanner | Park Cameras",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "heading_text": "Plustek OpticFilm 8200i Ai (19 stores) \u2022 PriceRunner \u00bb",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1425.0,
     "width": 586.0,
     "height": 133.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Plustek OpticFilm 8200i Ai FIlm Scanner - Camera World",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "heading_text": "Plustek OpticFilm 8200i Ai Film Scanner | Park Cameras",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,23 +89,23 @@
     "y": 1560.0,
     "width": 586.0,
     "height": 112.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Plustek OpticFilm 8200i Ai Film Scanner | Conrad.com",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Plustek OpticFilm 8200i Ai FIlm Scanner - Camera World",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1674.0,
     "width": 586.0,
     "height": 117.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 9
+    "html_handle": "rso[7]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Plustek OpticFilm 8200i Ai Film Scanner | Conrad.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
   },
   {
     "type": "unknown_widget",
@@ -165,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 13
+    "position": 12
   },
   {
     "type": "related_searches",

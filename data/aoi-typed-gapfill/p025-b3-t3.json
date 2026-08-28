@@ -24,15 +24,15 @@
     "position": 1
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 725.0,
     "width": 586.0,
     "height": 454.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Intex Pull-out Sofa Inflatable Bed, 76\" X 87\" X 26\", Queen",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Hypermarkets",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1181.0,
     "width": 586.0,
     "height": 336.0,
-    "html_handle": "rso[1]",
+    "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
-    "heading_text": "Intex Queen Inflatable Pull Out Sofa Bed, 1 Each - Walmart",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Intex Pull-out Sofa Inflatable Bed, 76\" X 87\" X 26\", Queen",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1519.0,
     "width": 586.0,
     "height": 304.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
-    "heading_text": "Intex Queen Size Inflatable Pull-Out Sofa Bed Couch and ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Intex Queen Inflatable Pull Out Sofa Bed, 1 Each - Walmart",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -64,24 +64,12 @@
     "x": 162.0,
     "y": 1825.0,
     "width": 586.0,
-    "height": 177.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Intex Inflatable Pull-Out Sofa Couch Bed, Queen - Dark Gray",
-    "source": "html_rso+cv_bbox",
+    "height": 334.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Intex Queen Size Inflatable Pull-Out Sofa Bed Couch and ...",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 2004.0,
-    "width": 586.0,
-    "height": 155.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Intex Inflatable Pull-Out Sofa Bed Sleep Away Futon Couch ...",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
@@ -89,35 +77,35 @@
     "y": 2161.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Intex Queen Size Inflatable Pull-Out Sofa Bed ... - Overstock.com",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Intex Inflatable Pull-Out Sofa Couch Bed, Queen - Dark Gray",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 2297.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 8
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Intex Inflatable Pull-Out Sofa Bed Sleep Away Futon Couch ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 2433.0,
     "width": 586.0,
     "height": 116.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 9
+    "html_handle": "rso[5]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Intex Queen Size Inflatable Pull-Out Sofa Bed ... - Overstock.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
   },
   {
     "type": "related_searches",

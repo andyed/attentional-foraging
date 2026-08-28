@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "Bosch 72204WS / F00E369874 Workshop Engine Oil Filter",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Oil Filter Bosch 72204WS | eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -76,24 +76,12 @@
     "x": 162.0,
     "y": 1100.0,
     "width": 586.0,
-    "height": 109.0,
+    "height": 238.0,
     "html_handle": "rso[2]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 6
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1211.0,
-    "width": 586.0,
-    "height": 127.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g",
-    "heading_text": "Mercedes Sprinter Engine Oil Filter 0001802609 \u2013 Bosch ...",
-    "source": "html_rso+cv_bbox",
-    "position": 7
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1340.0,
     "width": 586.0,
     "height": 188.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Bosch 72204WS / F00E369874 Workshop Engine Oil Filter",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[3]",
+    "html_signature": "div.g",
+    "heading_text": "Mercedes Sprinter Engine Oil Filter 0001802609 \u2013 Bosch ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1530.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "72204WS by BOSCH - Workshop Oil Filters - FinditParts",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "Bosch 72204WS / F00E369874 Workshop Engine Oil Filter",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,11 +113,11 @@
     "y": 1666.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Filter,Oil 72204WS - Wheeler Fleet",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "heading_text": "72204WS by BOSCH - Workshop Oil Filters - FinditParts",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,11 +125,11 @@
     "y": 1782.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Deals on Bosch 72204WS F00E369874 Workshop Engine Oil Filter ...",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "heading_text": "Filter,Oil 72204WS - Wheeler Fleet",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "organic",
@@ -149,11 +137,11 @@
     "y": 1898.0,
     "width": 586.0,
     "height": 137.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g",
-    "heading_text": "Mercedes-Benz Bosch 72204WS Engine Oil Filter - Car Parts ...",
-    "source": "html_rso+cv_bbox",
-    "position": 12
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Deals on Bosch 72204WS F00E369874 Workshop Engine Oil Filter ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
   },
   {
     "type": "organic",
@@ -161,10 +149,22 @@
     "y": 2037.0,
     "width": 586.0,
     "height": 158.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g",
+    "heading_text": "Mercedes-Benz Bosch 72204WS Engine Oil Filter - Car Parts ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 12
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2197.0,
+    "width": 586.0,
+    "height": 98.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "BOSCH 72204WS Oil Filter - RockAuto",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 13
   },
   {
@@ -225,18 +225,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2197.0,
-    "width": 586.0,
-    "height": 98.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

@@ -1,5 +1,104 @@
 # Changelog
 
+## AllSERP enrichment v1.1.0 — 2026-08-28 — typed-AOI geometric realignment
+
+**Consumer action required.** The typed AOI maps changed in place. Same
+schema, corrected values: AOI labels moved in a large fraction of trials, so
+identical downstream code produces different numbers. Re-derive; do not mix
+v1.0.0-era derived artifacts with v1.1.0 maps.
+
+Release marker: every `scripts/output/adserp_aois_by_trial_id_*_summary.json`
+now carries `allserp_release` and the `alignment_exclusions` block, so a bare
+CSV can be identified.
+
+### Why
+
+Sara Allawati (2026-08-28) spotted Google Maps / local-results blocks sitting
+between organic links with no corresponding AOI. Root cause: in these SERPs
+the local pack renders **outside `#rso`** (`div#Odp5De` under `.M8OgIe`), so
+Phase 1 emitted no card for it while the CV extractor did bbox it. Phase 2
+matched the k-th non-ad bbox to the k-th HTML card **by index**, so the pack's
+bbox absorbed the first card's label and every main-column label below it
+shifted up one slot — the same failure class as the dd_top cellsplit shift.
+
+Investigating that exposed two further members of the same class: any
+card/bbox count mismatch (CV over-segmentation, Phase-1 card merging) shifted
+labels the same way, and `html.parser` and Chromium parse some SERPs into
+**different trees** — right-rail knowledge panels that `html.parser` keeps as
+`#rso` children are re-parented by Chromium, silently shifting `nth-of-type`
+indices so cards were measured against their neighbour's geometry.
+
+### What landed
+
+- **Local packs typed.** `extract_html_widget_types.py` emits a `top_places`
+  card for out-of-`#rso` packs, DOM-ordered against `#rso`, heading from the
+  visible `div.gsmt`. 268 trials recovered.
+- **Index matching replaced by geometric alignment.** New Phase 1.5
+  (`measure_card_geometry.py`) renders every SERP snapshot in headless
+  Chromium at the dataset's 1280 px capture width and measures each card's
+  page-space box. `build_typed_aoi_map.py` now aligns cards to CV bboxes with
+  monotonic DP under a per-trial Theil-Sen render→dataset map, plus segment
+  absorption (CV over-segmentation) and span rescue (tall cards CV chopped
+  up). Corpus mean residual **2.0 px**, p90 4.6 px.
+- **Identity-verified measurement.** Cards carry class/heading/text-length
+  identity; a measurement is accepted only when identity verifies, repaired by
+  shifting the last `nth-of-type` index, else reported missing. 2,606 cards
+  repaired; 57 / 30,638 (0.19%) unverifiable.
+- **Off-column routing.** Cards whose verified rendered x sits far from the
+  main-column median (right-rail panels `html.parser` misplaced into `#rso`)
+  are pulled off the main axis to `position = -1`.
+- **Alignment exclusions.** 14 trials (0.5%) whose rank lattice cannot be
+  verified geometrically are listed in `data/aoi-typed/alignment-exclusions.json`
+  and dropped from every typed product.
+- **Producers that never existed.** `compute_butterworth_lfhf.py` and
+  `compute_ripa2.py` had no `typed` branch despite shipping `-typed.json`
+  outputs; both now have one.
+
+### Consumer-visible changes (`adserp_aois_by_trial_id_typed_gapfill.csv`)
+
+| | v1.0.0 | v1.1.0 | Δ |
+|---|---:|---:|---:|
+| rows | 37,174 | 36,370 | −804 |
+| trials | 2,776 | 2,762 | −14 (excluded) |
+| `knowledge_panel` | 746 | **0** | −746 |
+| `top_places` | 84 | **338** | +254 |
+| `unknown_widget` | 788 | 999 | +211 |
+| `organic` | 22,354 | 21,917 | −437 |
+
+**42.2% of retained trials have a corrected main-column etype sequence.**
+
+The `knowledge_panel` → 0 is the headline correction and is verified, not a
+regression: those cards render at x≈804, width 369, height ~3,000 px on a
+1,280 px page — the **right rail** — while the main column sits at x≈108.
+Screenshot-confirmed (e.g. p004-b1-t10, where that block is a "Shop now" ads
+panel). v1.0.0 was inserting a phantom main-column row in 746 places, which
+pushed every organic rank below it one slot deeper.
+
+### Downstream re-derived
+
+`cursor-approach-features-typed{,-buf500,-gapfill,-gapfill-buf500}.json`,
+`butterworth-lfhf-by-position-typed.json`, `ripa2-by-position-typed.json`,
+`k-coefficient-by-position-typed.json`,
+`saccade-orientation-by-{position,trial}-typed.json`,
+`retreat-arcs-typed.json`, `adsight-noticed-features-typed-gapfill.json`,
+typed regression-label caches. Pre-realignment copies retained as
+`*.stale-preAlignment-2026-08-28.*`.
+
+### Impact on published/claimed numbers
+
+- **LF/HF (NB14) unchanged** to three decimals — steep ρ = −1.000, plateau
+  −0.600 (n.s.), full −0.903 — despite 21% of trials changing their
+  visited-position set. Rank medians absorb per-trial label shifts.
+- **Knee/ceiling depth model re-derived.** The knee (deepest rank fixated
+  before the first >100 px scroll) and the fold ceiling C both come from
+  `typed_aoi_tops`, so both were re-derived. Knee distribution unchanged
+  and still matching published values within a point at every rank; the
+  proportional-vs-absolute model comparison is unchanged (ΔAIC ≈ +378).
+- **RIPA2 rank gradient is window-fragile in both substrates** (ranks 0–7
+  strengthen, 0–9 flips n.s.); report window sensitivity rather than a bare ρ.
+- Full delta: `docs/typed-realignment-delta.md`.
+
+
 ## 2026-05-05 — Y-pixel coverage fix (`typed_gapfill` flavor)
 
 Branch: `bbox-y-coverage-fix`. Adds a fifth AOI attribution flavor (`typed_gapfill`) as a pragmatic post-processing modifier on the `typed` cascade.

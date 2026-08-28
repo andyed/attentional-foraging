@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Amazon.com: Stander 30\" Safety Bed Rail, Adjustable ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -16,24 +16,12 @@
     "x": 162.0,
     "y": 304.0,
     "width": 586.0,
-    "height": 99.0,
+    "height": 221.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "30\u201d Safety Bed Rail - Stander",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 1
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 429.0,
-    "width": 586.0,
-    "height": 96.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g",
-    "heading_text": "30\" Pivoting Safety Bed Rail by Standers Inc. - Cascade ...",
-    "source": "html_rso+cv_bbox",
-    "position": 2
   },
   {
     "type": "organic",
@@ -41,11 +29,11 @@
     "y": 559.0,
     "width": 586.0,
     "height": 166.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Stander 30 Inch Safety Bed Rail, Swing Down ... - Walmart",
-    "source": "html_rso+cv_bbox",
-    "position": 3
+    "html_handle": "rso[2]",
+    "html_signature": "div.g",
+    "heading_text": "30\" Pivoting Safety Bed Rail by Standers Inc. - Cascade ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 2
   },
   {
     "type": "organic",
@@ -53,11 +41,11 @@
     "y": 727.0,
     "width": 586.0,
     "height": 258.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Stander 30\" Pivoting Safety Bed Rail - IndeMedical.com",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "html_handle": "rso[3]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Stander 30 Inch Safety Bed Rail, Swing Down ... - Walmart",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -65,11 +53,11 @@
     "y": 987.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Standers 30 Inch Pivoting Safety Bed Rail - ADW Diabetes",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "heading_text": "Stander 30\" Pivoting Safety Bed Rail - IndeMedical.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -77,35 +65,35 @@
     "y": 1123.0,
     "width": 586.0,
     "height": 113.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Standers 30 Inch Pivoting Safety Bed Rail - ADW Diabetes",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1238.0,
+    "width": 586.0,
+    "height": 139.0,
     "html_handle": "rso[6]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Stander 30\" Safety Bed Rail - ACG Medical Supply",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1238.0,
-    "width": 586.0,
-    "height": 139.0,
-    "html_handle": "rso[7]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy standers 30 pivoting safety bed rail",
-    "source": "html_rso+cv_bbox",
-    "position": 7
-  },
-  {
-    "type": "unknown_widget",
-    "x": 162.0,
     "y": 1379.0,
     "width": 586.0,
     "height": 266.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 8
+    "html_handle": "rso[7]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy standers 30 pivoting safety bed rail",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "native_ad",
@@ -117,7 +105,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 9
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "related_searches",

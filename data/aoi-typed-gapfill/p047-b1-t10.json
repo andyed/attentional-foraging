@@ -44,7 +44,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Allimax, 100% Allicin Powder Capsules, 180 mg, 30 ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ALLIMAX Capsules 180mg 30 Capsules - Amazon.ca",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Allimax 180mg 90 Capsules. Allicin Garlic Supplement to ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Allimax 100 Allicin Powder Capsules 180 MG 30 Veggie ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -92,19 +92,19 @@
     "html_handle": "rso[4]",
     "html_signature": "div.(no class)",
     "heading_text": "Allimax 100% Allicin Powder Capsules 180 ... - GoSupps.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1449.0,
     "width": 586.0,
     "height": 133.0,
-    "html_handle": "rso[5]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Allimax Stabilized Allicin 180 mg (VCaps) - Vitasave",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 1584.0,
     "width": 586.0,
     "height": 135.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Allimax Stabilized Allicin 180 mg (VCaps) - Vitasave",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Allimax Caplets 180mg, 30 Ct - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,22 +125,22 @@
     "y": 1721.0,
     "width": 586.0,
     "height": 166.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Allimax Caplets 180mg, 30 Ct - Walmart.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[8]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Allicin Powder Dietary Supplement 180 Mg - 30 Capsules",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
-    "type": "organic",
+    "type": "image_pack",
     "x": 162.0,
     "y": 1889.0,
     "width": 586.0,
     "height": 267.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Allicin Powder Dietary Supplement 180 Mg - 30 Capsules",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[9]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy allimax allimax powder capsules 30 capsules",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -168,16 +168,28 @@
     "position": 13
   },
   {
-    "type": "image_pack",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 2506.0,
     "width": 586.0,
     "height": 230.0,
-    "html_handle": "rso[9]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy allimax allimax powder capsules 30 capsules",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 14
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[5]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
   },
   {
     "type": "related_searches",

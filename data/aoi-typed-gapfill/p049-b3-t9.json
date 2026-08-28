@@ -12,52 +12,28 @@
     "position": 0
   },
   {
-    "type": "image_pack",
+    "type": "top_places",
     "x": 162.0,
     "y": 564.0,
     "width": 586.0,
-    "height": 382.0,
-    "html_handle": "rso[0]",
-    "html_signature": "ULSxyf+img div.ULSxyf",
-    "heading_text": "Find results on",
-    "source": "html_rso+cv_bbox",
-    "position": 1
-  },
-  {
-    "type": "top_places",
-    "x": 162.0,
-    "y": 948.0,
-    "width": 586.0,
-    "height": 122.0,
+    "height": 683.0,
     "html_handle": "rso[1]",
     "html_signature": "h=\"local\" div.ULSxyf",
     "heading_text": "Local results",
-    "source": "html_rso+cv_bbox",
-    "position": 2
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 1
   },
   {
     "type": "image_pack",
-    "x": 162.0,
-    "y": 1072.0,
-    "width": 586.0,
-    "height": 175.0,
-    "html_handle": "rso[2]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy vilac vilac metal car red",
-    "source": "html_rso+cv_bbox",
-    "position": 3
-  },
-  {
-    "type": "organic",
     "x": 162.0,
     "y": 1249.0,
     "width": 586.0,
     "height": 284.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g",
-    "heading_text": "Vilac Metal car, red - Toys & Games - Amazon",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy vilac vilac metal car red",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 2
   },
   {
     "type": "organic",
@@ -65,11 +41,11 @@
     "y": 1535.0,
     "width": 586.0,
     "height": 167.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Red vintage car - Vilac",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "html_handle": "rso[3]",
+    "html_signature": "div.g",
+    "heading_text": "Vilac Metal car, red - Toys & Games - Amazon",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -77,11 +53,11 @@
     "y": 1704.0,
     "width": 586.0,
     "height": 112.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Vilac Red Metal Car - Baby and Child Store",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "heading_text": "Red vintage car - Vilac",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -89,11 +65,11 @@
     "y": 1818.0,
     "width": 586.0,
     "height": 135.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Buy Vilac Vintage Car from \u00a379.95 (Today) - Ride Ons - Idealo",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "heading_text": "Vilac Red Metal Car - Baby and Child Store",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -101,11 +77,11 @@
     "y": 1955.0,
     "width": 586.0,
     "height": 246.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g",
-    "heading_text": "Vilac - Red Metal Car - Hamleys",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Buy Vilac Vintage Car from \u00a379.95 (Today) - Ride Ons - Idealo",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -113,11 +89,11 @@
     "y": 2203.0,
     "width": 586.0,
     "height": 182.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Metal Car Ride-On Vilac Toys and Hobbies Children",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "html_handle": "rso[7]",
+    "html_signature": "div.g",
+    "heading_text": "Vilac - Red Metal Car - Hamleys",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -125,11 +101,11 @@
     "y": 2387.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[9]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Vilac Classic Ride On Metal Car \u2013 Red - Elenfhant",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "heading_text": "Metal Car Ride-On Vilac Toys and Hobbies Children",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -137,11 +113,11 @@
     "y": 2523.0,
     "width": 586.0,
     "height": 133.0,
-    "html_handle": "rso[10]",
+    "html_handle": "rso[9]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Vilac Metal Car 1102 - PriceRunner",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "heading_text": "Vilac Classic Ride On Metal Car \u2013 Red - Elenfhant",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -149,11 +125,23 @@
     "y": 2658.0,
     "width": 586.0,
     "height": 135.0,
+    "html_handle": "rso[10]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Vilac Metal Car 1102 - PriceRunner",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2795.0,
+    "width": 586.0,
+    "height": 116.0,
     "html_handle": "rso[11]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Vilac Red Metal Car Ride-on - Mimitoys",
-    "source": "html_rso+cv_bbox",
-    "position": 12
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
   },
   {
     "type": "native_ad",
@@ -165,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -177,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 14
+    "position": 13
   },
   {
     "type": "native_ad",
@@ -189,7 +177,20 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 15
+    "position": 14
+  },
+  {
+    "type": "image_pack",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[0]",
+    "html_signature": "ULSxyf+img div.ULSxyf",
+    "heading_text": "Find results on",
+    "source": "html_only",
+    "y_render": 621,
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -213,18 +214,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2795.0,
-    "width": 586.0,
-    "height": 116.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

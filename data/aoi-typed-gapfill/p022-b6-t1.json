@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Lansky Coarse Diamond Hone LDHCR - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Extra Coarse Diamond Hone - Lansky Sharpeners",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Lansky Diamond Sharpening Hone",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Lansky Diamond Sharpening Hone - Coarse - Linaashop.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -64,24 +64,12 @@
     "x": 162.0,
     "y": 1204.0,
     "width": 586.0,
-    "height": 155.0,
+    "height": 284.0,
     "html_handle": "rso[4]",
     "html_signature": "div.(no class)",
     "heading_text": "Lansky Coarse Grit Diamond Sharpening Hone Purple Knife ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1361.0,
-    "width": 586.0,
-    "height": 127.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Diamond Sharpening Hone Lansky - Coarse grit - Euro-Knife",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
@@ -89,18 +77,30 @@
     "y": 1490.0,
     "width": 586.0,
     "height": 111.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Diamond Sharpening Hone Lansky - Coarse grit - Euro-Knife",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1603.0,
+    "width": 586.0,
+    "height": 121.0,
     "html_handle": "rso[6]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Lansky Extra Coarse Diamond Sharpening Hone",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
     "type": "unknown_widget",
     "x": 162.0,
-    "y": 1603.0,
+    "y": 1960.0,
     "width": 586.0,
-    "height": 121.0,
+    "height": 103.0,
     "html_handle": null,
     "html_signature": "",
     "heading_text": "",
@@ -110,9 +110,9 @@
   {
     "type": "unknown_widget",
     "x": 162.0,
-    "y": 1960.0,
+    "y": 2175.0,
     "width": 586.0,
-    "height": 103.0,
+    "height": 194.0,
     "html_handle": null,
     "html_signature": "",
     "heading_text": "",
@@ -141,18 +141,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2175.0,
-    "width": 586.0,
-    "height": 194.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

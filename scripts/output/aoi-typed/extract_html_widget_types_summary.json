@@ -1,8 +1,8 @@
 {
   "n_trials": 2776,
-  "n_cards_total": 30370,
+  "n_cards_total": 30638,
   "cards_per_trial": {
-    "mean": 10.940201729106628,
+    "mean": 11.036743515850144,
     "min": 1,
     "max": 16
   },
@@ -13,7 +13,7 @@
     "image_pack": 1600,
     "knowledge_panel": 826,
     "paa": 769,
-    "top_places": 86,
+    "top_places": 354,
     "other_widget": 51
   },
   "unmatched_other_widget_signatures": {

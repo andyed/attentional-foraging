@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Nokia 1208 Battery for sale - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -32,7 +32,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Original Nokia Battery BL-5C for 1200/1208/1209/1650/1680 ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.(no class)",
     "heading_text": "Nokia 1208 Battery - Phones & Telecommunications",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Nokia Mobile phone battery Nokia 1200 ... - Conrad",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -64,72 +64,48 @@
     "x": 162.0,
     "y": 1281.0,
     "width": 586.0,
-    "height": 111.0,
+    "height": 240.0,
     "html_handle": "rso[4]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 5
-  },
-  {
-    "type": "knowledge_panel",
-    "x": 162.0,
-    "y": 1394.0,
-    "width": 586.0,
-    "height": 127.0,
-    "html_handle": "rso[5]",
-    "html_signature": "TQc1id div.TQc1id",
-    "heading_text": "Hours",
-    "source": "html_rso+cv_bbox",
-    "position": 6
   },
   {
     "type": "organic",
     "x": 162.0,
     "y": 1523.0,
     "width": 586.0,
-    "height": 161.0,
+    "height": 270.0,
     "html_handle": "rso[6]",
     "html_signature": "div.(no class)",
     "heading_text": "BL-5CA Li-ion Battery for Nokia 1208 / 1680 classic ...",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 6
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1686.0,
+    "y": 1795.0,
     "width": 586.0,
-    "height": 107.0,
+    "height": 166.0,
     "html_handle": "rso[7]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Battery for Nokia 2300 2220 slide 1800 1680 classic 1661 ...",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1795.0,
-    "width": 586.0,
-    "height": 166.0,
-    "html_handle": "rso[8]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy nokia nokia battery for 1208 1680",
-    "source": "html_rso+cv_bbox",
-    "position": 9
-  },
-  {
-    "type": "unknown_widget",
-    "x": 162.0,
     "y": 1963.0,
     "width": 586.0,
     "height": 268.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 10
+    "html_handle": "rso[8]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy nokia nokia battery for 1208 1680",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -141,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -153,7 +129,19 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 10
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[5]",
+    "html_signature": "TQc1id div.TQc1id",
+    "heading_text": "Hours",
+    "source": "html_only+no_geometry",
+    "position": -1
   },
   {
     "type": "related_searches",

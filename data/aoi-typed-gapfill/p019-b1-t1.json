@@ -12,15 +12,15 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 590.0,
     "width": 586.0,
     "height": 237.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.(no class)",
-    "heading_text": "VHF 100 Marine Radio | Garmin",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 2 uMdZh",
+    "heading_text": "Places",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -28,36 +28,12 @@
     "x": 162.0,
     "y": 829.0,
     "width": 586.0,
-    "height": 130.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Garmin VHF 100, Negro : Todo lo dem\u00e1s - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "height": 378.0,
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "VHF 100 Marine Radio | Garmin",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 2
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 961.0,
-    "width": 586.0,
-    "height": 119.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Garmin VHF 100i | Waveinn - Tradeinn",
-    "source": "html_rso+cv_bbox",
-    "position": 3
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1082.0,
-    "width": 586.0,
-    "height": 125.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Garmin Boat Radio and Communication for sale - eBay",
-    "source": "html_rso+cv_bbox",
-    "position": 4
   },
   {
     "type": "organic",
@@ -65,11 +41,11 @@
     "y": 1209.0,
     "width": 586.0,
     "height": 137.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g",
-    "heading_text": "Garmin VHF 100 Review - Fish Finders",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "html_handle": "rso[1]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Garmin VHF 100, Negro : Todo lo dem\u00e1s - Amazon.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -77,11 +53,11 @@
     "y": 1348.0,
     "width": 586.0,
     "height": 133.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g",
-    "heading_text": "VHF 100/200 Series Radio Installation Instructions | Garmin",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Garmin VHF 100i | Waveinn - Tradeinn",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -89,35 +65,47 @@
     "y": 1483.0,
     "width": 586.0,
     "height": 133.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "\u1408 Garmin VHF 100 \u2022 best Price \u2022 Technical specifications.",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Garmin Boat Radio and Communication for sale - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1618.0,
     "width": 586.0,
     "height": 154.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 8
+    "html_handle": "rso[4]",
+    "html_signature": "div.g",
+    "heading_text": "Garmin VHF 100 Review - Fish Finders",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1774.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 9
+    "html_handle": "rso[5]",
+    "html_signature": "div.g",
+    "heading_text": "VHF 100/200 Series Radio Installation Instructions | Garmin",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1910.0,
+    "width": 586.0,
+    "height": 98.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "\u1408 Garmin VHF 100 \u2022 best Price \u2022 Technical specifications.",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
   },
   {
     "type": "unknown_widget",
@@ -165,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 13
+    "position": 12
   },
   {
     "type": "related_searches",
@@ -189,18 +177,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1910.0,
-    "width": 586.0,
-    "height": 98.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

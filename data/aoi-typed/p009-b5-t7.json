@@ -44,7 +44,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "VDO 360-009 Oil Pressure Sender - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g",
     "heading_text": "VDO Gauges 360-009 VDO Pressure Senders",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "VDO 360-009 80 PSI Pressure Sender for sale online - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,31 +80,31 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "VDO-360-009 - 360009 - OIL PRESSURE SENDER 80 ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
-  },
-  {
-    "type": "knowledge_panel",
-    "x": 162.0,
-    "y": 1304.0,
-    "width": 586.0,
-    "height": 129.0,
-    "html_handle": "rso[4]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 7
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1470.0,
+    "y": 1304.0,
     "width": 586.0,
-    "height": 81.0,
+    "height": 129.0,
     "html_handle": "rso[5]",
     "html_signature": "div.g",
     "heading_text": "VDO 360-009 Oil Pressure Sender - Vietnam",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
+  },
+  {
+    "type": "unknown_widget",
+    "x": 162.0,
+    "y": 1470.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 8
   },
   {
@@ -116,7 +116,7 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "VDO 360-009 Oil Pressure Sender - Italy",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+span_rescue",
     "position": 9
   },
   {
@@ -125,10 +125,10 @@
     "y": 1702.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "VDO Oil Pressure Sender 80 PSI - Davidson Sales Shop",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "VDO 360-009 Oil Pressure Sender - Oman | desertcart",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -137,35 +137,23 @@
     "y": 1816.0,
     "width": 586.0,
     "height": 127.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "VDO 360-009 Oil Pressure Sender - Oman | desertcart",
-    "source": "html_rso+cv_bbox",
-    "position": 11
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1992.0,
-    "width": 586.0,
-    "height": 69.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "VDO Pressure Sender 360 009 - Partdeal",
-    "source": "html_rso+cv_bbox",
-    "position": 12
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 2140.0,
+    "y": 1992.0,
     "width": 586.0,
-    "height": 96.0,
+    "height": 244.0,
     "html_handle": "rso[10]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy vdo vdo 360009 pressure sender",
-    "source": "html_rso+cv_bbox",
-    "position": 13
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -177,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 14
+    "position": 13
   },
   {
     "type": "native_ad",
@@ -189,7 +177,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 15
+    "position": 14
   },
   {
     "type": "native_ad",
@@ -201,7 +189,32 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 16
+    "position": 15
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[4]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "VDO Oil Pressure Sender 80 PSI - Davidson Sales Shop",
+    "source": "html_only",
+    "y_render": 1890,
+    "position": -1
   },
   {
     "type": "related_searches",

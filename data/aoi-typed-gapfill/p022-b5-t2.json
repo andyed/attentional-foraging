@@ -32,7 +32,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Olympian Labs, DIM-100, 60 Vegetarian Capsules",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Olympian Labs DIM Supplement 100mg - Menopause",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Olympian Labs DIM Supplement 100mg - 60 Capsules",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.(no class)",
     "heading_text": "(2 Pack) Olympian Labs DIM (Diindolylmethane) 60 Capsule",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.hlcw0c",
     "heading_text": "DIM - Diindolylmethane with BioPerine - 250mg - Olympian Labs",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -88,47 +88,47 @@
     "x": 162.0,
     "y": 1634.0,
     "width": 586.0,
-    "height": 129.0,
+    "height": 239.0,
     "html_handle": "rso[5]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 7
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1765.0,
+    "y": 1875.0,
     "width": 586.0,
-    "height": 108.0,
+    "height": 144.0,
     "html_handle": "rso[6]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Olympian Labs DIM 100 60 caps - Hormone levels balancing",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1875.0,
+    "y": 2021.0,
     "width": 586.0,
-    "height": 144.0,
+    "height": 287.0,
     "html_handle": "rso[7]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy olympian labs dim diindolylmethane 60 caps",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 2021.0,
+    "y": 2310.0,
     "width": 586.0,
-    "height": 287.0,
+    "height": 103.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Buy Olympian Labs - DIM Diindolylmethane 150 mg.",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -177,18 +177,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2310.0,
-    "width": 586.0,
-    "height": 103.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

@@ -1,74 +1,110 @@
 [
   {
     "order": 0,
+    "type": "top_places",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Hypermarkets",
+    "container": "rso",
+    "container_index": "local_pack",
+    "css_path": "#Odp5De",
+    "css_class": "",
+    "text_len": 605
+  },
+  {
+    "order": 1,
     "type": "organic",
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Intex Pull-out Sofa Inflatable Bed, 76\" X 87\" X 26\", Queen",
     "container": "rso",
-    "container_index": "0"
+    "container_index": "0",
+    "css_path": "#rso > div:nth-of-type(1)",
+    "css_class": "",
+    "text_len": 740
   },
   {
-    "order": 1,
+    "order": 2,
     "type": "organic",
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Intex Queen Inflatable Pull Out Sofa Bed, 1 Each - Walmart",
     "container": "rso",
-    "container_index": "1"
+    "container_index": "1",
+    "css_path": "#rso > div:nth-of-type(2)",
+    "css_class": "",
+    "text_len": 683
   },
   {
-    "order": 2,
+    "order": 3,
     "type": "organic",
     "html_handle": "rso[2]",
     "html_signature": "div.(no class)",
     "heading_text": "Intex Queen Size Inflatable Pull-Out Sofa Bed Couch and ...",
     "container": "rso",
-    "container_index": "2"
+    "container_index": "2",
+    "css_path": "#rso > div:nth-of-type(3)",
+    "css_class": "",
+    "text_len": 706
   },
   {
-    "order": 3,
+    "order": 4,
     "type": "organic",
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Intex Inflatable Pull-Out Sofa Couch Bed, Queen - Dark Gray",
     "container": "rso",
-    "container_index": "3"
+    "container_index": "3",
+    "css_path": "#rso > div:nth-of-type(4)",
+    "css_class": "g tF2Cxc",
+    "text_len": 242
   },
   {
-    "order": 4,
+    "order": 5,
     "type": "organic",
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Intex Inflatable Pull-Out Sofa Bed Sleep Away Futon Couch ...",
     "container": "rso",
-    "container_index": "4"
+    "container_index": "4",
+    "css_path": "#rso > div:nth-of-type(5)",
+    "css_class": "g tF2Cxc",
+    "text_len": 281
   },
   {
-    "order": 5,
+    "order": 6,
     "type": "organic",
     "html_handle": "rso[5]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Intex Queen Size Inflatable Pull-Out Sofa Bed ... - Overstock.com",
     "container": "rso",
-    "container_index": "5"
+    "container_index": "5",
+    "css_path": "#rso > div:nth-of-type(6)",
+    "css_class": "hlcw0c",
+    "text_len": 291
   },
   {
-    "order": 6,
+    "order": 7,
     "type": "related_searches",
     "html_handle": "botstuff.ULSxyf[0]",
     "html_signature": "h=\"rs\" div.ULSxyf",
     "heading_text": "Related searches",
     "container": "botstuff",
-    "container_index": 0
+    "container_index": 0,
+    "css_path": "#bres > div:nth-of-type(1)",
+    "css_class": "ULSxyf",
+    "text_len": 447
   },
   {
-    "order": 7,
+    "order": 8,
     "type": "pagination",
     "html_handle": "botstuff.nav[0]",
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|Next",
     "container": "botstuff",
-    "container_index": 0
+    "container_index": 0,
+    "css_path": "#botstuff > div:nth-of-type(1) > div:nth-of-type(3)",
+    "css_class": "",
+    "text_len": 22
   }
 ]

@@ -39,7 +39,7 @@ from data_loader import (
     get_trial_ids, load_pupil_trial, load_fixations, load_mouse_events,
     get_trial_meta, interpolate_scroll, result_band_tops, count_results_html,
     assign_fixation_to_position, click_to_position,
-    organic_aoi_tops,
+    organic_aoi_tops, DATA_DIR,
 )
 
 # ── RIPA2 parameters (Jayawardena et al. 2025) ────────────────────────────
@@ -189,6 +189,17 @@ def process_trial(trial_id, attribution='absolute'):
         n_results = len(tops)
         if n_results == 0:
             return None
+    elif attribution == 'typed':
+        # Typed AOI map. Added 2026-08-28 alongside the same gap in
+        # compute_butterworth_lfhf.py: the May-4 producer migration
+        # (e922f1e5) skipped both scripts, so ripa2-by-position-typed.json
+        # existed with no producer in the tree. typed_aoi_tops returns []
+        # for alignment-excluded trials, which drops them here.
+        from data_loader import typed_aoi_tops
+        tops = typed_aoi_tops(trial_id)
+        n_results = len(tops)
+        if n_results == 0:
+            return None
     else:  # 'absolute' (legacy)
         n_results = count_results_html(trial_id)
         if n_results is None:
@@ -329,7 +340,8 @@ def main():
     parser.add_argument('--trial', help='Process single trial ID')
     parser.add_argument('--output', '-o', help='Output JSON path')
     parser.add_argument('--compare', help='Path to Butterworth LF/HF JSON for comparison')
-    parser.add_argument('--attribution', choices=['absolute', 'organic'], default='absolute',
+    parser.add_argument('--attribution', choices=['absolute', 'organic', 'typed'],
+                        default='absolute',
                         help='Position attribution method. "absolute" (default) uses '
                              'count_results_html + result_band_tops. "organic" uses '
                              'load_aois → organic_aoi_tops (pixel-accurate, organic-only). '
@@ -359,6 +371,10 @@ def main():
         print(f'\nDone ({args.attribution}): {n_ok} trials processed, {n_fail} skipped', file=sys.stderr)
 
     # Save results
+    if not args.output and not args.trial and not args.compare:
+        suffix = {'organic': '-organic', 'typed': '-typed'}.get(args.attribution, '')
+        args.output = str(DATA_DIR / f'ripa2-by-position{suffix}.json')
+
     if args.output:
         output_path = Path(args.output)
         output_path.parent.mkdir(parents=True, exist_ok=True)

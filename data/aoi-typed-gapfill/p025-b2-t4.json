@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g",
     "heading_text": "Kuryakyn 1077 Shift Linkage for 1980-2019 Harley- ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -16,24 +16,12 @@
     "x": 162.0,
     "y": 332.0,
     "width": 586.0,
-    "height": 81.0,
+    "height": 220.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Kuryakyn 1077 Chrome Shift Linkage For Harley Davidson",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 1
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 438.0,
-    "width": 586.0,
-    "height": 114.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Kuryakyn Chrome Shift Linkage - 1077 Harley-Davidson ...",
-    "source": "html_rso+cv_bbox",
-    "position": 2
   },
   {
     "type": "organic",
@@ -41,11 +29,11 @@
     "y": 554.0,
     "width": 586.0,
     "height": 133.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g",
-    "heading_text": "Kuryakyn 1077 Shift Linkage for 1980-2019 ... - Walmart.com",
-    "source": "html_rso+cv_bbox",
-    "position": 3
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Kuryakyn Chrome Shift Linkage - 1077 Harley-Davidson ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 2
   },
   {
     "type": "organic",
@@ -53,11 +41,11 @@
     "y": 689.0,
     "width": 586.0,
     "height": 162.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Kuryakyn 1077 Chrome Shift Linkage Arm for Harley ...",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "html_handle": "rso[3]",
+    "html_signature": "div.g",
+    "heading_text": "Kuryakyn 1077 Shift Linkage for 1980-2019 ... - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -65,11 +53,11 @@
     "y": 853.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Kuryakyn Shift Linkage For Harley Davidson Touring, Trike ...",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "heading_text": "Kuryakyn 1077 Chrome Shift Linkage Arm for Harley ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -77,47 +65,47 @@
     "y": 970.0,
     "width": 586.0,
     "height": 134.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Kuryakyn Shift Linkage For Harley Davidson Touring, Trike ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1106.0,
+    "width": 586.0,
+    "height": 138.0,
     "html_handle": "rso[6]",
     "html_signature": "div.hlcw0c",
     "heading_text": "SLKY1077 Kuryakyn 1077 Chrome Linkage for HD. - Lockitt",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1106.0,
+    "y": 1246.0,
     "width": 586.0,
-    "height": 138.0,
+    "height": 286.0,
     "html_handle": "rso[7]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy kuryakyn kuryakyn 1077 chrome shift linkage",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1246.0,
-    "width": 586.0,
-    "height": 286.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Buy Kuryakyn 1077 Shift Linkage for 1980-2019 Harley ...",
-    "source": "html_rso+cv_bbox",
-    "position": 8
-  },
-  {
-    "type": "unknown_widget",
-    "x": 162.0,
     "y": 1534.0,
     "width": 586.0,
     "height": 149.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 9
+    "html_handle": "rso[8]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Buy Kuryakyn 1077 Shift Linkage for 1980-2019 Harley ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
   },
   {
     "type": "pagination",

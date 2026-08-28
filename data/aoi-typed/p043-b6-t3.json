@@ -12,15 +12,15 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 574.0,
     "width": 586.0,
     "height": 436.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Vital Clear\u00ae 924 Grams | Natural Macro and ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Supermarkets",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -29,10 +29,10 @@
     "y": 1047.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[1]",
+    "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Vital Clear - 942g - Vital Nutrients - Amrita Nutrition",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Vital Clear\u00ae 924 Grams | Natural Macro and ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1184.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Vital Nutrients - Vital Clear - Vegetarian - 942 Grams - Walmart",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Vital Clear - 942g - Vital Nutrients - Amrita Nutrition",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1300.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Vital Clear\u00ae - Doctor's Choice Supplements",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Vital Nutrients - Vital Clear - Vegetarian - 942 Grams - Walmart",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1416.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Vital Clear Herbal and Nutritional Support - Rehabmart.com",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Vital Clear\u00ae - Doctor's Choice Supplements",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1532.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Vital Clear (Vital Nutrients) - DrAlexRinehart.com",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Vital Clear Herbal and Nutritional Support - Rehabmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1648.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Vital Nutrients Vital Clear - Natural Healthy Concepts",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Vital Clear (Vital Nutrients) - DrAlexRinehart.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1763.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Vital Nutrients, Vital Clear - 942 Grams - amritavitamin.com",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Vital Nutrients Vital Clear - Natural Healthy Concepts",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,11 +113,23 @@
     "y": 1879.0,
     "width": 586.0,
     "height": 81.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Vital Nutrients, Vital Clear - 942 Grams - amritavitamin.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1995.0,
+    "width": 586.0,
+    "height": 99.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Vital Clear | Detox Support | Vital Nutrients - Forrest Health",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -129,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 11
   },
   {
     "type": "unknown_widget",
@@ -141,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 11
+    "position": 12
   },
   {
     "type": "related_searches",
@@ -165,18 +177,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|10|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1995.0,
-    "width": 586.0,
-    "height": 99.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

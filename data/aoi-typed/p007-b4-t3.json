@@ -36,15 +36,15 @@
     "position": 2
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 718.0,
     "width": 586.0,
     "height": 482.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "MAC, Lipstick by MAC, Chili, 1 Count - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Cosmetics Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1235.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[1]",
+    "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "MAC, Lipstick by M.A.C, Chili, 1 Count - Ubuy",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "MAC, Lipstick by MAC, Chili, 1 Count - Amazon.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1371.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "MAC Matte Lipstick 3gr #602 Chili - Amazon.co.uk",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "MAC, Lipstick by M.A.C, Chili, 1 Count - Ubuy",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1490.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Mini MAC / Chili Lipstick Duo | MAC Cosmetics - Official Site",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "MAC Matte Lipstick 3gr #602 Chili - Amazon.co.uk",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1626.0,
     "width": 586.0,
     "height": 98.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Lipstick | MAC Cosmetics - Official Site",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Mini MAC / Chili Lipstick Duo | MAC Cosmetics - Official Site",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1762.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "18 Latest Mac chili lipstick ideas - Pinterest",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Lipstick | MAC Cosmetics - Official Site",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 1878.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "MAC Lipstick CHILI by M.A.C Reviews 2022 - Influenster",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "18 Latest Mac chili lipstick ideas - Pinterest",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,23 +125,35 @@
     "y": 1994.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Mac Self-care - SSENSE",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "MAC Lipstick CHILI by M.A.C Reviews 2022 - Influenster",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
-    "type": "image_pack",
+    "type": "organic",
     "x": 162.0,
     "y": 2128.0,
     "width": 586.0,
     "height": 82.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Mac Self-care - SSENSE",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
+  },
+  {
+    "type": "image_pack",
+    "x": 162.0,
+    "y": 2255.0,
+    "width": 586.0,
+    "height": 244.0,
     "html_handle": "rso[8]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy mac lip care mac lipstick chili",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 12
   },
   {
     "type": "related_searches",
@@ -165,30 +177,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2255.0,
-    "width": 586.0,
-    "height": 68.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2403.0,
-    "width": 586.0,
-    "height": 96.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

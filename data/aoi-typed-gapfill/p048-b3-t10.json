@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Sharp EL-2192RII Printing Calculator - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -16,24 +16,12 @@
     "x": 162.0,
     "y": 453.0,
     "width": 586.0,
-    "height": 127.0,
+    "height": 235.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Sharp EL-2192RII Accounting Calculator 12 Digits 2 Color ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 1
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 605.0,
-    "width": 586.0,
-    "height": 83.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "EL-2192RII | Printing Calculators | SHARP - SharpUSA",
-    "source": "html_rso+cv_bbox",
-    "position": 2
   },
   {
     "type": "organic",
@@ -41,11 +29,11 @@
     "y": 721.0,
     "width": 586.0,
     "height": 79.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Sharp\u00ae EL-2192RII Printing Calculator - Office Depot",
-    "source": "html_rso+cv_bbox",
-    "position": 3
+    "heading_text": "EL-2192RII | Printing Calculators | SHARP - SharpUSA",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 2
   },
   {
     "type": "organic",
@@ -53,11 +41,11 @@
     "y": 834.0,
     "width": 586.0,
     "height": 103.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g",
-    "heading_text": "EL-2192RII-large-print-manual.pdf - Sharp Calculators",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Sharp\u00ae EL-2192RII Printing Calculator - Office Depot",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -65,23 +53,23 @@
     "y": 971.0,
     "width": 586.0,
     "height": 103.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "SHARP EL2192RII CALCULATOR INK ROLLER ... - Walmart",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "html_handle": "rso[4]",
+    "html_signature": "div.g",
+    "heading_text": "EL-2192RII-large-print-manual.pdf - Sharp Calculators",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1108.0,
     "width": 586.0,
     "height": 100.0,
-    "html_handle": "rso[6]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "SHARP EL2192RII CALCULATOR INK ROLLER ... - Walmart",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -92,8 +80,8 @@
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Sharp Accounting Calculator 12 Digit 2 Color Printer EL ...",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -104,8 +92,8 @@
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Sharp EL-2192RII Operation Manual (Page 2 of 2) | ManualsLib",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "native_ad",
@@ -117,7 +105,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 9
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,19 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
   },
   {
     "type": "related_searches",

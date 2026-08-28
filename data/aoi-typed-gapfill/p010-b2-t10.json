@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Xerox 6R916 6R917 Toner Cartridge (Black,1-Pack)",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "6R916 Xerox WorkCentre XE60 Toner Cartridge Black Genuine Xerox",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,31 +80,31 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g",
     "heading_text": "Xerox 6R916 Black Toner Cartridge",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
-  },
-  {
-    "type": "knowledge_panel",
-    "x": 162.0,
-    "y": 1104.0,
-    "width": 586.0,
-    "height": 205.0,
-    "html_handle": "rso[3]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 7
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1344.0,
+    "y": 1104.0,
     "width": 586.0,
-    "height": 81.0,
+    "height": 205.0,
     "html_handle": "rso[4]",
     "html_signature": "div.(no class)",
     "heading_text": "6R916 Compatible XEROX Black Laser Toner Cartridge",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
+  },
+  {
+    "type": "unknown_widget",
+    "x": 162.0,
+    "y": 1344.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 8
   },
   {
@@ -116,7 +116,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "New Genuine Xerox 6R916 Toner Cartridge WorkCentre XE60 ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+span_rescue",
     "position": 9
   },
   {
@@ -125,10 +125,10 @@
     "y": 1558.0,
     "width": 586.0,
     "height": 137.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Xerox 6R916 Compatible Laser Toner Cartridges - 6R916 Black ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Nuevo Genuino Xerox 6R916 Toner Cartucho WorkCentre XE. de ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -137,10 +137,10 @@
     "y": 1697.0,
     "width": 586.0,
     "height": 139.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Nuevo Genuino Xerox 6R916 Toner Cartucho WorkCentre XE. de ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g",
+    "heading_text": "Xerox 6R916 (6R917) Xe Series Black Toner Cartridge - GM ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -149,10 +149,10 @@
     "y": 1838.0,
     "width": 586.0,
     "height": 118.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g",
-    "heading_text": "Xerox 6R916 (6R917) Xe Series Black Toner Cartridge - GM ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "OEM 6R916 Black Laser Toner Cartridge for Xerox - LD ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 12
   },
   {
@@ -180,15 +180,28 @@
     "position": 14
   },
   {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[3]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
     "type": "organic",
     "x": null,
     "y": null,
     "width": null,
     "height": null,
-    "html_handle": "rso[9]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "OEM 6R916 Black Laser Toner Cartridge for Xerox - LD ...",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Xerox 6R916 Compatible Laser Toner Cartridges - 6R916 Black ...",
     "source": "html_only",
+    "y_render": 1746,
     "position": -1
   },
   {

@@ -6,6 +6,9 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "2Pk For Lexmark 150Xl 150 Xl High Yield Black Ink Cartridge ...",
     "container": "rso",
-    "container_index": "0"
+    "container_index": "0",
+    "css_path": "#rso > div:nth-of-type(1)",
+    "css_class": "hlcw0c",
+    "text_len": 250
   }
 ]

@@ -24,15 +24,15 @@
     "position": 1
   },
   {
-    "type": "knowledge_panel",
+    "type": "top_places",
     "x": 162.0,
     "y": 696.0,
     "width": 586.0,
     "height": 454.0,
-    "html_handle": "rso[0]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Cosmetics Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g",
     "heading_text": "Murad Hydro-Dynamic Ultimate Moisture - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,19 +56,19 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Hydro-Dynamic Ultimate Moisture | Hydration | Murad",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1467.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Murad Hydro-Dynamic\u00ae Ultimate Moisture - Sephora",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1606.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Murad Hydro-Dynamic\u2122 Ultimate Moisture (50ml)",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Murad Hydro-Dynamic\u00ae Ultimate Moisture - Sephora",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1739.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Murad Hydro-Dynamic\u2122 Ultimate Moisture (50ml) - Look ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Murad Hydro-Dynamic\u2122 Ultimate Moisture (50ml)",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1878.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Hydro-Dynamic Ultimate Moisture 50ml | Murad\u00ae | M&S",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Murad Hydro-Dynamic\u2122 Ultimate Moisture (50ml) - Look ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 2014.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Murad Moisturisers Hydro-Dynamic Ultimate Moisture 50ml",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Hydro-Dynamic Ultimate Moisture 50ml | Murad\u00ae | M&S",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -128,7 +128,7 @@
     "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Murad Hydro-Dynamic Ultimate Moisture - The Skin Nerd",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -140,7 +140,7 @@
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Murad Hydro-Dynamic Ultimate Moisture | Ulta Beauty",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -178,6 +178,31 @@
     "heading_text": "",
     "source": "ad_only",
     "position": 14
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[0]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Murad Moisturisers Hydro-Dynamic Ultimate Moisture 50ml",
+    "source": "html_only",
+    "y_render": 2385,
+    "position": -1
   },
   {
     "type": "related_searches",

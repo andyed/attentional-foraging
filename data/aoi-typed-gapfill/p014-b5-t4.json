@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Brooks 13mm Saddle Tension Spanner - SJS Cycles",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -28,24 +28,12 @@
     "x": 162.0,
     "y": 655.0,
     "width": 586.0,
-    "height": 109.0,
+    "height": 238.0,
     "html_handle": "rso[1]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 2
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 766.0,
-    "width": 586.0,
-    "height": 127.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "BROOKS SADDLES Tension spanner - Bicycle Workshop",
-    "source": "html_rso+cv_bbox",
-    "position": 3
   },
   {
     "type": "organic",
@@ -53,11 +41,11 @@
     "y": 895.0,
     "width": 586.0,
     "height": 111.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Tension Spanner - Brooks England",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "heading_text": "BROOKS SADDLES Tension spanner - Bicycle Workshop",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -65,11 +53,11 @@
     "y": 1008.0,
     "width": 586.0,
     "height": 116.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Brooks england Tension Spanner, Silver | Bikeinn - Tradeinn",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "heading_text": "Tension Spanner - Brooks England",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -77,11 +65,11 @@
     "y": 1126.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Brooks Saddle Tension Spanner - Clever Cycles",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "heading_text": "Brooks england Tension Spanner, Silver | Bikeinn - Tradeinn",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1262.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Brooks Saddle Tension Spanner | Perennial Cycle",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "heading_text": "Brooks Saddle Tension Spanner - Clever Cycles",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1378.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "BROOKS Tension Spanner | \u00a35.00 | Saddles - Spa Cycles",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "Brooks Saddle Tension Spanner | Perennial Cycle",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1494.0,
     "width": 586.0,
     "height": 112.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Brooks saddle spanner wrench tension wrench ... - eBay",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "BROOKS Tension Spanner | \u00a35.00 | Saddles - Spa Cycles",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,11 +113,11 @@
     "y": 1608.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": "rso[9]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Brooks Tension Spanner Accessories - Bike-Discount",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "heading_text": "Brooks saddle spanner wrench tension wrench ... - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,10 +125,22 @@
     "y": 1725.0,
     "width": 586.0,
     "height": 112.0,
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Brooks Tension Spanner Accessories - Bike-Discount",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1839.0,
+    "width": 586.0,
+    "height": 121.0,
     "html_handle": "rso[10]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Amazon.co.jp: Brooks Saddle Tensioning Spanner",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -177,18 +177,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1839.0,
-    "width": 586.0,
-    "height": 121.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

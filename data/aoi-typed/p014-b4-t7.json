@@ -16,24 +16,12 @@
     "x": 162.0,
     "y": 525.0,
     "width": 586.0,
-    "height": 83.0,
+    "height": 187.0,
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Remanufactured Starter DENSO 280-4260 - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 1
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 634.0,
-    "width": 586.0,
-    "height": 78.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Denso 280-4260 Remanufactured Starter - Amazon UK",
-    "source": "html_rso+cv_bbox",
-    "position": 2
   },
   {
     "type": "organic",
@@ -41,11 +29,11 @@
     "y": 743.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Denso 280-4260 Remanufactured Starter - SparkPlugs.com",
-    "source": "html_rso+cv_bbox",
-    "position": 3
+    "heading_text": "Denso 280-4260 Remanufactured Starter - Amazon UK",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 2
   },
   {
     "type": "organic",
@@ -53,11 +41,11 @@
     "y": 859.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Denso DENSO First Time Fit\u00ae Starter Motor - Walmart",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "heading_text": "Denso 280-4260 Remanufactured Starter - SparkPlugs.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -65,35 +53,35 @@
     "y": 979.0,
     "width": 586.0,
     "height": 81.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Denso DENSO First Time Fit\u00ae Starter Motor - Walmart",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1094.0,
+    "width": 586.0,
+    "height": 82.0,
     "html_handle": "rso[4]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Denso\u00ae 280-4260 - Remanufactured Starter - CARiD.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1094.0,
-    "width": 586.0,
-    "height": 82.0,
-    "html_handle": "rso[5]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy denso denso 280 4260 remanufactured starter",
-    "source": "html_rso+cv_bbox",
-    "position": 6
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
     "y": 1220.0,
     "width": 586.0,
     "height": 244.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "280-4260 DENSO Starter Motor - Newegg.com",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[5]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy denso denso 280 4260 remanufactured starter",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1507.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "280-4260 by DENSO - DENSO First Time Fit\u00ae Starter Motor",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "280-4260 DENSO Starter Motor - Newegg.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,10 +101,22 @@
     "y": 1624.0,
     "width": 586.0,
     "height": 81.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "280-4260 by DENSO - DENSO First Time Fit\u00ae Starter Motor",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1740.0,
+    "width": 586.0,
+    "height": 81.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Mazda Denso 280-4260/2804260 Starter Motor - Car Parts ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -165,18 +165,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1740.0,
-    "width": 586.0,
-    "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

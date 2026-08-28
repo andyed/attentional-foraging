@@ -1,14 +1,14 @@
 [
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 133.0,
     "width": 586.0,
     "height": 442.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Cadie Silver Polisher Cloth | 9 x 11 Inches - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -17,59 +17,47 @@
     "y": 672.0,
     "width": 586.0,
     "height": 227.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Cadie Silver Polishing Cloth Mitts, One Pair - eBay",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Cadie Silver Polisher Cloth | 9 x 11 Inches - Amazon.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
-    "type": "paa",
+    "type": "organic",
     "x": 162.0,
     "y": 930.0,
     "width": 586.0,
     "height": 85.0,
+    "html_handle": "rso[1]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Cadie Silver Polishing Cloth Mitts, One Pair - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 2
+  },
+  {
+    "type": "paa",
+    "x": 162.0,
+    "y": 1064.0,
+    "width": 586.0,
+    "height": 132.0,
     "html_handle": "rso[2]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
-    "position": 2
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 3
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1064.0,
-    "width": 586.0,
-    "height": 55.0,
-    "html_handle": "rso[3]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy cadie silver polisher cloths by cadie",
-    "source": "html_rso+cv_bbox",
-    "position": 3
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1144.0,
-    "width": 586.0,
-    "height": 52.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Cadie Silver Polisher Cloth | Shop - Foodtown",
-    "source": "html_rso+cv_bbox",
-    "position": 4
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
     "y": 1301.0,
     "width": 586.0,
     "height": 244.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Cadie Silver/Gold Polish Cloths - Church Supply Warehouse",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "html_handle": "rso[3]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy cadie silver polisher cloths by cadie",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -77,11 +65,11 @@
     "y": 1585.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Cadie Silver/Gold Polishing Cloth - Pamma Tools",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "heading_text": "Cadie Silver Polisher Cloth | Shop - Foodtown",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1700.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Cadie Silver Polishing Cloth Mitts, One Pair - Walmart.com",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "heading_text": "Cadie Silver/Gold Polish Cloths - Church Supply Warehouse",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,22 +89,34 @@
     "y": 1819.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Buy Cadie Silver Polisher Cloth | 9 x 11 Inches - Ubuy",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Cadie Silver/Gold Polishing Cloth - Pamma Tools",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1936.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Cadie Silver Polishing Cloth Mitts, One Pair - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2071.0,
+    "width": 586.0,
+    "height": 106.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Buy Cadie Silver Polisher Cloth | 9 x 11 Inches - Ubuy",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -177,18 +177,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2071.0,
-    "width": 586.0,
-    "height": 106.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

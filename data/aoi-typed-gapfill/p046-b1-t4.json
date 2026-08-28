@@ -32,7 +32,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Spry Xylitol Mints, Berry Blast, 240 Count - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Xlear, Spry, Berryblast Mints, Sugar Free, 240 Count, (144 g)",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -52,24 +52,12 @@
     "x": 162.0,
     "y": 1168.0,
     "width": 586.0,
-    "height": 90.0,
+    "height": 207.0,
     "html_handle": "rso[2]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 4
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1260.0,
-    "width": 586.0,
-    "height": 115.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Spry Natural Mints Berry Blast - 1200 Piece(s) Xlear",
-    "source": "html_rso+cv_bbox",
-    "position": 5
   },
   {
     "type": "organic",
@@ -77,11 +65,11 @@
     "y": 1377.0,
     "width": 586.0,
     "height": 171.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Natural Berry Blast Xylitol Mints, 240ct - Xlear, Inc.",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "heading_text": "Spry Natural Mints Berry Blast - 1200 Piece(s) Xlear",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1550.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Xlear Spry Berryblast Mints - Sugar Free 240 Ct - eBay",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Natural Berry Blast Xylitol Mints, 240ct - Xlear, Inc.",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1665.0,
     "width": 586.0,
     "height": 216.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Xlear Spry Dental Defense Mints Berry Blast -- 240 Pieces",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[5]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Xlear Spry Berryblast Mints - Sugar Free 240 Ct - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1883.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Xlear Spry\u00ae Mints, Sugarfree, Berry Blast Flavor - 240 Count",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "Xlear Spry Dental Defense Mints Berry Blast -- 240 Pieces",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,10 +113,22 @@
     "y": 2019.0,
     "width": 586.0,
     "height": 135.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Xlear Spry\u00ae Mints, Sugarfree, Berry Blast Flavor - 240 Count",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2156.0,
+    "width": 586.0,
+    "height": 118.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Xlear: Spry Berryblast Mints - Sugar Free (240 Ct) - Swanson ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -165,18 +165,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2156.0,
-    "width": 586.0,
-    "height": 118.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

@@ -36,15 +36,15 @@
     "position": 2
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 718.0,
     "width": 586.0,
     "height": 480.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Moroccanoil Hydrating Styling Cream, 10.2 oz - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Cosmetics Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1235.0,
     "width": 586.0,
     "height": 253.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Hydrating Style Cream with Argan Oil | Moroccanoil",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Moroccanoil Hydrating Styling Cream, 10.2 oz - Amazon.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1519.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Moroccanoil Nourishing/Hydrating Hair Styling Cream - eBay",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Hydrating Style Cream with Argan Oil | Moroccanoil",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,59 +77,47 @@
     "y": 1658.0,
     "width": 586.0,
     "height": 204.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Moroccanoil Hydrating Styling Cream - Sephora",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[2]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Moroccanoil Nourishing/Hydrating Hair Styling Cream - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
-  },
-  {
-    "type": "image_pack",
-    "x": 162.0,
-    "y": 1896.0,
-    "width": 586.0,
-    "height": 102.0,
-    "html_handle": "rso[4]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy moroccanoil moroccanoil hydrating cream 10 oz",
-    "source": "html_rso+cv_bbox",
-    "position": 7
   },
   {
     "type": "organic",
     "x": 162.0,
+    "y": 1896.0,
+    "width": 586.0,
+    "height": 102.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Moroccanoil Hydrating Styling Cream - Sephora",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
+  },
+  {
+    "type": "image_pack",
+    "x": 162.0,
     "y": 2042.0,
     "width": 586.0,
-    "height": 69.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "MoroccanOil Hydrating Styling Cream, 10.2 Oz - Walmart.com",
-    "source": "html_rso+cv_bbox",
+    "height": 244.0,
+    "html_handle": "rso[4]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy moroccanoil moroccanoil hydrating cream 10 oz",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 8
   },
   {
-    "type": "unknown_widget",
-    "x": 162.0,
-    "y": 2190.0,
-    "width": 586.0,
-    "height": 96.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 9
-  },
-  {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 2330.0,
     "width": 586.0,
     "height": 232.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 10
+    "html_handle": "rso[5]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "MoroccanOil Hydrating Styling Cream, 10.2 Oz - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -141,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 11
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
   },
   {
     "type": "native_ad",
@@ -165,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 12
   },
   {
     "type": "unknown_widget",
@@ -177,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 14
+    "position": 13
   },
   {
     "type": "related_searches",

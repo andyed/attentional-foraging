@@ -12,15 +12,15 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 574.0,
     "width": 586.0,
     "height": 305.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Zefal Husky Bicycle Floor Pump \u203a Customer reviews - Amazon ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 2 uMdZh",
+    "heading_text": "Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -29,10 +29,10 @@
     "y": 917.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[1]",
+    "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Zefal Husky Heavy Duty Floor Pump, 50 mm Gauge, 16 bar ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Zefal Husky Bicycle Floor Pump \u203a Customer reviews - Amazon ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1033.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Spare parts - Z\u00e9fal",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Zefal Husky Heavy Duty Floor Pump, 50 mm Gauge, 16 bar ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1168.0,
     "width": 586.0,
     "height": 61.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Buy Zefal Bicycle Pump Parts at HBS - Hollandbikeshop.com",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Spare parts - Z\u00e9fal",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1264.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Z\u00e9fal Black Bicycle Pumps for sale - eBay",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Buy Zefal Bicycle Pump Parts at HBS - Hollandbikeshop.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1380.0,
     "width": 586.0,
     "height": 183.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "\"Zefal HP Husky\" original connection | XXcycle - en",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[4]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Z\u00e9fal Black Bicycle Pumps for sale - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1598.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Zefal Bicycle Pump Accessories and Small Parts - Modern Bike",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "\"Zefal HP Husky\" original connection | XXcycle - en",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,22 +101,22 @@
     "y": 1734.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Bicycle Pump Zefal Rep Schrader Washer Husky with Thmblok",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Zefal Bicycle Pump Accessories and Small Parts - Modern Bike",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1850.0,
     "width": 586.0,
     "height": 99.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[7]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Bicycle Pump Zefal Rep Schrader Washer Husky with Thmblok",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {

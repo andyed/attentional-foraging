@@ -24,15 +24,15 @@
     "position": 1
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 725.0,
     "width": 586.0,
     "height": 497.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Twentyfourseven 25 - Black | Berghaus",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Sporting Goods Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1224.0,
     "width": 586.0,
     "height": 154.0,
-    "html_handle": "rso[1]",
+    "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Berghaus TwentyFourSeven Backpack, 15L, 20L, 25L, 30L",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Twentyfourseven 25 - Black | Berghaus",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,34 +53,34 @@
     "y": 1380.0,
     "width": 586.0,
     "height": 156.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Berghaus TwentyFourSeven 25 Rucksack - GO Outdoors",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Berghaus TwentyFourSeven Backpack, 15L, 20L, 25L, 30L",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
-  },
-  {
-    "type": "image_pack",
-    "x": 162.0,
-    "y": 1538.0,
-    "width": 586.0,
-    "height": 159.0,
-    "html_handle": "rso[3]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy berghaus berghaus unisex 20fourseven 25 backpack",
-    "source": "html_rso+cv_bbox",
-    "position": 5
   },
   {
     "type": "organic",
     "x": 162.0,
+    "y": 1538.0,
+    "width": 586.0,
+    "height": 159.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Berghaus TwentyFourSeven 25 Rucksack - GO Outdoors",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
+  },
+  {
+    "type": "image_pack",
+    "x": 162.0,
     "y": 1699.0,
     "width": 586.0,
     "height": 285.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g",
-    "heading_text": "Berghaus Twentyfourseven Backpack 25L Review",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[3]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy berghaus berghaus unisex 20fourseven 25 backpack",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1986.0,
     "width": 586.0,
     "height": 139.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Men's Suede Jacket | bykwfmxq",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g",
+    "heading_text": "Berghaus Twentyfourseven Backpack 25L Review",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 2127.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "5000000000000 and higher (Page 4325) - EAN-Search.org",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Men's Suede Jacket | bykwfmxq",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 2243.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Berghaus Hiking Rucksacks & Bags for sale - eBay",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "5000000000000 and higher (Page 4325) - EAN-Search.org",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,11 +125,23 @@
     "y": 2358.0,
     "width": 586.0,
     "height": 134.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Berghaus Hiking Rucksacks & Bags for sale - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2494.0,
+    "width": 586.0,
+    "height": 141.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Berghaus TwentyFourSeven 25L Backpack - OutdoorGB",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
   },
   {
     "type": "unknown_widget",
@@ -141,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 11
+    "position": 12
   },
   {
     "type": "related_searches",
@@ -165,18 +177,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2494.0,
-    "width": 586.0,
-    "height": 141.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

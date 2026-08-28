@@ -1,38 +1,38 @@
 [
   {
-    "type": "image_pack",
+    "type": "top_places",
     "x": 162.0,
     "y": 133.0,
     "width": 586.0,
     "height": 478.0,
-    "html_handle": "rso[0]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy kuryakyn kuryakyn 7546 floorboard exhaust guard",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Harley-Davidson Dealers",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "image_pack",
     "x": 162.0,
     "y": 630.0,
     "width": 586.0,
     "height": 203.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Kuryakyn - 7546 - Exhaust Boot Guards for Swept Wing ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy kuryakyn kuryakyn 7546 floorboard exhaust guard",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 873.0,
     "width": 586.0,
     "height": 187.0,
-    "html_handle": "rso[2]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Kuryakyn - 7546 - Exhaust Boot Guards for Swept Wing ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -44,7 +44,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Customer reviews: Kuryakyn 7546 Right-Side Swept-Wing ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,19 +56,19 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Kuryakyn 7546 Right-Side Swept-Wing Floorboard ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1308.0,
     "width": 586.0,
     "height": 156.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Floorboard Exhaust Boot Guards | Pegs & Foot Controls",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1466.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Exhaust Guard Right Side [DC7546] - $19.95 : Dream Cycles",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Floorboard Exhaust Boot Guards | Pegs & Foot Controls",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -92,7 +92,7 @@
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Right Traditional Floorboard Exhaust Boot Guard - 7544",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -104,7 +104,7 @@
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "catalogue Kuryakyn Harley - Calam\u00e9o",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -142,6 +142,31 @@
     "heading_text": "",
     "source": "ad_only",
     "position": 11
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Exhaust Guard Right Side [DC7546] - $19.95 : Dream Cycles",
+    "source": "html_only",
+    "y_render": 1771,
+    "position": -1
   },
   {
     "type": "pagination",

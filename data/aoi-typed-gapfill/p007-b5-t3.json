@@ -12,15 +12,15 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 542.0,
     "width": 586.0,
     "height": 497.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g",
-    "heading_text": "Zoggs Easy-fit Silicone Swimming Cap - Amazon UK",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Clothing Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -29,10 +29,10 @@
     "y": 1041.0,
     "width": 586.0,
     "height": 163.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Zoggs Easy Fit Silicone Swimming Cap Blue | Swiminn",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.g",
+    "heading_text": "Zoggs Easy-fit Silicone Swimming Cap - Amazon UK",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1206.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Buy Zoggs Easy Fit Silicone Swimming Cap - Black - Argos",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Zoggs Easy Fit Silicone Swimming Cap Blue | Swiminn",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1342.0,
     "width": 586.0,
     "height": 136.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Easy-fit Silicone Cap - Zoggs",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Buy Zoggs Easy Fit Silicone Swimming Cap - Black - Argos",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1480.0,
     "width": 586.0,
     "height": 358.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Zoggs Easy-Fit Swim Cap Blue - deporvillage",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[3]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Easy-fit Silicone Cap - Zoggs",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1840.0,
     "width": 586.0,
     "height": 130.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Zoggs Silicone Swimming Cap - Wiggle",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Zoggs Easy-Fit Swim Cap Blue - deporvillage",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,22 +89,22 @@
     "y": 1972.0,
     "width": 586.0,
     "height": 135.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Zoggs Easy-fit Silicone Swimming Cap One Size Black",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Zoggs Silicone Swimming Cap - Wiggle",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 2109.0,
     "width": 586.0,
     "height": 120.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Zoggs Easy-fit Silicone Swimming Cap One Size Black",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {

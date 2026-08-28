@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Mushroom Science - Cordyceps Cs-4 400 mg. - Walmart",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Mushroom Science Cordyceps Cs-4, 400mg, 90 Vegetarian ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,19 +80,19 @@
     "html_handle": "rso[2]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy mushroom science cordyceps 400mg 90 vegcap",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
-    "type": "knowledge_panel",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1221.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[3]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 7
   },
   {
@@ -104,7 +104,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "cordyceps mushroom capsules - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -116,7 +116,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Cordyceps 400mg - 90 - VegCap by MUSHROOM SCIENCE- Buy ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -128,7 +128,7 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Cordyceps 400mg - 90 - VegCap by MUSHROOM SCIENCE - Buy ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -140,7 +140,7 @@
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Cordyceps Mushroom Extract / CS-4 - 400 mg, 90 ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -149,10 +149,10 @@
     "y": 1910.0,
     "width": 586.0,
     "height": 132.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[9]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Cordyceps 500mg - 90 capsules - adaptogenic - Fairvital",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Lion's Mane 300mg 90 caps - The Green Pharmacy",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 12
   },
   {
@@ -161,10 +161,10 @@
     "y": 2044.0,
     "width": 586.0,
     "height": 119.0,
-    "html_handle": "rso[9]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Lion's Mane 300mg 90 caps - The Green Pharmacy",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[10]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Mushroom Science - Mother's Market & Kitchen",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 13
   },
   {
@@ -204,15 +204,28 @@
     "position": 16
   },
   {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[3]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
     "type": "organic",
     "x": null,
     "y": null,
     "width": null,
     "height": null,
-    "html_handle": "rso[10]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Mushroom Science - Mother's Market & Kitchen",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Cordyceps 500mg - 90 capsules - adaptogenic - Fairvital",
     "source": "html_only",
+    "y_render": 2174,
     "position": -1
   },
   {

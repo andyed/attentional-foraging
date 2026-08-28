@@ -20,7 +20,7 @@
     "html_handle": "rso[0]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy blomus blomus teapot porcelain",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -28,24 +28,12 @@
     "x": 162.0,
     "y": 827.0,
     "width": 586.0,
-    "height": 139.0,
+    "height": 296.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "blomus RO Porcelain Tea Pot 1100ml / 37oz Mourning Dove",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 2
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 968.0,
-    "width": 586.0,
-    "height": 155.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Blomus Ro 37 -oz. Porcelain Teapot - Wayfair",
-    "source": "html_rso+cv_bbox",
-    "position": 3
   },
   {
     "type": "organic",
@@ -53,11 +41,11 @@
     "y": 1125.0,
     "width": 586.0,
     "height": 135.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Porcelain Tea Pot - RO\u2013 blomus",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "heading_text": "Blomus Ro 37 -oz. Porcelain Teapot - Wayfair",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -65,11 +53,11 @@
     "y": 1262.0,
     "width": 586.0,
     "height": 133.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Blomus Teapot for sale - eBay",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "heading_text": "Porcelain Tea Pot - RO\u2013 blomus",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -77,47 +65,35 @@
     "y": 1397.0,
     "width": 586.0,
     "height": 116.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Blomus Teapot for sale - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1515.0,
+    "width": 586.0,
+    "height": 121.0,
     "html_handle": "rso[5]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Teapot -RO- Nimbus Cloud, 1100 ml | blomus Onlineshop",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
     "type": "paa",
     "x": 162.0,
-    "y": 1515.0,
+    "y": 1638.0,
     "width": 586.0,
-    "height": 121.0,
+    "height": 208.0,
     "html_handle": "rso[6]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 7
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1638.0,
-    "width": 586.0,
-    "height": 89.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Blomus 64053 32 oz Ro Porcelain Tea Pot&#44; Nimbus Cloud",
-    "source": "html_rso+cv_bbox",
-    "position": 8
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1729.0,
-    "width": 586.0,
-    "height": 117.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Blomus RO Tea Pot - Modern Planet",
-    "source": "html_rso+cv_bbox",
-    "position": 9
   },
   {
     "type": "organic",
@@ -125,10 +101,34 @@
     "y": 1848.0,
     "width": 586.0,
     "height": 150.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Blomus 64053 32 oz Ro Porcelain Tea Pot&#44; Nimbus Cloud",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2000.0,
+    "width": 586.0,
+    "height": 134.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Blomus RO Tea Pot - Modern Planet",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2136.0,
+    "width": 586.0,
+    "height": 117.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Asia Teapot With a Strainer by Blomus. Modern Minimalist - Etsy",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -177,30 +177,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2000.0,
-    "width": 586.0,
-    "height": 134.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2136.0,
-    "width": 586.0,
-    "height": 117.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

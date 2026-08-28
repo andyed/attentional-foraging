@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Weber 7575 Gas Grill Smoker \u203a Customer reviews - Amazon ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Weber 7575 Gas Grill Smoker with Cast Iron Cooking ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Weber 7575 Gas Grill Smoker For Genesis E-300 & S- ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -88,24 +88,12 @@
     "x": 162.0,
     "y": 1245.0,
     "width": 586.0,
-    "height": 55.0,
+    "height": 215.0,
     "html_handle": "rso[3]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 7
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1364.0,
-    "width": 586.0,
-    "height": 96.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Weber 7575 Gas Grill Smoker Box and Grate",
-    "source": "html_rso+cv_bbox",
-    "position": 8
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1462.0,
     "width": 586.0,
     "height": 120.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Weber 7575 Gas Grill Smoker - Guernsey | desertcart",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Weber 7575 Gas Grill Smoker Box and Grate",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,34 +113,46 @@
     "y": 1584.0,
     "width": 586.0,
     "height": 238.0,
+    "html_handle": "rso[5]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Weber 7575 Gas Grill Smoker - Guernsey | desertcart",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1824.0,
+    "width": 586.0,
+    "height": 119.0,
     "html_handle": "rso[6]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Weber 7575 Gas Grill Smoker | Walmart Canada",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1824.0,
+    "y": 1945.0,
     "width": 586.0,
-    "height": 119.0,
+    "height": 287.0,
     "html_handle": "rso[7]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy weber weber 7575 gas grill smoker",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 11
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1945.0,
+    "y": 2234.0,
     "width": 586.0,
-    "height": 130.0,
+    "height": 103.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Weber gas BBQs - The Barbecue Shop, Calpe, Spain",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 12
   },
   {
@@ -201,30 +201,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2077.0,
-    "width": 586.0,
-    "height": 155.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2234.0,
-    "width": 586.0,
-    "height": 103.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

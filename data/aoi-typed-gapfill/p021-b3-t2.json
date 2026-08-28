@@ -24,15 +24,15 @@
     "position": 1
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 663.0,
     "width": 586.0,
     "height": 454.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g",
-    "heading_text": "Photo Finish Lid Primer - Smashbox",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Cosmetics Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1119.0,
     "width": 586.0,
     "height": 162.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Smashbox Photo Finish Lid Primer, Light 0.08 Fl Oz (Pack ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.g",
+    "heading_text": "Photo Finish Lid Primer - Smashbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1283.0,
     "width": 586.0,
     "height": 307.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Smashbox Photo Finish Lid Primer 2.5ml - Boots",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Smashbox Photo Finish Lid Primer, Light 0.08 Fl Oz (Pack ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1592.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Smashbox Photo Finish Lid Primer - Next UK",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Smashbox Photo Finish Lid Primer 2.5ml - Boots",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,47 +77,59 @@
     "y": 1728.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Smashbox Photo Finish Lid Primer Correcting Primer Under ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Smashbox Photo Finish Lid Primer - Next UK",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
-  },
-  {
-    "type": "image_pack",
-    "x": 162.0,
-    "y": 1844.0,
-    "width": 586.0,
-    "height": 119.0,
-    "html_handle": "rso[5]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy smashbox smashbox photo finish lid primer",
-    "source": "html_rso+cv_bbox",
-    "position": 7
   },
   {
     "type": "organic",
     "x": 162.0,
+    "y": 1844.0,
+    "width": 586.0,
+    "height": 119.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Smashbox Photo Finish Lid Primer Correcting Primer Under ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
+  },
+  {
+    "type": "image_pack",
+    "x": 162.0,
     "y": 1965.0,
     "width": 586.0,
-    "height": 128.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Smashbox Eye Shadow Primer for sale - eBay",
-    "source": "html_rso+cv_bbox",
+    "height": 285.0,
+    "html_handle": "rso[5]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy smashbox smashbox photo finish lid primer",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 8
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 2095.0,
+    "y": 2252.0,
     "width": 586.0,
-    "height": 155.0,
+    "height": 119.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Smashbox Eye Shadow Primer for sale - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2373.0,
+    "width": 586.0,
+    "height": 118.0,
     "html_handle": "rso[7]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Smashbox Photo Finish Lid Primer - Sephora",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -129,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 11
   },
   {
     "type": "related_searches",
@@ -153,30 +165,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|9|10|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2252.0,
-    "width": 586.0,
-    "height": 119.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2373.0,
-    "width": 586.0,
-    "height": 118.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "70's Funk Ballads - Amazon.com Music",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -16,24 +16,12 @@
     "x": 162.0,
     "y": 287.0,
     "width": 586.0,
-    "height": 107.0,
+    "height": 240.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "70's Funk Ballads. 731455513820 - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 1
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 396.0,
-    "width": 586.0,
-    "height": 131.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g",
-    "heading_text": "Tickets For Doomsday: Heavy Psychedelic Funk And Soul ...",
-    "source": "html_rso+cv_bbox",
-    "position": 2
   },
   {
     "type": "organic",
@@ -41,11 +29,11 @@
     "y": 529.0,
     "width": 586.0,
     "height": 182.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Various Artists|Soul Music 60s 70s: Best R&B Songs, Funk ...",
-    "source": "html_rso+cv_bbox",
-    "position": 3
+    "html_handle": "rso[2]",
+    "html_signature": "div.g",
+    "heading_text": "Tickets For Doomsday: Heavy Psychedelic Funk And Soul ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 2
   },
   {
     "type": "organic",
@@ -53,11 +41,11 @@
     "y": 713.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Funk - Wikipedia",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "heading_text": "Various Artists|Soul Music 60s 70s: Best R&B Songs, Funk ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -65,11 +53,11 @@
     "y": 829.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.(no class)",
-    "heading_text": "70's GROOVES AND FUNK MIX - YouTube",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Funk - Wikipedia",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -77,11 +65,11 @@
     "y": 945.0,
     "width": 586.0,
     "height": 172.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "40 heavy duty funk classics | Music to die for - WordPress.com",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "html_handle": "rso[5]",
+    "html_signature": "div.(no class)",
+    "heading_text": "70's GROOVES AND FUNK MIX - YouTube",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1119.0,
     "width": 586.0,
     "height": 112.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "What are the best funk ballads of all time? - Quora",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "heading_text": "40 heavy duty funk classics | Music to die for - WordPress.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,23 +89,23 @@
     "y": 1233.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Another Word: The Depth of Sci-Fi Funk in the '70s",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "What are the best funk ballads of all time? - Quora",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1369.0,
     "width": 586.0,
     "height": 98.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 9
+    "html_handle": "rso[8]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Another Word: The Depth of Sci-Fi Funk in the '70s",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "native_ad",
@@ -129,7 +117,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 9
   },
   {
     "type": "pagination",

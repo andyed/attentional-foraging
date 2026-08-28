@@ -44,7 +44,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Bosal 233-445 Exhaust Muffler Assembly For 86-91 ... - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Bosal 233-445 Middle Silencer - Automotive - Amazon",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,19 +68,19 @@
     "html_handle": "rso[2]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy bosal bosal 233 445 muffler",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1348.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[3]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Bosal 233-445 Exhaust Silencer : Amazon.in: Home & Kitchen",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1464.0,
     "width": 586.0,
     "height": 125.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Bosal 233-445 Exhaust Silencer : Amazon.in: Home & Kitchen",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g",
+    "heading_text": "Bosal Exhaust Muffler,Exhaust Resonator Pipe P/N:233-445",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1624.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g",
-    "heading_text": "Bosal Exhaust Muffler,Exhaust Resonator Pipe P/N:233-445",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Bosal Canada 233-445 Muffler 623920006534 Fits 1986 1991 ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,10 +113,10 @@
     "y": 1740.0,
     "width": 586.0,
     "height": 61.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Bosal Canada 233-445 Muffler 623920006534 Fits 1986 1991 ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "ShopEddies Bosal 233-445 Exhaust Muffler,Exhaust Resonator ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,10 +125,10 @@
     "y": 1836.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "ShopEddies Bosal 233-445 Exhaust Muffler,Exhaust Resonator ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Volkswagen Vanagon Exhaust Muffler Assembly - PartsHawk",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -137,10 +137,10 @@
     "y": 1951.0,
     "width": 586.0,
     "height": 150.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Volkswagen Vanagon Exhaust Muffler Assembly - PartsHawk",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "1986-1991 Volkswagen Vanagon Muffler - Bosal 233-445",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -180,16 +180,16 @@
     "position": 14
   },
   {
-    "type": "organic",
-    "x": 162.0,
-    "y": 2577.0,
-    "width": 586.0,
-    "height": 80.0,
-    "html_handle": "rso[9]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "1986-1991 Volkswagen Vanagon Muffler - Bosal 233-445",
-    "source": "html_rso+cv_bbox",
-    "position": 15
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[3]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -225,6 +225,18 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 2577.0,
+    "width": 586.0,
+    "height": 80.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

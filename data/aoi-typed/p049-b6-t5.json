@@ -1,51 +1,27 @@
 [
   {
-    "type": "image_pack",
+    "type": "top_places",
     "x": 162.0,
     "y": 203.0,
     "width": 586.0,
-    "height": 365.0,
-    "html_handle": "rso[0]",
-    "html_signature": "ULSxyf+img div.ULSxyf",
-    "heading_text": "Find results on",
-    "source": "html_rso+cv_bbox",
-    "position": 0
-  },
-  {
-    "type": "top_places",
-    "x": 162.0,
-    "y": 603.0,
-    "width": 586.0,
-    "height": 90.0,
+    "height": 614.0,
     "html_handle": "rso[1]",
     "html_signature": "h=\"local\" div.ULSxyf",
     "heading_text": "Local results",
-    "source": "html_rso+cv_bbox",
-    "position": 1
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 0
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 728.0,
-    "width": 586.0,
-    "height": 89.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Marware AHEV11 EcoVue for the iPad (4th Generation), iPad ...",
-    "source": "html_rso+cv_bbox",
-    "position": 2
-  },
-  {
-    "type": "knowledge_panel",
-    "x": 162.0,
     "y": 863.0,
     "width": 586.0,
     "height": 272.0,
-    "html_handle": "rso[3]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
-    "position": 3
+    "html_handle": "rso[2]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Marware AHEV11 EcoVue for the iPad (4th Generation), iPad ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 1
   },
   {
     "type": "organic",
@@ -56,8 +32,8 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Marware Eco-Vue for iPad 4 / 3 / iPad 2 - Black - Mobile Fun",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 2
   },
   {
     "type": "organic",
@@ -68,8 +44,8 @@
     "html_handle": "rso[5]",
     "html_signature": "div.(no class)",
     "heading_text": "MARWARE Eco-Vue iPad Case; Brand New in the Plastic Wrap",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -80,8 +56,8 @@
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Marware - EcoVue Folio Case for Apple\u00ae iPad\u00ae with Retina",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -92,8 +68,8 @@
     "html_handle": "rso[7]",
     "html_signature": "div.g",
     "heading_text": "Marware Eco-Vue iPad Case - Walmart.com",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -104,8 +80,8 @@
     "html_handle": "rso[8]",
     "html_signature": "div.(no class)",
     "heading_text": "MARWARE ECO-VUE FOR iPad 2nd 3rd 4th generation Red $10.99 ...",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -116,8 +92,8 @@
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "iPod & iTunes For Dummies - Page 103 - Google Books Result",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "native_ad",
@@ -129,7 +105,32 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 8
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[3]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
+    "type": "image_pack",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[0]",
+    "html_signature": "ULSxyf+img div.ULSxyf",
+    "heading_text": "Find results on",
+    "source": "html_only",
+    "y_render": 182,
+    "position": -1
   },
   {
     "type": "pagination",

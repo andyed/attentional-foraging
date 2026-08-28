@@ -35,7 +35,7 @@ from data_loader import (
     get_trial_ids, load_pupil_trial, load_fixations, load_mouse_events,
     get_trial_meta, interpolate_scroll, result_band_tops, count_results_html,
     assign_fixation_to_position, click_to_position,
-    organic_aoi_tops,
+    organic_aoi_tops, DATA_DIR,
 )
 
 # ── Butterworth filter parameters (Duchowski 2026) ───────────────────────
@@ -140,6 +140,18 @@ def process_trial(trial_id, lf_sos, hf_sos, attribution='absolute'):
         n_results = len(tops)
         if n_results == 0:
             return None
+    elif attribution == 'typed':
+        # Typed AOI map (data/aoi-typed). Added 2026-08-28: the May-4
+        # producer migration (e922f1e5) extended k_coef / saccade /
+        # retreat / content for typed but skipped this script, so
+        # butterworth-lfhf-by-position-typed.json existed with no
+        # producer in the tree. typed_aoi_tops returns [] for
+        # alignment-excluded trials, which drops them here.
+        from data_loader import typed_aoi_tops
+        tops = typed_aoi_tops(trial_id)
+        n_results = len(tops)
+        if n_results == 0:
+            return None
     else:  # 'absolute' (legacy)
         n_results = count_results_html(trial_id)
         if n_results is None:
@@ -196,11 +208,15 @@ def main():
     parser = argparse.ArgumentParser(description='Compute per-position Butterworth LF/HF ratio')
     parser.add_argument('--trial', help='Process single trial ID')
     parser.add_argument('--output', '-o', help='Output JSON path')
-    parser.add_argument('--attribution', choices=['absolute', 'organic'], default='absolute',
+    parser.add_argument('--attribution', choices=['absolute', 'organic', 'typed'],
+                        default='absolute',
                         help='Position attribution method. "absolute" (default) uses '
                              'count_results_html + result_band_tops (legacy, ads-pooled). '
                              '"organic" uses load_aois → organic_aoi_tops (pixel-accurate, '
-                             'organic-only). See docs/methodology/organic-result-aoi-extraction.md.')
+                             'organic-only). "typed" uses the typed AOI map '
+                             '(typed_aoi_tops; all element types in display order, '
+                             'alignment-excluded trials dropped). '
+                             'See docs/methodology/organic-result-aoi-extraction.md.')
     args = parser.parse_args()
 
     lf_sos, hf_sos = design_filters()
@@ -226,6 +242,12 @@ def main():
                 n_fail += 1
 
         print(f'\nDone ({args.attribution}): {n_ok} trials processed, {n_fail} skipped', file=sys.stderr)
+
+    if not args.output and not args.trial:
+        # Default output path per flavor, mirroring the other producers'
+        # -organic / -typed suffix convention.
+        suffix = {'organic': '-organic', 'typed': '-typed'}.get(args.attribution, '')
+        args.output = str(DATA_DIR / f'butterworth-lfhf-by-position{suffix}.json')
 
     if args.output:
         output_path = Path(args.output)

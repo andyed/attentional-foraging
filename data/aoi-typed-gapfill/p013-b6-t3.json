@@ -44,7 +44,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Gates 38113 DriveAlign Automatic Belt Drive Tensioner",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -52,24 +52,12 @@
     "x": 162.0,
     "y": 826.0,
     "width": 586.0,
-    "height": 136.0,
+    "height": 245.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Gates 38113 Belt Tensioner Assembly | eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 4
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 964.0,
-    "width": 586.0,
-    "height": 107.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "GATES 38113 Belt Tensioner - Newegg.com",
-    "source": "html_rso+cv_bbox",
-    "position": 5
   },
   {
     "type": "organic",
@@ -77,11 +65,11 @@
     "y": 1073.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Gates 38113 Accessory Drive Belt Tensioner Assembly - Autocado",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "heading_text": "GATES 38113 Belt Tensioner - Newegg.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1189.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Gates 38113 Belt Tensioner Assembly; DriveAlign Premium ...",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "heading_text": "Gates 38113 Accessory Drive Belt Tensioner Assembly - Autocado",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 1305.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Gates Belt Tensioner 38113 - FleetPride",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "Gates 38113 Belt Tensioner Assembly; DriveAlign Premium ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,11 @@
     "y": 1421.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Gates 38113 Belt Tensioner Assembly \u2013 PartLimit",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "heading_text": "Gates Belt Tensioner 38113 - FleetPride",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -125,11 +113,11 @@
     "y": 1537.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g",
-    "heading_text": "Gates 38113 Belt Tensioner Assembly | CarPartsDiscount.com",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Gates 38113 Belt Tensioner Assembly \u2013 PartLimit",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,10 +125,22 @@
     "y": 1653.0,
     "width": 586.0,
     "height": 157.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g",
+    "heading_text": "Gates 38113 Belt Tensioner Assembly | CarPartsDiscount.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1812.0,
+    "width": 586.0,
+    "height": 96.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Gates 38113 Belt Tensioner Assembly - OMAN | desertcart",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
   {
@@ -201,18 +201,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1812.0,
-    "width": 586.0,
-    "height": 96.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

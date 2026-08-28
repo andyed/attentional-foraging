@@ -1,0 +1,16 @@
+{
+  "n_trials_scanned": 2776,
+  "n_trials_with_local_content": 353,
+  "pack_location_distribution": {
+    "out_of_rso_main": 268,
+    "in_rso": 85
+  },
+  "n_mis_shifted": 0,
+  "mis_shifted_tids": [],
+  "n_typed_top_places_main": 352,
+  "rank_shift_extent": {
+    "n_trials_with_typed_pack": 352,
+    "aois_below_pack_total": 3603,
+    "aois_below_pack_mean": 10.235795454545455
+  }
+}

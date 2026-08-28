@@ -36,15 +36,15 @@
     "position": 2
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 718.0,
     "width": 586.0,
     "height": 424.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Skinceuticals Phyto Corrective Soothing Fluid, 1 Oz",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Pharmacies",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1179.0,
     "width": 586.0,
     "height": 296.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Sensitive Skin |SkinCeuticals - Phyto Corrective Gel",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Skinceuticals Phyto Corrective Soothing Fluid, 1 Oz",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1510.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.(no class)",
-    "heading_text": "SkinCeuticals Phyto Corrective Gel (1 fl. oz.) - Dermstore",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Sensitive Skin |SkinCeuticals - Phyto Corrective Gel",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1642.0,
     "width": 586.0,
     "height": 227.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.(no class)",
-    "heading_text": "SkinCeuticals Phyto Corrective Gel - 1 fl oz for sale online",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "SkinCeuticals Phyto Corrective Gel (1 fl. oz.) - Dermstore",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1900.0,
     "width": 586.0,
     "height": 207.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "SkinCeuticals Phyto Corrective Gel, 1 oz - Walmart.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[3]",
+    "html_signature": "div.(no class)",
+    "heading_text": "SkinCeuticals Phyto Corrective Gel - 1 fl oz for sale online",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,22 +101,22 @@
     "y": 2142.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Skinceuticals Phyto Corrective Soothing Fluid, 1 Oz - Nepal",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "SkinCeuticals Phyto Corrective Gel, 1 oz - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 2257.0,
     "width": 586.0,
     "height": 126.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[5]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Skinceuticals Phyto Corrective Soothing Fluid, 1 Oz - Nepal",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {

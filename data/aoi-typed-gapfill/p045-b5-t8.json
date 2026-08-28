@@ -12,64 +12,52 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 542.0,
     "width": 586.0,
     "height": 498.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Multi-Use Vehicle Charger with Dual USB Ports and ...",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Electronics Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
-    "type": "image_pack",
+    "type": "organic",
     "x": 162.0,
     "y": 1042.0,
     "width": 586.0,
     "height": 265.0,
-    "html_handle": "rso[1]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy generic multi purpose usb car adapter",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Multi-Use Vehicle Charger with Dual USB Ports and ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
-    "type": "paa",
+    "type": "image_pack",
     "x": 162.0,
     "y": 1309.0,
     "width": 586.0,
     "height": 287.0,
-    "html_handle": "rso[2]",
-    "html_signature": "h=\"paa\" div.ULSxyf",
-    "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy generic multi purpose usb car adapter",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
-    "type": "organic",
+    "type": "paa",
     "x": 162.0,
     "y": 1598.0,
     "width": 586.0,
-    "height": 126.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "10 of the Best Car Chargers of 2022 - Too Many Adapters",
-    "source": "html_rso+cv_bbox",
+    "height": 236.0,
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"paa\" div.ULSxyf",
+    "heading_text": "People also ask",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 4
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1726.0,
-    "width": 586.0,
-    "height": 108.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g",
-    "heading_text": "The 3 Best USB Car Chargers 2022 | Reviews by Wirecutter",
-    "source": "html_rso+cv_bbox",
-    "position": 5
   },
   {
     "type": "organic",
@@ -77,11 +65,11 @@
     "y": 1836.0,
     "width": 586.0,
     "height": 140.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "USB and Wireless Car Chargers - Best Buy",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "heading_text": "10 of the Best Car Chargers of 2022 - Too Many Adapters",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -89,11 +77,11 @@
     "y": 1978.0,
     "width": 586.0,
     "height": 173.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "How to Buy Best Car USB Charger - Electronics Notes",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[4]",
+    "html_signature": "div.g",
+    "heading_text": "The 3 Best USB Car Chargers 2022 | Reviews by Wirecutter",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -101,11 +89,11 @@
     "y": 2153.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Carlinkit App2 into your iPhone's Safari browser app. You can ...",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "USB and Wireless Car Chargers - Best Buy",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -113,11 +101,35 @@
     "y": 2269.0,
     "width": 586.0,
     "height": 114.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "How to Buy Best Car USB Charger - Electronics Notes",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2385.0,
+    "width": 586.0,
+    "height": 115.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Carlinkit App2 into your iPhone's Safari browser app. You can ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2502.0,
+    "width": 586.0,
+    "height": 117.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "My iPad (Covers iOS 9 for iPad Pro, all models of iPad Air ...",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -129,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 10
+    "position": 11
   },
   {
     "type": "related_searches",
@@ -153,30 +165,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2385.0,
-    "width": 586.0,
-    "height": 115.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2502.0,
-    "width": 586.0,
-    "height": 117.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

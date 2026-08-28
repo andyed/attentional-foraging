@@ -24,27 +24,27 @@
     "position": 1
   },
   {
-    "type": "image_pack",
+    "type": "top_places",
     "x": 162.0,
     "y": 643.0,
     "width": 586.0,
     "height": 436.0,
-    "html_handle": "rso[0]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy mac pro mac pigment frozen white",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Cosmetics Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
-    "type": "organic",
+    "type": "image_pack",
     "x": 162.0,
     "y": 1149.0,
     "width": 586.0,
     "height": 202.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "MAC Cosmetics Pigment - Frozen White - Reviews",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy mac pro mac pigment frozen white",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1391.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "MAC Pigment White | Beautylish",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "MAC Cosmetics Pigment - Frozen White - Reviews",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1531.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Mac Pigments - Walmart",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "MAC Pigment White | Beautylish",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1647.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Las mejores ofertas en M * A * C Maquillaje individual blanco",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Mac Pigments - Walmart",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1763.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Pigment | MAC Cosmetics - Official Site",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Las mejores ofertas en M * A * C Maquillaje individual blanco",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1878.0,
     "width": 586.0,
     "height": 121.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "MAC Frozen White Pigment Dupes & Swatch Comparisons",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Pigment | MAC Cosmetics - Official Site",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,35 +113,47 @@
     "y": 2034.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Rare Mac Pigment Eyeshadow Frozen White Blue Brown",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "MAC Frozen White Pigment Dupes & Swatch Comparisons",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
-  },
-  {
-    "type": "paa",
-    "x": 162.0,
-    "y": 2149.0,
-    "width": 586.0,
-    "height": 82.0,
-    "html_handle": "rso[8]",
-    "html_signature": "h=\"paa\" div.ULSxyf",
-    "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
-    "position": 10
   },
   {
     "type": "organic",
     "x": 162.0,
+    "y": 2149.0,
+    "width": 586.0,
+    "height": 82.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Rare Mac Pigment Eyeshadow Frozen White Blue Brown",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
+  },
+  {
+    "type": "paa",
+    "x": 162.0,
     "y": 2279.0,
     "width": 586.0,
-    "height": 94.0,
+    "height": 193.0,
+    "html_handle": "rso[8]",
+    "html_signature": "h=\"paa\" div.ULSxyf",
+    "heading_text": "People also ask",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 11
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2519.0,
+    "width": 586.0,
+    "height": 81.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "5 MAC Lose Pigment *mini - Pinterest",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -153,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 13
   },
   {
     "type": "native_ad",
@@ -165,7 +177,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 14
   },
   {
     "type": "pagination",
@@ -177,30 +189,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2398.0,
-    "width": 586.0,
-    "height": 74.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2519.0,
-    "width": 586.0,
-    "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

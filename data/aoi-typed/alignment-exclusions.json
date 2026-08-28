@@ -1,0 +1,22 @@
+{
+  "date": "2026-08-28",
+  "reason": "alignment_suspect under the y-DP geometric card<->bbox alignment: shift-periodic pages with pathological widget rendering where a one-slot-wrong lattice cannot be ruled out geometrically. Excluded from typed-flavor feature derivation. See docs/local-pack-aoi-shift.md (Quality gate).",
+  "rule": "mean_residual > 30 OR (mean_h_mismatch > 60 AND mean_residual > 8)",
+  "source": "scripts/output/aoi-typed/build_typed_aoi_map_audits.jsonl",
+  "tids": [
+    "p007-b1-t9",
+    "p010-b1-t4",
+    "p015-b3-t6",
+    "p021-b1-t3",
+    "p023-b3-t7",
+    "p023-b4-t8",
+    "p023-b5-t8",
+    "p034-b6-t5",
+    "p041-b1-t9",
+    "p044-b5-t9",
+    "p046-b6-t5",
+    "p047-b3-t7",
+    "p047-b5-t2",
+    "p049-b4-t3"
+  ]
+}

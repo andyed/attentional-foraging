@@ -12,64 +12,28 @@
     "position": 0
   },
   {
-    "type": "other_widget",
+    "type": "top_places",
     "x": 162.0,
     "y": 548.0,
     "width": 586.0,
-    "height": 382.0,
-    "html_handle": "rso[0]",
-    "html_signature": "ULSxyf div.ULSxyf",
-    "heading_text": "Find results on",
-    "source": "html_rso+cv_bbox",
-    "position": 1
-  },
-  {
-    "type": "top_places",
-    "x": 162.0,
-    "y": 962.0,
-    "width": 586.0,
-    "height": 93.0,
+    "height": 631.0,
     "html_handle": "rso[1]",
     "html_signature": "h=\"local\" div.ULSxyf",
     "heading_text": "Local results",
-    "source": "html_rso+cv_bbox",
-    "position": 2
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1087.0,
-    "width": 586.0,
-    "height": 92.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Jetstream P8 - Folding Bikes by DAHON",
-    "source": "html_rso+cv_bbox",
-    "position": 3
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 1
   },
   {
     "type": "organic",
     "x": 162.0,
     "y": 1224.0,
     "width": 586.0,
-    "height": 126.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dahon Jetstream P8 Aluminium Folding Bike - PicClick UK",
-    "source": "html_rso+cv_bbox",
-    "position": 4
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1378.0,
-    "width": 586.0,
-    "height": 123.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Jetstream P8 - World Wheels - The No 1 internet source for ...",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "height": 277.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Jetstream P8 - Folding Bikes by DAHON",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 2
   },
   {
     "type": "organic",
@@ -77,11 +41,11 @@
     "y": 1537.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dahon P8d79714079 Jetstream P8 Folding Bicycle - eBay",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "heading_text": "Dahon Jetstream P8 Aluminium Folding Bike - PicClick UK",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -89,11 +53,11 @@
     "y": 1657.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Dahon Jetstream P8 Bronze - Amazon",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Jetstream P8 - World Wheels - The No 1 internet source for ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
     "type": "organic",
@@ -101,11 +65,11 @@
     "y": 1773.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dahon Jetstream P8 Review - The Best Folding Bikes",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "heading_text": "Dahon P8d79714079 Jetstream P8 Folding Bicycle - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "organic",
@@ -113,35 +77,47 @@
     "y": 1888.0,
     "width": 586.0,
     "height": 248.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Dahon Jetstream P8 Folding Bike (B000ET0UZC) | Amazon ...",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "html_handle": "rso[6]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Dahon Jetstream P8 Bronze - Amazon",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
-    "type": "image_pack",
+    "type": "organic",
     "x": 162.0,
     "y": 2175.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[9]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy dahon dahon jetstream p8 folding bike",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Dahon Jetstream P8 Review - The Best Folding Bikes",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
+    "x": 162.0,
+    "y": 2291.0,
+    "width": 586.0,
+    "height": 122.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Dahon Jetstream P8 Folding Bike (B000ET0UZC) | Amazon ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
+  },
+  {
+    "type": "image_pack",
     "x": 162.0,
     "y": 2461.0,
     "width": 586.0,
     "height": 244.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 11
+    "html_handle": "rso[9]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy dahon dahon jetstream p8 folding bike",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
     "type": "native_ad",
@@ -153,7 +129,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -165,7 +141,20 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 11
+  },
+  {
+    "type": "other_widget",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[0]",
+    "html_signature": "ULSxyf div.ULSxyf",
+    "heading_text": "Find results on",
+    "source": "html_only",
+    "y_render": 603,
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -189,18 +178,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2291.0,
-    "width": 586.0,
-    "height": 122.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

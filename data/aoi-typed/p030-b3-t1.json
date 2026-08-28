@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Denso 234-4835 Oxygen Sensor - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,19 +68,19 @@
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Oxygen Sensor-OE Style DENSO 234-4835 - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1064.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[2]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "DENSO 234-4835 Oxygen Sensor - Newegg.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,34 +89,34 @@
     "y": 1180.0,
     "width": 586.0,
     "height": 61.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "DENSO 234-4835 Oxygen Sensor - Newegg.com",
-    "source": "html_rso+cv_bbox",
-    "position": 7
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1289.0,
-    "width": 586.0,
-    "height": 91.0,
     "html_handle": "rso[4]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Oxygen Sensor-OE Style DENSO 234-4835 - Sears",
-    "source": "html_rso+cv_bbox",
-    "position": 8
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "paa",
     "x": 162.0,
-    "y": 1529.0,
+    "y": 1289.0,
     "width": 586.0,
-    "height": 98.0,
+    "height": 91.0,
     "html_handle": "rso[5]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1529.0,
+    "width": 586.0,
+    "height": 98.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Denso 234-4835 Oxygen Sensor - Ubuy",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,23 +125,11 @@
     "y": 1665.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Denso 234-4835 Oxygen Sensor - Ubuy",
-    "source": "html_rso+cv_bbox",
-    "position": 10
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1805.0,
-    "width": 586.0,
-    "height": 81.0,
     "html_handle": "rso[7]",
     "html_signature": "div.g",
     "heading_text": "DENSO 234-4835 Oxygen Sensor",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "organic",
@@ -149,11 +137,11 @@
     "y": 1921.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[9]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Oxygen Sensor - Denso\u00ae 234-4835 - CARiD.com",
-    "source": "html_rso+cv_bbox",
-    "position": 12
+    "heading_text": "Denso 234-4835 OE Identical Oxygen Sensor",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
   },
   {
     "type": "organic",
@@ -161,11 +149,11 @@
     "y": 2037.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[9]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Denso 234-4835 OE Identical Oxygen Sensor",
-    "source": "html_rso+cv_bbox",
-    "position": 13
+    "html_handle": "rso[10]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "2003 Nissan Sentra Oxygen Sensor - Denso 234-4835",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -177,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 14
+    "position": 13
   },
   {
     "type": "native_ad",
@@ -189,7 +177,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 15
+    "position": 14
   },
   {
     "type": "native_ad",
@@ -201,19 +189,32 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 16
+    "position": 15
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
   },
   {
     "type": "organic",
-    "x": 162.0,
-    "y": 2613.0,
-    "width": 586.0,
-    "height": 80.0,
-    "html_handle": "rso[10]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "2003 Nissan Sentra Oxygen Sensor - Denso 234-4835",
-    "source": "html_rso+cv_bbox",
-    "position": 17
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Oxygen Sensor - Denso\u00ae 234-4835 - CARiD.com",
+    "source": "html_only",
+    "y_render": 2131,
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -249,6 +250,30 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 1805.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 2613.0,
+    "width": 586.0,
+    "height": 80.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

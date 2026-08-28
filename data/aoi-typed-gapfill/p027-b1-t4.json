@@ -12,15 +12,15 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 442.0,
     "width": 586.0,
     "height": 453.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Motorcraft WG312 Washer Pump : Automotive - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Ford Dealers",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -29,10 +29,10 @@
     "y": 897.0,
     "width": 586.0,
     "height": 135.0,
-    "html_handle": "rso[1]",
+    "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Motorcraft WG-312 Windshield Washer Pump - Amazon",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Motorcraft WG312 Washer Pump : Automotive - Amazon.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1034.0,
     "width": 586.0,
     "height": 135.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Windshield Washer Pump Motorcraft WG-312 - eBay",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Motorcraft WG-312 Windshield Washer Pump - Amazon",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1171.0,
     "width": 586.0,
     "height": 281.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Motorcraft\u00ae WG312 - Windshield Washer Pump",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[2]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Windshield Washer Pump Motorcraft WG-312 - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1454.0,
     "width": 586.0,
     "height": 118.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Motorcraft WG312 Washer Pump- Buy Online in India at Desertcart ...",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Motorcraft\u00ae WG312 - Windshield Washer Pump",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1574.0,
     "width": 586.0,
     "height": 136.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g",
-    "heading_text": "Motorcraft WG-312 Windshield Washer Pump - Ubuy",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Motorcraft WG312 Washer Pump- Buy Online in India at Desertcart ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1712.0,
     "width": 586.0,
     "height": 183.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Motorcraft Windshield Washer Pump WG-312 - The Home Depot",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g",
+    "heading_text": "Motorcraft WG-312 Windshield Washer Pump - Ubuy",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,22 +101,22 @@
     "y": 1897.0,
     "width": 586.0,
     "height": 135.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "MOTORCRAFT WG312 Windshield Washer Pump - RockAuto",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Motorcraft Windshield Washer Pump WG-312 - The Home Depot",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 2034.0,
     "width": 586.0,
     "height": 97.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[7]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "MOTORCRAFT WG312 Windshield Washer Pump - RockAuto",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {

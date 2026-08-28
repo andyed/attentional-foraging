@@ -36,40 +36,16 @@
     "position": 2
   },
   {
-    "type": "image_pack",
+    "type": "top_places",
     "x": 162.0,
     "y": 699.0,
     "width": 586.0,
-    "height": 366.0,
-    "html_handle": "rso[0]",
-    "html_signature": "ULSxyf+img div.ULSxyf",
-    "heading_text": "Find results on",
-    "source": "html_rso+cv_bbox",
-    "position": 3
-  },
-  {
-    "type": "top_places",
-    "x": 162.0,
-    "y": 1100.0,
-    "width": 586.0,
-    "height": 71.0,
+    "height": 647.0,
     "html_handle": "rso[1]",
     "html_signature": "h=\"local\" div.ULSxyf",
     "heading_text": "Local results",
-    "source": "html_rso+cv_bbox",
-    "position": 4
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1207.0,
-    "width": 586.0,
-    "height": 139.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "DYMO LabelWriter 450 Direct Thermal Label Printer",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 3
   },
   {
     "type": "organic",
@@ -77,47 +53,35 @@
     "y": 1389.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "DYMO Label Manager 450 - Amazon.com",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "DYMO LabelWriter 450 Direct Thermal Label Printer",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
-    "type": "paa",
+    "type": "organic",
     "x": 162.0,
     "y": 1504.0,
     "width": 586.0,
     "height": 346.0,
-    "html_handle": "rso[4]",
-    "html_signature": "h=\"paa\" div.ULSxyf",
-    "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
-    "position": 7
+    "html_handle": "rso[3]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "DYMO Label Manager 450 - Amazon.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
-    "type": "organic",
+    "type": "paa",
     "x": 162.0,
     "y": 1898.0,
     "width": 586.0,
-    "height": 55.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "DYMO LabelWriter 450 Direct Thermal Label Printer",
-    "source": "html_rso+cv_bbox",
-    "position": 8
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 2017.0,
-    "width": 586.0,
-    "height": 74.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dymo LabelWriter 450 Label Printers for sale - eBay",
-    "source": "html_rso+cv_bbox",
-    "position": 9
+    "height": 193.0,
+    "html_handle": "rso[4]",
+    "html_signature": "h=\"paa\" div.ULSxyf",
+    "heading_text": "People also ask",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 6
   },
   {
     "type": "organic",
@@ -125,11 +89,11 @@
     "y": 2137.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dymo Labels LabelMANAGER 450D Labelmaker Tapes",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "heading_text": "DYMO LabelWriter 450 Direct Thermal Label Printer",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -137,11 +101,11 @@
     "y": 2253.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dymo Labelwriter 450 Label Printer",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "heading_text": "Dymo LabelWriter 450 Label Printers for sale - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -149,23 +113,23 @@
     "y": 2369.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[9]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Dymo LabelWriter 450 desde 135,82 \u20ac | Compara precios ...",
-    "source": "html_rso+cv_bbox",
-    "position": 12
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Dymo Labels LabelMANAGER 450D Labelmaker Tapes",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
-    "type": "image_pack",
+    "type": "organic",
     "x": 162.0,
     "y": 2485.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[10]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy dymo dymo label manager 450",
-    "source": "html_rso+cv_bbox",
-    "position": 13
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Dymo Labelwriter 450 Label Printer",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "organic",
@@ -173,11 +137,35 @@
     "y": 2600.0,
     "width": 586.0,
     "height": 151.0,
+    "html_handle": "rso[9]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Dymo LabelWriter 450 desde 135,82 \u20ac | Compara precios ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
+  },
+  {
+    "type": "image_pack",
+    "x": 162.0,
+    "y": 2795.0,
+    "width": 586.0,
+    "height": 245.0,
+    "html_handle": "rso[10]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy dymo dymo label manager 450",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 12
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 3083.0,
+    "width": 586.0,
+    "height": 120.0,
     "html_handle": "rso[11]",
     "html_signature": "div.hlcw0c",
     "heading_text": "DYMO\u00ae LabelManager\u00ae 450D High Performance ...",
-    "source": "html_rso+cv_bbox",
-    "position": 14
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 13
   },
   {
     "type": "native_ad",
@@ -189,7 +177,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 15
+    "position": 14
   },
   {
     "type": "native_ad",
@@ -201,7 +189,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 16
+    "position": 15
   },
   {
     "type": "native_ad",
@@ -213,7 +201,20 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 17
+    "position": 16
+  },
+  {
+    "type": "image_pack",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[0]",
+    "html_signature": "ULSxyf+img div.ULSxyf",
+    "heading_text": "Find results on",
+    "source": "html_only",
+    "y_render": 815,
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -237,42 +238,6 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|Next",
     "source": "html_botstuff",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2795.0,
-    "width": 586.0,
-    "height": 69.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2944.0,
-    "width": 586.0,
-    "height": 96.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 3083.0,
-    "width": 586.0,
-    "height": 120.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

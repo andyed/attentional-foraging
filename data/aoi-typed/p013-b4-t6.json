@@ -8,7 +8,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Rapala Fish 'N Fillet Knife with Sheath - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 0
   },
   {
@@ -16,24 +16,12 @@
     "x": 162.0,
     "y": 523.0,
     "width": 586.0,
-    "height": 99.0,
+    "height": 306.0,
     "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
     "heading_text": "Fish 'n Fillet\u00ae Knives - Rapala",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 1
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 647.0,
-    "width": 586.0,
-    "height": 182.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Rapala Fish N Fillet Superflex Brown | Waveinn - Tradeinn",
-    "source": "html_rso+cv_bbox",
-    "position": 2
   },
   {
     "type": "organic",
@@ -41,11 +29,11 @@
     "y": 864.0,
     "width": 586.0,
     "height": 223.0,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Rapala Fish 'n Fillet Knives Classic - Bass Pro Shops",
-    "source": "html_rso+cv_bbox",
-    "position": 3
+    "html_handle": "rso[2]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Rapala Fish N Fillet Superflex Brown | Waveinn - Tradeinn",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 2
   },
   {
     "type": "organic",
@@ -53,11 +41,11 @@
     "y": 1119.0,
     "width": 586.0,
     "height": 104.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Knives - Rapala",
-    "source": "html_rso+cv_bbox",
-    "position": 4
+    "heading_text": "Rapala Fish 'n Fillet Knives Classic - Bass Pro Shops",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 3
   },
   {
     "type": "organic",
@@ -65,23 +53,23 @@
     "y": 1258.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Rapala Fish'n Fillet\u00ae 150 mm Fillet Knife - Pro-Fishing.eu",
-    "source": "html_rso+cv_bbox",
-    "position": 5
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Knives - Rapala",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 4
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1369.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 6
+    "html_handle": "rso[5]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Rapala Fish'n Fillet\u00ae 150 mm Fillet Knife - Pro-Fishing.eu",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "native_ad",
@@ -93,7 +81,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 7
+    "position": 6
   },
   {
     "type": "unknown_widget",
@@ -105,7 +93,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 8
+    "position": 7
   },
   {
     "type": "related_searches",

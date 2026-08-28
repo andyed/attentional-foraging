@@ -6,7 +6,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Airtex Automotive Division 5G1016 Air5g1016 | Autoplicity",
     "container": "rso",
-    "container_index": "0"
+    "container_index": "0",
+    "css_path": "#rso > div:nth-of-type(1)",
+    "css_class": "g tF2Cxc",
+    "text_len": 310
   },
   {
     "order": 1,
@@ -15,7 +18,10 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "Airtex Products, SAU, (Zaragoza, Espa\u00f1a)",
     "container": "rso",
-    "container_index": "1"
+    "container_index": "1",
+    "css_path": "#rso > div:nth-of-type(2)",
+    "css_class": "hlcw0c",
+    "text_len": 461
   },
   {
     "order": 2,
@@ -24,7 +30,10 @@
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy airtex air5g1016",
     "container": "rso",
-    "container_index": "2"
+    "container_index": "2",
+    "css_path": "#rso > div:nth-of-type(3)",
+    "css_class": "ULSxyf",
+    "text_len": 104
   },
   {
     "order": 3,
@@ -33,6 +42,9 @@
     "html_signature": "h=\"rs\" div.ULSxyf",
     "heading_text": "Related searches",
     "container": "botstuff",
-    "container_index": 0
+    "container_index": 0,
+    "css_path": "#bres > div:nth-of-type(1)",
+    "css_class": "ULSxyf",
+    "text_len": 135
   }
 ]

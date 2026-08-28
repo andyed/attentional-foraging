@@ -56,7 +56,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.(no class)",
     "heading_text": "Amazon.com: Customer reviews: 4Life - PhytoLax - 60 Capsules",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,19 +68,19 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "PhytoLax | Digest. 4Life",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1019.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[2]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "PhytoLax - Transfer Factor 4life Products Wholesale Online.",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,22 +89,22 @@
     "y": 1135.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "PhytoLax - Transfer Factor 4life Products Wholesale Online.",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "PhytoLax - 4Life",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1255.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "PhytoLax - 4Life",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 8
   },
   {
@@ -116,7 +116,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "4Life - PhytoLax - Natural Laxative - 60 Capsules- Buy Online in ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,10 +125,10 @@
     "y": 1493.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "4Life - PhytoLax - Natural Laxative - 60 Capsules- Buy ... - desertcart",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "PhytoLax\u00ae \u2013 Buy 4Life Transfer Factor Plus, Glucoach, Pro-TF ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -137,35 +137,23 @@
     "y": 1609.0,
     "width": 586.0,
     "height": 137.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "PhytoLax\u00ae \u2013 Buy 4Life Transfer Factor Plus, Glucoach, Pro-TF ...",
-    "source": "html_rso+cv_bbox",
-    "position": 11
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1748.0,
-    "width": 586.0,
-    "height": 130.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "PhytoLax by 4Life - 60 capsules / 12 Bottles - Ubuy Qatar",
-    "source": "html_rso+cv_bbox",
-    "position": 12
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1880.0,
+    "y": 1748.0,
     "width": 586.0,
-    "height": 135.0,
+    "height": 267.0,
     "html_handle": "rso[9]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy 4life phytolax by 4life 60 capsules",
-    "source": "html_rso+cv_bbox",
-    "position": 13
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -177,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 14
+    "position": 13
   },
   {
     "type": "native_ad",
@@ -189,7 +177,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 15
+    "position": 14
   },
   {
     "type": "native_ad",
@@ -201,7 +189,32 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 16
+    "position": 15
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "4Life - PhytoLax - Natural Laxative - 60 Capsules- Buy ... - desertcart",
+    "source": "html_only",
+    "y_render": 1674,
+    "position": -1
   },
   {
     "type": "pagination",

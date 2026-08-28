@@ -44,7 +44,7 @@
     "html_handle": "rso[0]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Name A Star - Buy A Star - The Perfect Gift | Starregister.org",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -52,96 +52,36 @@
     "x": 162.0,
     "y": 846.0,
     "width": 586.0,
-    "height": 93.0,
+    "height": 192.0,
     "html_handle": "rso[1]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 4
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 964.0,
-    "width": 586.0,
-    "height": 74.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Buy a Star - Name a Star - Adopt a Star Online | CosmoNova",
-    "source": "html_rso+cv_bbox",
-    "position": 5
-  },
-  {
-    "type": "image_pack",
-    "x": 162.0,
     "y": 1081.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[3]",
-    "html_signature": "ULSxyf+img div.ULSxyf",
-    "heading_text": "Find results on",
-    "source": "html_rso+cv_bbox",
-    "position": 6
+    "html_handle": "rso[2]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Buy a Star - Name a Star - Adopt a Star Online | CosmoNova",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
   },
   {
     "type": "top_places",
     "x": 162.0,
     "y": 1436.0,
     "width": 586.0,
-    "height": 144.0,
+    "height": 683.0,
     "html_handle": "rso[4]",
     "html_signature": "h=\"local\" div.ULSxyf",
     "heading_text": "Local results",
-    "source": "html_rso+cv_bbox",
-    "position": 7
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1615.0,
-    "width": 586.0,
-    "height": 90.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Buy Name A Star Gifts From Our online US Star Registry",
-    "source": "html_rso+cv_bbox",
-    "position": 8
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1739.0,
-    "width": 586.0,
-    "height": 139.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Buy Name A Star Gifts From Our online UK Star Registry",
-    "source": "html_rso+cv_bbox",
-    "position": 9
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1921.0,
-    "width": 586.0,
-    "height": 82.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Name a Star | Send Light for Hope and Joy",
-    "source": "html_rso+cv_bbox",
-    "position": 10
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 2037.0,
-    "width": 586.0,
-    "height": 82.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Star-Registration.com: Name a Star - Buy a Star",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 6
   },
   {
     "type": "organic",
@@ -149,11 +89,11 @@
     "y": 2153.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[9]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Star Listings International - Name a Star for someone special",
-    "source": "html_rso+cv_bbox",
-    "position": 12
+    "heading_text": "Buy Name A Star Gifts From Our online US Star Registry",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 7
   },
   {
     "type": "organic",
@@ -161,11 +101,11 @@
     "y": 2268.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[10]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Buying Star Names | IAU - International Astronomical Union",
-    "source": "html_rso+cv_bbox",
-    "position": 13
+    "heading_text": "Buy Name A Star Gifts From Our online UK Star Registry",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
   },
   {
     "type": "organic",
@@ -173,35 +113,84 @@
     "y": 2384.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[11]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Can you really purchase and name a star? - Space.com",
-    "source": "html_rso+cv_bbox",
-    "position": 14
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Name a Star | Send Light for Hope and Joy",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 9
   },
   {
-    "type": "image_pack",
+    "type": "organic",
     "x": 162.0,
     "y": 2500.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[12]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy stars",
-    "source": "html_rso+cv_bbox",
-    "position": 15
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Star-Registration.com: Name a Star - Buy a Star",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
+    "x": 162.0,
+    "y": 2616.0,
+    "width": 586.0,
+    "height": 82.0,
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Star Listings International - Name a Star for someone special",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2742.0,
+    "width": 586.0,
+    "height": 69.0,
+    "html_handle": "rso[10]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Buying Star Names | IAU - International Astronomical Union",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 12
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2891.0,
+    "width": 586.0,
+    "height": 96.0,
+    "html_handle": "rso[11]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Can you really purchase and name a star? - Space.com",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 13
+  },
+  {
+    "type": "image_pack",
     "x": 162.0,
     "y": 3031.0,
     "width": 586.0,
     "height": 231.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 16
+    "html_handle": "rso[12]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy stars",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 14
+  },
+  {
+    "type": "image_pack",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[3]",
+    "html_signature": "ULSxyf+img div.ULSxyf",
+    "heading_text": "Find results on",
+    "source": "html_only",
+    "y_render": 1345,
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -237,42 +226,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2616.0,
-    "width": 586.0,
-    "height": 82.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2742.0,
-    "width": 586.0,
-    "height": 69.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2891.0,
-    "width": 586.0,
-    "height": 96.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

@@ -12,39 +12,39 @@
     "position": 0
   },
   {
-    "type": "image_pack",
+    "type": "top_places",
     "x": 162.0,
     "y": 442.0,
     "width": 586.0,
     "height": 439.0,
-    "html_handle": "rso[0]",
-    "html_signature": "h=\"imgs\" div.ULSxyf",
-    "heading_text": "Images for buy jeep jeep strap covers pink",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
-    "type": "knowledge_panel",
+    "type": "image_pack",
     "x": 162.0,
     "y": 950.0,
     "width": 586.0,
     "height": 244.0,
-    "html_handle": "rso[1]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "h=\"imgs\" div.ULSxyf",
+    "heading_text": "Images for buy jeep jeep strap covers pink",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1238.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Jeep - Protector para cintur\u00f3n, color rosa : Amazon.es",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1373.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Jeep Baby Seat Belt Strap Covers; Pink - Extreme Terrain",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Jeep - Protector para cintur\u00f3n, color rosa : Amazon.es",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1508.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Jeep Animal Strap Cover, Pink Puppy - Walmart.com",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Jeep Baby Seat Belt Strap Covers; Pink - Extreme Terrain",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Jeep Car Seat Strap Covers 2 Pack, Plush Pink - Styles May Vary ...",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -92,7 +92,7 @@
     "html_handle": "rso[6]",
     "html_signature": "div.(no class)",
     "heading_text": "Jeep Car Seat Strap Covers 2 Pack, Plush Puppy Baby ... - eBay",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -104,7 +104,7 @@
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Jeep Car Seat Strap Covers 2 Pack, Plush Pink - desertcart",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -116,7 +116,7 @@
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Meet the Delta Team - Google Books Result",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -130,6 +130,31 @@
     "heading_text": "",
     "source": "ad_only",
     "position": 10
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[1]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Jeep Animal Strap Cover, Pink Puppy - Walmart.com",
+    "source": "html_only",
+    "y_render": 1822,
+    "position": -1
   },
   {
     "type": "related_searches",

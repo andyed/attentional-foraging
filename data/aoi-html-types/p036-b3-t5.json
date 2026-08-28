@@ -6,7 +6,10 @@
     "html_signature": "div.(no class)",
     "heading_text": "Results for asus a32 n61 laptop battery - AliExpress",
     "container": "rso",
-    "container_index": "0"
+    "container_index": "0",
+    "css_path": "#rso > div:nth-of-type(1)",
+    "css_class": "",
+    "text_len": 561
   },
   {
     "order": 1,
@@ -15,7 +18,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "KingSener A32-N61 Battery for Asus N61 N61J N61D ...",
     "container": "rso",
-    "container_index": "1"
+    "container_index": "1",
+    "css_path": "#rso > div:nth-of-type(2)",
+    "css_class": "g tF2Cxc",
+    "text_len": 307
   },
   {
     "order": 2,
@@ -24,7 +30,10 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "Laptop Battery A32-M50 A32-N61 for Asus G50 G51 G60 ...",
     "container": "rso",
-    "container_index": "2"
+    "container_index": "2",
+    "css_path": "#rso > div:nth-of-type(3)",
+    "css_class": "hlcw0c",
+    "text_len": 621
   },
   {
     "order": 3,
@@ -33,7 +42,10 @@
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
     "container": "rso",
-    "container_index": "3"
+    "container_index": "3",
+    "css_path": "#rso > div:nth-of-type(4)",
+    "css_class": "ULSxyf",
+    "text_len": 2968
   },
   {
     "order": 4,
@@ -42,7 +54,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Asus A32-N61 Battery",
     "container": "rso",
-    "container_index": "4"
+    "container_index": "4",
+    "css_path": "#rso > div:nth-of-type(5)",
+    "css_class": "g tF2Cxc",
+    "text_len": 265
   },
   {
     "order": 5,
@@ -51,7 +66,10 @@
     "html_signature": "div.(no class)",
     "heading_text": "11.1v 53wh 4800mah A32-n61 Battery For Asus ... - Alibaba",
     "container": "rso",
-    "container_index": "5"
+    "container_index": "5",
+    "css_path": "#rso > div:nth-of-type(6)",
+    "css_class": "",
+    "text_len": 722
   },
   {
     "order": 6,
@@ -60,7 +78,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Asus A32-N61 Laptop Battery - Oman | desertcart",
     "container": "rso",
-    "container_index": "6"
+    "container_index": "6",
+    "css_path": "#rso > div:nth-of-type(7)",
+    "css_class": "g tF2Cxc",
+    "text_len": 232
   },
   {
     "order": 7,
@@ -69,7 +90,10 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "Laptop Battery for ASUS A31-B43 A32- ... - eBay",
     "container": "rso",
-    "container_index": "7"
+    "container_index": "7",
+    "css_path": "#rso > div:nth-of-type(8)",
+    "css_class": "hlcw0c",
+    "text_len": 275
   },
   {
     "order": 8,
@@ -78,6 +102,9 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|6|7|8|Next",
     "container": "botstuff",
-    "container_index": 0
+    "container_index": 0,
+    "css_path": "#botstuff > div:nth-of-type(1) > div:nth-of-type(3)",
+    "css_class": "",
+    "text_len": 26
   }
 ]

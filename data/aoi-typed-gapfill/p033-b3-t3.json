@@ -12,15 +12,15 @@
     "position": 0
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 561.0,
     "width": 586.0,
     "height": 454.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Foxs Glacier Fruits 200g : Candy - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Supermarkets",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 1
   },
   {
@@ -29,22 +29,22 @@
     "y": 1035.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[1]",
+    "html_handle": "rso[0]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Fox's Glacier Fruits 200G - Tesco Groceries",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Foxs Glacier Fruits 200g : Candy - Amazon.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
-    "type": "knowledge_panel",
+    "type": "organic",
     "x": 162.0,
     "y": 1168.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[2]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Fox's Glacier Fruits 200G - Tesco Groceries",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,19 +56,19 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g",
     "heading_text": "Fox's Glacier Fruits 200g | Sainsbury's",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1468.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Fox's Glacier Fruits 200G - Online Pound Store",
-    "source": "html_rso+cv_bbox",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1604.0,
     "width": 586.0,
     "height": 83.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Foxs Glacier Fruits 200g | The European Gift Store",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Fox's Glacier Fruits 200G - Online Pound Store",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 1719.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Fox's Glacier Fruits 200G - Pack of 12 - Lyreco",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Foxs Glacier Fruits 200g | The European Gift Store",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,10 +101,10 @@
     "y": 1839.0,
     "width": 586.0,
     "height": 99.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "FOXS GLACIER FRUITS (200g) - britishimportsgeorgia.com",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Fox's Glacier Fruits 200G - Pack of 12 - Lyreco",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -116,7 +116,7 @@
     "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Fox's Glacier Fruits | Waitrose & Partners",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -128,7 +128,7 @@
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Fox's Glacier Fruits 200g - BR Foods",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
   {
@@ -154,6 +154,31 @@
     "heading_text": "",
     "source": "cv_bbox_only",
     "position": 12
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[2]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "FOXS GLACIER FRUITS (200g) - britishimportsgeorgia.com",
+    "source": "html_only",
+    "y_render": 2188,
+    "position": -1
   },
   {
     "type": "related_searches",

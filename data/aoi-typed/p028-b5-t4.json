@@ -24,15 +24,15 @@
     "position": 1
   },
   {
-    "type": "organic",
+    "type": "top_places",
     "x": 162.0,
     "y": 726.0,
     "width": 586.0,
     "height": 482.0,
-    "html_handle": "rso[0]",
-    "html_signature": "div.g",
-    "heading_text": "Amazon.com: Schar - Certified Gluten Free - (5.3 oz) 6 Pack",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Supermarkets",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
   },
   {
@@ -41,10 +41,10 @@
     "y": 1244.0,
     "width": 586.0,
     "height": 152.0,
-    "html_handle": "rso[1]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Gluten Free Crispbread - Dr. Sch\u00e4r",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[0]",
+    "html_signature": "div.g",
+    "heading_text": "Amazon.com: Schar - Certified Gluten Free - (5.3 oz) 6 Pack",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,10 +53,10 @@
     "y": 1427.0,
     "width": 586.0,
     "height": 289.0,
-    "html_handle": "rso[2]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Schar Crisp Bread 150G - Tesco Groceries",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[1]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Gluten Free Crispbread - Dr. Sch\u00e4r",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,10 +65,10 @@
     "y": 1752.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Schar Gluten Free Crispbread 150g - Sainsbury's",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Schar Crisp Bread 150G - Tesco Groceries",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,10 +77,10 @@
     "y": 1887.0,
     "width": 586.0,
     "height": 98.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Schar Gluten Free Crispbreads 150g - Morrisons",
-    "source": "html_rso+cv_bbox",
+    "heading_text": "Schar Gluten Free Crispbread 150g - Sainsbury's",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,10 +89,10 @@
     "y": 2023.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g",
-    "heading_text": "Sch\u00e4r Crispbread dark, gluten free 125 g at Violey",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Schar Gluten Free Crispbreads 150g - Morrisons",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,22 +101,22 @@
     "y": 2139.0,
     "width": 586.0,
     "height": 125.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.hlcw0c",
-    "heading_text": "Schar Gluten Free Crispbread (150 g)",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g",
+    "heading_text": "Sch\u00e4r Crispbread dark, gluten free 125 g at Violey",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 2299.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[6]",
+    "html_signature": "div.hlcw0c",
+    "heading_text": "Schar Gluten Free Crispbread (150 g)",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {

@@ -6,6 +6,9 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "Ganz Fleur-de-Lis Oil Bottle, One Size, Multicolored - Amazon ...",
     "container": "rso",
-    "container_index": "0"
+    "container_index": "0",
+    "css_path": "#rso > div:nth-of-type(1)",
+    "css_class": "hlcw0c",
+    "text_len": 334
   }
 ]

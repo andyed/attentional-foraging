@@ -6,7 +6,10 @@
     "html_signature": "div.(no class)",
     "heading_text": "Biotics Research GTA 90c - Amazon.com",
     "container": "rso",
-    "container_index": "0"
+    "container_index": "0",
+    "css_path": "#rso > div:nth-of-type(1)",
+    "css_class": "",
+    "text_len": 584
   },
   {
     "order": 1,
@@ -15,7 +18,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "BIOTICS RESEARCH - todos los productos al mejor precio ...",
     "container": "rso",
-    "container_index": "1"
+    "container_index": "1",
+    "css_path": "#rso > div:nth-of-type(2)",
+    "css_class": "g tF2Cxc",
+    "text_len": 282
   },
   {
     "order": 2,
@@ -24,7 +30,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Biotics Research GTA-Forte II 90C - desertcart",
     "container": "rso",
-    "container_index": "2"
+    "container_index": "2",
+    "css_path": "#rso > div:nth-of-type(3)",
+    "css_class": "g tF2Cxc",
+    "text_len": 284
   },
   {
     "order": 3,
@@ -33,7 +42,10 @@
     "html_signature": "div.g",
     "heading_text": "Biotics Research GTA 90c - Indonesia",
     "container": "rso",
-    "container_index": "3"
+    "container_index": "3",
+    "css_path": "#rso > div:nth-of-type(4)",
+    "css_class": "g",
+    "text_len": 337
   },
   {
     "order": 4,
@@ -42,7 +54,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Biotics Research GTA 90c - NineLife - Oman",
     "container": "rso",
-    "container_index": "4"
+    "container_index": "4",
+    "css_path": "#rso > div:nth-of-type(5)",
+    "css_class": "g tF2Cxc",
+    "text_len": 259
   },
   {
     "order": 5,
@@ -51,7 +66,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "GTA\u00ae | Biotics Research",
     "container": "rso",
-    "container_index": "5"
+    "container_index": "5",
+    "css_path": "#rso > div:nth-of-type(6)",
+    "css_class": "g tF2Cxc",
+    "text_len": 264
   },
   {
     "order": 6,
@@ -60,7 +78,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Biotics Research GTA-Forte 90C - Total Body Wellness Clinic",
     "container": "rso",
-    "container_index": "6"
+    "container_index": "6",
+    "css_path": "#rso > div:nth-of-type(7)",
+    "css_class": "g tF2Cxc",
+    "text_len": 303
   },
   {
     "order": 7,
@@ -69,7 +90,10 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Biotics Research GTA-Forte II Endocrine Glands Support - eBay",
     "container": "rso",
-    "container_index": "7"
+    "container_index": "7",
+    "css_path": "#rso > div:nth-of-type(8)",
+    "css_class": "g tF2Cxc",
+    "text_len": 274
   },
   {
     "order": 8,
@@ -78,7 +102,10 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "GTA Forte 90 caps-Biotics Research - Global Nutrition",
     "container": "rso",
-    "container_index": "8"
+    "container_index": "8",
+    "css_path": "#rso > div:nth-of-type(9)",
+    "css_class": "hlcw0c",
+    "text_len": 293
   },
   {
     "order": 9,
@@ -87,7 +114,10 @@
     "html_signature": "h=\"rs\" div.ULSxyf",
     "heading_text": "Related searches",
     "container": "botstuff",
-    "container_index": 0
+    "container_index": 0,
+    "css_path": "#bres > div:nth-of-type(1)",
+    "css_class": "ULSxyf",
+    "text_len": 83
   },
   {
     "order": 10,
@@ -96,6 +126,9 @@
     "html_signature": "div[role=navigation] in botstuff",
     "heading_text": "Page navigation|1|2|3|4|5|Next",
     "container": "botstuff",
-    "container_index": 0
+    "container_index": 0,
+    "css_path": "#botstuff > div:nth-of-type(1) > div:nth-of-type(2)",
+    "css_class": "",
+    "text_len": 23
   }
 ]

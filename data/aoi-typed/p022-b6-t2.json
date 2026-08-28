@@ -36,15 +36,15 @@
     "position": 2
   },
   {
-    "type": "knowledge_panel",
+    "type": "top_places",
     "x": 162.0,
     "y": 670.0,
     "width": 586.0,
     "height": 482.0,
-    "html_handle": "rso[0]",
-    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
-    "heading_text": "Complementary results",
-    "source": "html_rso+cv_bbox",
+    "html_handle": "Odp5De[0]",
+    "html_signature": "out-of-rso local pack, 3 uMdZh",
+    "heading_text": "Cosmetics Stores",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -56,7 +56,7 @@
     "html_handle": "rso[1]",
     "html_signature": "div.g",
     "heading_text": "MAC Lipstick Fabby : Beauty & Personal Care - Amazon.com",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -68,7 +68,7 @@
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Frost Lipstick | MAC Cosmetics - Official Site",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -80,7 +80,7 @@
     "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Frost Lipstick | MAC Cosmetics Espa\u00f1a - Sitio oficial",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -92,7 +92,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.hlcw0c",
     "heading_text": "MAC Fabby Lipstick Review & Swatches",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -100,36 +100,24 @@
     "x": 162.0,
     "y": 1812.0,
     "width": 586.0,
-    "height": 68.0,
+    "height": 244.0,
     "html_handle": "rso[5]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy m a c mac lipstick fabby",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 8
   },
   {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1960.0,
-    "width": 586.0,
-    "height": 96.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "MAC Frost Lipstick 308 Fabby Lipstick 0.1 Ounces - Walmart",
-    "source": "html_rso+cv_bbox",
-    "position": 9
-  },
-  {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 2100.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "MAC Frost Lipstick - Fabby - ASOS",
-    "source": "html_rso+cv_bbox",
-    "position": 10
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
+    "position": 9
   },
   {
     "type": "organic",
@@ -137,11 +125,11 @@
     "y": 2236.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "MAC Cosmetics Frost Lipstick - Fabby - Reviews - MakeupAlley",
-    "source": "html_rso+cv_bbox",
-    "position": 11
+    "heading_text": "MAC Frost Lipstick - Fabby - ASOS",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "organic",
@@ -149,10 +137,22 @@
     "y": 2372.0,
     "width": 586.0,
     "height": 101.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "MAC Cosmetics Frost Lipstick - Fabby - Reviews - MakeupAlley",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2506.0,
+    "width": 586.0,
+    "height": 102.0,
     "html_handle": "rso[9]",
     "html_signature": "div.hlcw0c",
     "heading_text": "MAC Frost Lipstick (Various Shades) - LOOKFANTASTIC",
-    "source": "html_rso+cv_bbox",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 12
   },
   {
@@ -166,6 +166,31 @@
     "heading_text": "",
     "source": "ad_only",
     "position": 13
+  },
+  {
+    "type": "knowledge_panel",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[0]",
+    "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
+    "heading_text": "Complementary results",
+    "source": "html_rendered_offcolumn",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "MAC Frost Lipstick 308 Fabby Lipstick 0.1 Ounces - Walmart",
+    "source": "html_only",
+    "y_render": 2482,
+    "position": -1
   },
   {
     "type": "related_searches",
@@ -201,18 +226,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2506.0,
-    "width": 586.0,
-    "height": 102.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {
