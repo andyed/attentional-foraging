@@ -21,9 +21,20 @@ ROOT = Path("/Users/andyed/Documents/dev/attentional-foraging")
 AOI_DIR = ROOT / "data/aoi-typed-gapfill"
 OUT = ROOT / "scripts/output/serp_layout_diversity/summary.json"
 
+sys.path.insert(0, str(ROOT / "notebooks-v2"))
+from data_loader import typed_alignment_exclusions  # noqa: E402
+
 
 def main():
-    files = sorted(AOI_DIR.glob("*.json"))
+    # This script globs the typed AOI dir directly rather than going through
+    # load_typed_aois(), so it does not inherit that loader's exclusion gate. Apply it
+    # here: alignment_suspect trials are dropped from typed-flavor derivation
+    # (data/aoi-typed/alignment-exclusions.json; docs/local-pack-aoi-shift.md Quality gate).
+    excluded = typed_alignment_exclusions()
+    files = [p for p in sorted(AOI_DIR.glob("*.json")) if p.stem not in excluded]
+    n_excluded = len(list(AOI_DIR.glob("*.json"))) - len(files)
+    if n_excluded:
+        print(f"[exclusions] {n_excluded} alignment_suspect trials excluded", file=sys.stderr)
     n = len(files)
     if n == 0:
         print(f"no AOI files in {AOI_DIR}", file=sys.stderr)

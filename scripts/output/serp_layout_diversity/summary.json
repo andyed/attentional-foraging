@@ -1,6 +1,6 @@
 {
-  "trials": 2776,
-  "trials_with_nonorganic_element": 2776,
+  "trials": 2762,
+  "trials_with_nonorganic_element": 2762,
   "frac_with_nonorganic_element": 1.0,
   "organic_per_serp": {
     "median": 8,
@@ -10,66 +10,66 @@
   },
   "total_aois_per_serp": {
     "median": 16,
-    "mean": 16.23
+    "mean": 16.19
   },
   "distinct_types_per_serp": {
-    "median": 6,
-    "mean": 6.38,
+    "median": 7,
+    "mean": 6.51,
     "min": 2,
-    "max": 12
+    "max": 11
   },
   "per_type_trial_presence": {
     "organic": {
-      "trials": 2776,
+      "trials": 2762,
       "frac": 1.0
     },
     "pagination": {
-      "trials": 2697,
-      "frac": 0.9715
+      "trials": 2683,
+      "frac": 0.9714
     },
     "native_ad": {
-      "trials": 2647,
-      "frac": 0.9535
+      "trials": 2636,
+      "frac": 0.9544
     },
     "related_searches": {
-      "trials": 1811,
-      "frac": 0.6524
+      "trials": 1797,
+      "frac": 0.6506
     },
     "dd_top": {
-      "trials": 1582,
-      "frac": 0.5699
+      "trials": 1575,
+      "frac": 0.5702
     },
     "image_pack": {
-      "trials": 1580,
-      "frac": 0.5692
+      "trials": 1568,
+      "frac": 0.5677
     },
     "chrome": {
-      "trials": 1412,
-      "frac": 0.5086
-    },
-    "dd_right": {
-      "trials": 861,
-      "frac": 0.3102
-    },
-    "paa": {
-      "trials": 769,
-      "frac": 0.277
-    },
-    "knowledge_panel": {
-      "trials": 767,
-      "frac": 0.2763
+      "trials": 1322,
+      "frac": 0.4786
     },
     "unknown_widget": {
-      "trials": 666,
-      "frac": 0.2399
+      "trials": 872,
+      "frac": 0.3157
+    },
+    "dd_right": {
+      "trials": 856,
+      "frac": 0.3099
+    },
+    "paa": {
+      "trials": 764,
+      "frac": 0.2766
+    },
+    "knowledge_panel": {
+      "trials": 763,
+      "frac": 0.2762
     },
     "top_places": {
-      "trials": 86,
-      "frac": 0.031
+      "trials": 340,
+      "frac": 0.1231
     },
     "other_widget": {
-      "trials": 51,
-      "frac": 0.0184
+      "trials": 43,
+      "frac": 0.0156
     }
   }
 }

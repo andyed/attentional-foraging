@@ -49,6 +49,11 @@ from adserp_loader import (  # type: ignore # noqa: E402
     assign_fixation_to_position as pl_assign,
 )
 
+# Test 3 only. This artifact is ABSOLUTE rank-space and has no flavored variant:
+# compute_encoding_vs_retrieval.py takes no --attribution and positions its `first_pass`
+# fixations with result_band_tops() (the band estimator). Its `pos` therefore means a
+# different thing from an organic/organic_hybrid/typed `pos`, so Test 3 is gated to the
+# absolute attribution — see the guard at Test 3.
 ENC_PATH = ROOT / 'AdSERP/data/encoding-vs-retrieval.json'
 OUT_DIR = ROOT / 'scripts/output/saccade_orientation'
 OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -158,6 +163,7 @@ def main() -> None:
     by_trial: dict[str, dict] = {}
     skipped_no_fix = 0
     skipped_no_meta = 0
+    skipped_no_aoi = 0   # typed flavor: alignment-excluded, or no typed main-axis AOI
 
     for i, tid in enumerate(trial_ids):
         if (i + 1) % 250 == 0:
@@ -169,13 +175,21 @@ def main() -> None:
         # Position assignment context
         if args.attribution == 'organic':
             tops = organic_aoi_tops(tid)
+            n_results = len(tops) if tops else 0
         elif args.attribution == 'organic_hybrid':
             tops = _hybrid_aoi_tops(tid)
+            n_results = len(tops) if tops else 0
         elif args.attribution == 'typed':
             tops = typed_aoi_tops(tid)
             n_results = len(tops) if tops else 0
             if n_results == 0:
-                tops = None
+                # typed_aoi_tops() returns [] for alignment-excluded trials as well as for
+                # trials with no typed main-axis AOI. This used to set tops = None and fall
+                # through, which still wrote the trial: all 14 excluded ids leaked into both
+                # outputs (2,774 trials, where every sibling typed artifact carries 2,759).
+                # compute_k_coefficient.py:165 skips on the identical signal; match it.
+                skipped_no_aoi += 1
+                continue
         else:
             n_results = pl_count_results(tid) or 11
             doc_h, _, _ = pl_get_trial_meta(tid)
@@ -212,7 +226,8 @@ def main() -> None:
         by_pos[tid] = {'positions': positions}
 
     print(f'  trials with features: {len(by_trial):,}  '
-          f'(skipped {skipped_no_fix} no-fix, {skipped_no_meta} no-meta)',
+          f'(skipped {skipped_no_fix} no-fix, {skipped_no_meta} no-meta, '
+          f'{skipped_no_aoi} no-typed-AOI/excluded)',
           file=sys.stderr)
 
     # Save caches
@@ -247,12 +262,11 @@ def main() -> None:
     print(f'  oblique    = {n_o_total:,}  ({100*n_o_total/n_sac:.1f}%)')
 
     # ── Test 1: trial-level h:v ratio for trials WITH a click vs without ─
-    enc = json.load(open(ENC_PATH))
-    clicked_set = set()
-    for tid, trial in enc.items():
-        # 'click_pos' from ripa2 cache; load that separately
-        pass
-    # Cleanest: load from ripa2-by-position.json which has click_pos
+    # click_pos comes from the ripa2 cache, which resolve_paths() flavors per attribution.
+    # An unflavored `encoding-vs-retrieval.json` (2026-04-25, pre-typed rank space) used to be
+    # loaded here and immediately discarded — the loop over it was a bare `pass` and clicked_set
+    # was overwritten on the next line. Removed 2026-08-30: dead, and reading an unflavored
+    # positional artifact inside a flavored run is a mis-join waiting to be wired up.
     rcache = json.load(open(RIPA2_PATH))
     clicked_set = {tid for tid, t in rcache.items()
                    if t.get('click_pos') is not None}
@@ -311,7 +325,20 @@ def main() -> None:
     # ── Test 3: will-regress vs no-regress: max_horizontal_run at the position ─
     print('\n=== Test 3: max_horizontal_run × will-regress (per-(trial, pos) using NB22 label) ===')
     # encoding-vs-retrieval.json has per-fix will_regress; aggregate to per-(trial, pos)
-    # by taking ANY first-pass fix with will_regress=True at that pos
+    # by taking ANY first-pass fix with will_regress=True at that pos.
+    #
+    # GATED (2026-08-30): enc is absolute rank-space and has no flavored variant (see
+    # ENC_PATH). Joining its `pos` to a typed or organic `pos` on a bare (tid, pos) key
+    # succeeds silently — the trial ids resolve — while pairing two different rank
+    # definitions. Emit nothing rather than a wrong number.
+    if args.attribution != 'absolute':
+        _msg = (f'SKIPPED — encoding-vs-retrieval.json is absolute rank-space and has no '
+                f'{args.attribution} variant; joining it would mis-key (tid, pos).')
+        print(f'  {_msg}')
+        summary['tests']['max_horizontal_run_wr_vs_nr'] = {'skipped': _msg}
+        enc = {}
+    else:
+        enc = json.load(open(ENC_PATH))
     wr_map: dict[tuple[str, int], bool] = {}
     for tid, trial in enc.items():
         for fix in trial.get('first_pass') or []:

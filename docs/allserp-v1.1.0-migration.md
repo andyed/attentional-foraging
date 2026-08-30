@@ -6,15 +6,35 @@ re-derive rather than mixing v1.0.0-era artifacts with v1.1.0 maps.
 
 ## Check which release you have
 
+Check **the data file you actually read**, not the summary beside it. The summary is a
+separate write and can be current while the export next to it is not — exactly what
+happened to the `.jsonl` exports between 2026-08-28 and 2026-08-30, which carried
+v1.0.0 content next to a summary correctly reading `1.1.0` (fixed 2026-08-30).
+
+```bash
+# Count trials and check for excluded ids in the export itself.
+python - <<'EOF'
+import json
+p = 'scripts/output/adserp_aois_by_trial_id_typed_gapfill.jsonl'
+excl = set(json.load(open('data/aoi-typed/alignment-exclusions.json'))['tids'])
+tids = {json.loads(l)['trial_id'] for l in open(p)}
+print(f"{len(tids)} trials, {len(tids & excl)} excluded present")
+print("v1.1.0" if len(tids) == 2762 and not tids & excl else "PRE-1.1.0 — re-derive")
+EOF
+```
+
+`2762 trials, 0 excluded present` = current. **2,776 trials, or any excluded id present,
+means the export predates this release** regardless of what its summary says.
+
+A second tell that needs no exclusion list: v1.0.0 typed exports contain ~746
+main-column `knowledge_panel` rows and ~84 `top_places`; v1.1.0 contains 0 and ~338.
+
+The summary check below is still useful as a secondary signal, but it describes the
+summary's own provenance, not the export's:
+
 ```bash
 python -c "import json;d=json.load(open('scripts/output/adserp_aois_by_trial_id_typed_gapfill_summary.json'));print(d.get('allserp_release','pre-1.1.0'), d.get('alignment_exclusions',{}).get('n'))"
 ```
-
-`1.1.0 14` = current. A missing `allserp_release` key means the export
-predates this release.
-
-Every export summary now carries `allserp_release` and the full
-`alignment_exclusions` block, so a bare CSV is identifiable.
 
 ## If you consume the CSV export
 

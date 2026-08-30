@@ -238,8 +238,29 @@ than new IDs.
 `cursor-approach-features-typed{,-buf500,-gapfill,-gapfill-buf500}.json`
 (typed: 2,760 trials / 19,382 records; typed_gapfill: 2,538 / 17,926),
 `retreat-arcs-typed.json`, `adsight-noticed-features-typed-gapfill.json`.
-Still pending (notebook-tier, K-ID re-derivation):
-NB14 → `butterworth-lfhf-by-position-typed.json`, NB18 →
-`ripa2-by-position-typed.json`, then `compute_k_coefficient.py
---attribution typed` and `compute_saccade_orientation.py --attribution
-typed` which consume them.
+
+~~Still pending (notebook-tier, K-ID re-derivation): NB14, NB18, then
+`compute_k_coefficient.py` and `compute_saccade_orientation.py`.~~
+**Superseded 2026-08-30 — the script tier all ran on 08-28 at 06:05–06:06**
+(`butterworth-lfhf-by-position-typed.json`, `ripa2-by-position-typed.json`,
+`k-coefficient-by-position-typed.json`, `saccade-orientation-by-*-typed.json`).
+This paragraph described the plan, not the outcome, and stayed stale for two days.
+
+Corrected on 2026-08-30 (see
+[`realignment-consumer-plan-2026-08-30.md`](realignment-consumer-plan-2026-08-30.md)):
+
+- `compute_saccade_orientation.py` **leaked all 14 excluded trials** into both of its
+  typed outputs (2,774 trials where every sibling carries 2,759–2,760). It set
+  `tops = None` on the exclusion signal but never `continue`d, so the trial was written
+  anyway. Fixed and re-derived: **2,760 trials, 0 excluded.**
+- Its Test 3 joined the unflavored, absolute-rank-space
+  `encoding-vs-retrieval.json` (2026-04-25) against typed ranks on a bare `(tid, pos)`
+  key. Now gated to `--attribution absolute`.
+- The `.jsonl` exports at `scripts/output/adserp_aois_by_trial_id_typed{,_gapfill}.jsonl`
+  carried **v1.0.0 content under a post-realignment mtime, beside a summary correctly
+  reading 1.1.0** — 42.1% of trials had a different rank→etype sequence. Regenerated;
+  the release check in `allserp-v1.1.0-migration.md` now reads the export itself.
+
+**What is genuinely still pending is the notebook tier.** No notebook has been
+re-executed since the realignment; eight read typed artifacts and carry pre-realignment
+output. NB18 first — it joins LF/HF and RIPA2 and owns the `(re-run pending)` K3/K4 rows.

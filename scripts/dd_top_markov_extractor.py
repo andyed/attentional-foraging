@@ -43,7 +43,8 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "notebooks-v2"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from data_loader import load_fixations, get_trial_ids  # noqa: E402
+from data_loader import (load_fixations, get_trial_ids,  # noqa: E402
+                         typed_alignment_exclusions)
 from probe_cellsplit_features import load_aois  # noqa: E402
 
 OUT_DIR = ROOT / "scripts/output/dd_top_markov"
@@ -70,9 +71,14 @@ def _in_typed_aoi(x: float, y: float, a: dict) -> bool:
             and a["y"] <= y <= a["y"] + a["height"])
 
 
-def load_typed_aois(trial_id: str) -> list[dict] | None:
+def _read_typed_gapfill_raw(trial_id: str) -> list[dict] | None:
     """Returns the typed-gapfill AOI list (parents only, includes
-    organic with `position`)."""
+    organic with `position`).
+
+    Deliberately NOT named load_typed_aois: that name belongs to data_loader's gated
+    loader, and shadowing it here made an ungated read look like a gated one. This reads
+    the directory raw; the alignment-exclusion gate is applied to the trial list in main().
+    """
     p = TYPED_AOI_DIR / f"{trial_id}.json"
     if not p.exists():
         return None
@@ -143,7 +149,7 @@ def assign_state(fix: dict, cells: list[dict], typed_aois: list[dict]) -> str:
 
 
 def process_trial(trial_id: str) -> dict | None:
-    typed_aois = load_typed_aois(trial_id)
+    typed_aois = _read_typed_gapfill_raw(trial_id)
     if typed_aois is None or not is_dd_top_topped(typed_aois):
         return None
     try:
@@ -202,10 +208,15 @@ def entropy_bits(p: np.ndarray) -> float:
 
 
 def main() -> int:
-    print(f"[1/3] iterating {2776} trial IDs, filtering to dd_top-topped...")
+    # alignment_suspect trials are excluded from typed-flavor derivation
+    # (data/aoi-typed/alignment-exclusions.json; docs/local-pack-aoi-shift.md Quality gate).
+    excluded = typed_alignment_exclusions()
+    trial_ids = [t for t in get_trial_ids() if t not in excluded]
+    print(f"[1/3] iterating {len(trial_ids)} trial IDs "
+          f"({len(excluded)} alignment_suspect excluded), filtering to dd_top-topped...")
     kept = []
     n_iter = 0
-    for tid in get_trial_ids():
+    for tid in trial_ids:
         n_iter += 1
         rec = process_trial(tid)
         if rec is not None:

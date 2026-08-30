@@ -215,7 +215,11 @@ Source: Section 3 "Survey Phase Characterization" executed output, scroll-aware.
 ## NB14: `14_butterworth_cognitive_load` — cognitive load decreases with SERP position
 
 *Source: [`notebooks-v2/14_butterworth_cognitive_load.ipynb`](../notebooks-v2/14_butterworth_cognitive_load.ipynb)*
-*Last verified against executed notebook output: 2026-05-01.*
+*Last verified against executed notebook output: **2026-08-30** (typed primary, post-realignment AllSERP v1.1.0).*
+
+> **2026-08-30 correction.** This block described organic-rank as primary, but cell 2 has loaded the *typed* file since the 2026-05-04 cascade — and that edit pointed **both** loads at it, so `bw_data_abs` held the primary data and the "absolute robustness" column was a self-comparison. The robustness pair now loads the genuine legacy absolute file, and every **bolded** value below is from the 2026-08-30 execution on post-realignment typed inputs. The organic column is retained as the 2026-05-01 historical run; K-IDs are not renumbered.
+
+If prose in a paper draft cites a value that disagrees with a row below, the paper is wrong — not the notebook. If re-running this notebook produces different values, update this block immediately and `grep` for the old value across `docs/`.
 
 ### 2026-05-01 attribution shift — organic-rank as primary
 
@@ -227,25 +231,27 @@ The legacy absolute-rank values are preserved in `bw_data_abs` (loaded in cell 2
 
 **Polarity convention (pupillary LF/HF, not HRV).** Pupillary LF/HF (Peysakhovich 2015; Duchowski 2026) shares its name with the older HRV construct but indexes pupillary oscillation, not heart rate — HRV-style "↑ HF = ↑ activation" reasoning does not transfer. Within Duchowski's pupillary framework (Duchowski 2026, §2.2), polarity is **task-archetype dependent**: in *computation-dominated* tasks (mental arithmetic, active criterion comparison), more effort produces ↑ LF/HF; in *information-processing / memory-recall* tasks, more effort produces ↓ LF/HF. SERP evaluation is computation-dominated — the user actively compares each result against accumulating criteria and emits a binary attend/skip decision — so for this dataset **↑ LF/HF = ↑ effort**. Under that anchor: K3's negative gradient (LF/HF decreases with rank) reads as effort decreasing as compiled criteria make subsequent comparisons cheaper, and K6's clicked > non-clicked reads as the user investing more effort in items they commit to. LHIPA polarity is fixed by construction (lower LHIPA = more load); the two indices are negatively correlated and agree on direction (K7).
 
-| ID | Claim | Value (organic primary) | Robustness (absolute) |
-|---|---|---|---|
-| **K1** | Trials with usable Butterworth LF/HF data | **2,174** | 2,416 |
-| **K2** | Position-segment count (fixation positions × LF/HF) | **4,450** | 6,112 |
-| **K3** | **Position × median LF/HF, forward-pass fixations only (load DECREASES with deeper position; positions 0–10, N=11)** | **ρ = −0.655, *p* = 0.029** | ρ = −0.927, p < 0.0001 |
-| **K4** | Positions 1–10 only (excluding pos 0), forward-pass | ρ = −0.539, *p* = 0.108 (ns) | ρ = −0.903, p = 0.0003 |
-| **K5** | Within-trial Spearman (position vs LF/HF, ≥ 3 valid segments at positions 0–10) | *(re-compute on bw_data — value pending notebook re-run)* | N = 1,025, mean ρ = −0.152, median ρ = −0.400, 61.0% neg |
-| **K6** | Clicked vs non-clicked median LF/HF | **23.53 (N = 1,165)** vs **18.63 (N = 2,829)**; Mann–Whitney *p* = **2.5 × 10⁻⁷** — clicked positions carry more load (effect strengthens under organic) | 22.40 vs 19.27, p = 7.5 × 10⁻⁶ |
-| **K7** | Cross-index validation: trial-mean LF/HF × LHIPA | *(unchanged — per-trial)* ρ ≈ −0.125, *p* ≈ 7e-10, N ≈ 2,400 | ρ = −0.125, p = 7.47e-10 |
-| **K8** | Position-level medians (load by rank) — note non-monotone segments under organic | **pos 0: 23.17 (N=1,242) → 1: 20.40 → 2: 18.26 → 3: 19.86 → 4: 16.89 → 5: 14.85 → 6: 15.40 → 7: 14.20 → 8: 17.89 → 9: 17.85 → 10: 15.92** (monotone broken at pos 3 and pos 8) | pos 0: 29.64 → 22.17 → 18.96 → 18.30 → 17.23 → 16.77 → 14.41 → 13.82 → 13.31 → 15.58 → 13.49 |
+| ID | Claim | typed (current) | organic (2026-05-01) | absolute (legacy) |
+|---|---|---|---|---|
+| **K1** | Trials with usable Butterworth LF/HF data | **2,706** | 2,174 | 2,416 |
+| **K2** | Position-segment count (fixation positions × LF/HF) | **5,650** | 4,450 | 6,112 |
+| **K3** | **Position × median LF/HF, forward-pass fixations only (load DECREASES with deeper position; positions 0–10, N=11)** | **ρ = −0.882, *p* = 0.0003** | ρ = −0.655, p = 0.029 | ρ = −0.927, p < 0.0001 |
+| **K4** | Positions 1–10 only (excluding pos 0), forward-pass | **ρ = −0.842, *p* = 0.0022** | ρ = −0.539, p = 0.108 (ns) | ρ = −0.903, p = 0.0003 |
+| **K5** | Within-trial Spearman (position vs LF/HF, ≥ 3 valid segments at positions 0–10) | **N = 868, mean ρ = −0.186, median ρ = −0.500, 62.1% neg** | *(never run)* | N = 1,025, mean ρ = −0.152, median ρ = −0.400, 61.0% neg |
+| **K6** | Clicked vs non-clicked median LF/HF | **25.78 (N = 1,377)** vs **20.23 (N = 4,100)**; Mann–Whitney U = 3,108,961, *p* < 10⁻⁴ — clicked positions carry more load | 23.53 vs 18.63, p = 2.5 × 10⁻⁷ | 22.40 vs 19.27, p = 7.5 × 10⁻⁶ |
+| **K7** | Cross-index validation: trial-mean LF/HF × LHIPA | **ρ = −0.119, *p* = 6.64e-09, N = 2,368** | ρ ≈ −0.125, p ≈ 7e-10 | ρ = −0.125, p = 7.47e-10 |
+| **K8** | Position-level medians (load by rank) | **pos 0: 31.04 (N=1,366) → 1: 22.98 → 2: 20.01 → 3: 17.36 → 4: 18.29 → 5: 16.66 → 6: 15.44 → 7: 16.55 → 8: 17.00 → 9: 13.68 → 10: 16.52** (monotone through pos 3, then noisy) | pos 0: 23.17 → 20.40 → 18.26 → 19.86 → 16.89 → 14.85 → 15.40 → 14.20 → 17.89 → 17.85 → 15.92 | pos 0: 29.64 → 22.17 → 18.96 → 18.30 → 17.23 → 16.77 → 14.41 → 13.82 → 13.31 → 15.58 → 13.49 |
 
 ### Piecewise gradient (steep phase + plateau)
 
-| ID | Claim | Value (organic primary) | Robustness (absolute) |
-|---|---|---|---|
-| **K9** | Steep (pos 0–3) vs plateau (pos 4–10) Mann–Whitney on raw segments | **U = 2,366,828, *p* = 8.8 × 10⁻⁹** (N = 2,999 vs 1,429; steep median 21.09 vs plateau 16.12) — dichotomy holds strongly | U = 4,583,556, p = 3.2e-23 |
-| **K10** | Steep phase (pos 0–3) Spearman on position medians | ρ = −0.800, *p* = 0.20 (ns) — perfect-monotone does **not** survive bbox attribution | ρ = −1.000, p ≈ 0 |
-| **K11** | Plateau phase (pos 4–10) Spearman | ρ = **+0.321**, *p* = 0.482 (ns; sign flip) — plateau direction reverses but stays ns | ρ = −0.714, p = 0.071 |
-| **K12** | Pooled early (0–3) vs late (4–10) medians | early 21.1 (N = 2,999) vs late 16.1 (N = 1,429) — see K9 for MW | early 22.0 vs late 15.7 |
+| ID | Claim | typed (current) | organic (2026-05-01) | absolute (legacy) |
+|---|---|---|---|---|
+| **K9** | Steep (pos 0–3) vs plateau (pos 4–10) Mann–Whitney on raw segments | **U = 3,677,028, *p* = 1.6 × 10⁻¹⁸** (N = 3,785 vs 1,692; steep median 23.89 vs plateau 16.76) — dichotomy holds strongly | U = 2,366,828, p = 8.8 × 10⁻⁹ | U = 4,583,556, p = 3.2e-23 |
+| **K10** | Steep phase (pos 0–3) Spearman on position medians | **ρ = −1.000, *p* ≈ 0** — perfect monotone **holds** under typed | ρ = −0.800, p = 0.20 (ns) | ρ = −1.000, p ≈ 0 |
+| **K11** | Plateau phase (pos 4–10) Spearman | **ρ = −0.571, *p* = 0.18 (ns)** — sign restored to negative, still ns | ρ = +0.321, p = 0.482 (ns) | ρ = −0.714, p = 0.071 |
+| **K12** | Pooled early (0–3) vs late (4–10) medians | **early 23.9 (N = 3,785) vs late 16.8 (N = 1,692)** — see K9 for MW | early 21.1 vs late 16.1 | early 22.0 vs late 15.7 |
+
+> **K10/K11 reverse the organic-era reframe.** The note below says the perfect-monotone steep phase "does not survive bbox attribution" and that the plateau sign flips positive. Both were properties of the **organic** flavor: under typed, K10 is again ρ = −1.000 and K11's sign returns to negative (still ns). Isolated against the stale-marked pre-realignment typed inputs, the realignment itself moved K11 (0.000 → −0.571) and left K9/K10/K12 essentially unchanged — so this is a flavor effect, not a realignment effect.
 
 ### Within-trial gradient by evaluation depth
 
@@ -900,43 +906,51 @@ K18–K28 use `absolute_to_organic_rank()` from data_loader (h3 slots minus ad-o
 ## NB18: `18_ripa2_vs_lfhf` — RIPA2 vs Butterworth LF/HF comparison
 
 *Source: [`notebooks-v2/18_ripa2_vs_lfhf.ipynb`](../notebooks-v2/18_ripa2_vs_lfhf.ipynb)*
-*Last verified against executed notebook output: 2026-05-01. Quadrant K-bbox-y tier added 2026-05-11 from `scripts/output/aoi-consumer-cascade/rigor_corrections.json` plus inline typed/typed_gapfill re-run (`scripts/cascade_rigor_corrections.py` logic).*
+*Last verified against executed notebook output: **2026-08-30** (typed primary, post-realignment AllSERP v1.1.0). Quadrant K-bbox-y tier added 2026-05-11 from `scripts/output/aoi-consumer-cascade/rigor_corrections.json` plus inline typed/typed_gapfill re-run (`scripts/cascade_rigor_corrections.py` logic).*
 
-### 2026-05-01 attribution shift
+### Attribution history
 
-This notebook now reports values under **organic-rank** attribution (pixel-accurate bbox AOIs, ads excluded). Earlier published values were under absolute-rank — preserved as `bw_data_abs` / `ripa2_data_abs` and shown in the robustness column.
+- **2026-05-01** (`16830c62`) — primary moved absolute → **organic**-rank. K1–K10 organic columns date from this execution.
+- **2026-05-04** (`992c6c2b`) — typed cascade moved primary to **typed**. That edit replaced *all four* load paths with the typed files, so `bw_data_abs` / `ripa2_data_abs` pointed at the primary data and the "Absolute" robustness column silently became a self-comparison (stored output read `2719 / 2719 / 2719`). This header was never updated and kept describing organic as primary.
+- **2026-08-30** — robustness pair restored to the genuine legacy absolute files; notebook re-executed on post-realignment typed inputs. Every bolded value below is from that execution.
 
 ### Dataset
 
-| ID | Claim | Organic primary | Robustness (absolute) |
-|---|---|---|---|
-| **K1** | Trials with both Butterworth LF/HF and RIPA2 | **2,174** | 2,719 |
-| **K2** | Paired observations (same trial, same position) | **4,450** | 6,112 |
+| ID | Claim | typed (current) | typed (pre-realign) | organic (2026-05-01) | absolute (legacy) |
+|---|---|---|---|---|---|
+| **K1** | Trials with both Butterworth LF/HF and RIPA2 | **2,706** | 2,719 | 2,174 | 2,719 |
+| **K2** | Paired observations (same trial, same position) | **5,650** | 5,668 | 4,450 | 6,112 |
 
-### Observation-level correlation (still uncorrelated under both attributions)
+### Observation-level correlation (the metrics remain discriminant)
 
-| ID | Test | Organic | Absolute |
-|---|---|---|---|
-| **K3** | Pearson *r* (RIPA2 × LF/HF) | *(re-run pending)* | −0.028, p=0.030 |
-| **K4** | Spearman ρ | *(re-run pending)* | −0.016, p=0.224 (ns) |
+| ID | Test | typed (current) | typed (pre-realign) | organic | absolute |
+|---|---|---|---|---|---|
+| **K3** | Pearson *r* (RIPA2 × LF/HF) | **−0.023, p=0.080 (ns)** | −0.023, p=0.082 | *(never run)* | −0.028, p=0.030 |
+| **K4** | Spearman ρ | **−0.097, p=3.4e-13** | −0.098, p=1.6e-13 | *(never run)* | −0.016, p=0.224 (ns) |
 
-### Positional gradient — both attenuate under organic
+> K3/K4 stood as *(re-run pending)* from 2026-05-01 until 2026-08-30 — resolved here. **K4 is statistically significant but negligible in magnitude** (ρ = −0.097 at n = 5,650): the significance is carried by N, and the discriminant-validity headline — the two metrics do not measure the same thing — stands unchanged. Both are realignment-invariant (Δρ ≤ 0.001).
 
-| ID | Metric | Organic | Absolute |
-|---|---|---|---|
-| **K5** | Butterworth LF/HF × position ρ (0–10, N=11) | **−0.655, p=0.029** | −0.927, p=4e-5 |
-| **K6** | RIPA2 × position ρ (0–10, N=11) | **−0.080, p=0.78** (ns) | −0.262, p=0.366 (ns even at abs) |
+### Positional gradient
 
-> Under organic attribution, the LF/HF positional gradient (K5) survives but weakens (ρ −0.927 → −0.655); the RIPA2 positional gradient (K6) is null under both attributions but more strongly null under organic (ρ −0.262 → −0.080). Two-band engagement remains the headline (NB14:K9 still p<10⁻⁸ under organic).
+| ID | Metric | typed (current) | typed (pre-realign) | organic | absolute |
+|---|---|---|---|---|---|
+| **K5** | Butterworth LF/HF × position ρ (0–10, N=11) | **−0.882, p=3.3e-04** | −0.673, p=0.023 | −0.655, p=0.029 | −0.927, p=4e-5 |
+| **K6** | RIPA2 × position ρ (0–10, N=11) | **−0.682, p=0.021** | −0.855, p=8.1e-04 | −0.080, p=0.78 (ns) | −0.262, p=0.366 (ns) |
+
+> **This corrects the previous headline.** The retired note read: *"the RIPA2 positional gradient (K6) is null under both attributions"*. That is false under typed — K6 is significant both before and after the realignment (−0.855 → −0.682). The null was a property of the **organic** flavor, not of RIPA2.
+>
+> **Change attributed** (isolated by re-running against the stale-marked pre-realignment typed inputs): the **flavor switch** organic → typed is what moved K6 from null to significant. The **realignment** weakened K6 (−0.855 → −0.682) and strengthened K5 (−0.673 → −0.882); both stay significant and same-signed, and K3/K4 do not move. Two-band engagement remains the headline (NB14:K9).
 
 ### Click-position quadrant analysis
 
-| ID | Quadrant | Click rate (organic) | Robustness (absolute) |
-|---|---|---|---|
-| **K7** | Effortful (high LF/HF + high RIPA2) | **33.9%** [31.1, 36.8] | 27.9% |
-| **K8** | Deliberation (high LF/HF + low RIPA2) | **25.6%** [23.2, 28.1] | 26.2% |
-| **K9** | Quick decision (low LF/HF + high RIPA2) | **25.6%** [23.1, 28.1] | 22.9% |
-| **K10** | Routine scanning (low LF/HF + low RIPA2) | **19.7%** [17.2, 22.4] | 21.5% |
+| ID | Quadrant | typed (current) | organic (2026-05-01) | absolute (legacy) |
+|---|---|---|---|---|
+| **K7** | Effortful (high LF/HF + high RIPA2) | **28.9%** (383/1,324) | 33.9% [31.1, 36.8] | 27.9% |
+| **K8** | Deliberation (high LF/HF + low RIPA2) | **26.7%** (401/1,501) | 25.6% [23.2, 28.1] | 26.2% |
+| **K9** | Quick decision (low LF/HF + high RIPA2) | **24.0%** (362/1,509) | 25.6% [23.1, 28.1] | 22.9% |
+| **K10** | Routine scanning (low LF/HF + low RIPA2) | **19.0%** (250/1,316) | 19.7% [17.2, 22.4] | 21.5% |
+
+> HH > HL > LH > LL ordering holds under typed; joint lift HH−LL = **+9.9 pp**.
 
 ### Click-quadrant under typed cascade (2026-05-11) --- K-bbox-y tier
 
@@ -976,20 +990,13 @@ Per CLAUDE.md rank-type rule, K-IDs are never renumbered; K7--K10 above are the 
 >
 > **AOI cascade audit (2026-05-01).** N1/N2 (trials, segments) shrink under bbox attribution because each trial's organic AOI count is smaller (ads not counted as positions). LF/HF positional gradient (K5) survives at reduced strength; RIPA2 positional gradient was already weak and stays weak. Quadrant analysis (K7–K10) and convergent validity (K3–K4) require a notebook re-run on the new bw_data / ripa2_data — values pending.
 
-### 2026-05-04 typed cascade — second post-cascade primary
+### 2026-05-04 typed cascade — retired scrape
 
-*Typed cascade (HTML+vision joint widget typing) replaced organic_hybrid as primary on 2026-05-04. Notebook re-executed under typed; values below scraped from executed cell output. Legacy K-IDs preserved above for historical comparison.*
-
-| Claim | Value (typed) |
-|---|---|
-| RIPA2 cross-position Spearman ρ | `RIPA2 (organic primary)
-2719 / 2719 in legacy absolute-rank (loaded for robustness)
-
-5668 paired observations across 271` |
-| LF/HF × RIPA2 within-fixation correlation | `LF/HF (organic primary)
-2719 trials with RIPA2 (organic primary)
-2719 / 2719 in legacy absolute-rank (loaded for robustn` |
-| Quadrant typed (typed N = 5,649) | Effortful (high LF/HF + high RIPA2) 23.4 %, Deliberation (high LF/HF + low RIPA2) 26.6 %, Quick decision (low LF/HF + high RIPA2) 26.8 %, Routine scanning (low LF/HF + low RIPA2) 23.2 % |
+*A table here recorded three "typed" values that were **fragments of captured stdout**, not
+numbers — e.g. a Spearman ρ whose value read ``RIPA2 (organic primary)\n2719 / 2719 in legacy
+absolute-rank...``. Produced by an automated scrape that matched print output rather than
+computed results. **Removed 2026-08-30**; superseded by the typed columns in K1–K10 above,
+which come from executed cell output.*
 
 ---
 

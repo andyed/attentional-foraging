@@ -120,6 +120,12 @@ def visit_counts_for_trial(trial_id):
 def main():
     # Trial set comes from the canonical features file so we line up with the
     # gaze-side number (49.59% of 2,545 trials).
+    #
+    # This also supplies the alignment-exclusion gate transitively: the features file is
+    # produced by compute_cursor_approach_features.py, which drops alignment_suspect trials
+    # (docs/local-pack-aoi-shift.md Quality gate). The per-trial reads below index
+    # AOI_DIR by trial id, so they never reintroduce an excluded trial. If the trial set
+    # is ever re-sourced from an AOI_DIR glob, add the explicit gate.
     feats_path = ROOT / "AdSERP/data/cursor-approach-features-typed-gapfill.json"
     with open(feats_path) as f:
         feats = json.load(f)
