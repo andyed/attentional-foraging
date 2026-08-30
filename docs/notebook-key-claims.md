@@ -215,9 +215,9 @@ Source: Section 3 "Survey Phase Characterization" executed output, scroll-aware.
 ## NB14: `14_butterworth_cognitive_load` — cognitive load decreases with SERP position
 
 *Source: [`notebooks-v2/14_butterworth_cognitive_load.ipynb`](../notebooks-v2/14_butterworth_cognitive_load.ipynb)*
-*Last verified against executed notebook output: **2026-08-30** (typed primary, post-realignment AllSERP v1.1.0).*
+*Last verified against executed notebook output: **2026-08-30 (second pass, post-collision-fix)** — typed primary, AllSERP v1.1.0, y-DP-aligned + aoi-card-collision-fixed maps (`574218b6`), 12-tid alignment-exclusion list.*
 
-> **2026-08-30 correction.** This block described organic-rank as primary, but cell 2 has loaded the *typed* file since the 2026-05-04 cascade — and that edit pointed **both** loads at it, so `bw_data_abs` held the primary data and the "absolute robustness" column was a self-comparison. The robustness pair now loads the genuine legacy absolute file, and every **bolded** value below is from the 2026-08-30 execution on post-realignment typed inputs. The organic column is retained as the 2026-05-01 historical run; K-IDs are not renumbered.
+> **2026-08-30 correction.** This block described organic-rank as primary, but cell 2 has loaded the *typed* file since the 2026-05-04 cascade — and that edit pointed **both** loads at it, so `bw_data_abs` held the primary data and the "absolute robustness" column was a self-comparison. The robustness pair now loads the genuine legacy absolute file, and every **bolded** value below is from the 2026-08-30 **afternoon** execution — re-derived 2026-08-28: y-DP aligned typed maps; 2026-08-30: aoi card-collision fix (454 maps/flavor regenerated, exclusion list 14 → 12). The morning 2026-08-30 run sat on the pre-collision-fix inputs; where it differed its values are noted inline. The organic column is retained as the 2026-05-01 historical run; K-IDs are not renumbered.
 
 If prose in a paper draft cites a value that disagrees with a row below, the paper is wrong — not the notebook. If re-running this notebook produces different values, update this block immediately and `grep` for the old value across `docs/`.
 
@@ -233,25 +233,25 @@ The legacy absolute-rank values are preserved in `bw_data_abs` (loaded in cell 2
 
 | ID | Claim | typed (current) | organic (2026-05-01) | absolute (legacy) |
 |---|---|---|---|---|
-| **K1** | Trials with usable Butterworth LF/HF data | **2,706** | 2,174 | 2,416 |
-| **K2** | Position-segment count (fixation positions × LF/HF) | **5,650** | 4,450 | 6,112 |
-| **K3** | **Position × median LF/HF, forward-pass fixations only (load DECREASES with deeper position; positions 0–10, N=11)** | **ρ = −0.882, *p* = 0.0003** | ρ = −0.655, p = 0.029 | ρ = −0.927, p < 0.0001 |
-| **K4** | Positions 1–10 only (excluding pos 0), forward-pass | **ρ = −0.842, *p* = 0.0022** | ρ = −0.539, p = 0.108 (ns) | ρ = −0.903, p = 0.0003 |
-| **K5** | Within-trial Spearman (position vs LF/HF, ≥ 3 valid segments at positions 0–10) | **N = 868, mean ρ = −0.186, median ρ = −0.500, 62.1% neg** | *(never run)* | N = 1,025, mean ρ = −0.152, median ρ = −0.400, 61.0% neg |
-| **K6** | Clicked vs non-clicked median LF/HF | **25.78 (N = 1,377)** vs **20.23 (N = 4,100)**; Mann–Whitney U = 3,108,961, *p* < 10⁻⁴ — clicked positions carry more load | 23.53 vs 18.63, p = 2.5 × 10⁻⁷ | 22.40 vs 19.27, p = 7.5 × 10⁻⁶ |
-| **K7** | Cross-index validation: trial-mean LF/HF × LHIPA | **ρ = −0.119, *p* = 6.64e-09, N = 2,368** | ρ ≈ −0.125, p ≈ 7e-10 | ρ = −0.125, p = 7.47e-10 |
-| **K8** | Position-level medians (load by rank) | **pos 0: 31.04 (N=1,366) → 1: 22.98 → 2: 20.01 → 3: 17.36 → 4: 18.29 → 5: 16.66 → 6: 15.44 → 7: 16.55 → 8: 17.00 → 9: 13.68 → 10: 16.52** (monotone through pos 3, then noisy) | pos 0: 23.17 → 20.40 → 18.26 → 19.86 → 16.89 → 14.85 → 15.40 → 14.20 → 17.89 → 17.85 → 15.92 | pos 0: 29.64 → 22.17 → 18.96 → 18.30 → 17.23 → 16.77 → 14.41 → 13.82 → 13.31 → 15.58 → 13.49 |
+| **K1** | Trials with usable Butterworth LF/HF data | **2,707** | 2,174 | 2,416 |
+| **K2** | Position-segment count (fixation positions × LF/HF) | **5,647** | 4,450 | 6,112 |
+| **K3** | **Position × median LF/HF, forward-pass fixations only (load DECREASES with deeper position; positions 0–10, N=11)** | **ρ = −0.809, *p* = 0.0026** *(pre-collision-fix 08-30 am: −0.882)* | ρ = −0.655, p = 0.029 | ρ = −0.927, p < 0.0001 |
+| **K4** | Positions 1–10 only (excluding pos 0), forward-pass | **ρ = −0.745, *p* = 0.0133** *(pre-collision-fix: −0.842)* | ρ = −0.539, p = 0.108 (ns) | ρ = −0.903, p = 0.0003 |
+| **K5** | Within-trial Spearman (position vs LF/HF, ≥ 3 valid segments at positions 0–10) | **N = 866, mean ρ = −0.185, median ρ = −0.500, 62.1% neg** | *(never run)* | N = 1,025, mean ρ = −0.152, median ρ = −0.400, 61.0% neg |
+| **K6** | Clicked vs non-clicked median LF/HF | **25.76 (N = 1,378)** vs **20.28 (N = 4,096)**; Mann–Whitney U = 3,108,144, *p* < 10⁻⁴ — clicked positions carry more load | 23.53 vs 18.63, p = 2.5 × 10⁻⁷ | 22.40 vs 19.27, p = 7.5 × 10⁻⁶ |
+| **K7** | Cross-index validation: trial-mean LF/HF × LHIPA | **ρ = −0.119, *p* = 6.76e-09, N = 2,368** | ρ ≈ −0.125, p ≈ 7e-10 | ρ = −0.125, p = 7.47e-10 |
+| **K8** | Position-level medians (load by rank) | **pos 0: 31.04 (N=1,366) → 1: 22.98 → 2: 20.02 → 3: 17.36 → 4: 18.29 → 5: 16.77 → 6: 15.34 → 7: 16.77 → 8: 16.92 → 9: 14.53 → 10: 16.92** (monotone through pos 3, then noisy) | pos 0: 23.17 → 20.40 → 18.26 → 19.86 → 16.89 → 14.85 → 15.40 → 14.20 → 17.89 → 17.85 → 15.92 | pos 0: 29.64 → 22.17 → 18.96 → 18.30 → 17.23 → 16.77 → 14.41 → 13.82 → 13.31 → 15.58 → 13.49 |
 
 ### Piecewise gradient (steep phase + plateau)
 
 | ID | Claim | typed (current) | organic (2026-05-01) | absolute (legacy) |
 |---|---|---|---|---|
-| **K9** | Steep (pos 0–3) vs plateau (pos 4–10) Mann–Whitney on raw segments | **U = 3,677,028, *p* = 1.6 × 10⁻¹⁸** (N = 3,785 vs 1,692; steep median 23.89 vs plateau 16.76) — dichotomy holds strongly | U = 2,366,828, p = 8.8 × 10⁻⁹ | U = 4,583,556, p = 3.2e-23 |
+| **K9** | Steep (pos 0–3) vs plateau (pos 4–10) Mann–Whitney on raw segments | **U = 3,667,489, *p* = 3.3 × 10⁻¹⁸** (N = 3,784 vs 1,690; steep median 23.90 vs plateau 16.81) — dichotomy holds strongly | U = 2,366,828, p = 8.8 × 10⁻⁹ | U = 4,583,556, p = 3.2e-23 |
 | **K10** | Steep phase (pos 0–3) Spearman on position medians | **ρ = −1.000, *p* ≈ 0** — perfect monotone **holds** under typed | ρ = −0.800, p = 0.20 (ns) | ρ = −1.000, p ≈ 0 |
-| **K11** | Plateau phase (pos 4–10) Spearman | **ρ = −0.571, *p* = 0.18 (ns)** — sign restored to negative, still ns | ρ = +0.321, p = 0.482 (ns) | ρ = −0.714, p = 0.071 |
-| **K12** | Pooled early (0–3) vs late (4–10) medians | **early 23.9 (N = 3,785) vs late 16.8 (N = 1,692)** — see K9 for MW | early 21.1 vs late 16.1 | early 22.0 vs late 15.7 |
+| **K11** | Plateau phase (pos 4–10) Spearman | **ρ = −0.286, *p* = 0.53 (ns)** — sign stays negative, still ns *(pre-collision-fix: −0.571)* | ρ = +0.321, p = 0.482 (ns) | ρ = −0.714, p = 0.071 |
+| **K12** | Pooled early (0–3) vs late (4–10) medians | **early 23.9 (N = 3,784) vs late 16.8 (N = 1,690)** — see K9 for MW | early 21.1 vs late 16.1 | early 22.0 vs late 15.7 |
 
-> **K10/K11 reverse the organic-era reframe.** The note below says the perfect-monotone steep phase "does not survive bbox attribution" and that the plateau sign flips positive. Both were properties of the **organic** flavor: under typed, K10 is again ρ = −1.000 and K11's sign returns to negative (still ns). Isolated against the stale-marked pre-realignment typed inputs, the realignment itself moved K11 (0.000 → −0.571) and left K9/K10/K12 essentially unchanged — so this is a flavor effect, not a realignment effect.
+> **K10/K11 reverse the organic-era reframe.** The note below says the perfect-monotone steep phase "does not survive bbox attribution" and that the plateau sign flips positive. Both were properties of the **organic** flavor: under typed, K10 is again ρ = −1.000 and K11's sign returns to negative (still ns). Isolated against the stale-marked pre-realignment typed inputs, the realignment itself moved K11 (0.000 → −0.571) and left K9/K10/K12 essentially unchanged — so this is a flavor effect, not a realignment effect. The 2026-08-30 collision fix pulled K11 back toward zero (−0.571 → −0.286, still ns, still negative) and moved the full-range gradient K3 −0.882 → −0.809 — both bands' conclusions (K9/K10) unchanged.
 
 ### Within-trial gradient by evaluation depth
 
@@ -269,19 +269,18 @@ The legacy absolute-rank values are preserved in `bw_data_abs` (loaded in cell 2
 >
 > **Coordinate-space audit history (2026-04-09 / 2026-04-12).** Two prior audits: (a) cursor-side scroll double-count fix on click_pos derivation, K6 N_clicked 1,145 → 1,110; (b) fixation-side FPOGY page-space audit, K2 6,874 → 6,112, K3 −0.618 → −0.927 under absolute attribution. The 2026-05-01 cascade then reapplies the AOI-extraction shift on top — values cited above are post-all-three-audits.
 
-### 2026-05-04 typed cascade — second post-cascade primary
+### 2026-05-04 typed cascade — historical first typed run
 
-*Typed cascade (HTML+vision joint widget typing) replaced organic_hybrid as primary on 2026-05-04. Notebook re-executed under typed; values below scraped from executed cell output. Legacy K-IDs preserved above for historical comparison.*
+*Typed cascade replaced organic_hybrid as primary on 2026-05-04. The table this section carried was a raw stdout scrape (three values were captured printout fragments — the same defect family removed from NB18 and NB23 on 2026-08-30); replaced with transcribed values. These are the 2026-05-04 pre-realignment typed values, kept for lineage — the **typed (current)** column above supersedes them.*
 
-| Claim | Value (typed) |
+| Claim | typed (2026-05-04 run, pre-realignment) |
 |---|---|
-| Full-range Spearman ρ on position medians | `Spearman rho (position vs median LF/HF): -0.673, p = 0.0233` |
-| Steep (P0–P3) cross-position Spearman | **ρ = −1.000, *p* ≈ 0** (perfect monotone holds) |
-| Plateau (P4–P10) cross-position Spearman | ρ = 0.000, *p* = 1.0 (NS, fully flat) |
-| Within-trial Spearman median ρ | `Median rho: -0.500` |
-| Clicked vs non-clicked LF/HF | `Clicked: median 25.35, N = 1358
-Non-clicked: median 20.40` |
-| Trial-mean LF/HF × LHIPA | `LF/HF vs LHIPA: ρ = -0.113, p = 3.01e-08, N = 2371` |
+| Full-range Spearman ρ on position medians | −0.673, p = 0.0233 |
+| Steep (P0–P3) cross-position Spearman | −1.000, p ≈ 0 |
+| Plateau (P4–P10) cross-position Spearman | 0.000, p = 1.0 (ns, fully flat) |
+| Within-trial Spearman median ρ | −0.500 |
+| Clicked vs non-clicked LF/HF | 25.35 (N = 1,358) vs 20.40 |
+| Trial-mean LF/HF × LHIPA | ρ = −0.113, p = 3.01e-08, N = 2,371 |
 
 ---
 
@@ -650,7 +649,7 @@ NB22 defines the four classes via cursor approach (min_dist < 100 px) + **gaze r
 ## NB23: `23_rank_effects` — unified rank effects — framework compilation
 
 *Source: [`notebooks-v2/23_rank_effects.ipynb`](../notebooks-v2/23_rank_effects.ipynb)*
-*Last verified against executed notebook output: 2026-05-01.*
+*Last verified against executed notebook output: **2026-08-30** (typed primary; aoi card-collision-fixed, y-DP-aligned maps — AllSERP v1.1.0; 12-tid alignment-exclusion list via data_loader gated loaders).*
 
 ### 2026-05-01 attribution shift — bbox primary for paper figures
 
@@ -781,12 +780,23 @@ K18–K28 use `absolute_to_organic_rank()` from data_loader (h3 slots minus ad-o
 
 ### 2026-05-04 typed cascade — second post-cascade primary
 
-*Typed cascade (HTML+vision joint widget typing) replaced organic_hybrid as primary on 2026-05-04. Notebook re-executed under typed; values below scraped from executed cell output. Legacy K-IDs preserved above for historical comparison.*
+*Typed cascade (HTML+vision joint widget typing) replaced organic_hybrid as primary on 2026-05-04. Legacy K-IDs preserved above for historical comparison. Values below are from the **2026-08-30** execution (re-derived 2026-08-30: aoi card-collision fix on top of the 2026-08-28 y-DP aligned typed maps).*
 
-| Claim | Value (typed) |
-|---|---|
-| CTR Spearman × organic-rank | `*(see executed cell output)*` |
-| Click-share Spearman × rank | `Click share × position (0–10):    ρ = -0.973` |
+> **2026-08-30 note.** The two rows this table carried since 2026-05-04 were a botched stdout scrape — one value read `*(see executed cell output)*`, the other a captured fragment of the correlation printout — the same defect family removed from NB18 on 2026-08-30. Replaced with values transcribed from executed cell output.
+
+| Claim | typed (current, 2026-08-30) | typed (2026-05-04 run, pre-realignment) |
+|---|---|---|
+| Click share × position ρ (0–10) | **−0.973, p = 5.1e-07** | −0.973 |
+| Fixation count × position ρ (0–9) | **−1.000** | −1.000 |
+| Dwell time × position ρ (0–9) | **−1.000** | −1.000 |
+| Butterworth LF/HF × position ρ (0–10) | **−0.809, p = 0.0026** | −0.673, p = 0.023 |
+| LHIPA × click position ρ (0–10) | **−0.791, p = 0.0037** | −0.873, p = 0.0005 |
+| LHIPA × click position ρ (0–8, boundary excluded) | **−0.617, p = 0.077 (ns)** | −0.783, p = 0.013 |
+| Trials with Butterworth (typed join) | **2,707** | 2,719 |
+
+> **What moved on 2026-08-30 (collision-fix pass).** The LF/HF positional gradient strengthened (−0.673 → −0.809; the intermediate y-DP-realignment-only state computed in NB18's 2026-08-30 morning run was −0.882, so the collision fix itself moved it −0.882 → −0.809). The boundary-excluded LHIPA × click-position correlation **lost significance** (−0.783, p = 0.013 → −0.617, p = 0.077): the 0–10 version stays significant, so the LHIPA click-position gradient now leans on the boundary positions. Click-share / fixation / dwell monotonicity are invariant. NB18:K5 (−0.882 on pre-collision-fix inputs) will move to ≈−0.809 when NB18 gets its collision-fix re-run.
+>
+> **Cellsplit caveat.** The K-cellsplit-* section above still reads `scripts/output/nb23_cellsplit_rank/summary.json` from 2026-05-31 — the cellsplit lineage predates the realignment and is not yet re-derived; treat those rows as `[typed_gapfill-cellsplit, pending]`.
 
 ---
 
@@ -906,51 +916,52 @@ K18–K28 use `absolute_to_organic_rank()` from data_loader (h3 slots minus ad-o
 ## NB18: `18_ripa2_vs_lfhf` — RIPA2 vs Butterworth LF/HF comparison
 
 *Source: [`notebooks-v2/18_ripa2_vs_lfhf.ipynb`](../notebooks-v2/18_ripa2_vs_lfhf.ipynb)*
-*Last verified against executed notebook output: **2026-08-30** (typed primary, post-realignment AllSERP v1.1.0). Quadrant K-bbox-y tier added 2026-05-11 from `scripts/output/aoi-consumer-cascade/rigor_corrections.json` plus inline typed/typed_gapfill re-run (`scripts/cascade_rigor_corrections.py` logic).*
+*Last verified against executed notebook output: **2026-08-30 (second pass, post-collision-fix)** — typed primary, AllSERP v1.1.0, y-DP-aligned + aoi-card-collision-fixed maps (`574218b6`), 12-tid alignment-exclusion list. Quadrant K-bbox-y tier added 2026-05-11 from `scripts/output/aoi-consumer-cascade/rigor_corrections.json` plus inline typed/typed_gapfill re-run (`scripts/cascade_rigor_corrections.py` logic).*
 
 ### Attribution history
 
 - **2026-05-01** (`16830c62`) — primary moved absolute → **organic**-rank. K1–K10 organic columns date from this execution.
 - **2026-05-04** (`992c6c2b`) — typed cascade moved primary to **typed**. That edit replaced *all four* load paths with the typed files, so `bw_data_abs` / `ripa2_data_abs` pointed at the primary data and the "Absolute" robustness column silently became a self-comparison (stored output read `2719 / 2719 / 2719`). This header was never updated and kept describing organic as primary.
-- **2026-08-30** — robustness pair restored to the genuine legacy absolute files; notebook re-executed on post-realignment typed inputs. Every bolded value below is from that execution.
+- **2026-08-30 (morning)** — robustness pair restored to the genuine legacy absolute files; notebook re-executed on post-realignment (y-DP) typed inputs.
+- **2026-08-30 (afternoon)** — aoi card-collision fix (`574218b6`) regenerated both typed map flavors (454 maps each; exclusion list 14 → 12) and the typed artifacts; notebook re-executed. Every bolded value below is from this execution — re-derived 2026-08-28: y-DP aligned typed maps; 2026-08-30: aoi card-collision fix. K5 moved −0.882 → −0.809; K6 and the quadrant structure did not move.
 
 ### Dataset
 
 | ID | Claim | typed (current) | typed (pre-realign) | organic (2026-05-01) | absolute (legacy) |
 |---|---|---|---|---|---|
-| **K1** | Trials with both Butterworth LF/HF and RIPA2 | **2,706** | 2,719 | 2,174 | 2,719 |
-| **K2** | Paired observations (same trial, same position) | **5,650** | 5,668 | 4,450 | 6,112 |
+| **K1** | Trials with both Butterworth LF/HF and RIPA2 | **2,707** | 2,719 | 2,174 | 2,719 |
+| **K2** | Paired observations (same trial, same position) | **5,647** | 5,668 | 4,450 | 6,112 |
 
 ### Observation-level correlation (the metrics remain discriminant)
 
 | ID | Test | typed (current) | typed (pre-realign) | organic | absolute |
 |---|---|---|---|---|---|
 | **K3** | Pearson *r* (RIPA2 × LF/HF) | **−0.023, p=0.080 (ns)** | −0.023, p=0.082 | *(never run)* | −0.028, p=0.030 |
-| **K4** | Spearman ρ | **−0.097, p=3.4e-13** | −0.098, p=1.6e-13 | *(never run)* | −0.016, p=0.224 (ns) |
+| **K4** | Spearman ρ | **−0.097, p=2.5e-13** | −0.098, p=1.6e-13 | *(never run)* | −0.016, p=0.224 (ns) |
 
-> K3/K4 stood as *(re-run pending)* from 2026-05-01 until 2026-08-30 — resolved here. **K4 is statistically significant but negligible in magnitude** (ρ = −0.097 at n = 5,650): the significance is carried by N, and the discriminant-validity headline — the two metrics do not measure the same thing — stands unchanged. Both are realignment-invariant (Δρ ≤ 0.001).
+> K3/K4 stood as *(re-run pending)* from 2026-05-01 until 2026-08-30 — resolved here. **K4 is statistically significant but negligible in magnitude** (ρ = −0.097 at n = 5,647): the significance is carried by N, and the discriminant-validity headline — the two metrics do not measure the same thing — stands unchanged. Both are realignment-invariant (Δρ ≤ 0.001).
 
 ### Positional gradient
 
 | ID | Metric | typed (current) | typed (pre-realign) | organic | absolute |
 |---|---|---|---|---|---|
-| **K5** | Butterworth LF/HF × position ρ (0–10, N=11) | **−0.882, p=3.3e-04** | −0.673, p=0.023 | −0.655, p=0.029 | −0.927, p=4e-5 |
+| **K5** | Butterworth LF/HF × position ρ (0–10, N=11) | **−0.809, p=2.6e-03** *(y-DP-only state: −0.882)* | −0.673, p=0.023 | −0.655, p=0.029 | −0.927, p=4e-5 |
 | **K6** | RIPA2 × position ρ (0–10, N=11) | **−0.682, p=0.021** | −0.855, p=8.1e-04 | −0.080, p=0.78 (ns) | −0.262, p=0.366 (ns) |
 
 > **This corrects the previous headline.** The retired note read: *"the RIPA2 positional gradient (K6) is null under both attributions"*. That is false under typed — K6 is significant both before and after the realignment (−0.855 → −0.682). The null was a property of the **organic** flavor, not of RIPA2.
 >
-> **Change attributed** (isolated by re-running against the stale-marked pre-realignment typed inputs): the **flavor switch** organic → typed is what moved K6 from null to significant. The **realignment** weakened K6 (−0.855 → −0.682) and strengthened K5 (−0.673 → −0.882); both stay significant and same-signed, and K3/K4 do not move. Two-band engagement remains the headline (NB14:K9).
+> **Change attributed** (isolated by re-running against the stale-marked pre-realignment typed inputs): the **flavor switch** organic → typed is what moved K6 from null to significant. The **realignment** weakened K6 (−0.855 → −0.682) and strengthened K5 (−0.673 → −0.882); both stay significant and same-signed, and K3/K4 do not move. The 2026-08-30 collision fix then settled K5 at −0.809 (p = 2.6e-03) and left K6 untouched at −0.682 — the RIPA2 gradient is collision-fix-invariant. Two-band engagement remains the headline (NB14:K9).
 
 ### Click-position quadrant analysis
 
 | ID | Quadrant | typed (current) | organic (2026-05-01) | absolute (legacy) |
 |---|---|---|---|---|
-| **K7** | Effortful (high LF/HF + high RIPA2) | **28.9%** (383/1,324) | 33.9% [31.1, 36.8] | 27.9% |
-| **K8** | Deliberation (high LF/HF + low RIPA2) | **26.7%** (401/1,501) | 25.6% [23.2, 28.1] | 26.2% |
-| **K9** | Quick decision (low LF/HF + high RIPA2) | **24.0%** (362/1,509) | 25.6% [23.1, 28.1] | 22.9% |
-| **K10** | Routine scanning (low LF/HF + low RIPA2) | **19.0%** (250/1,316) | 19.7% [17.2, 22.4] | 21.5% |
+| **K7** | Effortful (high LF/HF + high RIPA2) | **29.1%** (385/1,324) | 33.9% [31.1, 36.8] | 27.9% |
+| **K8** | Deliberation (high LF/HF + low RIPA2) | **26.7%** (400/1,500) | 25.6% [23.2, 28.1] | 26.2% |
+| **K9** | Quick decision (low LF/HF + high RIPA2) | **24.0%** (362/1,508) | 25.6% [23.1, 28.1] | 22.9% |
+| **K10** | Routine scanning (low LF/HF + low RIPA2) | **19.0%** (250/1,315) | 19.7% [17.2, 22.4] | 21.5% |
 
-> HH > HL > LH > LL ordering holds under typed; joint lift HH−LL = **+9.9 pp**.
+> HH > HL > LH > LL ordering holds under typed; joint lift HH−LL = **+10.1 pp**.
 
 ### Click-quadrant under typed cascade (2026-05-11) --- K-bbox-y tier
 
