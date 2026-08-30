@@ -53,11 +53,37 @@ MAIN_MAX_X = 850          # capture space: main column ends ~832, right rail ~88
 
 JS = """(args) => {
   const out = {paths: {}, cells: [], click: null};
-  for (const [handle, sel] of Object.entries(args.paths)) {
-    let el = null;
-    try { el = document.querySelector(sel); } catch (e) {}
-    if (!el) continue;
-    const r = el.getBoundingClientRect();
+  // Resolve a card by IDENTITY, not by css_path.
+  //
+  // css_path is unreliable: _css_path() builds nth-of-type indices from
+  // BeautifulSoup's parse and the browser's parse disagrees, so the selector
+  // lands on a neighbour on a sizeable minority of cards (5 of 12 on
+  // p004-b1-t5). Trusting it made this harness report the substrate as broken
+  // on exactly the trials where the SELECTOR drifted -- see
+  // docs/aoi-failure-diagnosis-2026-08-30.md, second correction.
+  //
+  // Nor can we reuse the pipeline's own resolution (css_path + shift ladder +
+  // matchKind), because then the harness agrees with the pipeline by
+  // construction and can never detect a resolution error. So: search the whole
+  // document for an element whose class AND heading match what the card
+  // recorded, and score only when that is UNAMBIGUOUS. Ambiguous cards are
+  // skipped rather than guessed -- fewer scored cards, no invented failures.
+  const norm = s => (s || '').replace(/\s+/g, '');
+  const clsOf = el => (el.getAttribute('class') || '').split(/\s+/).filter(Boolean).join(' ');
+  const headOf = el => { const h = el.querySelector('h3') || el.querySelector('h2')
+                                || el.querySelector('[role="heading"]'); return h ? h.textContent : ''; };
+  const all = [...document.querySelectorAll('#rso *, #rso')];
+  for (const [handle, card] of Object.entries(args.cards)) {
+    if (!card.cls && !card.heading) continue;          // nothing to identify it by
+    const hits = all.filter(el => {
+      if (clsOf(el) !== (card.cls || '')) return false;
+      if (card.heading) {
+        return norm(headOf(el)).slice(0, 30) === norm(card.heading).slice(0, 30);
+      }
+      return true;
+    });
+    if (hits.length !== 1) { out.ambiguous = (out.ambiguous || 0) + 1; continue; }
+    const r = hits[0].getBoundingClientRect();
     if (r.width < 1) continue;
     out.paths[handle] = {x: r.left+window.scrollX, y: r.top+window.scrollY,
                          w: r.width, h: r.height};
@@ -168,8 +194,9 @@ async def score(tids, verbose=False):
                 aois = json.loads((TYPED / f'{tid}.json').read_text())
             except Exception:
                 continue
-            paths = {c['html_handle']: c['css_path'] for c in cards
-                     if c.get('html_handle') and c.get('css_path')}
+            paths = {c['html_handle']: {'cls': c.get('css_class', ''),
+                                       'heading': c.get('heading_text', '')}
+                     for c in cards if c.get('html_handle')}
             click = final_click(tid)
             try:
                 await page.goto(f'file://{serp}', wait_until='load', timeout=20000)
@@ -177,7 +204,7 @@ async def score(tids, verbose=False):
                 pass
             await page.wait_for_timeout(90)
             try:
-                res = await page.evaluate(JS, {'paths': paths, 'mainMaxX': MAIN_MAX_X,
+                res = await page.evaluate(JS, {'cards': paths, 'mainMaxX': MAIN_MAX_X,
                                                'clickXpath': click[2] if click else None})
             except Exception:
                 continue
