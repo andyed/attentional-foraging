@@ -112,7 +112,15 @@ move. After execution, update both Key Claims blocks ("typed (current)" columns 
 2026-08-30 header note gains "aoi card-collision fix" wording) and re-run `update_key_claims.py`.
 **Status: DONE this session — see the addendum at the bottom for results.**
 
-## 4 · NB15 — **BLOCKED on a producer conflict, do not execute yet**
+## 4 · NB15 — **RESOLVED 2026-08-30 (option 1, stronger form): write stripped, script is sole producer**
+
+Per Andy's call, cell 25's persist block was removed outright (not redirected): the records stay
+in-memory for the downstream cells, a comment names `compute_cursor_approach_features.py` as the
+sole producer, and NB15 was re-executed cleanly on the fresh substrate — the canonical artifact's
+16:36 script mtime is untouched. `scripts/add_etype_to_features.py` remains a third writer of the
+same path; that retirement decision is still open. Original blocker kept below for the record.
+
+## 4-orig · NB15 — ~~BLOCKED on a producer conflict, do not execute yet~~
 
 `15_cursor_approach.ipynb` reads `butterworth-lfhf-by-position-typed.json` (fresh) — but its
 **cell 25 writes `AdSERP/data/cursor-approach-features-typed.json`**, the same artifact
