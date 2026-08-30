@@ -136,21 +136,48 @@ def load_fixations(trial_id):
 
 # ── Mouse / scroll / click loading ─────────────────────────────────────────
 
-def load_mouse_events(trial_id):
+def load_mouse_events(trial_id, space='document'):
     """Load mouse, scroll, and click events for a trial.
+
+    Args:
+        space: coordinate space of the returned x/y.
+            'document'   — as recorded by evtrack (default; unchanged behaviour).
+            'screenshot' — converted into the space the AOI boxes live in.
+
+    **Pass `space='screenshot'` if you are going to compare these coordinates to
+    an AOI box.** evtrack records document space (1403 wide); the typed AOI maps
+    are screenshot space (1280 wide); the scale between them is anisotropic
+    (x 0.9123, y 0.9000). Comparing the two directly is a silent error, not a
+    loud one: on 2026-08-30 it put 22% of final clicks outside the AOI they hit
+    and inflated mean cursor-to-AOI distance from 37.5px to 57.3px.
+
+    The default stays 'document' because ~40 callers read this and most do not
+    touch AOIs; changing it globally would move numbers under scripts nobody is
+    looking at. Choosing is better than defaulting.
 
     Returns:
         all_events: list of (t, event_type, x, y)
         scrolls: list of (t, y) for scroll events
         clicks: list of (t, x, y) for click events
     """
+    if space not in ('document', 'screenshot'):
+        raise ValueError(f"space must be 'document' or 'screenshot', got {space!r}")
+    sx = sy = 1.0
+    if space == 'screenshot':
+        g = get_trial_geometry(trial_id)
+        if g is None:
+            raise ValueError(
+                f"{trial_id}: cannot convert to screenshot space -- trial "
+                f"metadata unreadable. Refusing to return document-space "
+                f"coordinates labelled as screenshot space.")
+        sx, sy = g['ratio_x'], g['ratio_y']
     path = MOUSE_DIR / f'{trial_id}.csv'
     all_events, scrolls, clicks = [], [], []
     with open(path) as f:
         for row in csv.DictReader(f):
             t = int(float(row['timestamp']))
             evt = row['event']
-            x, y = float(row['xpos']), float(row['ypos'])
+            x, y = float(row['xpos']) * sx, float(row['ypos']) * sy
             all_events.append((t, evt, x, y))
             if evt == 'scroll':
                 scrolls.append((t, y))

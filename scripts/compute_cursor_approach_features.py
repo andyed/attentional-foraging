@@ -178,7 +178,23 @@ def compute_approach_features(trial_id, attribution="absolute", click_buffer_ms=
         sampling-rate ablation. 0 = native (no thinning).
     """
     fixations = load_fixations(trial_id)
-    mouse_data = load_mouse_events(trial_id)
+    # Coordinate space depends on what the cursor gets compared against.
+    #
+    #   organic / organic_hybrid / typed / typed_gapfill
+    #       match against AOI boxes, which are SCREENSHOT space (the builder
+    #       aligns HTML cards onto CV bboxes extracted from the screenshots).
+    #       evtrack records DOCUMENT space, so the default silently compares two
+    #       coordinate systems -- which is what attribute_click_to_typed_gapfill's
+    #       x_tol = 5 was failing against a ~61px displacement.
+    #   absolute
+    #       builds its bands from `doc_h` via result_band_tops(), which is
+    #       DOCUMENT space. Converting here would break it the other way.
+    #
+    # Fixations are already screenshot space (FPOGX/FPOGY are relative to the
+    # screenshot), so under the AOI flavors all three streams end up aligned.
+    _AOI_FLAVORS = ("organic", "organic_hybrid", "typed", "typed_gapfill")
+    space = "screenshot" if attribution in _AOI_FLAVORS else "document"
+    mouse_data = load_mouse_events(trial_id, space=space)
     meta = get_trial_meta(trial_id)
     if fixations is None or mouse_data is None or meta is None:
         return None
