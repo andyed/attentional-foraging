@@ -137,9 +137,9 @@
     "y": 1833.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Exhaust Camshaft Position Sensor - 850 C70 S70 V70 ...",
+    "heading_text": "Cam Position Sensor by BOSCH - 0232101030 - PartsAvatar",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
@@ -192,6 +192,18 @@
     "position": 15
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Exhaust Camshaft Position Sensor - 850 C70 S70 V70 ...",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -201,19 +213,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Cam Position Sensor by BOSCH - 0232101030 - PartsAvatar",
-    "source": "html_only",
-    "y_render": 2050,
     "position": -1
   },
   {

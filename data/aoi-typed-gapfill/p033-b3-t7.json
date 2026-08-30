@@ -72,15 +72,15 @@
     "position": 5
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1168.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "SM5482 by KYB AMERICA LLC. - Shock Mount kit - FinditParts",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -113,9 +113,9 @@
     "y": 1518.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "SM5482 by KYB AMERICA LLC. - Shock Mount kit - FinditParts",
+    "heading_text": "KYB SM5482 Suspension Shock Mounting Kit - StockWise Auto",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
@@ -125,35 +125,23 @@
     "y": 1654.0,
     "width": 586.0,
     "height": 119.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "KYB SM5482 Suspension Shock Mounting Kit - StockWise Auto",
-    "source": "html_rso+cv_bbox+y_dp",
-    "position": 10
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1775.0,
-    "width": 586.0,
-    "height": 128.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "KYB\u00ae SM5482 - Rear Upper Shock Mounting Kit",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 11
+    "position": 10
   },
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1905.0,
+    "y": 1775.0,
     "width": 586.0,
-    "height": 135.0,
+    "height": 265.0,
     "html_handle": "rso[9]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy kyb kyb sm5482 shock mount kit",
-    "source": "html_rso+cv_bbox+y_dp",
-    "position": 12
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 11
   },
   {
     "type": "native_ad",
@@ -165,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -177,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 14
+    "position": 13
   },
   {
     "type": "native_ad",
@@ -189,7 +177,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 15
+    "position": 14
   },
   {
     "type": "knowledge_panel",

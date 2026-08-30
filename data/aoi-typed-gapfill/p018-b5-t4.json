@@ -60,15 +60,15 @@
     "position": 4
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1479.0,
     "width": 586.0,
     "height": 119.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Spy Optics Quanta Sunglasses - Walmart.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,9 +77,9 @@
     "y": 1600.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Spy Optics Quanta Sunglasses - Walmart.com",
+    "heading_text": "Spy QUANTA 2 Sunglasses | FREE Shipping - Go-Optic.com",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
@@ -141,19 +141,6 @@
     "html_signature": "h=\"comp\" div.TQc1id",
     "heading_text": "Complementary results",
     "source": "html_only+no_geometry",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Spy QUANTA 2 Sunglasses | FREE Shipping - Go-Optic.com",
-    "source": "html_only",
-    "y_render": 1795,
     "position": -1
   },
   {

@@ -72,15 +72,15 @@
     "position": 5
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1283.0,
     "width": 586.0,
     "height": 138.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Hagerty HP91320 Chandelier Cleaner, 32 oz, Liquid, Clear",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -101,9 +101,9 @@
     "y": 1539.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[9]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Hagerty HP91320 Chandelier Cleaner, 32 oz, Liquid, Clear",
+    "heading_text": "Hagerty Chandelier Cleaner | makes crystal and glass fixtures ...",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
@@ -165,19 +165,6 @@
     "html_signature": "TQc1id div.TQc1id",
     "heading_text": "Hours",
     "source": "html_only+no_geometry",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Hagerty Chandelier Cleaner | makes crystal and glass fixtures ...",
-    "source": "html_only",
-    "y_render": 1727,
     "position": -1
   },
   {

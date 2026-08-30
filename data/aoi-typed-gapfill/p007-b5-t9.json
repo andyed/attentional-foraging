@@ -84,15 +84,15 @@
     "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1891.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Intex 57165ep Gator 6.6ft X 5.6ft X 4in Outdoor Inflatable ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,9 +101,9 @@
     "y": 2008.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Intex 57165ep Gator 6.6ft X 5.6ft X 4in Outdoor Inflatable ...",
+    "heading_text": "Buy Intex Gator Inflatable Play Center, for Ages 2 Online in Spain ...",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
@@ -141,19 +141,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Buy Intex Gator Inflatable Play Center, for Ages 2 Online in Spain ...",
-    "source": "html_only",
-    "y_render": 2248,
     "position": -1
   },
   {

@@ -84,15 +84,15 @@
     "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1450.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "clove color conditioner - Aveda",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,22 +101,22 @@
     "y": 1586.0,
     "width": 586.0,
     "height": 154.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "clove color conditioner - Aveda",
+    "heading_text": "Aveda - Clove Color Conditioner 250ml/8.5oz - Coloured Hair",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1742.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Aveda Clove Color Conditioner 250ml/8.5oz - Kroger",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -137,9 +137,9 @@
     "y": 1973.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Aveda Clove Color Conditioner 250ml/8.5oz - Kroger",
+    "heading_text": "Clove Color Conditioner 250ml/8.5oz 2022 | Buy AVEDA Online",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
@@ -213,32 +213,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Aveda - Clove Color Conditioner 250ml/8.5oz - Coloured Hair",
-    "source": "html_only",
-    "y_render": 1780,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Clove Color Conditioner 250ml/8.5oz 2022 | Buy AVEDA Online",
-    "source": "html_only",
-    "y_render": 2211,
     "position": -1
   },
   {

@@ -89,9 +89,9 @@
     "y": 1325.0,
     "width": 586.0,
     "height": 112.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Filters | Pontiac G6 Forum",
+    "heading_text": "Purolator ONE A25594 Air Filter - Sixity Auto Parts",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
@@ -125,9 +125,9 @@
     "y": 1673.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "PurolatorTECH\u2122 Cabin Air Filters",
+    "heading_text": "Purolator Oil and Air Filters Become 'Classic'",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
@@ -180,6 +180,30 @@
     "position": 14
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Filters | Pontiac G6 Forum",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "PurolatorTECH\u2122 Cabin Air Filters",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -189,32 +213,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Purolator ONE A25594 Air Filter - Sixity Auto Parts",
-    "source": "html_only",
-    "y_render": 1487,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Purolator Oil and Air Filters Become 'Classic'",
-    "source": "html_only",
-    "y_render": 1874,
     "position": -1
   },
   {

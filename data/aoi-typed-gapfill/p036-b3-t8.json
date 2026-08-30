@@ -60,15 +60,15 @@
     "position": 4
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1225.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Avon Haiku shimmering Body Powder Talc 1.4 Oz - Desertcart",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,9 +77,9 @@
     "y": 1341.0,
     "width": 586.0,
     "height": 112.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Avon Haiku shimmering Body Powder Talc 1.4 Oz - Desertcart",
+    "heading_text": "AVON Haiku Shimmering Body Powder Talc 1.4 Oz 40g NEW",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
@@ -141,19 +141,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "AVON Haiku Shimmering Body Powder Talc 1.4 Oz 40g NEW",
-    "source": "html_only",
-    "y_render": 1509,
     "position": -1
   },
   {

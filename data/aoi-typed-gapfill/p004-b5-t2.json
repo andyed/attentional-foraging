@@ -84,15 +84,15 @@
     "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1182.0,
     "width": 586.0,
     "height": 256.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[5]",
+    "html_signature": "div.(no class)",
+    "heading_text": "ResMed H4i Standard Water Chamber : Ships Free",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,9 +101,9 @@
     "y": 1440.0,
     "width": 586.0,
     "height": 216.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.(no class)",
-    "heading_text": "ResMed H4i Standard Water Chamber : Ships Free",
+    "heading_text": "H4i\u2122 Water Chamber Upgrade Kit for HumidAire 3i ...",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
@@ -189,19 +189,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[4]",
-    "html_signature": "div.(no class)",
-    "heading_text": "H4i\u2122 Water Chamber Upgrade Kit for HumidAire 3i ...",
-    "source": "html_only",
-    "y_render": 1616,
     "position": -1
   },
   {

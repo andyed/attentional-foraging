@@ -60,15 +60,15 @@
     "position": 4
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1161.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Denso 280-0330 Remanufactured Starter (2800330) - Online ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -89,9 +89,9 @@
     "y": 1393.0,
     "width": 586.0,
     "height": 112.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Denso 280-0330 Remanufactured Starter (2800330) - Online ...",
+    "heading_text": "Denso 280-0330 Remanufactured Starter - Oman | desertcart",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
@@ -153,19 +153,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Denso 280-0330 Remanufactured Starter - Oman | desertcart",
-    "source": "html_only",
-    "y_render": 1566,
     "position": -1
   },
   {

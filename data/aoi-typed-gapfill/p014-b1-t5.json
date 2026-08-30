@@ -149,9 +149,9 @@
     "y": 2380.0,
     "width": 586.0,
     "height": 132.0,
-    "html_handle": "rso[9]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Herbalife Ultimate Program DUTCH CHOCOLATE - Nigeria",
+    "heading_text": "Ultimate Programme* Maximise your weight loss progress",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 12
   },
@@ -216,6 +216,18 @@
     "position": 17
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Herbalife Ultimate Program DUTCH CHOCOLATE - Nigeria",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -225,19 +237,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Ultimate Programme* Maximise your weight loss progress",
-    "source": "html_only",
-    "y_render": 2658,
     "position": -1
   },
   {

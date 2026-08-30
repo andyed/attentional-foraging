@@ -113,9 +113,9 @@
     "y": 1508.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "One New Febi Bilstein Speedometer Cable 19266 ... - eBay",
+    "heading_text": "febi bilstein 19270 Speedometer Cable, Pack of one ... - Amazon.com",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
@@ -180,6 +180,18 @@
     "position": 14
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "One New Febi Bilstein Speedometer Cable 19266 ... - eBay",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -189,19 +201,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "febi bilstein 19270 Speedometer Cable, Pack of one ... - Amazon.com",
-    "source": "html_only",
-    "y_render": 1690,
     "position": -1
   },
   {

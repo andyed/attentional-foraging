@@ -72,15 +72,15 @@
     "position": 5
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1013.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Dayco Products LLC Dayco Engine Timing Belt Kit with Water ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,22 +89,22 @@
     "y": 1129.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dayco Products LLC Dayco Engine Timing Belt Kit with Water ...",
+    "heading_text": "Dayco WP259K2A Engine Timing Belt Kit with Water Pump",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1245.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Duralast/Dayco Timing Belt Component Kit with Water ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,9 +113,9 @@
     "y": 1361.0,
     "width": 586.0,
     "height": 97.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Water Pump Kit, Dayco WP259K2A | B2823494 - Global ...",
+    "heading_text": "Dayco WP259K2A Timing Belt Kit with Water Pump",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
@@ -125,9 +125,9 @@
     "y": 1460.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Duralast/Dayco Timing Belt Component Kit with Water ...",
+    "heading_text": "Water Pump Kit, Dayco WP259K2A | B2823494 - Global ...",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
@@ -201,32 +201,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dayco WP259K2A Engine Timing Belt Kit with Water Pump",
-    "source": "html_only",
-    "y_render": 1252,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dayco WP259K2A Timing Belt Kit with Water Pump",
-    "source": "html_only",
-    "y_render": 1510,
     "position": -1
   },
   {

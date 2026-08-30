@@ -149,9 +149,9 @@
     "y": 1621.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[9]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "STABILUS 341059 Tailgate strut \u2014 Discounts today",
+    "heading_text": "fast delivery STABILUS Boot gas struts Length - Autopartspro",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 12
   },
@@ -204,6 +204,18 @@
     "position": 16
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "STABILUS 341059 Tailgate strut \u2014 Discounts today",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -213,19 +225,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "fast delivery STABILUS Boot gas struts Length - Autopartspro",
-    "source": "html_only",
-    "y_render": 1814,
     "position": -1
   },
   {

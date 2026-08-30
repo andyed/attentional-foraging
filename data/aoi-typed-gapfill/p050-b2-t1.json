@@ -84,15 +84,15 @@
     "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1600.0,
     "width": 586.0,
     "height": 154.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Nixon Canon Men's Watch (A160-1427) - iShopping.pk",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,9 +101,9 @@
     "y": 1756.0,
     "width": 586.0,
     "height": 115.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Nixon Canon Men's Watch (A160-1427) - iShopping.pk",
+    "heading_text": "NIXON CANNON A1601427 - PlanetaRelojes.com",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
@@ -141,19 +141,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "NIXON CANNON A1601427 - PlanetaRelojes.com",
-    "source": "html_only",
-    "y_render": 2014,
     "position": -1
   },
   {

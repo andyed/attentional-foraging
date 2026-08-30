@@ -1,10 +1,10 @@
 {
-  "n_trials_dd_top_topped": 1581,
+  "n_trials_dd_top_topped": 1572,
   "n_trials_total_corpus": 2776,
-  "frac_of_corpus": 0.5695,
-  "total_fixations": 132893,
-  "total_transitions": 131312,
-  "alphabet_size": 30,
+  "frac_of_corpus": 0.5663,
+  "total_fixations": 132123,
+  "total_transitions": 130551,
+  "alphabet_size": 28,
   "alphabet": [
     "dd_top_cell_1",
     "dd_top_cell_2",
@@ -14,7 +14,6 @@
     "dd_top_cell_6",
     "dd_top_other",
     "image_pack",
-    "knowledge_panel",
     "native_ad",
     "off",
     "organic_1",
@@ -31,7 +30,6 @@
     "organic_7",
     "organic_8",
     "organic_9",
-    "organic_unk",
     "other_widget",
     "paa",
     "top_places",
@@ -40,27 +38,27 @@
   "stationary_top10": [
     [
       "off",
-      0.1604
+      0.1563
     ],
     [
       "organic_1",
-      0.1053
+      0.099
     ],
     [
       "organic_2",
-      0.092
+      0.0943
     ],
     [
       "dd_top_cell_1",
-      0.0859
+      0.0861
     ],
     [
       "organic_3",
-      0.0758
+      0.0774
     ],
     [
       "dd_top_cell_2",
-      0.0697
+      0.0698
     ],
     [
       "dd_top_cell_3",
@@ -68,199 +66,199 @@
     ],
     [
       "native_ad",
-      0.0581
+      0.0584
+    ],
+    [
+      "organic_4",
+      0.0583
     ],
     [
       "dd_top_cell_4",
       0.0577
-    ],
-    [
-      "organic_4",
-      0.0564
     ]
   ],
-  "weighted_avg_transition_entropy_bits": 2.1672,
-  "max_entropy_bits": 4.9069,
+  "weighted_avg_transition_entropy_bits": 2.1643,
+  "max_entropy_bits": 4.8074,
   "top_30_transitions_by_count": [
     {
       "from": "off",
       "to": "off",
-      "count": 11053,
-      "p_to_given_from": 0.5372
+      "count": 10562,
+      "p_to_given_from": 0.5305
     },
     {
       "from": "organic_1",
       "to": "organic_1",
-      "count": 9431,
-      "p_to_given_from": 0.6784
+      "count": 8885,
+      "p_to_given_from": 0.683
     },
     {
       "from": "organic_2",
       "to": "organic_2",
-      "count": 8215,
-      "p_to_given_from": 0.6761
-    },
-    {
-      "from": "dd_top_cell_1",
-      "to": "dd_top_cell_1",
-      "count": 6700,
-      "p_to_given_from": 0.5879
+      "count": 8542,
+      "p_to_given_from": 0.6889
     },
     {
       "from": "organic_3",
       "to": "organic_3",
-      "count": 6581,
-      "p_to_given_from": 0.6581
+      "count": 6816,
+      "p_to_given_from": 0.6705
     },
     {
-      "from": "native_ad",
-      "to": "native_ad",
-      "count": 4790,
-      "p_to_given_from": 0.6227
+      "from": "dd_top_cell_1",
+      "to": "dd_top_cell_1",
+      "count": 6676,
+      "p_to_given_from": 0.5878
     },
     {
       "from": "organic_4",
       "to": "organic_4",
-      "count": 4781,
-      "p_to_given_from": 0.6409
+      "count": 4969,
+      "p_to_given_from": 0.6478
+    },
+    {
+      "from": "native_ad",
+      "to": "native_ad",
+      "count": 4789,
+      "p_to_given_from": 0.6228
     },
     {
       "from": "dd_top_cell_4",
       "to": "dd_top_cell_4",
-      "count": 4316,
-      "p_to_given_from": 0.5784
+      "count": 4281,
+      "p_to_given_from": 0.5778
     },
     {
       "from": "dd_top_cell_2",
       "to": "dd_top_cell_2",
-      "count": 4271,
-      "p_to_given_from": 0.4627
+      "count": 4254,
+      "p_to_given_from": 0.463
     },
     {
       "from": "dd_top_cell_3",
       "to": "dd_top_cell_3",
-      "count": 3800,
-      "p_to_given_from": 0.4782
+      "count": 3781,
+      "p_to_given_from": 0.4784
     },
     {
       "from": "organic_5",
       "to": "organic_5",
-      "count": 2971,
-      "p_to_given_from": 0.5924
+      "count": 2914,
+      "p_to_given_from": 0.6006
     },
     {
       "from": "organic_6",
       "to": "organic_6",
-      "count": 2302,
-      "p_to_given_from": 0.5945
-    },
-    {
-      "from": "image_pack",
-      "to": "image_pack",
-      "count": 1776,
-      "p_to_given_from": 0.6097
+      "count": 2157,
+      "p_to_given_from": 0.6025
     },
     {
       "from": "dd_top_cell_2",
       "to": "dd_top_cell_1",
-      "count": 1693,
-      "p_to_given_from": 0.1834
+      "count": 1687,
+      "p_to_given_from": 0.1836
     },
     {
-      "from": "organic_7",
-      "to": "organic_7",
-      "count": 1525,
-      "p_to_given_from": 0.5562
+      "from": "top_places",
+      "to": "top_places",
+      "count": 1640,
+      "p_to_given_from": 0.6902
     },
     {
       "from": "native_ad",
       "to": "off",
-      "count": 1518,
-      "p_to_given_from": 0.1973
+      "count": 1475,
+      "p_to_given_from": 0.1918
+    },
+    {
+      "from": "image_pack",
+      "to": "image_pack",
+      "count": 1470,
+      "p_to_given_from": 0.5833
+    },
+    {
+      "from": "dd_top_cell_1",
+      "to": "dd_top_cell_2",
+      "count": 1467,
+      "p_to_given_from": 0.1292
     },
     {
       "from": "off",
       "to": "native_ad",
-      "count": 1490,
-      "p_to_given_from": 0.0724
-    },
-    {
-      "from": "dd_top_cell_1",
-      "to": "dd_top_cell_2",
-      "count": 1473,
-      "p_to_given_from": 0.1293
+      "count": 1433,
+      "p_to_given_from": 0.072
     },
     {
       "from": "dd_top_cell_1",
       "to": "off",
-      "count": 1427,
-      "p_to_given_from": 0.1252
+      "count": 1424,
+      "p_to_given_from": 0.1254
     },
     {
-      "from": "organic_1",
-      "to": "organic_2",
-      "count": 1364,
-      "p_to_given_from": 0.0981
+      "from": "organic_7",
+      "to": "organic_7",
+      "count": 1368,
+      "p_to_given_from": 0.5319
     },
     {
       "from": "dd_top_cell_3",
       "to": "dd_top_cell_2",
-      "count": 1297,
-      "p_to_given_from": 0.1632
+      "count": 1289,
+      "p_to_given_from": 0.1631
     },
     {
       "from": "off",
       "to": "dd_top_cell_1",
-      "count": 1279,
-      "p_to_given_from": 0.0622
+      "count": 1277,
+      "p_to_given_from": 0.0641
+    },
+    {
+      "from": "organic_1",
+      "to": "organic_2",
+      "count": 1269,
+      "p_to_given_from": 0.0975
     },
     {
       "from": "off",
       "to": "organic_1",
-      "count": 1260,
-      "p_to_given_from": 0.0612
-    },
-    {
-      "from": "organic_1",
-      "to": "off",
-      "count": 1257,
-      "p_to_given_from": 0.0904
-    },
-    {
-      "from": "organic_2",
-      "to": "organic_3",
-      "count": 1210,
-      "p_to_given_from": 0.0996
+      "count": 1180,
+      "p_to_given_from": 0.0593
     },
     {
       "from": "organic_8",
       "to": "organic_8",
-      "count": 1162,
-      "p_to_given_from": 0.5655
+      "count": 1178,
+      "p_to_given_from": 0.5716
+    },
+    {
+      "from": "organic_2",
+      "to": "organic_3",
+      "count": 1175,
+      "p_to_given_from": 0.0948
+    },
+    {
+      "from": "organic_1",
+      "to": "off",
+      "count": 1166,
+      "p_to_given_from": 0.0896
     },
     {
       "from": "dd_top_cell_2",
       "to": "dd_top_cell_3",
-      "count": 1111,
-      "p_to_given_from": 0.1204
-    },
-    {
-      "from": "organic_2",
-      "to": "organic_1",
-      "count": 1076,
-      "p_to_given_from": 0.0886
+      "count": 1102,
+      "p_to_given_from": 0.12
     },
     {
       "from": "organic_3",
       "to": "organic_4",
-      "count": 1056,
-      "p_to_given_from": 0.1056
+      "count": 1057,
+      "p_to_given_from": 0.104
     },
     {
       "from": "dd_top_cell_4",
       "to": "dd_top_cell_3",
-      "count": 1041,
-      "p_to_given_from": 0.1395
+      "count": 1035,
+      "p_to_given_from": 0.1397
     }
   ],
   "trials_per_participant": {

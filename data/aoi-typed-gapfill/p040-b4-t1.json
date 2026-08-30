@@ -84,15 +84,15 @@
     "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1200.0,
     "width": 586.0,
     "height": 188.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[6]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Rotosound Acoustic Guitar Strings for sale - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,22 +101,22 @@
     "y": 1418.0,
     "width": 586.0,
     "height": 204.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.(no class)",
-    "heading_text": "Rotosound Acoustic Guitar Strings for sale - eBay",
+    "heading_text": "Rotosound Strings",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1624.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Rotosound Guitar & Bass Strings - Strings and Beyond",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,9 +125,9 @@
     "y": 1739.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Rotosound Guitar & Bass Strings - Strings and Beyond",
+    "heading_text": "Rotosound Jumbo King Acoustic Guitar Strings",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
@@ -165,32 +165,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[5]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Rotosound Strings",
-    "source": "html_only",
-    "y_render": 1579,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Rotosound Jumbo King Acoustic Guitar Strings",
-    "source": "html_only",
-    "y_render": 1950,
     "position": -1
   },
   {

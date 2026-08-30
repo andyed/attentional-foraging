@@ -108,15 +108,15 @@
     "position": 8
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1524.0,
     "width": 586.0,
     "height": 112.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "MEYLE 100 919 0017 Sensor, coolant temperature - Best Part ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -137,9 +137,9 @@
     "y": 1755.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "MEYLE 100 919 0017 Sensor, coolant temperature - Best Part ...",
+    "heading_text": "MEYLE Sensor, coolant temperature 100 919 0017 - spare parts",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
@@ -201,19 +201,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "MEYLE Sensor, coolant temperature 100 919 0017 - spare parts",
-    "source": "html_only",
-    "y_render": 1966,
     "position": -1
   },
   {

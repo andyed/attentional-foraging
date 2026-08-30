@@ -113,9 +113,9 @@
     "y": 1783.0,
     "width": 586.0,
     "height": 112.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Bosch Reman Alternator 12V 120A-AL0727X - The Engine ...",
+    "heading_text": "Bosch AL0727X Alternator - ShowMeTheParts.com",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
@@ -168,6 +168,18 @@
     "position": 13
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Bosch Reman Alternator 12V 120A-AL0727X - The Engine ...",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -177,19 +189,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Bosch AL0727X Alternator - ShowMeTheParts.com",
-    "source": "html_only",
-    "y_render": 2000,
     "position": -1
   },
   {

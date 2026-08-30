@@ -146,14 +146,26 @@
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1941.0,
+    "y": 1824.0,
     "width": 586.0,
-    "height": 114.0,
+    "height": 115.0,
     "html_handle": "rso[10]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Denso Exact Fit Oxygen Sensor 234-3075 - AutoZone Auto Parts",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 12
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1941.0,
+    "width": 586.0,
+    "height": 114.0,
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Denso 234-3075 Oxygen Sensor - Buy Online - desertcart",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 13
   },
   {
     "type": "organic",
@@ -165,7 +177,7 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "Denso\u00ae 234-3075 - Oxygen Sensor - CARiD.com",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 13
+    "position": 14
   },
   {
     "type": "native_ad",
@@ -177,7 +189,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 14
+    "position": 15
   },
   {
     "type": "native_ad",
@@ -189,7 +201,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 15
+    "position": 16
   },
   {
     "type": "native_ad",
@@ -201,7 +213,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 16
+    "position": 17
   },
   {
     "type": "knowledge_panel",
@@ -213,19 +225,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[9]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Denso 234-3075 Oxygen Sensor - Buy Online - desertcart",
-    "source": "html_only",
-    "y_render": 2171,
     "position": -1
   },
   {
@@ -262,18 +261,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1824.0,
-    "width": 586.0,
-    "height": 115.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

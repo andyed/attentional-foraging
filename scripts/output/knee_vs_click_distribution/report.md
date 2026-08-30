@@ -20,12 +20,12 @@ Predictions:
 
 | Pair | n | Spearman ρ | p | Pearson r | p |
 |---|---|---|---|---|---|
-| mean_knee × mean_click_pos | 45 | +0.486 | 7.146e-04 | +0.476 | 9.366e-04 |
-| mean_knee × click_at_P0_frac | 45 | -0.437 | 2.686e-03 | -0.437 | 2.693e-03 |
-| mean_knee × click_at_P0_or_P1_frac | 45 | -0.357 | 1.599e-02 | -0.340 | 2.226e-02 |
-| mean_knee × click_at_P3_or_deeper_frac | 45 | +0.361 | 1.493e-02 | +0.348 | 1.903e-02 |
-| mean_knee × click_entropy_bits | 45 | +0.449 | 1.955e-03 | +0.468 | 1.190e-03 |
-| mean_knee × regression_rate | 45 | +0.001 | 9.923e-01 | -0.005 | 9.735e-01 |
-| regression_rate × click_entropy_bits | 45 | +0.066 | 6.665e-01 | +0.095 | 5.359e-01 |
-| regression_rate × click_at_P0_frac | 45 | +0.113 | 4.598e-01 | +0.140 | 3.596e-01 |
-| regression_rate × mean_click_pos | 45 | +0.041 | 7.896e-01 | +0.057 | 7.113e-01 |
+| mean_knee × mean_click_pos | 45 | +0.459 | 1.504e-03 | +0.458 | 1.562e-03 |
+| mean_knee × click_at_P0_frac | 45 | -0.424 | 3.704e-03 | -0.442 | 2.392e-03 |
+| mean_knee × click_at_P0_or_P1_frac | 45 | -0.366 | 1.339e-02 | -0.342 | 2.134e-02 |
+| mean_knee × click_at_P3_or_deeper_frac | 45 | +0.331 | 2.627e-02 | +0.326 | 2.877e-02 |
+| mean_knee × click_entropy_bits | 45 | +0.437 | 2.702e-03 | +0.459 | 1.529e-03 |
+| mean_knee × regression_rate | 45 | +0.003 | 9.841e-01 | -0.005 | 9.745e-01 |
+| regression_rate × click_entropy_bits | 45 | +0.077 | 6.138e-01 | +0.114 | 4.553e-01 |
+| regression_rate × click_at_P0_frac | 45 | +0.121 | 4.267e-01 | +0.133 | 3.828e-01 |
+| regression_rate × mean_click_pos | 45 | +0.038 | 8.043e-01 | +0.066 | 6.653e-01 |

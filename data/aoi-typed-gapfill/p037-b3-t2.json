@@ -84,15 +84,15 @@
     "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1377.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "LuK\u00ae 17-065 - RepSet\u2122 Clutch Kit - CARiD.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,9 +101,9 @@
     "y": 1480.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "LuK\u00ae 17-065 - RepSet\u2122 Clutch Kit - CARiD.com",
+    "heading_text": "New Clutch Set - 17-065 by LUK on PartsAvatar.ca",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
@@ -189,19 +189,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "New Clutch Set - 17-065 by LUK on PartsAvatar.ca",
-    "source": "html_only",
-    "y_render": 1658,
     "position": -1
   },
   {

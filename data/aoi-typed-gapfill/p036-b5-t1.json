@@ -125,9 +125,9 @@
     "y": 1642.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dayco 95199K1 Engine Timing Belt Kit - StockWise Auto",
+    "heading_text": "Dayco\u00ae 95199K1 Timing Belt Kit - AutoPartsPrime",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
@@ -180,6 +180,18 @@
     "position": 14
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Dayco 95199K1 Engine Timing Belt Kit - StockWise Auto",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -189,19 +201,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dayco\u00ae 95199K1 Timing Belt Kit - AutoPartsPrime",
-    "source": "html_only",
-    "y_render": 1841,
     "position": -1
   },
   {

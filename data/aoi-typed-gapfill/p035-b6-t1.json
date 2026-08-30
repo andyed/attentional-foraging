@@ -53,9 +53,9 @@
     "y": 981.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "iRobot Roomba 620 Vacuum Cleaning Robot - Amazon.com",
+    "heading_text": "iRobot Roomba 620 - Robot aspirador (di\u00e1metro 33 cm ...",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
@@ -72,15 +72,15 @@
     "position": 5
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1285.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Buy irobot roomba 620 robotic vacuum at affordable price",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,22 +89,22 @@
     "y": 1402.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Buy irobot roomba 620 robotic vacuum at affordable price",
+    "heading_text": "iRobot Roomba 620 - Robot vacuums",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1517.0,
     "width": 586.0,
     "height": 125.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "iRobot Roomba 620 Vacuum Cleaning Robot - Denmark",
-    "source": "html_rso+cv_bbox+y_dp",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 8
   },
   {
@@ -156,6 +156,30 @@
     "position": 12
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "iRobot Roomba 620 Vacuum Cleaning Robot - Amazon.com",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "iRobot Roomba 620 Vacuum Cleaning Robot - Denmark",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -165,32 +189,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[1]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "iRobot Roomba 620 - Robot aspirador (di\u00e1metro 33 cm ...",
-    "source": "html_only",
-    "y_render": 1088,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "iRobot Roomba 620 - Robot vacuums",
-    "source": "html_only",
-    "y_render": 1551,
     "position": -1
   },
   {

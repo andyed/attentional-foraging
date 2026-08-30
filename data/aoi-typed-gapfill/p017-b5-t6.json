@@ -72,15 +72,15 @@
     "position": 5
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1222.0,
     "width": 586.0,
     "height": 120.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "ACDELCO GOLD/PROFESSIONAL 38044 PULLEY,BELT IDLER ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,9 +89,9 @@
     "y": 1344.0,
     "width": 586.0,
     "height": 137.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "ACDELCO GOLD/PROFESSIONAL 38044 PULLEY,BELT IDLER ...",
+    "heading_text": "ACDelco 38044 Professional Flanged Idler Pulley - PartLimit",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
@@ -153,19 +153,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "ACDelco 38044 Professional Flanged Idler Pulley - PartLimit",
-    "source": "html_only",
-    "y_render": 1509,
     "position": -1
   },
   {

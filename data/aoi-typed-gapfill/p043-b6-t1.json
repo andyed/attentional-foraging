@@ -89,9 +89,9 @@
     "y": 1178.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Solgar Potassium Tablet Vitamins & Minerals for sale - eBay",
+    "heading_text": "Potassium Tablets - Brain Health - Solgar",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
@@ -125,9 +125,9 @@
     "y": 1634.0,
     "width": 586.0,
     "height": 134.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Solgar Potassium - 100 Tablets - Evergreen Healthfoods",
+    "heading_text": "Solgar Potassium Tablets, 250 Count - Exborders - Tokopedia",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
@@ -192,6 +192,30 @@
     "position": 15
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Solgar Potassium Tablet Vitamins & Minerals for sale - eBay",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Solgar Potassium - 100 Tablets - Evergreen Healthfoods",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -201,32 +225,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Potassium Tablets - Brain Health - Solgar",
-    "source": "html_only",
-    "y_render": 1310,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Solgar Potassium Tablets, 250 Count - Exborders - Tokopedia",
-    "source": "html_only",
-    "y_render": 1833,
     "position": -1
   },
   {

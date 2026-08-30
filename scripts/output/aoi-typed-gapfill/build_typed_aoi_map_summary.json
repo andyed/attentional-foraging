@@ -9,31 +9,31 @@
       "y_dp": 2774,
       "index_fallback": 2
     },
-    "segments_merged_total": 1181,
-    "cards_no_geometry_total": 57,
-    "n_alignment_suspect": 22,
-    "mean_residual_px": 4.70620043258832,
-    "p90_residual_px": 9.2
+    "segments_merged_total": 1188,
+    "cards_no_geometry_total": 212,
+    "n_alignment_suspect": 16,
+    "mean_residual_px": 4.614960346070656,
+    "p90_residual_px": 9.1
   },
   "type_distribution_total": {
     "organic": 22530,
     "native_ad": 9217,
     "pagination": 2697,
     "related_searches": 1811,
-    "chrome": 1656,
+    "chrome": 1636,
     "image_pack": 1600,
     "dd_top": 1582,
-    "unknown_widget": 1010,
     "dd_right": 861,
     "knowledge_panel": 826,
     "paa": 769,
+    "unknown_widget": 680,
     "top_places": 354,
     "other_widget": 51
   },
   "matching_summary": {
-    "matched_total": 24711,
-    "unmatched_bbox_total": 2666,
-    "unmatched_html_total": 1297
+    "matched_total": 25073,
+    "unmatched_bbox_total": 2316,
+    "unmatched_html_total": 954
   },
   "mismatch_distribution": {
     "-1": 950,

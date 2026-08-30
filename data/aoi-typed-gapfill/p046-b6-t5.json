@@ -4,19 +4,19 @@
     "x": 162.0,
     "y": 203.0,
     "width": 586.0,
-    "height": 489.0,
+    "height": 680.0,
     "html_handle": "rso[1]",
     "html_signature": "h=\"local\" div.ULSxyf",
     "heading_text": "Local results",
-    "source": "html_rso+cv_bbox+y_dp+span_rescue",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 0
   },
   {
     "type": "organic",
     "x": 162.0,
-    "y": 728.0,
+    "y": 923.0,
     "width": 586.0,
-    "height": 155.0,
+    "height": 125.0,
     "html_handle": "rso[2]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "LEGO Technic Backhoe Loader 8069 by LEGO - Amazon",
@@ -26,9 +26,9 @@
   {
     "type": "organic",
     "x": 162.0,
-    "y": 923.0,
+    "y": 1081.0,
     "width": 586.0,
-    "height": 125.0,
+    "height": 166.0,
     "html_handle": "rso[4]",
     "html_signature": "div.g",
     "heading_text": "LEGO Technic Backhoe Loader 8069 - Amazon.com",
@@ -38,9 +38,9 @@
   {
     "type": "unknown_widget",
     "x": 162.0,
-    "y": 1081.0,
+    "y": 1249.0,
     "width": 586.0,
-    "height": 166.0,
+    "height": 135.0,
     "html_handle": null,
     "html_signature": "",
     "heading_text": "",
@@ -50,9 +50,9 @@
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1249.0,
+    "y": 1386.0,
     "width": 586.0,
-    "height": 135.0,
+    "height": 133.0,
     "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "LEGO Technic Backhoe Loader (8069) for sale online - eBay",
@@ -62,9 +62,9 @@
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1386.0,
+    "y": 1521.0,
     "width": 586.0,
-    "height": 133.0,
+    "height": 115.0,
     "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "LEGO Technic Backhoe Loader (8069) - eBay",
@@ -74,9 +74,9 @@
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1521.0,
+    "y": 1638.0,
     "width": 586.0,
-    "height": 115.0,
+    "height": 132.0,
     "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "LEGO 8069: Backhoe Loader - Brickset",
@@ -86,9 +86,9 @@
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1638.0,
+    "y": 1772.0,
     "width": 586.0,
-    "height": 132.0,
+    "height": 136.0,
     "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "LEGO Technic 8069 Backhoe Loader - electricBricks",
@@ -98,26 +98,14 @@
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1772.0,
+    "y": 1910.0,
     "width": 586.0,
-    "height": 136.0,
+    "height": 131.0,
     "html_handle": "rso[9]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "8069 LEGO Technic Backhoe Loader - BrickEconomy",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1910.0,
-    "width": 586.0,
-    "height": 131.0,
-    "html_handle": "rso[10]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "LEGO Technic Backhoe Loader Set 8069 - - StockX",
-    "source": "html_rso+cv_bbox+y_dp",
-    "position": 9
   },
   {
     "type": "organic",
@@ -129,7 +117,7 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "Set 8069-1 - Lego Backhoe Loader - BrickLink",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 10
+    "position": 9
   },
   {
     "type": "image_pack",
@@ -141,7 +129,7 @@
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy lego lego technic backhoe loader 8069",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 11
+    "position": 10
   },
   {
     "type": "unknown_widget",
@@ -153,7 +141,19 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 12
+    "position": 11
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[10]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "LEGO Technic Backhoe Loader Set 8069 - - StockX",
+    "source": "html_only+no_geometry",
+    "position": -1
   },
   {
     "type": "knowledge_panel",

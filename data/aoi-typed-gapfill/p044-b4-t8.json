@@ -84,15 +84,15 @@
     "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1221.0,
     "width": 586.0,
     "height": 160.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g",
+    "heading_text": "Moog Ball Joints K5289 - Vivid Racing",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,22 +101,22 @@
     "y": 1383.0,
     "width": 586.0,
     "height": 143.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g",
-    "heading_text": "Moog Ball Joints K5289 - Vivid Racing",
+    "heading_text": "Moog K5289 Ball Joint - Ubuy Qatar",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1528.0,
     "width": 586.0,
     "height": 135.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Moog Chassis Parts K5289 - Ball Joints - Summit Racing",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,9 +125,9 @@
     "y": 1665.0,
     "width": 586.0,
     "height": 135.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Moog Chassis Parts K5289 - Ball Joints - Summit Racing",
+    "heading_text": "MOOG K5289 Suspension Ball Joint",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
@@ -189,32 +189,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g",
-    "heading_text": "Moog K5289 Ball Joint - Ubuy Qatar",
-    "source": "html_only",
-    "y_render": 1558,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "MOOG K5289 Suspension Ball Joint",
-    "source": "html_only",
-    "y_render": 1871,
     "position": -1
   },
   {

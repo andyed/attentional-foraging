@@ -113,9 +113,9 @@
     "y": 1395.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Delphi SS10817 Camshaft Sensor: Buy Online in UAE at desertcart",
+    "heading_text": "DELPHI SS10817 Sensor, camshaft position - Car-parts.ie",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
@@ -192,6 +192,18 @@
     "position": 15
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Delphi SS10817 Camshaft Sensor: Buy Online in UAE at desertcart",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -201,19 +213,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "DELPHI SS10817 Sensor, camshaft position - Car-parts.ie",
-    "source": "html_only",
-    "y_render": 1564,
     "position": -1
   },
   {

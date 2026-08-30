@@ -84,15 +84,15 @@
     "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1350.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "BOSCH 0 281 002 435 Mass air flow sensor buy cheap ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -104,7 +104,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Mass Airflow Sensors Supplied Worldwide - Automotive Shop",
-    "source": "html_rso+cv_bbox+y_dp+span_rescue",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,9 +113,9 @@
     "y": 1565.0,
     "width": 586.0,
     "height": 133.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "BOSCH 0 281 002 435 Mass air flow sensor buy cheap ...",
+    "heading_text": "Bosch 0281002435 Air mass sensor - Autothreads",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
@@ -201,19 +201,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Bosch 0281002435 Air mass sensor - Autothreads",
-    "source": "html_only",
-    "y_render": 1752,
     "position": -1
   },
   {

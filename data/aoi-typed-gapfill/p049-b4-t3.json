@@ -89,9 +89,9 @@
     "y": 1723.0,
     "width": 586.0,
     "height": 114.0,
-    "html_handle": "rso[9]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Set 3189-1 : LEGO Heartlake Stables [Friends] - Catalog",
+    "heading_text": "LEGO\u00ae 3189 Heartlake Stables - ToyPro.com",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
@@ -112,7 +112,7 @@
     "x": 162.0,
     "y": 1955.0,
     "width": 586.0,
-    "height": 269.0,
+    "height": 406.0,
     "html_handle": "rso[11]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy lego lego friends 3189 heartlake stables",
@@ -168,6 +168,18 @@
     "position": 13
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Set 3189-1 : LEGO Heartlake Stables [Friends] - Catalog",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -190,19 +202,6 @@
     "heading_text": "Find results on",
     "source": "html_only",
     "y_render": 182,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "LEGO\u00ae 3189 Heartlake Stables - ToyPro.com",
-    "source": "html_only",
-    "y_render": 2203,
     "position": -1
   },
   {
@@ -239,18 +238,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2226.0,
-    "width": 586.0,
-    "height": 135.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

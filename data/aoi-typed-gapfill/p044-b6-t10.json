@@ -101,23 +101,35 @@
     "y": 1319.0,
     "width": 586.0,
     "height": 138.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Windshield Washer Pump 173689 - Advance Auto Parts",
-    "source": "html_rso+cv_bbox+y_dp",
-    "position": 8
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1459.0,
-    "width": 586.0,
-    "height": 114.0,
     "html_handle": "rso[5]",
     "html_signature": "div.g",
     "heading_text": "ACI 173689 ACI Windshield Washer Pumps | Summit Racing",
     "source": "html_rso+cv_bbox+y_dp",
+    "position": 8
+  },
+  {
+    "type": "unknown_widget",
+    "x": 162.0,
+    "y": 1459.0,
+    "width": 586.0,
+    "height": 114.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 9
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1575.0,
+    "width": 586.0,
+    "height": 114.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "ACI 173689 Windshield Washer Pump - RockAuto",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
   },
   {
     "type": "organic",
@@ -125,18 +137,6 @@
     "y": 1691.0,
     "width": 586.0,
     "height": 142.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "ACI 173689 Windshield Washer Pump | CarPartsDiscount.com",
-    "source": "html_rso+cv_bbox+y_dp",
-    "position": 10
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 1835.0,
-    "width": 586.0,
-    "height": 129.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "ACI/MAXAIR - Washer Pump - Part Number: 173689 - Partsplus.com ...",
@@ -146,13 +146,13 @@
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 1966.0,
+    "y": 1835.0,
     "width": 586.0,
-    "height": 135.0,
+    "height": 266.0,
     "html_handle": "rso[9]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy aci aci 173689 windshield washer pump",
-    "source": "html_rso+cv_bbox+y_dp",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 12
   },
   {
@@ -192,6 +192,30 @@
     "position": 15
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Windshield Washer Pump 173689 - Advance Auto Parts",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "ACI 173689 Windshield Washer Pump | CarPartsDiscount.com",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -201,19 +225,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "ACI 173689 Windshield Washer Pump - RockAuto",
-    "source": "html_only",
-    "y_render": 1764,
     "position": -1
   },
   {
@@ -250,18 +261,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1575.0,
-    "width": 586.0,
-    "height": 114.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

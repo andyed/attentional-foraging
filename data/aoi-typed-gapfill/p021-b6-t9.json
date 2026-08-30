@@ -137,9 +137,9 @@
     "y": 1706.0,
     "width": 586.0,
     "height": 113.0,
-    "html_handle": "rso[9]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "ResMed CPAP Masks & Headgear - Walmart.com",
+    "heading_text": "Resmed Universal Headgear | Buy CPAP Supplies - MyCPAP",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
@@ -156,6 +156,18 @@
     "position": 12
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "ResMed CPAP Masks & Headgear - Walmart.com",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -165,19 +177,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Resmed Universal Headgear | Buy CPAP Supplies - MyCPAP",
-    "source": "html_only",
-    "y_render": 1910,
     "position": -1
   },
   {

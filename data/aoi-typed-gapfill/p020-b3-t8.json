@@ -72,15 +72,15 @@
     "position": 5
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1209.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "RepSet\u2122 Clutch Kit - LuK\u00ae 04-115 - CARiD.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -92,7 +92,7 @@
     "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "LuK 04-115 Clutch Set - PartLimit",
-    "source": "html_rso+cv_bbox+y_dp+span_rescue",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,9 +101,9 @@
     "y": 1435.0,
     "width": 586.0,
     "height": 107.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "RepSet\u2122 Clutch Kit - LuK\u00ae 04-115 - CARiD.com",
+    "heading_text": "LUK AUTOMOTIVE SYSTEMS 04-115 Clutch Set - Newegg.com",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
@@ -177,19 +177,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "LUK AUTOMOTIVE SYSTEMS 04-115 Clutch Set - Newegg.com",
-    "source": "html_only",
-    "y_render": 1602,
     "position": -1
   },
   {
