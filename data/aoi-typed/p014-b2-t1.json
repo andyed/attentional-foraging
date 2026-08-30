@@ -48,28 +48,16 @@
     "position": 3
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1206.0,
     "width": 586.0,
-    "height": 102.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "height": 224.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Diamond Wire Saw Cutters - Mactech Europe",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
     "position": 4
-  },
-  {
-    "type": "unknown_widget",
-    "x": 162.0,
-    "y": 1334.0,
-    "width": 586.0,
-    "height": 96.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 5
   },
   {
     "type": "organic",
@@ -77,11 +65,11 @@
     "y": 1466.0,
     "width": 586.0,
     "height": 185.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[1]",
     "html_signature": "div.(no class)",
-    "heading_text": "Diamond Wire Saw Cutters - Mactech Europe",
+    "heading_text": "Mil-Tec Wire Saw - Military 1st",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 6
+    "position": 5
   },
   {
     "type": "organic",
@@ -93,7 +81,7 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Diamond Wire Saw Machines archivos - Cofeseg",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 7
+    "position": 6
   },
   {
     "type": "organic",
@@ -105,7 +93,7 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Wire saw 12m - Alliance-Elevage-Export.com",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 8
+    "position": 7
   },
   {
     "type": "organic",
@@ -117,7 +105,7 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Single Wire Saw machines for stone - MMG Service srl",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 9
+    "position": 8
   },
   {
     "type": "organic",
@@ -129,7 +117,7 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Wire Saw - Helikon-Tex",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 10
+    "position": 9
   },
   {
     "type": "organic",
@@ -141,7 +129,7 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "Helikon Survival Wire Saw - e-militaria.eu",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 11
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
   },
   {
     "type": "native_ad",
@@ -165,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -177,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 14
+    "position": 13
   },
   {
     "type": "knowledge_panel",
@@ -189,19 +177,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[1]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Mil-Tec Wire Saw - Military 1st",
-    "source": "html_only",
-    "y_render": 1626,
     "position": -1
   },
   {

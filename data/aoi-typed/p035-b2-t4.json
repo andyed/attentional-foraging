@@ -84,15 +84,15 @@
     "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1303.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Fram FT1033B Fram Automatic Transmission Filters",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,9 +101,9 @@
     "y": 1418.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Fram FT1033B Fram Automatic Transmission Filters",
+    "heading_text": "FRAM FT1033B FRAM Transmission Filter Kit (FT1033B) \u00a325.95 ...",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
@@ -189,19 +189,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "FRAM FT1033B FRAM Transmission Filter Kit (FT1033B) \u00a325.95 ...",
-    "source": "html_only",
-    "y_render": 1572,
     "position": -1
   },
   {

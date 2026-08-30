@@ -113,9 +113,9 @@
     "y": 1378.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "AIRTEX E8213 Fuel Pump \u2014 Discounts today - Best Part Store",
+    "heading_text": "Airtex E8213 Electric Fuel Pump - Oman | desertcart",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
@@ -137,9 +137,9 @@
     "y": 1770.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[9]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "AIRTEX E8213 Fuel Pump Electric buy cheap online",
+    "heading_text": "Universal Low Pressure Fuel Pumps - Zaragoza - Airtex ...",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
@@ -192,6 +192,30 @@
     "position": 15
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "AIRTEX E8213 Fuel Pump \u2014 Discounts today - Best Part Store",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "AIRTEX E8213 Fuel Pump Electric buy cheap online",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -201,32 +225,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Airtex E8213 Electric Fuel Pump - Oman | desertcart",
-    "source": "html_only",
-    "y_render": 1528,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Universal Low Pressure Fuel Pumps - Zaragoza - Airtex ...",
-    "source": "html_only",
-    "y_render": 1963,
     "position": -1
   },
   {

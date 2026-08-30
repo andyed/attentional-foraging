@@ -134,7 +134,7 @@
   {
     "type": "organic",
     "x": 162.0,
-    "y": 2185.0,
+    "y": 2069.0,
     "width": 586.0,
     "height": 81.0,
     "html_handle": "rso[9]",
@@ -146,6 +146,18 @@
   {
     "type": "organic",
     "x": 162.0,
+    "y": 2185.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Mason Natural Korean Ginseng, 1000 mg, White ... - Shop'n Save",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 12
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
     "y": 2300.0,
     "width": 586.0,
     "height": 81.0,
@@ -153,7 +165,7 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "Ginseng (Korean) 1000 mg, 60 Tablets, Mason Natural",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 12
+    "position": 13
   },
   {
     "type": "native_ad",
@@ -165,7 +177,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 14
   },
   {
     "type": "knowledge_panel",
@@ -177,19 +189,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Mason Natural Korean Ginseng, 1000 mg, White ... - Shop'n Save",
-    "source": "html_only",
-    "y_render": 2428,
     "position": -1
   },
   {
@@ -214,18 +213,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2069.0,
-    "width": 586.0,
-    "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

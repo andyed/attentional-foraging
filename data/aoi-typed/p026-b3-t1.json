@@ -137,9 +137,9 @@
     "y": 1693.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "RC-ME97 NGK Spark Plug Wire Set 8711 by NGK - Topspeed ...",
+    "heading_text": "NGK ME97, 8711 Spark Plug Wire Set - Mitsubishi - AutohausAZ",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
@@ -192,6 +192,18 @@
     "position": 15
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "RC-ME97 NGK Spark Plug Wire Set 8711 by NGK - Topspeed ...",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -201,19 +213,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "NGK ME97, 8711 Spark Plug Wire Set - Mitsubishi - AutohausAZ",
-    "source": "html_only",
-    "y_render": 1878,
     "position": -1
   },
   {

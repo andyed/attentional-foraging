@@ -125,9 +125,9 @@
     "y": 1684.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Pure Encapsulations OptiFerin-C | Hemoglobin Supplement",
+    "heading_text": "Pure Encapsulations OptiFerin-C OVitaminPro.com",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
@@ -204,6 +204,18 @@
     "position": 16
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Pure Encapsulations OptiFerin-C | Hemoglobin Supplement",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -213,19 +225,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Pure Encapsulations OptiFerin-C OVitaminPro.com",
-    "source": "html_only",
-    "y_render": 1871,
     "position": -1
   },
   {

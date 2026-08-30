@@ -48,15 +48,15 @@
     "position": 3
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1584.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Pureology Antifade Complex Nano Glaze Hair Styling Creme ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
   {
@@ -65,9 +65,9 @@
     "y": 1720.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Pureology Antifade Complex Nano Glaze Hair Styling Creme ...",
+    "heading_text": "Pureology Nano Glaze\u00ae Styling Hair Cream Reviews 2022",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
@@ -153,19 +153,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Pureology Nano Glaze\u00ae Styling Hair Cream Reviews 2022",
-    "source": "html_only",
-    "y_render": 1907,
     "position": -1
   },
   {

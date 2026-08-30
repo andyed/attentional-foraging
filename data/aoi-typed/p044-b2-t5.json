@@ -84,40 +84,28 @@
     "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "other_widget",
     "x": 162.0,
     "y": 1593.0,
     "width": 586.0,
-    "height": 55.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 7
-  },
-  {
-    "type": "unknown_widget",
-    "x": 162.0,
-    "y": 1712.0,
-    "width": 586.0,
-    "height": 74.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 8
-  },
-  {
-    "type": "other_widget",
-    "x": 162.0,
-    "y": 1830.0,
-    "width": 586.0,
-    "height": 461.0,
+    "height": 193.0,
     "html_handle": "rso[4]",
     "html_signature": "ULSxyf div.ULSxyf",
     "heading_text": "Videos",
     "source": "html_rso+cv_bbox+y_dp+merged_segment",
-    "position": 9
+    "position": 7
+  },
+  {
+    "type": "paa",
+    "x": 162.0,
+    "y": 1830.0,
+    "width": 586.0,
+    "height": 461.0,
+    "html_handle": "rso[3]",
+    "html_signature": "h=\"paa\" div.ULSxyf",
+    "heading_text": "People also ask",
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 8
   },
   {
     "type": "organic",
@@ -129,7 +117,7 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Classical Wedding Music - Lumiere Records",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 10
+    "position": 9
   },
   {
     "type": "organic",
@@ -141,7 +129,7 @@
     "html_signature": "div.(no class)",
     "heading_text": "Bride's Guide To Classical Wedding Music",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 11
+    "position": 10
   },
   {
     "type": "organic",
@@ -153,7 +141,7 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "60 Classical Wedding Songs for a Traditional Ceremony",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 12
+    "position": 11
   },
   {
     "type": "organic",
@@ -165,7 +153,7 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "String Quartet Classical Wedding Music",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 13
+    "position": 12
   },
   {
     "type": "unknown_widget",
@@ -177,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 14
+    "position": 13
   },
   {
     "type": "knowledge_panel",
@@ -189,19 +177,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "paa",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[3]",
-    "html_signature": "h=\"paa\" div.ULSxyf",
-    "heading_text": "People also ask",
-    "source": "html_only",
-    "y_render": 2032,
     "position": -1
   },
   {

@@ -48,39 +48,39 @@
     "position": 3
   },
   {
-    "type": "image_pack",
+    "type": "top_places",
     "x": 162.0,
     "y": 705.0,
     "width": 586.0,
-    "height": 365.0,
-    "html_handle": "rso[0]",
-    "html_signature": "ULSxyf+img div.ULSxyf",
-    "heading_text": "Find results on",
-    "source": "html_rso+cv_bbox+y_dp",
-    "position": 4
-  },
-  {
-    "type": "top_places",
-    "x": 162.0,
-    "y": 1102.0,
-    "width": 586.0,
-    "height": 361.0,
+    "height": 614.0,
     "html_handle": "rso[1]",
     "html_signature": "h=\"local\" div.ULSxyf",
     "heading_text": "Local results",
-    "source": "html_rso+cv_bbox+y_dp+span_rescue",
-    "position": 5
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 4
   },
   {
     "type": "unknown_widget",
     "x": 162.0,
-    "y": 1501.0,
+    "y": 1361.0,
     "width": 586.0,
-    "height": 81.0,
+    "height": 102.0,
     "html_handle": null,
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1501.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[3]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Frontline Spray 500ml ab 34,98 \u20ac | Preisvergleich ... - Idealo",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,9 +89,9 @@
     "y": 1616.0,
     "width": 586.0,
     "height": 98.0,
-    "html_handle": "rso[3]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Frontline Spray 500ml ab 34,98 \u20ac | Preisvergleich ... - Idealo",
+    "heading_text": "FRONTLINE SPRAY 500 ML Great Dog - Soin et Nature",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
@@ -101,9 +101,9 @@
     "y": 1748.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "FRONTLINE SPRAY 500 ML Great Dog - Soin et Nature",
+    "heading_text": "Frontline Spray 500ml - Cocooncenter, online health & beauty ...",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
@@ -113,9 +113,9 @@
     "y": 1884.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Frontline Spray 500ml - Cocooncenter, online health & beauty ...",
+    "heading_text": "FRONTLINE Dog Spray 500mL - Amazon.com",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
@@ -125,35 +125,23 @@
     "y": 2020.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Frontline Spray - 500ml - 365 Vet",
-    "source": "html_rso+cv_bbox+y_dp",
-    "position": 10
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 2173.0,
-    "width": 586.0,
-    "height": 55.0,
     "html_handle": "rso[8]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Frontline Spray 500 ml - Atida",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 11
+    "position": 10
   },
   {
     "type": "paa",
     "x": 162.0,
-    "y": 2253.0,
+    "y": 2173.0,
     "width": 586.0,
-    "height": 52.0,
+    "height": 132.0,
     "html_handle": "rso[9]",
     "html_signature": "h=\"paa\" div.ULSxyf",
     "heading_text": "People also ask",
-    "source": "html_rso+cv_bbox+y_dp",
-    "position": 12
+    "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 11
   },
   {
     "type": "organic",
@@ -165,7 +153,7 @@
     "html_signature": "div.g",
     "heading_text": "Frontline spray 500 ml. - Provetsa",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 13
+    "position": 12
   },
   {
     "type": "organic",
@@ -177,7 +165,7 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Frontline Spray 500mL - Farmamica",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 14
+    "position": 13
   },
   {
     "type": "organic",
@@ -189,7 +177,7 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "Comprar Frontline Spray 500 ml",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 15
+    "position": 14
   },
   {
     "type": "image_pack",
@@ -201,7 +189,7 @@
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy frontline frontline spray 500 ml",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 16
+    "position": 15
   },
   {
     "type": "native_ad",
@@ -213,7 +201,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 17
+    "position": 16
   },
   {
     "type": "native_ad",
@@ -225,7 +213,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 18
+    "position": 17
   },
   {
     "type": "native_ad",
@@ -237,7 +225,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 19
+    "position": 18
   },
   {
     "type": "unknown_widget",
@@ -249,7 +237,19 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 20
+    "position": 19
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Frontline Spray - 500ml - 365 Vet",
+    "source": "html_only+no_geometry",
+    "position": -1
   },
   {
     "type": "knowledge_panel",
@@ -264,16 +264,16 @@
     "position": -1
   },
   {
-    "type": "organic",
+    "type": "image_pack",
     "x": null,
     "y": null,
     "width": null,
     "height": null,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "FRONTLINE Dog Spray 500mL - Amazon.com",
+    "html_handle": "rso[0]",
+    "html_signature": "ULSxyf+img div.ULSxyf",
+    "heading_text": "Find results on",
     "source": "html_only",
-    "y_render": 2274,
+    "y_render": 777,
     "position": -1
   },
   {

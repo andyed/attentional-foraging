@@ -101,9 +101,9 @@
     "y": 1525.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dremel 134 High Speed Cutter - KMS Tools",
+    "heading_text": "Dremel 134 High-Speed Cutter NEW - eBay",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
@@ -168,6 +168,18 @@
     "position": 13
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Dremel 134 High Speed Cutter - KMS Tools",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -177,19 +189,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Dremel 134 High-Speed Cutter NEW - eBay",
-    "source": "html_only",
-    "y_render": 1696,
     "position": -1
   },
   {

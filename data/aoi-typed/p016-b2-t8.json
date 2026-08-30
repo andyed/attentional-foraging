@@ -89,9 +89,9 @@
     "y": 1205.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "MOOG K90263 Front Lower Ball Joint - Amazon.ca",
+    "heading_text": "Front Right Left Lower Ball Joint for Toyota Tundra ...",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
@@ -125,9 +125,9 @@
     "y": 1679.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Moog K80522 Front Left Lower Suspension Ball Joint For Toyota",
+    "heading_text": "Moog K80522 $66.41 Suspension Ball Joint - Front Left Lower ...",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
@@ -156,6 +156,30 @@
     "position": 12
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "MOOG K90263 Front Lower Ball Joint - Amazon.ca",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Moog K80522 Front Left Lower Suspension Ball Joint For Toyota",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -165,32 +189,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Front Right Left Lower Ball Joint for Toyota Tundra ...",
-    "source": "html_only",
-    "y_render": 1341,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Moog K80522 $66.41 Suspension Ball Joint - Front Left Lower ...",
-    "source": "html_only",
-    "y_render": 1863,
     "position": -1
   },
   {

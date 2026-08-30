@@ -84,15 +84,15 @@
     "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1495.0,
     "width": 586.0,
     "height": 79.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "MTD 1910917001 OEM 17.87\" Mulching Blade - The OEM ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,9 +101,9 @@
     "y": 1610.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[9]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "MTD 1910917001 OEM 17.87\" Mulching Blade - The OEM ...",
+    "heading_text": "Lowes Outdoor Parts Portal by OrderTree MTD-1910917",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
@@ -153,19 +153,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Lowes Outdoor Parts Portal by OrderTree MTD-1910917",
-    "source": "html_only",
-    "y_render": 1787,
     "position": -1
   },
   {

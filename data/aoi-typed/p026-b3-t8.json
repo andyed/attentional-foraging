@@ -72,15 +72,15 @@
     "position": 5
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1283.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Peugeot Toul Duo Pepper Mill Salt Mill Set Acrylic Grinder ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,22 +89,22 @@
     "y": 1395.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Peugeot Toul Duo Pepper Mill Salt Mill Set Acrylic Grinder ...",
+    "heading_text": "Peugeot - 4\" Toul Acrylic Pepper Mill - Williams Food Equipment",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1511.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "PEUGEOT Toul Salt Mill - Acrylic - Kitchen Therapy",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,9 +113,9 @@
     "y": 1650.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "PEUGEOT Toul Salt Mill - Acrylic - Kitchen Therapy",
+    "heading_text": "Peugeot Toul Pepper Mill, Acrylic/Steel, 9 x 12 x 16 cm",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
@@ -177,32 +177,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Peugeot - 4\" Toul Acrylic Pepper Mill - Williams Food Equipment",
-    "source": "html_only",
-    "y_render": 1555,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Peugeot Toul Pepper Mill, Acrylic/Steel, 9 x 12 x 16 cm",
-    "source": "html_only",
-    "y_render": 1835,
     "position": -1
   },
   {

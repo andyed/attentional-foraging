@@ -101,9 +101,9 @@
     "y": 1863.0,
     "width": 586.0,
     "height": 84.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Whirlpool 8299779 / WP8299779 Laundry Dryer Timer",
+    "heading_text": "Kenmore Dryer Timer 8299779 FOR SALE! - PicClick",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
@@ -144,6 +144,18 @@
     "position": 11
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Whirlpool 8299779 / WP8299779 Laundry Dryer Timer",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -153,19 +165,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Kenmore Dryer Timer 8299779 FOR SALE! - PicClick",
-    "source": "html_only",
-    "y_render": 2073,
     "position": -1
   },
   {

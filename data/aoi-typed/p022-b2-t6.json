@@ -113,9 +113,9 @@
     "y": 2280.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[10]",
+    "html_handle": "rso[9]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "BARE MINERALS - Multi-Wrinkle Repair | Selfridges.com",
+    "heading_text": "bareMinerals Multi-Wrinkle Repair - Beautypedia",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
@@ -168,6 +168,18 @@
     "position": 13
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[10]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "BARE MINERALS - Multi-Wrinkle Repair | Selfridges.com",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -190,19 +202,6 @@
     "heading_text": "Find results on",
     "source": "html_only",
     "y_render": 638,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[9]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "bareMinerals Multi-Wrinkle Repair - Beautypedia",
-    "source": "html_only",
-    "y_render": 2711,
     "position": -1
   },
   {

@@ -137,9 +137,9 @@
     "y": 1726.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "NGK 6953 BKR5E-11 V-Power Spark Plug - SparkPlugs.com",
+    "heading_text": "NGK (6953) BKR5E-11 V-Power Spark Plug, Pack of 1",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
@@ -204,6 +204,18 @@
     "position": 16
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "NGK 6953 BKR5E-11 V-Power Spark Plug - SparkPlugs.com",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -213,19 +225,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "NGK (6953) BKR5E-11 V-Power Spark Plug, Pack of 1",
-    "source": "html_only",
-    "y_render": 1914,
     "position": -1
   },
   {

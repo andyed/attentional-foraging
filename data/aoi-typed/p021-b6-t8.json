@@ -84,15 +84,15 @@
     "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1087.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "BOSAL 099-959 Catalytic Converter with add-on material",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,22 +101,22 @@
     "y": 1202.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "BOSAL 099-959 Catalytic Converter with add-on material",
+    "heading_text": "Catalytic Converter BOSAL 099-769 - Trodo.com",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1338.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "2000-2005 Volkswagen Passat Catalytic Converter - Bosal ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -137,9 +137,9 @@
     "y": 1590.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "2000-2005 Volkswagen Passat Catalytic Converter - Bosal ...",
+    "heading_text": "Direct Fit Converter - 099-223 by BOSAL on PartsAvatar.ca",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
@@ -213,32 +213,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Catalytic Converter BOSAL 099-769 - Trodo.com",
-    "source": "html_only",
-    "y_render": 1331,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Direct Fit Converter - 099-223 by BOSAL on PartsAvatar.ca",
-    "source": "html_only",
-    "y_render": 1761,
     "position": -1
   },
   {

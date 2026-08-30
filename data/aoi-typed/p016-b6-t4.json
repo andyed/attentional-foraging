@@ -84,15 +84,15 @@
     "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1107.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "MEYLE Radiator Hose 119 121 0100 without clamps ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,22 +101,22 @@
     "y": 1243.0,
     "width": 586.0,
     "height": 98.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "MEYLE Radiator Hose 119 121 0100 without clamps ...",
+    "heading_text": "MEYLE 119 121 0100 Radiator Hose EPDM (ethylene ...",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1378.0,
     "width": 586.0,
     "height": 84.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Meyle\u00ae 1191210100 - Engine Coolant Hose - CARiD.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -137,9 +137,9 @@
     "y": 1613.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Meyle\u00ae 1191210100 - Engine Coolant Hose - CARiD.com",
+    "heading_text": "MEYLE Radiator Hose 119 121 0100 - spare parts",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 11
   },
@@ -213,32 +213,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "MEYLE 119 121 0100 Radiator Hose EPDM (ethylene ...",
-    "source": "html_only",
-    "y_render": 1377,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "MEYLE Radiator Hose 119 121 0100 - spare parts",
-    "source": "html_only",
-    "y_render": 1789,
     "position": -1
   },
   {

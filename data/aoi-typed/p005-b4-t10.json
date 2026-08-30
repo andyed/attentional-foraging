@@ -72,15 +72,15 @@
     "position": 5
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1216.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Black Angus Cows (5 & 2 Calves) HO Scale Woodland Scenics",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,9 +89,9 @@
     "y": 1332.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Black Angus Cows (5 & 2 Calves) HO Scale Woodland Scenics",
+    "heading_text": "Woodland Scenics Black Angus Cows HO Scale Figures",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
@@ -141,19 +141,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Woodland Scenics Black Angus Cows HO Scale Figures",
-    "source": "html_only",
-    "y_render": 1478,
     "position": -1
   },
   {
