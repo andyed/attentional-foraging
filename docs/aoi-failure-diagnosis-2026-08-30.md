@@ -84,3 +84,76 @@ fix. Both are worth having. But the AOI score is dominated by handle assignment,
 and that is the same lesson as Phase 2 in a different place: **the pipeline
 infers by sequence and geometry what the saved HTML states outright.** Cells
 have numbered ids; cards have css_paths. Reading them is cheaper and correct.
+
+---
+
+# CORRECTION (same day): the DP is innocent
+
+Everything above about `build_typed_aoi_map`'s y-DP alignment being the culprit
+is **wrong**. Recorded rather than rewritten, because the reasoning that produced
+it looked sound and the error is instructive.
+
+## What disproved it
+
+Two checks, both against the collision-fixed worktree:
+
+1. **The DP pairs correctly.** For each AOI, is its stored `y` consistent with
+   `a + s * geo_y` for the card whose `html_handle` it carries? On broken trials:
+   **2,610 consistent, 102 not, median residual 0.7 px**. Statistically identical
+   to good trials (3,451 / 97 / 0.6 px). The alignment put each AOI on the card
+   it claims.
+2. **The stored geometry is what is shifted.** On `p004-b1-t10`, comparing the
+   stored `aoi-html-geometry` against a fresh render of each card's own
+   `css_path`:
+
+        handle    stored geo_y   my render   delta
+        rso[0..3]      matches     matches       0
+        rso[5]            1333        1476    -143     <- stored = render of rso[4]
+        rso[6]            1476        1744    -268     <- stored = render of rso[5]
+        rso[8]            1744        2023    -279     <- stored = render of rso[6]
+        rso[9]            2023        2228    -205     <- stored = render of rso[8]
+        rso[10]           2228        2423    -195     <- stored = render of rso[9]
+
+   `stored[N] = rendered[N-1]`. The displacement is upstream of the DP entirely.
+
+## The real defect, and why the collision fix missed it
+
+`measure_card_geometry` resolves each card by its `css_path`. When that path
+fails, the shift ladder tries `d = -1` first and lands on the previous card's
+node. The 2026-08-30 collision fix added a claim set so **two cards cannot hold
+one node** — and that is exactly the blind spot: **a uniform chain shift creates
+no duplicates.** If every card takes its predecessor's node, each node is claimed
+once and the claim set sees nothing wrong.
+
+It is also invisible downstream: a wholly shifted sequence is self-consistent,
+so the Theil-Sen refit fits it with ~1 px residuals and the DP has no local
+signal that anything is off. Three layers each report success.
+
+## Why the gate idea failed
+
+A hard gate on `|dy|` at the DP was swept at 0.35, 0.20 and 0.12 card-heights and
+changed the score by nothing at any value — because the drifted pairing's
+residuals are ~1 px, not large. Gating cannot separate two self-consistent
+solutions. The `fix/dp-drift` branch is abandoned; no part of it should be kept.
+
+The one piece of that work worth retaining: the fitted intercept does carry
+signal. `|intercept| > 80 px` flags 40 of 298 broken trials and **0 of 2,437**
+good ones — perfect specificity, 13 % sensitivity. Useful as an alarm, useless
+as a fix.
+
+## What to do instead
+
+The fix belongs in `measure_card_geometry`, and it must verify **identity**, not
+just non-duplication. A shifted match is currently accepted on `okLen` — a
++/-15 % text-length window that adjacent organics both satisfy. Requiring a
+heading match before accepting any non-zero shift, or requiring the shift
+direction to be consistent across a trial rather than per-card, would make a
+uniform chain shift inexpressible.
+
+## The methodological point
+
+The harness earned its keep here, but only because its result was checked
+against a second measurement. Three separate layers reported healthy numbers
+over this defect: no collisions, ~1 px alignment residuals, and a well-fitting
+Theil-Sen slope. It took an external ground truth (the DOM) plus a consistency
+check between two internal artifacts to see it. Neither alone was enough.
