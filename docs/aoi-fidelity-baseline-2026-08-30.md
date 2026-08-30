@@ -1,5 +1,11 @@
 # AOI fidelity baseline — v1.1.0 substrate, 2026-08-30
 
+> **The `aoi` figures in the original table below are VOID.** That check
+> resolved cards by `css_path`, which is itself unreliable, so it measured the
+> harness on the failing tail. The check was rewritten to resolve by
+> class+heading identity and re-run; corrected numbers are in the final section.
+> `click` and `cell` never used `css_path` and are unchanged.
+
 First full-corpus run of `scripts/aoi_fidelity.py`. This is the number every
 later change is measured against; before it there was no measurement of the
 substrate that could fail.
@@ -55,3 +61,50 @@ If a change does not move its score, it did not do what it claimed.
 - IoU is computed only where an AOI carries an `html_handle` that resolves.
   Orphaned AOIs (`position: -1`) contribute nothing, so the AOI score
   *understates* damage on trials that dropped cards entirely.
+
+
+---
+
+## Corrected baseline (identity resolution) and accuracy statement
+
+Re-run on the shipped v1.1.0 substrate after rewriting the `aoi` check:
+
+| check | void v1 (css_path) | **corrected** |
+|---|--:|--:|
+| click | 87.7 % | **87.7 %** (unchanged — never used css_path) |
+| aoi median IoU | 0.879 | **0.881** |
+| aoi p10 | 0.428 | **0.853** |
+| aoi IoU >= 0.5 | 87.0 % | **93.4 %** (2,593 / 2,776) |
+| cell | 29.1 % | **29.1 %** (unchanged) |
+
+The p10 is the informative line: 0.428 -> 0.853. The "catastrophic tail" that
+drove a day of diagnosis was almost entirely the harness's own selector, not the
+data. 183 trials remain below 0.5 and are not yet explained.
+
+## Best estimate of substrate accuracy, and the delta from this morning
+
+| quantity | before | after | where the change came from |
+|---|--:|--:|---|
+| click -> AOI attribution | 78.0 % | **96.2 %** | coordinate conversion (merged) |
+| cursor -> AOI mean distance | 57.3 px | **37.5 px** | same |
+| cursor vertical bias | +8.5 px | **+0.4 px** | same |
+| cards duplicating another's box | 508 | **0** | collision fix (NOT merged) |
+| orphaned main-column results | 480 trials | **167** | collision fix (NOT merged) |
+| AOI box vs DOM identity (IoU >= 0.5) | 93.4 % | 93.4 % | unchanged; was never as bad as reported |
+| carousel cell counts | short on 902/1,551 | unchanged | not fixed |
+| **fixation -> AOI attribution** | correct | **correct** | never affected |
+
+**Read this carefully before quoting it.** The largest number in the table is a
+correction to what we *knew*, not to what changed. Fixation attribution — which
+carries most of the published results — was always right. The gains are real but
+land on the **mouse stream**: the cellsplit family,
+`attribute_click_to_typed_gapfill`, and Leaky Cursor's `final_dist` /
+`retreat_dist`. crforager's verdicts do not move (T1 L1 shifts 0.01 against a
+0.20 gate).
+
+Two rows above are on an unmerged branch (`fix/aoi-card-collision`), so the
+shipped substrate still has 508 duplicate cards and 480 orphan trials.
+
+The honest summary: **the substrate is in better shape than this morning, and
+substantially better than the middle of the day suggested it was.** The worst
+remaining layer is `cell` at 29.1 %, which is a real defect and unfixed.
