@@ -93,6 +93,7 @@ SERP_DIR = DATA_DIR / 'serps'
 AD_DIR = DATA_DIR / 'ad-boundary-data'
 PUPIL_DIR = DATA_DIR / 'pupil-data'
 ORGANIC_BBOX_DIR = DATA_DIR / 'organic-boundary-data'
+SCREENSHOT_DIR = DATA_DIR / 'full-page-screenshots'
 
 # Legacy aliases — older notebooks reference FIX_DIR directly
 FIX_DIR = FIXATION_DIR
@@ -274,6 +275,14 @@ def get_trial_meta(trial_id):
     """Get trial metadata from XML.
 
     Returns: (doc_height, screen_height, timestamp) or (None, None, None).
+
+    NOTE: this reads both the `document` and `screen` lines with
+    ``.split('x')[1]``, i.e. it keeps the two HEIGHTS and discards both WIDTHS.
+    Those widths differ -- document 1403, screen 1280 -- and the difference is
+    exactly why mouse telemetry and AOI boxes live in different coordinate
+    spaces. Use `get_trial_geometry()` when you need the full picture, and
+    `document_to_screenshot()` to convert cursor/click coordinates. This
+    signature is kept as-is because ~237 call sites unpack the 3-tuple.
     """
     path = METADATA_DIR / f'{trial_id}.xml'
     try:
@@ -284,6 +293,99 @@ def get_trial_meta(trial_id):
         return doc_h, scr_h, ts
     except Exception:
         return None, None, None
+
+
+# ── Coordinate spaces ──────────────────────────────────────────────────────
+#
+# AdSERP carries THREE widths per trial and they are not interchangeable:
+#
+#   screen   1280   the physical display, and the full-page screenshot
+#   document 1403   the rendered page; the browser window overhangs the display
+#   window   1422   browser outer size (extends off-screen on Windows)
+#
+# Two instruments recorded into two of them:
+#
+#   Gazepoint GP3 (hardware)  -> SCREENSHOT space. FPOGX/FPOGY are "relative to
+#                                the top-left corner of the screenshot" per the
+#                                AdSERP README.
+#   evtrack (JavaScript)      -> DOCUMENT space. xpos/ypos are page coordinates.
+#
+# The typed AOI maps are in SCREENSHOT space (the builder aligns cards onto CV
+# bboxes extracted from the screenshots). So fixations need no conversion and
+# cursor/click samples do. Converting takes click-in-AOI containment from 78.0%
+# to 96.2% over 900 final clicks, and cuts mean cursor-to-AOI distance from
+# 57.3px to 37.5px over 158,891 samples.
+#
+# The scale is ANISOTROPIC: x 0.9123 (= 1280/1403), y 0.9000. Do not assume one
+# factor. Do not "fix" the raw telemetry either -- xpos/ypos are a faithful
+# record of document space and should stay that way; convert at read time.
+
+SCREENSHOT_WIDTH = 1280
+
+
+def get_trial_geometry(trial_id):
+    """Full per-trial geometry and the document -> screenshot scale factors.
+
+    Ratios are derived from the shipped screenshot where it is available, which
+    is exact and per-trial. If the screenshot volume is not mounted, they fall
+    back to `SCREENSHOT_WIDTH / doc_width` for x and the measured constant for
+    y, and `derived` reports which happened.
+
+    Returns a dict, or None when the metadata cannot be read.
+    """
+    path = METADATA_DIR / f'{trial_id}.xml'
+    try:
+        tree = ET.parse(path)
+        doc_w, doc_h = (int(v) for v in tree.find('.//document').text.split('x'))
+        scr_w, scr_h = (int(v) for v in tree.find('.//screen').text.split('x'))
+    except Exception:
+        return None
+    win = tree.find('.//window')
+    win_w = win_h = None
+    if win is not None and win.text and 'x' in win.text:
+        win_w, win_h = (int(v) for v in win.text.split('x'))
+
+    ratio_x = ratio_y = None
+    derived = 'fallback'
+    try:  # exact, per trial
+        from PIL import Image
+        shot = SCREENSHOT_DIR / f'{trial_id}.png'
+        if shot.exists():
+            sw, sh = Image.open(shot).size
+            ratio_x, ratio_y = sw / doc_w, sh / doc_h
+            derived = 'screenshot'
+    except Exception:
+        pass
+    if ratio_x is None:
+        ratio_x, ratio_y = SCREENSHOT_WIDTH / doc_w, 0.9000
+
+    return {
+        'doc_width': doc_w, 'doc_height': doc_h,
+        'screen_width': scr_w, 'screen_height': scr_h,
+        'window_width': win_w, 'window_height': win_h,
+        'ratio_x': ratio_x, 'ratio_y': ratio_y, 'derived': derived,
+    }
+
+
+def document_to_screenshot(x, y, trial_id):
+    """Convert an evtrack (cursor/click) coordinate into screenshot/AOI space.
+
+    Returns (x, y) unchanged if the trial's geometry cannot be read, so a caller
+    degrades to today's behaviour rather than silently inventing a position.
+    """
+    g = get_trial_geometry(trial_id)
+    if g is None:
+        return x, y
+    return x * g['ratio_x'], y * g['ratio_y']
+
+
+def screenshot_to_document(x, y, trial_id):
+    """Inverse of `document_to_screenshot` (e.g. to lift fixations into page space)."""
+    g = get_trial_geometry(trial_id)
+    if g is None or not g['ratio_x'] or not g['ratio_y']:
+        return x, y
+    return x / g['ratio_x'], y / g['ratio_y']
+
 
 def get_query(trial_id):
     """Extract search query from trial metadata XML."""
