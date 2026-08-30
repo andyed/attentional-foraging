@@ -1,39 +1,51 @@
 [
   {
-    "type": "unknown_widget",
+    "type": "top_places",
     "x": 162.0,
     "y": 203.0,
     "width": 586.0,
-    "height": 364.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
-    "position": 0
-  },
-  {
-    "type": "image_pack",
-    "x": 162.0,
-    "y": 602.0,
-    "width": 586.0,
-    "height": 90.0,
-    "html_handle": "rso[0]",
-    "html_signature": "ULSxyf+img div.ULSxyf",
-    "heading_text": "Find results on",
-    "source": "html_rso+cv_bbox+y_dp",
-    "position": 1
-  },
-  {
-    "type": "top_places",
-    "x": 162.0,
-    "y": 728.0,
-    "width": 586.0,
-    "height": 640.0,
+    "height": 680.0,
     "html_handle": "rso[1]",
     "html_signature": "h=\"local\" div.ULSxyf",
     "heading_text": "Local results",
     "source": "html_rso+cv_bbox+y_dp+merged_segment",
+    "position": 0
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 923.0,
+    "width": 586.0,
+    "height": 125.0,
+    "html_handle": "rso[2]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "LEGO Technic Backhoe Loader 8069 by LEGO - Amazon",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 1
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1081.0,
+    "width": 586.0,
+    "height": 152.0,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g",
+    "heading_text": "LEGO Technic Backhoe Loader 8069 - Amazon.com",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 2
+  },
+  {
+    "type": "unknown_widget",
+    "x": 162.0,
+    "y": 1263.0,
+    "width": 586.0,
+    "height": 105.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
+    "position": 3
   },
   {
     "type": "organic",
@@ -41,23 +53,35 @@
     "y": 1402.0,
     "width": 586.0,
     "height": 99.0,
-    "html_handle": "rso[2]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "LEGO Technic Backhoe Loader 8069 by LEGO - Amazon",
+    "heading_text": "LEGO Technic Backhoe Loader (8069) for sale online - eBay",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 3
+    "position": 4
   },
   {
     "type": "organic",
     "x": 162.0,
     "y": 1539.0,
     "width": 586.0,
-    "height": 214.0,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g",
-    "heading_text": "LEGO Technic Backhoe Loader 8069 - Amazon.com",
-    "source": "html_rso+cv_bbox+y_dp+merged_segment",
-    "position": 4
+    "height": 81.0,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "LEGO Technic Backhoe Loader (8069) - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 5
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1654.0,
+    "width": 586.0,
+    "height": 99.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "LEGO 8069: Backhoe Loader - Brickset",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 6
   },
   {
     "type": "organic",
@@ -65,11 +89,11 @@
     "y": 1790.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "LEGO Technic Backhoe Loader (8069) for sale online - eBay",
+    "heading_text": "LEGO Technic 8069 Backhoe Loader - electricBricks",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 5
+    "position": 7
   },
   {
     "type": "organic",
@@ -77,11 +101,11 @@
     "y": 1926.0,
     "width": 586.0,
     "height": 99.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[9]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "LEGO Technic Backhoe Loader (8069) - eBay",
+    "heading_text": "8069 LEGO Technic Backhoe Loader - BrickEconomy",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 6
+    "position": 8
   },
   {
     "type": "organic",
@@ -89,30 +113,6 @@
     "y": 2059.0,
     "width": 586.0,
     "height": 84.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "LEGO 8069: Backhoe Loader - Brickset",
-    "source": "html_rso+cv_bbox+y_dp",
-    "position": 7
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 2187.0,
-    "width": 586.0,
-    "height": 203.0,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "LEGO Technic 8069 Backhoe Loader - electricBricks",
-    "source": "html_rso+cv_bbox+y_dp",
-    "position": 8
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
-    "y": 2435.0,
-    "width": 586.0,
-    "height": 96.0,
     "html_handle": "rso[11]",
     "html_signature": "div.hlcw0c",
     "heading_text": "Set 8069-1 - Lego Backhoe Loader - BrickLink",
@@ -122,14 +122,26 @@
   {
     "type": "image_pack",
     "x": 162.0,
-    "y": 2556.0,
+    "y": 2187.0,
     "width": 586.0,
-    "height": 195.0,
+    "height": 203.0,
     "html_handle": "rso[12]",
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy lego lego technic backhoe loader 8069",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 10
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[10]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "LEGO Technic Backhoe Loader Set 8069 - - StockX",
+    "source": "html_only+no_geometry",
+    "position": -1
   },
   {
     "type": "knowledge_panel",
@@ -144,29 +156,16 @@
     "position": -1
   },
   {
-    "type": "organic",
+    "type": "image_pack",
     "x": null,
     "y": null,
     "width": null,
     "height": null,
-    "html_handle": "rso[9]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "8069 LEGO Technic Backhoe Loader - BrickEconomy",
+    "html_handle": "rso[0]",
+    "html_signature": "ULSxyf+img div.ULSxyf",
+    "heading_text": "Find results on",
     "source": "html_only",
-    "y_render": 2283,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[10]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "LEGO Technic Backhoe Loader Set 8069 - - StockX",
-    "source": "html_only",
-    "y_render": 2283,
+    "y_render": 182,
     "position": -1
   },
   {
@@ -203,6 +202,30 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 2435.0,
+    "width": 586.0,
+    "height": 96.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 2556.0,
+    "width": 586.0,
+    "height": 195.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

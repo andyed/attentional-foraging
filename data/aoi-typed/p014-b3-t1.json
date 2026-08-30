@@ -149,9 +149,9 @@
     "y": 1774.0,
     "width": 586.0,
     "height": 79.0,
-    "html_handle": "rso[9]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Ink Cartridges Black HP CH565A 3200 copies Original Certified",
+    "heading_text": "HP CH565A 111 | 510 No.82 Black Ink Cartridge (69ml)",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 12
   },
@@ -180,6 +180,18 @@
     "position": 14
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Ink Cartridges Black HP CH565A 3200 copies Original Certified",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -189,19 +201,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "HP CH565A 111 | 510 No.82 Black Ink Cartridge (69ml)",
-    "source": "html_only",
-    "y_render": 1968,
     "position": -1
   },
   {

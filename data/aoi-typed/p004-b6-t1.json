@@ -36,15 +36,15 @@
     "position": 2
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1241.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Parker Fountain Pen Converter Standard Twist Fill ... - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 3
   },
   {
@@ -53,9 +53,9 @@
     "y": 1357.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Parker Fountain Pen Converter Standard Twist Fill ... - eBay",
+    "heading_text": "Parker Converters - ParkerShop",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 4
   },
@@ -156,6 +156,18 @@
     "position": 12
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Parker Standard Piston Fill Converter | S0881380 - The Online ...",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -165,32 +177,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Parker Converters - ParkerShop",
-    "source": "html_only",
-    "y_render": 1507,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Parker Standard Piston Fill Converter | S0881380 - The Online ...",
-    "source": "html_only",
-    "y_render": 2066,
     "position": -1
   },
   {

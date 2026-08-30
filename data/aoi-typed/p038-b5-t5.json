@@ -122,7 +122,7 @@
   {
     "type": "organic",
     "x": 162.0,
-    "y": 2170.0,
+    "y": 2054.0,
     "width": 586.0,
     "height": 81.0,
     "html_handle": "rso[10]",
@@ -134,6 +134,18 @@
   {
     "type": "organic",
     "x": 162.0,
+    "y": 2170.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Shop for Computer Mice | Lenovo CA",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
     "y": 2285.0,
     "width": 586.0,
     "height": 99.0,
@@ -141,7 +153,7 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "Lenovo Bluetooth Laser Computer Mice, Trackballs ... - eBay",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 11
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -153,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 13
   },
   {
     "type": "native_ad",
@@ -165,7 +177,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 14
   },
   {
     "type": "native_ad",
@@ -177,7 +189,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 14
+    "position": 15
   },
   {
     "type": "unknown_widget",
@@ -189,7 +201,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 15
+    "position": 16
   },
   {
     "type": "knowledge_panel",
@@ -201,19 +213,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[9]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Shop for Computer Mice | Lenovo CA",
-    "source": "html_only",
-    "y_render": 2409,
     "position": -1
   },
   {
@@ -250,18 +249,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 2054.0,
-    "width": 586.0,
-    "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

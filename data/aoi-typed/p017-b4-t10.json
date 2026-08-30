@@ -113,9 +113,9 @@
     "y": 1480.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "PhytoBalance II 120c by Pure Encapsulations - Covenant ...",
+    "heading_text": "Pure Encapsulations - PhytoBalance II - 120 Capsules - Walmart",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
@@ -192,6 +192,18 @@
     "position": 15
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "PhytoBalance II 120c by Pure Encapsulations - Covenant ...",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -201,19 +213,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Pure Encapsulations - PhytoBalance II - 120 Capsules - Walmart",
-    "source": "html_only",
-    "y_render": 1642,
     "position": -1
   },
   {

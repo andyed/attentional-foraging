@@ -72,15 +72,15 @@
     "position": 5
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1061.0,
     "width": 586.0,
     "height": 84.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Oxygen Sensor - 234-4156 by DENSO on PartsAvatar.ca",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,9 +89,9 @@
     "y": 1176.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Oxygen Sensor - 234-4156 by DENSO on PartsAvatar.ca",
+    "heading_text": "DENSO 234-4156 Oxygen Sensor for Toyota Celica",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
@@ -122,6 +122,18 @@
   {
     "type": "organic",
     "x": 162.0,
+    "y": 1665.0,
+    "width": 586.0,
+    "height": 99.0,
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "DENSO 234-4156 oxygen sensor 4 wire, direct fit, heated ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 10
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
     "y": 1800.0,
     "width": 586.0,
     "height": 100.0,
@@ -129,7 +141,7 @@
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Denso Exact Fit Oxygen Sensor 234-4156 - AutoZone",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 10
+    "position": 11
   },
   {
     "type": "organic",
@@ -137,11 +149,11 @@
     "y": 1935.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[9]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "DENSO 234-4156 oxygen sensor 4 wire, direct fit, heated ...",
+    "heading_text": "Denso 234-4341 Oxygen Sensor - Sixity Auto Parts",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 11
+    "position": 12
   },
   {
     "type": "organic",
@@ -153,7 +165,7 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "Toyota Denso 234-4156/2344156 Oxygen Sensor - Car Parts ...",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 12
+    "position": 13
   },
   {
     "type": "native_ad",
@@ -165,7 +177,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 14
   },
   {
     "type": "native_ad",
@@ -177,7 +189,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 14
+    "position": 15
   },
   {
     "type": "native_ad",
@@ -189,7 +201,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 15
+    "position": 16
   },
   {
     "type": "knowledge_panel",
@@ -201,32 +213,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "DENSO 234-4156 Oxygen Sensor for Toyota Celica",
-    "source": "html_only",
-    "y_render": 1306,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Denso 234-4341 Oxygen Sensor - Sixity Auto Parts",
-    "source": "html_only",
-    "y_render": 2148,
     "position": -1
   },
   {
@@ -263,18 +249,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1665.0,
-    "width": 586.0,
-    "height": 99.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

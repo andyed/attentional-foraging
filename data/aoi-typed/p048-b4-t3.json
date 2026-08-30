@@ -125,9 +125,9 @@
     "y": 1499.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "PCI Brand\u00ae Xerox 6R934 Black Toner Cartridge ...",
+    "heading_text": "Xerox For LaserJet 4200 toner cartridge Original Black - Icecat",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
@@ -204,6 +204,18 @@
     "position": 16
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "PCI Brand\u00ae Xerox 6R934 Black Toner Cartridge ...",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -213,19 +225,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Xerox For LaserJet 4200 toner cartridge Original Black - Icecat",
-    "source": "html_only",
-    "y_render": 1669,
     "position": -1
   },
   {

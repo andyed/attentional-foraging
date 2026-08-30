@@ -96,15 +96,15 @@
     "position": 7
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1663.0,
     "width": 586.0,
     "height": 104.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Solaray IbuActin\u2122 PM -- 90 VegCaps - Vitacost",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,9 +113,9 @@
     "y": 1802.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[9]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Solaray IbuActin\u2122 PM -- 90 VegCaps - Vitacost",
+    "heading_text": "Solaray, Extra-Strength IbuActin PM 90 Vegetarian Capsules",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
@@ -177,19 +177,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Solaray, Extra-Strength IbuActin PM 90 Vegetarian Capsules",
-    "source": "html_only",
-    "y_render": 2001,
     "position": -1
   },
   {

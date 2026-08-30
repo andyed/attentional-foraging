@@ -84,15 +84,15 @@
     "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1336.0,
     "width": 586.0,
     "height": 84.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Bosch Platinum Spark Plug 6702-4, 4 Pack",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,22 +101,22 @@
     "y": 1450.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Bosch Platinum Spark Plug 6702-4, 4 Pack",
+    "heading_text": "Bosch 6702 FR8DPP30X 0242230557 Platinum Spark Plug",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1589.0,
     "width": 586.0,
     "height": 100.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Bosch Spark Plug - Bosch 6702 - FCP Euro",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
   {
@@ -125,9 +125,9 @@
     "y": 1726.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Bosch Spark Plug - Bosch 6702 - FCP Euro",
+    "heading_text": "Bosch Platinum 6702 Spark Plug - AutohausAZ",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
@@ -213,32 +213,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Bosch 6702 FR8DPP30X 0242230557 Platinum Spark Plug",
-    "source": "html_only",
-    "y_render": 1611,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Bosch Platinum 6702 Spark Plug - AutohausAZ",
-    "source": "html_only",
-    "y_render": 1912,
     "position": -1
   },
   {

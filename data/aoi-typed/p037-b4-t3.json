@@ -84,15 +84,15 @@
     "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1341.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Swift FX Bella Headgear - Pink Colour - ResMed Shop",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,9 +101,9 @@
     "y": 1456.0,
     "width": 586.0,
     "height": 99.0,
-    "html_handle": "rso[6]",
+    "html_handle": "rso[5]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Swift FX Bella Headgear - Pink Colour - ResMed Shop",
+    "heading_text": "AirFit for Her Headgear - Pink Colour, Size Small - ResMed ...",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
@@ -134,14 +134,26 @@
   {
     "type": "organic",
     "x": 162.0,
-    "y": 2097.0,
+    "y": 1982.0,
     "width": 586.0,
-    "height": 82.0,
+    "height": 81.0,
     "html_handle": "rso[10]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "ResMed AirFit P10 Headgear (3-Pack) in Gray/Pink",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 11
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 2097.0,
+    "width": 586.0,
+    "height": 82.0,
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "ResMed AirFit for Her Replacement Headgear - Pink",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 12
   },
   {
     "type": "organic",
@@ -153,7 +165,7 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "Swift FX For Her Headgear Assembly w/ softwraps pink",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 12
+    "position": 13
   },
   {
     "type": "native_ad",
@@ -165,7 +177,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 14
   },
   {
     "type": "native_ad",
@@ -177,7 +189,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 14
+    "position": 15
   },
   {
     "type": "native_ad",
@@ -189,7 +201,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 15
+    "position": 16
   },
   {
     "type": "knowledge_panel",
@@ -201,32 +213,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[5]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "AirFit for Her Headgear - Pink Colour, Size Small - ResMed ...",
-    "source": "html_only",
-    "y_render": 1616,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[9]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "ResMed AirFit for Her Replacement Headgear - Pink",
-    "source": "html_only",
-    "y_render": 2328,
     "position": -1
   },
   {
@@ -251,18 +237,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1982.0,
-    "width": 586.0,
-    "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

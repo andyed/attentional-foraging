@@ -84,15 +84,15 @@
     "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1518.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Fendi Quadro White Dial Ceramic Ladies Watch F622140",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,9 +101,9 @@
     "y": 1634.0,
     "width": 586.0,
     "height": 79.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Fendi Quadro White Dial Ceramic Ladies Watch F622140",
+    "heading_text": "fendi women's watch quartz white ceramic diamond ... - eBay",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
@@ -129,19 +129,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "fendi women's watch quartz white ceramic diamond ... - eBay",
-    "source": "html_only",
-    "y_render": 1856,
     "position": -1
   },
   {

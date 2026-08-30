@@ -35,11 +35,15 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from collections import Counter
 from pathlib import Path
 
-ROOT = Path('/Users/andyed/Documents/dev/attentional-foraging')
+# AF_ROOT lets a git worktree build into its own tree instead of writing
+# back into the main checkout's data/aoi-typed{,-gapfill}.
+ROOT = Path(os.environ.get('AF_ROOT',
+                           '/Users/andyed/Documents/dev/attentional-foraging'))
 HTML_TYPES = ROOT / 'data/aoi-html-types'
 GEOMETRY = ROOT / 'data/aoi-html-geometry'
 AD_BBOX = ROOT / 'AdSERP/data/ad-boundary-data'

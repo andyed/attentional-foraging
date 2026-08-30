@@ -72,15 +72,15 @@
     "position": 5
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1059.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "doTERRA Peppermint essential oil (15ml)",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,9 +89,9 @@
     "y": 1175.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "doTERRA Peppermint essential oil (15ml)",
+    "heading_text": "d\u014dTERRA Peppermint Essential Oil - 15ml",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
@@ -122,7 +122,7 @@
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1730.0,
+    "y": 1614.0,
     "width": 586.0,
     "height": 82.0,
     "html_handle": "rso[8]",
@@ -134,6 +134,18 @@
   {
     "type": "organic",
     "x": 162.0,
+    "y": 1730.0,
+    "width": 586.0,
+    "height": 82.0,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "doTERRA Peppermint Esssential Oil 15ml - Peter Louis",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
     "y": 1847.0,
     "width": 586.0,
     "height": 99.0,
@@ -141,7 +153,7 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "DoTerra Peppermint Essential Oil 15ml - Replays Sports ...",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 11
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -153,7 +165,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 13
   },
   {
     "type": "knowledge_panel",
@@ -165,32 +177,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "d\u014dTERRA Peppermint Essential Oil - 15ml",
-    "source": "html_only",
-    "y_render": 1306,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "doTERRA Peppermint Esssential Oil 15ml - Peter Louis",
-    "source": "html_only",
-    "y_render": 1922,
     "position": -1
   },
   {
@@ -227,18 +213,6 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1614.0,
-    "width": 586.0,
-    "height": 82.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

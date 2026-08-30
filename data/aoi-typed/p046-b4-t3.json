@@ -84,15 +84,15 @@
     "position": 6
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1330.0,
     "width": 586.0,
     "height": 84.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[9]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "From $53.42 - MMM-C23 3M Scotch Heavy Duty ... - Office Quarters",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
   {
@@ -101,9 +101,9 @@
     "y": 1449.0,
     "width": 586.0,
     "height": 104.0,
-    "html_handle": "rso[9]",
+    "html_handle": "rso[8]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "From $53.42 - MMM-C23 3M Scotch Heavy Duty ... - Office Quarters",
+    "heading_text": "3M TAPE DISPENSER, HEAVY DUTY, CA 6",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
@@ -153,19 +153,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "3M TAPE DISPENSER, HEAVY DUTY, CA 6",
-    "source": "html_only",
-    "y_render": 1609,
     "position": -1
   },
   {

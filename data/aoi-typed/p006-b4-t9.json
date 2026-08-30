@@ -60,15 +60,15 @@
     "position": 4
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1385.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Tennis Warehouse Europe | Tennis Equipment, Rackets ...",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 5
   },
   {
@@ -77,9 +77,9 @@
     "y": 1521.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Tennis Warehouse Europe | Tennis Equipment, Rackets ...",
+    "heading_text": "Tennis Rackets, Shoes & Clothing - Tennis-Point",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
@@ -125,9 +125,9 @@
     "y": 2004.0,
     "width": 586.0,
     "height": 79.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Tennis | Rackets, Clothing, Shoes, Equipment - Lillywhites",
+    "heading_text": "Tengotenis | Your Tennis and Paddle shop online.",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
@@ -144,6 +144,18 @@
     "position": 11
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Tennis | Rackets, Clothing, Shoes, Equipment - Lillywhites",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -153,32 +165,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Tennis Rackets, Shoes & Clothing - Tennis-Point",
-    "source": "html_only",
-    "y_render": 1685,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Tengotenis | Your Tennis and Paddle shop online.",
-    "source": "html_only",
-    "y_render": 2222,
     "position": -1
   },
   {

@@ -101,9 +101,9 @@
     "y": 1512.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[5]",
+    "html_handle": "rso[4]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "2007-2011 Mopar Oxygen Sensor 56029084AA",
+    "heading_text": "Oxygen Sensor - Mopar (56029084AA) - Tasca Parts",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
@@ -122,18 +122,6 @@
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1727.0,
-    "width": 586.0,
-    "height": 81.0,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "2007-2011 Mopar Oxygen Sensor 56029084AA - Genuine ...",
-    "source": "html_rso+cv_bbox+y_dp",
-    "position": 10
-  },
-  {
-    "type": "organic",
-    "x": 162.0,
     "y": 1843.0,
     "width": 586.0,
     "height": 105.0,
@@ -141,7 +129,7 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "Oxygen Sensor, Before Catalyst, Right - Mopar (56029084AA)",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 11
+    "position": 10
   },
   {
     "type": "native_ad",
@@ -153,7 +141,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 12
+    "position": 11
   },
   {
     "type": "native_ad",
@@ -165,7 +153,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 13
+    "position": 12
   },
   {
     "type": "native_ad",
@@ -177,7 +165,31 @@
     "html_signature": "",
     "heading_text": "",
     "source": "ad_only",
-    "position": 14
+    "position": 13
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[5]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "2007-2011 Mopar Oxygen Sensor 56029084AA",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "2007-2011 Mopar Oxygen Sensor 56029084AA - Genuine ...",
+    "source": "html_only+no_geometry",
+    "position": -1
   },
   {
     "type": "knowledge_panel",
@@ -189,19 +201,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[4]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Oxygen Sensor - Mopar (56029084AA) - Tasca Parts",
-    "source": "html_only",
-    "y_render": 1680,
     "position": -1
   },
   {
@@ -238,6 +237,18 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_ad_rhs",
+    "position": -1
+  },
+  {
+    "type": "chrome",
+    "x": 162.0,
+    "y": 1727.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   },
   {

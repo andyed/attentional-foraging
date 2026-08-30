@@ -96,15 +96,15 @@
     "position": 7
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1611.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[10]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Buy Nestle Yorkie bar - Shropshire's Own",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
   {
@@ -113,9 +113,9 @@
     "y": 1731.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[10]",
+    "html_handle": "rso[9]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Buy Nestle Yorkie bar - Shropshire's Own",
+    "heading_text": "Nestle Yorkie Original Chocolate Bars 3 Pack (46 g)",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
@@ -153,19 +153,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[9]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Nestle Yorkie Original Chocolate Bars 3 Pack (46 g)",
-    "source": "html_only",
-    "y_render": 1921,
     "position": -1
   },
   {

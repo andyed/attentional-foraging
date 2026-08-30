@@ -122,14 +122,26 @@
   {
     "type": "organic",
     "x": 162.0,
-    "y": 1934.0,
+    "y": 1817.0,
     "width": 586.0,
-    "height": 81.0,
+    "height": 82.0,
     "html_handle": "rso[9]",
     "html_signature": "div.g tF2Cxc",
     "heading_text": "Best CPAP Batteries of 2022 \u2013 Use While Camping or Traveling",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 10
+  },
+  {
+    "type": "organic",
+    "x": 162.0,
+    "y": 1934.0,
+    "width": 586.0,
+    "height": 81.0,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Philips Respironics Travel CPAP Battery Kit for System ...",
+    "source": "html_rso+cv_bbox+y_dp",
+    "position": 11
   },
   {
     "type": "organic",
@@ -141,7 +153,7 @@
     "html_signature": "div.hlcw0c",
     "heading_text": "PAP Battery Kit - Philips",
     "source": "html_rso+cv_bbox+y_dp",
-    "position": 11
+    "position": 12
   },
   {
     "type": "image_pack",
@@ -153,7 +165,7 @@
     "html_signature": "h=\"imgs\" div.ULSxyf",
     "heading_text": "Images for buy cpap battery pack respironics",
     "source": "html_rso+cv_bbox+y_dp+merged_segment",
-    "position": 12
+    "position": 13
   },
   {
     "type": "unknown_widget",
@@ -165,7 +177,7 @@
     "html_signature": "",
     "heading_text": "",
     "source": "cv_bbox_only",
-    "position": 13
+    "position": 14
   },
   {
     "type": "knowledge_panel",
@@ -177,19 +189,6 @@
     "html_signature": "TQc1id div.TQc1id",
     "heading_text": "Hours",
     "source": "html_only+no_geometry",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[8]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Philips Respironics Travel CPAP Battery Kit for System ...",
-    "source": "html_only",
-    "y_render": 2147,
     "position": -1
   },
   {
@@ -226,18 +225,6 @@
     "html_signature": "rhs.kp[data-attrid=kc:/collection/knowledge_panel]",
     "heading_text": "Hours",
     "source": "html_rhs",
-    "position": -1
-  },
-  {
-    "type": "chrome",
-    "x": 162.0,
-    "y": 1817.0,
-    "width": 586.0,
-    "height": 82.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only+chrome_heuristic",
     "position": -1
   }
 ]

@@ -149,9 +149,9 @@
     "y": 1937.0,
     "width": 586.0,
     "height": 82.0,
-    "html_handle": "rso[10]",
+    "html_handle": "rso[9]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "OESpectrum\u2122 Rear Driver or Passenger Side Strut",
+    "heading_text": "MONROE 71662 Shocks Gas Pressure, Suspension Strut ...",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 12
   },
@@ -204,6 +204,18 @@
     "position": 16
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[10]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "OESpectrum\u2122 Rear Driver or Passenger Side Strut",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -213,19 +225,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[9]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "MONROE 71662 Shocks Gas Pressure, Suspension Strut ...",
-    "source": "html_only",
-    "y_render": 2148,
     "position": -1
   },
   {

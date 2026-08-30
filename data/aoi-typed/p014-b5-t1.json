@@ -89,9 +89,9 @@
     "y": 1137.0,
     "width": 586.0,
     "height": 105.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Bosch 71033 Fuel Filter - THMotorsports",
+    "heading_text": "Bosch 71033 Fuel Filter - Walmart.com",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
@@ -125,9 +125,9 @@
     "y": 1509.0,
     "width": 586.0,
     "height": 101.0,
-    "html_handle": "rso[7]",
+    "html_handle": "rso[6]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "BOSCH 0 450 905 084 Fuel filter In-Line Filter - AUTODOC",
+    "heading_text": "Buy Bosch 71033 Fuel Filter 0.450.905.084-85e NIB fits various ...",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
@@ -180,6 +180,30 @@
     "position": 14
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[4]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Bosch 71033 Fuel Filter - THMotorsports",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[7]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "BOSCH 0 450 905 084 Fuel filter In-Line Filter - AUTODOC",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -189,32 +213,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[3]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Bosch 71033 Fuel Filter - Walmart.com",
-    "source": "html_only",
-    "y_render": 1262,
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Buy Bosch 71033 Fuel Filter 0.450.905.084-85e NIB fits various ...",
-    "source": "html_only",
-    "y_render": 1671,
     "position": -1
   },
   {

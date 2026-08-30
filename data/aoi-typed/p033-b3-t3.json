@@ -113,9 +113,9 @@
     "y": 1975.0,
     "width": 586.0,
     "height": 98.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Fox's Glacier Fruits | Waitrose & Partners",
+    "heading_text": "FOXS GLACIER FRUITS (200g) - britishimportsgeorgia.com",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 9
   },
@@ -156,6 +156,18 @@
     "position": 12
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Fox's Glacier Fruits | Waitrose & Partners",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -165,19 +177,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "FOXS GLACIER FRUITS (200g) - britishimportsgeorgia.com",
-    "source": "html_only",
-    "y_render": 2188,
     "position": -1
   },
   {

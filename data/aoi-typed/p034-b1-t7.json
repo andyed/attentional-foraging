@@ -72,15 +72,15 @@
     "position": 5
   },
   {
-    "type": "unknown_widget",
+    "type": "organic",
     "x": 162.0,
     "y": 1039.0,
     "width": 586.0,
     "height": 208.0,
-    "html_handle": null,
-    "html_signature": "",
-    "heading_text": "",
-    "source": "cv_bbox_only",
+    "html_handle": "rso[4]",
+    "html_signature": "div.(no class)",
+    "heading_text": "Organo Gold Flavored Coffee for sale - eBay",
+    "source": "html_rso+cv_bbox+y_dp",
     "position": 6
   },
   {
@@ -89,9 +89,9 @@
     "y": 1277.0,
     "width": 586.0,
     "height": 208.0,
-    "html_handle": "rso[4]",
+    "html_handle": "rso[3]",
     "html_signature": "div.(no class)",
-    "heading_text": "Organo Gold Flavored Coffee for sale - eBay",
+    "heading_text": "Caf\u00e9 Latte gourmet Organo Gold (1 caja de 20 sachets)",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 7
   },
@@ -177,19 +177,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[3]",
-    "html_signature": "div.(no class)",
-    "heading_text": "Caf\u00e9 Latte gourmet Organo Gold (1 caja de 20 sachets)",
-    "source": "html_only",
-    "y_render": 1421,
     "position": -1
   },
   {

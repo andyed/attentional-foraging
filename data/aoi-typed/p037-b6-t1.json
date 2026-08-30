@@ -125,9 +125,9 @@
     "y": 1612.0,
     "width": 586.0,
     "height": 85.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Philips Respironics True Blue CPAP Nasal Mask - Smart ...",
+    "heading_text": "Buy Philips Respironics TrueBlue CPAP BiPAP Headgear - 2022",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 10
   },
@@ -192,6 +192,18 @@
     "position": 15
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Philips Respironics True Blue CPAP Nasal Mask - Smart ...",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -201,19 +213,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Buy Philips Respironics TrueBlue CPAP BiPAP Headgear - 2022",
-    "source": "html_only",
-    "y_render": 1793,
     "position": -1
   },
   {

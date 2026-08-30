@@ -72,15 +72,15 @@
     "position": 5
   },
   {
-    "type": "organic",
+    "type": "unknown_widget",
     "x": 162.0,
     "y": 1285.0,
     "width": 586.0,
     "height": 102.0,
-    "html_handle": "rso[6]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Celestron Digital Microscope Imager, 5 Megapixel",
-    "source": "html_rso+cv_bbox+y_dp",
+    "html_handle": null,
+    "html_signature": "",
+    "heading_text": "",
+    "source": "cv_bbox_only",
     "position": 6
   },
   {
@@ -101,9 +101,9 @@
     "y": 1537.0,
     "width": 586.0,
     "height": 81.0,
-    "html_handle": "rso[8]",
+    "html_handle": "rso[7]",
     "html_signature": "div.g tF2Cxc",
-    "heading_text": "Celestron Digital Microscope Imager 44421,2 MP,black",
+    "heading_text": "Celestron 44421 Digital Microscope Imager 2 MP - Oman ...",
     "source": "html_rso+cv_bbox+y_dp",
     "position": 8
   },
@@ -156,6 +156,30 @@
     "position": 12
   },
   {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[6]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Celestron Digital Microscope Imager, 5 Megapixel",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
+    "type": "organic",
+    "x": null,
+    "y": null,
+    "width": null,
+    "height": null,
+    "html_handle": "rso[8]",
+    "html_signature": "div.g tF2Cxc",
+    "heading_text": "Celestron Digital Microscope Imager 44421,2 MP,black",
+    "source": "html_only+no_geometry",
+    "position": -1
+  },
+  {
     "type": "knowledge_panel",
     "x": null,
     "y": null,
@@ -165,19 +189,6 @@
     "html_signature": "h=\"comp\" div.TQc1id hSOk2e rhstc4",
     "heading_text": "Complementary results",
     "source": "html_rendered_offcolumn",
-    "position": -1
-  },
-  {
-    "type": "organic",
-    "x": null,
-    "y": null,
-    "width": null,
-    "height": null,
-    "html_handle": "rso[7]",
-    "html_signature": "div.g tF2Cxc",
-    "heading_text": "Celestron 44421 Digital Microscope Imager 2 MP - Oman ...",
-    "source": "html_only",
-    "y_render": 1705,
     "position": -1
   },
   {
