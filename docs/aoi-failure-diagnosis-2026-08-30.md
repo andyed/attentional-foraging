@@ -157,3 +157,69 @@ against a second measurement. Three separate layers reported healthy numbers
 over this defect: no collisions, ~1 px alignment residuals, and a well-fitting
 Theil-Sen slope. It took an external ground truth (the DOM) plus a consistency
 check between two internal artifacts to see it. Neither alone was enough.
+
+---
+
+# SECOND CORRECTION: the pipeline was right; the harness was wrong
+
+Both diagnoses above are wrong, and so is the `aoi` score they rest on. Retained
+in full because the sequence of errors is the useful part.
+
+## The evidence
+
+Resolving each card's `css_path` in the browser and comparing the resulting
+element's CLASS against the class the card itself recorded, on `p004-b1-t10`:
+
+    handle   css_path resolves to class   card records
+    rso[4]   hlcw0c                       g tF2Cxc
+    rso[5]   ULSxyf                       hlcw0c      <- what rso[4]'s path found
+    rso[6]   g tF2Cxc                     ULSxyf      <- what rso[5]'s path found
+
+**The `css_path` values are themselves off by one** relative to the card
+metadata they were emitted alongside. `_css_path()` builds `nth-of-type`
+indices from BeautifulSoup's parse tree; the browser's parse does not agree, so
+the selector selects a neighbour. Not rare: 5 of 12 cards on `p004-b1-t5` and 5
+of 12 on `p004-b2-t2`.
+
+So the shift ladder in `measure_card_geometry` is not a defect. It is the
+**repair** for an unreliable selector, and it works: it finds the element whose
+class and heading match the card. Stored `rso[5] = 1333` is the element carrying
+class `hlcw0c`, which is exactly what card `rso[5]` describes. The stored
+geometry was correct all along.
+
+## What that means for everything above
+
+- The `aoi` check resolves cards by `css_path` and therefore compares AOI boxes
+  against the wrong DOM elements on precisely the trials where the selector
+  drifts. The "13 % materially misaligned" figure and the 0.879 median are
+  **measuring the harness, not the substrate**, on the failing tail.
+- The chain-shift fix (node ownership) was worse than useless: it disabled the
+  repair, turning five correct cards on `p004-b1-t10` into `not found`. Reverted,
+  branch deleted.
+- The DP-drift fix was equally wrong, for a different reason. Also deleted.
+- The collision fix (`fix/aoi-card-collision`) is **not** invalidated. Duplicate
+  measurement onto one node is a real defect measured independently of
+  `css_path` — via coordinate collisions — and its 508/508 signature stands.
+
+## Fixing the harness
+
+The `aoi` check must resolve a card the way the pipeline does: by class and
+heading identity, using `css_path` only as a starting hint. Until then, the
+`aoi` score should not be quoted, and Phase 1's success criterion for
+`fix/aoi-card-collision` cannot be "moves aoi".
+
+The `click` and `cell` checks are unaffected — neither uses `css_path`. The
+click check resolves the xpath recorded by the event itself, and the cell check
+uses element ids. Those two numbers stand.
+
+## The actual lesson
+
+The harness was built to stop me trusting plausible reasoning over evidence, and
+it did exactly that in one direction: it falsified the roadmap's claim about
+collision casualties. But I then treated the harness's own output as ground
+truth and built two fixes on it without validating the instrument itself against
+the pipeline it was judging. An instrument needs the same scepticism as the
+thing it measures — and the tell was available early, in that the pipeline's own
+audit reported ~1 px residuals over trials the harness called catastrophic. When
+two measurements disagree that violently, the prior should be that one of them
+is broken, not that the disagreement is the finding.
