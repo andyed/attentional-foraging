@@ -8,6 +8,78 @@ bottom of this file.
 
 ---
 
+## Substrate fidelity roadmap (opened 2026-08-30)
+
+A day of substrate work found three defects that had shipped through a
+realignment release and a published resource paper: mouse telemetry never
+converted out of document space, two cards measured onto one DOM node, and
+carousel cells dropped from the tail. None was found by reasoning about the
+pipeline; each was found by checking it against an artifact that already
+contained the answer. So the roadmap is ordered to make those checks routine
+before making more changes.
+
+**Baseline** — `allserp-v1.1.0` as shipped, from `scripts/aoi_fidelity.py`
+(`docs/aoi-fidelity-baseline-2026-08-30.md`). Every item below states which
+score it must move. If a change does not move its score, it did not do what it
+claimed.
+
+    click  coordinate inside the element its own xpath names   87.7 %
+    aoi    stored box vs that DOM element (IoU)                 0.879 median, 87.0 % >= 0.5
+    cell   visible DOM cells vs the cellsplit export            29.1 %
+
+### Phase 0 — measurement  ✅ done
+- [x] `scripts/aoi_fidelity.py` — three independent scores against DOM ground
+      truth (click xpath, `html_handle` → `css_path`, numbered carousel ids).
+      Branch `fix/fidelity-harness`.
+- [x] Full-corpus baseline recorded.
+
+### Phase 1 — land the verified fixes  (branches open, none merged)
+- [ ] `fix/coordinate-space-loader` — `get_trial_geometry()`,
+      `document_to_screenshot()`. Ratios derived per trial from the shipped PNG,
+      so the hardcoded-constant bug becomes inexpressible.
+- [ ] `fix/wire-cursor-conversion` — `load_mouse_events(space=…)` and the
+      feature producer opting in per attribution flavor.  **moves: click**
+- [ ] `fix/aoi-card-collision` — two-phase node claiming + evidence-ranked
+      awards. Collisions 454 → 0, orphaned main-column 480 → 167 trials.
+      **moves: aoi** (the 360 low-IoU trials are its casualties)
+- [ ] Decide the merge order against the paused consumer migration. Merging
+      bumps the substrate and invalidates notebook work already re-derived.
+
+### Phase 2 — read the DOM instead of reconstructing it  **moves: cell**
+The pipeline rebuilds by CV and geometry heuristics what the saved HTML states
+outright. Cells are midpoint-split from a frozen 2026-05-24 snapshot **with no
+producer in this repo**; the DOM numbers them (`vplaurlg<N>`). Cards are located
+by shifting `nth-of-type` until something verifies; the DOM has the path. CV
+should be the fallback for what the DOM cannot answer, not the primary.
+- [ ] Replace snapshot cells with DOM-derived cells, clipped to the horizontal
+      scroller's visible width (the strip renders ~3,800px wide inside ~650px,
+      so most cards exist but were never on screen). Kills the trailing-drop at
+      source: the export is short on 902 of 1,551 carousels, median shortfall
+      exactly 1 cell.
+- [ ] Re-check `paper.tex:156`. The published within-carousel ρ = −1.0 is not
+      supportable — positions 1 and 2 are not ordered under any denominator
+      tried — but no replacement coefficient is established either.
+
+### Phase 3 — re-derive and restate
+- [ ] Table 1 counts and the 38,250-classification check on the fixed substrate.
+- [ ] arXiv v4 change note. The carousel ordering is a **restatement, not a
+      retraction**: direction holds, the perfect monotone does not.
+- [ ] Propagate to consumers: AF notebooks, AR replay bundles (done —
+      `approach-retreat@d5de80e`), crforager (measured, no refit indicated).
+
+### Known fidelity ceilings — state these in the release, do not rediscover them
+- The re-render is not the capture (Chrome 110 / Windows, 2023). Fonts and asset
+  availability differ, so 100 % on the click check is not the target.
+- Screenshots are scaled **anisotropically** from the document (x 0.9123,
+  y 0.9000), so screenshot-space geometry is lossy by construction.
+- 14 trials are alignment-excluded; the exclusion list is an *output* of the
+  build, so consumers must re-read it rather than pin 14.
+- The carousel's hidden tail was never on screen. No extraction recovers what
+  the participant did not see — see
+  `crforager/docs/notes/carousel-paging-and-scent-2026-08-30.md`.
+
+---
+
 ## AllSERP arxiv update queue (active)
 
 The 2D cell-aware merge landed 2026-05-24 (commits `5f694be6` family +
