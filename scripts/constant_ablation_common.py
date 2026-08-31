@@ -81,8 +81,12 @@ CLICK_BUFFER_MS = 500
 # M4-7 value matches sampling_rate_ablation.py's anchor (the paper's 0.847);
 # M4-9 value is the organic_hybrid|buf500|M4-9 cell of
 # scripts/output/paper-output/click_buffer_ablation.json (0.8671).
-CANONICAL_M4_AUC = 0.847      # M4-7 (paper definition of M4)
-CANONICAL_M4_9_AUC = 0.8671   # M4-9 (adds final_dist + retreat_dist)
+# Re-anchored 2026-08-31 to the coordinate-converted substrate (mouse doc→
+# screenshot space in the feature producer; +6.3% clicks re-attributed).
+# Pre-conversion anchors were 0.847 / 0.8671; the stale feature files that
+# reproduce them are kept as *.stale-preCoordConv-2026-08-31.json.
+CANONICAL_M4_AUC = 0.9040     # M4-7 (paper definition of M4)
+CANONICAL_M4_9_AUC = 0.9159   # M4-9 (adds final_dist + retreat_dist)
 ANCHOR_TOL = 0.005
 
 OUT_DIR = ROOT / "scripts/output/ablations"

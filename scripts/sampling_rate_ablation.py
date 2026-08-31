@@ -66,7 +66,9 @@ CLICK_BUFFER_MS = 500
 RATES_HZ = [1, 2, 3, 4, 5, 10, 15, 20, 30, 60]
 
 # Canonical §5.1 headline anchor (organic_hybrid, buf500, M4-7).
-CANONICAL_M4_AUC = 0.847
+# Re-anchored 2026-08-31: coordinate-converted substrate (was 0.847
+# pre-conversion; see docs/canonical-environment.md).
+CANONICAL_M4_AUC = 0.9040
 ANCHOR_TOL = 0.005
 
 OUT_PATH = ROOT / "scripts/output/paper-output/sampling_rate_ablation.json"
