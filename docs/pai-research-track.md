@@ -94,6 +94,40 @@ Producers: `scripts/pai_exposure_ablation.py`, `scripts/pai_preentry_probe.py`,
   viewport granularity?) is the bridge that would matter for deployment —
   a distinct claim from Leaky Cursor's cursor-geometry story.
 
+## First results on Q2/Q3 (2026-08-31, spec_eq2, full trial)
+
+Producer: `scripts/pai_etype_census.py` →
+`scripts/output/ablations/pai_etype_census.json`. Never-fixated AOIs are
+enumerated from `build_hybrid_aois()` (the feature file only carries
+fixated slots). Regime `[LAB, AdSERP, organic_hybrid]`.
+
+**Q3 — banner blindness is peripheral rejection, not invisibility.**
+
+| etype | n AOIs | entry % | click % | med mass entered | med mass never-entered | never-entered above entered-median |
+|---|---|---|---|---|---|---|
+| organic | 26,571 | 55.2 | 8.6 | 7,495 | 4,872 | **30.6 %** |
+| native_ad | 9,211 | 39.8 | 2.0 | 7,440 | 5,351 | **33.2 %** |
+| dd_top | 1,582 | 99.9 | 17.3 | 2,256 | 981 | 0.0 |
+
+A third of never-fixated ads (and organics) carry more peripheral PAI mass
+than the *median fixated* AOI of their type — they are peripherally
+sampled and then not visited. Caveats: cross-etype mass comparisons are
+geometry-confounded (page position, area — dd_top's low masses are a
+top-of-page artifact); the load-bearing contrast is entered vs
+never-entered *within* etype. Next: normalize by an exposure-opportunity
+baseline before claiming rejection rates.
+
+**Q2 — the clicked item's peripheral intake is late-concentrated.**
+Median cumulative share of pre-entry mass (500 ms bins, 8 s window before
+each AOI's own first entry): clicked items reach half their pre-entry mass
+only ≈ **2.25 s before entry** (28 % accumulated by −4 s), while
+entered-non-clicked items accrue diffusely (t50 ≈ −3.75 s; 51 % by −4 s).
+n = 2,355 clicked / 15,718 non-clicked records. The dissociation is in the
+*shape* (curves are within-record normalized), not the amount: peripheral
+intake on the future click target ramps as the decision approaches.
+Caveat: window truncation at trial start can differ between the groups —
+re-check with trial-time controls before this becomes a claim.
+
 ## Boundary decisions (2026-08-31)
 
 - **CHIIR**: PAI stays out as a contribution; at most a two-sentence
