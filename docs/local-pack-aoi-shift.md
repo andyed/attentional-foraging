@@ -139,6 +139,16 @@ trials than the 268-pack fix (any trial that had a count mismatch above
 content). The `[typed, pending]` gate on affected K-IDs applies corpus-wide
 until typed-flavor features are re-derived.
 
+> **Build-state update (2026-08-30).** The corpus-outcome figures above are
+> the 2026-08-28 build. Two superseding builds have landed since — the
+> realignment-plan interim state (matched 24,698 / `unknown_widget` 984) and
+> today's card-collision-fix build. Current truth per the on-disk
+> `scripts/output/aoi-typed/build_typed_aoi_map_summary.json`: **matched
+> pairs 25,054, `unknown_widget` 650, segments merged 1,196, mean residual
+> 1.95 px, p90 4.5 px, y-DP 2,774 / index-fallback 2, `n_alignment_suspect`
+> 12**. The intermediate figures are superseded build states, kept for the
+> narrative; the summary JSON is canonical.
+
 ## Geometry verification pass (2026-08-28, follow-up on the 2.4% gap)
 
 Inspecting the first geometry run's 745 `found:false` cards before the
@@ -200,10 +210,13 @@ y-residuals cannot (an evenly spaced organic run is shift-periodic, so a
 one-slot-shifted lattice has self-consistent y but pairs cards with the
 wrong heights); the `resid > 8` guard keeps out correct lattices whose
 widgets legitimately render divergent heights (verified on p036-b2-t6).
-**14 trials (0.5%) remain flagged `alignment_suspect: true`** in
+**12 trials (0.4%) remain flagged `alignment_suspect: true`** in
 `scripts/output/aoi-typed/build_typed_aoi_map_audits.jsonl` — these are
 shift-periodic pages with pathological widget rendering where a wrong
-lattice cannot be ruled out geometrically. **Downstream re-derivation
+lattice cannot be ruled out geometrically. *(Was 14 on 2026-08-28; the
+2026-08-30 collision-fix build changed membership — out: p034-b6-t5,
+p041-b1-t9, p046-b6-t5; in: p018-b3-t1. The canonical list is
+`data/aoi-typed/alignment-exclusions.json`, not this doc.)* **Downstream re-derivation
 should exclude or sensitivity-check them.** Related known issue, not
 fixed: "Find results on" maps-block variants are Phase-1-typed
 `image_pack`/`other_widget` via the ULSxyf heuristics.
@@ -238,6 +251,16 @@ than new IDs.
 `cursor-approach-features-typed{,-buf500,-gapfill,-gapfill-buf500}.json`
 (typed: 2,760 trials / 19,382 records; typed_gapfill: 2,538 / 17,926),
 `retreat-arcs-typed.json`, `adsight-noticed-features-typed-gapfill.json`.
+
+**2026-08-30 collision-fix pass (third generation):** producer fix
+`86f800a3` (two cards measuring the same DOM node), substrate regen
+`2da0544d` / merge `574218b6`; typed feature artifacts regenerated
+16:31–16:41 same day (typed: 2,762 trials / 19,388 records; the
+regression-label caches and `ltr_typed_*` / adsight / k-coefficient
+producers re-ran 2026-08-30 evening). Notebook tier: NB33/34/35/23 done
+morning-of; NB20/22/26/28/30/31/32 re-executed in the evening pass
+(this session); K-ID rows carry
+`(re-derived 2026-08-30: collision-fixed maps)` annotations.
 
 ~~Still pending (notebook-tier, K-ID re-derivation): NB14, NB18, then
 `compute_k_coefficient.py` and `compute_saccade_orientation.py`.~~
