@@ -1,12 +1,12 @@
 {
   "experiment": "K28: LF/HF as feature on top of M3-no-position 4-class graded LambdaMART",
-  "lfhf_coverage_pct_records": 0.2866390209365834,
+  "lfhf_coverage_pct_records": 0.29126263668248403,
   "class_distribution": {
-    "NotApprAbove": 5368,
-    "CLICKED": 2594,
-    "EVAL_REJECTED": 572,
-    "DEFERRED": 2567,
-    "NotApprBelow_EXCLUDED": 8673
+    "NotApprAbove": 3933,
+    "CLICKED": 2740,
+    "EVAL_REJECTED": 578,
+    "NotApprBelow_EXCLUDED": 8837,
+    "DEFERRED": 3300
   },
   "features": {
     "M3-no-position": [
@@ -39,42 +39,42 @@
   "metrics": {
     "M3-no-position": {
       "LR (pointwise, binary click)": {
-        "ndcg10": 0.8175917861287928,
-        "mrr10": 0.7668631882194233,
-        "n_trials": 2539
+        "ndcg10": 0.8732018832670515,
+        "mrr10": 0.8304614812058057,
+        "n_trials": 2688
       },
       "LambdaMART (binary click)": {
-        "ndcg10": 0.7939881692667708,
-        "mrr10": 0.7409361723681628,
-        "n_trials": 2539
+        "ndcg10": 0.8802927199616012,
+        "mrr10": 0.8401874693556866,
+        "n_trials": 2688
       },
       "LambdaMART (4-class graded)": {
-        "ndcg10": 0.8183019163055069,
-        "mrr10": 0.7713226881088291,
-        "n_trials": 2539
+        "ndcg10": 0.8868111828668636,
+        "mrr10": 0.8482116284013606,
+        "n_trials": 2688
       }
     },
     "M3-no-position + lfhf": {
       "LR (pointwise, binary click)": {
-        "ndcg10": 0.8164088033124322,
-        "mrr10": 0.7649040309520658,
-        "n_trials": 2539
+        "ndcg10": 0.8716841153013322,
+        "mrr10": 0.8283809169369274,
+        "n_trials": 2688
       },
       "LambdaMART (binary click)": {
-        "ndcg10": 0.7825292311143313,
-        "mrr10": 0.7242816037437552,
-        "n_trials": 2539
+        "ndcg10": 0.8831786998861342,
+        "mrr10": 0.8442285312586764,
+        "n_trials": 2688
       },
       "LambdaMART (4-class graded)": {
-        "ndcg10": 0.8187224366450679,
-        "mrr10": 0.7698999419587655,
-        "n_trials": 2539
+        "ndcg10": 0.8880954317508496,
+        "mrr10": 0.8505077356584614,
+        "n_trials": 2688
       }
     }
   },
   "headlines": {
-    "delta_mrr10_lfhf_4class_minus_baseline_4class": -0.0014227461500635474,
-    "delta_ndcg10_lfhf_4class_minus_baseline_4class": 0.00042052033956108126,
-    "delta_mrr10_lfhf_binary_minus_baseline_binary": -0.016654568624407617
+    "delta_mrr10_lfhf_4class_minus_baseline_4class": 0.0022961072571008323,
+    "delta_ndcg10_lfhf_4class_minus_baseline_4class": 0.0012842488839860389,
+    "delta_mrr10_lfhf_binary_minus_baseline_binary": 0.0040410619029898065
   }
 }

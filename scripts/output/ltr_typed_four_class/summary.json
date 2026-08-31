@@ -2,56 +2,56 @@
   "experiment": "LTR four-class graded labels (Peter's spec) on typed cascade",
   "spec_source": "Peter Dixon-Moses 2026-05-04",
   "dataset": {
-    "records_total": 19774,
-    "records_kept": 11101,
-    "records_dropped_NotApprBelow": 8673,
-    "trials": 2774,
+    "records_total": 19388,
+    "records_kept": 10551,
+    "records_dropped_NotApprBelow": 8837,
+    "trials": 2762,
     "participants": 47,
     "class_distribution": {
-      "NotApprAbove": 5368,
-      "CLICKED": 2594,
-      "EVAL_REJECTED": 572,
-      "DEFERRED": 2567,
-      "NotApprBelow_EXCLUDED": 8673
+      "NotApprAbove": 3933,
+      "CLICKED": 2740,
+      "EVAL_REJECTED": 578,
+      "NotApprBelow_EXCLUDED": 8837,
+      "DEFERRED": 3300
     }
   },
   "features": [
     "total_dwell_ms",
     "min_dist",
     "mean_dist",
-    "final_dist",
-    "retreat_dist",
     "dwell_in_proximity_ms",
     "mean_approach_velocity",
     "max_approach_velocity",
     "direction_changes",
     "frac_decreasing"
   ],
+  "feature_set": "canonical",
+  "click_buffer_ms": 0,
   "note": "no position feature; LOSO by participant; train on kept rows, predict on all.",
   "metrics": {
     "Original SERP position (no ML)": {
-      "ndcg10": 0.577378550670709,
-      "mrr10": 0.4589468557376002,
-      "n_trials": 2539
+      "ndcg10": 0.5769389107224454,
+      "mrr10": 0.4530389812017456,
+      "n_trials": 2688
     },
     "LR pointwise (binary click)": {
-      "ndcg10": 0.8175917861287928,
-      "mrr10": 0.7668631882194233,
-      "n_trials": 2539
+      "ndcg10": 0.8515829505938858,
+      "mrr10": 0.8011295056216932,
+      "n_trials": 2688
     },
     "LambdaMART (binary click, flavor-1)": {
-      "ndcg10": 0.7939881692667708,
-      "mrr10": 0.7409361723681628,
-      "n_trials": 2539
+      "ndcg10": 0.8679472866646402,
+      "mrr10": 0.8237111666400837,
+      "n_trials": 2688
     },
     "LambdaMART (4-class graded, Peter's)": {
-      "ndcg10": 0.8183019163055069,
-      "mrr10": 0.7713226881088291,
-      "n_trials": 2539
+      "ndcg10": 0.869664761862778,
+      "mrr10": 0.8258225967474201,
+      "n_trials": 2688
     }
   },
   "headlines": {
-    "delta_mrr10_4class_vs_binary_lambdamart": 0.03038651574066631,
-    "delta_mrr10_4class_vs_serp_position": 0.3123758323712289
+    "delta_mrr10_4class_vs_binary_lambdamart": 0.0021114301073363873,
+    "delta_mrr10_4class_vs_serp_position": 0.37278361554567446
   }
 }
