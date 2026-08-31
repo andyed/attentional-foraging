@@ -4,24 +4,24 @@
   "n_participants_joined": 47,
   "distributions": {
     "p_ad_click": {
-      "median": 0.1320754716981132,
-      "mean": 0.17569644066115772,
-      "p25": 0.0632209405501331,
-      "p75": 0.24537037037037035,
+      "median": 0.10714285714285714,
+      "mean": 0.1653986687669924,
+      "p25": 0.050423728813559325,
+      "p75": 0.23026315789473684,
       "min": 0.0,
-      "max": 0.5272727272727272,
+      "max": 0.576271186440678,
       "n_zero": 2,
-      "n_high_20pct": 16
+      "n_high_20pct": 17
     },
     "p_dd_top_click": {
-      "median": 0.06521739130434782,
-      "mean": 0.10390374200699526,
-      "max": 0.39655172413793105
+      "median": 0.05,
+      "mean": 0.09907219658426002,
+      "max": 0.3898305084745763
     },
     "p_native_ad_click": {
-      "median": 0.05454545454545454,
-      "mean": 0.07179269865416246,
-      "max": 0.36363636363636365
+      "median": 0.05,
+      "mean": 0.06632647218273238,
+      "max": 0.423728813559322
     },
     "p_ad_survey": {
       "median": 0.7277777777777777,
@@ -38,54 +38,54 @@
       "y": "p_ad_click",
       "label": "ad-attention prior \u2192 ad-click rate",
       "n": 47,
-      "spearman_rho": 0.24939999682345215,
-      "spearman_p": 0.09091507681133766,
-      "pearson_r": 0.24223993011777287
+      "spearman_rho": 0.2110028255170196,
+      "spearman_p": 0.15453444203231467,
+      "pearson_r": 0.2008914865120549
     },
     {
       "x": "p_ad_survey",
       "y": "p_dd_top_click",
       "label": "ad-attention prior \u2192 dd_top-click rate",
       "n": 47,
-      "spearman_rho": 0.29690308454649966,
-      "spearman_p": 0.04270266347667374,
-      "pearson_r": 0.2309872415348981
+      "spearman_rho": 0.27529352007618957,
+      "spearman_p": 0.061087047554163935,
+      "pearson_r": 0.20857573735618157
     },
     {
       "x": "p_ad_survey",
       "y": "p_native_ad_click",
       "label": "ad-attention prior \u2192 native_ad-click rate",
       "n": 47,
-      "spearman_rho": 0.10823291857337908,
-      "spearman_p": 0.468968470849388,
-      "pearson_r": 0.14488334408162534
+      "spearman_rho": 0.023238350272706335,
+      "spearman_p": 0.8767858437588685,
+      "pearson_r": 0.09511005468619846
     },
     {
       "x": "ad_over_index",
       "y": "p_ad_click",
       "label": "ad over-index (calibrated by area) \u2192 ad-click rate",
       "n": 47,
-      "spearman_rho": 0.23241290052453972,
-      "spearman_p": 0.11593895947082472,
-      "pearson_r": 0.20916617537417273
+      "spearman_rho": 0.1878235946485904,
+      "spearman_p": 0.2061341010637857,
+      "pearson_r": 0.1723560657575817
     },
     {
       "x": "ad_over_index",
       "y": "p_dd_top_click",
       "label": "ad over-index \u2192 dd_top-click rate",
       "n": 47,
-      "spearman_rho": 0.26672072786729706,
-      "spearman_p": 0.06994079592514235,
-      "pearson_r": 0.20491232586810793
+      "spearman_rho": 0.24305097346384671,
+      "spearman_p": 0.09972382775184045,
+      "pearson_r": 0.1857078853920366
     },
     {
       "x": "p_ad_survey",
       "y": "mean_click_pos",
       "label": "ad-attention prior \u2192 mean click position",
       "n": 47,
-      "spearman_rho": 0.019775073008351147,
-      "spearman_p": 0.8950370677822778,
-      "pearson_r": -0.02616324513116152
+      "spearman_rho": 0.04012720446140972,
+      "spearman_p": 0.7888545476924018,
+      "pearson_r": 0.027254782592274672
     },
     {
       "x": "p_ad_survey",
@@ -110,18 +110,18 @@
       "y": "regression_rate",
       "label": "ad-click rate \u2192 regression rate",
       "n": 47,
-      "spearman_rho": 0.05271985889592846,
-      "spearman_p": 0.7248820439220612,
-      "pearson_r": 0.008210167006302421
+      "spearman_rho": 0.04807775996245169,
+      "spearman_p": 0.7482750341416116,
+      "pearson_r": 0.035062608861563815
     },
     {
       "x": "p_dd_top_click",
       "y": "regression_rate",
       "label": "dd_top-click rate \u2192 regression rate",
       "n": 47,
-      "spearman_rho": 0.061125627237958544,
-      "spearman_p": 0.6831605883500974,
-      "pearson_r": 0.02521084543527994
+      "spearman_rho": 0.06272058822300708,
+      "spearman_p": 0.6753441373212655,
+      "pearson_r": 0.05083637754779724
     }
   ]
 }
