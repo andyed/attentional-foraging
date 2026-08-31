@@ -42,7 +42,7 @@ from sklearn.preprocessing import StandardScaler
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "AdSERP/data"
 
-sys.path.insert(0, "/Users/andyed/.claude/skills/muriel")
+sys.path.insert(0, "/Users/andyed/Documents/dev/muriel")  # package root; the ~/.claude/skills/muriel symlink points at the plugin skill dir since 2026-08-07
 from muriel.provenance import stamp_json  # noqa: E402
 
 BUFFERS = [0, 200, 500, 1000]

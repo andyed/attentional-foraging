@@ -28,7 +28,7 @@ from sklearn.preprocessing import StandardScaler
 
 ROOT = Path("/Users/andyed/Documents/dev/attentional-foraging")
 sys.path.insert(0, str(ROOT / "scripts"))
-sys.path.insert(0, "/Users/andyed/.claude/skills/muriel")
+sys.path.insert(0, "/Users/andyed/Documents/dev/muriel")  # package root; the ~/.claude/skills/muriel symlink points at the plugin skill dir since 2026-08-07
 from muriel.provenance import stamp_savefig  # noqa: E402
 from cursor_arc_prevalence import visit_counts_for_trial  # noqa: E402
 from nb22_revisit_count import count_revisits_per_trial  # noqa: E402

@@ -38,7 +38,7 @@ import numpy as np
 
 ROOT = Path("/Users/andyed/Documents/dev/attentional-foraging")
 sys.path.insert(0, str(ROOT / "notebooks-v2"))
-sys.path.insert(0, "/Users/andyed/.claude/skills/muriel")
+sys.path.insert(0, "/Users/andyed/Documents/dev/muriel")  # package root; the ~/.claude/skills/muriel symlink points at the plugin skill dir since 2026-08-07
 from muriel.provenance import stamp_savefig, stamp_existing  # noqa: E402
 
 OUT_DIR = ROOT / "scripts/output/figures"
