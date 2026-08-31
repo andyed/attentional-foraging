@@ -56,8 +56,12 @@ Model ladder (each fit in both conditions):
   M2-PAI  : position + pai_dwell_ms         (head-to-head swap)
   M2+Pp   : M2 + pai_periph_ms              (THE incremental test)
   M2+Pp35 : M2 + pai35_periph_ms            (functional-form sensitivity)
+  M2+PpS  : M2 + pai_spec_periph_ms         (spec-exact Eq 2; vertex OGD,
+                                             min(1, A/A_max) inside sqrt)
+  M2+PpSL : M2 + pai_specl_periph_ms        (spec, Listing-1.1 placement)
   M3-7    : M2 + 7 cursor geometry          (full model)
   M3-7+Pp : M3-7 + pai_periph_ms            (increment over everything)
+  M3-7+PpS/-7+PpSL : same with the spec-exact peripheral masses
   M4-7    : 7 geometry alone                (reference)
 
 Paired stats of record (47 LOSO folds; Wilcoxon, d_z, bootstrap CI):
@@ -104,6 +108,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from data_loader import load_fixations, load_mouse_events  # noqa: E402
 from data_loader import _RESULT_COL_X_MIN, _RESULT_COL_X_MAX  # noqa: E402
 from compute_cursor_approach_features import build_hybrid_aois  # noqa: E402
+from pai_spec import rect_alpha_grid  # noqa: E402
 
 OUT_DIR = ROOT / "scripts/output/ablations"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -122,10 +127,16 @@ APPROACH_7 = [
 ]
 
 PAI_FEATURES = ["pai_dwell_ms", "pai_periph_ms",
-                "pai35_dwell_ms", "pai35_periph_ms"]
+                "pai35_dwell_ms", "pai35_periph_ms",
+                "pai_spec_dwell_ms", "pai_spec_periph_ms",
+                "pai_specl_dwell_ms", "pai_specl_periph_ms"]
 
+# +PpS / +PpSL: spec-exact peripheral mass (pai_spec.rect_alpha_grid,
+# manuscript received 2026-08-31) under the Eq-2 and Listing-1.1 weight
+# placements — worklist item 0 of docs/pai-research-track.md.
 VARIANTS = ["D1", "P1", "Pp1", "M1", "M2", "M2-PAI", "M2+Pp", "M2+Pp35",
-            "M3-7", "M3-7+Pp", "M4-7"]
+            "M2+PpS", "M2+PpSL",
+            "M3-7", "M3-7+Pp", "M3-7+PpS", "M3-7+PpSL", "M4-7"]
 
 # phi = golden-ratio conjugate; lambda = phi^3, his exponent choice
 # (approach-retreat/site/pai/index.html:97-98, verified vs glias2poly).
@@ -141,9 +152,9 @@ RNG = np.random.default_rng(20260818)
 def pai_exposure_for_trial(trial_id, t_cuts):
     """Per-AOI PAI-weighted fixation mass up to each cutoff time.
 
-    Returns {condition: [[pai_dwell, pai_periph, pai35_dwell,
-    pai35_periph] per AOI]} in ms, or None if fixations/AOIs are
-    unavailable (coverage accounting mirrors viewport_exposure_for_trial).
+    Returns {condition: [PAI_FEATURES-ordered masses per AOI]} in ms, or
+    None if fixations/AOIs are unavailable (coverage accounting mirrors
+    viewport_exposure_for_trial).
     """
     try:
         fixations = load_fixations(trial_id)
@@ -188,18 +199,27 @@ def pai_exposure_for_trial(trial_id, t_cuts):
                     0.0, 1.0)
     # NB35 abstract-only sensitivity form (boundary OGD, no sqrt/area).
     alpha35 = np.clip(1.0 - ogd / np.maximum(cgd, 1.0), 0.0, 1.0)
+    # Spec-exact forms (pai_spec.rect_alpha_grid): vertex/corner OGD,
+    # min(1, A/A_max) weight inside (eq2) or outside (listing) the sqrt.
+    # Peripheral gating below stays rect-containment (boundary ogd > 0)
+    # for all forms — the gate is this harness's, not the alpha's.
+    alpha_spec = rect_alpha_grid(fx, fy, x0, x1, a_top, a_bot,
+                                 weight_placement="eq2")
+    alpha_specl = rect_alpha_grid(fx, fy, x0, x1, a_top, a_bot,
+                                  weight_placement="listing")
     outside = ogd > 0.0
+    forms = (alpha, alpha35, alpha_spec, alpha_specl)
 
     out = {}
     for cond, t_cut in t_cuts.items():
         mask = np.ones(len(ft), dtype=bool) if t_cut is None else (ft < float(t_cut))
         d = fd[mask][:, None]
-        acc = np.zeros((n_aoi, 4))
+        acc = np.zeros((n_aoi, 2 * len(forms)))
         if mask.any():
-            acc[:, 0] = (d * alpha[mask]).sum(axis=0)
-            acc[:, 1] = (d * np.where(outside[mask], alpha[mask], 0.0)).sum(axis=0)
-            acc[:, 2] = (d * alpha35[mask]).sum(axis=0)
-            acc[:, 3] = (d * np.where(outside[mask], alpha35[mask], 0.0)).sum(axis=0)
+            for j, a in enumerate(forms):
+                acc[:, 2 * j] = (d * a[mask]).sum(axis=0)
+                acc[:, 2 * j + 1] = (
+                    d * np.where(outside[mask], a[mask], 0.0)).sum(axis=0)
         out[cond] = acc.tolist()
     return out
 
@@ -260,6 +280,8 @@ def build_features(records, variant):
     pai_dwell = pai[:, :1]
     pai_periph = pai[:, 1:2]
     pai35_periph = pai[:, 3:4]
+    pai_spec_periph = pai[:, 5:6]
+    pai_specl_periph = pai[:, 7:8]
     x7 = np.array([[float(r.get(f, 0.0) or 0.0) for f in APPROACH_7]
                    for r in records])
     pos = positions.reshape(-1, 1)
@@ -280,10 +302,18 @@ def build_features(records, variant):
         return np.hstack([pos, dwell, pai_periph])
     if variant == "M2+Pp35":
         return np.hstack([pos, dwell, pai35_periph])
+    if variant == "M2+PpS":
+        return np.hstack([pos, dwell, pai_spec_periph])
+    if variant == "M2+PpSL":
+        return np.hstack([pos, dwell, pai_specl_periph])
     if variant == "M3-7":
         return np.hstack([pos, dwell, x7])
     if variant == "M3-7+Pp":
         return np.hstack([pos, dwell, x7, pai_periph])
+    if variant == "M3-7+PpS":
+        return np.hstack([pos, dwell, x7, pai_spec_periph])
+    if variant == "M3-7+PpSL":
+        return np.hstack([pos, dwell, x7, pai_specl_periph])
     if variant == "M4-7":
         return x7
     raise ValueError(variant)
@@ -500,8 +530,16 @@ def main():
         ("P1", "D1", "excision"),
         ("M2+Pp35", "M2", "buf500"),
         ("M2+Pp35", "M2", "excision"),
+        ("M2+PpS", "M2", "buf500"),
+        ("M2+PpS", "M2", "excision"),
+        ("M2+PpSL", "M2", "buf500"),
+        ("M2+PpSL", "M2", "excision"),
         ("M3-7+Pp", "M3-7", "buf500"),
         ("M3-7+Pp", "M3-7", "excision"),
+        ("M3-7+PpS", "M3-7", "buf500"),
+        ("M3-7+PpS", "M3-7", "excision"),
+        ("M3-7+PpSL", "M3-7", "buf500"),
+        ("M3-7+PpSL", "M3-7", "excision"),
     ]
     for va, vb, cond in comparisons:
         a, b, _ = paired_by_pid(grid[cond][va], grid[cond][vb])
@@ -512,18 +550,23 @@ def main():
               f"d_z={t['cohens_d_z']:+.2f} p={t['wilcoxon_p']:.1e}")
 
     # Leakage profile of the increment: (M2+Pp − M2) at buf500 vs the
-    # same increment under excision, per fold.
-    inc = {}
-    for cond in ("buf500", "excision"):
-        a, b, pids = paired_by_pid(grid[cond]["M2+Pp"], grid[cond]["M2"])
-        inc[cond] = {p: x - y for p, x, y in zip(pids, a, b)}
-    common = sorted(set(inc["buf500"]) & set(inc["excision"]))
-    t = paired_tests([inc["buf500"][p] for p in common],
-                     [inc["excision"][p] for p in common],
-                     "Pp increment (buf500)", "Pp increment (excision)")
-    paired.append(t)
-    print(f"  {t['comparison']:36s} dAUC={t['mean_delta_auc']:+.4f} "
-          f"p={t['wilcoxon_p']:.1e}")
+    # same increment under excision, per fold — for the exact form and
+    # both spec forms.
+    for pp_variant, tag in (("M2+Pp", "Pp"), ("M2+PpS", "PpS"),
+                            ("M2+PpSL", "PpSL")):
+        inc = {}
+        for cond in ("buf500", "excision"):
+            a, b, pids = paired_by_pid(grid[cond][pp_variant],
+                                       grid[cond]["M2"])
+            inc[cond] = {p: x - y for p, x, y in zip(pids, a, b)}
+        common = sorted(set(inc["buf500"]) & set(inc["excision"]))
+        t = paired_tests([inc["buf500"][p] for p in common],
+                         [inc["excision"][p] for p in common],
+                         f"{tag} increment (buf500)",
+                         f"{tag} increment (excision)")
+        paired.append(t)
+        print(f"  {t['comparison']:36s} dAUC={t['mean_delta_auc']:+.4f} "
+              f"p={t['wilcoxon_p']:.1e}")
 
     print("\n[5/5] writing outputs")
     out = {
@@ -542,6 +585,17 @@ def main():
                       "verified vs glias2poly_1920x1080.py)",
             "sensitivity_form": "alpha35 = clip(1 - OGD/max(CGD,1), 0, 1) "
                                 "(NB35 abstract-only form)",
+            "spec_forms": {
+                "spec_eq2": "clip(1 - sqrt((OGD_vertex/CGD) * "
+                            "min(1, A/A_max))) — manuscript Eq 2, "
+                            "pai_spec.rect_alpha_grid(weight_placement="
+                            "'eq2')",
+                "spec_listing": "clip(1 - sqrt(OGD_vertex/CGD) * "
+                                "min(1, A/A_max)) — Listing 1.1 placement",
+                "source": "authors' manuscript received 2026-08-31; "
+                          "scripts/pai_spec.py (verified by "
+                          "pai_spec_test.py)",
+            },
         },
         "coverage": cov,
         "descriptives": desc,

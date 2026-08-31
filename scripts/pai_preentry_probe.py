@@ -31,8 +31,14 @@ only; never-fixated slots have no entry_t and are excluded — also
 conservative, since those are slots where only PAI could score at all).
 Trials without a click are excluded (no pair to form).
 
-Both alpha forms: exact delivered-demo (sqrt + area weight) and NB35
-abstract-only (1 - OGD/CGD).
+Four alpha forms: exact delivered-demo (sqrt + inverse-area weight,
+boundary OGD), NB35 abstract-only (1 - OGD/CGD, boundary OGD), and the
+two spec-exact options from the authors' manuscript (received
+2026-08-31; `pai_spec.rect_alpha_grid`): vertex/corner OGD with
+min(1, A/A_ref) placed inside the sqrt (spec_eq2, the Eq. 2 form) or
+outside (spec_listing, the Listing 1.1 form). Peripheral gating stays
+rect-containment (boundary OGD > 0) for all four — the gate belongs to
+this probe's estimator, not to the alpha formula.
 
 Outputs:
   scripts/output/ablations/pai_preentry_probe.json
@@ -62,6 +68,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from data_loader import load_fixations  # noqa: E402
 from data_loader import _RESULT_COL_X_MIN, _RESULT_COL_X_MAX  # noqa: E402
 from compute_cursor_approach_features import build_hybrid_aois  # noqa: E402
+from pai_spec import rect_alpha_grid  # noqa: E402
 
 OUT_DIR = ROOT / "scripts/output/ablations"
 BUF500_FEATURES = ROOT / "AdSERP/data/cursor-approach-features-organic-hybrid-buf500.json"
@@ -72,12 +79,19 @@ P_LAMBDA = PHI ** 3
 N_BOOT = 5000
 RNG = np.random.default_rng(20260818)
 
+# (record key, form label) for the four alpha variants, in mass-tuple order.
+FORMS = (("pre_mass_ms", "exact"),
+         ("pre_mass35_ms", "nb35"),
+         ("pre_mass_spec_ms", "spec_eq2"),
+         ("pre_mass_specl_ms", "spec_listing"))
+
 
 def preentry_mass_for_trial(trial_id, entry_by_pos):
-    """Per-position pre-entry peripheral PAI mass (exact + NB35 forms).
+    """Per-position pre-entry peripheral PAI mass, all four alpha forms.
 
     entry_by_pos: {position: entry_t}. Returns {position: (mass_exact,
-    mass_35, window_ms)} or None if fixations/AOIs unavailable.
+    mass_35, mass_spec_eq2, mass_spec_listing, window_ms)} or None if
+    fixations/AOIs unavailable.
     """
     try:
         fixations = load_fixations(trial_id)
@@ -117,6 +131,10 @@ def preentry_mass_for_trial(trial_id, entry_by_pos):
     alpha = np.clip(1.0 - np.sqrt(ogd / np.maximum(cgd, 1.0)) * w_a[None, :],
                     0.0, 1.0)
     alpha35 = np.clip(1.0 - ogd / np.maximum(cgd, 1.0), 0.0, 1.0)
+    alpha_spec = rect_alpha_grid(fx, fy, x0, x1, a_top, a_bot,
+                                 weight_placement="eq2")
+    alpha_specl = rect_alpha_grid(fx, fy, x0, x1, a_top, a_bot,
+                                  weight_placement="listing")
     outside = ogd > 0.0
 
     out = {}
@@ -125,16 +143,21 @@ def preentry_mass_for_trial(trial_id, entry_by_pos):
             continue
         mask = ft < float(entry_t)
         d = fd[mask]
-        m = float((d * np.where(outside[mask, pos], alpha[mask, pos], 0.0)).sum())
-        m35 = float((d * np.where(outside[mask, pos], alpha35[mask, pos], 0.0)).sum())
-        out[pos] = (m, m35, float(entry_t) - t_start)
+        gate = outside[mask, pos]
+
+        def acc(a):
+            return float((d * np.where(gate, a[mask, pos], 0.0)).sum())
+
+        out[pos] = (acc(alpha), acc(alpha35), acc(alpha_spec),
+                    acc(alpha_specl), float(entry_t) - t_start)
     return out
 
 
 def shared_cutoff_masses(trial_id, t_star):
     """Peripheral PAI mass for EVERY AOI slot in the shared window
-    [trial start, t_star). Returns (mass_exact[], mass_35[], n_aoi,
-    n_fix_in_window) or None."""
+    [trial start, t_star). Returns (mass_exact[], mass_35[],
+    mass_spec_eq2[], mass_spec_listing[], n_aoi, n_fix_in_window) or
+    None."""
     try:
         fixations = load_fixations(trial_id)
     except Exception:
@@ -157,7 +180,8 @@ def shared_cutoff_masses(trial_id, t_star):
     ft = np.array([f["t"] for f in fixations], dtype=float)
     mask = ft < float(t_star)
     if not mask.any():
-        return ([0.0] * n_aoi, [0.0] * n_aoi, n_aoi, 0)
+        z = [0.0] * n_aoi
+        return (z, list(z), list(z), list(z), n_aoi, 0)
     fx = np.array([f["x"] for f in fixations], dtype=float)[mask]
     fy = np.array([f["y"] for f in fixations], dtype=float)[mask]
     fd = np.array([f.get("d", 200) or 200 for f in fixations],
@@ -175,11 +199,18 @@ def shared_cutoff_masses(trial_id, t_star):
     alpha = np.clip(1.0 - np.sqrt(ogd / np.maximum(cgd, 1.0)) * w_a[None, :],
                     0.0, 1.0)
     alpha35 = np.clip(1.0 - ogd / np.maximum(cgd, 1.0), 0.0, 1.0)
+    alpha_spec = rect_alpha_grid(fx, fy, x0, x1, a_top, a_bot,
+                                 weight_placement="eq2")
+    alpha_specl = rect_alpha_grid(fx, fy, x0, x1, a_top, a_bot,
+                                  weight_placement="listing")
     outside = ogd > 0.0
     d = fd[:, None]
-    m = (d * np.where(outside, alpha, 0.0)).sum(axis=0)
-    m35 = (d * np.where(outside, alpha35, 0.0)).sum(axis=0)
-    return (m.tolist(), m35.tolist(), n_aoi, int(mask.sum()))
+
+    def acc(a):
+        return (d * np.where(outside, a, 0.0)).sum(axis=0).tolist()
+
+    return (acc(alpha), acc(alpha35), acc(alpha_spec), acc(alpha_specl),
+            n_aoi, int(mask.sum()))
 
 
 def paired_stats(diffs, label):
@@ -237,11 +268,12 @@ def main():
             p = r["position"]
             if p not in res:
                 continue
-            m, m35, win = res[p]
+            m, m35, msp, mspl, win = res[p]
             rows_out.append({
                 "trial_id": tid, "position": p,
                 "was_clicked": int(r["was_clicked"]),
                 "pre_mass_ms": m, "pre_mass35_ms": m35,
+                "pre_mass_spec_ms": msp, "pre_mass_specl_ms": mspl,
                 "window_ms": win,
             })
     print(f"  {len(rows_out):,} records ({n_fail} trials failed loading)")
@@ -282,7 +314,7 @@ def main():
         return c[k] - float(np.mean([r[k] for r in adj]))
 
     tests = []
-    for mass_key, form in (("pre_mass_ms", "exact"), ("pre_mass35_ms", "nb35")):
+    for mass_key, form in FORMS:
         tests.append(paired_stats(collect(raw_pair, mass_key),
                                   f"raw clicked - mean(non-clicked) [{form}]"))
         tests.append(paired_stats(collect(rate_pair, mass_key),
@@ -306,7 +338,7 @@ def main():
     # ── Single-feature AUC (binary floor is exactly 0.5) ──
     y = np.array([r["was_clicked"] for r in rows_out])
     aucs = {}
-    for mass_key, form in (("pre_mass_ms", "exact"), ("pre_mass35_ms", "nb35")):
+    for mass_key, form in FORMS:
         x = np.array([r[mass_key] for r in rows_out], dtype=float)
         aucs[form] = float(roc_auc_score(y, x))
         # per-participant AUC distribution
@@ -346,7 +378,7 @@ def main():
     #    unfixated peers the clicked result beats on peripheral mass
     #    (ties = 0.5); one-sample vs 0.5. ──
     print("\n  Probe B: shared-cutoff (t* = clicked entry), unfixated slots only")
-    scores, scores35 = [], []
+    b_scores = {form: [] for _, form in FORMS}
     n_no_prior_fix = 0
     n_no_peers = 0
     peer_counts = []
@@ -359,7 +391,7 @@ def main():
         res = shared_cutoff_masses(tid, t_star)
         if res is None:
             continue
-        m, m35, n_aoi, n_fix = res
+        *masses, n_aoi, n_fix = res
         if n_fix == 0:
             n_no_prior_fix += 1
             continue
@@ -379,11 +411,11 @@ def main():
             ties = sum(1 for p in peers if vals[p] == c)
             return (less + 0.5 * ties) / len(peers)
 
-        scores.append(score(m))
-        scores35.append(score(m35))
+        for (_, form), vals in zip(FORMS, masses):
+            b_scores[form].append(score(vals))
 
     probe_b = {}
-    for label, ss in (("exact", scores), ("nb35", scores35)):
+    for label, ss in ((form, b_scores[form]) for _, form in FORMS):
         ss = np.asarray(ss, dtype=float)
         boot = np.array([np.mean(ss[RNG.integers(0, len(ss), size=len(ss))])
                          for _ in range(N_BOOT)])
@@ -426,8 +458,8 @@ def main():
     #    is nearest the trial's median entry (deterministic, seeded RNG
     #    unused), excluding the clicked result. ──
     print("\n  Probe C: same score for a non-clicked fixated result at its own t*")
-    c_scores, c_scores35 = [], []
-    b_paired, b_paired35 = [], []
+    c_scores = {form: [] for _, form in FORMS}
+    b_paired = {form: [] for _, form in FORMS}
     for i, (tid, rows) in enumerate(sorted(clicked_trials.items())):
         if (i + 1) % 400 == 0:
             print(f"  C {i + 1}/{len(clicked_trials)}", file=sys.stderr)
@@ -444,7 +476,7 @@ def main():
             res = shared_cutoff_masses(tid, t_star)
             if res is None:
                 return None
-            m, m35, n_aoi, n_fix = res
+            *masses, n_aoi, n_fix = res
             if n_fix == 0 or target_pos >= n_aoi:
                 return None
             peers = [p for p in range(n_aoi)
@@ -458,20 +490,19 @@ def main():
                 less = sum(1 for p in peers if vals[p] < c)
                 ties = sum(1 for p in peers if vals[p] == c)
                 return (less + 0.5 * ties) / len(peers)
-            return s(m), s(m35)
+            return tuple(s(vals) for vals in masses)
 
         sc = score_at(ctrl["position"], float(ctrl["entry_t"]))
         sb = score_at(clk["position"], float(clk["entry_t"]))
         if sc is None or sb is None:
             continue
-        c_scores.append(sc[0])
-        c_scores35.append(sc[1])
-        b_paired.append(sb[0])
-        b_paired35.append(sb[1])
+        for j, (_, form) in enumerate(FORMS):
+            c_scores[form].append(sc[j])
+            b_paired[form].append(sb[j])
 
     probe_c = {}
-    for label, cs, bs in (("exact", c_scores, b_paired),
-                          ("nb35", c_scores35, b_paired35)):
+    for label, cs, bs in ((form, c_scores[form], b_paired[form])
+                          for _, form in FORMS):
         cs = np.asarray(cs, dtype=float)
         bs = np.asarray(bs, dtype=float)
         diffs = bs - cs
@@ -512,6 +543,15 @@ def main():
                      "PAI mass than non-clicked neighbors before its first "
                      "fixation? Binary point-in-AOI dwell is identically 0 "
                      "in this window (AUC floor = 0.5 by construction)."),
+        "alpha_forms": {
+            "exact": "delivered-demo: clip(1 - sqrt(OGD_boundary/max(CGD,1)) "
+                     "* (A_max/A)^lambda), lambda = phi^3",
+            "nb35": "abstract-only: clip(1 - OGD_boundary/max(CGD,1))",
+            "spec_eq2": "manuscript Eq 2 via pai_spec.rect_alpha_grid: "
+                        "clip(1 - sqrt((OGD_vertex/CGD) * min(1, A/A_max)))",
+            "spec_listing": "manuscript Listing 1.1 weight placement: "
+                            "clip(1 - sqrt(OGD_vertex/CGD) * min(1, A/A_max))",
+        },
         "n_trials": len(per_trial),
         "n_records": len(rows_out),
         "paired_tests": tests,

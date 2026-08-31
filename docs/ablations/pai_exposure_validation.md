@@ -198,3 +198,44 @@ largest. The right claim for the ETRA short paper: *binary AOI metrics
 miss peripheral exposure entirely; PAI recovers it, and that recovered
 component is predictive precisely in the leakage-robust, pre-decision
 regime.*
+
+## Addendum 2026-08-31 — spec-exact re-derivation (track worklist item 0)
+
+The authors' manuscript arrived 2026-08-31; `scripts/pai_spec.py` is the
+spec-exact implementation (verified by `scripts/pai_spec_test.py`), and
+both producers now compute **four** alpha forms: `exact` (delivered-demo),
+`nb35` (abstract-only), `spec_eq2` (manuscript Eq. 2: vertex OGD,
+min(1, A/A_max) inside the sqrt), `spec_listing` (Listing 1.1: weight
+outside the sqrt). Pre-spec outputs are preserved as
+`*-prespec-20260831.*`. Peripheral gating stays rect-containment for all
+four; the gate belongs to this harness, not to the alpha.
+
+**The model-level verdict survives and strengthens under the authors'
+definition.** Over M2, the spec-eq2 peripheral increment is +0.019
+buf500 / **+0.032 excision** (exact form: +0.006 / +0.016); over the full
+7-feature cursor model, +0.0052 / **+0.0156** (exact: +0.0042 / +0.0107).
+Increment growth under excision — the anticipation-not-leakage signature —
+is stronger for both spec forms (p ≈ 7e-07 vs 1.3e-04 for exact). The two
+spec options (eq2 vs listing weight placement) agree to ~0.001–0.002 AUC
+everywhere; the D2 ambiguity does not matter at the model level.
+
+**The probe-B/C rank headline does NOT survive — it reverses sign.**
+Under the spec forms the clicked result beats only **43.2%** (eq2) /
+**37.1%** (listing) of its still-unfixated peers at shared cutoff
+(exact: 91.3%, nb35: 95.6%), and the click-specific delta vs the
+next-foveated control flips to −12.5 / −13.8 points (p ≈ 1e-34).
+Mechanism: the demo kernel's weight (A_max/A)^0.236 ≥ 1 *suppresses*
+small AOIs, while the published weight min(1, A/A_max) ≤ 1 *boosts* them
+(the paper's stated intent — small objects shouldn't vanish). A
+within-trial rank over AOIs is dominated by that weight direction, and
+clicked results sit in larger-than-median AOIs. The 86–96%-vs-chance
+poster claim (and its bar-triple figure) is therefore a property of the
+demo kernel, not of PAI as published — retired as a PAI claim; it may
+only be described as a demo-kernel observation with the kernel named.
+
+**Kernel-sensitivity rule (worklist item 4, now hard policy).** No number
+from this file or `pai_preentry_probe.json` may be quoted without naming
+its kernel (`exact` / `nb35` / `spec_eq2` / `spec_listing`). The
+rank-space statistics reverse sign between the demo and published
+kernels; sign-free model increments do not. Any claim written as "PAI"
+with no qualifier means `spec_eq2` (the authors' Eq. 2) from here on.

@@ -11,9 +11,13 @@ ETTAC 2026 session to look over ahead of Lyon.
 **Sources:**
 - PAI method: Duchowski, Gehrer & Svaldi, *Peripheral Attention Index (PAI):
   Area-Weighted Distal Polygonal Areas Of Interest*, to appear, ETTAC 2026
-  (ICPR 2026 Workshops, Lyon). Implementation in NB35 is derived from the
-  published abstract only — proceedings not yet available to check against;
-  documented assumptions and open questions are in the notebook header.
+  (ICPR 2026 Workshops, Lyon). A spec-exact implementation from the authors'
+  manuscript (received 2026-08-31) now lives at
+  [`scripts/pai_spec.py`](../scripts/pai_spec.py), verified by
+  `scripts/pai_spec_test.py`; it supersedes NB35's abstract-derived variant.
+  The manuscript's equations and its Listing 1.1 differ in a few places
+  (centroid definition, area-weight placement); the module exposes both as
+  options, and the specifics have been raised with the authors directly.
 - Corpus: AdSERP (Latifzadeh, Gwizdka & Leiva, SIGIR 2025; Zenodo 15236546).
 - AOI geometry: AllSERP (arXiv:2605.04949).
 

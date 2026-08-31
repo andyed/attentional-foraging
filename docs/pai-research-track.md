@@ -25,27 +25,35 @@ Producers: `scripts/pai_exposure_ablation.py`, `scripts/pai_preentry_probe.py`,
 `scripts/output/ablations/pai_*`. All numbers 2026-08-31,
 `[LAB, AdSERP, organic_hybrid, buf500/excision]`.
 
-1. **Pre-foveation anticipation.** At the moment the clicked result is first
-   fixated, its accumulated peripheral exposure mass already ranks it above
-   **91.3 %** (exact-AOI) / **95.6 %** (nb35 skirt) of still-unfixated peers
-   (d_z = 2.27 / 3.78). Click-specific: +4.5 / +2.8 pts over the
-   next-foveated non-clicked control at its own entry (p ≈ 10⁻²⁰) — this is
-   not merely "about to be looked at."
-2. **Anticipation, not leakage.** PAI's click-prediction increment *grows*
-   when the committed approach is excised: over position+dwell +0.006 →
-   **+0.016** (p = 3.9×10⁻⁵); over the full 7-feature cursor model +0.004 →
-   **+0.011** (p = 4.4×10⁻⁶); increment growth itself p = 1.3×10⁻⁴. Every
-   commitment-loaded channel moves the other way.
+1. **Anticipation, not leakage — restated under the spec 2026-08-31 and
+   STRONGER.** The peripheral-mass click-prediction increment *grows* when
+   the committed approach is excised, and the spec-eq2 kernel carries more
+   of it than the demo kernel: over position+dwell, spec-eq2 +0.019 →
+   **+0.032** (exact: +0.006 → +0.016); over the full 7-feature cursor
+   model, spec-eq2 +0.0052 → **+0.0156** (exact: +0.0042 → +0.0107);
+   increment-growth p ≈ 7×10⁻⁷ (spec) vs 1.3×10⁻⁴ (exact). The two spec
+   options (Eq-2 vs Listing-1.1 weight placement) agree to ≲0.002 AUC —
+   the manuscript's D2 ambiguity is immaterial at the model level.
+2. **The pre-entry rank headline was kernel-direction-dependent and is
+   RETIRED as a PAI claim.** Under the authors' Eq. 2 the clicked result
+   beats only **43.2 %** (spec_eq2) / **37.1 %** (spec_listing) of
+   still-unfixated peers — the demo kernel's 91.3/95.6 % reversed sign,
+   and the click-specific delta flips to −12.5/−13.8 pts. Mechanism: the
+   demo weight (A_max/A)^0.236 suppresses small AOIs; the published
+   min(1, A/A_max) boosts them, and within-trial rank is dominated by
+   that direction. The information is still there (model AUC increments
+   above are *larger* under spec) — but the sign story belongs to the
+   kernel, not the periphery. Full analysis:
+   `docs/ablations/pai_exposure_validation.md` §Addendum 2026-08-31.
 3. **Load-bearing within gaze models.** Removing the peripheral skirt from
    position+dwell costs −0.043 AUC intact / −0.027 under excision
-   (d_z ≈ −1.3).
-4. **Kernel sensitivity is real**: exact-AOI vs the nb35 skirt give
-   materially different pre-entry numbers (91.3 vs 95.6; probe-A AUC 0.52
-   vs 0.42). **Caveat on every number above:** the producers ran the
-   `exact`/`nb35` variants, which predate the spec-exact `pai_spec.py`
-   (received 2026-08-31). Nothing here is quotable as "PAI" per the
-   authors' definition until re-derived through the spec module (see
-   worklist item 0).
+   (d_z ≈ −1.3). [exact kernel; not re-derived — the spec analog is the
+   M2+PpS − M2 increment above.]
+4. **Kernel naming is hard policy.** Every quoted number names its kernel
+   (`exact` / `nb35` / `spec_eq2` / `spec_listing`); bare "PAI" means
+   `spec_eq2`. Rank-space statistics reverse sign between demo and
+   published kernels; sign-free model increments do not. Pre-spec outputs
+   preserved as `scripts/output/ablations/*-prespec-20260831.*`.
 
 ## Broader questions (beyond Leaky Cursor)
 
@@ -102,13 +110,17 @@ Producers: `scripts/pai_exposure_ablation.py`, `scripts/pai_preentry_probe.py`,
 
 ## Near-term worklist
 
-0. **Spec-exact re-derivation (blocks quoting anything).** Wire
-   `pai_spec.py` into `pai_preentry_probe.py` and `pai_exposure_ablation.py`
-   as a third mass variant; re-derive the pre-entry and excision-increment
-   numbers under both spec options. Only then do the §established numbers
-   get restated as PAI proper.
-1. Q1 comparison: spec-exact vs exact vs nb35 on the probe harness; then
-   draft the CM-weighted proposal for the authors.
+0. ~~Spec-exact re-derivation~~ **DONE 2026-08-31.** Both producers carry
+   all four kernels; §established rewritten from the spec runs. Outcome:
+   model-level claims strengthened, pre-entry rank claim retired
+   (sign flip — see §established 2 and the validation addendum).
+1. Q1 comparison: ~~spec vs exact vs nb35 on the probe harness~~ done as
+   part of item 0 (the four-kernel probe/ablation runs ARE the
+   comparison). Remaining: draft the CM-weighted proposal for the
+   authors — now with the sharpened framing that the area-weight
+   *direction* dominates within-page rank, which is precisely the slot a
+   cortical-magnification-grounded weight would fill on principled
+   grounds instead of convention.
 2. Q3 per-etype PAI decomposition (cheap: the exposure producer already
    walks per-record etype).
 3. Anticipation-horizon curve (Q2): pre-entry mass as a function of time
