@@ -1,0 +1,13 @@
+{
+  "substrate": "AllSERP v1.1.0 (post card-collision fix)",
+  "branch": "release/allserp-v1.1.0",
+  "substrate_commit": "ab657a63",
+  "typed_maps_content_hash": "2cb789eb8febd234",
+  "hash_method": "sha256 over sorted(data/aoi-typed/p*.json), updating basename bytes then file bytes per file; first 16 hex chars of the digest",
+  "n_trial_maps": 2776,
+  "exclusion_list": "alignment-exclusions.json",
+  "n_excluded": 12,
+  "corpus_trials": 2764,
+  "generated": "2026-08-30",
+  "note": "Consumers pin substrate identity by (branch, substrate_commit, typed_maps_content_hash) and must re-read the exclusion list — membership changed from the earlier 14-trial list on 2026-08-30 (+p018-b3-t1, net 12)."
+}
