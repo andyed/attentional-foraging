@@ -4,14 +4,14 @@
     "dataset_sha256": "e8088c070b955bd3d37dc17420966960c020c963110bc434e5411ce9bee360e5",
     "figure_version": "four-grade-distinct-gaze-labels",
     "h_ids": [],
-    "muriel_version": "0.6.0",
+    "muriel_version": "0.14.0",
     "nb_k_ids": [],
     "notes": "4-grade vs 3-grade LTR comparison; label-source=gaze (gaze regression ground truth (LAB))",
-    "run_utc": "2026-08-31T01:27:47+00:00",
+    "run_utc": "2026-08-31T13:18:56+00:00",
     "schema_version": 1,
     "script_dirty": false,
     "script_path": "/Users/andyed/Documents/dev/attentional-foraging/scripts/ltr_typed_four_distinct_grades.py",
-    "script_sha": "44935f57"
+    "script_sha": "ceb95cb0"
   },
   "dataset": {
     "class_distribution": {
