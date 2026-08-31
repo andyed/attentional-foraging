@@ -41,3 +41,32 @@ feature file** (env new, features old ⇒ isolates the env term), then on
 post-conversion features with the pre-collision-fix maps (isolates the
 substrate term). Until then, treat "the graded lift shrank because the
 features got better" as hypothesis, not finding.
+
+### First result — the §4.1 headline (2026-08-31)
+
+Run on `organic_hybrid` buf500 via the canonical harness
+(`constant_ablation_common.m4_loso_eval_both`), pinned env:
+
+| term | M4-7 AUC | M4-9 AUC | M1 (position) | n_clicks |
+|---|---|---|---|---|
+| published anchor | 0.847 | 0.8671 | 0.668 | 2,589 |
+| stale features + pinned env (**env term**) | **0.8468** | **0.8671** | 0.6679 | 2,589 |
+| converted features + pinned env (**coord term**) | **0.9040** | **0.9159** | 0.6642 | **2,751** |
+
+- **Environment term ≈ 0** for the LR headline (anchors reproduce to
+  ±0.0002). NB26's drift is a LightGBM/labeled-subset phenomenon, not
+  universal.
+- **Coordinate term = +0.057 AUC** on M4-7 — and it is not pure feature
+  drift: the conversion re-attributes clicks (**2,589 → 2,751 clicked
+  records, +6.3%**), so part of the gain is *label correction*. Every
+  record's `min_dist`/`mean_dist` changed; `total_dwell_ms` (time-only)
+  changed in none.
+- **The §4.1 story strengthens**: M4 − M1 gap +0.179 → **+0.240**.
+  Direction opposite to §4.6's graded-lift shrinkage, same mechanism —
+  clean geometry helps cursor features and click labels, does nothing for
+  the position baseline.
+- The `CANONICAL_M4_AUC = 0.847` / `CANONICAL_M4_9_AUC = 0.8671` anchors in
+  `constant_ablation_common.py` (and the sampling-rate ablation's anchor)
+  now describe the **stale** substrate. Re-anchoring is a deliberate act:
+  update them when the converted numbers are adopted as canonical, and
+  re-run the constant sweeps + sampling ablation against the new anchor.
