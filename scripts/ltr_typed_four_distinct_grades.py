@@ -41,8 +41,13 @@ from sklearn.metrics import ndcg_score
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
-sys.path.insert(0, '/Users/andyed/Documents/dev/muriel')  # package root; the ~/.claude/skills/muriel symlink points at the plugin skill dir since 2026-08-07
-from muriel.provenance import stamp_json  # noqa: E402
+# muriel is imported lazily, at the stamp call, not here. Other scripts import
+# this module for its canonical protocol constants (APPROACH_THRESHOLD_PX,
+# M4_CANONICAL, M3_NO_POS); a module-level import would make every one of them
+# hard-depend on muriel being installed, which is what forced a copy-paste fork
+# of those constants in nonclicked_absorption_check.py. Stamping still fails
+# loudly if muriel is missing when this script actually runs — an unstamped
+# artifact is not an acceptable degradation.
 
 ROOT = Path('/Users/andyed/Documents/dev/attentional-foraging')
 FEAT = ROOT / 'AdSERP/data/cursor-approach-features-typed.json'
@@ -411,6 +416,8 @@ def main():
     }
 
     out_path = OUT / f'summary_{args.label_source}_buf{args.click_buffer_ms}.json'
+    from muriel.provenance import stamp_json  # lazy: see note at the imports
+
     stamp_json(
         summary, out_path,
         script=__file__,
