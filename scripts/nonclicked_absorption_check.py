@@ -59,16 +59,15 @@ sys.path.insert(0, str(ROOT / "scripts"))
 # mirror of scripts/paper_stat_tests.py).
 from approach_truncation_ablation import paired_tests  # noqa: E402
 
-# The helpers below are copied VERBATIM from
-# scripts/ltr_typed_four_distinct_grades.py (importing that module pulls
-# in `muriel.provenance` from a skills path that is not importable in
-# this environment; copying keeps this script new-file-only without
-# touching the original). Protocol identity is by construction.
-APPROACH_THRESHOLD_PX = 100.0
-M4_CANONICAL = ['min_dist', 'mean_dist',
-                'dwell_in_proximity_ms', 'mean_approach_velocity',
-                'max_approach_velocity', 'direction_changes', 'frac_decreasing']
-M3_NO_POS = ['total_dwell_ms'] + M4_CANONICAL
+# Protocol constants come from the canonical producer, not a copy. They were
+# duplicated here because importing that module pulled in `muriel.provenance`
+# through a skills path that stopped being importable on 2026-08-07; that is
+# fixed (muriel is installed, and the path hack points at the package root), so
+# the copy is retired. Copies of protocol constants do not announce their drift
+# — they produce a different number in a paper.
+from ltr_typed_four_distinct_grades import (  # noqa: E402
+    APPROACH_THRESHOLD_PX, M3_NO_POS, M4_CANONICAL,
+)
 
 
 def contiguous_group_sizes(tid_arr):

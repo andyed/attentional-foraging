@@ -55,32 +55,12 @@ def deposit_gaussian_max(grid: np.ndarray, fx: float, fy: float, value: float):
     grid[y0:y1, x0:x1] = np.maximum(grid[y0:y1, x0:x1], value * weight)
 
 
-def apply_pink_colormap(density_arr: np.ndarray) -> np.ndarray:
-    """muriel pink colormap: light pink → hot pink → deep magenta.
-    Lifted from muriel.typeset.render_heatmap, applied to a normalized
-    density array and returns RGBA uint8 of shape (h, w, 4)."""
-    h, w = density_arr.shape
-    rgba = np.zeros((h, w, 4), dtype=np.uint8)
-    d_gamma = density_arr ** 0.7
-    for c in range(3):
-        low = [255, 210, 240][c]
-        mid = [230, 60, 140][c]
-        high = [180, 20, 80][c]
-        rgba[:, :, c] = np.where(
-            density_arr > 0.01,
-            np.where(
-                d_gamma < 0.5,
-                (low + (mid - low) * d_gamma * 2).astype(np.uint8),
-                (mid + (high - mid) * (d_gamma - 0.5) * 2).astype(np.uint8),
-            ),
-            0,
-        )
-    rgba[:, :, 3] = np.where(
-        density_arr > 0.01,
-        np.minimum(240, (d_gamma * 300).astype(np.uint16)).astype(np.uint8),
-        0,
-    )
-    return rgba
+# The pink ramp now lives upstream as muriel.typeset.pink_colormap. It was
+# hand-extracted here while muriel had no importable colormap and the
+# package was not installed; a hand copy of a color ramp drifts silently —
+# the figures just stop matching. Import keeps this figure and every muriel
+# heatmap on one implementation.
+from muriel.typeset import pink_colormap as apply_pink_colormap  # noqa: E402
 
 
 def contour_band(density_arr: np.ndarray, n_bands: int = N_BANDS,
