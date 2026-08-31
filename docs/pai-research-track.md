@@ -1,9 +1,21 @@
 # PAI research track — peripheral attention index
 
-Status doc, started 2026-08-31. Decision (Andy): PAI is a first-class
+Status doc, started 2026-08-31. Decision (Andy): PAI work is a first-class
 research thread in this repo, not a support figure for the Leaky Cursor
 CHIIR resubmission and not necessarily the CHI LBW poster. Seek insights
 broader than click prediction.
+
+**Attribution — read first.** PAI is **Duchowski, Gehrer & Svaldi's
+method** (*Peripheral Attention Index (PAI): Area-Weighted Distal Polygonal
+Areas Of Interest*, to appear, ETTAC 2026 / ICPR Workshops, Lyon). This
+repo's role is application and validation on AdSERP (the census notebooks
+NB33–NB35, `docs/pai-census-note.md`, posted for the ETTAC session) plus a
+**spec-exact implementation** from the authors' manuscript (received
+2026-08-31): `scripts/pai_spec.py`, verified by `scripts/pai_spec_test.py`.
+It supersedes NB35's abstract-derived variant; manuscript-equation vs
+Listing-1.1 discrepancies are exposed as options and have been raised with
+the authors. Extensions to the method are joint-work territory, not solo
+contributions.
 
 ## What is established (all on the converted substrate, pinned env)
 
@@ -27,22 +39,25 @@ Producers: `scripts/pai_exposure_ablation.py`, `scripts/pai_preentry_probe.py`,
 3. **Load-bearing within gaze models.** Removing the peripheral skirt from
    position+dwell costs −0.043 AUC intact / −0.027 under excision
    (d_z ≈ −1.3).
-4. **Kernel sensitivity is real and unexplained**: exact-AOI vs the ad-hoc
-   nb35 skirt give materially different pre-entry numbers (91.3 vs 95.6;
-   probe-A AUC 0.52 vs 0.42). The kernel is currently a convenience, not a
-   theory. This is the biggest open methods question and the biggest
-   opportunity (see Q1).
+4. **Kernel sensitivity is real**: exact-AOI vs the nb35 skirt give
+   materially different pre-entry numbers (91.3 vs 95.6; probe-A AUC 0.52
+   vs 0.42). **Caveat on every number above:** the producers ran the
+   `exact`/`nb35` variants, which predate the spec-exact `pai_spec.py`
+   (received 2026-08-31). Nothing here is quotable as "PAI" per the
+   authors' definition until re-derived through the spec module (see
+   worklist item 0).
 
 ## Broader questions (beyond Leaky Cursor)
 
-- **Q1 — A principled kernel from cortical magnification.** Replace the
-  ad-hoc skirt with an eccentricity-weighted membership function derived
-  from acuity falloff / cortical magnification (the Scrutinizer machinery
-  is literally this). Prediction: a CM-weighted PAI beats both current
-  kernels and turns "soft AOI membership" from a hack into a
-  vision-science-grounded measurement. This is the methodological
-  contribution with reach beyond SERPs (ETRA-shaped; also the natural
-  Duchowski collaboration surface — settle authorship before it ships).
+- **Q1 — Kernel comparison under the spec, then the CM proposal.** First,
+  three-way comparison on the probe harness: spec-exact `pai_spec.py`
+  (both manuscript and Listing-1.1 options) vs the exact/nb35 variants —
+  does the authors' area-weighted distal-polygon design close or widen the
+  91.3-vs-95.6 gap? Then, as a **proposed joint extension with the
+  authors**: an eccentricity/cortical-magnification-weighted membership
+  function (the Scrutinizer machinery is literally this) as a
+  vision-science-grounded refinement of the distal weighting. Duchowski is
+  the natural co-author, not a courtesy — it's his method.
 - **Q2 — Anticipation horizon and dynamics.** How long before first entry
   does the clicked item's peripheral mass separate from peers? Rise shape,
   decay after retreat, relation to saccade landing-site selection. Connects
@@ -79,16 +94,21 @@ Producers: `scripts/pai_exposure_ablation.py`, `scripts/pai_preentry_probe.py`,
 - **CHI LBW poster**: optional, no longer load-bearing. If it ships, it is
   the descriptive/outreach vehicle and cites whatever the PAI track
   publishes, not the reverse.
-- **Venue for the construct itself**: ETRA-shaped (kernel methodology +
-  validation) or a vision-science venue if Q1 lands. Not decided.
+- **Venue**: the construct belongs to the ETTAC 2026 paper (Duchowski et
+  al.). AF's census/validation work and any CM extension are ETRA-shaped —
+  scoped and authored with the method's authors. Not decided.
 - **RIPA2/Gavindya track stays separate and embargoed** — any Q5 pupil
   crossover uses LF/HF only until that clears.
 
 ## Near-term worklist
 
-1. Q1 prototype: CM-weighted kernel, same probe harness, three-way kernel
-   comparison (exact / nb35 / CM) on the pre-entry probe and the excision
-   increment.
+0. **Spec-exact re-derivation (blocks quoting anything).** Wire
+   `pai_spec.py` into `pai_preentry_probe.py` and `pai_exposure_ablation.py`
+   as a third mass variant; re-derive the pre-entry and excision-increment
+   numbers under both spec options. Only then do the §established numbers
+   get restated as PAI proper.
+1. Q1 comparison: spec-exact vs exact vs nb35 on the probe harness; then
+   draft the CM-weighted proposal for the authors.
 2. Q3 per-etype PAI decomposition (cheap: the exposure producer already
    walks per-record etype).
 3. Anticipation-horizon curve (Q2): pre-entry mass as a function of time
