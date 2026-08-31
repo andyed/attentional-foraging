@@ -48,6 +48,35 @@ statement). Everything pupil/gaze-side holds by construction, consistent
 with the typed-cascade revisit's conclusion that substrate hygiene moves
 measurement quality, not the cognitive findings.
 
+## Re-run results (2026-08-31, later the same day)
+
+All four flagged re-runs completed in the pinned env:
+
+- **Rung-4 hybrid label: SURVIVES the environment.** R4f reproduces at
+  **+0.1414 MRR (p ≈ 0)** on byte-identical April absolute inputs (published
+  +0.143); R4g linear-gain +0.1116. The 10-grade null stays null (R4e
+  −0.0267, p = 0.98). Env-robust, unlike NB26-K4. Citable under
+  `[absolute, legacy]`; typed-substrate port still required before it can
+  headline anywhere.
+- **bbox-y-coverage audits, screenshot space: contamination collapses
+  22.7 % → 3.91 %** of `approached & clicked` (94 records / 2,406). dd_right
+  capture: 103 final clicks (3.71 % of clicks; 11.96 % of dd_right-present
+  trials). The coordinate conversion resolves the bulk of what
+  `typed_gapfill` was invented to mop up; gapfill's role is now the ~4 %
+  residual (off-axis and gap clicks), not a 23 % patch. AllSERP v4's data
+  statement should be rewritten around this (audit variants run with
+  `space='screenshot'`; repo scripts still default to document space — a
+  follow-up should add a `--space` flag rather than leave the meaning
+  ambiguous).
+- **Click-buffer grid regenerated** (`paper-output/click_buffer_ablation.json`):
+  M4-7 = 0.905/0.905/0.904/0.896 across buf 0/200/500/1000 — the M2 anchor
+  source is healed and the §4.4 buffer-insensitivity story is cleaner.
+- **Exposure + PAI paired stats unblocked** (anchor OK at 0.8194): hover
+  drop 0.209; geometry drop +0.142 (d_z = 3.22); bands-alone hold 0.596
+  under excision. PAI increment over M2: +0.006 → **+0.016 under excision
+  (p = 3.9×10⁻⁵)**; over full geometry: +0.004 → **+0.011 (p = 4.4×10⁻⁶)**;
+  increment-growth itself p = 1.3×10⁻⁴.
+
 ## PAI refresh (same pass, positive-side)
 
 `pai_preentry_probe.py` re-run on converted substrate: the anticipation
