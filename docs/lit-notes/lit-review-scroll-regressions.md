@@ -61,11 +61,20 @@ Dumais, S. T., Buscher, G., & Cutrell, E. (2010). Individual differences in gaze
 
 **Gap your work fills:** Their clustering is descriptive (k=3) and offline; AdSERP gives you per-(trial, position) labels and the raw fixation stream so the strategy distinction can be operationalised at the *trial* level rather than per-participant. The Economic-Ads cluster anticipates the ad-focused / ad-ignorer distinction in your AdSERP analysis but doesn't model regression at all.
 
-### 7. eyeScrollR — Mapping Eye Tracking on Scrollable Pages (BRM 2024)
+### 7. Larigaldie, Dreneva & Orquin — eyeScrollR (BRM 2024)
 
-eyeScrollR: A software method for reproducible mapping of eye-tracking data from scrollable web pages. Behavior Research Methods (2024).
+Larigaldie, N., Dreneva, A., & Orquin, J. L. (2024). eyeScrollR: A software method for reproducible
+mapping of eye-tracking data from scrollable web pages. *Behavior Research Methods, 56*(4),
+3380–3395. DOI: [10.3758/s13428-024-02343-1](https://doi.org/10.3758/s13428-024-02343-1).
 
-**Why it matters:** Addresses exactly the coordinate mapping problem you struggled with — remapping eye-tracking gaze coordinates to full-page coordinates using scroll data. Their deterministic algorithm is what the AdSERP importer does. Cite for methodological grounding of the scroll-correction approach.
+**Why it matters:** Provides a deterministic screen-to-page mapping based on synchronized scroll
+input. More importantly for the AdSERP audit, the paper explicitly warns that applying page mapping
+before fixation/saccade inference can turn stationary gaze during scrolling into apparent saccades.
+
+**Claim boundary:** This is direct prior art for the failure mode, so AllSERP should not claim to have
+invented scroll correction. Its contribution is the consumer-facing rule for already page-mapped
+fixations and the quantified effect on a substantive saccade-direction result. Dedicated review:
+[`scroll-compensation-gaze-kinematics.md`](scroll-compensation-gaze-kinematics.md).
 
 ### 8. Shi, Jayawardena & Gwizdka — LHIPA Pupillometry (CHIIR 2025)
 
@@ -161,7 +170,7 @@ For the full attentional-foraging findings paper (if written):
 | **Azzopardi & Maxwell (IFT stopping models)** | Model SERP-level stopping decisions | Single-pass assumption — don't model within-page re-evaluation. Our regressions break this. |
 | **Liu et al. CIKM 2014** | Two-stage model: skim → read | Needs a third stage: **re-evaluate**. Our confirmation/rejection split on revisit characterizes it. |
 | **RecGaze, SIGIR 2025** | Carousel analog — horizontal scroll regressions | Same behavioral pattern in a different UI paradigm. Cross-validates. |
-| **eyeScrollR, BRM 2024** | Validates scroll-correction methodology for eye tracking | Confirms our approach to coordinate correction. |
+| **eyeScrollR, BRM 2024** | Reproducible screen-to-page mapping; explicit false-saccade warning | Direct prior art for the failure mode; AllSERP adds a conservative rule for page-mapped fixations and quantifies its consequence. |
 | **Chuklin et al. (click models)** | Assume monotonic examination (top-to-bottom, single pass) | Our data breaks monotonic assumption — 69% of trials are non-monotonic. |
 | **Arapakis & Leiva SIGIR 2016** | 638 cursor features, AUC 0.86 for attention prediction | Aggregate features; we decompose into episodes with geometric properties (arc ratio, Fitts' ID) |
 | **Guo & Agichtein WWW 2012** | Post-click cursor features predict relevance | Post-click; we capture pre-click evaluation phase (approach-retreat) |
@@ -191,7 +200,7 @@ Sources:
 - [Liu et al. CIKM 2014 — Two-Stage Examination](http://www.thuir.cn/group/~YQLiu/publications/cikm2014-liu.pdf)
 - [RecGaze SIGIR 2025 — Carousel Eye Tracking](https://arxiv.org/abs/2504.20792)
 - [Riding the Carousel 2025](https://arxiv.org/abs/2507.10135)
-- [eyeScrollR 2024 — Scroll Coordinate Mapping](https://pmc.ncbi.nlm.nih.gov/articles/PMC11133154/)
+- [eyeScrollR 2024 — Scroll Coordinate Mapping](https://doi.org/10.3758/s13428-024-02343-1)
 - [Buscher et al. SIGIR 2010 — Ad Quality Eye Tracking](https://dl.acm.org/doi/10.1145/1835449.1835459)
 - [Huang, White & Buscher CHI 2012 — Gaze-Cursor Alignment](https://dl.acm.org/doi/10.1145/2207676.2208591)
 - [Chuklin et al. 2015 — Click Models](https://clickmodels.weebly.com/uploads/5/2/2/5/52257029/mc2015-clickmodels.pdf)
