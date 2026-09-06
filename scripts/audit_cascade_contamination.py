@@ -34,6 +34,9 @@ from data_loader import (  # noqa: E402
     get_trial_meta, load_mouse_events, click_to_position,
     typed_aoi_tops, typed_aoi_etypes,
 )
+from audit_space import resolve as resolve_space  # noqa: E402
+
+SPACE = resolve_space()
 
 TYPED_CSV = ROOT / "scripts/output/adserp_aois_by_trial_id_typed.csv"
 AD_DIR = ROOT / "AdSERP/data/ad-boundary-data"
@@ -89,22 +92,27 @@ def click_in_dd_right(cx, cy, ddr):
     return None
 
 
-def categorize(cx, cy, aois, ddr, doc_h, scr_h):
+def categorize(cx, cy, aois, ddr, doc_h, scr_h, tid):
     """Return ('dd_right' | 'right_chrome' | 'left_chrome' | 'below_doc' |
-                'above_top' | 'in_column_edge' | 'attributed', detail)."""
+                'above_top' | 'in_column_edge' | 'attributed', detail).
+
+    The X 162-702 result column and doc_h are DOCUMENT-space constants, so they
+    travel through SPACE alongside the click. Converting the point but not the
+    threshold would silently re-bucket every near-miss.
+    """
     if click_in_aoi(cx, cy, aois):
         return ("attributed_strict", None)
     if click_in_dd_right(cx, cy, ddr):
         return ("dd_right", None)
     if cy < 0:
         return ("above_top", None)
-    if cy > doc_h:
+    if cy > SPACE.y(doc_h, tid):
         return ("below_doc", None)
-    if cx < 162:
+    if cx < SPACE.x(162, tid):
         return ("left_chrome", None)
-    if cx > 702:
+    if cx > SPACE.x(702, tid):
         return ("right_chrome", None)
-    # In-column (X 162-702) but Y not in any bbox — bbox-edge near miss
+    # In-column (X 162-702 document space) but Y not in any bbox — bbox-edge near miss
     return ("in_column_edge", None)
 
 
@@ -139,11 +147,11 @@ for tid, aois in aois_by_trial.items():
     final = clicks[-1]
     if len(final) < 3:
         continue
-    cx, cy = float(final[1]), float(final[2])
+    cx, cy = SPACE.point(float(final[1]), float(final[2]), tid)
     n_trials_examined += 1
 
     ddr = load_dd_right(tid)
-    cat, _ = categorize(cx, cy, aois, ddr, doc_h, scr_h)
+    cat, _ = categorize(cx, cy, aois, ddr, doc_h, scr_h, tid)
     cat_counts[cat] += 1
 
     if cat != "attributed_strict":
@@ -151,7 +159,12 @@ for tid, aois in aois_by_trial.items():
         tops = typed_aoi_tops(tid)
         etypes = typed_aoi_etypes(tid)
         n_results = len(tops)
-        yband_pos = click_to_position(clicks, tops, n_results)
+        # The Y-band rule bisects against typed AOI tops (screenshot space), so
+        # its clicks need the same conversion the containment test just used.
+        yband_clicks = ([list(c[:1]) + list(SPACE.point(float(c[1]), float(c[2]), tid))
+                         + list(c[3:]) for c in clicks if len(c) >= 3]
+                        if SPACE.converts else clicks)
+        yband_pos = click_to_position(yband_clicks, tops, n_results)
         yband_etype = (
             etypes[yband_pos]
             if yband_pos is not None and 0 <= yband_pos < len(etypes)

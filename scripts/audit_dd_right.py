@@ -22,6 +22,9 @@ from pathlib import Path
 ROOT = Path("/Users/andyed/Documents/dev/attentional-foraging")
 sys.path.insert(0, str(ROOT / "notebooks-v2"))
 from data_loader import load_mouse_events  # noqa: E402
+from audit_space import resolve as resolve_space  # noqa: E402
+
+SPACE = resolve_space()
 
 AD_DIR = ROOT / "AdSERP/data/ad-boundary-data"
 
@@ -63,7 +66,7 @@ for f in sorted(AD_DIR.glob("*.json")):
     final = clicks[-1]
     if len(final) < 3:
         continue
-    cx, cy = float(final[1]), float(final[2])
+    cx, cy = SPACE.point(float(final[1]), float(final[2]), tid)
     n_clicks_total += 1
     for r in ddright:
         x0 = r["location"]["x"]

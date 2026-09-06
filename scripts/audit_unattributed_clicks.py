@@ -23,6 +23,9 @@ from pathlib import Path
 ROOT = Path("/Users/andyed/Documents/dev/attentional-foraging")
 sys.path.insert(0, str(ROOT / "notebooks-v2"))
 from data_loader import get_trial_meta, load_mouse_events  # noqa: E402
+from audit_space import resolve as resolve_space  # noqa: E402
+
+SPACE = resolve_space()
 
 TYPED_CSV = ROOT / "scripts/output/adserp_aois_by_trial_id_typed.csv"
 
@@ -129,7 +132,7 @@ def main():
         if len(final) < 3:
             cat["final_click_malformed"] += 1
             continue
-        cx, cy = float(final[1]), float(final[2])
+        cx, cy = SPACE.point(float(final[1]), float(final[2]), tid)
         rank = assign_to_aoi(cx, cy, aois)
         if rank >= 0:
             etype = next(a["etype"] for a in aois if a["rank"] == rank)

@@ -49,6 +49,9 @@ sys.path.insert(0, str(ROOT / "notebooks-v2"))
 from data_loader import (  # noqa: E402
     get_trial_meta, load_fixations, load_mouse_events,
 )
+from audit_space import resolve as resolve_space  # noqa: E402
+
+SPACE = resolve_space()
 
 TYPED_CSV = ROOT / "scripts/output/adserp_aois_by_trial_id_typed.csv"
 
@@ -139,7 +142,7 @@ for tid, aois in aois_by_trial.items():
     if clicks:
         final = clicks[-1]
         if len(final) >= 3:
-            cx, cy = float(final[1]), float(final[2])
+            cx, cy = SPACE.point(float(final[1]), float(final[2]), tid)
             hit = find_containing(cx, cy, aois)
             if hit is not None:
                 n_clicks_attr += 1
