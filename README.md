@@ -233,7 +233,7 @@ Several pieces of this project are designed for reuse beyond AdSERP:
 - [findings.md](./docs/findings.md) — All findings with statistical tests (v8)
 - [priming-null-result.md](./docs/null-findings/priming-null-result.md) — The hypothesis that drove the early work, why it was wrong, and what the investigation found instead
 - [CHANGELOG.md](./CHANGELOG.md) — Version history and corrections
-- [references.bib](./references.bib) — Verified BibTeX library
+- [references.bib](./references.bib) — BibTeX library; DOI-bearing entries are batch-verified, while no-DOI entries state their narrower provenance
 - [methodological-threats.md](./docs/methodological-threats.md) — Threats to validity and mitigations
 - [journey.md](./docs/journey.md) — The first session, frozen at v0
 

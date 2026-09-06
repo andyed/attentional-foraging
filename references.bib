@@ -1,6 +1,7 @@
 % Attentional Foraging on SERPs — Reference Library
-% Verified against DOIs and publisher metadata 2026-04-01.
-% If you add entries, include the DOI and a comment noting where you verified it.
+% DOI-bearing entries batch-verified against Crossref 2026-09-02.
+% Entries without DOIs remain explicitly unverified unless their notes say otherwise.
+% If you add entries, include the DOI when one exists and note the verification source.
 
 % ═══════════════════════════════════════════════════════════════════════════
 % PRIMARY DATASET
@@ -142,7 +143,7 @@
 
 @inproceedings{bruckner2020abandonment,
   author    = {Br\"{u}ckner, Lukas and Arapakis, Ioannis and Leiva, Luis A.},
-  title     = {Query Abandonment Prediction with Deep Learning Models of Mouse Cursor Movements},
+  title     = {Query Abandonment Prediction with Recurrent Neural Models of Mouse Cursor Movements},
   booktitle = {Proceedings of the 29th ACM International Conference on Information and Knowledge Management},
   series    = {CIKM '20},
   year      = {2020},
@@ -341,8 +342,9 @@
   author    = {Azzopardi, Leif and Zuccon, Guido},
   title     = {Building Economic Models of Human Computer Interaction},
   booktitle = {Extended Abstracts of the 2019 CHI Conference on Human Factors in Computing Systems (CHI EA '19)},
+  pages     = {1--4},
   year      = {2019},
-  doi       = {10.1145/3290607.3299022},
+  doi       = {10.1145/3290607.3298809},
   note      = {Tutorial extending economic search models to HCI. C/W/L framework for evaluation.},
 }
 
@@ -352,7 +354,7 @@
   booktitle = {Proceedings of the 28th ACM International Conference on Information and Knowledge Management (CIKM '19)},
   pages     = {1833--1842},
   year      = {2019},
-  doi       = {10.1145/3357384.3358046},
+  doi       = {10.1145/3357384.3358041},
   note      = {Eye-tracking study of SERP examination from query to first action (click or reformulation). Two devices (desktop + mobile).},
 }
 
@@ -377,7 +379,7 @@
   title     = {Predicting Users' Behavior Using Mouse Movement Information: An Information Foraging Theory Perspective},
   journal   = {Neural Computing and Applications},
   volume    = {35},
-  pages     = {33},
+  pages     = {23767--23780},
   year      = {2023},
   doi       = {10.1007/s00521-020-05306-7},
   note      = {IFT framing for mouse-based user prediction. Relevant to AFE angle.},
@@ -385,8 +387,9 @@
 
 @inproceedings{bruckner2021systematic,
   author    = {Br\"{u}ckner, Lukas and Arapakis, Ioannis and Leiva, Luis A.},
-  title     = {A Systematic Examination of Mouse Movement Length for Decision Making in Web Search},
+  title     = {When Choice Happens: A Systematic Examination of Mouse Movement Length for Decision Making in Web Search},
   booktitle = {Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  pages     = {2318--2322},
   year      = {2021},
   publisher = {ACM},
   doi       = {10.1145/3404835.3463055},
@@ -818,7 +821,7 @@
   series    = {ECIR '18},
   year      = {2018},
   publisher = {Springer},
-  doi       = {10.1007/978-3-319-76941-7_17},
+  doi       = {10.1007/978-3-319-76941-7_16},
   note      = {SERP-level stopping model using information scent. Models leave decision but not within-page re-evaluation.},
 }
 
@@ -827,10 +830,11 @@
 % ═══════════════════════════════════════════════════════════════════════════
 
 @inproceedings{deleon2025recgaze,
-  author    = {de Le\'{o}n Mart\'{i}nez, Jurek and Jansen, Thomas and Schmitt, Christina and Tusche, Anita and de Rijke, Maarten},
+  author    = {de Leon-Martinez, Santiago and Kang, Jingwei and Moro, Robert and de Rijke, Maarten and Kveton, Branislav and Oosterhuis, Harrie and Bielikova, Maria},
   title     = {{RecGaze}: The First Eye Tracking and User Interaction Dataset for Carousel Interfaces},
   booktitle = {Proceedings of the 48th International ACM SIGIR Conference on Research and Development in Information Retrieval},
   series    = {SIGIR '25},
+  pages     = {3702--3711},
   year      = {2025},
   publisher = {ACM},
   doi       = {10.1145/3726302.3730301},
@@ -937,12 +941,14 @@
 }
 
 @inproceedings{zhang2021cbcm,
-  author    = {Zhang, Jingtao and Liu, Yiqun and Mao, Jiaxin and Zhang, Min and Ma, Shaoping},
+  author    = {Zhang, Ruizhe and Xie, Xiaohui and Mao, Jiaxin and Liu, Yiqun and Zhang, Min and Ma, Shaoping},
   title     = {Constructing a Comparison-based Click Model for Web Search},
   booktitle = {Proceedings of the Web Conference 2021},
   series    = {WWW '21},
   year      = {2021},
+  pages     = {270--283},
   publisher = {ACM},
+  doi       = {10.1145/3442381.3449918},
   note      = {Comparison-Based Click Model (CBCM). Explicit revisit and compare primitives in the click likelihood. Same THUIR group as wang2015pscm; six years downstream. Treats revisit/comparison as click-model features. Cite alongside wang2015pscm as IR-side prior art for forward/regressive decomposition; OSEC's task-state framing (separate motor, pupillometric, geometric signatures) is the differentiator.},
 }
 
@@ -990,14 +996,15 @@
 % SPATIAL MEMORY IN VISUAL SEARCH
 % ═══════════════════════════════════════════════════════════════════════════
 
-@article{solman2024spatial,
-  author    = {Solman, Gavin J. F. and Kingstone, Alan},
+@article{aivar2024spatial,
+  author    = {Aivar, M. Pilar and Li, Chia-Ling and Tong, Matthew H. and Kit, Dmitry M. and Hayhoe, Mary M.},
   title     = {Knowing Where to Go: Spatial Memory Guides Eye and Body Movements in a Naturalistic Visual Search Task},
   journal   = {Journal of Vision},
   volume    = {24},
   number    = {9},
+  articleno = {1},
   year      = {2024},
-  doi       = {10.1167/jov.24.9.8},
+  doi       = {10.1167/jov.24.9.1},
   note      = {Spatial memory guides return fixations in real-world search. Closest analog to our SERP regression spatial precision finding.},
 }
 
@@ -1005,13 +1012,14 @@
 % SATISFICING IN IR
 % ═══════════════════════════════════════════════════════════════════════════
 
-@article{zhai2022satisficing,
-  author    = {Zhai, Junping and Qiu, Xinhan and Shi, Xin and Shi, Yong},
+@article{dicaprio2022satisficing,
+  author    = {Di Caprio, Debora and Santos-Arteaga, Francisco J. and Tavana, Madjid},
   title     = {An Information Retrieval Benchmarking Model of Satisficing and Impatient Users' Behavior in Online Search Environments},
   journal   = {Expert Systems with Applications},
-  volume    = {189},
+  volume    = {191},
+  pages     = {116352},
   year      = {2022},
-  doi       = {10.1016/j.eswa.2021.116089},
+  doi       = {10.1016/j.eswa.2021.116352},
   note      = {Models satisficing in IR using click logs. Our work adds eye-tracking and pupillometry dimensions.},
 }
 
@@ -1092,8 +1100,10 @@
   title     = {Query Performance Prediction for Neural {IR}: Are We There Yet?},
   booktitle = {Advances in Information Retrieval: 45th European Conference on Information Retrieval (ECIR 2023)},
   year      = {2023},
+  pages     = {232--248},
   publisher = {Springer},
-  note     = {Recent benchmark of classical QPP predictors (NQC, WIG, UEF) ported to dense retrievers; classical std-of-scores still competitive against neural alternatives. Full bibliographic details to verify.},
+  doi       = {10.1007/978-3-031-28244-7_15},
+  note      = {Recent benchmark of classical QPP predictors (NQC, WIG, UEF) ported to dense retrievers; classical std-of-scores still competitive against neural alternatives.},
 }
 
 % ═══════════════════════════════════════════════════════════════════════════
@@ -1171,7 +1181,7 @@
 }
 
 @inproceedings{hassan2014struggling,
-  author    = {Hassan Awadallah, Ahmed and White, Ryen W. and Pantel, Patrick and Dumais, Susan T. and Wang, Yi-Min},
+  author    = {Hassan Awadallah, Ahmed and White, Ryen W. and Dumais, Susan T. and Wang, Yi-Min},
   title     = {Struggling or Exploring? {Disambiguating} Long Search Sessions},
   booktitle = {Proceedings of the 7th ACM International Conference on Web Search and Data Mining},
   series    = {WSDM '14},
@@ -1386,7 +1396,9 @@
   booktitle = {Proceedings of the 2017 Conference on Human Information Interaction and Retrieval},
   series    = {CHIIR '17},
   year      = {2017},
+  pages     = {97--106},
   publisher = {ACM},
+  doi       = {10.1145/3020165.3020173},
   note      = {Verified via sigir.org/chiir2017/accepted-papers 2026-04-19. Mobile users are best served by 2--3-line snippets (narrower than desktop). Relevant to content-residualized viewport-band work (NB29) because snippet size bounds the per-AOI content volume against which viewport residence is expected.},
 }
 
@@ -1410,7 +1422,7 @@
   pages     = {359--382},
   year      = {2004},
   publisher = {Elsevier},
-  doi       = {10.1016/j.cogsci.2003.12.001},
+  doi       = {10.1207/s15516709cog2803_3},
   note      = {Verified via ScienceDirect 2026-04-19. Cost-benefit analysis of display access vs memory retrieval at millisecond scale. Together with the SCH paper (gray2006soft), establishes the framework under which cursor/scroll actions like "scroll back to re-check a result" can be read as display-use vs memory-retrieval microstrategy choices.},
 }
 
