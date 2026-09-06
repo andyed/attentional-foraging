@@ -131,7 +131,12 @@ def emit_aggregate_doc() -> None:
         "`2cb789eb8febd234`). Typed-flavor K rows carry `(re-derived 2026-08-28: \u2026)` / "
         "`(re-derived 2026-08-30: collision-fixed maps)` annotations; a typed-flavor value "
         "without one predates these passes \u2014 treat it as stale until its notebook's "
-        "re-run lands. `organic` / `organic_hybrid` / WILD rows are unaffected by design.")
+        "re-run lands. The typed parsing fixes left the organic flavors' source boxes "
+        "unchanged, but the separate 2026-08-31 mouse-coordinate conversion changed "
+        "`organic` / `organic_hybrid` feature inputs and click attribution. Check each "
+        "producer's sensor inputs, coordinate space, observation window, and source "
+        "version before treating a row as current. WILD is a separate dataset and "
+        "requires its own provenance check.")
     lines.append("")
     lines.append("## What this document is for")
     lines.append("")

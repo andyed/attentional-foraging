@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-09-04T22:48:02.481044+00:00",
+  "status": "full_corpus",
+  "protocol": {
+    "regime": "LAB dataset; cursor-only predictors and row selection",
+    "rank_type": "typed",
+    "feature_source": "approach-retreat ResultFeatureTracker",
+    "gaze_used": false,
+    "buffers_ms": [
+      0,
+      500
+    ],
+    "sample_events": "native mousemove only; t < final click minus buffer",
+    "coordinate_space": "document CSS px; typed AOI centers divided by canonical ratio_y",
+    "proximity_px": 100,
+    "candidate_population": "all main-axis typed AOIs in included trials",
+    "click_label": "final click; strict unique X+Y typed-box containment; ambiguous/off-box trials excluded",
+    "cross_buffer_population": "identical; at least two distinct timestamps before largest buffer cutoff",
+    "visibility_gate": "none; offline all-AOI replay, not browser IntersectionObserver or 20 Hz lifecycle parity",
+    "estimator": "LOSO StandardScaler + balanced LogisticRegression(C=1, max_iter=5000)",
+    "scope": "new typed experiment; not a numeric replacement for historical organic_hybrid or gaze-gated M4"
+  },
+  "substrate": {
+    "substrate": "AllSERP v1.1.0 (post card-collision fix)",
+    "branch": "release/allserp-v1.1.0",
+    "substrate_commit": "ab657a63",
+    "typed_maps_content_hash": "2cb789eb8febd234",
+    "hash_method": "sha256 over sorted(data/aoi-typed/p*.json), updating basename bytes then file bytes per file; first 16 hex chars of the digest",
+    "n_trial_maps": 2776,
+    "exclusion_list": "alignment-exclusions.json",
+    "n_excluded": 12,
+    "corpus_trials": 2764,
+    "generated": "2026-08-30",
+    "note": "Consumers pin substrate identity by (branch, substrate_commit, typed_maps_content_hash) and must re-read the exclusion list \u2014 membership changed from the earlier 14-trial list on 2026-08-30 (+p018-b3-t1, net 12)."
+  },
+  "counts": {
+    "discovered_trials": 2776,
+    "included": 2652,
+    "nonmonotonic_mouse_time": 3,
+    "click_outside_main_boxes": 108,
+    "alignment_excluded": 12,
+    "no_click": 1
+  },
+  "geometry_sources_included": {
+    "screenshot": 2652
+  },
+  "conditions": {
+    "buf0": {
+      "M1": {
+        "features": [
+          "position"
+        ],
+        "pooled_auc": 0.7928592166567747,
+        "fold_auc_mean": 0.7995813196215552,
+        "fold_auc_sd": 0.05788232891392713,
+        "n_folds": 47,
+        "n_records": 34916,
+        "n_clicks": 2652
+      },
+      "M4-7": {
+        "features": [
+          "min_dist",
+          "mean_dist",
+          "dwell_in_proximity_ms",
+          "mean_approach_velocity",
+          "max_approach_velocity",
+          "direction_changes",
+          "frac_decreasing"
+        ],
+        "pooled_auc": 0.9505418672647492,
+        "fold_auc_mean": 0.9509954097540817,
+        "fold_auc_sd": 0.020798133612215153,
+        "n_folds": 47,
+        "n_records": 34916,
+        "n_clicks": 2652
+      },
+      "M4-9": {
+        "features": [
+          "min_dist",
+          "mean_dist",
+          "final_dist",
+          "retreat_dist",
+          "dwell_in_proximity_ms",
+          "mean_approach_velocity",
+          "max_approach_velocity",
+          "direction_changes",
+          "frac_decreasing"
+        ],
+        "pooled_auc": 0.9974571353079179,
+        "fold_auc_mean": 0.9975309875570145,
+        "fold_auc_sd": 0.0024667912438177384,
+        "n_folds": 47,
+        "n_records": 34916,
+        "n_clicks": 2652
+      }
+    },
+    "buf500": {
+      "M1": {
+        "features": [
+          "position"
+        ],
+        "pooled_auc": 0.7928592166567747,
+        "fold_auc_mean": 0.7995813196215552,
+        "fold_auc_sd": 0.05788232891392713,
+        "n_folds": 47,
+        "n_records": 34916,
+        "n_clicks": 2652
+      },
+      "M4-7": {
+        "features": [
+          "min_dist",
+          "mean_dist",
+          "dwell_in_proximity_ms",
+          "mean_approach_velocity",
+          "max_approach_velocity",
+          "direction_changes",
+          "frac_decreasing"
+        ],
+        "pooled_auc": 0.9505418672647492,
+        "fold_auc_mean": 0.9509954097540817,
+        "fold_auc_sd": 0.020798133612215153,
+        "n_folds": 47,
+        "n_records": 34916,
+        "n_clicks": 2652
+      },
+      "M4-9": {
+        "features": [
+          "min_dist",
+          "mean_dist",
+          "final_dist",
+          "retreat_dist",
+          "dwell_in_proximity_ms",
+          "mean_approach_velocity",
+          "max_approach_velocity",
+          "direction_changes",
+          "frac_decreasing"
+        ],
+        "pooled_auc": 0.9974571353079179,
+        "fold_auc_mean": 0.9975309875570145,
+        "fold_auc_sd": 0.0024667912438177384,
+        "n_folds": 47,
+        "n_records": 34916,
+        "n_clicks": 2652
+      }
+    }
+  },
+  "paired": {
+    "buf0_M4-7_vs_M1": {
+      "n_participants": 47,
+      "mean_participant_auc_delta": 0.15141409013252657,
+      "bootstrap_ci95": [
+        0.1366726006965809,
+        0.16603403881710962
+      ],
+      "bootstrap_resamples": 10000,
+      "bootstrap_seed": 20260904,
+      "wilcoxon_two_sided_p": 1.4210854715202004e-14
+    },
+    "buf500_M4-7_vs_M1": {
+      "n_participants": 47,
+      "mean_participant_auc_delta": 0.15141409013252657,
+      "bootstrap_ci95": [
+        0.1366726006965809,
+        0.16603403881710962
+      ],
+      "bootstrap_resamples": 10000,
+      "bootstrap_seed": 20260904,
+      "wilcoxon_two_sided_p": 1.4210854715202004e-14
+    }
+  },
+  "sampling_diagnostics": {
+    "samples_removed_relative_to_buf0": {
+      "buf0": 0,
+      "buf500": 0
+    },
+    "trials_changed_relative_to_buf0": {
+      "buf0": 0,
+      "buf500": 0
+    },
+    "last_mousemove_to_click_ms_quantiles": {
+      "min": 672.0,
+      "q25": 1376.0,
+      "median": 1799.5,
+      "q75": 2616.0,
+      "max": 19619.0
+    },
+    "interpretation": "An unchanged stream does not test removal of terminal approach; time buffers alone may leave the entire approach intact."
+  },
+  "provenance": {
+    "sha256": {
+      "producer": "2fc255287a1c6c88c4adbcaba3df4e9e4a06572a7da8ff5e4f38f4c0576e8340",
+      "bridge": "1f4eaac3fb2c24761a2051d9b2e68938107b23e6f99aa69647d3761aab814aac",
+      "tracker": "587934cbeef059f54449029ddf558600369468a07f9527a7b2dcc097849caf46",
+      "data_loader": "20b669620a9ae4f74aab6e43abdb66334798a02b0f537b48d382a782990ecff8",
+      "substrate": "986e958161fc74b55a93e30cee5811276bb7230d76db10d78fa5328f089e27e1",
+      "exclusions": "da0f4c7654de12971e1530beb600d829e70b800ac9fc45c9436b1cf38de9f05c"
+    },
+    "mouse_and_metadata_sha256": "8ae78f116e05281a0f275471cceb119367664a9599415ed4690037c64b7f4bf2",
+    "geometry_values_sha256": "36184d751058ba4c7149420fe7a0ff5d14229c1a00f9eb8532db4e6106eb8fa8",
+    "feature_records_sha256": {
+      "buf0": "d135d23273fa88fba901fc9a85d1eee21185d3857e137febc10b4f28cf07c891",
+      "buf500": "d135d23273fa88fba901fc9a85d1eee21185d3857e137febc10b4f28cf07c891"
+    },
+    "record_keys_and_labels_sha256": "eabfc8004e688d07c364f50841bace6af3fd840d02f2016a92985c2be4edb474",
+    "python": "3.13.11",
+    "numpy": "2.4.4",
+    "node": "v25.8.2",
+    "sklearn": "1.8.0"
+  }
+}

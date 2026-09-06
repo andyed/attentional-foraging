@@ -1,86 +1,93 @@
-# Feature-extractor lineage (cursor approach features)
+# Feature-extractor lineage
 
-Two parallel cursor-feature pipelines live here, serving different purposes.
-Neither supersedes the other. The gotcha is the third entry — a §4.1 LOSO
-retrain script whose numbers are mechanically real but easy to mistake for the
-paper's headline.
+**Source audit: 2026-09-04.** The same M4 label and nine field names have been
+used for different measurements. Their outputs must retain the producer,
+sensor requirements, row population, AOI version, coordinate convention, and
+time window. A successful arithmetic parity test does not establish all six.
 
-## Pipeline A — paper §4.1 / §4.3 / §4.6 headline numbers (cursor-only)
+## Current cursor-only typed replay
 
-**Production library:** [`approach-retreat/src/approach-retreat.js`](../../../approach-retreat/src/approach-retreat.js)
-— `ResultFeatureTracker` class, released as `approach-retreat` (v0.3.0). Pure
-mousemove-only: registers `mousemove` / `click` / `scroll` / `resize` listeners
-and nothing else. **No gaze input.** Computes the nine features per result from
-`(pageY, t)` mousemove samples.
+[`m4_cursor_aoi_rerun.py`](../../scripts/m4_cursor_aoi_rerun.py) calls the
+actual `ResultFeatureTracker` exported by the sibling approach-retreat library
+through [`m4_cursor_tracker.mjs`](../../scripts/m4_cursor_tracker.mjs).
+There is no copied Python implementation to drift from the accumulator.
 
-**Canonical AdSERP extractor (LAB-side Python):**
-[`scripts/m4_nb21_hybrid_rerun.py`](../../scripts/m4_nb21_hybrid_rerun.py).
-**Parity-verified at 1e-6 tolerance** against the JS library via
-[`scripts/test_feature_tracker_parity.js`](../../scripts/test_feature_tracker_parity.js)
-+ `test_feature_tracker_parity.py` (synthetic trajectory; nine features;
-absolute diff < 1e-6).
+The experiment uses the post-collision typed maps and their exclusion list.
+It verifies the maps' content hash before extraction. Mouse events remain in
+document CSS pixels; AOI centers are converted from screenshot coordinates
+using the existing per-trial geometry helper. The 100 px proximity threshold
+therefore has the same units as the browser tracker.
 
-**Produces** the paper's headline §4.1 numbers — M1 = 0.668, M4 = 0.847 —
-under `organic_hybrid` attribution at Δ = 500 ms click-buffer. Per-feature
-alone-AUCs in
-[`scripts/output/paper-output/alone_auc_table.md`](../../scripts/output/paper-output/alone_auc_table.md).
+Every main-axis typed AOI receives a row, whether the cursor or gaze visited it
+or not. Trials require at least two AOIs, a uniquely attributable final click
+under strict X+Y containment, and two distinct mousemove timestamps before
+the largest buffer cutoff. Off-box or ambiguous clicks are excluded and
+counted, rather than snapped to a Y band or labeled as known non-click trials.
+The entire alignment-eligible corpus is considered, but these additional
+quality gates make the analyzed denominator smaller.
 
-## Pipeline B — LAB analysis substrate (gaze-gated, not deployable)
+Only native `mousemove` events enter features; click/hover/gaze observations do
+not. The final click supplies the outcome and the cutoff, not a predictor.
+The 0 and 500 ms conditions use identical trial/AOI rows and labels. M1 is
+position alone; M4-7 drops final and retreat distances; M4-9 retains them as
+a diagnostic. Scaling and balanced logistic regression are fit separately
+inside each leave-one-participant-out training fold.
 
-**Producer:** [`scripts/compute_cursor_approach_features.py`](../../scripts/compute_cursor_approach_features.py)
-— extracted from NB15. Gaze-gated: iterates fixations and samples cursor at
-fixation timestamps; computes the same nine geometric features.
+The output at `scripts/output/m4_cursor_aoi/summary.json` contains only
+aggregate results, participant-paired uncertainty, coverage counts, source
+hashes, and sampling diagnostics. NB21's independent reader checks the source
+and substrate before displaying results and generating current K rows.
 
-**Output:** `AdSERP/data/cursor-approach-features-organic.json` (and
-`-absolute.json`, `-organic-hybrid.json` variants).
+This is **[LAB, AdSERP, typed, cursor-only] offline replay**. The accumulator is
+the real JS implementation; browser lifecycle equivalence is not established.
+In particular, all-AOI replay has no IntersectionObserver eligibility gate or
+browser sampling throttle. It is a new protocol, not a replacement numeric
+value for the old organic experiment.
 
-**Active and used widely** as the feature substrate for downstream LAB-side
-analyses — LFHF studies, four-class taxonomy (NB22), viewport bands (NB28),
-trial-level analyses, plot rendering. Not deprecated; just answers a different
-question than Pipeline A.
+## Active gaze-dependent LAB stream
 
-**Why a separate pipeline exists:** Pipeline B uses fixation-timed cursor
-samples to study what the cursor does *given a known gaze trajectory* — the
-input to LAB-side coupling and load analyses. Pipeline A's job is what a
-deployable extractor can recover from mouse telemetry alone. The two are not
-swappable; they are not validations of each other.
+[`compute_cursor_approach_features.py`](../../scripts/compute_cursor_approach_features.py)
+loads fixations and groups them into AOI positions. Only those positions emit
+records. Cursor locations are interpolated at fixation timestamps; distance
+fields come from `gaze_cursor_distance(fix['x'], fix['y'], mx, my)`.
+`dwell_in_proximity_ms` sums fixation durations when the cursor is near the
+estimated result center. These are not the browser's cursor-to-center
+distance and mousemove-interval dwell measurements.
 
-## Diagnostic-only — deliberate gaze-gated extractor for the §4.3 upper bound
+Its `cursor-approach-features-*.json` caches remain useful for gaze–cursor
+coupling, load analyses, and gaze-grounded taxonomy. They also feed
+[`click_buffer_ablation.py`](../../scripts/click_buffer_ablation.py), the
+constant-sensitivity harness, and the approach-truncation ablation. Those
+analyses must be labeled gaze-dependent LAB diagnostics, even when a model's
+feature list contains no field named `gaze`. The August 31 M4-7 AUC 0.9040
+belongs to this stream. Removing explicit gaze columns cannot undo gaze-based
+row selection or feature construction.
 
-[`scripts/compute_lab_gaze_gated_features.py`](../../scripts/compute_lab_gaze_gated_features.py)
-("STUB-D"). Explicit fixation-timed cursor interpolation; **requires an eye
-tracker; not deployable**. Produces the paper's §4.3 "diagnostic upper bound"
-(LOSO AUC 0.781). Exists only as the ceiling Pipeline A's deployable
-cursor-only classifier (0.753) is compared against — 96.4 % capture on
-identical features and protocol.
+## Historical cursor-only reconstruction
 
-## The landmine — `nb21_loso_retrain_organic.py`
+[`m4_nb21_hybrid_rerun.py`](../../scripts/m4_nb21_hybrid_rerun.py) computes
+vertical distances from positional mouse events to centers estimated using
+XPath observations or linear page bands. It derives its row lattice from an
+older feature cache and has neither an `organic_hybrid` AOI option nor a
+500 ms buffer. Here, “hybrid” describes XPath plus linear reconstruction.
 
-[`scripts/nb21_loso_retrain_organic.py`](../../scripts/nb21_loso_retrain_organic.py)
-re-runs the §4.1 LOSO protocol on Pipeline B's
-`cursor-approach-features-organic.json`. Its output —
-**M1 = 0.727 / M4 = 0.864** — is mechanically real but is **NOT** the paper's
-§4.1 headline (which is Pipeline A's M1 = 0.668 / M4 = 0.847 under
-`organic_hybrid`). Easy to mistake for the headline; emits
-`DeprecationWarning` at import for that reason.
+Earlier versions of this document claimed that script produced the buffered
+organic 0.847 headline. The current source does not support that attribution.
+Synthetic parity files are in **approach-retreat/scripts/**, not this repo's
+scripts directory. They check feature arithmetic on a supplied trace, not the
+data selection or geometry that produced a reported AUC. The new typed stream
+therefore calls the actual accumulator and records its source hash.
 
-## Historical context
+## What remains to validate
 
-The 2026-04-14 retrospective
-[`docs/drafts/paper-output/process-trace-gaze-sync-missed.md`](../drafts/paper-output/process-trace-gaze-sync-missed.md)
-documents how an earlier framing claimed Pipeline B's features were
-"WILD-compatible" — a claim Pipeline A's existence + parity test corrected. The
-producer in Pipeline B was never the problem; the *claim about its features
-being deployable* was. That claim no longer appears in the paper.
-
-## Reading order for someone new to this question
-
-1. **This file.**
-2. `approach-retreat/src/approach-retreat.js` — the `ResultFeatureTracker`
-   class (~150 lines) is the source of truth for what "the nine features"
-   actually are.
-3. `scripts/m4_nb21_hybrid_rerun.py` — the canonical Python extractor
-   (Pipeline A).
-4. `scripts/test_feature_tracker_parity.{js,py}` — the proof tying (2) and
-   (3) together at 1e-6.
-5. `scripts/compute_cursor_approach_features.py` — Pipeline B, separately.
+- Inspect how many cursor samples each buffer removes. Equal scores from an
+  unchanged trace do not establish robustness to removal of the terminal
+  approach. The new summary reports both removed samples and affected trials.
+- Run full terminal-approach excision on the cursor-only stream; existing
+  gaze-dependent excision results cannot stand in for this control.
+- Evaluate browser visibility/sampling policies before claiming end-to-end
+  browser parity, and preserve matched populations when comparing protocols.
+- Reconcile historical claims by producer and rank type. Preserve their K IDs
+  and dates; do not silently overwrite them with a new typed result.
+- Keep cell-resolved analyses pending until the separate carousel-cell
+  producer is rebuilt and verified. Parent-card repairs do not validate cells.

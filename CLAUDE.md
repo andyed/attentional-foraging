@@ -4,12 +4,32 @@ SERP evaluation task model (OSEC) built on AdSERP eye+cursor dataset. 11 Tier-A 
 
 ## Feature extractor provenance — read this first
 
-**Two parallel cursor-feature pipelines**, different questions. Neither supersedes the other; mistaking them for each other has bit us before. Full map in [`docs/methodology/feature-extractor-lineage.md`](docs/methodology/feature-extractor-lineage.md); `scripts/CANONICAL.md` is the table.
+**Corrected 2026-09-04:** model names and shared feature-field names do not
+establish a common measurement. Read
+[`docs/methodology/feature-extractor-lineage.md`](docs/methodology/feature-extractor-lineage.md)
+and [`scripts/CANONICAL.md`](scripts/CANONICAL.md) before quoting M4 results.
 
-- **Paper §4.1 / §4.3 / §4.6 headline (cursor-only, deployable):** `approach-retreat` library (JS, `ResultFeatureTracker` v0.3.0) ↔ `scripts/m4_nb21_hybrid_rerun.py` (AdSERP Python), **parity-verified at 1e-6** via `scripts/test_feature_tracker_parity.{js,py}`. Produces M1 = 0.668 / M4 = 0.847 under `organic_hybrid`.
-- **LAB analysis substrate (gaze-gated, active):** `scripts/compute_cursor_approach_features.py` → `cursor-approach-features-organic.json`. Feeds LFHF, four-class taxonomy (NB22), viewport bands (NB28), plot rendering. *Not* the source of the paper's §4.1 headline numbers.
+- **Current cursor-only typed replay:** `scripts/m4_cursor_aoi_rerun.py` calls the
+  actual sibling `approach-retreat/src/approach-retreat.js` `ResultFeatureTracker`
+  through `scripts/m4_cursor_tracker.mjs`. It uses post-collision typed AOIs,
+  native mousemove, strict X+Y final-click labels, and matched 0/500 ms windows.
+  NB21's new aggregate reader checks source/substrate hashes. This is an offline
+  all-AOI protocol; it does not replicate browser visibility or sampling policy.
+- **Active gaze-dependent LAB stream:** `compute_cursor_approach_features.py`
+  selects rows from fixations, samples cursor at fixation times, computes
+  gaze–cursor distance, and weights proximity by fixation duration. The
+  click-buffer grid, constant sweeps, and approach-truncation ablation using its
+  caches are LAB diagnostics, including the August 31 M4-7 AUC 0.9040.
+- **Historical cursor-only reconstruction:** `m4_nb21_hybrid_rerun.py` uses XPath
+  observations plus linear fallback centers and positional mouse events. Its
+  name does not mean current `organic_hybrid` attribution: it has no such flag
+  and no 500 ms buffer. Old documentation incorrectly attached the 0.847
+  buffered-organic headline to it. Do not carry that assertion forward.
 
-**The one landmine:** `scripts/nb21_loso_retrain_organic.py` runs the §4.1 LOSO protocol on the LAB analysis substrate and produces M1 = 0.727 / M4 = 0.864 — *not* the paper's headline. Emits `DeprecationWarning` at import. The 2026-04-14 retrospective `docs/drafts/cikm-2026/process-trace-gaze-sync-missed.md` documents the failure pattern.
+Synthetic parity fixtures in the sibling approach-retreat repository check
+feature arithmetic only. They do not prove row selection, geometry, timestamps,
+click attribution, or equivalence of scientific protocols. Neither a LAB score
+nor an offline replay score establishes browser deployment performance.
 
 ## CIKM 2026 paper
 
