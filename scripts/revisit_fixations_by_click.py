@@ -5,7 +5,17 @@ AdSERP first-visit/revisit fixation contrast. The draft currently quotes
 "+32% more fixation (clicked) / -17% (non-clicked)" — prose-only numbers with
 no K-ID whose current NB07b execution reads +12.5% / -7.9%, computed under the
 retracted pre-2026-04-12 coordinate convention. This producer recomputes the
-contrast on the current typed_gapfill substrate under two stated constructs:
+contrast on the current typed_gapfill substrate and restores the opportunity
+denominators that the earlier intensity-only output omitted:
+
+- Revisit prevalence: among organic element-trials with at least one fixation
+  episode, the share with a later episode. This is a whole-trial gaze-defined
+  baseline, not a post-click/browser-back rate.
+- Upward-scroll + gaze retrieval: among upward gestures after prior fixation on
+  the target set, whether gaze returns to that set before the next scroll.
+  Gesture-level and any-success-per-trial denominators are both reported.
+
+Conditional intensity remains under the original two constructs:
 
 - Construct A ("episode"): the AO-paper-parallel construct. A visit to an
   element is a maximal run of consecutive fixations assigned to it. First
@@ -92,12 +102,58 @@ def agg(records):
     }
 
 
+def prevalence(records):
+    """Summarize a binary revisit/retrieval opportunity without conditioning on success."""
+    if not records:
+        return None
+    by_trial = defaultdict(list)
+    by_participant = defaultdict(list)
+    for record in records:
+        value = bool(record['revisited'])
+        by_trial[record['trial_id']].append(value)
+        by_participant[record['participant_id']].append(value)
+    n = len(records)
+    hits = sum(bool(record['revisited']) for record in records)
+    return {
+        'n_opportunities': n,
+        'n_revisited': hits,
+        'revisit_rate': hits / n,
+        'n_trials': len(by_trial),
+        'n_participants': len(by_participant),
+        'equal_trial_mean_rate': sum(
+            sum(values) / len(values) for values in by_trial.values()
+        ) / len(by_trial),
+        'equal_participant_mean_rate': sum(
+            sum(values) / len(values) for values in by_participant.values()
+        ) / len(by_participant),
+    }
+
+
+def collapse_gestures_to_trials(records):
+    """Collapse gesture opportunities to one any-retrieval outcome per trial."""
+    by_trial = defaultdict(list)
+    participants = {}
+    for record in records:
+        by_trial[record['trial_id']].append(bool(record['revisited']))
+        participants[record['trial_id']] = record['participant_id']
+    return [
+        {
+            'trial_id': trial_id,
+            'participant_id': participants[trial_id],
+            'revisited': any(values),
+        }
+        for trial_id, values in by_trial.items()
+    ]
+
+
 def main():
     excluded = typed_alignment_exclusions()
     trials = [t for t in get_trial_ids() if t not in excluded]
 
-    ep_rec = defaultdict(list)   # (etype, clicked) -> records  [construct A]
-    rs_rec = defaultdict(list)   # [construct B]
+    ep_rec = defaultdict(list)   # (etype, clicked) -> successful revisit records
+    rs_rec = defaultdict(list)   # successful regression-split revisit records
+    ep_opportunities = defaultdict(list)  # organic element-trial opportunities
+    scroll_opportunities = defaultdict(list)  # upward-gesture opportunities
     pop = {'trials_analyzed': 0, 'skipped_no_gapfill_map': 0,
            'skipped_no_fixations': 0, 'trials_with_attributed_click': 0}
 
@@ -136,7 +192,19 @@ def main():
                 cur_pos, cur_run = pos, [f]
         if cur_pos is not None and cur_pos >= 0:
             episodes[cur_pos].append(cur_run)
+        participant_id = tid.split('-')[0]
         for pos, runs in episodes.items():
+            clicked = clicked_pos is not None and pos == clicked_pos
+            if etypes[pos] == 'organic':
+                opportunity = {
+                    'trial_id': tid,
+                    'participant_id': participant_id,
+                    'revisited': len(runs) >= 2,
+                }
+                ep_opportunities['all'].append(opportunity)
+                ep_opportunities['clicked' if clicked else 'non_clicked'].append(
+                    opportunity
+                )
             if len(runs) < 2:
                 continue
             first, revs = runs[0], runs[1:]
@@ -146,11 +214,38 @@ def main():
                 'rev_n_mean': sum(len(r) for r in revs) / len(revs),
                 'rev_ms_mean': sum(sum(f['d'] for f in r) for r in revs) / len(revs),
             }
-            key = (etypes[pos], clicked_pos is not None and pos == clicked_pos)
+            key = (etypes[pos], clicked)
             ep_rec[key].append(rec)
 
         # Construct B: regression-split via landing fixation of first up-gesture
-        ups = [g for g in gestures(scrolls) if g['direction'] == 'up']
+        all_gestures = gestures(scrolls)
+        ups = [g for g in all_gestures if g['direction'] == 'up']
+        for gesture in ups:
+            later_starts = [
+                other['t_start'] for other in all_gestures
+                if gesture['t_end'] < other['t_start']
+            ]
+            window_end = min(later_starts) if later_starts else float('inf')
+            prior_organic = {
+                pos for pos, fixation in seq
+                if fixation['t'] < gesture['t_end']
+                and pos >= 0 and etypes[pos] == 'organic'
+            }
+            post_organic = {
+                pos for pos, fixation in seq
+                if gesture['t_end'] <= fixation['t'] < window_end
+                and pos >= 0 and etypes[pos] == 'organic'
+            }
+            retrieved = prior_organic.intersection(post_organic)
+            base = {'trial_id': tid, 'participant_id': participant_id}
+            if prior_organic:
+                scroll_opportunities['any_prior_organic'].append({
+                    **base, 'revisited': bool(retrieved),
+                })
+            if clicked_pos is not None and clicked_pos in prior_organic:
+                scroll_opportunities['clicked'].append({
+                    **base, 'revisited': clicked_pos in retrieved,
+                })
         split_t = {}
         for g in ups:
             land = next(((p, f) for p, f in seq if f['t'] >= g['t_end']), None)
@@ -199,6 +294,28 @@ def main():
         'click_attribution': 'attribute_click_to_typed_gapfill on final click, mouse events in screenshot space.',
         'population': pop,
         'organic': {
+            'whole_trial_revisit_prevalence': {
+                group: prevalence(ep_opportunities.get(group, []))
+                for group in ('clicked', 'non_clicked', 'all')
+            },
+            'upward_scroll_gaze_retrieval': {
+                'definition': (
+                    'Opportunity = an upward scroll gesture after at least one prior '
+                    'fixation on the target organic set. Retrieval = a fixation assigned '
+                    'to that target after the gesture and before the next scroll gesture. '
+                    'Gesture-level and trial-level denominators are reported separately.'
+                ),
+                'gesture_level': {
+                    group: prevalence(scroll_opportunities.get(group, []))
+                    for group in ('clicked', 'any_prior_organic')
+                },
+                'trial_level': {
+                    group: prevalence(collapse_gestures_to_trials(
+                        scroll_opportunities.get(group, [])
+                    ))
+                    for group in ('clicked', 'any_prior_organic')
+                },
+            },
             'construct_A_episode': by_click(ep_rec, 'organic'),
             'construct_B_regression_split': by_click(rs_rec, 'organic'),
         },
@@ -226,7 +343,28 @@ def main():
                 f"({block['pct_change_ms']:+.1%}) |")
 
     lines = ['# First-visit vs revisit fixations by click status — AdSERP organic',
-             '', f"Tag: `{summary['regime_tag']}` · generated {summary['generated']}", '']
+             '', f"Tag: `{summary['regime_tag']}` · generated {summary['generated']}",
+             '', '## Revisit prevalence (denominator-explicit)', '',
+             '| group | revisited / visited element-trials | event rate | equal-trial rate | equal-participant rate |',
+             '|---|---:|---:|---:|---:|']
+    for group in ('clicked', 'non_clicked', 'all'):
+        block = summary['organic']['whole_trial_revisit_prevalence'][group]
+        lines.append(
+            f"| {group} | {block['n_revisited']} / {block['n_opportunities']} | "
+            f"{block['revisit_rate']:.1%} | {block['equal_trial_mean_rate']:.1%} | "
+            f"{block['equal_participant_mean_rate']:.1%} |"
+        )
+    lines += ['', '## Upward-scroll + gaze retrieval (denominator-explicit)', '',
+              '| target | gesture-level | trial-level |', '|---|---:|---:|']
+    for group in ('clicked', 'any_prior_organic'):
+        gesture = summary['organic']['upward_scroll_gaze_retrieval']['gesture_level'][group]
+        trial = summary['organic']['upward_scroll_gaze_retrieval']['trial_level'][group]
+        lines.append(
+            f"| {group} | {gesture['n_revisited']} / {gesture['n_opportunities']} "
+            f"({gesture['revisit_rate']:.1%}) | {trial['n_revisited']} / "
+            f"{trial['n_opportunities']} ({trial['revisit_rate']:.1%}) |"
+        )
+    lines.append('')
     for cname, key in (('Construct A (episode, AO-parallel)', 'construct_A_episode'),
                        ('Construct B (regression-split, NB07b semantics clean)', 'construct_B_regression_split')):
         lines += [f'## {cname}', '', '| group | n | fixations first->revisit | dwell first->revisit |', '|---|---|---|---|']
