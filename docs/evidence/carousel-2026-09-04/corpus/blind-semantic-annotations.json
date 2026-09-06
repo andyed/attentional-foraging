@@ -1,0 +1,190 @@
+{
+  "annotated_at_utc": "2026-09-05T00:22:41.326184+00:00",
+  "blind_to_corpus_outcomes": true,
+  "preselection_sha256": "e816108a80a1901fa7a4b99415a02fa5f944105f00cc53aed470ebb93aca052b",
+  "source_evidence_sha256": "7ec97e28a927e0957c914aa960bb25fb5b239ab0545dee8e41c277a62bf07d43",
+  "method": "Original screenshot crops personally inspected, compared with raw/cached HTML card text and numbering; no candidate outputs consulted; image/title discrepancy and indistinguishable labels retained as limitations.",
+  "total_visible_cards": 34,
+  "cases": [
+    {
+      "trial_id": "p016-b3-t1",
+      "visible_product_count": 5,
+      "visible_card_ids_left_to_right": [
+        "vplaurlg0",
+        "vplaurlg1",
+        "vplaurlg2",
+        "vplaurlg3",
+        "vplaurlg4"
+      ],
+      "observed_prices_eur_left_to_right": [
+        "25.99",
+        "10.96",
+        "23.99",
+        "10.12",
+        "10.94"
+      ],
+      "raw_cached_card_text_and_order_equal": true,
+      "visible_text_price_order_correspondence": true,
+      "observation": "Five blues records: first three Blues Breakers, fourth A Hard Road, fifth Bluesbreakers CD. Visible title, price and merchant sequence matches raw/cached card IDs 0-4.",
+      "screenshot_sha256": "dcb086e38ec00c38201cefa763d0d74035aac0cb30a08b0064c48fe62ff1134e",
+      "full_product_identity_validated": false,
+      "reason_full_identity_unvalidated": "Merchant destinations were not visited; images and truncated visible labels cannot establish SKU identity."
+    },
+    {
+      "trial_id": "p046-b1-t1",
+      "visible_product_count": 5,
+      "visible_card_ids_left_to_right": [
+        "vplaurlg0",
+        "vplaurlg1",
+        "vplaurlg2",
+        "vplaurlg3",
+        "vplaurlg4"
+      ],
+      "observed_prices_eur_left_to_right": [
+        "119.99",
+        "109.99",
+        "145.00",
+        "177.00",
+        "104.30"
+      ],
+      "raw_cached_card_text_and_order_equal": true,
+      "visible_text_price_order_correspondence": true,
+      "observation": "Five suitcases: yellow large, yellow medium, blue Ulisse, olive Ulisse, black flexible suitcase. Titles/prices/merchants match IDs 0-4. Arrow partly occludes the last card; the original has no spelling block.",
+      "screenshot_sha256": "abe28ad0c422899f67c6f6153ac3cfd471b5b17403cd3b9d36def6ed7ad5d97e",
+      "full_product_identity_validated": false,
+      "reason_full_identity_unvalidated": "Merchant destinations were not visited; images and truncated visible labels cannot establish SKU identity."
+    },
+    {
+      "trial_id": "p030-b6-t4",
+      "visible_product_count": 3,
+      "visible_card_ids_left_to_right": [
+        "vplaurlg0",
+        "vplaurlg1",
+        "vplaurlg2"
+      ],
+      "observed_prices_eur_left_to_right": [
+        "9.01",
+        "7.28",
+        "22.58"
+      ],
+      "raw_cached_card_text_and_order_equal": true,
+      "visible_text_price_order_correspondence": true,
+      "observation": "Three Naturalax bottles, purple-cap product then two white-bottle variants. Labels/prices/merchants match IDs 0-2. The original has no spelling block.",
+      "screenshot_sha256": "bf9c579bc7536e86120f85a01820720f93c7387dc96447c207f5eef8d49d37db",
+      "full_product_identity_validated": false,
+      "reason_full_identity_unvalidated": "Merchant destinations were not visited; images and truncated visible labels cannot establish SKU identity."
+    },
+    {
+      "trial_id": "p048-b4-t8",
+      "visible_product_count": 5,
+      "visible_card_ids_left_to_right": [
+        "vplaurlg0",
+        "vplaurlg1",
+        "vplaurlg2",
+        "vplaurlg3",
+        "vplaurlg4"
+      ],
+      "observed_prices_eur_left_to_right": [
+        "55.50",
+        "46.23",
+        "41.31",
+        "44.15",
+        "55.48"
+      ],
+      "raw_cached_card_text_and_order_equal": true,
+      "visible_text_price_order_correspondence": true,
+      "observation": "Five oxygen sensors; title prefixes and distinct prices match IDs 0-4. Arrow partly occludes the last card.",
+      "screenshot_sha256": "c88f490505eb7225c371a1b6341c9f8d580c061747d6dc216b24b00309bc1f09",
+      "full_product_identity_validated": false,
+      "reason_full_identity_unvalidated": "Merchant destinations were not visited; images and truncated visible labels cannot establish SKU identity."
+    },
+    {
+      "trial_id": "p040-b5-t10",
+      "visible_product_count": 5,
+      "visible_card_ids_left_to_right": [
+        "vplaurlg0",
+        "vplaurlg1",
+        "vplaurlg2",
+        "vplaurlg3",
+        "vplaurlg4"
+      ],
+      "observed_prices_eur_left_to_right": [
+        "31.46",
+        "77.00",
+        "72.07",
+        "98.39",
+        "103.20"
+      ],
+      "raw_cached_card_text_and_order_equal": true,
+      "visible_text_price_order_correspondence": true,
+      "observation": "Five Casio watches, including distinct red third watch; title prefixes, prices and merchant sequence match IDs 0-4. Arrow partly occludes the last card.",
+      "screenshot_sha256": "086eff23bd390d6f259a67d4eb531f8df6498f5b5e6457740e6426895ea491d8",
+      "full_product_identity_validated": false,
+      "reason_full_identity_unvalidated": "Merchant destinations were not visited; images and truncated visible labels cannot establish SKU identity."
+    },
+    {
+      "trial_id": "p009-b6-t4",
+      "visible_product_count": 5,
+      "visible_card_ids_left_to_right": [
+        "vplaurlg0",
+        "vplaurlg1",
+        "vplaurlg2",
+        "vplaurlg3",
+        "vplaurlg4"
+      ],
+      "observed_prices_eur_left_to_right": [
+        "29.98",
+        "29.98",
+        "89.98",
+        "45.81",
+        "34.98"
+      ],
+      "raw_cached_card_text_and_order_equal": true,
+      "visible_text_price_order_correspondence": true,
+      "observation": "Five projector lamps. Two equal-price ELPLP50 entries remain distinguished by product-title continuation (PowerLite 826W versus EB-85H) in HTML; screenshot truncates that continuation, so their exact subtype order is not independently visible. Other price/title/image differences match IDs 0-4.",
+      "screenshot_sha256": "a154ee9a0c2b270a35b9f6e1934714b2ec014eda0049bc4bc152a9a107719963",
+      "full_product_identity_validated": false,
+      "reason_full_identity_unvalidated": "Merchant destinations were not visited; images and truncated visible labels cannot establish SKU identity."
+    },
+    {
+      "trial_id": "p032-b2-t5",
+      "visible_product_count": 3,
+      "visible_card_ids_left_to_right": [
+        "vplaurlg0",
+        "vplaurlg1",
+        "vplaurlg2"
+      ],
+      "observed_prices_eur_left_to_right": [
+        "40.16",
+        "106.31",
+        "16.54"
+      ],
+      "raw_cached_card_text_and_order_equal": true,
+      "visible_text_price_order_correspondence": true,
+      "observation": "Three Christmas-tree cup/saucer offers: stacked cups, set of four, single cup/saucer; visible titles/prices and Etsy merchants match IDs 0-2.",
+      "screenshot_sha256": "cd10d56471a81dab622c92cf0a95ffaefe9e85523bf5a4a6686823d9b20000b5",
+      "full_product_identity_validated": false,
+      "reason_full_identity_unvalidated": "Merchant destinations were not visited; images and truncated visible labels cannot establish SKU identity."
+    },
+    {
+      "trial_id": "p014-b3-t4",
+      "visible_product_count": 3,
+      "visible_card_ids_left_to_right": [
+        "vplaurlg0",
+        "vplaurlg1",
+        "vplaurlg2"
+      ],
+      "observed_prices_eur_left_to_right": [
+        "11.18",
+        "12.91",
+        "2.00"
+      ],
+      "raw_cached_card_text_and_order_equal": true,
+      "visible_text_price_order_correspondence": true,
+      "observation": "Three record offers. Visible title/price/merchant sequence matches IDs 0-2, but the original screenshot first cover says Liszt and second says Chopin while the query/first title refer to Daniel O Donnell and third cover is Daniel O Donnell. This is an image/title content inconsistency inside the source screenshot, not evidence of a geometry/order error.",
+      "screenshot_sha256": "544e7c3f075e23c3fb93cdf41bed494e8764ce5e1f0af21932fa1ae8d3cb6228",
+      "full_product_identity_validated": false,
+      "reason_full_identity_unvalidated": "Merchant destinations were not visited; images and truncated visible labels cannot establish SKU identity."
+    }
+  ]
+}

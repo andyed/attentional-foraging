@@ -1,0 +1,7 @@
+{
+  "recorded_at_utc": "2026-09-05T00:24:05.038156+00:00",
+  "original_annotations_sha256": "deb9f8524f808c668663056704e4d1cf9c3ee8a46cfd043adf58f1ec77cf537c",
+  "trial_id": "p014-b3-t4",
+  "correction": "The second album image reads JOURNEY, not Chopin. The first reads Liszt. Original and replayed HTML show the same images. Counts, card order, titles, prices and acceptance expectations are unchanged.",
+  "basis": "Enlarged replayed-carousel image and decoded original HTML product image; correction occurred after the frozen extraction but no parameter/source changes followed."
+}

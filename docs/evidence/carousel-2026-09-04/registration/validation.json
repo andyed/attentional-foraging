@@ -1,0 +1,24 @@
+{
+  "tests_passed": 94,
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=scripts .venv/bin/python -m unittest test_aoi_fidelity test_carousel_dom test_carousel_screenshot test_carousel_match_report",
+  "verified_utc": "2026-09-05T00:13:17.314412+00:00",
+  "source_sha256": {
+    "aoi_fidelity.py": "d07e5292abeb674f7ccb1d37567da4947d4d553a3f3d9ae1fd45d114d9d15c5a",
+    "carousel_dom.py": "9596f492a167d388479d508e6c1522f960106744a54ef48a69f44c467c22cab2",
+    "carousel_screenshot.py": "85a9df2c866e80ff70da55f048dd4bd7630eedf9cc30425ec40813f67c71da30",
+    "carousel_match_report.py": "7770be9e770d44901e3f86195cb9b5616320922827402048ed3e56c386b8f697",
+    "test_carousel_screenshot.py": "73a0515d8f821e2ff43d29ebb63e69969e41e365d8062234d5f82f8fdfac7be8",
+    "test_carousel_match_report.py": "7433f594ff9872fc47238a500feb4e544b740000aa7bdd391040b213fcf41467"
+  },
+  "evidence_sha256": {
+    "spelling-layout-diagnosis.md": "f5b618ca0b05e3947ba5f19946295bc56b777927816377fe4896b6cdd1134171",
+    "cohort.json": "2c8ed32eb2cf4915da7b8692dd43ade38ebffe8d163e409ae8f2c4f340b92dfb",
+    "comparison.json": "45c109caedc281a7b6fbbc4605cbd1fd5e8a9491b443f68e691e418f80e3a2b4",
+    "candidate-cells.csv": "d952df6341813b660458420b5e95e5c757f42548e4fce1584f05dbac2d4c02a7",
+    "heldout.json": "446add3d7d5c88c5b6d060e811012995d47d9ff35134842d1a08a7c873699c4a",
+    "candidate-audit.json.meta.json": "bb005a7a925e00283bfb4c56c96728c0b3d1320f36ee072e40dbadac18c919c1",
+    "candidate-audit.json": "20e4b113b1aa9c33bd49dcdc1e7ac5ad3d84ea070ce465f05229a1650fc82ab9",
+    "heldout-validation.json": "00091633d57d9e7af44c0ca8a2cf44493631e8984c2e802d8bc103cc11c90712"
+  },
+  "limits": "Fixed development cohort and targeted spelling holdout. Count/outline geometry support does not validate semantic product identity or generalize to the full corpus."
+}

@@ -1,5 +1,12 @@
 # dd_top cell split — the `typed_gapfill_cellsplit` flavor
 
+**2026-09-04 status:** the released cell layer still uses the frozen May snapshot.
+“100% aligned” below describes internal parent alignment, not correct card
+identity or boundaries. A [DOM candidate and independent screenshot fixtures](carousel-dom-candidate.md)
+now exist. The [registered candidate](carousel-screenshot-registration.md)
+matches all 61 counts in the fixed comparison cohort, with screenshot-border
+support; raw layout mismatches are retained and explicitly corrected. The replacement is not yet wired into the public export.
+
 **Date:** 2026-06-23
 **Stable ID:** M:dd-top-cellsplit
 **Producer (flavor):** `scripts/export_aois_by_trial_id.py --attribution typed_gapfill_cellsplit`
@@ -31,7 +38,7 @@ click in a card margin attributes to the nearest cell rather than being lost.
 
 | tier | etype | coverage | alignment to backbone | status |
 |---|---|---|---|---|
-| **1 — headline** | `dd_top_cell` | 6,373 cells / 1,550 trials (55.8 %); modal 4 cells/carousel (range 2–6) | **100 %** aligned to block-level `dd_top` bboxes | ship as primary |
+| **1 — headline** | `dd_top_cell` | 6,373 cells / 1,550 trials (55.8 %); modal 4 cells/carousel (range 2–6) | **100 %** aligned to block-level `dd_top` bboxes | legacy snapshot; replacement validation pending |
 | 2 — sparse | `organic_cell` | 174 aligned cells / 75 trials (2.7 %) | **45.8 %** of 380 cascade candidates align to a public organic | least-mature; ship aligned subset only |
 | 3 — covariate | `dd_right` (+`dd_right_cell`) | 861 right-rail blocks (31.0 %); 184 cells / 92 trials | off-axis (`main_axis=False`) | covariate, not a modeling target |
 

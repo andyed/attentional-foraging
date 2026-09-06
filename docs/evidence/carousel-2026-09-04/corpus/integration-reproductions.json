@@ -1,0 +1,91 @@
+{
+  "synthetic_current_export_empty_base_still_emits": [
+    {
+      "trial_id": "excluded-test",
+      "uid": 1,
+      "batch": 1,
+      "trial": 1,
+      "rank": -1,
+      "etype": "dd_right",
+      "organic_rank": null,
+      "top_y": 150.0,
+      "bottom_y": 330.0,
+      "center_y": 240.0,
+      "left_x": 900.0,
+      "right_x": 1150.0,
+      "n_total": null,
+      "n_organic": null,
+      "doc_height": 2500,
+      "screen_height": 1024,
+      "html_handle": null,
+      "html_signature": "",
+      "role": "parent",
+      "cell_index": null,
+      "n_cells": 0,
+      "parent_rank": -1,
+      "parent_etype": "dd_right",
+      "main_axis": false
+    }
+  ],
+  "synthetic_nb25_off_x_same_y_assigned_rank": 0,
+  "legacy_parent_vs_current_gapfill": {
+    "legacy_parent_rows": 37174,
+    "current_gapfill_rows": 36407,
+    "common_keys": 36296,
+    "changed_common_rows": 10754,
+    "changed_common_trials": 1565,
+    "legacy_only_keys": 878,
+    "current_only_keys": 111,
+    "source_hashes": {
+      "adserp_aois_by_trial_id_typed_gapfill_cellsplit.csv": "a5fa5a9ad1863c6eaa9c22089dc26631b3ae5bebe38d7ed2e5a8522c61d29081",
+      "adserp_aois_by_trial_id_typed_gapfill.csv": "5e189cdddda0fe0ae32365ecf565fb9373de7ce358d1da28910ff85865bd4c0f"
+    },
+    "examples": [
+      {
+        "trial_id": "p004-b1-t10",
+        "rank": "10",
+        "fields": [
+          "etype",
+          "top_y",
+          "bottom_y",
+          "html_handle"
+        ]
+      },
+      {
+        "trial_id": "p004-b1-t10",
+        "rank": "11",
+        "fields": [
+          "top_y",
+          "bottom_y"
+        ]
+      },
+      {
+        "trial_id": "p004-b1-t10",
+        "rank": "12",
+        "fields": [
+          "top_y",
+          "bottom_y",
+          "html_handle"
+        ]
+      },
+      {
+        "trial_id": "p004-b1-t10",
+        "rank": "13",
+        "fields": [
+          "top_y",
+          "bottom_y",
+          "html_handle"
+        ]
+      },
+      {
+        "trial_id": "p004-b1-t10",
+        "rank": "14",
+        "fields": [
+          "top_y",
+          "bottom_y",
+          "html_handle"
+        ]
+      }
+    ]
+  }
+}

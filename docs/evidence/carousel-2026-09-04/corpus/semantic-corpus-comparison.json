@@ -1,0 +1,55 @@
+{
+  "selected": 8,
+  "available": 8,
+  "matched": 8,
+  "cases": [
+    {
+      "trial_id": "p016-b3-t1",
+      "available": true,
+      "sha256": "c557808348e7f8986aff16bcec038b16435e2d72336ea1364e0e78f647a5840b",
+      "matches_independent_run": true
+    },
+    {
+      "trial_id": "p046-b1-t1",
+      "available": true,
+      "sha256": "0a265f44ef15a446bc169e7f6dd582e3f53c91738cf0cddb839e44d37a9b24b3",
+      "matches_independent_run": true
+    },
+    {
+      "trial_id": "p030-b6-t4",
+      "available": true,
+      "sha256": "2e263711ac0f4c2bb552f51f1c925fcf502c8534223712750f0b8fc1685dbac7",
+      "matches_independent_run": true
+    },
+    {
+      "trial_id": "p048-b4-t8",
+      "available": true,
+      "sha256": "783edb9e17782a6b19e45a670bbebc524e28aadd014c22b3bf6d3fe90853b0cb",
+      "matches_independent_run": true
+    },
+    {
+      "trial_id": "p040-b5-t10",
+      "available": true,
+      "sha256": "335ece130c0eab10aff4bfffe9d4e143c341806947aa645a49424cb82392e126",
+      "matches_independent_run": true
+    },
+    {
+      "trial_id": "p009-b6-t4",
+      "available": true,
+      "sha256": "a7effe1dc192c13d91a3af246220a1a4abb1bc23fed2749a3bbfc35b31d02ecf",
+      "matches_independent_run": true
+    },
+    {
+      "trial_id": "p032-b2-t5",
+      "available": true,
+      "sha256": "3e9540f541549e0f9f18bc3b45a2aa058ecec2b3d67cd377300c74641699af40",
+      "matches_independent_run": true
+    },
+    {
+      "trial_id": "p014-b3-t4",
+      "available": true,
+      "sha256": "05e1dcacf47c9a02584f8c59d10fa3f166f2acfa8e84d5cd9d4d3944222066d1",
+      "matches_independent_run": true
+    }
+  ]
+}

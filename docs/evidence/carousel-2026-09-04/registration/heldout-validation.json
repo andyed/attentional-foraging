@@ -1,0 +1,49 @@
+{
+  "scope": "Six spelling-suggestion pages outside the retained61 development cohort; chosen by independent reviewer before registration results, not a random corpus sample.",
+  "annotation_basis": "Independent visual review of original screenshots confirmed visible product counts and absence of the HTML spelling block. Counts supplied before reviewer saw registration outcomes.",
+  "summary": {
+    "trials": 6,
+    "count_agreement": 6,
+    "screenshot_registration_accepted": 6
+  },
+  "trials": [
+    {
+      "trial_id": "p004-b2-t8",
+      "visually_counted_cards": 5,
+      "candidate_cards": 5,
+      "registration_status": "accepted"
+    },
+    {
+      "trial_id": "p011-b5-t10",
+      "visually_counted_cards": 5,
+      "candidate_cards": 5,
+      "registration_status": "accepted"
+    },
+    {
+      "trial_id": "p028-b6-t8",
+      "visually_counted_cards": 5,
+      "candidate_cards": 5,
+      "registration_status": "accepted"
+    },
+    {
+      "trial_id": "p040-b6-t5",
+      "visually_counted_cards": 4,
+      "candidate_cards": 4,
+      "registration_status": "accepted"
+    },
+    {
+      "trial_id": "p045-b5-t1",
+      "visually_counted_cards": 5,
+      "candidate_cards": 5,
+      "registration_status": "accepted"
+    },
+    {
+      "trial_id": "p050-b2-t1",
+      "visually_counted_cards": 5,
+      "candidate_cards": 5,
+      "registration_status": "accepted"
+    }
+  ],
+  "annotations_sha256": "745d4bfccc12135c8e8aaecba72d06c1e4bb7cb0985236e0b84c356f488f4bfc",
+  "candidate_sha256": "446add3d7d5c88c5b6d060e811012995d47d9ff35134842d1a08a7c873699c4a"
+}

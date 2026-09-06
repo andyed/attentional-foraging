@@ -1,0 +1,75 @@
+{
+  "candidate_report_sha256": "dca6bff6cce53b3966250279910fafb25f235ffb9547919889470a02e6ff9a08",
+  "fixture_sha256": "53e4187ff5c8cd12167917992dd69d026c9cef9af7584dbae7a90ce447bafeb5",
+  "holdout_sha256": "745d4bfccc12135c8e8aaecba72d06c1e4bb7cb0985236e0b84c356f488f4bfc",
+  "golden_pass": 8,
+  "holdout_pass": 6,
+  "golden": [
+    {
+      "trial_id": "p005-b2-t1",
+      "errors": []
+    },
+    {
+      "trial_id": "p006-b2-t9",
+      "errors": []
+    },
+    {
+      "trial_id": "p004-b5-t7",
+      "errors": []
+    },
+    {
+      "trial_id": "p022-b2-t4",
+      "errors": []
+    },
+    {
+      "trial_id": "p006-b5-t2",
+      "errors": []
+    },
+    {
+      "trial_id": "p011-b1-t1",
+      "errors": []
+    },
+    {
+      "trial_id": "p040-b4-t3",
+      "errors": []
+    },
+    {
+      "trial_id": "p048-b3-t6",
+      "errors": []
+    }
+  ],
+  "holdout": [
+    {
+      "trial_id": "p004-b2-t8",
+      "count": 5,
+      "passed": true
+    },
+    {
+      "trial_id": "p011-b5-t10",
+      "count": 5,
+      "passed": true
+    },
+    {
+      "trial_id": "p028-b6-t8",
+      "count": 5,
+      "passed": true
+    },
+    {
+      "trial_id": "p040-b6-t5",
+      "count": 4,
+      "passed": true
+    },
+    {
+      "trial_id": "p045-b5-t1",
+      "count": 5,
+      "passed": true
+    },
+    {
+      "trial_id": "p050-b2-t1",
+      "count": 5,
+      "passed": true
+    }
+  ],
+  "large_shift_pages": 79,
+  "all_large_shift_pages_contain_spelling_module": true
+}

@@ -1,0 +1,290 @@
+{
+  "annotation_basis": "Visually reviewed original AdSERP full-page screenshots, native-pixel crops with coordinate rulers; approximate border rectangles (x1,y1,x2,y2), fixed before candidate run. 3px tolerance for manual border localization. Candidate X conversion uses recorded window width; Y uses document height. These fixtures do not establish corpus-wide pixel accuracy.",
+  "regime": "LAB",
+  "cases": [
+    {
+      "trial_id": "p005-b2-t1",
+      "selection": "legacy_short",
+      "visible_count": 5,
+      "rects_screenshot": [
+        [
+          162,
+          194,
+          274,
+          445
+        ],
+        [
+          281,
+          194,
+          393,
+          445
+        ],
+        [
+          400,
+          194,
+          512,
+          445
+        ],
+        [
+          519,
+          194,
+          631,
+          445
+        ],
+        [
+          638,
+          194,
+          750,
+          445
+        ]
+      ],
+      "tolerance_px": 3,
+      "screenshot_sha256": "7db77958829f303f465661cfe24c1d17058197ae5e1fbadcb88294004d1869c3",
+      "expected_registered_outcome": "accept"
+    },
+    {
+      "trial_id": "p006-b2-t9",
+      "selection": "legacy_short",
+      "visible_count": 5,
+      "rects_screenshot": [
+        [
+          162,
+          194,
+          274,
+          484
+        ],
+        [
+          281,
+          194,
+          393,
+          484
+        ],
+        [
+          400,
+          194,
+          512,
+          484
+        ],
+        [
+          519,
+          194,
+          631,
+          484
+        ],
+        [
+          638,
+          194,
+          750,
+          484
+        ]
+      ],
+      "tolerance_px": 3,
+      "screenshot_sha256": "87585035c557850fba6f5a0eccdae3a8e0efcfffcd0ab0a547970741f1d55216",
+      "expected_registered_outcome": "accept"
+    },
+    {
+      "trial_id": "p004-b5-t7",
+      "selection": "legacy_over",
+      "visible_count": 3,
+      "rects_screenshot": [
+        [
+          162,
+          194,
+          353,
+          530
+        ],
+        [
+          360,
+          194,
+          551,
+          530
+        ],
+        [
+          558,
+          194,
+          750,
+          530
+        ]
+      ],
+      "tolerance_px": 3,
+      "screenshot_sha256": "93cfd207e4221c2c7cd920523e4e363cbb9dbd16c6db21108a502b3ae0788642",
+      "expected_registered_outcome": "accept"
+    },
+    {
+      "trial_id": "p022-b2-t4",
+      "selection": "legacy_over",
+      "visible_count": 3,
+      "rects_screenshot": [
+        [
+          162,
+          194,
+          353,
+          484
+        ],
+        [
+          360,
+          194,
+          551,
+          484
+        ],
+        [
+          558,
+          194,
+          750,
+          484
+        ]
+      ],
+      "tolerance_px": 3,
+      "screenshot_sha256": "3e68611cfb3e4b92242262738f77b0a5ba263561aae463fc7f3778c9b74da33b",
+      "expected_registered_outcome": "accept"
+    },
+    {
+      "trial_id": "p006-b5-t2",
+      "selection": "legacy_count_equal",
+      "visible_count": 5,
+      "rects_screenshot": [
+        [
+          162,
+          194,
+          274,
+          500
+        ],
+        [
+          281,
+          194,
+          393,
+          500
+        ],
+        [
+          400,
+          194,
+          512,
+          500
+        ],
+        [
+          519,
+          194,
+          631,
+          500
+        ],
+        [
+          638,
+          194,
+          750,
+          500
+        ]
+      ],
+      "tolerance_px": 3,
+      "screenshot_sha256": "468e4ca4e194f7d2989dbd6d4e1219ae449a3fd8547a53c0cbc7e749b76b3c32",
+      "expected_outcome": "reject_boundary_mismatch",
+      "note": "Negative control: saved HTML renders a Did you mean block absent from the original screenshot, shifting every card down about 39 screenshot pixels. Matching counts must not admit these boxes.",
+      "expected_registered_outcome": "accept"
+    },
+    {
+      "trial_id": "p011-b1-t1",
+      "selection": "legacy_count_equal",
+      "visible_count": 4,
+      "rects_screenshot": [
+        [
+          162,
+          194,
+          305,
+          382
+        ],
+        [
+          311,
+          194,
+          453,
+          382
+        ],
+        [
+          460,
+          194,
+          602,
+          382
+        ],
+        [
+          609,
+          194,
+          751,
+          382
+        ]
+      ],
+      "tolerance_px": 3,
+      "screenshot_sha256": "8968255109e0bbed2f2dc5d80965e5fce997f8e7b5d89ca231d602c31a21f42b",
+      "expected_registered_outcome": "accept"
+    },
+    {
+      "trial_id": "p040-b4-t3",
+      "selection": "spelling_layout_mismatch",
+      "visible_count": 3,
+      "rects_screenshot": [
+        [
+          162,
+          194,
+          353,
+          531
+        ],
+        [
+          360,
+          194,
+          551,
+          531
+        ],
+        [
+          558,
+          194,
+          750,
+          531
+        ]
+      ],
+      "tolerance_px": 3,
+      "screenshot_sha256": "a82572b46669abc6806f9f2cbb805e10ef638774f574def2f24e6aeeeb136eb0",
+      "expected_outcome": "reject_boundary_mismatch",
+      "expected_registered_outcome": "accept",
+      "note": "Original screenshot border rectangles manually reviewed at native resolution. Raw HTML contains spelling block absent in the screenshot; require raw rejection and registered recovery."
+    },
+    {
+      "trial_id": "p048-b3-t6",
+      "selection": "spelling_layout_mismatch",
+      "visible_count": 5,
+      "rects_screenshot": [
+        [
+          162,
+          194,
+          274,
+          445
+        ],
+        [
+          281,
+          194,
+          393,
+          445
+        ],
+        [
+          400,
+          194,
+          512,
+          445
+        ],
+        [
+          519,
+          194,
+          631,
+          445
+        ],
+        [
+          638,
+          194,
+          750,
+          445
+        ]
+      ],
+      "tolerance_px": 3,
+      "screenshot_sha256": "82e411a95a7b6a3dd3e9dd8d5c21fba67bb33421f17cb3657a466bbd94e23dff",
+      "expected_outcome": "reject_boundary_mismatch",
+      "expected_registered_outcome": "accept",
+      "note": "Original screenshot border rectangles manually reviewed at native resolution. Raw HTML contains spelling block absent in the screenshot; require raw rejection and registered recovery."
+    }
+  ]
+}

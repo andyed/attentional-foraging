@@ -2,7 +2,7 @@
   "date": "2026-05-04",
   "attribution": "typed",
   "n_trials_audited": 2776,
-  "n_trials_skipped": 0,
+  "n_trials_skipped": 2,
   "match_iou_threshold": 0.3,
   "phase_a_consistency": {
     "n_organic_bboxes_total": 26590,

@@ -1,0 +1,3177 @@
+{
+  "schema": "allserp-carousel-dom-candidate-v2",
+  "regime": "LAB",
+  "flavor": "typed parent / DOM candidate cells; not released cellsplit",
+  "source_sha256": "9596f492a167d388479d508e6c1522f960106744a54ef48a69f44c467c22cab2",
+  "fixture_sha256": "53e4187ff5c8cd12167917992dd69d026c9cef9af7584dbae7a90ce447bafeb5",
+  "python": "3.13.11",
+  "playwright": "1.62.0",
+  "chromium": "151.0.7922.34",
+  "viewport": {
+    "width": 1389,
+    "height": 1024
+  },
+  "network": "blocked",
+  "visibility": "captured horizontal viewport and ancestor overflow clips; no temporal exposure inference",
+  "summary": {
+    "trials": 6,
+    "scored": 6,
+    "fixture_trials": 0,
+    "fixture_pass": 0,
+    "accepted_fixtures": 0,
+    "expected_rejections": 0,
+    "registration_accepted": 6,
+    "large_vertical_corrections": 6
+  },
+  "trials": [
+    {
+      "trial_id": "p004-b2-t8",
+      "status": "scored",
+      "parents": [
+        {
+          "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1)",
+          "raw_rect": {
+            "x": 180,
+            "y": 219.265625,
+            "w": 652,
+            "h": 425
+          },
+          "visible_rect": {
+            "x": 180,
+            "y": 219.265625,
+            "w": 652,
+            "h": 425
+          },
+          "cells": [
+            {
+              "card_id": "vplaurlg0",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+              "dom_order": 0,
+              "raw_rect": {
+                "x": 180,
+                "y": 258.265625,
+                "w": 124,
+                "h": 375
+              },
+              "visible_rect": {
+                "x": 180,
+                "y": 258.265625,
+                "w": 124,
+                "h": 375
+              },
+              "visible_fraction": 1,
+              "visible_index": 0,
+              "raw_rect_screenshot": {
+                "x": 162.0253,
+                "y": 232.4803,
+                "w": 111.6174,
+                "h": 337.5598
+              },
+              "visible_rect_screenshot": {
+                "x": 162.0253,
+                "y": 232.4803,
+                "w": 111.6174,
+                "h": 337.5598
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 162.0253,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 337.5598
+              }
+            },
+            {
+              "card_id": "vplaurlg1",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+              "dom_order": 1,
+              "raw_rect": {
+                "x": 312,
+                "y": 258.265625,
+                "w": 124,
+                "h": 375
+              },
+              "visible_rect": {
+                "x": 312,
+                "y": 258.265625,
+                "w": 124,
+                "h": 375
+              },
+              "visible_fraction": 1,
+              "visible_index": 1,
+              "raw_rect_screenshot": {
+                "x": 280.8439,
+                "y": 232.4803,
+                "w": 111.6174,
+                "h": 337.5598
+              },
+              "visible_rect_screenshot": {
+                "x": 280.8439,
+                "y": 232.4803,
+                "w": 111.6174,
+                "h": 337.5598
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 280.8439,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 337.5598
+              }
+            },
+            {
+              "card_id": "vplaurlg2",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
+              "dom_order": 2,
+              "raw_rect": {
+                "x": 444,
+                "y": 258.265625,
+                "w": 124,
+                "h": 375
+              },
+              "visible_rect": {
+                "x": 444,
+                "y": 258.265625,
+                "w": 124,
+                "h": 375
+              },
+              "visible_fraction": 1,
+              "visible_index": 2,
+              "raw_rect_screenshot": {
+                "x": 399.6624,
+                "y": 232.4803,
+                "w": 111.6174,
+                "h": 337.5598
+              },
+              "visible_rect_screenshot": {
+                "x": 399.6624,
+                "y": 232.4803,
+                "w": 111.6174,
+                "h": 337.5598
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 399.6624,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 337.5598
+              }
+            },
+            {
+              "card_id": "vplaurlg3",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+              "dom_order": 3,
+              "raw_rect": {
+                "x": 576,
+                "y": 258.265625,
+                "w": 124,
+                "h": 375
+              },
+              "visible_rect": {
+                "x": 576,
+                "y": 258.265625,
+                "w": 124,
+                "h": 375
+              },
+              "visible_fraction": 1,
+              "visible_index": 3,
+              "raw_rect_screenshot": {
+                "x": 518.481,
+                "y": 232.4803,
+                "w": 111.6174,
+                "h": 337.5598
+              },
+              "visible_rect_screenshot": {
+                "x": 518.481,
+                "y": 232.4803,
+                "w": 111.6174,
+                "h": 337.5598
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 518.481,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 337.5598
+              }
+            },
+            {
+              "card_id": "vplaurlg4",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5)",
+              "dom_order": 4,
+              "raw_rect": {
+                "x": 708,
+                "y": 258.265625,
+                "w": 124,
+                "h": 375
+              },
+              "visible_rect": {
+                "x": 708,
+                "y": 258.265625,
+                "w": 124,
+                "h": 375
+              },
+              "visible_fraction": 1,
+              "visible_index": 4,
+              "raw_rect_screenshot": {
+                "x": 637.2996,
+                "y": 232.4803,
+                "w": 111.6174,
+                "h": 337.5598
+              },
+              "visible_rect_screenshot": {
+                "x": 637.2996,
+                "y": 232.4803,
+                "w": 111.6174,
+                "h": 337.5598
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 637.2996,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 337.5598
+              }
+            },
+            {
+              "card_id": "vplaurlg5",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(6)",
+              "dom_order": 5,
+              "raw_rect": {
+                "x": 840,
+                "y": 258.265625,
+                "w": 124,
+                "h": 375
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 756.1181,
+                "y": 232.4803,
+                "w": 111.6174,
+                "h": 337.5598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg6",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(7)",
+              "dom_order": 6,
+              "raw_rect": {
+                "x": 972,
+                "y": 258.265625,
+                "w": 124,
+                "h": 375
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 874.9367,
+                "y": 232.4803,
+                "w": 111.6174,
+                "h": 337.5598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg7",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(8)",
+              "dom_order": 7,
+              "raw_rect": {
+                "x": 1104,
+                "y": 258.265625,
+                "w": 124,
+                "h": 375
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 993.7553,
+                "y": 232.4803,
+                "w": 111.6174,
+                "h": 337.5598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg8",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(9)",
+              "dom_order": 8,
+              "raw_rect": {
+                "x": 1236,
+                "y": 258.265625,
+                "w": 124,
+                "h": 375
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1112.5738,
+                "y": 232.4803,
+                "w": 111.6174,
+                "h": 337.5598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg9",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(10)",
+              "dom_order": 9,
+              "raw_rect": {
+                "x": 1368,
+                "y": 258.265625,
+                "w": 124,
+                "h": 375
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1231.3924,
+                "y": 232.4803,
+                "w": 111.6174,
+                "h": 337.5598
+              },
+              "visible_rect_screenshot": null
+            }
+          ],
+          "non_product_units": [
+            {
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(11)",
+              "reason": "comparison_service_directory",
+              "raw_rect": {
+                "x": 1500,
+                "y": 258.265625,
+                "w": 124,
+                "h": 375
+              },
+              "visible_rect": null
+            }
+          ],
+          "issues": [],
+          "rendered_visible_rect_screenshot": {
+            "x": 162.0253,
+            "y": 197.374,
+            "w": 586.8917,
+            "h": 382.5678
+          },
+          "typed_position": 0,
+          "typed_rect_screenshot": {
+            "x": 162.0,
+            "y": 158.0,
+            "w": 586.0,
+            "h": 382.0
+          },
+          "typed_html_handle": null,
+          "screenshot_registration": {
+            "status": "accepted",
+            "reason": null,
+            "anchors": [
+              {
+                "card_id": "vplaurlg0",
+                "outline": {
+                  "closed": true,
+                  "x": 162,
+                  "y": 194,
+                  "w": 112,
+                  "h": 337,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.4803
+              },
+              {
+                "card_id": "vplaurlg1",
+                "outline": {
+                  "closed": true,
+                  "x": 281,
+                  "y": 194,
+                  "w": 112,
+                  "h": 337,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.4803
+              },
+              {
+                "card_id": "vplaurlg2",
+                "outline": {
+                  "closed": true,
+                  "x": 400,
+                  "y": 194,
+                  "w": 112,
+                  "h": 337,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.4803
+              },
+              {
+                "card_id": "vplaurlg3",
+                "outline": {
+                  "closed": true,
+                  "x": 519,
+                  "y": 194,
+                  "w": 112,
+                  "h": 337,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.4803
+              }
+            ],
+            "dy": -38.4803,
+            "card_checks": [
+              {
+                "card_id": "vplaurlg0",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg1",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg2",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg3",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg4",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 0.0031446540880503146
+                },
+                "passed": true
+              }
+            ]
+          }
+        }
+      ],
+      "unscoped_product_links": 0,
+      "document_width": 1403,
+      "unmatched_typed_positions": [],
+      "ratio_x": 0.90014064697609,
+      "ratio_y": 0.9001594896331738,
+      "legacy_document_width_ratio_x": 0.9123307198859587,
+      "coordinate_model": "screenshot_width/window_width; screenshot_height/document_height",
+      "inputs": {
+        "html": {
+          "path": "AdSERP/data/serps-cached/p004-b2-t8.html",
+          "sha256": "01b3074ef7cb1a34c59840dfd7887a5bc87da5588d3512dac4b81edb006b0eac"
+        },
+        "screenshot": {
+          "path": "AdSERP/data/full-page-screenshots/p004-b2-t8.png",
+          "sha256": "7746e254eb99c68ee88a8dcc438366f84501e36b3c6cfd4f8d34f7203980da59"
+        },
+        "metadata": {
+          "path": "AdSERP/data/trial-metadata/p004-b2-t8.xml",
+          "sha256": "8ea9482e7bfa624084832c9ee549babf2ef99fd157007e17c93fb0463f46ddc1"
+        },
+        "typed": {
+          "path": "data/aoi-typed/p004-b2-t8.json",
+          "sha256": "4ed375c247bfe460c1cd550da104b19256fcbbe3ad08da3b06367db0cf018fb7"
+        }
+      },
+      "registration_status": "accepted"
+    },
+    {
+      "trial_id": "p011-b5-t10",
+      "status": "scored",
+      "parents": [
+        {
+          "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1)",
+          "raw_rect": {
+            "x": 180,
+            "y": 219.265625,
+            "w": 652,
+            "h": 390
+          },
+          "visible_rect": {
+            "x": 180,
+            "y": 219.265625,
+            "w": 652,
+            "h": 390
+          },
+          "cells": [
+            {
+              "card_id": "vplaurlg0",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+              "dom_order": 0,
+              "raw_rect": {
+                "x": 180,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": {
+                "x": 180,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_fraction": 1,
+              "visible_index": 0,
+              "raw_rect_screenshot": {
+                "x": 162.0253,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "visible_rect_screenshot": {
+                "x": 162.0253,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 162.0253,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 305.9885
+              }
+            },
+            {
+              "card_id": "vplaurlg1",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+              "dom_order": 1,
+              "raw_rect": {
+                "x": 312,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": {
+                "x": 312,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_fraction": 1,
+              "visible_index": 1,
+              "raw_rect_screenshot": {
+                "x": 280.8439,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "visible_rect_screenshot": {
+                "x": 280.8439,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 280.8439,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 305.9885
+              }
+            },
+            {
+              "card_id": "vplaurlg2",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
+              "dom_order": 2,
+              "raw_rect": {
+                "x": 444,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": {
+                "x": 444,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_fraction": 1,
+              "visible_index": 2,
+              "raw_rect_screenshot": {
+                "x": 399.6624,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "visible_rect_screenshot": {
+                "x": 399.6624,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 399.6624,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 305.9885
+              }
+            },
+            {
+              "card_id": "vplaurlg3",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+              "dom_order": 3,
+              "raw_rect": {
+                "x": 576,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": {
+                "x": 576,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_fraction": 1,
+              "visible_index": 3,
+              "raw_rect_screenshot": {
+                "x": 518.481,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "visible_rect_screenshot": {
+                "x": 518.481,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 518.481,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 305.9885
+              }
+            },
+            {
+              "card_id": "vplaurlg4",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5)",
+              "dom_order": 4,
+              "raw_rect": {
+                "x": 708,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": {
+                "x": 708,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_fraction": 1,
+              "visible_index": 4,
+              "raw_rect_screenshot": {
+                "x": 637.2996,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "visible_rect_screenshot": {
+                "x": 637.2996,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 637.2996,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 305.9885
+              }
+            },
+            {
+              "card_id": "vplaurlg5",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(6)",
+              "dom_order": 5,
+              "raw_rect": {
+                "x": 840,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 756.1181,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg6",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(7)",
+              "dom_order": 6,
+              "raw_rect": {
+                "x": 972,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 874.9367,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg7",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(8)",
+              "dom_order": 7,
+              "raw_rect": {
+                "x": 1104,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 993.7553,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg8",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(9)",
+              "dom_order": 8,
+              "raw_rect": {
+                "x": 1236,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1112.5738,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg9",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(10)",
+              "dom_order": 9,
+              "raw_rect": {
+                "x": 1368,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1231.3924,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg10",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(11)",
+              "dom_order": 10,
+              "raw_rect": {
+                "x": 1500,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1350.211,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg11",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(12)",
+              "dom_order": 11,
+              "raw_rect": {
+                "x": 1632,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1469.0295,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg12",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(13)",
+              "dom_order": 12,
+              "raw_rect": {
+                "x": 1764,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1587.8481,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg13",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(14)",
+              "dom_order": 13,
+              "raw_rect": {
+                "x": 1896,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1706.6667,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg14",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(15)",
+              "dom_order": 14,
+              "raw_rect": {
+                "x": 2028,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1825.4852,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg15",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(16)",
+              "dom_order": 15,
+              "raw_rect": {
+                "x": 2160,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1944.3038,
+                "y": 232.4303,
+                "w": 111.6174,
+                "h": 305.9885
+              },
+              "visible_rect_screenshot": null
+            }
+          ],
+          "non_product_units": [
+            {
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(17)",
+              "reason": "comparison_service_directory",
+              "raw_rect": {
+                "x": 2292,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null
+            }
+          ],
+          "issues": [],
+          "rendered_visible_rect_screenshot": {
+            "x": 162.0253,
+            "y": 197.3317,
+            "w": 586.8917,
+            "h": 350.9868
+          },
+          "typed_position": 0,
+          "typed_rect_screenshot": {
+            "x": 162.0,
+            "y": 158.0,
+            "w": 586.0,
+            "h": 351.0
+          },
+          "typed_html_handle": null,
+          "screenshot_registration": {
+            "status": "accepted",
+            "reason": null,
+            "anchors": [
+              {
+                "card_id": "vplaurlg0",
+                "outline": {
+                  "closed": true,
+                  "x": 162,
+                  "y": 194,
+                  "w": 112,
+                  "h": 306,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.43029999999999
+              },
+              {
+                "card_id": "vplaurlg1",
+                "outline": {
+                  "closed": true,
+                  "x": 281,
+                  "y": 194,
+                  "w": 112,
+                  "h": 306,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.43029999999999
+              },
+              {
+                "card_id": "vplaurlg2",
+                "outline": {
+                  "closed": true,
+                  "x": 400,
+                  "y": 194,
+                  "w": 112,
+                  "h": 306,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.43029999999999
+              },
+              {
+                "card_id": "vplaurlg3",
+                "outline": {
+                  "closed": true,
+                  "x": 519,
+                  "y": 194,
+                  "w": 112,
+                  "h": 306,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.43029999999999
+              }
+            ],
+            "dy": -38.4303,
+            "card_checks": [
+              {
+                "card_id": "vplaurlg0",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg1",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg2",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg3",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg4",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 0.0034965034965034965
+                },
+                "passed": true
+              }
+            ]
+          }
+        }
+      ],
+      "unscoped_product_links": 0,
+      "document_width": 1403,
+      "unmatched_typed_positions": [],
+      "ratio_x": 0.90014064697609,
+      "ratio_y": 0.8999662047989185,
+      "legacy_document_width_ratio_x": 0.9123307198859587,
+      "coordinate_model": "screenshot_width/window_width; screenshot_height/document_height",
+      "inputs": {
+        "html": {
+          "path": "AdSERP/data/serps-cached/p011-b5-t10.html",
+          "sha256": "2c60b4541e4c8d883b409c8b5d3cfe047cb29a5909896b6e66361d6f5c1d32de"
+        },
+        "screenshot": {
+          "path": "AdSERP/data/full-page-screenshots/p011-b5-t10.png",
+          "sha256": "b29cac039af4cabd9879352de1d184b0abf115faf952d8c663e9ff5dd2dd6207"
+        },
+        "metadata": {
+          "path": "AdSERP/data/trial-metadata/p011-b5-t10.xml",
+          "sha256": "9c3a8281674920aadba92d3b2ddc671a86cefb81e5515163f0ad4bfeb99246e6"
+        },
+        "typed": {
+          "path": "data/aoi-typed/p011-b5-t10.json",
+          "sha256": "21fb8f1cd230b7fef03824d5b7076142caa0cd6642d424dbf7c4db656b120b66"
+        }
+      },
+      "registration_status": "accepted"
+    },
+    {
+      "trial_id": "p028-b6-t8",
+      "status": "scored",
+      "parents": [
+        {
+          "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1)",
+          "raw_rect": {
+            "x": 180,
+            "y": 219.265625,
+            "w": 652,
+            "h": 390
+          },
+          "visible_rect": {
+            "x": 180,
+            "y": 219.265625,
+            "w": 652,
+            "h": 390
+          },
+          "cells": [
+            {
+              "card_id": "vplaurlg0",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+              "dom_order": 0,
+              "raw_rect": {
+                "x": 180,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": {
+                "x": 180,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_fraction": 1,
+              "visible_index": 0,
+              "raw_rect_screenshot": {
+                "x": 162.0253,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": {
+                "x": 162.0253,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 162.0253,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 305.9598
+              }
+            },
+            {
+              "card_id": "vplaurlg1",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+              "dom_order": 1,
+              "raw_rect": {
+                "x": 312,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": {
+                "x": 312,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_fraction": 1,
+              "visible_index": 1,
+              "raw_rect_screenshot": {
+                "x": 280.8439,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": {
+                "x": 280.8439,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 280.8439,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 305.9598
+              }
+            },
+            {
+              "card_id": "vplaurlg2",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
+              "dom_order": 2,
+              "raw_rect": {
+                "x": 444,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": {
+                "x": 444,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_fraction": 1,
+              "visible_index": 2,
+              "raw_rect_screenshot": {
+                "x": 399.6624,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": {
+                "x": 399.6624,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 399.6624,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 305.9598
+              }
+            },
+            {
+              "card_id": "vplaurlg3",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+              "dom_order": 3,
+              "raw_rect": {
+                "x": 576,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": {
+                "x": 576,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_fraction": 1,
+              "visible_index": 3,
+              "raw_rect_screenshot": {
+                "x": 518.481,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": {
+                "x": 518.481,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 518.481,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 305.9598
+              }
+            },
+            {
+              "card_id": "vplaurlg4",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5)",
+              "dom_order": 4,
+              "raw_rect": {
+                "x": 708,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": {
+                "x": 708,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_fraction": 1,
+              "visible_index": 4,
+              "raw_rect_screenshot": {
+                "x": 637.2996,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": {
+                "x": 637.2996,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 637.2996,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 305.9598
+              }
+            },
+            {
+              "card_id": "vplaurlg5",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(6)",
+              "dom_order": 5,
+              "raw_rect": {
+                "x": 840,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 756.1181,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg6",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(7)",
+              "dom_order": 6,
+              "raw_rect": {
+                "x": 972,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 874.9367,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg7",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(8)",
+              "dom_order": 7,
+              "raw_rect": {
+                "x": 1104,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 993.7553,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg8",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(9)",
+              "dom_order": 8,
+              "raw_rect": {
+                "x": 1236,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1112.5738,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg9",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(10)",
+              "dom_order": 9,
+              "raw_rect": {
+                "x": 1368,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1231.3924,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg10",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(11)",
+              "dom_order": 10,
+              "raw_rect": {
+                "x": 1500,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1350.211,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg11",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(12)",
+              "dom_order": 11,
+              "raw_rect": {
+                "x": 1632,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1469.0295,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg12",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(13)",
+              "dom_order": 12,
+              "raw_rect": {
+                "x": 1764,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1587.8481,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg13",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(14)",
+              "dom_order": 13,
+              "raw_rect": {
+                "x": 1896,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1706.6667,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg14",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(15)",
+              "dom_order": 14,
+              "raw_rect": {
+                "x": 2028,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1825.4852,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg15",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(16)",
+              "dom_order": 15,
+              "raw_rect": {
+                "x": 2160,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1944.3038,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg16",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(17)",
+              "dom_order": 16,
+              "raw_rect": {
+                "x": 2292,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 2063.1224,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg17",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(18)",
+              "dom_order": 17,
+              "raw_rect": {
+                "x": 2424,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 2181.9409,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg18",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(19)",
+              "dom_order": 18,
+              "raw_rect": {
+                "x": 2556,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 2300.7595,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg19",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(20)",
+              "dom_order": 19,
+              "raw_rect": {
+                "x": 2688,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 2419.5781,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg20",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(21)",
+              "dom_order": 20,
+              "raw_rect": {
+                "x": 2820,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 2538.3966,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg21",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(22)",
+              "dom_order": 21,
+              "raw_rect": {
+                "x": 2952,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 2657.2152,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg22",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(23)",
+              "dom_order": 22,
+              "raw_rect": {
+                "x": 3084,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 2776.0338,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg23",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(24)",
+              "dom_order": 23,
+              "raw_rect": {
+                "x": 3216,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 2894.8523,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg24",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(25)",
+              "dom_order": 24,
+              "raw_rect": {
+                "x": 3348,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 3013.6709,
+                "y": 232.4086,
+                "w": 111.6174,
+                "h": 305.9598
+              },
+              "visible_rect_screenshot": null
+            }
+          ],
+          "non_product_units": [
+            {
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(26)",
+              "reason": "comparison_service_directory",
+              "raw_rect": {
+                "x": 3480,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null
+            }
+          ],
+          "issues": [],
+          "rendered_visible_rect_screenshot": {
+            "x": 162.0253,
+            "y": 197.3132,
+            "w": 586.8917,
+            "h": 350.9539
+          },
+          "typed_position": 0,
+          "typed_rect_screenshot": {
+            "x": 162.0,
+            "y": 158.0,
+            "w": 586.0,
+            "h": 351.0
+          },
+          "typed_html_handle": null,
+          "screenshot_registration": {
+            "status": "accepted",
+            "reason": null,
+            "anchors": [
+              {
+                "card_id": "vplaurlg0",
+                "outline": {
+                  "closed": true,
+                  "x": 162,
+                  "y": 194,
+                  "w": 112,
+                  "h": 306,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.40860000000001
+              },
+              {
+                "card_id": "vplaurlg1",
+                "outline": {
+                  "closed": true,
+                  "x": 281,
+                  "y": 194,
+                  "w": 112,
+                  "h": 306,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.40860000000001
+              },
+              {
+                "card_id": "vplaurlg2",
+                "outline": {
+                  "closed": true,
+                  "x": 400,
+                  "y": 194,
+                  "w": 112,
+                  "h": 306,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.40860000000001
+              },
+              {
+                "card_id": "vplaurlg3",
+                "outline": {
+                  "closed": true,
+                  "x": 519,
+                  "y": 194,
+                  "w": 112,
+                  "h": 306,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.40860000000001
+              }
+            ],
+            "dy": -38.4086,
+            "card_checks": [
+              {
+                "card_id": "vplaurlg0",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg1",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg2",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg3",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg4",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 0.0034965034965034965
+                },
+                "passed": true
+              }
+            ]
+          }
+        }
+      ],
+      "unscoped_product_links": 0,
+      "document_width": 1403,
+      "unmatched_typed_positions": [],
+      "ratio_x": 0.90014064697609,
+      "ratio_y": 0.8998818665091554,
+      "legacy_document_width_ratio_x": 0.9123307198859587,
+      "coordinate_model": "screenshot_width/window_width; screenshot_height/document_height",
+      "inputs": {
+        "html": {
+          "path": "AdSERP/data/serps-cached/p028-b6-t8.html",
+          "sha256": "47fbaa532f43e205c89794d1851e8039f0408b1fd224e3aae0ba984affe3d5c2"
+        },
+        "screenshot": {
+          "path": "AdSERP/data/full-page-screenshots/p028-b6-t8.png",
+          "sha256": "fe10b1477280e986f2de37b548c78877705eebccd4564663bb3e27bc68d8d53a"
+        },
+        "metadata": {
+          "path": "AdSERP/data/trial-metadata/p028-b6-t8.xml",
+          "sha256": "d148021d58edfe9e5dd3be4b045e77fcc717bbd092e6eebdff486e320a65ed50"
+        },
+        "typed": {
+          "path": "data/aoi-typed/p028-b6-t8.json",
+          "sha256": "5043c0498fc9cb661dd3ee0c4e2d4a2aefb0eb7e2627c37c6a16946b6472c9d2"
+        }
+      },
+      "registration_status": "accepted"
+    },
+    {
+      "trial_id": "p040-b6-t5",
+      "status": "scored",
+      "parents": [
+        {
+          "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1)",
+          "raw_rect": {
+            "x": 180,
+            "y": 219.265625,
+            "w": 652,
+            "h": 329
+          },
+          "visible_rect": {
+            "x": 180,
+            "y": 219.265625,
+            "w": 652,
+            "h": 329
+          },
+          "cells": [
+            {
+              "card_id": "vplaurlg0",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+              "dom_order": 0,
+              "raw_rect": {
+                "x": 180,
+                "y": 258.265625,
+                "w": 157,
+                "h": 279
+              },
+              "visible_rect": {
+                "x": 180,
+                "y": 258.265625,
+                "w": 157,
+                "h": 279
+              },
+              "visible_fraction": 1,
+              "visible_index": 0,
+              "raw_rect_screenshot": {
+                "x": 162.0253,
+                "y": 232.4231,
+                "w": 141.3221,
+                "h": 251.0827
+              },
+              "visible_rect_screenshot": {
+                "x": 162.0253,
+                "y": 232.4231,
+                "w": 141.3221,
+                "h": 251.0827
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 162.0253,
+                "y": 194.0,
+                "w": 141.3221,
+                "h": 251.0827
+              }
+            },
+            {
+              "card_id": "vplaurlg1",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+              "dom_order": 1,
+              "raw_rect": {
+                "x": 345,
+                "y": 258.265625,
+                "w": 157,
+                "h": 279
+              },
+              "visible_rect": {
+                "x": 345,
+                "y": 258.265625,
+                "w": 157,
+                "h": 279
+              },
+              "visible_fraction": 1,
+              "visible_index": 1,
+              "raw_rect_screenshot": {
+                "x": 310.5485,
+                "y": 232.4231,
+                "w": 141.3221,
+                "h": 251.0827
+              },
+              "visible_rect_screenshot": {
+                "x": 310.5485,
+                "y": 232.4231,
+                "w": 141.3221,
+                "h": 251.0827
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 310.5485,
+                "y": 194.0,
+                "w": 141.3221,
+                "h": 251.0827
+              }
+            },
+            {
+              "card_id": "vplaurlg2",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
+              "dom_order": 2,
+              "raw_rect": {
+                "x": 510,
+                "y": 258.265625,
+                "w": 157,
+                "h": 279
+              },
+              "visible_rect": {
+                "x": 510,
+                "y": 258.265625,
+                "w": 157,
+                "h": 279
+              },
+              "visible_fraction": 1,
+              "visible_index": 2,
+              "raw_rect_screenshot": {
+                "x": 459.0717,
+                "y": 232.4231,
+                "w": 141.3221,
+                "h": 251.0827
+              },
+              "visible_rect_screenshot": {
+                "x": 459.0717,
+                "y": 232.4231,
+                "w": 141.3221,
+                "h": 251.0827
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 459.0717,
+                "y": 194.0,
+                "w": 141.3221,
+                "h": 251.0827
+              }
+            },
+            {
+              "card_id": "vplaurlg3",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+              "dom_order": 3,
+              "raw_rect": {
+                "x": 675,
+                "y": 258.265625,
+                "w": 157,
+                "h": 279
+              },
+              "visible_rect": {
+                "x": 675,
+                "y": 258.265625,
+                "w": 157,
+                "h": 279
+              },
+              "visible_fraction": 1,
+              "visible_index": 3,
+              "raw_rect_screenshot": {
+                "x": 607.5949,
+                "y": 232.4231,
+                "w": 141.3221,
+                "h": 251.0827
+              },
+              "visible_rect_screenshot": {
+                "x": 607.5949,
+                "y": 232.4231,
+                "w": 141.3221,
+                "h": 251.0827
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 607.5949,
+                "y": 194.0,
+                "w": 141.3221,
+                "h": 251.0827
+              }
+            }
+          ],
+          "non_product_units": [],
+          "issues": [],
+          "rendered_visible_rect_screenshot": {
+            "x": 162.0253,
+            "y": 197.3255,
+            "w": 586.8917,
+            "h": 296.0796
+          },
+          "typed_position": 0,
+          "typed_rect_screenshot": {
+            "x": 162.0,
+            "y": 158.0,
+            "w": 587.0,
+            "h": 296.0
+          },
+          "typed_html_handle": null,
+          "screenshot_registration": {
+            "status": "accepted",
+            "reason": null,
+            "anchors": [
+              {
+                "card_id": "vplaurlg0",
+                "outline": {
+                  "closed": true,
+                  "x": 162,
+                  "y": 194,
+                  "w": 142,
+                  "h": 251,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.423100000000005
+              },
+              {
+                "card_id": "vplaurlg1",
+                "outline": {
+                  "closed": true,
+                  "x": 311,
+                  "y": 194,
+                  "w": 141,
+                  "h": 251,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.423100000000005
+              },
+              {
+                "card_id": "vplaurlg2",
+                "outline": {
+                  "closed": true,
+                  "x": 459,
+                  "y": 194,
+                  "w": 142,
+                  "h": 251,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.423100000000005
+              },
+              {
+                "card_id": "vplaurlg3",
+                "outline": {
+                  "closed": true,
+                  "x": 608,
+                  "y": 194,
+                  "w": 142,
+                  "h": 251,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.423100000000005
+              }
+            ],
+            "dy": -38.4231,
+            "card_checks": [
+              {
+                "card_id": "vplaurlg0",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg1",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg2",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg3",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              }
+            ]
+          }
+        }
+      ],
+      "unscoped_product_links": 0,
+      "document_width": 1403,
+      "unmatched_typed_positions": [],
+      "ratio_x": 0.90014064697609,
+      "ratio_y": 0.8999380421313506,
+      "legacy_document_width_ratio_x": 0.9123307198859587,
+      "coordinate_model": "screenshot_width/window_width; screenshot_height/document_height",
+      "inputs": {
+        "html": {
+          "path": "AdSERP/data/serps-cached/p040-b6-t5.html",
+          "sha256": "b8766e9926085870c8a08f1fa21b160d525f232aa2e5e99f4dc5a1113937c4ac"
+        },
+        "screenshot": {
+          "path": "AdSERP/data/full-page-screenshots/p040-b6-t5.png",
+          "sha256": "fb822af44c7f4cbe1310ee1e2c790bbf1469dc44965a77970e3804ef453fc240"
+        },
+        "metadata": {
+          "path": "AdSERP/data/trial-metadata/p040-b6-t5.xml",
+          "sha256": "c080c90376e7036f2df9ce1e78369c273c73a8f1aa3a4489ffda13429bce4f87"
+        },
+        "typed": {
+          "path": "data/aoi-typed/p040-b6-t5.json",
+          "sha256": "1d6cd76000a6fdcb4b0e173c2496caa3a1866f17ec5b5a37e334a91f3417d7f9"
+        }
+      },
+      "registration_status": "accepted"
+    },
+    {
+      "trial_id": "p045-b5-t1",
+      "status": "scored",
+      "parents": [
+        {
+          "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1)",
+          "raw_rect": {
+            "x": 180,
+            "y": 219.265625,
+            "w": 652,
+            "h": 329
+          },
+          "visible_rect": {
+            "x": 180,
+            "y": 219.265625,
+            "w": 652,
+            "h": 329
+          },
+          "cells": [
+            {
+              "card_id": "vplaurlg0",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+              "dom_order": 0,
+              "raw_rect": {
+                "x": 180,
+                "y": 258.265625,
+                "w": 124,
+                "h": 279
+              },
+              "visible_rect": {
+                "x": 180,
+                "y": 258.265625,
+                "w": 124,
+                "h": 279
+              },
+              "visible_fraction": 1,
+              "visible_index": 0,
+              "raw_rect_screenshot": {
+                "x": 162.0253,
+                "y": 232.4391,
+                "w": 111.6174,
+                "h": 251.1
+              },
+              "visible_rect_screenshot": {
+                "x": 162.0253,
+                "y": 232.4391,
+                "w": 111.6174,
+                "h": 251.1
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 162.0253,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 251.1
+              }
+            },
+            {
+              "card_id": "vplaurlg1",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+              "dom_order": 1,
+              "raw_rect": {
+                "x": 312,
+                "y": 258.265625,
+                "w": 124,
+                "h": 279
+              },
+              "visible_rect": {
+                "x": 312,
+                "y": 258.265625,
+                "w": 124,
+                "h": 279
+              },
+              "visible_fraction": 1,
+              "visible_index": 1,
+              "raw_rect_screenshot": {
+                "x": 280.8439,
+                "y": 232.4391,
+                "w": 111.6174,
+                "h": 251.1
+              },
+              "visible_rect_screenshot": {
+                "x": 280.8439,
+                "y": 232.4391,
+                "w": 111.6174,
+                "h": 251.1
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 280.8439,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 251.1
+              }
+            },
+            {
+              "card_id": "vplaurlg2",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
+              "dom_order": 2,
+              "raw_rect": {
+                "x": 444,
+                "y": 258.265625,
+                "w": 124,
+                "h": 279
+              },
+              "visible_rect": {
+                "x": 444,
+                "y": 258.265625,
+                "w": 124,
+                "h": 279
+              },
+              "visible_fraction": 1,
+              "visible_index": 2,
+              "raw_rect_screenshot": {
+                "x": 399.6624,
+                "y": 232.4391,
+                "w": 111.6174,
+                "h": 251.1
+              },
+              "visible_rect_screenshot": {
+                "x": 399.6624,
+                "y": 232.4391,
+                "w": 111.6174,
+                "h": 251.1
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 399.6624,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 251.1
+              }
+            },
+            {
+              "card_id": "vplaurlg3",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+              "dom_order": 3,
+              "raw_rect": {
+                "x": 576,
+                "y": 258.265625,
+                "w": 124,
+                "h": 279
+              },
+              "visible_rect": {
+                "x": 576,
+                "y": 258.265625,
+                "w": 124,
+                "h": 279
+              },
+              "visible_fraction": 1,
+              "visible_index": 3,
+              "raw_rect_screenshot": {
+                "x": 518.481,
+                "y": 232.4391,
+                "w": 111.6174,
+                "h": 251.1
+              },
+              "visible_rect_screenshot": {
+                "x": 518.481,
+                "y": 232.4391,
+                "w": 111.6174,
+                "h": 251.1
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 518.481,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 251.1
+              }
+            },
+            {
+              "card_id": "vplaurlg4",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5)",
+              "dom_order": 4,
+              "raw_rect": {
+                "x": 708,
+                "y": 258.265625,
+                "w": 124,
+                "h": 279
+              },
+              "visible_rect": {
+                "x": 708,
+                "y": 258.265625,
+                "w": 124,
+                "h": 279
+              },
+              "visible_fraction": 1,
+              "visible_index": 4,
+              "raw_rect_screenshot": {
+                "x": 637.2996,
+                "y": 232.4391,
+                "w": 111.6174,
+                "h": 251.1
+              },
+              "visible_rect_screenshot": {
+                "x": 637.2996,
+                "y": 232.4391,
+                "w": 111.6174,
+                "h": 251.1
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 637.2996,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 251.1
+              }
+            },
+            {
+              "card_id": "vplaurlg5",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(6)",
+              "dom_order": 5,
+              "raw_rect": {
+                "x": 840,
+                "y": 258.265625,
+                "w": 124,
+                "h": 279
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 756.1181,
+                "y": 232.4391,
+                "w": 111.6174,
+                "h": 251.1
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg6",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(7)",
+              "dom_order": 6,
+              "raw_rect": {
+                "x": 972,
+                "y": 258.265625,
+                "w": 124,
+                "h": 279
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 874.9367,
+                "y": 232.4391,
+                "w": 111.6174,
+                "h": 251.1
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg7",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(8)",
+              "dom_order": 7,
+              "raw_rect": {
+                "x": 1104,
+                "y": 258.265625,
+                "w": 124,
+                "h": 279
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 993.7553,
+                "y": 232.4391,
+                "w": 111.6174,
+                "h": 251.1
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg8",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(9)",
+              "dom_order": 8,
+              "raw_rect": {
+                "x": 1236,
+                "y": 258.265625,
+                "w": 124,
+                "h": 279
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1112.5738,
+                "y": 232.4391,
+                "w": 111.6174,
+                "h": 251.1
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg9",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(10)",
+              "dom_order": 9,
+              "raw_rect": {
+                "x": 1368,
+                "y": 258.265625,
+                "w": 124,
+                "h": 279
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1231.3924,
+                "y": 232.4391,
+                "w": 111.6174,
+                "h": 251.1
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg10",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(11)",
+              "dom_order": 10,
+              "raw_rect": {
+                "x": 1500,
+                "y": 258.265625,
+                "w": 124,
+                "h": 279
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 1350.211,
+                "y": 232.4391,
+                "w": 111.6174,
+                "h": 251.1
+              },
+              "visible_rect_screenshot": null
+            }
+          ],
+          "non_product_units": [
+            {
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(12)",
+              "reason": "comparison_service_directory",
+              "raw_rect": {
+                "x": 1632,
+                "y": 258.265625,
+                "w": 124,
+                "h": 279
+              },
+              "visible_rect": null
+            }
+          ],
+          "issues": [],
+          "rendered_visible_rect_screenshot": {
+            "x": 162.0253,
+            "y": 197.3391,
+            "w": 586.8917,
+            "h": 296.1
+          },
+          "typed_position": 0,
+          "typed_rect_screenshot": {
+            "x": 162.0,
+            "y": 158.0,
+            "w": 586.0,
+            "h": 296.0
+          },
+          "typed_html_handle": null,
+          "screenshot_registration": {
+            "status": "accepted",
+            "reason": null,
+            "anchors": [
+              {
+                "card_id": "vplaurlg0",
+                "outline": {
+                  "closed": true,
+                  "x": 162,
+                  "y": 194,
+                  "w": 112,
+                  "h": 251,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.439099999999996
+              },
+              {
+                "card_id": "vplaurlg1",
+                "outline": {
+                  "closed": true,
+                  "x": 281,
+                  "y": 194,
+                  "w": 112,
+                  "h": 251,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.439099999999996
+              },
+              {
+                "card_id": "vplaurlg2",
+                "outline": {
+                  "closed": true,
+                  "x": 400,
+                  "y": 194,
+                  "w": 112,
+                  "h": 251,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.439099999999996
+              },
+              {
+                "card_id": "vplaurlg3",
+                "outline": {
+                  "closed": true,
+                  "x": 519,
+                  "y": 194,
+                  "w": 112,
+                  "h": 251,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.439099999999996
+              }
+            ],
+            "dy": -38.4391,
+            "card_checks": [
+              {
+                "card_id": "vplaurlg0",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg1",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg2",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg3",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg4",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 0.004329004329004329
+                },
+                "passed": true
+              }
+            ]
+          }
+        }
+      ],
+      "unscoped_product_links": 0,
+      "document_width": 1403,
+      "unmatched_typed_positions": [],
+      "ratio_x": 0.90014064697609,
+      "ratio_y": 0.9,
+      "legacy_document_width_ratio_x": 0.9123307198859587,
+      "coordinate_model": "screenshot_width/window_width; screenshot_height/document_height",
+      "inputs": {
+        "html": {
+          "path": "AdSERP/data/serps-cached/p045-b5-t1.html",
+          "sha256": "56b63c220defec70c4fd8663aeef4a10a4009d2a9b44b3dbb099350537f2de5f"
+        },
+        "screenshot": {
+          "path": "AdSERP/data/full-page-screenshots/p045-b5-t1.png",
+          "sha256": "e32500d94e5481c84bf69ddc3d56f2b92d5eaf4c75ecb7459ba32aaddcc6532a"
+        },
+        "metadata": {
+          "path": "AdSERP/data/trial-metadata/p045-b5-t1.xml",
+          "sha256": "d4a5de78ab8b6b1eec8aac12abcd5c41f8b89e9ebd8f02e6e198e6c9482c0f1b"
+        },
+        "typed": {
+          "path": "data/aoi-typed/p045-b5-t1.json",
+          "sha256": "cce39570b9073f6994aaa2e5e8cae712833c8677cad814ca2328821864dbed17"
+        }
+      },
+      "registration_status": "accepted"
+    },
+    {
+      "trial_id": "p050-b2-t1",
+      "status": "scored",
+      "parents": [
+        {
+          "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1)",
+          "raw_rect": {
+            "x": 180,
+            "y": 219.265625,
+            "w": 652,
+            "h": 390
+          },
+          "visible_rect": {
+            "x": 180,
+            "y": 219.265625,
+            "w": 652,
+            "h": 390
+          },
+          "cells": [
+            {
+              "card_id": "vplaurlg0",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+              "dom_order": 0,
+              "raw_rect": {
+                "x": 180,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": {
+                "x": 180,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_fraction": 1,
+              "visible_index": 0,
+              "raw_rect_screenshot": {
+                "x": 162.0253,
+                "y": 232.4888,
+                "w": 111.6174,
+                "h": 306.0655
+              },
+              "visible_rect_screenshot": {
+                "x": 162.0253,
+                "y": 232.4888,
+                "w": 111.6174,
+                "h": 306.0655
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 162.0253,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 306.0655
+              }
+            },
+            {
+              "card_id": "vplaurlg1",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+              "dom_order": 1,
+              "raw_rect": {
+                "x": 312,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": {
+                "x": 312,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_fraction": 1,
+              "visible_index": 1,
+              "raw_rect_screenshot": {
+                "x": 280.8439,
+                "y": 232.4888,
+                "w": 111.6174,
+                "h": 306.0655
+              },
+              "visible_rect_screenshot": {
+                "x": 280.8439,
+                "y": 232.4888,
+                "w": 111.6174,
+                "h": 306.0655
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 280.8439,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 306.0655
+              }
+            },
+            {
+              "card_id": "vplaurlg2",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3)",
+              "dom_order": 2,
+              "raw_rect": {
+                "x": 444,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": {
+                "x": 444,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_fraction": 1,
+              "visible_index": 2,
+              "raw_rect_screenshot": {
+                "x": 399.6624,
+                "y": 232.4888,
+                "w": 111.6174,
+                "h": 306.0655
+              },
+              "visible_rect_screenshot": {
+                "x": 399.6624,
+                "y": 232.4888,
+                "w": 111.6174,
+                "h": 306.0655
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 399.6624,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 306.0655
+              }
+            },
+            {
+              "card_id": "vplaurlg3",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+              "dom_order": 3,
+              "raw_rect": {
+                "x": 576,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": {
+                "x": 576,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_fraction": 1,
+              "visible_index": 3,
+              "raw_rect_screenshot": {
+                "x": 518.481,
+                "y": 232.4888,
+                "w": 111.6174,
+                "h": 306.0655
+              },
+              "visible_rect_screenshot": {
+                "x": 518.481,
+                "y": 232.4888,
+                "w": 111.6174,
+                "h": 306.0655
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 518.481,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 306.0655
+              }
+            },
+            {
+              "card_id": "vplaurlg4",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5)",
+              "dom_order": 4,
+              "raw_rect": {
+                "x": 708,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": {
+                "x": 708,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_fraction": 1,
+              "visible_index": 4,
+              "raw_rect_screenshot": {
+                "x": 637.2996,
+                "y": 232.4888,
+                "w": 111.6174,
+                "h": 306.0655
+              },
+              "visible_rect_screenshot": {
+                "x": 637.2996,
+                "y": 232.4888,
+                "w": 111.6174,
+                "h": 306.0655
+              },
+              "aligned_visible_rect_screenshot": {
+                "x": 637.2996,
+                "y": 194.0,
+                "w": 111.6174,
+                "h": 306.0655
+              }
+            },
+            {
+              "card_id": "vplaurlg5",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(6)",
+              "dom_order": 5,
+              "raw_rect": {
+                "x": 840,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 756.1181,
+                "y": 232.4888,
+                "w": 111.6174,
+                "h": 306.0655
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg6",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(7)",
+              "dom_order": 6,
+              "raw_rect": {
+                "x": 972,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 874.9367,
+                "y": 232.4888,
+                "w": 111.6174,
+                "h": 306.0655
+              },
+              "visible_rect_screenshot": null
+            },
+            {
+              "card_id": "vplaurlg7",
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(8)",
+              "dom_order": 7,
+              "raw_rect": {
+                "x": 1104,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null,
+              "visible_fraction": 0,
+              "visible_index": null,
+              "raw_rect_screenshot": {
+                "x": 993.7553,
+                "y": 232.4888,
+                "w": 111.6174,
+                "h": 306.0655
+              },
+              "visible_rect_screenshot": null
+            }
+          ],
+          "non_product_units": [
+            {
+              "dom_handle": "html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(10) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > g-scrolling-carousel:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(9)",
+              "reason": "comparison_service_directory",
+              "raw_rect": {
+                "x": 1236,
+                "y": 258.265625,
+                "w": 124,
+                "h": 340
+              },
+              "visible_rect": null
+            }
+          ],
+          "issues": [],
+          "rendered_visible_rect_screenshot": {
+            "x": 162.0253,
+            "y": 197.3813,
+            "w": 586.8917,
+            "h": 351.0751
+          },
+          "typed_position": 0,
+          "typed_rect_screenshot": {
+            "x": 162.0,
+            "y": 158.0,
+            "w": 586.0,
+            "h": 351.0
+          },
+          "typed_html_handle": null,
+          "screenshot_registration": {
+            "status": "accepted",
+            "reason": null,
+            "anchors": [
+              {
+                "card_id": "vplaurlg0",
+                "outline": {
+                  "closed": true,
+                  "x": 162,
+                  "y": 194,
+                  "w": 112,
+                  "h": 306,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.4888
+              },
+              {
+                "card_id": "vplaurlg1",
+                "outline": {
+                  "closed": true,
+                  "x": 281,
+                  "y": 194,
+                  "w": 112,
+                  "h": 306,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.4888
+              },
+              {
+                "card_id": "vplaurlg2",
+                "outline": {
+                  "closed": true,
+                  "x": 400,
+                  "y": 194,
+                  "w": 112,
+                  "h": 306,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.4888
+              },
+              {
+                "card_id": "vplaurlg3",
+                "outline": {
+                  "closed": true,
+                  "x": 519,
+                  "y": 194,
+                  "w": 112,
+                  "h": 306,
+                  "left_support": 1.0,
+                  "right_support": 1.0
+                },
+                "dy": -38.4888
+              }
+            ],
+            "dy": -38.4888,
+            "card_checks": [
+              {
+                "card_id": "vplaurlg0",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg1",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg2",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg3",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 1.0
+                },
+                "passed": true
+              },
+              {
+                "card_id": "vplaurlg4",
+                "support": {
+                  "top": 1.0,
+                  "bottom": 1.0,
+                  "left": 1.0,
+                  "right": 0.0034965034965034965
+                },
+                "passed": true
+              }
+            ]
+          }
+        }
+      ],
+      "unscoped_product_links": 0,
+      "document_width": 1403,
+      "unmatched_typed_positions": [],
+      "ratio_x": 0.90014064697609,
+      "ratio_y": 0.9001926782273603,
+      "legacy_document_width_ratio_x": 0.9123307198859587,
+      "coordinate_model": "screenshot_width/window_width; screenshot_height/document_height",
+      "inputs": {
+        "html": {
+          "path": "AdSERP/data/serps-cached/p050-b2-t1.html",
+          "sha256": "60ea08824da10b374607b67a407718026b70ebe614793ed0ec8f1a35e5955589"
+        },
+        "screenshot": {
+          "path": "AdSERP/data/full-page-screenshots/p050-b2-t1.png",
+          "sha256": "a649ce1bc453bd244a7fbc05252e1d02f6da20715d3859708e7e54c8a7cb69b3"
+        },
+        "metadata": {
+          "path": "AdSERP/data/trial-metadata/p050-b2-t1.xml",
+          "sha256": "670175cd735faaea9d643de37415164837f24ba5a422c49284f0a1017a69b550"
+        },
+        "typed": {
+          "path": "data/aoi-typed/p050-b2-t1.json",
+          "sha256": "c64aa38672796112ea68b4f7ac8fd66cf8828699fd6609c12bd5b507aa16991d"
+        }
+      },
+      "registration_status": "accepted"
+    }
+  ],
+  "registration": {
+    "source_sha256": "85a9df2c866e80ff70da55f048dd4bd7630eedf9cc30425ec40813f67c71da30",
+    "parameters": {
+      "stroke_rgb": [
+        218,
+        220,
+        224
+      ],
+      "stroke_tolerance": 3,
+      "corner_search_px": 14,
+      "straight_run_px": 40,
+      "minimum_card_height_px": 60,
+      "maximum_card_height_px": 700,
+      "maximum_vertical_shift_px": 80,
+      "shape_tolerance_px": 3,
+      "translation_spread_px": 2,
+      "minimum_anchor_fraction": 0.6,
+      "minimum_horizontal_support": 0.85,
+      "minimum_vertical_support": 0.7
+    },
+    "numpy": "2.4.4",
+    "scipy": "1.17.1",
+    "geometry": "single vertical translation, original screenshot strokes; no content identity validation"
+  },
+  "candidate_csv_sha256": "c73830c0b3b1b48c780dd6a1e2716fc0068435df493f622bfdcb9b890c381ea6"
+}

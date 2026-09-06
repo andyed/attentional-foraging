@@ -1,0 +1,139 @@
+{
+  "reviewed_at_utc": "2026-09-05T00:25:07.312834+00:00",
+  "source_hashes": {
+    "carousel_corpus.py": "8267a2dc8932ff023a1059fdcc66b155f1f0720267806839524f46911c43550f",
+    "carousel_dom.py": "9596f492a167d388479d508e6c1522f960106744a54ef48a69f44c467c22cab2",
+    "carousel_screenshot.py": "85a9df2c866e80ff70da55f048dd4bd7630eedf9cc30425ec40813f67c71da30"
+  },
+  "blind_annotations_sha256": "deb9f8524f808c668663056704e4d1cf9c3ee8a46cfd043adf58f1ec77cf537c",
+  "blind_annotation_erratum_sha256": "2cd311c5aed2994994fe1153585dd6234f7b7419acd575414f9cae32c3ab999c",
+  "case_count": 8,
+  "visible_cards": 34,
+  "all_counts_and_orders_match": true,
+  "evidence_scope": "Eight preselected trials; captured card text, price, merchant and image order correspond to the saved DOM. No merchant destination visit or SKU/relevance validation. p009 truncated subtype labels and p014 source image/title mismatch remain explicit limitations.",
+  "cases": [
+    {
+      "trial_id": "p016-b3-t1",
+      "frozen_extractor_status": "scored",
+      "registration_status": "accepted",
+      "expected_count": 5,
+      "observed_count": 5,
+      "card_id_order_match": true,
+      "vertical_shifts_px": [
+        -0.4175
+      ],
+      "screenshot_input_matches_blind_source": true,
+      "source_images_visually_match_original_card_order": true,
+      "full_corpus_record_available": true,
+      "full_corpus_record_sha256": "c557808348e7f8986aff16bcec038b16435e2d72336ea1364e0e78f647a5840b",
+      "full_corpus_geometry_and_inputs_match_independent_run": true
+    },
+    {
+      "trial_id": "p046-b1-t1",
+      "frozen_extractor_status": "scored",
+      "registration_status": "accepted",
+      "expected_count": 5,
+      "observed_count": 5,
+      "card_id_order_match": true,
+      "vertical_shifts_px": [
+        -38.4666
+      ],
+      "screenshot_input_matches_blind_source": true,
+      "source_images_visually_match_original_card_order": true,
+      "full_corpus_record_available": false,
+      "full_corpus_record_sha256": null
+    },
+    {
+      "trial_id": "p030-b6-t4",
+      "frozen_extractor_status": "scored",
+      "registration_status": "accepted",
+      "expected_count": 3,
+      "observed_count": 3,
+      "card_id_order_match": true,
+      "vertical_shifts_px": [
+        -38.4143
+      ],
+      "screenshot_input_matches_blind_source": true,
+      "source_images_visually_match_original_card_order": true,
+      "full_corpus_record_available": false,
+      "full_corpus_record_sha256": null
+    },
+    {
+      "trial_id": "p048-b4-t8",
+      "frozen_extractor_status": "scored",
+      "registration_status": "accepted",
+      "expected_count": 5,
+      "observed_count": 5,
+      "card_id_order_match": true,
+      "vertical_shifts_px": [
+        0.4659
+      ],
+      "screenshot_input_matches_blind_source": true,
+      "source_images_visually_match_original_card_order": true,
+      "full_corpus_record_available": false,
+      "full_corpus_record_sha256": null
+    },
+    {
+      "trial_id": "p040-b5-t10",
+      "frozen_extractor_status": "scored",
+      "registration_status": "accepted",
+      "expected_count": 5,
+      "observed_count": 5,
+      "card_id_order_match": true,
+      "vertical_shifts_px": [
+        0.4647
+      ],
+      "screenshot_input_matches_blind_source": true,
+      "source_images_visually_match_original_card_order": true,
+      "full_corpus_record_available": false,
+      "full_corpus_record_sha256": null
+    },
+    {
+      "trial_id": "p009-b6-t4",
+      "frozen_extractor_status": "scored",
+      "registration_status": "accepted",
+      "expected_count": 5,
+      "observed_count": 5,
+      "card_id_order_match": true,
+      "vertical_shifts_px": [
+        0.4748
+      ],
+      "screenshot_input_matches_blind_source": true,
+      "source_images_visually_match_original_card_order": true,
+      "full_corpus_record_available": true,
+      "full_corpus_record_sha256": "a7effe1dc192c13d91a3af246220a1a4abb1bc23fed2749a3bbfc35b31d02ecf",
+      "full_corpus_geometry_and_inputs_match_independent_run": true
+    },
+    {
+      "trial_id": "p032-b2-t5",
+      "frozen_extractor_status": "scored",
+      "registration_status": "accepted",
+      "expected_count": 3,
+      "observed_count": 3,
+      "card_id_order_match": true,
+      "vertical_shifts_px": [
+        0.5252
+      ],
+      "screenshot_input_matches_blind_source": true,
+      "source_images_visually_match_original_card_order": true,
+      "full_corpus_record_available": false,
+      "full_corpus_record_sha256": null
+    },
+    {
+      "trial_id": "p014-b3-t4",
+      "frozen_extractor_status": "scored",
+      "registration_status": "accepted",
+      "expected_count": 3,
+      "observed_count": 3,
+      "card_id_order_match": true,
+      "vertical_shifts_px": [
+        0.514
+      ],
+      "screenshot_input_matches_blind_source": true,
+      "source_images_visually_match_original_card_order": true,
+      "full_corpus_record_available": true,
+      "full_corpus_record_sha256": "05e1dcacf47c9a02584f8c59d10fa3f166f2acfa8e84d5cd9d4d3944222066d1",
+      "full_corpus_geometry_and_inputs_match_independent_run": true
+    }
+  ]
+}

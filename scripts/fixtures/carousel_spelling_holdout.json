@@ -1,0 +1,36 @@
+{
+  "selection": "Six spelling-suggestion pages outside the retained61 development cohort; chosen by independent reviewer before registration results, not a random corpus sample.",
+  "annotation_basis": "Independent visual review of original screenshots confirmed visible product counts and absence of the HTML spelling block. Counts supplied before reviewer saw registration outcomes.",
+  "cases": [
+    {
+      "trial_id": "p004-b2-t8",
+      "visible_count": 5,
+      "screenshot_sha256": "7746e254eb99c68ee88a8dcc438366f84501e36b3c6cfd4f8d34f7203980da59"
+    },
+    {
+      "trial_id": "p011-b5-t10",
+      "visible_count": 5,
+      "screenshot_sha256": "b29cac039af4cabd9879352de1d184b0abf115faf952d8c663e9ff5dd2dd6207"
+    },
+    {
+      "trial_id": "p028-b6-t8",
+      "visible_count": 5,
+      "screenshot_sha256": "fe10b1477280e986f2de37b548c78877705eebccd4564663bb3e27bc68d8d53a"
+    },
+    {
+      "trial_id": "p040-b6-t5",
+      "visible_count": 4,
+      "screenshot_sha256": "fb822af44c7f4cbe1310ee1e2c790bbf1469dc44965a77970e3804ef453fc240"
+    },
+    {
+      "trial_id": "p045-b5-t1",
+      "visible_count": 5,
+      "screenshot_sha256": "e32500d94e5481c84bf69ddc3d56f2b92d5eaf4c75ecb7459ba32aaddcc6532a"
+    },
+    {
+      "trial_id": "p050-b2-t1",
+      "visible_count": 5,
+      "screenshot_sha256": "a649ce1bc453bd244a7fbc05252e1d02f6da20715d3859708e7e54c8a7cb69b3"
+    }
+  ]
+}

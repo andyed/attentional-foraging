@@ -1,0 +1,22 @@
+{
+  "schema": "allserp-aoi-fidelity-v2",
+  "cell_metric": "per-parent top/main visible card count agreement; not geometry fidelity",
+  "visibility": "positive card area after ancestor clips; no vertical viewport or temporal exposure inference",
+  "source_sha256": "d07e5292abeb674f7ccb1d37567da4947d4d553a3f3d9ae1fd45d114d9d15c5a",
+  "cellsplit_sha256": "d952df6341813b660458420b5e95e5c757f42548e4fce1584f05dbac2d4c02a7",
+  "viewport": 1389,
+  "network": "blocked",
+  "summary": {
+    "requested_trials": 61,
+    "scored_trials": 61,
+    "agree_trials": 61,
+    "unresolved_trials": 0,
+    "absent_trials": 0,
+    "missing_export_trials": 0,
+    "compared_parents": 61,
+    "agree_parents": 61,
+    "short_parents": 0,
+    "over_parents": 0,
+    "issue_counts": {}
+  }
+}

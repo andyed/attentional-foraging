@@ -1,7 +1,7 @@
 """Score the typed AOI substrate against DOM ground truth.
 
-Three checks, each against something the pipeline did NOT produce, so a score
-cannot be gamed by the thing being scored:
+Three checks. Click/AOI checks use independently resolved DOM evidence; the cell
+check is a count diagnostic only and cannot certify boundaries or identity:
 
   click   every click event records the xpath of the element it hit. Render the
           saved SERP at the capture viewport and ask whether the recorded
@@ -11,7 +11,8 @@ cannot be gamed by the thing being scored:
           matching css_path. Resolve it, map the rendered box into screenshot
           space, and compare to the stored AOI box by IoU. Tests extraction.
   cell    carousel cards carry numbered DOM ids (vplaurlg<N>). Compare the
-          visible ones against the cellsplit export. Tests the cell layer.
+          visible card counts per top parent against top/main cells only.
+          Missing exports, observed zeroes and unresolved pages remain explicit.
 
 Every failure mode found on 2026-08-30 -- unconverted mouse coordinates,
 two cards measured onto one DOM node, trailing cells dropped -- shows up in one
@@ -27,6 +28,9 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import hashlib
+import math
+from collections import Counter
 import asyncio
 import csv
 import json
@@ -51,7 +55,7 @@ CELLSPLIT = ROOT / 'scripts/output/adserp_aois_by_trial_id_typed_gapfill_cellspl
 CAPTURE_VIEWPORT = 1389   # reproduces the recorded document width of 1403
 MAIN_MAX_X = 850          # capture space: main column ends ~832, right rail ~880
 
-JS = """(args) => {
+JS = r"""(args) => {
   const out = {paths: {}, cells: [], click: null};
   // Resolve a card by IDENTITY, not by css_path.
   //
@@ -88,29 +92,53 @@ JS = """(args) => {
     out.paths[handle] = {x: r.left+window.scrollX, y: r.top+window.scrollY,
                          w: r.width, h: r.height};
   }
-  // Carousel cells are only "cells" if the user could see them. The strip is a
-  // horizontal scroller: the container renders ~3,800px wide clipped to ~650px,
-  // so most cards are in the DOM but off-screen. Find the clipping ancestor
-  // (clientWidth < scrollWidth) and count only what fits inside it.
-  const seen = new Map();
-  let clip = null;
-  const firstCell = document.querySelector('[id^="vplaurlg"]');
-  if (firstCell) { let p = firstCell.parentElement;
-    for (let i = 0; i < 10 && p; i++) {
-      if (p.scrollWidth > p.clientWidth + 20 && p.clientWidth > 200) {
-        clip = {x: p.getBoundingClientRect().left + window.scrollX, w: p.clientWidth};
-        break;
-      } p = p.parentElement; } }
-  document.querySelectorAll('[id^="vplaurlg"]').forEach(el => {
-    const m = el.id.match(/^vplaurlg(\\d+)$/); if (!m) return;
-    const r = el.getBoundingClientRect();
-    const x = r.left + window.scrollX;
-    if (r.width < 5 || x > args.mainMaxX) return;
-    if (clip && x + r.width > clip.x + clip.w + 2) return;   // scrolled off the strip
-    seen.set(+m[1], {x: x, w: r.width});
+  // Count independently from the candidate .pla-unit enumerator: start with
+  // numbered product links, scope each to its own top parent, and deduplicate
+  // aliases only within the same card node. Count positive visible CARD area;
+  // a partially exposed card counts even when its image is clipped away.
+  const topParents=[...document.querySelectorAll('.commercial-unit-desktop-top')];
+  const groups=topParents.map(el=>({el,ids:new Map(),cards:new Set(),count:0,issues:[]}));
+  const clipped = el => {
+    const r=el.getBoundingClientRect(); let left=Math.max(r.left,0),right=Math.min(r.right,document.documentElement.clientWidth),top=r.top,bottom=r.bottom;
+    for(let p=el;p;p=p.parentElement) {
+      const cs=getComputedStyle(p);
+      if(cs.display==='none'||['hidden','collapse'].includes(cs.visibility)||+cs.opacity===0) return false;
+      if(cs.clipPath!=='none') return null;
+      if(p===el) continue;
+      const pr=p.getBoundingClientRect(),sx=p.offsetWidth ? pr.width/p.offsetWidth : 1,sy=p.offsetHeight ? pr.height/p.offsetHeight : 1;
+      if(/^(hidden|clip|scroll|auto)$/.test(cs.overflowX)) {
+        left=Math.max(left,pr.left+p.clientLeft*sx);right=Math.min(right,pr.left+(p.clientLeft+p.clientWidth)*sx);
+      }
+      if(/^(hidden|clip|scroll|auto)$/.test(cs.overflowY)) {
+        top=Math.max(top,pr.top+p.clientTop*sy);bottom=Math.min(bottom,pr.top+(p.clientTop+p.clientHeight)*sy);
+      }
+    }
+    return right>left && bottom>top;
+  };
+  let unscoped=0,offaxis=0;
+  document.querySelectorAll('[id^="vplaurlg"]').forEach(link=>{
+    if(!/^vplaurlg(\d+)$/.test(link.id)) return;
+    const parent=link.closest('.commercial-unit-desktop-top'),group=groups.find(g=>g.el===parent);
+    if(!group) {
+      if(link.closest('.commercial-unit-desktop-rhs, #rhs')) offaxis++; else unscoped++;
+      return;
+    }
+    const card=link.closest('.pla-unit');
+    if(!card || card.closest('.commercial-unit-desktop-top')!==parent) {group.issues.push('unsupported_card_container');return;}
+    if(group.ids.has(link.id) && group.ids.get(link.id)!==card) group.issues.push('duplicate_card_identity');
+    group.ids.set(link.id,card);
+    if(group.cards.has(card)) return;
+    group.cards.add(card);
+    const visible=clipped(card);
+    if(visible===null) group.issues.push('unsupported_clip_path');
+    if(visible) group.count++;
   });
-  out.cells = [...seen.keys()].sort((a,b)=>a-b);
-  out.clip = clip;
+  out.cell_parents=groups.map((g,i)=>{ const r=g.el.getBoundingClientRect();
+    if(!g.cards.size) g.issues.push('no_supported_cards');
+    return {dom_parent_index:i,count:g.count,issues:[...new Set(g.issues)],rect:{x:r.left+scrollX,y:r.top+scrollY,w:r.width,h:r.height}};
+  });
+  out.cell_unscoped_links=unscoped;
+  out.cell_offaxis_links=offaxis;
   if (args.clickXpath) {
     let el = null;
     try { el = document.evaluate(args.clickXpath, document, null, 9, null).singleNodeValue; }
@@ -165,34 +193,126 @@ def iou(a, b):
     return inter / union if union > 0 else 0.0
 
 
-def cellsplit_counts():
-    counts = {}
-    if not CELLSPLIT.exists():
-        return counts
-    with CELLSPLIT.open() as fh:
+def cellsplit_inventory(path=None):
+    """Distinguish a present trial with zero top cells from a missing export.
+
+    Scope is exactly role=cell, parent_etype=dd_top, main_axis=true.
+    The parent rows supply explicit zero-cell observations and parent ranks.
+    """
+    path = Path(path) if path is not None else CELLSPLIT
+    trials = {}
+    if not path.exists():
+        return trials
+    with path.open() as fh:
         for r in csv.DictReader(fh):
-            if r.get('role') == 'cell' and r.get('cell_index'):
-                counts[r['trial_id']] = counts.get(r['trial_id'], 0) + 1
-    return counts
+            tid = r['trial_id']
+            trial = trials.setdefault(tid, {'count': 0, 'parents': {}, 'issues': []})
+            if r.get('parent_etype') != 'dd_top' or r.get('main_axis', '').lower() != 'true':
+                continue
+            rank = r.get('parent_rank', '')
+            if r.get('role') == 'cell':
+                trial['count'] += 1
+                parent = trial['parents'].setdefault(rank, {'count': 0, 'rect': None, 'cell_indices': set()})
+                parent['count'] += 1
+                idx=r.get('cell_index')
+                try:
+                    if str(int(idx)) != idx or int(idx)<0:
+                        raise ValueError('noncanonical cell index')
+                except (TypeError, ValueError):
+                    trial['issues'].append('invalid_cell_index')
+                if idx in parent['cell_indices']:
+                    trial['issues'].append('duplicate_cell_index')
+                parent['cell_indices'].add(idx)
+                if r.get('cell_index') in (None, ''):
+                    trial['issues'].append('missing_cell_index')
+            elif r.get('role') == 'parent':
+                parent = trial['parents'].setdefault(rank, {'count': 0, 'rect': None, 'cell_indices': set()})
+                if parent['rect'] is not None:
+                    trial['issues'].append('duplicate_export_parent')
+                try:
+                    x, y = float(r['left_x']), float(r['top_y'])
+                    box={'x': x, 'y': y, 'w': float(r['right_x'])-x, 'h': float(r['bottom_y'])-y}
+                    if not all(math.isfinite(v) for v in box.values()) or min(box['w'],box['h'])<=0:
+                        raise ValueError('invalid rectangle')
+                    parent['rect'] = box
+                except (ValueError, KeyError):
+                    trial['issues'].append('invalid_export_parent_rect')
+    return trials
+
+
+def cellsplit_counts(path=None):
+    return {tid: row['count'] for tid, row in cellsplit_inventory(path).items()}
+
+
+def compare_cells(res, exported, rx, ry, typed_top_count=0):
+    parents = res.get('cell_parents', [])
+    dom = sum(p['count'] for p in parents)
+    exp = exported['count'] if exported is not None else 0
+    issues = list(exported['issues']) if exported else []
+    if res.get('cell_unscoped_links'):
+        issues.append('unscoped_product_links')
+    issues.extend(issue for p in parents for issue in p['issues'])
+    comparisons, claimed = [], set()
+    export_parents = exported['parents'] if exported else {}
+    for p in parents:
+        b=p['rect']; d={'x':b['x']*rx,'y':b['y']*ry,'w':b['w']*rx,'h':b['h']*ry}
+        hits=[]
+        for rank, entry in export_parents.items():
+            e=entry['rect']
+            if e is None:
+                continue
+            inter=max(0,min(d['x']+d['w'],e['x']+e['w'])-max(d['x'],e['x']))*max(0,min(d['y']+d['h'],e['y']+e['h'])-max(d['y'],e['y']))
+            if inter/max(d['w']*d['h'],1)>=0.5:
+                hits.append(rank)
+        if len(hits)>1 or (hits and hits[0] in claimed):
+            issues.append('ambiguous_export_parent')
+            continue
+        rank=hits[0] if hits else None
+        if rank is not None:
+            claimed.add(rank)
+        comparisons.append({'dom_parent_index':p['dom_parent_index'],'export_parent_rank':rank,
+                            'dom_cells':p['count'],'export_cells':export_parents[rank]['count'] if rank is not None else 0,
+                            'status':'matched' if rank is not None else 'missing_export_parent'})
+    for rank, entry in export_parents.items():
+        if rank not in claimed:
+            comparisons.append({'dom_parent_index':None,'export_parent_rank':rank,'dom_cells':0,
+                                'export_cells':entry['count'],'status':'export_only_parent'})
+            if entry['rect'] is None:
+                issues.append('missing_export_parent_rect')
+    # A typed parent with no recognized DOM template is unresolved, not a
+    # certified zero-card page. Keep the evidence in the denominator ledger.
+    if typed_top_count > len(parents):
+        issues.append('unresolved_typed_parent')
+    status = 'unresolved' if issues else ('scored' if parents or export_parents or typed_top_count else 'absent')
+    return {'dom_cells':dom,'export_cells':exp,'cell_export_present':exported is not None,
+            'cell_status':status,'cell_issues':sorted(set(issues)),'cell_parent_comparisons':comparisons,
+            'cell_count_agree':all(p['dom_cells']==p['export_cells'] for p in comparisons) if status=='scored' else None}
 
 
 async def score(tids, verbose=False):
-    cs = cellsplit_counts()
+    cs = cellsplit_inventory()
     rows = []
     async with async_playwright() as pw:
         browser = await pw.chromium.launch()
         ctx = await browser.new_context(viewport={'width': CAPTURE_VIEWPORT, 'height': 1024})
+        await ctx.route('http://**/*', lambda route: route.abort())
+        await ctx.route('https://**/*', lambda route: route.abort())
         page = await ctx.new_page()
         for n, tid in enumerate(tids, 1):
             serp = SERPS_CACHED / f'{tid}.html'
             if not serp.exists():
                 serp = SERPS / f'{tid}.html'
+            failure = {'tid':tid,'click_ok':None,'aoi_iou_median':None,'aoi_n':0,
+                       'dom_cells':None,'export_cells':cs.get(tid,{}).get('count'),
+                       'cell_export_present':tid in cs,'cell_status':'unresolved'}
             if not serp.exists():
+                rows.append(dict(failure,cell_issues=['missing_html']))
                 continue
             try:
                 cards = json.loads((HTML_TYPES / f'{tid}.json').read_text())
                 aois = json.loads((TYPED / f'{tid}.json').read_text())
-            except Exception:
+            except Exception as e:
+                rows.append(dict(failure,cell_issues=['missing_or_invalid_aoi_input'],error=str(e)))
                 continue
             paths = {c['html_handle']: {'cls': c.get('css_class', ''),
                                        'heading': c.get('heading_text', '')}
@@ -200,16 +320,19 @@ async def score(tids, verbose=False):
             click = final_click(tid)
             try:
                 await page.goto(f'file://{serp}', wait_until='load', timeout=20000)
-            except Exception:
-                pass
+            except Exception as e:
+                rows.append(dict(failure,cell_issues=['navigation_failed'],error=str(e)))
+                continue
             await page.wait_for_timeout(90)
             try:
                 res = await page.evaluate(JS, {'cards': paths, 'mainMaxX': MAIN_MAX_X,
                                                'clickXpath': click[2] if click else None})
-            except Exception:
+            except Exception as e:
+                rows.append(dict(failure,cell_issues=['dom_evaluation_failed'],error=str(e)))
                 continue
             rx, ry = ratios(tid) or (None, None)
             if rx is None:
+                rows.append(dict(failure,cell_issues=['missing_coordinate_metadata']))
                 continue
 
             # click: does the recorded coordinate fall inside the element its xpath names?
@@ -230,19 +353,18 @@ async def score(tids, verbose=False):
                                 (d['x']*rx, d['y']*ry, d['w']*rx, d['h']*ry)))
 
             # cell: DOM visible carousel cells vs the cellsplit export
-            dom_cells = len(res['cells'])
-            exp_cells = cs.get(tid)
+            cell_result = compare_cells(res, cs.get(tid), rx, ry,
+                                        sum(a.get('type')=='dd_top' and a.get('position',-1)>=0 for a in aois))
 
             rows.append({'tid': tid,
                          'click_ok': click_ok,
                          'aoi_iou_median': statistics.median(ious) if ious else None,
                          'aoi_n': len(ious),
-                         'dom_cells': dom_cells,
-                         'export_cells': exp_cells,
+                         **cell_result,
                          'ratio_x': round(rx, 4), 'ratio_y': round(ry, 4)})
             if verbose:
                 print(f"  {tid}: click={click_ok} iou={rows[-1]['aoi_iou_median']} "
-                      f"cells dom={dom_cells} export={exp_cells}", flush=True)
+                      f"cells {cell_result['cell_status']} dom={cell_result['dom_cells']} export={cell_result['export_cells']}", flush=True)
             elif n % 40 == 0:
                 print(f"  {n}/{len(tids)}", file=sys.stderr, flush=True)
         await browser.close()
@@ -264,24 +386,39 @@ def report(rows):
         print(f"            median {statistics.median(io):.3f}   "
               f"p10 {io_s[len(io_s)//10]:.3f}   p90 {io_s[9*len(io_s)//10]:.3f}")
         print(f"            IoU >= 0.5 on {good}/{len(io)} trials ({100*good/len(io):.1f}%)")
-    cc = [(r['dom_cells'], r['export_cells']) for r in rows
-          if r['dom_cells'] and r['export_cells'] is not None]
-    if cc:
-        agree = sum(1 for d, e in cc if d == e)
-        print(f"\n  cell      visible DOM carousel cells vs the cellsplit export")
-        print(f"            agree {agree}/{len(cc)} ({100*agree/len(cc):.1f}%)   "
-              f"export short on {sum(1 for d,e in cc if e < d)}   over on {sum(1 for d,e in cc if e > d)}")
+    summary = cell_summary(rows)
+    print("\n  cell      top/main product cards, any positive visible card area")
+    print("            count agreement only; not boundary or identity fidelity")
+    print("            " + json.dumps(summary, sort_keys=True))
     print(f"\n{'='*66}")
 
 
+def cell_summary(rows):
+    cc=[r for r in rows if r.get('cell_status')=='scored']
+    comparisons=[p for r in cc for p in r['cell_parent_comparisons']]
+    return {'requested_trials':len(rows),'scored_trials':len(cc),
+            'agree_trials':sum(r['cell_count_agree'] for r in cc),
+            'unresolved_trials':sum(r.get('cell_status')=='unresolved' for r in rows),
+            'absent_trials':sum(r.get('cell_status')=='absent' for r in rows),
+            'missing_export_trials':sum(not r.get('cell_export_present',False) for r in rows),
+            'compared_parents':len(comparisons),
+            'agree_parents':sum(p['dom_cells']==p['export_cells'] for p in comparisons),
+            'short_parents':sum(p['export_cells']<p['dom_cells'] for p in comparisons),
+            'over_parents':sum(p['export_cells']>p['dom_cells'] for p in comparisons),
+            'issue_counts':dict(Counter(issue for r in rows for issue in r.get('cell_issues',[])))}
+
+
 def main():
+    global CELLSPLIT
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     ap.add_argument('--all', action='store_true')
     ap.add_argument('--trials', nargs='*')
     ap.add_argument('--limit', type=int, default=120)
     ap.add_argument('--json')
+    ap.add_argument('--cellsplit',type=Path,default=CELLSPLIT,help='Explicit cell export to audit; default is the released snapshot')
     ap.add_argument('-v', '--verbose', action='store_true')
     a = ap.parse_args()
+    CELLSPLIT = a.cellsplit
     every = sorted(p.stem for p in HTML_TYPES.glob('p*.json'))
     if a.trials:
         tids = a.trials
@@ -296,7 +433,13 @@ def main():
     if a.json:
         Path(a.json).parent.mkdir(parents=True, exist_ok=True)
         Path(a.json).write_text(json.dumps(rows, indent=1))
-        print(f"  wrote {a.json}")
+        meta={'schema':'allserp-aoi-fidelity-v2','cell_metric':'per-parent top/main visible card count agreement; not geometry fidelity',
+              'visibility':'positive card area after ancestor clips; no vertical viewport or temporal exposure inference',
+              'source_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+              'cellsplit_sha256':hashlib.sha256(CELLSPLIT.read_bytes()).hexdigest() if CELLSPLIT.exists() else None,
+              'viewport':CAPTURE_VIEWPORT,'network':'blocked','summary':cell_summary(rows)}
+        Path(a.json+'.meta.json').write_text(json.dumps(meta,indent=2)+'\n')
+        print(f"  wrote {a.json} and metadata sidecar")
 
 
 if __name__ == '__main__':

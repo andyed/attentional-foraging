@@ -1,0 +1,42 @@
+{
+  "tests": {
+    "existing_carousel_suite": 94,
+    "export_exclusion_regressions": 3,
+    "corpus_summary_regressions": 12,
+    "total_passed": 109
+  },
+  "measurement_parameters_changed": false,
+  "released_exports_regenerated": false,
+  "notebook_models_regenerated": false,
+  "source_hashes": {
+    "test_carousel_corpus_summary.py": "8690128b15922c6e78113f68635674a1c42e295739fde61b25d356d818ac6dc7",
+    "test_export_aois_by_trial_id.py": "907354d30fb4880e3ebb454eed06c54c19efa1b9a9e37ba7a2851e10da72e98f",
+    "carousel_count_corpus.py": "9322b4b6b8146092bc12da1e6798ce3762e2fa1bd7f5f7524f68a4e327dd89b4",
+    "export_aois_by_trial_id.py": "196064fc3131dadcfa8510ddf56c245e70f4ac584a019ee1dc12d1996b47c444",
+    "summarize_carousel_corpus.py": "90c6ead9e53188748750b08c3aa5fc4050ba2301c3d805b89b6028392025ca77",
+    "carousel_corpus.py": "8267a2dc8932ff023a1059fdcc66b155f1f0720267806839524f46911c43550f"
+  },
+  "artifacts": {
+    "semantic-review-results.json": "301b6ac5cf2ffec947a53e6ab11de1f2cb2756571f9778e157d1e4d9430666e9",
+    "integration-reproductions.json": "2fc7200f899f1c7339619713311d4c1751fb05ccc2c8fff49240ed506a1b837b",
+    "semantic-preselection.json": "e816108a80a1901fa7a4b99415a02fa5f944105f00cc53aed470ebb93aca052b",
+    "p033-b3-t2.png": "9a31069bd1a7ed5f61afb85e337ac1f5e54a58707ca9af081f53fa9b0fcd88e3",
+    "count-audit.json.gz": "b6cd7210432197cc4bce59f6cbc184939dab8efff4e289c52dd903dd70207a98",
+    "semantic-extraction.json": "2f66ba7340559563f6e957d8c9c18aafb28c7502ffc4f6a33e1b8305ee1fa139",
+    "p017-b5-t8.png": "4764f75a11625093d5b58129f0c033513939c76c14ff131acd8a4081eb387101",
+    "blind-annotation-erratum.json": "2cd311c5aed2994994fe1153585dd6234f7b7419acd575414f9cae32c3ab999c",
+    "p042-b2-t8.png": "6992e32cd3dbc2e6b192cd09bb7c1d7105da99af385664e80c4bcd2ab27d83cd",
+    "export-exclusion-fix.json": "faf4d2367879041a6709b7bb0550bea230ca7e8a410338a364e466e0fe499f15",
+    "comparison.json": "2b1c11546920444e92d152fdcd9315d5a086f0ce6a1b33943ecf4cd10df6df29",
+    "blind-semantic-annotations.json": "deb9f8524f808c668663056704e4d1cf9c3ee8a46cfd043adf58f1ec77cf537c",
+    "fixture-validation.json": "7568bfac7fef2f3c2839c07dec1e34e0dac52dec884f884dd3ec5abf958734f8",
+    "candidate-cells.csv.gz": "dc013a517d30d413bab5e5b7e4c984ea3671c97c4ecdf6f9010038886e977006",
+    "semantic-corpus-comparison.json": "fc196d4c14708f269242e29c4c28f28389f1102c77723e365c71e1748f51e231",
+    "height-scale-diagnostic.json": "07be3fa0cf64e84711ae6b1f92715ae56b40ca64aa8340526ef3422946b25e60",
+    "semantic-review.md": "3f5f87317b878f1cd8cffb3d964ed355c73ba0574215843a69405302904893be",
+    "p044-b4-t6.png": "097cceb630dd4038c876950f90722d778f9f88ded5ec165d164114fece149c98",
+    "blind-source-evidence.json": "7ec97e28a927e0957c914aa960bb25fb5b239ab0545dee8e41c277a62bf07d43",
+    "candidate-report.json.gz": "f3d3b83fe0e65071fde6cbf1253b6347278b2add5cf547239191de42e8d096d8",
+    "p035-b3-t10.png": "54bbf542ce1f966c7f38dbfbd38997bc181eaa2dc830a938ea060ca0ba103df1"
+  }
+}

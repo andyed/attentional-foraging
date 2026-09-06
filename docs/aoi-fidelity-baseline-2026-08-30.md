@@ -1,10 +1,19 @@
 # AOI fidelity baseline — v1.1.0 substrate, 2026-08-30
 
+> **2026-09-04 cell-metric correction:** the historical 29.1% full-corpus
+> and 31.0% sample figures below are retired as top-carousel fidelity estimates.
+> The old counter mixed cell types and omitted zero/missing comparisons; its DOM
+> check also used incomplete clipping. The denominator was not valid merely
+> because it resembled the export's coverage. The repaired retained-sample audit
+> is **19/61 (31.1%) matching parent counts**, not boundary accuracy.
+> See [the repair evidence and remaining gate](methodology/carousel-dom-candidate.md).
+> Historical tables below are preserved as the record of the earlier audit.
+
 > **The `aoi` figures in the original table below are VOID.** That check
 > resolved cards by `css_path`, which is itself unreliable, so it measured the
 > harness on the failing tail. The check was rewritten to resolve by
 > class+heading identity and re-run; corrected numbers are in the final section.
-> `click` and `cell` never used `css_path` and are unchanged.
+> `click` never used `css_path`; the separate cell-metric correction is above.
 
 First full-corpus run of `scripts/aoi_fidelity.py`. This is the number every
 later change is measured against; before it there was no measurement of the

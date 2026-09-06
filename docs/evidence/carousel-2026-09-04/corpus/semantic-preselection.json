@@ -1,0 +1,81 @@
+{
+  "selected_at_utc": "2026-09-05T00:20:20.863455+00:00",
+  "seed": "allserp-corpus-semantic-audit-20260904",
+  "selection": "Lowest SHA256(seed:trial_id) within each predeclared stratum, requiring unique participants; based only on current typed map geometry and preexisting raw spelling search; prior61+heldout6 and exclusions removed; no corpus per-trial outcomes read before selection",
+  "pool_sha256": "61b3d71ecf81d04b199b962a623475fe48998534fb0ddb1a0688a11e6ccc5047",
+  "cases": [
+    {
+      "trial_id": "p016-b3-t1",
+      "participant": "p016",
+      "height": 351.0,
+      "width": 587.0,
+      "position": 1,
+      "spelling": false,
+      "stratum": "nonzero typed parent position"
+    },
+    {
+      "trial_id": "p046-b1-t1",
+      "participant": "p046",
+      "height": 296.0,
+      "width": 586.0,
+      "position": 0,
+      "spelling": true,
+      "stratum": "spelling block, short parent"
+    },
+    {
+      "trial_id": "p030-b6-t4",
+      "participant": "p030",
+      "height": 382.0,
+      "width": 587.0,
+      "position": 0,
+      "spelling": true,
+      "stratum": "spelling block, tall parent"
+    },
+    {
+      "trial_id": "p048-b4-t8",
+      "participant": "p048",
+      "height": 233.0,
+      "width": 586.0,
+      "position": 0,
+      "spelling": false,
+      "stratum": "short parent below 250px"
+    },
+    {
+      "trial_id": "p040-b5-t10",
+      "participant": "p040",
+      "height": 279.0,
+      "width": 586.0,
+      "position": 0,
+      "spelling": false,
+      "stratum": "250-299px parent"
+    },
+    {
+      "trial_id": "p009-b6-t4",
+      "participant": "p009",
+      "height": 334.0,
+      "width": 587.0,
+      "position": 0,
+      "spelling": false,
+      "stratum": "300-349px parent"
+    },
+    {
+      "trial_id": "p032-b2-t5",
+      "participant": "p032",
+      "height": 351.0,
+      "width": 587.0,
+      "position": 0,
+      "spelling": false,
+      "stratum": "350px+ parent A"
+    },
+    {
+      "trial_id": "p014-b3-t4",
+      "participant": "p014",
+      "height": 351.0,
+      "width": 587.0,
+      "position": 0,
+      "spelling": false,
+      "stratum": "350px+ parent B"
+    }
+  ],
+  "protocol": "Retain every selected ID even if extraction fails; for accepted cases compare original image product order/identity and card boundaries against source DOM cell text/link and registered rectangles; no parameter/source tuning from outcomes."
+}
