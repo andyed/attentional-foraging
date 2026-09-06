@@ -1,0 +1,359 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-09-06T21:38:55.705954+00:00",
+  "status": "full_corpus",
+  "protocol": {
+    "regime": "LAB dataset; cursor-only predictors and row selection",
+    "rank_type": "typed",
+    "feature_source": "approach-retreat ResultFeatureTracker",
+    "gaze_used": false,
+    "gaze_used_for": [],
+    "buffers_ms": [
+      0,
+      500
+    ],
+    "anchor_event": "mousedown",
+    "sampling": "native",
+    "downsample_hz": 15.0,
+    "window": "all",
+    "sample_events": "native mousemove only; t < mousedown anchor minus buffer",
+    "coordinate_space": "document CSS px; typed AOI centers divided by canonical ratio_y",
+    "distance_axis": "vertical |pageY - AOI center y|; the browser tracker is one-dimensional",
+    "proximity_px": 100,
+    "candidate_population": "all main-axis typed AOIs in included trials",
+    "ranking_metrics": "per-trial MRR@10 and top-1 hit rate (NDCG@1, one clicked AOI per trial) on held-out probabilities",
+    "click_label": "final click; strict unique X+Y typed-box containment; ambiguous/off-box trials excluded",
+    "cross_buffer_population": "identical; at least two distinct timestamps before largest buffer cutoff",
+    "visibility_gate": "none; offline all-AOI replay, not browser IntersectionObserver or 20 Hz lifecycle parity",
+    "estimator": "LOSO StandardScaler + balanced LogisticRegression(C=1, max_iter=5000)",
+    "scope": "new typed experiment; not a numeric replacement for historical organic_hybrid or gaze-gated M4"
+  },
+  "substrate": {
+    "substrate": "AllSERP v1.1.0 (post card-collision fix)",
+    "branch": "release/allserp-v1.1.0",
+    "substrate_commit": "ab657a63",
+    "typed_maps_content_hash": "2cb789eb8febd234",
+    "hash_method": "sha256 over sorted(data/aoi-typed/p*.json), updating basename bytes then file bytes per file; first 16 hex chars of the digest",
+    "n_trial_maps": 2776,
+    "exclusion_list": "alignment-exclusions.json",
+    "n_excluded": 12,
+    "corpus_trials": 2764,
+    "generated": "2026-08-30",
+    "note": "Consumers pin substrate identity by (branch, substrate_commit, typed_maps_content_hash) and must re-read the exclusion list \u2014 membership changed from the earlier 14-trial list on 2026-08-30 (+p018-b3-t1, net 12)."
+  },
+  "counts": {
+    "discovered_trials": 2776,
+    "included": 2648,
+    "insufficient_prebuffer_mousemove": 4,
+    "nonmonotonic_mouse_time": 3,
+    "click_outside_main_boxes": 108,
+    "alignment_excluded": 12,
+    "no_click": 1
+  },
+  "geometry_sources_included": {
+    "screenshot": 2648
+  },
+  "conditions": {
+    "buf0": {
+      "M1": {
+        "features": [
+          "position"
+        ],
+        "pooled_auc": 0.792673733593799,
+        "fold_auc_mean": 0.7993984305323811,
+        "fold_auc_sd": 0.057889291373079695,
+        "n_folds": 47,
+        "fold_auc_median": 0.8002793296089385,
+        "fold_auc_iqr": [
+          0.7514004456257735,
+          0.8368765362225771
+        ],
+        "n_records": 34867,
+        "n_clicks": 2648,
+        "mrr_at_10": 0.44807806430729386,
+        "ndcg_at_1": 0.19826283987915408,
+        "n_ranked_trials": 2648
+      },
+      "M3": {
+        "features": [
+          "position",
+          "min_dist",
+          "mean_dist",
+          "dwell_in_proximity_ms",
+          "mean_approach_velocity",
+          "max_approach_velocity",
+          "direction_changes",
+          "frac_decreasing"
+        ],
+        "pooled_auc": 0.9524824044546344,
+        "fold_auc_mean": 0.952591295718641,
+        "fold_auc_sd": 0.021252192252973378,
+        "n_folds": 47,
+        "fold_auc_median": 0.9543202560151713,
+        "fold_auc_iqr": [
+          0.942865359663582,
+          0.969074848649953
+        ],
+        "n_records": 34867,
+        "n_clicks": 2648,
+        "mrr_at_10": 0.8250921629981298,
+        "ndcg_at_1": 0.7039274924471299,
+        "n_ranked_trials": 2648
+      },
+      "M4-7": {
+        "features": [
+          "min_dist",
+          "mean_dist",
+          "dwell_in_proximity_ms",
+          "mean_approach_velocity",
+          "max_approach_velocity",
+          "direction_changes",
+          "frac_decreasing"
+        ],
+        "pooled_auc": 0.9523379062044136,
+        "fold_auc_mean": 0.9524422784731942,
+        "fold_auc_sd": 0.02118783391981441,
+        "n_folds": 47,
+        "fold_auc_median": 0.9558610880644779,
+        "fold_auc_iqr": [
+          0.9429402526342039,
+          0.9691587113537983
+        ],
+        "n_records": 34867,
+        "n_clicks": 2648,
+        "mrr_at_10": 0.8279450199012133,
+        "ndcg_at_1": 0.7095921450151057,
+        "n_ranked_trials": 2648
+      },
+      "M4-9": {
+        "features": [
+          "min_dist",
+          "mean_dist",
+          "final_dist",
+          "retreat_dist",
+          "dwell_in_proximity_ms",
+          "mean_approach_velocity",
+          "max_approach_velocity",
+          "direction_changes",
+          "frac_decreasing"
+        ],
+        "pooled_auc": 0.9973969685748655,
+        "fold_auc_mean": 0.9974727203546698,
+        "fold_auc_sd": 0.0024887454773325117,
+        "n_folds": 47,
+        "fold_auc_median": 0.9980288781229221,
+        "fold_auc_iqr": [
+          0.9968078994389227,
+          0.9988307821048727
+        ],
+        "n_records": 34867,
+        "n_clicks": 2648,
+        "mrr_at_10": 0.9887336354481369,
+        "ndcg_at_1": 0.9780966767371602,
+        "n_ranked_trials": 2648
+      }
+    },
+    "buf500": {
+      "M1": {
+        "features": [
+          "position"
+        ],
+        "pooled_auc": 0.792673733593799,
+        "fold_auc_mean": 0.7993984305323811,
+        "fold_auc_sd": 0.057889291373079695,
+        "n_folds": 47,
+        "fold_auc_median": 0.8002793296089385,
+        "fold_auc_iqr": [
+          0.7514004456257735,
+          0.8368765362225771
+        ],
+        "n_records": 34867,
+        "n_clicks": 2648,
+        "mrr_at_10": 0.44807806430729386,
+        "ndcg_at_1": 0.19826283987915408,
+        "n_ranked_trials": 2648
+      },
+      "M3": {
+        "features": [
+          "position",
+          "min_dist",
+          "mean_dist",
+          "dwell_in_proximity_ms",
+          "mean_approach_velocity",
+          "max_approach_velocity",
+          "direction_changes",
+          "frac_decreasing"
+        ],
+        "pooled_auc": 0.9352652058621843,
+        "fold_auc_mean": 0.9366047614156208,
+        "fold_auc_sd": 0.023322240066993353,
+        "n_folds": 47,
+        "fold_auc_median": 0.9390162844798935,
+        "fold_auc_iqr": [
+          0.9237729543402311,
+          0.9535613526575466
+        ],
+        "n_records": 34867,
+        "n_clicks": 2648,
+        "mrr_at_10": 0.7729547307341869,
+        "ndcg_at_1": 0.6272658610271903,
+        "n_ranked_trials": 2648
+      },
+      "M4-7": {
+        "features": [
+          "min_dist",
+          "mean_dist",
+          "dwell_in_proximity_ms",
+          "mean_approach_velocity",
+          "max_approach_velocity",
+          "direction_changes",
+          "frac_decreasing"
+        ],
+        "pooled_auc": 0.9350067546602561,
+        "fold_auc_mean": 0.9363589400337171,
+        "fold_auc_sd": 0.022835118596688884,
+        "n_folds": 47,
+        "fold_auc_median": 0.9399496336996337,
+        "fold_auc_iqr": [
+          0.9233379421769468,
+          0.9529842098195
+        ],
+        "n_records": 34867,
+        "n_clicks": 2648,
+        "mrr_at_10": 0.7791597731741234,
+        "ndcg_at_1": 0.6370845921450151,
+        "n_ranked_trials": 2648
+      },
+      "M4-9": {
+        "features": [
+          "min_dist",
+          "mean_dist",
+          "final_dist",
+          "retreat_dist",
+          "dwell_in_proximity_ms",
+          "mean_approach_velocity",
+          "max_approach_velocity",
+          "direction_changes",
+          "frac_decreasing"
+        ],
+        "pooled_auc": 0.9886020324086788,
+        "fold_auc_mean": 0.9887353269934372,
+        "fold_auc_sd": 0.008230788770710644,
+        "n_folds": 47,
+        "fold_auc_median": 0.9906486985037918,
+        "fold_auc_iqr": [
+          0.9857960852465494,
+          0.9936065218601503
+        ],
+        "n_records": 34867,
+        "n_clicks": 2648,
+        "mrr_at_10": 0.94145581570997,
+        "ndcg_at_1": 0.8923716012084593,
+        "n_ranked_trials": 2648
+      }
+    }
+  },
+  "paired": {
+    "buf0_M4-7_vs_M1": {
+      "n_participants": 47,
+      "mean_participant_auc_delta": 0.1530438479408132,
+      "bootstrap_ci95": [
+        0.13801067148746585,
+        0.16807935305679306
+      ],
+      "bootstrap_resamples": 10000,
+      "bootstrap_seed": 20260904,
+      "wilcoxon_two_sided_p": 1.4210854715202004e-14
+    },
+    "buf0_M3_vs_M4-7": {
+      "n_participants": 47,
+      "mean_participant_auc_delta": 0.00014901724544684084,
+      "bootstrap_ci95": [
+        -0.0003075094373177574,
+        0.0006271323018213358
+      ],
+      "bootstrap_resamples": 10000,
+      "bootstrap_seed": 20260904,
+      "wilcoxon_two_sided_p": 0.633184639216168
+    },
+    "buf500_M4-7_vs_M1": {
+      "n_participants": 47,
+      "mean_participant_auc_delta": 0.13696050950133606,
+      "bootstrap_ci95": [
+        0.12297741212303885,
+        0.1509703683245241
+      ],
+      "bootstrap_resamples": 10000,
+      "bootstrap_seed": 20260904,
+      "wilcoxon_two_sided_p": 1.4210854715202004e-14
+    },
+    "buf500_M3_vs_M4-7": {
+      "n_participants": 47,
+      "mean_participant_auc_delta": 0.00024582138190345164,
+      "bootstrap_ci95": [
+        -0.00039522222787906336,
+        0.0009314101046626077
+      ],
+      "bootstrap_resamples": 10000,
+      "bootstrap_seed": 20260904,
+      "wilcoxon_two_sided_p": 0.7143650608485943
+    }
+  },
+  "feature_ablation": {},
+  "ablation_skipped": true,
+  "sampling_diagnostics": {
+    "anchor_event": "mousedown",
+    "samples_removed_relative_to_buf0": {
+      "buf0": 0,
+      "buf500": 5883
+    },
+    "trials_changed_relative_to_buf0": {
+      "buf0": 0,
+      "buf500": 1706
+    },
+    "post_anchor_samples_excluded_at_every_buffer": 397,
+    "last_mousemove_to_click_ms_quantiles": {
+      "min": 672.0,
+      "q25": 1400.0,
+      "median": 1820.0,
+      "q75": 2640.0,
+      "max": 19619.0
+    },
+    "last_mousemove_to_anchor_ms_quantiles": {
+      "min": 1.0,
+      "q25": 161.0,
+      "median": 315.0,
+      "q75": 773.0,
+      "max": 17982.0
+    },
+    "anchor_to_click_ms_quantiles": {
+      "min": 695.0,
+      "q25": 1167.0,
+      "median": 1415.0,
+      "q75": 1846.0,
+      "max": 12612.0
+    },
+    "interpretation": "An unchanged stream does not test removal of terminal approach; time buffers alone may leave the entire approach intact."
+  },
+  "provenance": {
+    "sha256": {
+      "producer": "7b6b427eb9aa452eb6be3be82e8102058d98635658ff91e1b26e5a400a717a19",
+      "bridge": "c4b20a61b7002071ebfb36cc41ae090093902e931d00d78514ef4028f01ea10d",
+      "tracker": "587934cbeef059f54449029ddf558600369468a07f9527a7b2dcc097849caf46",
+      "data_loader": "20b669620a9ae4f74aab6e43abdb66334798a02b0f537b48d382a782990ecff8",
+      "substrate": "986e958161fc74b55a93e30cee5811276bb7230d76db10d78fa5328f089e27e1",
+      "exclusions": "da0f4c7654de12971e1530beb600d829e70b800ac9fc45c9436b1cf38de9f05c"
+    },
+    "mouse_and_metadata_sha256": "8ae78f116e05281a0f275471cceb119367664a9599415ed4690037c64b7f4bf2",
+    "geometry_values_sha256": "03dbf7c80b991b868ab403e178a11f3d2d71647892ecf40e1bd8b667df13d175",
+    "feature_records_sha256": {
+      "buf0": "47f76130f72e7a085483d4bb5ebcf862d8e1b012c19890d017e23b7d7fac7dec",
+      "buf500": "f671d511fd5a9ee086d3978367fc5143d8636ae7927e62614a0c10d376f6c17b"
+    },
+    "record_keys_and_labels_sha256": "aa2935f62fb52cf6eedcc10163ecaca51ab7972b7145f57cfe40e975fb943938",
+    "python": "3.13.11",
+    "numpy": "2.4.4",
+    "node": "v25.8.2",
+    "sklearn": "1.8.0"
+  }
+}
