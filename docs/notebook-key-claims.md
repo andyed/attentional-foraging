@@ -399,31 +399,57 @@ The K1–K18 below are the published values verified 2026-04-12. Keep for paper-
 ## NB21: `21_click_prediction` — LOSO click prediction and four-class taxonomy
 
 *Source: [`notebooks-v2/21_click_prediction.ipynb`](../notebooks-v2/21_click_prediction.ipynb)*
-*Last verified: historical output verified 2026-05-01; provenance reviewed 2026-09-04. Current cursor-only aggregate reader executed 2026-09-04.*
+*Last verified: historical output verified 2026-05-01; provenance reviewed 2026-09-04. Current cursor-only aggregate readers executed 2026-09-06 (click-anchored reference run and press-anchored buffer grid).*
 
-### Current cursor-only typed stream (executed aggregate reader)
+### Current cursor-only typed stream, click-anchored reference run (executed aggregate reader)
 
-Generated 2026-09-04T22:48:02.481044+00:00; `[LAB, AdSERP, typed, cursor-only, buf500]`. AOI map hash `2cb789eb8febd234`; 12 alignment exclusions. Source and substrate hashes verified.
+Generated 2026-09-06T19:12:21.744957+00:00; `[LAB, AdSERP, typed, cursor-only, click-anchored, buf500]`. AOI map hash `2cb789eb8febd234`; 12 alignment exclusions. Source and substrate hashes verified.
 
-Source: [cursor-only aggregate](../scripts/output/m4_cursor_aoi/summary.json); SHA256 `36076631398a87d7e8569b3fd0a90bfa8c2c25f2f6153707c472cc390b38ab23`.
-
-This is a new all-main-axis-AOI experiment, not a numeric replacement for the historical organic or gaze-dependent rows. Strict unique X+Y containment identifies the final click; ambiguous and off-box trials are excluded. Native mousemove samples end before the final click minus 500 ms. There is no viewport gate or gaze-conditioned row selection. Running the actual JS tracker establishes its feature arithmetic here, not complete browser-lifecycle parity. The final click defines the observation cutoff: this is a retrospective offline protocol, not a prospective prediction at a target-independent time.
+Source: [cursor-only aggregate](../scripts/output/m4_cursor_aoi/summary.json); SHA256 `5b1bad1a9177cd1dcb6f090a6aad304d95dba61030bf807689d112d92b771bc7`.
 
 | ID | Claim | Value |
 |---|---|---|
 | **K-current-1** | Included trials / AOI records / valid participant folds | 2,652 / 34,916 / 47 |
-| **K-current-2** | M1 pooled OOF AUC; participant mean ± SD | **0.7929**; 0.7996 ± 0.0579 |
-| **K-current-3** | M4-7 pooled OOF AUC; participant mean ± SD | **0.9505**; 0.9510 ± 0.0208 |
-| **K-current-4** | M4-9 pooled OOF AUC; participant mean ± SD | **0.9975**; 0.9975 ± 0.0025 |
-| **K-current-5** | M4-7 minus M1, mean paired participant AUC difference | **+0.1514**; 95% participant-bootstrap CI [+0.1367, +0.1660] |
-| **K-current-6** | buf500 vs buf0: removed native samples / affected trials; M4-7 pooled AUC change | 0 / 0; +0.0000 |
+| **K-current-2** | M1 pooled OOF AUC; participant mean ± SD; median [IQR]; MRR@10; NDCG@1 | **0.7929**; 0.7996 ± 0.0579; 0.8048 [0.7514, 0.8369]; 0.4485; 0.1987 |
+| **K-current-3** | M3 pooled OOF AUC; participant mean ± SD; median [IQR]; MRR@10; NDCG@1 | **0.9505**; 0.9509 ± 0.0209; 0.9515 [0.9400, 0.9686]; 0.8243; 0.7040 |
+| **K-current-4** | M4-7 pooled OOF AUC; participant mean ± SD; median [IQR]; MRR@10; NDCG@1 | **0.9505**; 0.9510 ± 0.0208; 0.9514 [0.9398, 0.9684]; 0.8265; 0.7078 |
+| **K-current-5** | M4-9 pooled OOF AUC; participant mean ± SD; median [IQR]; MRR@10; NDCG@1 | **0.9975**; 0.9975 ± 0.0025; 0.9982 [0.9968, 0.9988]; 0.9888; 0.9781 |
+| **K-current-6** | M4-7 minus M1, mean paired participant AUC difference | **+0.1514**; 95% participant-bootstrap CI [+0.1367, +0.1660]; Wilcoxon p = 1.42e-14 |
+| **K-current-7** | M3 minus M4-7, mean paired participant AUC difference | **-0.0001**; 95% participant-bootstrap CI [-0.0003, +0.0001]; Wilcoxon p = 3.31e-01 |
+| **K-current-8** | M4-7 pooled AUC by buffer (native samples removed vs buf0, trials affected) | buf0: 0.9505 (0 samples, 0 trials changed) / buf500: 0.9505 (0 samples, 0 trials changed) |
+| **K-current-9** | Leave-one-feature-out on M4-7 (ΔAUC vs full, ordered) | `min_dist` -0.0259; `mean_approach_velocity` -0.0134; `mean_dist` -0.0053; `dwell_in_proximity_ms` -0.0037; `max_approach_velocity` -0.0028; `direction_changes` -0.0003; `frac_decreasing` +0.0000 |
+| **K-current-10** | Single-feature LOSO AUC (ordered) | `min_dist` 0.8907; `dwell_in_proximity_ms` 0.8868; `mean_dist` 0.8853; `mean_approach_velocity` 0.6258; `frac_decreasing` 0.5890; `max_approach_velocity` 0.5501; `direction_changes` 0.5110 |
 
-Last native mousemove to final click gap (ms), min / Q1 / median / Q3 / max: 672.0 / 1,376.0 / 1,799.5 / 2,616.0 / 19,619.0.
-The two buffers consumed identical feature records. Equal AUCs therefore do not provide evidence that prediction survives removal of terminal approach.
+Timing (ms, min / Q1 / median / Q3 / max): last native mousemove → logged click 672 / 1,376 / 1,800 / 2,616 / 19,619; last native mousemove → click anchor 672 / 1,376 / 1,800 / 2,616 / 19,619; anchor → logged click 0 / 0 / 0 / 0 / 0. Samples between anchor and logged click, excluded at every buffer: 0.
 
 Excluded-trial counts: nonmonotonic mouse time: 3; click outside main boxes: 108; alignment excluded: 12; no click: 1.
 
-The paired difference is computed within participants; it is not the difference of pooled AUCs. A time buffer alone does not establish removal of the whole final approach. These click-prediction results do not validate relevance labels, a psychological interpretation, or a deployed browser model. The reader verifies current source files and AOI maps; recorded mouse/metadata and geometry hashes document the extraction inputs without re-reading private traces or redoing extraction.
+The paired differences are computed within participants; they are not differences of pooled AUCs. These click-prediction results do not validate relevance labels, a psychological interpretation, or a deployed browser model. The reader verifies current source files and AOI maps; recorded mouse/metadata and geometry hashes document the extraction inputs without re-reading private traces.
+
+### Current cursor-only typed stream, press-anchored Δ = 500 ms headline and buffer grid (executed aggregate reader)
+
+Generated 2026-09-06T19:17:11.503527+00:00; `[LAB, AdSERP, typed, cursor-only, mousedown-anchored, buf500]`. AOI map hash `2cb789eb8febd234`; 12 alignment exclusions. Source and substrate hashes verified.
+
+Source: [cursor-only aggregate](../scripts/output/m4_cursor_aoi_mousedown/summary.json); SHA256 `6702e3bf2439f5f5af28d2e130a4f57bae61e3e14cba6f1ce9548a7cc8a57a33`.
+
+| ID | Claim | Value |
+|---|---|---|
+| **K-press-1** | Included trials / AOI records / valid participant folds | 2,608 / 34,328 / 47 |
+| **K-press-2** | M1 pooled OOF AUC; participant mean ± SD; median [IQR]; MRR@10; NDCG@1 | **0.7918**; 0.7987 ± 0.0577; 0.8009 [0.7514, 0.8364]; 0.4471; 0.1975 |
+| **K-press-3** | M3 pooled OOF AUC; participant mean ± SD; median [IQR]; MRR@10; NDCG@1 | **0.9348**; 0.9365 ± 0.0236; 0.9389 [0.9227, 0.9557]; 0.7748; 0.6292 |
+| **K-press-4** | M4-7 pooled OOF AUC; participant mean ± SD; median [IQR]; MRR@10; NDCG@1 | **0.9348**; 0.9366 ± 0.0231; 0.9385 [0.9228, 0.9553]; 0.7773; 0.6338 |
+| **K-press-5** | M4-9 pooled OOF AUC; participant mean ± SD; median [IQR]; MRR@10; NDCG@1 | **0.9903**; 0.9905 ± 0.0077; 0.9922 [0.9886, 0.9952]; 0.9498; 0.9064 |
+| **K-press-6** | M4-7 minus M1, mean paired participant AUC difference | **+0.1379**; 95% participant-bootstrap CI [+0.1242, +0.1514]; Wilcoxon p = 1.42e-14 |
+| **K-press-7** | M3 minus M4-7, mean paired participant AUC difference | **-0.0000**; 95% participant-bootstrap CI [-0.0004, +0.0004]; Wilcoxon p = 9.96e-01 |
+| **K-press-8** | M4-7 pooled AUC by buffer (native samples removed vs buf0, trials affected) | buf0: 0.9494 (0 samples, 0 trials changed) / buf250: 0.9476 (6,042 samples, 1,158 trials changed) / buf500: 0.9348 (21,223 samples, 1,705 trials changed) / buf1000: 0.8852 (56,742 samples, 2,099 trials changed) |
+| **K-press-9** | Leave-one-feature-out on M4-7 (ΔAUC vs full, ordered) | `min_dist` -0.0264; `mean_approach_velocity` -0.0135; `mean_dist` -0.0064; `dwell_in_proximity_ms` -0.0031; `max_approach_velocity` -0.0027; `direction_changes` -0.0002; `frac_decreasing` +0.0001 |
+| **K-press-10** | Single-feature LOSO AUC (ordered) | `min_dist` 0.8722; `mean_dist` 0.8718; `dwell_in_proximity_ms` 0.8530; `mean_approach_velocity` 0.6145; `frac_decreasing` 0.5787; `max_approach_velocity` 0.5491; `direction_changes` 0.5090 |
+
+Timing (ms, min / Q1 / median / Q3 / max): last native mousemove → logged click 672 / 1,382 / 1,812 / 2,646 / 19,619; last native mousemove → mousedown anchor 1 / 139 / 294 / 770 / 17,982; anchor → logged click 695 / 1,173 / 1,421 / 1,853 / 12,612. Samples between anchor and logged click, excluded at every buffer: 495.
+
+Excluded-trial counts: insufficient prebuffer mousemove: 44; nonmonotonic mouse time: 3; click outside main boxes: 108; alignment excluded: 12; no click: 1.
+
+The paired differences are computed within participants; they are not differences of pooled AUCs. These click-prediction results do not validate relevance labels, a psychological interpretation, or a deployed browser model. The reader verifies current source files and AOI maps; recorded mouse/metadata and geometry hashes document the extraction inputs without re-reading private traces.
 
 ### Provenance boundary (reviewed 2026-09-04)
 

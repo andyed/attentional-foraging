@@ -10,6 +10,16 @@ Run from attentional-foraging:
 
 Only aggregate metrics and hashes are saved. Default output is separate from
 historical paper-output artifacts. --limit is for smoke tests, never claims.
+
+Observation cutoff. evtrack stamps the final `click` record a median ~1.3 s
+after the `mouseup` of the same physical press (the two share coordinates on
+every trial checked), and the last native `mousemove` precedes even the
+`mousedown` by a median ~0.2 s. Anchoring buffers at the logged click therefore
+removes no cursor samples for any buffer below ~0.6 s. `--anchor mousedown`
+anchors the cutoff at the last mousedown at or before the final click so a
+buffer actually tests removal of the terminal approach; `--anchor click` is the
+original protocol and remains the default so the committed aggregate stays
+reproducible. The two anchors are separate experiments with separate outputs.
 """
 from __future__ import annotations
 
@@ -43,6 +53,9 @@ APPROACH_9 = [
     'direction_changes', 'frac_decreasing',
 ]
 APPROACH_7 = [f for f in APPROACH_9 if f not in ('final_dist', 'retreat_dist')]
+MODELS = [('M1', ['position']), ('M3', ['position'] + APPROACH_7),
+          ('M4-7', APPROACH_7), ('M4-9', APPROACH_9)]
+ANCHORS = ('click', 'mousedown')
 
 
 def sha256(path):
@@ -76,7 +89,9 @@ def strict_click_position(cards, x, y):
         None, 'ambiguous_click' if hits else 'click_outside_main_boxes')
 
 
-def prepare_trial(tid, cards, events, clicks, geometry, buffers):
+def prepare_trial(tid, cards, events, clicks, geometry, buffers, anchor='click'):
+    if anchor not in ANCHORS:
+        raise ValueError(f'anchor must be one of {ANCHORS}')
     cards = main_cards(cards)
     if len(cards) < 2:
         return None, 'fewer_than_two_aois'
@@ -99,12 +114,21 @@ def prepare_trial(tid, cards, events, clicks, geometry, buffers):
                if event == 'mousemove' and all(math.isfinite(v) for v in (t, x, y))]
     if any(b[0] < a[0] for a, b in zip(samples, samples[1:])):
         return None, 'nonmonotonic_mouse_time'
-    cutoff = click[0] - max(buffers)
+    anchor_t = click[0]
+    if anchor == 'mousedown':
+        # The press that produced the final click: last mousedown at or before
+        # the logged click. Its location is not used; only its time.
+        presses = [t for t, event, x, y in events
+                   if event == 'mousedown' and math.isfinite(t) and t <= click[0]]
+        if not presses:
+            return None, 'no_mousedown_for_final_click'
+        anchor_t = max(presses)
+    cutoff = anchor_t - max(buffers)
     if len({t for t, _ in samples if t < cutoff}) < 2:
         return None, 'insufficient_prebuffer_mousemove'
     return {
-        'trial_id': tid, 'click_t': click[0], 'click_position': position,
-        'buffers_ms': buffers, 'samples': samples,
+        'trial_id': tid, 'click_t': click[0], 'anchor_t': anchor_t,
+        'click_position': position, 'buffers_ms': buffers, 'samples': samples,
         # Convert boxes back to document CSS px: the browser's proximity
         # threshold and velocity clamp are expressed in that coordinate space.
         'aois': [{'position': c['position'], 'etype': c['type'],
@@ -124,10 +148,33 @@ def track_batch(trials, bridge, tracker):
     return rows
 
 
+def within_trial_ranking(trial_ids, y, proba):
+    """Per-trial MRR@10 and top-1 hit rate (NDCG@1 with one relevant item).
+
+    Each included trial has exactly one clicked AOI. AOIs are ranked by held-out
+    probability, ties broken by lower position so a tie never flatters the model.
+    """
+    by_trial = {}
+    for i, tid in enumerate(trial_ids):
+        by_trial.setdefault(tid, []).append(i)
+    rr, top1 = [], []
+    for idx in by_trial.values():
+        order = sorted(idx, key=lambda i: (-proba[i], i))
+        clicked = [k for k, i in enumerate(order) if y[i] == 1]
+        if len(clicked) != 1:
+            raise ValueError('Expected exactly one clicked AOI per trial')
+        rank = clicked[0] + 1
+        rr.append(1.0 / rank if rank <= 10 else 0.0)
+        top1.append(1.0 if rank == 1 else 0.0)
+    return {'mrr_at_10': float(np.mean(rr)), 'ndcg_at_1': float(np.mean(top1)),
+            'n_ranked_trials': len(rr)}
+
+
 def evaluate(records, features):
     X = np.asarray([[r[f] for f in features] for r in records], dtype=float)
     y = np.asarray([r['was_clicked'] for r in records], dtype=int)
-    groups = np.asarray([r['trial_id'].split('-')[0] for r in records])
+    trial_ids = [r['trial_id'] for r in records]
+    groups = np.asarray([tid.split('-')[0] for tid in trial_ids])
     if not np.isfinite(X).all():
         raise ValueError('Nonfinite features')
     if len(set(groups)) < 3:
@@ -147,8 +194,23 @@ def evaluate(records, features):
         'features': features, 'pooled_auc': float(roc_auc_score(y, proba)),
         'fold_auc_mean': float(aucs.mean()),
         'fold_auc_sd': float(aucs.std(ddof=1)), 'n_folds': len(folds),
+        'fold_auc_median': float(np.median(aucs)),
+        'fold_auc_iqr': np.quantile(aucs, [.25, .75]).tolist(),
         'n_records': len(y), 'n_clicks': int(y.sum()),
+        **within_trial_ranking(trial_ids, y, proba),
     }, folds
+
+
+def feature_ablation(records, full):
+    """Leave-one-feature-out and single-feature LOSO on the M4-7 vector."""
+    lofo, alone = {}, {}
+    for feat in APPROACH_7:
+        dropped, _ = evaluate(records, [f for f in APPROACH_7 if f != feat])
+        lofo[feat] = {k: dropped[k] for k in ('pooled_auc', 'fold_auc_mean', 'mrr_at_10', 'ndcg_at_1')}
+        lofo[feat]['delta_pooled_auc_vs_M4-7'] = dropped['pooled_auc'] - full['pooled_auc']
+        single, _ = evaluate(records, [feat])
+        alone[feat] = {k: single[k] for k in ('pooled_auc', 'fold_auc_mean', 'mrr_at_10', 'ndcg_at_1')}
+    return {'leave_one_out': lofo, 'alone': alone}
 
 
 def paired_comparison(a, b):
@@ -201,7 +263,8 @@ def run(args):
     counts, geometry_counts = Counter(), Counter()
     removed_samples = {f'buf{b}': 0 for b in args.buffers}
     changed_trials = {f'buf{b}': 0 for b in args.buffers}
-    last_move_gaps = []
+    last_move_gaps, last_move_to_anchor, anchor_to_click = [], [], []
+    post_anchor_samples = 0
     geometry_hash = hashlib.sha256()
     input_hash = hashlib.sha256()
     batch = []
@@ -224,15 +287,21 @@ def run(args):
         if geometry is None:
             raise ValueError(f'{tid}: missing coordinate geometry')
         events, _, clicks = dl.load_mouse_events(tid, space='document')
-        trial, reason = prepare_trial(tid, cards, events, clicks, geometry, args.buffers)
+        trial, reason = prepare_trial(tid, cards, events, clicks, geometry, args.buffers,
+                                      anchor=args.anchor)
         counts[reason] += 1
         if trial is not None:
             geometry_counts[geometry['derived']] += 1
             geometry_hash.update(json.dumps([tid, geometry], sort_keys=True).encode())
+            anchor_t = trial['anchor_t']
             pre_click = [t for t, _ in trial['samples'] if t < trial['click_t']]
+            pre_anchor = [t for t in pre_click if t < anchor_t]
             last_move_gaps.append(trial['click_t'] - max(pre_click))
+            last_move_to_anchor.append(anchor_t - max(pre_anchor))
+            anchor_to_click.append(trial['click_t'] - anchor_t)
+            post_anchor_samples += len(pre_click) - len(pre_anchor)
             for b in args.buffers:
-                removed = sum(trial['click_t'] - b <= t < trial['click_t'] for t in pre_click)
+                removed = sum(anchor_t - b <= t < anchor_t for t in pre_anchor)
                 removed_samples[f'buf{b}'] += removed
                 changed_trials[f'buf{b}'] += int(removed > 0)
             batch.append(trial)
@@ -242,7 +311,7 @@ def run(args):
             print(f'{i + 1}/{len(tids)} trials inspected; {counts["included"]} included', flush=True)
     if batch:
         flush()
-    metrics, fold_results = {}, {}
+    metrics, fold_results, ablations = {}, {}, {}
     keys = None
     for condition, records in conditions.items():
         current_keys = [(r['trial_id'], r['position'], r['was_clicked']) for r in records]
@@ -252,14 +321,23 @@ def run(args):
         if len({(r['trial_id'], r['position']) for r in records}) != len(records):
             raise ValueError('Duplicate trial/AOI row')
         metrics[condition], fold_results[condition] = {}, {}
-        for name, features in [('M1', ['position']), ('M4-7', APPROACH_7), ('M4-9', APPROACH_9)]:
+        for name, features in MODELS:
             result, folds = evaluate(records, features)
             metrics[condition][name], fold_results[condition][name] = result, folds
             print(f'{condition} {name}: pooled AUC={result["pooled_auc"]:.6f}; '
-                  f'fold mean={result["fold_auc_mean"]:.6f}', flush=True)
-    paired = {f'{condition}_M4-7_vs_M1': paired_comparison(models['M4-7'], models['M1'])
-              for condition, models in fold_results.items()}
+                  f'fold mean={result["fold_auc_mean"]:.6f}; MRR@10={result["mrr_at_10"]:.4f}',
+                  flush=True)
+        ablations[condition] = feature_ablation(records, metrics[condition]['M4-7'])
+        print(f'{condition} feature ablation done', flush=True)
+    paired = {}
+    for condition, models in fold_results.items():
+        paired[f'{condition}_M4-7_vs_M1'] = paired_comparison(models['M4-7'], models['M1'])
+        paired[f'{condition}_M3_vs_M4-7'] = paired_comparison(models['M3'], models['M4-7'])
     hashes_after = {k: sha256(p) for k, p in source_files.items()}
+    quantiles = ['min', 'q25', 'median', 'q75', 'max']
+
+    def q(values):
+        return dict(zip(quantiles, np.quantile(values, [0, .25, .5, .75, 1]).tolist()))
     if hashes_after != hashes_before:
         raise RuntimeError('Source changed during run; refusing to publish aggregate')
     payload = {
@@ -268,10 +346,12 @@ def run(args):
         'protocol': {
             'regime': 'LAB dataset; cursor-only predictors and row selection',
             'rank_type': 'typed', 'feature_source': 'approach-retreat ResultFeatureTracker',
-            'gaze_used': False, 'buffers_ms': args.buffers,
-            'sample_events': 'native mousemove only; t < final click minus buffer',
+            'gaze_used': False, 'buffers_ms': args.buffers, 'anchor_event': args.anchor,
+            'sample_events': f'native mousemove only; t < {args.anchor} anchor minus buffer',
             'coordinate_space': 'document CSS px; typed AOI centers divided by canonical ratio_y',
+            'distance_axis': 'vertical |pageY - AOI center y|; the browser tracker is one-dimensional',
             'proximity_px': 100, 'candidate_population': 'all main-axis typed AOIs in included trials',
+            'ranking_metrics': 'per-trial MRR@10 and top-1 hit rate (NDCG@1, one clicked AOI per trial) on held-out probabilities',
             'click_label': 'final click; strict unique X+Y typed-box containment; ambiguous/off-box trials excluded',
             'cross_buffer_population': 'identical; at least two distinct timestamps before largest buffer cutoff',
             'visibility_gate': 'none; offline all-AOI replay, not browser IntersectionObserver or 20 Hz lifecycle parity',
@@ -280,12 +360,15 @@ def run(args):
         },
         'substrate': substrate, 'counts': {'discovered_trials': len(tids), **dict(counts)},
         'geometry_sources_included': dict(geometry_counts), 'conditions': metrics, 'paired': paired,
+        'feature_ablation': ablations,
         'sampling_diagnostics': {
+            'anchor_event': args.anchor,
             'samples_removed_relative_to_buf0': removed_samples,
             'trials_changed_relative_to_buf0': changed_trials,
-            'last_mousemove_to_click_ms_quantiles': dict(zip(
-                ['min', 'q25', 'median', 'q75', 'max'],
-                np.quantile(last_move_gaps, [0, .25, .5, .75, 1]).tolist())),
+            'post_anchor_samples_excluded_at_every_buffer': post_anchor_samples,
+            'last_mousemove_to_click_ms_quantiles': q(last_move_gaps),
+            'last_mousemove_to_anchor_ms_quantiles': q(last_move_to_anchor),
+            'anchor_to_click_ms_quantiles': q(anchor_to_click),
             'interpretation': 'An unchanged stream does not test removal of terminal approach; time buffers alone may leave the entire approach intact.',
         },
         'provenance': {
@@ -315,6 +398,8 @@ def parse_args():
                         default=root.parent / 'approach-retreat/src/approach-retreat.js')
     parser.add_argument('--output-dir', type=Path, default=root / 'scripts/output/m4_cursor_aoi')
     parser.add_argument('--buffers', type=int, nargs='+', default=[0, 500])
+    parser.add_argument('--anchor', choices=ANCHORS, default='click',
+                        help='event whose timestamp the buffer cutoff is measured from')
     parser.add_argument('--limit', type=int, default=0)
     args = parser.parse_args()
     if not args.buffers or min(args.buffers) < 0 or len(set(args.buffers)) != len(args.buffers):

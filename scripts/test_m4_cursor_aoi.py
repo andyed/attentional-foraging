@@ -8,7 +8,8 @@ import os
 from pathlib import Path
 import unittest
 
-from m4_cursor_aoi_rerun import prepare_trial, strict_click_position, track_batch
+from m4_cursor_aoi_rerun import (prepare_trial, strict_click_position, track_batch,
+                                 within_trial_ranking)
 
 ROOT = Path(os.environ.get('M4_TEST_REPO_ROOT', Path(__file__).resolve().parent.parent))
 TRACKER = ROOT.parent / 'approach-retreat/src/approach-retreat.js'
@@ -92,6 +93,44 @@ class CursorStreamTests(unittest.TestCase):
                                            (700, 'mousemove', 200, 500)])
         self.assertIsNone(trial)
         self.assertEqual(reason, 'insufficient_prebuffer_mousemove')
+
+    def test_mousedown_anchor_cuts_press_and_post_press_samples(self):
+        # Press at 450; two post-press moves and the click at 1000. The logged
+        # click is late relative to the press, so the anchor must be the press.
+        events = self.events + [(450, 'mousedown', 200, 560), (500, 'mousemove', 200, 9000),
+                                (560, 'mouseup', 200, 9000), (900, 'mousemove', 200, 8000)]
+        trial, reason = prepare_trial('p001-b1-t1', self.cards, events, self.clicks,
+                                      self.geometry, [0, 200], anchor='mousedown')
+        self.assertEqual(reason, 'included')
+        self.assertEqual(trial['anchor_t'], 450)
+        self.assertEqual(trial['click_t'], 1000)
+        result = track_batch([trial], BRIDGE, TRACKER)[0]
+        self.assertEqual(result['buf0'][0]['sample_count'], 5)
+        self.assertEqual(result['buf200'][0]['sample_count'], 3)
+        by_click, _ = prepare_trial('p001-b1-t1', self.cards, events, self.clicks,
+                                    self.geometry, [0, 200], anchor='click')
+        self.assertEqual(by_click['anchor_t'], 1000)
+        self.assertEqual(track_batch([by_click], BRIDGE, TRACKER)[0]['buf0'][0]['sample_count'], 7)
+
+    def test_mousedown_anchor_requires_a_press_before_the_click(self):
+        trial, reason = prepare_trial('p001-b1-t1', self.cards, self.events, self.clicks,
+                                      self.geometry, [0, 500], anchor='mousedown')
+        self.assertIsNone(trial)
+        self.assertEqual(reason, 'no_mousedown_for_final_click')
+        with self.assertRaisesRegex(ValueError, 'anchor'):
+            prepare_trial('p001-b1-t1', self.cards, self.events, self.clicks,
+                          self.geometry, [0, 500], anchor='mouseup')
+
+    def test_within_trial_ranking_scores_one_click_per_trial(self):
+        trial_ids = ['a', 'a', 'a', 'b', 'b', 'c', 'c']
+        y = [0, 1, 0, 1, 0, 1, 0]
+        proba = [.1, .9, .5, .4, .6, .5, .5]  # a: rank 1; b: rank 2; c: tie -> rank 1
+        out = within_trial_ranking(trial_ids, y, proba)
+        self.assertEqual(out['n_ranked_trials'], 3)
+        self.assertAlmostEqual(out['mrr_at_10'], (1 + .5 + 1) / 3)
+        self.assertAlmostEqual(out['ndcg_at_1'], 2 / 3)
+        with self.assertRaisesRegex(ValueError, 'exactly one'):
+            within_trial_ranking(['a', 'a'], [1, 1], [.5, .5])
 
 
 if __name__ == '__main__':
