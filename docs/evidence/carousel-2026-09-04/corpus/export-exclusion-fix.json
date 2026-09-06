@@ -1,0 +1,27 @@
+{
+  "target_root": "/Users/andyed/Documents/dev/attentional-foraging",
+  "files": [
+    {
+      "relative_path": "scripts/export_aois_by_trial_id.py",
+      "before_sha256": "37ed4c3907797d55d5006fc7fb4486f786f6d56a6b0d5b5daee0ae5c416813db",
+      "after_sha256": "196064fc3131dadcfa8510ddf56c245e70f4ac584a019ee1dc12d1996b47c444"
+    },
+    {
+      "relative_path": "scripts/test_export_aois_by_trial_id.py",
+      "before_sha256": null,
+      "after_sha256": "907354d30fb4880e3ebb454eed06c54c19efa1b9a9e37ba7a2851e10da72e98f"
+    }
+  ],
+  "dependencies": {
+    "notebooks-v2/data_loader.py": "20b669620a9ae4f74aab6e43abdb66334798a02b0f537b48d382a782990ecff8",
+    "data/aoi-typed/alignment-exclusions.json": "da0f4c7654de12971e1530beb600d829e70b800ac9fc45c9436b1cf38de9f05c"
+  },
+  "validation": {
+    "original_regression": "1 failed, 2 passed; excluded trial leaked 2 right-rail rows",
+    "fixed_regression": "3 passed",
+    "canonical_exclusions_read": 12,
+    "canonical_exclusions_skip_all_source_loading": true,
+    "target_unchanged": true,
+    "full_exports_generated": false
+  }
+}

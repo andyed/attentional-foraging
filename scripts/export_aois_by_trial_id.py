@@ -50,6 +50,7 @@ from data_loader import (  # noqa: E402
     absolute_rank_band_tops,
     absolute_to_organic_rank,
     organic_aoi_bands,  # bbox organics
+    typed_alignment_exclusions,
 )
 from compute_cursor_approach_features import build_hybrid_aois  # noqa: E402
 from probe_cellsplit_features import load_aois as load_cell_aois  # noqa: E402
@@ -286,6 +287,11 @@ def rows_typed_cellsplit(trial_id, doc_h, scr_h, uid, batch, trial):
     n_cells (cells in this parent; 0 = not subdivided), parent_rank,
     parent_etype, main_axis (bool).
     """
+    # The typed loader filters the main axis, but legacy right-rail rows are
+    # appended independently below. Apply the canonical trial-level exclusion
+    # before reading that snapshot; an empty main axis alone is not exclusion.
+    if trial_id in typed_alignment_exclusions():
+        return []
     base = rows_typed(trial_id, doc_h, scr_h, uid, batch, trial, gapfill=True)
     for r in base:
         _cellsplit_extra_keys(r, "parent", None, 0, r["rank"], r["etype"], True)
