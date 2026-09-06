@@ -16,9 +16,27 @@ source/substrate hashes, and separates pooled AUC from mean participant AUC.
 The producer saves aggregates only and leaves existing LAB caches unchanged.
 
 ```sh
-.venv/bin/python -m unittest discover -s scripts -p test_m4_cursor_aoi.py
-.venv/bin/python scripts/m4_cursor_aoi_rerun.py
+.venv/bin/python -m unittest discover -s scripts -p 'test_m4_cursor*.py'
+.venv/bin/python scripts/m4_cursor_aoi_rerun.py                                   # click-anchored reference
+.venv/bin/python scripts/m4_cursor_aoi_rerun.py --anchor mousedown --buffers 0 250 500 1000 \
+    --output-dir scripts/output/m4_cursor_aoi_mousedown \
+    --feature-cache AdSERP/data/cursor-only-typed-features-mousedown.json           # press-anchored headline + grid
+.venv/bin/python scripts/m4_cursor_aoi_rerun.py --anchor mousedown --sampling gaze-gated --buffers 0 500 \
+    --output-dir scripts/output/m4_cursor_aoi_mousedown_gazegated \
+    --feature-cache AdSERP/data/cursor-only-typed-features-mousedown-gazegated.json # §4.3 matched-row ceiling
+.venv/bin/python scripts/m4_cursor_only_downstream.py                              # §4.2 / §4.3 / terciles / per-etype
+.venv/bin/python scripts/ltr_cursor_only_four_grades.py                            # §4.6 on the same rows
 ```
+
+**Anchor the buffer at the press.** evtrack's final `click` row is a navigation
+stamp a median ~1.4 s after the `mousedown` of the same press (`mouseup` and
+`click` share coordinates; `blur` follows within 1 ms). A click-anchored buffer
+below ~0.7 s removes no cursor samples. `--anchor mousedown` is the headline
+protocol; `--anchor click` is kept as the reference run. `--window pre5|post5`
+(fifth-fixation boundary) and `--downsample-hz` (greedy thinning) are the
+time-window and sampling-rate ablations on the same protocol; `--sampling
+gaze-gated` samples the cursor at fixation onsets for the §4.3 ceiling. The
+sidecar records which of those read fixations (`gaze_used_for`).
 
 **A buffer must remove samples to test anything.** Read
 `sampling_diagnostics` before interpreting equal buffered/unbuffered scores.

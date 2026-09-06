@@ -1,0 +1,311 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-09-06T21:27:21.583799+00:00",
+  "inputs": {
+    "feature_cache": "AdSERP/data/cursor-only-typed-features-mousedown.json",
+    "feature_cache_sha256": "c4f4dba3c363440710ffb1fa61f50b70dad35a8adb9016b5b3e1940a82e2ea30",
+    "aggregate_sidecar": "scripts/output/m4_cursor_aoi_mousedown/summary.json",
+    "regression_label_cache": "scripts/output/approach_threshold_sensitivity/regression_labels_cache_typed.json",
+    "regression_label_cache_sha256": "a878bba4a69b9736393f510fc2936e3e021621bc99a1bb772f64aed61f0ed4a8",
+    "buffer_ms": 500,
+    "anchor_event": "mousedown",
+    "sampling": "native"
+  },
+  "population": {
+    "records": 34328,
+    "trials": 2608,
+    "participants": 47,
+    "four_class": {
+      "clicked": 2608,
+      "deferred": 6800,
+      "eval_rejected": 3132,
+      "not_approached": 21788
+    },
+    "approached_nonclick_pool": 9932
+  },
+  "section_4_3": {
+    "protocol": "LOSO balanced LR on approached (min_dist < 100 px) non-click rows; target = NB22 gaze-regression label (deferred=1, eval-rejected=0)",
+    "deployable_M4_7": {
+      "pooled_auc": 0.6910655191195253,
+      "fold_auc_mean": 0.6936346245189787,
+      "fold_auc_sd": 0.06980115189681423,
+      "fold_auc_median": 0.7049873737373739,
+      "n_folds": 47,
+      "n_records": 9932,
+      "n_positive": 6800,
+      "youden_j": {
+        "threshold": 0.4767158548170605,
+        "tpr": 0.7276470588235294,
+        "fpr": 0.4425287356321839,
+        "precision": 0.7811809283233344,
+        "recall": 0.7276470588235294,
+        "f1": 0.7534642911527333
+      }
+    },
+    "deployable_M4_9_diagnostic": {
+      "pooled_auc": 0.6926638212756366,
+      "fold_auc_mean": 0.6955314690781026,
+      "fold_auc_sd": 0.06934936329420012,
+      "fold_auc_median": 0.7049873737373737,
+      "n_folds": 47,
+      "n_records": 9932,
+      "n_positive": 6800
+    },
+    "leave_one_feature_out": {
+      "min_dist": {
+        "pooled_auc": 0.6897285609646158,
+        "delta_pooled_auc_vs_full": -0.0013369581549095289
+      },
+      "mean_dist": {
+        "pooled_auc": 0.635820749755841,
+        "delta_pooled_auc_vs_full": -0.055244769363684276
+      },
+      "dwell_in_proximity_ms": {
+        "pooled_auc": 0.6816015889114266,
+        "delta_pooled_auc_vs_full": -0.009463930208098659
+      },
+      "mean_approach_velocity": {
+        "pooled_auc": 0.6917210389903087,
+        "delta_pooled_auc_vs_full": 0.0006555198707833831
+      },
+      "max_approach_velocity": {
+        "pooled_auc": 0.69023364134926,
+        "delta_pooled_auc_vs_full": -0.0008318777702652769
+      },
+      "direction_changes": {
+        "pooled_auc": 0.6931082375478927,
+        "delta_pooled_auc_vs_full": 0.0020427184283674515
+      },
+      "frac_decreasing": {
+        "pooled_auc": 0.6910962268048981,
+        "delta_pooled_auc_vs_full": 3.070768537283275e-05
+      }
+    },
+    "minimal_four": {
+      "features": [
+        "mean_dist",
+        "dwell_in_proximity_ms",
+        "min_dist",
+        "direction_changes"
+      ],
+      "pooled_auc": 0.690608143640598,
+      "fold_auc_mean": 0.6945354603850318,
+      "fold_auc_sd": 0.06973473499796111,
+      "fold_auc_median": 0.7053030303030303,
+      "n_folds": 47,
+      "n_records": 9932,
+      "n_positive": 6800,
+      "paired_vs_M4_7": {
+        "n_participants": 47,
+        "mean_delta": 0.000900835866053193,
+        "bootstrap_ci95": [
+          -0.0027787023252887435,
+          0.0046462457455524265
+        ],
+        "wilcoxon_two_sided_p": 0.5817683463049406
+      }
+    },
+    "matched_row_ceiling": {
+      "ceiling_sampling": "cursor y interpolated at fixation onsets (gaze-gated), same rows, same labels, same anchor and buffer",
+      "ceiling_cache_sha256": "f80ca380c229b17c4c200d5989430d6f7117ce69e34da7323e9d59ecd2a46a41",
+      "n_shared_pool_rows": 9911,
+      "deployable_native_on_shared_rows": {
+        "pooled_auc": 0.6921580027608614,
+        "fold_auc_mean": 0.6948111819356186,
+        "fold_auc_sd": 0.06879417891706212,
+        "fold_auc_median": 0.7047979797979799,
+        "n_folds": 47,
+        "n_records": 9911,
+        "n_positive": 6797
+      },
+      "gaze_gated_ceiling": {
+        "pooled_auc": 0.7151128010024446,
+        "fold_auc_mean": 0.7022227508362874,
+        "fold_auc_sd": 0.07314291177829402,
+        "fold_auc_median": 0.6971806474068919,
+        "n_folds": 47,
+        "n_records": 9911,
+        "n_positive": 6797
+      },
+      "gap_ceiling_minus_deployable_pooled": 0.022954798241583196,
+      "capture_fraction_pooled": 0.9679004512163603,
+      "paired_ceiling_minus_deployable": {
+        "n_participants": 47,
+        "mean_delta": 0.007411568900668654,
+        "bootstrap_ci95": [
+          -0.00491690301689485,
+          0.019834106829212984
+        ],
+        "wilcoxon_two_sided_p": 0.23625031629687498
+      }
+    }
+  },
+  "section_4_2": {
+    "protocol": "LOSO M4-7 click classifier over all rows; Youden-J threshold on its OOF probabilities partitions the approached non-click pool",
+    "click_classifier_youden_j": {
+      "threshold": 0.5603313613965101,
+      "tpr": 0.8987730061349694,
+      "fpr": 0.16298865069356872,
+      "precision": 0.31195102475379294,
+      "recall": 0.8987730061349694,
+      "f1": 0.46314957518277017
+    },
+    "pool": 9932,
+    "click_thresholded_split": {
+      "deferred": 4840,
+      "eval_rejected": 5092,
+      "deferred_pct": 48.73137333870318
+    },
+    "gaze_regression_split": {
+      "deferred": 6800,
+      "eval_rejected": 3132,
+      "deferred_pct": 68.46556584776481
+    },
+    "disagreement_pct": 42.488924687877564,
+    "jaccard_eval_rejected": 0.32176149148183864,
+    "deployable_disagreement_pct": 32.60169150221506,
+    "deployable_disagreement_pct_at_0_5": 34.625453080950464
+  },
+  "chattiness_terciles": {
+    "measure": "events_per_sec (mousemove-family samples / trial duration; NB11.5 definition), per-participant mean over trials",
+    "n_participants": 47,
+    "tercile_mean_auc": [
+      0.9311336297373565,
+      0.9323033111336306,
+      0.9458973203708096
+    ],
+    "tercile_mean_events_per_sec": [
+      11.45862356850295,
+      17.485533710742466,
+      33.75517549867939
+    ],
+    "spearman_rho": 0.21149398704902866,
+    "spearman_p": 0.1535547538587511,
+    "events_per_sec_range": [
+      6.284271150413064,
+      53.60996489877525
+    ]
+  },
+  "per_etype_M4_7": {
+    "dd_top": {
+      "n_records": 1547,
+      "n_clicks": 265,
+      "approach_rate": 0.8674854557207499,
+      "auc_M4_7_within_etype": 0.8753922232360992
+    },
+    "image_pack": {
+      "n_records": 1471,
+      "n_clicks": 31,
+      "approach_rate": 0.309993201903467,
+      "auc_M4_7_within_etype": 0.9521057347670252
+    },
+    "native_ad": {
+      "n_records": 8585,
+      "n_clicks": 147,
+      "approach_rate": 0.2535818287711124,
+      "auc_M4_7_within_etype": 0.940495136191476
+    },
+    "organic": {
+      "n_records": 21039,
+      "n_clicks": 2131,
+      "approach_rate": 0.37706164741670234,
+      "auc_M4_7_within_etype": 0.9320621315670424
+    },
+    "paa": {
+      "n_records": 732,
+      "n_clicks": 1,
+      "approach_rate": 0.33469945355191255,
+      "auc_M4_7_within_etype": 0.9931600547195623
+    },
+    "top_places": {
+      "n_records": 324,
+      "n_clicks": 22,
+      "approach_rate": 0.5895061728395061,
+      "auc_M4_7_within_etype": 0.8654425045153522
+    },
+    "unknown_widget": {
+      "n_records": 602,
+      "n_clicks": 11,
+      "approach_rate": 0.07142857142857142,
+      "auc_M4_7_within_etype": 0.9809260113828642
+    }
+  },
+  "four_class_by_etype": {
+    "dd_top": {
+      "n_records": 1547,
+      "clicked": 265,
+      "approached_nonclick": 1080,
+      "deferred": 964,
+      "eval_rejected": 116,
+      "deferred_pct_of_records": 62.31415643180349,
+      "deferred_pct_of_approached_nonclick": 89.25925925925927
+    },
+    "image_pack": {
+      "n_records": 1471,
+      "clicked": 31,
+      "approached_nonclick": 427,
+      "deferred": 321,
+      "eval_rejected": 106,
+      "deferred_pct_of_records": 21.821889870836166,
+      "deferred_pct_of_approached_nonclick": 75.17564402810304
+    },
+    "native_ad": {
+      "n_records": 8585,
+      "clicked": 147,
+      "approached_nonclick": 2035,
+      "deferred": 1450,
+      "eval_rejected": 585,
+      "deferred_pct_of_records": 16.8899242865463,
+      "deferred_pct_of_approached_nonclick": 71.25307125307125
+    },
+    "organic": {
+      "n_records": 21039,
+      "clicked": 2131,
+      "approached_nonclick": 5936,
+      "deferred": 3737,
+      "eval_rejected": 2199,
+      "deferred_pct_of_records": 17.76225105755977,
+      "deferred_pct_of_approached_nonclick": 62.95485175202157
+    },
+    "other_widget": {
+      "n_records": 28,
+      "clicked": 0,
+      "approached_nonclick": 7,
+      "deferred": 4,
+      "eval_rejected": 3,
+      "deferred_pct_of_records": 14.285714285714285,
+      "deferred_pct_of_approached_nonclick": 57.14285714285714
+    },
+    "paa": {
+      "n_records": 732,
+      "clicked": 1,
+      "approached_nonclick": 244,
+      "deferred": 159,
+      "eval_rejected": 85,
+      "deferred_pct_of_records": 21.721311475409834,
+      "deferred_pct_of_approached_nonclick": 65.1639344262295
+    },
+    "top_places": {
+      "n_records": 324,
+      "clicked": 22,
+      "approached_nonclick": 171,
+      "deferred": 150,
+      "eval_rejected": 21,
+      "deferred_pct_of_records": 46.2962962962963,
+      "deferred_pct_of_approached_nonclick": 87.71929824561403
+    },
+    "unknown_widget": {
+      "n_records": 602,
+      "clicked": 11,
+      "approached_nonclick": 32,
+      "deferred": 15,
+      "eval_rejected": 17,
+      "deferred_pct_of_records": 2.4916943521594686,
+      "deferred_pct_of_approached_nonclick": 46.875
+    }
+  },
+  "provenance": {
+    "producer_sha256": "c38efebc02164ad36ea56f2354c93437cca9ca3bbfe3c125da00886c4db88458",
+    "python": "3.13.11"
+  }
+}

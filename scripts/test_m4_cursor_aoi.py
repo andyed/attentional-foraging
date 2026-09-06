@@ -9,7 +9,8 @@ from pathlib import Path
 import unittest
 
 from m4_cursor_aoi_rerun import (prepare_trial, strict_click_position, track_batch,
-                                 within_trial_ranking)
+                                 within_trial_ranking, downsample_samples,
+                                 gaze_gated_samples, fifth_fixation_end)
 
 ROOT = Path(os.environ.get('M4_TEST_REPO_ROOT', Path(__file__).resolve().parent.parent))
 TRACKER = ROOT.parent / 'approach-retreat/src/approach-retreat.js'
@@ -131,6 +132,37 @@ class CursorStreamTests(unittest.TestCase):
         self.assertAlmostEqual(out['ndcg_at_1'], 2 / 3)
         with self.assertRaisesRegex(ValueError, 'exactly one'):
             within_trial_ranking(['a', 'a'], [1, 1], [.5, .5])
+
+    def test_downsampling_is_greedy_and_keeps_first_sample(self):
+        samples = [[0, 1], [100, 2], [200, 3], [300, 4], [400, 5]]
+        self.assertEqual(downsample_samples(samples, 5), [[0, 1], [200, 3], [400, 5]])
+        self.assertEqual(downsample_samples(samples, 0), samples)
+        trial, reason = prepare_trial('p001-b1-t1', self.cards, self.events, self.clicks,
+                                      self.geometry, [0, 500], downsample_hz=5)
+        self.assertEqual(reason, 'included')
+        self.assertEqual([t for t, _ in trial['samples']], [0, 200, 400])
+
+    def test_gaze_gated_sampling_interpolates_at_fixation_onsets_only(self):
+        samples = [[0, 700], [100, 580], [200, 540]]
+        self.assertEqual(gaze_gated_samples(samples, [50, 150, 250, -10]),
+                         [[50.0, 640.0], [150.0, 560.0]])
+        self.assertEqual(gaze_gated_samples([[0, 1]], [0]), [])
+
+    def test_window_uses_end_of_fifth_fixation(self):
+        fix = [dict(t=10 * i, d=5) for i in range(1, 8)]  # ends: 15, 25, 35, 45, 55, ...
+        self.assertEqual(fifth_fixation_end(fix), 55.0)
+        self.assertIsNone(fifth_fixation_end(fix[:5]))
+        post, reason = prepare_trial('p001-b1-t1', self.cards, self.events, self.clicks,
+                                     self.geometry, [0], window='post5', fixations=fix)
+        self.assertEqual(reason, 'included')
+        self.assertEqual([t for t, _ in post['samples']], [100, 200, 300, 400])
+        pre, reason = prepare_trial('p001-b1-t1', self.cards, self.events, self.clicks,
+                                    self.geometry, [0], window='pre5', fixations=fix)
+        self.assertIsNone(pre)
+        self.assertEqual(reason, 'insufficient_prebuffer_mousemove')
+        none, reason = prepare_trial('p001-b1-t1', self.cards, self.events, self.clicks,
+                                     self.geometry, [0], window='pre5', fixations=fix[:3])
+        self.assertEqual(reason, 'no_fifth_fixation_boundary')
 
 
 if __name__ == '__main__':

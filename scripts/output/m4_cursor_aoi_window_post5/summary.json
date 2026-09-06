@@ -1,0 +1,362 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-09-06T21:24:50.417127+00:00",
+  "status": "full_corpus",
+  "protocol": {
+    "regime": "LAB dataset; cursor-only predictors and row selection",
+    "rank_type": "typed",
+    "feature_source": "approach-retreat ResultFeatureTracker",
+    "gaze_used": true,
+    "gaze_used_for": [
+      "window boundary (end of fifth fixation)"
+    ],
+    "buffers_ms": [
+      0,
+      500
+    ],
+    "anchor_event": "mousedown",
+    "sampling": "native",
+    "downsample_hz": 0,
+    "window": "post5",
+    "sample_events": "native mousemove only; t < mousedown anchor minus buffer",
+    "coordinate_space": "document CSS px; typed AOI centers divided by canonical ratio_y",
+    "distance_axis": "vertical |pageY - AOI center y|; the browser tracker is one-dimensional",
+    "proximity_px": 100,
+    "candidate_population": "all main-axis typed AOIs in included trials",
+    "ranking_metrics": "per-trial MRR@10 and top-1 hit rate (NDCG@1, one clicked AOI per trial) on held-out probabilities",
+    "click_label": "final click; strict unique X+Y typed-box containment; ambiguous/off-box trials excluded",
+    "cross_buffer_population": "identical; at least two distinct timestamps before largest buffer cutoff",
+    "visibility_gate": "none; offline all-AOI replay, not browser IntersectionObserver or 20 Hz lifecycle parity",
+    "estimator": "LOSO StandardScaler + balanced LogisticRegression(C=1, max_iter=5000)",
+    "scope": "new typed experiment; not a numeric replacement for historical organic_hybrid or gaze-gated M4"
+  },
+  "substrate": {
+    "substrate": "AllSERP v1.1.0 (post card-collision fix)",
+    "branch": "release/allserp-v1.1.0",
+    "substrate_commit": "ab657a63",
+    "typed_maps_content_hash": "2cb789eb8febd234",
+    "hash_method": "sha256 over sorted(data/aoi-typed/p*.json), updating basename bytes then file bytes per file; first 16 hex chars of the digest",
+    "n_trial_maps": 2776,
+    "exclusion_list": "alignment-exclusions.json",
+    "n_excluded": 12,
+    "corpus_trials": 2764,
+    "generated": "2026-08-30",
+    "note": "Consumers pin substrate identity by (branch, substrate_commit, typed_maps_content_hash) and must re-read the exclusion list \u2014 membership changed from the earlier 14-trial list on 2026-08-30 (+p018-b3-t1, net 12)."
+  },
+  "counts": {
+    "discovered_trials": 2776,
+    "included": 2629,
+    "nonmonotonic_mouse_time": 3,
+    "insufficient_prebuffer_mousemove": 17,
+    "click_outside_main_boxes": 108,
+    "alignment_excluded": 12,
+    "no_click": 1,
+    "no_fifth_fixation_boundary": 6
+  },
+  "geometry_sources_included": {
+    "screenshot": 2629
+  },
+  "conditions": {
+    "buf0": {
+      "M1": {
+        "features": [
+          "position"
+        ],
+        "pooled_auc": 0.7920623951091528,
+        "fold_auc_mean": 0.7988311559788289,
+        "fold_auc_sd": 0.05770351286071593,
+        "n_folds": 47,
+        "fold_auc_median": 0.8027586206896552,
+        "fold_auc_iqr": [
+          0.7508834544885274,
+          0.83627288082016
+        ],
+        "n_records": 34636,
+        "n_clicks": 2629,
+        "mrr_at_10": 0.44669754931261213,
+        "ndcg_at_1": 0.19665271966527198,
+        "n_ranked_trials": 2629
+      },
+      "M3": {
+        "features": [
+          "position",
+          "min_dist",
+          "mean_dist",
+          "dwell_in_proximity_ms",
+          "mean_approach_velocity",
+          "max_approach_velocity",
+          "direction_changes",
+          "frac_decreasing"
+        ],
+        "pooled_auc": 0.9527237902254715,
+        "fold_auc_mean": 0.952773065125206,
+        "fold_auc_sd": 0.021369911821402406,
+        "n_folds": 47,
+        "fold_auc_median": 0.9547232428588361,
+        "fold_auc_iqr": [
+          0.9423468280428039,
+          0.9710338599725605
+        ],
+        "n_records": 34636,
+        "n_clicks": 2629,
+        "mrr_at_10": 0.831658787516528,
+        "ndcg_at_1": 0.7173830353746672,
+        "n_ranked_trials": 2629
+      },
+      "M4-7": {
+        "features": [
+          "min_dist",
+          "mean_dist",
+          "dwell_in_proximity_ms",
+          "mean_approach_velocity",
+          "max_approach_velocity",
+          "direction_changes",
+          "frac_decreasing"
+        ],
+        "pooled_auc": 0.9528034846599445,
+        "fold_auc_mean": 0.9528943277301645,
+        "fold_auc_sd": 0.021204106929701965,
+        "n_folds": 47,
+        "fold_auc_median": 0.9556318681318681,
+        "fold_auc_iqr": [
+          0.9428541657632902,
+          0.970837812907555
+        ],
+        "n_records": 34636,
+        "n_clicks": 2629,
+        "mrr_at_10": 0.8318414268205063,
+        "ndcg_at_1": 0.7177634081399772,
+        "n_ranked_trials": 2629
+      },
+      "M4-9": {
+        "features": [
+          "min_dist",
+          "mean_dist",
+          "final_dist",
+          "retreat_dist",
+          "dwell_in_proximity_ms",
+          "mean_approach_velocity",
+          "max_approach_velocity",
+          "direction_changes",
+          "frac_decreasing"
+        ],
+        "pooled_auc": 0.9974743067745867,
+        "fold_auc_mean": 0.9975244950236194,
+        "fold_auc_sd": 0.0024535920368907345,
+        "n_folds": 47,
+        "fold_auc_median": 0.9981376518218624,
+        "fold_auc_iqr": [
+          0.9968491458621617,
+          0.9987804354447206
+        ],
+        "n_records": 34636,
+        "n_clicks": 2629,
+        "mrr_at_10": 0.9882718397362749,
+        "ndcg_at_1": 0.9771776340813998,
+        "n_ranked_trials": 2629
+      }
+    },
+    "buf500": {
+      "M1": {
+        "features": [
+          "position"
+        ],
+        "pooled_auc": 0.7920623951091528,
+        "fold_auc_mean": 0.7988311559788289,
+        "fold_auc_sd": 0.05770351286071593,
+        "n_folds": 47,
+        "fold_auc_median": 0.8027586206896552,
+        "fold_auc_iqr": [
+          0.7508834544885274,
+          0.83627288082016
+        ],
+        "n_records": 34636,
+        "n_clicks": 2629,
+        "mrr_at_10": 0.44669754931261213,
+        "ndcg_at_1": 0.19665271966527198,
+        "n_ranked_trials": 2629
+      },
+      "M3": {
+        "features": [
+          "position",
+          "min_dist",
+          "mean_dist",
+          "dwell_in_proximity_ms",
+          "mean_approach_velocity",
+          "max_approach_velocity",
+          "direction_changes",
+          "frac_decreasing"
+        ],
+        "pooled_auc": 0.9383786018755905,
+        "fold_auc_mean": 0.9393914845916381,
+        "fold_auc_sd": 0.022841350930168907,
+        "n_folds": 47,
+        "fold_auc_median": 0.9431082777938761,
+        "fold_auc_iqr": [
+          0.9237953061263826,
+          0.9575476086380605
+        ],
+        "n_records": 34636,
+        "n_clicks": 2629,
+        "mrr_at_10": 0.7863592590580036,
+        "ndcg_at_1": 0.6492963103841765,
+        "n_ranked_trials": 2629
+      },
+      "M4-7": {
+        "features": [
+          "min_dist",
+          "mean_dist",
+          "dwell_in_proximity_ms",
+          "mean_approach_velocity",
+          "max_approach_velocity",
+          "direction_changes",
+          "frac_decreasing"
+        ],
+        "pooled_auc": 0.938423119524194,
+        "fold_auc_mean": 0.9393885649698797,
+        "fold_auc_sd": 0.022525495882470988,
+        "n_folds": 47,
+        "fold_auc_median": 0.9432234432234432,
+        "fold_auc_iqr": [
+          0.9242654065732054,
+          0.9570403538109489
+        ],
+        "n_records": 34636,
+        "n_clicks": 2629,
+        "mrr_at_10": 0.7877741853683277,
+        "ndcg_at_1": 0.6523392925066566,
+        "n_ranked_trials": 2629
+      },
+      "M4-9": {
+        "features": [
+          "min_dist",
+          "mean_dist",
+          "final_dist",
+          "retreat_dist",
+          "dwell_in_proximity_ms",
+          "mean_approach_velocity",
+          "max_approach_velocity",
+          "direction_changes",
+          "frac_decreasing"
+        ],
+        "pooled_auc": 0.9901149428811592,
+        "fold_auc_mean": 0.9902475247097012,
+        "fold_auc_sd": 0.00733134520893053,
+        "n_folds": 47,
+        "fold_auc_median": 0.9919603056675865,
+        "fold_auc_iqr": [
+          0.9877261814890577,
+          0.9945665073515284
+        ],
+        "n_records": 34636,
+        "n_clicks": 2629,
+        "mrr_at_10": 0.9505927475592748,
+        "ndcg_at_1": 0.9083301635602891,
+        "n_ranked_trials": 2629
+      }
+    }
+  },
+  "paired": {
+    "buf0_M4-7_vs_M1": {
+      "n_participants": 47,
+      "mean_participant_auc_delta": 0.1540631717513357,
+      "bootstrap_ci95": [
+        0.13932614260796844,
+        0.16870189812154684
+      ],
+      "bootstrap_resamples": 10000,
+      "bootstrap_seed": 20260904,
+      "wilcoxon_two_sided_p": 1.4210854715202004e-14
+    },
+    "buf0_M3_vs_M4-7": {
+      "n_participants": 47,
+      "mean_participant_auc_delta": -0.00012126260495844055,
+      "bootstrap_ci95": [
+        -0.00035887025615449715,
+        0.00011378951289112309
+      ],
+      "bootstrap_resamples": 10000,
+      "bootstrap_seed": 20260904,
+      "wilcoxon_two_sided_p": 0.31022107072914196
+    },
+    "buf500_M4-7_vs_M1": {
+      "n_participants": 47,
+      "mean_participant_auc_delta": 0.140557408991051,
+      "bootstrap_ci95": [
+        0.12667800101540228,
+        0.1541090138920553
+      ],
+      "bootstrap_resamples": 10000,
+      "bootstrap_seed": 20260904,
+      "wilcoxon_two_sided_p": 1.4210854715202004e-14
+    },
+    "buf500_M3_vs_M4-7": {
+      "n_participants": 47,
+      "mean_participant_auc_delta": 2.9196217584350902e-06,
+      "bootstrap_ci95": [
+        -0.00036850267011592265,
+        0.0003946233787079579
+      ],
+      "bootstrap_resamples": 10000,
+      "bootstrap_seed": 20260904,
+      "wilcoxon_two_sided_p": 0.962380165638109
+    }
+  },
+  "feature_ablation": {},
+  "ablation_skipped": true,
+  "sampling_diagnostics": {
+    "anchor_event": "mousedown",
+    "samples_removed_relative_to_buf0": {
+      "buf0": 0,
+      "buf500": 21670
+    },
+    "trials_changed_relative_to_buf0": {
+      "buf0": 0,
+      "buf500": 1731
+    },
+    "post_anchor_samples_excluded_at_every_buffer": 498,
+    "last_mousemove_to_click_ms_quantiles": {
+      "min": 672.0,
+      "q25": 1383.0,
+      "median": 1807.0,
+      "q75": 2624.0,
+      "max": 19619.0
+    },
+    "last_mousemove_to_anchor_ms_quantiles": {
+      "min": 1.0,
+      "q25": 139.0,
+      "median": 290.0,
+      "q75": 759.0,
+      "max": 17982.0
+    },
+    "anchor_to_click_ms_quantiles": {
+      "min": 701.0,
+      "q25": 1168.0,
+      "median": 1421.0,
+      "q75": 1852.0,
+      "max": 12612.0
+    },
+    "interpretation": "An unchanged stream does not test removal of terminal approach; time buffers alone may leave the entire approach intact."
+  },
+  "provenance": {
+    "sha256": {
+      "producer": "7b6b427eb9aa452eb6be3be82e8102058d98635658ff91e1b26e5a400a717a19",
+      "bridge": "c4b20a61b7002071ebfb36cc41ae090093902e931d00d78514ef4028f01ea10d",
+      "tracker": "587934cbeef059f54449029ddf558600369468a07f9527a7b2dcc097849caf46",
+      "data_loader": "20b669620a9ae4f74aab6e43abdb66334798a02b0f537b48d382a782990ecff8",
+      "substrate": "986e958161fc74b55a93e30cee5811276bb7230d76db10d78fa5328f089e27e1",
+      "exclusions": "da0f4c7654de12971e1530beb600d829e70b800ac9fc45c9436b1cf38de9f05c"
+    },
+    "mouse_and_metadata_sha256": "8ae78f116e05281a0f275471cceb119367664a9599415ed4690037c64b7f4bf2",
+    "geometry_values_sha256": "ffdc2f0074566fbb62a9fd02864e7619d4d4aa845b0c1f98891af5cdd51f0a89",
+    "feature_records_sha256": {
+      "buf0": "05e75646945cbe555d56dd44a0a0a822151ab735e9295bc45ff4a61c6ea4afd2",
+      "buf500": "14aaba5e376f410ed616b017e3577ad1e9c97efe9a0fc1c5fce88b58994f27cc"
+    },
+    "record_keys_and_labels_sha256": "f5a4f6f11c8d5119eef04c8b4fd3a258fd7b8844d1e3c9f70764ab0714417c00",
+    "python": "3.13.11",
+    "numpy": "2.4.4",
+    "node": "v25.8.2",
+    "sklearn": "1.8.0"
+  }
+}

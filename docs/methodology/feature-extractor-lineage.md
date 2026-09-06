@@ -78,6 +78,18 @@ scripts directory. They check feature arithmetic on a supplied trace, not the
 data selection or geometry that produced a reported AUC. The new typed stream
 therefore calls the actual accumulator and records its source hash.
 
+## Re-derived on the cursor-only rows (2026-09-06)
+
+`m4_cursor_only_downstream.py` and `ltr_cursor_only_four_grades.py` re-run the
+§4.2 click-thresholded baseline, the §4.3 deployable deferred-class classifier
+(with a matched-row gaze-gated ceiling from `--sampling gaze-gated`), the
+NB11.5 chattiness terciles, the per-etype slice and the §4.6 LambdaMART check
+on the per-record cache the producer writes (hash-checked against its sidecar).
+Gaze enters only as the NB22 regression label and, for the ceiling, as sampling
+times. The time-window (`--window`) and sampling-rate (`--downsample-hz`) runs
+are separate sidecars under `scripts/output/m4_cursor_aoi_*`. What is still
+LAB-stream only: NB22's gaze-return counts and the K-leak cursor-blind subset.
+
 ## What remains to validate
 
 - Inspect how many cursor samples each buffer removes. Equal scores from an

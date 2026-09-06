@@ -56,6 +56,13 @@ APPROACH_7 = [f for f in APPROACH_9 if f not in ('final_dist', 'retreat_dist')]
 MODELS = [('M1', ['position']), ('M3', ['position'] + APPROACH_7),
           ('M4-7', APPROACH_7), ('M4-9', APPROACH_9)]
 ANCHORS = ('click', 'mousedown')
+WINDOWS = ('all', 'pre5', 'post5')
+SAMPLINGS = ('native', 'gaze-gated')
+FEATURE_GROUPS = {
+    'distance': ['min_dist', 'mean_dist', 'dwell_in_proximity_ms'],
+    'velocity': ['mean_approach_velocity', 'max_approach_velocity'],
+    'dynamics': ['direction_changes', 'frac_decreasing'],
+}
 
 
 def sha256(path):
@@ -89,9 +96,52 @@ def strict_click_position(cards, x, y):
         None, 'ambiguous_click' if hits else 'click_outside_main_boxes')
 
 
-def prepare_trial(tid, cards, events, clicks, geometry, buffers, anchor='click'):
+def downsample_samples(samples, hz):
+    """Greedy timestamp thinning of [t, y] samples to simulate an N Hz cursor
+    rate (mirrors compute_cursor_approach_features.downsample_mouse_events).
+    hz <= 0 is a no-op."""
+    if not hz or hz <= 0:
+        return samples
+    min_gap = 1000.0 / float(hz)
+    kept, last = [], None
+    for t, y in samples:
+        if last is None or t - last >= min_gap:
+            kept.append([t, y]); last = t
+    return kept
+
+
+def gaze_gated_samples(samples, fixation_times):
+    """Cursor y interpolated at each fixation onset: the §4.3 diagnostic
+    ceiling's sampling policy (fixation-timed cursor), applied to the same
+    rows and labels as the deployable native stream. Only fixation
+    timestamps are used; fixation coordinates never enter."""
+    if len(samples) < 2:
+        return []
+    ts = np.asarray([t for t, _ in samples], dtype=float)
+    ys = np.asarray([y for _, y in samples], dtype=float)
+    out = []
+    for t in sorted(fixation_times):
+        if t < ts[0] or t > ts[-1]:
+            continue
+        out.append([float(t), float(np.interp(t, ts, ys))])
+    return out
+
+
+def fifth_fixation_end(fixations, k=5):
+    """End time of the k-th fixation: the paper's early-scan / deliberation
+    boundary (§3.3). None when the trial has too few fixations for a boundary."""
+    if len(fixations) <= k:
+        return None
+    f = sorted(fixations, key=lambda f: f['t'])[k - 1]
+    return float(f['t']) + float(f.get('d', 200) or 200)
+
+
+def prepare_trial(tid, cards, events, clicks, geometry, buffers, anchor='click',
+                  downsample_hz=0, window='all', fixations=None):
     if anchor not in ANCHORS:
         raise ValueError(f'anchor must be one of {ANCHORS}')
+    if window not in WINDOWS:
+        raise ValueError(f'window must be one of {WINDOWS}')
     cards = main_cards(cards)
     if len(cards) < 2:
         return None, 'fewer_than_two_aois'
@@ -114,6 +164,12 @@ def prepare_trial(tid, cards, events, clicks, geometry, buffers, anchor='click')
                if event == 'mousemove' and all(math.isfinite(v) for v in (t, x, y))]
     if any(b[0] < a[0] for a, b in zip(samples, samples[1:])):
         return None, 'nonmonotonic_mouse_time'
+    samples = downsample_samples(samples, downsample_hz)
+    if window != 'all':
+        boundary = fifth_fixation_end(fixations or [])
+        if boundary is None:
+            return None, 'no_fifth_fixation_boundary'
+        samples = [s for s in samples if (s[0] >= boundary) == (window == 'post5')]
     anchor_t = click[0]
     if anchor == 'mousedown':
         # The press that produced the final click: last mousedown at or before
@@ -202,15 +258,36 @@ def evaluate(records, features):
 
 
 def feature_ablation(records, full):
-    """Leave-one-feature-out and single-feature LOSO on the M4-7 vector."""
-    lofo, alone = {}, {}
+    """Leave-one-feature-out, single-feature, group, and greedy forward-addition
+    LOSO sweeps on the M4-7 vector."""
+    keep = ('pooled_auc', 'fold_auc_mean', 'mrr_at_10', 'ndcg_at_1')
+    lofo, alone, groups = {}, {}, {}
     for feat in APPROACH_7:
         dropped, _ = evaluate(records, [f for f in APPROACH_7 if f != feat])
-        lofo[feat] = {k: dropped[k] for k in ('pooled_auc', 'fold_auc_mean', 'mrr_at_10', 'ndcg_at_1')}
+        lofo[feat] = {k: dropped[k] for k in keep}
         lofo[feat]['delta_pooled_auc_vs_M4-7'] = dropped['pooled_auc'] - full['pooled_auc']
         single, _ = evaluate(records, [feat])
-        alone[feat] = {k: single[k] for k in ('pooled_auc', 'fold_auc_mean', 'mrr_at_10', 'ndcg_at_1')}
-    return {'leave_one_out': lofo, 'alone': alone}
+        alone[feat] = {k: single[k] for k in keep}
+    for name, feats in FEATURE_GROUPS.items():
+        only, _ = evaluate(records, feats)
+        without, _ = evaluate(records, [f for f in APPROACH_7 if f not in feats])
+        groups[name] = {'features': feats,
+                        'only': {k: only[k] for k in keep},
+                        'without': {k: without[k] for k in keep}}
+    # Greedy forward addition: at each step add the feature that maximises
+    # pooled AUC; three steps is where the CIKM draft claimed saturation.
+    forward, chosen = [], []
+    for _ in range(3):
+        best = None
+        for feat in APPROACH_7:
+            if feat in chosen:
+                continue
+            res, _ = evaluate(records, chosen + [feat])
+            if best is None or res['pooled_auc'] > best[1]['pooled_auc']:
+                best = (feat, res)
+        chosen.append(best[0])
+        forward.append({'features': list(chosen), **{k: best[1][k] for k in keep}})
+    return {'leave_one_out': lofo, 'alone': alone, 'groups': groups, 'forward_addition': forward}
 
 
 def paired_comparison(a, b):
@@ -230,8 +307,14 @@ def paired_comparison(a, b):
 def run(args):
     root = args.repo_root.resolve()
     sys.path.insert(0, str(root / 'notebooks-v2'))
-    # No fixation loader is imported or called; gaze cannot select rows.
+    # Fixations are read only when a gaze-defined policy is requested
+    # (gaze-gated sampling times or the fixation-5 window boundary); they
+    # never select rows or enter a feature. The default protocol reads none.
     import data_loader as dl
+    needs_fixations = args.sampling == 'gaze-gated' or args.window != 'all'
+    gaze_used_for = ([] if not needs_fixations else
+                     (['cursor sampling times (fixation onsets)'] if args.sampling == 'gaze-gated' else [])
+                     + (['window boundary (end of fifth fixation)'] if args.window != 'all' else []))
     tracker = args.tracker_js.resolve()
     bridge = Path(__file__).with_name('m4_cursor_tracker.mjs')
     source_files = {
@@ -287,8 +370,15 @@ def run(args):
         if geometry is None:
             raise ValueError(f'{tid}: missing coordinate geometry')
         events, _, clicks = dl.load_mouse_events(tid, space='document')
+        fixations = dl.load_fixations(tid) if needs_fixations else None
         trial, reason = prepare_trial(tid, cards, events, clicks, geometry, args.buffers,
-                                      anchor=args.anchor)
+                                      anchor=args.anchor, downsample_hz=args.downsample_hz,
+                                      window=args.window, fixations=fixations)
+        if trial is not None and args.sampling == 'gaze-gated':
+            trial['samples'] = gaze_gated_samples(
+                trial['samples'], [f['t'] for f in fixations if math.isfinite(f['t'])])
+            if len({t for t, _ in trial['samples'] if t < trial['anchor_t'] - max(args.buffers)}) < 2:
+                trial, reason = None, 'insufficient_prebuffer_gaze_gated_samples'
         counts[reason] += 1
         if trial is not None:
             geometry_counts[geometry['derived']] += 1
@@ -327,8 +417,18 @@ def run(args):
             print(f'{condition} {name}: pooled AUC={result["pooled_auc"]:.6f}; '
                   f'fold mean={result["fold_auc_mean"]:.6f}; MRR@10={result["mrr_at_10"]:.4f}',
                   flush=True)
-        ablations[condition] = feature_ablation(records, metrics[condition]['M4-7'])
-        print(f'{condition} feature ablation done', flush=True)
+        if not args.no_ablation:
+            ablations[condition] = feature_ablation(records, metrics[condition]['M4-7'])
+            print(f'{condition} feature ablation done', flush=True)
+    if args.feature_cache:
+        # Per-record features for downstream producers (§4.2/§4.3/§4.6 re-runs).
+        # Derived aggregates only, like the existing LAB caches; kept out of git.
+        args.feature_cache.parent.mkdir(parents=True, exist_ok=True)
+        args.feature_cache.write_text(json.dumps({
+            'protocol_note': 'per-(trial, position) records from m4_cursor_aoi_rerun.py; see summary.json in the matching output dir',
+            'anchor_event': args.anchor, 'sampling': args.sampling, 'window': args.window,
+            'downsample_hz': args.downsample_hz, 'conditions': conditions}, allow_nan=False))
+        print(f'Wrote feature cache: {args.feature_cache}', flush=True)
     paired = {}
     for condition, models in fold_results.items():
         paired[f'{condition}_M4-7_vs_M1'] = paired_comparison(models['M4-7'], models['M1'])
@@ -346,8 +446,12 @@ def run(args):
         'protocol': {
             'regime': 'LAB dataset; cursor-only predictors and row selection',
             'rank_type': 'typed', 'feature_source': 'approach-retreat ResultFeatureTracker',
-            'gaze_used': False, 'buffers_ms': args.buffers, 'anchor_event': args.anchor,
-            'sample_events': f'native mousemove only; t < {args.anchor} anchor minus buffer',
+            'gaze_used': bool(gaze_used_for), 'gaze_used_for': gaze_used_for,
+            'buffers_ms': args.buffers, 'anchor_event': args.anchor,
+            'sampling': args.sampling, 'downsample_hz': args.downsample_hz, 'window': args.window,
+            'sample_events': (f'native mousemove only; t < {args.anchor} anchor minus buffer'
+                              if args.sampling == 'native' else
+                              f'cursor y interpolated from native mousemove at fixation onsets; t < {args.anchor} anchor minus buffer'),
             'coordinate_space': 'document CSS px; typed AOI centers divided by canonical ratio_y',
             'distance_axis': 'vertical |pageY - AOI center y|; the browser tracker is one-dimensional',
             'proximity_px': 100, 'candidate_population': 'all main-axis typed AOIs in included trials',
@@ -361,6 +465,7 @@ def run(args):
         'substrate': substrate, 'counts': {'discovered_trials': len(tids), **dict(counts)},
         'geometry_sources_included': dict(geometry_counts), 'conditions': metrics, 'paired': paired,
         'feature_ablation': ablations,
+        'ablation_skipped': bool(args.no_ablation),
         'sampling_diagnostics': {
             'anchor_event': args.anchor,
             'samples_removed_relative_to_buf0': removed_samples,
@@ -400,12 +505,22 @@ def parse_args():
     parser.add_argument('--buffers', type=int, nargs='+', default=[0, 500])
     parser.add_argument('--anchor', choices=ANCHORS, default='click',
                         help='event whose timestamp the buffer cutoff is measured from')
+    parser.add_argument('--sampling', choices=SAMPLINGS, default='native',
+                        help='native mousemove samples, or cursor interpolated at fixation onsets (§4.3 ceiling)')
+    parser.add_argument('--downsample-hz', type=float, default=0,
+                        help='greedy-thin native mousemove to this rate before extraction (0 = native)')
+    parser.add_argument('--window', choices=WINDOWS, default='all',
+                        help='restrict samples to before/after the end of the fifth fixation')
+    parser.add_argument('--feature-cache', type=Path, default=None,
+                        help='also write per-record features here (kept out of git)')
+    parser.add_argument('--no-ablation', action='store_true',
+                        help='skip the feature sweeps (sampling-rate and window runs)')
     parser.add_argument('--limit', type=int, default=0)
     args = parser.parse_args()
     if not args.buffers or min(args.buffers) < 0 or len(set(args.buffers)) != len(args.buffers):
         parser.error('buffers must be distinct nonnegative milliseconds')
-    if args.limit < 0:
-        parser.error('limit must be nonnegative')
+    if args.limit < 0 or args.downsample_hz < 0:
+        parser.error('limit and downsample-hz must be nonnegative')
     return args
 
 

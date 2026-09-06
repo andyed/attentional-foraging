@@ -1,17 +1,21 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-09-06T19:12:21.744957+00:00",
+  "generated_utc": "2026-09-06T21:32:41.595440+00:00",
   "status": "full_corpus",
   "protocol": {
     "regime": "LAB dataset; cursor-only predictors and row selection",
     "rank_type": "typed",
     "feature_source": "approach-retreat ResultFeatureTracker",
     "gaze_used": false,
+    "gaze_used_for": [],
     "buffers_ms": [
       0,
       500
     ],
     "anchor_event": "click",
+    "sampling": "native",
+    "downsample_hz": 0,
+    "window": "all",
     "sample_events": "native mousemove only; t < click anchor minus buffer",
     "coordinate_space": "document CSS px; typed AOI centers divided by canonical ratio_y",
     "distance_axis": "vertical |pageY - AOI center y|; the browser tracker is one-dimensional",
@@ -390,7 +394,96 @@
           "mrr_at_10": 0.5991114821997175,
           "ndcg_at_1": 0.4984917043740573
         }
-      }
+      },
+      "groups": {
+        "distance": {
+          "features": [
+            "min_dist",
+            "mean_dist",
+            "dwell_in_proximity_ms"
+          ],
+          "only": {
+            "pooled_auc": 0.9179038790648342,
+            "fold_auc_mean": 0.9208820818949937,
+            "mrr_at_10": 0.6784704266321913,
+            "ndcg_at_1": 0.4819004524886878
+          },
+          "without": {
+            "pooled_auc": 0.621584228615057,
+            "fold_auc_mean": 0.6327192810965442,
+            "mrr_at_10": 0.6403014197131843,
+            "ndcg_at_1": 0.5554298642533937
+          }
+        },
+        "velocity": {
+          "features": [
+            "mean_approach_velocity",
+            "max_approach_velocity"
+          ],
+          "only": {
+            "pooled_auc": 0.6243913103397722,
+            "fold_auc_mean": 0.6296770542603758,
+            "mrr_at_10": 0.6032446311858077,
+            "ndcg_at_1": 0.5177224736048266
+          },
+          "without": {
+            "pooled_auc": 0.9370961976028085,
+            "fold_auc_mean": 0.9393395430812491,
+            "mrr_at_10": 0.7739016974311091,
+            "ndcg_at_1": 0.6233031674208145
+          }
+        },
+        "dynamics": {
+          "features": [
+            "direction_changes",
+            "frac_decreasing"
+          ],
+          "only": {
+            "pooled_auc": 0.5909900116086031,
+            "fold_auc_mean": 0.6005375961129873,
+            "mrr_at_10": 0.6066987478752185,
+            "ndcg_at_1": 0.5079185520361991
+          },
+          "without": {
+            "pooled_auc": 0.9502695685743446,
+            "fold_auc_mean": 0.9507658292893847,
+            "mrr_at_10": 0.8298082908377025,
+            "ndcg_at_1": 0.7141779788838613
+          }
+        }
+      },
+      "forward_addition": [
+        {
+          "features": [
+            "min_dist"
+          ],
+          "pooled_auc": 0.8907302777631299,
+          "fold_auc_mean": 0.9015709233009888,
+          "mrr_at_10": 0.6580433455433455,
+          "ndcg_at_1": 0.4464555052790347
+        },
+        {
+          "features": [
+            "min_dist",
+            "mean_approach_velocity"
+          ],
+          "pooled_auc": 0.9254853389027702,
+          "fold_auc_mean": 0.9290122490918875,
+          "mrr_at_10": 0.816340168546051,
+          "ndcg_at_1": 0.6987179487179487
+        },
+        {
+          "features": [
+            "min_dist",
+            "mean_approach_velocity",
+            "mean_dist"
+          ],
+          "pooled_auc": 0.9444607908585243,
+          "fold_auc_mean": 0.9442531756255451,
+          "mrr_at_10": 0.8238105712370418,
+          "ndcg_at_1": 0.7088989441930619
+        }
+      ]
     },
     "buf500": {
       "leave_one_out": {
@@ -487,9 +580,99 @@
           "mrr_at_10": 0.5991114821997175,
           "ndcg_at_1": 0.4984917043740573
         }
-      }
+      },
+      "groups": {
+        "distance": {
+          "features": [
+            "min_dist",
+            "mean_dist",
+            "dwell_in_proximity_ms"
+          ],
+          "only": {
+            "pooled_auc": 0.9179038790648342,
+            "fold_auc_mean": 0.9208820818949937,
+            "mrr_at_10": 0.6784704266321913,
+            "ndcg_at_1": 0.4819004524886878
+          },
+          "without": {
+            "pooled_auc": 0.621584228615057,
+            "fold_auc_mean": 0.6327192810965442,
+            "mrr_at_10": 0.6403014197131843,
+            "ndcg_at_1": 0.5554298642533937
+          }
+        },
+        "velocity": {
+          "features": [
+            "mean_approach_velocity",
+            "max_approach_velocity"
+          ],
+          "only": {
+            "pooled_auc": 0.6243913103397722,
+            "fold_auc_mean": 0.6296770542603758,
+            "mrr_at_10": 0.6032446311858077,
+            "ndcg_at_1": 0.5177224736048266
+          },
+          "without": {
+            "pooled_auc": 0.9370961976028085,
+            "fold_auc_mean": 0.9393395430812491,
+            "mrr_at_10": 0.7739016974311091,
+            "ndcg_at_1": 0.6233031674208145
+          }
+        },
+        "dynamics": {
+          "features": [
+            "direction_changes",
+            "frac_decreasing"
+          ],
+          "only": {
+            "pooled_auc": 0.5909900116086031,
+            "fold_auc_mean": 0.6005375961129873,
+            "mrr_at_10": 0.6066987478752185,
+            "ndcg_at_1": 0.5079185520361991
+          },
+          "without": {
+            "pooled_auc": 0.9502695685743446,
+            "fold_auc_mean": 0.9507658292893847,
+            "mrr_at_10": 0.8298082908377025,
+            "ndcg_at_1": 0.7141779788838613
+          }
+        }
+      },
+      "forward_addition": [
+        {
+          "features": [
+            "min_dist"
+          ],
+          "pooled_auc": 0.8907302777631299,
+          "fold_auc_mean": 0.9015709233009888,
+          "mrr_at_10": 0.6580433455433455,
+          "ndcg_at_1": 0.4464555052790347
+        },
+        {
+          "features": [
+            "min_dist",
+            "mean_approach_velocity"
+          ],
+          "pooled_auc": 0.9254853389027702,
+          "fold_auc_mean": 0.9290122490918875,
+          "mrr_at_10": 0.816340168546051,
+          "ndcg_at_1": 0.6987179487179487
+        },
+        {
+          "features": [
+            "min_dist",
+            "mean_approach_velocity",
+            "mean_dist"
+          ],
+          "pooled_auc": 0.9444607908585243,
+          "fold_auc_mean": 0.9442531756255451,
+          "mrr_at_10": 0.8238105712370418,
+          "ndcg_at_1": 0.7088989441930619
+        }
+      ]
     }
   },
+  "ablation_skipped": false,
   "sampling_diagnostics": {
     "anchor_event": "click",
     "samples_removed_relative_to_buf0": {
@@ -526,7 +709,7 @@
   },
   "provenance": {
     "sha256": {
-      "producer": "0c5fc02b841211076a8e6e2b5002faf710748fcf396512d10e02b25fd4853598",
+      "producer": "7b6b427eb9aa452eb6be3be82e8102058d98635658ff91e1b26e5a400a717a19",
       "bridge": "c4b20a61b7002071ebfb36cc41ae090093902e931d00d78514ef4028f01ea10d",
       "tracker": "587934cbeef059f54449029ddf558600369468a07f9527a7b2dcc097849caf46",
       "data_loader": "20b669620a9ae4f74aab6e43abdb66334798a02b0f537b48d382a782990ecff8",
