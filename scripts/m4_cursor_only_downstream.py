@@ -135,6 +135,60 @@ def chattiness_per_participant(dl, tids):
     return {p: float(np.mean(v)) for p, v in per_trial.items()}
 
 
+def gaze_return_counts(dl, tid, cards):
+    """Distinct gaze returns per main-axis position, NB22's rule on the typed map:
+    a fixation lands on a position already visited while a later position has
+    been reached (p in visited and p < max_seen). Counted once per re-entry,
+    not once per fixation, so a long dwell is one return."""
+    bands = sorted(((c['y'], c['y'] + c['height'], c['position']) for c in cards if c.get('position', -1) >= 0))
+    def pos_of(y):
+        for top, bot, p in bands:
+            if top <= y <= bot:
+                return p
+        return None
+    visited, max_seen, returns, last = set(), -1, defaultdict(int), None
+    for f in sorted(dl.load_fixations(tid), key=lambda f: f['t']):
+        p = pos_of(f['y'])
+        if p is None:
+            last = None
+            continue
+        if p != last and p in visited and p < max_seen:
+            returns[p] += 1
+        visited.add(p); max_seen = max(max_seen, p); last = p
+    return dict(returns)
+
+
+def cursor_visit_counts(dl, tid, cards, margin_px=40, min_dwell_ms=100, reapproach_ms=5000):
+    """Finalised cursor visits per main-axis position (cursor_arc_prevalence rule:
+    enter the box +- margin, dwell >= min_dwell, exit; a re-entry within the
+    reapproach window merges into the prior visit). Cursor converted into the
+    maps' screenshot space first."""
+    events, _, _ = dl.load_mouse_events(tid, space='screenshot')
+    pos_events = {'mousemove', 'mouseover', 'mouseout', 'mousedown', 'mouseup'}
+    cursor = sorted((t, x, y) for t, evt, x, y in events if evt in pos_events)
+    boxes = [(c['position'], c['x'] - margin_px, c['x'] + c['width'] + margin_px,
+              c['y'] - margin_px, c['y'] + c['height'] + margin_px)
+             for c in cards if c.get('position', -1) >= 0]
+    counts, last_exit = defaultdict(int), {}
+    current, enter_t = None, None
+    def finalize(pos, et, xt):
+        if xt - et < min_dwell_ms:
+            return
+        prev = last_exit.get(pos)
+        if prev is None or et - prev > reapproach_ms:
+            counts[pos] += 1
+        last_exit[pos] = xt
+    for t, x, y in cursor:
+        hit = next((p for p, x0, x1, y0, y1 in boxes if x0 <= x <= x1 and y0 <= y <= y1), None)
+        if hit != current:
+            if current is not None:
+                finalize(current, enter_t, t)
+            current, enter_t = hit, (t if hit is not None else None)
+    if current is not None and cursor:
+        finalize(current, enter_t, cursor[-1][0])
+    return dict(counts)
+
+
 def run(args):
     sys.path.insert(0, str(ROOT / 'notebooks-v2'))
     import data_loader as dl
@@ -277,6 +331,48 @@ def run(args):
                        'deferred_pct_of_records': 100 * float((pool_e & (gaze == 1)).sum() / max(sel.sum(), 1)),
                        'deferred_pct_of_approached_nonclick': 100 * float((pool_e & (gaze == 1)).sum() / max(pool_e.sum(), 1))}
     out['four_class_by_etype'] = by_etype
+
+    # ---- NB22 gaze-return counts on the deferred rows (typed map, fixation sequence) ----
+    tids = sorted({r['trial_id'] for r in records})
+    ret_by_key, visits_by_key = {}, {}
+    for tid in tids:
+        cards = dl.load_typed_aois(tid)
+        for p, n in gaze_return_counts(dl, tid, cards).items():
+            ret_by_key[(tid, p)] = n
+        for p, n in cursor_visit_counts(dl, tid, cards).items():
+            visits_by_key[(tid, p)] = n
+    deferred_rows = [r for r, g, pl in zip(records, gaze, pool) if pl and g == 1]
+    returns = np.asarray([ret_by_key.get((r['trial_id'], r['position']), 0) for r in deferred_rows])
+    out['gaze_return_counts'] = {
+        'rule': 'distinct re-entries of the fixation sequence into a main-axis typed AOI already visited while a later position had been reached (NB22 p in visited and p < max_seen), counted once per re-entry',
+        'population': 'approached (cursor-only) non-click rows with gaze-regression label = deferred',
+        'n': int(len(returns)),
+        'pct_ge_1': 100 * float((returns >= 1).mean()), 'pct_ge_2': 100 * float((returns >= 2).mean()),
+        'pct_ge_3': 100 * float((returns >= 3).mean()), 'pct_ge_5': 100 * float((returns >= 5).mean()),
+        'median': float(np.median(returns)), 'mean': float(returns.mean())}
+
+    # ---- K-leak: cursor-blind subset (clicked + approached + cursor visit_count == 1) ----
+    visits = np.asarray([visits_by_key.get((r['trial_id'], r['position']), 0) for r in records])
+    clicked_appr = (clicked == 1) & approached
+    blind = clicked_appr & (visits == 1)
+    y_regaze = gaze  # gaze-regressed at that position, independent of cursor revisit
+    kl = {'protocol': 'cursor visits per typed AOI in screenshot space (40 px margin, >= 100 ms dwell, 5 s merge); '
+                      'subset = clicked & approached & visit_count == 1; target = gaze-regression label; LOPO balanced LR',
+          'clicked_and_approached': int(clicked_appr.sum()),
+          'cursor_revisit_coverage': {'n_visit_ge_2': int((clicked_appr & (visits >= 2)).sum()),
+                                      'pct': 100 * float((clicked_appr & (visits >= 2)).sum() / max(clicked_appr.sum(), 1))},
+          'cursor_blind_subset': {'n': int(blind.sum()), 'participants': int(len(np.unique(pid[blind]))),
+                                  'regaze_prevalence_pct': 100 * float(y_regaze[blind].mean()) if blind.any() else None}}
+    if blind.sum() > 50 and len(set(y_regaze[blind])) == 2:
+        pb, _ = loso_proba(records, APPROACH_7, y_regaze, blind)
+        full7, f7 = summarize(y_regaze, pb, pid, blind)
+        pmin, _ = loso_proba(records, minimal4, y_regaze, blind)
+        min4, fm = summarize(y_regaze, pmin, pid, blind)
+        a7 = np.array(list(f7.values()))
+        kl['full_M4_7'] = {**full7, 'wilcoxon_vs_chance_one_sided_p': float(wilcoxon(a7 - 0.5, alternative='greater').pvalue),
+                           'folds_at_or_below_0_5': int((a7 <= 0.5).sum())}
+        kl['minimal_four'] = {**min4, 'paired_vs_M4_7': paired(fm, f7)}
+    out['cursor_blind_regaze'] = kl
 
     out['provenance'] = {'producer_sha256': sha256(__file__), 'python': sys.version.split()[0]}
     args.output.parent.mkdir(parents=True, exist_ok=True)

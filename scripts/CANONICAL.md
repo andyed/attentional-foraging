@@ -35,8 +35,9 @@ below ~0.7 s removes no cursor samples. `--anchor mousedown` is the headline
 protocol; `--anchor click` is kept as the reference run. `--window pre5|post5`
 (fifth-fixation boundary) and `--downsample-hz` (greedy thinning) are the
 time-window and sampling-rate ablations on the same protocol; `--sampling
-gaze-gated` samples the cursor at fixation onsets for the §4.3 ceiling. The
-sidecar records which of those read fixations (`gaze_used_for`).
+gaze-gated` samples the cursor at fixation onsets for the §4.3 ceiling; `--flavor
+organic|typed_gapfill` swaps the AOI map (organic = bbox organics only, organic
+rank). The sidecar records which of those read fixations (`gaze_used_for`).
 
 **A buffer must remove samples to test anything.** Read
 `sampling_diagnostics` before interpreting equal buffered/unbuffered scores.

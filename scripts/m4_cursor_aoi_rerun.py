@@ -58,6 +58,7 @@ MODELS = [('M1', ['position']), ('M3', ['position'] + APPROACH_7),
 ANCHORS = ('click', 'mousedown')
 WINDOWS = ('all', 'pre5', 'post5')
 SAMPLINGS = ('native', 'gaze-gated')
+FLAVORS = ('typed', 'typed_gapfill', 'organic')
 FEATURE_GROUPS = {
     'distance': ['min_dist', 'mean_dist', 'dwell_in_proximity_ms'],
     'velocity': ['mean_approach_velocity', 'max_approach_velocity'],
@@ -191,6 +192,24 @@ def prepare_trial(tid, cards, events, clicks, geometry, buffers, anchor='click',
                   'center_document_y': (c['y'] + c['height'] / 2) / sy}
                  for c in cards],
     }, 'included'
+
+
+def load_flavor_cards(dl, tid, flavor):
+    """Main-axis AOI cards for one flavor in the typed-map schema
+    (x, y, width, height, position, type; screenshot space)."""
+    if flavor == 'typed':
+        return dl.load_typed_aois(tid)
+    if flavor == 'typed_gapfill':
+        return dl.load_typed_gapfill_aois(tid)
+    if tid in dl.typed_alignment_exclusions():
+        return []
+    organics = dl.load_aois(tid)
+    if organics.get('source') != 'bbox':
+        return []  # band-estimated fallbacks are not measured geometry
+    return [{'position': a['position'] - 1, 'type': 'organic',
+             'x': a['x_top'], 'y': a['y_top'],
+             'width': a['x_bottom'] - a['x_top'], 'height': a['y_bottom'] - a['y_top']}
+            for a in organics['organic']]
 
 
 def track_batch(trials, bridge, tracker):
@@ -365,7 +384,10 @@ def run(args):
         # Record consumed inputs (hashes only, no private telemetry in output).
         for p in (dl.MOUSE_DIR / f'{tid}.csv', dl.METADATA_DIR / f'{tid}.xml'):
             input_hash.update(p.name.encode()); input_hash.update(p.read_bytes())
-        cards = dl.load_typed_aois(tid)
+        cards = load_flavor_cards(dl, tid, args.flavor)
+        if not cards:
+            counts['no_measured_aoi_map_for_flavor'] += 1
+            continue
         geometry = dl.get_trial_geometry(tid)
         if geometry is None:
             raise ValueError(f'{tid}: missing coordinate geometry')
@@ -445,7 +467,7 @@ def run(args):
         'status': 'smoke_test' if args.limit else 'full_corpus',
         'protocol': {
             'regime': 'LAB dataset; cursor-only predictors and row selection',
-            'rank_type': 'typed', 'feature_source': 'approach-retreat ResultFeatureTracker',
+            'rank_type': args.flavor, 'feature_source': 'approach-retreat ResultFeatureTracker',
             'gaze_used': bool(gaze_used_for), 'gaze_used_for': gaze_used_for,
             'buffers_ms': args.buffers, 'anchor_event': args.anchor,
             'sampling': args.sampling, 'downsample_hz': args.downsample_hz, 'window': args.window,
@@ -454,7 +476,7 @@ def run(args):
                               f'cursor y interpolated from native mousemove at fixation onsets; t < {args.anchor} anchor minus buffer'),
             'coordinate_space': 'document CSS px; typed AOI centers divided by canonical ratio_y',
             'distance_axis': 'vertical |pageY - AOI center y|; the browser tracker is one-dimensional',
-            'proximity_px': 100, 'candidate_population': 'all main-axis typed AOIs in included trials',
+            'proximity_px': 100, 'candidate_population': f'all main-axis {args.flavor} AOIs in included trials',
             'ranking_metrics': 'per-trial MRR@10 and top-1 hit rate (NDCG@1, one clicked AOI per trial) on held-out probabilities',
             'click_label': 'final click; strict unique X+Y typed-box containment; ambiguous/off-box trials excluded',
             'cross_buffer_population': 'identical; at least two distinct timestamps before largest buffer cutoff',
@@ -505,6 +527,8 @@ def parse_args():
     parser.add_argument('--buffers', type=int, nargs='+', default=[0, 500])
     parser.add_argument('--anchor', choices=ANCHORS, default='click',
                         help='event whose timestamp the buffer cutoff is measured from')
+    parser.add_argument('--flavor', choices=FLAVORS, default='typed',
+                        help='AOI flavor supplying the main-axis cards (organic = bbox organics only, organic rank)')
     parser.add_argument('--sampling', choices=SAMPLINGS, default='native',
                         help='native mousemove samples, or cursor interpolated at fixation onsets (§4.3 ceiling)')
     parser.add_argument('--downsample-hz', type=float, default=0,

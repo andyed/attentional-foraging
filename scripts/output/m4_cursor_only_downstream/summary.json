@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-09-06T21:27:21.583799+00:00",
+  "generated_utc": "2026-09-06T22:10:21.757824+00:00",
   "inputs": {
     "feature_cache": "AdSERP/data/cursor-only-typed-features-mousedown.json",
     "feature_cache_sha256": "c4f4dba3c363440710ffb1fa61f50b70dad35a8adb9016b5b3e1940a82e2ea30",
@@ -304,8 +304,61 @@
       "deferred_pct_of_approached_nonclick": 46.875
     }
   },
+  "gaze_return_counts": {
+    "rule": "distinct re-entries of the fixation sequence into a main-axis typed AOI already visited while a later position had been reached (NB22 p in visited and p < max_seen), counted once per re-entry",
+    "population": "approached (cursor-only) non-click rows with gaze-regression label = deferred",
+    "n": 6800,
+    "pct_ge_1": 83.27941176470588,
+    "pct_ge_2": 55.367647058823536,
+    "pct_ge_3": 37.01470588235294,
+    "pct_ge_5": 17.044117647058822,
+    "median": 2.0,
+    "mean": 2.558970588235294
+  },
+  "cursor_blind_regaze": {
+    "protocol": "cursor visits per typed AOI in screenshot space (40 px margin, >= 100 ms dwell, 5 s merge); subset = clicked & approached & visit_count == 1; target = gaze-regression label; LOPO balanced LR",
+    "clicked_and_approached": 2462,
+    "cursor_revisit_coverage": {
+      "n_visit_ge_2": 706,
+      "pct": 28.67587327376117
+    },
+    "cursor_blind_subset": {
+      "n": 1745,
+      "participants": 47,
+      "regaze_prevalence_pct": 70.88825214899714
+    },
+    "full_M4_7": {
+      "pooled_auc": 0.6599007632130058,
+      "fold_auc_mean": 0.6444830739648986,
+      "fold_auc_sd": 0.18717438740250342,
+      "fold_auc_median": 0.6713286713286712,
+      "n_folds": 45,
+      "n_records": 1745,
+      "n_positive": 1237,
+      "wilcoxon_vs_chance_one_sided_p": 4.124480978733266e-06,
+      "folds_at_or_below_0_5": 8
+    },
+    "minimal_four": {
+      "pooled_auc": 0.6576617292280664,
+      "fold_auc_mean": 0.636128883485042,
+      "fold_auc_sd": 0.17721953433955215,
+      "fold_auc_median": 0.65,
+      "n_folds": 45,
+      "n_records": 1745,
+      "n_positive": 1237,
+      "paired_vs_M4_7": {
+        "n_participants": 45,
+        "mean_delta": -0.008354190479856454,
+        "bootstrap_ci95": [
+          -0.023869201349079373,
+          0.008083615006035662
+        ],
+        "wilcoxon_two_sided_p": 0.10828079318737778
+      }
+    }
+  },
   "provenance": {
-    "producer_sha256": "c38efebc02164ad36ea56f2354c93437cca9ca3bbfe3c125da00886c4db88458",
+    "producer_sha256": "1fb1582b1c59d6e4f49e958c630de3695772f0c66554531092720887e858860f",
     "python": "3.13.11"
   }
 }

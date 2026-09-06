@@ -10,7 +10,7 @@ import unittest
 
 from m4_cursor_aoi_rerun import (prepare_trial, strict_click_position, track_batch,
                                  within_trial_ranking, downsample_samples,
-                                 gaze_gated_samples, fifth_fixation_end)
+                                 gaze_gated_samples, fifth_fixation_end, load_flavor_cards)
 
 ROOT = Path(os.environ.get('M4_TEST_REPO_ROOT', Path(__file__).resolve().parent.parent))
 TRACKER = ROOT.parent / 'approach-retreat/src/approach-retreat.js'
@@ -164,6 +164,16 @@ class CursorStreamTests(unittest.TestCase):
                                      self.geometry, [0], window='pre5', fixations=fix[:3])
         self.assertEqual(reason, 'no_fifth_fixation_boundary')
 
+    def test_organic_flavor_converts_bands_to_cards_and_refuses_estimates(self):
+        class DL:
+            def typed_alignment_exclusions(self): return {'p009-b1-t1'}
+            def load_aois(self, tid):
+                return {'source': 'bbox' if tid == 'p001-b1-t1' else 'band_estimate',
+                        'organic': [dict(position=1, y_top=100, y_bottom=180, x_top=160, x_bottom=740)]}
+        cards = load_flavor_cards(DL(), 'p001-b1-t1', 'organic')
+        self.assertEqual(cards, [dict(position=0, type='organic', x=160, y=100, width=580, height=80)])
+        self.assertEqual(load_flavor_cards(DL(), 'p002-b1-t1', 'organic'), [])
+        self.assertEqual(load_flavor_cards(DL(), 'p009-b1-t1', 'organic'), [])
 
 if __name__ == '__main__':
     unittest.main()

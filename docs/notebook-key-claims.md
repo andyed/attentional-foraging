@@ -403,9 +403,9 @@ The K1–K18 below are the published values verified 2026-04-12. Keep for paper-
 
 ### Current cursor-only typed stream, click-anchored reference run (executed aggregate reader)
 
-Generated 2026-09-06T21:32:41.595440+00:00; `[LAB, AdSERP, typed, cursor-only, click-anchored, buf500]`. AOI map hash `2cb789eb8febd234`; 12 alignment exclusions. Source and substrate hashes verified.
+Generated 2026-09-06T22:05:17.096229+00:00; `[LAB, AdSERP, typed, cursor-only, click-anchored, buf500]`. AOI map hash `2cb789eb8febd234`; 12 alignment exclusions. Source and substrate hashes verified.
 
-Source: [cursor-only aggregate](../scripts/output/m4_cursor_aoi/summary.json); SHA256 `0d4995bf7263426e40a8a4d585fb0f75dd3022b17a8cd726a9d5d4b7c60548a9`.
+Source: [cursor-only aggregate](../scripts/output/m4_cursor_aoi/summary.json); SHA256 `cb8cab76bed9ff493ac107e5bd7cb001972434e114f5a4aec1187ff23906b658`.
 
 | ID | Claim | Value |
 |---|---|---|
@@ -428,9 +428,9 @@ The paired differences are computed within participants; they are not difference
 
 ### Current cursor-only typed stream, press-anchored Δ = 500 ms headline and buffer grid (executed aggregate reader)
 
-Generated 2026-09-06T21:21:48.168104+00:00; `[LAB, AdSERP, typed, cursor-only, mousedown-anchored, buf500]`. AOI map hash `2cb789eb8febd234`; 12 alignment exclusions. Source and substrate hashes verified.
+Generated 2026-09-06T21:59:56.962855+00:00; `[LAB, AdSERP, typed, cursor-only, mousedown-anchored, buf500]`. AOI map hash `2cb789eb8febd234`; 12 alignment exclusions. Source and substrate hashes verified.
 
-Source: [cursor-only aggregate](../scripts/output/m4_cursor_aoi_mousedown/summary.json); SHA256 `b83a5d3d55a3a70076f9b62af3c068222cfba29f50acc9c4f9ffecc91b242f68`.
+Source: [cursor-only aggregate](../scripts/output/m4_cursor_aoi_mousedown/summary.json); SHA256 `76641cd296e60b3a9c3be057741f7c5c56646e0b5b1655bfeda63b3e2ea4bb28`.
 
 | ID | Claim | Value |
 |---|---|---|

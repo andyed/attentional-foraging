@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-09-06T21:21:48.168104+00:00",
+  "generated_utc": "2026-09-06T21:59:56.962855+00:00",
   "status": "full_corpus",
   "protocol": {
     "regime": "LAB dataset; cursor-only predictors and row selection",
@@ -1330,7 +1330,7 @@
   },
   "provenance": {
     "sha256": {
-      "producer": "7b6b427eb9aa452eb6be3be82e8102058d98635658ff91e1b26e5a400a717a19",
+      "producer": "bd8f3bb33613bfd2d49d7eb7e1fbfc4b6ae7f8fc39ac2fc8f58d6a2cac3d0edd",
       "bridge": "c4b20a61b7002071ebfb36cc41ae090093902e931d00d78514ef4028f01ea10d",
       "tracker": "587934cbeef059f54449029ddf558600369468a07f9527a7b2dcc097849caf46",
       "data_loader": "20b669620a9ae4f74aab6e43abdb66334798a02b0f537b48d382a782990ecff8",
