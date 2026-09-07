@@ -19,15 +19,17 @@ p = 'scripts/output/adserp_aois_by_trial_id_typed_gapfill.jsonl'
 excl = set(json.load(open('data/aoi-typed/alignment-exclusions.json'))['tids'])
 tids = {json.loads(l)['trial_id'] for l in open(p)}
 print(f"{len(tids)} trials, {len(tids & excl)} excluded present")
-print("v1.1.0" if len(tids) == 2762 and not tids & excl else "PRE-1.1.0 — re-derive")
+print("v1.1.0" if len(tids) == 2764 and not tids & excl else "PRE-1.1.0 — re-derive")
 EOF
 ```
 
-`2762 trials, 0 excluded present` = current. **2,776 trials, or any excluded id present,
-means the export predates this release** regardless of what its summary says.
+`2764 trials, 0 excluded present` = current (post the 2026-08-30 card-collision fix,
+typed-map content hash `2cb789eb8febd234`, 12 exclusions). `2762 trials` is the
+2026-08-28 build with the earlier 14-trial list. **2,776 trials, or any excluded id
+present, means the export predates this release** regardless of what its summary says.
 
 A second tell that needs no exclusion list: v1.0.0 typed exports contain ~746
-main-column `knowledge_panel` rows and ~84 `top_places`; v1.1.0 contains 0 and ~338.
+main-column `knowledge_panel` rows and ~84 `top_places`; v1.1.0 contains 0 and 340.
 
 The summary check below is still useful as a secondary signal, but it describes the
 summary's own provenance, not the export's:
@@ -48,13 +50,13 @@ scripts/output/adserp_aois_by_trial_id_typed_gapfill.csv
 `trial_id` / `rank` / `etype` / `top_y` / `bottom_y` semantics, same
 page-space coordinate convention.
 
-| | v1.0.0 | v1.1.0 |
-|---|---:|---:|
-| rows | 37,174 | 36,370 |
-| trials | 2,776 | 2,762 |
-| `knowledge_panel` rows | 746 | **0** |
-| `top_places` rows | 84 | **338** |
-| `organic` rows | 22,354 | 21,917 |
+| | v1.0.0 | v1.1.0 (2026-08-28) | v1.1.0 current (2026-08-30 collision fix) |
+|---|---:|---:|---:|
+| rows | 37,174 | 36,370 | 36,407 |
+| trials | 2,776 | 2,762 | 2,764 |
+| `knowledge_panel` rows | 746 | **0** | **0** |
+| `top_places` rows | 84 | **338** | **340** |
+| `organic` rows | 22,354 | 21,917 | 22,277 |
 
 **42.2% of retained trials have a corrected main-column etype sequence.**
 
@@ -85,7 +87,8 @@ directory directly, apply
    occupied, pushing every organic below them one rank deeper. They are
    now `position = -1` (off-axis) and do not appear in the main-axis
    export. Expect this category to be empty by construction.
-3. **14 trials excluded.** Pages whose rank lattice cannot be verified
+3. **12 trials excluded** (14 in the 2026-08-28 build; the membership changed,
+   not just the count, so re-read the list). Pages whose rank lattice cannot be verified
    geometrically (shift-periodic layouts where a one-rank-wrong lattice
    can't be ruled out). The list and the rule that produced it are in
    `data/aoi-typed/alignment-exclusions.json`, and are embedded in every

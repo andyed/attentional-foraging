@@ -1,5 +1,17 @@
 # Changelog
 
+## AllSERP enrichment v1.1.0, current build — 2026-08-30 — card-collision fix + re-pin
+
+Same release, corrected maps. `measure_card_geometry` now claims DOM nodes in two
+phases, so a card can no longer be handed another card's box: duplicated card bboxes
+454 → 0, orphaned main-column trials 17.3 % → 6.0 %, 454 typed maps changed per
+flavor. The alignment-exclusion list went 14 → **12** with changed membership
+(`data/aoi-typed/alignment-exclusions.json`, rule embedded in every export summary).
+Substrate pin: 2,764 trials, typed-map content hash `2cb789eb8febd234`. Exports:
+`typed_gapfill` 36,407 rows, `top_places` 340, `knowledge_panel` 0 (off-axis). The
+migration guide's self-check now tests for 2,764. Table 1 of the AllSERP paper (arXiv
+v4) is derived from this build by `scripts/allserp_descriptives.py --space screenshot`.
+
 ## AllSERP enrichment v1.1.0 — 2026-08-28 — typed-AOI geometric realignment
 
 **Consumer action required.** The typed AOI maps changed in place. Same
