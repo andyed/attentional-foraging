@@ -48,6 +48,13 @@ OUT_DIR_BY_FLAVOR = {
 # text; many real clicks land on link padding / margin within ~10px of bbox
 # edges (audit 2026-05-05). Apply tolerance ONLY to clicks; fixations stay
 # strict (gaze has its own spatial slop, no need to compound).
+# Coordinate space for click samples. evtrack records document space (1403 px
+# wide); the typed maps are screenshot space (1280 px). Comparing the two
+# directly is the silent error documented in data_loader.load_mouse_events.
+# 'document' preserves the historical behaviour of this producer (the May
+# 2026 Table 1); 'screenshot' converts each click through its own trial's
+# ratios before the containment test. Fixations need no conversion.
+SPACE = "document"
 CLICK_X_TOL = 5.0
 CLICK_Y_TOL = 10.0
 
@@ -110,7 +117,7 @@ def process_trial(tid, aois):
         return None
     if fixations is None or len(fixations) == 0:
         return None
-    mouse_data = load_mouse_events(tid)
+    mouse_data = load_mouse_events(tid, space=SPACE)
     if mouse_data is None:
         return None
     _, _, clicks = mouse_data
@@ -189,10 +196,20 @@ def main():
         "--flavor", choices=list(CSV_BY_FLAVOR.keys()), default="typed",
         help="typed = legacy tight bboxes; typed_gapfill = midpoint-split applied",
     )
+    parser.add_argument(
+        "--space", choices=["document", "screenshot"], default="document",
+        help="coordinate space of click samples before the bbox containment "
+             "test; 'screenshot' is the space the AOI maps live in",
+    )
     args = parser.parse_args()
+    global SPACE
+    SPACE = args.space
+    print(f"[space] click coordinates compared in {SPACE} space")
 
     csv_path = CSV_BY_FLAVOR[args.flavor]
     out_dir = OUT_DIR_BY_FLAVOR[args.flavor]
+    if SPACE == "screenshot":
+        out_dir = out_dir.with_name(out_dir.name + "_screenshot")
     out_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"loading {args.flavor} AOI CSV from {csv_path.name} ...")
@@ -354,6 +371,7 @@ def main():
         "per_etype": rows,
     }
     summary["flavor"] = args.flavor
+    summary["click_space"] = SPACE
     summary["regime_tag"] = f"[LAB, AdSERP, {args.flavor}]"
     (out_dir / "summary.json").write_text(json.dumps(summary, indent=2))
     print(f"\nwrote {out_dir / 'summary.json'}")
