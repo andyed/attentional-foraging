@@ -1,6 +1,6 @@
 # M4 feature streams and evidence boundaries
 
-Checked 2026-09-04 against the producer code. Shared field names are not proof
+Updated 2026-09-07 against the producer code and retained aggregates. Shared field names are not proof
 that two models consume the same measurement.
 
 | Role | Producer | Measurement and limits |
@@ -25,7 +25,9 @@ The producer saves aggregates only and leaves existing LAB caches unchanged.
     --output-dir scripts/output/m4_cursor_aoi_mousedown_gazegated \
     --feature-cache AdSERP/data/cursor-only-typed-features-mousedown-gazegated.json # §4.3 matched-row ceiling
 .venv/bin/python scripts/m4_cursor_only_downstream.py                              # §4.2 / §4.3 / terciles / per-etype
-.venv/bin/python scripts/ltr_cursor_only_four_grades.py                            # §4.6 on the same rows
+.venv/bin/python scripts/ltr_cursor_only_nested_grades.py --no-lofo                # §4.6 with nested cursor-label generation
+# Historical non-nested diagnostic only:
+# .venv/bin/python scripts/ltr_cursor_only_four_grades.py
 ```
 
 **Anchor the buffer at the press.** evtrack's final `click` row is a navigation
@@ -48,6 +50,46 @@ The previous table incorrectly described `m4_nb21_hybrid_rerun.py` as the
 producer of the buffered-organic 0.847 headline and linked parity tests that
 actually live in the sibling approach-retreat repository. Neither assertion
 established the full protocol. See the [lineage audit](../docs/methodology/feature-extractor-lineage.md).
+
+## Nested supervision in the ranking check (September 7)
+
+The original `ltr_cursor_only_four_grades.py` precomputed one global LOSO
+cursor-label vector, then reused it in outer ranker folds. Training grades for
+participant Q could depend on the gaze labels of outer test participant P.
+Its cursor-label uplift and cursor-label ranker ablations are non-nested
+historical diagnostics. `ltr_cursor_only_nested_grades.py` instead generates
+grades within each outer training partition, with inner participant-held-out
+labelers and a fixed 0.5 threshold. It writes a separate aggregate and preserves
+the original result. See the [audit and comparison](../docs/methodology/ltr-nested-label-audit.md).
+
+## Matched window and sampling comparisons (September 7)
+
+[`m4_cursor_matched_sensitivity.py`](m4_cursor_matched_sensitivity.py) replays
+the September 6 sensitivities with the canonical producer and requires exact
+agreement with their retained feature hashes. The producer acquired a flavor
+option between the sensitivity runs and headline rerun; both producer hashes
+are recorded, and feature equality is checked rather than assumed. Native
+features must match the press-grid sidecar. The script then intersects whole
+trials separately for the window and rate families, rejects any shared trial
+with a different AOI/label lattice, and refits each condition with the same
+participant folds. M1 is refit once on each family's common rows.
+
+```sh
+.venv/bin/python scripts/m4_cursor_matched_sensitivity.py
+```
+
+The default keeps regenerated per-record caches in a temporary directory and
+writes only aggregates/hashes to `output/m4_cursor_matched_sensitivity/`.
+`--cache-dir /private/tmp/m4-matched-cache` allows a resumable local run; that
+scratch directory is not a distributable artifact. The original sensitivity
+and headline outputs are preserved. The native cohort retains the headline's
+1,000 ms eligibility gate; sensitivities retain their 500 ms gate before the
+intersection. Comparisons therefore estimate effects within common eligibility,
+not the full corpus. Window eligibility/boundaries use fixation times, even
+though the predictors are cursor-only. Different window durations and residual
+terminal approach remain possible explanations; small rate differences are
+not an equivalence test. See the
+[matched report](../docs/methodology/m4-matched-sensitivity.md).
 
 ## Carousel cells: released snapshot and candidate
 

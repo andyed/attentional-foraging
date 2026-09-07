@@ -87,8 +87,29 @@ NB11.5 chattiness terciles, the per-etype slice and the §4.6 LambdaMART check
 on the per-record cache the producer writes (hash-checked against its sidecar).
 Gaze enters only as the NB22 regression label and, for the ceiling, as sampling
 times. The time-window (`--window`) and sampling-rate (`--downsample-hz`) runs
-are separate sidecars under `scripts/output/m4_cursor_aoi_*`. What is still
-LAB-stream only: NB22's gaze-return counts and the K-leak cursor-blind subset.
+are separate sidecars under `scripts/output/m4_cursor_aoi_*`. The downstream
+producer also re-counts gaze returns on these typed rows and evaluates the
+cursor-blind subset. Those targets/counts still require gaze, but their cursor
+features and row population now come from the cursor-only replay; they are no
+longer limited to the old LAB feature caches. NB22's original notebook rows
+remain their own dated record.
+
+**September 7 matched-cohort check.** The window and rate sidecars used different
+eligible populations. `m4_cursor_matched_sensitivity.py` now refits them on a
+whole-trial intersection within each family, preserving every AOI and click
+label and checking regenerated features against the retained hashes. See the
+[protocol and results](m4-matched-sensitivity.md). This controls cohort selection
+for these comparisons; it does not establish time-window equivalence, eliminate
+terminal approach, or reproduce the browser's visibility lifecycle.
+
+**September 7 ranking split correction.** The original cursor-label ranking
+run combined global LOSO label generation with outer ranker LOSO. That allows
+the outer test participant's gaze labels to influence training grades for
+other participants. The [nested-label audit](ltr-nested-label-audit.md) records
+the dependency and the corrected training-only inner folds. Original cursor
+ranking rows and their feature-drop results retain the non-nested diagnostic
+label; the matched window/rate results and standalone deferred-class LOSO
+are separate experiments and do not use this ranking-label path.
 
 ## What remains to validate
 
