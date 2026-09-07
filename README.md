@@ -271,4 +271,4 @@ https://doi.org/10.1145/3726302.3730325
 
 ## License
 
-Analysis code: MIT. The AdSERP dataset has its own [license](https://github.com/kayhan-latifzadeh/AdSERP/blob/main/LICENSE).
+Analysis code: MIT. Derived AllSERP data (the per-AOI corpus CSVs under `scripts/output/`, the per-trial typed maps under `data/aoi-typed*/`, and the exclusion list) is released under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/), matching the AdSERP corpus licence; cite both (see `CITATION.cff`). The AdSERP dataset itself has its own [license](https://github.com/kayhan-latifzadeh/AdSERP/blob/main/LICENSE) and is not redistributed here.
