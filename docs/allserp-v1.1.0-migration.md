@@ -19,12 +19,12 @@ p = 'scripts/output/adserp_aois_by_trial_id_typed_gapfill.jsonl'
 excl = set(json.load(open('data/aoi-typed/alignment-exclusions.json'))['tids'])
 tids = {json.loads(l)['trial_id'] for l in open(p)}
 print(f"{len(tids)} trials, {len(tids & excl)} excluded present")
-print("v1.1.0" if len(tids) == 2764 and not tids & excl else "PRE-1.1.0 — re-derive")
+print("v1.1.1" if len(tids) == 2764 and not tids & excl else "PRE-1.1.1 — re-derive")
 EOF
 ```
 
-`2764 trials, 0 excluded present` = current (post the 2026-08-30 card-collision fix,
-typed-map content hash `2cb789eb8febd234`, 12 exclusions). `2762 trials` is the
+`2764 trials, 0 excluded present` = current, released as **v1.1.1** (the 2026-08-30 card-collision
+fix, typed-map content hash `2cb789eb8febd234`, 12 exclusions; export summaries stamp `allserp_release: 1.1.1`). `2762 trials` is the
 2026-08-28 build with the earlier 14-trial list. **2,776 trials, or any excluded id
 present, means the export predates this release** regardless of what its summary says.
 
@@ -50,7 +50,7 @@ scripts/output/adserp_aois_by_trial_id_typed_gapfill.csv
 `trial_id` / `rank` / `etype` / `top_y` / `bottom_y` semantics, same
 page-space coordinate convention.
 
-| | v1.0.0 | v1.1.0 (2026-08-28) | v1.1.0 current (2026-08-30 collision fix) |
+| | v1.0.0 | v1.1.0 (2026-08-28) | v1.1.1 (2026-08-30 collision fix) |
 |---|---:|---:|---:|
 | rows | 37,174 | 36,370 | 36,407 |
 | trials | 2,776 | 2,762 | 2,764 |

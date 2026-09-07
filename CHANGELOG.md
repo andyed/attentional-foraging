@@ -1,8 +1,8 @@
 # Changelog
 
-## AllSERP enrichment v1.1.0, current build — 2026-08-30 — card-collision fix + re-pin
+## AllSERP enrichment v1.1.1 — 2026-09-07 — card-collision fix, re-pin, exports re-stamped
 
-Same release, corrected maps. `measure_card_geometry` now claims DOM nodes in two
+The 2026-08-30 collision-fixed maps, now carrying their own release number so they are distinguishable from the 2026-08-28 build that the `allserp-v1.1.0` tag points at. Export summaries stamp `allserp_release: 1.1.1`. Row content of `typed`, `typed_gapfill` and `organic_hybrid` is byte-identical to the 08-30 exports (verified by diff at re-stamp). `typed_gapfill_cellsplit` is regenerated: its parent rows were the June 23 build and now equal the `typed_gapfill` export exactly (36,407 main-axis parents), and the 12 exclusions apply, so cells move from 6,373 in 1,550 trials to 6,345 in 1,543 (dd_top), 174/75 to 164/74 (organic sub-cells), 861 to 858 right-rail blocks; the cells themselves still come from the frozen May snapshot. `cellsplit_click_composition` re-run on it: 235 carousel clicks, leftmost 32.1 % on the modal four-cell layout (n = 140). `cellsplit_coverage.json` (June) is superseded by the export summary. Also new since 08-30: `scripts/audit_trial_filter_space.py` (trial-level click filter in both coordinate spaces), the full-corpus `aoi_fidelity` output, `allserp_descriptives.py --space`, and the v1.1.0 migration guide's corrected self-check. `measure_card_geometry` now claims DOM nodes in two
 phases, so a card can no longer be handed another card's box: duplicated card bboxes
 454 → 0, orphaned main-column trials 17.3 % → 6.0 %, 454 typed maps changed per
 flavor. The alignment-exclusion list went 14 → **12** with changed membership

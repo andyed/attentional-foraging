@@ -39,7 +39,7 @@ ROOT = Path(__file__).resolve().parent.parent
 # AllSERP enrichment release. Bump when the typed AOI maps change in a way
 # that moves downstream values (see CHANGELOG.md). Stamped into every export
 # summary so a consumer can identify which enrichment a CSV came from.
-ALLSERP_RELEASE = "1.1.0"
+ALLSERP_RELEASE = "1.1.1"
 sys.path.insert(0, str(ROOT / "notebooks-v2"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
