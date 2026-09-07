@@ -61,8 +61,8 @@ sequence position and cost, and after a dropped or unmatched card the pairing
 slips. The output then takes `html_handle` from the card and `x`/`y` from the
 bbox, so a slipped pair produces exactly this — right box, wrong identity.
 
-This is the mechanism behind Al-Lawati's §3b downstream claim that "ranks below
-the drop renumber". She was right about the consequence; the cause is the
+This is the mechanism behind the observation in Sara Allawati's review that ranks
+below the drop renumber. She was right about the consequence; the cause is the
 pairing, not the geometry.
 
 ## The fix, and how to know it worked
