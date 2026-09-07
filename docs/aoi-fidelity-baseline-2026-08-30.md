@@ -107,7 +107,7 @@ data. 183 trials remain below 0.5 and are not yet explained.
 correction to what we *knew*, not to what changed. Fixation attribution — which
 carries most of the published results — was always right. The gains are real but
 land on the **mouse stream**: the cellsplit family,
-`attribute_click_to_typed_gapfill`, and Leaky Cursor's `final_dist` /
+`attribute_click_to_typed_gapfill`, and the cursor methods paper's `final_dist` /
 `retreat_dist`. crforager's verdicts do not move (T1 L1 shifts 0.01 against a
 0.20 gate).
 

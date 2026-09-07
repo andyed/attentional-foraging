@@ -574,7 +574,7 @@ def main():
 
     summary = {
         "experiment": ("viewport-exposure leakage ablation "
-                       "(control-ladder final tier, Leaky Cursor revision)"),
+                       "(control-ladder final tier, cursor-paper revision)"),
         "generated_utc": datetime.datetime.now(datetime.UTC).isoformat(),
         "regime": "LAB",
         "dataset": "AdSERP",

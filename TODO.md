@@ -301,11 +301,11 @@ rather than editing both.
   - [ ] **Airtight test (build, not join):** per-fixation RIPA2 × per-fixation cursor
     state, N-matched across bands, with a within-person model to turn |rho|
     "entanglement" into signed prediction. Needs per-fixation RIPA2 across all
-    trials + cursor velocity/pause aligned per fixation window. RIPA2 = Gavindya track.
+    trials + cursor velocity/pause aligned per fixation window. RIPA2 belongs to the separate pupil-arousal track.
   - [ ] **Writeup decision:** null-finding (LHIPA↔LF/HF non-replication) in
     `docs/null-findings/` vs positive finding (top-viewport RIPA2 coupling). Keep
-    track separation — LF/HF = Duchowski-sensitive, RIPA2 = Gavindya track.
-  - [ ] **Draft Peter reply** — corrected framing: tonic load from cursor = no
+    track separation between the LF/HF paper and the RIPA2 track.
+  - [ ] **Draft reply on the coupling framing** — corrected framing: tonic load from cursor = no
     (time-on-task); phasic arousal in top viewport = yes (event-scope only).
   - [ ] **Decide fate of the 4 untracked `scripts/explore_cursor_*` scripts** (promote vs toss).
 - [ ] **Ski-jump null-finding update (2026-05-06).** AllSERP's flavor-

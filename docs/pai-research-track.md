@@ -1,7 +1,7 @@
 # PAI research track — peripheral attention index
 
 Status doc, started 2026-08-31. Decision (Andy): PAI work is a first-class
-research thread in this repo, not a support figure for the Leaky Cursor
+research thread in this repo, not a support figure for the cursor methods
 CHIIR resubmission and not necessarily the CHI LBW poster. Seek insights
 broader than click prediction.
 
@@ -55,7 +55,7 @@ Producers: `scripts/pai_exposure_ablation.py`, `scripts/pai_preentry_probe.py`,
    published kernels; sign-free model increments do not. Pre-spec outputs
    preserved as `scripts/output/ablations/*-prespec-20260831.*`.
 
-## Broader questions (beyond Leaky Cursor)
+## Broader questions (beyond the cursor methods paper)
 
 - **Q1 — Kernel comparison under the spec, then the CM proposal.** First,
   three-way comparison on the probe harness: spec-exact `pai_spec.py`
@@ -92,7 +92,7 @@ Producers: `scripts/pai_exposure_ablation.py`, `scripts/pai_preentry_probe.py`,
   scroll level, which held 0.596 under full excision. Characterizing E as a
   degraded PAI (what fraction of the anticipation signal survives at
   viewport granularity?) is the bridge that would matter for deployment —
-  a distinct claim from Leaky Cursor's cursor-geometry story.
+  a distinct claim from the cursor methods paper's geometry story.
 
 ## First results on Q2/Q3 (2026-08-31, spec_eq2, full trial)
 

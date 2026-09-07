@@ -50,13 +50,15 @@ docs/schul-replay/data/
 # Per-record figure caches — large (10-15 MB), reproducible from source scripts
 scripts/output/figures/per_record_*.json
 
-# Thursday RIPA2 meeting prep — internal-only, not paper artifacts
+# Meeting-prep visuals, not paper artifacts
 scripts/output/ripa2_meet_visuals/
 
-# RIPA2 analysis source — Gavindya/team paper track, still unpublished. The pupil
-# paper's acceptance (2026-07-25) unblocked LF/HF and LHIPA on this public repo but
-# NOT RIPA2. Promote with `git add -f` once that track publishes.
+# RIPA2 analysis source belongs to a separate, not yet published track; promote
+# with `git add -f` when that work is public.
 scripts/explore_cursor_ripa2_coupling.py
+
+# Working notes that reference collaborators' unpublished material stay local
+docs/notes/
 
 # Full schul-replay corpus — 917 MB / 1,640 files, 238 of them per-trial screen
 # recordings (trial.mp4, up to 27 MB each) derived from AdSERP, which is itself
