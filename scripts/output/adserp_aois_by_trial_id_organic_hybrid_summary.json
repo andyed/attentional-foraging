@@ -1,10 +1,13 @@
 {
   "allserp_release": "1.1.1",
   "alignment_exclusions": {
-    "n": 12,
+    "applied": false,
+    "n": 0,
     "date": "2026-08-30",
     "rule": "mean_residual > 30 OR (mean_h_mismatch > 60 AND mean_residual > 8)",
-    "tids": [
+    "tids": [],
+    "not_applied_reason": "'organic_hybrid' is a bbox flavor and does not read the typed card map, so the card<->bbox alignment ambiguity does not apply. The listed trials are present in this export by design.",
+    "typed_flavor_tids": [
       "p007-b1-t9",
       "p010-b1-t4",
       "p015-b3-t6",

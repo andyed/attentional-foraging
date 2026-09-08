@@ -361,6 +361,57 @@ def rows_typed_cellsplit(trial_id, doc_h, scr_h, uid, batch, trial):
     return base + extra
 
 
+TYPED_FLAVORS = frozenset({"typed", "typed_gapfill", "typed_gapfill_cellsplit"})
+
+
+def exclusion_block(attribution: str, excl: dict) -> dict:
+    """The `alignment_exclusions` stamp for one attribution, honest about `applied`.
+
+    The exclusions are a TYPED-flavor gate: they mark trials where the y-DP card<->bbox
+    lattice could be one slot wrong, i.e. where typed CARD IDENTITIES are unsafe. The bbox
+    rects themselves are the reference geometry and are not in doubt, and the bbox flavors
+    (absolute / organic / organic_hybrid) never consult the card map — build_hybrid_aois
+    goes through organic_aoi_bands -> load_aois, the organic-bbox enrichment — so the
+    ambiguity cannot reach them and they correctly keep those trials.
+
+    Stamping the block unconditionally made organic_hybrid's summary read as though it had
+    dropped 12 trials it still shipped (2,776 rows, all 12 tids present, beside a
+    typed_gapfill summary carrying the identical block at 2,764). An audit asking "were the
+    exclusions honoured?" must not be answerable by reading a block the export never applied.
+    """
+    applied = attribution in TYPED_FLAVORS
+    block = {
+        "applied": applied,
+        "n": len(excl.get("tids", [])) if applied else 0,
+        "date": excl.get("date"),
+        "rule": excl.get("rule"),
+        "tids": excl.get("tids", []) if applied else [],
+    }
+    if not applied:
+        block["not_applied_reason"] = (
+            f"{attribution!r} is a bbox flavor and does not read the typed card map, "
+            "so the card<->bbox alignment ambiguity does not apply. The listed trials "
+            "are present in this export by design."
+        )
+        block["typed_flavor_tids"] = excl.get("tids", [])
+    return block
+
+
+def assert_exclusions_applied(attribution: str, shipped: set, excl: dict) -> None:
+    """Machine-check the stamp: a typed flavor must not ship an excluded trial.
+
+    The prose claim is what failed before — this is the check that would have caught it.
+    """
+    if attribution not in TYPED_FLAVORS:
+        return
+    leaked = sorted(shipped & set(excl.get("tids", [])))
+    if leaked:
+        raise SystemExit(
+            f"[export {attribution}] alignment exclusions claimed but not applied: "
+            f"{len(leaked)} excluded trials present ({', '.join(leaked[:5])})"
+        )
+
+
 def rows_for_trial(trial_id: str, attribution: str) -> list[dict]:
     uid, batch, trial = parse_trial_id(trial_id)
     meta = get_trial_meta(trial_id)
@@ -449,14 +500,13 @@ def main() -> None:
     # bare CSV is otherwise indistinguishable from an older one.
     excl_path = ROOT / "data" / "aoi-typed" / "alignment-exclusions.json"
     excl = json.loads(excl_path.read_text()) if excl_path.exists() else {}
+
+    excl_block = exclusion_block(args.attribution, excl)
+    assert_exclusions_applied(args.attribution, {r["trial_id"] for r in all_rows}, excl)
+
     summary = {
         "allserp_release": ALLSERP_RELEASE,
-        "alignment_exclusions": {
-            "n": len(excl.get("tids", [])),
-            "date": excl.get("date"),
-            "rule": excl.get("rule"),
-            "tids": excl.get("tids", []),
-        },
+        "alignment_exclusions": excl_block,
         "attribution": args.attribution,
         "n_trials": len({r["trial_id"] for r in all_rows}),
         "n_aoi_rows": len(all_rows),
