@@ -83,3 +83,45 @@ class CellExportEligibilityTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+EXCL = {'tids': ['p007-b1-t9', 'p010-b1-t4'], 'date': '2026-08-30', 'rule': 'mean_residual > 30'}
+
+
+class ExclusionStampTests(unittest.TestCase):
+    """The stamp must describe what the export did, not what the gate could do.
+
+    organic_hybrid legitimately keeps alignment-excluded trials — it reads bbox rects,
+    never the typed card map, so the card<->bbox ambiguity does not reach it. What was
+    wrong was the summary claiming otherwise.
+    """
+
+    def test_bbox_flavor_declares_the_gate_not_applied(self):
+        block = exporter.exclusion_block('organic_hybrid', EXCL)
+        self.assertFalse(block['applied'])
+        self.assertEqual(block['n'], 0)
+        self.assertEqual(block['tids'], [])
+        self.assertIn('does not read the typed card map', block['not_applied_reason'])
+        # provenance is kept, just not claimed as applied
+        self.assertEqual(block['typed_flavor_tids'], EXCL['tids'])
+
+    def test_typed_flavor_declares_the_gate_applied(self):
+        for flavor in ('typed', 'typed_gapfill', 'typed_gapfill_cellsplit'):
+            block = exporter.exclusion_block(flavor, EXCL)
+            self.assertTrue(block['applied'], flavor)
+            self.assertEqual(block['n'], 2, flavor)
+            self.assertEqual(block['tids'], EXCL['tids'], flavor)
+            self.assertNotIn('not_applied_reason', block)
+
+    def test_guard_trips_when_a_typed_flavor_ships_an_excluded_trial(self):
+        shipped = {'p004-b1-t1', 'p007-b1-t9'}
+        with self.assertRaises(SystemExit) as cm:
+            exporter.assert_exclusions_applied('typed_gapfill', shipped, EXCL)
+        self.assertIn('p007-b1-t9', str(cm.exception))
+
+    def test_guard_passes_for_a_clean_typed_export(self):
+        exporter.assert_exclusions_applied('typed_gapfill', {'p004-b1-t1'}, EXCL)
+
+    def test_guard_is_silent_for_bbox_flavors_that_keep_those_trials(self):
+        # the exact shape of the real organic_hybrid export: all excluded tids present
+        exporter.assert_exclusions_applied('organic_hybrid', set(EXCL['tids']), EXCL)

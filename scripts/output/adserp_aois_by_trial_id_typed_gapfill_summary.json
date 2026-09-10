@@ -1,6 +1,7 @@
 {
   "allserp_release": "1.1.1",
   "alignment_exclusions": {
+    "applied": true,
     "n": 12,
     "date": "2026-08-30",
     "rule": "mean_residual > 30 OR (mean_h_mismatch > 60 AND mean_residual > 8)",
