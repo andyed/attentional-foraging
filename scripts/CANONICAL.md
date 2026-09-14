@@ -117,3 +117,20 @@ See [full-corpus evidence](../docs/methodology/carousel-full-corpus-validation.m
 and [the adoption contract](../docs/methodology/carousel-source-adoption.md).
 The exporter now applies the canonical exclusion list before loading right-rail
 rows; the frozen export itself remains unchanged.
+
+## Deferred carve, reduction baselines and rate curve (September 13)
+
+`deferred_dwell_carve.py` splits gaze dwell on a result into first visit and
+everything after, on the same fixation→AOI assignment that produced the typed
+regression label, and asserts zero disagreement with the shipped label cache
+before reporting. It reproduces the shipped §4.3 deployable M4-7 (0.6911) on
+the shipped pool as its gate, then carves on the label-complete pool
+(`--labeled-only`, 9,269 rows; the 663 excluded rows are approached but never
+fixated). Every table is scored on one row set. `reduction_baselines.py`
+expresses Brückner, Huang 2011, Liu 2014, a page-grain battery and rank
+position as projections of the construction under one protocol, with
+within-trial concordance and tie-aware ranking metrics. `rate_curve_canonical.py`
+runs the deferred and click tasks down producer-thinned caches and stamps the
+applied rate. `scroll_only_carve.py` and `scroll_kinematics.py` are the
+viewport-pointer rows. See
+[the methodology page](../docs/methodology/deferred-dwell-carve.md).

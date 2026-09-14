@@ -215,6 +215,23 @@ rather than editing both.
 
 ## Cross-cutting infrastructure
 
+### Deferred carve / reduction baselines (2026-09-13, see `docs/methodology/deferred-dwell-carve.md`)
+
+Fix theme from the same-day audit: one pool per table, the carve on the
+label's own fixation→AOI assignment, the stamp describes what the run did.
+All three are now asserted in the producers. Open:
+
+- [ ] Fixed-horizon carve (first visit + Δ ms) so the first-visit column can be
+      stated as a deployable time rather than a gaze event.
+- [ ] Reduction baselines under their sources' own targets/grains (page-grain
+      targets for B1/B4) before "the reductions are faithful" is claimed.
+- [x] `scroll_only_carve.py` "full trial" geometry was on the UNCUT scroll timeline;
+      window-matched 2026-09-13 (schema 3). Inert: the evtrack log ends at the final
+      click, so only the 500 ms buffer was exposed and no number moved (`[NB36:K9]`).
+- [ ] The two claude.ai review artifacts still show the strict-band numbers
+      (0.747 / 0.504 / 67 %); regenerate from `summary_labeled_only.json` or
+      retire them.
+
 - [ ] **Ad text + embeddings.** `serp-embeddings.json` covers organic h3
   only — ad text/embeddings absent. To enable per-etype content analyses
   (LF/HF × content × etype, query-cosine for ad copy, ad-vs-organic TTR
