@@ -53,6 +53,7 @@ NOTEBOOK_LABELS = {
     "30_scroll_trajectory.ipynb": ("NB30", "30_scroll_trajectory", "scroll trajectory adds AUC on top of continuous viewport analytics"),
     "31_adsight_replication.ipynb": ("NB31", "31_adsight_replication", "AdSight noticed-classifier replication — per-etype LightGBM vs Seq2Seq buckets"),
     "32_k_coefficient.ipynb": ("NB32", "32_k_coefficient", "K coefficient (ambient/focal) — position gradient, inverted-U phase trajectory, click outcome"),
+    "36_scroll_vs_cursor_deferred.ipynb": ("NB36", "36_scroll_vs_cursor_deferred", "viewport vs cursor on the deferred class, same rows, same window"),
 }
 
 TARGETS = list(NOTEBOOK_LABELS.keys())

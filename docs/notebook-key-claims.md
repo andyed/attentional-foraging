@@ -37,6 +37,7 @@ Every notebook in this project that ships key numbers to papers or external read
 - [NB30: `30_scroll_trajectory`](#nb30-30_scroll_trajectory) — scroll trajectory adds AUC on top of continuous viewport analytics
 - [NB31: `31_adsight_replication`](#nb31-31_adsight_replication) — AdSight noticed-classifier replication — per-etype LightGBM vs Seq2Seq buckets
 - [NB32: `32_k_coefficient`](#nb32-32_k_coefficient) — K coefficient (ambient/focal) — position gradient, inverted-U phase trajectory, click outcome
+- [NB36: `36_scroll_vs_cursor_deferred`](#nb36-36_scroll_vs_cursor_deferred) — viewport vs cursor on the deferred class, same rows, same window
 
 ### Notebooks intentionally NOT covered
 
@@ -2233,6 +2234,27 @@ K and LF/HF are partially independent at the per-position level. Both decline at
 | K × LF/HF position correlation | ρ = **+0.327**, *p* = 0.253 (ns), N = 14 positions (= K19) |
 
 *(2026-08-30 stdout-scrape sweep + collision-fix re-run: the two rows above carried a stdout fragment and a placeholder since 2026-05-04; values now transcribed from the 2026-08-30 execution. The re-run reproduced every K1–K19 value to printed precision — the K-coefficient pipeline (per-trial fixation/saccade sequences and the phase split) has no dependency on typed AOI card geometry, so the collision fix moves nothing here.)*
+
+---
+
+<a id="nb36-36_scroll_vs_cursor_deferred"></a>
+
+## NB36: `36_scroll_vs_cursor_deferred` — viewport vs cursor on the deferred class, same rows, same window
+
+*Source: [`notebooks-v2/36_scroll_vs_cursor_deferred.ipynb`](../notebooks-v2/36_scroll_vs_cursor_deferred.ipynb)*
+
+| ID | Claim | Value |
+|---|---|---|
+| **K1** | Scroll-eligible label-complete pool (≥3 scroll events before mousedown(final click) − 500 ms; approached, non-clicked, fixated) | n = 8,653 rows (93.4% of the 9,269-row label-complete pool), 46 participants, 2,075 trials, deferred rate 0.735 |
+| **K2** | Cursor M4-7 vs viewport kinematics 12, same rows, pooled LOSO AUC (within-trial concordance) | cursor 0.692 (0.710) vs viewport 0.713 (0.684); viewport geometry 7 (window-matched) 0.717 |
+| **K3** | Permutation null on the same rows (100 within-participant label shuffles), mean / p95 / p99 | cursor 0.509 / 0.524 / 0.530; viewport 0.518 / 0.532 / 0.535 |
+| **K4** | Paired by participant, viewport − cursor fold AUC | viewport better in 20/46 participants; median Δ -0.011, mean Δ -0.006; Wilcoxon one-sided p = 7.2e-01 |
+| **K5** | Cursor M4-7 on scroll-eligible vs not-eligible rows of the label-complete pool (trained on the full pool) | all 0.680; eligible 0.692 (refit within subset 0.692); not eligible 0.613; deferred rate eligible 0.735 vs not 0.716 |
+| **K6** | Position as the order-defined baseline, and what each sensor adds over it (pooled / within-trial) | position 0.687 / 0.744; +cursor 0.714 / 0.740; +viewport 0.750 / 0.742; +both 0.758 / 0.739 |
+| **K7** | Same first-visit carve on both sensors, order-0 triplet (full window → first visit only; diagnostic cutoff = end of first gaze visit) | cursor 0.660 → 0.622; viewport 0.714 → 0.633; viewport kinematics 12 0.723 → 0.631; n = 5,123 |
+| **K8** | Best single feature per sensor, same rows | cursor `mean_dist` 0.682; viewport `K_frac_closing` 0.642 |
+| **K10** | Producers' subset (first-visit scroll features exist): cursor vs viewport kinematics, pooled (within-trial); paired by participant | cursor 0.660 (0.713) vs viewport 0.723 (0.699); viewport better in 29/46 participants, median Δ +0.036, Wilcoxon one-sided p = 3.1e-02; n = 5,123 |
+| **K9** | Producer window discrepancy | scroll_only_carve.py "full trial" geometry is computed on the uncut scroll timeline; window-matched here it scores 0.717 (producer, uncut: 0.715 on 5,255 rows) |
 
 ---
 

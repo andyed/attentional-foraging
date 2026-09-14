@@ -21,6 +21,7 @@ Sequentially numbered notebooks with shared utilities in [`data_loader.py`](data
 | `10_strategies.ipynb` | Satisfice vs optimize segmentation |
 | `11_individual_differences.ipynb` | Two independent individual difference dimensions |
 | `23_rank_effects.ipynb` | **Unified rank effects** — all by-position measures on one page, framework compilation narrative |
+| `36_scroll_vs_cursor_deferred.ipynb` | Viewport (scroll) vs cursor on the deferred class — same rows, same window, paired by participant, same carve on both sensors |
 
 ## Quick Start
 
