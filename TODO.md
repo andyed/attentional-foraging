@@ -223,8 +223,10 @@ All three are now asserted in the producers. Open:
 
 - [ ] Fixed-horizon carve (first visit + Δ ms) so the first-visit column can be
       stated as a deployable time rather than a gaze event.
-- [ ] Reduction baselines under their sources' own targets/grains (page-grain
-      targets for B1/B4) before "the reductions are faithful" is claimed.
+- [x] Reduction baselines under their sources' own targets/grains — done 2026-09-13
+      (`scripts/page_grain_faithfulness.py`): Arapakis direction reproduces
+      (ad-noticed 0.73 vs 0.86), Brückner does not (ad-clicked 0.50 vs 0.69).
+      Faithfulness = the construction reproduces the measurement, not the effect size.
 - [x] `scroll_only_carve.py` "full trial" geometry was on the UNCUT scroll timeline;
       window-matched 2026-09-13 (schema 3). Inert: the evtrack log ends at the final
       click, so only the 500 ms buffer was exposed and no number moved (`[NB36:K9]`).

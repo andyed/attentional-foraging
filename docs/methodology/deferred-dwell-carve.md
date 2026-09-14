@@ -65,6 +65,7 @@ and the difference is documented.
 | Rate curve on producer-thinned caches, native approach gate | `rate_curve_canonical.py` (`CONDS`, rate and monotone-thinning assertions) |
 | Scroll floor and viewport-pointer kinematics, first-visit carve | `scroll_only_carve.scroll_features`, `scroll_kinematics.kinematics` |
 | Same-rows sensor comparison with within-trial and paired readouts | `notebooks-v2/36_scroll_vs_cursor_deferred.ipynb` |
+| Page-grain projections at their sources' own grain and target | `page_grain_faithfulness.py` |
 
 ## 4. Parameters
 
@@ -128,6 +129,20 @@ Reduction baselines (click: all 34,328 rows; deferred: 9,269):
 B1 and B4 are constant within trial (asserted), so their within-trial AUC is
 0.500 by construction and their MRR is the uniform-guess value.
 
+Page-grain faithfulness (`scripts/page_grain_faithfulness.py`, one row per trial,
+same features via `reduction_baselines.trial_stream`/`globals_for`, no gaze in
+any feature; targets from the sources' lit-notes in
+`approach-retreat/docs/references/`):
+
+| source → AdSERP trial target | n (pos) | B1 | B4 | layout prior | null p95 (B4) |
+|---|---|---|---|---|---|
+| Brückner 2021 → `ad_clicked` (final click on a native ad) | 2,482 (147) | 0.50 (raw scalar) | 0.585 | 0.736 | 0.596 |
+| Arapakis & Leiva 2016 → `ad_noticed` (any fixation in a native-ad box; gaze proxy for their self-report) | 2,481 (1,402) | 0.69 | 0.728 | 0.817 | 0.606 |
+
+Brückner's headline (≈0.69 on ad-clicked, ACD) does not reproduce on AdSERP;
+Arapakis & Leiva's direction reproduces (source 0.86 with 638 features). Huang
+2012 has no page-grain target on AdSERP and is not scored.
+
 Scroll producers (rows with at least two scroll events; the carve cutoff is the
 end of the first gaze visit and is a diagnostic, not a deployable feature):
 
@@ -161,8 +176,8 @@ gaze visit, and every visit is in the label cache).
 - Gap-fill flavor (`typed_gapfill`) for both label and visits.
 - Return rules beyond the two in the lineage (e.g. requiring a minimum
   intervening depth).
-- Reduction baselines under their sources' own targets and grains (page-grain
-  targets for B1/B4); here they are scored at candidate grain only.
+- Page-grain targets beyond ad-clicked and ad-noticed (abandonment and
+  self-report do not exist on AdSERP).
 
 ## 7. What's robust regardless of tweaking
 
@@ -183,6 +198,9 @@ gaze visit, and every visit is in the label cache).
   by construction. Cursor claims on this target must be stated over position.
 - The 663 never-fixated rows are excluded from the deferred pool; the shipped
   §4.3 number included them as rejected.
+- "The reductions are faithful" is a claim about the construction reproducing
+  each source's measurement, not about cross-dataset transfer of effect sizes:
+  Brückner's mouse-length scalar is at chance on AdSERP's ad-click target.
 - Pooled AUC on a per-result target rewards between-trial base rate; report
   within-trial concordance beside it.
 
@@ -192,7 +210,9 @@ gaze visit, and every visit is in the label cache).
   (`cikm-leakycursor/notes/chiir-framing-2026-09-13.md`, §2 reduction table,
   §4.3, reviewer map R1-W2a). Not yet in `source/paper.md`.
 - AO-SERP replication (`collab/allawati-ai-overviews/abandonment-2026-09-13/`,
-  separate implementation; RMIT ethics permission required before citing).
+  separate implementation) is OUT of the CHIIR paper as of 2026-09-13: Sara
+  Allawati publishes the AO work standalone and leads the no-endpoint test.
+  Nothing from that directory is cited here.
 
 ## 10. Status
 
