@@ -2,6 +2,7 @@
 
 **Tags:** `[LAB, AdSERP, typed]` · kernel inherited from the census it consumes
 **Producer:** `scripts/engagement_continuation.py --census-dir …` → `scripts/output/engagement_continuation/gate_200px/summary.json` (**primary**, intake within 200 px (≈ 5°)), `kernel_boundary_cm_24/summary.json` (soft falloff), `summary.json` (the flat published kernel, artefact rows)
+**Key Claims:** `[NB37:K5–K9]`
 **Inputs:** the census `states.csv` (matched-opportunity rule), the cursor-only typed mousedown cache, organic content features, split title/snippet embeddings
 **Generated:** 2026-09-14.
 

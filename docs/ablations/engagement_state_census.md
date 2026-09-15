@@ -2,6 +2,7 @@
 
 **Tags:** `[LAB, AdSERP, typed]` · peripheral = outside the typed band rect · **five kernel variants reported, one primary**
 **Producer:** `scripts/engagement_state_census.py` (+ `states.csv`, one row per result slot). Variants under `scripts/output/engagement_state_census/`: `gate_200px/` (**primary**: published alpha, fixations further than 200 px ≈ 5° from the band contribute nothing), `gate_400px/` (≈ 9°), `kernel_boundary_cm_24/` and `kernel_boundary_cm/` (boundary-distance kernel with cortical-magnification falloff, 24 and 40 px/°), `summary.json` (the published PAI Eq. 2 ungated) and `kernel_listing/` (its other weight placement).
+**Key Claims:** `[NB37:K1–K4]` (`notebooks-v2/37_engagement_states.ipynb`)
 **Generated:** 2026-09-14, revised the same evening after the kernel finding below.
 
 > **Read this first — the published kernel is flat on SERP bands.** On

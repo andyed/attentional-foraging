@@ -2,6 +2,7 @@
 
 **Tags:** `[LAB, AdSERP, typed]` · 43 px/° (2026-09-14 derivation; the 2026-09-14 runs used 24 px/°, so E2 = 48 px ≈ 1.1°; rerun 2026-09-15 at 43 px/°, every quoted number identical to three decimals, see `px_per_deg_rerun.md`) · survey = first 5 fixations (NB13)
 **Producer:** `scripts/pai_kernel_validation.py` → `scripts/output/pai_kernel_validation/summary.json`
+**Key Claims:** `[NB37:K12]`
 **Generated:** 2026-09-14. Companion to `engagement_state_census.md` §Read-this-first (the flat-kernel finding) and `periphery_navigates.md` (what the periphery does).
 
 ## The test

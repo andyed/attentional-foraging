@@ -54,6 +54,8 @@ NOTEBOOK_LABELS = {
     "31_adsight_replication.ipynb": ("NB31", "31_adsight_replication", "AdSight noticed-classifier replication — per-etype LightGBM vs Seq2Seq buckets"),
     "32_k_coefficient.ipynb": ("NB32", "32_k_coefficient", "K coefficient (ambient/focal) — position gradient, inverted-U phase trajectory, click outcome"),
     "36_scroll_vs_cursor_deferred.ipynb": ("NB36", "36_scroll_vs_cursor_deferred", "viewport vs cursor on the deferred class, same rows, same window"),
+    "37_engagement_states.ipynb": ("NB37", "37_engagement_states", "five engagement states, continuation five ways, cost tiers, periphery as next-fixation guidance, kernel validation — reader notebook over the 2026-09-14 producers"),
+    "38_moves_between_results.ipynb": ("NB38", "38_moves_between_results", "memory-guided returns, ambient timing before major saccades, the stutter step by position, the survey vs the ad block — reader notebook over the 2026-09-14/15 producers"),
 }
 
 TARGETS = list(NOTEBOOK_LABELS.keys())

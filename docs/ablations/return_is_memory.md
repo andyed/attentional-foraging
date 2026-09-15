@@ -2,6 +2,7 @@
 
 **Tags:** `[LAB, AdSERP, typed]` · window 1 s · **two kernels reported**
 **Producer:** `scripts/return_is_memory.py` → `summary_boundary_cm_24.json` (primary: boundary-distance kernel with cortical-magnification falloff, alpha = 1/(1 + E/2°), 43 px/° (2026-09-14 derivation; the 2026-09-14 runs used 24 px/°, so E2 = 48 px ≈ 1.1°; rerun 2026-09-15 at 43 px/°, every quoted number identical to three decimals, see `px_per_deg_rerun.md`), `scripts/peripheral_kernel.py`) and `summary.json` (the published PAI Eq. 2, `spec_eq2`)
+**Key Claims:** `[NB38:K1–K3]` (`notebooks-v2/38_moves_between_results.ipynb`)
 **Generated:** 2026-09-14. Follows `pai_deferred_probe.md` (same day).
 
 > **Kernel note (read first).** The published PAI kernel is nearly flat in

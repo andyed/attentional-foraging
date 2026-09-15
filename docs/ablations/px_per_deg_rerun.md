@@ -2,6 +2,7 @@
 
 **Tags:** `[LAB, AdSERP, typed]` · boundary-distance kernel alpha = 1/(1 + E/2°) · 2026-09-15
 **Producers:** the six below, rerun with `--px-per-deg 43` (outputs suffixed `_43` / `_px43` / `kernel_boundary_cm_43`) against their 2026-09-14 runs at 24 px/°
+**Key Claims:** `[NB37:K15]`
 
 ## Why
 

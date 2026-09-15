@@ -2,6 +2,7 @@
 
 **Tags:** `[LAB, AdSERP, typed]` · survey = first five fixations (NB13) · 2,603 trials, 47 participants · ad = `native_ad` + `dd_top` (top-of-page ads in the typed taxonomy)
 **Producer:** `scripts/survey_above_fold.py` → `scripts/output/survey_above_fold/summary.json`
+**Key Claims:** `[NB38:K10–K11]`
 **Generated:** 2026-09-15. AI-Overview mirror (collab-only, Sara's data): `collab/allawati-ai-overviews/engagement-census-ao-2026-09-14/survey_above_fold_ao.py`, numbers in that folder's README.
 
 ## Question

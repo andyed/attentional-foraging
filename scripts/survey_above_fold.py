@@ -110,7 +110,8 @@ for tid in tids:
                 adtop['land_later_only'] += 1
 
 out = {'generated_utc': dt.datetime.now(dt.timezone.utc).isoformat(), 'regime': '[LAB, AdSERP, typed]', 'n_survey_fixations': N_SURVEY,
-       'trials': n_trials, 'fold_px_median': float(np.median(fold_used)), 'layouts_top_band': dict(layouts)}
+       'trials': n_trials, 'fold_px_median': float(np.median(fold_used)), 'layouts_top_band': dict(layouts),
+       'survey_reach_fold_share': survey_reach_fold / n_trials, 'survey_len_ms_median': float(np.nanmedian(np.array(survey_len_ms, float)))}
 print(f'trials {n_trials}; fold {np.median(fold_used):.0f} px; top band: {dict(layouts)}')
 print(f'survey ({N_SURVEY} fixations) reaches below the fold in {survey_reach_fold / n_trials:.3f} of trials')
 CL = ['page top', 'ad', 'widget', 'organic', 'between/other', 'below fold']

@@ -2,6 +2,7 @@
 
 **Tags:** `[LAB, AdSERP, typed, buf500 mousedown]` · **two kernels reported**
 **Producer:** `scripts/pai_deferred_probe.py` → `summary_w1000_full_boundary_cm_24.json` (1 s, untruncated, boundary-distance kernel with cortical-magnification falloff, `scripts/peripheral_kernel.py`, 43 px/° (2026-09-14 derivation; runs were made with 24 px/°, so E2 = 48 px ≈ 1.1°)) and, under the published PAI Eq. 2 (`spec_eq2`): `summary.json` (2 s, truncated), `summary_w2000_full.json`, `summary_w1000_full.json`
+**Key Claims:** `[NB37:K13]`
 **Generated:** 2026-09-14. Assessment probe for whether PAI has a place in the CHIIR 2027 divergence framing.
 
 > **Kernel note (added later the same day, read first).** The published Eq. 2
