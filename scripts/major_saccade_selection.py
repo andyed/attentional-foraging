@@ -34,6 +34,7 @@ from peripheral_kernel import boundary_ogd
 ap = argparse.ArgumentParser()
 ap.add_argument('--px-per-deg', type=float, default=24.0); ap.add_argument('--e2-deg', type=float, default=2.0)
 ap.add_argument('--census-dir', default='scripts/output/engagement_state_census/gate_200px')
+ap.add_argument('--output', default='scripts/output/major_saccade_selection/summary.json')
 ap.add_argument('--allow-prev-off-column', action='store_true', help='keep moves whose preceding fixation was on no result (default: moves between results only, as in the note)')
 args = ap.parse_args()
 BINS = [('minor <100', 0, 100), ('100-300', 100, 300), ('major 300-600', 300, 600), ('major >600', 600, 1e9)]
@@ -138,5 +139,5 @@ out['major_windows'] = wins
 sel = [e for e, mm in zip(ev, amp >= 600) if mm and 'top_intake_1000' in e and e['n_c'] >= 3]
 out['top_intake_not_nearest'] = {name: float(np.mean([e['top_intake_1000'] and not e['nearest_prev'] for e, mm in zip(ev, (amp >= lo) & (amp < hi)) if mm and 'top_intake_1000' in e and e['n_c'] >= 3])) for name, lo, hi in BINS}
 print('\nP(top intake and not nearest): ' + ', '.join(f'{k} {v:.3f}' for k, v in out['top_intake_not_nearest'].items()))
-json.dump(out, open(ROOT / 'scripts/output/major_saccade_selection/summary.json', 'w'), indent=1)
-print('\nwrote scripts/output/major_saccade_selection/summary.json')
+json.dump(out, open(ROOT / args.output, 'w'), indent=1)
+print('\nwrote', args.output)

@@ -84,7 +84,7 @@ is a function of how far the kernel looks:
 |---|---|---|---|---|
 | published Eq. 2, gated at 200 px (**primary**) | ≈ 5° | **25.1 %** | 0.27 [0.20, 0.37] | **0.33** (skipped get *less*) |
 | published Eq. 2, gated at 400 px | ≈ 9° | 34.1 % | 0.38 [0.26, 0.52] | — |
-| boundary distance, 1/(1 + E/2°), 43 px/° (2026-09-14 derivation; runs were made with 24 px/°, so E2 = 48 px ≈ 1.1°) | soft | 44.5 % | 0.53 [0.38, 0.60] | 0.46 (skipped get less) |
+| boundary distance, 1/(1 + E/2°), 43 px/° (2026-09-14 derivation; the 2026-09-14 runs used 24 px/°, so E2 = 48 px ≈ 1.1°; rerun 2026-09-15 at 43 px/°, every quoted number identical to three decimals, see `px_per_deg_rerun.md`) | soft | 44.5 % | 0.53 [0.38, 0.60] | 0.46 (skipped get less) At 43 px/° (2026-09-15 rerun): 1,222 peripheral slots (from 1,096), tier tests still null; see `px_per_deg_rerun.md`. |
 | boundary distance, 1/(1 + E/2°), 40 px/° | soft | 49.2 % | 0.56 [0.43, 0.65] | — |
 | published Eq. 2, ungated (the 73 % row) | flat | 72.8 % | 0.79 [0.69, 0.85] | 0.60 (skipped get *more*) |
 
@@ -108,7 +108,7 @@ The construct boundary the paper draws ("examined non-clicks") is right;
 about a third of the excluded rows were taken in peripherally at read
 level and passed by with the cursor, and most were not.
 
-### What follows what (display order, row-normalised, boundary kernel 43 px/° (2026-09-14 derivation; runs were made with 24 px/°, so E2 = 48 px ≈ 1.1°))
+### What follows what (display order, row-normalised, boundary kernel 43 px/° (2026-09-14 derivation; the 2026-09-14 runs used 24 px/°, so E2 = 48 px ≈ 1.1°; rerun 2026-09-15 at 43 px/°, every quoted number identical to three decimals, see `px_per_deg_rerun.md`))
 
 | from ↓ / to → | never on | unsampled | peripheral | rejected | deferred | clicked |
 |---|---|---|---|---|---|---|

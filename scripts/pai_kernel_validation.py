@@ -47,7 +47,10 @@ from peripheral_kernel import boundary_ogd  # noqa: E402
 STATES = ROOT / 'scripts/output/engagement_state_census/gate_200px/states.csv'
 OUT = ROOT / 'scripts/output/pai_kernel_validation'
 SURVEY_FIX = 5
-PX_PER_DEG = 24.0
+import argparse as _ap
+_a = _ap.ArgumentParser(); _a.add_argument('--px-per-deg', type=float, default=24.0); _a.add_argument('--suffix', default='')
+_ARGS = _a.parse_args()
+PX_PER_DEG = _ARGS.px_per_deg   # 24 = the 2026-09-14 runs; 43 = the derived AdSERP scale
 
 KERNELS = [
     ('published eq2, ungated', 'spec', None, None),
@@ -175,7 +178,7 @@ def main():
            'regime': '[LAB, AdSERP, typed]', 'candidates': len(cands), 'later_fixated': int(y.sum()),
            'px_per_deg': PX_PER_DEG, 'survey_fixations': SURVEY_FIX, **res}
     OUT.mkdir(parents=True, exist_ok=True)
-    json.dump(out, open(OUT / 'summary.json', 'w'), indent=1)
+    json.dump(out, open(OUT / f'summary{_ARGS.suffix}.json', 'w'), indent=1)
     print(f'wrote {OUT}')
 
 
