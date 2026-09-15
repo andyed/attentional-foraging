@@ -1,0 +1,226 @@
+{
+ "schema_version": 1,
+ "generated_utc": "2026-09-14T14:51:49.576122+00:00",
+ "regime": "[LAB, AdSERP, typed]",
+ "candidates": 16436,
+ "later_fixated": 13288,
+ "px_per_deg": 24.0,
+ "survey_fixations": 5,
+ "baselines": {
+  "position only": 0.6539251601888606,
+  "distance rank only": 0.7477538465598792,
+  "position + distance rank": 0.7519715340607875
+ },
+ "kernels": [
+  {
+   "kernel": "published eq2, ungated",
+   "zero_intake_share": 6.0842054027743974e-05,
+   "intake rank alone": 0.5195958348601255,
+   "position + intake": 0.6632935717143498,
+   "position + distance + intake": 0.7588026179097879,
+   "gain over position": {
+    "mean_delta": -0.0005175002293482908,
+    "ci95": [
+     -0.002863446872097304,
+     0.001725041946926583
+    ]
+   },
+   "gain over position + distance": {
+    "mean_delta": 0.008624903459621266,
+    "ci95": [
+     0.005582426802041121,
+     0.011833349825213666
+    ]
+   }
+  },
+  {
+   "kernel": "published eq2, gate 400 px",
+   "zero_intake_share": 0.736675590167924,
+   "intake rank alone": 0.7454214883335233,
+   "position + intake": 0.7492142598685595,
+   "position + distance + intake": 0.7522232276525447,
+   "gain over position": {
+    "mean_delta": 0.047787360663698666,
+    "ci95": [
+     0.022570515678920985,
+     0.07136619184602762
+    ]
+   },
+   "gain over position + distance": {
+    "mean_delta": 0.0008154644952019303,
+    "ci95": [
+     9.476420596190697e-05,
+     0.0017015705269589174
+    ]
+   }
+  },
+  {
+   "kernel": "published eq2, gate 200 px",
+   "zero_intake_share": 0.8732660014602093,
+   "intake rank alone": 0.7469590341277242,
+   "position + intake": 0.7509050546317453,
+   "position + distance + intake": 0.7523981234418116,
+   "gain over position": {
+    "mean_delta": 0.049564812723421885,
+    "ci95": [
+     0.024266139399658194,
+     0.07301286164416686
+    ]
+   },
+   "gain over position + distance": {
+    "mean_delta": 0.000981867945876622,
+    "ci95": [
+     0.00023201810075561169,
+     0.0018320145363204688
+    ]
+   }
+  },
+  {
+   "kernel": "published eq2, gate 100 px",
+   "zero_intake_share": 0.9428693112679484,
+   "intake rank alone": 0.747454066188446,
+   "position + intake": 0.7514983520207588,
+   "position + distance + intake": 0.7526551361031574,
+   "gain over position": {
+    "mean_delta": 0.05013965406930709,
+    "ci95": [
+     0.02508794898587938,
+     0.07341383497465494
+    ]
+   },
+   "gain over position + distance": {
+    "mean_delta": 0.0011313933219377903,
+    "ci95": [
+     0.00020316956901998264,
+     0.002181522251684562
+    ]
+   }
+  },
+  {
+   "kernel": "boundary 1/(1+E/1deg), ungated",
+   "zero_intake_share": 0.0,
+   "intake rank alone": 0.7480462399987148,
+   "position + intake": 0.7523661970713132,
+   "position + distance + intake": 0.7526363819004948,
+   "gain over position": {
+    "mean_delta": 0.05058667789384846,
+    "ci95": [
+     0.02595777759782972,
+     0.0734999199759351
+    ]
+   },
+   "gain over position + distance": {
+    "mean_delta": 0.0010900626472301973,
+    "ci95": [
+     0.00014801625546664773,
+     0.00221595248077989
+    ]
+   }
+  },
+  {
+   "kernel": "boundary 1/(1+E/2deg), ungated",
+   "zero_intake_share": 0.0,
+   "intake rank alone": 0.7479334757234316,
+   "position + intake": 0.7522448147079996,
+   "position + distance + intake": 0.7525715968281993,
+   "gain over position": {
+    "mean_delta": 0.05044471670105993,
+    "ci95": [
+     0.02581818338564685,
+     0.07333006286062804
+    ]
+   },
+   "gain over position + distance": {
+    "mean_delta": 0.0009873950284661301,
+    "ci95": [
+     7.403250982611939e-05,
+     0.0020841746685381505
+    ]
+   }
+  },
+  {
+   "kernel": "boundary 1/(1+E/4deg), ungated",
+   "zero_intake_share": 0.0,
+   "intake rank alone": 0.7478378161415904,
+   "position + intake": 0.7521180654632358,
+   "position + distance + intake": 0.7524269779002101,
+   "gain over position": {
+    "mean_delta": 0.05009034610520626,
+    "ci95": [
+     0.025411767226594384,
+     0.07311345767344653
+    ]
+   },
+   "gain over position + distance": {
+    "mean_delta": 0.0006409567735779015,
+    "ci95": [
+     -3.3737598290030954e-05,
+     0.0014130117048523725
+    ]
+   }
+  },
+  {
+   "kernel": "boundary 1/(1+E/2deg), gate 200 px",
+   "zero_intake_share": 0.8720491603796544,
+   "intake rank alone": 0.7470355928709072,
+   "position + intake": 0.7511067489693675,
+   "position + distance + intake": 0.752536909322701,
+   "gain over position": {
+    "mean_delta": 0.049637901739674486,
+    "ci95": [
+     0.024741500325406184,
+     0.07300272876162107
+    ]
+   },
+   "gain over position + distance": {
+    "mean_delta": 0.0011022750804449385,
+    "ci95": [
+     0.00028957506029776416,
+     0.002114395681221944
+    ]
+   }
+  },
+  {
+   "kernel": "hard gate only, 200 px (duration within reach)",
+   "zero_intake_share": 0.8720491603796544,
+   "intake rank alone": 0.7467510405773531,
+   "position + intake": 0.7507991752645142,
+   "position + distance + intake": 0.7522594331846448,
+   "gain over position": {
+    "mean_delta": 0.04925665163449398,
+    "ci95": [
+     0.024099194818631913,
+     0.07271053154272077
+    ]
+   },
+   "gain over position + distance": {
+    "mean_delta": 0.0002461473566250299,
+    "ci95": [
+     -0.0001709867854329577,
+     0.0006711125481142566
+    ]
+   }
+  },
+  {
+   "kernel": "hard gate only, 100 px",
+   "zero_intake_share": 0.9400705767826721,
+   "intake rank alone": 0.7473340106042884,
+   "position + intake": 0.7515461041174045,
+   "position + distance + intake": 0.7527133589974656,
+   "gain over position": {
+    "mean_delta": 0.050032707193096604,
+    "ci95": [
+     0.02507938128492972,
+     0.07338266560546317
+    ]
+   },
+   "gain over position + distance": {
+    "mean_delta": 0.0010996266690916695,
+    "ci95": [
+     0.00026160290575334976,
+     0.0020462355710366056
+    ]
+   }
+  }
+ ]
+}

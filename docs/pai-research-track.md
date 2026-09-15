@@ -128,11 +128,45 @@ intake on the future click target ramps as the decision approaches.
 Caveat: window truncation at trial start can differ between the groups —
 re-check with trial-time controls before this becomes a claim.
 
+## Deferred-class probe (2026-09-14, post-fix substrate)
+
+`scripts/pai_deferred_probe.py` → `docs/ablations/pai_deferred_probe.md`.
+Scored on the CHIIR carve's own 9,269 label-complete rows (cursor-only typed
+mousedown cache, label producer's map, gate reproduces M4-7 0.6802). On
+untruncated 1 s post-exit windows, peripheral intake adds −0.000 paired AUC
+over the seven-feature cursor vector under an eccentricity-aware kernel
+(the published kernel's +0.010 was page-wide fixation duration: see the
+kernel finding below). The truncated-window run (+0.022) is window-length
+leakage and is not quotable. **CHIIR boundary confirmed on
+evidence: PAI stays out.** The finding is a Q2/Q6 item for the ETRA 2027
+short paper (due 2027-02-11) with the authors.
+
+**Return mechanism (2026-09-14):** `scripts/return_is_memory.py` →
+`docs/ablations/return_is_memory.md`. Long gaze returns (≥ 2 ranks, n = 1,774)
+land at first-entry precision from 2.4× the distance with *half* the
+peripheral intake on the target (78 vs 148 mass/s under the boundary
+kernel, CI [−75, −50]), and precision does not covary with that intake
+(ρ −0.001). Memory-guided. This is the Q2 answer for the deferred class.
+
+**Kernel finding (2026-09-14, load-bearing):** the published Eq. 2 alpha is
+nearly flat in eccentricity on SERP result bands (corpus Spearman with
+boundary distance −0.08; `scripts/peripheral_kernel.py` docstring,
+`docs/ablations/engagement_state_census.md`). Every PAI number on this
+corpus is reported beside a gated or boundary-distance variant; the
+boundary-distance cortical-magnification falloff is the Q1 proposal, now
+with a concrete reason.
+
+**Re-derivation debt:** everything in `pai_exposure_validation.md` and
+`pai_preentry_probe.json` predates the 09-04 lineage audit and the 09-13
+carve fix (organic_hybrid bands, gaze-selected feature caches). Re-run the
+exposure ablation on the cursor-only typed cache before quoting any of it.
+
 ## Boundary decisions (2026-08-31)
 
 - **CHIIR**: PAI stays out as a contribution; at most a two-sentence
   future-work/discussion note without numbers. The paper's spine remains
-  gaze-trains/cursor-runs.
+  gaze-trains/cursor-runs. *Re-confirmed 2026-09-14 on post-fix evidence
+  (deferred-class probe above).*
 - **CHI LBW poster**: optional, no longer load-bearing. If it ships, it is
   the descriptive/outreach vehicle and cites whatever the PAI track
   publishes, not the reverse.
@@ -159,6 +193,8 @@ re-check with trial-time controls before this becomes a claim.
    walks per-record etype).
 3. Anticipation-horizon curve (Q2): pre-entry mass as a function of time
    before first entry, clicked vs control.
-4. Write the kernel-sensitivity note (established fact 4) into
+4. Re-derive `pai_exposure_ablation.py` on the cursor-only typed mousedown
+   cache with the carve gate (the 08-31 increments are over retired rows).
+5. Write the kernel-sensitivity note (established fact 4) into
    `docs/ablations/pai_exposure_validation.md` so the current numbers can't
    be quoted kernel-free.

@@ -8,6 +8,85 @@ bottom of this file.
 
 ---
 
+## Foraging refresh (opened 2026-09-14)
+
+Decision: the repo advances foraging as a theory of SERP behaviour; click
+prediction is a diagnostic. Plan and phases: `docs/foraging-refresh-plan-2026-09-14.md`.
+Construct map: `docs/foraging-constructs.md`.
+
+### Phase A — land and reframe
+- [x] `scripts/return_is_memory.py` + `docs/ablations/return_is_memory.md`
+      (returns are memory-guided; long returns land at first-entry precision
+      from 2.4× the distance with a weaker peripheral ramp).
+- [x] `scripts/engagement_state_census.py` + `docs/ablations/engagement_state_census.md`
+      (five-state census with an opportunity baseline; primary = intake within 8°: a
+      quarter of on-screen skips sampled at read level, 44 % under a soft falloff, 73 %
+      under the flat published kernel — always quote the reach).
+- [x] Kernel finding: the published PAI Eq. 2 is flat in eccentricity on SERP bands
+      (`scripts/peripheral_kernel.py` docstring). Bring to Duchowski; boundary-distance
+      CM falloff is the proposal, the hard gate the assumption-free alternative.
+- [x] `scripts/engagement_continuation.py` + `docs/ablations/engagement_continuation.md`
+      (C(i) five ways; cost tiers 0 / 541 / 1,695 / 4,052 ms; within 8° the
+      position-matched peripheral share is 32 % and skipped results get LESS intake
+      than read ones at matched position, AUC 0.33; relevance-by-state null under any
+      eccentricity-aware kernel).
+- [x] `scripts/periphery_navigates.py` + `docs/ablations/periphery_navigates.md`: skipping is
+      reading order + opportunity (layout w/o residence 0.713 vs position 0.696, CI incl. 0;
+      content adds nothing); the survey leaves a proximity map (top-intake candidate fixated
+      later 96 % vs 49 %) that no kernel beats plain distance on (+0.001).
+- [x] `scripts/pai_kernel_validation.py` + `docs/ablations/pai_kernel_validation.md`: published
+      Eq. 2 ungated predicts later fixation at 0.520; every eccentricity-aware kernel 0.745–0.748,
+      shape unidentifiable; suggestions for the authors: boundary distance, area weight outside
+      the ratio.
+- [x] Bold query-term density from the HTML snapshots: NULL on every state contrast
+      (`docs/null-findings/2026-09-14-bold-term-density-null.md`); no variance between
+      results on transactional queries. Peripheral evaluation is not supported on AdSERP.
+- [x] `scripts/pai_deferred_probe.py` + `docs/ablations/pai_deferred_probe.md`
+      (PAI on the deferred split: −0.000 over the cursor vector under an
+      eccentricity-aware kernel; the +0.010 was the flat published kernel;
+      PAI stays out of CHIIR).
+- [x] README front sections rewritten around the two-decisions / three-channels /
+      five-states thesis (2026-09-14).
+- [ ] Move ski-jump and priming framings to `docs/history/` with anchors preserved.
+
+### Phase B — the CHIIR 2027 paper (abstract 2026-10-08, paper 10-15)
+Decision 2026-09-14: ONE CHIIR submission — the five-state / continuation
+paper framed through C/W/L and the IFT cost model (Leif), with PAI as the
+instrument (Duchowski). Leaky Cursor is not submitted to CHIIR.
+- [x] Ordered first-pass C(i) (the strict C/W/L version) in the continuation producer
+      (first-pass reach at result 10 = 30 %; C declines smoothly 0.84 → 0.60).
+- [x] Kernel sensitivity on the census: eq2 vs listing agree on 98.3 % of slots, shares
+      move ≤ 1.8 pts (`engagement_state_census/kernel_listing/`). The demo `exact` kernel is
+      retired and not run.
+- [ ] NB37 Key Claims block; every quoted number through it.
+- [ ] Write to Sara FIRST (decision 2026-09-14: Sara joins CHIIR for orientation).
+      Scope in the note: the survey-phase mechanism generalises (her 2026-06-03 NB13
+      replication: compression, survey length, pupil trajectory, scroll decoupling;
+      values stay in `collab/`);
+      CHIIR states "replicates on a second corpus, in preparation" and carries NO AO
+      number; where the survey lands on an AI-Overview page, depth, give-up and
+      scroll-or-not stay with the RMIT paper; offer the survey-map producer
+      (`periphery_navigates.py` test B) for her corpus as that paper's mechanism layer.
+      Ask whether her PIs (McKay / Sanderson / Trippas) need to be consulted on her
+      coauthorship and whether the "in preparation" citation is acceptable to them.
+- [ ] Write to Leif and Duchowski (coauthorship; Leif on the evaluation-theory layer
+      and a relevance-judgment set for AdSERP results if he wants to drive it).
+- [ ] Settle the CHI27 boundary with Sara in the same note (how deep vs how you move).
+- [ ] Re-derive `pai_exposure_ablation.py` on the cursor-only typed mousedown cache
+      (every 08-31 PAI increment is over retired gaze-selected rows).
+
+### Phase C — the theory gap
+- [ ] Fit a within-page gain curve and give-up threshold per participant; test whether
+      the depletion-state predictor is the MVT threshold. Until then: "depletion-state
+      prediction", never "MVT".
+
+### Phase D / E
+- [ ] NB37 engagement states, NB38 return mechanism (Tier B), tier re-assignment,
+      freshness ledger walked to zero, Key Claims aggregate rebuilt.
+- [ ] `docs/history/` index; `findings.md` re-sectioned with old anchors kept.
+
+---
+
 ## Substrate fidelity roadmap (opened 2026-08-30)
 
 A day of substrate work found three defects that had shipped through a

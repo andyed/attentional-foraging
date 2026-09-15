@@ -1,6 +1,6 @@
 # Attentional Foraging on Search Results Pages
 
-[Cursor Plots](https://andyed.github.io/attentional-foraging/) | [Why a task model](#why-a-task-model-not-another-classifier) | [Task Model](#the-task-model) | [Key Insights](#key-insights) | [Notebooks](#notebooks) | [Data](#data) | [Paper](#paper) | [What's Next](#whats-next)
+[Cursor Plots](https://andyed.github.io/attentional-foraging/) | [Two decisions, three channels, five states](#two-decisions-three-channels-five-states) | [Task Model](#the-task-model) | [Key Insights](#key-insights) | [Notebooks](#notebooks) | [Data](#dataset) | [Paper](#paper) | [What's Next](#whats-next)
 
 ---
 
@@ -8,27 +8,99 @@
 
 ---
 
-## The puzzle
+## What this repository is for
 
-People scan a page of search results in a recognizable shape — the **F-pattern** in heatmaps, with a steep click decay from top to bottom and odd boundary effects at the last visible result. Twenty years of web search literature has explained this as "position bias" — a *label* for the shape, not a *mechanism* for it. This project asks the mechanism question: what cognitive operations are actually running while a user evaluates a search results page, and which of the patterns we see are the operations vs. which are statistical artifacts of how the data was aggregated?
+This is a research program on **foraging as a theory of how people use a
+search results page**, built on the [AdSERP](https://github.com/kayhan-latifzadeh/AdSERP)
+eye-tracking corpus (Latifzadeh, Gwizdka & Leiva, SIGIR 2025) and the
+[AllSERP](https://arxiv.org/abs/2605.04949) per-element enrichment of it.
+Information foraging theory (Pirolli & Card 1999; the marginal value theorem;
+Azzopardi's economic models of search) is stated at the level of patches, gain
+curves and stopping rules. What this repository adds is a **saccade-level
+observable for each of those constructs**, on a public corpus, with a producer
+that reproduces a shipped number before it emits a new one.
+The construct-to-observable map is [`docs/foraging-constructs.md`](docs/foraging-constructs.md);
+the plan that reorganised the repository around it (2026-09-14) is
+[`docs/foraging-refresh-plan-2026-09-14.md`](docs/foraging-refresh-plan-2026-09-14.md).
 
-The answer turns out to be a four-phase task model — **Orient → Survey → Evaluate → Commit** — recoverable from eye tracking, pupil dilation, mouse trajectories, and scroll telemetry on 2,776 commercial search trials.
+Click prediction is a diagnostic the theory passes, not the object. Twenty
+years of web search modelling treats the user as a signal stream and learns a
+map from stream to relevance: click models, cursor feature bags, sequence
+models. Those work. They also cannot represent the thing this corpus is full
+of: the gaze **returns** to results it has already examined (29 % of result
+slots are deferred in this way; 65 % of trials contain a return), which
+cascade models forbid, and the results a searcher examined but did not click
+split into two gaze-defined classes that clicks cannot see.
 
-[Latifzadeh, Gwizdka & Leiva's AdSERP dataset](https://github.com/kayhan-latifzadeh/AdSERP) (SIGIR 2025) made it possible: one of the richest public datasets of search behavior, with simultaneous eye tracking, mouse tracking, scrolling, and pupil dilation from 47 participants across 2,776 trials. An AI-assisted [journey.md](./docs/journey.md) validated the dataset's utility; the [findings](./docs/findings.md) have been growing since.
+## Two decisions, three channels, five states
 
-The AdSERP signals span five orders of magnitude in time — from 7 ms pupil samples to 60-second trials. Our augmentations (organic-result bounding boxes, reading episodes, cursor approach episodes, Butterworth LF/HF windows, LHIPA) bridge the gap between raw sensor events and trial-level cognition, making per-result and per-phase analysis possible. ([Signal timescale breakdown](assets/temporal-spectrum.png))
+A searcher on a results page makes two nested decisions and leaves three
+kinds of trace.
 
-> **On earlier framings.** This project began from two hypotheses that did not survive empirical test: the classic "ski-jump" terminal-click uptick at scale, and a lexical-priming explanation for the declining dwell curve. Both turned out to be either coordinate-bug artifacts or under-powered at the AdSERP grain, and the forward story (task model, cursor approach-retreat, graded-relevance reframe) overtook them. Audit back stories and what survived each one are documented in [`docs/null-findings/`](./docs/null-findings/) — the project documents null results in git even when they don't make it into papers, as a research-integrity commitment.
+- **Within-patch — harvest this result, or not.** Witnessed by the cursor.
+  Seven approach-geometry features on a press-anchored, click-buffered cursor
+  stream predict the eventual click at 0.935 AUC on 2,608 trials, and position
+  becomes redundant once they are in the model.
+- **Between-patch — advance, return, or leave.** Witnessed by the gaze return
+  itself (9,797 deferred result slots, 9,347 measured return events) and, as a
+  candidate not yet produced in this repository, by depletion state (how deep,
+  how many sampled, how much page remains). The return is **memory-guided**:
+  long returns (two or more ranks, 30 % of returns) land at first-entry
+  precision from 2.4× the distance with a *weaker* peripheral ramp than the
+  first entry had. → [`docs/ablations/return_is_memory.md`](docs/ablations/return_is_memory.md)
+- **Pre-patch — what the periphery delivered before any fixation landed.**
+  Witnessed by the Peripheral Attention Index (Duchowski, Gehrer & Svaldi
+  2026), the graded-membership construct on the gaze side that mirrors the
+  cursor construction. Its measurable job here is local next-fixation
+  guidance: where the five survey fixations were predicts where the eyes
+  go afterwards (top-intake candidate fixated later in 96 % of trials,
+  bottom in 49 %), and that is gaze proximity, since no kernel adds more
+  than 0.001 over distance. It does not evaluate content, does not steer
+  skips beyond reading order, and does not guide returns, which are
+  executed from memory. The published PAI kernel is nearly flat in
+  eccentricity on SERP result bands, which is the method question this
+  repository brings to its authors.
+  → [`docs/ablations/pai_deferred_probe.md`](docs/ablations/pai_deferred_probe.md)
 
-## Why a task model, not another classifier
+Put together, engagement with a result has **five states**, not the four the
+consideration-set taxonomy carried until now:
 
-Twenty years of web search modeling has been dominated by a single move: treat user behavior as a signal stream and learn a mapping from that stream to relevance. Click models (cascade, DBN, UBM) encode examination and stopping as statistical parameters. Cursor-feature classifiers extract 638-dimensional feature bags from mouse trajectories. Transformer-based sequence models now learn end-to-end maps from raw `(x, y, t)` to click. These approaches have produced real engineering gains and are the default framing in SIGIR, CIKM, and WSDM.
+| state | witnessed by | share of 34,317 result slots |
+|---|---|---|
+| never on screen | scroll | 24 % |
+| on screen, never fixated — *peripherally sampled* vs *unsampled* | PAI within 200 px (≈ 5°), with an opportunity baseline | 2 % vs 5 % (13 % opportunity unknown) |
+| fixated, rejected | gaze | 18 % |
+| fixated, **deferred** (the eyes came back) | gaze, readable from the cursor | 29 % |
+| clicked | cursor, click | 8 % |
 
-This project argues the framing misses a critical dimension. The user is running a *cognitive task*, and when that task is modeled explicitly — using the vocabulary of psychology and HCI task analysis the field already has — structure comes out of the data that pure signal-decoding leaves untouched. Phase boundaries become testable. Content-independent vs. content-modulated subprocesses separate. Forward evaluation and regressive re-evaluation stop being one blob. The four-class consideration-set taxonomy (clicked / deferred / evaluated-rejected / not-approached) recovers information that a 638-feature classifier leaves on the table, using 11 features, because the task model tells you which features matter.
+Of the results that were on screen and never fixated, **a quarter**
+received as much near-peripheral intake (within 200 px, about 5°) per second of
+unfixated screen time as the results the searcher went on to read, a third
+under a wider reach, and the share is a per-participant trait. Most skipped
+results receive *less* near-peripheral intake than read results at the same
+position: the eyes get close to what they read. The published PAI kernel
+reads 73 % here because it is nearly flat in eccentricity on SERP result
+bands, which is the method question this repository brings to its authors.
 
-The Survey phase operationalized in this paper was hypothesized by Zhang, Abualsaud & Smucker (CHIIR 2018) in the context of immediate requery behavior. We give it a saccade-level signature. The same move applies across the project: psychology and HCI already have the vocabulary; what this work adds is the measurement.
+Per-state findings with links to the notebooks and producers:
+[`docs/findings-result-evaluation-states.md`](docs/findings-result-evaluation-states.md).
 
-*Task models add a dimension, not just another feature.* That is the claim the whole repository is organized around.
+The peripheral tier is a construct the ad-attention industry does not have
+(viewability is a viewport rectangle held for one second) and it sharpens the
+boundary of every cursor result in this repository: "approached but never
+fixated" now splits into sampled-and-skipped versus never sampled.
+→ [`docs/ablations/engagement_state_census.md`](docs/ablations/engagement_state_census.md)
+
+The phase model below (Orient → Survey → Evaluate → Commit) is the temporal
+structure inside which those decisions run.
+
+> **On earlier framings.** This project began from two hypotheses that did not
+> survive empirical test: the classic "ski-jump" terminal-click uptick at scale,
+> and a lexical-priming explanation for the declining dwell curve. Both are
+> documented nulls in [`docs/null-findings/`](./docs/null-findings/) — the project
+> keeps null results in git even when they don't make it into papers. The
+> position-bias mechanism question they opened is answered below by the
+> two-decision account, not by either of them.
 
 ## Cursor plots — two views, one dataset
 
@@ -240,15 +312,22 @@ Several pieces of this project are designed for reuse beyond AdSERP:
 <a id="whats-next"></a>
 ## What's Next
 
-Highlights from the full [TODO.md](./TODO.md):
+The ordered worklist is [`TODO.md`](./TODO.md); the refresh phases are in
+[`docs/foraging-refresh-plan-2026-09-14.md`](docs/foraging-refresh-plan-2026-09-14.md).
+The three items that change what the theory can claim:
 
-- **Saliency-guided survey** — do the initial wide eye sweeps target visually salient regions of the page? Requires saliency map export from [Scrutinizer](https://github.com/andyed/scrutinizer2025)
-- **Product taxonomy partition** — commodity vs branded vs experiential queries ("buy AA batteries" vs "buy Nike Air Max" vs "buy winter jacket") may produce different foraging strategies
-- **Full model validation** — the stay/refine/abandon decision needs production log data with natural stopping behavior
-- **Windowed LHIPA by position** — pupil dilation trajectories during forward scanning as a cognitive load timeline (pending consultation on minimum analysis window size)
-- **Forward-only vs regressive splits landed** in NB01/05/17/20/23/24 (April 2026). Cross-repo: `approach-retreat` Episode now carries direction natively. The remaining priming granularity — token-level fixation analysis mapping individual fixations to specific words — is tractable on AdSERP but not a priority now that framework compilation explains what the original conjecture was trying to explain. Context: [priming-null-result.md](./docs/null-findings/priming-null-result.md)
-- **Mouse dwell vs time on screen** — normalize cursor dwell at each result by how long the result was actually in the viewport. Current dwell measures conflate "cursor lingered there" with "the result was visible for a long time"
-- **Mouse resting position analyses** — characterize where cursors park between interactions (right margin? last clicked? centered?). Individual-differences candidate, connects to `mouse_independent` tag
+- **The gain curve.** No give-up threshold or marginal-value function is
+  fitted anywhere here yet; until it is, the language stays "depletion-state
+  prediction", never "MVT". Phase C.
+- **The peripheral tier, post-fix.** Every PAI number computed before the
+  2026-09-04 lineage audit sits on retired rows; the exposure ablation is
+  re-derived on the cursor-only stream before any of it is quoted. Phase B.
+- **Natural stopping.** AdSERP is forced-choice, so stay/refine/abandon is
+  unobservable here. The abandonment work is Sara Allawati's track (CHI 2027)
+  and is cited, not rebuilt.
+
+Older open threads (saliency-guided survey, product-taxonomy partition,
+windowed LHIPA, cursor resting positions) remain in `TODO.md`.
 
 ## Sister project: approach-retreat
 
