@@ -48,6 +48,12 @@ kinds of trace.
   long returns (two or more ranks, 30 % of returns) land at first-entry
   precision from 2.4× the distance with a *weaker* peripheral ramp than the
   first entry had. → [`docs/ablations/return_is_memory.md`](docs/ablations/return_is_memory.md)
+  The return is also the **modal move**: from the second result down, the
+  first visit to a result ends with a move back in 50–57 % of cases, landing
+  on a result already examined 75–92 % of the time, and at result 2 three
+  quarters of those excursions come back to result 2 before any new result is
+  entered. Forward by one is second (32–38 %); skipping two or more is 6–13 %.
+  → [`docs/ablations/next_action_by_position.md`](docs/ablations/next_action_by_position.md)
 - **Pre-patch — what the periphery delivered before any fixation landed.**
   Witnessed by the Peripheral Attention Index (Duchowski, Gehrer & Svaldi
   2026), the graded-membership construct on the gaze side that mirrors the
@@ -59,7 +65,9 @@ kinds of trace.
   skips beyond reading order, and does not guide returns, which are
   executed from memory. The published PAI kernel is nearly flat in
   eccentricity on SERP result bands, which is the method question this
-  repository brings to its authors.
+  repository brings to its authors; the falloff's scale is as unidentifiable
+  as its shape (rerun at the derived 43 px/°, nothing rank-based moves,
+  [`docs/ablations/px_per_deg_rerun.md`](docs/ablations/px_per_deg_rerun.md)).
   → [`docs/ablations/pai_deferred_probe.md`](docs/ablations/pai_deferred_probe.md)
 
 Put together, engagement with a result has **five states**, not the four the
@@ -92,7 +100,24 @@ fixated" now splits into sampled-and-skipped versus never sampled.
 → [`docs/ablations/engagement_state_census.md`](docs/ablations/engagement_state_census.md)
 
 The phase model below (Orient → Survey → Evaluate → Commit) is the temporal
-structure inside which those decisions run.
+structure inside which those decisions run. One qualification from the
+five-fixation survey itself: on the 78 % of pages topped by an ad block, the
+survey reads *into* the block rather than around it (first band fixated is
+the ad in 93 % of trials, 3.5 of the 5 fixations, skip-over 3 %, every
+participant), under 1 % of surveys reach the fold, and only 13 % of the
+block's dwell falls inside the survey. The survey is how the top block is
+scanned, not the page. → [`docs/ablations/survey_above_fold.md`](docs/ablations/survey_above_fold.md)
+
+### The stutter step, idealized and in the population
+
+<img src="scripts/output/figures/idealized_vs_population.png" width="900" alt="An idealized trial on an ad-topped page beside the population rate of each of its six stages">
+
+Left, one authored trial on an ad-topped page: survey on the top block; read
+result 1 then re-read the query; bounce back to a seen result; return, then
+forward one; a long forward jump as the minority path; a memory-guided return
+and the click. Right, the population rate of each stage from the producers
+(`render_idealized_vs_population.py`; a single-channel version with cursor and
+a roving ±200 px peripheral field is `idealized_navigation.png`).
 
 > **On earlier framings.** This project began from two hypotheses that did not
 > survive empirical test: the classic "ski-jump" terminal-click uptick at scale,
@@ -322,6 +347,8 @@ The three items that change what the theory can claim:
 - **The peripheral tier, post-fix.** Every PAI number computed before the
   2026-09-04 lineage audit sits on retired rows; the exposure ablation is
   re-derived on the cursor-only stream before any of it is quoted. Phase B.
+  (The kernel-scale question is closed: the 43 px/° rerun moves nothing
+  rank-based.)
 - **Natural stopping.** AdSERP is forced-choice, so stay/refine/abandon is
   unobservable here. The abandonment work is Sara Allawati's track (CHI 2027)
   and is cited, not rebuilt.
