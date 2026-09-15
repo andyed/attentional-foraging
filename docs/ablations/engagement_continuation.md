@@ -81,7 +81,7 @@ position** (n = 2,420 skipped slots with a threshold):
 | kernel | position-matched peripheral share | skipped vs read AUC at matched (etype, position) |
 |---|---|---|
 | within 200 px (≈ 5°) (primary) | **31.8 %** | **0.33** |
-| soft falloff, 43 px/° (2026-09-14 derivation; runs were made with 24 px/°, so E2 = 48 px ≈ 1.1°) | 46.2 % | 0.46 |
+| soft falloff, 43 px/° (2026-09-14 derivation; the 2026-09-14 runs used 24 px/°, so E2 = 48 px ≈ 1.1°; rerun 2026-09-15 at 43 px/°, every quoted number identical to three decimals, see `px_per_deg_rerun.md`) | 46.2 % | 0.46 At 43 px/° (2026-09-15 rerun): 50.3 %, matched AUC 0.49; see `px_per_deg_rerun.md`. |
 | flat published kernel | 64.3 % | 0.60 |
 
 Under either eccentricity-aware definition a skipped result receives *less*

@@ -1,7 +1,7 @@
 # Returns are memory-guided — landing precision survives a 2.4× longer jump with a weaker peripheral ramp
 
 **Tags:** `[LAB, AdSERP, typed]` · window 1 s · **two kernels reported**
-**Producer:** `scripts/return_is_memory.py` → `summary_boundary_cm_24.json` (primary: boundary-distance kernel with cortical-magnification falloff, alpha = 1/(1 + E/2°), 43 px/° (2026-09-14 derivation; runs were made with 24 px/°, so E2 = 48 px ≈ 1.1°), `scripts/peripheral_kernel.py`) and `summary.json` (the published PAI Eq. 2, `spec_eq2`)
+**Producer:** `scripts/return_is_memory.py` → `summary_boundary_cm_24.json` (primary: boundary-distance kernel with cortical-magnification falloff, alpha = 1/(1 + E/2°), 43 px/° (2026-09-14 derivation; the 2026-09-14 runs used 24 px/°, so E2 = 48 px ≈ 1.1°; rerun 2026-09-15 at 43 px/°, every quoted number identical to three decimals, see `px_per_deg_rerun.md`), `scripts/peripheral_kernel.py`) and `summary.json` (the published PAI Eq. 2, `spec_eq2`)
 **Generated:** 2026-09-14. Follows `pai_deferred_probe.md` (same day).
 
 > **Kernel note (read first).** The published PAI kernel is nearly flat in
@@ -117,7 +117,7 @@ periphery had of the target in the preceding second.
 - The entry saccade for most rows is the downward reading step from the
   result above, so the amplitude contrast is partly the layout. The
   precision contrast is not.
-- The boundary kernel's 43 px/° (2026-09-14 derivation; runs were made with 24 px/°, so E2 = 48 px ≈ 1.1°) is the repo's convention (findings.md
+- The boundary kernel's 43 px/° (2026-09-14 derivation; the 2026-09-14 runs used 24 px/°, so E2 = 48 px ≈ 1.1°; rerun 2026-09-15 at 43 px/°, every quoted number identical to three decimals, see `px_per_deg_rerun.md`) is the repo's convention (findings.md
   §3d-ii); the lit note's upper bound is 40 px/°. The sign and the null do
   not depend on the choice; the ramp magnitudes do.
 - `[LAB]` only; the label and both measures need an eye tracker.

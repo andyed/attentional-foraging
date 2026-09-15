@@ -60,7 +60,10 @@ BOLD = ROOT / 'scripts/output/bold_term_density/by_trial.json'
 OUT = ROOT / 'scripts/output/periphery_navigates'
 SURVEY_FIX = 5
 GATE_PX = 200.0
-PX_PER_DEG = 24.0
+import argparse as _ap
+_a = _ap.ArgumentParser(); _a.add_argument('--px-per-deg', type=float, default=24.0); _a.add_argument('--suffix', default='')
+_ARGS = _a.parse_args()
+PX_PER_DEG = _ARGS.px_per_deg   # 24 = the 2026-09-14 runs; 43 = the derived AdSERP scale
 ETYPES = ('organic', 'native_ad', 'dd_top', 'image_pack', 'paa', 'top_places', 'unknown_widget', 'other_widget')
 
 
@@ -251,7 +254,7 @@ def main():
     out = {'schema_version': 1, 'generated_utc': dt.datetime.now(dt.timezone.utc).isoformat(),
            'regime': '[LAB, AdSERP, typed]', 'A_skip_is_layout': resA, 'B_survey_map': resB}
     OUT.mkdir(parents=True, exist_ok=True)
-    json.dump(out, open(OUT / 'summary.json', 'w'), indent=1)
+    json.dump(out, open(OUT / f'summary{_ARGS.suffix}.json', 'w'), indent=1)
 
     print(f"(A) pool n={len(pool):,} fixated {int(y.sum()):,}")
     for k, v in resA['all_slots'].items():

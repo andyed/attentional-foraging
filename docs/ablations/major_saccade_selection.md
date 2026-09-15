@@ -1,6 +1,6 @@
 # Before a major saccade — ambient timing, target selection, and whether the periphery is accessed
 
-**Tags:** `[LAB, AdSERP, typed]` · first-entry moves between results · 43 px/° (2026-09-14 derivation; runs were made with 24 px/°, so E2 = 48 px ≈ 1.1°) · boundary-CM kernel ungated for intake, hard gate for "any intake"
+**Tags:** `[LAB, AdSERP, typed]` · first-entry moves between results · 43 px/° (2026-09-14 derivation; the 2026-09-14 runs used 24 px/°, so E2 = 48 px ≈ 1.1°; rerun 2026-09-15 at 43 px/°, every quoted number identical to three decimals, see `px_per_deg_rerun.md`) · boundary-CM kernel ungated for intake, hard gate for "any intake"
 **Producer:** `scripts/major_saccade_selection.py` → `scripts/output/major_saccade_selection/summary.json` (promoted 2026-09-15 from the inline analyses of 2026-09-14; the producer's numbers below supersede the inline ones, which differed by at most 6 ms, 0.5 px and 0.02 in selection rates from a slightly different on-screen candidate set). Inputs: typed bands, fixations by the label producer's rule, the primary census states for on-screen candidates (any viewport residence)
 **Hypothesis (Andy):** peripheral access is more likely *preceding* major saccades than minor ones. Three signatures were tested.
 

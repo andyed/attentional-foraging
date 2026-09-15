@@ -1,0 +1,101 @@
+{
+ "schema_version": 1,
+ "generated_utc": "2026-09-15T15:18:59.743331+00:00",
+ "regime": "[LAB, AdSERP, typed]",
+ "A_skip_is_layout": {
+  "pool": {
+   "n": 16145,
+   "fixated": 13680,
+   "participants": 46,
+   "definition": "on-screen >= 500 ms, opportunity known, not clicked"
+  },
+  "all_slots": {
+   "layout (position+height+residence+etype)": 0.8025999074766021,
+   "layout without residence (position+height+etype)": 0.7127807580987627,
+   "position + height": 0.7111154407316467,
+   "position + etype": 0.6990806376997261,
+   "position only": 0.6962826056012241,
+   "residence only": 0.7383510521571,
+   "height only": 0.6262031007200218,
+   "etype only": 0.513695301472071,
+   "paired layout-without-residence vs position": {
+    "n": 46,
+    "mean_delta": 0.005977530140080712,
+    "ci95": [
+     -0.0010329785883605445,
+     0.012621603330206902
+    ]
+   }
+  },
+  "organic_slots": {
+   "n": 8577,
+   "fixated": 7291,
+   "layout without residence (position+height)": 0.6508468865831518,
+   "content (query cosine + snippet length + bold share)": 0.5254185425991225,
+   "layout + content": 0.6507718563950997,
+   "paired layout+content vs layout": {
+    "n": 46,
+    "mean_delta": -0.001592607155056431,
+    "ci95": [
+     -0.0028537494441872586,
+     -0.00047133302390784613
+    ]
+   },
+   "paired layout vs content": {
+    "n": 46,
+    "mean_delta": 0.17556308138866128,
+    "ci95": [
+     0.1492458079860209,
+     0.20308730426607885
+    ]
+   }
+  }
+ },
+ "B_survey_map": {
+  "trials": 2603,
+  "candidates": 16436,
+  "later_fixated": 13288,
+  "definition": "slots not fixated in the first 5 fixations, on screen, not clicked; intake = boundary_cm 24 px/deg gated 200 px",
+  "auc": {
+   "survey intake": 0.5244231475007401,
+   "survey intake (within-trial rank)": 0.7469478102932435,
+   "survey gaze distance": 0.6584823238591899,
+   "survey gaze distance (rank)": 0.7477538465598792,
+   "position only": 0.6539251601888606,
+   "position + intake rank": 0.751005758364972,
+   "position + distance rank": 0.7519715340607875,
+   "position + both ranks": 0.7524731522054272
+  },
+  "paired": {
+   "position+intake vs position": {
+    "n": 46,
+    "mean_delta": 0.049531576205552034,
+    "ci95": [
+     0.02466581670720912,
+     0.07297241969942708
+    ]
+   },
+   "position+distance vs position": {
+    "n": 46,
+    "mean_delta": 0.050142860592565765,
+    "ci95": [
+     0.02539147451256289,
+     0.0733872881022255
+    ]
+   },
+   "position+both vs position+distance": {
+    "n": 46,
+    "mean_delta": 0.0009868301805351172,
+    "ci95": [
+     0.00024777577675705754,
+     0.0018889485280871169
+    ]
+   }
+  },
+  "within_trial_top_vs_bottom_intake_later_fixated": {
+   "top": 0.9598677998111426,
+   "bottom": 0.48914069877242683,
+   "n_trials": 2118
+  }
+ }
+}

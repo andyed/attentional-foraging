@@ -1,6 +1,6 @@
 # What the periphery does on a results page — two tests of navigation
 
-**Tags:** `[LAB, AdSERP, typed]` · states from the primary census (intake within 200 px (≈ 5°)) · 43 px/° (2026-09-14 derivation; runs were made with 24 px/°, so E2 = 48 px ≈ 1.1°)
+**Tags:** `[LAB, AdSERP, typed]` · states from the primary census (intake within 200 px (≈ 5°)) · 43 px/° (2026-09-14 derivation; the 2026-09-14 runs used 24 px/°, so E2 = 48 px ≈ 1.1°; rerun 2026-09-15 at 43 px/°, every quoted number identical to three decimals, see `px_per_deg_rerun.md`)
 **Producer:** `scripts/periphery_navigates.py` → `scripts/output/periphery_navigates/summary.json`
 **Generated:** 2026-09-14. Companion to `pai_kernel_validation.md` and the null-findings entry on bold density.
 
@@ -43,7 +43,7 @@ the raw census is position and time on screen, not a format decision.
 For each trial, intake during the first five fixations (the survey phase)
 on every on-screen, non-clicked slot *not* fixated during those five,
 versus whether that slot is fixated later. 16,436 candidates over 2,603
-trials; 13,288 fixated later. Intake = boundary-distance kernel, 43 px/° (2026-09-14 derivation; runs were made with 24 px/°, so E2 = 48 px ≈ 1.1°),
+trials; 13,288 fixated later. Intake = boundary-distance kernel, 43 px/° (2026-09-14 derivation; the 2026-09-14 runs used 24 px/°, so E2 = 48 px ≈ 1.1°; rerun 2026-09-15 at 43 px/°, every quoted number identical to three decimals, see `px_per_deg_rerun.md`),
 gated at 200 px; control = mean gaze distance to the slot during the survey;
 position removed by within-trial rank.
 
