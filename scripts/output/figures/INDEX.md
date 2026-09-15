@@ -185,3 +185,36 @@ The gaze_density summary also exposes both aggregations explicitly — use `medi
 - New canonical figure: add a gallery section (thumbnail + source + intent + summary.json link), re-run the script so the summary regenerates.
 - Exploratory variant: add a row to the **Secondary / retired** table with intent stated plainly; mark as *Retired* or *Superseded* when a stronger version lands.
 - Upstream data changes (features JSON, regression labels): delete the per-record caches, re-render the canonical figures, update timestamps, commit PNG + PDF + summary.json together.
+
+### idealized_navigation.png
+
+<img src="idealized_navigation.png" width="720" alt="Idealized stutter-step navigation: page scanpath with cursor and peripheral halos, and the same trace as vertical position over time">
+
+**Source:** `scripts/render_idealized_navigation.py`  ·  **Created:** 2026-09-15  ·  **Regime:** schematic, not data (parameters are `[LAB, AdSERP, typed]` medians)
+
+An authored single trial showing three channels: fixations with minor (< 100 px),
+next-result (100–300 px) and major (≥ 300 px) saccades; the cursor; and a
+roving ±200 px near-peripheral field. Panel (a) is the page, panel (b) the same
+trace as a staircase of vertical position over time, sharing the y axis. The
+survey, focal reading, the short ambient fixation before a long forward jump,
+the memory-guided return and the cursor holding the deferred candidate are the
+mechanisms in `docs/ablations/major_saccade_selection.md`,
+`return_is_memory.md` and `periphery_navigates.md`. Companion to
+`result_moves.png`, which shows the same moves from the data.
+
+### idealized_vs_population.png
+
+<img src="idealized_vs_population.png" width="720" alt="Idealized stutter-step trial on an ad-topped page beside the population rate of each of its six stages">
+
+**Source:** `scripts/render_idealized_vs_population.py`  ·  **Created:** 2026-09-15  ·  **Regime:** left schematic; right `[LAB, AdSERP, typed]`
+**Stats dumps:** `survey_above_fold/summary.json`, `next_action_by_position/summary.json`, `return_is_memory/summary_boundary_cm_24.json`; stage 5 durations from `docs/ablations/major_saccade_selection.md` §2 (inline analysis, hard-coded)
+
+Six numbered stages on an authored trial (survey on the top ad block; read
+result 1 then re-read the query; bounce back to a seen result; return then
+forward one; a long forward jump as the minority path; memory-guided return and
+click), each matched on the right by its population distribution: survey
+composition on ad-topped pages, where the first visit to results 1, 2, 5 and 10
+ends, what the back excursion resolves to, the pre-saccadic fixation duration by
+amplitude, and return-vs-entry landing precision. The idealized trial differs
+from `idealized_navigation.png` in starting on an ad block, which is the layout
+of 78 % of AdSERP trials.
