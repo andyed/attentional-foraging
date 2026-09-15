@@ -2,6 +2,7 @@
 
 **Tags:** `[LAB, AdSERP, typed]` · organic slots · states from the engagement census (primary: intake within 200 px (≈ 5°); also the soft-falloff census)
 **Producer:** `scripts/bold_term_density.py` → `scripts/output/bold_term_density/summary.json`, `by_trial.json`
+**Key Claims:** `[NB37:K14]`
 **Date:** 2026-09-14
 
 ## Why it was tested

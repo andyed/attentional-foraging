@@ -45,14 +45,14 @@ kinds of trace.
   itself (9,797 deferred result slots, 9,347 measured return events) and, as a
   candidate not yet produced in this repository, by depletion state (how deep,
   how many sampled, how much page remains). The return is **memory-guided**:
-  long returns (two or more ranks, 30 % of returns) land at first-entry
+  long returns (two or more ranks, 19 % of returns) land at first-entry
   precision from 2.4× the distance with a *weaker* peripheral ramp than the
-  first entry had. → [`docs/ablations/return_is_memory.md`](docs/ablations/return_is_memory.md)
+  first entry had `[NB38:K1–K3]`. → [`docs/ablations/return_is_memory.md`](docs/ablations/return_is_memory.md)
   The return is also the **modal move**: from the second result down, the
   first visit to a result ends with a move back in 50–57 % of cases, landing
   on a result already examined 75–92 % of the time, and at result 2 three
   quarters of those excursions come back to result 2 before any new result is
-  entered. Forward by one is second (32–38 %); skipping two or more is 6–13 %.
+  entered. Forward by one is second (32–38 %); skipping two or more is 6–13 % `[NB38:K7–K9]`.
   → [`docs/ablations/next_action_by_position.md`](docs/ablations/next_action_by_position.md)
 - **Pre-patch — what the periphery delivered before any fixation landed.**
   Witnessed by the Peripheral Attention Index (Duchowski, Gehrer & Svaldi
@@ -73,7 +73,7 @@ kinds of trace.
 Put together, engagement with a result has **five states**, not the four the
 consideration-set taxonomy carried until now:
 
-| state | witnessed by | share of 34,317 result slots |
+| state | witnessed by | share of 34,317 result slots `[NB37:K2]` |
 |---|---|---|
 | never on screen | scroll | 24 % |
 | on screen, never fixated — *peripherally sampled* vs *unsampled* | PAI within 200 px (≈ 5°), with an opportunity baseline | 2 % vs 5 % (13 % opportunity unknown) |
@@ -105,7 +105,7 @@ five-fixation survey itself: on the 78 % of pages topped by an ad block, the
 survey reads *into* the block rather than around it (first band fixated is
 the ad in 93 % of trials, 3.5 of the 5 fixations, skip-over 3 %, every
 participant), under 1 % of surveys reach the fold, and only 13 % of the
-block's dwell falls inside the survey. The survey is how the top block is
+block's dwell falls inside the survey `[NB38:K10]`. The survey is how the top block is
 scanned, not the page. → [`docs/ablations/survey_above_fold.md`](docs/ablations/survey_above_fold.md)
 
 ### The stutter step, idealized and in the population

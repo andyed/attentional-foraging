@@ -2,6 +2,7 @@
 
 **Tags:** `[LAB, AdSERP, typed]` · positions 1–10 on the typed AOI map, all element types · 2,606 trials, 47 participants
 **Producer:** `scripts/next_action_by_position.py` → `scripts/output/next_action_by_position/summary.json` (`--organic-only` writes `summary_organic.json`; see the caveat)
+**Key Claims:** `[NB38:K7–K9]`
 **Generated:** 2026-09-15. Quantitative companion to the idealized figure `scripts/output/figures/idealized_navigation.png` and to `render_result_moves.py`.
 
 ## Definitions

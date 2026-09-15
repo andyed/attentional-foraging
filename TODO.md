@@ -73,8 +73,10 @@ instrument (Duchowski). Leaky Cursor is not submitted to CHIIR.
 - [x] Kernel sensitivity on the census: eq2 vs listing agree on 98.3 % of slots, shares
       move ≤ 1.8 pts (`engagement_state_census/kernel_listing/`). The demo `exact` kernel is
       retired and not run.
-- [ ] NB37 Key Claims block; every quoted number through it (now also the 2026-09-15
-      next-action, survey-above-fold and major-saccade numbers).
+- [x] NB37 + NB38 Key Claims blocks (2026-09-15): reader notebooks over the producers'
+      summary JSONs, SHA-asserted, table printed from the files
+      (`notebooks-v2/build_key_claims_notebooks_37_38.py`, `key_claims_3738.py`); aggregate
+      rebuilt; notes, findings page and README carry `[NB37:K#]` / `[NB38:K#]` tags.
 - [ ] Write to Sara FIRST (decision 2026-09-14: Sara joins CHIIR for orientation).
       Scope in the note: the survey-phase mechanism generalises (her 2026-06-03 NB13
       replication: compression, survey length, pupil trajectory, scroll decoupling;
@@ -97,8 +99,9 @@ instrument (Duchowski). Leaky Cursor is not submitted to CHIIR.
       prediction", never "MVT".
 
 ### Phase D / E
-- [ ] NB37 engagement states, NB38 return mechanism (Tier B), tier re-assignment,
-      freshness ledger walked to zero, Key Claims aggregate rebuilt.
+- [x] NB37 engagement states, NB38 moves between results (reader notebooks, 2026-09-15);
+      Key Claims aggregate rebuilt.
+- [ ] Tier re-assignment, freshness ledger walked to zero.
 - [ ] `docs/history/` index; `findings.md` re-sectioned with old anchors kept.
 
 ---

@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-09-15T13:04:31.108877+00:00",
+ "generated_utc": "2026-09-15T16:01:48.593761+00:00",
  "regime": "[LAB, AdSERP, typed]",
  "n_survey_fixations": 5,
  "trials": 2603,
@@ -13,6 +13,8 @@
   "unknown_widget": 7,
   "other_widget": 3
  },
+ "survey_reach_fold_share": 0.008835958509412217,
+ "survey_len_ms_median": 1023.0,
  "composition_all": {
   "page top": {
    "fix_share": 0.22151363810987323,

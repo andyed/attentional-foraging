@@ -38,6 +38,8 @@ Every notebook in this project that ships key numbers to papers or external read
 - [NB31: `31_adsight_replication`](#nb31-31_adsight_replication) — AdSight noticed-classifier replication — per-etype LightGBM vs Seq2Seq buckets
 - [NB32: `32_k_coefficient`](#nb32-32_k_coefficient) — K coefficient (ambient/focal) — position gradient, inverted-U phase trajectory, click outcome
 - [NB36: `36_scroll_vs_cursor_deferred`](#nb36-36_scroll_vs_cursor_deferred) — viewport vs cursor on the deferred class, same rows, same window
+- [NB37: `37_engagement_states`](#nb37-37_engagement_states) — five engagement states, continuation five ways, cost tiers, periphery as next-fixation guidance, kernel validation — reader notebook over the 2026-09-14 producers
+- [NB38: `38_moves_between_results`](#nb38-38_moves_between_results) — memory-guided returns, ambient timing before major saccades, the stutter step by position, the survey vs the ad block — reader notebook over the 2026-09-14/15 producers
 
 ### Notebooks intentionally NOT covered
 
@@ -2255,6 +2257,78 @@ K and LF/HF are partially independent at the per-position level. Both decline at
 | **K8** | Best single feature per sensor, same rows | cursor `mean_dist` 0.682; viewport `K_frac_closing` 0.642 |
 | **K10** | Producers' subset (first-visit scroll features exist): cursor vs viewport kinematics, pooled (within-trial); paired by participant | cursor 0.660 (0.713) vs viewport 0.723 (0.699); viewport better in 29/46 participants, median Δ +0.036, Wilcoxon one-sided p = 3.1e-02; n = 5,123 |
 | **K9** | Producer window discrepancy | scroll_only_carve.py "full trial" geometry is computed on the uncut scroll timeline; window-matched here it scores 0.717 (producer, uncut: 0.715 on 5,255 rows) |
+
+---
+
+<a id="nb37-37_engagement_states"></a>
+
+## NB37: `37_engagement_states` — five engagement states, continuation five ways, cost tiers, periphery as next-fixation guidance, kernel validation — reader notebook over the 2026-09-14 producers
+
+*Source: [`notebooks-v2/37_engagement_states.ipynb`](../notebooks-v2/37_engagement_states.ipynb)*
+
+| ID | Claim | Value |
+|---|---|---|
+| **K1** | Population and primary rule (`engagement_state_census.py`, gate_200px) | 34,317 result slots, 2,607 trials, 47 participants; kernel: spec_eq2, peripheral = outside typed band rect, eccentricity gate OGD <= 200 px; rule: never-fixated AOI is peripheral iff its intake >= the median of FIXATED AOIs of the same etype; PRIMARY (state) = mass per second of on-screen-UNFIXATED time (residence minus own dwell); lenient (state_rate) = mass per second of residence; conservative (state_mass) = raw full-trial mass |
+| **K2** | Five-state census, share of all slots (matched-opportunity rule on unfixated time) | never on screen 24 %, brief 2 %, unsampled 5 %, peripheral 2 %, rejected 18 %, deferred 29 %, clicked 8 %; opportunity unknown 4,378 slots (13 %) |
+| **K3** | Peripheral tier among on-screen never-fixated slots; per-participant trait | 618 of 2,465 = 25 %; participant median 0.27, IQR [0.20, 0.37], range 0.04–0.67 (n = 41 with enough slots) |
+| **K4** | CHIIR carve's 660 approached-never-fixated rows, by state | peripheral 168, unsampled 374, opportunity unknown 62, never on screen 8, brief 48 (n = 660) |
+| **K5** | Reach at result 10, five ways (`engagement_continuation.py`) | viewport 49 %, periphery (intake within 200 px) 38 %, fixation any time 36 %, fixation first pass 30 %, cursor 18 % (opportunity-known trials n = 2,151) |
+| **K6** | First-pass continuation C(i), the strict C/W/L version | 0.84 at the top declining to 0.60–0.61 at the bottom; full vector [0.84, 0.81, 0.77, 0.75, 0.7, 0.68, 0.65, 0.63, 0.6, 0.61] |
+| **K7** | Examination cost tiers, median gaze dwell ms [95 % CI] by state, and share approached by the cursor | peripheral 0 [0, 0] / rejected 541 [501, 581] / deferred 1,695 [1,527, 1,858] / clicked 4,052 [3,542, 4,596]; approached 27 % / 41 % / 69 % / 94 % |
+| **K8** | Position-matched peripheral share and skipped-vs-read intake at matched position | share 31.8 % (n = 2,420); matched AUC skipped vs read 0.330 (skipped results get less near-peripheral intake) |
+| **K9** | Relevance by state (query-text cosine, organic), Mann–Whitney AUC (p) | peripheral vs unsampled 0.496 (0.81); peripheral vs rejected 0.476 (0.15); deferred vs clicked, relevance rank 0.528 (3.0e-04) |
+| **K10** | Skipping is reading order and opportunity (`periphery_navigates.py` A), LOSO AUC | pool 16,145 on-screen non-clicked slots; position only 0.696; layout without residence 0.713, paired Δ +0.006 [-0.001, +0.013]; residence only 0.738; layout + residence 0.803; organic subset (n = 8,577): layout 0.651, content 0.525, layout + content 0.651 (Δ -0.002 [-0.003, -0.000]) |
+| **K11** | The survey leaves a proximity map (`periphery_navigates.py` B), LOSO AUC | 16,436 candidates, 13,288 later fixated; position only 0.654; survey intake rank 0.747; survey gaze-distance rank 0.748; position + intake 0.751 (Δ over position +0.050 [+0.025, +0.073]); position + distance 0.752; both 0.753 (Δ over position + distance +0.001 [+0.000, +0.002]); top-intake candidate fixated later 96 % vs bottom 49 % (n = 2,118 trials) |
+| **K12** | Kernel validation on later fixation (`pai_kernel_validation.py`) | published Eq. 2 ungated: intake alone 0.520, gain over position -0.001 [-0.003, +0.002], gain over position + distance +0.009 [+0.006, +0.012]; every eccentricity-aware kernel (9 variants: gated Eq. 2, boundary falloff at 1/2/4°, hard gates): intake alone 0.745–0.748, gain over position + distance +0.000 to +0.001 |
+| **K13** | PAI on the deferred split (`pai_deferred_probe.py`, 1 s post window, full windows only) | gate: carve M4-7 reproduced at 0.6802 (Δ 0.0000, n = 9,269); M4-7 pooled 0.682 on 6,154 rows; paired M4-7 + PAI vs M4-7: published kernel +0.0096 [+0.0034, +0.0160] (p 0.003); boundary kernel 24 px/° -0.0002 [-0.0006, +0.0001]; 43 px/° -0.0002 [-0.0004, +0.0001] |
+| **K14** | Bold query-term density by state, NULL (`bold_term_density.py`) | 2,776 snapshots, 29,361 results, bold share median 0.10, em in titles 0 %; AUC (p): peripheral vs unsampled 0.513 (0.47), fixated vs on-screen unfixated 0.491 (0.32), rejected vs deferred 0.503 (0.61), deferred vs clicked 0.511 (0.15) |
+| **K15** | Soft-falloff kernel at 24 vs 43 px/° (2026-09-15 rerun) | survey map, position + intake: 0.751 vs 0.751; soft-variant census peripheral slots 1,096 vs 1,222; position-matched share 46.2 % vs 50.3 %, matched AUC 0.465 vs 0.494; deferred-probe paired Δ -0.0002 vs -0.0002. Primary (hard-gate) census does not use the kernel |
+
+**Inputs (SHA256 at build):**
+
+- `scripts/output/engagement_state_census/gate_200px/summary.json` `668e36f6c6c2418b…`
+- `scripts/output/engagement_state_census/kernel_boundary_cm_24/summary.json` `0ae18ee78a1cdd15…`
+- `scripts/output/engagement_state_census/kernel_boundary_cm_43/summary.json` `f84a0fcbd4be5faf…`
+- `scripts/output/engagement_continuation/gate_200px/summary.json` `0c732ad8a8502ae0…`
+- `scripts/output/engagement_continuation/kernel_boundary_cm_24/summary.json` `423ae2323dd604da…`
+- `scripts/output/engagement_continuation/kernel_boundary_cm_43/summary.json` `291ae58302f543ea…`
+- `scripts/output/periphery_navigates/summary.json` `7ce92a61cd78b391…`
+- `scripts/output/periphery_navigates/summary_px43.json` `b3af56b7008b130c…`
+- `scripts/output/pai_kernel_validation/summary.json` `20ed5e9dc2e3128e…`
+- `scripts/output/pai_deferred_probe/summary_w1000_full.json` `92919a7c84b3c73f…`
+- `scripts/output/pai_deferred_probe/summary_w1000_full_boundary_cm_24.json` `5074406ba950c7f8…`
+- `scripts/output/pai_deferred_probe/summary_w1000_full_boundary_cm_43.json` `7deec314e35241fa…`
+- `scripts/output/bold_term_density/summary.json` `9fa73c0910aa61cb…`
+
+---
+
+<a id="nb38-38_moves_between_results"></a>
+
+## NB38: `38_moves_between_results` — memory-guided returns, ambient timing before major saccades, the stutter step by position, the survey vs the ad block — reader notebook over the 2026-09-14/15 producers
+
+*Source: [`notebooks-v2/38_moves_between_results.ipynb`](../notebooks-v2/38_moves_between_results.ipynb)*
+
+| ID | Claim | Value |
+|---|---|---|
+| **K1** | Returns, all (`return_is_memory.py`, boundary kernel 24 px/°; landing and amplitude are kernel-free) | 9,347 return events on 9,797 deferred slots, 47 participants; landing offset return 47.5 vs entry 39.5 px, Δ +7.0 [+6.0, +9.0] (participants with Δ < 0: 2/47); amplitude Δ -25.8 px [-31.7, -19.6]; 70 % of returns come from the adjacent result |
+| **K2** | Long returns (≥ 2 ranks) land at first-entry precision from 2.4× the distance | n = 1,774; landing Δ +1.5 px [+0.0, +3.0] (p 0.17); amplitude 429 vs 178 px; gaze distance in the prior second 387 vs 219 px |
+| **K3** | Peripheral ramp before the return, and ramp vs precision | all returns, boundary kernel: Δ +20.7 mass/s [+16.4, +26.0]; published kernel: Δ -16.5 [-23.0, -9.6]; long returns, boundary kernel: Δ -60.8 [-74.6, -49.9] (weaker ramp); Spearman ramp vs landing offset: entry -0.019 (p 0.11), return -0.001 (p 0.96) |
+| **K4** | Ambient timing before a long jump (`major_saccade_selection.py`): fixation before a first-entry move, median ms by amplitude | 15,625 moves, 47 participants; minor <100 200, 100-300 200, major 300-600 174, major >600 154; per-participant major − minor -23 ms, negative in 38/47 |
+| **K5** | Landing precision by amplitude, and prior intake vs offset | minor <100 37.5 px (0.38 of band height), 100-300 33.5 px (0.31 of band height), major 300-600 37.5 px (0.30 of band height), major >600 38.5 px (0.33 of band height); Spearman(prior 1 s intake, offset) major 300–600 +0.059 (p 0.001), > 600 +0.010 (p 0.79) |
+| **K6** | Target selection: landed result = nearest to the preceding fixation / top intake (1 s) / closest to any fixation (1 s), ≥ 3 candidates | minor <100 0.973 / 0.943 / 0.950 (chance 0.17, n 3,067); 100-300 0.819 / 0.802 / 0.801 (chance 0.17, n 5,774); major 300-600 0.550 / 0.550 / 0.548 (chance 0.14, n 2,593); major >600 0.240 / 0.249 / 0.251 (chance 0.17, n 534); major ≥ 300 px by window: 500 ms 0.545 / 0.543, 1000 ms 0.499 / 0.498, 2000 ms 0.481 / 0.478, 4000 ms 0.471 / 0.468 |
+| **K7** | After the first fixation on position p, the next fixation (`next_action_by_position.py` A) | read on: position 1 82 %, 2 61 %, 10 50 %; immediate move back, positions 2–10: 25 %–31 % |
+| **K8** | Where the first visit to p ends (B): positions 2–10 ranges, and position 1 | back 50 %–57 % (lands on a seen result 75 %–92 %), forward 1 32 %–38 %, forward 2+ 6 %–13 %; position 1 (n = 2,592): forward 1 46 %, forward 2+ 10 %, page top 44 %, median visit 4 fixations / 744 ms vs 2 / 415 at position 2; P(clicked) position 1 0.20, 2 0.26, 10 0.03 |
+| **K9** | What a back excursion resolves to (D), position 2 vs 10 | returns to p 75 % vs 27 %; new result p+1 8 % vs 6 %; new result above p 8 % vs 35 %; trial ends 5 % vs 27 % (n = 1,377 / 387) |
+| **K10** | The survey vs the ad block (`survey_above_fold.py`; ad = native_ad + dd_top; survey = first 5 fixations) | 2,603 trials, ad-topped 2,019 (block height median 351 px); survey fixations on ad-topped pages: page top 23 %, ad 71 % (area share 46 %, ratio 1.53), widget 1 %, organic 5 % (ratio 0.13); first band fixated is the ad 93 %, skip over to an organic 3 %; ad fixations in the survey mean 3.5 of 5; block fixated ever 99.9 %, of which in the survey 96 %; share of ad dwell in the survey 13 %; return to the block after the survey 93 %; per participant median 0.98, IQR [0.94, 1.00], min 0.78 (n = 47); surveys reaching below the fold 0.9 % |
+| **K11** | Survey on pages not topped by an ad, and the first fixation of the trial | not ad-topped (n = 584): page top 20 %, widget 20 % (ratio 0.94), organic 59 % (ratio 0.76); first fixation of the trial: page top 43 %, ad 39 %, organic 13 %, widget 4 % |
+
+**Inputs (SHA256 at build):**
+
+- `scripts/output/return_is_memory/summary_boundary_cm_24.json` `56e375fcbeefa5ce…`
+- `scripts/output/return_is_memory/summary.json` `215a01be296a00e8…`
+- `scripts/output/major_saccade_selection/summary.json` `f089ca5f026fc1b5…`
+- `scripts/output/next_action_by_position/summary.json` `9b0c0b28cc28f130…`
+- `scripts/output/survey_above_fold/summary.json` `ae43ecd0aa1444cd…`
 
 ---
 

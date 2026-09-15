@@ -2,6 +2,7 @@
 
 **Tags:** `[LAB, AdSERP, typed]` · states from the primary census (intake within 200 px (≈ 5°)) · 43 px/° (2026-09-14 derivation; the 2026-09-14 runs used 24 px/°, so E2 = 48 px ≈ 1.1°; rerun 2026-09-15 at 43 px/°, every quoted number identical to three decimals, see `px_per_deg_rerun.md`)
 **Producer:** `scripts/periphery_navigates.py` → `scripts/output/periphery_navigates/summary.json`
+**Key Claims:** `[NB37:K10–K11]`
 **Generated:** 2026-09-14. Companion to `pai_kernel_validation.md` and the null-findings entry on bold density.
 
 ## Why
