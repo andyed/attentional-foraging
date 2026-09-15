@@ -207,7 +207,7 @@ mechanisms in `docs/ablations/major_saccade_selection.md`,
 <img src="idealized_vs_population.png" width="720" alt="Idealized stutter-step trial on an ad-topped page beside the population rate of each of its six stages">
 
 **Source:** `scripts/render_idealized_vs_population.py`  ·  **Created:** 2026-09-15  ·  **Regime:** left schematic; right `[LAB, AdSERP, typed]`
-**Stats dumps:** `survey_above_fold/summary.json`, `next_action_by_position/summary.json`, `return_is_memory/summary_boundary_cm_24.json`; stage 5 durations from `docs/ablations/major_saccade_selection.md` §2 (inline analysis, hard-coded)
+**Stats dumps:** `survey_above_fold/summary.json`, `next_action_by_position/summary.json`, `return_is_memory/summary_boundary_cm_24.json`; `major_saccade_selection/summary.json`
 
 Six numbered stages on an authored trial (survey on the top ad block; read
 result 1 then re-read the query; bounce back to a seen result; return then

@@ -9,8 +9,7 @@ stage, the population distribution from the producers:
   2-3 where a first visit ends    scripts/output/next_action_by_position/summary.json
   4 what a back excursion resolves to           (same)
   5 fixation before a first-entry move by amplitude
-                                   docs/ablations/major_saccade_selection.md §2
-                                   (inline analysis 2026-09-14; hard-coded here)
+                                   scripts/output/major_saccade_selection/summary.json
   6 landing offset, return vs first entry
                                    scripts/output/return_is_memory/summary_boundary_cm_24.json
 Regime [LAB, AdSERP, typed]. Output: scripts/output/figures/idealized_vs_population.{png,svg,pdf}
@@ -28,6 +27,7 @@ OUT = ROOT / 'scripts/output/figures'
 NA = json.load(open(ROOT / 'scripts/output/next_action_by_position/summary.json'))
 SV = json.load(open(ROOT / 'scripts/output/survey_above_fold/summary.json'))
 RM = json.load(open(ROOT / 'scripts/output/return_is_memory/summary_boundary_cm_24.json'))
+MS = json.load(open(ROOT / 'scripts/output/major_saccade_selection/summary.json'))
 
 BG, TEXT = '#fafaf8', '#222222'
 GAZE, AMBER = '#5b3eb8', '#b8722c'
@@ -148,11 +148,12 @@ for st, title, segs, note in rows:
         bx.text(0.04, yb - BH / 2 - 0.028, note, ha='left', va='top', fontsize=7.6, color=TEXT)
     y -= DY + (0.024 if note else 0.0)
 
-# stage 5: fixation before a first-entry move, by amplitude (major_saccade_selection.md §2, inline 2026-09-14)
-PRE = [('< 100 px', 200), ('100–300', 201), ('300–600', 180), ('> 600 px', 154)]
+# stage 5: fixation before a first-entry move, by amplitude (scripts/major_saccade_selection.py)
+MB = MS['bins']; MD = MS['prev_fix_major_minus_minor']
+PRE = [('< 100 px', round(MB['minor <100']['prev_fix_ms_median'])), ('100–300', round(MB['100-300']['prev_fix_ms_median'])), ('300–600', round(MB['major 300-600']['prev_fix_ms_median'])), ('> 600 px', round(MB['major >600']['prev_fix_ms_median']))]
 bx.plot(0.012, y - 0.004, marker='o', ms=15, mfc='#ffffff', mec=TEXT, mew=1.1, clip_on=False); bx.text(0.012, y - 0.004, '5', ha='center', va='center', fontsize=8.5, fontweight='bold')
-bx.text(0.04, y, 'fixation before a first-entry move: median ms by saccade amplitude (15,130 moves)', ha='left', va='center', fontsize=9.2)
-bx.text(0.04, y - 0.03 - BH / 2 - 0.028, 'shorter before long jumps in 35 of 43 participants (per-participant major − minor: −24 ms)', ha='left', va='top', fontsize=7.6)
+bx.text(0.04, y, f"fixation before a first-entry move: median ms by saccade amplitude ({MS['first_entry_moves']:,} moves)", ha='left', va='center', fontsize=9.2)
+bx.text(0.04, y - 0.03 - BH / 2 - 0.028, f"shorter before long jumps in {MD['negative']} of {MD['n_participants']} participants (per-participant major − minor: {MD['median_ms']:+.0f} ms)", ha='left', va='top', fontsize=7.6)
 for k, (lab, ms) in enumerate(PRE):
     x0 = 0.04 + k * 0.23
     bx.barh(y - 0.03, ms / 250 * 0.2, left=x0, height=BH, color=GAZE if ms >= 180 else AMBER, lw=0)
@@ -172,7 +173,7 @@ bx.text(0.04, y - 0.085, f'{adj:.0%} of returns come from the adjacent result; l
         ha='left', va='top', fontsize=7.6)
 
 fig.suptitle('The stutter step: one idealized trial, and the rate of each of its moves in the population', fontsize=13.5, x=0.05, ha='left', y=0.965)
-fig.text(0.05, 0.915, 'Left is authored, not data; its parameters are AdSERP medians. Right reads the producers: survey_above_fold, next_action_by_position, return_is_memory, and the pre-saccadic durations in major_saccade_selection.md. [LAB, AdSERP, typed]',
+fig.text(0.05, 0.915, 'Left is authored, not data; its parameters are AdSERP medians. Right reads the producers: survey_above_fold, next_action_by_position, return_is_memory, major_saccade_selection. [LAB, AdSERP, typed]',
          fontsize=8.6, va='top')
 for ext in ('png', 'svg', 'pdf'):
     fig.savefig(OUT / f'idealized_vs_population.{ext}', dpi=170 if ext == 'png' else None)
