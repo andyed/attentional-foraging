@@ -1,0 +1,890 @@
+{
+ "schema_version": 1,
+ "generated_utc": "2026-09-14T14:02:42.983260+00:00",
+ "regime": "[LAB, AdSERP, typed]",
+ "kernel": "boundary_cm PROPOSAL: alpha = 1/(1 + E/2deg), 40 px/deg, peripheral = outside typed band rect, ungated",
+ "intake_eccentricity_px": {
+  "peripheral": {
+   "median_of_slot_mass_weighted_ogd": 645.9130789403451
+  },
+  "unsampled": {
+   "median_of_slot_mass_weighted_ogd": 563.6131625725343
+  },
+  "rejected": {
+   "median_of_slot_mass_weighted_ogd": 420.1706645179786
+  },
+  "deferred": {
+   "median_of_slot_mass_weighted_ogd": 249.61888928080404
+  },
+  "clicked": {
+   "median_of_slot_mass_weighted_ogd": 176.88682714313452
+  }
+ },
+ "inputs": {
+  "feature_cache": "AdSERP/data/cursor-only-typed-features-mousedown.json",
+  "feature_cache_sha256": "c4f4dba3c363440710ffb1fa61f50b70dad35a8adb9016b5b3e1940a82e2ea30",
+  "label_cache_sha256": "a878bba4a69b9736393f510fc2936e3e021621bc99a1bb772f64aed61f0ed4a8",
+  "buffer_ms": 500,
+  "anchor_event": "mousedown"
+ },
+ "population": {
+  "trials": 2607,
+  "rows": 34317,
+  "participants": 47,
+  "skips": {
+   "no_scroll_stream": 457,
+   "no_fixations": 1
+  }
+ },
+ "thresholds": {
+  "unfixated_rate_per_s_by_etype": {
+   "dd_top": 1224.8200027183916,
+   "image_pack": 671.0104453255117,
+   "native_ad": 907.5714202900369,
+   "organic": 627.5035078554705,
+   "other_widget": 705.9100171641096,
+   "paa": 554.9015125062216,
+   "top_places": 980.3560452114042,
+   "unknown_widget": 752.2854200483621
+  },
+  "rate_per_s_by_etype": {
+   "dd_top": 814.6499424675495,
+   "image_pack": 546.6004635543504,
+   "native_ad": 756.2072797521521,
+   "organic": 525.4478706075824,
+   "other_widget": 681.6984041032471,
+   "paa": 471.2222757015703,
+   "top_places": 724.2530022603781,
+   "unknown_widget": 681.1666402146944
+  },
+  "mass_by_etype": {
+   "dd_top": 3308.4738079678914,
+   "image_pack": 3495.314293734557,
+   "native_ad": 3383.8055316812006,
+   "organic": 3798.038934540589,
+   "other_widget": 3232.9102412213197,
+   "paa": 3647.7426664053014,
+   "top_places": 3954.1655130046047,
+   "unknown_widget": 2816.605872016534
+  },
+  "min_residence_ms": 500.0,
+  "rule": "never-fixated AOI is peripheral iff its intake >= the median of FIXATED AOIs of the same etype; PRIMARY (state) = mass per second of on-screen-UNFIXATED time (residence minus own dwell); lenient (state_rate) = mass per second of residence; conservative (state_mass) = raw full-trial mass"
+ },
+ "census_unfix": {
+  "dd_top": {
+   "n": 1547,
+   "never_onscreen": 0,
+   "brief_onscreen": 0,
+   "unsampled": 1,
+   "peripheral": 0,
+   "rejected": 151,
+   "deferred": 1130,
+   "clicked": 265,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 0,
+   "share": {
+    "never_onscreen": 0.0,
+    "brief_onscreen": 0.0,
+    "unsampled": 0.0006,
+    "peripheral": 0.0,
+    "rejected": 0.0976,
+    "deferred": 0.7304,
+    "clicked": 0.1713
+   }
+  },
+  "image_pack": {
+   "n": 1471,
+   "never_onscreen": 415,
+   "brief_onscreen": 21,
+   "unsampled": 32,
+   "peripheral": 32,
+   "rejected": 232,
+   "deferred": 502,
+   "clicked": 31,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 206,
+   "share": {
+    "never_onscreen": 0.2821,
+    "brief_onscreen": 0.0143,
+    "unsampled": 0.0218,
+    "peripheral": 0.0218,
+    "rejected": 0.1577,
+    "deferred": 0.3413,
+    "clicked": 0.0211
+   }
+  },
+  "native_ad": {
+   "n": 8582,
+   "never_onscreen": 3325,
+   "brief_onscreen": 102,
+   "unsampled": 292,
+   "peripheral": 297,
+   "rejected": 1355,
+   "deferred": 1913,
+   "clicked": 147,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 1151,
+   "share": {
+    "never_onscreen": 0.3874,
+    "brief_onscreen": 0.0119,
+    "unsampled": 0.034,
+    "peripheral": 0.0346,
+    "rejected": 0.1579,
+    "deferred": 0.2229,
+    "clicked": 0.0171
+   }
+  },
+  "organic": {
+   "n": 21031,
+   "never_onscreen": 4077,
+   "brief_onscreen": 535,
+   "unsampled": 873,
+   "peripheral": 808,
+   "rejected": 4093,
+   "deferred": 5736,
+   "clicked": 2130,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 2779,
+   "share": {
+    "never_onscreen": 0.1939,
+    "brief_onscreen": 0.0254,
+    "unsampled": 0.0415,
+    "peripheral": 0.0384,
+    "rejected": 0.1946,
+    "deferred": 0.2727,
+    "clicked": 0.1013
+   }
+  },
+  "other_widget": {
+   "n": 28,
+   "never_onscreen": 11,
+   "brief_onscreen": 0,
+   "unsampled": 0,
+   "peripheral": 1,
+   "rejected": 5,
+   "deferred": 7,
+   "clicked": 0,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 4,
+   "share": {
+    "never_onscreen": 0.3929,
+    "brief_onscreen": 0.0,
+    "unsampled": 0.0,
+    "peripheral": 0.0357,
+    "rejected": 0.1786,
+    "deferred": 0.25,
+    "clicked": 0.0
+   }
+  },
+  "paa": {
+   "n": 732,
+   "never_onscreen": 106,
+   "brief_onscreen": 43,
+   "unsampled": 41,
+   "peripheral": 49,
+   "rejected": 117,
+   "deferred": 249,
+   "clicked": 1,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 126,
+   "share": {
+    "never_onscreen": 0.1448,
+    "brief_onscreen": 0.0587,
+    "unsampled": 0.056,
+    "peripheral": 0.0669,
+    "rejected": 0.1598,
+    "deferred": 0.3402,
+    "clicked": 0.0014
+   }
+  },
+  "top_places": {
+   "n": 324,
+   "never_onscreen": 6,
+   "brief_onscreen": 0,
+   "unsampled": 1,
+   "peripheral": 0,
+   "rejected": 51,
+   "deferred": 229,
+   "clicked": 22,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 15,
+   "share": {
+    "never_onscreen": 0.0185,
+    "brief_onscreen": 0.0,
+    "unsampled": 0.0031,
+    "peripheral": 0.0,
+    "rejected": 0.1574,
+    "deferred": 0.7068,
+    "clicked": 0.0679
+   }
+  },
+  "unknown_widget": {
+   "n": 602,
+   "never_onscreen": 339,
+   "brief_onscreen": 13,
+   "unsampled": 13,
+   "peripheral": 25,
+   "rejected": 73,
+   "deferred": 31,
+   "clicked": 11,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 97,
+   "share": {
+    "never_onscreen": 0.5631,
+    "brief_onscreen": 0.0216,
+    "unsampled": 0.0216,
+    "peripheral": 0.0415,
+    "rejected": 0.1213,
+    "deferred": 0.0515,
+    "clicked": 0.0183
+   }
+  },
+  "ALL": {
+   "n": 34317,
+   "never_onscreen": 8279,
+   "brief_onscreen": 714,
+   "unsampled": 1253,
+   "peripheral": 1212,
+   "rejected": 6077,
+   "deferred": 9797,
+   "clicked": 2607,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 4378,
+   "share": {
+    "never_onscreen": 0.2413,
+    "brief_onscreen": 0.0208,
+    "unsampled": 0.0365,
+    "peripheral": 0.0353,
+    "rejected": 0.1771,
+    "deferred": 0.2855,
+    "clicked": 0.076
+   }
+  }
+ },
+ "census_rate": {
+  "dd_top": {
+   "n": 1547,
+   "never_onscreen": 0,
+   "brief_onscreen": 0,
+   "unsampled": 1,
+   "peripheral": 0,
+   "rejected": 151,
+   "deferred": 1130,
+   "clicked": 265,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 0,
+   "share": {
+    "never_onscreen": 0.0,
+    "brief_onscreen": 0.0,
+    "unsampled": 0.0006,
+    "peripheral": 0.0,
+    "rejected": 0.0976,
+    "deferred": 0.7304,
+    "clicked": 0.1713
+   }
+  },
+  "image_pack": {
+   "n": 1471,
+   "never_onscreen": 415,
+   "brief_onscreen": 21,
+   "unsampled": 26,
+   "peripheral": 38,
+   "rejected": 232,
+   "deferred": 502,
+   "clicked": 31,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 206,
+   "share": {
+    "never_onscreen": 0.2821,
+    "brief_onscreen": 0.0143,
+    "unsampled": 0.0177,
+    "peripheral": 0.0258,
+    "rejected": 0.1577,
+    "deferred": 0.3413,
+    "clicked": 0.0211
+   }
+  },
+  "native_ad": {
+   "n": 8582,
+   "never_onscreen": 3325,
+   "brief_onscreen": 102,
+   "unsampled": 221,
+   "peripheral": 368,
+   "rejected": 1355,
+   "deferred": 1913,
+   "clicked": 147,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 1151,
+   "share": {
+    "never_onscreen": 0.3874,
+    "brief_onscreen": 0.0119,
+    "unsampled": 0.0258,
+    "peripheral": 0.0429,
+    "rejected": 0.1579,
+    "deferred": 0.2229,
+    "clicked": 0.0171
+   }
+  },
+  "organic": {
+   "n": 21031,
+   "never_onscreen": 4077,
+   "brief_onscreen": 535,
+   "unsampled": 668,
+   "peripheral": 1013,
+   "rejected": 4093,
+   "deferred": 5736,
+   "clicked": 2130,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 2779,
+   "share": {
+    "never_onscreen": 0.1939,
+    "brief_onscreen": 0.0254,
+    "unsampled": 0.0318,
+    "peripheral": 0.0482,
+    "rejected": 0.1946,
+    "deferred": 0.2727,
+    "clicked": 0.1013
+   }
+  },
+  "other_widget": {
+   "n": 28,
+   "never_onscreen": 11,
+   "brief_onscreen": 0,
+   "unsampled": 0,
+   "peripheral": 1,
+   "rejected": 5,
+   "deferred": 7,
+   "clicked": 0,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 4,
+   "share": {
+    "never_onscreen": 0.3929,
+    "brief_onscreen": 0.0,
+    "unsampled": 0.0,
+    "peripheral": 0.0357,
+    "rejected": 0.1786,
+    "deferred": 0.25,
+    "clicked": 0.0
+   }
+  },
+  "paa": {
+   "n": 732,
+   "never_onscreen": 106,
+   "brief_onscreen": 43,
+   "unsampled": 40,
+   "peripheral": 50,
+   "rejected": 117,
+   "deferred": 249,
+   "clicked": 1,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 126,
+   "share": {
+    "never_onscreen": 0.1448,
+    "brief_onscreen": 0.0587,
+    "unsampled": 0.0546,
+    "peripheral": 0.0683,
+    "rejected": 0.1598,
+    "deferred": 0.3402,
+    "clicked": 0.0014
+   }
+  },
+  "top_places": {
+   "n": 324,
+   "never_onscreen": 6,
+   "brief_onscreen": 0,
+   "unsampled": 1,
+   "peripheral": 0,
+   "rejected": 51,
+   "deferred": 229,
+   "clicked": 22,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 15,
+   "share": {
+    "never_onscreen": 0.0185,
+    "brief_onscreen": 0.0,
+    "unsampled": 0.0031,
+    "peripheral": 0.0,
+    "rejected": 0.1574,
+    "deferred": 0.7068,
+    "clicked": 0.0679
+   }
+  },
+  "unknown_widget": {
+   "n": 602,
+   "never_onscreen": 339,
+   "brief_onscreen": 13,
+   "unsampled": 12,
+   "peripheral": 26,
+   "rejected": 73,
+   "deferred": 31,
+   "clicked": 11,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 97,
+   "share": {
+    "never_onscreen": 0.5631,
+    "brief_onscreen": 0.0216,
+    "unsampled": 0.0199,
+    "peripheral": 0.0432,
+    "rejected": 0.1213,
+    "deferred": 0.0515,
+    "clicked": 0.0183
+   }
+  },
+  "ALL": {
+   "n": 34317,
+   "never_onscreen": 8279,
+   "brief_onscreen": 714,
+   "unsampled": 969,
+   "peripheral": 1496,
+   "rejected": 6077,
+   "deferred": 9797,
+   "clicked": 2607,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 4378,
+   "share": {
+    "never_onscreen": 0.2413,
+    "brief_onscreen": 0.0208,
+    "unsampled": 0.0282,
+    "peripheral": 0.0436,
+    "rejected": 0.1771,
+    "deferred": 0.2855,
+    "clicked": 0.076
+   }
+  }
+ },
+ "census_mass": {
+  "dd_top": {
+   "n": 1547,
+   "never_onscreen": 0,
+   "brief_onscreen": 0,
+   "unsampled": 1,
+   "peripheral": 0,
+   "rejected": 151,
+   "deferred": 1130,
+   "clicked": 265,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 0,
+   "share": {
+    "never_onscreen": 0.0,
+    "brief_onscreen": 0.0,
+    "unsampled": 0.0006,
+    "peripheral": 0.0,
+    "rejected": 0.0976,
+    "deferred": 0.7304,
+    "clicked": 0.1713
+   }
+  },
+  "image_pack": {
+   "n": 1471,
+   "never_onscreen": 0,
+   "brief_onscreen": 0,
+   "unsampled": 668,
+   "peripheral": 38,
+   "rejected": 232,
+   "deferred": 502,
+   "clicked": 31,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 0,
+   "share": {
+    "never_onscreen": 0.0,
+    "brief_onscreen": 0.0,
+    "unsampled": 0.4541,
+    "peripheral": 0.0258,
+    "rejected": 0.1577,
+    "deferred": 0.3413,
+    "clicked": 0.0211
+   }
+  },
+  "native_ad": {
+   "n": 8582,
+   "never_onscreen": 0,
+   "brief_onscreen": 0,
+   "unsampled": 5060,
+   "peripheral": 107,
+   "rejected": 1355,
+   "deferred": 1913,
+   "clicked": 147,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 0,
+   "share": {
+    "never_onscreen": 0.0,
+    "brief_onscreen": 0.0,
+    "unsampled": 0.5896,
+    "peripheral": 0.0125,
+    "rejected": 0.1579,
+    "deferred": 0.2229,
+    "clicked": 0.0171
+   }
+  },
+  "organic": {
+   "n": 21031,
+   "never_onscreen": 0,
+   "brief_onscreen": 0,
+   "unsampled": 8652,
+   "peripheral": 420,
+   "rejected": 4093,
+   "deferred": 5736,
+   "clicked": 2130,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 0,
+   "share": {
+    "never_onscreen": 0.0,
+    "brief_onscreen": 0.0,
+    "unsampled": 0.4114,
+    "peripheral": 0.02,
+    "rejected": 0.1946,
+    "deferred": 0.2727,
+    "clicked": 0.1013
+   }
+  },
+  "other_widget": {
+   "n": 28,
+   "never_onscreen": 0,
+   "brief_onscreen": 0,
+   "unsampled": 15,
+   "peripheral": 1,
+   "rejected": 5,
+   "deferred": 7,
+   "clicked": 0,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 0,
+   "share": {
+    "never_onscreen": 0.0,
+    "brief_onscreen": 0.0,
+    "unsampled": 0.5357,
+    "peripheral": 0.0357,
+    "rejected": 0.1786,
+    "deferred": 0.25,
+    "clicked": 0.0
+   }
+  },
+  "paa": {
+   "n": 732,
+   "never_onscreen": 0,
+   "brief_onscreen": 0,
+   "unsampled": 332,
+   "peripheral": 33,
+   "rejected": 117,
+   "deferred": 249,
+   "clicked": 1,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 0,
+   "share": {
+    "never_onscreen": 0.0,
+    "brief_onscreen": 0.0,
+    "unsampled": 0.4536,
+    "peripheral": 0.0451,
+    "rejected": 0.1598,
+    "deferred": 0.3402,
+    "clicked": 0.0014
+   }
+  },
+  "top_places": {
+   "n": 324,
+   "never_onscreen": 0,
+   "brief_onscreen": 0,
+   "unsampled": 20,
+   "peripheral": 2,
+   "rejected": 51,
+   "deferred": 229,
+   "clicked": 22,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 0,
+   "share": {
+    "never_onscreen": 0.0,
+    "brief_onscreen": 0.0,
+    "unsampled": 0.0617,
+    "peripheral": 0.0062,
+    "rejected": 0.1574,
+    "deferred": 0.7068,
+    "clicked": 0.0679
+   }
+  },
+  "unknown_widget": {
+   "n": 602,
+   "never_onscreen": 0,
+   "brief_onscreen": 0,
+   "unsampled": 467,
+   "peripheral": 20,
+   "rejected": 73,
+   "deferred": 31,
+   "clicked": 11,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 0,
+   "share": {
+    "never_onscreen": 0.0,
+    "brief_onscreen": 0.0,
+    "unsampled": 0.7757,
+    "peripheral": 0.0332,
+    "rejected": 0.1213,
+    "deferred": 0.0515,
+    "clicked": 0.0183
+   }
+  },
+  "ALL": {
+   "n": 34317,
+   "never_onscreen": 0,
+   "brief_onscreen": 0,
+   "unsampled": 15215,
+   "peripheral": 621,
+   "rejected": 6077,
+   "deferred": 9797,
+   "clicked": 2607,
+   "fixated_unlabeled": 0,
+   "unknown_opportunity": 0,
+   "share": {
+    "never_onscreen": 0.0,
+    "brief_onscreen": 0.0,
+    "unsampled": 0.4434,
+    "peripheral": 0.0181,
+    "rejected": 0.1771,
+    "deferred": 0.2855,
+    "clicked": 0.076
+   }
+  }
+ },
+ "never_fixated_onscreen_split_unfix": {
+  "dd_top": {
+   "never_fixated_onscreen": 1,
+   "peripheral": 0,
+   "peripheral_share": 0.0
+  },
+  "image_pack": {
+   "never_fixated_onscreen": 64,
+   "peripheral": 32,
+   "peripheral_share": 0.5
+  },
+  "native_ad": {
+   "never_fixated_onscreen": 589,
+   "peripheral": 297,
+   "peripheral_share": 0.5042
+  },
+  "organic": {
+   "never_fixated_onscreen": 1681,
+   "peripheral": 808,
+   "peripheral_share": 0.4807
+  },
+  "other_widget": {
+   "never_fixated_onscreen": 1,
+   "peripheral": 1,
+   "peripheral_share": 1.0
+  },
+  "paa": {
+   "never_fixated_onscreen": 90,
+   "peripheral": 49,
+   "peripheral_share": 0.5444
+  },
+  "top_places": {
+   "never_fixated_onscreen": 1,
+   "peripheral": 0,
+   "peripheral_share": 0.0
+  },
+  "unknown_widget": {
+   "never_fixated_onscreen": 38,
+   "peripheral": 25,
+   "peripheral_share": 0.6579
+  },
+  "ALL": {
+   "never_fixated_onscreen": 2465,
+   "peripheral": 1212,
+   "peripheral_share": 0.4917
+  }
+ },
+ "never_fixated_onscreen_split_rate": {
+  "dd_top": {
+   "never_fixated_onscreen": 1,
+   "peripheral": 0,
+   "peripheral_share": 0.0
+  },
+  "image_pack": {
+   "never_fixated_onscreen": 64,
+   "peripheral": 38,
+   "peripheral_share": 0.5938
+  },
+  "native_ad": {
+   "never_fixated_onscreen": 589,
+   "peripheral": 368,
+   "peripheral_share": 0.6248
+  },
+  "organic": {
+   "never_fixated_onscreen": 1681,
+   "peripheral": 1013,
+   "peripheral_share": 0.6026
+  },
+  "other_widget": {
+   "never_fixated_onscreen": 1,
+   "peripheral": 1,
+   "peripheral_share": 1.0
+  },
+  "paa": {
+   "never_fixated_onscreen": 90,
+   "peripheral": 50,
+   "peripheral_share": 0.5556
+  },
+  "top_places": {
+   "never_fixated_onscreen": 1,
+   "peripheral": 0,
+   "peripheral_share": 0.0
+  },
+  "unknown_widget": {
+   "never_fixated_onscreen": 38,
+   "peripheral": 26,
+   "peripheral_share": 0.6842
+  },
+  "ALL": {
+   "never_fixated_onscreen": 2465,
+   "peripheral": 1496,
+   "peripheral_share": 0.6069
+  }
+ },
+ "never_fixated_split_mass": {
+  "dd_top": {
+   "never_fixated_onscreen": 1,
+   "peripheral": 0,
+   "peripheral_share": 0.0
+  },
+  "image_pack": {
+   "never_fixated_onscreen": 706,
+   "peripheral": 38,
+   "peripheral_share": 0.0538
+  },
+  "native_ad": {
+   "never_fixated_onscreen": 5167,
+   "peripheral": 107,
+   "peripheral_share": 0.0207
+  },
+  "organic": {
+   "never_fixated_onscreen": 9072,
+   "peripheral": 420,
+   "peripheral_share": 0.0463
+  },
+  "other_widget": {
+   "never_fixated_onscreen": 16,
+   "peripheral": 1,
+   "peripheral_share": 0.0625
+  },
+  "paa": {
+   "never_fixated_onscreen": 365,
+   "peripheral": 33,
+   "peripheral_share": 0.0904
+  },
+  "top_places": {
+   "never_fixated_onscreen": 22,
+   "peripheral": 2,
+   "peripheral_share": 0.0909
+  },
+  "unknown_widget": {
+   "never_fixated_onscreen": 487,
+   "peripheral": 20,
+   "peripheral_share": 0.0411
+  },
+  "ALL": {
+   "never_fixated_onscreen": 15836,
+   "peripheral": 621,
+   "peripheral_share": 0.0392
+  }
+ },
+ "chiir_never_fixated_rows": {
+  "n": 660,
+  "unfix": {
+   "unknown_opportunity": 62,
+   "peripheral": 214,
+   "unsampled": 328,
+   "never_onscreen": 8,
+   "brief_onscreen": 48
+  },
+  "rate": {
+   "unknown_opportunity": 62,
+   "peripheral": 290,
+   "unsampled": 252,
+   "never_onscreen": 8,
+   "brief_onscreen": 48
+  },
+  "mass": {
+   "unsampled": 513,
+   "peripheral": 147
+  }
+ },
+ "participant_peripheral_share": {
+  "n_participants": 41,
+  "median": 0.5581395348837209,
+  "iqr": [
+   0.42857142857142855,
+   0.6470588235294118
+  ],
+  "min": 0.07692307692307693,
+  "max": 0.7435897435897436
+ },
+ "transitions_display_order_rate": {
+  "never_onscreen": {
+   "never_onscreen": 0.9977,
+   "brief_onscreen": 0.0,
+   "unsampled": 0.0,
+   "peripheral": 0.0,
+   "rejected": 0.002,
+   "deferred": 0.0003,
+   "clicked": 0.0,
+   "n": 6832
+  },
+  "brief_onscreen": {
+   "never_onscreen": 0.7016,
+   "brief_onscreen": 0.2452,
+   "unsampled": 0.0015,
+   "peripheral": 0.0,
+   "rejected": 0.0236,
+   "deferred": 0.0222,
+   "clicked": 0.0059,
+   "n": 677
+  },
+  "unsampled": {
+   "never_onscreen": 0.1237,
+   "brief_onscreen": 0.0415,
+   "unsampled": 0.3449,
+   "peripheral": 0.0941,
+   "rejected": 0.2432,
+   "deferred": 0.1432,
+   "clicked": 0.0093,
+   "n": 1180
+  },
+  "peripheral": {
+   "never_onscreen": 0.2797,
+   "brief_onscreen": 0.1106,
+   "unsampled": 0.0428,
+   "peripheral": 0.2593,
+   "rejected": 0.197,
+   "deferred": 0.1022,
+   "clicked": 0.0084,
+   "n": 1076
+  },
+  "rejected": {
+   "never_onscreen": 0.0881,
+   "brief_onscreen": 0.0416,
+   "unsampled": 0.0952,
+   "peripheral": 0.1101,
+   "rejected": 0.3624,
+   "deferred": 0.2235,
+   "clicked": 0.0281,
+   "n": 5629
+  },
+  "deferred": {
+   "never_onscreen": 0.0001,
+   "brief_onscreen": 0.0016,
+   "unsampled": 0.0164,
+   "peripheral": 0.0082,
+   "rejected": 0.2531,
+   "deferred": 0.5249,
+   "clicked": 0.1938,
+   "n": 9797
+  },
+  "clicked": {
+   "never_onscreen": 0.0169,
+   "brief_onscreen": 0.0489,
+   "unsampled": 0.0378,
+   "peripheral": 0.0462,
+   "rejected": 0.3016,
+   "deferred": 0.4738,
+   "clicked": 0.0,
+   "n": 2596
+  }
+ }
+}
