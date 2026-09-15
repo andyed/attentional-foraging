@@ -19,14 +19,14 @@ Construct map: `docs/foraging-constructs.md`.
       (returns are memory-guided; long returns land at first-entry precision
       from 2.4× the distance with a weaker peripheral ramp).
 - [x] `scripts/engagement_state_census.py` + `docs/ablations/engagement_state_census.md`
-      (five-state census with an opportunity baseline; primary = intake within 8°: a
+      (five-state census with an opportunity baseline; primary = intake within 200 px ≈ 5°: a
       quarter of on-screen skips sampled at read level, 44 % under a soft falloff, 73 %
       under the flat published kernel — always quote the reach).
 - [x] Kernel finding: the published PAI Eq. 2 is flat in eccentricity on SERP bands
       (`scripts/peripheral_kernel.py` docstring). Bring to Duchowski; boundary-distance
       CM falloff is the proposal, the hard gate the assumption-free alternative.
 - [x] `scripts/engagement_continuation.py` + `docs/ablations/engagement_continuation.md`
-      (C(i) five ways; cost tiers 0 / 541 / 1,695 / 4,052 ms; within 8° the
+      (C(i) five ways; cost tiers 0 / 541 / 1,695 / 4,052 ms; within 200 px ≈ 5° the
       position-matched peripheral share is 32 % and skipped results get LESS intake
       than read ones at matched position, AUC 0.33; relevance-by-state null under any
       eccentricity-aware kernel).
@@ -47,6 +47,21 @@ Construct map: `docs/foraging-constructs.md`.
       PAI stays out of CHIIR).
 - [x] README front sections rewritten around the two-decisions / three-channels /
       five-states thesis (2026-09-14).
+- [x] `scripts/next_action_by_position.py` + `docs/ablations/next_action_by_position.md`
+      (2026-09-15): given the first fixation on p, what happens next. From position 2 down
+      the first visit ends with a move BACK in 50–57 % of cases, onto a seen result 75–92 %;
+      at position 2, 75 % of those excursions return before any new result. Result 1's
+      first visit ends at the query box 44 %.
+- [x] `scripts/survey_above_fold.py` + `docs/ablations/survey_above_fold.md` (2026-09-15):
+      the survey reads INTO the ad block (ad = native_ad + dd_top), first band = ad 93 %,
+      skip-over 3 %, <1 % of surveys reach the fold. AO mirror in `collab/` (her data).
+- [x] `scripts/major_saccade_selection.py` promoted from the inline analysis (2026-09-15);
+      the "top intake and not nearest rises to 10.7 %" sentence did not reproduce, withdrawn.
+- [x] Idealized stutter-step figures: `render_idealized_navigation.py`,
+      `render_idealized_vs_population.py` (2026-09-15).
+- [x] Soft-falloff kernel rerun at the derived 43 px/° (2026-09-15): nothing rank- or
+      model-based moves; soft census tier +4 pts, still null; `docs/ablations/px_per_deg_rerun.md`.
+- [x] Refresh committed and pushed 2026-09-15 (d81ef950 … b27aca75).
 - [ ] Move ski-jump and priming framings to `docs/history/` with anchors preserved.
 
 ### Phase B — the CHIIR 2027 paper (abstract 2026-10-08, paper 10-15)
@@ -58,7 +73,8 @@ instrument (Duchowski). Leaky Cursor is not submitted to CHIIR.
 - [x] Kernel sensitivity on the census: eq2 vs listing agree on 98.3 % of slots, shares
       move ≤ 1.8 pts (`engagement_state_census/kernel_listing/`). The demo `exact` kernel is
       retired and not run.
-- [ ] NB37 Key Claims block; every quoted number through it.
+- [ ] NB37 Key Claims block; every quoted number through it (now also the 2026-09-15
+      next-action, survey-above-fold and major-saccade numbers).
 - [ ] Write to Sara FIRST (decision 2026-09-14: Sara joins CHIIR for orientation).
       Scope in the note: the survey-phase mechanism generalises (her 2026-06-03 NB13
       replication: compression, survey length, pupil trajectory, scroll decoupling;
