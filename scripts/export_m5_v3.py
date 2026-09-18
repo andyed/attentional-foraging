@@ -18,6 +18,13 @@ Two things change relative to v2 beyond the feature set:
      inheriting Youden-J.
   2. a second variant takes the typed `position` integer, to say whether rank
      adds anything a cursor-plus-viewport model does not already have.
+  3. the DEPLOYED fit is unweighted (class_weight=None). The balanced fit the
+     gate and every science comparison use is not a probability: it fits as if
+     the classes were even while the pool prior is 0.685, so its out-of-fold
+     score under-predicts in nine of ten deciles (Brier 0.1918, worst bin off
+     by 0.226). Since the consumer's use is the continuous score, that is a
+     defect in the instrument, so the exported models are refitted without
+     class weighting and carry the prior they are calibrated to.
 
 Protocol (identical to viewport_bands_cursor_only.py, whose helpers are
 imported rather than copied):
@@ -26,11 +33,15 @@ imported rather than copied):
   pool    = approached (min_dist < 100 px) AND not clicked  (9,932 rows)
   bands   = edmonds-2026-vpbands-v1, full window only (no first-visit carve),
             screenshot space, cut at mousedown(final click) - 500 ms
-  LOSO    = 47-fold, StandardScaler + LogisticRegression(balanced, C=1.0)
+  LOSO    = 47-fold, StandardScaler + LogisticRegression(C=1.0); balanced for
+            the gate and the science table, class_weight=None for the exports,
+            each with its own out-of-fold scores, operating points and bins
   GATE    = LOSO pooled AUC for cursor_M4_7, bands_3 and cursor_M4_7+bands_3
             must each equal viewport_bands_cursor_only/summary.json to 1e-6
-  export  = full-data refit, v2's JSON schema plus score_semantics,
-            operating_points, calibration, feature_units and LOSO coefficients
+  export  = unweighted full-data refit, v2's JSON schema plus score_semantics,
+            training_prior, operating_points, calibration, feature_units and
+            LOSO coefficients; a Platt layer is added only if the unweighted
+            out-of-fold score misses calibration by more than CAL_TOL
 
 Run from attentional-foraging:
   .venv/bin/python scripts/export_m5_v3.py
@@ -62,18 +73,20 @@ sys.path.insert(0, str(ROOT / 'notebooks-v2'))
 
 from m4_cursor_aoi_rerun import APPROACH_7, load_flavor_cards, main_cards  # noqa: E402
 from m4_cursor_only_downstream import (  # noqa: E402
-    loso_proba, paired, rel, sha256, youden,
+    paired, rel, sha256, summarize, youden,
 )
 from export_m5_cursor_only import load_inputs  # noqa: E402
 from viewport_bands_cursor_only import (  # noqa: E402
     BANDS, BAND_ALL, band_ms, model_block, observation_cutoff,
 )
+from reduction_baselines import within_trial_auc  # noqa: E402
 
 AR_ROOT = ROOT.parent / 'approach-retreat'
 GATE_TOL = 1e-6
 RANK = 'position'
 FIXED_THRESHOLDS = [0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70, 0.75]
 N_CAL_BINS = 10
+CAL_TOL = 0.05  # max |mean score - observed rate| in any equal-count bin before a Platt layer is added
 
 FEATURE_UNITS = {
     'min_dist': 'px', 'mean_dist': 'px', 'dwell_in_proximity_ms': 'ms',
@@ -90,7 +103,11 @@ SCORE_SEMANTICS = (
     'averaged per result across sessions - not a hard label; any threshold is the consumer\'s choice, '
     'and operating_points gives the precision/recall of the choices from the LOSO out-of-fold scores. '
     'operating_threshold is retained for schema compatibility with m5_inference.M5Classifier and '
-    'carries the Youden-J point, which is one row of that table and not a recommendation.'
+    'carries the Youden-J point, which is one row of that table and not a recommendation. '
+    'PRIOR SHIFT: the score is calibrated to training_prior (the share of deferred rows in the '
+    'training pool). To move it to a different base rate, work on the logit: '
+    'logit_new = logit_old + log((p_new / (1 - p_new)) / (p_train / (1 - p_train))), i.e. add the log '
+    'odds ratio of the new prior to the old, then re-apply the sigmoid.'
 )
 
 LINEAGE_NOTE = (
@@ -103,11 +120,61 @@ LINEAGE_NOTE = (
     'forward from docs/ablations/viewport_bands_cursor_only.md: the band signal is mostly the return - cut '
     'at the end of the first gaze visit, bands fall 0.771 -> 0.553 - which does not matter for an instrument '
     'whose consumer wants to know whether the user came back, but does mean the bands are not a prediction '
-    'made before the return happened.'
+    'made before the return happened. '
+    'Class weighting: v2 and every gate/science number use class_weight=\'balanced\'; the exported v3 models '
+    'are refitted with class_weight=None because the balanced score is not a probability (it fits as if the '
+    'classes were even while the pool prior is 0.685) and the consumer\'s product is the continuous score. '
+    'Ranking is unaffected - the paired per-participant delta between the two fits is in summary.json.'
 )
 
 
-def loso_coefficients(records, feats, y, mask):
+def _pipe(class_weight):
+    return make_pipeline(StandardScaler(),
+                         LogisticRegression(max_iter=5000, class_weight=class_weight, C=1.0))
+
+
+def loso_proba_cw(records, feats, y, mask, class_weight):
+    """m4_cursor_only_downstream.loso_proba with the class weighting exposed;
+    class_weight='balanced' is that function, fold for fold."""
+    X = np.asarray([[r[f] for f in feats] for r in records], dtype=float)
+    pid = np.asarray([r['trial_id'].split('-')[0] for r in records])
+    proba = np.full(len(records), np.nan)
+    for p in np.unique(pid):
+        train, test = mask & (pid != p), mask & (pid == p)
+        if len(set(y[train])) < 2 or not test.any():
+            continue
+        m = _pipe(class_weight)
+        m.fit(X[train], y[train])
+        proba[test] = m.predict_proba(X[test])[:, 1]
+    return proba, pid
+
+
+def model_block_cw(records, feats, y, mask, pid, tids, class_weight):
+    """viewport_bands_cursor_only.model_block with the class weighting exposed."""
+    proba, _ = loso_proba_cw(records, feats, y, mask, class_weight)
+    s, folds = summarize(y, proba, pid, mask)
+    wt, n_pairs = within_trial_auc(tids, y, proba, mask)
+    s['within_trial_auc'] = float(wt)
+    s['within_trial_pairs'] = int(n_pairs)
+    s['features'] = list(feats)
+    s['class_weight'] = class_weight
+    return s, folds, proba
+
+
+def platt_fit(y, score):
+    """Platt scaling on the out-of-fold logit: p_cal = sigmoid(a * z + b), where
+    z is the model's own logit, so the layer composes with `apply` rather than
+    needing a second model. Unregularised (C = 1e10) because the fit has two
+    parameters and 9,932 rows."""
+    q = np.clip(score, 1e-12, 1 - 1e-12)
+    z = np.log(q / (1 - q))
+    lr = LogisticRegression(C=1e10, max_iter=10000)
+    lr.fit(z.reshape(-1, 1), y)
+    a, b = float(lr.coef_[0][0]), float(lr.intercept_[0])
+    return a, b, 1.0 / (1.0 + np.exp(-(a * z + b)))
+
+
+def loso_coefficients(records, feats, y, mask, class_weight):
     """Per-fold standardized coefficients (the scaler is inside each fold's pipeline),
     reported as the mean and sd over the 47 LOSO fits."""
     X = np.asarray([[r[f] for f in feats] for r in records], dtype=float)
@@ -117,12 +184,11 @@ def loso_coefficients(records, feats, y, mask):
         train = mask & (pid != p)
         if len(set(y[train])) < 2:
             continue
-        m = make_pipeline(StandardScaler(),
-                          LogisticRegression(max_iter=5000, class_weight='balanced', C=1.0))
+        m = _pipe(class_weight)
         m.fit(X[train], y[train])
         rows.append(m[-1].coef_.ravel())
     a = np.asarray(rows)
-    return {'n_folds': int(len(a)),
+    return {'n_folds': int(len(a)), 'class_weight': class_weight,
             'mean': dict(zip(feats, a.mean(axis=0).tolist())),
             'sd': dict(zip(feats, a.std(axis=0, ddof=1).tolist()))}
 
@@ -248,12 +314,18 @@ def compute_bands(dl, records, flavor):
     return have, dict(skips), len({k[0] for k in full}), len(tids)
 
 
-def refit_export(records, feats, y, pool, oof, loso, name, extra):
-    """Full-data refit + the v2 model JSON schema, plus the v3 score blocks."""
+def refit_export(records, feats, y, pool, oof, loso, name, extra, class_weight,
+                 balanced_reference=None):
+    """Full-data refit + the v2 model JSON schema, plus the v3 score blocks.
+
+    The exported score is the fitted logistic model, Platt-corrected only when
+    the out-of-fold score misses calibration by more than CAL_TOL in any
+    equal-count bin. The operating points and the reported bins are always on
+    the score the file actually emits.
+    """
     X = np.asarray([[r[f] for f in feats] for r in records], dtype=float)[pool]
     yy = y[pool]
-    pipe = make_pipeline(StandardScaler(),
-                         LogisticRegression(max_iter=5000, class_weight='balanced', C=1.0))
+    pipe = _pipe(class_weight)
     pipe.fit(X, yy)
     scaler, lr = pipe.named_steps['standardscaler'], pipe.named_steps['logisticregression']
     z = ((X - scaler.mean_) / scaler.scale_) @ lr.coef_[0] + lr.intercept_[0]
@@ -263,35 +335,59 @@ def refit_export(records, feats, y, pool, oof, loso, name, extra):
 
     sel = pool & np.isfinite(oof)
     y_sel, p_sel = y[sel], oof[sel]
-    yj = youden(y, oof, pool)
+    cal_raw = calibration(y_sel, p_sel)
+    platt, cal_final, score_sel = None, cal_raw, p_sel
+    if cal_raw['max_abs_gap_mean_score_minus_observed_rate'] > CAL_TOL:
+        a, b, score_sel = platt_fit(y_sel, p_sel)
+        platt = {'a': a, 'b': b,
+                 'fitted_on': 'the LOSO out-of-fold logits of this model, all pool rows',
+                 'reason': 'the uncalibrated out-of-fold score missed calibration by '
+                           f'{cal_raw["max_abs_gap_mean_score_minus_observed_rate"]:.3f} '
+                           f'(tolerance {CAL_TOL})'}
+        cal_final = calibration(y_sel, score_sel)
+    score_full = np.full(len(records), np.nan)
+    score_full[sel] = score_sel
+    yj = youden(y, score_full, pool)
     prior = float(yy.mean())
     n_pool, n_def = int(pool.sum()), int(yy.sum())
+    apply_formula = ('z = sum_i(coef_i * (feat_i - scaler_mean_i) / scaler_scale_i) + intercept; '
+                     'score = sigmoid(z); pred_deferred = score >= operating_threshold')
+    if platt:
+        apply_formula = ('z = sum_i(coef_i * (feat_i - scaler_mean_i) / scaler_scale_i) + intercept; '
+                         'score = sigmoid(platt.a * z + platt.b); '
+                         'pred_deferred = score >= operating_threshold. '
+                         'NOTE: the Platt layer is part of the score - a consumer that stops at '
+                         'sigmoid(z) emits the uncalibrated score.')
     model = {
-        'model': "LogisticRegression(class_weight='balanced', C=1.0) + StandardScaler",
+        'model': f"LogisticRegression(class_weight={class_weight!r}, C=1.0) + StandardScaler",
+        'class_weight': class_weight,
         'trained_on': 'all 47 participants, no holdout (full-data refit); '
                       '[LAB, AdSERP, typed, cursor-only + viewport bands, press-anchored buf500]',
         'n_episodes': n_pool,
         'n_deferred': n_def,
         'n_eval_rej': n_pool - n_def,
+        'training_prior': prior,
+        'training_prior_note': f'{n_def} deferred / {n_pool} pool rows; the score is calibrated to this '
+                               'base rate, see score_semantics for the prior shift',
         'score_semantics': SCORE_SEMANTICS,
         'operating_threshold': yj['threshold'],
         'operating_threshold_method': 'Youden-J on LOSO out-of-fold predictions (one row of operating_points)',
-        'operating_points': operating_points(y_sel, p_sel, yj['threshold'], prior),
-        'calibration': calibration(y_sel, p_sel),
+        'operating_points': operating_points(y_sel, score_sel, yj['threshold'], prior),
+        'calibration': cal_final,
+        'platt': platt,
         'loso_auc': loso['pooled_auc'],
         'loso_within_trial_auc': loso['within_trial_auc'],
         'loso_fold_auc_mean': loso['fold_auc_mean'],
         'loso_fold_auc_sd': loso['fold_auc_sd'],
         'loso_youden_j': yj,
-        'loso_standardized_coefficients': loso_coefficients(records, feats, y, pool),
+        'loso_standardized_coefficients': loso_coefficients(records, feats, y, pool, class_weight),
         'features': list(feats),
         'feature_units': {f: FEATURE_UNITS[f] for f in feats},
         'scaler_mean': scaler.mean_.tolist(),
         'scaler_scale': scaler.scale_.tolist(),
         'coefficients_raw': lr.coef_[0].tolist(),
         'intercept': float(lr.intercept_[0]),
-        'apply': 'score = sigmoid(sum_i(coef_i * (feat_i - scaler_mean_i) / scaler_scale_i) + intercept); '
-                 'pred_deferred = score >= operating_threshold',
+        'apply': apply_formula,
         'refit_selfcheck_max_abs_err': max_err,
         'regime_for_inference': 'WILD-compatible (cursor features plus the viewport bands the library emits '
                                 'at runtime); supervision was [LAB, NB22 gaze-derived]',
@@ -299,9 +395,15 @@ def refit_export(records, feats, y, pool, oof, loso, name, extra):
                            'scroll event; vt_top/vt_mid/vt_bot accrue ms by which third of the viewport the '
                            'result centre lies in, over the first mouse event to mousedown(final click) - 500 ms, '
                            'in screenshot space (scroll y * ratio_y, vp_h = screen_height * ratio_y)',
+        'balanced_reference': balanced_reference,
         'provenance': dict(extra),
         'lineage_note': LINEAGE_NOTE,
     }
+    if platt is None:
+        model['calibration']['platt_layer'] = (f'none: the uncalibrated out-of-fold score is within {CAL_TOL} '
+                                               'in every equal-count bin')
+    else:
+        model['calibration_uncalibrated'] = cal_raw
     return model, max_err
 
 
@@ -351,6 +453,38 @@ def run(args):
         print(f"{name:40s} {s['pooled_auc']:7.3f} {s['fold_auc_mean']:7.3f} ± {s['fold_auc_sd']:.3f} "
               f"{s['within_trial_auc']:13.3f}")
 
+    # ---- the deployable fit: same features, no class weighting ------------------------------
+    deployable = {'m5_v3_cursor_bands.json': ('cursor_M4_7_plus_bands_3',
+                                              list(APPROACH_7) + list(BANDS)),
+                  'm5_v3_cursor_bands_rank.json': ('cursor_M4_7_plus_bands_3_plus_rank',
+                                                   list(APPROACH_7) + list(BANDS) + [RANK])}
+    unweighted, u_folds, u_oof = {}, {}, {}
+    print("\nunweighted (class_weight=None) refits, same rows and folds")
+    for block, feats in deployable.values():
+        s_u, f_u, p_u = model_block_cw(records, feats, y, pool, pid, tids_arr, None)
+        unweighted[block], u_folds[block], u_oof[block] = s_u, f_u, p_u
+        print(f"{block:40s} {s_u['pooled_auc']:7.3f} {s_u['fold_auc_mean']:7.3f} ± {s_u['fold_auc_sd']:.3f} "
+              f"{s_u['within_trial_auc']:13.3f}  (balanced {blocks[block]['pooled_auc']:.3f} / "
+              f"{blocks[block]['within_trial_auc']:.3f})")
+
+    # The balanced score's own calibration and operating points, kept as evidence for why it is
+    # the gate and the science comparison but not the exported artifact.
+    balanced_score = {}
+    for block, feats in deployable.values():
+        pb, _ = loso_proba_cw(records, feats, y, pool, 'balanced')
+        selb = pool & np.isfinite(pb)
+        yj_b = youden(y, pb, pool)
+        balanced_score[block] = {
+            'note': 'not exported: this fit ranks the same as the deployed one but its score is not a '
+                    'probability, because class_weight=balanced fits as if the prior were 0.5',
+            'calibration': calibration(y[selb], pb[selb]),
+            'youden_j': yj_b,
+            'operating_points': operating_points(y[selb], pb[selb], yj_b['threshold'],
+                                                 float(y[pool].mean())),
+        }
+        print(f"  balanced {block:38s} Brier {balanced_score[block]['calibration']['brier_score']:.4f} "
+              f"max gap {balanced_score[block]['calibration']['max_abs_gap_mean_score_minus_observed_rate']:.3f}")
+
     paired_block = {
         'method': 'per-participant LOSO fold AUC differences; 10,000-draw bootstrap of the participant mean '
                   'plus two-sided Wilcoxon (m4_cursor_only_downstream.paired)',
@@ -360,6 +494,10 @@ def run(args):
         'cursor_plus_vp_any_plus_bands_minus_cursor_plus_bands':
             paired(folds['cursor_M4_7_plus_vp_any_plus_bands_3'], folds['cursor_M4_7_plus_bands_3']),
     }
+    for block in unweighted:
+        paired_block[f'unweighted_minus_balanced__{block}'] = paired(u_folds[block], folds[block])
+        paired_block[f'unweighted_minus_balanced__{block}']['pooled_auc_delta'] = (
+            unweighted[block]['pooled_auc'] - blocks[block]['pooled_auc'])
     for k, v in paired_block.items():
         if isinstance(v, dict) and 'mean_delta' in v:
             print(f"  {k:56s} Δ {v['mean_delta']:+.4f} "
@@ -402,26 +540,28 @@ def run(args):
         'gate': gate,
         'sklearn': __import__('sklearn').__version__, 'python': sys.version.split()[0],
     }
-    exports = {
-        'm5_v3_cursor_bands.json': ('cursor_M4_7_plus_bands_3', list(APPROACH_7) + list(BANDS)),
-        'm5_v3_cursor_bands_rank.json': ('cursor_M4_7_plus_bands_3_plus_rank',
-                                         list(APPROACH_7) + list(BANDS) + [RANK]),
-    }
     out_dir = args.output_dir
     out_dir.mkdir(parents=True, exist_ok=True)
     written, selfchecks = {}, {}
-    for fname, (block, feats) in exports.items():
-        oof, _ = loso_proba(records, feats, y, pool)
-        model, err = refit_export(records, feats, y, pool, oof, blocks[block], fname, prov)
+    for fname, (block, feats) in deployable.items():
+        ref = {'note': 'the balanced fit is the gate and the science comparison; it is not exported '
+                       'because its score is not a probability',
+               'class_weight': 'balanced', 'loso_auc': blocks[block]['pooled_auc'],
+               'loso_within_trial_auc': blocks[block]['within_trial_auc']}
+        model, err = refit_export(records, feats, y, pool, u_oof[block], unweighted[block],
+                                  fname, prov, None, balanced_reference=ref)
         (out_dir / fname).write_text(json.dumps(model, indent=2, allow_nan=False) + '\n')
-        written[block] = {'file': rel(out_dir / fname),
+        written[block] = {'file': rel(out_dir / fname), 'class_weight': None,
+                          'training_prior': model['training_prior'],
+                          'platt': model['platt'],
                           'operating_points': model['operating_points'],
                           'calibration': model['calibration']}
         selfchecks[fname] = err
         yjp = next(p for p in model['operating_points'] if p['method'].startswith('Youden'))
         prp = next(p for p in model['operating_points'] if p['method'].startswith('prior'))
-        print(f"\n{fname}: refit selfcheck {err:.1e}, Brier {model['calibration']['brier_score']:.4f}, "
-              f"{model['calibration']['verdict']}")
+        print(f"\n{fname}: class_weight={model['class_weight']}, refit selfcheck {err:.1e}, "
+              f"Brier {model['calibration']['brier_score']:.4f}, {model['calibration']['verdict']}"
+              f"{'' if model['platt'] is None else ' [after Platt]'}")
         for tag, p in (('youden ', yjp), ('prior  ', prp)):
             print(f"  {tag} t={p['threshold']:.3f} share {p['predicted_deferred_share']:.3f} "
                   f"def P/R {p['deferred_precision']:.3f}/{p['deferred_recall']:.3f} "
@@ -439,9 +579,12 @@ def run(args):
                        'rows_dropped_from_shipped_pool': int((shipped_pool & ~have).sum()),
                        'band_trial_skips': skips},
         'gate': gate,
-        'loso': blocks,
-        'fold_aucs': folds,
+        'loso_balanced': blocks,
+        'loso_unweighted_deployed': unweighted,
+        'fold_aucs_balanced': folds,
+        'fold_aucs_unweighted_deployed': u_folds,
         'paired_by_participant': paired_block,
+        'balanced_score_not_exported': balanced_score,
         'exported': written,
         'refit_selfcheck_max_abs_err': selfchecks,
         'aggregate_use': aggregate_use,
@@ -451,7 +594,7 @@ def run(args):
     print(f'\nwrote {out_dir}/summary.json')
     if args.ar_models_dir:
         args.ar_models_dir.mkdir(parents=True, exist_ok=True)
-        for fname in exports:
+        for fname in deployable:
             shutil.copyfile(out_dir / fname, args.ar_models_dir / fname)
             print(f'wrote {args.ar_models_dir / fname}')
 
