@@ -1,0 +1,180 @@
+{
+ "schema_version": 1,
+ "generated_utc": "2026-09-17T22:44:43.262185+00:00",
+ "regime": "[LAB, AdSERP, typed]",
+ "inputs": {
+  "lab_cache": "AdSERP/data/cursor-approach-features-typed-buf500.json",
+  "lab_cache_sha256": "8997d3b1d82d901531d7e8ae2bbd7f5687522ca27c0c05bd0fe76d9eea123868",
+  "cursor_cache": "AdSERP/data/cursor-only-typed-features-mousedown.json",
+  "cursor_cache_sha256": "c4f4dba3c363440710ffb1fa61f50b70dad35a8adb9016b5b3e1940a82e2ea30",
+  "gazegated_cache": "AdSERP/data/cursor-only-typed-features-mousedown-gazegated.json",
+  "gazegated_cache_sha256": "f80ca380c229b17c4c200d5989430d6f7117ce69e34da7323e9d59ecd2a46a41",
+  "label_cache": "scripts/output/approach_threshold_sensitivity/regression_labels_cache_typed.json",
+  "label_cache_sha256": "a878bba4a69b9736393f510fc2936e3e021621bc99a1bb772f64aed61f0ed4a8"
+ },
+ "gate": {
+  "rung_C_pooled_auc": 0.6910655191195253,
+  "shipped_deployable_pooled_auc": 0.6910655191195253,
+  "abs_diff": 0.0
+ },
+ "population": {
+  "lab_pool": 3875,
+  "shared_rows": 3706,
+  "full_cursor_pool": 9932
+ },
+ "rungs": {
+  "L_full_lab_pool": {
+   "pooled_auc": 0.764310220154004,
+   "fold_auc_mean": 0.7509698762350718,
+   "fold_auc_sd": 0.11861531524674022,
+   "fold_auc_median": 0.7777777777777778,
+   "n_folds": 47,
+   "n_records": 3875,
+   "n_positive": 3297,
+   "rung": "L: LAB typed (fixation rows, gaze-cursor distance, click-anchored buf500)",
+   "n_deferred": 3297,
+   "n_rejected": 578
+  },
+  "L_shared_rows": {
+   "pooled_auc": 0.7709081945412232,
+   "fold_auc_mean": 0.7565739915124333,
+   "fold_auc_sd": 0.12120833346608151,
+   "fold_auc_median": 0.7749999999999999,
+   "n_folds": 47,
+   "n_records": 3706,
+   "n_positive": 3148,
+   "rung": "L on the shared rows (same rows as G0/N0/N5)",
+   "n_deferred": 3148,
+   "n_rejected": 558
+  },
+  "G0": {
+   "pooled_auc": 0.6648870762798704,
+   "fold_auc_mean": 0.6890650917301329,
+   "fold_auc_sd": 0.14151504805620158,
+   "fold_auc_median": 0.7148148148148148,
+   "n_folds": 47,
+   "n_records": 3706,
+   "n_positive": 3148,
+   "rung": "G0: cursor-only features, fixation-onset sampling, buf0, LAB rows",
+   "n_deferred": 3148,
+   "n_rejected": 558
+  },
+  "G5": {
+   "pooled_auc": 0.6623662745419518,
+   "fold_auc_mean": 0.6848078445487582,
+   "fold_auc_sd": 0.1461795140235869,
+   "fold_auc_median": 0.7065820777160984,
+   "n_folds": 47,
+   "n_records": 3706,
+   "n_positive": 3148,
+   "rung": "G5: cursor-only, fixation-onset sampling, buf500, LAB rows",
+   "n_deferred": 3148,
+   "n_rejected": 558
+  },
+  "N0": {
+   "pooled_auc": 0.6631228566353786,
+   "fold_auc_mean": 0.6867382671110984,
+   "fold_auc_sd": 0.15442474117656757,
+   "fold_auc_median": 0.72,
+   "n_folds": 47,
+   "n_records": 3706,
+   "n_positive": 3148,
+   "rung": "N0: cursor-only, native sampling, buf0, LAB rows",
+   "n_deferred": 3148,
+   "n_rejected": 558
+  },
+  "N5": {
+   "pooled_auc": 0.6588588988627928,
+   "fold_auc_mean": 0.6818442494134846,
+   "fold_auc_sd": 0.15587485019315211,
+   "fold_auc_median": 0.71875,
+   "n_folds": 47,
+   "n_records": 3706,
+   "n_positive": 3148,
+   "rung": "N5: cursor-only, native sampling, buf500, LAB rows",
+   "n_deferred": 3148,
+   "n_rejected": 558
+  },
+  "C": {
+   "pooled_auc": 0.6910655191195253,
+   "fold_auc_mean": 0.6936346245189787,
+   "fold_auc_sd": 0.06980115189681423,
+   "fold_auc_median": 0.7049873737373739,
+   "n_folds": 47,
+   "n_records": 9932,
+   "n_positive": 6800,
+   "rung": "C: cursor-only, native, buf500, full approached non-click pool",
+   "n_deferred": 6800,
+   "n_rejected": 3132
+  }
+ },
+ "steps_paired_participant": {
+  "L \u2192 G0 (feature definition; LAB rows)": {
+   "n_participants": 47,
+   "mean_delta": -0.06750889978230049,
+   "bootstrap_ci95": [
+    -0.11607723285445115,
+    -0.01705717828865706
+   ],
+   "wilcoxon_two_sided_p": 0.013751156851512292
+  },
+  "G0 \u2192 N0 (sampling: fixation onsets \u2192 native)": {
+   "n_participants": 47,
+   "mean_delta": -0.0023268246190345956,
+   "bootstrap_ci95": [
+    -0.021480384465617616,
+    0.016059859549607175
+   ],
+   "wilcoxon_two_sided_p": 0.8544487231305311
+  },
+  "N0 \u2192 N5 (press buffer 0 \u2192 500 ms)": {
+   "n_participants": 47,
+   "mean_delta": -0.004894017697613777,
+   "bootstrap_ci95": [
+    -0.0122571965955364,
+    0.0017972395433168754
+   ],
+   "wilcoxon_two_sided_p": 0.2794450137640345
+  },
+  "N5 \u2192 C (rows: LAB fixation-selected \u2192 full cursor pool)": {
+   "n_participants": 47,
+   "mean_delta": 0.011790375105494187,
+   "bootstrap_ci95": [
+    -0.026031654291192738,
+    0.052187421762794776
+   ],
+   "wilcoxon_two_sided_p": 0.6710255879840759
+  }
+ },
+ "organic_rung": {
+  "summary": {
+   "pooled_auc": 0.7238635507162634,
+   "fold_auc_mean": 0.7048449805981585,
+   "fold_auc_sd": 0.16794933422086147,
+   "fold_auc_median": 0.74,
+   "n_folds": 47,
+   "n_records": 2464,
+   "n_positive": 1955,
+   "rung": "O: LAB organic buf500 (May flavour, post-coordinate-conversion cache)",
+   "n_deferred": 1955,
+   "n_rejected": 509
+  },
+  "label_cache": "scripts/output/approach_threshold_sensitivity/regression_labels_cache_organic.json",
+  "cache_sha256": "194cef78bf07d46fe1befaf86eabee928f1fb5bd2fb656a00e08c8f8942c6dfd"
+ },
+ "standoff_threshold_on_C": {
+  "note": "approached = cursor min_dist < px (1-D vertical distance to the AOI centre); the 100 px zone is still a constant",
+  "50": {
+   "pool": 7849,
+   "pooled_auc": 0.690145641537028
+  },
+  "100": {
+   "pool": 9932,
+   "pooled_auc": 0.6910655191195253
+  },
+  "200": {
+   "pool": 12710,
+   "pooled_auc": 0.7013870122990682
+  }
+ }
+}
