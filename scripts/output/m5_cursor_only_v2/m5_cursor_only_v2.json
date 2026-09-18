@@ -1,0 +1,84 @@
+{
+  "model": "LogisticRegression(class_weight='balanced', C=1.0) + StandardScaler",
+  "trained_on": "all 47 participants, no holdout (full-data refit); [LAB, AdSERP, typed, cursor-only, press-anchored buf500]",
+  "n_episodes": 9932,
+  "n_deferred": 6800,
+  "n_eval_rej": 3132,
+  "operating_threshold": 0.4767158548170605,
+  "operating_threshold_method": "Youden-J on LOSO out-of-fold predictions",
+  "loso_auc": 0.6910655191195253,
+  "loso_fold_auc_mean": 0.6936346245189787,
+  "loso_fold_auc_sd": 0.06980115189681423,
+  "loso_youden_j": {
+    "threshold": 0.4767158548170605,
+    "tpr": 0.7276470588235294,
+    "fpr": 0.4425287356321839,
+    "precision": 0.7811809283233344,
+    "recall": 0.7276470588235294,
+    "f1": 0.7534642911527333
+  },
+  "features": [
+    "min_dist",
+    "mean_dist",
+    "dwell_in_proximity_ms",
+    "mean_approach_velocity",
+    "max_approach_velocity",
+    "direction_changes",
+    "frac_decreasing"
+  ],
+  "scaler_mean": [
+    25.50021573343162,
+    561.0290872747997,
+    1518.2360048328635,
+    14.59165056356985,
+    2247.0896986125094,
+    51.5885018123238,
+    0.4177945024040973
+  ],
+  "scaler_scale": [
+    28.768698093407117,
+    375.7200198968656,
+    1889.3192713734,
+    133.28544655248757,
+    1500.9593463767824,
+    48.310669442767605,
+    0.15308235508692228
+  ],
+  "coefficients_raw": [
+    -0.09352414984208963,
+    -0.5577273195029008,
+    0.325112787568923,
+    -0.00041270971390957884,
+    -0.09520429292820604,
+    0.13716573524717857,
+    -0.05078519417467733
+  ],
+  "intercept": 0.09666728603860673,
+  "apply": "score = sigmoid(sum_i(coef_i * (feat_i - scaler_mean_i) / scaler_scale_i) + intercept); pred_deferred = score >= operating_threshold",
+  "regime_for_inference": "WILD-compatible (cursor features only, the tracker's runtime measurement); supervision was [LAB, NB22 gaze-derived]",
+  "provenance": {
+    "producer": "attentional-foraging/scripts/export_m5_cursor_only.py",
+    "producer_sha256": "1b2e015dfcdb1df024b4141c75196b7096961376d98bcb6c12b6f1cefb9b0669",
+    "generated_utc": "2026-09-18T12:07:11.752660+00:00",
+    "feature_cache": "AdSERP/data/cursor-only-typed-features-mousedown.json",
+    "feature_cache_sha256": "c4f4dba3c363440710ffb1fa61f50b70dad35a8adb9016b5b3e1940a82e2ea30",
+    "feature_cache_condition": "buf500",
+    "anchor_event": "mousedown",
+    "sampling": "native",
+    "label_cache": "scripts/output/approach_threshold_sensitivity/regression_labels_cache_typed.json",
+    "label_cache_sha256": "a878bba4a69b9736393f510fc2936e3e021621bc99a1bb772f64aed61f0ed4a8",
+    "label_alignment_rows": "AdSERP/data/cursor-approach-features-typed.json",
+    "pool": "approached (min_dist < 100 px) and not clicked",
+    "gate": {
+      "expected_pooled_auc": 0.6910655191195253,
+      "reproduced_pooled_auc": 0.6910655191195253,
+      "abs_diff": 0.0,
+      "tolerance": 1e-06,
+      "passed": true,
+      "sidecar": "scripts/output/m4_cursor_only_downstream/summary.json"
+    },
+    "sklearn": "1.8.0",
+    "python": "3.13.11"
+  },
+  "lineage_note": "Replaces m5_final_model.json (2026-05-02, kept as m5_final_model.legacy-2026-05-02.json). That model was trained on the LAB organic stream from compute_cursor_approach_features.py: rows selected by fixation, the cursor sampled at fixation times, min_dist/mean_dist measured from the FIXATION position to the cursor, and dwell_in_proximity_ms weighted by fixation duration; it also consumed final_dist and retreat_dist, the two terms the click-buffer screen excludes on principle. Those features carried part of the gaze-return label they were trained to predict: on identical rows and labels they score 0.771 and the tracker's cursor-only features 0.665 (paired participant delta -0.068 [-0.116, -0.017]); sampling, buffer and population each move < 0.01 (attentional-foraging/docs/ablations/deferred_drop_decomposition.md). They were also not the measurement m5_inference.py computes at runtime, so the shipped scaler statistics (min_dist mean 61 px, dwell mean 1,488 ms) standardised runtime features against the wrong distribution. This model is trained on exactly the runtime measurement: the tracker's one-dimensional cursor-to-centre distance on native mousemove events, press-anchored 500 ms buffer, seven features. The drop from LOSO 0.769 to 0.691 is the removal of the gaze term, not a regression."
+}
