@@ -82,6 +82,16 @@ instrument (Duchowski). Leaky Cursor is not submitted to CHIIR.
       half dwell heterogeneity, half returns (71 % of fixation time is post-first-visit).
       L: click above the deepest rank examined in 84.5 % of trials, median gap 4 ranks.
       Gated on shipped first-pass reach (1e-9) and census dwell (0 ms). Key Claims rows owed.
+- [x] `scripts/deferred_drop_decomposition.py` + note (2026-09-17): the deferred classifier's
+      0.75 → 0.69 is the feature definition (old features were fixation-selected with
+      gaze-to-cursor distances; −0.068 on identical rows); sampling, buffer, population < 0.01.
+- [x] `scripts/ltr_gaze_graded_labels.py` + note (2026-09-17/18): graded gaze labels on cursor
+      features: four-grade +0.012 click / +0.05 NDCG vs its own relevance; finer grades neutral
+      within cursor reach; any grade on an unapproached result reverses both. Census deferred
+      describes; approached∧returned trains.
+- [ ] approach-retreat consumer update in progress (inventory: `approach-retreat/docs/validation/
+      2026-09-18-claims-inventory.md`): M5 v2 export, key-claims V2 transcription, ablation doc,
+      current-evidence, V3 bands re-derivation on the cursor-only pool.
 - [ ] Pass-4 outline (2026-09-16): C/W/L extension (three amendments: channel-indexed viewing,
       state-indexed cost, a return term) + full CIKM port map:
       `~/Documents/dev/chiir27/notes/chiir-cwl-extension-outline-2026-09-16.md`.

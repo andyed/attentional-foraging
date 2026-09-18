@@ -65,7 +65,7 @@ into 8..0, exponential gain; NB26's K24 construction with a gaze scalar);
 
 NDCG@10 against the paper's four-grade relevance itself (on-screen): binary
 0.898 · four grades 0.945 · six within reach 0.944 · pointwise regression on
-four grades **0.954** · pure-gaze four grades 0.880 · SERP position 0.884.
+four grades **0.954** · pure-gaze four grades 0.880 · SERP position 0.856.
 Paired deltas are per-participant means of per-trial metrics, 10,000-sample
 bootstrap. Graded NDCG is scored on 2,564 trials over on-screen AOIs (trials with no on-screen non-zero grade beyond the click are skipped).
 
