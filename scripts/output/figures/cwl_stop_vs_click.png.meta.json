@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "run_utc": "2026-09-16T04:52:41.545479+00:00",
+  "script_path": "/Users/andyed/Documents/dev/attentional-foraging/scripts/render_cwl_stop_vs_click.py",
+  "script_sha": "b911c205",
+  "script_dirty": true,
+  "dataset_path": "scripts/output/cwl_derived_vs_measured/gate_200px/summary.json",
+  "dataset_sha256": "0281584c7f805805ba44c71d66eba306c971dabc3b34136f93ab5cfc83893d92",
+  "producer_generated_utc": "2026-09-16T04:32:38.587728+00:00",
+  "producer_gate": {
+    "G1_first_pass_reach_max_abs_diff": 0.0,
+    "G2_per_slot_dwell_max_abs_diff_ms": 0.0,
+    "G2_slots_checked": 28416
+  },
+  "nb_k_ids": [],
+  "h_ids": [],
+  "figure_version": "gate_200px-v1",
+  "notes": "Stopping distribution derived (deepest first-pass rank) vs clicked rank, and the per-trial gap. [LAB, AdSERP, typed]; n_trials=2151; click above deepest 0.845 CI [0.8062372398291269, 0.8808793035219629]; expected stop derived 6.51 vs click 2.71 (0-based)."
+}
