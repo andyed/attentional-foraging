@@ -77,6 +77,17 @@ instrument (Duchowski). Leaky Cursor is not submitted to CHIIR.
       summary JSONs, SHA-asserted, table printed from the files
       (`notebooks-v2/build_key_claims_notebooks_37_38.py`, `key_claims_3738.py`); aggregate
       rebuilt; notes, findings page and README carry `[NB37:K#]` / `[NB38:K#]` tags.
+- [x] `scripts/cwl_derived_vs_measured.py` + `docs/ablations/cwl_derived_vs_measured.md`
+      (2026-09-15): C/W/L's derived W(i) and L(i) against the measured versions. W: TVD 0.20,
+      half dwell heterogeneity, half returns (71 % of fixation time is post-first-visit).
+      L: click above the deepest rank examined in 84.5 % of trials, median gap 4 ranks.
+      Gated on shipped first-pass reach (1e-9) and census dwell (0 ms). Key Claims rows owed.
+- [ ] Pass-4 outline (2026-09-16): C/W/L extension (three amendments: channel-indexed viewing,
+      state-indexed cost, a return term) + full CIKM port map:
+      `~/Documents/dev/chiir27/notes/chiir-cwl-extension-outline-2026-09-16.md`.
+- [ ] Pass-3 outline (2026-09-15): the five-state / C/W/L paper absorbs the audited CIKM
+      cursor chapter (§4.3), bounded AO rows A1–A5, PAI as §4.5. Decisions 1–5 pending:
+      `~/Documents/dev/chiir27/notes/chiir-outline-2026-09-15.md`.
 - [ ] Write to Sara FIRST (decision 2026-09-14: Sara joins CHIIR for orientation).
       Scope in the note: the survey-phase mechanism generalises (her 2026-06-03 NB13
       replication: compression, survey length, pupil trajectory, scroll decoupling;

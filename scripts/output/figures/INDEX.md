@@ -202,6 +202,25 @@ mechanisms in `docs/ablations/major_saccade_selection.md`,
 `return_is_memory.md` and `periphery_navigates.md`. Companion to
 `result_moves.png`, which shows the same moves from the data.
 
+### cwl_stop_vs_click.png
+
+<img src="cwl_stop_vs_click.png" width="720" alt="Two stopping distributions over ranks, the single-descent stop and the clicked rank, beside a histogram of the per-trial gap between the deepest rank examined and the clicked rank">
+
+**Source:** `scripts/render_cwl_stop_vs_click.py`  ·  **Created:** 2026-09-15  ·  **Regime:** `[LAB, AdSERP, typed]`
+**Stats dumps:** `cwl_derived_vs_measured/gate_200px/summary.json` (primary), `gate_200px_press_truncated/summary.json` (the 82 % robustness figure in the subtitle)
+
+C/W/L derives its stopping distribution from one descent, so the framework's
+stop is the deepest rank reached on the first pass. Every AdSERP trial ends in
+a click, so the observed stop is the clicked rank. Panel (a) shows the two
+distributions over ranks 1–10 (10+ = 10 or deeper): 40 % of trials go to rank
+10 or deeper before turning back, expected stop 7.5 (1-based); the click has
+expected rank 3.7. Panel (b) is the per-trial gap: the click is above the
+deepest rank examined in 84.5 % of trials [80.6, 88.1], median gap 4 ranks,
+per-participant median 87 %. The producer is gated on the shipped first-pass
+reach (1e-9) and the census's per-slot dwell (0 ms). Note:
+`docs/ablations/cwl_derived_vs_measured.md`. Forced-choice caveat: the click is
+a harvest rank, not an abandonment rank.
+
 ### idealized_vs_population.png
 
 <img src="idealized_vs_population.png" width="720" alt="Idealized stutter-step trial on an ad-topped page beside the population rate of each of its six stages">
