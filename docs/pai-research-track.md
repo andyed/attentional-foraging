@@ -17,7 +17,44 @@ Listing-1.1 discrepancies are exposed as options and have been raised with
 the authors. Extensions to the method are joint-work territory, not solo
 contributions.
 
-## What is established (all on the converted substrate, pinned env)
+> **Status 2026-09-18 — read this before the 08-31 section.** Every number
+> under "What is established" below is a 2026-08-31 figure on the
+> gaze-selected `organic_hybrid` caches that the 09-04 lineage audit retired;
+> none is quotable. What stands on the post-fix substrate, each with a gated
+> producer and a note in `docs/ablations/`:
+>
+> 1. **The published Eq. 2 kernel is nearly flat in eccentricity on SERP
+>    result bands** (Spearman −0.08 with boundary distance; 0.46 within 50 px
+>    vs 0.40 beyond 1,600 px; 6.8 % of adjacent pairs get α = 0 because the
+>    vertex distance exceeds the centroid distance below the middle of a wide
+>    band). `scripts/peripheral_kernel.py`, `engagement_state_census.md`
+>    §Read-this-first. Two suggestions for the authors: boundary distance
+>    instead of vertex distance on wide AOIs; the area weight outside the
+>    distance ratio.
+> 2. **Validation against later fixation** (`pai_kernel_validation.md`):
+>    survey intake predicts which unfixated result is fixated later at 0.520
+>    under the published kernel ungated, 0.745–0.748 under every
+>    eccentricity-aware kernel or hard gate, 0.748 for plain gaze distance.
+>    On this layout the falloff shape is unidentifiable; the shape test needs
+>    compact, well-separated AOIs.
+> 3. **Duration is exposure, not attribution** (`duration_parafoveal_accrual.md`,
+>    producer promoted 2026-09-18): longer visits on k make k+1 *less* likely
+>    to be skipped (0.256 → 0.138 across quintiles; 36/47 participants), the
+>    serial-attention signature.
+> 4. **What the periphery measurably does:** the five-state census
+>    (`engagement_state_census.md`; 25 % of on-screen never-fixated results
+>    sampled at read level within 200 px ≈ 5°, a per-participant trait),
+>    local next-fixation guidance only (`periphery_navigates.md`), nothing on
+>    the deferred split beyond the cursor (`pai_deferred_probe.md`), and
+>    returns executed from memory with half the peripheral ramp
+>    (`return_is_memory.md`).
+>
+> Venue: the CHIIR 2027 paper (abstract 2026-10-08) uses PAI as the
+> instrument for the zero-fixation tier with Duchowski as coauthor; the
+> kernel method result goes to the ETRA 2027 short paper (abstract
+> 2027-02-04) with the authors. Planning repo: `~/Documents/dev/chiir27`.
+
+## What is established (all on the converted substrate, pinned env) — RETIRED 2026-09-04, kept as method history
 
 Producers: `scripts/pai_exposure_ablation.py`, `scripts/pai_preentry_probe.py`,
 `scripts/render_pai_preentry_figure.py`; validation writeup
