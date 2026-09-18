@@ -1,0 +1,404 @@
+{
+  "model": "LogisticRegression(class_weight='balanced', C=1.0) + StandardScaler",
+  "trained_on": "all 47 participants, no holdout (full-data refit); [LAB, AdSERP, typed, cursor-only + viewport bands, press-anchored buf500]",
+  "n_episodes": 9932,
+  "n_deferred": 6800,
+  "n_eval_rej": 3132,
+  "score_semantics": "This is P(deferred | approached, not clicked) under the LAB NB22 gaze-regression label: the probability that a result the cursor approached but did not click is one the participant later returned to. The intended consumer use is the continuous score - as a per-episode feature, or averaged per result across sessions - not a hard label; any threshold is the consumer's choice, and operating_points gives the precision/recall of the choices from the LOSO out-of-fold scores. operating_threshold is retained for schema compatibility with m5_inference.M5Classifier and carries the Youden-J point, which is one row of that table and not a recommendation.",
+  "operating_threshold": 0.45435599081123895,
+  "operating_threshold_method": "Youden-J on LOSO out-of-fold predictions (one row of operating_points)",
+  "operating_points": [
+    {
+      "threshold": 0.3,
+      "method": "fixed grid",
+      "predicted_deferred_share": 0.7965163109142167,
+      "deferred_precision": 0.7731007457969915,
+      "deferred_recall": 0.8994117647058824,
+      "rejected_precision": 0.6615536862939139,
+      "rejected_recall": 0.4268837803320562,
+      "tp": 6116,
+      "fp": 1795,
+      "fn": 684,
+      "tn": 1337
+    },
+    {
+      "threshold": 0.35,
+      "method": "fixed grid",
+      "predicted_deferred_share": 0.7241240434957712,
+      "deferred_precision": 0.800194660734149,
+      "deferred_recall": 0.8463235294117647,
+      "rejected_precision": 0.6186131386861314,
+      "rejected_recall": 0.5411877394636015,
+      "tp": 5755,
+      "fp": 1437,
+      "fn": 1045,
+      "tn": 1695
+    },
+    {
+      "threshold": 0.37861986623021304,
+      "method": "prior-matching: predicted-deferred share = pool prior 0.6847",
+      "predicted_deferred_share": 0.684655658477648,
+      "deferred_precision": 0.8136764705882353,
+      "deferred_recall": 0.8136764705882353,
+      "rejected_precision": 0.5954661558109834,
+      "rejected_recall": 0.5954661558109834,
+      "tp": 5533,
+      "fp": 1267,
+      "fn": 1267,
+      "tn": 1865
+    },
+    {
+      "threshold": 0.4,
+      "method": "fixed grid",
+      "predicted_deferred_share": 0.6540475231574708,
+      "deferred_precision": 0.8252770935960592,
+      "deferred_recall": 0.7883823529411764,
+      "rejected_precision": 0.5811990686845169,
+      "rejected_recall": 0.6376117496807152,
+      "tp": 5361,
+      "fp": 1135,
+      "fn": 1439,
+      "tn": 1997
+    },
+    {
+      "threshold": 0.45,
+      "method": "fixed grid",
+      "predicted_deferred_share": 0.5891059202577528,
+      "deferred_precision": 0.8482310716116903,
+      "deferred_recall": 0.7298529411764706,
+      "rejected_precision": 0.5498652291105122,
+      "rejected_recall": 0.7164750957854407,
+      "tp": 4963,
+      "fp": 888,
+      "fn": 1837,
+      "tn": 2244
+    },
+    {
+      "threshold": 0.45435599081123895,
+      "method": "Youden-J on LOSO out-of-fold scores",
+      "predicted_deferred_share": 0.5829641562625856,
+      "deferred_precision": 0.8507772020725388,
+      "deferred_recall": 0.7244117647058823,
+      "rejected_precision": 0.5475615644616127,
+      "rejected_recall": 0.7241379310344828,
+      "tp": 4926,
+      "fp": 864,
+      "fn": 1874,
+      "tn": 2268
+    },
+    {
+      "threshold": 0.5,
+      "method": "fixed grid",
+      "predicted_deferred_share": 0.522553362867499,
+      "deferred_precision": 0.8641618497109826,
+      "deferred_recall": 0.6595588235294118,
+      "rejected_precision": 0.5118093631379165,
+      "rejected_recall": 0.774904214559387,
+      "tp": 4485,
+      "fp": 705,
+      "fn": 2315,
+      "tn": 2427
+    },
+    {
+      "threshold": 0.55,
+      "method": "fixed grid",
+      "predicted_deferred_share": 0.46627064035441,
+      "deferred_precision": 0.8797236018138631,
+      "deferred_recall": 0.5991176470588235,
+      "rejected_precision": 0.4857574042633465,
+      "rejected_recall": 0.8221583652618135,
+      "tp": 4074,
+      "fp": 557,
+      "fn": 2726,
+      "tn": 2575
+    },
+    {
+      "threshold": 0.6,
+      "method": "fixed grid",
+      "predicted_deferred_share": 0.4092831252517116,
+      "deferred_precision": 0.8944649446494465,
+      "deferred_recall": 0.5347058823529411,
+      "rejected_precision": 0.4607124595193455,
+      "rejected_recall": 0.8630268199233716,
+      "tp": 3636,
+      "fp": 429,
+      "fn": 3164,
+      "tn": 2703
+    },
+    {
+      "threshold": 0.65,
+      "method": "fixed grid",
+      "predicted_deferred_share": 0.358135320177205,
+      "deferred_precision": 0.905538375035142,
+      "deferred_recall": 0.4736764705882353,
+      "rejected_precision": 0.43858823529411767,
+      "rejected_recall": 0.89272030651341,
+      "tp": 3221,
+      "fp": 336,
+      "fn": 3579,
+      "tn": 2796
+    },
+    {
+      "threshold": 0.7,
+      "method": "fixed grid",
+      "predicted_deferred_share": 0.31242448650825616,
+      "deferred_precision": 0.9191105381888495,
+      "deferred_recall": 0.4194117647058824,
+      "rejected_precision": 0.4218772880363157,
+      "rejected_recall": 0.9198595146871009,
+      "tp": 2852,
+      "fp": 251,
+      "fn": 3948,
+      "tn": 2881
+    },
+    {
+      "threshold": 0.75,
+      "method": "fixed grid",
+      "predicted_deferred_share": 0.26490132903745467,
+      "deferred_precision": 0.9228430254656025,
+      "deferred_recall": 0.35705882352941176,
+      "rejected_precision": 0.40117792083276266,
+      "rejected_recall": 0.9351851851851852,
+      "tp": 2428,
+      "fp": 203,
+      "fn": 4372,
+      "tn": 2929
+    }
+  ],
+  "calibration": {
+    "n_bins": 10,
+    "binning": "equal-count on the LOSO out-of-fold score",
+    "bins": [
+      {
+        "edge_lo": 0.05510146078250359,
+        "edge_hi": 0.22049067007439635,
+        "mean_score": 0.16646083494120492,
+        "observed_deferred_rate": 0.2796780684104628,
+        "n": 994
+      },
+      {
+        "edge_lo": 0.22052258630746502,
+        "edge_hi": 0.2980782519604618,
+        "mean_score": 0.26158409432375945,
+        "observed_deferred_rate": 0.39235412474849096,
+        "n": 994
+      },
+      {
+        "edge_lo": 0.2980812837643475,
+        "edge_hi": 0.3659132946238239,
+        "mean_score": 0.3321912349629841,
+        "observed_deferred_rate": 0.5085599194360524,
+        "n": 993
+      },
+      {
+        "edge_lo": 0.366053281400104,
+        "edge_hi": 0.44083161987727654,
+        "mean_score": 0.4034851433571853,
+        "observed_deferred_rate": 0.6012084592145015,
+        "n": 993
+      },
+      {
+        "edge_lo": 0.4409346642756635,
+        "edge_hi": 0.5214543342327743,
+        "mean_score": 0.4804211807175883,
+        "observed_deferred_rate": 0.7119838872104733,
+        "n": 993
+      },
+      {
+        "edge_lo": 0.5214980577863848,
+        "edge_hi": 0.607787310143226,
+        "mean_score": 0.5641236438962,
+        "observed_deferred_rate": 0.7734138972809668,
+        "n": 993
+      },
+      {
+        "edge_lo": 0.6078417877921248,
+        "edge_hi": 0.7144250235545538,
+        "mean_score": 0.6600678519401784,
+        "observed_deferred_rate": 0.8187311178247734,
+        "n": 993
+      },
+      {
+        "edge_lo": 0.7144478855531476,
+        "edge_hi": 0.8203323851262376,
+        "mean_score": 0.766009004530338,
+        "observed_deferred_rate": 0.8831822759315207,
+        "n": 993
+      },
+      {
+        "edge_lo": 0.8204349979474498,
+        "edge_hi": 0.9299082797143097,
+        "mean_score": 0.8738247645282092,
+        "observed_deferred_rate": 0.9144008056394763,
+        "n": 993
+      },
+      {
+        "edge_lo": 0.9299099997936736,
+        "edge_hi": 0.9999981441657464,
+        "mean_score": 0.97060871598866,
+        "observed_deferred_rate": 0.9637462235649547,
+        "n": 993
+      }
+    ],
+    "brier_score": 0.19092127574874534,
+    "max_abs_gap_mean_score_minus_observed_rate": 0.23156270649288502,
+    "verdict": "not calibrated: worst equal-count bin is off by 0.232 in probability"
+  },
+  "loso_auc": 0.7898702201186989,
+  "loso_within_trial_auc": 0.7754306808859721,
+  "loso_fold_auc_mean": 0.7827071113521047,
+  "loso_fold_auc_sd": 0.060276276802879204,
+  "loso_youden_j": {
+    "threshold": 0.45435599081123895,
+    "tpr": 0.7244117647058823,
+    "fpr": 0.27586206896551724,
+    "precision": 0.8507772020725388,
+    "recall": 0.7244117647058823,
+    "f1": 0.782525814138205
+  },
+  "loso_standardized_coefficients": {
+    "n_folds": 47,
+    "mean": {
+      "min_dist": -0.10257196673970673,
+      "mean_dist": -0.11438554269846715,
+      "dwell_in_proximity_ms": 0.11372069955123495,
+      "mean_approach_velocity": 0.08090292691713413,
+      "max_approach_velocity": -0.052507280786057764,
+      "direction_changes": -0.02709488886769731,
+      "frac_decreasing": -0.010330366719665338,
+      "vt_top": 1.261045166733828,
+      "vt_mid": 0.6434731014999588,
+      "vt_bot": 0.2497355971519737,
+      "position": -0.23044767594634125
+    },
+    "sd": {
+      "min_dist": 0.004217628401208527,
+      "mean_dist": 0.009227764240383192,
+      "dwell_in_proximity_ms": 0.00712710931028591,
+      "mean_approach_velocity": 0.006025273974471062,
+      "max_approach_velocity": 0.007581800089097854,
+      "direction_changes": 0.025793650729164768,
+      "frac_decreasing": 0.005726721687696473,
+      "vt_top": 0.012901936284035966,
+      "vt_mid": 0.009449735440528385,
+      "vt_bot": 0.004767486716753984,
+      "position": 0.008123440129897101
+    }
+  },
+  "features": [
+    "min_dist",
+    "mean_dist",
+    "dwell_in_proximity_ms",
+    "mean_approach_velocity",
+    "max_approach_velocity",
+    "direction_changes",
+    "frac_decreasing",
+    "vt_top",
+    "vt_mid",
+    "vt_bot",
+    "position"
+  ],
+  "feature_units": {
+    "min_dist": "px",
+    "mean_dist": "px",
+    "dwell_in_proximity_ms": "ms",
+    "mean_approach_velocity": "px/s",
+    "max_approach_velocity": "px/s",
+    "direction_changes": "count",
+    "frac_decreasing": "fraction",
+    "vt_top": "ms",
+    "vt_mid": "ms",
+    "vt_bot": "ms",
+    "position": "rank 0-based"
+  },
+  "scaler_mean": [
+    25.50021573343162,
+    561.0290872747997,
+    1518.2360048328635,
+    14.59165056356985,
+    2247.0896986125094,
+    51.5885018123238,
+    0.4177945024040973,
+    3797.411598872332,
+    5537.102094240838,
+    4398.198348771647,
+    3.5220499395892064
+  ],
+  "scaler_scale": [
+    28.768698093407117,
+    375.7200198968656,
+    1889.3192713734,
+    133.28544655248757,
+    1500.9593463767824,
+    48.310669442767605,
+    0.15308235508692228,
+    5352.941225902066,
+    6587.183762512767,
+    6471.098426735423,
+    3.106807432525786
+  ],
+  "coefficients_raw": [
+    -0.10253604005911743,
+    -0.11404767346163243,
+    0.11380488026738148,
+    0.08125682942293516,
+    -0.052656145303865115,
+    -0.027662272970764106,
+    -0.01040619936348402,
+    1.261020399613996,
+    0.6434112524650997,
+    0.24978118694884285,
+    -0.2305861408194487
+  ],
+  "intercept": 0.41835881475119346,
+  "apply": "score = sigmoid(sum_i(coef_i * (feat_i - scaler_mean_i) / scaler_scale_i) + intercept); pred_deferred = score >= operating_threshold",
+  "refit_selfcheck_max_abs_err": 0.0,
+  "regime_for_inference": "WILD-compatible (cursor features plus the viewport bands the library emits at runtime); supervision was [LAB, NB22 gaze-derived]",
+  "band_definition": "edmonds-2026-vpbands-v1: scrollY = 0 from the first mouse event, stepped at each scroll event; vt_top/vt_mid/vt_bot accrue ms by which third of the viewport the result centre lies in, over the first mouse event to mousedown(final click) - 500 ms, in screenshot space (scroll y * ratio_y, vp_h = screen_height * ratio_y)",
+  "provenance": {
+    "producer": "attentional-foraging/scripts/export_m5_v3.py",
+    "producer_sha256": "d0b88f1764350a4b4cb930db6f2b934d1174f235892420e398112474f04c6fb5",
+    "generated_utc": "2026-09-18T16:22:37.826489+00:00",
+    "feature_cache": "AdSERP/data/cursor-only-typed-features-mousedown.json",
+    "feature_cache_sha256": "c4f4dba3c363440710ffb1fa61f50b70dad35a8adb9016b5b3e1940a82e2ea30",
+    "feature_cache_condition": "buf500",
+    "anchor_event": "mousedown",
+    "sampling": "native",
+    "flavor": "typed",
+    "label_cache": "scripts/output/approach_threshold_sensitivity/regression_labels_cache_typed.json",
+    "label_cache_sha256": "a878bba4a69b9736393f510fc2936e3e021621bc99a1bb772f64aed61f0ed4a8",
+    "label_alignment_rows": "AdSERP/data/cursor-approach-features-typed.json",
+    "lab_rows_sha256": "e8088c070b955bd3d37dc17420966960c020c963110bc434e5411ce9bee360e5",
+    "bands_sidecar": "scripts/output/viewport_bands_cursor_only/summary.json",
+    "bands_sidecar_sha256": "9c7cb878fc0e7cd7b0e05c672e3d5ba2b27e74c4b640e08f9d47b2c99c5c7353",
+    "pool": "approached (min_dist < 100 px) and not clicked, with bands resolved",
+    "gate": {
+      "tolerance": 1e-06,
+      "sidecar": "scripts/output/viewport_bands_cursor_only/summary.json",
+      "checks": {
+        "cursor_M4_7": {
+          "expected_pooled_auc": 0.6910655191195253,
+          "reproduced_pooled_auc": 0.6910655191195253,
+          "abs_diff": 0.0,
+          "passed": true
+        },
+        "bands_3": {
+          "expected_pooled_auc": 0.788615665614905,
+          "reproduced_pooled_auc": 0.788615665614905,
+          "abs_diff": 0.0,
+          "passed": true
+        },
+        "cursor_M4_7_plus_bands_3": {
+          "expected_pooled_auc": 0.7891330478551575,
+          "reproduced_pooled_auc": 0.7891330478551575,
+          "abs_diff": 0.0,
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    "sklearn": "1.8.0",
+    "python": "3.13.11"
+  },
+  "lineage_note": "Successor to m5_cursor_only_v2.json (2026-09-18), which stays in place as the cursor-only model. v2 is the seven-feature tracker vector at LOSO 0.691; on its Youden point (TPR 0.7276, FPR 0.4425, 6,800 deferred / 3,132 rejected) the rejected-label precision is 48.5 %, i.e. a hard EVALUATED_REJECTED call from the cursor alone is near a coin flip. v3 adds the three viewport-band features the library already emits at runtime (edmonds-2026-vpbands-v1: ms the result spent in the top / middle / bottom third of the viewport, over the same window every cursor feature uses). Science caveat carried forward from docs/ablations/viewport_bands_cursor_only.md: the band signal is mostly the return - cut at the end of the first gaze visit, bands fall 0.771 -> 0.553 - which does not matter for an instrument whose consumer wants to know whether the user came back, but does mean the bands are not a prediction made before the return happened."
+}
