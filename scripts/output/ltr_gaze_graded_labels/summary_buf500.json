@@ -1,0 +1,961 @@
+{
+ "schema_version": 1,
+ "generated_utc": "2026-09-18T11:36:40.423977+00:00",
+ "regime": "[LAB, AdSERP, typed, cursor-only features, gaze training labels]",
+ "protocol": "cursor-only typed buf500 (press-anchored); 47-fold participant LOSO; LGBMRanker lambdarank NDCG@10 (200 trees, lr 0.05, 31 leaves, min 20); NotApprBelow rows excluded from training for EVERY scheme; inference scores every main-axis AOI; MRR@10 / NDCG@10 per trial on the binary click vector",
+ "inputs": {
+  "cache": "AdSERP/data/cursor-only-typed-features-mousedown.json",
+  "cache_sha256": "c4f4dba3c363440710ffb1fa61f50b70dad35a8adb9016b5b3e1940a82e2ea30",
+  "label_cache_sha256": "a878bba4a69b9736393f510fc2936e3e021621bc99a1bb772f64aed61f0ed4a8",
+  "states_csv": "scripts/output/engagement_state_census/gate_200px/states.csv",
+  "states_sha256": "e13643b421715c4adc02704db08c8e2916b8599bf81528662835b2f232e3dcdb"
+ },
+ "gate": {
+  "LambdaMART (binary click)": {
+   "this_run": 0.7741914378225728,
+   "shipped": 0.7741914378225728
+  },
+  "LambdaMART (4 distinct grades, 3/2/1/0; gaze labels)": {
+   "this_run": 0.7856351640860844,
+   "shipped": 0.7856351640860844
+  }
+ },
+ "training_rows": 13909,
+ "records": 34328,
+ "label_counts_on_training_rows": {
+  "states6": {
+   "0": 524,
+   "1": 192,
+   "2": 2765,
+   "3": 1907,
+   "4": 5913,
+   "5": 2608
+  },
+  "cost4": {
+   "0": 716,
+   "1": 2765,
+   "2": 7820,
+   "3": 2608
+  },
+  "dwell10": {
+   "0": 1745,
+   "1": 479,
+   "2": 587,
+   "3": 721,
+   "4": 917,
+   "5": 1201,
+   "6": 1507,
+   "7": 1867,
+   "8": 2277,
+   "9": 2608
+  },
+  "gaze4": {
+   "NotApprAbove": 1369,
+   "DEFERRED": 6800,
+   "EVAL_REJECTED": 3132,
+   "CLICKED": 2608,
+   "NotApprBelow_EXCLUDED": 20419
+  },
+  "rows_missing_census_state": 11
+ },
+ "metrics": {
+  "Original SERP position (no ML)": {
+   "ndcg10": 0.5763929836941669,
+   "mrr10": 0.4470516542506573,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.9295129324382281,
+   "graded_ndcg10_gaze4_onscreen": 0.8560618953468349,
+   "n_trials_graded": 2564
+  },
+  "Oracle: score = six-state gaze grade (upper bound on the graded metric)": {
+   "ndcg10": 1.0,
+   "mrr10": 1.0,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 1.0,
+   "graded_ndcg10_gaze4_onscreen": 0.967877262360974,
+   "n_trials_graded": 2564
+  },
+  "LambdaMART (binary click)": {
+   "ndcg10": 0.8265036631873487,
+   "mrr10": 0.7741914378225728,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.9310791517860536,
+   "graded_ndcg10_gaze4_onscreen": 0.8983384276500878,
+   "n_trials_graded": 2564
+  },
+  "LambdaMART (4 distinct grades, 3/2/1/0; gaze labels)": {
+   "ndcg10": 0.8372355225198831,
+   "mrr10": 0.7856351640860844,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.9425522529752208,
+   "graded_ndcg10_gaze4_onscreen": 0.944678320627895,
+   "n_trials_graded": 2564
+  },
+  "LambdaMART (4 grades from gaze alone, no approach filter; census)": {
+   "ndcg10": 0.8172117265228549,
+   "mrr10": 0.763375663404421,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.9314340635209508,
+   "graded_ndcg10_gaze4_onscreen": 0.8803442969417263,
+   "n_trials_graded": 2564
+  },
+  "LambdaMART (3-grade collapse from gaze alone, rejected folded to 0; census)": {
+   "ndcg10": 0.8182585505594849,
+   "mrr10": 0.7646378055312104,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.9317751719015769,
+   "graded_ndcg10_gaze4_onscreen": 0.8823388403203749,
+   "n_trials_graded": 2564
+  },
+  "LambdaMART (six grades within cursor reach: clicked 5 / deferred \u22653 visits 4 / deferred 3 / rejected 2 / approached-unfixated 1 / not approached 0)": {
+   "ndcg10": 0.8327784405137613,
+   "mrr10": 0.7799569700068166,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.942295008252877,
+   "graded_ndcg10_gaze4_onscreen": 0.9435096508600701,
+   "n_trials_graded": 2564
+  },
+  "LambdaMART (click-pinned dwell rank among approached rows; not approached 0)": {
+   "ndcg10": 0.8287388379696115,
+   "mrr10": 0.7752308221345797,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.9403582727999408,
+   "graded_ndcg10_gaze4_onscreen": 0.9398250958218127,
+   "n_trials_graded": 2564
+  },
+  "LambdaMART (six states 5..0; gaze census)": {
+   "ndcg10": 0.8144991793511595,
+   "mrr10": 0.760447706690038,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.931552146001884,
+   "graded_ndcg10_gaze4_onscreen": 0.8812560181586733,
+   "n_trials_graded": 2564
+  },
+  "LambdaMART (four states, cost-tier gain; gaze census)": {
+   "ndcg10": 0.8169481992756353,
+   "mrr10": 0.7638560229817899,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.9309598314768281,
+   "graded_ndcg10_gaze4_onscreen": 0.8794770472629051,
+   "n_trials_graded": 2564
+  },
+  "LambdaMART (click-pinned gaze-dwell rank, 10 grades, exp gain)": {
+   "ndcg10": 0.8054688834326749,
+   "mrr10": 0.7520830290193786,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.9300032425857727,
+   "graded_ndcg10_gaze4_onscreen": 0.8892189531892649,
+   "n_trials_graded": 2564
+  },
+  "LambdaMART (click-pinned visit-count rank, 10 grades, exp gain)": {
+   "ndcg10": 0.8038644487746959,
+   "mrr10": 0.7495836985100789,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.929167081033455,
+   "graded_ndcg10_gaze4_onscreen": 0.8829906037206888,
+   "n_trials_graded": 2564
+  },
+  "LambdaMART (click-pinned gaze-dwell rank, 10 grades, linear gain)": {
+   "ndcg10": 0.7937888725757917,
+   "mrr10": 0.7371991856558574,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.9331123675213704,
+   "graded_ndcg10_gaze4_onscreen": 0.8915842781419553,
+   "n_trials_graded": 2564
+  },
+  "LambdaMART (position + cursor; binary click)": {
+   "ndcg10": 0.8192450030399537,
+   "mrr10": 0.7676520352517284,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.9268595488724685,
+   "graded_ndcg10_gaze4_onscreen": 0.8844273654087113,
+   "n_trials_graded": 2564
+  },
+  "LambdaMART (position + cursor; 4 distinct grades, 3/2/1/0; gaze labels)": {
+   "ndcg10": 0.8469219651017958,
+   "mrr10": 0.7980037004576882,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.943971791495437,
+   "graded_ndcg10_gaze4_onscreen": 0.9459272646130754,
+   "n_trials_graded": 2564
+  },
+  "LambdaMART (position + cursor; 4 grades from gaze alone, no approach filter; census)": {
+   "ndcg10": 0.8205572464503411,
+   "mrr10": 0.768712721540559,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.9324628483672235,
+   "graded_ndcg10_gaze4_onscreen": 0.8811568528299584,
+   "n_trials_graded": 2564
+  },
+  "LambdaMART (position + cursor; 3-grade collapse from gaze alone, rejected folded to 0; census)": {
+   "ndcg10": 0.8205062975054954,
+   "mrr10": 0.7685938869412795,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.932912678447707,
+   "graded_ndcg10_gaze4_onscreen": 0.8814536135818271,
+   "n_trials_graded": 2564
+  },
+  "LambdaMART (position + cursor; six grades within cursor reach: clicked 5 / deferred \u22653 visits 4 / deferred 3 / rejected 2 / approached-unfixated 1 / not approached 0)": {
+   "ndcg10": 0.8414334284752769,
+   "mrr10": 0.7907958722855194,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.9447165186406413,
+   "graded_ndcg10_gaze4_onscreen": 0.9458165965919119,
+   "n_trials_graded": 2564
+  },
+  "LambdaMART (position + cursor; click-pinned dwell rank among approached rows; not approached 0)": {
+   "ndcg10": 0.8313077173246383,
+   "mrr10": 0.7783535397799201,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.9418048953584719,
+   "graded_ndcg10_gaze4_onscreen": 0.9390739187693642,
+   "n_trials_graded": 2564
+  },
+  "LGBM (pointwise regression on gaze4 grade)": {
+   "ndcg10": 0.8217820857725041,
+   "mrr10": 0.7644953866004479,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.9454071304450433,
+   "graded_ndcg10_gaze4_onscreen": 0.9542103530928804,
+   "n_trials_graded": 2564
+  },
+  "LGBM (pointwise regression on six-within-reach grade)": {
+   "ndcg10": 0.8110575330962928,
+   "mrr10": 0.750829103369364,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.9440174499111279,
+   "graded_ndcg10_gaze4_onscreen": 0.9530215429731944,
+   "n_trials_graded": 2564
+  },
+  "LGBM (pointwise regression on six-state census grade)": {
+   "ndcg10": 0.7945955906509722,
+   "mrr10": 0.73290075104684,
+   "n_trials": 2608,
+   "graded_ndcg10_states6_onscreen": 0.9385349857643196,
+   "graded_ndcg10_gaze4_onscreen": 0.8848729533005405,
+   "n_trials_graded": 2564
+  }
+ },
+ "comparisons": {
+  "LambdaMART (binary click)": {
+   "delta_mrr10_vs_binary": 0.0,
+   "delta_ndcg10_vs_binary": 0.0,
+   "delta_mrr10_vs_gaze4": -0.011443726263511533,
+   "paired_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.0,
+    "bootstrap_ci95": [
+     0.0,
+     0.0
+    ],
+    "positive": 0,
+    "wilcoxon_two_sided_p": 1.0
+   },
+   "paired_vs_gaze4": {
+    "n_participants": 47,
+    "mean_delta": -0.011671132462241269,
+    "bootstrap_ci95": [
+     -0.019288021501283285,
+     -0.003542121831972273
+    ],
+    "positive": 14,
+    "wilcoxon_two_sided_p": 0.0034318856932458175
+   },
+   "delta_graded_ndcg10_states6_vs_binary": 0.0,
+   "paired_graded_states6_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.0,
+    "bootstrap_ci95": [
+     0.0,
+     0.0
+    ],
+    "positive": 0,
+    "wilcoxon_two_sided_p": 1.0
+   }
+  },
+  "LambdaMART (4 distinct grades, 3/2/1/0; gaze labels)": {
+   "delta_mrr10_vs_binary": 0.011443726263511533,
+   "delta_ndcg10_vs_binary": 0.0107318593325344,
+   "delta_mrr10_vs_gaze4": 0.0,
+   "paired_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.011671132462241269,
+    "bootstrap_ci95": [
+     0.0035421218319722724,
+     0.019288021501283285
+    ],
+    "positive": 33,
+    "wilcoxon_two_sided_p": 0.0034318856932458175
+   },
+   "paired_vs_gaze4": {
+    "n_participants": 47,
+    "mean_delta": 0.0,
+    "bootstrap_ci95": [
+     0.0,
+     0.0
+    ],
+    "positive": 0,
+    "wilcoxon_two_sided_p": 1.0
+   },
+   "delta_graded_ndcg10_states6_vs_binary": 0.011473101189167223,
+   "paired_graded_states6_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.011395050154871146,
+    "bootstrap_ci95": [
+     0.009011416416974087,
+     0.013941623913483294
+    ],
+    "positive": 44,
+    "wilcoxon_two_sided_p": 1.5631940186722204e-12
+   }
+  },
+  "LambdaMART (4 grades from gaze alone, no approach filter; census)": {
+   "delta_mrr10_vs_binary": -0.010815774418151847,
+   "delta_ndcg10_vs_binary": -0.009291936664493794,
+   "delta_mrr10_vs_gaze4": -0.02225950068166338,
+   "paired_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": -0.010630274353233408,
+    "bootstrap_ci95": [
+     -0.02011238937996323,
+     -0.0013481383866137434
+    ],
+    "positive": 16,
+    "wilcoxon_two_sided_p": 0.04776878513753502
+   },
+   "paired_vs_gaze4": {
+    "n_participants": 47,
+    "mean_delta": -0.022301406815474677,
+    "bootstrap_ci95": [
+     -0.03209609154695086,
+     -0.012721489117738762
+    ],
+    "positive": 12,
+    "wilcoxon_two_sided_p": 7.473593767315378e-05
+   },
+   "delta_graded_ndcg10_states6_vs_binary": 0.00035491173489721195,
+   "paired_graded_states6_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.0004312920458947151,
+    "bootstrap_ci95": [
+     -0.0015533814605042562,
+     0.002381609579772684
+    ],
+    "positive": 23,
+    "wilcoxon_two_sided_p": 0.7411885682016788
+   }
+  },
+  "LambdaMART (3-grade collapse from gaze alone, rejected folded to 0; census)": {
+   "delta_mrr10_vs_binary": -0.009553632291362413,
+   "delta_ndcg10_vs_binary": -0.00824511262786376,
+   "delta_mrr10_vs_gaze4": -0.020997358554873946,
+   "paired_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": -0.009372405226842417,
+    "bootstrap_ci95": [
+     -0.017476070054412447,
+     -0.0015467321648182585
+    ],
+    "positive": 20,
+    "wilcoxon_two_sided_p": 0.05518674218265858
+   },
+   "paired_vs_gaze4": {
+    "n_participants": 47,
+    "mean_delta": -0.021043537689083687,
+    "bootstrap_ci95": [
+     -0.029450573762373394,
+     -0.013019478655416208
+    ],
+    "positive": 10,
+    "wilcoxon_two_sided_p": 6.819307103000938e-06
+   },
+   "delta_graded_ndcg10_states6_vs_binary": 0.000696020115523277,
+   "paired_graded_states6_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.0007440757940244019,
+    "bootstrap_ci95": [
+     -0.0009117192769900572,
+     0.002391988075137203
+    ],
+    "positive": 26,
+    "wilcoxon_two_sided_p": 0.38606563978051156
+   }
+  },
+  "LambdaMART (six grades within cursor reach: clicked 5 / deferred \u22653 visits 4 / deferred 3 / rejected 2 / approached-unfixated 1 / not approached 0)": {
+   "delta_mrr10_vs_binary": 0.0057655321842438045,
+   "delta_ndcg10_vs_binary": 0.006274777326412573,
+   "delta_mrr10_vs_gaze4": -0.005678194079267729,
+   "paired_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.006442106439349544,
+    "bootstrap_ci95": [
+     -0.002942579093785723,
+     0.015976908393367236
+    ],
+    "positive": 27,
+    "wilcoxon_two_sided_p": 0.20808942936665176
+   },
+   "paired_vs_gaze4": {
+    "n_participants": 47,
+    "mean_delta": -0.0052290260228917244,
+    "bootstrap_ci95": [
+     -0.01207243157441443,
+     0.0015565722291580528
+    ],
+    "positive": 19,
+    "wilcoxon_two_sided_p": 0.21903261174313937
+   },
+   "delta_graded_ndcg10_states6_vs_binary": 0.011215856466823437,
+   "paired_graded_states6_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.01116512916198,
+    "bootstrap_ci95": [
+     0.008573667904144199,
+     0.013934397600543855
+    ],
+    "positive": 41,
+    "wilcoxon_two_sided_p": 1.617621592231444e-10
+   }
+  },
+  "LambdaMART (click-pinned dwell rank among approached rows; not approached 0)": {
+   "delta_mrr10_vs_binary": 0.0010393843120068968,
+   "delta_ndcg10_vs_binary": 0.002235174782262761,
+   "delta_mrr10_vs_gaze4": -0.010404341951504636,
+   "paired_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.0012633457965063133,
+    "bootstrap_ci95": [
+     -0.008663766084585193,
+     0.01094690397834152
+    ],
+    "positive": 26,
+    "wilcoxon_two_sided_p": 0.5462582200803894
+   },
+   "paired_vs_gaze4": {
+    "n_participants": 47,
+    "mean_delta": -0.010407786665734955,
+    "bootstrap_ci95": [
+     -0.01823246321828479,
+     -0.0028500485513044617
+    ],
+    "positive": 20,
+    "wilcoxon_two_sided_p": 0.02159718620218598
+   },
+   "delta_graded_ndcg10_states6_vs_binary": 0.00927912101388717,
+   "paired_graded_states6_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.009126259091906268,
+    "bootstrap_ci95": [
+     0.006630430001338177,
+     0.011692519844578675
+    ],
+    "positive": 39,
+    "wilcoxon_two_sided_p": 2.435815815715614e-08
+   }
+  },
+  "LambdaMART (six states 5..0; gaze census)": {
+   "delta_mrr10_vs_binary": -0.013743731132534798,
+   "delta_ndcg10_vs_binary": -0.01200448383618924,
+   "delta_mrr10_vs_gaze4": -0.02518745739604633,
+   "paired_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": -0.013386232978224668,
+    "bootstrap_ci95": [
+     -0.021645262882828743,
+     -0.005378780427228839
+    ],
+    "positive": 20,
+    "wilcoxon_two_sided_p": 0.005660545781566384
+   },
+   "paired_vs_gaze4": {
+    "n_participants": 47,
+    "mean_delta": -0.025057365440465933,
+    "bootstrap_ci95": [
+     -0.03250927317154514,
+     -0.017635037139388975
+    ],
+    "positive": 8,
+    "wilcoxon_two_sided_p": 3.822258065611095e-08
+   },
+   "delta_graded_ndcg10_states6_vs_binary": 0.00047299421583035794,
+   "paired_graded_states6_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.0005748339434450836,
+    "bootstrap_ci95": [
+     -0.001529282637531847,
+     0.002585507716013261
+    ],
+    "positive": 24,
+    "wilcoxon_two_sided_p": 0.7019049489862255
+   }
+  },
+  "LambdaMART (four states, cost-tier gain; gaze census)": {
+   "delta_mrr10_vs_binary": -0.01033541484078293,
+   "delta_ndcg10_vs_binary": -0.009555463911713358,
+   "delta_mrr10_vs_gaze4": -0.021779141104294464,
+   "paired_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": -0.010282605528206487,
+    "bootstrap_ci95": [
+     -0.019097691348342764,
+     -0.001634464788476819
+    ],
+    "positive": 20,
+    "wilcoxon_two_sided_p": 0.036746795672257804
+   },
+   "paired_vs_gaze4": {
+    "n_participants": 47,
+    "mean_delta": -0.021953737990447756,
+    "bootstrap_ci95": [
+     -0.02983609557502789,
+     -0.014211124567029294
+    ],
+    "positive": 7,
+    "wilcoxon_two_sided_p": 1.1392126708642536e-06
+   },
+   "delta_graded_ndcg10_states6_vs_binary": -0.00011932030922545689,
+   "paired_graded_states6_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": -7.4546029612463e-05,
+    "bootstrap_ci95": [
+     -0.0018696846542783098,
+     0.00174062709727205
+    ],
+    "positive": 19,
+    "wilcoxon_two_sided_p": 0.7332749202959832
+   }
+  },
+  "LambdaMART (click-pinned gaze-dwell rank, 10 grades, exp gain)": {
+   "delta_mrr10_vs_binary": -0.0221084088031942,
+   "delta_ndcg10_vs_binary": -0.021034779754673827,
+   "delta_mrr10_vs_gaze4": -0.033552135066705735,
+   "paired_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": -0.02212434732684426,
+    "bootstrap_ci95": [
+     -0.03524686049272022,
+     -0.010391382279235434
+    ],
+    "positive": 13,
+    "wilcoxon_two_sided_p": 0.0004482864504780082
+   },
+   "paired_vs_gaze4": {
+    "n_participants": 47,
+    "mean_delta": -0.03379547978908552,
+    "bootstrap_ci95": [
+     -0.04426145239286878,
+     -0.023517444044881538
+    ],
+    "positive": 9,
+    "wilcoxon_two_sided_p": 1.4826906635789783e-07
+   },
+   "delta_graded_ndcg10_states6_vs_binary": -0.001075909200280889,
+   "paired_graded_states6_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": -0.0010786750754785152,
+    "bootstrap_ci95": [
+     -0.0035245456391738497,
+     0.0010955375026488836
+    ],
+    "positive": 18,
+    "wilcoxon_two_sided_p": 0.478560013118539
+   }
+  },
+  "LambdaMART (click-pinned visit-count rank, 10 grades, exp gain)": {
+   "delta_mrr10_vs_binary": -0.024607739312493937,
+   "delta_ndcg10_vs_binary": -0.02263921441265282,
+   "delta_mrr10_vs_gaze4": -0.03605146557600547,
+   "paired_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": -0.023759100201290517,
+    "bootstrap_ci95": [
+     -0.036664372824583735,
+     -0.011577854317984224
+    ],
+    "positive": 16,
+    "wilcoxon_two_sided_p": 0.001660561951695172
+   },
+   "paired_vs_gaze4": {
+    "n_participants": 47,
+    "mean_delta": -0.03543023266353179,
+    "bootstrap_ci95": [
+     -0.04508155229907284,
+     -0.02600259414504783
+    ],
+    "positive": 6,
+    "wilcoxon_two_sided_p": 7.038266858216957e-09
+   },
+   "delta_graded_ndcg10_states6_vs_binary": -0.0019120707525985825,
+   "paired_graded_states6_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": -0.0017628755677069293,
+    "bootstrap_ci95": [
+     -0.003895088671608092,
+     0.0003579787006776993
+    ],
+    "positive": 18,
+    "wilcoxon_two_sided_p": 0.11423281349964043
+   }
+  },
+  "LambdaMART (click-pinned gaze-dwell rank, 10 grades, linear gain)": {
+   "delta_mrr10_vs_binary": -0.03699225216671542,
+   "delta_ndcg10_vs_binary": -0.03271479061155702,
+   "delta_mrr10_vs_gaze4": -0.048435978430226956,
+   "paired_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": -0.03604004062658756,
+    "bootstrap_ci95": [
+     -0.05209860950077174,
+     -0.020648476672145498
+    ],
+    "positive": 9,
+    "wilcoxon_two_sided_p": 3.154944201355647e-05
+   },
+   "paired_vs_gaze4": {
+    "n_participants": 47,
+    "mean_delta": -0.04771117308882884,
+    "bootstrap_ci95": [
+     -0.06126280261405704,
+     -0.03467864310068479
+    ],
+    "positive": 7,
+    "wilcoxon_two_sided_p": 1.1491749773995252e-08
+   },
+   "delta_graded_ndcg10_states6_vs_binary": 0.0020332157353167846,
+   "paired_graded_states6_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.0019402826272061217,
+    "bootstrap_ci95": [
+     -0.0018728709756495828,
+     0.005186584945136463
+    ],
+    "positive": 34,
+    "wilcoxon_two_sided_p": 0.015085341312627065
+   }
+  },
+  "LambdaMART (position + cursor; binary click)": {
+   "delta_mrr10_vs_binary": -0.006539402570844399,
+   "delta_ndcg10_vs_binary": -0.0072586601473949575,
+   "delta_mrr10_vs_gaze4": -0.017983128834355933,
+   "paired_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": -0.0068924375916067345,
+    "bootstrap_ci95": [
+     -0.017067978250202058,
+     0.0026429959110143473
+    ],
+    "positive": 21,
+    "wilcoxon_two_sided_p": 0.3361193387760153
+   },
+   "paired_vs_gaze4": {
+    "n_participants": 47,
+    "mean_delta": -0.018563570053848004,
+    "bootstrap_ci95": [
+     -0.029777029764026915,
+     -0.007371734034752519
+    ],
+    "positive": 16,
+    "wilcoxon_two_sided_p": 0.00235828791058168
+   },
+   "delta_graded_ndcg10_states6_vs_binary": -0.004219602913585141,
+   "paired_graded_states6_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": -0.004209717908513334,
+    "bootstrap_ci95": [
+     -0.005778329109214832,
+     -0.002643302047720024
+    ],
+    "positive": 8,
+    "wilcoxon_two_sided_p": 4.3789438990415874e-06
+   }
+  },
+  "LambdaMART (position + cursor; 4 distinct grades, 3/2/1/0; gaze labels)": {
+   "delta_mrr10_vs_binary": 0.023812262635115378,
+   "delta_ndcg10_vs_binary": 0.020418301914447157,
+   "delta_mrr10_vs_gaze4": 0.012368536371603844,
+   "paired_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.024011645427194556,
+    "bootstrap_ci95": [
+     0.01535212498908078,
+     0.032795353334846615
+    ],
+    "positive": 37,
+    "wilcoxon_two_sided_p": 2.9620061354762584e-06
+   },
+   "paired_vs_gaze4": {
+    "n_participants": 47,
+    "mean_delta": 0.012340512964953284,
+    "bootstrap_ci95": [
+     0.003938052387117451,
+     0.020875768625932867
+    ],
+    "positive": 32,
+    "wilcoxon_two_sided_p": 0.005803944209543628
+   },
+   "delta_graded_ndcg10_states6_vs_binary": 0.012892639709383369,
+   "paired_graded_states6_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.012726199753289485,
+    "bootstrap_ci95": [
+     0.01016313395377515,
+     0.015451335655366164
+    ],
+    "positive": 45,
+    "wilcoxon_two_sided_p": 1.5631940186722204e-12
+   }
+  },
+  "LambdaMART (position + cursor; 4 grades from gaze alone, no approach filter; census)": {
+   "delta_mrr10_vs_binary": -0.005478716282013796,
+   "delta_ndcg10_vs_binary": -0.005946416737007576,
+   "delta_mrr10_vs_gaze4": -0.01692244254552533,
+   "paired_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": -0.005771259414621615,
+    "bootstrap_ci95": [
+     -0.015526773079973698,
+     0.0032393614532780775
+    ],
+    "positive": 22,
+    "wilcoxon_two_sided_p": 0.36894435814075166
+   },
+   "paired_vs_gaze4": {
+    "n_participants": 47,
+    "mean_delta": -0.017442391876862882,
+    "bootstrap_ci95": [
+     -0.02683614206701352,
+     -0.008129981340241284
+    ],
+    "positive": 17,
+    "wilcoxon_two_sided_p": 0.0008262478132650131
+   },
+   "delta_graded_ndcg10_states6_vs_binary": 0.0013836965811698798,
+   "paired_graded_states6_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.0012881811294542067,
+    "bootstrap_ci95": [
+     -0.0009112320508608126,
+     0.0036049405027408577
+    ],
+    "positive": 24,
+    "wilcoxon_two_sided_p": 0.40365414628793417
+   }
+  },
+  "LambdaMART (position + cursor; 3-grade collapse from gaze alone, rejected folded to 0; census)": {
+   "delta_mrr10_vs_binary": -0.005597550881293323,
+   "delta_ndcg10_vs_binary": -0.005997365681853273,
+   "delta_mrr10_vs_gaze4": -0.017041277144804856,
+   "paired_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": -0.00569469717534512,
+    "bootstrap_ci95": [
+     -0.01670258919648243,
+     0.005063344127473156
+    ],
+    "positive": 21,
+    "wilcoxon_two_sided_p": 0.31022107072914196
+   },
+   "paired_vs_gaze4": {
+    "n_participants": 47,
+    "mean_delta": -0.01736582963758639,
+    "bootstrap_ci95": [
+     -0.029250872628377736,
+     -0.005201191053631041
+    ],
+    "positive": 13,
+    "wilcoxon_two_sided_p": 0.0012529003740411326
+   },
+   "delta_graded_ndcg10_states6_vs_binary": 0.001833526661653373,
+   "paired_graded_states6_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.0018974174842178294,
+    "bootstrap_ci95": [
+     -0.00029959265099179205,
+     0.004158293224216471
+    ],
+    "positive": 29,
+    "wilcoxon_two_sided_p": 0.04420811536772362
+   }
+  },
+  "LambdaMART (position + cursor; six grades within cursor reach: clicked 5 / deferred \u22653 visits 4 / deferred 3 / rejected 2 / approached-unfixated 1 / not approached 0)": {
+   "delta_mrr10_vs_binary": 0.01660443446294657,
+   "delta_ndcg10_vs_binary": 0.01492976528792822,
+   "delta_mrr10_vs_gaze4": 0.005160708199435038,
+   "paired_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.016583595137149826,
+    "bootstrap_ci95": [
+     0.0057291469480170295,
+     0.027428451424096337
+    ],
+    "positive": 31,
+    "wilcoxon_two_sided_p": 0.007694115464971674
+   },
+   "paired_vs_gaze4": {
+    "n_participants": 47,
+    "mean_delta": 0.004912462674908557,
+    "bootstrap_ci95": [
+     -0.005464054669071611,
+     0.015516771815309062
+    ],
+    "positive": 25,
+    "wilcoxon_two_sided_p": 0.505087576140383
+   },
+   "delta_graded_ndcg10_states6_vs_binary": 0.013637366854587718,
+   "paired_graded_states6_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.01351773770613125,
+    "bootstrap_ci95": [
+     0.010532187708540813,
+     0.016801331371697707
+    ],
+    "positive": 43,
+    "wilcoxon_two_sided_p": 7.617018127348274e-12
+   }
+  },
+  "LambdaMART (position + cursor; click-pinned dwell rank among approached rows; not approached 0)": {
+   "delta_mrr10_vs_binary": 0.004162101957347231,
+   "delta_ndcg10_vs_binary": 0.004804054137289571,
+   "delta_mrr10_vs_gaze4": -0.007281624306164303,
+   "paired_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.0045361050833075435,
+    "bootstrap_ci95": [
+     -0.007511122935470854,
+     0.01625180053516665
+    ],
+    "positive": 28,
+    "wilcoxon_two_sided_p": 0.3468499245620791
+   },
+   "paired_vs_gaze4": {
+    "n_participants": 47,
+    "mean_delta": -0.007135027378933725,
+    "bootstrap_ci95": [
+     -0.01720663538493761,
+     0.0032049159733065326
+    ],
+    "positive": 19,
+    "wilcoxon_two_sided_p": 0.1721288052877128
+   },
+   "delta_graded_ndcg10_states6_vs_binary": 0.01072574357241829,
+   "paired_graded_states6_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.010600818396228883,
+    "bootstrap_ci95": [
+     0.008237038128584862,
+     0.01312282777044816
+    ],
+    "positive": 42,
+    "wilcoxon_two_sided_p": 2.4712676349736284e-11
+   }
+  },
+  "LGBM (pointwise regression on gaze4 grade)": {
+   "delta_mrr10_vs_binary": -0.009696051222124913,
+   "delta_ndcg10_vs_binary": -0.00472157741484458,
+   "delta_mrr10_vs_gaze4": -0.021139777485636446,
+   "paired_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": -0.008371447602279685,
+    "bootstrap_ci95": [
+     -0.022361744722798407,
+     0.005311226232601
+    ],
+    "positive": 24,
+    "wilcoxon_two_sided_p": 0.4464795905533805
+   },
+   "paired_vs_gaze4": {
+    "n_participants": 47,
+    "mean_delta": -0.020042580064520955,
+    "bootstrap_ci95": [
+     -0.031223831056607348,
+     -0.008993951214116024
+    ],
+    "positive": 18,
+    "wilcoxon_two_sided_p": 0.0033077521456732484
+   },
+   "delta_graded_ndcg10_states6_vs_binary": 0.014327978658989715,
+   "paired_graded_states6_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.01431631884999341,
+    "bootstrap_ci95": [
+     0.010542075759060191,
+     0.01821588772151982
+    ],
+    "positive": 40,
+    "wilcoxon_two_sided_p": 5.201030717216781e-09
+   }
+  },
+  "LGBM (pointwise regression on six-within-reach grade)": {
+   "delta_mrr10_vs_binary": -0.02336233445320879,
+   "delta_ndcg10_vs_binary": -0.015446130091055887,
+   "delta_mrr10_vs_gaze4": -0.03480606071672032,
+   "paired_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": -0.022023946507319994,
+    "bootstrap_ci95": [
+     -0.03627385894971029,
+     -0.008319614784713025
+    ],
+    "positive": 16,
+    "wilcoxon_two_sided_p": 0.008786958608638429
+   },
+   "paired_vs_gaze4": {
+    "n_participants": 47,
+    "mean_delta": -0.03369507896956127,
+    "bootstrap_ci95": [
+     -0.045593767320647564,
+     -0.022006023904592362
+    ],
+    "positive": 13,
+    "wilcoxon_two_sided_p": 6.819307103000938e-06
+   },
+   "delta_graded_ndcg10_states6_vs_binary": 0.012938298125074299,
+   "paired_graded_states6_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.012849028412486318,
+    "bootstrap_ci95": [
+     0.009047733124432501,
+     0.0167450464891922
+    ],
+    "positive": 38,
+    "wilcoxon_two_sided_p": 5.428071858659678e-08
+   }
+  },
+  "LGBM (pointwise regression on six-state census grade)": {
+   "delta_mrr10_vs_binary": -0.04129068677573278,
+   "delta_ndcg10_vs_binary": -0.03190807253637651,
+   "delta_mrr10_vs_gaze4": -0.05273441303924431,
+   "paired_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": -0.04019792474195545,
+    "bootstrap_ci95": [
+     -0.05523884132961386,
+     -0.025299418035872108
+    ],
+    "positive": 13,
+    "wilcoxon_two_sided_p": 9.861699609814423e-06
+   },
+   "paired_vs_gaze4": {
+    "n_participants": 47,
+    "mean_delta": -0.05186905720419672,
+    "bootstrap_ci95": [
+     -0.0655949390660039,
+     -0.03865047416705321
+    ],
+    "positive": 8,
+    "wilcoxon_two_sided_p": 3.4386573588562896e-09
+   },
+   "delta_graded_ndcg10_states6_vs_binary": 0.007455833978265991,
+   "paired_graded_states6_vs_binary": {
+    "n_participants": 47,
+    "mean_delta": 0.007599703805888577,
+    "bootstrap_ci95": [
+     0.0034030421443750347,
+     0.011894329383820068
+    ],
+    "positive": 34,
+    "wilcoxon_two_sided_p": 0.0010628165224062514
+   }
+  }
+ }
+}
