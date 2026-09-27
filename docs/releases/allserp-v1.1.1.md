@@ -26,6 +26,19 @@ Per-trial JSON maps live in the repository under `data/aoi-typed/` and `data/aoi
 - DOM fidelity harness, full corpus (`scripts/aoi_fidelity.py --all`, output `scripts/output/aoi_fidelity_full_2026-09-07.json`): recorded click inside its xpath element on 87.7 % of trials; released box matches its DOM element at IoU >= 0.5 on 90.8 %, median IoU 0.879; visible carousel card count agrees with the cell export on 29.5 % (the cell layer is the least mature tier; a DOM-derived replacement is validated but not yet adopted).
 - Trial-level click filter in both coordinate spaces (`scripts/audit_trial_filter_space.py`): 91.5 % of final clicks attribute in document space, 95.7 % once evtrack clicks are converted to screenshot space.
 
+## Known issue: the exclusion stamp in export summaries (noted 2026-09-26)
+
+Every v1.1.1 export summary carries the same `alignment_exclusions` block, including
+`adserp_aois_by_trial_id_organic_hybrid_summary.json`. That export keeps all 12 listed
+trials (2,776 trials); the typed exports drop them (2,764). A v1.1.1 summary therefore does
+not say whether its own export applied the list. Commit `448fad26` on `main` makes the stamp
+record `applied` true or false per export; the CSV and JSONL data are byte-identical, so no
+number moves. Read the trial count, not the stamp, to tell which applies.
+
+The cell-split export applies the current parent boxes and the 12 exclusions to the May cell
+snapshot, so it holds 6,345 cells in 1,543 carousels against the snapshot's 6,373 in 1,550.
+Producers that read the snapshot directly (cell composition and rank) keep all 1,550.
+
 ## Licence
 
 Code MIT. Derived data CC-BY-4.0. Cite the paper and the AdSERP corpus (`CITATION.cff`).
