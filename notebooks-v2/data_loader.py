@@ -1137,7 +1137,7 @@ def attribute_click_to_typed_gapfill(
     return best
 
 
-def is_main_axis_click(trial_id):
+def is_main_axis_click(trial_id, space='document'):
     """True iff the trial's final click attributes to a main-axis AOI under
     typed_gapfill (with default tolerance). False for the 158 hard-error
     trials (dd_right, right_chrome, off-target where click is in no
@@ -1146,9 +1146,25 @@ def is_main_axis_click(trial_id):
     Use as a trial-level filter for any click-outcome analysis under
     typed_gapfill: contaminated trials have no defensible main-axis click
     target and should be dropped from `was_clicked` populations.
+
+    Args:
+        space: coordinate space of the click before the containment test.
+            'screenshot' is the correct comparison: the typed_gapfill boxes
+            are screenshot space. 'document' (the default) compares raw
+            evtrack coordinates against those boxes. It stays the default
+            because the released feature producers were built on it: across
+            the 2,776 trials, screenshot space admits 2,657 against 2,539 and
+            drops none (the 118 extra trials were chrome/off-target under
+            document space). Switching a producer to 'screenshot' therefore
+            only adds trials to its population, and should be versioned as a
+            substrate change. Audit: scripts/audit_trial_filter_space.py.
     """
+    # Validate before the try: the except below would turn a misspelled space
+    # into a silent False, i.e. a trial quietly dropped from every population.
+    if space not in ('document', 'screenshot'):
+        raise ValueError(f"space must be 'document' or 'screenshot', got {space!r}")
     try:
-        _, _, clicks = load_mouse_events(trial_id)
+        _, _, clicks = load_mouse_events(trial_id, space=space)
     except Exception:
         return False
     if not clicks:
