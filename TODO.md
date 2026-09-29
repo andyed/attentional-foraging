@@ -8,11 +8,59 @@ bottom of this file.
 
 ---
 
+## Evolve the process account across the project (2026-09-29)
+
+Current direction: **Attentional Foraging in Search: Initial Sampling and
+Recurrent Evaluation**. AF characterizes the search cognitive process;
+approach-retreat owns click modeling. OSEC remains historical vocabulary,
+not an established four-stage explanation. This revision supersedes the
+headline framing in the September 14 worklist below.
+
+- [x] Replace the README's stage-sequence headline and update agent orientation.
+- [ ] Audit active framing in `docs/foraging-constructs.md`, `docs/findings.md`,
+      `docs/findings-result-evaluation-states.md`, notebook introductions,
+      the explainer source, project metadata and the task-model manuscript.
+      Distinguish current claims from historical reports before editing.
+      Inventory from the 2026-09-29 audit: `findings.md` (four-phase task
+      model at the top, §3b Orient–Survey–Evaluate–Commit, "survey and
+      evaluate are qualitatively different scanning modes", and the claim that
+      click models assume monotonic top-to-bottom examination, which PSCM and
+      CBCM contradict); `foraging-constructs.md` "Survey / evaluate phases"
+      row; `findings-result-evaluation-states.md` "foveal and serial" and "the
+      survey phase"; the public OSEC explainer (`scripts/build-explainer.js`
+      renders `docs/drafts/osec-explainer.md`); the site title "Cursor Plots —
+      Attentional Foraging on AdSERP". CITATION.cff and the pyproject
+      description were updated in the audit.
+- [ ] Separate initial layout orientation from the observed contraction of
+      saccade amplitude. Use the scroll-aware NB13 claims and the top-block
+      analysis; test whether discrete phases explain more than a continuous
+      change in sampling scale. A fixed first-five cutoff is not evidence
+      of a discovered boundary or a whole-page survey.
+- [ ] Develop the recurrent-evaluation account around within-result reading,
+      backward excursions, re-entry, forward continuation and cursor pauses.
+      Specify what each account predicts about the next move or visit duration;
+      distinguish recorded reinspection from inferred comparison or memory use.
+- [ ] Replace unsupported “Evaluate → re-Survey” interpretations. A targeted
+      return does not by itself establish a renewed survey. Keep gaze returns,
+      cursor returns and scroll regressions distinct.
+- [ ] Assess novelty against prior skimming/reading and ambient/focal accounts.
+      State the specific measurement or explanatory contribution rather than
+      claim novelty for the existence of an opening phase.
+- [ ] Carry the revised framing into paper titles, abstracts, figures, captions
+      and generated pages as their arguments are revised. Respect manuscript
+      sentence locks; regenerate paired artifacts together. Preserve published
+      titles, historical notebooks and numerical provenance rather than globally
+      replacing OSEC or renaming legacy variables.
+
+Completion: active public introductions express the process account, each
+mechanistic claim points to its evidence and limits, and historical OSEC
+material is identified as such. No new stage model or cognitive mechanism is
+considered established by this editorial revision.
+
 ## Foraging refresh (opened 2026-09-14)
 
-Decision: the repo advances foraging as a theory of SERP behaviour; click
-prediction is a diagnostic. Plan and phases: `docs/foraging-refresh-plan-2026-09-14.md`.
-Construct map: `docs/foraging-constructs.md`.
+Scope: characterize the search cognitive process through observed SERP
+behaviour. Construct map: `docs/foraging-constructs.md`.
 
 ### Phase A — land and reframe
 - [x] `scripts/return_is_memory.py` + `docs/ablations/return_is_memory.md`

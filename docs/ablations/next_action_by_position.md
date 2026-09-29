@@ -46,7 +46,7 @@ A first fixation on result 1 is followed by another on result 1 four times in fi
 
 Three regularities:
 
-1. **From position 2 down, the modal end of a first visit is a move back, in 50–57 % of visits at every position**, and the back move lands on a result already examined 75–92 % of the time. The stutter step is not an occasional pattern; it is the majority case for every result below the first.
+1. **From position 2 down, the modal end of a first visit is a move back, in 50–57 % of visits at every position**, and the back move lands on a result already examined 75–92 % of the time. The stutter step is not an occasional pattern; it is the modal outcome for every result below the first, at or near half of first visits (49.8 % at position 9).
 2. **Forward by one is the second outcome (32–38 %)**; skipping two or more results from the end of a visit is 6–13 %, rising with depth. Reading order is the forward rule; long forward jumps are the minority the survey and the pre-jump timing describe.
 3. **Result 1 is different.** Its first visit is twice as long (4 fixations, 745 ms vs 2 and ~415 ms) and ends off the result column 44 % of the time, always *above* the results: at y ≈ 121 px (IQR 86–143), the query box and the results header (the first typed AOI starts at y = 158). Reading result 1 and then re-reading the query is the commonest opening after reading straight on to result 2.
 
@@ -74,7 +74,7 @@ At the top of the page the back move is a **bounce**: three quarters of back exc
 
 ## Reading
 
-The sequence the idealized figure draws (read p, go back to a seen result, come back to p, then move on) is the modal first-visit trajectory for every result from position 2 down. Two mechanisms already documented fit it: the return is memory-guided (`return_is_memory.md`: precision at first-entry level, no peripheral ramp, 70 % of returns from the adjacent result), and continuation beyond p is reading order with opportunity (`periphery_navigates.md` §A). What this table adds is the *rate*: a searcher on AdSERP compares the result just read with one already seen before continuing more often than not, and the comparison is a two-result loop at the top of the page and a widening one deeper down.
+The sequence the idealized figure draws (read p, go back to a seen result, come back to p, then move on) is the modal first-visit trajectory for every result from position 2 down. Two mechanisms already documented fit it: the return is memory-guided (`return_is_memory.md`: precision at first-entry level, no peripheral ramp, 70 % of returns from the adjacent result), and continuation beyond p is reading order with opportunity (`periphery_navigates.md` §A). What this table adds is the *rate*: a searcher on AdSERP returns to a result already seen before continuing in about half of first visits, and the return is a two-result loop at the top of the page and a widening one deeper down. Whether a return serves comparison is an inference; the rate does not test it.
 
 ## Caveats
 

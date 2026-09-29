@@ -81,3 +81,11 @@ scripts/output/*_HYBRID_BACKUP/
 # quote her pre-publication numbers. Whitelist a specific shareable file with
 # `!collab/<path>` only once permission is explicitly granted.
 collab/
+
+# Curated research posters and their linked static reading pages. The glob covers
+# every poster folder, so a new one is not silently dropped by the *.html rule above.
+!docs/visualizations/**/*.html
+
+# Agent/session deliverables (workbooks, inspection dumps, offline HTML). Session
+# output is not a repository artifact; promote a file deliberately if it becomes one.
+outputs/

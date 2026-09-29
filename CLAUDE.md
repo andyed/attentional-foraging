@@ -1,6 +1,10 @@
 # Attentional Foraging
 
-SERP evaluation task model (OSEC) built on AdSERP eye+cursor dataset. 11 Tier-A analysis notebooks, 4 producer scripts, comprehensive Key Claims system.
+Search cognitive-process research built on AdSERP gaze, cursor, scroll and pupil
+recordings. Current framing: **initial sampling and recurrent evaluation**.
+OSEC is an earlier organizing vocabulary, not the headline explanatory model.
+Attentional-foraging characterizes the search process; approach-retreat owns
+click modeling. The project-wide framing revision is tracked in `TODO.md`.
 
 ## Feature extractor provenance — read this first
 
@@ -151,7 +155,7 @@ Full convention spec: https://github.com/andyed/science-agent/blob/main/docs/not
 - `docs/findings.md` — narrative findings citing `[NB##:K##]`
 - `notebooks-v2/update_key_claims.py` — generates aggregate from notebook Key Claims blocks
 - `notebooks-v2/data_loader.py` — shared data loading (coordinate conventions documented in docstring)
-- `tests/test_coordinate_invariants.py` — regression test for coordinate-space conventions
+- `notebooks-v2/test_coordinate_invariants.py` — regression test for coordinate-space conventions (needs the local AdSERP data)
 
 ## Data
 

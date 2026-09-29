@@ -1,7 +1,7 @@
 [project]
 name = "attentional-foraging"
 version = "0.1.0"
-description = "Add your description here"
+description = "Search-process research on AdSERP gaze, cursor, scroll and pupil recordings, with the AllSERP typed AOI pipeline"
 requires-python = ">=3.13"
 dependencies = [
     "beautifulsoup4>=4.14.3",

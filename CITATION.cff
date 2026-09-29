@@ -1,19 +1,22 @@
 cff-version: 1.2.0
-# AllSERP enrichment data release. Distinct from the paper anchor tag
-# v1.0.0 (CIKM reference state) — bump when typed AOI values change.
-# See CHANGELOG.md and docs/allserp-v1.1.0-migration.md.
-allserp-enrichment-version: "1.1.1"
-message: "If you use this software or the AllSERP enrichment, please cite the arXiv paper below."
+# `version` is the AllSERP enrichment data release (tag allserp-v1.1.1), distinct
+# from the paper anchor tag v1.0.0 (CIKM reference state). Bump it when typed AOI
+# values change. See CHANGELOG.md and docs/allserp-v1.1.0-migration.md.
+message: "If you use this software or the AllSERP enrichment, please cite the AllSERP paper and the AdSERP dataset paper listed below."
 type: software
-title: "Attentional Foraging on Search Results Pages"
+title: "Attentional Foraging in Search: Initial Sampling and Recurrent Evaluation"
+version: "1.1.1"
+date-released: "2026-09-07"
 authors:
   - family-names: Edmonds
     given-names: Andy
 repository-code: "https://github.com/andyed/attentional-foraging"
 abstract: >-
-  Task-model analysis of SERP evaluation built on the AdSERP eye+cursor
-  dataset. Implements the typed AOI extraction, per-element behavioral
-  inventory, and Key Claims pipeline described in the AllSERP paper.
+  Search-process research on the AdSERP gaze, cursor, scroll and pupil
+  recordings: how people sample a results page, evaluate and revisit results,
+  and commit to a selection. Implements the typed AOI extraction (AllSERP),
+  the per-element behavioral inventory and the Key Claims pipeline described
+  in the AllSERP paper.
 preferred-citation:
   type: article
   title: "AllSERP: Exhaustive Per-Element Enrichment of the Versatile AdSERP Dataset"
@@ -26,3 +29,17 @@ preferred-citation:
       value: "arXiv:2605.04949"
       description: "arXiv preprint"
   url: "https://arxiv.org/abs/2605.04949"
+references:
+  - type: conference-paper
+    title: "A Versatile Dataset of Mouse and Eye Movements on Search Engine Results Pages"
+    authors:
+      - family-names: Latifzadeh
+        given-names: Kayhan
+      - family-names: Gwizdka
+        given-names: Jacek
+      - family-names: Leiva
+        given-names: Luis A.
+    collection-title: "Proceedings of the 48th International ACM SIGIR Conference on Research and Development in Information Retrieval"
+    year: 2025
+    doi: "10.1145/3726302.3730325"
+    url: "https://zenodo.org/records/15236546"
