@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-09-13T13:31:41.384891+00:00",
+  "regime": "[LAB, AdSERP, typed]; cursor-only stream, press-anchored 500 ms buffer",
+  "protocol": {
+    "buffer_ms": 500.0,
+    "dwell_cap_ms": 2000.0,
+    "approach_px": 100.0,
+    "fixation_slack_ms": 50.0,
+    "classifier": "LOSO 47-fold balanced LR, StandardScaler, C=1.0",
+    "dwell_features_log1p": true,
+    "m4_features_raw": true,
+    "gaze_used_for": [
+      "fixation containing a cursor sample (coupling only)",
+      "fifth-fixation boundary (timing split)",
+      "NB22 deferred label (target only)"
+    ]
+  },
+  "counts": {
+    "included": 2650,
+    "nonmonotonic_mouse_time": 3,
+    "click_outside_main_boxes": 108,
+    "alignment_excluded": 12,
+    "no_click": 1,
+    "insufficient_prebuffer_mousemove": 2
+  },
+  "rows": {
+    "scanned": 34889,
+    "joined_to_canonical": 34328,
+    "approached_non_click": 9269,
+    "deferred_rate": 0.733628223109289
+  },
+  "parking_regime": {
+    "time_share_uncapped": {
+      "in_box": 0.6291029967522845,
+      "gutter_L": 0.060818035989929436,
+      "gutter_R": 0.16351217069849106,
+      "gap": 0.12439124725415913,
+      "above": 0.02101044743506962,
+      "below": 0.001165101870066169
+    },
+    "time_share_capped_2s": {
+      "in_box": 0.6608354073939818,
+      "gutter_L": 0.048489593799705195,
+      "gutter_R": 0.1395286993633491,
+      "gap": 0.12608082111332602,
+      "above": 0.023568458083605994,
+      "below": 0.0014970202460318591
+    },
+    "per_trial_off_box_share_quantiles": {
+      "q25": 0.06039124921394645,
+      "median": 0.22375887273270423,
+      "q75": 0.6673583211897892
+    },
+    "participant_median_off_box_quantiles": {
+      "min": 0.00841353378594667,
+      "q25": 0.11198732559952482,
+      "median": 0.19403115994292064,
+      "q75": 0.4964343790232151,
+      "max": 0.9405684754521964
+    },
+    "off_box_variance": {
+      "total": 0.11688894675796475,
+      "within_participant_mean": 0.07212639263748827,
+      "between_participant_share": 0.3829494179048747
+    },
+    "tercile_cuts": [
+      0.10560780215952625,
+      0.4577646049450122
+    ],
+    "in_box_dwell_auc_by_off_box_tercile": {
+      "low": {
+        "rows": 11273,
+        "in_box_dwell_auc": 0.8640776182492532
+      },
+      "mid": {
+        "rows": 11417,
+        "in_box_dwell_auc": 0.8541071008106561
+      },
+      "high": {
+        "rows": 11638,
+        "in_box_dwell_auc": 0.8618418371445793
+      }
+    },
+    "single_feature_click_auc": {
+      "in_box_dwell": 0.8543415194976751,
+      "beside_box_dwell": 0.5440130256887337,
+      "vertical_band_dwell": 0.8480701718545711,
+      "in_box_plus_beside": 0.8619902313378565
+    },
+    "clicked_aois_zero_in_box_dwell_share": 0.06901840490797546
+  },
+  "whitespace": {
+    "gap_episodes": {
+      "n": 9781,
+      "median_ms": 83.0,
+      "q25_ms": 33.0,
+      "q75_ms": 314.0,
+      "time_share_in_episodes_over_1s": 0.7731650392360967,
+      "time_share_in_episodes_over_3s": 0.5520995048283437
+    },
+    "gap_time_by_x": {
+      "column": 0.7690308783221483,
+      "gutter": 0.23096912167785164
+    },
+    "gap_share_of_cursor_time": {
+      "pre_fifth_fixation": 0.05844699851322473,
+      "post": 0.12953015684696254
+    },
+    "gaze_while_cursor_in_gap": {
+      "other_aoi": 0.21873038224058933,
+      "on_below": 0.16610579715853818,
+      "off_or_none": 0.4352907504648427,
+      "on_above": 0.17987307013602977
+    },
+    "gaze_while_cursor_in_box": {
+      "off_or_none": 0.4047999725257045,
+      "other_aoi": 0.08978686349094697,
+      "adjacent": 0.17411335344468257,
+      "on_same": 0.33129981053866603
+    },
+    "cursor_y_vs_gaze_y": {
+      "gap": {
+        "n": 46159,
+        "pearson_r": 0.9168351789629914,
+        "gaze_minus_cursor_px": {
+          "median": -0.5,
+          "q25": -111.24799577746325,
+          "q75": 92.54069629860567
+        }
+      },
+      "box": {
+        "n": 298644,
+        "pearson_r": 0.9142441712173225,
+        "gaze_minus_cursor_px": {
+          "median": -5.275362045681661,
+          "q25": -74.20000000000005,
+          "q75": 88.57742116053475
+        }
+      }
+    },
+    "gap_adjacent_dwell": {
+      "click": {
+        "alone_auc": 0.7482604330259401,
+        "m4_7_auc": 0.9347503486217595,
+        "m4_7_plus_gap_auc": 0.9346528336518154,
+        "paired_participant_delta": {
+          "n": 47,
+          "mean": -5.537824266714125e-05,
+          "ci95": [
+            -0.00021679369558298594,
+            9.58018496519432e-05
+          ],
+          "wilcoxon_p": 0.8312920290238954
+        }
+      },
+      "deferred": {
+        "alone_auc": 0.5426234722321492,
+        "m4_7_auc": 0.6802053105567865,
+        "m4_7_plus_gap_auc": 0.6799277511733735,
+        "paired_participant_delta": {
+          "n": 47,
+          "mean": -0.0001910947457876578,
+          "ci95": [
+            -0.00041066705553234557,
+            4.180115014959503e-06
+          ],
+          "wilcoxon_p": 0.14135232051128946
+        }
+      }
+    }
+  },
+  "beyond_dwell": {
+    "dwell_only": {
+      "click": 0.8529876364991994,
+      "deferred": 0.5928723822457294
+    },
+    "min_dist_only": {
+      "click": 0.8721993548321587,
+      "deferred": 0.581200116741715
+    },
+    "mean_dist_only": {
+      "click": 0.8718188627097534,
+      "deferred": 0.6653526076287136
+    },
+    "mean_approach_velocity_only": {
+      "click": 0.6145083043056963,
+      "deferred": 0.553049460367379
+    },
+    "direction_changes_only": {
+      "click": 0.5090121988604275,
+      "deferred": 0.505297750935125
+    },
+    "m4_7_minus_dwell": {
+      "click": 0.931667221914915,
+      "deferred": 0.6715521287494342
+    },
+    "dwell_plus_mean_dist": {
+      "click": 0.8839140553075608,
+      "deferred": 0.682312677197246
+    },
+    "m4_7": {
+      "click": 0.9347503486217595,
+      "deferred": 0.6802053105567865
+    }
+  },
+  "provenance": {
+    "producer_sha256": "e86a620c17a9d827d569d50c360c66dc3acf5a025c8bfc433f30eaac4ff23a78",
+    "substrate": {
+      "substrate": "AllSERP v1.1.0 (post card-collision fix)",
+      "branch": "release/allserp-v1.1.0",
+      "substrate_commit": "ab657a63",
+      "typed_maps_content_hash": "2cb789eb8febd234",
+      "hash_method": "sha256 over sorted(data/aoi-typed/p*.json), updating basename bytes then file bytes per file; first 16 hex chars of the digest",
+      "n_trial_maps": 2776,
+      "exclusion_list": "alignment-exclusions.json",
+      "n_excluded": 12,
+      "corpus_trials": 2764,
+      "generated": "2026-08-30",
+      "note": "Consumers pin substrate identity by (branch, substrate_commit, typed_maps_content_hash) and must re-read the exclusion list \u2014 membership changed from the earlier 14-trial list on 2026-08-30 (+p018-b3-t1, net 12)."
+    },
+    "feature_cache": "AdSERP/data/cursor-only-typed-features-mousedown.json",
+    "feature_records_sha256": "7651e992932c7effa2074b747875d5efd306fcd54ee94ab2206eab6221023295",
+    "canonical_sidecar_sha256": "76641cd296e60b3a9c3be057741f7c5c56646e0b5b1655bfeda63b3e2ea4bb28",
+    "label_cache_sha256": "a878bba4a69b9736393f510fc2936e3e021621bc99a1bb772f64aed61f0ed4a8",
+    "label_rows_sha256": "e8088c070b955bd3d37dc17420966960c020c963110bc434e5411ce9bee360e5",
+    "data_loader_sha256": "20b669620a9ae4f74aab6e43abdb66334798a02b0f537b48d382a782990ecff8"
+  }
+}
