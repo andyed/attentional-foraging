@@ -1,0 +1,24 @@
+# Checks that need no AdSERP data. Most producer tests read the separately
+# downloaded dataset and run locally (see scripts/attention_atlas/README.md);
+# add a test here once it runs from repository files alone.
+name: checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Install the locked environment
+        run: uv sync --frozen --python 3.13
+      - name: Attention-atlas tests and verification
+        run: uv run python -m unittest discover -s scripts -p test_attention_atlas.py
+      - name: Python syntax
+        run: uv run python -m compileall -q scripts notebooks-v2/data_loader.py
+      - name: Citation metadata
+        run: uvx cffconvert --validate -i CITATION.cff
+      - name: Site builder syntax
+        run: node --check scripts/build-gh-pages.js
