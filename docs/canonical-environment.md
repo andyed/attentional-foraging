@@ -17,6 +17,16 @@ environment is unrecoverable. Rule going forward:
 - A model-based K row is citable only if produced in the pinned environment.
 - Rebuilding `.venv` must start from `requirements.lock`
   (`uv pip install -r requirements.lock` or `python -m pip install -r`).
+- **One optional extra (2026-09-29).** `scripts/m4_same_target_learned_baselines.py`
+  needs torch, pinned separately in `requirements-learned-baselines.lock`
+  (torch 2.14.0 and five dependencies; `uv pip install -r` it on top of the
+  base lock). No other producer imports torch, and its test skips when torch
+  is absent. The canonical `.venv` is the base lock plus this extra.
+- `pyproject.toml` / `uv.lock` declare the same direct dependencies for
+  `uv sync`, including pandas, pillow and mistune, which the attention-atlas
+  scripts import directly. `uv sync` removes packages that the lock does not
+  list, so when a script gains a direct import, declare it there and pin
+  it to the version in `requirements.lock`.
 - Deliberate solver upgrades are a substrate event: re-pin the lock, re-run
   the affected producers, and annotate moved K rows — same protocol as an
   AOI-substrate re-derivation.
