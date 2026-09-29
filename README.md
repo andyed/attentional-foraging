@@ -33,8 +33,11 @@ fixated again, and the cursor can stay on one result while the eyes visit others
 
 This is one recorded interval from trial `p021-b1-t6`. A fixed rule chose it
 from 63 cursor pauses of 2–8 s that contain at least three gaze AOIs and a gaze
-return, so it shows the pattern rather than a typical pause. The aggregates
-below say how common each part of it is. **[LAB, AdSERP, typed]**
+return, so it shows the pattern rather than a typical pause: 10.7% of the 1,843
+cursor pauses of that length contain three or more gaze AOIs and a return, and
+66.5% contain some gaze on another AOI. Rodden et al. named the pattern
+*marking*; [its rate and what the parked result predicts](docs/ablations/cursor_marking.md)
+are measured separately. **[LAB, AdSERP, typed]**
 
 - **First visits often end with a move back.** In the separate first-visit
   analysis, a move to an earlier position ends 50–57% of first visits at
@@ -53,7 +56,8 @@ below say how common each part of it is. **[LAB, AdSERP, typed]**
   of the time the cursor rests inside an AOI, a recorded fixation is on a
   different AOI; among rest time with a matched fixation the share is 35.6%
   (33.3–37.7). The logger records the cursor only when it moves, and a position
-  is held for at most 2 s, so stillness beyond 2 s falls outside this measure.
+  is held for at most 2 s, so stillness beyond 2 s falls outside this measure;
+  holding each position until the next move gives 27.6% (25.8–29.1).
   **[LAB, AdSERP, typed; poster producer]**
   [Definition and denominators](docs/visualizations/gaze-cursor-echo/methods.md)
 
@@ -102,9 +106,11 @@ states the classifiable share.
 **[While the mouse waits, the eyes travel](docs/visualizations/gaze-cursor-echo/index.html)**
 ([PDF](docs/visualizations/gaze-cursor-echo/poster.pdf)) links first-entry timing,
 rank changes and cursor rest to a whole trial and a four-second pause. Gaze
-enters jointly visited results first in 66.5% of trial–AOIs, but nearby matched
-visits have little median lag. The cursor's sparser path is not sufficient to
-establish that it is a delayed copy of gaze. **[LAB, AdSERP, typed]**
+enters a jointly visited result first in 66.5% of trial–AOIs. Among nearby
+matched visits the lead is small: setting aside pairs that start at the first
+mousemove, where every cursor visit begins, gaze is first in 55.3% (53.2–57.1)
+with a median lead of 49 ms. These timings do not show a fixed cursor delay
+behind gaze. **[LAB, AdSERP, typed]**
 
 Both posters use the same 2,650-trial, 47-participant cohort and clock, from
 first native mousemove to final press. The [atlas guide](docs/visualizations/README.md)

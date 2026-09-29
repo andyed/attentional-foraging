@@ -30,6 +30,16 @@ The contribution here is measurement rather than the observation that returns
 occur: per-position rates on typed AOIs, and gaze and cursor recorded together
 so their sequences can be compared under one visit definition.
 
+The single-pass assumption has two parts, and they fare differently. Coverage
+largely holds: 94.0% [92.0, 95.7] of AdSERP paths that end on an organic click
+have entered every organic result above it (Lorigo et al. report 67%). Order
+does not: applying Lorigo et al.'s own definitions, 16.6% of scanpaths are
+strictly linear and 47.3% are nonlinear
+([scanpath linearity](ablations/scanpath_linearity.md);
+[Lorigo et al., IP&M 2006](https://doi.org/10.1016/j.ipm.2005.10.001)). So the
+results above the click are usually examined; what fails is examining them
+once, in order.
+
 The AF observations require an account that permits backward moves and
 reinspection. They do not imply that every trial is nonlinear, that page
 position is irrelevant, or that every sequential account excludes returns.
@@ -75,9 +85,9 @@ its rates with the first-visit table as if they had a shared denominator.
 | --- | --- | --- |
 | Gaze: 40.4 AOI changes/min; cursor: 14.2/min | Qualifying changes per minute of 6.068 hours covered by both channels | The recorded eye path samples between results more often |
 | Gaze: 16.0 backward steps/min; cursor: 4.7/min | Moves to a smaller AOI position during the same common coverage | Backtracking remains visible when coverage is held common |
-| 23.8% different-AOI gaze during cursor rest | Exact overlap duration divided by cursor-resting-inside-AOI duration | A cursor pause can accompany continued visual examination |
+| 23.8% different-AOI gaze during cursor rest | Exact overlap duration divided by cursor-resting-inside-AOI duration; cursor held at most 2 s (27.6% when held until its next move) | A cursor pause can accompany continued visual examination |
 | 66.5% gaze-first; median first-entry difference +939 ms | First qualifying entries into 8,175 trial–AOIs visited by both signals; positive means cursor later | Gaze more often reaches a jointly visited result earlier |
-| Median +2 ms in nearby pairs | 10,321 one-to-one same-AOI visit pairs, restricted to onset differences within ±2 s | This selected subset alone cannot establish a general follower lag |
+| Median +2 ms in nearby pairs; gaze first 55.3% without clock-origin pairs | 10,321 one-to-one same-AOI visit pairs within ±2 s; 9,128 after removing pairs that start at the first mousemove, where every cursor visit begins (median +49 ms) | A small gaze lead among nearby visits; this selected subset cannot establish a general follower lag |
 
 Sources: [sequence aggregates](visualizations/gaze-cursor-echo/summary.json),
 [common-coverage checks](visualizations/gaze-cursor-echo/checks.json),
@@ -92,14 +102,24 @@ interpretation, even after matching coverage.
 
 In trial `p021-b1-t6`, the cursor remains within AOI 1 during the four-second
 interval shown. Gaze visits `3 → 2 → 3 → 1`, spending 1.50 seconds on a different
-AOI from the cursor. The example was selected by a fixed duration-and-coverage
-rule from 63 qualifying pauses. It demonstrates a possible organization of
-activity; the 23.8% aggregate supplies the duration-based prevalence measure.
+AOI from the cursor. A fixed rule chose the example from 63 qualifying pauses,
+and the rule requires a gaze return, so it shows the pattern rather than a
+typical pause. Of 1,843 cursor pauses lasting 2–8 s, 10.7% contain three or
+more gaze AOIs and a return, and 66.5% contain some gaze on another AOI
+([example-rule counts](visualizations/gaze-cursor-echo/checks.json)).
 
-This suggests a useful account of coordination: the cursor can maintain a
-location while visual sampling continues elsewhere. Whether it acts as a
-remembered anchor or merely remains where the hand last left it is untested.
-Calling it an “anchor” is therefore a hypothesis about function.
+Rodden et al. named this pattern *marking*: the pointer stays on the most
+promising result read so far while the eyes check others
+([CHI '08 Extended Abstracts](https://doi.org/10.1145/1358628.1358797)). They
+described it from inspection and reported no rate. Measured here, 65.1%
+[62.0, 68.4] of cursor pauses that end before the final approach contain at
+least 100 ms of gaze on another result; the pattern appears in 42.5% of trials
+and in all 47 participants. The parked result is the eventual click 1.53 times
+as often as its position predicts
+([cursor marking](ablations/cursor_marking.md)). That supports reading the
+pause as a mark on a candidate. Whether the searcher intends it as a bookmark,
+or the hand simply stays where it last stopped, is not tested; the 2 s cursor
+hold also makes these rates lower bounds.
 
 ## From observable movement to cognitive explanation
 
