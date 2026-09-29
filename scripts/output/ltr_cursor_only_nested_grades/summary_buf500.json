@@ -1,0 +1,952 @@
+{
+  "schema_version": 2,
+  "generated_utc": "2026-09-07T13:14:57.866336+00:00",
+  "experiment": "LTR graded labels vs binary clicks with cursor labels nested inside each outer participant fold",
+  "regime": "LAB",
+  "rank_type": "typed",
+  "protocol": {
+    "features": [
+      "min_dist",
+      "mean_dist",
+      "dwell_in_proximity_ms",
+      "mean_approach_velocity",
+      "max_approach_velocity",
+      "direction_changes",
+      "frac_decreasing"
+    ],
+    "buffer_ms": 500,
+    "anchor_event": "mousedown",
+    "sampling": "native",
+    "ranker": "LGBMRanker lambdarank ndcg@10 n_estimators=200 lr=0.05 num_leaves=31 min_data_in_leaf=20",
+    "split": "LOSO by participant; train on kept rows (NotApprBelow excluded), score all rows",
+    "evaluation": "per-trial MRR@10 / NDCG@10 against the binary click; trials with >= 2 rows and a click",
+    "label_sources": {
+      "gaze": "NB22 gaze-regression label re-keyed by (trial, position)",
+      "cursor": "For each outer ranker LOSO fold, inner participant LOSO labeler (M4-7 -> gaze label) fitted/scaled only on outer-training approached non-click rows; fixed threshold 0.5"
+    },
+    "cursor_label_threshold": 0.5,
+    "outer_test_gaze_used_for_cursor_training_labels": false,
+    "cursor_labeler_features_in_ranker_lofo": "Fixed full M4-7; only ranker feature columns are ablated",
+    "ranker_lofo_status": "not run"
+  },
+  "dataset": {
+    "records_total": 34328,
+    "records_kept": 13909,
+    "records_dropped_NotApprBelow": 20419,
+    "trials": 2608,
+    "participants": 47,
+    "gaze_class_distribution": {
+      "NotApprAbove": 1369,
+      "DEFERRED": 6800,
+      "EVAL_REJECTED": 3132,
+      "CLICKED": 2608,
+      "NotApprBelow_EXCLUDED": 20419
+    },
+    "cursor_class_distribution_scope": "No global cursor distribution: training labels vary by outer fold; see nested_cursor_label_folds"
+  },
+  "metrics": {
+    "Original SERP position (no ML)": {
+      "ndcg10": 0.5763929836941669,
+      "mrr10": 0.4470516542506573,
+      "n_trials": 2608,
+      "mrr10_ad_clicked": 0.8122197179842812,
+      "n_ad_clicked": 412,
+      "mrr10_organic_clicked": 0.3785410703443491,
+      "n_organic_clicked": 2196
+    },
+    "LR pointwise (binary click)": {
+      "ndcg10": 0.836971193531292,
+      "mrr10": 0.7837318324569091,
+      "n_trials": 2608,
+      "mrr10_ad_clicked": 0.831342464170134,
+      "n_ad_clicked": 412,
+      "mrr10_organic_clicked": 0.7747994188567958,
+      "n_organic_clicked": 2196
+    },
+    "LambdaMART (binary click)": {
+      "ndcg10": 0.8265036631873487,
+      "mrr10": 0.7741914378225728,
+      "n_trials": 2608,
+      "mrr10_ad_clicked": 0.780139466789952,
+      "n_ad_clicked": 412,
+      "mrr10_organic_clicked": 0.7730755052476364,
+      "n_organic_clicked": 2196
+    },
+    "LambdaMART (3-grade collapse, 2/1/0/0; gaze labels)": {
+      "ndcg10": 0.8344914161965611,
+      "mrr10": 0.7820804727821599,
+      "n_trials": 2608,
+      "mrr10_ad_clicked": 0.8090123670827554,
+      "n_ad_clicked": 412,
+      "mrr10_organic_clicked": 0.7770276765836874,
+      "n_organic_clicked": 2196
+    },
+    "LambdaMART (4 distinct grades, 3/2/1/0; gaze labels)": {
+      "ndcg10": 0.8372355225198831,
+      "mrr10": 0.7856351640860844,
+      "n_trials": 2608,
+      "mrr10_ad_clicked": 0.8187625211897057,
+      "n_ad_clicked": 412,
+      "mrr10_organic_clicked": 0.7794200132997947,
+      "n_organic_clicked": 2196
+    },
+    "LambdaMART (3-grade collapse, 2/1/0/0; cursor labels)": {
+      "ndcg10": 0.8320341302685942,
+      "mrr10": 0.7797162576687117,
+      "n_trials": 2608,
+      "mrr10_ad_clicked": 0.8128765988596086,
+      "n_ad_clicked": 412,
+      "mrr10_organic_clicked": 0.7734949186110388,
+      "n_organic_clicked": 2196
+    },
+    "LambdaMART (4 distinct grades, 3/2/1/0; cursor labels)": {
+      "ndcg10": 0.8318621458788615,
+      "mrr10": 0.7791578415619826,
+      "n_trials": 2608,
+      "mrr10_ad_clicked": 0.8045124441362306,
+      "n_ad_clicked": 412,
+      "mrr10_organic_clicked": 0.7744009671263771,
+      "n_organic_clicked": 2196
+    }
+  },
+  "headlines": {
+    "gaze": {
+      "delta_mrr10_3grade_minus_binary": 0.007889034959587038,
+      "delta_mrr10_4grade_minus_binary": 0.011443726263511533,
+      "delta_ndcg10_3grade_minus_binary": 0.007987753009212395,
+      "delta_ndcg10_4grade_minus_binary": 0.0107318593325344,
+      "delta_mrr10_4grade_minus_3grade": 0.0035546913039244954,
+      "delta_mrr10_3grade_minus_binary_ad_clicked": 0.028872900292803316,
+      "delta_mrr10_3grade_minus_binary_organic_clicked": 0.00395217133605108
+    },
+    "cursor": {
+      "delta_mrr10_3grade_minus_binary": 0.00552481984613884,
+      "delta_mrr10_4grade_minus_binary": 0.004966403739409819,
+      "delta_ndcg10_3grade_minus_binary": 0.005530467081245494,
+      "delta_ndcg10_4grade_minus_binary": 0.005358482691512845,
+      "delta_mrr10_4grade_minus_3grade": -0.0005584161067290205,
+      "delta_mrr10_3grade_minus_binary_ad_clicked": 0.03273713206965656,
+      "delta_mrr10_3grade_minus_binary_organic_clicked": 0.0004194133634024544
+    }
+  },
+  "ranker_leave_one_feature_out": {},
+  "nested_cursor_label_folds": [
+    {
+      "outer_fold": 1,
+      "outer_training_records": 33637,
+      "outer_training_kept_records": 13662,
+      "inner_participants": 46,
+      "labeler_pool_records": 9783,
+      "class_distribution_outer_training": {
+        "DEFERRED": 5758,
+        "CLICKED": 2557,
+        "EVAL_REJECTED": 4025,
+        "NotApprBelow_EXCLUDED": 19975,
+        "NotApprAbove": 1322
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6532760911785751,
+      "kept_three_grade_labels_sha256": "8eec4b7cbeea81b4c2fb388ecea5f625b05a46bf12cfc25e358d25b49283d1fd",
+      "kept_four_grade_labels_sha256": "fe603ff9341c4c9377933b5670df4cf608b24c09795fde344f008ca32b0a8d7d"
+    },
+    {
+      "outer_fold": 2,
+      "outer_training_records": 33610,
+      "outer_training_kept_records": 13648,
+      "inner_participants": 46,
+      "labeler_pool_records": 9742,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1356,
+        "DEFERRED": 5718,
+        "CLICKED": 2550,
+        "NotApprBelow_EXCLUDED": 19962,
+        "EVAL_REJECTED": 4024
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6534592486142475,
+      "kept_three_grade_labels_sha256": "59213389d282320868bbee3675e1bf3cbcb2ed1a29c5ace2e1bcbe7ffd6cea0d",
+      "kept_four_grade_labels_sha256": "c19e20bba339c81b79ae8ce8687014442da47674f44ae83b6514673a5ba018ba"
+    },
+    {
+      "outer_fold": 3,
+      "outer_training_records": 33653,
+      "outer_training_kept_records": 13560,
+      "inner_participants": 46,
+      "labeler_pool_records": 9684,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1320,
+        "DEFERRED": 5727,
+        "CLICKED": 2556,
+        "NotApprBelow_EXCLUDED": 20093,
+        "EVAL_REJECTED": 3957
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6535522511358942,
+      "kept_three_grade_labels_sha256": "377d7b3e14ed64fed7c83e753e51fb797020e58582141c7ff62a301d49dbb90f",
+      "kept_four_grade_labels_sha256": "7d374a71b365f47eaf1f76281c67c83854dd4d22e3861a6c624f86abd72ad12c"
+    },
+    {
+      "outer_fold": 4,
+      "outer_training_records": 33599,
+      "outer_training_kept_records": 13529,
+      "inner_participants": 46,
+      "labeler_pool_records": 9623,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1354,
+        "DEFERRED": 5698,
+        "CLICKED": 2552,
+        "NotApprBelow_EXCLUDED": 20070,
+        "EVAL_REJECTED": 3925
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6521874675257197,
+      "kept_three_grade_labels_sha256": "5c7bfa0c0245f9147b2cc4325f5388984de76d92127af3d19b3ec766be69fc12",
+      "kept_four_grade_labels_sha256": "059c09e4cdd00f15d633cbbd9dd2943876661e2dc9c5837eb0124d51cca03d08"
+    },
+    {
+      "outer_fold": 5,
+      "outer_training_records": 33698,
+      "outer_training_kept_records": 13733,
+      "inner_participants": 46,
+      "labeler_pool_records": 9810,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1362,
+        "DEFERRED": 5783,
+        "CLICKED": 2561,
+        "NotApprBelow_EXCLUDED": 19965,
+        "EVAL_REJECTED": 4027
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.653822629969419,
+      "kept_three_grade_labels_sha256": "a5f736655d93edfaef95ebc0f687bbe8f8d6a72836bc0b1804423daff8ca0cc2",
+      "kept_four_grade_labels_sha256": "393f3172b7b02c5cfd913549f6ac3d9774f52177adf889b967b856d6896e6f46"
+    },
+    {
+      "outer_fold": 6,
+      "outer_training_records": 33659,
+      "outer_training_kept_records": 13493,
+      "inner_participants": 46,
+      "labeler_pool_records": 9571,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1365,
+        "DEFERRED": 5646,
+        "CLICKED": 2557,
+        "NotApprBelow_EXCLUDED": 20166,
+        "EVAL_REJECTED": 3925
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.65217845575175,
+      "kept_three_grade_labels_sha256": "6c76f4969e86bc0b6e05b74feb5a0c1a287e0c3beb91c991231d38399a8c19b2",
+      "kept_four_grade_labels_sha256": "81349a1ab57648e83a068fa6ff3c9ea41ace4098d84302bb2654a68f3f786deb"
+    },
+    {
+      "outer_fold": 7,
+      "outer_training_records": 33549,
+      "outer_training_kept_records": 13451,
+      "inner_participants": 46,
+      "labeler_pool_records": 9610,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1292,
+        "DEFERRED": 5659,
+        "CLICKED": 2549,
+        "NotApprBelow_EXCLUDED": 20098,
+        "EVAL_REJECTED": 3951
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6551508844953173,
+      "kept_three_grade_labels_sha256": "f327e8f6857255ad4d7ba407ba20f37dfff3eda2c12adfb56af4b3d82138d534",
+      "kept_four_grade_labels_sha256": "875ce629c66a45cdde98d73470ab03d5df6b613fe434eab96522e6b952a3f943"
+    },
+    {
+      "outer_fold": 8,
+      "outer_training_records": 33596,
+      "outer_training_kept_records": 13429,
+      "inner_participants": 46,
+      "labeler_pool_records": 9539,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1337,
+        "DEFERRED": 5651,
+        "CLICKED": 2553,
+        "NotApprBelow_EXCLUDED": 20167,
+        "EVAL_REJECTED": 3888
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.653003459482126,
+      "kept_three_grade_labels_sha256": "8f4f73f5261a8b12417fb3d59408e9fffc3f277d7e00c87a27aa03fb09580d2a",
+      "kept_four_grade_labels_sha256": "cb3b14ce92fe3fd48d929c0d85eab897cd26343fccebc07ed50630cf54f6c5e2"
+    },
+    {
+      "outer_fold": 9,
+      "outer_training_records": 33554,
+      "outer_training_kept_records": 13589,
+      "inner_participants": 46,
+      "labeler_pool_records": 9721,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1319,
+        "DEFERRED": 5725,
+        "CLICKED": 2549,
+        "NotApprBelow_EXCLUDED": 19965,
+        "EVAL_REJECTED": 3996
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6538421973048041,
+      "kept_three_grade_labels_sha256": "6216ff733eccc60e656dd0990f11af12f962986508179169437094efe20628c7",
+      "kept_four_grade_labels_sha256": "6a21cf0e865f28f83d4f688f3c4a3e5ac81bf90c7c5c329d981d32248d5c25ba"
+    },
+    {
+      "outer_fold": 10,
+      "outer_training_records": 33606,
+      "outer_training_kept_records": 13773,
+      "inner_participants": 46,
+      "labeler_pool_records": 9854,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1366,
+        "DEFERRED": 5826,
+        "CLICKED": 2553,
+        "NotApprBelow_EXCLUDED": 19833,
+        "EVAL_REJECTED": 4028
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6543535620052771,
+      "kept_three_grade_labels_sha256": "fde32d2f3cc18577833cbc0083beec6eebb175991a5215a35059f024256e4df7",
+      "kept_four_grade_labels_sha256": "5f91dbd8b230a30edceda396ca3859aab3918cd546499d645b63520cf804fbb5"
+    },
+    {
+      "outer_fold": 11,
+      "outer_training_records": 33532,
+      "outer_training_kept_records": 13489,
+      "inner_participants": 46,
+      "labeler_pool_records": 9667,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1274,
+        "DEFERRED": 5713,
+        "CLICKED": 2548,
+        "NotApprBelow_EXCLUDED": 20043,
+        "EVAL_REJECTED": 3954
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6560463432295438,
+      "kept_three_grade_labels_sha256": "0a9d5c17a34e06d89a24d7576defe9b736d03afc924dec7c25c280d8c98351ad",
+      "kept_four_grade_labels_sha256": "020224eef74f504a4bd81f42309b9d5d72ce54732c7b60dd97fc2df64d9adbd0"
+    },
+    {
+      "outer_fold": 12,
+      "outer_training_records": 33568,
+      "outer_training_kept_records": 13520,
+      "inner_participants": 46,
+      "labeler_pool_records": 9610,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1361,
+        "DEFERRED": 5686,
+        "CLICKED": 2549,
+        "NotApprBelow_EXCLUDED": 20048,
+        "EVAL_REJECTED": 3924
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6530697190426639,
+      "kept_three_grade_labels_sha256": "cea55beab9ffaebf5c13624eb3af26b856842c57a0c9ee8b9ae49cc259b83f3f",
+      "kept_four_grade_labels_sha256": "0429561e280838895e27d443499958ba7321d1b4d3ded85443329f8d0875b746"
+    },
+    {
+      "outer_fold": 13,
+      "outer_training_records": 33636,
+      "outer_training_kept_records": 13672,
+      "inner_participants": 46,
+      "labeler_pool_records": 9766,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1351,
+        "DEFERRED": 5761,
+        "CLICKED": 2555,
+        "NotApprBelow_EXCLUDED": 19964,
+        "EVAL_REJECTED": 4005
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6543108744624206,
+      "kept_three_grade_labels_sha256": "0616b8f23df4d895a1cf61393990fe8aa2fc6b75db5fdaee693c65ea1856f13f",
+      "kept_four_grade_labels_sha256": "689f6d9b1ccf04a0cb252ba5e903b738f1ab43dbca35fa5ef792728c9bbcf263"
+    },
+    {
+      "outer_fold": 14,
+      "outer_training_records": 33579,
+      "outer_training_kept_records": 13636,
+      "inner_participants": 46,
+      "labeler_pool_records": 9800,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1284,
+        "DEFERRED": 5795,
+        "CLICKED": 2552,
+        "NotApprBelow_EXCLUDED": 19943,
+        "EVAL_REJECTED": 4005
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6555102040816326,
+      "kept_three_grade_labels_sha256": "007b8968280d45456a7488e5238cb882405e99a2253c1ad4c9913d632a48fec6",
+      "kept_four_grade_labels_sha256": "1d2a8195e2aa9077e43241197a7408a8698f254bcf830aa124329aa7bae3e8f7"
+    },
+    {
+      "outer_fold": 15,
+      "outer_training_records": 33563,
+      "outer_training_kept_records": 13677,
+      "inner_participants": 46,
+      "labeler_pool_records": 9785,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1341,
+        "DEFERRED": 5752,
+        "CLICKED": 2551,
+        "NotApprBelow_EXCLUDED": 19886,
+        "EVAL_REJECTED": 4033
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6538579458354624,
+      "kept_three_grade_labels_sha256": "7067d128946fe09f0d6a1a0c2e5729c973b3ddf3e7e7f35c0df52521e722c86e",
+      "kept_four_grade_labels_sha256": "c34dcd5cc4bbcddf5c26510c1b1462745b0529adf429b4948baf2b2c304263bf"
+    },
+    {
+      "outer_fold": 16,
+      "outer_training_records": 33580,
+      "outer_training_kept_records": 13491,
+      "inner_participants": 46,
+      "labeler_pool_records": 9585,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1354,
+        "DEFERRED": 5651,
+        "CLICKED": 2552,
+        "NotApprBelow_EXCLUDED": 20089,
+        "EVAL_REJECTED": 3934
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6509128847157016,
+      "kept_three_grade_labels_sha256": "9732fb410ba4df9a15c7f3471c57cbdff261ad43522cb8ad3baad5cdc5356f64",
+      "kept_four_grade_labels_sha256": "21b8e03eab39cfcfe9d7225e380c86295362ad06127a01bcde59a36fea112d43"
+    },
+    {
+      "outer_fold": 17,
+      "outer_training_records": 33556,
+      "outer_training_kept_records": 13551,
+      "inner_participants": 46,
+      "labeler_pool_records": 9715,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1287,
+        "DEFERRED": 5740,
+        "CLICKED": 2549,
+        "NotApprBelow_EXCLUDED": 20005,
+        "EVAL_REJECTED": 3975
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6552753474009264,
+      "kept_three_grade_labels_sha256": "e8b8692d116abdd38636adec4d6cefee69e4ccf96de16847797fac1a3901763f",
+      "kept_four_grade_labels_sha256": "adcdd25d419ff65a48e30ef0f3f8edbe6297f2c8bdadad60f56f6cf99ae9dcd8"
+    },
+    {
+      "outer_fold": 18,
+      "outer_training_records": 33572,
+      "outer_training_kept_records": 13566,
+      "inner_participants": 46,
+      "labeler_pool_records": 9710,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1305,
+        "DEFERRED": 5704,
+        "CLICKED": 2551,
+        "NotApprBelow_EXCLUDED": 20006,
+        "EVAL_REJECTED": 4006
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6523171987641606,
+      "kept_three_grade_labels_sha256": "0a9d5b28ad0851d7aa010a376dfe6336e66c22a1fddd5834f59b4537520c114d",
+      "kept_four_grade_labels_sha256": "039079f9205457f88107e73f43225741c58f05fc522d55b43be64dc4bc4ed6a8"
+    },
+    {
+      "outer_fold": 19,
+      "outer_training_records": 33584,
+      "outer_training_kept_records": 13697,
+      "inner_participants": 46,
+      "labeler_pool_records": 9789,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1356,
+        "DEFERRED": 5751,
+        "CLICKED": 2552,
+        "NotApprBelow_EXCLUDED": 19887,
+        "EVAL_REJECTED": 4038
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6526713658187762,
+      "kept_three_grade_labels_sha256": "3839fa74741bed2ead65fea8cde1aa9edafe23bd60f6f029e5211a1b7e92606f",
+      "kept_four_grade_labels_sha256": "6249717b38e7e86cc3ec5a2a2d995af752f8e37c91b65a593b59b222b0e293bb"
+    },
+    {
+      "outer_fold": 20,
+      "outer_training_records": 33667,
+      "outer_training_kept_records": 13744,
+      "inner_participants": 46,
+      "labeler_pool_records": 9835,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1352,
+        "DEFERRED": 5812,
+        "CLICKED": 2557,
+        "NotApprBelow_EXCLUDED": 19923,
+        "EVAL_REJECTED": 4023
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6550076258261311,
+      "kept_three_grade_labels_sha256": "03ebec67816b5963596b179404d15513517a259f89dfe5c00d22adb364fcefa4",
+      "kept_four_grade_labels_sha256": "f555a79e1ba78f165df74f49c6e6829937143627dee70ea51d621644b03b9a9e"
+    },
+    {
+      "outer_fold": 21,
+      "outer_training_records": 33549,
+      "outer_training_kept_records": 13546,
+      "inner_participants": 46,
+      "labeler_pool_records": 9697,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1299,
+        "DEFERRED": 5721,
+        "CLICKED": 2550,
+        "NotApprBelow_EXCLUDED": 20003,
+        "EVAL_REJECTED": 3976
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.655047952975147,
+      "kept_three_grade_labels_sha256": "0a4ccbf43132c448ad96c7e6a06845e17de32efe30b34c6f046339b88ee3e65e",
+      "kept_four_grade_labels_sha256": "93d62f72121c9bf63934d317737edaf72a9fb2897c5447f704bb78705bb439f1"
+    },
+    {
+      "outer_fold": 22,
+      "outer_training_records": 33594,
+      "outer_training_kept_records": 13624,
+      "inner_participants": 46,
+      "labeler_pool_records": 9732,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1340,
+        "DEFERRED": 5728,
+        "CLICKED": 2552,
+        "NotApprBelow_EXCLUDED": 19970,
+        "EVAL_REJECTED": 4004
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6528976572133169,
+      "kept_three_grade_labels_sha256": "0c58a8df0fa281854c9b5c0e93f1cedc9818baf22c3ee98ba30524389aeb0d59",
+      "kept_four_grade_labels_sha256": "dbd410e7c2b519e63c1620aeea138eb9eb1a5c556065a98a7837c81d1a40f7d4"
+    },
+    {
+      "outer_fold": 23,
+      "outer_training_records": 33669,
+      "outer_training_kept_records": 13655,
+      "inner_participants": 46,
+      "labeler_pool_records": 9776,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1320,
+        "DEFERRED": 5801,
+        "CLICKED": 2559,
+        "NotApprBelow_EXCLUDED": 20014,
+        "EVAL_REJECTED": 3975
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6573240589198036,
+      "kept_three_grade_labels_sha256": "925b03a9472bff90e5e62c8998a1dc2b4e0d888dd16f0aff69842b8dd073c335",
+      "kept_four_grade_labels_sha256": "7b8e7ba108171a5f2fb0980db8d52faa30d45dff2cd026d613453b606bede87d"
+    },
+    {
+      "outer_fold": 24,
+      "outer_training_records": 33525,
+      "outer_training_kept_records": 13663,
+      "inner_participants": 46,
+      "labeler_pool_records": 9786,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1329,
+        "DEFERRED": 5750,
+        "CLICKED": 2548,
+        "NotApprBelow_EXCLUDED": 19862,
+        "EVAL_REJECTED": 4036
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6536889433885142,
+      "kept_three_grade_labels_sha256": "5ada523e77448b40df89a2f8ea17662dc988dab620f2ebd3d0cec735f0166aeb",
+      "kept_four_grade_labels_sha256": "6b827fd3cce6e532649b8b3e3d885855a2bcfca59b8f3e7215d5e9983ea65b03"
+    },
+    {
+      "outer_fold": 25,
+      "outer_training_records": 33525,
+      "outer_training_kept_records": 13526,
+      "inner_participants": 46,
+      "labeler_pool_records": 9618,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1360,
+        "DEFERRED": 5671,
+        "CLICKED": 2548,
+        "NotApprBelow_EXCLUDED": 19999,
+        "EVAL_REJECTED": 3947
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6501351632355999,
+      "kept_three_grade_labels_sha256": "221935c27d5b1252f94d6ea5b40b06caa297620118293c85e6edc6307078ed3a",
+      "kept_four_grade_labels_sha256": "fc16307c6c1a25fa3e936b940397e9ff759fa82ea530728238f803bedeb8beb9"
+    },
+    {
+      "outer_fold": 26,
+      "outer_training_records": 33663,
+      "outer_training_kept_records": 13676,
+      "inner_participants": 46,
+      "labeler_pool_records": 9781,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1339,
+        "DEFERRED": 5798,
+        "CLICKED": 2556,
+        "NotApprBelow_EXCLUDED": 19987,
+        "EVAL_REJECTED": 3983
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6577037112769656,
+      "kept_three_grade_labels_sha256": "3b39d8b1c21f788aeb59a7364dfc962ee765750e841fef3a7b8414eab865fd9b",
+      "kept_four_grade_labels_sha256": "27f956b5bb3e2f2b212de97f8f96da9a9c0d818325a6fae96872c4a4f84b988f"
+    },
+    {
+      "outer_fold": 27,
+      "outer_training_records": 33546,
+      "outer_training_kept_records": 13682,
+      "inner_participants": 46,
+      "labeler_pool_records": 9775,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1357,
+        "DEFERRED": 5752,
+        "CLICKED": 2550,
+        "NotApprBelow_EXCLUDED": 19864,
+        "EVAL_REJECTED": 4023
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6536061381074169,
+      "kept_three_grade_labels_sha256": "32f4e3f8af8cf14cf997d21f4a1118d03d125236dc4324c04c932eb8990f4e2f",
+      "kept_four_grade_labels_sha256": "5e495241a9b14bde31f6259e366aefaaf799418ecba6bbec21135dd3d46b673e"
+    },
+    {
+      "outer_fold": 28,
+      "outer_training_records": 33564,
+      "outer_training_kept_records": 13558,
+      "inner_participants": 46,
+      "labeler_pool_records": 9650,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1360,
+        "DEFERRED": 5713,
+        "CLICKED": 2548,
+        "NotApprBelow_EXCLUDED": 20006,
+        "EVAL_REJECTED": 3937
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6535751295336788,
+      "kept_three_grade_labels_sha256": "b2ae489a2adc1f8874bfbfe99d72305dfe1752565c26cc337ea52204e20f196c",
+      "kept_four_grade_labels_sha256": "5dc47a69ca99330f38627e0cc539e8f061825c544a1347a17a6cc09da8f4ffb1"
+    },
+    {
+      "outer_fold": 29,
+      "outer_training_records": 33554,
+      "outer_training_kept_records": 13730,
+      "inner_participants": 46,
+      "labeler_pool_records": 9812,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1369,
+        "DEFERRED": 5814,
+        "CLICKED": 2549,
+        "NotApprBelow_EXCLUDED": 19824,
+        "EVAL_REJECTED": 3998
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6564410925397473,
+      "kept_three_grade_labels_sha256": "58f0cdb7a2278502b641e23eac421dfd16bd5e42ba8a1a58bea6786c90ad2587",
+      "kept_four_grade_labels_sha256": "f13f22b5444cd90a97105afd7a339278044fc29641ce3b1179f3d1c97a75c759"
+    },
+    {
+      "outer_fold": 30,
+      "outer_training_records": 33684,
+      "outer_training_kept_records": 13737,
+      "inner_participants": 46,
+      "labeler_pool_records": 9818,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1360,
+        "DEFERRED": 5788,
+        "CLICKED": 2559,
+        "NotApprBelow_EXCLUDED": 19947,
+        "EVAL_REJECTED": 4030
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6533917294764718,
+      "kept_three_grade_labels_sha256": "65c24a24b0f833d9e38c0201a4d4d54d80924167f7c1c050d9abe6bcf0a145b7",
+      "kept_four_grade_labels_sha256": "4ed7c35ed6531c54327f1d18a9945c8257868876317d14a4d24262a83eaae208"
+    },
+    {
+      "outer_fold": 31,
+      "outer_training_records": 33550,
+      "outer_training_kept_records": 13592,
+      "inner_participants": 46,
+      "labeler_pool_records": 9710,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1333,
+        "DEFERRED": 5731,
+        "CLICKED": 2549,
+        "NotApprBelow_EXCLUDED": 19958,
+        "EVAL_REJECTED": 3979
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6550978372811535,
+      "kept_three_grade_labels_sha256": "96f1d765b2416ccdaffe296fb99e9ebbaa9f3708029c9ef9ed5a8157a5f8e02b",
+      "kept_four_grade_labels_sha256": "0f53c0cabcb30e3a745ec907d768503b8338371a240c1f189285856cd5c9cc19"
+    },
+    {
+      "outer_fold": 32,
+      "outer_training_records": 33561,
+      "outer_training_kept_records": 13577,
+      "inner_participants": 46,
+      "labeler_pool_records": 9663,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1364,
+        "DEFERRED": 5686,
+        "CLICKED": 2550,
+        "NotApprBelow_EXCLUDED": 19984,
+        "EVAL_REJECTED": 3977
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6537307254475836,
+      "kept_three_grade_labels_sha256": "0d84746e2ab8b74293e97621fbae05242c7a58766b3937593857775d8bfe578b",
+      "kept_four_grade_labels_sha256": "bf158af9370dde4ecf37430109db58bb81f19505daadd79a1bc1d81fcbe69784"
+    },
+    {
+      "outer_fold": 33,
+      "outer_training_records": 33543,
+      "outer_training_kept_records": 13694,
+      "inner_participants": 46,
+      "labeler_pool_records": 9782,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1363,
+        "DEFERRED": 5766,
+        "CLICKED": 2549,
+        "NotApprBelow_EXCLUDED": 19849,
+        "EVAL_REJECTED": 4016
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6531384175015335,
+      "kept_three_grade_labels_sha256": "1181a51a42d3f6775d3c85065d3277a5c6eb6e2e7fa26d699105eb02040ee8ed",
+      "kept_four_grade_labels_sha256": "7612d27bc528c6fcfc866f916424ca0f91e0b2d55d48a7c8d306ffb417c918d4"
+    },
+    {
+      "outer_fold": 34,
+      "outer_training_records": 33551,
+      "outer_training_kept_records": 13394,
+      "inner_participants": 46,
+      "labeler_pool_records": 9479,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1365,
+        "DEFERRED": 5610,
+        "CLICKED": 2550,
+        "NotApprBelow_EXCLUDED": 20157,
+        "EVAL_REJECTED": 3869
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6526004852832578,
+      "kept_three_grade_labels_sha256": "7627011455e4b9f95dbbded93920d761db8770421b852ecaee7feba9aae9c130",
+      "kept_four_grade_labels_sha256": "25460c15b84a2c9eedb57594e511320dbb1e60a8112b2e86b4c1ab4a4840f660"
+    },
+    {
+      "outer_fold": 35,
+      "outer_training_records": 33655,
+      "outer_training_kept_records": 13680,
+      "inner_participants": 46,
+      "labeler_pool_records": 9809,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1314,
+        "DEFERRED": 5797,
+        "CLICKED": 2557,
+        "NotApprBelow_EXCLUDED": 19975,
+        "EVAL_REJECTED": 4012
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6547048628810276,
+      "kept_three_grade_labels_sha256": "b9c21ea30d363661ffe58c6c285b6c6d9dca945ce6cb00b7540774b815a2562c",
+      "kept_four_grade_labels_sha256": "8ae028fd7b532ec709ddff13c821ec5cc23611669ce2b8f296c4485cb4ac6a9a"
+    },
+    {
+      "outer_fold": 36,
+      "outer_training_records": 33798,
+      "outer_training_kept_records": 13716,
+      "inner_participants": 46,
+      "labeler_pool_records": 9792,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1357,
+        "DEFERRED": 5763,
+        "CLICKED": 2567,
+        "NotApprBelow_EXCLUDED": 20082,
+        "EVAL_REJECTED": 4029
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.653390522875817,
+      "kept_three_grade_labels_sha256": "d8c68e564a57aeb34c90a8acab2a70b51b65a169ca9c22ba94e5740a616278c2",
+      "kept_four_grade_labels_sha256": "a896f1fdf5653a3997b22e92b691d181a2df15f9fb99a29b5d42f2bac958551d"
+    },
+    {
+      "outer_fold": 37,
+      "outer_training_records": 33552,
+      "outer_training_kept_records": 13557,
+      "inner_participants": 46,
+      "labeler_pool_records": 9692,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1317,
+        "DEFERRED": 5720,
+        "CLICKED": 2548,
+        "NotApprBelow_EXCLUDED": 19995,
+        "EVAL_REJECTED": 3972
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6520841931489889,
+      "kept_three_grade_labels_sha256": "94a42d57a83bc1dc1a690dd2b16c6d059b88846425162f06344370bf9f60c5ed",
+      "kept_four_grade_labels_sha256": "8391dd953e1ba819e3ded3311e8fe2671552d84a856134cc50a0f6473201b399"
+    },
+    {
+      "outer_fold": 38,
+      "outer_training_records": 33764,
+      "outer_training_kept_records": 13739,
+      "inner_participants": 46,
+      "labeler_pool_records": 9841,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1335,
+        "DEFERRED": 5817,
+        "CLICKED": 2563,
+        "NotApprBelow_EXCLUDED": 20025,
+        "EVAL_REJECTED": 4024
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.656132506859059,
+      "kept_three_grade_labels_sha256": "cdfa75cf3003baad5da98e80d87fab3b74b9f045df09b46f96a79b503bd32de0",
+      "kept_four_grade_labels_sha256": "bdcc2cb689656c69c4c6ea05d073aa184cddb49b9fd964525c7b11cc1ec51d84"
+    },
+    {
+      "outer_fold": 39,
+      "outer_training_records": 33554,
+      "outer_training_kept_records": 13592,
+      "inner_participants": 46,
+      "labeler_pool_records": 9708,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1335,
+        "DEFERRED": 5707,
+        "CLICKED": 2549,
+        "NotApprBelow_EXCLUDED": 19962,
+        "EVAL_REJECTED": 4001
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6528636176349403,
+      "kept_three_grade_labels_sha256": "ad271d56cac83f070277878a0ae11ef9419c6210ca2c16df45bcb59648349d35",
+      "kept_four_grade_labels_sha256": "0c79a47931533b1f8e028e15f31eeac70d3d7a905b495d19976acdf2553bafc3"
+    },
+    {
+      "outer_fold": 40,
+      "outer_training_records": 33575,
+      "outer_training_kept_records": 13736,
+      "inner_participants": 46,
+      "labeler_pool_records": 9825,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1359,
+        "DEFERRED": 5789,
+        "CLICKED": 2552,
+        "NotApprBelow_EXCLUDED": 19839,
+        "EVAL_REJECTED": 4036
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6544529262086514,
+      "kept_three_grade_labels_sha256": "488bd9c65348b743a1cbccfbe55a0598277c7846fd8a26abc6c6360badb12f66",
+      "kept_four_grade_labels_sha256": "d81f85b6bea34a8ba2c3ece21b8455e92f8929775802f35cac89d9471812921b"
+    },
+    {
+      "outer_fold": 41,
+      "outer_training_records": 33544,
+      "outer_training_kept_records": 13509,
+      "inner_participants": 46,
+      "labeler_pool_records": 9646,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1314,
+        "DEFERRED": 5721,
+        "CLICKED": 2549,
+        "NotApprBelow_EXCLUDED": 20035,
+        "EVAL_REJECTED": 3925
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6554012025710139,
+      "kept_three_grade_labels_sha256": "ca61f57bd648b7a11548d23264aa1842ba8ce4c8ee81252f571022da9cf9c114",
+      "kept_four_grade_labels_sha256": "57547481f09af75f7fa06a37f8657ef5287f60905fbd560bf6e9b8bab2bee809"
+    },
+    {
+      "outer_fold": 42,
+      "outer_training_records": 33582,
+      "outer_training_kept_records": 13636,
+      "inner_participants": 46,
+      "labeler_pool_records": 9736,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1348,
+        "DEFERRED": 5722,
+        "CLICKED": 2552,
+        "NotApprBelow_EXCLUDED": 19946,
+        "EVAL_REJECTED": 4014
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6526294165981923,
+      "kept_three_grade_labels_sha256": "0f9fcfcdf3714a99f8e7cfae0b4358bc4ce16ca5a7639fd8f11d47afa09f122c",
+      "kept_four_grade_labels_sha256": "0ddefb6543f85553dad54c5e2cb723488e22cfa968e058416c8d2dd0c22f7b4a"
+    },
+    {
+      "outer_fold": 43,
+      "outer_training_records": 33569,
+      "outer_training_kept_records": 13575,
+      "inner_participants": 46,
+      "labeler_pool_records": 9671,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1354,
+        "DEFERRED": 5700,
+        "CLICKED": 2550,
+        "NotApprBelow_EXCLUDED": 19994,
+        "EVAL_REJECTED": 3971
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.651638920483921,
+      "kept_three_grade_labels_sha256": "258cb49c51dae2d376f2107cc1061896fca51bfaaf8943bb83fa15a5ea4b01b9",
+      "kept_four_grade_labels_sha256": "b31dc178b88c4527c4b3c36087159b32f2792f450a5316b6b58e29a77c4988ad"
+    },
+    {
+      "outer_fold": 44,
+      "outer_training_records": 33603,
+      "outer_training_kept_records": 13543,
+      "inner_participants": 46,
+      "labeler_pool_records": 9624,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1367,
+        "DEFERRED": 5645,
+        "CLICKED": 2552,
+        "NotApprBelow_EXCLUDED": 20060,
+        "EVAL_REJECTED": 3979
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6634455527847049,
+      "kept_three_grade_labels_sha256": "40ec83159253d4ca860dc3377c66e04d0be0dec05986c8500a084d6dee800a68",
+      "kept_four_grade_labels_sha256": "67f61feeb21b86ccb081a1dde518c20cbdc78d44b97114b03f365aa10b452b29"
+    },
+    {
+      "outer_fold": 45,
+      "outer_training_records": 33599,
+      "outer_training_kept_records": 13707,
+      "inner_participants": 46,
+      "labeler_pool_records": 9799,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1355,
+        "DEFERRED": 5762,
+        "CLICKED": 2553,
+        "NotApprBelow_EXCLUDED": 19892,
+        "EVAL_REJECTED": 4037
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6534340238799877,
+      "kept_three_grade_labels_sha256": "e0372b58078bd384c75272dc051edad96b482127f2807d7f3b0f429f88cb12a8",
+      "kept_four_grade_labels_sha256": "2e968d516fc08e525dcca883748d38a56fc0de1991bc6dff637f1cb6f65ee470"
+    },
+    {
+      "outer_fold": 46,
+      "outer_training_records": 33544,
+      "outer_training_kept_records": 13678,
+      "inner_participants": 46,
+      "labeler_pool_records": 9771,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1358,
+        "DEFERRED": 5774,
+        "CLICKED": 2549,
+        "NotApprBelow_EXCLUDED": 19866,
+        "EVAL_REJECTED": 3997
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6556135503019138,
+      "kept_three_grade_labels_sha256": "1d6472a42fa6668030de6c88136c5649d79b2296fc408c5b395c576a1eebffe0",
+      "kept_four_grade_labels_sha256": "cbb1b6fb698c24ca490eed310516445d06c315ef9dc5fd42da57c2e292275f45"
+    },
+    {
+      "outer_fold": 47,
+      "outer_training_records": 33673,
+      "outer_training_kept_records": 13582,
+      "inner_participants": 46,
+      "labeler_pool_records": 9680,
+      "class_distribution_outer_training": {
+        "NotApprAbove": 1345,
+        "DEFERRED": 5718,
+        "CLICKED": 2557,
+        "NotApprBelow_EXCLUDED": 20091,
+        "EVAL_REJECTED": 3962
+      },
+      "inner_oof_agreement_with_training_gaze_on_pool": 0.6510330578512397,
+      "kept_three_grade_labels_sha256": "6d70e91ccd230dd943c9fa33db11b544ed8b93f285cca6ce3dfb0f186251a42a",
+      "kept_four_grade_labels_sha256": "f48d2ccdbe918f235a83d69c5a9353264e73107bf0b3d050cbc32e6dc78a0a1d"
+    }
+  ],
+  "inputs": {
+    "feature_cache": "AdSERP/data/cursor-only-typed-features-mousedown.json",
+    "feature_cache_sha256": "c4f4dba3c363440710ffb1fa61f50b70dad35a8adb9016b5b3e1940a82e2ea30",
+    "regression_label_cache": "scripts/output/approach_threshold_sensitivity/regression_labels_cache_typed.json",
+    "regression_label_cache_sha256": "a878bba4a69b9736393f510fc2936e3e021621bc99a1bb772f64aed61f0ed4a8",
+    "regression_label_row_keys": "AdSERP/data/cursor-approach-features-typed.json",
+    "regression_label_row_keys_sha256": "e8088c070b955bd3d37dc17420966960c020c963110bc434e5411ce9bee360e5"
+  },
+  "provenance": {
+    "producer_sha256": "655028a0a78960362ec0f8cded66a95288930e989c4e12dcbe4ddc9612f96cbf",
+    "shared_labeler_grading_metrics_sha256": "96e88ffb40da68b919b8f33c4264a5407981367e23ce6cc6b81240fa301b2b6c",
+    "feature_contract_sha256": "bd8f3bb33613bfd2d49d7eb7e1fbfc4b6ae7f8fc39ac2fc8f58d6a2cac3d0edd",
+    "historical_producer_sha256": "84eeb95fdb24d2b9a6cd597d6f3023415b8cd5080c85c0d946f125901530a4ef",
+    "python": "3.13.11",
+    "numpy": "2.4.4",
+    "lightgbm": "4.6.0",
+    "sklearn": "1.8.0"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "target": "/Users/andyed/Documents/dev/attentional-foraging/scripts/output/ltr_four_grade_cursor_dwell",
+  "require_gate": true,
+  "scanned": 1,
+  "parsed": 1,
+  "producers": 1,
+  "gated": 1,
+  "ungated": 0,
+  "severity_counts": {
+    "error": 0,
+    "warn": 0,
+    "info": 0
+  },
+  "sidecars": [
+    {
+      "file": "summary.json",
+      "abs": "/Users/andyed/Documents/dev/attentional-foraging/scripts/output/ltr_four_grade_cursor_dwell/summary.json",
+      "findings": [],
+      "checks": [
+        {
+          "name": "binary | M4 ndcg10",
+          "shipped": 0.8265036631873487,
+          "reproduced": 0.8265036631873487,
+          "delta": 0,
+          "tolerance": 1e-8,
+          "tolerance_kind": "declared",
+          "within": true,
+          "pool": null,
+          "source": "../ltr_cursor_only_nested_grades/summary_buf500.json",
+          "source_path": "metrics.LambdaMART (binary click).ndcg10",
+          "pin_status": "current",
+          "live_source_value": 0.8265036631873487
+        },
+        {
+          "name": "binary | M4 mrr10",
+          "shipped": 0.7741914378225728,
+          "reproduced": 0.7741914378225728,
+          "delta": 0,
+          "tolerance": 1e-8,
+          "tolerance_kind": "declared",
+          "within": true,
+          "pool": null,
+          "source": "../ltr_cursor_only_nested_grades/summary_buf500.json",
+          "source_path": "metrics.LambdaMART (binary click).mrr10",
+          "pin_status": "current",
+          "live_source_value": 0.7741914378225728
+        },
+        {
+          "name": "approach-retreat 4 | M4 ndcg10",
+          "shipped": 0.8318621458788615,
+          "reproduced": 0.8318621458788615,
+          "delta": 0,
+          "tolerance": 1e-8,
+          "tolerance_kind": "declared",
+          "within": true,
+          "pool": null,
+          "source": "../ltr_cursor_only_nested_grades/summary_buf500.json",
+          "source_path": "metrics.LambdaMART (4 distinct grades, 3/2/1/0; cursor labels).ndcg10",
+          "pin_status": "current",
+          "live_source_value": 0.8318621458788615
+        },
+        {
+          "name": "approach-retreat 4 | M4 mrr10",
+          "shipped": 0.7791578415619826,
+          "reproduced": 0.7791578415619826,
+          "delta": 0,
+          "tolerance": 1e-8,
+          "tolerance_kind": "declared",
+          "within": true,
+          "pool": null,
+          "source": "../ltr_cursor_only_nested_grades/summary_buf500.json",
+          "source_path": "metrics.LambdaMART (4 distinct grades, 3/2/1/0; cursor labels).mrr10",
+          "pin_status": "current",
+          "live_source_value": 0.7791578415619826
+        }
+      ],
+      "gate_status": "ok",
+      "numerics": 1474,
+      "provenance": true,
+      "nonstandard_json": false
+    }
+  ]
+}
