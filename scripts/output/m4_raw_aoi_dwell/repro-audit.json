@@ -1,0 +1,41 @@
+{
+  "target": "/Users/andyed/Documents/dev/attentional-foraging/scripts/output/m4_raw_aoi_dwell",
+  "require_gate": true,
+  "scanned": 1,
+  "parsed": 1,
+  "producers": 1,
+  "gated": 1,
+  "ungated": 0,
+  "severity_counts": {
+    "error": 0,
+    "warn": 0,
+    "info": 0
+  },
+  "sidecars": [
+    {
+      "file": "summary.json",
+      "abs": "/Users/andyed/Documents/dev/attentional-foraging/scripts/output/m4_raw_aoi_dwell/summary.json",
+      "findings": [],
+      "checks": [
+        {
+          "name": "shipped",
+          "shipped": 0.9347503486217595,
+          "reproduced": 0.9347503486217595,
+          "delta": 0,
+          "tolerance": 1e-8,
+          "tolerance_kind": "declared",
+          "within": true,
+          "pool": null,
+          "source": "../m4_cursor_aoi_mousedown/summary.json",
+          "source_path": "conditions.buf500.M4-7.pooled_auc",
+          "pin_status": "current",
+          "live_source_value": 0.9347503486217595
+        }
+      ],
+      "gate_status": "ok",
+      "numerics": 863,
+      "provenance": true,
+      "nonstandard_json": false
+    }
+  ]
+}
