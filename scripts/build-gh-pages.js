@@ -404,7 +404,7 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
 .info-panel a { color: #ff9933; text-decoration: none; font-weight: 600; }
 .info-panel a:hover { text-decoration: underline; }
 .back { font-size: 12px; }
-.back a { color: #6af; text-decoration: none; }
+.back a { color: #8bf; text-decoration: none; }
 </style></head><body>
 <div class="header">
   <div style="display:flex;align-items:center;gap:12px;">
@@ -500,10 +500,10 @@ body { background: #111; color: #eee; font-family: system-ui, -apple-system, san
   <span>Duration: <span class="val" id="info-dur">—</span></span>
   <span>Fixations: <span class="val" id="info-seen">0</span></span>
   ${click ? `<span>Click: <span class="val">(${Math.round(click.x)}, ${Math.round(click.y)})</span></span>` : ''}
-  <span><a href="png/${id}.png" download style="color:#6af;text-decoration:none;">Download PNG</a></span>
+  <span><a href="png/${id}.png" download style="color:#8bf;text-decoration:none;">Download PNG</a></span>
 </div>
-<div style="width:${screenW}px;padding:6px 16px;background:#1a1a1a;font-size:10px;color:#666;border-top:1px solid #222;">
-  Fixation overlay alignment: median &lt;13px offset, max ~45px at page bottom. SERP HTML is re-rendered locally; element heights differ from original Chrome 110/Windows session due to external resource loading (Maps tiles, product images). Fixation coordinates (FPOGX/FPOGY) from <a href="https://github.com/kayhan-latifzadeh/AdSERP" style="color:#888;">AdSERP dataset</a> are pixel-verified accurate against synthetic test pages.
+<div style="width:${screenW}px;padding:6px 16px;background:#1a1a1a;font-size:10px;color:#bbb;border-top:1px solid #222;">
+  Fixation overlay alignment: median &lt;13px offset, max ~45px at page bottom. SERP HTML is re-rendered locally; element heights differ from original Chrome 110/Windows session due to external resource loading (Maps tiles, product images). Fixation coordinates (FPOGX/FPOGY) from <a href="https://github.com/kayhan-latifzadeh/AdSERP" style="color:#bbb;">AdSERP dataset</a> are pixel-verified accurate against synthetic test pages.
 </div>
 <script>
 const F=${JSON.stringify(fixations)},CK=${JSON.stringify(click)},ME=${JSON.stringify(mouseEvents)},FR=${fovealR},SW=${screenW},N=${N},
@@ -832,7 +832,7 @@ body { font-family: system-ui, -apple-system, sans-serif; max-width: 900px; marg
 h1 { font-size: 1.6em; margin-bottom: 0.3em; }
 h1 a { color: #ff9933; text-decoration: none; }
 .subtitle { color: #aaa; margin-bottom: 1.5em; line-height: 1.5; }
-.subtitle a { color: #6af; text-decoration: none; }
+.subtitle a { color: #8bf; text-decoration: none; }
 .trial { margin: 0.6em 0; background: #1a1a1a; border-radius: 6px; border-left: 3px solid #333; transition: border-color 0.2s, background 0.2s; cursor: pointer; }
 .trial:hover { border-left-color: #ff9933; background: #222; }
 .trial.aligned { border-left-color: #22c55e; }
@@ -850,23 +850,23 @@ h1 a { color: #ff9933; text-decoration: none; }
 .trial a { display: block; padding: 0.8em 1em; color: #eee; text-decoration: none; cursor: pointer; }
 .trial .tag { color: #ff9933; font-size: 0.8em; text-transform: uppercase; letter-spacing: 0.5px; }
 .trial .id { font-weight: 600; font-size: 0.95em; }
-.trial .query { color: #aaa; font-size: 0.85em; margin-top: 2px; }
-.trial .meta { color: #888; font-size: 0.8em; margin-top: 2px; }
+.trial .query { color: #bbb; font-size: 0.85em; margin-top: 2px; }
+.trial .meta { color: #bbb; font-size: 0.8em; margin-top: 2px; }
 kbd { background: #333; padding: 1px 6px; border-radius: 3px; font-size: 0.85em; color: #ccc; }
-.controls-help { color: #888; font-size: 0.85em; margin-bottom: 1.5em; }
-footer { margin-top: 2em; padding-top: 1em; border-top: 1px solid #333; color: #666; font-size: 0.8em; }
-footer a { color: #888; }
+.controls-help { color: #bbb; font-size: 0.85em; margin-bottom: 1.5em; }
+footer { margin-top: 2em; padding-top: 1em; border-top: 1px solid #333; color: #bbb; font-size: 0.8em; }
+footer a { color: #bbb; }
 .hero-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0.8em 0 1.5em; }
 .hero-card { display: block; text-decoration: none; color: inherit; background: #0c0c0c; border-radius: 6px; padding: 4px; transition: transform 0.15s, background 0.15s; }
 .hero-card:hover { transform: translateY(-2px); background: #1a1a1a; }
 .hero-card img { width: 100%; display: block; border-radius: 4px; }
 .hero-card .cap { padding: 6px 4px 2px; display: flex; justify-content: space-between; align-items: baseline; gap: 6px; }
 .hero-card .cap .label { color: #ff9933; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; font-size: 0.78em; }
-.hero-card .cap .count { color: #888; font-family: ui-monospace, monospace; font-size: 0.75em; }
-.hero-caption { color: #888; font-size: 0.82em; margin-bottom: 1em; }
+.hero-card .cap .count { color: #bbb; font-family: ui-monospace, monospace; font-size: 0.75em; }
+.hero-caption { color: #bbb; font-size: 0.82em; margin-bottom: 1em; }
 @media (max-width: 700px) { .hero-strip { grid-template-columns: 1fr; } }
 </style></head><body>
-<h1>Cursor Plots <span style="color:#888;font-weight:400;">— <a href="https://github.com/andyed/attentional-foraging" style="color:#ff9933;">Attentional Foraging</a> on AdSERP</span></h1>
+<h1>Cursor Plots <span style="color:#bbb;font-weight:400;">— <a href="https://github.com/andyed/attentional-foraging" style="color:#ff9933;">Attentional Foraging</a> on AdSERP</span></h1>
 <p class="subtitle">
   Each card below is a <em>cursor plot</em>: one complete search session from the
   <a href="https://doi.org/10.1145/3726302.3730325">AdSERP dataset</a>, replayed
@@ -890,7 +890,7 @@ footer a { color: #888; }
   </a>
 </div>
 <p class="hero-caption">Three contrasting foraging strategies. Click a card to replay.</p>
-<p class="subtitle" style="color:#888;">
+<p class="subtitle" style="color:#bbb;">
   AdSERP: 47 participants, 2,776 transactional Google queries, Gazepoint GP3 HD eye tracker at 150Hz.
   Trials below are prototypical examples of distinct search behaviors.
 </p>
@@ -968,15 +968,15 @@ what the participant could have resolved across their full search session:
 sharp where they looked, degraded where they didn't.</p>
 
 <p><strong>Pipeline:</strong></p>
-<ol style="margin-left:1.5em;color:#999;">
-<li>The <a href="https://github.com/andyed/attentional-foraging/blob/main/scripts/find_interesting_trials.py" style="color:#6af;">interesting trials script</a>
+<ol style="margin-left:1.5em;color:#bbb;">
+<li>The <a href="https://github.com/andyed/attentional-foraging/blob/main/scripts/find_interesting_trials.py" style="color:#8bf;">interesting trials script</a>
   identifies prototypical search behaviors from 2,776 AdSERP trials</li>
-<li>The <a href="https://github.com/andyed/scrutinizer2025/blob/main/renderer/scanpath/importers/adserp-importer.js" style="color:#6af;">AdSERP importer</a>
+<li>The <a href="https://github.com/andyed/scrutinizer2025/blob/main/renderer/scanpath/importers/adserp-importer.js" style="color:#8bf;">AdSERP importer</a>
   parses fixation CSVs (page-space coords from Gazepoint GP3 HD at 150Hz),
   mouse events (evtrack pageX/pageY), scroll timelines, and trial metadata —
   reconciling two coordinate systems
-  (<a href="https://github.com/andyed/scrutinizer2025/blob/main/docs/adserp-coordinate-system.md" style="color:#6af;">coordinate reference</a>)</li>
-<li>The <a href="https://github.com/andyed/scrutinizer2025/blob/main/scripts/capture-fullpage-gazeplot.js" style="color:#6af;">fullpage gazeplot script</a>
+  (<a href="https://github.com/andyed/scrutinizer2025/blob/main/docs/adserp-coordinate-system.md" style="color:#8bf;">coordinate reference</a>)</li>
+<li>The <a href="https://github.com/andyed/scrutinizer2025/blob/main/scripts/capture-fullpage-gazeplot.js" style="color:#8bf;">fullpage gazeplot script</a>
   walks each fixation through Scrutinizer's Electron-based WebGL pipeline with
   <code style="background:#222;padding:1px 4px;border-radius:2px;">TEST_VISUAL_MEMORY=-1</code> (infinite accumulation),
   then tile-captures the full page at each scroll position and stitches them</li>
@@ -986,8 +986,8 @@ sharp where they looked, degraded where they didn't.</p>
   minutes to seconds per trial</li>
 <li>The interactive overlay is generated as self-contained HTML with the
   gazeplot PNG as background</li>
-<li>The <a href="https://github.com/andyed/scrutinizer2025/blob/main/scripts/export-saliency.js" style="color:#6af;">saliency export CLI</a>
-  (<a href="https://github.com/andyed/scrutinizer2025/blob/main/docs/developers_guide.md#saliency--congestion-export-cli" style="color:#6af;">docs</a>)
+<li>The <a href="https://github.com/andyed/scrutinizer2025/blob/main/scripts/export-saliency.js" style="color:#8bf;">saliency export CLI</a>
+  (<a href="https://github.com/andyed/scrutinizer2025/blob/main/docs/developers_guide.md#saliency--congestion-export-cli" style="color:#8bf;">docs</a>)
   computes per-fixation saliency and Rosenholtz feature congestion
   using the same Oklab DoG + local variance pipeline as the real-time
   renderer — but headless in Node.js, no GPU required (~100ms/image)</li>
@@ -1010,7 +1010,7 @@ Fixation coordinates from the eye tracker are in screen-pixel space
 scaling). Rendering at a different width causes content reflow, shifting
 elements vertically. Instead of coordinate transforms, each fixation is
 <em>anchored to the DOM element it landed on</em>: during the build step,
-<a href="https://github.com/andyed/attentional-foraging/blob/main/scripts/generate-anchors.js" style="color:#6af;">generate-anchors.js</a>
+<a href="https://github.com/andyed/attentional-foraging/blob/main/scripts/generate-anchors.js" style="color:#8bf;">generate-anchors.js</a>
 loads each SERP in Playwright at the original window width, uses
 <code style="background:#222;padding:1px 4px;border-radius:2px;">elementFromPoint</code>
 to map each fixation to a CSS selector + offset, then the build script
@@ -1020,14 +1020,15 @@ by DOM-based event logging (Edmonds, 2003) — the same principle that anchors
 interaction events to page structure rather than screen coordinates.</p>
 
 <p style="margin-top:0.8em;"><strong>Data:</strong>
-<a href="https://doi.org/10.1145/3726302.3730325" style="color:#6af;">AdSERP</a> —
+<a href="https://doi.org/10.1145/3726302.3730325" style="color:#8bf;">AdSERP</a> —
 Latifzadeh et al., 2,776 transactional Google SERP queries, 47 participants,
 Gazepoint GP3 HD eye tracker, simultaneous mouse + scroll + gaze recording.
-<a href="https://zenodo.org/records/15236546" style="color:#6af;">Dataset on Zenodo</a>.</p>
+<a href="https://zenodo.org/records/15236546" style="color:#8bf;">Dataset on Zenodo</a>.</p>
 </div>
 </details>
 
 <footer>
+  <a href="attention-atlas/">Search-process posters</a> ·
   <a href="https://github.com/andyed/scrutinizer2025">Scrutinizer</a> ·
   <a href="https://github.com/andyed/attentional-foraging">attentional-foraging</a> ·
   <a href="https://doi.org/10.1145/3726302.3730325">AdSERP paper</a> ·
@@ -1036,6 +1037,18 @@ Gazepoint GP3 HD eye tracker, simultaneous mouse + scroll + gaze recording.
 </body></html>`;
 
 fs.writeFileSync(path.join(SITE_DIR, 'index.html'), indexHtml);
+
+// Curated search-process posters, prepared by scripts/attention_atlas/.
+// The pages, figures, summaries and checks are published; per-trial records
+// (*.json.gz), Markdown sources and build manifests stay in the repository.
+// Keep SITE_EXCLUDE identical to the list in scripts/attention_atlas/verify-atlas.py,
+// which fails if a page links to an excluded file.
+const SITE_EXCLUDE = [/\.md$/, /\.json\.gz$/, /^import-manifest\.json$/, /^integration-verification\.json$/,
+    /^evidence-pin\.json$/, /^render-manifest\.json$/];
+fs.cpSync(path.join(ROOT, 'docs', 'visualizations'),
+    path.join(SITE_DIR, 'attention-atlas'),
+    { recursive: true, filter: (src) => !SITE_EXCLUDE.some((re) => re.test(path.basename(src))) });
+
 
 // .nojekyll for GitHub Pages
 fs.writeFileSync(path.join(SITE_DIR, '.nojekyll'), '');
