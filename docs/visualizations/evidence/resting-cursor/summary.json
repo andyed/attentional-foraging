@@ -1,0 +1,436 @@
+{
+  "trials": 2650,
+  "participants": 47,
+  "definition": "Cursor < threshold screenshot px/s over complete 100 ms windows without scroll events; cursor held within strict typed AOI xy rectangle; exact overlap with fixation in a different AOI. Cursor and fixation holds use existing poster conventions; cursor page positions are not reconstructed during scroll. Motion validity does not require raw gaze endpoints. Full first-mousemove to final-press clock, 2000 ms cursor hold cap. Resting means low endpoint displacement, not a minimum-length stationary episode.",
+  "primary_threshold": 50,
+  "gates": [
+    {
+      "status": "ok",
+      "source": "docs/visualizations/information-space-poster/summary.json",
+      "source_path": "aggregate_ms.cursor_aoi.in_aoi",
+      "shipped": 23140440.0,
+      "reproduced": 23140440.0,
+      "delta": 0.0,
+      "tolerance": 0.0001
+    },
+    {
+      "status": "ok",
+      "source": "docs/visualizations/information-space-poster/summary.json",
+      "source_path": "aggregate_ms.cursor_aoi.off_aoi",
+      "shipped": 10836091.0,
+      "reproduced": 10836091.0,
+      "delta": 0.0,
+      "tolerance": 0.0001
+    },
+    {
+      "status": "ok",
+      "source": "docs/visualizations/information-space-poster/summary.json",
+      "source_path": "aggregate_ms.cursor_aoi.unmatched",
+      "shipped": 14055894.0,
+      "reproduced": 14055894.0,
+      "delta": 0.0,
+      "tolerance": 0.0001
+    },
+    {
+      "status": "ok",
+      "source": "docs/visualizations/information-space-poster/summary.json",
+      "source_path": "aggregate_ms.joint.adjacent",
+      "shipped": 3187466.0,
+      "reproduced": 3187466.0,
+      "delta": 0.0,
+      "tolerance": 0.0001
+    },
+    {
+      "status": "ok",
+      "source": "docs/visualizations/information-space-poster/summary.json",
+      "source_path": "aggregate_ms.joint.both_off",
+      "shipped": 2024977.0,
+      "reproduced": 2024977.0,
+      "delta": 0.0,
+      "tolerance": 0.0001
+    },
+    {
+      "status": "ok",
+      "source": "docs/visualizations/information-space-poster/summary.json",
+      "source_path": "aggregate_ms.joint.cursor_only",
+      "shipped": 3689207.0,
+      "reproduced": 3689207.0,
+      "delta": 0.0,
+      "tolerance": 0.0001
+    },
+    {
+      "status": "ok",
+      "source": "docs/visualizations/information-space-poster/summary.json",
+      "source_path": "aggregate_ms.joint.gaze_only",
+      "shipped": 4759827.0,
+      "reproduced": 4759827.0,
+      "delta": 0.0,
+      "tolerance": 0.0001
+    },
+    {
+      "status": "ok",
+      "source": "docs/visualizations/information-space-poster/summary.json",
+      "source_path": "aggregate_ms.joint.neither_recorded",
+      "shipped": 5244020.0,
+      "reproduced": 5244020.0,
+      "delta": 0.0,
+      "tolerance": 0.0001
+    },
+    {
+      "status": "ok",
+      "source": "docs/visualizations/information-space-poster/summary.json",
+      "source_path": "aggregate_ms.joint.no_cursor",
+      "shipped": 8811874.0,
+      "reproduced": 8811874.0,
+      "delta": 0.0,
+      "tolerance": 0.0001
+    },
+    {
+      "status": "ok",
+      "source": "docs/visualizations/information-space-poster/summary.json",
+      "source_path": "aggregate_ms.joint.no_fixation",
+      "shipped": 12132062.0,
+      "reproduced": 12132062.0,
+      "delta": 0.0,
+      "tolerance": 0.0001
+    },
+    {
+      "status": "ok",
+      "source": "docs/visualizations/information-space-poster/summary.json",
+      "source_path": "aggregate_ms.joint.other",
+      "shipped": 1959194.0,
+      "reproduced": 1959194.0,
+      "delta": 0.0,
+      "tolerance": 0.0001
+    },
+    {
+      "status": "ok",
+      "source": "docs/visualizations/information-space-poster/summary.json",
+      "source_path": "aggregate_ms.joint.same",
+      "shipped": 6223798.0,
+      "reproduced": 6223798.0,
+      "delta": 0.0,
+      "tolerance": 0.0001
+    }
+  ],
+  "results": {
+    "25": {
+      "milliseconds": {
+        "full_clock_ms": 48032425.0,
+        "cursor_covered_ms": 33976531.0,
+        "cursor_in_aoi_ms": 23140440.0,
+        "cursor_rest_in_aoi_ms": 13336644.0,
+        "cursor_rest_in_aoi_fixation_matched_ms": 8887955.0,
+        "cursor_rest_both_in_aoi_ms": 6581828.0,
+        "different_aoi_ms": 3238347.0,
+        "adjacent_aoi_ms": 1933199.0,
+        "other_aoi_ms": 1305148.0,
+        "same_aoi_ms": 3343481.0,
+        "gaze_off_aoi_ms": 2306127.0,
+        "gaze_unmatched_ms": 4448689.0,
+        "cursor_in_aoi_motion_unclassified_ms": 2737396.0
+      },
+      "different_aoi_share_by_denominator": {
+        "full_clock_ms": {
+          "percent": 6.742001887266778,
+          "ci95": [
+            5.79362376746127,
+            7.6678361660302325
+          ]
+        },
+        "cursor_covered_ms": {
+          "percent": 9.531129001957263,
+          "ci95": [
+            8.263153901441482,
+            10.678721958298313
+          ]
+        },
+        "cursor_in_aoi_ms": {
+          "percent": 13.99431903628453,
+          "ci95": [
+            12.492597988874934,
+            15.353026056160932
+          ]
+        },
+        "cursor_rest_in_aoi_ms": {
+          "percent": 24.28157338532842,
+          "ci95": [
+            22.724026654678287,
+            25.662389629829807
+          ]
+        },
+        "cursor_rest_in_aoi_fixation_matched_ms": {
+          "percent": 36.43523172653327,
+          "ci95": [
+            34.25724856509553,
+            38.58347946803091
+          ]
+        },
+        "cursor_rest_both_in_aoi_ms": {
+          "percent": 49.20133130188148,
+          "ci95": [
+            46.28933824968913,
+            51.92532726667397
+          ]
+        }
+      }
+    },
+    "50": {
+      "milliseconds": {
+        "full_clock_ms": 48032425.0,
+        "cursor_covered_ms": 33976531.0,
+        "cursor_in_aoi_ms": 23140440.0,
+        "cursor_rest_in_aoi_ms": 14519016.0,
+        "cursor_rest_in_aoi_fixation_matched_ms": 9699822.0,
+        "cursor_rest_both_in_aoi_ms": 7211628.0,
+        "different_aoi_ms": 3448853.0,
+        "adjacent_aoi_ms": 2094084.0,
+        "other_aoi_ms": 1354769.0,
+        "same_aoi_ms": 3762775.0,
+        "gaze_off_aoi_ms": 2488194.0,
+        "gaze_unmatched_ms": 4819194.0,
+        "cursor_in_aoi_motion_unclassified_ms": 2737396.0
+      },
+      "different_aoi_share_by_denominator": {
+        "full_clock_ms": {
+          "percent": 7.180260001446939,
+          "ci95": [
+            6.174020376386202,
+            8.167527773813516
+          ]
+        },
+        "cursor_covered_ms": {
+          "percent": 10.150691958516894,
+          "ci95": [
+            8.831725031166455,
+            11.310120066186764
+          ]
+        },
+        "cursor_in_aoi_ms": {
+          "percent": 14.904007875390443,
+          "ci95": [
+            13.396901745946662,
+            16.254368201637874
+          ]
+        },
+        "cursor_rest_in_aoi_ms": {
+          "percent": 23.754040907455437,
+          "ci95": [
+            22.18386168327598,
+            25.15988206665973
+          ]
+        },
+        "cursor_rest_in_aoi_fixation_matched_ms": {
+          "percent": 35.555838034966,
+          "ci95": [
+            33.33365547943919,
+            37.700401826948585
+          ]
+        },
+        "cursor_rest_both_in_aoi_ms": {
+          "percent": 47.82350115674297,
+          "ci95": [
+            44.740131637950576,
+            50.56415228772811
+          ]
+        }
+      }
+    },
+    "100": {
+      "milliseconds": {
+        "full_clock_ms": 48032425.0,
+        "cursor_covered_ms": 33976531.0,
+        "cursor_in_aoi_ms": 23140440.0,
+        "cursor_rest_in_aoi_ms": 15853582.0,
+        "cursor_rest_in_aoi_fixation_matched_ms": 10619613.0,
+        "cursor_rest_both_in_aoi_ms": 7932262.0,
+        "different_aoi_ms": 3660444.0,
+        "adjacent_aoi_ms": 2256514.0,
+        "other_aoi_ms": 1403930.0,
+        "same_aoi_ms": 4271818.0,
+        "gaze_off_aoi_ms": 2687351.0,
+        "gaze_unmatched_ms": 5233969.0,
+        "cursor_in_aoi_motion_unclassified_ms": 2737396.0
+      },
+      "different_aoi_share_by_denominator": {
+        "full_clock_ms": {
+          "percent": 7.620777006366012,
+          "ci95": [
+            6.564237447371664,
+            8.640237462070873
+          ]
+        },
+        "cursor_covered_ms": {
+          "percent": 10.773448295825139,
+          "ci95": [
+            9.443132041088177,
+            11.973236555815674
+          ]
+        },
+        "cursor_in_aoi_ms": {
+          "percent": 15.818385475816363,
+          "ci95": [
+            14.323541514052396,
+            17.135241995746988
+          ]
+        },
+        "cursor_rest_in_aoi_ms": {
+          "percent": 23.089065928444438,
+          "ci95": [
+            21.497370701463648,
+            24.462056253819224
+          ]
+        },
+        "cursor_rest_in_aoi_fixation_matched_ms": {
+          "percent": 34.46871369041414,
+          "ci95": [
+            32.196760673899114,
+            36.606975469128315
+          ]
+        },
+        "cursor_rest_both_in_aoi_ms": {
+          "percent": 46.14628210717195,
+          "ci95": [
+            42.88512472666496,
+            48.957746131036615
+          ]
+        }
+      }
+    }
+  },
+  "sensitivity_cursor_hold": {
+    "uncapped_hold": {
+      "threshold_px_s": 50,
+      "definition": "As primary at 50 px/s, but each cursor position is held until the next mousemove or the press (no 2 s cap), so long stillness counts as covered and can count as rest.",
+      "milliseconds": {
+        "full_clock_ms": 48032425.0,
+        "cursor_covered_ms": 48032425.0,
+        "cursor_in_aoi_ms": 31103321.0,
+        "cursor_rest_in_aoi_ms": 21585779.0,
+        "cursor_rest_in_aoi_fixation_matched_ms": 14428999.0,
+        "cursor_rest_both_in_aoi_ms": 10615900.0,
+        "different_aoi_ms": 5953297.0,
+        "adjacent_aoi_ms": 2906270.0,
+        "other_aoi_ms": 3047027.0,
+        "same_aoi_ms": 4662603.0,
+        "gaze_off_aoi_ms": 3813099.0,
+        "gaze_unmatched_ms": 7156780.0,
+        "cursor_in_aoi_motion_unclassified_ms": 3483478.0
+      },
+      "different_aoi_share_by_denominator": {
+        "full_clock_ms": {
+          "percent": 12.394329455570897,
+          "ci95": [
+            10.552999177280448,
+            14.064234012562881
+          ]
+        },
+        "cursor_covered_ms": {
+          "percent": 12.394329455570897,
+          "ci95": [
+            10.552999177280448,
+            14.064234012562881
+          ]
+        },
+        "cursor_in_aoi_ms": {
+          "percent": 19.140390185343875,
+          "ci95": [
+            17.187180895075194,
+            20.793753339619993
+          ]
+        },
+        "cursor_rest_in_aoi_ms": {
+          "percent": 27.57971810977959,
+          "ci95": [
+            25.828391987073903,
+            29.0515258757081
+          ]
+        },
+        "cursor_rest_in_aoi_fixation_matched_ms": {
+          "percent": 41.25925159465324,
+          "ci95": [
+            38.82340800355237,
+            43.28295703614063
+          ]
+        },
+        "cursor_rest_both_in_aoi_ms": {
+          "percent": 56.079060654301564,
+          "ci95": [
+            52.86243930071402,
+            58.67226940526801
+          ]
+        }
+      }
+    },
+    "uncapped_hold_scroll_shift": {
+      "threshold_px_s": 50,
+      "definition": "As uncapped_hold, and the held page position moves with the page scroll offset (a still cursor keeps its screen position while the page scrolls).",
+      "milliseconds": {
+        "full_clock_ms": 48032425.0,
+        "cursor_covered_ms": 48032425.0,
+        "cursor_in_aoi_ms": 30825332.0,
+        "cursor_rest_in_aoi_ms": 21362094.0,
+        "cursor_rest_in_aoi_fixation_matched_ms": 14263508.0,
+        "cursor_rest_both_in_aoi_ms": 10512601.0,
+        "different_aoi_ms": 5334428.0,
+        "adjacent_aoi_ms": 3304401.0,
+        "other_aoi_ms": 2030027.0,
+        "same_aoi_ms": 5178173.0,
+        "gaze_off_aoi_ms": 3750907.0,
+        "gaze_unmatched_ms": 7098586.0,
+        "cursor_in_aoi_motion_unclassified_ms": 3429557.0
+      },
+      "different_aoi_share_by_denominator": {
+        "full_clock_ms": {
+          "percent": 11.105889406999543,
+          "ci95": [
+            9.536143278338495,
+            12.52593241098722
+          ]
+        },
+        "cursor_covered_ms": {
+          "percent": 11.105889406999543,
+          "ci95": [
+            9.536143278338495,
+            12.52593241098722
+          ]
+        },
+        "cursor_in_aoi_ms": {
+          "percent": 17.305338349640483,
+          "ci95": [
+            15.616994141647103,
+            18.791962237112294
+          ]
+        },
+        "cursor_rest_in_aoi_ms": {
+          "percent": 24.971465812293495,
+          "ci95": [
+            23.40427399178007,
+            26.40634201804105
+          ]
+        },
+        "cursor_rest_in_aoi_fixation_matched_ms": {
+          "percent": 37.39913070473266,
+          "ci95": [
+            35.31114578783677,
+            39.32698652182079
+          ]
+        },
+        "cursor_rest_both_in_aoi_ms": {
+          "percent": 50.743179542341615,
+          "ci95": [
+            47.990326714027766,
+            53.13217351361148
+          ]
+        }
+      }
+    }
+  },
+  "source_hashes": {
+    "scripts/attention_atlas/compute-resting-cursor.py": "1b5bca3f4471497465808a12973f67d2ecf6e8dd4787e091afab7c7c1eeaa1b7",
+    "scripts/attention_atlas/atlas_core.py": "977b8a1824bc7cd4dc4d79f3bcc7738ff17f9c107756b898e83a94af174d5460",
+    "docs/visualizations/information-space-poster/summary.json": "955240f161c40cf19777954868e5b888247baff1a31b2fe187704c71a1bbc5a6",
+    "notebooks-v2/data_loader.py": "2a1d7c51a1919fac1c6c86c476f646ef96800be265688cd57c351cab18b00275",
+    "data/aoi-typed/substrate.json": "986e958161fc74b55a93e30cee5811276bb7230d76db10d78fa5328f089e27e1"
+  }
+}

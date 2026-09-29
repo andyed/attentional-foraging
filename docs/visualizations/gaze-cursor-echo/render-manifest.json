@@ -1,0 +1,71 @@
+{
+  "poster_inches": [
+    46.8,
+    33.1
+  ],
+  "regions": {
+    "entry": [
+      0.025,
+      0.655,
+      0.29,
+      0.205
+    ],
+    "sparsity": [
+      0.338,
+      0.655,
+      0.327,
+      0.205
+    ],
+    "rest": [
+      0.68,
+      0.655,
+      0.295,
+      0.205
+    ],
+    "trial": [
+      0.025,
+      0.317,
+      0.615,
+      0.329
+    ],
+    "pause": [
+      0.66,
+      0.317,
+      0.315,
+      0.329
+    ],
+    "first-lag": [
+      0.025,
+      0.037,
+      0.445,
+      0.266
+    ],
+    "matched-lag": [
+      0.51,
+      0.037,
+      0.465,
+      0.266
+    ]
+  },
+  "min_text_contrast": 8.702329716145742,
+  "example": {
+    "trial_id": "p021-b1-t6",
+    "pause": {
+      "start": 4400.0,
+      "end": 8400.0,
+      "cursor_aoi": 0,
+      "gaze_sequence": [
+        2,
+        1,
+        2,
+        0
+      ],
+      "distinct": 3,
+      "gaze_aoi_coverage": 0.66225,
+      "different_ms": 1497.0,
+      "returns": 1
+    },
+    "qualifying_pauses": 63,
+    "selection": "Among 2\u20138 s same-AOI cursor rests with >=3 gaze AOIs, >=1 gaze return, and >=60% gaze-in-AOI coverage, choose duration nearest 4 s; tie by trial ID then onset. Illustrative, not representative."
+  }
+}

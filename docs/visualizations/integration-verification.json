@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "scope": "Verification from saved derived records; raw recordings were not recomputed.",
+  "html_pages": 7,
+  "html_links_and_anchors": 146,
+  "markdown_links": 66,
+  "trials": 2650,
+  "participants": 47,
+  "occupancy_conservation": "passed for every trial and spatial partition",
+  "aggregate_reproduction": "all spatial aggregates match the per-trial records",
+  "prior_target_overlap": "earlier and approach durations match the prior baseline in both directions",
+  "gates_cross_checked": 17,
+  "common_coverage_recomputation": "recomputed from saved sequence records; identical to checks.json",
+  "page_numbers_checked": 67,
+  "pinned_evidence_files": 12,
+  "source_hashes": {
+    "scripts/attention_atlas/atlas_core.py": "977b8a1824bc7cd4dc4d79f3bcc7738ff17f9c107756b898e83a94af174d5460",
+    "scripts/attention_atlas/build-gaze-cursor-echo-page.py": "0893a9fe99edbc3b864731a935714053352db39e53981472e21d1c103d063f1f",
+    "scripts/attention_atlas/build-index.py": "1f24ab167fdbac83771121e9b03ee5b33633eaac7750bcf23a42b0e8cc77415a",
+    "scripts/attention_atlas/build-information-space-page.py": "93d82c7dd710885f91e2b66ac482c31a0f6db81b38dbdbf53032aea2b339ab0a",
+    "scripts/attention_atlas/check-gaze-cursor-echo.py": "1d73ddfbe3acfc26e60bd83666a56ee0d8641b851c9408643a3d8c2d8c5a2192",
+    "scripts/attention_atlas/compute-gaze-cursor-echo.py": "c965ff434dda69d4a2de930485f0914631fe1929a487d09c9fd68f1bace9f3f5",
+    "scripts/attention_atlas/compute-information-space.py": "ab85e6d0978e7681cef002f6c393fc646378280b530740dde4b1c5ed1dcf9e6c",
+    "scripts/attention_atlas/compute-resting-cursor.py": "1b5bca3f4471497465808a12973f67d2ecf6e8dd4787e091afab7c7c1eeaa1b7",
+    "scripts/attention_atlas/page_values.py": "0a2671d4b86c571592283d54361b6f5cd41ee9d5df4c148828a5f0568eabd359",
+    "scripts/attention_atlas/plot_style.py": "f005cf980e59a5950452c362d50abc7e99d5ecbc2b4bb02ea1cfc695f1788bc0",
+    "scripts/attention_atlas/render-gaze-cursor-echo.py": "02eb8ca99c562bbcadda0ed4f88bd49204762dca4c3898c846dd5d521c3520a6",
+    "scripts/attention_atlas/render-information-space.py": "875dedadf0d954310fc992a26290d0d72638a717275499744e42baa1306cd16c",
+    "scripts/attention_atlas/verify-atlas.py": "a2ef30ad2ee584a91a6cc84b6ac301de85068031b48a9adb94430a652a167f02"
+  }
+}

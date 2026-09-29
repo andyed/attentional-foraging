@@ -1,0 +1,211 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Attentional Foraging in Search: Initial Sampling and Recurrent Evaluation</title><style>*{box-sizing:border-box}body{margin:0;background:#fafaf8;color:#222;font:500 19px/1.6 Arial,sans-serif}main{max-width:1120px;margin:auto;padding:32px 30px}h1{font-size:42px;line-height:1.15}h2{margin-top:42px;line-height:1.25}a{color:#00505e;text-underline-offset:3px}a:focus-visible,.table-wrap:focus-visible{outline:3px solid #782650;outline-offset:4px}img{max-width:100%;height:auto}nav{display:flex;gap:24px;flex-wrap:wrap}nav a{min-height:44px;display:inline-flex;align-items:center}.table-wrap{overflow-x:auto}table{border-collapse:collapse}td,th{padding:10px;text-align:left;border-bottom:1px solid #999}pre{overflow-x:auto;background:#eeefea;padding:18px;font-size:16px}code{overflow-wrap:anywhere}p,li{max-width:86ch}@media(max-width:600px){main{padding:22px 18px}h1{font-size:32px}}</style></head><body><main><nav aria-label="Atlas"><a href="./">Atlas</a><a href="information-space-poster/">Time and space</a><a href="gaze-cursor-echo/">Sequences and timing</a><a href="not-a-cascade.html">Not a cascade</a><a href="readme.html">Project overview</a></nav><h1 id="attentional-foraging-in-search-initial-sampling-and-recurrent-evaluation">Attentional Foraging in Search: Initial Sampling and Recurrent Evaluation</h1>
+<p>How do people sample a search page, evaluate a result, return to something
+already seen, and decide where to go? This project studies that process through
+synchronized gaze, cursor, scroll and pupil recordings from
+<a href="https://github.com/kayhan-latifzadeh/AdSERP">AdSERP</a>, with
+<a href="https://arxiv.org/abs/2605.04949">AllSERP</a> supplying typed areas of interest
+(AOIs) for the page's results, ads and widgets.</p>
+<p><strong>Repository scope:</strong> attentional-foraging characterizes the search cognitive
+process and hosts the LAB analysis substrate. Click modeling is developed in
+<a href="https://github.com/andyed/approach-retreat">approach-retreat</a>, which validates
+against the claims recorded here.</p>
+<p>Start with the <a href="index.html">two linked posters</a>, or the
+<a href="#not-a-cascade">observed pause</a> below. The
+<a href="https://github.com/andyed/attentional-foraging/blob/main/docs/foraging-constructs.md">construct-to-observable map</a> connects the
+foraging account to the measurements that can support or challenge it.</p>
+<h2 id="not-a-cascade">Not a cascade</h2>
+<p>The cascade model of click position bias assumes that a searcher examines
+results once, from the top, and stops at the first worthwhile one
+(<a href="https://doi.org/10.1145/1341531.1341545">Craswell et al., WSDM 2008</a>).
+Later click models relax that assumption with revisits
+(<a href="https://doi.org/10.1145/2124295.2124334">Xu et al., WSDM 2012</a>),
+non-sequential examination (<a href="https://doi.org/10.1145/2766462.2767712">Wang et al., SIGIR 2015</a>)
+and comparison with adjacent results (<a href="https://doi.org/10.1145/3442381.3449918">Zhang et al., WWW 2021</a>).
+The recordings here show the loops directly: a result is fixated, left and
+fixated again, and the cursor can stay on one result while the eyes visit others.</p>
+<p><a href="gaze-cursor-echo/poster.pdf"><img src="gaze-cursor-echo/pause.png" alt="During a four-second cursor pause on AOI 1, gaze visits AOIs 3, 2, 3 and 1. Gaps with no fixation are shown separately." /></a></p>
+<p>This is one recorded interval from trial <code>p021-b1-t6</code>. A fixed rule chose it
+from 63 cursor pauses of 2–8 s that contain at least three gaze AOIs and a gaze
+return, so it shows the pattern rather than a typical pause: 10.7% of the 1,843
+cursor pauses of that length contain three or more gaze AOIs and a return, and
+66.5% contain some gaze on another AOI. Rodden et al. named the pattern
+<em>marking</em>; <a href="https://github.com/andyed/attentional-foraging/blob/main/docs/ablations/cursor_marking.md">its rate and what the parked result predicts</a>
+are measured separately. <strong>[LAB, AdSERP, typed]</strong></p>
+<ul>
+<li><strong>First visits often end with a move back.</strong> In the separate first-visit
+analysis, a move to an earlier position ends 50–57% of first visits at
+positions 2–10, and 75–92% of those moves land on a result already visited,
+depending on position. Positions include ads and widgets, and fixations are
+assigned to positions by vertical band. These are per-position shares, not
+shares of trials. <strong>[LAB, AdSERP, typed, NB38:K8]</strong>
+<a href="https://github.com/andyed/attentional-foraging/blob/main/docs/ablations/next_action_by_position.md">First-visit evidence, 2,606 trials</a></li>
+<li><strong>Gaze changes results more often than the cursor.</strong> During time covered by
+both signals, gaze makes 2.84× as many AOI changes (95% CI 2.43–3.36) and
+3.38× as many backward steps (2.80–4.14), with one visit definition for both
+channels. The ratio depends on the minimum visit duration: on the full clock
+it is 2.97 at 100 ms and 1.76 at 200 ms. <strong>[LAB, AdSERP, typed; poster producer]</strong>
+<a href="gaze-cursor-echo/checks.json">Common-coverage evidence, 2,650 trials</a></li>
+<li><strong>The eyes often move on while the cursor rests.</strong> During 23.8% (22.2–25.2)
+of the time the cursor rests inside an AOI, a recorded fixation is on a
+different AOI; among rest time with a matched fixation the share is 35.6%
+(33.3–37.7). The logger records the cursor only when it moves, and a position
+is held for at most 2 s, so stillness beyond 2 s falls outside this measure;
+holding each position until the next move gives 27.6% (25.8–29.1).
+<strong>[LAB, AdSERP, typed; poster producer]</strong>
+<a href="gaze-cursor-echo/methods.html">Definition and denominators</a></li>
+</ul>
+<p>Revisiting is consistent with comparison and re-evaluation. A fixation alone
+cannot establish what was understood, remembered or preferred. “Not a cascade”
+describes the observed examination sequence; it does not assume that every
+searcher uses the same strategy. <a href="not-a-cascade.html">Full account and limits</a></p>
+<p><a id="the-task-model"></a>
+<a id="two-decisions-three-channels-five-states"></a></p>
+<h2 id="initial-sampling-and-recurrent-evaluation">Initial sampling and recurrent evaluation</h2>
+<p>The opening of a trial establishes where examination begins and how broadly
+the eyes move. Subsequent evaluation includes local reading, forward moves,
+returns, pauses and longer excursions before the final action. The research
+question is how these activities are organized and coordinated across gaze,
+cursor and scroll. Their timing need not follow a fixed sequence of stages.</p>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+  <th>Process</th>
+  <th>Observable evidence</th>
+  <th>Interpretation to investigate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Initial sampling</td>
+  <td>Initial fixation locations, saccade amplitudes, visible page area</td>
+  <td>Establishing where useful material might be</td>
+</tr>
+<tr>
+  <td>Local examination</td>
+  <td>Fixation sequences and dwell within a result</td>
+  <td>Reading and assessing the result</td>
+</tr>
+<tr>
+  <td>Recurrent examination</td>
+  <td>Re-entry into an earlier AOI; excursion and return geometry</td>
+  <td>Comparison, checking or memory-guided reinspection</td>
+</tr>
+<tr>
+  <td>Commitment</td>
+  <td>Final approach and physical press, aligned with gaze</td>
+  <td>The transition from examination to action</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are functional descriptions of observable activity, and more than one
+can be under way at the same time. Gaze, cursor and scroll provide different
+observations of the process. Pupil measures add an effort-related signal;
+none of them directly reports a person's reason for returning.</p>
+<p>AdSERP requires a result selection. It supports analysis of examination and
+commitment within that task; it cannot establish when people naturally abandon
+a page, reformulate a query, or decide that further search is not worthwhile.
+The wider foraging account needs those stopping decisions too.</p>
+<h2 id="two-posters-from-time-budgets-to-individual-excursions">Two posters, from time budgets to individual excursions</h2>
+<p><strong><a href="information-space-poster/index.html">One clock, many views</a></strong>
+(<a href="information-space-poster/poster.pdf">PDF</a>) partitions
+recorded time by AOI membership, initial fold, motion and gaze–cursor location.
+The aggregate views lead into a shared timeline, an observed trial and its
+final seconds. Each view names its denominator. The spatial views keep
+unavailable time in the denominator; the motion view conditions it out and
+states the classifiable share.</p>
+<p><strong><a href="gaze-cursor-echo/index.html">While the mouse waits, the eyes travel</a></strong>
+(<a href="gaze-cursor-echo/poster.pdf">PDF</a>) links first-entry timing,
+rank changes and cursor rest to a whole trial and a four-second pause. Gaze
+enters a jointly visited result first in 66.5% of trial–AOIs. Among nearby
+matched visits the lead is small: setting aside pairs that start at the first
+mousemove, where every cursor visit begins, gaze is first in 55.3% (53.2–57.1)
+with a median lead of 49 ms. These timings do not show a fixed cursor delay
+behind gaze. <strong>[LAB, AdSERP, typed]</strong></p>
+<p>Both posters use the same 2,650-trial, 47-participant cohort and clock, from
+first native mousemove to final press. The <a href="index.html">atlas guide</a>
+includes static exports, source values, measurement notes and rebuild commands.
+The HTML views work locally; GitHub's file viewer does not render them as pages.</p>
+<p><a id="key-insights"></a></p>
+<h2 id="evidence">Evidence</h2>
+<ul>
+<li><a href="https://github.com/andyed/attentional-foraging/blob/main/docs/ablations/next_action_by_position.md">First visits and the next action</a>:
+when attention stays, advances, moves back, or leaves the result column.</li>
+<li><a href="https://github.com/andyed/attentional-foraging/blob/main/docs/ablations/return_is_memory.md">Return geometry and memory</a>: the evidence
+for a memory-guided interpretation, including precision and approach geometry.</li>
+<li><a href="https://github.com/andyed/attentional-foraging/blob/main/docs/ablations/survey_above_fold.md">First fixations on ad-topped pages</a>:
+where the first five fixations land when advertising tops the page.</li>
+<li><a href="https://github.com/andyed/attentional-foraging/blob/main/docs/ablations/engagement_state_census.md">Peripheral exposure</a>: distinguish
+being on screen, receiving nearby gaze exposure and receiving a fixation.</li>
+<li><a href="https://github.com/andyed/attentional-foraging/blob/main/docs/null-findings/README.md">Null findings</a>: hypotheses that did not survive,
+including the lexical-priming account of declining dwell.</li>
+</ul>
+<p><a id="dataset"></a>
+<a id="notebooks"></a>
+<a id="reusable-components"></a>
+<a id="figure-gallery"></a></p>
+<h2 id="dataset-and-analysis">Dataset and analysis</h2>
+<p>AdSERP (Latifzadeh, Gwizdka &amp; Leiva, SIGIR 2025;
+<a href="https://doi.org/10.1145/3726302.3730325">paper</a>, <a href="https://zenodo.org/records/15236546">Zenodo</a>)
+contains 2,776 trials from 47 participants, with eye tracking, mouse events,
+scroll, pupil recordings and captured search pages. AllSERP adds per-element
+geometry and types, so observations can be assigned to a result's box rather
+than to a vertical band estimated from the page. Analysis cohorts vary with
+signal availability and geometry exclusions.</p>
+<p>Use the <a href="https://github.com/andyed/attentional-foraging/blob/main/docs/canonical-environment.md">canonical Python environment</a> and the
+shared <a href="https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/data_loader.py">data loader</a>. The <a href="https://github.com/andyed/attentional-foraging/blob/main/notebooks-v2/README.md">notebook guide</a>,
+<a href="https://github.com/andyed/attentional-foraging/blob/main/docs/notebook-key-claims.md">claim registry</a> and <a href="https://github.com/andyed/attentional-foraging/blob/main/docs/methodology/README.md">methodology directory</a>
+provide the analysis and measurement definitions. The
+<a href="https://github.com/andyed/attentional-foraging/blob/main/scripts/output/figures/INDEX.md">figure gallery</a> records other figures and their producers.</p>
+<p>For individual trials, the <a href="https://andyed.github.io/attentional-foraging/">foveated replay</a>
+shows accumulated gaze on a perception-oriented background. The
+<a href="https://andyed.github.io/approach-retreat/replay/">screenshot-based replay</a>
+uses original captured page geometry. The foveated version re-renders archived
+HTML, so page layout can differ from the original capture.</p>
+<p><a id="quick-start--allserp-data-files"></a></p>
+<h2 id="using-the-allserp-data">Using the AllSERP data</h2>
+<p>AllSERP v1.1.1 (<a href="https://github.com/andyed/attentional-foraging/releases/tag/allserp-v1.1.1">release</a>,
+<a href="https://github.com/andyed/attentional-foraging/blob/main/docs/releases/allserp-v1.1.1.md">notes</a>) ships corpus CSVs with one row per
+AOI (geometry, element type and organic rank) as release assets and under
+<code>scripts/output/</code>, and one typed map per trial under <code>data/aoi-typed-gapfill/</code>
+and <code>data/aoi-typed/</code>. Existing AdSERP signal files join on <code>trial_id</code>. The
+AdSERP corpus itself is not redistributed; download it from Zenodo.</p>
+<pre><code class="language-python">import json
+import polars as pl
+
+# One row per AOI: geometry, element type and organic rank (2,764 trials).
+aois = pl.read_csv(&quot;scripts/output/adserp_aois_by_trial_id_typed_gapfill.csv&quot;)
+print(aois.group_by(&quot;etype&quot;).len().sort(&quot;len&quot;, descending=True))
+
+# Organic results whose top edge lies within the first screen (page coordinates).
+first_screen = aois.filter(
+    (pl.col(&quot;etype&quot;) == &quot;organic&quot;) &amp; (pl.col(&quot;top_y&quot;) &lt; pl.col(&quot;screen_height&quot;)))
+print(first_screen.height, &quot;organic AOIs start on the first screen&quot;)
+
+# One trial's typed map: a list of AOIs with type, box and main-column position.
+# Position -1 marks elements outside the result column, such as pagination.
+with open(&quot;data/aoi-typed-gapfill/p010-b2-t6.json&quot;) as f:
+    trial = json.load(f)
+print([(a[&quot;type&quot;], a[&quot;position&quot;], a[&quot;x&quot;], a[&quot;y&quot;], a[&quot;width&quot;], a[&quot;height&quot;])
+       for a in trial if a[&quot;position&quot;] &gt;= 0])
+</code></pre>
+<p><code>scripts/build_aois.py --trial p010-b2-t6</code> rebuilds one trial's map from the
+AdSERP screenshot and HTML, and <code>--all</code> rebuilds the corpus. <code>--flavor</code> selects
+<code>typed_gapfill</code> (the default), <code>typed</code> or <code>typed_gapfill_cellsplit</code>. Moving from
+v1.1.0: <a href="https://github.com/andyed/attentional-foraging/blob/main/docs/allserp-v1.1.0-migration.md">migration guide</a>.</p>
+<p><a id="paper"></a>
+<a id="docs"></a>
+<a id="citation"></a></p>
+<h2 id="papers-and-provenance">Papers and provenance</h2>
+<ul>
+<li><a href="https://arxiv.org/abs/2605.04949">AllSERP: Exhaustive Per-Element Enrichment of the Versatile AdSERP Dataset</a>
+and its <a href="https://github.com/andyed/allserp-paper">source repository</a>.</li>
+<li><a href="https://github.com/andyed/attentional-foraging/blob/main/docs/arxiv/task-model-paper.pdf">Earlier OSEC task-model draft</a> — retained as
+a historical framing; its four-stage account is being reassessed.</li>
+<li><a href="https://github.com/andyed/attentional-foraging/blob/main/docs/methodological-threats.md">Measurement threats and limitations</a>,
+<a href="https://github.com/andyed/attentional-foraging/blob/main/references.bib">references</a>, and <a href="https://github.com/andyed/attentional-foraging/blob/main/CHANGELOG.md">change history</a>.</li>
+<li><a href="https://github.com/andyed/attentional-foraging/blob/main/CITATION.cff">CITATION.cff</a> gives the AllSERP paper as the preferred citation
+and lists the AdSERP dataset paper; cite both when you use the data.</li>
+</ul>
+<h2 id="license">License</h2>
+<p>Analysis code: MIT. Derived AllSERP data (the per-AOI corpus CSVs under <code>scripts/output/</code>, the per-trial typed maps under <code>data/aoi-typed*/</code>, and the exclusion list) and the derived poster evidence under <code>docs/visualizations/</code> are released under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a>, matching the AdSERP corpus licence; cite both (see <code>CITATION.cff</code>). The AdSERP dataset itself has its own <a href="https://github.com/kayhan-latifzadeh/AdSERP/blob/main/LICENSE">license</a> and is not redistributed here.</p>
+</main></body></html>

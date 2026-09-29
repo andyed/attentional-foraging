@@ -1,0 +1,192 @@
+{
+  "common_coverage_totals": {
+    "common_ms": 21844469.0,
+    "gaze_visits": 44467,
+    "gaze_transitions": 14696,
+    "gaze_backward": 5841,
+    "gaze_reversals": 4756,
+    "gaze_distinct_aois": 13424,
+    "cursor_visits": 32064,
+    "cursor_transitions": 5170,
+    "cursor_backward": 1729,
+    "cursor_reversals": 865,
+    "cursor_distinct_aois": 8543,
+    "first_count": 6451,
+    "gaze_first": 5078
+  },
+  "common_coverage_rates_per_minute": {
+    "gaze": {
+      "transitions": {
+        "value": 40.365366628962235,
+        "ci95": [
+          37.10980870804559,
+          43.85393968688825
+        ]
+      },
+      "backward": {
+        "value": 16.043420419145917,
+        "ci95": [
+          14.69694269981143,
+          17.591649781047643
+        ]
+      },
+      "reversals": {
+        "value": 13.063261002132851,
+        "ci95": [
+          11.557702915314819,
+          14.76639390279496
+        ]
+      }
+    },
+    "cursor": {
+      "transitions": {
+        "value": 14.200390954799587,
+        "ci95": [
+          12.075525298591375,
+          16.295031030511183
+        ]
+      },
+      "backward": {
+        "value": 4.749028232272435,
+        "ci95": [
+          3.934244939761548,
+          5.568337105907839
+        ]
+      },
+      "reversals": {
+        "value": 2.3758874614896794,
+        "ci95": [
+          1.7787800501291355,
+          3.0309771809859654
+        ]
+      }
+    }
+  },
+  "gaze_to_cursor_count_ratio": {
+    "transitions": {
+      "value": 2.842553191489362,
+      "ci95": [
+        2.433081613202005,
+        3.360048236820553
+      ]
+    },
+    "backward": {
+      "value": 3.378253325621747,
+      "ci95": [
+        2.797521648706647,
+        4.1405779442547095
+      ]
+    },
+    "reversals": {
+      "value": 5.498265895953757,
+      "ci95": [
+        4.118815426202316,
+        7.4842364766457345
+      ]
+    }
+  },
+  "first_entries_excluding_clock_boundary": {
+    "n": 6451,
+    "median_lag_ms": 1685.0,
+    "gaze_first_share": {
+      "value": 78.71647806541621,
+      "ci95": [
+        74.73692007321321,
+        82.52415962475109
+      ]
+    }
+  },
+  "matched_pairs_clock_origin_sensitivity": {
+    "window_ms": 2000,
+    "all_pairs": {
+      "pairs": 10321,
+      "lag_median_ms": 2.0,
+      "lag_iqr_ms": [
+        -226.0,
+        341.0
+      ],
+      "gaze_first": {
+        "percent": 50.12111229532022,
+        "ci95": [
+          48.22070435764422,
+          51.81345972354512
+        ]
+      },
+      "tie": {
+        "percent": 4.427865516907277,
+        "ci95": [
+          3.747877434879876,
+          5.2825703354837685
+        ]
+      },
+      "cursor_first": {
+        "percent": 45.4510221877725,
+        "ci95": [
+          43.663397201638254,
+          47.308786090413
+        ]
+      },
+      "gaze_first_among_untied": {
+        "percent": 52.44322789943228,
+        "ci95": [
+          50.54807499120639,
+          54.24089075553814
+        ]
+      }
+    },
+    "excluding_pairs_at_clock_origin": {
+      "pairs": 9128,
+      "lag_median_ms": 49.0,
+      "lag_iqr_ms": [
+        -220.25,
+        398.0
+      ],
+      "gaze_first": {
+        "percent": 55.26950043821209,
+        "ci95": [
+          53.17725921903562,
+          57.14791288775134
+        ]
+      },
+      "tie": {
+        "percent": 0.12050832602979843,
+        "ci95": [
+          0.05856009686681245,
+          0.19395037151796704
+        ]
+      },
+      "cursor_first": {
+        "percent": 44.60999123575811,
+        "ci95": [
+          42.74070307476486,
+          46.69957173374232
+        ]
+      },
+      "gaze_first_among_untied": {
+        "percent": 55.33618514862345,
+        "ci95": [
+          53.2380266606544,
+          57.20963111932969
+        ]
+      }
+    },
+    "note": "The clock starts at the first mousemove, so every first cursor visit starts at 0 ms. Pairs whose gaze or cursor visit starts there are excluded in the second row; ties are a separate category."
+  },
+  "example_rule_prevalence": {
+    "pauses_2_to_8_s": 1843,
+    "with_3plus_gaze_aois_and_a_return": 198,
+    "with_3plus_gaze_aois_and_a_return_pct": 10.743353228431905,
+    "qualifying_for_the_illustration": 63,
+    "qualifying_for_the_illustration_pct": 3.41833966359197,
+    "with_any_different_aoi_gaze": 1225,
+    "with_any_different_aoi_gaze_pct": 66.46771568095497,
+    "note": "Pauses are cursor rests of at least 1 s inside one AOI; counts are pauses, not trials."
+  },
+  "note": "Common coverage intersects exact cursor coverage and recorded fixation intervals. Both channels use the same >=100ms visit threshold and <=100ms merge gap. Counting links still allows <=500ms gaps; estimates are descriptive and depend on fixation segmentation.",
+  "source_hashes": {
+    "scripts/attention_atlas/check-gaze-cursor-echo.py": "1d73ddfbe3acfc26e60bd83666a56ee0d8641b851c9408643a3d8c2d8c5a2192",
+    "scripts/attention_atlas/atlas_core.py": "977b8a1824bc7cd4dc4d79f3bcc7738ff17f9c107756b898e83a94af174d5460",
+    "docs/visualizations/gaze-cursor-echo/trials.json.gz": "7b9428ca2f4b4fdf6fa3da4177b3280b58888f1437ae801da7e78aaef5bb75b5",
+    "docs/visualizations/gaze-cursor-echo/summary.json": "a44090b172cc85f214250c1159f6894bcf69c4d97beb51052a0f25dcbc3cdbd7"
+  }
+}

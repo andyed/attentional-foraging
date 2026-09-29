@@ -1,0 +1,313 @@
+{
+  "trials": 2650,
+  "participants": 47,
+  "gates": [
+    {
+      "status": "ok",
+      "source": "docs/visualizations/evidence/resting-cursor/summary.json",
+      "source_path": "results.50.milliseconds.cursor_covered_ms",
+      "shipped": 33976531.0,
+      "reproduced": 33976531.0,
+      "delta": 0.0,
+      "tolerance": 0.0001
+    },
+    {
+      "status": "ok",
+      "source": "docs/visualizations/evidence/resting-cursor/summary.json",
+      "source_path": "results.50.milliseconds.cursor_in_aoi_ms",
+      "shipped": 23140440.0,
+      "reproduced": 23140440.0,
+      "delta": 0.0,
+      "tolerance": 0.0001
+    },
+    {
+      "status": "ok",
+      "source": "docs/visualizations/evidence/resting-cursor/summary.json",
+      "source_path": "results.50.milliseconds.cursor_rest_in_aoi_ms",
+      "shipped": 14519016.0,
+      "reproduced": 14519016.0,
+      "delta": 0.0,
+      "tolerance": 0.0001
+    },
+    {
+      "status": "ok",
+      "source": "docs/visualizations/evidence/resting-cursor/summary.json",
+      "source_path": "results.50.milliseconds.different_aoi_ms",
+      "shipped": 3448853.0,
+      "reproduced": 3448853.0,
+      "delta": 0.0,
+      "tolerance": 0.0001
+    },
+    {
+      "status": "ok",
+      "source": "docs/visualizations/evidence/resting-cursor/summary.json",
+      "source_path": "results.50.milliseconds.full_clock_ms",
+      "shipped": 48032425.0,
+      "reproduced": 48032425.0,
+      "delta": 0.0,
+      "tolerance": 0.0001
+    }
+  ],
+  "totals_ms": {
+    "cursor_covered_ms": 33976531.0,
+    "cursor_in_aoi_ms": 23140440.0,
+    "cursor_rest_in_aoi_ms": 14519016.0,
+    "different_aoi_ms": 3448853.0,
+    "full_clock_ms": 48032425.0
+  },
+  "visit_sensitivity": {
+    "0": {
+      "totals": {
+        "both_visited": 8999,
+        "gaze_only_aois": 7462,
+        "cursor_only_aois": 1156,
+        "gaze_visits": 67936,
+        "gaze_transitions": 27011,
+        "gaze_backward": 11182,
+        "gaze_reversals": 11062,
+        "gaze_distinct_aois": 16461,
+        "cursor_visits": 17440,
+        "cursor_transitions": 9513,
+        "cursor_backward": 3425,
+        "cursor_reversals": 1859,
+        "cursor_distinct_aois": 10155
+      },
+      "first_entry_lag_median_ms": 1009.0,
+      "first_entry_lag_iqr_ms": [
+        -22.0,
+        4708.5
+      ],
+      "gaze_first_share": {
+        "percent": 67.3408156461829,
+        "ci95": [
+          63.97922335371897,
+          70.40904740195916
+        ]
+      },
+      "trial_medians": {
+        "gaze_visits": 22.0,
+        "gaze_transitions": 8.0,
+        "gaze_backward": 3.0,
+        "gaze_reversals": 3.0,
+        "gaze_distinct_aois": 6.0,
+        "cursor_visits": 5.0,
+        "cursor_transitions": 2.0,
+        "cursor_backward": 0.0,
+        "cursor_reversals": 0.0,
+        "cursor_distinct_aois": 3.0
+      },
+      "equal_first_entries": 600
+    },
+    "100": {
+      "totals": {
+        "both_visited": 8175,
+        "gaze_only_aois": 7762,
+        "cursor_only_aois": 1046,
+        "gaze_visits": 60943,
+        "gaze_transitions": 21838,
+        "gaze_backward": 8722,
+        "gaze_reversals": 7880,
+        "gaze_distinct_aois": 15937,
+        "cursor_visits": 15050,
+        "cursor_transitions": 7354,
+        "cursor_backward": 2490,
+        "cursor_reversals": 1540,
+        "cursor_distinct_aois": 9221
+      },
+      "first_entry_lag_median_ms": 939.0,
+      "first_entry_lag_iqr_ms": [
+        -84.0,
+        4546.5
+      ],
+      "gaze_first_share": {
+        "percent": 66.51987767584097,
+        "ci95": [
+          63.41349476008362,
+          69.44854153044083
+        ]
+      },
+      "trial_medians": {
+        "gaze_visits": 20.0,
+        "gaze_transitions": 7.0,
+        "gaze_backward": 2.0,
+        "gaze_reversals": 2.0,
+        "gaze_distinct_aois": 5.0,
+        "cursor_visits": 4.0,
+        "cursor_transitions": 2.0,
+        "cursor_backward": 0.0,
+        "cursor_reversals": 0.0,
+        "cursor_distinct_aois": 3.0
+      },
+      "equal_first_entries": 448
+    },
+    "200": {
+      "totals": {
+        "both_visited": 6954,
+        "gaze_only_aois": 6575,
+        "cursor_only_aois": 1542,
+        "gaze_visits": 42216,
+        "gaze_transitions": 10300,
+        "gaze_backward": 3628,
+        "gaze_reversals": 2291,
+        "gaze_distinct_aois": 13529,
+        "cursor_visits": 13380,
+        "cursor_transitions": 5855,
+        "cursor_backward": 1934,
+        "cursor_reversals": 1174,
+        "cursor_distinct_aois": 8496
+      },
+      "first_entry_lag_median_ms": 692.0,
+      "first_entry_lag_iqr_ms": [
+        -275.0,
+        4031.0
+      ],
+      "gaze_first_share": {
+        "percent": 62.58268622375611,
+        "ci95": [
+          59.69554131189643,
+          65.6684917521112
+        ]
+      },
+      "trial_medians": {
+        "gaze_visits": 13.0,
+        "gaze_transitions": 3.0,
+        "gaze_backward": 1.0,
+        "gaze_reversals": 0.0,
+        "gaze_distinct_aois": 5.0,
+        "cursor_visits": 4.0,
+        "cursor_transitions": 1.0,
+        "cursor_backward": 0.0,
+        "cursor_reversals": 0.0,
+        "cursor_distinct_aois": 3.0
+      },
+      "equal_first_entries": 310
+    }
+  },
+  "matching_sensitivity": {
+    "500": {
+      "matched_pairs": 7203,
+      "gaze_visits": 60943,
+      "cursor_visits": 15050,
+      "gaze_unmatched_visits": 53740,
+      "cursor_unmatched_visits": 7847,
+      "lag_median_ms": 0.0,
+      "lag_iqr_ms": [
+        -166.0,
+        163.0
+      ],
+      "gaze_first_share": {
+        "percent": 46.13355546300153,
+        "ci95": [
+          44.51203538692142,
+          47.57288040718127
+        ]
+      },
+      "both_return_pairs": 2713,
+      "both_return_lag_median_ms": 6.0,
+      "both_return_gaze_first_pct": 50.90305934389974
+    },
+    "1000": {
+      "matched_pairs": 9020,
+      "gaze_visits": 60943,
+      "cursor_visits": 15050,
+      "gaze_unmatched_visits": 51923,
+      "cursor_unmatched_visits": 6030,
+      "lag_median_ms": 0.0,
+      "lag_iqr_ms": [
+        -203.0,
+        247.0
+      ],
+      "gaze_first_share": {
+        "percent": 48.41463414634146,
+        "ci95": [
+          46.76577639008688,
+          49.94199227188422
+        ]
+      },
+      "both_return_pairs": 3383,
+      "both_return_lag_median_ms": 16.0,
+      "both_return_gaze_first_pct": 52.113508720070946
+    },
+    "2000": {
+      "matched_pairs": 10321,
+      "gaze_visits": 60943,
+      "cursor_visits": 15050,
+      "gaze_unmatched_visits": 50622,
+      "cursor_unmatched_visits": 4729,
+      "lag_median_ms": 2.0,
+      "lag_iqr_ms": [
+        -226.0,
+        341.0
+      ],
+      "gaze_first_share": {
+        "percent": 50.12111229532022,
+        "ci95": [
+          48.22070435764422,
+          51.81345972354512
+        ]
+      },
+      "both_return_pairs": 3811,
+      "both_return_lag_median_ms": 27.0,
+      "both_return_gaze_first_pct": 53.13565993177644
+    },
+    "5000": {
+      "matched_pairs": 11478,
+      "gaze_visits": 60943,
+      "cursor_visits": 15050,
+      "gaze_unmatched_visits": 49465,
+      "cursor_unmatched_visits": 3572,
+      "lag_median_ms": 22.0,
+      "lag_iqr_ms": [
+        -246.75,
+        478.0
+      ],
+      "gaze_first_share": {
+        "percent": 51.916710228262765,
+        "ci95": [
+          49.90657925592443,
+          53.785913340340144
+        ]
+      },
+      "both_return_pairs": 4242,
+      "both_return_lag_median_ms": 48.0,
+      "both_return_gaze_first_pct": 54.73833097595474
+    }
+  },
+  "example": {
+    "trial_id": "p021-b1-t6",
+    "pause": {
+      "start": 4400.0,
+      "end": 8400.0,
+      "cursor_aoi": 0,
+      "gaze_sequence": [
+        2,
+        1,
+        2,
+        0
+      ],
+      "distinct": 3,
+      "gaze_aoi_coverage": 0.66225,
+      "different_ms": 1497.0,
+      "returns": 1
+    },
+    "qualifying_pauses": 63,
+    "selection": "Among 2\u20138 s same-AOI cursor rests with >=3 gaze AOIs, >=1 gaze return, and >=60% gaze-in-AOI coverage, choose duration nearest 4 s; tie by trial ID then onset. Illustrative, not representative."
+  },
+  "method": {
+    "clock": "first native mousemove to final press; same 2650-trial poster cohort",
+    "aoi": "strict typed main-column xy rectangles; -1 off AOIs, -2 unobserved",
+    "resting": "<50 screenshot px/s over 100 ms endpoint windows, scroll windows excluded, no >=1s requirement for earlier occupancy fraction; pause illustration >=1s contiguous",
+    "visits": "same-AOI segments bridged across <=100ms gap, never across intervening AOI; >=100ms observed occupancy primary; 0/200ms sensitivity",
+    "first_entry": "first qualifying gaze and cursor visit to each trial-AOI visited by both; lag = cursor onset minus gaze onset; no time-window restriction",
+    "matching": "monotone one-to-one same-AOI visit matching; maximize count within +/-window then minimize total absolute onset lag; primary +/-2s; 0.5/1/5s sensitivity",
+    "sequence": "AOI transitions/reversals only between qualifying visits separated by <=500ms; separate channel coverage and sampling remain different",
+    "limitations": "Page-space cursor held up to 2s without scroll reconstruction; gaze fixation intervals exact. First entry at observation start may be left-censored. Matching does not establish causal following; analyses are exploratory."
+  },
+  "source_hashes": {
+    "scripts/attention_atlas/compute-gaze-cursor-echo.py": "c965ff434dda69d4a2de930485f0914631fe1929a487d09c9fd68f1bace9f3f5",
+    "scripts/attention_atlas/atlas_core.py": "977b8a1824bc7cd4dc4d79f3bcc7738ff17f9c107756b898e83a94af174d5460",
+    "docs/visualizations/evidence/resting-cursor/summary.json": "ce92289572384bfb8bc23a641f6507484d76109d2cea0c6b764663ed1d80651e",
+    "notebooks-v2/data_loader.py": "2a1d7c51a1919fac1c6c86c476f646ef96800be265688cd57c351cab18b00275",
+    "data/aoi-typed/substrate.json": "986e958161fc74b55a93e30cee5811276bb7230d76db10d78fa5328f089e27e1"
+  }
+}
