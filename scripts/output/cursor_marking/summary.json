@@ -1,0 +1,590 @@
+{
+ "regime": "[LAB, AdSERP, typed]",
+ "rank_type": "typed",
+ "method": "Rodden et al. 2008 marking pattern (doi:10.1145/1358628.1358797): prevalence and two predictions",
+ "cohort": {
+  "trials": 2650,
+  "participants": 47
+ },
+ "gates": {
+  "totals_ms_reproduced": 5,
+  "example_pause_reproduced": "p021-b1-t6",
+  "qualifying_pauses": 63,
+  "status": "PASSED"
+ },
+ "inputs_sha256": {
+  "docs/visualizations/gaze-cursor-echo/trials.json.gz": "7b9428ca2f4b4fdf6fa3da4177b3280b58888f1437ae801da7e78aaef5bb75b5",
+  "docs/visualizations/gaze-cursor-echo/summary.json": "a44090b172cc85f214250c1159f6894bcf69c4d97beb51052a0f25dcbc3cdbd7",
+  "docs/visualizations/information-space-poster/trials.json.gz": "df37c3382c45ab087e14dbaa8a8d800754d75df4a1d8f13e63d9d086c4c2adff"
+ },
+ "bootstrap": {
+  "unit": "participant",
+  "draws": 2000,
+  "seed": 20260929,
+  "statistic": "ratio of sums"
+ },
+ "click_rate_by_position": {
+  "0": 0.19849056603773585,
+  "1": 0.24943396226415093,
+  "2": 0.1471698113207547,
+  "3": 0.13056603773584904,
+  "4": 0.12075471698113208,
+  "5": 0.052075471698113204,
+  "6": 0.03509433962264151,
+  "7": 0.01849056603773585,
+  "8": 0.020377358490566037,
+  "9": 0.009811320754716982,
+  "10": 0.006792452830188679,
+  "11": 0.004528301886792453,
+  "12": 0.004150943396226415,
+  "13": 0.0015094339622641509,
+  "14": 0.0007547169811320754
+ },
+ "primary": "min_other_100ms",
+ "views": {
+  "min_other_0ms": {
+   "min_other_ms": 0,
+   "prevalence": {
+    "pauses_all": 5058,
+    "pauses_pre_approach": 3500,
+    "marking_share_of_pre_approach_pauses": {
+     "value": 0.6925714285714286,
+     "ci95": [
+      0.6620076730194738,
+      0.7244480078245228
+     ],
+     "n": 3500.0,
+     "participants": 47
+    },
+    "marking_share_of_pre_approach_pause_time": {
+     "value": 0.696294848817008,
+     "ci95": [
+      0.6607824877489183,
+      0.7307302798984987
+     ],
+     "n": 6550340.0,
+     "participants": 47
+    },
+    "trials_with_marking_pause": {
+     "value": 0.4369811320754717,
+     "ci95": [
+      0.36998278047929617,
+      0.5031878045115463
+     ],
+     "n": 2650.0,
+     "participants": 47
+    },
+    "participants_with_marking_pause": 47,
+    "per_participant_trial_share": {
+     "median": 0.423728813559322,
+     "iqr": [
+      0.25,
+      0.5966101694915253
+     ]
+    },
+    "other_aois_per_marking_pause": {
+     "mean": 1.4674092409240924,
+     "share_2_plus": 0.36633663366336633
+    }
+   },
+   "test_A_marked_vs_most_gazed_other": {
+    "marked_hit": {
+     "value": 0.25742574257425743,
+     "ci95": [
+      0.2300715922195037,
+      0.28456722832150444
+     ],
+     "n": 2424.0,
+     "participants": 47
+    },
+    "other_hit": {
+     "value": 0.20132013201320131,
+     "ci95": [
+      0.1784170951934493,
+      0.23159464318560177
+     ],
+     "n": 2424.0,
+     "participants": 47
+    },
+    "diff": {
+     "value": 0.056105610561056105,
+     "ci95": [
+      0.009337364790958785,
+      0.09553379054221614
+     ],
+     "n": 2424.0,
+     "participants": 47
+    },
+    "marked_expected": {
+     "value": 0.1671480166884613,
+     "ci95": [
+      0.16085690591433027,
+      0.17435160638051156
+     ],
+     "n": 2424.0,
+     "participants": 47
+    },
+    "other_expected": {
+     "value": 0.14694719471947193,
+     "ci95": [
+      0.14112570482494058,
+      0.15378879308456636
+     ],
+     "n": 2424.0,
+     "participants": 47
+    },
+    "marked_lift": 1.5401064737373475,
+    "other_lift": 1.3700168444693994
+   },
+   "test_A_by_lead_time": {
+    "0-2s": {
+     "pauses": 360,
+     "marked_hit": 0.2861111111111111,
+     "other_hit": 0.2833333333333333,
+     "marked_expected": 0.15891194968553457,
+     "other_expected": 0.14208909853249477
+    },
+    "2-5s": {
+     "pauses": 396,
+     "marked_hit": 0.26262626262626265,
+     "other_hit": 0.20959595959595959,
+     "marked_expected": 0.15890127692014483,
+     "other_expected": 0.13823327615780448
+    },
+    "5-10s": {
+     "pauses": 512,
+     "marked_hit": 0.263671875,
+     "other_hit": 0.169921875,
+     "marked_expected": 0.16356353183962263,
+     "other_expected": 0.1413067511792453
+    },
+    ">=10s": {
+     "pauses": 1156,
+     "marked_hit": 0.24394463667820068,
+     "other_hit": 0.18685121107266436,
+     "marked_expected": 0.1741254814911536,
+     "other_expected": 0.153943330939479
+    }
+   },
+   "test_A_by_marked_position": {
+    "0": {
+     "pauses": 690,
+     "marked_hit": 0.2217391304347826,
+     "other_hit": 0.2536231884057971,
+     "click_rate_at_marked_position": 0.19849056603773585
+    },
+    "1": {
+     "pauses": 635,
+     "marked_hit": 0.3779527559055118,
+     "other_hit": 0.2031496062992126,
+     "click_rate_at_marked_position": 0.24943396226415085
+    },
+    "2": {
+     "pauses": 311,
+     "marked_hit": 0.18971061093247588,
+     "other_hit": 0.26688102893890675,
+     "click_rate_at_marked_position": 0.1471698113207547
+    },
+    "3+": {
+     "pauses": 788,
+     "marked_hit": 0.2182741116751269,
+     "other_hit": 0.1281725888324873,
+     "click_rate_at_marked_position": 0.08127909204099225
+    }
+   },
+   "test_B_later_vs_earlier_mark": {
+    "later_hit": {
+     "value": 0.24283305227655985,
+     "ci95": [
+      0.21589669955792518,
+      0.2760966810966811
+     ],
+     "n": 1186.0,
+     "participants": 45
+    },
+    "earlier_hit": {
+     "value": 0.19224283305227655,
+     "ci95": [
+      0.17181502208009744,
+      0.21532709304043987
+     ],
+     "n": 1186.0,
+     "participants": 45
+    },
+    "diff": {
+     "value": 0.050590219224283306,
+     "ci95": [
+      0.020749237447370686,
+      0.08922709006188208
+     ],
+     "n": 1186.0,
+     "participants": 45
+    }
+   }
+  },
+  "min_other_100ms": {
+   "min_other_ms": 100,
+   "prevalence": {
+    "pauses_all": 5058,
+    "pauses_pre_approach": 3500,
+    "marking_share_of_pre_approach_pauses": {
+     "value": 0.6511428571428571,
+     "ci95": [
+      0.6204115599222911,
+      0.6839059154497813
+     ],
+     "n": 3500.0,
+     "participants": 47
+    },
+    "marking_share_of_pre_approach_pause_time": {
+     "value": 0.6584711633289264,
+     "ci95": [
+      0.622850859368132,
+      0.6951147414145031
+     ],
+     "n": 6550340.0,
+     "participants": 47
+    },
+    "trials_with_marking_pause": {
+     "value": 0.4249056603773585,
+     "ci95": [
+      0.3596863322635952,
+      0.4906311418122182
+     ],
+     "n": 2650.0,
+     "participants": 47
+    },
+    "participants_with_marking_pause": 47,
+    "per_participant_trial_share": {
+     "median": 0.4067796610169492,
+     "iqr": [
+      0.23145604395604397,
+      0.5966101694915253
+     ]
+    },
+    "other_aois_per_marking_pause": {
+     "mean": 1.3738481790258885,
+     "share_2_plus": 0.31505046072838966
+    }
+   },
+   "test_A_marked_vs_most_gazed_other": {
+    "marked_hit": {
+     "value": 0.2544975866608161,
+     "ci95": [
+      0.22689399270137822,
+      0.2820147596454221
+     ],
+     "n": 2279.0,
+     "participants": 47
+    },
+    "other_hit": {
+     "value": 0.2062308029837648,
+     "ci95": [
+      0.1827558223554832,
+      0.23666366424313104
+     ],
+     "n": 2279.0,
+     "participants": 47
+    },
+    "diff": {
+     "value": 0.04826678367705134,
+     "ci95": [
+      0.0,
+      0.08802713053437844
+     ],
+     "n": 2279.0,
+     "participants": 47
+    },
+    "marked_expected": {
+     "value": 0.1667648008477733,
+     "ci95": [
+      0.16020446272711966,
+      0.17401266499877405
+     ],
+     "n": 2279.0,
+     "participants": 47
+    },
+    "other_expected": {
+     "value": 0.14607730964424975,
+     "ci95": [
+      0.1398515507725785,
+      0.15333808665494034
+     ],
+     "n": 2279.0,
+     "participants": 47
+    },
+    "marked_lift": 1.526086952204784,
+    "other_lift": 1.4117921769370632
+   },
+   "test_A_by_lead_time": {
+    "0-2s": {
+     "pauses": 340,
+     "marked_hit": 0.2823529411764706,
+     "other_hit": 0.29411764705882354,
+     "marked_expected": 0.15863928967813537,
+     "other_expected": 0.1419433962264151
+    },
+    "2-5s": {
+     "pauses": 369,
+     "marked_hit": 0.2601626016260163,
+     "other_hit": 0.21138211382113822,
+     "marked_expected": 0.15947947026640077,
+     "other_expected": 0.13716725469141483
+    },
+    "5-10s": {
+     "pauses": 479,
+     "marked_hit": 0.2588726513569937,
+     "other_hit": 0.1732776617954071,
+     "marked_expected": 0.16279591917122938,
+     "other_expected": 0.13996060976090124
+    },
+    ">=10s": {
+     "pauses": 1091,
+     "marked_hit": 0.24197983501374887,
+     "other_hit": 0.1915673693858845,
+     "marked_expected": 0.1735036231257458,
+     "other_expected": 0.15306469743873546
+    }
+   },
+   "test_A_by_marked_position": {
+    "0": {
+     "pauses": 638,
+     "marked_hit": 0.22413793103448276,
+     "other_hit": 0.2617554858934169,
+     "click_rate_at_marked_position": 0.19849056603773588
+    },
+    "1": {
+     "pauses": 598,
+     "marked_hit": 0.3729096989966555,
+     "other_hit": 0.20903010033444816,
+     "click_rate_at_marked_position": 0.2494339622641509
+    },
+    "2": {
+     "pauses": 293,
+     "marked_hit": 0.18771331058020477,
+     "other_hit": 0.27303754266211605,
+     "click_rate_at_marked_position": 0.14716981132075468
+    },
+    "3+": {
+     "pauses": 750,
+     "marked_hit": 0.212,
+     "other_hit": 0.13066666666666665,
+     "click_rate_at_marked_position": 0.08151698113207546
+    }
+   },
+   "test_B_later_vs_earlier_mark": {
+    "later_hit": {
+     "value": 0.24283305227655985,
+     "ci95": [
+      0.21589669955792518,
+      0.2760966810966811
+     ],
+     "n": 1186.0,
+     "participants": 45
+    },
+    "earlier_hit": {
+     "value": 0.19224283305227655,
+     "ci95": [
+      0.17181502208009744,
+      0.21532709304043987
+     ],
+     "n": 1186.0,
+     "participants": 45
+    },
+    "diff": {
+     "value": 0.050590219224283306,
+     "ci95": [
+      0.020749237447370686,
+      0.08922709006188208
+     ],
+     "n": 1186.0,
+     "participants": 45
+    }
+   }
+  },
+  "min_other_300ms": {
+   "min_other_ms": 300,
+   "prevalence": {
+    "pauses_all": 5058,
+    "pauses_pre_approach": 3500,
+    "marking_share_of_pre_approach_pauses": {
+     "value": 0.484,
+     "ci95": [
+      0.45103976773326276,
+      0.5212014999631186
+     ],
+     "n": 3500.0,
+     "participants": 47
+    },
+    "marking_share_of_pre_approach_pause_time": {
+     "value": 0.50350867283225,
+     "ci95": [
+      0.4628504934566772,
+      0.5493654793111449
+     ],
+     "n": 6550340.0,
+     "participants": 47
+    },
+    "trials_with_marking_pause": {
+     "value": 0.35660377358490564,
+     "ci95": [
+      0.2988031786461106,
+      0.4161269679266851
+     ],
+     "n": 2650.0,
+     "participants": 47
+    },
+    "participants_with_marking_pause": 47,
+    "per_participant_trial_share": {
+     "median": 0.3389830508474576,
+     "iqr": [
+      0.1880479251899474,
+      0.521186440677966
+     ]
+    },
+    "other_aois_per_marking_pause": {
+     "mean": 1.1245572609208974,
+     "share_2_plus": 0.12101534828807556
+    }
+   },
+   "test_A_marked_vs_most_gazed_other": {
+    "marked_hit": {
+     "value": 0.2473435655253837,
+     "ci95": [
+      0.2194274850981767,
+      0.27433646702294057
+     ],
+     "n": 1694.0,
+     "participants": 47
+    },
+    "other_hit": {
+     "value": 0.22786304604486424,
+     "ci95": [
+      0.19976461854042038,
+      0.26288443046089477
+     ],
+     "n": 1694.0,
+     "participants": 47
+    },
+    "diff": {
+     "value": 0.01948051948051948,
+     "ci95": [
+      -0.03367964805313519,
+      0.06515194263796609
+     ],
+     "n": 1694.0,
+     "participants": 47
+    },
+    "marked_expected": {
+     "value": 0.16641888129023627,
+     "ci95": [
+      0.15881035132457486,
+      0.17493803946205114
+     ],
+     "n": 1694.0,
+     "participants": 47
+    },
+    "other_expected": {
+     "value": 0.14406272972310702,
+     "ci95": [
+      0.13694378095429385,
+      0.15239009664103279
+     ],
+     "n": 1694.0,
+     "participants": 47
+    },
+    "marked_lift": 1.4862710505427201,
+    "other_lift": 1.5816932421232333
+   },
+   "test_A_by_lead_time": {
+    "0-2s": {
+     "pauses": 249,
+     "marked_hit": 0.26907630522088355,
+     "other_hit": 0.3253012048192771,
+     "marked_expected": 0.16065924073653104,
+     "other_expected": 0.14398878532999923
+    },
+    "2-5s": {
+     "pauses": 281,
+     "marked_hit": 0.24199288256227758,
+     "other_hit": 0.2313167259786477,
+     "marked_expected": 0.1599395689249983,
+     "other_expected": 0.1362895319948969
+    },
+    "5-10s": {
+     "pauses": 355,
+     "marked_hit": 0.24225352112676057,
+     "other_hit": 0.18309859154929578,
+     "marked_expected": 0.1600127557799628,
+     "other_expected": 0.13492851448312515
+    },
+    ">=10s": {
+     "pauses": 809,
+     "marked_hit": 0.24474660074165636,
+     "other_hit": 0.21631644004944375,
+     "marked_expected": 0.17325325932318025,
+     "other_expected": 0.15079366560160457
+    }
+   },
+   "test_A_by_marked_position": {
+    "0": {
+     "pauses": 455,
+     "marked_hit": 0.2087912087912088,
+     "other_hit": 0.2857142857142857,
+     "click_rate_at_marked_position": 0.19849056603773588
+    },
+    "1": {
+     "pauses": 445,
+     "marked_hit": 0.3707865168539326,
+     "other_hit": 0.23820224719101124,
+     "click_rate_at_marked_position": 0.24943396226415088
+    },
+    "2": {
+     "pauses": 234,
+     "marked_hit": 0.19658119658119658,
+     "other_hit": 0.2777777777777778,
+     "click_rate_at_marked_position": 0.14716981132075474
+    },
+    "3+": {
+     "pauses": 560,
+     "marked_hit": 0.2017857142857143,
+     "other_hit": 0.15178571428571427,
+     "click_rate_at_marked_position": 0.0824366576819407
+    }
+   },
+   "test_B_later_vs_earlier_mark": {
+    "later_hit": {
+     "value": 0.24283305227655985,
+     "ci95": [
+      0.21589669955792518,
+      0.2760966810966811
+     ],
+     "n": 1186.0,
+     "participants": 45
+    },
+    "earlier_hit": {
+     "value": 0.19224283305227655,
+     "ci95": [
+      0.17181502208009744,
+      0.21532709304043987
+     ],
+     "n": 1186.0,
+     "participants": 45
+    },
+    "diff": {
+     "value": 0.050590219224283306,
+     "ci95": [
+      0.020749237447370686,
+      0.08922709006188208
+     ],
+     "n": 1186.0,
+     "participants": 45
+    }
+   }
+  }
+ },
+ "reference_final_approach": {
+  "pauses_overlapping_final_approach": 1558,
+  "on_target_share": 0.67201540436457
+ }
+}
