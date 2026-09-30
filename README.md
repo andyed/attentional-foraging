@@ -32,10 +32,10 @@ fixated again, and the cursor can stay on one result while the eyes visit others
 [![During a four-second cursor pause on AOI 1, gaze visits AOIs 3, 2, 3 and 1. Gaps with no fixation are shown separately.](docs/visualizations/gaze-cursor-echo/pause.png)](docs/visualizations/gaze-cursor-echo/poster.pdf)
 
 This is one recorded interval from trial `p021-b1-t6`. A fixed rule chose it
-from 63 cursor pauses of 2–8 s that contain at least three gaze AOIs and a gaze
-return, so it shows the pattern rather than a typical pause: 10.7% of the 1,843
-cursor pauses of that length contain three or more gaze AOIs and a return, and
-66.5% contain some gaze on another AOI. Rodden et al. named the pattern
+from 63 cursor pauses of 2–8 s with at least three gaze AOIs, a gaze return
+and at least 60% gaze-in-AOI coverage, so it shows the pattern rather than a
+typical pause: 10.7% of the 1,843 cursor pauses of that length contain three or
+more gaze AOIs and a return, and 66.5% contain any gaze on another AOI. Rodden et al. named the pattern
 *marking*; [its rate and what the parked result predicts](docs/ablations/cursor_marking.md)
 are measured separately. **[LAB, AdSERP, typed]**
 
@@ -46,15 +46,15 @@ are measured separately. **[LAB, AdSERP, typed]**
   assigned to positions by vertical band. These are per-position shares, not
   shares of trials. **[LAB, AdSERP, typed, NB38:K8]**
   [First-visit evidence, 2,606 trials](docs/ablations/next_action_by_position.md)
-- **Gaze changes results more often than the cursor.** During time covered by
+- **Gaze changes AOIs more often than the cursor.** During time covered by
   both signals, gaze makes 2.84× as many AOI changes (95% CI 2.43–3.36) and
   3.38× as many backward steps (2.80–4.14), with one visit definition for both
   channels. The ratio depends on the minimum visit duration: on the full clock
   it is 2.97 at 100 ms and 1.76 at 200 ms. **[LAB, AdSERP, typed; poster producer]**
   [Common-coverage evidence, 2,650 trials](docs/visualizations/gaze-cursor-echo/checks.json)
-- **The eyes often move on while the cursor rests.** During 23.8% (22.2–25.2)
+- **The eyes often move on while the cursor rests.** During 23.8% (95% CI 22.2–25.2)
   of the time the cursor rests inside an AOI, a recorded fixation is on a
-  different AOI; among rest time with a matched fixation the share is 35.6%
+  different AOI; among rest time with a recorded fixation the share is 35.6%
   (33.3–37.7). The logger records the cursor only when it moves, and a position
   is held for at most 2 s, so stillness beyond 2 s falls outside this measure;
   holding each position until the next move gives 27.6% (25.8–29.1).
@@ -105,10 +105,11 @@ states the classifiable share.
 
 **[While the mouse waits, the eyes travel](docs/visualizations/gaze-cursor-echo/index.html)**
 ([PDF](docs/visualizations/gaze-cursor-echo/poster.pdf)) links first-entry timing,
-rank changes and cursor rest to a whole trial and a four-second pause. Gaze
+AOI-position changes and cursor rest to a whole trial and a four-second pause. Gaze
 enters a jointly visited result first in 66.5% of trial–AOIs. Among nearby
 matched visits the lead is small: setting aside pairs that start at the first
-mousemove, where every cursor visit begins, gaze is first in 55.3% (53.2–57.1)
+mousemove (in 1,552 of 2,650 trials the cursor's first visit starts there), gaze
+is first in 55.3% (95% CI 53.2–57.1)
 with a median lead of 49 ms. These timings do not show a fixed cursor delay
 behind gaze. **[LAB, AdSERP, typed]**
 

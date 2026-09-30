@@ -107,8 +107,10 @@ def main():
             'window_ms': core.PRIMARY_MATCH_WINDOW_MS,
             'all_pairs': matched_pair_shares(trials, window, pids, boot, exclude_origin=False),
             'excluding_pairs_at_clock_origin': matched_pair_shares(trials, window, pids, boot, exclude_origin=True),
-            'note': 'The clock starts at the first mousemove, so every first cursor visit starts at 0 ms. Pairs whose '
-                    'gaze or cursor visit starts there are excluded in the second row; ties are a separate category.'},
+            'trials_with_first_cursor_visit_at_origin': sum(1 for tr in trials if tr['cursor_visits'] and tr['cursor_visits'][0]['start'] == 0),
+            'note': 'The clock starts at the first mousemove, so in trials where the cursor is already inside an AOI '
+                    'then, its first visit starts at 0 ms and can only tie or precede gaze. Pairs whose gaze or '
+                    'cursor visit starts there are excluded in the second row; ties are a separate category.'},
         'example_rule_prevalence': example_prevalence(trials),
         'note': NOTE,
         'source_hashes': core.source_hashes([Path(__file__), Path(core.__file__), TRIALS, SUMMARY])}

@@ -25,15 +25,17 @@ The contribution here is measurement rather than the observation that returns
 occur: per-position rates on typed AOIs, and gaze and cursor recorded together
 so their sequences can be compared under one visit definition.</p>
 <p>The single-pass assumption has two parts, and they fare differently. Coverage
-largely holds: 94.0% [92.0, 95.7] of AdSERP paths that end on an organic click
-have entered every organic result above it (Lorigo et al. report 67%). Order
-does not: applying Lorigo et al.'s own definitions, 16.6% of scanpaths are
-strictly linear and 47.3% are nonlinear
+largely holds: 94.0% (95% CI 92.0–95.7, participant-cluster bootstrap) of
+AdSERP paths that end on an organic click have entered every organic result
+above it; Lorigo et al. report the same full coverage for 67% of their paths
+that end in a selection (external figure). <strong>[LAB, AdSERP, typed]</strong> Order does
+not: applying Lorigo et al.'s own definitions, 16.6% of scanpaths are strictly
+linear, 36.1% linear with regressions, and 47.3% nonlinear
 (<a href="https://github.com/andyed/attentional-foraging/blob/main/docs/ablations/scanpath_linearity.md">scanpath linearity</a>;
 <a href="https://doi.org/10.1016/j.ipm.2005.10.001">Lorigo et al., IP&amp;M 2006</a>). So the
 results above the click are usually examined; what fails is examining them
 once, in order.</p>
-<p>The AF observations require an account that permits backward moves and
+<p>The attentional-foraging observations require an account that permits backward moves and
 reinspection. They do not imply that every trial is nonlinear, that page
 position is irrelevant, or that every sequential account excludes returns.
 The word “cascade” elsewhere in this repository can also mean a pipeline of
@@ -50,9 +52,9 @@ x/y rectangles instead. In that 2,606-trial analysis:</p>
 50–57% of first visits; moving forward one position accounts for 32–38%.
 <strong>[LAB, AdSERP, typed, NB38:K8]</strong></li>
 <li>Among backward departures, the destination has already been visited in
-approximately 75–92% of cases, depending on position. <strong>[NB38:K8]</strong></li>
+approximately 75–92% of cases, depending on position. <strong>[LAB, AdSERP, typed, NB38:K8]</strong></li>
 <li>Of the 1,377 backward excursions from position 2, about 75% return to
-position 2 before any previously unvisited result is entered. <strong>[NB38:K9]</strong></li>
+position 2 before any previously unvisited result is entered. <strong>[LAB, AdSERP, typed, NB38:K9]</strong></li>
 </ul>
 <p>These are different conditional proportions. None means “75% of search time”
 or “75% of all trials.” The imported
@@ -99,12 +101,12 @@ its rates with the first-visit table as if they had a shared denominator.</p>
 </tr>
 <tr>
   <td>Median +2 ms in nearby pairs; gaze first 55.3% without clock-origin pairs</td>
-  <td>10,321 one-to-one same-AOI visit pairs within ±2 s; 9,128 after removing pairs that start at the first mousemove, where every cursor visit begins (median +49 ms)</td>
+  <td>10,321 one-to-one same-AOI visit pairs within ±2 s; 9,128 after removing pairs that start at the first mousemove, where the cursor's first visit starts in 1,552 of 2,650 trials (median +49 ms)</td>
   <td>A small gaze lead among nearby visits; this selected subset cannot establish a general follower lag</td>
 </tr>
 </tbody>
 </table></div>
-<p>Sources: <a href="gaze-cursor-echo/summary.json">sequence aggregates</a>,
+<p><strong>[LAB, AdSERP, typed]</strong> Sources: <a href="gaze-cursor-echo/summary.json">sequence aggregates</a>,
 <a href="gaze-cursor-echo/checks.json">common-coverage checks</a>,
 <a href="evidence/resting-cursor/summary.json">rest-duration aggregates</a>.
 The sequence poster shows participant-cluster confidence intervals. Comparing
@@ -114,23 +116,29 @@ interpretation, even after matching coverage.</p>
 <p><img src="gaze-cursor-echo/pause.png" alt="Gaze visits AOIs 3, 2, 3 and 1 while the cursor stays on AOI 1." /></p>
 <p>In trial <code>p021-b1-t6</code>, the cursor remains within AOI 1 during the four-second
 interval shown. Gaze visits <code>3 → 2 → 3 → 1</code>, spending 1.50 seconds on a different
-AOI from the cursor. A fixed rule chose the example from 63 qualifying pauses,
-and the rule requires a gaze return, so it shows the pattern rather than a
-typical pause. Of 1,843 cursor pauses lasting 2–8 s, 10.7% contain three or
-more gaze AOIs and a return, and 66.5% contain some gaze on another AOI
-(<a href="gaze-cursor-echo/checks.json">example-rule counts</a>).</p>
+AOI from the cursor. A fixed rule chose the example from 63 pauses of 2–8 s
+with at least three gaze AOIs, a gaze return and at least 60% gaze-in-AOI
+coverage, so it shows the pattern rather than a typical pause. Of 1,843 cursor pauses lasting 2–8 s, 10.7% contain three or
+more gaze AOIs and a return, and 66.5% contain any gaze on another AOI
+(<a href="gaze-cursor-echo/checks.json">example-rule counts</a>). <strong>[LAB, AdSERP, typed]</strong></p>
 <p>Rodden et al. named this pattern <em>marking</em>: the pointer stays on the most
 promising result read so far while the eyes check others
 (<a href="https://doi.org/10.1145/1358628.1358797">CHI '08 Extended Abstracts</a>). They
-described it from inspection and reported no rate. Measured here, 65.1%
-[62.0, 68.4] of cursor pauses that end before the final approach contain at
-least 100 ms of gaze on another result; the pattern appears in 42.5% of trials
-and in all 47 participants. The parked result is the eventual click 1.53 times
-as often as its position predicts
-(<a href="https://github.com/andyed/attentional-foraging/blob/main/docs/ablations/cursor_marking.md">cursor marking</a>). That supports reading the
-pause as a mark on a candidate. Whether the searcher intends it as a bookmark,
-or the hand simply stays where it last stopped, is not tested; the 2 s cursor
-hold also makes these rates lower bounds.</p>
+described it from inspection and reported no rate. Measured here on a
+different set and threshold from the counts above (the 3,500 cursor pauses
+that end before the final approach, and at least 100 ms of gaze), 65.1%
+(95% CI 62.0–68.4) contain gaze on another result under the poster's 2 s cursor
+hold. Holding a still pointer until it next moves gives 74.5% of 4,221 such
+pauses, and also moving the held position with page scroll gives 71.1% of 4,174. The pattern appears in 42.5% of
+trials under the 2 s hold (45.8% and 46.2% under the two uncapped rules) and in
+all 47 participants. The parked result is the eventual click 1.53, 1.46 and
+1.40 times as often as its position predicts under the three rules
+(<a href="https://github.com/andyed/attentional-foraging/blob/main/docs/ablations/cursor_marking.md">cursor marking</a>). Its edge over the result the
+eyes examine most during the same pause is small and not robust to the hold
+rule: +4.8, +3.9 and +0.9 percentage points of click share, with intervals
+that reach zero. <strong>[LAB, AdSERP, typed]</strong> The pause marks a candidate; it does not show that the hand holds
+information the eyes lack. Whether the searcher intends the pointer as a
+bookmark, or the hand simply stays where it last stopped, is not tested.</p>
 <h2 id="from-observable-movement-to-cognitive-explanation">From observable movement to cognitive explanation</h2>
 <p><strong>Reinspection is observed. Comparison is inferred.</strong> A return establishes
 that attention revisited an AOI. It does not establish whether the searcher

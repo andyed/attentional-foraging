@@ -170,7 +170,8 @@
         ]
       }
     },
-    "note": "The clock starts at the first mousemove, so every first cursor visit starts at 0 ms. Pairs whose gaze or cursor visit starts there are excluded in the second row; ties are a separate category."
+    "trials_with_first_cursor_visit_at_origin": 1552,
+    "note": "The clock starts at the first mousemove, so in trials where the cursor is already inside an AOI then, its first visit starts at 0 ms and can only tie or precede gaze. Pairs whose gaze or cursor visit starts there are excluded in the second row; ties are a separate category."
   },
   "example_rule_prevalence": {
     "pauses_2_to_8_s": 1843,
@@ -184,7 +185,7 @@
   },
   "note": "Common coverage intersects exact cursor coverage and recorded fixation intervals. Both channels use the same >=100ms visit threshold and <=100ms merge gap. Counting links still allows <=500ms gaps; estimates are descriptive and depend on fixation segmentation.",
   "source_hashes": {
-    "scripts/attention_atlas/check-gaze-cursor-echo.py": "1d73ddfbe3acfc26e60bd83666a56ee0d8641b851c9408643a3d8c2d8c5a2192",
+    "scripts/attention_atlas/check-gaze-cursor-echo.py": "f9be7a421a4b40c4a0b4d8b85756cfbcec6e277bb944920848d6d57566dcd032",
     "scripts/attention_atlas/atlas_core.py": "977b8a1824bc7cd4dc4d79f3bcc7738ff17f9c107756b898e83a94af174d5460",
     "docs/visualizations/gaze-cursor-echo/trials.json.gz": "7b9428ca2f4b4fdf6fa3da4177b3280b58888f1437ae801da7e78aaef5bb75b5",
     "docs/visualizations/gaze-cursor-echo/summary.json": "a44090b172cc85f214250c1159f6894bcf69c4d97beb51052a0f25dcbc3cdbd7"

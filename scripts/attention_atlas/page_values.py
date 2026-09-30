@@ -53,6 +53,7 @@ def values():
               'rest_matched_share': pct(share['cursor_rest_in_aoi_fixation_matched_ms']['percent']),
               'rest_matched_ci': ci(share['cursor_rest_in_aoi_fixation_matched_ms']['ci95']),
               'rest_minutes': f"{ms['different_aoi_ms'] / 60000:.1f}",
+              'rest_total_minutes': f"{rest_ms / 60000:.1f}",
               'rest_same': pct(100 * ms['same_aoi_ms'] / rest_ms),
               'rest_gaze_off': pct(100 * ms['gaze_off_aoi_ms'] / rest_ms),
               'rest_unmatched': pct(100 * ms['gaze_unmatched_ms'] / rest_ms)})
@@ -73,6 +74,7 @@ def values():
               'first_cursor_first': pct(100 * np.mean(lags < 0))})
     fb = checks['first_entries_excluding_clock_boundary']
     v.update({'first_boundary_pairs': f"{fb['n']:,}", 'first_boundary_gaze_first': pct(fb['gaze_first_share']['value']),
+              'first_boundary_ci': ci(fb['gaze_first_share']['ci95']),
               'first_boundary_median_s': signed(fb['median_lag_ms'] / 1000)})
     # Matched nearby visits (primary ±2 s) and the clock-origin sensitivity.
     near = echo['matching_sensitivity'][str(core.PRIMARY_MATCH_WINDOW_MS)]
@@ -83,6 +85,7 @@ def values():
               'matched_ci': ci(near['gaze_first_share']['ci95']),
               'matched_ties': pct(allp['tie']['percent']),
               'origin_pairs': f"{excl['pairs']:,}", 'origin_gaze_first': pct(excl['gaze_first']['percent']),
+              'origin_trials': f"{origin['trials_with_first_cursor_visit_at_origin']:,}",
               'origin_ci': ci(excl['gaze_first']['ci95']), 'origin_median_s': signed(excl['lag_median_ms'] / 1000),
               'both_return_pairs': f"{near['both_return_pairs']:,}",
               'both_return_median_s': signed(near['both_return_lag_median_ms'] / 1000),
@@ -108,10 +111,12 @@ def values():
               'pause_different_s': f"{pa['different_ms'] / 1000:.2f}",
               'pauses_2_to_8': f"{prev['pauses_2_to_8_s']:,}",
               'pauses_with_return_pct': pct(prev['with_3plus_gaze_aois_and_a_return_pct']),
-              'pauses_any_other_pct': pct(prev['with_any_different_aoi_gaze_pct'])})
+              'pauses_any_other_pct': pct(prev['with_any_different_aoi_gaze_pct']),
+              'pauses_any_other': f"{prev['with_any_different_aoi_gaze']:,}"})
     # The prior final-approach readout the information-space poster compares against.
     legacy = e['prior']['legacy_reproduction']['shares']
-    v['legacy_table'] = '/'.join(f"{100 * legacy[k]:.1f}" for k in ['on_same', 'adjacent', 'other_aoi', 'off_or_none'])
+    v['legacy_table'] = ' / '.join(f"{name} {100 * legacy[k]:.1f}" for name, k in
+                                   [('same', 'on_same'), ('adjacent', 'adjacent'), ('other', 'other_aoi'), ('off or none', 'off_or_none')])
     res = e['prior']['results']
     v['prior_earlier'] = pct(res['xy|cap2000|full|earlier']['gaze_on_cursor_off_pct_matched'])
     v['prior_approach'] = pct(res['xy|cap2000|full|approach']['gaze_on_cursor_off_pct_matched'])
@@ -128,8 +133,9 @@ def expected():
     echo_methods = ['clock_hours', 'common_hours', 'first_pairs', 'first_gaze_only_aois', 'first_cursor_only_aois',
                     'qualifying_pauses', 'pause_trial', 'pause_window', 'rest_uncapped', 'rest_uncapped_shift',
                     'origin_gaze_first', 'pauses_with_return_pct']
-    echo_poster = ['first_gaze_first', 'first_ci', 'rest_share', 'rest_ci', 'rest_minutes', 'rest_same', 'rest_gaze_off',
-                   'rest_unmatched', 'matched_gaze_first', 'matched_ties', 'origin_gaze_first', 'qualifying_pauses']
+    echo_poster = ['first_gaze_first', 'first_ci', 'rest_share', 'rest_ci', 'rest_minutes', 'rest_total_minutes',
+                   'rest_same', 'rest_gaze_off', 'rest_unmatched', 'rest_uncapped', 'matched_gaze_first', 'matched_ties',
+                   'origin_gaze_first', 'qualifying_pauses', 'pauses_2_to_8', 'pauses_any_other']
     info_methods = ['legacy_table', 'prior_earlier', 'prior_approach', 'trials']
     return {ATLAS / 'gaze-cursor-echo/index.html': [v[k] for k in echo_page],
             ATLAS / 'gaze-cursor-echo/methods.md': [v[k] for k in echo_methods],
