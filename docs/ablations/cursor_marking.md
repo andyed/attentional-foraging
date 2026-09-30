@@ -167,7 +167,8 @@ put the pointer. The scroll-following rule tracks what is physically under it.
    primary rule the marked result wins by +4.8 points [0.0, 8.8]. The margin
    shrinks to +3.9 [−0.2, 7.7] without the cap and +0.9 [−2.7, 4.2] when the
    pointer follows scroll. Relative to position, the eyes' most-examined result
-   is as diagnostic (lift 1.52 without the cap). In the last 2 s before the
+   has lift 1.52 under both no-cap rules, against 1.46 and 1.40 for the parked
+   result. In the last 2 s before the
    approach the eyes' target is ahead under every rule, consistent with gaze
    reaching the choice before the hand (Huang, White & Buscher, CHI 2012).
 4. **Moving the mark tracks the choice, weakly.** The later of two marks is the
@@ -176,9 +177,10 @@ put the pointer. The scroll-following rule tracks what is physically under it.
    scroll rule some moves are the page, not the hand.
 
 Supported: the pattern is common, and the parked result predicts the choice
-above position. Not supported as a distinct effect: the parked result is the
-best candidate so far *compared with* what the eyes check during the pause;
-both carry comparable choice information. Not tested: whether the user
+above position. Not robust: the parked result's edge over what the eyes check
+during the pause (+4.8, +3.9 and +0.9 points across hold rules; the intervals
+reach zero). The data do not show that the hand holds information the eyes
+lack, and they do not rule it out. Not tested: whether the user
 *intends* the pointer as a bookmark. A cleaner test would separate hand
 placements from scroll-induced changes, keeping only pauses whose result was
 under the pointer when the hand last moved.
@@ -204,8 +206,9 @@ under the pointer when the hand last moved.
 - For [`../not-a-cascade.md`](../not-a-cascade.md): "anchor" is no longer
   untested at the level Rodden described it. The resting cursor marks a
   result that is chosen more often than its position predicts, while gaze
-  checks other results. The eyes' most-examined result during the pause is
-  about as predictive, and whether the mark is a deliberate bookmark remains open.
+  checks other results. Its edge over the eyes' most-examined result during the
+  pause is small and depends on the hold rule, and whether the mark is a
+  deliberate bookmark remains open.
 
 ## Citation
 

@@ -117,11 +117,12 @@ least 100 ms of gaze on another result under the poster's 2 s cursor hold.
 Holding a still pointer until it next moves raises that to 71–75%. The pattern
 appears in 42.5–46% of trials and in all 47 participants. Across hold rules,
 the parked result is the eventual click 1.40–1.53 times as often as its
-position predicts ([cursor marking](ablations/cursor_marking.md)). The result
-the eyes examine most during the same pause predicts the click about as well,
-so the pause marks a candidate without the hand carrying privileged
-information. Whether the searcher intends the pointer as a bookmark, or the
-hand simply stays where it last stopped, is not tested.
+position predicts ([cursor marking](ablations/cursor_marking.md)). Its edge
+over the result the eyes examine most during the same pause is small and not
+robust to the hold rule (+4.8, +3.9 and +0.9 points; the intervals reach
+zero). The pause marks a candidate; it does not show that the hand holds
+information the eyes lack. Whether the searcher intends the pointer as a
+bookmark, or the hand simply stays where it last stopped, is not tested.
 
 ## From observable movement to cognitive explanation
 
