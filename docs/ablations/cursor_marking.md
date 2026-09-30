@@ -1,7 +1,7 @@
 # Cursor marking: how often the pointer holds a result while the eyes check others
 
 **Tags:** `[LAB, AdSERP, typed]` · rank type `typed` (all main-column elements; positions numbered from 1 below) · 2,650 trials, 47 participants
-**Producer:** `scripts/cursor_marking.py` → `scripts/output/cursor_marking/summary.json` · tests `scripts/test_cursor_marking.py`
+**Producer:** `scripts/cursor_marking.py` → `scripts/output/cursor_marking/summary.json`; `--hold-sensitivity` (needs the raw AdSERP recordings) → `hold_sensitivity.json` · tests `scripts/test_cursor_marking.py`
 **Key Claims:** none yet. Cite this note until a notebook row exists.
 **Generated:** 2026-09-29.
 
@@ -110,44 +110,85 @@ By the marked result's position:
 | Earlier marked result | 19.2% [17.2, 21.5] |
 | Difference | +5.1 points [2.1, 8.9] |
 
+## Cursor-hold sensitivity
+
+The tables above use the poster's primary rule: a mousemove position is held
+for at most 2 s. The logger records the cursor only when it moves, so a
+pointer left completely still for longer drops out of "rest". That is the
+prototypical mark in Rodden's description. `--hold-sensitivity` rebuilds every
+trial's pauses from the raw recordings through `scripts/attention_atlas/atlas_core.py`
+under two relaxed rules:
+
+- **no cap:** each position is held until the next mousemove;
+- **no cap, follows scroll:** as above, and the held page position moves with
+  the scroll offset. A still pointer keeps its screen position while the page
+  scrolls under it.
+
+Gates: the capped rebuild reproduces the shipped per-trial pauses, gaze
+segments and rest totals for all 2,650 trials. Each uncapped rebuild
+reproduces the resting-cursor producer's sensitivity totals (rest share
+27.6% and 25.0%). The capped rebuild also reproduces this note's primary
+summary.
+
+| At ≥100 ms other-gaze | 2 s cap (primary) | No cap | No cap, follows scroll |
+|---|---|---|---|
+| Cursor pauses (≥1 s) | 5,058 | 6,039 | 5,953 |
+| … lasting ≥4 s / ≥8 s | 3.2% / 0.1% | 16.2% / 3.3% | 16.3% / 3.3% |
+| Marking share of pre-approach pauses | 65.1% [62.0, 68.4] | 74.5% [71.4, 77.5] | 71.1% [68.1, 74.3] |
+| Marking share of pre-approach pause time | 65.8% [62.3, 69.5] | 78.6% [75.4, 81.7] | 76.2% [73.0, 79.4] |
+| Trials with a pre-approach marking pause | 42.5% [36.0, 49.1] | 45.8% [38.9, 52.6] | 46.2% [39.4, 52.9] |
+| A: marked result is the click (lift) | 25.4% (1.53) | 24.5% (1.46) | 21.7% (1.40) |
+| A: most-gazed other is the click (lift) | 20.6% (1.41) | 20.5% (1.52) | 20.8% (1.52) |
+| A: paired difference, marked − other | +4.8 [0.0, 8.8] | +3.9 [−0.2, 7.7] | +0.9 [−2.7, 4.2] |
+| B: later − earlier mark (transitions) | +5.1 [2.1, 8.9] (1,186) | +4.7 [1.8, 8.3] (1,298) | +2.2 [0.2, 4.1] (1,857) |
+| Marks ≥4 s: marked / most-gazed other is the click | 31.0% / 21.8% (87) | 28.6% / 24.6% (574) | 27.5% / 24.2% (563) |
+
+Under the scroll-following rule, a still pointer can land on a different
+result because the page moved, not the hand. Those passive changes add
+pauses and "moves" that are not placements. That is why test B has 1,857
+transitions under this rule against 1,298 without it, and they dilute both
+tests. The no-cap rule without scroll keeps the result where the hand last
+put the pointer. The scroll-following rule tracks what is physically under it.
+
 ## Reading
 
-1. **Marking is common and universal.** About two thirds of pre-approach
-   cursor pauses contain gaze on another result. The pattern appears in 42.5%
-   of trials and in all 47 participants. Rodden et al. named it; this supplies
+1. **Marking is common and universal, more so than the capped figures showed.**
+   Once long still periods count, 71–75% of pre-approach cursor pauses contain
+   gaze on another result, and about 46% of trials and all 47 participants show
+   the pattern. The cap had hidden the long marks: pauses of 4 s or more rise
+   from 3.2% to 16% of pauses. Rodden et al. named the pattern; this supplies
    the rate.
 2. **The parked result carries choice information beyond its position.** It is
-   the eventual click 1.53 times as often as its position predicts. The effect
-   is strongest when the cursor is parked below the top three results (2.60×)
-   and at position 2 (1.50×). A cursor resting on the first element, often an
-   ad block where the hand happens to be, is barely diagnostic (1.13×).
-3. **The hand's mark beats the eyes' excursion, except just before the approach.**
-   From 2 s to more than 10 s before the approach, the marked result is the
-   click more often than the most-gazed other (by 4.9 to 8.6 points). In the last
-   2 s the eyes' target catches up (29.4% against 28.2%). That is consistent
-   with gaze moving to the choice before the hand, as in Huang, White & Buscher
-   (CHI 2012). Overall the paired advantage is small and depends on the
-   threshold for counting a look: +4.8 [0.0, 8.8] at 100 ms, gone at 300 ms.
-4. **Moving the mark tracks the choice.** The later of two marks is the click
-   more often (+5.1 points). This agrees with Rodden's description, but later
-   marks are also closer in time to the click. The lead-time table bounds that
-   effect only loosely: the marked hit rate rises from 24.2% to 28.2% as the
-   approach nears.
+   the eventual click 1.40–1.53 times as often as its position predicts under
+   every hold rule. The effect is strongest when the cursor is parked below the
+   top three results (2.60× primary). A cursor resting on the first element,
+   often an ad block where the hand happens to be, is barely diagnostic (1.13×).
+3. **The hand's mark does not reliably beat the eyes' excursion.** Under the
+   primary rule the marked result wins by +4.8 points [0.0, 8.8]. The margin
+   shrinks to +3.9 [−0.2, 7.7] without the cap and +0.9 [−2.7, 4.2] when the
+   pointer follows scroll. Relative to position, the eyes' most-examined result
+   is as diagnostic (lift 1.52 without the cap). In the last 2 s before the
+   approach the eyes' target is ahead under every rule, consistent with gaze
+   reaching the choice before the hand (Huang, White & Buscher, CHI 2012).
+4. **Moving the mark tracks the choice, weakly.** The later of two marks is the
+   click more often: +5.1 points primary, +4.7 without the cap, +2.2 [0.2, 4.1]
+   with scroll. Later marks are also closer in time to the click, and under the
+   scroll rule some moves are the page, not the hand.
 
 Supported: the pattern is common, and the parked result predicts the choice
-above position. Weakly supported: the parked result is the best candidate so
-far, compared with what the eyes are checking. Not tested: whether the user
-*intends* the pointer as a bookmark.
+above position. Not supported as a distinct effect: the parked result is the
+best candidate so far *compared with* what the eyes check during the pause;
+both carry comparable choice information. Not tested: whether the user
+*intends* the pointer as a bookmark. A cleaner test would separate hand
+placements from scroll-induced changes, keeping only pauses whose result was
+under the pointer when the hand last moved.
 
 ## Limits
 
-- **The 2 s cursor-hold cap truncates the canonical case.** The cursor logger
-  records only movement, and the poster's convention treats a cursor with no
-  event for 2 s as unavailable. A pause therefore persists only while the hand
-  keeps making small movements. A pointer left completely still for longer,
-  which is Rodden's prototypical mark, is cut at 2 s or dropped. The prevalence
-  figures are lower bounds. A hold-until-next-event sensitivity on the raw
-  recordings is the next step.
+- **Cursor hold.** Under the primary 2 s cap the prevalence figures are lower
+  bounds. The hold sensitivity above measures them without the cap: 71–75% of
+  pauses and about 46% of trials. The no-cap rules assume the pointer stayed
+  exactly where the last mousemove left it, which is how the logger behaves.
 - "Rest" is < 50 px/s endpoint displacement, not physiological stillness.
 - AOIs include ads and widgets. The position-1 element is often an ad block,
   which dilutes the top row.
@@ -163,12 +204,9 @@ far, compared with what the eyes are checking. Not tested: whether the user
 - For [`../not-a-cascade.md`](../not-a-cascade.md): "anchor" is no longer
   untested at the level Rodden described it. The resting cursor marks a
   result that is chosen more often than its position predicts, while gaze
-  checks other results. Whether that is a deliberate bookmark remains open.
+  checks other results. The eyes' most-examined result during the pause is
+  about as predictive, and whether the mark is a deliberate bookmark remains open.
 
-## Bibliography entry to add
+## Citation
 
-Not yet in `references.bib` (metadata checked against Crossref, 2026-09-29):
-- `rodden2008eyemouse`: Rodden, K., Fu, X., Aula, A., Spiro, I. *Eye-mouse
-  coordination patterns on web search results pages.* CHI '08 Extended
-  Abstracts on Human Factors in Computing Systems, 2997–3002, 2008.
-  doi:10.1145/1358628.1358797
+`references.bib`: `rodden2008eyemouse` (metadata checked against Crossref, 2026-09-29).

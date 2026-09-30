@@ -37,8 +37,21 @@ Gate. Summed per-trial rest totals must equal the shipped totals_ms, and the
 illustration rule must select the shipped example pause from the shipped
 number of qualifying pauses.
 
+Hold sensitivity (--hold-sensitivity; needs the raw AdSERP recordings and
+screenshots). The poster holds a mousemove position for at most 2 s, and the
+logger records the cursor only when it moves, so a pointer left completely
+still for longer drops out of "rest" -- Rodden's prototypical mark. This mode
+rebuilds every trial's pauses from the raw recordings through
+scripts/attention_atlas/atlas_core.py under three cursor-hold rules: the
+primary 2 s cap, no cap (held until the next mousemove), and no cap with the
+held page position following page scroll. Gates: the capped rebuild must
+reproduce the shipped per-trial pauses, gaze segments and rest totals exactly,
+and each uncapped rebuild must reproduce the resting-cursor producer's
+sensitivity totals. It then reruns the prevalence and both tests per rule.
+
 Regime [LAB, AdSERP, typed]; rank type typed (all main-column elements).
 Output: scripts/output/cursor_marking/summary.json
+        scripts/output/cursor_marking/hold_sensitivity.json (--hold-sensitivity)
 """
 import argparse
 import gzip
@@ -62,6 +75,11 @@ LEAD_BINS_S = [(0, 2), (2, 5), (5, 10), (10, None)]   # approach onset minus pau
 BOOTSTRAP_DRAWS = 2000
 BOOTSTRAP_SEED = 20260929
 UNOBSERVED = (-1, -2)                                 # off every AOI, no fixation
+REST_SUMMARY = ATLAS / 'evidence/resting-cursor/summary.json'
+# name: (hold_ms, held page position follows scroll); keys 2-3 match compute-resting-cursor.py
+HOLD_RULES = {'capped_2s': (2000, False), 'uncapped_hold': (None, False), 'uncapped_hold_scroll_shift': (None, True)}
+LONG_PAUSE_MS = (2000, 4000, 8000)                    # duration thresholds reported per rule
+WORKERS = 8
 
 
 # ── Pure functions (unit-tested in test_cursor_marking.py) ──────────────────
@@ -261,10 +279,128 @@ def prevalence(recs, echo):
     }
 
 
+def pause_durations(echo_like):
+    d = [p['end'] - p['start'] for tr in echo_like for p in tr['pauses']]
+    return {'pauses': len(d), 'median_ms': float(np.median(d)) if d else None,
+            **{f'share_ge_{t // 1000}s': float(np.mean([x >= t for x in d])) if d else None for t in LONG_PAUSE_MS}}
+
+
+def analyse(echo_like, info, p_click, min_other_ms=MIN_OTHER_MS):
+    recs = pause_records(echo_like, info, min_other_ms)
+    test_a, by_lead, by_pos = marking_tests(recs, p_click)
+    long_marks = [r for r in recs if r['pre_approach'] and r['marking'] and r['end'] - r['start'] >= 4000]
+    return {'pauses': pause_durations(echo_like),
+            'prevalence': prevalence(recs, echo_like),
+            'test_A_marked_vs_most_gazed_other': test_a,
+            'test_A_by_lead_time': by_lead,
+            'test_A_by_marked_position': by_pos,
+            'test_B_later_vs_earlier_mark': remark_test(recs),
+            'long_marks_ge_4s': {'pauses': len(long_marks),
+                                 'marked_hit': float(np.mean([r['aoi'] == r['target'] for r in long_marks])) if long_marks else None,
+                                 'other_hit': float(np.mean([r['other'] == r['target'] for r in long_marks])) if long_marks else None}}
+
+
+def rebuild_trial(row, core):
+    """Pauses, gaze segments and rest totals for one trial under every HOLD_RULES rule."""
+    tr = core.Trial(row)
+    edges = core.interval_edges(tr, tr.windows)
+    click = max(tr.clicks, key=lambda c: c[0])
+    hits = [c for c in tr.cards if core.inside(click[1] * tr.sx, click[2] * tr.sy, c)]
+    out = {'trial_id': tr.trial_id, 'pid': tr.pid, 'start': float(tr.start),
+           'target': int(hits[0]['position']) if hits else None, 'rules': {}}
+    for name, (hold, shift) in HOLD_RULES.items():
+        cs = core.window_speed(core.cursor_endpoints(tr, hold))
+        valid = np.isfinite(cs) & ~core.scroll_windows(tr)
+        o = core.occupancy(tr, edges, hold, shift)
+        ca, ga = core.aoi(o['cx'], o['cy'], tr.cards), core.aoi(o['gx'], o['gy'], tr.cards)
+        ca[~o['cv']] = core.UNOBSERVED
+        ga[~o['gv']] = core.UNOBSERVED
+        mv, speed = core.window_lookup(tr, o['mid'], cs, valid)
+        resting = (ca >= 0) & mv & (speed < core.REST_PX_S)
+        pauses = [{'start': a, 'end': b, 'cursor_aoi': k}
+                  for a, b, k in core.segments(edges - tr.start, np.where(resting, ca, core.OFF_AOI))
+                  if k >= 0 and b - a >= core.PAUSE_MIN_MS]
+        if 'gaze_segments' not in out:          # gaze occupancy does not depend on the cursor rule
+            out['gaze_segments'] = core.segments(edges - tr.start, ga)
+        out['rules'][name] = {'pauses': pauses, 'rest_ms': float(o['dt'][resting].sum()),
+                              'different_ms': float(o['dt'][resting & (ga >= 0) & (ga != ca)].sum())}
+    return out
+
+
+def hold_sensitivity(out_dir):
+    """Rebuild pauses from raw recordings under each hold rule, gate, and rerun the tests."""
+    import sys
+    from concurrent.futures import ThreadPoolExecutor
+    sys.path.insert(0, str(ROOT / 'scripts/attention_atlas'))
+    import atlas_core as core
+
+    echo = {t['trial_id']: t for t in load_json(ECHO_TRIALS)}
+    info = {t['trial_id']: t for t in load_json(INFO_TRIALS)}
+    rest = json.loads(REST_SUMMARY.read_text())
+    rows = core.load_cohort()
+    gate(len(rows) == len(echo), f'cohort {len(rows)} vs sequence-poster trials {len(echo)}')
+    with ThreadPoolExecutor(max_workers=WORKERS) as pool:
+        built = list(pool.map(lambda r: rebuild_trial(r, core), rows))
+
+    # Gate 1: the capped rebuild is the shipped substrate.
+    for b in built:
+        ref, cap = echo[b['trial_id']], b['rules']['capped_2s']
+        gate(b['target'] == info[b['trial_id']]['target_position'], f"{b['trial_id']}: target differs")
+        gate(abs(b['start'] - info[b['trial_id']]['start_ms']) < 1e-6, f"{b['trial_id']}: clock start differs")
+        gate([(p['start'], p['end'], p['cursor_aoi']) for p in ref['pauses']]
+             == [(p['start'], p['end'], p['cursor_aoi']) for p in cap['pauses']], f"{b['trial_id']}: pauses differ")
+        gate(ref['gaze_segments'] == b['gaze_segments'], f"{b['trial_id']}: gaze segments differ")
+        gate(abs(ref['totals']['cursor_rest_in_aoi_ms'] - cap['rest_ms']) < 1e-6
+             and abs(ref['totals']['different_aoi_ms'] - cap['different_ms']) < 1e-6, f"{b['trial_id']}: rest totals differ")
+    # Gate 2: each uncapped rebuild reproduces the resting-cursor producer's sensitivity totals.
+    for name in ('uncapped_hold', 'uncapped_hold_scroll_shift'):
+        shipped = rest['sensitivity_cursor_hold'][name]['milliseconds']
+        got_rest = sum(b['rules'][name]['rest_ms'] for b in built)
+        got_diff = sum(b['rules'][name]['different_ms'] for b in built)
+        gate(abs(got_rest - shipped['cursor_rest_in_aoi_ms']) < 1e-3, f'{name}: rest {got_rest} vs {shipped["cursor_rest_in_aoi_ms"]}')
+        gate(abs(got_diff - shipped['different_aoi_ms']) < 1e-3, f'{name}: different {got_diff} vs {shipped["different_aoi_ms"]}')
+
+    p_click = click_rate_by_position(info)
+    rules = {}
+    for name, (hold, shift) in HOLD_RULES.items():
+        echo_like = [{'trial_id': b['trial_id'], 'pid': b['pid'], 'pauses': b['rules'][name]['pauses'],
+                      'gaze_segments': b['gaze_segments']} for b in built]
+        rules[name] = {'hold_ms': hold, 'shift_with_scroll': shift,
+                       'rest_share_different_aoi': sum(b['rules'][name]['different_ms'] for b in built)
+                       / sum(b['rules'][name]['rest_ms'] for b in built),
+                       **analyse(echo_like, info, p_click)}
+    # The capped rule must reproduce the primary summary's headline exactly.
+    primary = json.loads((OUT_DIR / 'summary.json').read_text())['views'][f'min_other_{MIN_OTHER_MS}ms']
+    gate(rules['capped_2s']['prevalence']['marking_share_of_pre_approach_pauses']
+         == primary['prevalence']['marking_share_of_pre_approach_pauses'], 'capped rule does not reproduce the primary summary')
+
+    rel = lambda p: str(Path(p).resolve().relative_to(ROOT))
+    out = {'regime': '[LAB, AdSERP, typed]', 'rank_type': 'typed', 'min_other_ms': MIN_OTHER_MS,
+           'gates': {'capped_rebuild_matches_shipped_trials': len(built),
+                     'uncapped_totals_match_resting_cursor_sensitivity': 2,
+                     'capped_reproduces_primary_summary': True, 'status': 'PASSED'},
+           'inputs_sha256': {rel(resolve(p)): sha256(resolve(p)) for p in (ECHO_TRIALS, INFO_TRIALS, REST_SUMMARY)},
+           'rules': rules}
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / 'hold_sensitivity.json').write_text(json.dumps(out, indent=1) + '\n')
+    pct = lambda r: f"{r['value'] * 100:.1f}% [{r['ci95'][0] * 100:.1f}, {r['ci95'][1] * 100:.1f}]"
+    print(f'gates PASSED; {len(built)} trials rebuilt')
+    for name, v in rules.items():
+        pr, a, b = v['prevalence'], v['test_A_marked_vs_most_gazed_other'], v['test_B_later_vs_earlier_mark']
+        print(f"{name:28s} pauses {v['pauses']['pauses']:5d} (≥4s {v['pauses']['share_ge_4s'] * 100:4.1f}%) "
+              f"marking {pct(pr['marking_share_of_pre_approach_pauses'])} trials {pct(pr['trials_with_marking_pause'])} "
+              f"| A marked {pct(a['marked_hit'])} lift {a['marked_lift']:.2f} other {pct(a['other_hit'])} diff {pct(a['diff'])} "
+              f"| B diff {pct(b['diff'])}")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     ap.add_argument('--out-dir', type=Path, default=OUT_DIR)
+    ap.add_argument('--hold-sensitivity', action='store_true',
+                    help='rebuild pauses from raw recordings under each cursor-hold rule (needs AdSERP data)')
     args = ap.parse_args()
+    if args.hold_sensitivity:
+        return hold_sensitivity(args.out_dir)
 
     echo = load_json(ECHO_TRIALS)
     info = {t['trial_id']: t for t in load_json(INFO_TRIALS)}

@@ -113,13 +113,15 @@ promising result read so far while the eyes check others
 ([CHI '08 Extended Abstracts](https://doi.org/10.1145/1358628.1358797)). They
 described it from inspection and reported no rate. Measured here, 65.1%
 [62.0, 68.4] of cursor pauses that end before the final approach contain at
-least 100 ms of gaze on another result; the pattern appears in 42.5% of trials
-and in all 47 participants. The parked result is the eventual click 1.53 times
-as often as its position predicts
-([cursor marking](ablations/cursor_marking.md)). That supports reading the
-pause as a mark on a candidate. Whether the searcher intends it as a bookmark,
-or the hand simply stays where it last stopped, is not tested; the 2 s cursor
-hold also makes these rates lower bounds.
+least 100 ms of gaze on another result under the poster's 2 s cursor hold.
+Holding a still pointer until it next moves raises that to 71–75%. The pattern
+appears in 42.5–46% of trials and in all 47 participants. Across hold rules,
+the parked result is the eventual click 1.40–1.53 times as often as its
+position predicts ([cursor marking](ablations/cursor_marking.md)). The result
+the eyes examine most during the same pause predicts the click about as well,
+so the pause marks a candidate without the hand carrying privileged
+information. Whether the searcher intends the pointer as a bookmark, or the
+hand simply stays where it last stopped, is not tested.
 
 ## From observable movement to cognitive explanation
 
