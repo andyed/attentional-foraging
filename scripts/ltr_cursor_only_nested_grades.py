@@ -9,6 +9,14 @@ fitting, probability estimates or training grades. The threshold remains 0.5.
 
 The historical producer and summaries are retained unchanged. Run:
   .venv/bin/python scripts/ltr_cursor_only_nested_grades.py --no-lofo
+
+--label-complete restricts the run to the label-complete pool used by §4.3 and
+deferred_dwell_carve.py. Approached unclicked rows that gaze never fixated have
+no row in the regression-label cache; the default run reads them through
+`.get(key, False)` as evaluated-rejected. With the flag they are left out of
+every inner labeler's training pool and out of every ranker's training rows
+(binary, gaze, and cursor alike, so the rows stay matched); evaluation still
+scores all rows. Output: summary_buf{N}_label_complete.json.
 """
 from __future__ import annotations
 
@@ -52,7 +60,7 @@ def rel(path):
     return str(path.relative_to(ROOT)) if path.is_relative_to(ROOT) else str(path)
 
 
-def nested_cursor_training_labels(records, X, gaze, pid, pool, held_out):
+def nested_cursor_training_labels(records, X, gaze, pid, pool, held_out, exclude=None):
     """Return kept training grades and fold diagnostics without reading test data.
 
     Slice *before* calling the shared labeler: each inner fit then excludes
@@ -79,6 +87,10 @@ def nested_cursor_training_labels(records, X, gaze, pid, pool, held_out):
     three, inc3 = assign_three_grade_collapse(train_records, binary)
     if not np.array_equal(inc4, inc3):
         raise ValueError('Nested training grade inclusion masks diverged')
+    if exclude is not None:
+        # Rows outside the label-complete pool get no training grade.
+        drop = np.asarray(exclude)[outer_train]
+        inc4, inc3 = inc4 & ~drop, inc3 & ~drop
     stats = {
         'outer_training_records': len(train_records),
         'outer_training_kept_records': int(inc4.sum()),
@@ -99,6 +111,8 @@ def main():
     ap.add_argument('--feature-cache', type=Path, default=ROOT / 'AdSERP/data/cursor-only-typed-features-mousedown.json')
     ap.add_argument('--buffer', type=int, default=500)
     ap.add_argument('--no-lofo', action='store_true')
+    ap.add_argument('--label-complete', action='store_true',
+                    help='exclude approached unclicked rows absent from the label cache (never fixated)')
     ap.add_argument('--output-dir', type=Path, default=ROOT / 'scripts/output/ltr_cursor_only_nested_grades')
     args = ap.parse_args()
 
@@ -121,6 +135,16 @@ def main():
     approached = np.array([r['min_dist'] < APPROACH_THRESHOLD_PX for r in records])
     gaze_arr = np.array([int(g) for g in gaze_labels])
     pool = approached & (y_click_all == 0)
+    labeled = np.array([(r['trial_id'], r['position']) in label_by_key for r in records])
+    never_fixated = pool & ~labeled
+    if args.label_complete:
+        exclude = never_fixated
+        labeler_pool = pool & labeled
+    else:
+        exclude = np.zeros(len(records), dtype=bool)
+        labeler_pool = pool
+    print(f'approached non-click pool {int(pool.sum()):,}; never fixated {int(never_fixated.sum()):,}; '
+          f'labeler pool {int(labeler_pool.sum()):,}', file=sys.stderr)
     print(f'records {len(records):,} trials {len(np.unique(tid_all)):,} participants {len(np.unique(pid_all))}', file=sys.stderr)
 
     # Gaze grades are a supervised comparison. Cursor grades are created only
@@ -128,14 +152,20 @@ def main():
     l4, inc4, counts = assign_four_distinct_grades(records, gaze_labels)
     l3, inc3 = assign_three_grade_collapse(records, gaze_labels)
     assert (inc4 == inc3).all()
+    if args.label_complete:
+        # Every never-fixated row was graded EVAL_REJECTED via the default.
+        assert not (gaze_arr[never_fixated]).any()
+        counts['EVAL_REJECTED'] -= int(never_fixated.sum())
+        counts['NeverFixated_EXCLUDED'] = int(never_fixated.sum())
     flavors = {'gaze': {'4grade': l4, '3grade': l3, 'class_counts': counts},
                'cursor': {'4grade': {}, '3grade': {}}}
-    include = inc4
+    include = inc4 & ~exclude
     nested_diagnostics = []
     import time
     started = time.monotonic()
     for fold_number, p in enumerate(np.unique(pid_all), 1):
-        fold = nested_cursor_training_labels(records, X_full, gaze_arr, pid_all, pool, p)
+        fold = nested_cursor_training_labels(records, X_full, gaze_arr, pid_all, labeler_pool, p,
+                                             exclude=exclude if args.label_complete else None)
         assert np.array_equal(fold['include'], include[pid_all != p])
         for grade in ('3grade', '4grade'):
             flavors['cursor'][grade][p] = fold[grade]
@@ -235,6 +265,12 @@ def main():
                      'label_sources': {'gaze': 'NB22 gaze-regression label re-keyed by (trial, position)',
                                        'cursor': 'For each outer ranker LOSO fold, inner participant LOSO labeler (M4-7 -> gaze label) fitted/scaled only on outer-training approached non-click rows; fixed threshold 0.5'},
                      'cursor_label_threshold': 0.5,
+                     'label_pool': ('label-complete: approached non-click rows present in the regression-label cache; '
+                                    'never-fixated rows excluded from labeler training and from all ranker training rows')
+                                   if args.label_complete else
+                                   'approached non-click rows; rows absent from the label cache read as not deferred',
+                     'labeler_pool_records': int(labeler_pool.sum()),
+                     'never_fixated_approached_nonclick': int(never_fixated.sum()),
                      'outer_test_gaze_used_for_cursor_training_labels': False,
                      'cursor_labeler_features_in_ranker_lofo': 'Fixed full M4-7; only ranker feature columns are ablated',
                      'ranker_lofo_status': 'not run' if args.no_lofo else 'nested cursor labels; fixed M4-7 labeler'},
@@ -257,7 +293,8 @@ def main():
     import lightgbm, sklearn
     summary['provenance'].update({'lightgbm': lightgbm.__version__, 'sklearn': sklearn.__version__})
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    out = args.output_dir / f'summary_buf{args.buffer}.json'
+    out = args.output_dir / (f'summary_buf{args.buffer}_label_complete.json' if args.label_complete
+                             else f'summary_buf{args.buffer}.json')
     out.write_text(json.dumps(summary, indent=2, allow_nan=False) + '\n')
     print(f'wrote {out}', file=sys.stderr)
     for k, v in rows.items():
