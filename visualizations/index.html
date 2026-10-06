@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Search process: two linked posters</title><style>*{box-sizing:border-box}body{margin:0;background:#fafaf8;color:#222;font:500 19px/1.6 Arial,sans-serif}main{max-width:1120px;margin:auto;padding:32px 30px}h1{font-size:42px;line-height:1.15}h2{margin-top:42px;line-height:1.25}a{color:#00505e;text-underline-offset:3px}a:focus-visible,.table-wrap:focus-visible{outline:3px solid #782650;outline-offset:4px}img{max-width:100%;height:auto}nav{display:flex;gap:24px;flex-wrap:wrap}nav a{min-height:44px;display:inline-flex;align-items:center}.table-wrap{overflow-x:auto}table{border-collapse:collapse}td,th{padding:10px;text-align:left;border-bottom:1px solid #999}pre{overflow-x:auto;background:#eeefea;padding:18px;font-size:16px}code{overflow-wrap:anywhere}p,li{max-width:86ch}@media(max-width:600px){main{padding:22px 18px}h1{font-size:32px}}</style></head><body><main><nav aria-label="Atlas"><a href="./">Atlas</a><a href="information-space-poster/">Time and space</a><a href="gaze-cursor-echo/">Sequences and timing</a><a href="not-a-cascade.html">Not a cascade</a><a href="readme.html">Project overview</a></nav><h1 id="search-process-two-linked-posters">Search process: two linked posters</h1>
+<p><strong>LAB · AdSERP · typed AOIs · 2,650 trials · 47 participants</strong></p>
+<p><a href="information-space-poster/index.html">One clock, many views</a> follows time budgets
+into a trial and its final seconds. <a href="gaze-cursor-echo/index.html">While the mouse waits, the eyes travel</a>
+follows sequence and timing aggregates into a gaze excursion during cursor rest.
+Read the <a href="not-a-cascade.html">“not a cascade” account</a> alongside them.</p>
+<div class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+  <th>Artifact</th>
+  <th>Print / preview</th>
+  <th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Information space</td>
+  <td><a href="information-space-poster/poster.pdf">A0 PDF</a> · <a href="information-space-poster/poster-preview.png">PNG</a></td>
+  <td><a href="information-space-poster/methods.html">Methods</a> · <a href="information-space-poster/time-budgets.csv">time budgets</a> · <a href="information-space-poster/summary.json">aggregates</a></td>
+</tr>
+<tr>
+  <td>Gaze–cursor sequences</td>
+  <td><a href="gaze-cursor-echo/poster.pdf">A0 PDF</a> · <a href="gaze-cursor-echo/poster-preview.png">PNG</a></td>
+  <td><a href="gaze-cursor-echo/methods.html">Methods</a> · <a href="gaze-cursor-echo/summary.json">aggregates</a> · <a href="gaze-cursor-echo/checks.json">checks and sensitivities</a></td>
+</tr>
+<tr>
+  <td>Resting cursor</td>
+  <td>—</td>
+  <td><a href="evidence/resting-cursor/summary.json">aggregates and cursor-hold sensitivities</a></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="measures-and-scope">Measures and scope</h2>
+<p>Both posters start at the first native mousemove and stop at the final physical
+press. Spatial partitions include missing coverage in the full duration
+denominator. Motion uses complete 100-ms windows. Initial-fold position is a
+page-coordinate measure, not current viewport visibility. The sequence poster
+also uses event counts and a common-coverage time denominator; those are labeled
+separately. A recorded fixation is not proof of comprehension, and gaze-return
+counts are not cursor-return counts.</p>
+<p>Three sensitivities qualify headline numbers. The cursor logger records only
+movement and a position is held for at most 2 s, so long stillness is
+unavailable rather than rest; holding until the next move raises the
+different-AOI share of rest time from 23.8% to 27.6%. Every first cursor visit
+starts at the clock origin, so matched visit pairs that start there are
+reported separately; without them gaze arrives first in 55.3% of pairs rather
+than 50.1%. The illustrated pause is selected for a gaze return; 10.7% of
+2–8 s cursor pauses show that pattern.</p>
+<p>The earlier first-visit evidence in <a href="not-a-cascade.html">not a cascade</a> uses
+2,606 trials and runs of consecutive fixations. Its snapshot lives in
+<a href="evidence/next-action-by-position.json">evidence/next-action-by-position.json</a>.
+It is supporting context, not another partition of the poster cohort.</p>
+<p>Local viewing, rebuild commands and verification are described in the <a href="https://github.com/andyed/attentional-foraging/blob/main/docs/visualizations/README.md">atlas guide on GitHub</a>.</p>
+</main></body></html>

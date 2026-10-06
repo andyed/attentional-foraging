@@ -1,0 +1,17 @@
+{
+  "note": "Digests of the shipped evidence, excluding provenance hashes. Re-pin only after a deliberate, reviewed change to the numbers (verify-atlas.py --pin).",
+  "values": {
+    "information-space-poster/summary.json": "a21173de478d0cc05ef788a64554412068ab214296e7afc8e2750ab8d44962dc",
+    "information-space-poster/trials.json.gz": "429ed11e819dad8043489a09e6c5aa7656443d497a34ada4a9930b07e65e9bac",
+    "information-space-poster/time-budgets.csv": "cbbbe8d78bde11d7142947127cc72e914066c15e1aa959bc8fb8e206d15b43b2",
+    "gaze-cursor-echo/summary.json": "16fcf5f39833bc063b166c82cdf3bc5f6f41f8f1fb5dc009dbdc033de932f0a9",
+    "gaze-cursor-echo/checks.json": "01540bbab86fed6112ecc49b92aa533b1c83b74c2ab44ce9da08c6bca2817a28",
+    "gaze-cursor-echo/trials.json.gz": "90b5582671cad09399993101184e7d76a3c09486e075aec8bbd0d2a626654bb3",
+    "gaze-cursor-echo/common-coverage-trials.json.gz": "c90ab82d12c93cddf77464044622494b69e94ae364b35f0905d098339384e76a",
+    "evidence/resting-cursor/summary.json": "a94fde3050fb958efc6d9ef1a04cf8776dd682e9d79074797ec8476546013f2d",
+    "evidence/resting-cursor/trials.json.gz": "d86a9a91a4f1402c8cbd273003dca4ca104ed7d80cbe919e83143bb337691a49",
+    "evidence/final-approach/summary.json": "ac1ec7dd41b18698704f7b7552f2133e20f6e3df306cbb192cf2e55ae11cec35",
+    "evidence/final-approach/trial-summary.csv": "8e361cdec6c4db3b2afaa7ad628ef48370b3b9809bb2759a3e0825d1c2e0b0ba",
+    "evidence/next-action-by-position.json": "2fcfa7243d1df9000e91281be51e3dca26a3aa1131a9c1909c57013a6ffdc9e2"
+  }
+}
