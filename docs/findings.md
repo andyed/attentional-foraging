@@ -173,10 +173,10 @@ Saccade amplitude distinguishes two scanning modes within each trial:
 
 | Phase | Saccade amplitude | Duration | Behavior |
 |-------|-------------------|----------|----------|
-| **Survey** (fixations 1–~5) | 107.8 px median, 53% major | ~1.3s (median) | Wide jumps between results, gist sampling [NB13:K5] |
-| **Evaluate** (fixations ~6+) | 69.4 px median, 40% major | Variable | Narrow saccades within results, reading episodes [NB13:K6] |
+| **Survey** (saccades 1–5) | 107.4 px median, 53% major | ~1.3s (median) | Wide jumps between results, gist sampling [NB13:K5] |
+| **Evaluate** (saccades 6+) | 69.9 px median (first-30 cap; 68.9 uncapped), 35% major | Variable | Narrow saccades within results, reading episodes [NB13:K6] |
 
-Per-trial amplitude slope over first 20 saccades: mean ρ = −0.135, p = 9.33 × 10⁻¹⁶⁸ (N = 2,754) [NB13:K2–K3]. The transition is detectable within individual trials (71.8% have negative slope) [NB13:K4].
+Per-trial amplitude slope over first 20 saccades: mean ρ = −0.133, p = 1.50 × 10⁻¹⁶⁵ (N = 2,748) [NB13:K2–K3]. The transition is detectable within individual trials (72.0% have negative slope) [NB13:K4] and within 46 of 47 participants [NB13:K20]. Scroll-aware values (2026-06-03); sidecar: `scripts/output/survey_amplitude_transition/summary.json` (`docs/ablations/survey_amplitude_transition.md`).
 
 **Survey duration is fixed.** Median 1.28s (IQR 1.06–1.58s). Survey duration shows weak negative correlation with total fixation count (ρ = −0.163) — quick deciders may spend relatively more time surveying — but does not respond to SERP content difficulty.
 
