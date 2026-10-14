@@ -56,7 +56,13 @@ APPROACH_7 = [f for f in APPROACH_9 if f not in ('final_dist', 'retreat_dist')]
 MODELS = [('M1', ['position']), ('M3', ['position'] + APPROACH_7),
           ('M4-7', APPROACH_7), ('M4-9', APPROACH_9)]
 ANCHORS = ('click', 'mousedown')
-WINDOWS = ('all', 'pre5', 'post5')
+WINDOWS = ('all', 'pre5', 'post5', 'episode', 'episode-pad')
+FIXATION_WINDOWS = ('pre5', 'post5')
+# Episode crop: per AOI, keep only post-buffer samples inside that AOI's
+# proximity episodes (maximal runs with |pageY - center| < 100 px), optionally
+# padded by EPISODE_PAD_MS on both sides. Cursor-only; no gaze enters.
+EPISODE_WINDOWS = {'episode': 0, 'episode-pad': 500}
+EPISODE_PROXIMITY_PX = 100
 SAMPLINGS = ('native', 'gaze-gated')
 FLAVORS = ('typed', 'typed_gapfill', 'organic')
 FEATURE_GROUPS = {
@@ -166,7 +172,7 @@ def prepare_trial(tid, cards, events, clicks, geometry, buffers, anchor='click',
     if any(b[0] < a[0] for a, b in zip(samples, samples[1:])):
         return None, 'nonmonotonic_mouse_time'
     samples = downsample_samples(samples, downsample_hz)
-    if window != 'all':
+    if window in FIXATION_WINDOWS:
         boundary = fifth_fixation_end(fixations or [])
         if boundary is None:
             return None, 'no_fifth_fixation_boundary'
@@ -183,8 +189,15 @@ def prepare_trial(tid, cards, events, clicks, geometry, buffers, anchor='click',
     cutoff = anchor_t - max(buffers)
     if len({t for t, _ in samples if t < cutoff}) < 2:
         return None, 'insufficient_prebuffer_mousemove'
+    episode_window = None
+    if window in EPISODE_WINDOWS:
+        # Applied per AOI inside the bridge, after the press buffer, so row
+        # inclusion and the post-buffer stream are identical to window='all'.
+        episode_window = {'proximity_px': EPISODE_PROXIMITY_PX,
+                          'pad_ms': EPISODE_WINDOWS[window]}
     return {
         'trial_id': tid, 'click_t': click[0], 'anchor_t': anchor_t,
+        'episode_window': episode_window,
         'click_position': position, 'buffers_ms': buffers, 'samples': samples,
         # Convert boxes back to document CSS px: the browser's proximity
         # threshold and velocity clamp are expressed in that coordinate space.
@@ -323,6 +336,31 @@ def paired_comparison(a, b):
     }
 
 
+def episode_survival(records):
+    """Per-row sample and episode survival under an episode crop."""
+    def q(v):
+        return dict(zip(['q25', 'median', 'q75', 'q90'],
+                        np.quantile(v, [.25, .5, .75, .9]).tolist())) if len(v) else None
+    out = {}
+    for label, sel in (('all', lambda r: True), ('clicked', lambda r: r['was_clicked']),
+                       ('not_clicked', lambda r: not r['was_clicked'])):
+        rs = [r for r in records if sel(r)]
+        kept = np.asarray([r['kept_samples'] for r in rs], dtype=float)
+        win = np.asarray([r['window_samples'] for r in rs], dtype=float)
+        eps = np.asarray([r['episode_count'] for r in rs], dtype=float)
+        out[label] = {
+            'n_rows': len(rs), 'n_rows_empty': int((kept == 0).sum()),
+            'frac_rows_empty': float((kept == 0).mean()),
+            'n_rows_single_sample': int((kept == 1).sum()),
+            'samples_in_window_total': int(win.sum()), 'samples_kept_total': int(kept.sum()),
+            'frac_samples_kept_pooled': float(kept.sum() / win.sum()) if win.sum() else 0.0,
+            'kept_samples_quantiles_nonempty': q(kept[kept > 0]),
+            'episodes_per_row_quantiles_nonempty': q(eps[kept > 0]),
+            'episodes_total': int(eps.sum()),
+        }
+    return out
+
+
 def run(args):
     root = args.repo_root.resolve()
     sys.path.insert(0, str(root / 'notebooks-v2'))
@@ -330,10 +368,10 @@ def run(args):
     # (gaze-gated sampling times or the fixation-5 window boundary); they
     # never select rows or enter a feature. The default protocol reads none.
     import data_loader as dl
-    needs_fixations = args.sampling == 'gaze-gated' or args.window != 'all'
+    needs_fixations = args.sampling == 'gaze-gated' or args.window in FIXATION_WINDOWS
     gaze_used_for = ([] if not needs_fixations else
                      (['cursor sampling times (fixation onsets)'] if args.sampling == 'gaze-gated' else [])
-                     + (['window boundary (end of fifth fixation)'] if args.window != 'all' else []))
+                     + (['window boundary (end of fifth fixation)'] if args.window in FIXATION_WINDOWS else []))
     tracker = args.tracker_js.resolve()
     bridge = Path(__file__).with_name('m4_cursor_tracker.mjs')
     source_files = {
@@ -455,6 +493,17 @@ def run(args):
     for condition, models in fold_results.items():
         paired[f'{condition}_M4-7_vs_M1'] = paired_comparison(models['M4-7'], models['M1'])
         paired[f'{condition}_M3_vs_M4-7'] = paired_comparison(models['M3'], models['M4-7'])
+    episode_diagnostics = None
+    if args.window in EPISODE_WINDOWS:
+        episode_diagnostics = {c: episode_survival(r) for c, r in conditions.items()}
+        episode_diagnostics['definition'] = (
+            f'per AOI: maximal runs of consecutive post-buffer mousemove samples with '
+            f'|pageY - AOI center y| < {EPISODE_PROXIMITY_PX} px, each extended by '
+            f'{EPISODE_WINDOWS[args.window]} ms on both sides (padded runs may merge)')
+        episode_diagnostics['empty_row_policy'] = (
+            'rows with zero in-episode samples are fed nothing; the tracker returns its '
+            'empty state (every feature 0, including min_dist = 0 and mean_dist = 0). '
+            'Not imputed; counted under n_rows_empty.')
     hashes_after = {k: sha256(p) for k, p in source_files.items()}
     quantiles = ['min', 'q25', 'median', 'q75', 'max']
 
@@ -486,7 +535,7 @@ def run(args):
         },
         'substrate': substrate, 'counts': {'discovered_trials': len(tids), **dict(counts)},
         'geometry_sources_included': dict(geometry_counts), 'conditions': metrics, 'paired': paired,
-        'feature_ablation': ablations,
+        'feature_ablation': ablations, 'episode_diagnostics': episode_diagnostics,
         'ablation_skipped': bool(args.no_ablation),
         'sampling_diagnostics': {
             'anchor_event': args.anchor,
@@ -534,7 +583,7 @@ def parse_args():
     parser.add_argument('--downsample-hz', type=float, default=0,
                         help='greedy-thin native mousemove to this rate before extraction (0 = native)')
     parser.add_argument('--window', choices=WINDOWS, default='all',
-                        help='restrict samples to before/after the end of the fifth fixation')
+                        help='pre5/post5: before/after the end of the fifth fixation (gaze boundary); episode/episode-pad: per-AOI 100 px proximity episodes, unpadded or padded 500 ms (cursor-only)')
     parser.add_argument('--feature-cache', type=Path, default=None,
                         help='also write per-record features here (kept out of git)')
     parser.add_argument('--no-ablation', action='store_true',
